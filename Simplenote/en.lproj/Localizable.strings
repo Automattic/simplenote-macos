@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Simplenote
+
+  Created by Michael Johnston on 7/26/13.
+  Copyright (c) 2013 Simperium. All rights reserved.
+*/
+
+"welcomeNote-Mac" = "Welcome to Simplenote Mac!
+
+To add a note, click the plus button.
+
+To remove a note, click the options button at the top right and choose Move to Trash.
+
+You can search all your notes by typing in the search field at the bottom of the note list.
+
+Click the arrow button at the bottom left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.
+
+There are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.
+
+Use Simplenote on your iPhone, iPad, Android device, or in your web browser at http://simplenote.com. Your notes will stay updated everywhere automatically.";
