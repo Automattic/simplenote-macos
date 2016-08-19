@@ -156,6 +156,7 @@
 		B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B56B35741AC3160300B9F365 /* NSTextView+Simplenote.m */; };
 		B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
 		B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
+		B58A7B931D66643000B9DD13 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		B58CF2161A81303E00A9B4D2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58CF2151A81303E00A9B4D2 /* Crashlytics.framework */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -1011,6 +1012,7 @@
 				4623ABDF1773740700CE0441 /* README.md in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				4623ABF61773BC1000CE0441 /* SourceSansPro-Regular.ttf in Resources */,
+				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
 				4623ABF71773BC1000CE0441 /* SourceSansPro-Semibold.ttf in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
