@@ -11,21 +11,21 @@ PODS:
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
   - Reachability (3.2)
-  - Simperium-OSX (0.8.15):
-    - Simperium-OSX/DiffMatchPach (= 0.8.15)
-    - Simperium-OSX/JRSwizzle (= 0.8.15)
-    - Simperium-OSX/SocketRocket (= 0.8.15)
-    - Simperium-OSX/SPReachability (= 0.8.15)
-    - Simperium-OSX/SSKeychain (= 0.8.15)
-  - Simperium-OSX/DiffMatchPach (0.8.15)
-  - Simperium-OSX/JRSwizzle (0.8.15)
-  - Simperium-OSX/SocketRocket (0.8.15)
-  - Simperium-OSX/SPReachability (0.8.15)
-  - Simperium-OSX/SSKeychain (0.8.15)
+  - Simperium-OSX (0.8.17):
+    - Simperium-OSX/DiffMatchPach (= 0.8.17)
+    - Simperium-OSX/JRSwizzle (= 0.8.17)
+    - Simperium-OSX/SocketRocket (= 0.8.17)
+    - Simperium-OSX/SPReachability (= 0.8.17)
+    - Simperium-OSX/SSKeychain (= 0.8.17)
+  - Simperium-OSX/DiffMatchPach (0.8.17)
+  - Simperium-OSX/JRSwizzle (0.8.17)
+  - Simperium-OSX/SocketRocket (0.8.17)
+  - Simperium-OSX/SPReachability (0.8.17)
+  - Simperium-OSX/SSKeychain (0.8.17)
 
 DEPENDENCIES:
   - Automattic-Tracks-OSX (from `https://github.com/Automattic/Automattic-Tracks-iOS.git`, tag `0.1.0`)
-  - Simperium-OSX (= 0.8.15)
+  - Simperium-OSX (= 0.8.17)
 
 EXTERNAL SOURCES:
   Automattic-Tracks-OSX:
@@ -41,8 +41,8 @@ SPEC CHECKSUMS:
   Automattic-Tracks-OSX: 6abe3b77ffa1105d4b9859645b92acd59f536efa
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  Simperium-OSX: d923cf7da311e0a9607e3611f0593ecd46796293
+  Simperium-OSX: 19809fb508ccb21f4f06fd5884c09721a6d65a69
 
-PODFILE CHECKSUM: 2948561d086c61206433354930b6040b11c9c495
+PODFILE CHECKSUM: 894103412e89a85c0591d25cb05bbcbecd9aea32
 
 COCOAPODS: 1.0.1
