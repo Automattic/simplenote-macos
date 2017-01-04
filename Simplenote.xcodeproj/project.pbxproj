@@ -1480,7 +1480,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = QXKWK6Q52N;
@@ -1519,10 +1519,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Developer ID Application: Codality, Inc. (QXKWK6Q52N)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application: Codality, Inc. (QXKWK6Q52N)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = QXKWK6Q52N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
@@ -1567,6 +1568,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"/**",
@@ -1610,6 +1612,7 @@
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"/**",
@@ -1636,8 +1639,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac;
 				PRODUCT_NAME = Simplenote;
-				PROVISIONING_PROFILE = "b50b6f62-2cc2-42cc-ae26-970c69eb9df9";
-				"PROVISIONING_PROFILE[sdk=macosx*]" = "b50b6f62-2cc2-42cc-ae26-970c69eb9df9";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=macosx*]" = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
