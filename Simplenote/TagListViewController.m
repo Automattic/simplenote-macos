@@ -728,6 +728,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 {
     [tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     [tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    [tableView setNeedsDisplay:YES];
     [tableView reloadData];
 }
 
