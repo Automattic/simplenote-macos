@@ -535,14 +535,14 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 - (void)bucket:(SPBucket *)bucket didChangeObjectForKey:(NSString *)key forChangeType:(SPBucketChangeType)change memberNames:(NSArray *)memberNames
 {
     // Ignore acks
-    if (change == SPBucketChangeAcknowledge) {
+    if (change == SPBucketChangeTypeAcknowledge) {
         return;
 	}
     
     if ([bucket.name isEqualToString:@"Note"]) {
         // Note change
         switch (change) {                
-            case SPBucketChangeUpdate:
+            case SPBucketChangeTypeUpdate:
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
                     [self.noteEditorViewController updateTagField];
@@ -551,7 +551,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 
                 break;
             
-            case SPBucketChangeInsert:
+            case SPBucketChangeTypeInsert:
                 break;
 
             default:
