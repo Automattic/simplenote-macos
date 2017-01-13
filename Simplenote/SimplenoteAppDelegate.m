@@ -706,7 +706,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)application
 {
-    return NO;
+    return YES;
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)hasVisibleWindows
