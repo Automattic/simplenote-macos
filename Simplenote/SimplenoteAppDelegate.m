@@ -217,6 +217,8 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     } else {
         [self configureLegacyWindow];
     }
+
+    [self.window makeKeyAndOrderFront:nil];
 }
 
 - (void)configureYosemiteWindow
