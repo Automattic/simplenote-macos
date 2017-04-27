@@ -679,7 +679,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [notesArrayController setSelectsInsertedObjects:YES];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    [appDelegate ensureMainWindowIsVisible];
+    [appDelegate ensureMainWindowIsVisible:nil];
     
     Note *newNote = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:appDelegate.simperium.managedObjectContext];
     newNote.modificationDate = [NSDate date];

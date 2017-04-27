@@ -37,8 +37,8 @@
 - (IBAction)emptyTrashAction:(id)sender;
 - (IBAction)toggleSidebarAction:(id)sender;
 - (IBAction)changeThemeAction:(id)sender;
+- (IBAction)ensureMainWindowIsVisible:(id)sender;
 
-- (void)ensureMainWindowIsVisible;
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
 - (NSString *)selectedTagName;
