@@ -291,6 +291,15 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 
 #pragma mark - Other
 
+- (void)ensureMainWindowIsVisible
+{
+    if ([self.window isVisible]) {
+        return;
+    }
+
+    [self.window makeKeyAndOrderFront:nil];
+}
+
 - (IBAction)selectAllNotesTag
 {
     [self.tagListViewController selectAllNotesTag];
@@ -706,7 +715,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)application
 {
-    return YES;
+    return NO;
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)hasVisibleWindows
