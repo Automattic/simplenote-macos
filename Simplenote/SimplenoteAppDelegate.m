@@ -353,6 +353,11 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     return numDeletedNotes;
 }
 
+- (BOOL)isMainWindowVisible
+{
+    return self.window.isVisible;
+}
+
 - (void)createWelcomeNote
 {
     SPBucket *noteBucket = [_simperium bucketForName:@"Note"];

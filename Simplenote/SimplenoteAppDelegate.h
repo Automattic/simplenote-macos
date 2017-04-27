@@ -43,5 +43,6 @@
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
 - (NSString *)selectedTagName;
 - (NSInteger)numDeletedNotes;
+- (BOOL)isMainWindowVisible;
 
 @end
