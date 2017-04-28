@@ -525,20 +525,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+    BOOL isMainWindowVisible = [[SimplenoteAppDelegate sharedDelegate] isMainWindowVisible];
+
     // Note menu
-    if (menuItem == deleteItem || menuItem == printItem) {
-        return [[SimplenoteAppDelegate sharedDelegate] isMainWindowVisible];
-    }
     if (menuItem == newItem) {
         return !self.viewingTrash;
     }
 
-    if (menuItem == deleteItem) {
-        return !self.viewingTrash && self.note != nil;
-    }
-
-    if (menuItem == printItem) {
-        return self.note != nil;
+    if (menuItem == deleteItem || menuItem == printItem) {
+        return !self.viewingTrash && self.note != nil && isMainWindowVisible;
     }
     
     return YES;
