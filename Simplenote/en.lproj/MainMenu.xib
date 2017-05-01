@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -463,6 +463,13 @@
                                     <action selector="arrangeInFront:" target="-1" id="39"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="3kv-mj-TiH"/>
+                            <menuItem title="Main Window" id="vor-dd-sYt">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="ensureMainWindowIsVisible:" target="494" id="91z-nv-pTJ"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -479,6 +486,9 @@
                     </menu>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="494" id="ahP-nJ-8XG"/>
+            </connections>
         </menu>
         <customView id="914" customClass="SPToolbarView">
             <rect key="frame" x="0.0" y="0.0" width="901" height="36"/>
@@ -655,7 +665,7 @@
                                                                     <rect key="frame" x="0.0" y="2" width="151" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="1464" customClass="SPTagTextField">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1464" customClass="SPTagTextField">
                                                                             <rect key="frame" x="36" y="1" width="100" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1465">
@@ -679,7 +689,7 @@
                                                                     <rect key="frame" x="0.0" y="26" width="151" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="1482" customClass="SPTagTextField">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1482" customClass="SPTagTextField">
                                                                             <rect key="frame" x="36" y="0.0" width="100" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1483">
@@ -703,7 +713,7 @@
                                                                     <rect key="frame" x="0.0" y="50" width="151" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="1496" customClass="SPTagTextField">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1496" customClass="SPTagTextField">
                                                                             <rect key="frame" x="38" y="0.0" width="100" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1497">
@@ -727,7 +737,7 @@
                                                                     <rect key="frame" x="0.0" y="74" width="151" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="1489" customClass="SPTagTextField">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1489" customClass="SPTagTextField">
                                                                             <rect key="frame" x="20" y="0.0" width="124" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1490">
@@ -824,7 +834,7 @@
                                                                     <rect key="frame" x="0.0" y="4" width="255" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="1103">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
                                                                             <rect key="frame" x="18" y="0.0" width="214" height="59"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
@@ -867,7 +877,7 @@
                                             <outlet property="menu" destination="1504" id="1509"/>
                                         </connections>
                                     </scrollView>
-                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" id="915">
+                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="915">
                                         <rect key="frame" x="36" y="10" width="205" height="22"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="" usesSingleLineMode="YES" bezelStyle="round" id="916">
@@ -893,7 +903,7 @@
                                             <outlet property="delegate" destination="874" id="DYP-cY-EYS"/>
                                         </connections>
                                     </searchField>
-                                    <textField verticalHuggingPriority="750" id="1766">
+                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1766">
                                         <rect key="frame" x="17" y="340" width="221" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Notes" id="1767">
@@ -957,7 +967,7 @@
                                         <rect key="frame" x="141" y="262" width="210" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" tag="1" id="1441">
+                                            <textField verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="1441">
                                                 <rect key="frame" x="6" y="16" width="199" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="1442">
@@ -1016,6 +1026,7 @@
                 <userDefinedRuntimeAttribute type="color" keyPath="inactiveBaselineSeparatorColor">
                     <color key="value" white="0.82999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                 </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="excludedFromWindowsMenu" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="delegate" destination="494" id="1423"/>
@@ -1025,6 +1036,7 @@
             <connections>
                 <outlet property="backgroundView" destination="372" id="C2S-D2-Vn5"/>
                 <outlet property="emptyTrashItem" destination="1256" id="1776"/>
+                <outlet property="mainWindowItem" destination="vor-dd-sYt" id="jUG-qn-XNJ"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListToolbarButton" destination="1680" id="1703"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
@@ -1123,7 +1135,7 @@
                         <rect key="frame" x="1" y="1" width="238" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="1635">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1635">
                                 <rect key="frame" x="12" y="39" width="214" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Add an email address as a tag to share this note with someone. Then you can both make changes to it." id="1637">
@@ -1158,7 +1170,7 @@
                         <rect key="frame" x="1" y="1" width="238" height="153"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" id="1057">
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1057">
                                 <rect key="frame" x="15" y="92" width="208" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" placeholderString="Not published" drawsBackground="YES" usesSingleLineMode="YES" id="1058">
@@ -1178,7 +1190,7 @@
                                     <action selector="publishAction:" target="1107" id="1664"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="1068">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1068">
                                 <rect key="frame" x="12" y="3" width="214" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Publish this note to a web page. The page will stay updated with the contents of your note." id="1069">
@@ -1237,7 +1249,7 @@
                     <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                 </box>
-                <textField verticalHuggingPriority="750" id="1319">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1319">
                     <rect key="frame" x="7" y="47" width="206" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version: Current" id="1320">

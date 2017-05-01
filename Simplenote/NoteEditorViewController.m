@@ -525,13 +525,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+    BOOL isMainWindowVisible = [[SimplenoteAppDelegate sharedDelegate] isMainWindowVisible];
+
     // Note menu
     if (menuItem == newItem) {
         return !self.viewingTrash;
-    } else if (menuItem == deleteItem) {
-        return !self.viewingTrash && self.note != nil;
-    } else if (menuItem == printItem) {
-        return self.note != nil;
+    }
+
+    if (menuItem == deleteItem || menuItem == printItem) {
+        return !self.viewingTrash && self.note != nil && isMainWindowVisible;
     }
     
     return YES;
@@ -679,6 +681,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [notesArrayController setSelectsInsertedObjects:YES];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
+    [appDelegate ensureMainWindowIsVisible:nil];
     
     Note *newNote = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:appDelegate.simperium.managedObjectContext];
     newNote.modificationDate = [NSDate date];
