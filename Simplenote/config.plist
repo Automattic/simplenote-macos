@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   config.plist.example.plist
+   Simplenote-OSX
+
+   Copyright (c) 2016 Simperium. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+	    <key>SPSimperiumAppID</key>
+		<string>history-analyst-dad</string>
+		<key>SPSimperiumApiKey</key>
+		<string>1c40d66b2ddd422eb799a68518263360</string>
+		<key>SPCrashlyticsKey</key>
+		<string>not-required</string>
+		<key>SPBitHockeyID</key>
+		<string>not-required</string>
+		<key>SPBitHockeyCompany</key>
+		<string>not-required</string>
+    </dict>
+</plist>
