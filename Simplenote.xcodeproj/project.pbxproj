@@ -1149,7 +1149,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=\"Developer ID Application: Codality, Inc.\"\nfind \"$LOCATION\" -name '*.framework' -exec codesign --verbose --force --sign \"$IDENTITY\" {}/Versions/Current \\;\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/../XPCServices/com.andymatuschak.Sparkle.SandboxService.xpc\"\n";
+			shellScript = "if [[ \"Debug\" == \"${CONFIGURATION}\" ]]; then\n    echo \"Skipping Deep Codesign\";\n    exit 0;\nfi\n\nLOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=\"Developer ID Application: Codality, Inc.\"\nfind \"$LOCATION\" -name '*.framework' -exec codesign --verbose --force --sign \"$IDENTITY\" {}/Versions/Current \\;\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/../XPCServices/com.andymatuschak.Sparkle.SandboxService.xpc\"\n";
 		};
 		BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
