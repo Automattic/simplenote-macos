@@ -39,10 +39,6 @@
     NSButtonCell *restoreCell = [restoreButton cell];
     [restoreCell setHighlightsBy:NSContentsCellMask];
     
-    NSButtonCell *tagListToolbarCell = [tagListToolbarButton cell];
-    [tagListToolbarCell setHighlightsBy:NSContentsCellMask];
-
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noNoteLoaded:) name:SPNoNoteLoadedNotificationName object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteLoaded:) name:SPNoteLoadedNotificationName object:nil];
@@ -52,6 +48,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
+    
+    [addButton setWantsLayer:YES];
+    [searchBox setWantsLayer:YES];
+    [splitter setWantsLayer:YES];
 
     [self applyStyle];
 }
@@ -114,7 +114,7 @@
 }
 
 - (void)moveView:(NSView *)view x:(CGFloat)x y:(CGFloat)y {
-    [view setFrame:NSMakeRect(view.frame.origin.x + x, view.frame.origin.y + y, view.frame.size.width, view.frame.size.height)];
+    [[view animator] setFrame:NSMakeRect(view.frame.origin.x + x, view.frame.origin.y + y, view.frame.size.width, view.frame.size.height)];
     [view setNeedsLayout:YES];
 }
 
@@ -135,6 +135,12 @@
     if (distance == 0)
         return;
     
+    BOOL collapsed = left <= 1;
+    CGRect searchFrame = searchBox.frame;
+    searchFrame.origin.x = collapsed ? 48 : 156;
+    searchFrame.size.width = collapsed ? 160 : 190;
+    [[searchBox animator] setFrame: searchFrame];
+    
     [self moveView:addButton x:distance y:0];
     [self moveView:splitter x:distance y:0];
 }
@@ -144,15 +150,12 @@
 - (void)applyStyle {
     [self applyActionButtonStyle];
     [self applySearchBoxStyle];
-    [self applyToolbarButtonsStyle];
 }
 
 - (void)applyActionButtonStyle {
     BOOL isDarkTheme = [[[VSThemeManager sharedManager] theme] isDark];
-    NSString *newButtonName = [@"button_new" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
     NSString *actionButtonName = [@"button_action" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
     
-    [addButton setImage:[NSImage imageNamed:newButtonName]];
     NSMenuItem *imageItem = [[NSMenuItem alloc] init];
     [imageItem setImage:[NSImage imageNamed:actionButtonName]];
     [[self.actionButton cell] setMenuItem:imageItem];
@@ -160,16 +163,6 @@
 
 - (void)applySearchBoxStyle {
     [searchBox setFillColor:[self.theme colorForKey:@"tableViewBackgroundColor"]];
-}
-
-- (void)applyToolbarButtonsStyle {
-    BOOL isDarkTheme                = [self.theme isDark];
-    NSString *addButtonName         = [@"button_new" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    NSString *sidebarButtonName     = [@"button_sidebar_show" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    NSString *tagListButtonName     = [@"button_sidebar_hide" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    addButton.image                 = [NSImage imageNamed:addButtonName];
-    sidebarButton.image             = [NSImage imageNamed:sidebarButtonName];
-    tagListToolbarButton.image      = [NSImage imageNamed:tagListButtonName];
 }
 
 @end

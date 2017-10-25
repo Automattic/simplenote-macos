@@ -49,9 +49,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     int previewLinesPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kPreviewLinesPref] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
-    borderView = [SPGradientView horizontalDividerWithWidth:self.view.frame.size.width paddingX:20 locationY:42];
-    [self.view addSubview:borderView];
-    
     [progressIndicator setWantsLayer:YES];
     [progressIndicator setAlphaValue:0.5];
     [progressIndicator setHidden:YES];
@@ -509,12 +506,18 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right
 {
-    int paddingX = 10;
+    /*int paddingX = 20;
     BOOL collapsed = left <= 1;
-    CGFloat searchBarX = collapsed ? self.noteListToolbarButton.frame.size.width + paddingX : paddingX + 10;
+    if (collapsed) {
+        NSLog(@"Collapsed!");
+    } else {
+        NSLog(@"Not Collapsed");
+    }
+    
+    CGFloat searchBarX = collapsed ? paddingX : 0;
     [self.searchField setFrameOrigin:NSMakePoint(searchBarX, self.searchField.frame.origin.y)];
     [self.searchField setFrameSize:CGSizeMake(right - left - self.searchField.frame.origin.x - paddingX*2, self.searchField.frame.size.height)];
-    [self.searchField setNeedsLayout:YES];
+    [self.searchField setNeedsLayout:YES];*/
 }
 
 
@@ -543,8 +546,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     
     [self.tableView setBackgroundColor:[theme colorForKey:@"tableViewBackgroundColor"]];
-    [borderView applyStyle];
-    [borderView setNeedsDisplay:YES];
 }
 
 - (void)applyStatusStyle

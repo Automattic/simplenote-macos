@@ -15,7 +15,6 @@
     IBOutlet NSButton *addButton;
     IBOutlet NSButton *sidebarButton;
     IBOutlet NSButton *restoreButton;
-    IBOutlet NSButton *tagListToolbarButton;
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *arrayController;
     IBOutlet NSTextView *noteEditor;
