@@ -654,10 +654,6 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     BOOL collapsed = ![self.tagListViewController.view isHidden];
     [self.tagListViewController.view setHidden:collapsed];
     
-    CGRect tagsFrame = self.tagListViewController.view.frame;
-    tagsFrame.origin.x = collapsed ? -tagsFrame.size.width : 0;
-    [[self.tagListViewController.view animator] setFrame:tagsFrame];
-    
     [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
     [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
     [self.splitView adjustSubviews];
