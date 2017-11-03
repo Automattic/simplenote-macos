@@ -48,10 +48,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
-    
-    [addButton setWantsLayer:YES];
-    [searchBox setWantsLayer:YES];
-    [splitter setWantsLayer:YES];
 
     [self applyStyle];
 }
@@ -79,8 +75,6 @@
 
 - (void)enableButtons:(BOOL)enabled {
     [self.actionButton setEnabled:enabled];
-    // Must set actionButton image each time we enable it again?
-    [self applyActionButtonStyle];
     [restoreButton setEnabled:enabled];
 }
 
@@ -93,7 +87,7 @@
 }
 
 - (void)configureForTrash:(BOOL)trash {
-    [[self.actionButton itemAtIndex:0] setEnabled:!trash];
+    [self.actionButton setEnabled:!trash];
     [addButton setEnabled:!trash];
     
     [restoreButton setHidden:!trash];
@@ -114,14 +108,14 @@
 }
 
 - (void)moveView:(NSView *)view x:(CGFloat)x y:(CGFloat)y {
-    [[view animator] setFrame:NSMakeRect(view.frame.origin.x + x, view.frame.origin.y + y, view.frame.size.width, view.frame.size.height)];
+    [view setFrame:NSMakeRect(view.frame.origin.x + x, view.frame.origin.y + y, view.frame.size.width, view.frame.size.height)];
     [view setNeedsLayout:YES];
 }
 
 - (void)setFullscreen:(BOOL)fullscreen {
     // Account for fullscreen button going away
-    int moveRightX = fullscreen ? 36 : -36;
-    [self moveView:self.actionButton x:moveRightX y:0];
+    //int moveRightX = fullscreen ? 36 : -36;
+    //[self moveView:self.actionButton x:moveRightX y:0];
 
 // This was hiding the button, actually!
 //     Account for traffic lights going away
@@ -137,9 +131,11 @@
     
     BOOL collapsed = left <= 1;
     CGRect searchFrame = searchBox.frame;
-    searchFrame.origin.x = collapsed ? 48 : 156;
-    searchFrame.size.width = collapsed ? 160 : 190;
-    [[searchBox animator] setFrame: searchFrame];
+    // TODO: Magic numbers
+    searchFrame.origin.x = collapsed ? 62 : 156;
+    CGFloat searchFrameAdjustment = collapsed ? 120.0f : 80.0f;
+    searchFrame.size.width = tableViewController.view.frame.size.width - searchFrameAdjustment;
+    [searchBox setFrame: searchFrame];
     
     [self moveView:addButton x:distance y:0];
     [self moveView:splitter x:distance y:0];
@@ -148,17 +144,7 @@
 #pragma mark - Theme
 
 - (void)applyStyle {
-    [self applyActionButtonStyle];
     [self applySearchBoxStyle];
-}
-
-- (void)applyActionButtonStyle {
-    BOOL isDarkTheme = [[[VSThemeManager sharedManager] theme] isDark];
-    NSString *actionButtonName = [@"button_action" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    
-    NSMenuItem *imageItem = [[NSMenuItem alloc] init];
-    [imageItem setImage:[NSImage imageNamed:actionButtonName]];
-    [[self.actionButton cell] setMenuItem:imageItem];
 }
 
 - (void)applySearchBoxStyle {

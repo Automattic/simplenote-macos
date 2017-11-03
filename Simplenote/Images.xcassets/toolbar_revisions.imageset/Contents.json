@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "new-note.png",
+      "filename" : "revisions.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "new-note@2x.png",
+      "filename" : "revisions@2x.png",
       "scale" : "2x"
     },
     {
