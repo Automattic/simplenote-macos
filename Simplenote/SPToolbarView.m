@@ -18,6 +18,10 @@
 #import "NSApplication+Helpers.h"
 @import Simperium_OSX;
 
+#define kSearchCollapsedMargin  62
+#define kSearchCollapsedWidth   120
+#define kSearchExpandedMargin   156
+#define kSearchExpandedWidth    79
 
 @implementation SPToolbarView
 
@@ -131,9 +135,8 @@
     
     BOOL collapsed = left <= 1;
     CGRect searchFrame = searchBox.frame;
-    // TODO: Magic numbers
-    searchFrame.origin.x = collapsed ? 62 : 156;
-    CGFloat searchFrameAdjustment = collapsed ? 120 : 79;
+    searchFrame.origin.x = collapsed ? kSearchCollapsedMargin : kSearchExpandedMargin;
+    CGFloat searchFrameAdjustment = collapsed ? kSearchCollapsedWidth : kSearchExpandedWidth;
     searchFrame.size.width = tableViewController.view.frame.size.width - searchFrameAdjustment;
     [searchBox setFrame: searchFrame];
     
