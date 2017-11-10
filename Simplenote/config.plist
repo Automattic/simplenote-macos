@@ -9,9 +9,9 @@
 <plist version="1.0">
     <dict>
 	    <key>SPSimperiumAppID</key>
-		<string>your-app-id</string>
+		<string>history-analyst-dad</string>
 		<key>SPSimperiumApiKey</key>
-		<string>your-api-key</string>
+		<string>1c40d66b2ddd422eb799a68518263360</string>
 		<key>SPCrashlyticsKey</key>
 		<string>not-required</string>
 		<key>SPBitHockeyID</key>
