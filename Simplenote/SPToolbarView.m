@@ -48,6 +48,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
+    
+    // Interface builder doesn't like decimal values? Set width to 0.5 here to match borders
+    CGRect splitterFrame = splitter.frame;
+    splitterFrame.size.width = 0.5f;
+    [splitter setFrame:splitterFrame];
 
     [self applyStyle];
 }
@@ -76,6 +81,8 @@
 - (void)enableButtons:(BOOL)enabled {
     [self.actionButton setEnabled:enabled];
     [restoreButton setEnabled:enabled];
+    [trashButton setEnabled:enabled];
+    [historyButton setEnabled:enabled];
 }
 
 - (void)noNoteLoaded:(id)sender {
@@ -133,7 +140,7 @@
     CGRect searchFrame = searchBox.frame;
     // TODO: Magic numbers
     searchFrame.origin.x = collapsed ? 62 : 156;
-    CGFloat searchFrameAdjustment = collapsed ? 120.0f : 80.0f;
+    CGFloat searchFrameAdjustment = collapsed ? 119 : 79;
     searchFrame.size.width = tableViewController.view.frame.size.width - searchFrameAdjustment;
     [searchBox setFrame: searchFrame];
     
@@ -145,6 +152,7 @@
 
 - (void)applyStyle {
     [self applySearchBoxStyle];
+    [splitter setFillColor:[self.theme colorForKey:@"dividerColor"]];
 }
 
 - (void)applySearchBoxStyle {
