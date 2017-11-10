@@ -505,7 +505,6 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 - (void)notifySplitDidChange
 {
     [self.toolbar setSplitPositionLeft:[self tagListSplitPosition] right:[self editorSplitPosition]];
-    [self.noteListViewController setSplitPositionLeft:[self tagListSplitPosition] right:[self editorSplitPosition]];
 }
 
 

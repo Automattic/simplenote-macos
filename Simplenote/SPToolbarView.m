@@ -36,9 +36,6 @@
     NSButtonCell *sidebarCell = [sidebarButton cell];
     [sidebarCell setHighlightsBy:NSContentsCellMask];
     
-    NSButtonCell *restoreCell = [restoreButton cell];
-    [restoreCell setHighlightsBy:NSContentsCellMask];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noNoteLoaded:) name:SPNoNoteLoadedNotificationName object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteLoaded:) name:SPNoteLoadedNotificationName object:nil];
@@ -75,7 +72,6 @@
 
 - (void)enableButtons:(BOOL)enabled {
     [self.actionButton setEnabled:enabled];
-    [restoreButton setEnabled:enabled];
     [trashButton setEnabled:enabled];
     [historyButton setEnabled:enabled];
 }
@@ -91,7 +87,9 @@
 - (void)configureForTrash:(BOOL)trash {
     [self.actionButton setEnabled:!trash];
     [addButton setEnabled:!trash];
-    
+    [historyButton setHidden:trash];
+
+    [trashButton setHidden:trash];
     [restoreButton setHidden:!trash];
     [noteEditor setEditable:!trash];
     [noteEditor setSelectable:!trash];
@@ -106,7 +104,7 @@
 }
 
 - (void)trashDidEmpty:(NSNotification *)notification {
-    [restoreButton setEnabled:NO];
+    [trashButton setEnabled:NO];
 }
 
 - (void)moveView:(NSView *)view x:(CGFloat)x y:(CGFloat)y {

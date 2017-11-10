@@ -502,26 +502,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     [self.view.window makeFirstResponder:self.searchField];
 }
 
-#pragma mark - Split Helpers
-
-- (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right
-{
-    /*int paddingX = 20;
-    BOOL collapsed = left <= 1;
-    if (collapsed) {
-        NSLog(@"Collapsed!");
-    } else {
-        NSLog(@"Not Collapsed");
-    }
-    
-    CGFloat searchBarX = collapsed ? paddingX : 0;
-    [self.searchField setFrameOrigin:NSMakePoint(searchBarX, self.searchField.frame.origin.y)];
-    [self.searchField setFrameSize:CGSizeMake(right - left - self.searchField.frame.origin.x - paddingX*2, self.searchField.frame.size.height)];
-    [self.searchField setNeedsLayout:YES];*/
-}
-
-
-
 #pragma mark - NSMenuValidation delegate
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem

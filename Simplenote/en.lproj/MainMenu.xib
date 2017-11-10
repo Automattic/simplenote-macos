@@ -119,7 +119,6 @@
                 </button>
                 <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" id="1698">
                     <rect key="frame" x="158" y="19" width="190" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <view key="contentView" id="qdW-BD-GMh">
                         <rect key="frame" x="0.0" y="0.0" width="190" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +146,7 @@
                                             <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                         </dictionary>
                                     </binding>
-                                    <outlet property="delegate" destination="874" id="DYP-cY-EYS"/>
+                                    <outlet property="delegate" destination="914" id="c9e-3v-2l6"/>
                                 </connections>
                             </searchField>
                         </subviews>
@@ -165,7 +164,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" id="mXz-OM-6A3">
-                    <rect key="frame" x="824" y="19" width="22" height="22"/>
+                    <rect key="frame" x="818" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -176,7 +175,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" id="7hm-UJ-0zw">
-                    <rect key="frame" x="787" y="19" width="22" height="22"/>
+                    <rect key="frame" x="775" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_revisions" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -186,15 +185,15 @@
                         <action selector="showVersionPopover:" target="1107" id="6bi-5c-YJd"/>
                     </connections>
                 </button>
-                <button hidden="YES" toolTip="Restore Note" misplaced="YES" id="1252" userLabel="Restore">
-                    <rect key="frame" x="750" y="19" width="22" height="22"/>
+                <button verticalHuggingPriority="750" misplaced="YES" id="fA9-bG-luR">
+                    <rect key="frame" x="818" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1253">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="X3f-rW-nRp">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="restoreAction:" target="1107" id="1663"/>
+                        <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
                     </connections>
                 </button>
             </subviews>
@@ -203,7 +202,7 @@
                 <outlet property="arrayController" destination="573" id="1148"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
                 <outlet property="noteEditor" destination="934" id="1154"/>
-                <outlet property="restoreButton" destination="1252" id="1501"/>
+                <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
                 <outlet property="sidebarButton" destination="1680" id="1687"/>
                 <outlet property="splitter" destination="1387" id="1438"/>
@@ -1246,7 +1245,6 @@
     </objects>
     <resources>
         <image name="button_new" width="22" height="22"/>
-        <image name="button_restore" width="22" height="22"/>
         <image name="icon_all_notes" width="12" height="12"/>
         <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="12" height="12"/>
@@ -1254,5 +1252,6 @@
         <image name="toolbar_info" width="22" height="22"/>
         <image name="toolbar_revisions" width="22" height="22"/>
         <image name="toolbar_trash" width="22" height="22"/>
+        <image name="toolbar_trash_restore" width="22" height="22"/>
     </resources>
 </document>
