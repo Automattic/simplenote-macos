@@ -29,13 +29,13 @@
 
 + (SPGradientView *)horizontalDividerInView:(NSView *)view location:(CGPoint)location
 {
-    CGRect frame = NSMakeRect(location.x, location.y, view.frame.size.width-location.x*2-location.x/2+5, 0.5);
+    CGRect frame = NSMakeRect(location.x, location.y, view.frame.size.width-location.x*2-location.x/2+5, 1.0);
     return [self horizontalDividerForRect:frame];
 }
 
 + (SPGradientView *)horizontalDividerWithWidth:(CGFloat)width paddingX:(CGFloat)paddingX locationY:(CGFloat)locationY
 {
-    CGRect frame = NSMakeRect(paddingX, locationY, width-paddingX*2, 0.5);
+    CGRect frame = NSMakeRect(paddingX, locationY, width-paddingX*2, 1.0);
     return [self horizontalDividerForRect:frame];
 }
 

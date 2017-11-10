@@ -63,7 +63,7 @@
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <popUpButton misplaced="YES" id="1601" userLabel="Action">
-                    <rect key="frame" x="852" y="14" width="34" height="34"/>
+                    <rect key="frame" x="847" y="10" width="44" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -165,7 +165,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" id="mXz-OM-6A3">
-                    <rect key="frame" x="815" y="19" width="22" height="22"/>
+                    <rect key="frame" x="824" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -176,7 +176,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" id="7hm-UJ-0zw">
-                    <rect key="frame" x="770" y="19" width="22" height="22"/>
+                    <rect key="frame" x="787" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_revisions" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -187,7 +187,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" toolTip="Restore Note" misplaced="YES" id="1252" userLabel="Restore">
-                    <rect key="frame" x="729" y="20" width="22" height="22"/>
+                    <rect key="frame" x="750" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1253">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -680,7 +680,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
                                             <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
@@ -828,7 +828,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="606"/>
@@ -922,7 +922,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>

@@ -48,11 +48,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
-    
-    // Interface builder doesn't like decimal values? Set width to 0.5 here to match borders
-    CGRect splitterFrame = splitter.frame;
-    splitterFrame.size.width = 0.5f;
-    [splitter setFrame:splitterFrame];
 
     [self applyStyle];
 }
@@ -69,7 +64,7 @@
     if (_drawsSeparator) {
         CGContextRef context    = [[NSGraphicsContext currentContext] graphicsPort];
         NSRect separator        = self.bounds;
-        separator.size.height   = 1.0f / [[NSScreen mainScreen] backingScaleFactor];
+        separator.size.height   = 1.0f;
         
         CGContextBeginPath(context);
 
@@ -140,7 +135,7 @@
     CGRect searchFrame = searchBox.frame;
     // TODO: Magic numbers
     searchFrame.origin.x = collapsed ? 62 : 156;
-    CGFloat searchFrameAdjustment = collapsed ? 119 : 79;
+    CGFloat searchFrameAdjustment = collapsed ? 120 : 79;
     searchFrame.size.width = tableViewController.view.frame.size.width - searchFrameAdjustment;
     [searchBox setFrame: searchFrame];
     
