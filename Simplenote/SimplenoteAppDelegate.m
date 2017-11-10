@@ -72,6 +72,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 @property (strong, nonatomic) IBOutlet NSButton                 *noteListToolbarButton;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
+@property (strong, nonatomic) IBOutlet NSMenuItem               *mainWindowItem;
 
 @property (strong, nonatomic) NSBox                             *inactiveOverlayBox;
 @property (strong, nonatomic) NSBox                             *inactiveOverlayTitleBox;
@@ -288,6 +289,15 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 
 #pragma mark - Other
 
+- (IBAction)ensureMainWindowIsVisible:(id)sender
+{
+    if ([self.window isVisible]) {
+        return;
+    }
+
+    [self.window makeKeyAndOrderFront:nil];
+}
+
 - (IBAction)selectAllNotesTag
 {
     [self.tagListViewController selectAllNotesTag];
@@ -338,6 +348,11 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     NSInteger numDeletedNotes = [notesBucket numObjectsForPredicate:[NSPredicate predicateWithFormat:@"deleted == 1"]];
     
     return numDeletedNotes;
+}
+
+- (BOOL)isMainWindowVisible
+{
+    return self.window.isVisible;
 }
 
 - (void)createWelcomeNote
@@ -601,7 +616,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     if (menuItem == self.emptyTrashItem) {
         return [self numDeletedNotes] > 0;
     }
-    
+
     return YES;
 }
 
@@ -701,7 +716,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)application
 {
-    return YES;
+    return NO;
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)hasVisibleWindows
