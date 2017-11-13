@@ -1,3 +1,0 @@
-#include "ConfigCommon.xcconfig"
-#include "ConfigCommonDebug.xcconfig"
-#include "ConfigUnitTest.xcconfig"
