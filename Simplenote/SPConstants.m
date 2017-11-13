@@ -19,6 +19,3 @@ NSString * const SPWelcomeNoteID                = @"welcomeNote-Mac";
 NSString * const SPSimplenotePublishURL         = @"http://simp.ly/publish/";
 NSString * const SPSimplenoteForgotPasswordURL  = @"https://app.simplenote.com/forgot/";
 NSString * const SPSimplenoteLogoImageName      = @"logo";
-
-NSString * const SPSimplenoteMediumFontName     = @"SourceSansPro-Semibold";
-NSString * const SPSimplenoteRegularFontName    = @"SourceSansPro-Regular";

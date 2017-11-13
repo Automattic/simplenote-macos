@@ -113,8 +113,6 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     authenticator.providerString                    = @"simplenote.com";
     
     SPAuthenticationConfiguration *config           = [SPAuthenticationConfiguration sharedInstance];
-    config.regularFontName                          = SPSimplenoteRegularFontName;
-    config.mediumFontName                           = SPSimplenoteMediumFontName;
     config.logoImageName                            = SPSimplenoteLogoImageName;
     config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
     
