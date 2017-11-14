@@ -1019,7 +1019,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./External/Fabric.framework/run 39f00d04d6837320a9c583f4d201332394364204 29f13b9ff2837f01a648d9a17aae09d50b1cdd0c0be66fbee6fb859b642b27b2";
+			shellScript = ./External/Fabric.framework/run;
 		};
 		B5CA81B71896F65800AC6EFC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
