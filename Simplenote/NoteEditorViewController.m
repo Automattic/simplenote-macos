@@ -131,8 +131,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     tagTokenField = [self.bottomBar addTagField];
     tagTokenField.delegate = self;    
     
-    [noNoteText setFont:[NSFont fontWithName:@"SourceSansPro-Regular"
-                                        size:20.0]];
+    [noNoteText setFont:[NSFont systemFontOfSize:20.0]];
 
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
@@ -857,7 +856,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (NSFont *)noteBodyFont
 {
     if (!_noteBodyFont) {
-        _noteBodyFont =  [NSFont fontWithName:@"SourceSansPro-Regular" size:[self getFontSize]];
+        _noteBodyFont =  [NSFont systemFontOfSize:[self getFontSize]];
     }
     
     return _noteBodyFont;
@@ -871,7 +870,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (NSFont *)noteTitleFont
 {
     if (!_noteTitleFont) {
-        _noteTitleFont =  [NSFont fontWithName:@"SourceSansPro-Regular" size:[self getFontSize] + [self getFontSize] * 0.214f];
+        _noteTitleFont =  [NSFont systemFontOfSize:[self getFontSize] + [self getFontSize] * 0.214f];
     }
     
     return _noteTitleFont;

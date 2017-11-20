@@ -97,17 +97,17 @@ static NSImage *pinImageHighlighted;
 
 - (NSFont *)noteTitleSelectedFont
 {
-    return [NSFont fontWithName:@"SourceSansPro-Regular" size:15.0];
+    return [NSFont systemFontOfSize:15.0];
 }
 
 - (NSFont *)noteTitleFont
 {
-    return [NSFont fontWithName:@"SourceSansPro-Regular" size:15.0];
+    return [NSFont systemFontOfSize:15.0];
 }
 
 - (NSFont *)notePreviewFont
 {
-    return [NSFont fontWithName:@"SourceSansPro-Regular" size:13.0];
+    return [NSFont systemFontOfSize:13.0];
 }
 
 @end

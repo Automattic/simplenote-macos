@@ -604,7 +604,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         newSearchField.alphaValue   = 0.6f;
     }
     
-    newSearchField.font             = [NSFont fontWithName:@"SourceSansPro-Regular" size:13];
+    newSearchField.font             = [NSFont systemFontOfSize:13];
     newSearchField.backgroundColor  = [theme colorForKey:@"searchFieldBackgroundColor"];
     newSearchField.textColor        = [theme colorForKey:@"searchBarFontColor"];
     newSearchField.autoresizingMask = NSViewWidthSizable | NSViewMaxXMargin | NSViewMaxYMargin;
@@ -619,7 +619,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         NSForegroundColorAttributeName  : [theme colorForKey:@"searchBarFontColor"],
         NSStrokeWidthAttributeName      : @(-1.0),
         NSStrokeColorAttributeName      : [NSColor clearColor],
-        NSFontAttributeName             : [NSFont fontWithName:@"SourceSansPro-Regular" size:13]
+        NSFontAttributeName             : [NSFont systemFontOfSize:13]
     };
     
     NSString *searchPlaceholder     = NSLocalizedString(@"Search", @"Placeholder text in the search field.");

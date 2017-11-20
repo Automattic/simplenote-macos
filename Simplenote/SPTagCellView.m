@@ -105,8 +105,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 
 - (void)positionButtonRelativeToTextField
 {
-    NSDictionary *attributes = @{NSFontNameAttribute: @"SourceSansPro-Regular",
-                                 NSFontSizeAttribute: @14.0};
+    NSDictionary *attributes = @{NSFontSizeAttribute: @14.0};
     NSSize tagSize = [self.textField.stringValue sizeWithAttributes:attributes];
     CGFloat buttonX = self.textField.frame.origin.x + tagSize.width + 10;
     [self.button setFrameOrigin:CGPointMake(buttonX, self.button.frame.origin.y)];
@@ -162,7 +161,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 - (void)applyStyle
 {
     NSColor *textColor = [self.theme colorForKey:@"textColor"];
-    NSFont *textFont = [NSFont fontWithName:@"SourceSansPro-Regular" size:15.0];
+    NSFont *textFont = [NSFont systemFontOfSize:15.0];
     
     [self.textField setFont:textFont];
     [self.textField setTextColor:textColor];

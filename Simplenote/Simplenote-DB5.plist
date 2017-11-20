@@ -8,10 +8,6 @@
 		<string>Default</string>
 		<key>dark</key>
 		<false/>
-		<key>fontName</key>
-		<string>SourceSansPro-Light</string>
-		<key>boldFontName</key>
-		<string>SourceSansPro-Regular</string>
 		<key>textColor</key>
 		<string>2d3034</string>
 		<key>lightBlueColor</key>
@@ -36,8 +32,6 @@
 		<string>0.055</string>
 		<key>noteBodyLineHeightPercentage~ipad</key>
 		<string>0.075</string>
-		<key>noteBodyFont</key>
-		<string>@boldFontName</string>
 		<key>noteBodyFontSize</key>
 		<real>17.5</real>
 		<key>noteBodyStrokeWidth</key>
@@ -96,8 +90,6 @@
 		<string>@tintColor</string>
 		<key>cellHighlightTextColor</key>
 		<string>fcfcfc</string>
-		<key>barButtonFont</key>
-		<string>@boldFontName</string>
 		<key>barButtonFontSize</key>
 		<real>16.5</real>
 		<key>barButtonFontColor</key>
@@ -122,14 +114,10 @@
 		<integer>8</integer>
 		<key>actionSheetShowViewSeparators</key>
 		<true/>
-		<key>actionSheetFont</key>
-		<string>@boldFontName</string>
 		<key>actionSheetFontSize</key>
 		<integer>18</integer>
 		<key>actionSheetFontColor</key>
 		<string>@textColor</string>
-		<key>actionSheetMessageFont</key>
-		<string>@boldFontName</string>
 		<key>actionSheetMessageFontSize</key>
 		<integer>18</integer>
 		<key>actionSheetTextFieldFontColor</key>
@@ -148,14 +136,10 @@
 		<string>d9d9d9</string>
 		<key>actionSheetBackgroundColor</key>
 		<string>ffffff</string>
-		<key>actionSheetButtonFont</key>
-		<string>@boldFontName</string>
 		<key>actionSheetButtonFontSize</key>
 		<integer>16</integer>
 		<key>actionSheetButtonFontColor</key>
 		<string>@textColor</string>
-		<key>actionButtonFont</key>
-		<string>@boldFontName</string>
 		<key>actionButtonFontSize</key>
 		<real>13.5</real>
 		<key>actionSheetButtonBackgroundHighlightColor</key>
@@ -172,14 +156,10 @@
 		<integer>100</integer>
 		<key>actionButtonWidth</key>
 		<string>76</string>
-		<key>actionViewActivityIndicatorFont</key>
-		<string>@boldFontName</string>
 		<key>actionViewActivityIndicatorFontSize</key>
 		<integer>21</integer>
 		<key>actionViewActivityIndicatorFontColor</key>
 		<string>@textColor</string>
-		<key>actionViewStatusFont</key>
-		<string>@boldFontName</string>
 		<key>actionViewStatusFontSize</key>
 		<real>13.5</real>
 		<key>actionViewStatusFontColor</key>
@@ -210,8 +190,6 @@
 		<integer>15</integer>
 		<key>tagViewItemPadding</key>
 		<integer>10</integer>
-		<key>tagViewFont</key>
-		<string>@boldFontName</string>
 		<key>tagViewFontSize</key>
 		<string>15</string>
 		<key>tagViewFontColor</key>
@@ -230,8 +208,6 @@
 		<string>button_delete_small</string>
 		<key>searchBarBackgroundImage</key>
 		<string>searchbar_background</string>
-		<key>searchBarFont</key>
-		<string>@boldFontName</string>
 		<key>searchBarFontSize</key>
 		<real>16.5</real>
 		<key>searchBarFontColor</key>
@@ -264,8 +240,6 @@
 		<integer>15</integer>
 		<key>tagListItemPadding</key>
 		<integer>10</integer>
-		<key>tagListFont</key>
-		<string>@boldFontName</string>
 		<key>tagListFontSize</key>
 		<real>16.5</real>
 		<key>tagListFontColor</key>
@@ -294,14 +268,10 @@
 		<string>@secondaryTextColor</string>
 		<key>collaboratorCellHeight</key>
 		<integer>44</integer>
-		<key>collaboratorCellPrimaryLabelFont</key>
-		<string>@boldFontName</string>
 		<key>collaboratorCellPrimaryLabelFontSize</key>
 		<integer>18</integer>
 		<key>collaboratorCellPrimaryLabelFontColor</key>
 		<string>@textColor</string>
-		<key>collaboratorCellSecondaryLabelFont</key>
-		<string>@boldFontName</string>
 		<key>collaboratorCellSecondaryLabelFontSize</key>
 		<integer>15</integer>
 		<key>collaboratorCellSecondaryLabelFontColor</key>
@@ -312,14 +282,10 @@
 		<string>@textColor</string>
 		<key>collaboratorTextFieldPlaceholderTextColor</key>
 		<string>999999</string>
-		<key>navigationBarTitleFont</key>
-		<string>@boldFontName</string>
 		<key>navigationBarTitleFontSize</key>
 		<integer>21</integer>
 		<key>navigationBarTitleFontColor</key>
 		<string>333333</string>
-		<key>horizontalPickerTitleFont</key>
-		<string>@boldFontName</string>
 		<key>horizontalPickerTitleFontSize</key>
 		<real>12</real>
 		<key>horizontalPickerTitleFontColor</key>
@@ -332,8 +298,6 @@
 		<integer>10</integer>
 		<key>horizontalPickerBorderColor</key>
 		<string>d9d9d9</string>
-		<key>versionPickerDateFont</key>
-		<string>@boldFontName</string>
 		<key>versionPickerDateFontSize</key>
 		<integer>21</integer>
 		<key>versionPickerDateFontColor</key>
@@ -354,8 +318,6 @@
 		<string>toolbar_background_landscape</string>
 		<key>toolbarShadowImage</key>
 		<string>@navigationBarShadowImage</string>
-		<key>emptyListViewFont</key>
-		<string>@boldFontName</string>
 		<key>emptyListViewFontSize</key>
 		<string>21</string>
 		<key>emptyListViewFontColor</key>
@@ -366,8 +328,6 @@
 		<string>ffffff</string>
 		<key>popoverTextColor</key>
 		<string>ffffff</string>
-		<key>popoverTextFont</key>
-		<string>@boldFontName</string>
 		<key>popoverTextFontSize</key>
 		<string>13</string>
 		<key>shareUrlBackgroundColor</key>

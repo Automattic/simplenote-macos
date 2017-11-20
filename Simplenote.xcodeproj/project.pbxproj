@@ -31,10 +31,6 @@
 		4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
 		4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
 		4623ABDF1773740700CE0441 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABDB1773740700CE0441 /* README.md */; };
-		4623ABF61773BC1000CE0441 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABEA1773BC1000CE0441 /* SourceSansPro-Regular.ttf */; };
-		4623ABF71773BC1000CE0441 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABEB1773BC1000CE0441 /* SourceSansPro-Semibold.ttf */; };
-		4623AC031773BC5700CE0441 /* SourceSansPro-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4623ABEA1773BC1000CE0441 /* SourceSansPro-Regular.ttf */; };
-		4623AC041773BC5700CE0441 /* SourceSansPro-Semibold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4623ABEB1773BC1000CE0441 /* SourceSansPro-Semibold.ttf */; };
 		46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558BB51793AF4B009CD695 /* NSImage+Colorize.m */; };
 		46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558C0017947E77009CD695 /* NoteEditorBottomBar.m */; };
 		466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = 469180F817CAD4C700648430 /* NSString+Bullets.m */; };
@@ -91,11 +87,7 @@
 		466FFEE817CC10A800399652 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
 		466FFEF017CC10A800399652 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABD61773740700CE0441 /* .gitignore */; };
 		466FFEF117CC10A800399652 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABDB1773740700CE0441 /* README.md */; };
-		466FFEF217CC10A800399652 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABEA1773BC1000CE0441 /* SourceSansPro-Regular.ttf */; };
-		466FFEF317CC10A800399652 /* SourceSansPro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABEB1773BC1000CE0441 /* SourceSansPro-Semibold.ttf */; };
 		466FFF1717CC10A800399652 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46F0E66517A3300B005BB4D1 /* Localizable.strings */; };
-		466FFF2A17CC10A800399652 /* SourceSansPro-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4623ABEA1773BC1000CE0441 /* SourceSansPro-Regular.ttf */; };
-		466FFF2B17CC10A800399652 /* SourceSansPro-Semibold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4623ABEB1773BC1000CE0441 /* SourceSansPro-Semibold.ttf */; };
 		469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54617B47C490071C809 /* MMDrawingUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		46B0F54C17B47C490071C809 /* MMScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54817B47C490071C809 /* MMScroller.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -195,8 +187,6 @@
 			dstPath = Fonts;
 			dstSubfolderSpec = 7;
 			files = (
-				4623AC031773BC5700CE0441 /* SourceSansPro-Regular.ttf in CopyFiles */,
-				4623AC041773BC5700CE0441 /* SourceSansPro-Semibold.ttf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,8 +205,6 @@
 			dstPath = Fonts;
 			dstSubfolderSpec = 7;
 			files = (
-				466FFF2A17CC10A800399652 /* SourceSansPro-Regular.ttf in CopyFiles */,
-				466FFF2B17CC10A800399652 /* SourceSansPro-Semibold.ttf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,8 +274,6 @@
 		4623ABD91773740700CE0441 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
 		4623ABDA1773740700CE0441 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
 		4623ABDB1773740700CE0441 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		4623ABEA1773BC1000CE0441 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
-		4623ABEB1773BC1000CE0441 /* SourceSansPro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.ttf"; sourceTree = "<group>"; };
 		46558BB41793AF4B009CD695 /* NSImage+Colorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Colorize.h"; sourceTree = "<group>"; };
 		46558BB51793AF4B009CD695 /* NSImage+Colorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Colorize.m"; sourceTree = "<group>"; };
 		46558BFF17947E77009CD695 /* NoteEditorBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorBottomBar.h; sourceTree = "<group>"; };
@@ -587,15 +573,6 @@
 			path = External/INAppStoreWindow;
 			sourceTree = "<group>";
 		};
-		4623ABE01773BC1000CE0441 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				4623ABEA1773BC1000CE0441 /* SourceSansPro-Regular.ttf */,
-				4623ABEB1773BC1000CE0441 /* SourceSansPro-Semibold.ttf */,
-			);
-			path = Fonts;
-			sourceTree = SOURCE_ROOT;
-		};
 		463774DB171F111600E2E333 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,7 +651,6 @@
 				B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */,
 				469512C817CC38790014A2BF /* simplenote.iconset */,
 				46F6540517F3F6E80074422C /* simplenotebeta.iconset */,
-				4623ABE01773BC1000CE0441 /* Fonts */,
 			);
 			name = Resources;
 			path = Simplenote;
@@ -878,9 +854,7 @@
 				4623ABDC1773740700CE0441 /* .gitignore in Resources */,
 				4623ABDF1773740700CE0441 /* README.md in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
-				4623ABF61773BC1000CE0441 /* SourceSansPro-Regular.ttf in Resources */,
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
-				4623ABF71773BC1000CE0441 /* SourceSansPro-Semibold.ttf in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
 			);
@@ -897,8 +871,6 @@
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				466FFEF017CC10A800399652 /* .gitignore in Resources */,
 				466FFEF117CC10A800399652 /* README.md in Resources */,
-				466FFEF217CC10A800399652 /* SourceSansPro-Regular.ttf in Resources */,
-				466FFEF317CC10A800399652 /* SourceSansPro-Semibold.ttf in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				378345021D38624100D45D46 /* config.plist in Resources */,
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
