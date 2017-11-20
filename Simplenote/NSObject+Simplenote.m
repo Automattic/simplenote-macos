@@ -14,7 +14,7 @@
 
 + (BOOL)sp_respondsToSelector:(SEL)aSelector
 {
-    return class_respondsToSelector([self class], aSelector);
+    return [self respondsToSelector:aSelector];
 }
 
 @end
