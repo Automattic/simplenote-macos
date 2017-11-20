@@ -9,11 +9,15 @@
 		<key>dark</key>
 		<false/>
 		<key>textColor</key>
-		<string>333333</string>
+		<string>2d3034</string>
 		<key>lightBlueColor</key>
 		<string>eef3f8</string>
 		<key>dividerColor</key>
-		<string>dfdfdf</string>
+		<string>dbdee0</string>
+		<key>secondaryTextColor</key>
+		<string>899199</string>
+		<key>noteHeadlineFont</key>
+		<string>@boldFontName</string>
 		<key>noteHeadlineFontSize</key>
 		<real>17.5</real>
 		<key>noteHeadlineStrokeWidth</key>
@@ -35,7 +39,7 @@
 		<key>noteBodyFontSize~ipad</key>
 		<string>19</string>
 		<key>noteBodyFontPreviewColor</key>
-		<string>666666</string>
+		<string>@secondaryTextColor</string>
 		<key>noteCellBackgroundSelectionColor</key>
 		<string>@lightBlueColor</string>
 		<key>noteSidePadding</key>
@@ -75,7 +79,7 @@
 		<key>editorViewAboveKeyboardPadding</key>
 		<integer>10</integer>
 		<key>tintColor</key>
-		<string>448ac9</string>
+		<string>4895d9</string>
 		<key>barTintColor</key>
 		<string>ffffff</string>
 		<key>backgroundColor</key>
@@ -261,7 +265,7 @@
 		<key>tableViewCellBackgroundHighlightColor</key>
 		<string>@lightBlueColor</string>
 		<key>tableViewDetailTextLabelColor</key>
-		<string>666666</string>
+		<string>@secondaryTextColor</string>
 		<key>collaboratorCellHeight</key>
 		<integer>44</integer>
 		<key>collaboratorCellPrimaryLabelFontSize</key>
@@ -338,11 +342,11 @@
 		<key>lightBlueColor</key>
 		<string>2e3b49</string>
 		<key>textColor</key>
-		<string>71889f</string>
+		<string>dbdee0</string>
 		<key>secondaryTextColor</key>
-		<string>5b6780</string>
+		<string>899199</string>
 		<key>dividerColor</key>
-		<string>343b4a</string>
+		<string>4b5157</string>
 		<key>noteHeadlineFontColor</key>
 		<string>@textColor</string>
 		<key>noteBodyFontPreviewColor</key>
@@ -356,7 +360,7 @@
 		<key>barTintColor</key>
 		<string>232323</string>
 		<key>backgroundColor</key>
-		<string>24272b</string>
+		<string>2d3034</string>
 		<key>cellHighlightBackgroundColor</key>
 		<string>@tintColor</string>
 		<key>cellHighlightTextColor</key>
@@ -418,7 +422,7 @@
 		<key>tagListSeparatorColor</key>
 		<string>@dividerColor</string>
 		<key>tableViewBackgroundColor</key>
-		<string>1c1e21</string>
+		<string>2d3034</string>
 		<key>tableViewCellBackgroundHighlightColor</key>
 		<string>@lightBlueColor</string>
 		<key>tableViewSeparatorColor</key>
