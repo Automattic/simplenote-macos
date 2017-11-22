@@ -16,7 +16,7 @@
 #import "VSThemeManager.h"
 
 
-static NSRect SPTagCellPopUpButtonFrame     = {136.0f, 0.0f, 15.0f, 18.0f};
+static NSRect SPTagCellPopUpButtonFrame     = {132.0f, 0.0f, 15.0f, 38.0f};
 static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 
 
@@ -26,6 +26,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 @property (nonatomic, strong) NSImage           *image;
 @property (nonatomic, strong) NSImage           *imageHighlighted;
 @property (nonatomic, assign) BOOL              highlighted;
+@property (nonatomic, strong) IBOutlet NSBox    *dividerView;
 @end
 
 @implementation SPTagCellView
@@ -166,6 +167,10 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     [self.textField setFont:textFont];
     [self.textField setTextColor:textColor];
     [[self.button cell] setArrowColor:textColor];
+    
+    if (self.dividerView) {
+        [self.dividerView setBorderColor:[self.theme colorForKey:@"dividerColor"]];
+    }
     
     if (self.imageView.image) {
         NSString *imageName = [self.imageView.image.name stringByReplacingOccurrencesOfString:@"_highlighted" withString:@""];

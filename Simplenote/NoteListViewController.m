@@ -523,9 +523,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)applyTableStyle
 {
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    
-    [self.tableView setBackgroundColor:[theme colorForKey:@"tableViewBackgroundColor"]];
+    [self.tableView setBackgroundColor:[NSColor clearColor]];
 }
 
 - (void)applyStatusStyle

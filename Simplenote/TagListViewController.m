@@ -24,9 +24,9 @@
 #define kSeparatorRow 3
 #define kStartOfTagListRow 4
 
-#define kRowHeight 20
-#define kSeparatorHeight 19
-#define kTopRowHeight 16
+#define kRowHeight 30
+#define kSeparatorHeight 24
+#define kTopRowHeight 14
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
@@ -479,12 +479,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
-    if (row == kTopRow) {
+    if (row == kTopRow || row == kSeparatorRow) {
         return NO;
     }
-    
-    if (row == kSeparatorRow)
-        return NO;
     
     if ([self.tableView selectedRow] == kTrashRow) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kWillFinishViewingTrash object:self];

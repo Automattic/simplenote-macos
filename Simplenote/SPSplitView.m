@@ -50,8 +50,8 @@ static NSString * const SPSplitViewVisibleKey   = @"visible";
 
 - (void)drawDividerInRect:(NSRect)rect
 {
-    // Slight hack to make left divider the background color
-    if (rect.origin.x < 200) {
+    // Slight hack to make left divider the background color when tags view is collapsed
+    if (rect.origin.x == 0) {
         [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] set];
         NSRectFill(rect);
     } else {
