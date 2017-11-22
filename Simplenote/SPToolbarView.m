@@ -18,6 +18,10 @@
 #import "NSApplication+Helpers.h"
 @import Simperium_OSX;
 
+#define kSearchCollapsedMargin  62
+#define kSearchCollapsedWidth   120
+#define kSearchExpandedMargin   156
+#define kSearchExpandedWidth    79
 
 @implementation SPToolbarView
 
@@ -35,13 +39,6 @@
 
     NSButtonCell *sidebarCell = [sidebarButton cell];
     [sidebarCell setHighlightsBy:NSContentsCellMask];
-    
-    NSButtonCell *restoreCell = [restoreButton cell];
-    [restoreCell setHighlightsBy:NSContentsCellMask];
-    
-    NSButtonCell *tagListToolbarCell = [tagListToolbarButton cell];
-    [tagListToolbarCell setHighlightsBy:NSContentsCellMask];
-
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noNoteLoaded:) name:SPNoNoteLoadedNotificationName object:nil];
     
@@ -68,7 +65,7 @@
     if (_drawsSeparator) {
         CGContextRef context    = [[NSGraphicsContext currentContext] graphicsPort];
         NSRect separator        = self.bounds;
-        separator.size.height   = 1.0f / [[NSScreen mainScreen] backingScaleFactor];
+        separator.size.height   = 1.0f;
         
         CGContextBeginPath(context);
 
@@ -79,9 +76,8 @@
 
 - (void)enableButtons:(BOOL)enabled {
     [self.actionButton setEnabled:enabled];
-    // Must set actionButton image each time we enable it again?
-    [self applyActionButtonStyle];
-    [restoreButton setEnabled:enabled];
+    [trashButton setEnabled:enabled];
+    [historyButton setEnabled:enabled];
 }
 
 - (void)noNoteLoaded:(id)sender {
@@ -93,9 +89,11 @@
 }
 
 - (void)configureForTrash:(BOOL)trash {
-    [[self.actionButton itemAtIndex:0] setEnabled:!trash];
+    [self.actionButton setEnabled:!trash];
     [addButton setEnabled:!trash];
-    
+    [historyButton setHidden:trash];
+
+    [trashButton setHidden:trash];
     [restoreButton setHidden:!trash];
     [noteEditor setEditable:!trash];
     [noteEditor setSelectable:!trash];
@@ -110,7 +108,7 @@
 }
 
 - (void)trashDidEmpty:(NSNotification *)notification {
-    [restoreButton setEnabled:NO];
+    [trashButton setEnabled:NO];
 }
 
 - (void)moveView:(NSView *)view x:(CGFloat)x y:(CGFloat)y {
@@ -120,8 +118,8 @@
 
 - (void)setFullscreen:(BOOL)fullscreen {
     // Account for fullscreen button going away
-    int moveRightX = fullscreen ? 36 : -36;
-    [self moveView:self.actionButton x:moveRightX y:0];
+    //int moveRightX = fullscreen ? 36 : -36;
+    //[self moveView:self.actionButton x:moveRightX y:0];
 
 // This was hiding the button, actually!
 //     Account for traffic lights going away
@@ -135,6 +133,13 @@
     if (distance == 0)
         return;
     
+    BOOL collapsed = left <= 1;
+    CGRect searchFrame = searchBox.frame;
+    searchFrame.origin.x = collapsed ? kSearchCollapsedMargin : kSearchExpandedMargin;
+    CGFloat searchFrameAdjustment = collapsed ? kSearchCollapsedWidth : kSearchExpandedWidth;
+    searchFrame.size.width = tableViewController.view.frame.size.width - searchFrameAdjustment;
+    [searchBox setFrame: searchFrame];
+    
     [self moveView:addButton x:distance y:0];
     [self moveView:splitter x:distance y:0];
 }
@@ -142,34 +147,12 @@
 #pragma mark - Theme
 
 - (void)applyStyle {
-    [self applyActionButtonStyle];
     [self applySearchBoxStyle];
-    [self applyToolbarButtonsStyle];
-}
-
-- (void)applyActionButtonStyle {
-    BOOL isDarkTheme = [[[VSThemeManager sharedManager] theme] isDark];
-    NSString *newButtonName = [@"button_new" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    NSString *actionButtonName = [@"button_action" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    
-    [addButton setImage:[NSImage imageNamed:newButtonName]];
-    NSMenuItem *imageItem = [[NSMenuItem alloc] init];
-    [imageItem setImage:[NSImage imageNamed:actionButtonName]];
-    [[self.actionButton cell] setMenuItem:imageItem];
+    [splitter setFillColor:[self.theme colorForKey:@"dividerColor"]];
 }
 
 - (void)applySearchBoxStyle {
     [searchBox setFillColor:[self.theme colorForKey:@"tableViewBackgroundColor"]];
-}
-
-- (void)applyToolbarButtonsStyle {
-    BOOL isDarkTheme                = [self.theme isDark];
-    NSString *addButtonName         = [@"button_new" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    NSString *sidebarButtonName     = [@"button_sidebar_show" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    NSString *tagListButtonName     = [@"button_sidebar_hide" stringByAppendingString:isDarkTheme ? @"_dark" : @""];
-    addButton.image                 = [NSImage imageNamed:addButtonName];
-    sidebarButton.image             = [NSImage imageNamed:sidebarButtonName];
-    tagListToolbarButton.image      = [NSImage imageNamed:tagListButtonName];
 }
 
 @end

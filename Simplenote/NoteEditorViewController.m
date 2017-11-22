@@ -1065,6 +1065,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (IBAction)showVersionPopover:(id)sender
 {
+    // Dismiss the popover if user clicks revisions button when popover is showing already
+    if (self.activePopover != nil && [self.activePopover isShown] &&
+            self.activePopover.contentViewController == self.versionsViewController) {
+        [self dismissActivePopover];
+        return;
+    }
+    
     [SPTracker trackEditorVersionsAccessed];
     [self showViewController:self.versionsViewController relativeToView:self.noteEditor preferredEdge:NSMinXEdge];
 }

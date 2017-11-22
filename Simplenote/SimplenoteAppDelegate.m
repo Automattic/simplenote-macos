@@ -69,7 +69,6 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
 @property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
-@property (strong, nonatomic) IBOutlet NSButton                 *tagListToolbarButton;
 @property (strong, nonatomic) IBOutlet NSButton                 *noteListToolbarButton;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
@@ -204,8 +203,6 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     // Restore collapsed state of tag list based on autosaved width
     BOOL collapsed                              = self.tagListViewController.view.frame.size.width <= 1;
     self.tagListViewController.view.hidden      = collapsed;
-    self.tagListToolbarButton.hidden            = collapsed;
-    self.noteListToolbarButton.hidden           = !collapsed;
     self.window.releasedWhenClosed              = NO;
     
     [self.splitView adjustSubviews];
@@ -521,7 +518,6 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 - (void)notifySplitDidChange
 {
     [self.toolbar setSplitPositionLeft:[self tagListSplitPosition] right:[self editorSplitPosition]];
-    [self.noteListViewController setSplitPositionLeft:[self tagListSplitPosition] right:[self editorSplitPosition]];
 }
 
 
@@ -669,11 +665,10 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
     CGFloat editorSplitPosition = [self editorSplitPosition];
     BOOL collapsed = ![self.tagListViewController.view isHidden];
     [self.tagListViewController.view setHidden:collapsed];
+    
     [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
     [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
     [self.splitView adjustSubviews];
-    [self.tagListToolbarButton setHidden:collapsed];
-    [self.noteListToolbarButton setHidden:!collapsed];
 }
 
 - (IBAction)changeThemeAction:(id)sender

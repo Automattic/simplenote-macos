@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,6 +47,172 @@
                 <outlet property="delegate" destination="874" id="1526"/>
             </connections>
         </menu>
+        <customView id="914" customClass="SPToolbarView">
+            <rect key="frame" x="0.0" y="0.0" width="901" height="71"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="line" borderWidth="0.0" title="Box" titlePosition="noTitle" id="1387">
+                    <rect key="frame" x="393" y="1" width="1" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <view key="contentView" id="uXT-Dz-pKp">
+                        <rect key="frame" x="0.0" y="0.0" width="1" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="fillColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <popUpButton misplaced="YES" id="1601" userLabel="Action">
+                    <rect key="frame" x="847" y="10" width="44" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
+                            <items>
+                                <menuItem title="Item 1" image="toolbar_info" hidden="YES" id="1604"/>
+                                <menuItem title="0 Words" enabled="NO" id="1605"/>
+                                <menuItem title="0 Characters" enabled="NO" id="1606"/>
+                                <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem isSeparatorItem="YES" id="1614"/>
+                                <menuItem title="Pin to Top" state="on" id="1615">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="pinAction:" target="1107" id="1661"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Publish to Web..." id="1648" userLabel="Menu Item - Publish...">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="showPublishPopover:" target="1107" id="8Sd-3K-mmC"/>
+                                    </connections>
+                                </menuItem>
+                            </items>
+                            <connections>
+                                <outlet property="delegate" destination="1107" id="1627"/>
+                            </connections>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="1732">
+                    <rect key="frame" x="413" y="22" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </progressIndicator>
+                <button toolTip="Show Sidebar" misplaced="YES" id="1680" userLabel="Sidebar">
+                    <rect key="frame" x="20" y="19" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_tags" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="1681">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleSidebarAction:" target="494" id="1693"/>
+                    </connections>
+                </button>
+                <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="none" titlePosition="noTitle" id="1698">
+                    <rect key="frame" x="158" y="19" width="190" height="22"/>
+                    <view key="contentView" id="qdW-BD-GMh">
+                        <rect key="frame" x="0.0" y="0.0" width="190" height="22"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="915">
+                                <rect key="frame" x="0.0" y="0.0" width="190" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="916">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="573" name="predicate" keyPath="filterPredicate" id="1244">
+                                            <dictionary key="options">
+                                                <string key="NSPredicateFormat">content contains $value</string>
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </searchFieldCell>
+                                <connections>
+                                    <binding destination="573" name="predicate" keyPath="filterPredicate" id="1240">
+                                        <dictionary key="options">
+                                            <string key="NSPredicateFormat">content contains[c] $value</string>
+                                            <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                        </dictionary>
+                                    </binding>
+                                    <outlet property="delegate" destination="914" id="c9e-3v-2l6"/>
+                                </connections>
+                            </searchField>
+                        </subviews>
+                    </view>
+                </box>
+                <button toolTip="Add Note" misplaced="YES" id="987" userLabel="Add">
+                    <rect key="frame" x="351" y="19" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="988">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="addAction:" target="1107" id="1662"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" misplaced="YES" id="mXz-OM-6A3">
+                    <rect key="frame" x="818" y="19" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" misplaced="YES" id="7hm-UJ-0zw">
+                    <rect key="frame" x="775" y="19" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_revisions" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showVersionPopover:" target="1107" id="6bi-5c-YJd"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" misplaced="YES" id="fA9-bG-luR">
+                    <rect key="frame" x="818" y="19" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="X3f-rW-nRp">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <connections>
+                <outlet property="addButton" destination="987" id="1424"/>
+                <outlet property="arrayController" destination="573" id="1148"/>
+                <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
+                <outlet property="noteEditor" destination="934" id="1154"/>
+                <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
+                <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
+                <outlet property="sidebarButton" destination="1680" id="1687"/>
+                <outlet property="splitter" destination="1387" id="1438"/>
+                <outlet property="tableView" destination="561" id="1109"/>
+                <outlet property="tableViewController" destination="874" id="1271"/>
+                <outlet property="trashButton" destination="mXz-OM-6A3" id="XnP-Bb-cph"/>
+                <outlet property="window" destination="371" id="1247"/>
+            </connections>
+            <point key="canvasLocation" x="-866.5" y="585.5"/>
+        </customView>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="Simplenote" id="56">
@@ -490,128 +656,12 @@
                 <outlet property="delegate" destination="494" id="ahP-nJ-8XG"/>
             </connections>
         </menu>
-        <customView id="914" customClass="SPToolbarView">
-            <rect key="frame" x="0.0" y="0.0" width="901" height="36"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-            <subviews>
-                <button toolTip="Add Note" id="987" userLabel="Add">
-                    <rect key="frame" x="358" y="3.5" width="32" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="988">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="addAction:" target="1107" id="1662"/>
-                    </connections>
-                </button>
-                <button hidden="YES" toolTip="Restore Note" id="1252" userLabel="Restore">
-                    <rect key="frame" x="795" y="7" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1253">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="restoreAction:" target="1107" id="1663"/>
-                    </connections>
-                </button>
-                <box hidden="YES" autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="1387">
-                    <rect key="frame" x="393" y="1" width="1" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                    <view key="contentView" id="uXT-Dz-pKp">
-                        <rect key="frame" x="1" y="1" width="0.0" height="33"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <color key="borderColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
-                <popUpButton id="1601" userLabel="Action">
-                    <rect key="frame" x="821" y="5.5" width="45" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <popUpButtonCell key="cell" type="bevel" title="Item 1" bezelStyle="rounded" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" selectedItem="5hy-P6-zKc" id="1602">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
-                            <items>
-                                <menuItem title="Item 1" image="button_action" hidden="YES" id="1604"/>
-                                <menuItem title="0 Words" enabled="NO" id="1605"/>
-                                <menuItem title="0 Characters" enabled="NO" id="1606"/>
-                                <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem isSeparatorItem="YES" id="1614"/>
-                                <menuItem title="Pin to Top" state="on" id="1615">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="pinAction:" target="1107" id="1661"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="Publish to Web..." id="1648" userLabel="Menu Item - Publish...">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="showPublishPopover:" target="1107" id="8Sd-3K-mmC"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="Send by Email..." id="5hy-P6-zKc" userLabel="Menu Item - Email...">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="emailNote:" target="1107" id="zrf-AB-nsp"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="History..." id="1617">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="showVersionPopover:" target="1107" id="uPL-Mh-ynk"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem isSeparatorItem="YES" id="1618"/>
-                                <menuItem title="Move to Trash" id="1619">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="deleteAction:" target="1107" id="1623"/>
-                                    </connections>
-                                </menuItem>
-                            </items>
-                            <connections>
-                                <outlet property="delegate" destination="1107" id="1627"/>
-                            </connections>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
-                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="1732">
-                    <rect key="frame" x="75" y="10" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                </progressIndicator>
-            </subviews>
-            <connections>
-                <outlet property="actionButton" destination="1601" id="1622"/>
-                <outlet property="addButton" destination="987" id="1424"/>
-                <outlet property="arrayController" destination="573" id="1148"/>
-                <outlet property="noteEditor" destination="934" id="1154"/>
-                <outlet property="restoreButton" destination="1252" id="1501"/>
-                <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
-                <outlet property="sidebarButton" destination="1680" id="1687"/>
-                <outlet property="splitter" destination="1387" id="1438"/>
-                <outlet property="tableView" destination="561" id="1109"/>
-                <outlet property="tableViewController" destination="874" id="1271"/>
-                <outlet property="tagListToolbarButton" destination="1700" id="1730"/>
-                <outlet property="window" destination="371" id="1247"/>
-            </connections>
-        </customView>
         <window title="Simplenote" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" id="371" customClass="SPWindow">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="199" y="95" width="900" height="618"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <value key="minSize" type="size" width="750" height="400"/>
             <view key="contentView" id="372" customClass="SPBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
@@ -635,14 +685,14 @@
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
                                     <scrollView borderType="none" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452" customClass="MMScrollView">
-                                        <rect key="frame" x="0.0" y="42" width="151" height="576"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="151" height="576"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="576"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -776,47 +826,27 @@
                                             <outlet property="menu" destination="1510" id="1519"/>
                                         </connections>
                                     </scrollView>
-                                    <button toolTip="Hide Sidebar" id="1700" userLabel="Sidebar">
-                                        <rect key="frame" x="5" y="12" width="32" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_sidebar_hide" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="1701">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toggleSidebarAction:" target="494" id="1702"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </customView>
                             <customView focusRingType="none" id="558">
                                 <rect key="frame" x="151" y="0.0" width="255" height="618"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1698">
-                                        <rect key="frame" x="0.0" y="0.0" width="260" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" id="qdW-BD-GMh">
-                                            <rect key="frame" x="0.0" y="0.0" width="260" height="42"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                        <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </box>
                                     <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="560">
-                                        <rect key="frame" x="0.0" y="42" width="255" height="576"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="255" height="576"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="564"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="606"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
                                                     <tableColumns>
-                                                        <tableColumn width="255" maxWidth="10000000" id="565">
+                                                        <tableColumn identifier="" width="240" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -831,7 +861,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="CustomCell" id="607" customClass="SPNoteCellView">
-                                                                    <rect key="frame" x="0.0" y="4" width="255" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="240" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
@@ -870,39 +900,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="564" customClass="MMScroller">
-                                            <rect key="frame" x="239" y="12" width="16" height="564"/>
+                                            <rect key="frame" x="240" y="12" width="15" height="606"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <connections>
                                             <outlet property="menu" destination="1504" id="1509"/>
                                         </connections>
                                     </scrollView>
-                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="915">
-                                        <rect key="frame" x="36" y="10" width="205" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="" usesSingleLineMode="YES" bezelStyle="round" id="916">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <connections>
-                                                <binding destination="573" name="predicate" keyPath="filterPredicate" id="1244">
-                                                    <dictionary key="options">
-                                                        <string key="NSPredicateFormat">content contains $value</string>
-                                                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </searchFieldCell>
-                                        <connections>
-                                            <binding destination="573" name="predicate" keyPath="filterPredicate" id="1240">
-                                                <dictionary key="options">
-                                                    <string key="NSPredicateFormat">content contains[c] $value</string>
-                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                                </dictionary>
-                                            </binding>
-                                            <outlet property="delegate" destination="874" id="DYP-cY-EYS"/>
-                                        </connections>
-                                    </searchField>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1766">
                                         <rect key="frame" x="17" y="340" width="221" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -912,17 +916,6 @@
                                             <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button toolTip="Show Sidebar" id="1680" userLabel="Sidebar">
-                                        <rect key="frame" x="5" y="13" width="32" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_sidebar_show" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="1681">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="toggleSidebarAction:" target="494" id="1693"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </customView>
                             <customView focusRingType="none" id="559">
@@ -937,14 +930,14 @@
                                         <rect key="frame" x="0.0" y="43" width="493" height="575"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
+                                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="575"/>
+                                                    <size key="minSize" width="478" height="575"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <connections>
@@ -959,7 +952,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="936" customClass="MMScroller">
-                                            <rect key="frame" x="477" y="0.0" width="16" height="575"/>
+                                            <rect key="frame" x="478" y="0.0" width="15" height="575"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -1042,7 +1035,6 @@
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>
                 <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
-                <outlet property="tagListToolbarButton" destination="1700" id="1704"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
                 <outlet property="textScrollView" destination="933" id="1199"/>
                 <outlet property="textViewParent" destination="559" id="1198"/>
@@ -1057,7 +1049,6 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
-                <outlet property="historyItem" destination="1617" id="1771"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noNoteText" destination="1441" id="1531"/>
@@ -1265,13 +1256,14 @@
         </menuItem>
     </objects>
     <resources>
-        <image name="button_action" width="22" height="22"/>
         <image name="button_new" width="22" height="22"/>
-        <image name="button_restore" width="22" height="22"/>
-        <image name="button_sidebar_hide" width="9" height="16"/>
-        <image name="button_sidebar_show" width="9" height="16"/>
         <image name="icon_all_notes" width="12" height="12"/>
+        <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="12" height="12"/>
         <image name="logo_grey" width="128" height="128"/>
+        <image name="toolbar_info" width="22" height="22"/>
+        <image name="toolbar_revisions" width="22" height="22"/>
+        <image name="toolbar_trash" width="22" height="22"/>
+        <image name="toolbar_trash_restore" width="22" height="22"/>
     </resources>
 </document>

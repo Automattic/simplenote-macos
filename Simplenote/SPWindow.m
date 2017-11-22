@@ -191,7 +191,7 @@
     
     for (NSButton *button in @[ closeButton, minimizeButton, zoomButton ]) {
         NSRect buttonFrame      = button.frame;
-        buttonFrame.origin.y    = floor((self.titleBarHeight - buttonFrame.size.height) * 0.5f);
+        buttonFrame.origin.y    = floor((self.titleBarHeight - buttonFrame.size.height) * 0.9f);
         button.frame            = buttonFrame;
     }
 }

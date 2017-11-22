@@ -45,7 +45,7 @@ static NSString * const SPSplitViewVisibleKey   = @"visible";
 
 - (CGFloat)dividerThickness
 {
-    return 0.5;
+    return 1.0;
 }
 
 - (void)drawDividerInRect:(NSRect)rect

@@ -34,7 +34,6 @@
     BOOL viewingTrash;
     BOOL awake;
     CGFloat rowHeight;
-    SPGradientView *borderView;
 }
 
 @property (strong, nonatomic) IBOutlet SPTableView      *tableView;
