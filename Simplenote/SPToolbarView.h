@@ -23,6 +23,7 @@
     IBOutlet NoteListViewController *tableViewController;
     IBOutlet NSBox *splitter;
     IBOutlet NSBox *searchBox;
+    IBOutlet NSSearchField *searchField;
 }
 
 @property (nonatomic, strong) IBOutlet NSPopUpButton    *actionButton;

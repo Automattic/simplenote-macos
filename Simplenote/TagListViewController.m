@@ -495,32 +495,12 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    NSPredicate *predicate;
-    BOOL loadTrash = NO;
-    
-    if ([self.tableView selectedRow] == kTrashRow) {
-        predicate = [NSPredicate predicateWithFormat:@"deleted == 1"];
-        loadTrash = YES;
-    } else if ([self.tableView selectedRow] == kAllNotesRow) {
-        predicate = [NSPredicate predicateWithFormat:@"deleted == 0"];
-    } else {
-        [SPTracker trackTagRowPressed];
-        
-        NSString *tagName = [self selectedTagName];
-
-        tagName = [tagName stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
-        tagName = [tagName stringByReplacingOccurrencesOfString:@"/" withString:@"\\/"];
-        
-        // Add quotes so "example" doesn't match with "exampletwo"
-        NSString *match = [[NSString alloc] initWithFormat:@"\"%@\"", tagName];
-        predicate = [NSPredicate predicateWithFormat:@"tags contains[c] %@ AND deleted == 0", match];
-    }
-    
-    [noteListViewController setNotesPredicate:predicate];
-    [noteListViewController selectRow:0];
-    
-    NSString *notificationName = loadTrash ? kDidBeginViewingTrash : kTagsDidLoad;
+    BOOL isViewingTrash = [self.tableView selectedRow] == kTrashRow;
+    NSString *notificationName = isViewingTrash ? kDidBeginViewingTrash : kTagsDidLoad;
     [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self];
+    
+    [noteListViewController filterNotes:nil];
+    [noteListViewController selectRow:0];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row

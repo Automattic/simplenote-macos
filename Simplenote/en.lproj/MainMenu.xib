@@ -123,10 +123,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="190" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="915">
+                            <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="915">
                                 <rect key="frame" x="0.0" y="0.0" width="190" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="916">
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" focusRingType="none" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="916">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -204,6 +204,7 @@
                 <outlet property="noteEditor" destination="934" id="1154"/>
                 <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
+                <outlet property="searchField" destination="915" id="L6k-Ak-N34"/>
                 <outlet property="sidebarButton" destination="1680" id="1687"/>
                 <outlet property="splitter" destination="1387" id="1438"/>
                 <outlet property="tableView" destination="561" id="1109"/>
