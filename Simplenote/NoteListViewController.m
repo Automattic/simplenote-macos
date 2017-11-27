@@ -531,7 +531,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     
     NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
     if (selectedTag.length > 0) {
-        
         // Match against "tagName" (JSON formatted)
         NSString *tagName = selectedTag;
         
