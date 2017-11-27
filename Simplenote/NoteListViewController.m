@@ -547,8 +547,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     if (searchText.length > 0) {
         NSArray *searchStrings = [searchText componentsSeparatedByString:@" "];
         for (NSString *word in searchStrings) {
-            if (word.length == 0)
+            if (word.length == 0) {
                 continue;
+            }
             [predicateList addObject: [NSPredicate predicateWithFormat:@"content CONTAINS[c] %@", word]];
         }
     }

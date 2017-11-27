@@ -153,7 +153,8 @@
 
 - (void)applySearchBoxStyle {
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
-
+    [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
+    
     if (@available(macOS 10.10, *)) {
         if (theme.isDark) {
             searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
@@ -161,8 +162,6 @@
             searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
         }
     }
-    
-    [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
 }
 
 @end

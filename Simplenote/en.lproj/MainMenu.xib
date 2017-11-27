@@ -130,22 +130,9 @@
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <connections>
-                                        <binding destination="573" name="predicate" keyPath="filterPredicate" id="1244">
-                                            <dictionary key="options">
-                                                <string key="NSPredicateFormat">content contains $value</string>
-                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
                                 </searchFieldCell>
                                 <connections>
-                                    <binding destination="573" name="predicate" keyPath="filterPredicate" id="1240">
-                                        <dictionary key="options">
-                                            <string key="NSPredicateFormat">content contains[c] $value</string>
-                                            <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                        </dictionary>
-                                    </binding>
+                                    <action selector="filterNotes:" target="874" id="dQa-U1-MUq"/>
                                     <outlet property="delegate" destination="914" id="c9e-3v-2l6"/>
                                 </connections>
                             </searchField>
