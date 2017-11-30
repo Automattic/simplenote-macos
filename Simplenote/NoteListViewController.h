@@ -57,7 +57,6 @@
 - (IBAction)searchAction:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
-- (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right;
 - (void)applyStyle;
 
 @end

@@ -40,6 +40,8 @@
     NSButtonCell *sidebarCell = [sidebarButton cell];
     [sidebarCell setHighlightsBy:NSContentsCellMask];
     
+    [shareButton sendActionOn:NSLeftMouseDownMask];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noNoteLoaded:) name:SPNoNoteLoadedNotificationName object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteLoaded:) name:SPNoteLoadedNotificationName object:nil];
@@ -76,6 +78,7 @@
 
 - (void)enableButtons:(BOOL)enabled {
     [self.actionButton setEnabled:enabled];
+    [shareButton setEnabled:enabled];
     [trashButton setEnabled:enabled];
     [historyButton setEnabled:enabled];
 }
@@ -90,6 +93,7 @@
 
 - (void)configureForTrash:(BOOL)trash {
     [self.actionButton setEnabled:!trash];
+    [shareButton setHidden:trash];
     [addButton setEnabled:!trash];
     [historyButton setHidden:trash];
 

@@ -36,7 +36,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 #pragma mark NoteEditorViewController
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController : NSViewController
+@interface NoteEditorViewController : NSViewController <NSSharingServicePickerDelegate>
 {
     IBOutlet NSTableView *tableView;
     IBOutlet NoteListViewController *noteListViewController;
@@ -47,6 +47,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSTextFieldCell *versionLabel;
     IBOutlet NSTextFieldCell *publishLabel;
     IBOutlet NSButton *publishButton;
+    IBOutlet NSButton *shareButton;
     IBOutlet NSView *statusView;
     IBOutlet NSTextField *noNoteText;
     IBOutlet NSMenuItem *wordCountItem;
@@ -75,16 +76,14 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)updateTagField;
 - (void)willReceiveNewContent;
 - (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data;
+- (void)applyStyle;
+- (void)showPublishPopover;
 - (NSUInteger)wordCount;
 - (NSUInteger)charCount;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)adjustFontSizeAction:(id)sender;
-- (void)applyStyle;
-
 - (IBAction)showSharePopover:(id)sender;
-- (IBAction)showPublishPopover:(id)sender;
-- (IBAction)emailNote:(id)sender;
 - (IBAction)showVersionPopover:(id)sender;
 
 @end

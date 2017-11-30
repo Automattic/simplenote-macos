@@ -89,12 +89,6 @@
                                         <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
                                     </connections>
                                 </menuItem>
-                                <menuItem title="Publish to Web..." id="1648" userLabel="Menu Item - Publish...">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="showPublishPopover:" target="1107" id="8Sd-3K-mmC"/>
-                                    </connections>
-                                </menuItem>
                             </items>
                             <connections>
                                 <outlet property="delegate" destination="1107" id="1627"/>
@@ -175,7 +169,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" id="7hm-UJ-0zw">
-                    <rect key="frame" x="775" y="19" width="22" height="22"/>
+                    <rect key="frame" x="735" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_revisions" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -196,6 +190,17 @@
                         <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" misplaced="YES" id="qmA-vO-wPh">
+                    <rect key="frame" x="777" y="19" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_share" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L1E-HD-wfM">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="shareNote:" target="1107" id="W9o-Z7-kgJ"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="addButton" destination="987" id="1424"/>
@@ -204,6 +209,7 @@
                 <outlet property="noteEditor" destination="934" id="1154"/>
                 <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
+                <outlet property="shareButton" destination="qmA-vO-wPh" id="GK2-GI-0Eu"/>
                 <outlet property="sidebarButton" destination="1680" id="1687"/>
                 <outlet property="splitter" destination="1387" id="1438"/>
                 <outlet property="tableView" destination="561" id="1109"/>
@@ -1061,10 +1067,10 @@
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
                 <outlet property="printItem" destination="78" id="1659"/>
                 <outlet property="publishButton" destination="1063" id="1327"/>
-                <outlet property="publishItem" destination="1648" id="1772"/>
                 <outlet property="publishLabel" destination="1058" id="1322"/>
                 <outlet property="publishViewController" destination="1040" id="5kS-We-Atz"/>
                 <outlet property="restoreVersionButton" destination="1088" id="1312"/>
+                <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
                 <outlet property="shareViewController" destination="1643" id="Ahf-1p-0Qr"/>
                 <outlet property="statusView" destination="1440" id="1769"/>
                 <outlet property="tableView" destination="561" id="1282"/>
@@ -1267,6 +1273,8 @@
         <image name="logo_grey" width="128" height="128"/>
         <image name="toolbar_info" width="22" height="22"/>
         <image name="toolbar_revisions" width="22" height="22"/>
+        <image name="toolbar_share" width="22" height="22"/>
+        <image name="toolbar_trash" width="22" height="22"/>
         <image name="toolbar_trash_restore" width="22" height="22"/>
     </resources>
 </document>
