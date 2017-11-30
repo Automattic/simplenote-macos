@@ -991,7 +991,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ./External/Fabric.framework/run;
+			shellScript = "FABRIC_API_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricApiKey);\nFABRIC_BUILD_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricBuildKey);\n\necho \"Fabric?\";\n\nif [ ${FABRIC_API_KEY} == \"not-required\" ] || [ ${FABRIC_BUILD_KEY} == \"not-required\" ]; then\necho \"Could not find fabric keys. Check your config.plist.\";\nexit 0;\nfi\n\n./External/Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_KEY}\n";
 		};
 		B5CA81B71896F65800AC6EFC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
