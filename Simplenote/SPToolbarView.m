@@ -156,7 +156,16 @@
 }
 
 - (void)applySearchBoxStyle {
-    [searchBox setFillColor:[self.theme colorForKey:@"tableViewBackgroundColor"]];
+    VSTheme *theme = [[VSThemeManager sharedManager] theme];
+    [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
+    
+    if (@available(macOS 10.10, *)) {
+        if (theme.isDark) {
+            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+        } else {
+            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        }
+    }
 }
 
 @end
