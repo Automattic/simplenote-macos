@@ -226,6 +226,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     self.selectedNotes          = [NSArray arrayWithObject:self.note];
     
     [self updateTagField];
+    [self updateShareButtonVisibility];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -411,6 +412,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     self.note.content = self.noteEditor.string;
     
+    [self updateShareButtonVisibility];
+    
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
@@ -425,6 +428,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
 }
 
+-(void)updateShareButtonVisibility
+{
+    [shareButton setEnabled:self.note.content.length > 0];
+}
 
 #pragma mark - Simperium
 
@@ -1032,7 +1039,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self dismissActivePopover];
 }
 
-
+- (void)showPublishPopover
+{
+    [self showViewController:self.publishViewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+}
 
 #pragma mark - NSButton Delegate Methods
 
@@ -1041,27 +1051,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [SPTracker trackEditorCollaboratorsAccessed];
     [self showViewController:self.shareViewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
     [self.bottomBar.tokenField becomeFirstResponder];
-}
-
-- (IBAction)showPublishPopover:(id)sender
-{
-    NSPopUpButton *actionButton = [[[SimplenoteAppDelegate sharedDelegate] toolbar] actionButton];
-    [self showViewController:self.publishViewController relativeToView:actionButton preferredEdge:NSMaxYEdge];
-}
-
-- (IBAction)emailNote:(id)sender
-{
-    if (!self.note || [self.note.content length] == 0) {
-        return;
-    }
-
-    // Send via mailto: url scheme
-    NSString *subject = [self.note.titlePreview stringByUrlEncoding];
-    NSString *body = [self.note.content stringByUrlEncoding];
-    NSString *mailToUrl = [NSString stringWithFormat:@"mailto:?Subject=%@&body=%@",
-                           subject,
-                           body];
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:mailToUrl]];
 }
 
 - (IBAction)showVersionPopover:(id)sender
@@ -1077,7 +1066,45 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self showViewController:self.versionsViewController relativeToView:self.noteEditor preferredEdge:NSMinXEdge];
 }
 
+- (IBAction)shareNote:(id)sender
+{
+    if (!self.note.content) {
+        return;
+    }
+    NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
+    NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
+    sharingPicker.delegate = self;
+    [sharingPicker showRelativeToRect:shareButton.bounds ofView:shareButton preferredEdge:NSMinYEdge];
+}
 
+#pragma mark - NSSharingServicePicker delegate
+
+- (NSArray *)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker sharingServicesForItems:(NSArray *)items proposedSharingServices:(NSArray *)proposedServices
+{
+    // Add Simplenote publish to web option to the sharing services drop down
+    NSArray *services = proposedServices;
+    NSString *firstString;
+    for (id item in items) {
+        if ([item isKindOfClass:[NSString class]]) {
+            firstString = item;
+            break;
+        }
+        if ([item isKindOfClass:[NSAttributedString class]]) {
+            firstString = [(NSAttributedString *)item string];
+            break;
+        }
+    }
+    
+    if (firstString) {
+        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:@"Publish to Web" image:[NSImage imageNamed:@"share_icon"] alternateImage:nil handler:^{
+            [self showPublishPopover];
+        }];
+        
+        services = [services arrayByAddingObject:customService];
+    }
+    
+    return services;
+}
 
 #pragma mark - NSPopover Helpers
 
