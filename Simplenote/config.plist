@@ -18,5 +18,9 @@
 		<string>not-required</string>
 		<key>SPBitHockeyCompany</key>
 		<string>not-required</string>
+		<key>FabricApiKey</key>
+		<string>not-required</string>
+		<key>FabricBuildKey</key>
+		<string>not-required</string>
     </dict>
 </plist>
