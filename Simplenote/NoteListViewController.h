@@ -55,6 +55,7 @@
 - (IBAction)sortPrefAction:(id)sender;
 - (IBAction)previewLinesAction:(id)sender;
 - (IBAction)searchAction:(id)sender;
+- (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
 - (void)applyStyle;

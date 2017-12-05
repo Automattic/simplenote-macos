@@ -148,6 +148,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     if ([[arrayController arrangedObjects] count] == 0) {
         [noteEditorViewController displayNote:nil];
+        [statusField setHidden:NO];
     }
 }
 
@@ -403,17 +404,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
     self.searching = NO;
-    
-    /**
-        NOTE:
-        This is a horrible hack. NSSearchField is drawing an orange glow around the Search Text, once the control looses the focus.
-        We'll apply the exact same text, with extra properties, so that there is no orange glow.
-     */
-    [self hackSearchFieldStyle];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self hackSearchFieldStyle];
-    });
 }
 
 #pragma mark - Actions
@@ -518,7 +508,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     [self applyStatusStyle];
     [self applyTableStyle];
-    [self applySearchFieldStyle];
 }
 
 - (void)applyTableStyle
@@ -532,114 +521,38 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
 }
 
-- (void)applySearchFieldStyle
-{
-/**
-    NOTE:
-    Switching NSSearchField Style(s) on the fly has proven to be near impossible:
- 
-    -   When the searchField has a rounded bezel style, it won't render a background. Toggling the bezelStyle property, on the fly,
-        causes the instance not to properly redraw, even when calling explicitly *setNeedsDisplay*. (I promise, tried every single possible combination).
- 
-    -   Subclassing NSSearchFieldCell (as of OSX 10.10), and simply overriding 'drawWithFrame:inView:' (even just with a one line call to superview)
-        breaks the Loupe animation.
- 
-    -   Furthermore, even when subclassing NSSearchFieldCell and reimplementing the whole draw logic (Loupe + Placeholder + Cancel button),
-        whenever the control gains focus, the NSWindow's NSTextView instance takes over, and may draw itself on top of the loupe control.
- 
-    For the reasons outlined above, the solution that requires the less code delta (say: implementing our own NSSearchField from scratch) is to simply
-    instantiate a new SearchField each time the theme changes (and replace the previous one).
- 
-    *Sorry*, this will be revisited in the future. Below we'll do the following:
- */
-
-    // Setup Bindings with the NoteList-ArrayController
-    NSSearchField *refreshedSearchField = [self newSearchField];
-
-    // Update Bindings
-    [self setupBindingsWithSearchField:refreshedSearchField arrayController:arrayController];
-    [self removeBindingsForSearchField:self.searchField];
+- (IBAction)filterNotes:(id)sender {
+    NSString *searchText = [self.searchField stringValue];
     
-    // Replace SearchFields
-    refreshedSearchField.frame = self.searchField.frame;
-    [self.view replaceSubview:self.searchField with:refreshedSearchField];
-    self.searchField = refreshedSearchField;
-}
-
-
-#pragma mark - Search Field Helpers
-
-- (NSSearchField *)newSearchField
-{
-    VSTheme *theme                  = [[VSThemeManager sharedManager] theme];
-    NSSearchField *newSearchField   = [[NSSearchField alloc] initWithFrame:NSZeroRect];
+    NSMutableArray *predicateList = [[NSMutableArray alloc] init];
+    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", [NSNumber numberWithBool:viewingTrash]]];
     
-    if (theme.isDark) {
-        newSearchField.drawsBackground  = YES;
-        newSearchField.bordered     = YES;
-        newSearchField.bezelStyle   = NSTextFieldSquareBezel;
-    } else {
-        newSearchField.bezelStyle   = NSTextFieldRoundedBezel;
-        newSearchField.alphaValue   = 0.6f;
+    NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
+    if (selectedTag.length > 0) {
+        // Match against "tagName" (JSON formatted)
+        NSString *tagName = selectedTag;
+        
+        tagName = [tagName stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
+        tagName = [tagName stringByReplacingOccurrencesOfString:@"/" withString:@"\\/"];
+        
+        // individual tags are surrounded by quotes, thus adding quotes to the selected tag
+        // ensures only the correct notes are shown
+        NSString *match = [[NSString alloc] initWithFormat:@"\"%@\"", tagName];
+        [predicateList addObject: [NSPredicate predicateWithFormat: @"tags CONTAINS[c] %@",match]];
     }
     
-    newSearchField.font             = [NSFont systemFontOfSize:13];
-    newSearchField.backgroundColor  = [theme colorForKey:@"searchFieldBackgroundColor"];
-    newSearchField.textColor        = [theme colorForKey:@"searchBarFontColor"];
-    newSearchField.autoresizingMask = NSViewWidthSizable | NSViewMaxXMargin | NSViewMaxYMargin;
-    
-    // Note:
-    // 'NSSearchFieldDelegate' was introduced in OSX 10.11. Before that, the delegate field expected a `NSTextFieldDelegate` conforming instance.
-    // Hack to shut off the warning, we're all good!
-    newSearchField.delegate         = (id)self;
-    
-    // Setup the Placeholder
-    NSDictionary *colorAttribute    = @{
-        NSForegroundColorAttributeName  : [theme colorForKey:@"searchBarFontColor"],
-        NSStrokeWidthAttributeName      : @(-1.0),
-        NSStrokeColorAttributeName      : [NSColor clearColor],
-        NSFontAttributeName             : [NSFont systemFontOfSize:13]
-    };
-    
-    NSString *searchPlaceholder     = NSLocalizedString(@"Search", @"Placeholder text in the search field.");
-    
-    if ([newSearchField respondsToSelector:@selector(setPlaceholderAttributedString:)]) {
-        newSearchField.placeholderAttributedString = [[NSAttributedString alloc] initWithString:searchPlaceholder
-                                                                                     attributes:colorAttribute];
+    if (searchText.length > 0) {
+        NSArray *searchStrings = [searchText componentsSeparatedByString:@" "];
+        for (NSString *word in searchStrings) {
+            if (word.length == 0) {
+                continue;
+            }
+            [predicateList addObject: [NSPredicate predicateWithFormat:@"content CONTAINS[c] %@", word]];
+        }
     }
     
-    return newSearchField;
-}
-
-- (void)setupBindingsWithSearchField:(NSSearchField *)searchField arrayController:(NSArrayController *)theArrayController
-{
-    NSDictionary *bindingOptions = @{
-        NSPredicateFormatBindingOption : @"content contains[c] $value"
-    };
-    
-    [searchField bind:NSPredicateBinding toObject:theArrayController withKeyPath:@"filterPredicate" options:bindingOptions];
-}
-
-- (void)removeBindingsForSearchField:(NSSearchField *)searchField
-{
-    [searchField unbind:NSPredicateBinding];
-}
-
-- (void)hackSearchFieldStyle
-{
-    NSString *value = self.searchField.stringValue;
-    if (value == nil || value.length == 0) {
-        self.searchField.stringValue = [NSString string];
-        return;
-    }
-
-    NSDictionary *attributes = @{
-        NSFontAttributeName             : self.searchField.font,
-        NSBackgroundColorAttributeName  : self.searchField.backgroundColor,
-        NSForegroundColorAttributeName  : self.searchField.textColor
-    };
-
-    self.searchField.attributedStringValue = [[NSAttributedString alloc] initWithString:value attributes:attributes];
+    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicateList];
+    [self setNotesPredicate:compound];
 }
 
 @end
