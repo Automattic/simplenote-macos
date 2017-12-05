@@ -1020,6 +1020,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="delegate" destination="494" id="1423"/>
+                <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
@@ -1262,7 +1263,6 @@
         <image name="toolbar_info" width="22" height="22"/>
         <image name="toolbar_revisions" width="22" height="22"/>
         <image name="toolbar_share" width="22" height="22"/>
-        <image name="toolbar_trash" width="22" height="22"/>
         <image name="toolbar_trash_restore" width="22" height="22"/>
     </resources>
 </document>
