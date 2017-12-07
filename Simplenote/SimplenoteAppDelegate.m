@@ -17,7 +17,6 @@
 #import "SPWindow.h"
 #import "SPToolbarView.h"
 #import "NSImage+Colorize.h"
-#import "NSApplication+Helpers.h"
 #import "SPIntegrityHelper.h"
 #import "SPConstants.h"
 #import "VSThemeManager.h"
@@ -153,7 +152,6 @@
     [SPTracker trackApplicationLaunched];
     
     [self configureWindow];
-    [self configureMenu];
     [self hookWindowNotifications];
 
     [self updateThemeMenuForPosition:[self.theme boolForKey:@"dark"] ? 1 : 0];
@@ -199,15 +197,11 @@
     
     [self.splitView adjustSubviews];
     [self notifySplitDidChange];
-    
-    if ([NSApplication isRunningYosemiteOrHigher]) {
-        [self configureYosemiteWindow];
-    } else {
-        [self configureLegacyWindow];
-    }
+
+    [self configureToolbar];
 }
 
-- (void)configureYosemiteWindow
+- (void)configureToolbar
 {
     NSRect splitFrame                           = self.splitView.frame;
     NSRect toolbarFrame                         = self.toolbar.frame;
@@ -227,40 +221,11 @@
     [self.splitView.superview addSubview:self.toolbar];
 }
 
-- (void)configureLegacyWindow
-{
-    SPWindow *customWindow                      = (SPWindow *)self.window;
-    
-    // Attach the Toolbar
-    self.toolbar.autoresizingMask               = NSViewWidthSizable | NSViewHeightSizable;
-    self.toolbar.frame                          = customWindow.titleBarView.bounds;
-    [customWindow.titleBarView addSubview:self.toolbar];
-    
-    // Attach Fullscreen Buttons
-    NSImage *fullscreenImage                    = [NSImage imageNamed:@"button_fullscreen"];
-    INWindowButton *fullscreenButton            = [[INWindowButton alloc] initWithSize:NSMakeSize(14, 16) groupIdentifier:nil];
-    fullscreenButton.activeNotKeyWindowImage    = fullscreenImage;
-    fullscreenButton.activeImage                = fullscreenImage;
-    fullscreenButton.inactiveImage              = fullscreenImage;
-    fullscreenButton.rolloverImage              = fullscreenImage;
-    fullscreenButton.pressedImage               = [NSImage imageNamed:@"button_fullscreen" colorizeWithColor:[NSColor colorWithDeviceWhite:0.1 alpha:0.3]];
-    
-    customWindow.fullScreenButton               = fullscreenButton;
-}
-
-- (void)configureMenu
-{
-    // Disable Theme Switch on OS Version < Yosemite
-    self.switchThemeItem.hidden = ![NSApplication isRunningYosemiteOrHigher];
-}
-
 - (void)hookWindowNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(handleWindowDidBecomeMainNote:)         name:NSApplicationDidBecomeActiveNotification   object:self.window];
     [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:)         name:NSApplicationDidResignActiveNotification   object:self.window];
-    [nc addObserver:self selector:@selector(handleWindowWillEnterFullScreenNote:)   name:NSWindowWillEnterFullScreenNotification    object:self.window];
-    [nc addObserver:self selector:@selector(handleWindowWillExitFullScreenNote:)    name:NSWindowWillExitFullScreenNotification     object:self.window];
     [nc addObserver:self selector:@selector(handleWindowDidResizeNote:)             name:NSWindowDidResizeNotification              object:self.window];
 }
 
@@ -377,24 +342,6 @@
 
 
 #pragma mark - NSWindow Notification Handlers
-
-- (void)handleWindowWillEnterFullScreenNote:(NSNotification *)notification
-{
-    // Yosemite: The toolbar is always in fullscreen mode
-    if ([NSApplication isRunningYosemiteOrHigher]) {
-        return;
-    }
-    [self.toolbar setFullscreen:YES];
-}
-
-- (void)handleWindowWillExitFullScreenNote:(NSNotification *)notification
-{
-    // Yosemite: The toolbar is always in fullscreen mode
-    if ([NSApplication isRunningYosemiteOrHigher]) {
-        return;
-    }
-    [self.toolbar setFullscreen:NO];
-}
 
 - (void)handleWindowDidResizeNote:(NSNotification *)notification
 {

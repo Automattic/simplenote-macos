@@ -134,8 +134,6 @@
 		B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B52849731A4086F500F588CC /* NSColor+Simplenote.m */; };
 		B543BEA419DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */; };
 		B543BEA519DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */; };
-		B54EB1821A3F4D7B00D472B3 /* NSApplication+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB1811A3F4D7B00D472B3 /* NSApplication+Helpers.m */; };
-		B54EB1891A3F4DF300D472B3 /* NSApplication+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB1811A3F4D7B00D472B3 /* NSApplication+Helpers.m */; };
 		B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
@@ -358,8 +356,6 @@
 		B52849731A4086F500F588CC /* NSColor+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Simplenote.m"; sourceTree = "<group>"; };
 		B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPIntegrityHelper.m; sourceTree = "<group>"; };
 		B543BEA319DDEC1D0051D30C /* SPIntegrityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPIntegrityHelper.h; sourceTree = "<group>"; };
-		B54EB1801A3F4D7B00D472B3 /* NSApplication+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+Helpers.h"; sourceTree = "<group>"; };
-		B54EB1811A3F4D7B00D472B3 /* NSApplication+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+Helpers.m"; sourceTree = "<group>"; };
 		B54EB18E1A3F683D00D472B3 /* SPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPWindow.h; sourceTree = "<group>"; };
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -606,8 +602,6 @@
 				B5FA82A31B977E8300082296 /* NSView+Simplenote.m */,
 				B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */,
 				B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */,
-				B54EB1801A3F4D7B00D472B3 /* NSApplication+Helpers.h */,
-				B54EB1811A3F4D7B00D472B3 /* NSApplication+Helpers.m */,
 				B52849721A4086F500F588CC /* NSColor+Simplenote.h */,
 				B52849731A4086F500F588CC /* NSColor+Simplenote.m */,
 				B56B35731AC3160300B9F365 /* NSTextView+Simplenote.h */,
@@ -1126,7 +1120,6 @@
 				46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */,
 				46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */,
 				46DD162F17A1E9C10093678C /* SPTagTextField.m in Sources */,
-				B54EB1821A3F4D7B00D472B3 /* NSApplication+Helpers.m in Sources */,
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
 				46F4EAB217B1A5F800697EAD /* SPSplitView.m in Sources */,
 				B5A4EF2F1AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
@@ -1200,7 +1193,6 @@
 				466FFED117CC10A800399652 /* NSImage+Colorize.m in Sources */,
 				466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */,
 				466FFED317CC10A800399652 /* SPTagTextField.m in Sources */,
-				B54EB1891A3F4DF300D472B3 /* NSApplication+Helpers.m in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
 				466FFED517CC10A800399652 /* SPSplitView.m in Sources */,
 				B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
@@ -1362,7 +1354,7 @@
 				INFOPLIST_FILE = "Simplenote/Simplenote-Info-Hockey.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "${inherited}";
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
@@ -1407,7 +1399,7 @@
 				INFOPLIST_FILE = "Simplenote/Simplenote-Info-Hockey.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "${inherited}";
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
@@ -1451,7 +1443,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Simplenote/Simplenote-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "${inherited}";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
@@ -1495,7 +1487,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Simplenote/Simplenote-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "${inherited}";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (

@@ -18,7 +18,7 @@
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
-#import "NSApplication+Helpers.h"
+
 @import Simperium_OSX;
 
 CGFloat const kNoteRowHeight = 64;
@@ -85,10 +85,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     awake = YES;
 
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
-
-    if ([NSApplication isRunningMavericksOrLower]) {
-        previewLinesMenuItem.hidden = YES;
-    }
 }
 
 - (void)viewWillAppear
@@ -217,10 +213,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
 {
-    if ([NSApplication isRunningMavericksOrLower]) {
-        return (row == 0) ? (kNoteRowHeight + kNoteListTopMargin) : kNoteRowHeight;
-    }
-    
     return rowHeight;
 }
 
@@ -230,12 +222,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     Note *note = [[arrayController arrangedObjects] objectAtIndex:row];
     view.note = note;
     view.contentPreview.delegate = self.tableView;
-    
-    if ([NSApplication isRunningMavericksOrLower]) {
-        view.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
-        view.contentPreview.autoresizingMask = NSViewMaxYMargin | NSViewWidthSizable;
-    }
-    
+
     return view;
 }
 

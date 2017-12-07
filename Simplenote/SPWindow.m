@@ -7,7 +7,6 @@
 //
 
 #import "SPWindow.h"
-#import "NSApplication+Helpers.h"
 
 
 
@@ -26,8 +25,8 @@
 {
     styleMask = [self yosemiteMaskWithMask:styleMask];
     if (self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag]) {
-        [self setupYosemiteStyleIfNeeded];
-        [self setupNotificationsIfNeeded];
+        [self setupTitle];
+        [self startListeningToNotifications];
     }
     
     return self;
@@ -37,8 +36,8 @@
 {
     styleMask = [self yosemiteMaskWithMask:styleMask];
     if ((self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag screen:screen])) {
-        [self setupYosemiteStyleIfNeeded];
-        [self setupNotificationsIfNeeded];
+        [self setupTitle];
+        [self startListeningToNotifications];
     }
     
     return self;
@@ -49,30 +48,18 @@
 
 - (NSUInteger)yosemiteMaskWithMask:(NSUInteger)mask
 {
-    if ([NSApplication isRunningYosemiteOrHigher]) {
-        mask |= NSUnifiedTitleAndToolbarWindowMask | NSFullSizeContentViewWindowMask;
-    }
-    
+    mask |= NSUnifiedTitleAndToolbarWindowMask | NSFullSizeContentViewWindowMask;
     return mask;
 }
 
-- (void)setupYosemiteStyleIfNeeded
+- (void)setupTitle
 {
-    if ([NSApplication isRunningYosemiteOrHigher] == false) {
-        return;
-    }
-    
     self.titleVisibility            = NSWindowTitleHidden;
     self.titlebarAppearsTransparent = YES;
 }
 
-- (void)setupNotificationsIfNeeded
+- (void)startListeningToNotifications
 {
-    // Only required in Yosemite systems
-    if ([NSApplication isRunningYosemiteOrHigher] == false) {
-        return;
-    }
-    
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
     [nc addObserver:self selector:@selector(sp_layoutButtons) name:NSWindowDidResizeNotification            object:self];
@@ -126,8 +113,7 @@
 + (void)load
 {
     // Neutralize INAppStoreWindow's behavior when running Yosemite (or higher)
-    BOOL isYosemite = [NSApplication isRunningYosemiteOrHigher];
-    [INAppStoreWindow setSpecialBehaviorDisabled:isYosemite];
+    [INAppStoreWindow setSpecialBehaviorDisabled:YES];
 }
 
 

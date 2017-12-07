@@ -12,7 +12,6 @@
 #import "SPPopUpButtonCell.h"
 #import "NSImage+Colorize.h"
 #import "NSString+Simplenote.h"
-#import "NSApplication+Helpers.h"
 #import "VSThemeManager.h"
 
 
@@ -142,10 +141,8 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     self.imageView.wantsLayer   = YES;
     self.imageView.alphaValue   = alphaValue;
 
-    if ([NSApplication isRunningYosemiteOrHigher]) {
-        self.textField.wantsLayer   = YES;
-        self.textField.alphaValue   = alphaValue;
-    }
+    self.textField.wantsLayer   = YES;
+    self.textField.alphaValue   = alphaValue;
 }
 
 - (void)setSelected:(BOOL)selected
