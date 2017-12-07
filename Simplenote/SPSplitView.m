@@ -15,6 +15,8 @@
 
 static NSString * const SPSplitViewWidthKey     = @"width";
 static NSString * const SPSplitViewVisibleKey   = @"visible";
+const CGFloat SPSplitViewDefaultWidth = 135.0;
+
 
 
 #pragma mark ====================================================================================
@@ -127,11 +129,15 @@ static NSString * const SPSplitViewVisibleKey   = @"visible";
         if (![params isKindOfClass:[NSDictionary class]]) {
             continue;
         }
-        
+
+        /// NOTE:
+        /// The TagList's width is fixed, and should not be restored!
+        ///
+        CGFloat targetWidth = (i == SPSplitViewSectionTags) ? SPSplitViewDefaultWidth : [params[SPSplitViewWidthKey] floatValue];
         NSRect frame        = subview.frame;
-        frame.size.width    = [params[SPSplitViewWidthKey] floatValue];
+        frame.size.width    = targetWidth;
         subview.frame       = frame;
-        
+
         subview.hidden      = [params[SPSplitViewVisibleKey] boolValue];
     }
 }
