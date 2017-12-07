@@ -18,7 +18,6 @@
 #import "NSString+Metadata.h"
 #import "NSString+Bullets.h"
 #import "NSTextView+Simplenote.h"
-#import "NSApplication+Helpers.h"
 #import "SPConstants.h"
 #import "SPToolbarView.h"
 #import "SPTextLinkifier.h"
@@ -118,7 +117,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
        NSForegroundColorAttributeName: [self.theme colorForKey:@"tintColor"],
-        NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSSingleUnderlineStyle],
+        NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle],
                 NSCursorAttributeName: [NSCursor pointingHandCursor]
      }];
 
@@ -1128,12 +1127,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (NSPopover *)newPopoverWithContentViewController:(NSViewController *)viewController
 {
     BOOL isDarkTheme                = [[[VSThemeManager sharedManager] theme] isDark];
-    NSPopoverAppearance appearance  = isDarkTheme ? NSPopoverAppearanceMinimal : NSPopoverAppearanceHUD;
-    
+    NSAppearanceName appearanceName = isDarkTheme ? NSAppearanceNameVibrantLight : NSAppearanceNameVibrantDark;
+
     NSPopover *popover              = [[NSPopover alloc] init];
     popover.contentViewController   = viewController;
     popover.delegate                = self;
-    popover.appearance              = appearance;
+    popover.appearance              = [NSAppearance appearanceNamed:appearanceName];
     popover.behavior                = NSPopoverBehaviorTransient;
     
     return popover;
