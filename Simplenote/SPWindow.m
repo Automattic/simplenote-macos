@@ -7,7 +7,6 @@
 //
 
 #import "SPWindow.h"
-#import "NSApplication+Helpers.h"
 
 
 

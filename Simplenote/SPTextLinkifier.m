@@ -9,7 +9,6 @@
 #import "SPTextLinkifier.h"
 #import "NSTextView+Simplenote.h"
 #import "NSView+Simplenote.h"
-#import "NSApplication+Helpers.h"
 
 
 
