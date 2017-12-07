@@ -41,16 +41,8 @@
 #pragma mark ====================================================================================
 
 #define kFirstLaunchKey					@"SPFirstLaunch"
-#define kMinimumTagSplit				135
-#define kDefaultTagSplit				135
-#define kMaximumTagSplit				135
 #define kMinimumNoteListSplit			250
 #define kMaximumNoteListSplit			384
-
-typedef NS_ENUM(NSInteger, SPSplitViewSection) {
-    SPSplitViewSectionTags      = 0,
-    SPSplitViewSectionList      = 1
-};
 
 
 #pragma mark ====================================================================================
@@ -465,7 +457,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex
 {
     // Tag: Split should be fixed
-    CGFloat minTagListWidth = [self.tagListViewController.view isHidden] ? 0 : kMinimumTagSplit;
+    CGFloat minTagListWidth = [self.tagListViewController.view isHidden] ? 0 : SPSplitViewDefaultWidth;
     if (dividerIndex == SPSplitViewSectionTags) {
         return minTagListWidth;
     }
@@ -478,7 +470,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 {
     // Tag: Split should be fixed
     if (dividerIndex == SPSplitViewSectionTags) {
-        return kMinimumTagSplit;
+        return SPSplitViewDefaultWidth;
 	}
 
     // List: Split should be dynamic
@@ -661,7 +653,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 {
     [SPTracker trackSidebarButtonPresed];
 
-    CGFloat tagListSplitPosition = MAX([self tagListSplitPosition], kDefaultTagSplit);
+    CGFloat tagListSplitPosition = MAX([self tagListSplitPosition], SPSplitViewDefaultWidth);
     CGFloat editorSplitPosition = [self editorSplitPosition];
     BOOL collapsed = ![self.tagListViewController.view isHidden];
     [self.tagListViewController.view setHidden:collapsed];
