@@ -34,7 +34,7 @@ const CGFloat SPSplitViewDefaultWidth = 135.0;
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self listenNotifications];
+        [self startListeningToNotifications];
     }
     return self;
 }
@@ -65,7 +65,7 @@ const CGFloat SPSplitViewDefaultWidth = 135.0;
 
 #pragma mark - NSNotification Helpers
 
-- (void)listenNotifications
+- (void)startListeningToNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleAppWillTerminateNote:)
