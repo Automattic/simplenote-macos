@@ -31,6 +31,8 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     NSButtonCell *addNoteCell = [addButton cell];
     [addNoteCell setHighlightsBy:NSContentsCellMask];
     
@@ -133,10 +135,10 @@
 
 - (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right {
     CGFloat distance = right - splitter.frame.origin.x;
-    
-    if (distance == 0)
+    if (distance == 0) {
         return;
-    
+    }
+
     BOOL collapsed = left <= 1;
     CGRect searchFrame = searchBox.frame;
     searchFrame.origin.x = collapsed ? kSearchCollapsedMargin : kSearchExpandedMargin;
