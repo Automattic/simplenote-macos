@@ -398,7 +398,7 @@ static NSCalendar *gregorian = nil;
 - (NSString *)dateString:(NSDate *)date brief:(BOOL)brief
 {
 	if (!gregorian) {
-		gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+		gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 		dateFormatterTime = [NSDateFormatter new];
 		[dateFormatterTime setTimeStyle: NSDateFormatterShortStyle];
 		//[dateFormatterTime setDateFormat:@"h:mm a"];
@@ -423,19 +423,19 @@ static NSCalendar *gregorian = nil;
 	
 	//NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	NSDate *now = [NSDate date];
-	NSDateComponents *nowComponents = [gregorian components: NSDayCalendarUnit | NSHourCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate: now];
+	NSDateComponents *nowComponents = [gregorian components:NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
 	nowComponents.hour = 0;
 	NSDate *nowMidnight = [gregorian dateFromComponents: nowComponents];
 	
 	// NSDateFormatter will localize the date for us
 //	NSDate *then = [[NSDate alloc] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMTForDate:date] sinceDate:date];
 	NSDate *then = date;
-	NSDateComponents *deltaComponents = [gregorian components:NSMinuteCalendarUnit | NSYearCalendarUnit fromDate: then toDate: nowMidnight options:NSWrapCalendarComponents];
+	NSDateComponents *deltaComponents = [gregorian components:NSCalendarUnitMinute | NSCalendarUnitYear fromDate:then toDate:nowMidnight options:NSCalendarWrapComponents];
 	
 	nowComponents.day = 31;
 	nowComponents.month = 12;
 	NSDate *nowNewYear = [gregorian dateFromComponents: nowComponents];
-	NSDateComponents *deltaComponentsYear = [gregorian components: NSDayCalendarUnit | NSYearCalendarUnit fromDate: then toDate: nowNewYear options:0];
+	NSDateComponents *deltaComponentsYear = [gregorian components: NSCalendarUnitDay | NSCalendarUnitYear fromDate:then toDate:nowNewYear options:0];
 	//NSLog(@"Comparing %@ to %@: %d", [then description], [nowMidnight description], deltaComponentsYear.year);
 	NSString *dateString;
 	
