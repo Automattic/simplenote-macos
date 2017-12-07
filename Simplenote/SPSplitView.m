@@ -15,6 +15,8 @@
 
 static NSString * const SPSplitViewWidthKey     = @"width";
 static NSString * const SPSplitViewVisibleKey   = @"visible";
+const CGFloat SPSplitViewDefaultWidth = 135.0;
+
 
 
 #pragma mark ====================================================================================
@@ -32,7 +34,7 @@ static NSString * const SPSplitViewVisibleKey   = @"visible";
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self listenNotifications];
+        [self startListeningToNotifications];
     }
     return self;
 }
@@ -50,8 +52,8 @@ static NSString * const SPSplitViewVisibleKey   = @"visible";
 
 - (void)drawDividerInRect:(NSRect)rect
 {
-    // Slight hack to make left divider the background color
-    if (rect.origin.x < 200) {
+    // Slight hack to make left divider the background color when tags view is collapsed
+    if (rect.origin.x == 0) {
         [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] set];
         NSRectFill(rect);
     } else {
@@ -63,7 +65,7 @@ static NSString * const SPSplitViewVisibleKey   = @"visible";
 
 #pragma mark - NSNotification Helpers
 
-- (void)listenNotifications
+- (void)startListeningToNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleAppWillTerminateNote:)
@@ -127,11 +129,15 @@ static NSString * const SPSplitViewVisibleKey   = @"visible";
         if (![params isKindOfClass:[NSDictionary class]]) {
             continue;
         }
-        
+
+        /// NOTE:
+        /// The TagList's width is fixed, and should not be restored!
+        ///
+        CGFloat targetWidth = (i == SPSplitViewSectionTags) ? SPSplitViewDefaultWidth : [params[SPSplitViewWidthKey] floatValue];
         NSRect frame        = subview.frame;
-        frame.size.width    = [params[SPSplitViewWidthKey] floatValue];
+        frame.size.width    = targetWidth;
         subview.frame       = frame;
-        
+
         subview.hidden      = [params[SPSplitViewVisibleKey] boolValue];
     }
 }

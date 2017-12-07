@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -147,7 +147,7 @@
                 <button verticalHuggingPriority="750" misplaced="YES" id="mXz-OM-6A3">
                     <rect key="frame" x="818" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_trash_highlighted" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -666,33 +666,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView focusRingType="none" id="1436">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="135" height="618"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1731">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" id="2Nl-8a-lk8">
-                                            <rect key="frame" x="0.0" y="0.0" width="248" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <scrollView borderType="none" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452" customClass="MMScrollView">
-                                        <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
+                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452" customClass="MMScrollView">
+                                        <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="618"/>
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
-                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="NameColumn" width="151" minWidth="40" maxWidth="1000" id="1457">
+                                                        <tableColumn identifier="NameColumn" width="136" minWidth="40" maxWidth="1000" id="1457">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -705,21 +705,21 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <tableCellView identifier="AllNotesCell" id="1463" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="2" width="151" height="20"/>
+                                                                <tableCellView identifier="AllNotesCell" misplaced="YES" id="1463" customClass="SPTagCellView">
+                                                                    <rect key="frame" x="0.0" y="2" width="136" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1464" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="36" y="1" width="100" height="24"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="1464" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="47" y="7" width="85" height="22"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1465">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <imageView id="1473">
-                                                                            <rect key="frame" x="18" y="0.0" width="20" height="20"/>
+                                                                        <imageView misplaced="YES" id="1473">
+                                                                            <rect key="frame" x="18" y="7" width="22" height="22"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_all_notes" id="1474"/>
                                                                         </imageView>
@@ -729,21 +729,21 @@
                                                                         <outlet property="textField" destination="1464" id="1466"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="TrashCell" id="1480" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="26" width="151" height="20"/>
+                                                                <tableCellView identifier="TrashCell" misplaced="YES" id="1480" customClass="SPTagCellView">
+                                                                    <rect key="frame" x="0.0" y="36" width="136" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1482" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="36" y="0.0" width="100" height="24"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="1482" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="47" y="6" width="85" height="22"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1483">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <imageView id="1481">
-                                                                            <rect key="frame" x="18" y="0.0" width="20" height="20"/>
+                                                                        <imageView misplaced="YES" id="1481">
+                                                                            <rect key="frame" x="18" y="7" width="22" height="22"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_trash" id="1484"/>
                                                                         </imageView>
@@ -753,12 +753,12 @@
                                                                         <outlet property="textField" destination="1482" id="1485"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="SeparatorCell" id="1494" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="50" width="151" height="20"/>
+                                                                <tableCellView identifier="SeparatorCell" misplaced="YES" id="1494" customClass="SPTagCellView">
+                                                                    <rect key="frame" x="0.0" y="70" width="136" height="36"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1496" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="38" y="0.0" width="100" height="24"/>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="1496" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="20" y="6" width="109" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1497">
                                                                                 <font key="font" metaFont="system"/>
@@ -766,23 +766,26 @@
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <imageView id="1495">
-                                                                            <rect key="frame" x="20" y="0.0" width="20" height="20"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="1498"/>
-                                                                        </imageView>
+                                                                        <box misplaced="YES" boxType="custom" borderType="line" id="vWM-3v-GoR">
+                                                                            <rect key="frame" x="0.0" y="15" width="151" height="1"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <view key="contentView" id="8LT-ym-mnf">
+                                                                                <rect key="frame" x="1" y="1" width="149" height="0.0"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                            </view>
+                                                                        </box>
                                                                     </subviews>
                                                                     <connections>
-                                                                        <outlet property="imageView" destination="1495" id="1500"/>
+                                                                        <outlet property="dividerView" destination="vWM-3v-GoR" id="7oD-Wl-Ses"/>
                                                                         <outlet property="textField" destination="1496" id="1499"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="TagCell" id="1487" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="74" width="151" height="20"/>
+                                                                <tableCellView identifier="TagCell" misplaced="YES" id="1487" customClass="SPTagCellView">
+                                                                    <rect key="frame" x="0.0" y="110" width="136" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1489" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="20" y="0.0" width="124" height="24"/>
+                                                                            <rect key="frame" x="20" y="0.0" width="109" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1490">
                                                                                 <font key="font" metaFont="system"/>
@@ -823,24 +826,24 @@
                                 </subviews>
                             </customView>
                             <customView focusRingType="none" id="558">
-                                <rect key="frame" x="151" y="0.0" width="255" height="618"/>
+                                <rect key="frame" x="136" y="0.0" width="270" height="618"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
                                     <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="560">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="606"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="606"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="" width="240" maxWidth="10000000" id="565">
+                                                        <tableColumn identifier="" width="270" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -855,11 +858,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="CustomCell" id="607" customClass="SPNoteCellView">
-                                                                    <rect key="frame" x="0.0" y="4" width="240" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="270" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
-                                                                            <rect key="frame" x="18" y="0.0" width="214" height="59"/>
+                                                                            <rect key="frame" x="18" y="0.0" width="244" height="59"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
                                                                                 <font key="font" size="12" name="Helvetica"/>
@@ -886,15 +889,16 @@
                                                     </connections>
                                                 </tableView>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="1" green="0.0074358092780256735" blue="0.18312235167695623" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </clipView>
                                         <edgeInsets key="contentInsets" left="0.0" right="0.0" top="12" bottom="0.0"/>
+                                        <edgeInsets key="scrollerInsets" left="0.0" right="0.0" top="-12" bottom="0.0"/>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="562">
                                             <rect key="frame" x="-100" y="-100" width="235" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="564" customClass="MMScroller">
-                                            <rect key="frame" x="240" y="12" width="15" height="606"/>
+                                            <rect key="frame" x="254" y="0.0" width="16" height="618"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <connections>
@@ -902,7 +906,7 @@
                                         </connections>
                                     </scrollView>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1766">
-                                        <rect key="frame" x="17" y="340" width="221" height="30"/>
+                                        <rect key="frame" x="25" y="340" width="221" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Notes" id="1767">
                                             <font key="font" size="20" name="HelveticaNeue"/>
@@ -924,14 +928,14 @@
                                         <rect key="frame" x="0.0" y="43" width="493" height="575"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="478" height="575"/>
+                                                    <size key="minSize" width="493" height="575"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <connections>
@@ -946,7 +950,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="936" customClass="MMScroller">
-                                            <rect key="frame" x="478" y="0.0" width="15" height="575"/>
+                                            <rect key="frame" x="477" y="0.0" width="16" height="575"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -1017,6 +1021,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="delegate" destination="494" id="1423"/>
+                <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
@@ -1251,14 +1256,14 @@
     </objects>
     <resources>
         <image name="button_new" width="22" height="22"/>
-        <image name="icon_all_notes" width="12" height="12"/>
+        <image name="icon_all_notes" width="22" height="22"/>
         <image name="icon_tags" width="22" height="22"/>
-        <image name="icon_trash" width="12" height="12"/>
+        <image name="icon_trash" width="22" height="22"/>
+        <image name="icon_trash_highlighted" width="22" height="22"/>
         <image name="logo_grey" width="128" height="128"/>
         <image name="toolbar_info" width="22" height="22"/>
         <image name="toolbar_revisions" width="22" height="22"/>
         <image name="toolbar_share" width="22" height="22"/>
-        <image name="toolbar_trash" width="22" height="22"/>
         <image name="toolbar_trash_restore" width="22" height="22"/>
     </resources>
 </document>
