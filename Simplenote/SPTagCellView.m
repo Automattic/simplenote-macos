@@ -14,10 +14,7 @@
 #import "NSString+Simplenote.h"
 #import "VSThemeManager.h"
 
-
-static NSRect SPTagCellPopUpButtonFrame     = {132.0f, 0.0f, 15.0f, 38.0f};
 static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
-
 
 @interface SPTagCellView ()
 @property (nonatomic, strong) SPPopUpButton     *button;
@@ -51,9 +48,14 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 - (SPPopUpButton *)button
 {
     if (!_button) {
-        SPPopUpButton *button = [[SPPopUpButton alloc] initWithFrame:SPTagCellPopUpButtonFrame pullsDown:YES];
+        CGRect textFrame = self.textField.frame;
+        CGRect buttonFrame = CGRectMake(self.frame.size.width - textFrame.size.height,
+                                        textFrame.origin.y,
+                                        textFrame.size.height,
+                                        textFrame.size.height
+                                        );
+        SPPopUpButton *button = [[SPPopUpButton alloc] initWithFrame:buttonFrame pullsDown:YES];
         button.bordered = NO;
-        button.autoresizingMask = NSViewMinXMargin;
         button.hidden = YES;
         button.alphaValue = SPTagCellPopUpButtonAlpha;
         _button = button;
