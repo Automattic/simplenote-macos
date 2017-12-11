@@ -763,7 +763,6 @@
 				4623ABF91773BC3200CE0441 /* CopyFiles */,
 				B5E372CA1896F010005EE097 /* CopyFiles */,
 				B51D44911945FEFD00496889 /* ShellScript */,
-				B5CA81B71896F65800AC6EFC /* ShellScript */,
 				516D51EC5AEF5EB2EB2C1DE7 /* [CP] Embed Pods Frameworks */,
 				781EA4180C752C2D48538CA0 /* [CP] Copy Pods Resources */,
 			);
@@ -787,7 +786,6 @@
 				466FFF2517CC10A800399652 /* CopyFiles */,
 				466FFF2917CC10A800399652 /* CopyFiles */,
 				B51D44821945EF7900496889 /* ShellScript */,
-				46CD5796181F073C00669E6E /* ShellScript */,
 				B58CF20C1A8121F000A9B4D2 /* ShellScript */,
 				D70F19DBCBC35255BE560AC0 /* [CP] Embed Pods Frameworks */,
 				BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */,
@@ -874,19 +872,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		46CD5796181F073C00669E6E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\n#IDENTITY=\"3rd Party Mac Developer Application: Automattic, Inc.\"\n#codesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Simperium-OSX.framework/Versions/A\"";
-		};
 		516D51EC5AEF5EB2EB2C1DE7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -985,20 +970,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FABRIC_API_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricApiKey);\nFABRIC_BUILD_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricBuildKey);\n\necho \"Fabric?\";\n\nif [ ${FABRIC_API_KEY} == \"not-required\" ] || [ ${FABRIC_BUILD_KEY} == \"not-required\" ]; then\necho \"Could not find fabric keys. Check your config.plist.\";\nexit 0;\nfi\n\n./External/Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_KEY}\n";
-		};
-		B5CA81B71896F65800AC6EFC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"Debug\" == \"${CONFIGURATION}\" ]]; then\n    echo \"Skipping Deep Codesign\";\n    exit 0;\nfi\n\nLOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=\"Developer ID Application: Codality, Inc.\"\nfind \"$LOCATION\" -name '*.framework' -exec codesign --verbose --force --sign \"$IDENTITY\" {}/Versions/Current \\;\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/../XPCServices/com.andymatuschak.Sparkle.SandboxService.xpc\"\n";
+			shellScript = "FABRIC_API_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricApiKey);\nFABRIC_BUILD_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricBuildKey);\n\nif [ ${FABRIC_API_KEY} == \"not-required\" ] || [ ${FABRIC_BUILD_KEY} == \"not-required\" ]; then\necho \"Could not find fabric keys. Check your config.plist.\";\nexit 0;\nfi\n\n./External/Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_KEY}\n";
 		};
 		BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1285,7 +1257,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -1322,7 +1294,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
