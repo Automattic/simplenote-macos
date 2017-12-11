@@ -30,7 +30,7 @@
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
-NSString * const kTagDeleted = @"SPTagDeleted";
+NSString * const kTagUpdated = @"SPTagUpdated";
 NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
 NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
@@ -268,6 +268,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     
     renamedTag.name = newTagName;
     [self.simperium save];
+    
+    NSDictionary *userInfo = @{@"tagName": newTagName};
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTagUpdated object:self userInfo:userInfo];
 }
 
 - (void)deleteTag:(Tag *)tag
@@ -304,7 +307,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 	}
 	
     NSDictionary *userInfo = @{@"tagName": tagName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTagDeleted object:self userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTagUpdated object:self userInfo:userInfo];
 }
 
 

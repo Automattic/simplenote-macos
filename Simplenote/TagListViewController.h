@@ -25,7 +25,7 @@
 @property (strong) NSArray *tagArray;
 
 extern NSString * const kTagsDidLoad;
-extern NSString * const kTagDeleted;
+extern NSString * const kTagUpdated;
 extern NSString * const kDidBeginViewingTrash;
 extern NSString * const kWillFinishViewingTrash;
 extern NSString * const kDidEmptyTrash;

@@ -135,7 +135,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
-    [nc addObserver:self selector:@selector(tagDeleted:) name:kTagDeleted object:nil];
+    [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
 }
 
@@ -281,7 +281,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self.bottomBar setEnabled:YES];
 }
 
-- (void)tagDeleted:(NSNotification *)notification
+- (void)tagUpdated:(NSNotification *)notification
 {
     [self updateTagField];
 }
