@@ -85,6 +85,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     awake = YES;
 
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
+    self.tableView.backgroundColor = [NSColor clearColor];
 }
 
 - (void)viewWillAppear
@@ -492,17 +493,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 #pragma mark - Theme
 
 - (void)applyStyle
-{
-    [self applyStatusStyle];
-    [self applyTableStyle];
-}
-
-- (void)applyTableStyle
-{
-    [self.tableView setBackgroundColor:[NSColor clearColor]];
-}
-
-- (void)applyStatusStyle
 {
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
