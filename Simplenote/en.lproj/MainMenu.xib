@@ -62,7 +62,7 @@
                     <color key="fillColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
-                <popUpButton misplaced="YES" id="1601" userLabel="Action">
+                <popUpButton toolTip="Info" misplaced="YES" id="1601" userLabel="Action">
                     <rect key="frame" x="847" y="10" width="44" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
