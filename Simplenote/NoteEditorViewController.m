@@ -25,6 +25,8 @@
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
 
+#import "Simplenote-Swift.h"
+
 @import Simperium_OSX;
 
 
@@ -63,6 +65,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
 @property (nonatomic, strong) SPTextLinkifier       *textLinkifier;
+@property (nonatomic, strong) Storage               *storage;
 
 @property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
 @property (nonatomic, assign) BOOL                  viewingVersions;
@@ -96,7 +99,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        // Initialization code here.
+        
     }
     
     return self;
@@ -106,6 +109,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     CGFloat insetX = 20;
     CGFloat insetY = 20;
+    _storage = [Storage newInstance];
     [self.noteEditor setFont:self.noteTitleFont];
     [self.noteEditor setTextContainerInset: NSMakeSize(insetX, insetY)];
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-insetX/2, self.noteEditor.frame.size.height-insetY/2)];
@@ -137,6 +141,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     [nc addObserver:self selector:@selector(tagDeleted:) name:kTagDeleted object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
+    
+    /*let theme = Theme("one-dark")
+    storage.theme = theme
+    textView.backgroundColor = theme.backgroundColor
+    textView.insertionPointColor = theme.tintColor
+    textView.layoutManager?.replaceTextStorage(storage)*/
+    [_noteEditor.layoutManager replaceTextStorage:_storage];
 }
 
 - (void)save

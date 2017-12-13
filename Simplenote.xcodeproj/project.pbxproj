@@ -22,6 +22,40 @@
 		26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9B14032D2A00A7935E /* Credits.rtf */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
+		3712FC821FE1ACAA008544AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC701FE1ACA9008544AC /* Storage.swift */; };
+		3712FC831FE1ACAA008544AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC701FE1ACA9008544AC /* Storage.swift */; };
+		3712FC841FE1ACAA008544AC /* UniversalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC711FE1ACA9008544AC /* UniversalTypes.swift */; };
+		3712FC851FE1ACAA008544AC /* UniversalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC711FE1ACA9008544AC /* UniversalTypes.swift */; };
+		3712FC861FE1ACAA008544AC /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC721FE1ACA9008544AC /* Element.swift */; };
+		3712FC871FE1ACAA008544AC /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC721FE1ACA9008544AC /* Element.swift */; };
+		3712FC881FE1ACAA008544AC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC731FE1ACA9008544AC /* Extensions.swift */; };
+		3712FC891FE1ACAA008544AC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC731FE1ACA9008544AC /* Extensions.swift */; };
+		3712FC8A1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */; };
+		3712FC8B1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */; };
+		3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC751FE1ACA9008544AC /* Style.swift */; };
+		3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC751FE1ACA9008544AC /* Style.swift */; };
+		3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC761FE1ACA9008544AC /* Theme.swift */; };
+		3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC761FE1ACA9008544AC /* Theme.swift */; };
+		3712FC901FE1ACAA008544AC /* solarized-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC781FE1ACA9008544AC /* solarized-light.json */; };
+		3712FC911FE1ACAA008544AC /* solarized-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC781FE1ACA9008544AC /* solarized-light.json */; };
+		3712FC921FE1ACAA008544AC /* one-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC791FE1ACA9008544AC /* one-light.json */; };
+		3712FC931FE1ACAA008544AC /* one-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC791FE1ACA9008544AC /* one-light.json */; };
+		3712FC941FE1ACAA008544AC /* one-light-custom.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7A1FE1ACA9008544AC /* one-light-custom.json */; };
+		3712FC951FE1ACAA008544AC /* one-light-custom.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7A1FE1ACA9008544AC /* one-light-custom.json */; };
+		3712FC961FE1ACAA008544AC /* base16-tomorrow-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7B1FE1ACA9008544AC /* base16-tomorrow-dark.json */; };
+		3712FC971FE1ACAA008544AC /* base16-tomorrow-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7B1FE1ACA9008544AC /* base16-tomorrow-dark.json */; };
+		3712FC981FE1ACAA008544AC /* base16-tomorrow-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7C1FE1ACA9008544AC /* base16-tomorrow-light.json */; };
+		3712FC991FE1ACAA008544AC /* base16-tomorrow-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7C1FE1ACA9008544AC /* base16-tomorrow-light.json */; };
+		3712FC9A1FE1ACAA008544AC /* blues-clues.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7D1FE1ACA9008544AC /* blues-clues.json */; };
+		3712FC9B1FE1ACAA008544AC /* blues-clues.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7D1FE1ACA9008544AC /* blues-clues.json */; };
+		3712FC9C1FE1ACAA008544AC /* solarized-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7E1FE1ACA9008544AC /* solarized-dark.json */; };
+		3712FC9D1FE1ACAA008544AC /* solarized-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7E1FE1ACA9008544AC /* solarized-dark.json */; };
+		3712FC9E1FE1ACAA008544AC /* one-dark-custom.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7F1FE1ACA9008544AC /* one-dark-custom.json */; };
+		3712FC9F1FE1ACAA008544AC /* one-dark-custom.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC7F1FE1ACA9008544AC /* one-dark-custom.json */; };
+		3712FCA01FE1ACAA008544AC /* one-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC801FE1ACA9008544AC /* one-dark.json */; };
+		3712FCA11FE1ACAA008544AC /* one-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC801FE1ACA9008544AC /* one-dark.json */; };
+		3712FCA21FE1ACAA008544AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC811FE1ACA9008544AC /* Info.plist */; };
+		3712FCA31FE1ACAA008544AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC811FE1ACA9008544AC /* Info.plist */; };
 		378345021D38624100D45D46 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
@@ -257,6 +291,23 @@
 		26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplenoteAppDelegate.h; sourceTree = "<group>"; };
 		26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplenoteAppDelegate.m; sourceTree = "<group>"; };
 		26F72AA214032D2A00A7935E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3712FC701FE1ACA9008544AC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		3712FC711FE1ACA9008544AC /* UniversalTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalTypes.swift; sourceTree = "<group>"; };
+		3712FC721FE1ACA9008544AC /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		3712FC731FE1ACA9008544AC /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notepad-macOS.swift"; sourceTree = "<group>"; };
+		3712FC751FE1ACA9008544AC /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		3712FC761FE1ACA9008544AC /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		3712FC781FE1ACA9008544AC /* solarized-light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "solarized-light.json"; sourceTree = "<group>"; };
+		3712FC791FE1ACA9008544AC /* one-light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "one-light.json"; sourceTree = "<group>"; };
+		3712FC7A1FE1ACA9008544AC /* one-light-custom.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "one-light-custom.json"; sourceTree = "<group>"; };
+		3712FC7B1FE1ACA9008544AC /* base16-tomorrow-dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "base16-tomorrow-dark.json"; sourceTree = "<group>"; };
+		3712FC7C1FE1ACA9008544AC /* base16-tomorrow-light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "base16-tomorrow-light.json"; sourceTree = "<group>"; };
+		3712FC7D1FE1ACA9008544AC /* blues-clues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "blues-clues.json"; sourceTree = "<group>"; };
+		3712FC7E1FE1ACA9008544AC /* solarized-dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "solarized-dark.json"; sourceTree = "<group>"; };
+		3712FC7F1FE1ACA9008544AC /* one-dark-custom.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "one-dark-custom.json"; sourceTree = "<group>"; };
+		3712FC801FE1ACA9008544AC /* one-dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "one-dark.json"; sourceTree = "<group>"; };
+		3712FC811FE1ACA9008544AC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		378345001D38624100D45D46 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-DB5.plist"; sourceTree = "<group>"; };
 		378AA6FE1ACB05B100CA87DC /* VSTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VSTheme.h; path = DB5/VSTheme.h; sourceTree = "<group>"; };
@@ -433,6 +484,7 @@
 		26DBB1F61405A6E600186392 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				3712FC6F1FE1ACA9008544AC /* Notepad */,
 				378AA70A1ACB05C400CA87DC /* DB5 */,
 				B58CF2171A81304300A9B4D2 /* Crashlytics */,
 				46B0F54417B47C490071C809 /* custom-scroller */,
@@ -540,6 +592,39 @@
 				378345001D38624100D45D46 /* config.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3712FC6F1FE1ACA9008544AC /* Notepad */ = {
+			isa = PBXGroup;
+			children = (
+				3712FC701FE1ACA9008544AC /* Storage.swift */,
+				3712FC711FE1ACA9008544AC /* UniversalTypes.swift */,
+				3712FC721FE1ACA9008544AC /* Element.swift */,
+				3712FC731FE1ACA9008544AC /* Extensions.swift */,
+				3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */,
+				3712FC751FE1ACA9008544AC /* Style.swift */,
+				3712FC761FE1ACA9008544AC /* Theme.swift */,
+				3712FC771FE1ACA9008544AC /* themes */,
+				3712FC811FE1ACA9008544AC /* Info.plist */,
+			);
+			name = Notepad;
+			path = External/Notepad;
+			sourceTree = "<group>";
+		};
+		3712FC771FE1ACA9008544AC /* themes */ = {
+			isa = PBXGroup;
+			children = (
+				3712FC781FE1ACA9008544AC /* solarized-light.json */,
+				3712FC791FE1ACA9008544AC /* one-light.json */,
+				3712FC7A1FE1ACA9008544AC /* one-light-custom.json */,
+				3712FC7B1FE1ACA9008544AC /* base16-tomorrow-dark.json */,
+				3712FC7C1FE1ACA9008544AC /* base16-tomorrow-light.json */,
+				3712FC7D1FE1ACA9008544AC /* blues-clues.json */,
+				3712FC7E1FE1ACA9008544AC /* solarized-dark.json */,
+				3712FC7F1FE1ACA9008544AC /* one-dark-custom.json */,
+				3712FC801FE1ACA9008544AC /* one-dark.json */,
+			);
+			path = themes;
 			sourceTree = "<group>";
 		};
 		378AA70A1ACB05C400CA87DC /* DB5 */ = {
@@ -839,16 +924,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3712FC961FE1ACAA008544AC /* base16-tomorrow-dark.json in Resources */,
 				26F72A9714032D2A00A7935E /* InfoPlist.strings in Resources */,
 				26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */,
+				3712FC9E1FE1ACAA008544AC /* one-dark-custom.json in Resources */,
+				3712FC9C1FE1ACAA008544AC /* solarized-dark.json in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
+				3712FC941FE1ACAA008544AC /* one-light-custom.json in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
+				3712FCA21FE1ACAA008544AC /* Info.plist in Resources */,
 				4623ABDC1773740700CE0441 /* .gitignore in Resources */,
+				3712FC921FE1ACAA008544AC /* one-light.json in Resources */,
 				4623ABDF1773740700CE0441 /* README.md in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
+				3712FC901FE1ACAA008544AC /* solarized-light.json in Resources */,
+				3712FC9A1FE1ACAA008544AC /* blues-clues.json in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
+				3712FC981FE1ACAA008544AC /* base16-tomorrow-light.json in Resources */,
+				3712FCA01FE1ACAA008544AC /* one-dark.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,16 +951,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3712FC971FE1ACAA008544AC /* base16-tomorrow-dark.json in Resources */,
 				B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
+				3712FC9F1FE1ACAA008544AC /* one-dark-custom.json in Resources */,
+				3712FC9D1FE1ACAA008544AC /* solarized-dark.json in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
+				3712FC951FE1ACAA008544AC /* one-light-custom.json in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
+				3712FCA31FE1ACAA008544AC /* Info.plist in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
+				3712FC931FE1ACAA008544AC /* one-light.json in Resources */,
 				466FFEF017CC10A800399652 /* .gitignore in Resources */,
 				466FFEF117CC10A800399652 /* README.md in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
+				3712FC911FE1ACAA008544AC /* solarized-light.json in Resources */,
+				3712FC9B1FE1ACAA008544AC /* blues-clues.json in Resources */,
 				378345021D38624100D45D46 /* config.plist in Resources */,
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
+				3712FC991FE1ACAA008544AC /* base16-tomorrow-light.json in Resources */,
+				3712FCA11FE1ACAA008544AC /* one-dark.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,10 +1146,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */,
+				3712FC841FE1ACAA008544AC /* UniversalTypes.swift in Sources */,
 				378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */,
 				26F72A9914032D2A00A7935E /* main.m in Sources */,
 				B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */,
+				3712FC8A1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
+				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
 				2614F1E01405A0B10031AE94 /* Tag.m in Sources */,
 				B5087A221AF3B16A00505A2B /* PublishViewController.m in Sources */,
@@ -1068,6 +1176,7 @@
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				7154812814E5AB6000CB8964 /* autolink.c in Sources */,
 				7154812914E5AB6000CB8964 /* buffer.c in Sources */,
+				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5FA829B1B977A1F00082296 /* SPTextLinkifier.m in Sources */,
 				7154812A14E5AB6000CB8964 /* houdini_href_e.c in Sources */,
 				7154812B14E5AB6000CB8964 /* houdini_html_e.c in Sources */,
@@ -1083,6 +1192,7 @@
 				B5087A151AF3AB9D00505A2B /* ShareViewController.m in Sources */,
 				B543BEA419DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
+				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */,
 				4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
@@ -1093,10 +1203,12 @@
 				46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */,
 				46DD162F17A1E9C10093678C /* SPTagTextField.m in Sources */,
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
+				3712FC881FE1ACAA008544AC /* Extensions.swift in Sources */,
 				46F4EAB217B1A5F800697EAD /* SPSplitView.m in Sources */,
 				B5A4EF2F1AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
 				46EEA3C317B2DC7200914D1A /* NSString+Styling.m in Sources */,
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
+				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
@@ -1114,10 +1226,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				466FFEA817CC10A800399652 /* main.m in Sources */,
+				3712FC851FE1ACAA008544AC /* UniversalTypes.swift in Sources */,
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */,
+				3712FC8B1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
+				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5087A231AF3B16A00505A2B /* PublishViewController.m in Sources */,
@@ -1141,6 +1256,7 @@
 				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				466FFEBB17CC10A800399652 /* houdini_href_e.c in Sources */,
 				466FFEBC17CC10A800399652 /* houdini_html_e.c in Sources */,
+				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5FA829C1B977A1F00082296 /* SPTextLinkifier.m in Sources */,
 				B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */,
 				466FFEBD17CC10A800399652 /* html_smartypants.c in Sources */,
@@ -1156,6 +1272,7 @@
 				B5087A161AF3AB9D00505A2B /* ShareViewController.m in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */,
+				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				466FFECC17CC10A800399652 /* INAppStoreWindow.m in Sources */,
 				466FFECD17CC10A800399652 /* INWindowButton.m in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
@@ -1166,10 +1283,12 @@
 				466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */,
 				466FFED317CC10A800399652 /* SPTagTextField.m in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
+				3712FC891FE1ACAA008544AC /* Extensions.swift in Sources */,
 				466FFED517CC10A800399652 /* SPSplitView.m in Sources */,
 				B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
 				466FFED617CC10A800399652 /* NSString+Styling.m in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
+				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
@@ -1260,6 +1379,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Debug;
@@ -1296,6 +1416,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Release;

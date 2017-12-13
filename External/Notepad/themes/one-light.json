@@ -1,0 +1,43 @@
+{
+    "name": "One",
+    "style": "Light",
+    "author": {
+        "name": "Rudd Fawcett",
+        "email": "rudd.fawcett@gmail.com"
+    },
+    "version": "1.0",
+    "variables": {
+        "boldFont": "not implemented yet"
+    },
+    "editor": {
+        "backgroundColor": "#ffffff",
+        "tintColor": "#E55D51"
+    },
+    "styles": {
+        "h1": {
+            "color": "#E55D51"
+        },
+        "h2": {
+            "color": "#E55D51"
+        },
+        "h3": {
+            "color": "#E55D51"
+        },
+        "body": {
+            "font": "Menlo-Regular",
+            "size": 15,
+            "color": "#383A42"
+        },
+        "bold": {
+            "font": "Menlo-Bold",
+            "color": "#A97A00"
+        },
+        "italic": {
+            "font": "Menlo-Italic",
+            "color": "#B742B3"
+        },
+        "code": {
+            "color": "#64AF66"
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Base16 Tomorrow",
+    "style": "Light",
+    "author": {
+        "name": "Rudd Fawcett",
+        "email": "rudd.fawcett@gmail.com"
+    },
+    "version": "1.0",
+    "variables": {
+        "boldFont": "not implemented yet"
+    },
+    "editor": {
+        "backgroundColor": "#FFFFFF",
+        "tintColor": "#1D1F21"
+    },
+    "styles": {
+        "h1": {
+            "color": "#C96667"
+        },
+        "h2": {
+            "color": "#C96667"
+        },
+        "h3": {
+            "color": "#C96667"
+        },
+        "body": {
+            "font": "Menlo-Regular",
+            "size": 15,
+            "color": "#252628"
+        },
+        "bold": {
+            "font": "Menlo-Bold",
+            "color": "#DC9364"
+        },
+        "italic": {
+            "font": "Menlo-Italic",
+            "color": "#B195BA"
+        },
+        "code": {
+            "color": "#B5BC6D"
+        }
+    }
+}

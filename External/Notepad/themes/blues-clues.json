@@ -1,0 +1,50 @@
+{
+    "name": "Blues Clues",
+    "style": "",
+    "author": {
+        "name": "Rudd Fawcett",
+        "email": "rudd.fawcett@gmail.com"
+    },
+    "version": "1.0",
+    "variables": {
+        "boldFont": "not implemented yet"
+    },
+    "editor": {
+        "backgroundColor": "#DFF2F9",
+        "tintColor": "#12518A"
+    },
+    "styles": {
+        "h1": {
+            "font": "Avenir-Black",
+            "size": 25,
+            "color": "#12518A"
+        },
+        "h2": {
+            "font": "Avenir-Heavy",
+            "size": 23,
+            "color": "#2667A9"
+        },
+        "h3": {
+            "font": "Avenir-Heavy",
+            "size": 21,
+            "color": "#327BBD"
+        },
+        "body": {
+            "font": "Avenir-Book",
+            "size": 15,
+            "color": "#2667A9"
+        },
+        "bold": {
+            "font": "Avenir-Medium",
+            "color": "#4D9DD2"
+        },
+        "italic": {
+            "font": "Avenir-Oblique",
+            "color": "#4D9DD2"
+        },
+        "code": {
+            "font": "Menlo-Regular",
+            "color": "#4D9DD2"
+        }
+    }
+}

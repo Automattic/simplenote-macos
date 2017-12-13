@@ -1,0 +1,41 @@
+{
+    "name": "Solarized",
+    "style": "Light",
+    "author": {
+        "name": "Rudd Fawcett",
+        "email": "rudd.fawcett@gmail.com"
+    },
+    "version": "1.0",
+    "variables": {
+        "boldFont": "not implemented yet"
+    },
+    "editor": {
+        "backgroundColor": "#FDF6E4",
+        "tintColor": "#022B35"
+    },
+    "styles": {
+        "h1": {
+            "color": "#3A93D0"
+        },
+        "h2": {
+            "color": "#3A93D0"
+        },
+        "h3": {
+            "color": "#3A93D0"
+        },
+        "body": {
+            "font": "Menlo-Regular",
+            "size": 15,
+            "color": "#667B82"
+        },
+        "bold": {
+            "font": "Menlo-Bold"
+        },
+        "italic": {
+            "font": "Menlo-Italic"
+        },
+        "code": {
+            "font": "Menlo-Italic"
+        }
+    }
+}
