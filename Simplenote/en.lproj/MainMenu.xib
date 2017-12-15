@@ -1060,6 +1060,7 @@
                 <outlet property="publishLabel" destination="1058" id="1322"/>
                 <outlet property="publishViewController" destination="1040" id="5kS-We-Atz"/>
                 <outlet property="restoreVersionButton" destination="1088" id="1312"/>
+                <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
                 <outlet property="shareViewController" destination="1643" id="Ahf-1p-0Qr"/>
                 <outlet property="statusView" destination="1440" id="1769"/>

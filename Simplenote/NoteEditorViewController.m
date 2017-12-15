@@ -57,6 +57,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 @property (nonatomic, strong) NSTimer               *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
+@property (nonatomic, strong) NSMutableDictionary   *noteScrollPositions;
 @property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSFont                *noteBodyFont;
 @property (nonatomic, strong) NSFont                *noteTitleFont;
@@ -128,7 +129,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 	}
     
     tagTokenField = [self.bottomBar addTagField];
-    tagTokenField.delegate = self;    
+    tagTokenField.delegate = self;
+    self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
     [noNoteText setFont:[NSFont systemFontOfSize:20.0]];
 
@@ -207,7 +209,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SPNoteLoadedNotificationName object:self];
-
+    
+    // Save the scrollPosition of the current note
+    if (self.note != nil) {
+        NSValue *positionValue = [NSValue valueWithPoint:[[self.scrollView contentView] bounds].origin];
+        self.noteScrollPositions[self.note.simperiumKey] = positionValue;
+    }
+    
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)
     self.noteEditor.editable    = false;
@@ -236,6 +244,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [self updateEditorFonts];
+    
+    if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
+        // Restore scroll position for note if it was saved previously in this session
+        NSPoint scrollPoint = [[self.noteScrollPositions objectForKey:selectedNote.simperiumKey] pointValue];
+        [[self.scrollView documentView] scrollPoint:scrollPoint];
+    } else {
+        // Otherwise we'll scroll to the top!
+        [[self.scrollView documentView] scrollPoint:NSMakePoint(0, 0)];
+    }
 }
 
 - (void)displayNotes:(NSArray *)notes
