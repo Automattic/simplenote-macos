@@ -127,7 +127,7 @@
                                 </searchFieldCell>
                                 <connections>
                                     <action selector="filterNotes:" target="874" id="dQa-U1-MUq"/>
-                                    <outlet property="delegate" destination="914" id="c9e-3v-2l6"/>
+                                    <outlet property="delegate" destination="874" id="c6x-8I-Ool"/>
                                 </connections>
                             </searchField>
                         </subviews>
