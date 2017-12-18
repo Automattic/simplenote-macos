@@ -149,13 +149,8 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 
 - (void)setSelected:(BOOL)selected
 {
-    BOOL changed = _highlighted != selected;
-
     _highlighted = selected;
-
-    if (changed) {
-        [self updateTextAndImageColors];
-    }    
+    [self updateTextAndImageColors];
 }
 
 - (void)applyStyle
