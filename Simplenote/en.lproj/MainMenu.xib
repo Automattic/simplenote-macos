@@ -62,7 +62,7 @@
                     <color key="fillColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
-                <popUpButton misplaced="YES" id="1601" userLabel="Action">
+                <popUpButton toolTip="Info" misplaced="YES" id="1601" userLabel="Action">
                     <rect key="frame" x="847" y="10" width="44" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
@@ -144,7 +144,7 @@
                         <action selector="addAction:" target="1107" id="1662"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" id="mXz-OM-6A3">
+                <button toolTip="Trash" verticalHuggingPriority="750" misplaced="YES" id="mXz-OM-6A3">
                     <rect key="frame" x="818" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_trash_highlighted" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
@@ -155,7 +155,7 @@
                         <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" id="7hm-UJ-0zw">
+                <button toolTip="History" verticalHuggingPriority="750" misplaced="YES" id="7hm-UJ-0zw">
                     <rect key="frame" x="735" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_revisions" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
@@ -166,7 +166,7 @@
                         <action selector="showVersionPopover:" target="1107" id="6bi-5c-YJd"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" id="fA9-bG-luR">
+                <button toolTip="Restore" verticalHuggingPriority="750" misplaced="YES" id="fA9-bG-luR">
                     <rect key="frame" x="818" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="X3f-rW-nRp">
@@ -177,7 +177,7 @@
                         <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" id="qmA-vO-wPh">
+                <button toolTip="Share" verticalHuggingPriority="750" misplaced="YES" id="qmA-vO-wPh">
                     <rect key="frame" x="777" y="19" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_share" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L1E-HD-wfM">
