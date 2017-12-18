@@ -63,6 +63,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 }
 
 @property (nonatomic, assign) IBOutlet SPTextView           *noteEditor;
+@property (nonatomic, assign) IBOutlet NSScrollView         *scrollView;
 @property (nonatomic, assign) IBOutlet NoteEditorBottomBar  *bottomBar;
 @property (nonatomic, strong) IBOutlet NSViewController     *shareViewController;
 @property (nonatomic, strong) IBOutlet NSViewController     *publishViewController;
