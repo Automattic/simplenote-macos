@@ -247,8 +247,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
         // Restore scroll position for note if it was saved previously in this session
-        NSPoint scrollPoint = [[self.noteScrollPositions objectForKey:selectedNote.simperiumKey] pointValue];
-        [[self.scrollView documentView] scrollPoint:scrollPoint];
+        double scrollDelay = 0.01;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, scrollDelay * NSEC_PER_SEC);
+        // #hack! Scroll after a very slight delay, to give the editor time to load the content
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+            NSPoint scrollPoint = [[self.noteScrollPositions objectForKey:selectedNote.simperiumKey] pointValue];
+            [[self.scrollView documentView] scrollPoint:scrollPoint];
+        });
     } else {
         // Otherwise we'll scroll to the top!
         [[self.scrollView documentView] scrollPoint:NSMakePoint(0, 0)];
