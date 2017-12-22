@@ -45,6 +45,7 @@ NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
+static NSString * const SPMonospaceFontPreferencesKey   = @"kMonospaceFontPreferencesKey";
 static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 
@@ -127,6 +128,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 	for (NSString *key in preferences.allKeys) {
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
+    
+    BOOL monospaceFontEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:SPMonospaceFontPreferencesKey];
+    [monospaceFontMenuItem setState:monospaceFontEnabled ? NSControlStateValueOn : NSControlStateValueOff];
     
     tagTokenField = [self.bottomBar addTagField];
     tagTokenField.delegate = self;
@@ -884,10 +888,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (NSFont *)noteBodyFont
 {
     if (!_noteBodyFont) {
-        _noteBodyFont =  [NSFont systemFontOfSize:[self getFontSize]];
+        if ([self shouldUseMonospaceFont]) {
+            _noteBodyFont =  [NSFont fontWithName:[self.theme stringForKey:@"monospaceFontName"] size:[self getFontSize]];
+        } else {
+            _noteBodyFont =  [NSFont systemFontOfSize:[self getFontSize]];
+        }
     }
     
     return _noteBodyFont;
+}
+
+// Verifies user has enabled monospace font and that font is available on the system
+- (BOOL)shouldUseMonospaceFont {
+    BOOL monospaceEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:SPMonospaceFontPreferencesKey];
+    NSArray *fonts = [[NSFontManager sharedFontManager] availableFontFamilies];
+    return monospaceEnabled && [fonts containsObject:[self.theme stringForKey:@"monospaceFontName"]];
 }
 
 - (NSColor *)noteBodyColor
@@ -898,7 +913,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (NSFont *)noteTitleFont
 {
     if (!_noteTitleFont) {
-        _noteTitleFont =  [NSFont systemFontOfSize:[self getFontSize] + [self getFontSize] * 0.214f];
+        CGFloat fontSize = [self getFontSize] + [self getFontSize] * 0.214f;
+        if ([self shouldUseMonospaceFont]) {
+            _noteTitleFont =  [NSFont fontWithName:[self.theme stringForKey:@"monospaceFontName"] size:fontSize];
+        } else {
+            _noteTitleFont =  [NSFont systemFontOfSize:fontSize];
+        }
     }
     
     return _noteTitleFont;
@@ -942,6 +962,19 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
     // Update font size preference and reset fonts
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
+    self.noteBodyFont = nil;
+    self.noteTitleFont = nil;
+    [self.noteEditor setFont:self.noteBodyFont];
+    [self updateEditorFonts];
+}
+
+- (IBAction)setMonospaceFontAction:(id)sender
+{
+    NSMenuItem *item = (NSMenuItem *)sender;
+    
+    BOOL isItemOn = item.state == NSControlStateValueOn;
+    [item setState:isItemOn ? NSControlStateValueOff : NSControlStateValueOn];
+    [[NSUserDefaults standardUserDefaults] setBool:item.state == NSControlStateValueOn forKey:SPMonospaceFontPreferencesKey];
     self.noteBodyFont = nil;
     self.noteTitleFont = nil;
     [self.noteEditor setFont:self.noteBodyFont];

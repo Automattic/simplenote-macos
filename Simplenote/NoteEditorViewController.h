@@ -60,6 +60,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
     IBOutlet NSMenuItem *historyItem;
     IBOutlet NSMenuItem *publishItem;
+    IBOutlet NSMenuItem *monospaceFontMenuItem;
 }
 
 @property (nonatomic, assign) IBOutlet SPTextView           *noteEditor;
@@ -84,6 +85,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)adjustFontSizeAction:(id)sender;
+- (IBAction)setMonospaceFontAction:(id)sender;
 - (IBAction)showSharePopover:(id)sender;
 - (IBAction)showVersionPopover:(id)sender;
 
