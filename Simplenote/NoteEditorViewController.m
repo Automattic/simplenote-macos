@@ -19,6 +19,7 @@
 #import "NSString+Bullets.h"
 #import "NSTextView+Simplenote.h"
 #import "SPConstants.h"
+#import "SPMarkdownParser.h"
 #import "SPToolbarView.h"
 #import "SPTextLinkifier.h"
 #import "VSThemeManager.h"
@@ -141,12 +142,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     [nc addObserver:self selector:@selector(tagDeleted:) name:kTagDeleted object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
-    
-    /*let theme = Theme("one-dark")
-    storage.theme = theme
-    textView.backgroundColor = theme.backgroundColor
-    textView.insertionPointColor = theme.tintColor
-    textView.layoutManager?.replaceTextStorage(storage)*/
+
     [_noteEditor.layoutManager replaceTextStorage:_storage];
 }
 
@@ -197,6 +193,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self showStatusText:nil];
     [statusView setHidden: selectedNote != nil];
     
+    if (!self.markdownView.isHidden) {
+        [self toggleMarkdownView:nil];
+    }
+    
     if (selectedNote == nil) {
         [self.noteEditor setEditable:NO];
         [self.noteEditor setSelectable:NO];
@@ -246,6 +246,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         self.noteEditor.string = @"";
     }
     
+    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
     [self updateEditorFonts];
 }
 
@@ -565,6 +566,16 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     return YES;
 }
 
+- (BOOL)selectedNotesMarkdowned
+{
+    for (Note *selectedNote in self.selectedNotes) {
+        if (!selectedNote.markdown)
+            return NO;
+    }
+    
+    return YES;
+}
+
 - (void)menuWillOpen:(NSMenu *)menu
 {
     // Action menu
@@ -577,9 +588,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     [self updateCounts];
     pinnedItem.state = [self selectedNotesPinned] ? NSOnState : NSOffState;
+    markdownItem.state = [self selectedNotesMarkdowned] ? NSOnState : NSOffState;
     [collaborateItem setEnabled:numSelectedNotes == 1];
-    [publishItem setEnabled:numSelectedNotes == 1];
-    [historyItem setEnabled:numSelectedNotes == 1];
 
     NSString *statusString;
     
@@ -672,6 +682,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     // Update the list
     [notesArrayController rearrangeObjects];
     [noteListViewController selectRowForNoteKey:self.note.simperiumKey];
+}
+
+- (IBAction)markdownAction:(id)sender
+{
+    // Toggle the markdown state
+    BOOL isEnabled = markdownItem.state == NSOffState;
+    
+    for (Note *selectedNote in self.selectedNotes) {
+        selectedNote.markdown = isEnabled;
+    }
+    
+    [self save];
+    
+    // Update editor to apply markdown styles
+    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
 }
 
 - (IBAction)publishAction:(id)sender
@@ -935,30 +960,38 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     self.noteTitleFont = nil;
     [self.noteEditor setFont:self.noteBodyFont];
     [self updateEditorFonts];
+    [self applyStyle];
 }
 
 - (void)updateEditorFonts
 {
-    NSRange firstLineRange = [self.noteEditor.string rangeOfString:@"\n"];
+    /*NSRange firstLineRange = [self.noteEditor.string rangeOfString:@"\n"];
     NSInteger titleLength = (firstLineRange.location != NSNotFound) ? firstLineRange.location : self.noteEditor.string.length;
     
     NSRange titleRange = NSMakeRange(0, titleLength);
     NSRange bodyRange = NSMakeRange(titleRange.length, self.noteEditor.string.length - titleRange.length);
-
-    NSTextStorage *textStorage = self.noteEditor.textStorage;
     
-    [textStorage beginEditing];
+    //[_storage beginEditing];
+    NSMutableDictionary *titleDictionary = [NSMutableDictionary dictionary];
+    [titleDictionary setObject:self.noteTitleColor forKey:NSForegroundColorAttributeName];
+    [titleDictionary setObject:self.noteTitleFont forKey:NSFontAttributeName];
     
-    [textStorage addAttribute:NSForegroundColorAttributeName value:self.noteTitleColor range:titleRange];
-    [textStorage addAttribute:NSFontAttributeName value:self.noteTitleFont range:titleRange];
+    [_storage setAttributes:titleDictionary range:titleRange];
+    
+    NSMutableDictionary *bodyDictionary = [NSMutableDictionary dictionary];
+    [bodyDictionary setObject:self.noteBodyColor forKey:NSForegroundColorAttributeName];
+    [bodyDictionary setObject:self.noteBodyFont forKey:NSFontAttributeName];*/
+    
+    /*[_storage addAttribute:NSForegroundColorAttributeName value:self.noteTitleColor range:titleRange];
+    [_storage addAttribute:NSFontAttributeName value:self.noteTitleFont range:titleRange];
     
     // Restore body font in case newline was entered inside the title
     if (bodyRange.length > 0) {
-        [textStorage addAttribute:NSForegroundColorAttributeName value:self.noteBodyColor range:bodyRange];
-        [textStorage addAttribute:NSFontAttributeName value:self.noteBodyFont range:bodyRange];
+        [_storage addAttribute:NSForegroundColorAttributeName value:self.noteBodyColor range:bodyRange];
+        [_storage addAttribute:NSFontAttributeName value:self.noteBodyFont range:bodyRange];
     }
 
-    [textStorage endEditing];
+    [_storage endEditing];*/
 }
 
 
@@ -1038,6 +1071,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (void)applyStyle
 {
+    if (self.note != nil) {
+        [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    }
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 
@@ -1084,6 +1120,26 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
     sharingPicker.delegate = self;
     [sharingPicker showRelativeToRect:shareButton.bounds ofView:shareButton preferredEdge:NSMinYEdge];
+}
+
+- (IBAction)toggleMarkdownView:(id)sender
+{
+    if (self.markdownView == nil) {
+        return;
+    }
+    
+    BOOL markdownVisible = self.markdownView.hidden;
+    [self.editorScrollView setHidden:markdownVisible];
+    [self.markdownView setHidden:!markdownVisible];
+    [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
+    
+    if (markdownVisible) {
+        [self loadMarkdownContent];
+    }
+}
+- (void)loadMarkdownContent {
+    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:self.note.content];
+    [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 #pragma mark - NSSharingServicePicker delegate

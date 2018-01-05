@@ -12,8 +12,10 @@
 #import "Note.h"
 #import "Tag.h"
 #import "LoginWindowController.h"
+#import "MMScroller.h"
 #import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
+#import "SPMarkdownParser.h"
 #import "SPWindow.h"
 #import "SPToolbarView.h"
 #import "NSImage+Colorize.h"
@@ -197,6 +199,23 @@
     
     [self.splitView adjustSubviews];
     [self notifySplitDidChange];
+    
+    // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.2)
+    WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
+    WKPreferences *prefs = [[WKPreferences alloc] init];
+    prefs.javaScriptEnabled = NO;
+    webConfig.preferences = prefs;
+    CGRect frame = CGRectMake(0, 44.0f, self.textViewParent.frame.size.width, self.textViewParent.frame.size.height - 44.0f);
+    WKWebView *markdownView = [[WKWebView alloc] initWithFrame:frame configuration:webConfig];
+    [markdownView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [markdownView setHidden:YES];
+    
+    // Preload CSS in webview, prevents 'flashing' when first loading the markdown view
+    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
+    [markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+    
+    [self.textViewParent addSubview:markdownView];
+    self.noteEditorViewController.markdownView = markdownView;
 
     [self configureToolbar];
 }

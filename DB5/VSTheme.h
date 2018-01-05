@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <AppKit/AppKit.h>
 
 typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
     VSTextCaseTransformNone,

@@ -27,6 +27,8 @@
 
     /// The underlying text storage implementation.
     var backingStore = NSTextStorage()
+    
+    var markdownEnabled = false
 
     override public var string: String {
         get {
@@ -40,9 +42,8 @@
     
     @objc public class func newInstance() -> Storage {
         let storage = Storage()
-        storage.theme = Theme("one-dark")
+        storage.theme = Theme(markdownEnabled: false)
         return storage
-        
     }
     
     override public init(attributedString attrStr: NSAttributedString) {
@@ -86,6 +87,10 @@
         self.edited([.editedCharacters, .editedAttributes], range: range, changeInLength: change)
         self.endEditing()
     }
+    
+    override public func addAttribute(_ name: NSAttributedStringKey, value: Any, range: NSRange) {
+        backingStore.addAttribute(name, value: value, range: range)
+    }
 
     /// Sets the attributes on a string for a particular range.
     ///
@@ -124,5 +129,9 @@
                 backingStore.addAttributes(style.attributes, range: match.range(at: 0))
             })
         }
+    }
+    
+    @objc public func applyStyle(markdownEnabled: Bool) {
+        self.theme = Theme(markdownEnabled: markdownEnabled)
     }
 }

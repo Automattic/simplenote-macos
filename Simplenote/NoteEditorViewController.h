@@ -46,6 +46,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSSlider *versionSlider;
     IBOutlet NSTextFieldCell *versionLabel;
     IBOutlet NSTextFieldCell *publishLabel;
+    IBOutlet NSButton *previewButton;
     IBOutlet NSButton *publishButton;
     IBOutlet NSButton *shareButton;
     IBOutlet NSView *statusView;
@@ -54,12 +55,11 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *characterCountItem;
     IBOutlet NSMenuItem *modifiedItem;
     IBOutlet NSMenuItem *pinnedItem;
+    IBOutlet NSMenuItem *markdownItem;
     IBOutlet NSMenuItem *newItem;
     IBOutlet NSMenuItem *deleteItem;
     IBOutlet NSMenuItem *printItem;
     IBOutlet NSMenuItem *collaborateItem;
-    IBOutlet NSMenuItem *historyItem;
-    IBOutlet NSMenuItem *publishItem;
 }
 
 @property (nonatomic, assign) IBOutlet SPTextView           *noteEditor;
@@ -67,7 +67,9 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong) IBOutlet NSViewController     *shareViewController;
 @property (nonatomic, strong) IBOutlet NSViewController     *publishViewController;
 @property (nonatomic, strong) IBOutlet NSViewController     *versionsViewController;
+@property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
 @property (nonatomic,   weak) Note                          *note;
+@property (nonatomic, strong) WKWebView                     *markdownView;
 
 - (void)save;
 - (void)displayNote:(Note *)selectedNote;
@@ -83,7 +85,9 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)adjustFontSizeAction:(id)sender;
+- (IBAction)markdownAction:(id)sender;
 - (IBAction)showSharePopover:(id)sender;
 - (IBAction)showVersionPopover:(id)sender;
+- (IBAction)toggleMarkdownView:(id)sender;
 
 @end

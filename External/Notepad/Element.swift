@@ -26,6 +26,8 @@ public enum Element: String {
 
     case url = "\\[([^\\]]+)\\]\\(([^\\)\"\\s]+)(?:\\s+\"(.*)\")?\\)"
     case image = "\\!\\[([^\\]]+)\\]\\(([^\\)\"\\s]+)(?:\\s+\"(.*)\")?\\)"
+    case quote = "^(\\>[^\\>](.*))$"
+    case firstLine = "\\A.*"
 
     /// Converts an enum value (type String) to a NSRegularExpression.
     ///
@@ -51,6 +53,8 @@ public enum Element: String {
         case "code": return .code
         case "url": return .url
         case "image": return .image
+        case "quote": return .quote
+        case "firstLine": return .firstLine
         default: return .unknown
         }
     }
