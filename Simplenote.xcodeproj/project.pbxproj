@@ -27,6 +27,14 @@
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
 		378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		378E1F751CFCB5A7007486B5 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
+		37E03B4D200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */; };
+		37E03B4E200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */; };
+		37E03B4F200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */; };
+		37E03B50200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */; };
+		37E03B51200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */; };
+		37E03B52200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */; };
+		37E03B53200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */; };
+		37E03B54200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */; };
 		4623ABDC1773740700CE0441 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABD61773740700CE0441 /* .gitignore */; };
 		4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
 		4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
@@ -265,6 +273,10 @@
 		378AA7011ACB05B100CA87DC /* VSThemeLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSThemeLoader.m; path = DB5/VSThemeLoader.m; sourceTree = "<group>"; };
 		378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Escaping.h"; sourceTree = "<group>"; };
 		378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Escaping.m"; sourceTree = "<group>"; };
+		37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-Bold.otf"; sourceTree = "<group>"; };
+		37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-Regular.otf"; sourceTree = "<group>"; };
+		37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-BoldItalic.otf"; sourceTree = "<group>"; };
+		37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-RegularItalic.otf"; sourceTree = "<group>"; };
 		39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4623ABD61773740700CE0441 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4623ABD71773740700CE0441 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
@@ -555,6 +567,17 @@
 			name = DB5;
 			sourceTree = "<group>";
 		};
+		37E03B3C2005866100572ED1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */,
+				37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */,
+				37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */,
+				37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		4623ABD51773740700CE0441 /* INAppStoreWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +665,7 @@
 		714BA64814D2333C00A6CCC1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				37E03B3C2005866100572ED1 /* Fonts */,
 				B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */,
 				469512C817CC38790014A2BF /* simplenote.iconset */,
 				46F6540517F3F6E80074422C /* simplenotebeta.iconset */,
@@ -843,10 +867,14 @@
 				26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
+				37E03B51200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */,
+				37E03B53200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */,
+				37E03B4D200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */,
 				4623ABDC1773740700CE0441 /* .gitignore in Resources */,
 				4623ABDF1773740700CE0441 /* README.md in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
+				37E03B4F200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
 			);
@@ -860,10 +888,14 @@
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
+				37E03B52200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */,
+				37E03B54200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */,
+				37E03B4E200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				466FFEF017CC10A800399652 /* .gitignore in Resources */,
 				466FFEF117CC10A800399652 /* README.md in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
+				37E03B50200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */,
 				378345021D38624100D45D46 /* config.plist in Resources */,
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
 			);

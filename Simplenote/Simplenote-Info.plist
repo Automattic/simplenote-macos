@@ -4,6 +4,13 @@
 <dict>
 	<key>ATSApplicationFontsPath</key>
 	<string>Fonts</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>iAWriterDuospace-BoldItalic.otf</string>
+		<string>iAWriterDuospace-RegularItalic.otf</string>
+		<string>iAWriterDuospace-Bold.otf</string>
+		<string>iAWriterDuospace-Regular.otf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -50,7 +57,7 @@
 		<true/>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2014 Automattic. All rights reserved.</string>
+	<string>Copyright © 2018 Automattic. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
