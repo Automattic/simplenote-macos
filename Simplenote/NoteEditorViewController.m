@@ -1205,4 +1205,25 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     return popover;
 }
 
+- (BOOL)urlSchemeIsAllowed: (NSString *) scheme {
+    return [scheme isEqualToString:@"http"] ||
+        [scheme isEqualToString:@"https"] ||
+        [scheme isEqualToString:@"mailto"];
+}
+
+#pragma mark - WKNavigationDelegate
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        NSURL *linkUrl = navigationAction.request.URL;
+        if ([self urlSchemeIsAllowed:linkUrl.scheme]) {
+            [[NSWorkspace sharedWorkspace] openURL:linkUrl];
+        }
+        
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 @end

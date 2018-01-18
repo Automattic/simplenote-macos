@@ -216,6 +216,7 @@
     
     [self.textViewParent addSubview:markdownView];
     self.noteEditorViewController.markdownView = markdownView;
+    [markdownView setNavigationDelegate:self.noteEditorViewController];
 
     [self configureToolbar];
 }
