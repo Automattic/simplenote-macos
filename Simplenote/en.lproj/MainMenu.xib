@@ -215,6 +215,7 @@
                 <outlet property="arrayController" destination="573" id="1148"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
                 <outlet property="noteEditor" destination="934" id="1154"/>
+                <outlet property="previewButton" destination="OMI-hx-wfj" id="XYV-Pc-8mE"/>
                 <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
                 <outlet property="searchField" destination="915" id="L6k-Ak-N34"/>

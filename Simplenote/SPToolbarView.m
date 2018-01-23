@@ -97,7 +97,7 @@
     [shareButton setHidden:trash];
     [addButton setEnabled:!trash];
     [historyButton setHidden:trash];
-
+    [previewButton setHidden:trash];
     [trashButton setHidden:trash];
     [restoreButton setHidden:!trash];
     [noteEditor setEditable:!trash];
