@@ -241,6 +241,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         self.noteEditor.string = @"";
     }
     
+    [previewButton setHidden:!self.note.markdown];
     [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
 }
 
@@ -662,6 +663,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     // Toggle the markdown state
     BOOL isEnabled = markdownItem.state == NSOffState;
+    [previewButton setHidden:!isEnabled];
     
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.markdown = isEnabled;
