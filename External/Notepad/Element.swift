@@ -22,7 +22,7 @@ public enum Element: String {
     case bold = "(^|[\\W_])(?:(?!\\1)|(?=^))(\\*|_)\\2(?=\\S)(.*?\\S)\\2\\2(?!\\2)(?=[\\W_]|$)"
     case italic = "(^|[\\W_])(?:(?!\\1)|(?=^))(\\*|_)(?=\\S)((?:(?!\\2).)*?\\S)\\2(?!\\2)(?=[\\W_]|$)"
     case boldItalic = "(\\*\\*\\*\\w+(\\s\\w+)*\\*\\*\\*)"
-    case code = "(`[^`]{1,}`)" // Allows for any character except ` to be in inline code.
+    case inlineCode = "(^|[\\W`])(?:(?!\\1)|(?=^))(\\*|`)(?=\\S)((?:(?!\\2).)*?\\S)\\2(?!\\2)(?=[\\W`]|$)"
 
     case url = "\\[([^\\]]+)\\]\\(([^\\)\"\\s]+)(?:\\s+\"(.*)\")?\\)"
     case image = "\\!\\[([^\\]]+)\\]\\(([^\\)\"\\s]+)(?:\\s+\"(.*)\")?\\)"
@@ -50,11 +50,11 @@ public enum Element: String {
         case "bold": return .bold
         case "italic": return .italic
         case "boldItalic": return .boldItalic
-        case "code": return .code
         case "url": return .url
         case "image": return .image
         case "quote": return .quote
         case "firstLine": return .firstLine
+        case "inlineCode": return .inlineCode
         default: return .unknown
         }
     }

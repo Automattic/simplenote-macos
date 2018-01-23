@@ -51,7 +51,7 @@ public struct Theme {
         
         /* Header Text */
         let h1Attributes = [
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.6)
+            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.25)
         ]
         styles.append(Style(element: Element.unknown.from(string: "firstLine"), attributes: h1Attributes))
         
@@ -62,12 +62,12 @@ public struct Theme {
         
         styles.append(Style(element: Element.unknown.from(string: "h1"), attributes: h1Attributes))
         let h2Attributes = [
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.4)
+            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.25)
         ]
         styles.append(Style(element: Element.unknown.from(string: "h2"), attributes: h2Attributes))
         
         let h3Attributes = [
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.2)
+            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.25)
         ]
         styles.append(Style(element: Element.unknown.from(string: "h3"), attributes: h3Attributes))
         
@@ -81,7 +81,7 @@ public struct Theme {
             NSAttributedStringKey.foregroundColor: theme?.color(forKey: "secondaryTextColor"),
             NSAttributedStringKey.font: NSFont(name: "Courier", size: CGFloat(fontSize))
         ]
-        styles.append(Style(element: Element.unknown.from(string: "code"), attributes: codeAttributes as [NSAttributedStringKey : AnyObject]))
+        styles.append(Style(element: Element.unknown.from(string: "inlineCode"), attributes: codeAttributes as [NSAttributedStringKey : AnyObject]))
         
          /* Emphasized Text*/
         let fontManager = NSFontManager.shared;

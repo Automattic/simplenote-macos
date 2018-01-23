@@ -82,14 +82,23 @@
     override public func replaceCharacters(in range: NSRange, with str: String) {
         self.beginEditing()
         backingStore.replaceCharacters(in: range, with: str)
-        let len = (str as NSString).length
-        let change = len - range.length
-        self.edited([.editedCharacters, .editedAttributes], range: range, changeInLength: change)
+        let change = str.utf16.count - range.length
+        self.edited(.editedCharacters, range: range, changeInLength: change)
         self.endEditing()
     }
     
     override public func addAttribute(_ name: NSAttributedStringKey, value: Any, range: NSRange) {
+        self.beginEditing()
         backingStore.addAttribute(name, value: value, range: range)
+        self.edited(.editedAttributes, range: range, changeInLength: 0)
+        self.endEditing()
+    }
+    
+    override public func removeAttribute(_ name: NSAttributedStringKey, range: NSRange) {
+        self.beginEditing()
+        backingStore.removeAttribute(name, range: range)
+        self.edited(.editedAttributes, range: range, changeInLength: 0)
+        self.endEditing()
     }
 
     /// Sets the attributes on a string for a particular range.
