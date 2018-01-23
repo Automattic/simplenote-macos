@@ -129,14 +129,7 @@ html {
 }
 
 .note-detail-markdown code {
-    font-size: 85%;
-    background: #f1f2f3;
-    padding: 1em;
-    border-radius: 3px;
-    background: #f6f7f8;
-    width: 100%;
-    overflow-x: auto;
-    display: block;
+    color: #84878a;
 }
 
 .note-detail-markdown pre {
@@ -146,8 +139,12 @@ html {
 }
 
 .note-detail-markdown pre code {
+    font-size: 85%;
     color: #616870;
     background: transparent;
+    width: 100%;
+    overflow-x: auto;
+    display: block;
 }
 
 .note-detail-markdown table {

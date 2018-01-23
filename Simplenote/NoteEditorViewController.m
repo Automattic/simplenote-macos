@@ -61,8 +61,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 @property (nonatomic, strong) NSTimer               *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
 @property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
-@property (nonatomic, strong) NSFont                *noteBodyFont;
-@property (nonatomic, strong) NSFont                *noteTitleFont;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
 @property (nonatomic, strong) SPTextLinkifier       *textLinkifier;
@@ -71,7 +69,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 @property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
 @property (nonatomic, assign) BOOL                  viewingVersions;
 @property (nonatomic, assign) BOOL                  viewingTrash;
-@property (nonatomic, assign) BOOL                  needsFontUpdate;
 
 @end
 
@@ -111,7 +108,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     CGFloat insetX = 20;
     CGFloat insetY = 20;
     _storage = [Storage newInstance];
-    [self.noteEditor setFont:self.noteTitleFont];
     [self.noteEditor setTextContainerInset: NSMakeSize(insetX, insetY)];
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-insetX/2, self.noteEditor.frame.size.height-insetY/2)];
     [self applyStyle];
@@ -225,7 +221,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     self.noteEditor.editable    = !self.viewingTrash;
     
     self.noteEditor.selectable  = !self.viewingTrash;
-    self.noteEditor.font        = self.noteBodyFont;
     
     tagTokenField.editable      = !self.viewingTrash;
     tagTokenField.selectable    = !self.viewingTrash;
@@ -247,7 +242,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
-    [self updateEditorFonts];
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -403,15 +397,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)range replacementString:(NSString *)text
 {
-    // Need to track whether the user entered a newline in order to prevent scroll jittering
-    // when updating the editor's fonts. (If a newline is entered in the title line, fonts
-    // need to be adjusted).
-    NSUInteger firstNewlineLocation = [self.note.content rangeOfString:@"\n"].location;
-    BOOL hasNewline                 = firstNewlineLocation != NSNotFound;
-    BOOL editingFirstLine           = range.location <= firstNewlineLocation;
-
-    self.needsFontUpdate            = (hasNewline && editingFirstLine) || !hasNewline || self.noteEditor.string.length == 0;
-
     // Apply Autobullets if needed
     BOOL appliedAutoBullets = [self.noteEditor applyAutoBulletsWithReplacementText:text replacementRange:range];
 
@@ -426,13 +411,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
-    
-    // Update the fonts only if there was a newline entered or more than a single character changed
-    if (self.needsFontUpdate) {
-        [self updateEditorFonts];
-    }
-    
-    self.needsFontUpdate = NO;
     
     // Update the note list preview
     [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
@@ -452,7 +430,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
                                      currentLocation:self.cursorLocationBeforeRemoteUpdate];
 
     self.noteEditor.string = self.note.content;
-    [self updateEditorFonts];
     
     NSRange newRange = NSMakeRange(newLocation, 0);
     [self.noteEditor setSelectedRange:newRange];
@@ -636,8 +613,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
 }
 
-
-
 #pragma mark - Actions
 
 - (IBAction)versionSliderChanged:(id)sender
@@ -649,7 +624,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
 	if (versionData != nil) {
 		self.noteEditor.string = (NSString *)[versionData objectForKey:@"content"];
-        [self updateEditorFonts];
         [self.noteEditor setTextColor:[self.theme colorForKey:@"tagViewPlaceholderColor"]];
 
 		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
@@ -894,28 +868,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 
 #pragma mark - Fonts
-
-- (NSFont *)noteBodyFont
-{
-    if (!_noteBodyFont) {
-        _noteBodyFont =  [NSFont systemFontOfSize:[self getFontSize]];
-    }
-    
-    return _noteBodyFont;
-}
-
 - (NSColor *)noteBodyColor
 {
     return [self.theme colorForKey:@"textColor"];
-}
-
-- (NSFont *)noteTitleFont
-{
-    if (!_noteTitleFont) {
-        _noteTitleFont =  [NSFont systemFontOfSize:[self getFontSize] + [self getFontSize] * 0.214f];
-    }
-    
-    return _noteTitleFont;
 }
 
 - (NSColor *)noteTitleColor
@@ -956,45 +911,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
     // Update font size preference and reset fonts
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
-    self.noteBodyFont = nil;
-    self.noteTitleFont = nil;
-    [self.noteEditor setFont:self.noteBodyFont];
-    [self updateEditorFonts];
     [self applyStyle];
 }
-
-- (void)updateEditorFonts
-{
-    /*NSRange firstLineRange = [self.noteEditor.string rangeOfString:@"\n"];
-    NSInteger titleLength = (firstLineRange.location != NSNotFound) ? firstLineRange.location : self.noteEditor.string.length;
-    
-    NSRange titleRange = NSMakeRange(0, titleLength);
-    NSRange bodyRange = NSMakeRange(titleRange.length, self.noteEditor.string.length - titleRange.length);
-    
-    //[_storage beginEditing];
-    NSMutableDictionary *titleDictionary = [NSMutableDictionary dictionary];
-    [titleDictionary setObject:self.noteTitleColor forKey:NSForegroundColorAttributeName];
-    [titleDictionary setObject:self.noteTitleFont forKey:NSFontAttributeName];
-    
-    [_storage setAttributes:titleDictionary range:titleRange];
-    
-    NSMutableDictionary *bodyDictionary = [NSMutableDictionary dictionary];
-    [bodyDictionary setObject:self.noteBodyColor forKey:NSForegroundColorAttributeName];
-    [bodyDictionary setObject:self.noteBodyFont forKey:NSFontAttributeName];*/
-    
-    /*[_storage addAttribute:NSForegroundColorAttributeName value:self.noteTitleColor range:titleRange];
-    [_storage addAttribute:NSFontAttributeName value:self.noteTitleFont range:titleRange];
-    
-    // Restore body font in case newline was entered inside the title
-    if (bodyRange.length > 0) {
-        [_storage addAttribute:NSForegroundColorAttributeName value:self.noteBodyColor range:bodyRange];
-        [_storage addAttribute:NSFontAttributeName value:self.noteBodyFont range:bodyRange];
-    }
-
-    [_storage endEditing];*/
-}
-
-
 
 #pragma mark - NoteEditor Preferences Helpers
 
