@@ -60,6 +60,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 @property (nonatomic, strong) NSTimer               *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
+@property (nonatomic, strong) NSMutableDictionary   *noteScrollPositions;
 @property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
@@ -129,14 +130,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 	}
     
     tagTokenField = [self.bottomBar addTagField];
-    tagTokenField.delegate = self;    
+    tagTokenField.delegate = self;
+    self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
     [noNoteText setFont:[NSFont systemFontOfSize:20.0]];
 
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
-    [nc addObserver:self selector:@selector(tagDeleted:) name:kTagDeleted object:nil];
+    [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
 
     [_noteEditor.layoutManager replaceTextStorage:_storage];
@@ -214,7 +216,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SPNoteLoadedNotificationName object:self];
-
+    
+    // Save the scrollPosition of the current note
+    if (self.note != nil) {
+        NSValue *positionValue = [NSValue valueWithPoint:[[self.scrollView contentView] bounds].origin];
+        self.noteScrollPositions[self.note.simperiumKey] = positionValue;
+    }
+    
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)
     self.noteEditor.editable    = false;
@@ -243,6 +251,20 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     [previewButton setHidden:!self.note.markdown];
     [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    
+    if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
+        // Restore scroll position for note if it was saved previously in this session
+        double scrollDelay = 0.01;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, scrollDelay * NSEC_PER_SEC);
+        // #hack! Scroll after a very slight delay, to give the editor time to load the content
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+            NSPoint scrollPoint = [[self.noteScrollPositions objectForKey:selectedNote.simperiumKey] pointValue];
+            [[self.scrollView documentView] scrollPoint:scrollPoint];
+        });
+    } else {
+        // Otherwise we'll scroll to the top!
+        [[self.scrollView documentView] scrollPoint:NSMakePoint(0, 0)];
+    }
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -288,7 +310,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self.bottomBar setEnabled:YES];
 }
 
-- (void)tagDeleted:(NSNotification *)notification
+- (void)tagUpdated:(NSNotification *)notification
 {
     [self updateTagField];
 }

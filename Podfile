@@ -11,8 +11,10 @@ abstract_target 'Automattic' do
 	pod 'Automattic-Tracks-OSX', :git => 'https://github.com/Automattic/Automattic-Tracks-iOS.git', :tag => '0.1.0'
     pod 'hoedown', '3.0.3'
 	pod 'Simperium-OSX', '0.8.19'
-	pod 'Sparkle', '1.18.1'
 
-	target 'Simplenote'
+	target 'Simplenote' do
+		pod 'Sparkle', '1.18.1'
+	end
+
 	target 'Simplenote-AppStore'
 end

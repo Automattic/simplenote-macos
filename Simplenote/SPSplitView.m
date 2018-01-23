@@ -68,13 +68,13 @@ const CGFloat SPSplitViewDefaultWidth = 135.0;
 - (void)startListeningToNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleAppWillTerminateNote:)
-                                                 name:NSApplicationWillTerminateNotification
+                                             selector:@selector(handleWindowWillClose:)
+                                                 name:NSWindowWillCloseNotification
                                                object:nil];
 }
 
 
-- (void)handleAppWillTerminateNote:(NSNotification *)note
+- (void)handleWindowWillClose:(NSNotification *)note
 {
     [self saveStateWithName:self.simplenoteAutosaveName];
 }
@@ -131,9 +131,12 @@ const CGFloat SPSplitViewDefaultWidth = 135.0;
         }
 
         /// NOTE:
-        /// The TagList's width is fixed, and should not be restored!
+        /// The TagList's width is fixed, and should not be restored! (Unless it is zero)
         ///
-        CGFloat targetWidth = (i == SPSplitViewSectionTags) ? SPSplitViewDefaultWidth : [params[SPSplitViewWidthKey] floatValue];
+        CGFloat targetWidth = [params[SPSplitViewWidthKey] floatValue];
+        if (i == SPSplitViewSectionTags && targetWidth > 0) {
+            targetWidth = SPSplitViewDefaultWidth;
+        }
         NSRect frame        = subview.frame;
         frame.size.width    = targetWidth;
         subview.frame       = frame;

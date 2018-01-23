@@ -204,7 +204,7 @@
     WKPreferences *prefs = [[WKPreferences alloc] init];
     prefs.javaScriptEnabled = NO;
     webConfig.preferences = prefs;
-    CGRect frame = CGRectMake(0, 44.0f, self.textViewParent.frame.size.width, self.textViewParent.frame.size.height - 44.0f);
+    CGRect frame = CGRectMake(0, 43.0f, self.textViewParent.frame.size.width, self.textViewParent.frame.size.height - 43.0f);
     WKWebView *markdownView = [[WKWebView alloc] initWithFrame:frame configuration:webConfig];
     [markdownView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [markdownView setHidden:YES];
