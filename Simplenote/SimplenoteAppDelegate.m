@@ -12,7 +12,6 @@
 #import "Note.h"
 #import "Tag.h"
 #import "LoginWindowController.h"
-#import "MMScroller.h"
 #import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
 #import "SPMarkdownParser.h"
@@ -200,7 +199,7 @@
     [self.splitView adjustSubviews];
     [self notifySplitDidChange];
     
-    // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.2)
+    // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.12)
     WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
     WKPreferences *prefs = [[WKPreferences alloc] init];
     prefs.javaScriptEnabled = NO;
