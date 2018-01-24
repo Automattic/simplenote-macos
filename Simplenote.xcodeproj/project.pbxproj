@@ -22,19 +22,15 @@
 		26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9B14032D2A00A7935E /* Credits.rtf */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
+		370C38E82018F96C00BFD0D4 /* iAWriterDuospace-Bold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 370C38E42018F95400BFD0D4 /* iAWriterDuospace-Bold.otf */; };
+		370C38E92018F96C00BFD0D4 /* iAWriterDuospace-BoldItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 370C38E72018F95400BFD0D4 /* iAWriterDuospace-BoldItalic.otf */; };
+		370C38EA2018F96C00BFD0D4 /* iAWriterDuospace-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 370C38E52018F95400BFD0D4 /* iAWriterDuospace-Regular.otf */; };
+		370C38EB2018F96C00BFD0D4 /* iAWriterDuospace-RegularItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 370C38E62018F95400BFD0D4 /* iAWriterDuospace-RegularItalic.otf */; };
 		378345021D38624100D45D46 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
 		378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		378E1F751CFCB5A7007486B5 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
-		37E03B4D200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */; };
-		37E03B4E200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */; };
-		37E03B4F200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */; };
-		37E03B50200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */; };
-		37E03B51200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */; };
-		37E03B52200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */; };
-		37E03B53200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */; };
-		37E03B54200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */; };
 		4623ABDC1773740700CE0441 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABD61773740700CE0441 /* .gitignore */; };
 		4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
 		4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
@@ -193,6 +189,10 @@
 			dstPath = Fonts;
 			dstSubfolderSpec = 7;
 			files = (
+				370C38E82018F96C00BFD0D4 /* iAWriterDuospace-Bold.otf in CopyFiles */,
+				370C38E92018F96C00BFD0D4 /* iAWriterDuospace-BoldItalic.otf in CopyFiles */,
+				370C38EA2018F96C00BFD0D4 /* iAWriterDuospace-Regular.otf in CopyFiles */,
+				370C38EB2018F96C00BFD0D4 /* iAWriterDuospace-RegularItalic.otf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +265,10 @@
 		26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplenoteAppDelegate.h; sourceTree = "<group>"; };
 		26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplenoteAppDelegate.m; sourceTree = "<group>"; };
 		26F72AA214032D2A00A7935E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		370C38E42018F95400BFD0D4 /* iAWriterDuospace-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-Bold.otf"; sourceTree = "<group>"; };
+		370C38E52018F95400BFD0D4 /* iAWriterDuospace-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-Regular.otf"; sourceTree = "<group>"; };
+		370C38E62018F95400BFD0D4 /* iAWriterDuospace-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-RegularItalic.otf"; sourceTree = "<group>"; };
+		370C38E72018F95400BFD0D4 /* iAWriterDuospace-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-BoldItalic.otf"; sourceTree = "<group>"; };
 		378345001D38624100D45D46 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-DB5.plist"; sourceTree = "<group>"; };
 		378AA6FE1ACB05B100CA87DC /* VSTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VSTheme.h; path = DB5/VSTheme.h; sourceTree = "<group>"; };
@@ -273,10 +277,6 @@
 		378AA7011ACB05B100CA87DC /* VSThemeLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSThemeLoader.m; path = DB5/VSThemeLoader.m; sourceTree = "<group>"; };
 		378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Escaping.h"; sourceTree = "<group>"; };
 		378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Escaping.m"; sourceTree = "<group>"; };
-		37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-Bold.otf"; sourceTree = "<group>"; };
-		37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-Regular.otf"; sourceTree = "<group>"; };
-		37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-BoldItalic.otf"; sourceTree = "<group>"; };
-		37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iAWriterDuospace-RegularItalic.otf"; sourceTree = "<group>"; };
 		39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4623ABD61773740700CE0441 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4623ABD71773740700CE0441 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
@@ -570,10 +570,10 @@
 		37E03B3C2005866100572ED1 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				37E03B49200586C400572ED1 /* iAWriterDuospace-Bold.otf */,
-				37E03B4B200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf */,
-				37E03B4A200586C500572ED1 /* iAWriterDuospace-Regular.otf */,
-				37E03B4C200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf */,
+				370C38E42018F95400BFD0D4 /* iAWriterDuospace-Bold.otf */,
+				370C38E72018F95400BFD0D4 /* iAWriterDuospace-BoldItalic.otf */,
+				370C38E52018F95400BFD0D4 /* iAWriterDuospace-Regular.otf */,
+				370C38E62018F95400BFD0D4 /* iAWriterDuospace-RegularItalic.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -833,7 +833,8 @@
 				ORGANIZATIONNAME = Simperium;
 				TargetAttributes = {
 					26F72A8714032D2A00A7935E = {
-						DevelopmentTeam = QXKWK6Q52N;
+						DevelopmentTeam = PZYM8XX95Q;
+						ProvisioningStyle = Automatic;
 					};
 					466FFEA617CC10A800399652 = {
 						DevelopmentTeam = PZYM8XX95Q;
@@ -867,14 +868,10 @@
 				26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
-				37E03B51200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */,
-				37E03B53200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */,
-				37E03B4D200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */,
 				4623ABDC1773740700CE0441 /* .gitignore in Resources */,
 				4623ABDF1773740700CE0441 /* README.md in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
-				37E03B4F200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
 			);
@@ -888,14 +885,10 @@
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
-				37E03B52200586C500572ED1 /* iAWriterDuospace-BoldItalic.otf in Resources */,
-				37E03B54200586C500572ED1 /* iAWriterDuospace-RegularItalic.otf in Resources */,
-				37E03B4E200586C500572ED1 /* iAWriterDuospace-Bold.otf in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				466FFEF017CC10A800399652 /* .gitignore in Resources */,
 				466FFEF117CC10A800399652 /* README.md in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
-				37E03B50200586C500572ED1 /* iAWriterDuospace-Regular.otf in Resources */,
 				378345021D38624100D45D46 /* config.plist in Resources */,
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
 			);
@@ -1337,8 +1330,9 @@
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = QXKWK6Q52N;
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
@@ -1365,6 +1359,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.Simplenote;
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
@@ -1378,11 +1373,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Codality, Inc. (QXKWK6Q52N)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application: Codality, Inc. (QXKWK6Q52N)";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = QXKWK6Q52N;
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
@@ -1410,6 +1406,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.Simplenote;
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
