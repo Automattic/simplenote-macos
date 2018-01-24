@@ -37,55 +37,51 @@ public struct Theme {
         backgroundColor = (theme?.color(forKey: "backgroundColor"))!
         tintColor = (theme?.color(forKey: "tintColor"))!
         
-        var fontSize = UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey")
+        var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
         if (fontSize == 0) {
-            fontSize = 15; // Just in case!
+            fontSize = 15.0; // Just in case!
         }
         
         /* All Text */
         let attributes = [
             NSAttributedStringKey.foregroundColor: theme?.color(forKey: "textColor"),
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize))
+            NSAttributedStringKey.font: NSFont.systemFont(ofSize: fontSize)
         ]
         body = Style(element: .body, attributes: attributes as [NSAttributedStringKey : AnyObject])
         
         /* Header Text */
-        let h1Attributes = [
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.25)
+        let firstLineAttributes = [
+            NSAttributedStringKey.font: NSFont.systemFont(ofSize: fontSize * 1.25)
         ]
-        styles.append(Style(element: Element.unknown.from(string: "firstLine"), attributes: h1Attributes))
+        styles.append(Style(element: Element.unknown.from(string: "firstLine"), attributes: firstLineAttributes))
         
         // Stop styling here if the note doesn't have markdown enabled
         if (!markdownEnabled) {
             return
         }
         
-        styles.append(Style(element: Element.unknown.from(string: "h1"), attributes: h1Attributes))
-        let h2Attributes = [
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.25)
+        let headingAttributes = [
+            NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: fontSize)
         ]
-        styles.append(Style(element: Element.unknown.from(string: "h2"), attributes: h2Attributes))
-        
-        let h3Attributes = [
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: CGFloat(fontSize) * 1.25)
-        ]
-        styles.append(Style(element: Element.unknown.from(string: "h3"), attributes: h3Attributes))
+        styles.append(Style(element: Element.unknown.from(string: "h1"), attributes: headingAttributes))
+        styles.append(Style(element: Element.unknown.from(string: "h2"), attributes: headingAttributes))
+        styles.append(Style(element: Element.unknown.from(string: "firstLine"), attributes: firstLineAttributes))
         
         /* Bold Text*/
         let boldAttributes = [
-            NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: CGFloat(fontSize))
+            NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: fontSize)
         ]
         styles.append(Style(element: Element.unknown.from(string: "bold"), attributes: boldAttributes))
         
         let codeAttributes = [
             NSAttributedStringKey.foregroundColor: theme?.color(forKey: "secondaryTextColor"),
-            NSAttributedStringKey.font: NSFont(name: "Courier", size: CGFloat(fontSize))
+            NSAttributedStringKey.font: NSFont(name: "Courier", size: fontSize)
         ]
         styles.append(Style(element: Element.unknown.from(string: "inlineCode"), attributes: codeAttributes as [NSAttributedStringKey : AnyObject]))
         
          /* Emphasized Text*/
         let fontManager = NSFontManager.shared;
-        let defaultFont = NSFont.systemFont(ofSize: CGFloat(fontSize))
+        let defaultFont = NSFont.systemFont(ofSize: fontSize)
         let italicFont = fontManager.convert(defaultFont, toHaveTrait: NSFontTraitMask.italicFontMask)
         
         let italicAttributes = [
