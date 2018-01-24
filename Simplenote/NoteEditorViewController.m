@@ -141,7 +141,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
 
-    [_noteEditor.layoutManager replaceTextStorage:self.storage];
+    [self.noteEditor.layoutManager replaceTextStorage:self.storage];
 }
 
 - (void)save
