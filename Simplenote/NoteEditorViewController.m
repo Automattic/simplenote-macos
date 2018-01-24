@@ -108,7 +108,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     CGFloat insetX = 20;
     CGFloat insetY = 20;
-    _storage = [Storage newInstance];
+    self.storage = [Storage newInstance];
     [self.noteEditor setTextContainerInset: NSMakeSize(insetX, insetY)];
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-insetX/2, self.noteEditor.frame.size.height-insetY/2)];
     [self applyStyle];
@@ -141,7 +141,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
 
-    [_noteEditor.layoutManager replaceTextStorage:_storage];
+    [_noteEditor.layoutManager replaceTextStorage:self.storage];
 }
 
 - (void)save
