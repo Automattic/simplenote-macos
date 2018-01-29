@@ -18,6 +18,7 @@
 #import "SPToolbarView.h"
 #import "NSImage+Colorize.h"
 #import "SPIntegrityHelper.h"
+#import "StatusChecker.h"
 #import "SPConstants.h"
 #import "VSThemeManager.h"
 #import "SPSplitView.h"
@@ -565,44 +566,33 @@
 	return (SimplenoteAppDelegate *)[[NSApplication sharedApplication] delegate];
 }
 
-- (BOOL)hasUnsyncedNotes
-{
-    SPBucket *notesBucket = [self.simperium bucketForName:@"Note"];
-    NSArray *notes = [notesBucket allObjects];
-    for (Note *note in notes) {
-        if ([note.version isEqualToString:@"0"]) {
-            return true;
-        }
-    }
-    
-    return false;
-}
 
 #pragma mark - Actions
 
 - (IBAction)signOutAction:(id)sender
 {
     // Safety first: Check for unsynced notes before they are deleted!
-    if ([self hasUnsyncedNotes]) {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:NSLocalizedString(@"Sign Out", @"Sign out of the app")];
-        [alert addButtonWithTitle:NSLocalizedString(@"Visit Web App", @"Visit app.simplenote.com in the browser")];
-        [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel the action")];
-        [alert setMessageText:NSLocalizedString(@"Unsynced Notes Detected", @"Alert title displayed in when an account has unsynced notes")];
-        [alert setInformativeText:NSLocalizedString(@"Signing out will delete any unsynced notes. You can verify your synced notes by signing in to the Web App.", @"Alert message displayed when an account has unsynced notes")];
-        [alert setAlertStyle:NSAlertStyleCritical];
-        
-        [alert beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
-            if (result == NSAlertSecondButtonReturn) {
-                NSURL *linkUrl = [NSURL URLWithString:@"https://app.simplenote.com"];
-                [[NSWorkspace sharedWorkspace] openURL:linkUrl];
-            } else if (result == NSAlertFirstButtonReturn) {
-                [self signOut];
-            }
-        }];
-    } else {
+    if ([StatusChecker hasUnsentChanges:self.simperium] == false)  {
         [self signOut];
+        return;
     }
+
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"Sign Out", @"Sign out of the app")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Visit Web App", @"Visit app.simplenote.com in the browser")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel the action")];
+    [alert setMessageText:NSLocalizedString(@"Unsynced Notes Detected", @"Alert title displayed in when an account has unsynced notes")];
+    [alert setInformativeText:NSLocalizedString(@"Signing out will delete any unsynced notes. You can verify your synced notes by signing in to the Web App.", @"Alert message displayed when an account has unsynced notes")];
+    [alert setAlertStyle:NSAlertStyleCritical];
+
+    [alert beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
+        if (result == NSAlertSecondButtonReturn) {
+            NSURL *linkUrl = [NSURL URLWithString:@"https://app.simplenote.com"];
+            [[NSWorkspace sharedWorkspace] openURL:linkUrl];
+        } else if (result == NSAlertFirstButtonReturn) {
+            [self signOut];
+        }
+    }];
 }
 
 -(void)signOut
