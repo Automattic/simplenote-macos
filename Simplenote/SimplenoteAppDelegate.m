@@ -578,7 +578,7 @@
     }
 
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:NSLocalizedString(@"Sign Out", @"Sign out of the app")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Delete Notes", @"Delete notes and sign out of the app")];
     [alert addButtonWithTitle:NSLocalizedString(@"Visit Web App", @"Visit app.simplenote.com in the browser")];
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel the action")];
     [alert setMessageText:NSLocalizedString(@"Unsynced Notes Detected", @"Alert title displayed in when an account has unsynced notes")];
