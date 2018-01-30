@@ -97,10 +97,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-    if (self) {
-        
-    }
-    
     return self;
 }
 
