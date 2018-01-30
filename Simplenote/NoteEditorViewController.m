@@ -48,6 +48,7 @@ NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
+static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
 static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 
@@ -696,6 +697,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     // Update editor to apply markdown styles
     [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
 }
 
 - (IBAction)publishAction:(id)sender
@@ -726,6 +729,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     Note *newNote = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:appDelegate.simperium.managedObjectContext];
     newNote.modificationDate = [NSDate date];
     newNote.creationDate = [NSDate date];
+    newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
     
     NSString *currentTag = [appDelegate selectedTagName];
     if ([currentTag length] > 0) {
