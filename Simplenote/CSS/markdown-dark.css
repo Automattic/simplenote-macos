@@ -92,6 +92,10 @@ html {
     box-sizing: border-box;
 }
 
+.note-detail-markdown ul, .note-detail-markdown ol {
+    margin-left: 2em;
+}
+
 .note-detail-markdown img {
     display: block;
     margin: 0 auto;
@@ -145,6 +149,7 @@ html {
     width: 100%;
     overflow-x: auto;
     display: block;
+    margin-bottom: 0;
 }
 
 .note-detail-markdown table {
