@@ -1164,6 +1164,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         }
         
         decisionHandler(WKNavigationActionPolicyCancel);
+        return;
     }
     
     decisionHandler(WKNavigationActionPolicyAllow);
