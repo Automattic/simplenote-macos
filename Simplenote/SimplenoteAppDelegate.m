@@ -579,14 +579,14 @@
 
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:NSLocalizedString(@"Delete Notes", @"Delete notes and sign out of the app")];
-    [alert addButtonWithTitle:NSLocalizedString(@"Visit Web App", @"Visit app.simplenote.com in the browser")];
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel the action")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Visit Web App", @"Visit app.simplenote.com in the browser")];
     [alert setMessageText:NSLocalizedString(@"Unsynced Notes Detected", @"Alert title displayed in when an account has unsynced notes")];
-    [alert setInformativeText:NSLocalizedString(@"Signing out will delete any unsynced notes. You can verify your synced notes by signing in to the Web App.", @"Alert message displayed when an account has unsynced notes")];
+    [alert setInformativeText:NSLocalizedString(@"Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.", @"Alert message displayed when an account has unsynced notes")];
     [alert setAlertStyle:NSAlertStyleCritical];
 
     [alert beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
-        if (result == NSAlertSecondButtonReturn) {
+        if (result == NSAlertThirdButtonReturn) {
             NSURL *linkUrl = [NSURL URLWithString:@"https://app.simplenote.com"];
             [[NSWorkspace sharedWorkspace] openURL:linkUrl];
         } else if (result == NSAlertFirstButtonReturn) {
