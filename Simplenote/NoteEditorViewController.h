@@ -48,6 +48,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSTextFieldCell *publishLabel;
     IBOutlet NSButton *previewButton;
     IBOutlet NSButton *publishButton;
+    IBOutlet NSButton *historyButton;
     IBOutlet NSButton *shareButton;
     IBOutlet NSView *statusView;
     IBOutlet NSTextField *noNoteText;

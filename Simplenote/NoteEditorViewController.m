@@ -239,6 +239,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     [self updateTagField];
     [self updateShareButtonVisibility];
+    [previewButton setEnabled:YES];
+    [historyButton setEnabled:YES];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -278,6 +280,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [tagTokenField setSelectable:NO];
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
+    [shareButton setEnabled:NO];
+    [previewButton setEnabled:NO];
+    [historyButton setEnabled:NO];
     
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
