@@ -90,7 +90,6 @@
     override public func addAttribute(_ name: NSAttributedStringKey, value: Any, range: NSRange) {
         self.beginEditing()
         backingStore.addAttribute(name, value: value, range: range)
-        self.edited(.editedAttributes, range: range, changeInLength: 0)
         self.endEditing()
     }
     

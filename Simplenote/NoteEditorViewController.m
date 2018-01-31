@@ -21,7 +21,6 @@
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "SPToolbarView.h"
-#import "SPTextLinkifier.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
@@ -65,7 +64,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 @property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
-@property (nonatomic, strong) SPTextLinkifier       *textLinkifier;
 @property (nonatomic, strong) Storage               *storage;
 
 @property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
@@ -105,13 +103,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     CGFloat insetX = 20;
     CGFloat insetY = 20;
-    self.storage = [Storage newInstance];
+    
     [self.noteEditor setTextContainerInset: NSMakeSize(insetX, insetY)];
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-insetX/2, self.noteEditor.frame.size.height-insetY/2)];
-    [self applyStyle];
-	
-    // Optimized Linkifier
-    self.textLinkifier = [SPTextLinkifier linkifierWithTextView:self.noteEditor];
+    self.storage = [Storage newInstance];
+    [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
@@ -137,8 +133,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
-
-    [self.noteEditor.layoutManager replaceTextStorage:self.storage];
+    
+    [self applyStyle];
 }
 
 - (void)save
@@ -264,6 +260,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         // Otherwise we'll scroll to the top!
         [[self.scrollView documentView] scrollPoint:NSMakePoint(0, 0)];
     }
+    
+    [self checkTextInDocument];
+    
+    if (selectedNote.markdown) {
+        // Reset markdown preview content
+        NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
+        [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+    }
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -283,6 +287,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
+}
+
+// Linkifies text in the editor
+- (void)checkTextInDocument
+{
+    dispatch_async(dispatch_get_main_queue(), ^() {
+        [self.noteEditor checkTextInDocument:nil];
+    });
 }
 
 - (void)showStatusText:(NSString *)text
@@ -697,6 +709,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     // Update editor to apply markdown styles
     [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    [self checkTextInDocument];
     
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
 }
@@ -991,11 +1004,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 	
 	[defaults setObject:preferences forKey:SPTextViewPreferencesKey];
 	[defaults synchronize];
-    
-    // Toggle the 'Optimized Linkifier', as needed
-    if ([keyPath isEqualToString:NSStringFromSelector(@selector(automaticLinkDetectionEnabled))]) {
-        self.textLinkifier.enabled = [change[NSKeyValueChangeNewKey] boolValue];
-    }
 }
 
 - (NSDictionary *)loadNoteEditorPreferences
@@ -1076,8 +1084,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     BOOL markdownVisible = self.markdownView.hidden;
+    
     [self.editorScrollView setHidden:markdownVisible];
+    [self.noteEditor setSelectable:!markdownVisible];
+    [self.noteEditor setEditable:!markdownVisible];
+    [self.noteEditor setHidden:markdownVisible];
     [self.markdownView setHidden:!markdownVisible];
+    
     [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
     
     if (markdownVisible) {
