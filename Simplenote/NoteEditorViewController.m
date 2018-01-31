@@ -294,6 +294,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     dispatch_async(dispatch_get_main_queue(), ^() {
         [self.noteEditor checkTextInDocument:nil];
+        [self.noteEditor setNeedsDisplay:YES];
     });
 }
 
