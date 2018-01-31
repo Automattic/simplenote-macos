@@ -955,6 +955,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     // Update font size preference and reset fonts
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
     [self applyStyle];
+    [self checkTextInDocument];
 }
 
 #pragma mark - NoteEditor Preferences Helpers
