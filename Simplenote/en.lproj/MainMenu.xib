@@ -87,6 +87,12 @@
                                         <action selector="pinAction:" target="1107" id="1661"/>
                                     </connections>
                                 </menuItem>
+                                <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
+                                    </connections>
+                                </menuItem>
                                 <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>
@@ -192,12 +198,24 @@
                         <action selector="shareNote:" target="1107" id="W9o-Z7-kgJ"/>
                     </connections>
                 </button>
+                <button toolTip="Preview Markdown" verticalHuggingPriority="750" misplaced="YES" id="OMI-hx-wfj">
+                    <rect key="frame" x="693" y="19" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_preview" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Q9W-kz-F4v">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="addButton" destination="987" id="1424"/>
                 <outlet property="arrayController" destination="573" id="1148"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
                 <outlet property="noteEditor" destination="934" id="1154"/>
+                <outlet property="previewButton" destination="OMI-hx-wfj" id="XYV-Pc-8mE"/>
                 <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
                 <outlet property="searchField" destination="915" id="L6k-Ak-N34"/>
@@ -687,7 +705,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
                                             <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
@@ -837,17 +855,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="254" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="606"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="606"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="" width="254" maxWidth="10000000" id="565">
+                                                        <tableColumn identifier="" width="270" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -862,11 +880,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="CustomCell" id="607" customClass="SPNoteCellView">
-                                                                    <rect key="frame" x="0.0" y="4" width="254" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="270" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
-                                                                            <rect key="frame" x="18" y="0.0" width="228" height="59"/>
+                                                                            <rect key="frame" x="18" y="0.0" width="244" height="59"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
                                                                                 <font key="font" size="12" name="Helvetica"/>
@@ -928,12 +946,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="493" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </customView>
-                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="933" customClass="MMScrollView">
+                                    <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="933" customClass="MMScrollView">
                                         <rect key="frame" x="0.0" y="43" width="493" height="575"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
                                             <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
@@ -954,7 +972,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="936" customClass="MMScroller">
-                                            <rect key="frame" x="478" y="0.0" width="15" height="575"/>
+                                            <rect key="frame" x="477" y="0.0" width="16" height="575"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -1052,6 +1070,8 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
+                <outlet property="historyButton" destination="7hm-UJ-0zw" id="i3Y-k0-nZS"/>
+                <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noNoteText" destination="1441" id="1531"/>
@@ -1059,6 +1079,7 @@
                 <outlet property="noteListViewController" destination="874" id="1695"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
+                <outlet property="previewButton" destination="OMI-hx-wfj" id="8d5-5c-auI"/>
                 <outlet property="printItem" destination="78" id="1659"/>
                 <outlet property="publishButton" destination="1063" id="1327"/>
                 <outlet property="publishLabel" destination="1058" id="1322"/>
@@ -1262,6 +1283,7 @@
     <resources>
         <image name="button_new" width="22" height="22"/>
         <image name="icon_all_notes" width="22" height="22"/>
+        <image name="icon_preview" width="44" height="44"/>
         <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>
