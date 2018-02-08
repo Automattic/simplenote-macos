@@ -22,11 +22,18 @@
 		26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9B14032D2A00A7935E /* Credits.rtf */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
+		375581C220292AA800529D79 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375581C120292AA800529D79 /* About.storyboard */; };
+		375581C320292AA800529D79 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375581C120292AA800529D79 /* About.storyboard */; };
+		376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
+		376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
+		376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		378345021D38624100D45D46 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
 		378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		378E1F751CFCB5A7007486B5 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
+		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
+		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		4623ABDC1773740700CE0441 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABD61773740700CE0441 /* .gitignore */; };
 		4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
 		4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
@@ -259,6 +266,9 @@
 		26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplenoteAppDelegate.h; sourceTree = "<group>"; };
 		26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplenoteAppDelegate.m; sourceTree = "<group>"; };
 		26F72AA214032D2A00A7935E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		375581C120292AA800529D79 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simplenote-Bridging-Header.h"; sourceTree = "<group>"; };
+		376EE3EA202B748E00E3812E /* SPAboutTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAboutTextField.swift; sourceTree = "<group>"; };
 		378345001D38624100D45D46 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-DB5.plist"; sourceTree = "<group>"; };
 		378AA6FE1ACB05B100CA87DC /* VSTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VSTheme.h; path = DB5/VSTheme.h; sourceTree = "<group>"; };
@@ -267,6 +277,7 @@
 		378AA7011ACB05B100CA87DC /* VSThemeLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSThemeLoader.m; path = DB5/VSThemeLoader.m; sourceTree = "<group>"; };
 		378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Escaping.h"; sourceTree = "<group>"; };
 		378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Escaping.m"; sourceTree = "<group>"; };
+		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4623ABD61773740700CE0441 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4623ABD71773740700CE0441 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
@@ -496,7 +507,7 @@
 				71233DD814DC500C00139E61 /* Transformers */,
 				714BA65514D3260000A6CCC1 /* Custom Views */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
-				26F72AA114032D2A00A7935E /* MainMenu.xib */,
+				37F742EA202A382400A47D3A /* AboutViewController.swift */,
 				26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */,
 				26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */,
 				B543BEA319DDEC1D0051D30C /* SPIntegrityHelper.h */,
@@ -527,6 +538,7 @@
 				B5087A211AF3B16A00505A2B /* PublishViewController.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
+				26F72AA114032D2A00A7935E /* MainMenu.xib */,
 			);
 			path = Simplenote;
 			sourceTree = "<group>";
@@ -534,6 +546,8 @@
 		26F72A9314032D2A00A7935E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				375581C120292AA800529D79 /* About.storyboard */,
+				37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */,
 				378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */,
 				46A0BEB8175BFD540050E864 /* Simplenote.entitlements */,
 				26F72A9414032D2A00A7935E /* Simplenote-Info.plist */,
@@ -689,6 +703,7 @@
 				B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */,
 				B5A4EF311AEEA03D007AB0AB /* SPPopUpButton.h */,
 				B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */,
+				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -816,9 +831,11 @@
 				TargetAttributes = {
 					26F72A8714032D2A00A7935E = {
 						DevelopmentTeam = QXKWK6Q52N;
+						LastSwiftMigration = 0920;
 					};
 					466FFEA617CC10A800399652 = {
 						DevelopmentTeam = PZYM8XX95Q;
+						LastSwiftMigration = 0920;
 					};
 				};
 			};
@@ -846,6 +863,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F72A9714032D2A00A7935E /* InfoPlist.strings in Resources */,
+				376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */,
 				26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
@@ -855,6 +873,7 @@
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
+				375581C220292AA800529D79 /* About.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +891,7 @@
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				378345021D38624100D45D46 /* config.plist in Resources */,
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
+				375581C320292AA800529D79 /* About.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,9 +1085,11 @@
 				B5087A1E1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
 				71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */,
 				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
+				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */,
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
+				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				7154812814E5AB6000CB8964 /* autolink.c in Sources */,
 				7154812914E5AB6000CB8964 /* buffer.c in Sources */,
@@ -1137,11 +1159,13 @@
 				466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */,
 				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				B5087A1F1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
+				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				466FFEB917CC10A800399652 /* autolink.c in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				466FFEBA17CC10A800399652 /* buffer.c in Sources */,
+				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				466FFEBB17CC10A800399652 /* houdini_href_e.c in Sources */,
 				466FFEBC17CC10A800399652 /* houdini_html_e.c in Sources */,
@@ -1264,6 +1288,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Simplenote/Simplenote-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Simplenote-Swift.h";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Debug;
@@ -1300,6 +1326,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Simplenote/Simplenote-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Simplenote-Swift.h";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Release;
@@ -1342,6 +1370,8 @@
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1387,6 +1417,7 @@
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1432,6 +1463,8 @@
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1477,6 +1510,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=macosx*]" = "";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
