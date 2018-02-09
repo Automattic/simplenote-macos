@@ -82,6 +82,7 @@
     [shareButton setEnabled:enabled];
     [trashButton setEnabled:enabled];
     [historyButton setEnabled:enabled];
+    [previewButton setEnabled:enabled];
 }
 
 - (void)noNoteLoaded:(id)sender {
