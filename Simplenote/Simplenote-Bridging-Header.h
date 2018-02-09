@@ -3,3 +3,4 @@
 //  Simplenote
 //
 
+#import "VSThemeManager.h"

@@ -62,31 +62,31 @@ class AboutViewController: NSViewController {
         copyrightLabel?.stringValue = copyrightText
     }
     
-    func blogLabelClick() {
-        NSWorkspace.shared().open(URL(string: blogUrl)!)
+    @objc func blogLabelClick() {
+        NSWorkspace.shared.open(URL(string: blogUrl)!)
     }
     
-    func twitterLabelClick() {
-        NSWorkspace.shared().open(URL(string: twitterUrl)!)
+    @objc func twitterLabelClick() {
+        NSWorkspace.shared.open(URL(string: twitterUrl)!)
     }
     
-    func appsLabelClick() {
-        NSWorkspace.shared().open(URL(string: appsUrl)!)
+    @objc func appsLabelClick() {
+        NSWorkspace.shared.open(URL(string: appsUrl)!)
     }
     
-    func githubLabelClick() {
-        NSWorkspace.shared().open(URL(string: githubUrl)!)
+    @objc func githubLabelClick() {
+        NSWorkspace.shared.open(URL(string: githubUrl)!)
     }
     
-    func hiringLabelClick() {
-        NSWorkspace.shared().open(URL(string: hiringUrl)!)
+    @objc func hiringLabelClick() {
+        NSWorkspace.shared.open(URL(string: hiringUrl)!)
     }
     
-    func privacyLabelClick() {
-        NSWorkspace.shared().open(URL(string: privacyUrl)!)
+    @objc func privacyLabelClick() {
+        NSWorkspace.shared.open(URL(string: privacyUrl)!)
     }
     
-    func termsLabelClick() {
-        NSWorkspace.shared().open(URL(string: termsUrl)!)
+    @objc func termsLabelClick() {
+        NSWorkspace.shared.open(URL(string: termsUrl)!)
     }
 }

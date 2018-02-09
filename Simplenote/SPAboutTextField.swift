@@ -10,7 +10,7 @@ import Cocoa
 @objc class SPAboutTextField: NSTextField {
 
     override func resetCursorRects() {
-        self.addCursorRect(self.bounds, cursor: NSCursor.pointingHand())
+        self.addCursorRect(self.bounds, cursor: NSCursor.pointingHand)
     }
     
 }
