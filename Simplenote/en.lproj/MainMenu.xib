@@ -215,7 +215,6 @@
                 <outlet property="arrayController" destination="573" id="1148"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
                 <outlet property="noteEditor" destination="934" id="1154"/>
-                <outlet property="previewButton" destination="OMI-hx-wfj" id="XYV-Pc-8mE"/>
                 <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
                 <outlet property="searchField" destination="915" id="L6k-Ak-N34"/>
@@ -855,17 +854,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="255" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="606"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="606"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="" width="270" maxWidth="10000000" id="565">
+                                                        <tableColumn identifier="" width="255" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -880,11 +879,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="CustomCell" id="607" customClass="SPNoteCellView">
-                                                                    <rect key="frame" x="0.0" y="4" width="270" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="255" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
-                                                                            <rect key="frame" x="18" y="0.0" width="244" height="59"/>
+                                                                            <rect key="frame" x="18" y="0.0" width="229" height="59"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
                                                                                 <font key="font" size="12" name="Helvetica"/>
@@ -920,7 +919,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="564" customClass="MMScroller">
-                                            <rect key="frame" x="254" y="0.0" width="16" height="618"/>
+                                            <rect key="frame" x="255" y="0.0" width="15" height="618"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <connections>
@@ -950,14 +949,14 @@
                                         <rect key="frame" x="0.0" y="43" width="493" height="575"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="575"/>
+                                                    <size key="minSize" width="478" height="575"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <connections>
@@ -972,7 +971,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="936" customClass="MMScroller">
-                                            <rect key="frame" x="477" y="0.0" width="16" height="575"/>
+                                            <rect key="frame" x="478" y="0.0" width="15" height="575"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>

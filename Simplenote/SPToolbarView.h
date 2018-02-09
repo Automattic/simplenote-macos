@@ -18,7 +18,6 @@
     IBOutlet NSButton *trashButton;
     IBOutlet NSButton *restoreButton;
     IBOutlet NSButton *shareButton;
-    IBOutlet NSButton *previewButton;
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *arrayController;
     IBOutlet NSTextView *noteEditor;
