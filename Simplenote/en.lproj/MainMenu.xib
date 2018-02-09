@@ -211,6 +211,7 @@
                 </button>
             </subviews>
             <connections>
+                <outlet property="actionButton" destination="1601" id="gdu-Es-X6I"/>
                 <outlet property="addButton" destination="987" id="1424"/>
                 <outlet property="arrayController" destination="573" id="1148"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>

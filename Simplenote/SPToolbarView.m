@@ -81,6 +81,7 @@
     [self.actionButton setEnabled:enabled];
     [shareButton setEnabled:enabled];
     [trashButton setEnabled:enabled];
+    [restoreButton setEnabled:enabled];
     [historyButton setEnabled:enabled];
     [previewButton setEnabled:enabled];
 }
