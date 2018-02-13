@@ -244,7 +244,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         self.noteEditor.string = @"";
     }
     
-    [previewButton setHidden:!self.note.markdown];
+    [previewButton setHidden:!self.note.markdown || self.viewingTrash];
     [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
@@ -316,6 +316,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (void)trashDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = YES;
+    [previewButton setHidden:YES];
     [self.bottomBar setEnabled:NO];
 }
 
@@ -706,6 +707,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         selectedNote.markdown = isEnabled;
     }
     
+    // Switch back to the editor if markdown is disabled
+    if (!isEnabled && ![self.markdownView isHidden]) {
+        [self toggleMarkdownView:nil];
+    }
+    
     [self save];
     
     // Update editor to apply markdown styles
@@ -1030,6 +1036,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     if (self.note != nil) {
         [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+        if (!self.markdownView.hidden) {
+            [self loadMarkdownContent];
+        }
     }
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
