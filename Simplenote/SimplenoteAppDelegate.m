@@ -24,6 +24,7 @@
 #import "VSThemeManager.h"
 #import "SPSplitView.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
 
 @import Simperium_OSX;
 
@@ -69,6 +70,7 @@
 
 @property (strong, nonatomic) NSBox                             *inactiveOverlayBox;
 @property (strong, nonatomic) NSBox                             *inactiveOverlayTitleBox;
+@property (strong, nonatomic) NSWindowController                *aboutWindowController;
 
 @end
 
@@ -358,6 +360,19 @@
     [destination addSubview:overlay];
 
     return overlay;
+}
+
+- (IBAction)aboutAction:(id)sender
+{
+    // Prevents duplicate windows!
+    if (self.aboutWindowController && self.aboutWindowController.window.isVisible) {
+        [self.aboutWindowController.window makeKeyAndOrderFront:self];
+        return;
+    }
+    
+    NSStoryboard *aboutStoryboard = [NSStoryboard storyboardWithName:@"About" bundle:nil];
+    self.aboutWindowController = [aboutStoryboard instantiateControllerWithIdentifier:@"AboutWindowController"];
+    [self.aboutWindowController showWindow:self];
 }
 
 

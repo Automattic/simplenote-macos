@@ -238,7 +238,7 @@
                             <menuItem title="About Simplenote" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="orderFrontStandardAboutPanel:" target="-2" id="1544"/>
+                                    <action selector="aboutAction:" target="494" id="Ptn-5S-Rce"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="236">
