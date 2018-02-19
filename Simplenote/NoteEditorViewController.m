@@ -19,11 +19,13 @@
 #import "NSString+Bullets.h"
 #import "NSTextView+Simplenote.h"
 #import "SPConstants.h"
+#import "SPMarkdownParser.h"
 #import "SPToolbarView.h"
-#import "SPTextLinkifier.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
+
+#import "Simplenote-Swift.h"
 
 @import Simperium_OSX;
 
@@ -45,6 +47,7 @@ NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
+static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
 static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 
@@ -59,16 +62,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 @property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
 @property (nonatomic, strong) NSMutableDictionary   *noteScrollPositions;
 @property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
-@property (nonatomic, strong) NSFont                *noteBodyFont;
-@property (nonatomic, strong) NSFont                *noteTitleFont;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
-@property (nonatomic, strong) SPTextLinkifier       *textLinkifier;
+@property (nonatomic, strong) Storage               *storage;
 
 @property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
 @property (nonatomic, assign) BOOL                  viewingVersions;
 @property (nonatomic, assign) BOOL                  viewingTrash;
-@property (nonatomic, assign) BOOL                  needsFontUpdate;
 
 @end
 
@@ -96,10 +96,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
-    if (self) {
-        // Initialization code here.
-    }
-    
     return self;
 }
 
@@ -107,13 +103,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     CGFloat insetX = 20;
     CGFloat insetY = 20;
-    [self.noteEditor setFont:self.noteTitleFont];
+    
     [self.noteEditor setTextContainerInset: NSMakeSize(insetX, insetY)];
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-insetX/2, self.noteEditor.frame.size.height-insetY/2)];
-    [self applyStyle];
-	
-    // Optimized Linkifier
-    self.textLinkifier = [SPTextLinkifier linkifierWithTextView:self.noteEditor];
+    self.storage = [Storage newInstance];
+    [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
@@ -139,6 +133,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
+    
+    [self applyStyle];
 }
 
 - (void)save
@@ -188,6 +184,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self showStatusText:nil];
     [statusView setHidden: selectedNote != nil];
     
+    if (!self.markdownView.isHidden) {
+        [self toggleMarkdownView:nil];
+    }
+    
     if (selectedNote == nil) {
         [self.noteEditor setEditable:NO];
         [self.noteEditor setSelectable:NO];
@@ -222,7 +222,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     self.noteEditor.editable    = !self.viewingTrash;
     
     self.noteEditor.selectable  = !self.viewingTrash;
-    self.noteEditor.font        = self.noteBodyFont;
     
     tagTokenField.editable      = !self.viewingTrash;
     tagTokenField.selectable    = !self.viewingTrash;
@@ -233,6 +232,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     [self updateTagField];
     [self updateShareButtonVisibility];
+    [previewButton setEnabled:YES];
+    [historyButton setEnabled:YES];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -243,7 +244,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         self.noteEditor.string = @"";
     }
     
-    [self updateEditorFonts];
+    [previewButton setHidden:!self.note.markdown || self.viewingTrash];
+    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
         // Restore scroll position for note if it was saved previously in this session
@@ -258,6 +260,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         // Otherwise we'll scroll to the top!
         [[self.scrollView documentView] scrollPoint:NSMakePoint(0, 0)];
     }
+    
+    [self checkTextInDocument];
+    
+    if (selectedNote.markdown) {
+        // Reset markdown preview content
+        NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
+        [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+    }
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -271,9 +281,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [tagTokenField setSelectable:NO];
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
+    [shareButton setEnabled:NO];
+    [previewButton setEnabled:NO];
+    [historyButton setEnabled:NO];
     
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
+}
+
+// Linkifies text in the editor
+- (void)checkTextInDocument
+{
+    dispatch_async(dispatch_get_main_queue(), ^() {
+        [self.noteEditor checkTextInDocument:nil];
+        [self.noteEditor setNeedsDisplay:YES];
+    });
 }
 
 - (void)showStatusText:(NSString *)text
@@ -294,6 +316,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (void)trashDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = YES;
+    [previewButton setHidden:YES];
     [self.bottomBar setEnabled:NO];
 }
 
@@ -413,15 +436,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)range replacementString:(NSString *)text
 {
-    // Need to track whether the user entered a newline in order to prevent scroll jittering
-    // when updating the editor's fonts. (If a newline is entered in the title line, fonts
-    // need to be adjusted).
-    NSUInteger firstNewlineLocation = [self.note.content rangeOfString:@"\n"].location;
-    BOOL hasNewline                 = firstNewlineLocation != NSNotFound;
-    BOOL editingFirstLine           = range.location <= firstNewlineLocation;
-
-    self.needsFontUpdate            = (hasNewline && editingFirstLine) || !hasNewline || self.noteEditor.string.length == 0;
-
     // Apply Autobullets if needed
     BOOL appliedAutoBullets = [self.noteEditor applyAutoBulletsWithReplacementText:text replacementRange:range];
 
@@ -436,13 +450,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
-    
-    // Update the fonts only if there was a newline entered or more than a single character changed
-    if (self.needsFontUpdate) {
-        [self updateEditorFonts];
-    }
-    
-    self.needsFontUpdate = NO;
     
     // Update the note list preview
     [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
@@ -462,7 +469,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
                                      currentLocation:self.cursorLocationBeforeRemoteUpdate];
 
     self.noteEditor.string = self.note.content;
-    [self updateEditorFonts];
     
     NSRange newRange = NSMakeRange(newLocation, 0);
     [self.noteEditor setSelectedRange:newRange];
@@ -576,6 +582,16 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     return YES;
 }
 
+- (BOOL)selectedNotesMarkdowned
+{
+    for (Note *selectedNote in self.selectedNotes) {
+        if (!selectedNote.markdown)
+            return NO;
+    }
+    
+    return YES;
+}
+
 - (void)menuWillOpen:(NSMenu *)menu
 {
     // Action menu
@@ -588,9 +604,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     [self updateCounts];
     pinnedItem.state = [self selectedNotesPinned] ? NSOnState : NSOffState;
+    markdownItem.state = [self selectedNotesMarkdowned] ? NSOnState : NSOffState;
     [collaborateItem setEnabled:numSelectedNotes == 1];
-    [publishItem setEnabled:numSelectedNotes == 1];
-    [historyItem setEnabled:numSelectedNotes == 1];
 
     NSString *statusString;
     
@@ -637,8 +652,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
 }
 
-
-
 #pragma mark - Actions
 
 - (IBAction)versionSliderChanged:(id)sender
@@ -650,7 +663,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
 	if (versionData != nil) {
 		self.noteEditor.string = (NSString *)[versionData objectForKey:@"content"];
-        [self updateEditorFonts];
         [self.noteEditor setTextColor:[self.theme colorForKey:@"tagViewPlaceholderColor"]];
 
 		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
@@ -685,6 +697,30 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [noteListViewController selectRowForNoteKey:self.note.simperiumKey];
 }
 
+- (IBAction)markdownAction:(id)sender
+{
+    // Toggle the markdown state
+    BOOL isEnabled = markdownItem.state == NSOffState;
+    [previewButton setHidden:!isEnabled];
+    
+    for (Note *selectedNote in self.selectedNotes) {
+        selectedNote.markdown = isEnabled;
+    }
+    
+    // Switch back to the editor if markdown is disabled
+    if (!isEnabled && ![self.markdownView isHidden]) {
+        [self toggleMarkdownView:nil];
+    }
+    
+    [self save];
+    
+    // Update editor to apply markdown styles
+    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    [self checkTextInDocument];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
+}
+
 - (IBAction)publishAction:(id)sender
 {
     // The button state is toggled when user clicks on it
@@ -713,6 +749,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     Note *newNote = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:appDelegate.simperium.managedObjectContext];
     newNote.modificationDate = [NSDate date];
     newNote.creationDate = [NSDate date];
+    newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
     
     NSString *currentTag = [appDelegate selectedTagName];
     if ([currentTag length] > 0) {
@@ -880,28 +917,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 
 #pragma mark - Fonts
-
-- (NSFont *)noteBodyFont
-{
-    if (!_noteBodyFont) {
-        _noteBodyFont =  [NSFont systemFontOfSize:[self getFontSize]];
-    }
-    
-    return _noteBodyFont;
-}
-
 - (NSColor *)noteBodyColor
 {
     return [self.theme colorForKey:@"textColor"];
-}
-
-- (NSFont *)noteTitleFont
-{
-    if (!_noteTitleFont) {
-        _noteTitleFont =  [NSFont systemFontOfSize:[self getFontSize] + [self getFontSize] * 0.214f];
-    }
-    
-    return _noteTitleFont;
 }
 
 - (NSColor *)noteTitleColor
@@ -942,37 +960,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
     // Update font size preference and reset fonts
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
-    self.noteBodyFont = nil;
-    self.noteTitleFont = nil;
-    [self.noteEditor setFont:self.noteBodyFont];
-    [self updateEditorFonts];
+    [self applyStyle];
+    [self checkTextInDocument];
 }
-
-- (void)updateEditorFonts
-{
-    NSRange firstLineRange = [self.noteEditor.string rangeOfString:@"\n"];
-    NSInteger titleLength = (firstLineRange.location != NSNotFound) ? firstLineRange.location : self.noteEditor.string.length;
-    
-    NSRange titleRange = NSMakeRange(0, titleLength);
-    NSRange bodyRange = NSMakeRange(titleRange.length, self.noteEditor.string.length - titleRange.length);
-
-    NSTextStorage *textStorage = self.noteEditor.textStorage;
-    
-    [textStorage beginEditing];
-    
-    [textStorage addAttribute:NSForegroundColorAttributeName value:self.noteTitleColor range:titleRange];
-    [textStorage addAttribute:NSFontAttributeName value:self.noteTitleFont range:titleRange];
-    
-    // Restore body font in case newline was entered inside the title
-    if (bodyRange.length > 0) {
-        [textStorage addAttribute:NSForegroundColorAttributeName value:self.noteBodyColor range:bodyRange];
-        [textStorage addAttribute:NSFontAttributeName value:self.noteBodyFont range:bodyRange];
-    }
-
-    [textStorage endEditing];
-}
-
-
 
 #pragma mark - NoteEditor Preferences Helpers
 
@@ -1022,11 +1012,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 	
 	[defaults setObject:preferences forKey:SPTextViewPreferencesKey];
 	[defaults synchronize];
-    
-    // Toggle the 'Optimized Linkifier', as needed
-    if ([keyPath isEqualToString:NSStringFromSelector(@selector(automaticLinkDetectionEnabled))]) {
-        self.textLinkifier.enabled = [change[NSKeyValueChangeNewKey] boolValue];
-    }
 }
 
 - (NSDictionary *)loadNoteEditorPreferences
@@ -1049,6 +1034,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (void)applyStyle
 {
+    if (self.note != nil) {
+        [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+        if (!self.markdownView.hidden) {
+            [self loadMarkdownContent];
+        }
+    }
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 
@@ -1095,6 +1086,32 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
     sharingPicker.delegate = self;
     [sharingPicker showRelativeToRect:shareButton.bounds ofView:shareButton preferredEdge:NSMinYEdge];
+}
+
+- (IBAction)toggleMarkdownView:(id)sender
+{
+    if (self.markdownView == nil) {
+        return;
+    }
+    
+    BOOL markdownVisible = self.markdownView.hidden;
+    
+    [self.editorScrollView setHidden:markdownVisible];
+    [self.noteEditor setSelectable:!markdownVisible];
+    [self.noteEditor setEditable:!markdownVisible];
+    [self.noteEditor setHidden:markdownVisible];
+    [self.markdownView setHidden:!markdownVisible];
+    
+    [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
+    [historyButton setEnabled:!markdownVisible];
+    
+    if (markdownVisible) {
+        [self loadMarkdownContent];
+    }
+}
+- (void)loadMarkdownContent {
+    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:self.note.content];
+    [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 #pragma mark - NSSharingServicePicker delegate
@@ -1158,6 +1175,28 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     popover.behavior                = NSPopoverBehaviorTransient;
     
     return popover;
+}
+
+- (BOOL)urlSchemeIsAllowed: (NSString *) scheme {
+    return [scheme isEqualToString:@"http"] ||
+        [scheme isEqualToString:@"https"] ||
+        [scheme isEqualToString:@"mailto"];
+}
+
+#pragma mark - WKNavigationDelegate
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+        NSURL *linkUrl = navigationAction.request.URL;
+        if ([self urlSchemeIsAllowed:linkUrl.scheme]) {
+            [[NSWorkspace sharedWorkspace] openURL:linkUrl];
+        }
+        
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
+    }
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 @end
