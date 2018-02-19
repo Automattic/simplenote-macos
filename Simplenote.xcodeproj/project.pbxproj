@@ -33,7 +33,6 @@
 		3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC761FE1ACA9008544AC /* Theme.swift */; };
 		3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC761FE1ACA9008544AC /* Theme.swift */; };
 		3712FCA21FE1ACAA008544AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC811FE1ACA9008544AC /* Info.plist */; };
-		3712FCA31FE1ACAA008544AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC811FE1ACA9008544AC /* Info.plist */; };
 		373B50DD20179DFE000568A6 /* UniversalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DB20179DFD000568A6 /* UniversalTypes.swift */; };
 		373B50DE20179DFE000568A6 /* UniversalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DB20179DFD000568A6 /* UniversalTypes.swift */; };
 		373B50DF20179DFE000568A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DC20179DFE000568A6 /* Extensions.swift */; };
@@ -901,7 +900,7 @@
 					466FFEA617CC10A800399652 = {
 						DevelopmentTeam = PZYM8XX95Q;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -954,7 +953,6 @@
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
-				3712FCA31FE1ACAA008544AC /* Info.plist in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFEF017CC10A800399652 /* .gitignore in Resources */,
@@ -1542,10 +1540,10 @@
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"/**",
@@ -1589,11 +1587,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"/**",
@@ -1622,7 +1620,7 @@
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=macosx*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Simplenote Mac Production Profile";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
 				VALID_ARCHS = x86_64;
