@@ -609,8 +609,8 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
-                            <menuItem title="Toggle Sidebar" id="tkU-Gb-qGx">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Toggle Sidebar" keyEquivalent="t" id="tkU-Gb-qGx">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 <connections>
                                     <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
                                 </connections>
