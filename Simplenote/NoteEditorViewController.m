@@ -1103,6 +1103,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self.markdownView setHidden:!markdownVisible];
     
     [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
+    [historyButton setEnabled:!markdownVisible];
     
     if (markdownVisible) {
         [self loadMarkdownContent];
