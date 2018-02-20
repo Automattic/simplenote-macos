@@ -685,6 +685,23 @@
     [self updateThemeMenuForPosition:[sender tag]];
 }
 
+- (IBAction)focusModeAction:(id)sender
+{
+    [SPTracker trackSidebarButtonPresed];
+    
+    BOOL collapsed = ![self.splitView isHidden];
+    [self.splitView setHidden:collapsed];
+    [self.toolbar setHidden:collapsed];
+    if ( collapsed ) {
+        [self.splitView.superview addSubview:self.noteEditorViewController.view];
+        [self.noteEditorViewController.view setFrame:self.splitView.superview.bounds];
+    }
+    else {
+        [self.textViewParent addSubview:self.noteEditorViewController.view];
+        [self.noteEditorViewController.view setFrame:self.textViewParent.bounds];
+    }
+}
+
 - (void)updateThemeMenuForPosition:(NSInteger)position
 {
     for (NSMenuItem *menuItem in themeMenu.itemArray) {
