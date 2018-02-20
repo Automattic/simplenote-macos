@@ -799,8 +799,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (IBAction)printAction:(id)sender
 {
     // Create a copy of the editor view to be used as the print source
-    NSData *archivedView = [NSKeyedArchiver archivedDataWithRootObject:self.noteEditor];
-    NSTextView *printView = [NSKeyedUnarchiver unarchiveObjectWithData:archivedView];
+    NSTextView *printView = [[NSTextView alloc] init];
+    [printView.textStorage appendAttributedString:self.noteEditor.attributedString];
     [printView setTextColor:[NSColor blackColor]];
 
     // Configure wrapping and alignment
