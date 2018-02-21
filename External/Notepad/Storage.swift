@@ -52,19 +52,13 @@
     }
 
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    required public init(itemProviderData data: Data, typeIdentifier: String) throws {
-        fatalError("init(itemProviderData:typeIdentifier:) has not been implemented")
-    }
-    
-    #if os(macOS)
     required public init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
-        fatalError("init(pasteboardPropertyList:ofType:) has not been implemented")
+        super.init(pasteboardPropertyList: propertyList, ofType: type)
     }
-    #endif
-
+    
     /// Finds attributes within a given range on a String.
     ///
     /// - parameter location: How far into the String to look.
