@@ -293,8 +293,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (void)checkTextInDocument
 {
     dispatch_async(dispatch_get_main_queue(), ^() {
+        // Disable editor delegate while processing links to prevent the editor from modifying the note
+        [self.noteEditor setDelegate:nil];
         [self.noteEditor checkTextInDocument:nil];
         [self.noteEditor setNeedsDisplay:YES];
+        [self.noteEditor setDelegate:self];
     });
 }
 
