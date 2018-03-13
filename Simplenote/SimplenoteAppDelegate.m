@@ -230,6 +230,8 @@
     
     splitFrame.size.height                      -= toolbarFrame.size.height;
     self.splitView.frame                        = splitFrame;
+    self.splitViewTopConstraint.constant = toolbarFrame.size.height;
+    [self.splitView applyStyle];
     
     toolbarFrame.origin.y                       = splitFrame.size.height;
     toolbarFrame.size.width                     = splitFrame.size.width;
@@ -421,13 +423,13 @@
 - (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex
 {
     // Tag List: Don't draw separators
-    return (dividerIndex == SPSplitViewSectionTags);
+    return (dividerIndex == SPSplitViewSectionTags) || (dividerIndex == SPSplitViewSectionList);
 }
 
 - (NSRect)splitView:(NSSplitView *)splitView effectiveRect:(NSRect)proposedEffectiveRect forDrawnRect:(NSRect)drawnRect ofDividerAtIndex:(NSInteger)dividerIndex
 {
     // Tag List: Don't draw separators
-    return (dividerIndex == SPSplitViewSectionTags) ? CGRectZero : proposedEffectiveRect;
+    return (dividerIndex == SPSplitViewSectionTags) || (dividerIndex == SPSplitViewSectionList && self.noteListViewController.isCollapsed) ? CGRectZero : proposedEffectiveRect;
 }
 
 - (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview
@@ -444,6 +446,9 @@
         return minTagListWidth;
     }
 	
+    if (dividerIndex == SPSplitViewSectionList && self.noteListViewController.isCollapsed) {
+        return 0;
+    }
     // List: Split should be dynamic
     return MAX(minTagListWidth, self.tagListViewController.view.bounds.size.width) + kMinimumNoteListSplit;
 }
@@ -660,16 +665,50 @@
 - (IBAction)toggleSidebarAction:(id)sender
 {
     [SPTracker trackSidebarButtonPresed];
-
+    
+    BOOL collapsed = ![self.tagListViewController.view isHidden];
+    if (self.noteListViewController.isCollapsed) {
+        [self focusModeAction:nil];
+    }
+    
     CGFloat tagListSplitPosition = MAX([self tagListSplitPosition], SPSplitViewDefaultWidth);
     CGFloat editorSplitPosition = [self editorSplitPosition];
-    BOOL collapsed = ![self.tagListViewController.view isHidden];
     [self.tagListViewController.view setHidden:collapsed];
     
     [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
+    [self.splitView adjustSubviews];
     [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
     [self.splitView adjustSubviews];
 }
+
+- (IBAction)focusModeAction:(id)sender {
+    CGFloat tagListSplitPosition = MAX([self tagListSplitPosition], SPSplitViewDefaultWidth);
+    CGFloat editorSplitPosition = [self editorSplitPosition];
+    BOOL collapsed = !self.noteListViewController.isCollapsed;
+    self.noteListViewController.isCollapsed = collapsed;
+    [self.noteListViewController.searchField setHidden:collapsed];
+    [self.tagListViewController.view setHidden:YES];
+    if (collapsed) {
+//        self.splitViewTopConstraint.constant = 0;
+        [self.splitView applyStyle];
+        [self.toolbar setAlphaValue:0.3];
+//        [self.toolbar setHidden:YES];
+//        self.splitView.toolbar = self.toolbar;
+    }
+    else {
+//        self.splitViewTopConstraint.constant = self.toolbar.frame.size.height;
+        [self.splitView applyStyle];
+        [self.toolbar setAlphaValue:1.0];
+//        [self.toolbar setHidden:NO];
+//        self.splitView.toolbar = NULL;
+    }
+    
+    [self.splitView setPosition:0 ofDividerAtIndex:0];
+    [self.splitView setPosition:collapsed ? 0 : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
+    [self.splitView adjustSubviews];
+}
+
+
 
 - (IBAction)changeThemeAction:(id)sender
 {
@@ -683,23 +722,6 @@
     [SPTracker trackSettingsThemeUpdated:newTheme];
     [[VSThemeManager sharedManager] swapTheme:newTheme];
     [self updateThemeMenuForPosition:[sender tag]];
-}
-
-- (IBAction)focusModeAction:(id)sender
-{
-    [SPTracker trackSidebarButtonPresed];
-    
-    BOOL collapsed = ![self.splitView isHidden];
-    [self.splitView setHidden:collapsed];
-    [self.toolbar setHidden:collapsed];
-    if ( collapsed ) {
-        [self.splitView.superview addSubview:self.noteEditorViewController.view];
-        [self.noteEditorViewController.view setFrame:self.splitView.superview.bounds];
-    }
-    else {
-        [self.textViewParent addSubview:self.noteEditorViewController.view];
-        [self.noteEditorViewController.view setFrame:self.textViewParent.bounds];
-    }
 }
 
 - (void)updateThemeMenuForPosition:(NSInteger)position
@@ -725,7 +747,6 @@
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
 }
-
 
 #pragma mark - Shutdown
 
