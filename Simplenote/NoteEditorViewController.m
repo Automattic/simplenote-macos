@@ -293,8 +293,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (void)checkTextInDocument
 {
     dispatch_async(dispatch_get_main_queue(), ^() {
+        // Temporarily remove the editor delegate because `checkTextInDocument`
+        // fires `textDidChange` which will erroneously modify the note's modification
+        // date and unintentionally change the sort order of the note in the list as a result
+        [self.noteEditor setDelegate:nil];
         [self.noteEditor checkTextInDocument:nil];
         [self.noteEditor setNeedsDisplay:YES];
+        [self.noteEditor setDelegate:self];
     });
 }
 
