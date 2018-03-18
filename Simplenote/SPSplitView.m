@@ -150,4 +150,36 @@ const CGFloat SPSplitViewDefaultWidth = 135.0;
     [self setNeedsDisplay:YES];
 }
 
+//-(void)mouseMoved:(NSEvent *)event {
+//    if (self.toolbar == NULL) {
+//        return;
+//    }
+//    
+//    NSWindow *plotWindow = [self window];
+//    NSPoint mousePosition = [plotWindow mouseLocationOutsideOfEventStream];
+//    
+//    //convert to View
+//    mousePosition = [self convertPoint:mousePosition fromView:nil];
+//    float mX = mousePosition.x;
+//    float mY = mousePosition.y;
+//    if (self.toolbar.isHidden && mY < 30 && mX > 0 && mX < self.frame.size.width) {
+//        [self.toolbar setHidden:NO];
+//        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+//            context.duration = 0.5;
+//            self.toolbar.animator.alphaValue = 0.7;
+//        } completionHandler:^{
+//            
+//        }];
+//    }
+//    else if (!self.toolbar.isHidden && (mY > self.toolbar.frame.size.height || mY < 0 || mX < 0 || mX > self.frame.size.width))  {
+//        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+//            context.duration = 0.5;
+//            self.toolbar.animator.alphaValue = 0.0;
+//        } completionHandler:^{
+//            [self.toolbar setHidden:YES];
+//        }];
+//    }
+//}
+
+
 @end
