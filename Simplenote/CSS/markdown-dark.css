@@ -160,11 +160,11 @@ html {
 }
 
 .note-detail-markdown table tr:nth-child(2n) {
-    background-color: #f6f7f8;
+    background-color: #383d41;
 }
 
 .note-detail-markdown table th, .note-detail-markdown table td {
-    border: 1px solid #c0c4c8;
+    border: 1px solid #575e65;
     padding: 6px 13px;
 }
 
