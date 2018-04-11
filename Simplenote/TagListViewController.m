@@ -232,6 +232,11 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         return nil;
     }
     
+    // Don't add the tag if there is an existing tag with the same name
+    if ([self tagWithName:tagName]) {
+        return nil;
+    }
+    
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
     NSString *tagKey = [[tagName lowercaseString] sp_urlEncodeString];
