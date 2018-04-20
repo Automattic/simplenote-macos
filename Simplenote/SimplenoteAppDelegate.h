@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
 @property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
+@property (weak) IBOutlet NSLayoutConstraint *splitViewTopConstraint;
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 
@@ -39,6 +40,7 @@
 - (IBAction)changeThemeAction:(id)sender;
 - (IBAction)ensureMainWindowIsVisible:(id)sender;
 - (IBAction)aboutAction:(id)sender;
+- (IBAction)focusModeAction:(id)sender;
 
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;

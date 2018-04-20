@@ -40,6 +40,7 @@
 @property (strong, nonatomic) IBOutlet NSSearchField    *searchField;
 @property (strong, nonatomic) IBOutlet NSButton         *noteListToolbarButton;
 @property (assign, nonatomic) BOOL                      searching;
+@property (assign, nonatomic) BOOL                      isCollapsed;
 
 - (void)loadNotes;
 - (void)reset;

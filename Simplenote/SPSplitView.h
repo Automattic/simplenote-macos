@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "SPToolbarView.h"
 
 extern const CGFloat SPSplitViewDefaultWidth;
 
@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, SPSplitViewSection) {
 @interface SPSplitView : NSSplitView
 
 @property (nonatomic, strong) NSString *simplenoteAutosaveName;
+//@property (nonatomic, weak) SPToolbarView *toolbar;
 
 - (void)applyStyle;
 
