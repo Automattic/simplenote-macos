@@ -15,7 +15,7 @@
 
 static NSString * const SPSplitViewWidthKey     = @"width";
 static NSString * const SPSplitViewVisibleKey   = @"visible";
-const CGFloat SPSplitViewDefaultWidth = 135.0;
+const CGFloat SPSplitViewDefaultWidth = 120.0;
 
 
 
