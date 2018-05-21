@@ -25,6 +25,7 @@
 #import "SPSplitView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
+#import "WPAuthHandler.h"
 
 @import Simperium_OSX;
 
@@ -82,7 +83,6 @@
 @implementation SimplenoteAppDelegate
 
 #pragma mark - Startup
-
 // Can be used for bugs that don't show up while debugging from Xcode
 - (void)redirectConsoleLogToDocumentFolder
 {
@@ -147,9 +147,16 @@
     return [[VSThemeManager sharedManager] theme];
 }
 
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
+    [eventManager setEventHandler:self
+                      andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                    forEventClass:kInternetEventClass
+                       andEventID:kAEGetURL];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
 
@@ -251,6 +258,32 @@
     [nc addObserver:self selector:@selector(handleWindowDidResizeNote:)             name:NSWindowDidResizeNotification              object:self.window];
 }
 
+- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+{
+    NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    if (![[url host] isEqualToString:@"auth"]) {
+        return;
+    }
+    
+    if ([WPAuthHandler isWPAuthenticationUrl: url]) {
+        if (self.simperium.user.authenticated) {
+            // We're already signed in
+            [[NSNotificationCenter defaultCenter] postNotificationName:SPSignInErrorNotificationName
+                                                                object:nil];
+            return;
+        }
+        
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
+        NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+        SPUser *newUser = [WPAuthHandler authorizeSimplenoteUserFromUrl:url forAppId:config[@"SPSimperiumAppID"]];
+        if (newUser != nil) {
+            self.simperium.user = newUser;
+            [self.simperium authenticationDidSucceedForUsername:newUser.email token:newUser.authToken];
+        }
+    }
+}
 
 #pragma mark - BITCrashReportManagerDelegate Methods
 
@@ -632,6 +665,9 @@
 -(void)signOut
 {
     [SPTracker trackUserSignedOut];
+    
+    // Remove WordPress token
+    [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
     
     [self.noteEditorViewController displayNote:nil];
     [self.tagListViewController reset];

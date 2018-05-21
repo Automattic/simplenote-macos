@@ -14,8 +14,10 @@
 #pragma mark Constants
 #pragma mark ====================================================================================
 
-NSString * const SPWelcomeNoteID                = @"welcomeNote-Mac";
+NSString * const SPWelcomeNoteID                    = @"welcomeNote-Mac";
 
-NSString * const SPSimplenotePublishURL         = @"http://simp.ly/publish/";
-NSString * const SPSimplenoteForgotPasswordURL  = @"https://app.simplenote.com/forgot/";
-NSString * const SPSimplenoteLogoImageName      = @"logo";
+NSString * const SPSimplenotePublishURL             = @"http://simp.ly/publish/";
+NSString * const SPSimplenoteForgotPasswordURL      = @"https://app.simplenote.com/forgot/";
+NSString * const SPSimplenoteLogoImageName          = @"logo";
+NSString * const SPWPServiceName                    = @"simplenote-wpcom";
+NSString * const SPSignInErrorNotificationName      = @"SPSignInErrorNotificationName";
