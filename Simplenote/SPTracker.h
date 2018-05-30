@@ -64,4 +64,9 @@
 + (void)trackUserSignedIn;
 + (void)trackUserSignedOut;
 
+#pragma mark - WP.com Sign In
++ (void)trackWPCCButtonPressed;
++ (void)trackWPCCLoginSucceeded;
++ (void)trackWPCCLoginFailed;
+
 @end

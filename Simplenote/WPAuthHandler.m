@@ -7,6 +7,7 @@
 #import <Foundation/Foundation.h>
 #import "WPAuthHandler.h"
 #import "SPConstants.h"
+#import "SPTracker.h"
 
 @implementation WPAuthHandler
 
@@ -37,6 +38,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:SPSignInErrorNotificationName
                                                             object:nil
                                                           userInfo:errorInfo];
+        [SPTracker trackWPCCLoginFailed];
         return false;
     }
     
@@ -46,6 +48,7 @@
         // States don't match!
         [[NSNotificationCenter defaultCenter] postNotificationName:SPSignInErrorNotificationName
                                                             object:nil];
+        [SPTracker trackWPCCLoginFailed];
         return nil;
     }
     
@@ -56,6 +59,7 @@
     if (success == NO) {
         [[NSNotificationCenter defaultCenter] postNotificationName:SPSignInErrorNotificationName
                                                             object:nil];
+        [SPTracker trackWPCCLoginFailed];
         return nil;
     }
     

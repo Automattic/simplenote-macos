@@ -74,6 +74,8 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     NSString *requestUrl = [NSString stringWithFormat:authUrl, config[@"WPCCClientID"], config[@"WPCCRedirectURL"], sessionState];
     NSString *encodedUrl = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedUrl]];
+    
+    [SPTracker trackWPCCButtonPressed];
 }
 
 - (IBAction)signInErrorAction:(NSNotification *)notification

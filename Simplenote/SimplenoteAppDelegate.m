@@ -282,6 +282,8 @@
             self.simperium.user = newUser;
             [self.simperium authenticationDidSucceedForUsername:newUser.email token:newUser.authToken];
         }
+        
+        [SPTracker trackWPCCLoginSucceeded];
     }
 }
 
