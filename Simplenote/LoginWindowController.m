@@ -70,8 +70,8 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     NSString *sessionState = [[NSUUID UUID] UUIDString];
     sessionState = [@"app-" stringByAppendingString:sessionState];
     [[NSUserDefaults standardUserDefaults] setObject:sessionState forKey:SPAuthSessionKey];
-    NSString *authUrl = @"https://public-api.wordpress.com/oauth2/authorize?response_type=code&scope=global&client_id=%@&redirect_uri=%@&state=%@";
-    NSString *requestUrl = [NSString stringWithFormat:authUrl, config[@"WPCCClientID"], config[@"WPCCRedirectURL"], sessionState];
+    
+    NSString *requestUrl = [NSString stringWithFormat:SPWPSignInAuthURL, config[@"WPCCClientID"], config[@"WPCCRedirectURL"], sessionState];
     NSString *encodedUrl = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedUrl]];
     

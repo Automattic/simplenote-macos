@@ -21,3 +21,4 @@ NSString * const SPSimplenoteForgotPasswordURL      = @"https://app.simplenote.c
 NSString * const SPSimplenoteLogoImageName          = @"logo";
 NSString * const SPWPServiceName                    = @"simplenote-wpcom";
 NSString * const SPSignInErrorNotificationName      = @"SPSignInErrorNotificationName";
+NSString * const SPWPSignInAuthURL                  = @"https://public-api.wordpress.com/oauth2/authorize?response_type=code&scope=global&client_id=%@&redirect_uri=%@&state=%@";
