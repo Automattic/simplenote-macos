@@ -43,7 +43,7 @@
 #pragma mark ====================================================================================
 
 #define kFirstLaunchKey					@"SPFirstLaunch"
-#define kMinimumNoteListSplit			250
+#define kMinimumNoteListSplit			240
 #define kMaximumNoteListSplit			384
 
 
@@ -445,7 +445,7 @@
     }
 	
     // List: Split should be dynamic
-    return MAX(minTagListWidth, self.tagListViewController.view.bounds.size.width) + kMinimumNoteListSplit;
+    return minTagListWidth + kMinimumNoteListSplit;
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex

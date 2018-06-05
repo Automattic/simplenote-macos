@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -610,7 +610,6 @@
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
                             <menuItem title="Toggle Sidebar" keyEquivalent="t" id="tkU-Gb-qGx">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 <connections>
                                     <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
                                 </connections>
@@ -679,7 +678,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="199" y="95" width="900" height="618"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
-            <value key="minSize" type="size" width="750" height="400"/>
+            <value key="minSize" type="size" width="720" height="400"/>
             <view key="contentView" id="372" customClass="SPBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -1284,7 +1283,7 @@
     <resources>
         <image name="button_new" width="22" height="22"/>
         <image name="icon_all_notes" width="22" height="22"/>
-        <image name="icon_preview" width="44" height="44"/>
+        <image name="icon_preview" width="22" height="22"/>
         <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>
