@@ -39,7 +39,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
         [view setFrame:frame];
     }
     
-    NSButton *wpccButton = [NSButton buttonWithTitle:@"Sign in with WordPress.com" target:self action:@selector(wpccSignInAction:)];
+    NSButton *wpccButton = [NSButton buttonWithTitle:NSLocalizedString(@"Sign in with WordPress.com", @"button title for wp.com sign in button") target:self action:@selector(wpccSignInAction:)];
     [wpccButton setImage:[NSImage imageNamed:@"icon_wp"]];
     [wpccButton setImagePosition:NSImageLeft];
     [wpccButton setBordered:NO];
@@ -52,7 +52,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     [colorString addAttribute:NSForegroundColorAttributeName value:textColor range:titleRange];
     [wpccButton setAttributedTitle:colorString];
     
-    CGFloat centerPosition = (rootView.frame.size.width / 2) - (SPLoginWPButtonWidth / 2);
+    int centerPosition = (rootView.frame.size.width / 2) - (SPLoginWPButtonWidth / 2);
     wpccButton.frame = CGRectMake(centerPosition, SPLoginAdditionalHeight, SPLoginWPButtonWidth, SPLoginAdditionalHeight);
     [rootView addSubview:wpccButton];
     
@@ -89,7 +89,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     [alert setAlertStyle:NSAlertStyleCritical];
     [alert setMessageText: NSLocalizedString(@"Couldn't Sign In", @"Alert dialog title displayed on sign in error")];
     [alert setInformativeText:errorMessage];
-    [alert addButtonWithTitle: @"OK"];
+    [alert addButtonWithTitle: NSLocalizedString(@"OK", @"OK button in error alert dialog")];
     [alert runModal];
 }
 
