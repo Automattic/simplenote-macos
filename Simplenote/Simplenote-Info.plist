@@ -26,6 +26,19 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1330</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>URL Identifier</key>
+			<string>Simplenote URL</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>simplenote</string>
+			</array>
+		</dict>
+	</array>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -50,7 +63,7 @@
 		<true/>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2014 Automattic. All rights reserved.</string>
+	<string>Copyright © 2018 Automattic. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

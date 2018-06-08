@@ -19,3 +19,6 @@ extern NSString * const SPWelcomeNoteID;
 extern NSString * const SPSimplenotePublishURL;
 extern NSString * const SPSimplenoteForgotPasswordURL;
 extern NSString * const SPSimplenoteLogoImageName;
+extern NSString * const SPWPServiceName;
+extern NSString * const SPSignInErrorNotificationName;
+extern NSString * const SPWPSignInAuthURL;
