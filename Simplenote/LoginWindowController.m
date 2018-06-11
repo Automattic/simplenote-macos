@@ -9,6 +9,7 @@
 #import "LoginWindowController.h"
 #import "SPConstants.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
 
 static CGFloat const SPLoginAdditionalHeight        = 40.0f;
 static CGFloat const SPLoginWPButtonWidth           = 270.0f;
@@ -59,11 +60,18 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(signInErrorAction:) name:SPSignInErrorNotificationName object:nil];
     
+    [self.window setDelegate:self];
+    
     return self;
 }
 
 - (IBAction)wpccSignInAction:(id)sender
 {
+    if (wpAuthWindowController != nil) {
+        [wpAuthWindowController.window makeKeyAndOrderFront:nil];
+        return;
+    }
+    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     
@@ -73,13 +81,20 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     
     NSString *requestUrl = [NSString stringWithFormat:SPWPSignInAuthURL, config[@"WPCCClientID"], config[@"WPCCRedirectURL"], sessionState];
     NSString *encodedUrl = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedUrl]];
+    wpAuthWindowController = [[WPAuthWindowController alloc] initWithWindowNibName:@"WPAuthWindowController"];
+    [wpAuthWindowController showWindow:self];
+    
+    [wpAuthWindowController loadUrlWithUrl:[NSURL URLWithString:encodedUrl]];
     
     [SPTracker trackWPCCButtonPressed];
 }
 
 - (IBAction)signInErrorAction:(NSNotification *)notification
 {
+    if (wpAuthWindowController != nil) {
+        [wpAuthWindowController close];
+    }
+    
     NSString *errorMessage = NSLocalizedString(@"An error was encountered while signing in.", @"Sign in error message");
     if (notification.userInfo != nil && notification.userInfo[@"errorString"]) {
         errorMessage = [notification.userInfo valueForKey:@"errorString"];
@@ -109,6 +124,12 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+    if (wpAuthWindowController != nil) {
+        [wpAuthWindowController close];
+    }
 }
 
 @end
