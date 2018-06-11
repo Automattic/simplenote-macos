@@ -9,7 +9,6 @@
 #import "LoginWindowController.h"
 #import "SPConstants.h"
 #import "SPTracker.h"
-#import "Simplenote-Swift.h"
 
 static CGFloat const SPLoginAdditionalHeight        = 40.0f;
 static CGFloat const SPLoginWPButtonWidth           = 270.0f;
