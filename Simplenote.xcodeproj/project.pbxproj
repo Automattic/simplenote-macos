@@ -45,6 +45,7 @@
 		376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		3777F9E820D19BE100580AF6 /* WPAuthWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765B88020CB2F31001A3269 /* WPAuthWindowController.swift */; };
+		3777F9E920D19D5200580AF6 /* WPAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3765B88120CB2F31001A3269 /* WPAuthWindowController.xib */; };
 		378345021D38624100D45D46 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
@@ -971,6 +972,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3777F9E920D19D5200580AF6 /* WPAuthWindowController.xib in Resources */,
 				B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
