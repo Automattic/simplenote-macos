@@ -44,6 +44,7 @@
 		376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
+		3777F9E820D19BE100580AF6 /* WPAuthWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765B88020CB2F31001A3269 /* WPAuthWindowController.swift */; };
 		378345021D38624100D45D46 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
@@ -1308,6 +1309,7 @@
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
 				466FFED517CC10A800399652 /* SPSplitView.m in Sources */,
 				B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
+				3777F9E820D19BE100580AF6 /* WPAuthWindowController.swift in Sources */,
 				466FFED617CC10A800399652 /* NSString+Styling.m in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
