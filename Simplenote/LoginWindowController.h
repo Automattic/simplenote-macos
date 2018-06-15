@@ -18,8 +18,6 @@
  *              extra functionality, Simplenote-Y.
  */
 
-@interface LoginWindowController : SPAuthenticationWindowController <NSWindowDelegate> {
-    WPAuthWindowController *wpAuthWindowController;
-}
-
+@interface LoginWindowController : SPAuthenticationWindowController <NSWindowDelegate>
+    @property (nonatomic, strong) WPAuthWindowController *wpAuthWindowController;
 @end

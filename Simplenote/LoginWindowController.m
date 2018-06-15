@@ -66,8 +66,8 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 - (IBAction)wpccSignInAction:(id)sender
 {
-    if (wpAuthWindowController != nil) {
-        [wpAuthWindowController.window makeKeyAndOrderFront:nil];
+    if (self.wpAuthWindowController != nil) {
+        [self.wpAuthWindowController.window makeKeyAndOrderFront:nil];
         return;
     }
     
@@ -80,18 +80,18 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     
     NSString *requestUrl = [NSString stringWithFormat:SPWPSignInAuthURL, config[@"WPCCClientID"], config[@"WPCCRedirectURL"], sessionState];
     NSString *encodedUrl = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    wpAuthWindowController = [[WPAuthWindowController alloc] initWithWindowNibName:@"WPAuthWindowController"];
-    [wpAuthWindowController showWindow:self];
+    self.wpAuthWindowController = [[WPAuthWindowController alloc] initWithWindowNibName:@"WPAuthWindowController"];
+    [self.wpAuthWindowController showWindow:self];
     
-    [wpAuthWindowController loadUrlWithUrl:[NSURL URLWithString:encodedUrl]];
+    [self.wpAuthWindowController loadUrlWithUrl:[NSURL URLWithString:encodedUrl]];
     
     [SPTracker trackWPCCButtonPressed];
 }
 
 - (IBAction)signInErrorAction:(NSNotification *)notification
 {
-    if (wpAuthWindowController != nil) {
-        [wpAuthWindowController close];
+    if (self.wpAuthWindowController != nil) {
+        [self.wpAuthWindowController close];
     }
     
     NSString *errorMessage = NSLocalizedString(@"An error was encountered while signing in.", @"Sign in error message");
@@ -126,8 +126,8 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
-    if (wpAuthWindowController != nil) {
-        [wpAuthWindowController close];
+    if (self.wpAuthWindowController != nil) {
+        [self.wpAuthWindowController close];
     }
 }
 

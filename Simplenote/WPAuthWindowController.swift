@@ -11,6 +11,6 @@ class WPAuthWindowController: NSWindowController {
     @IBOutlet var webView: WebView!
     
     @objc public func loadUrl(url: URL) {
-        webView.mainFrame.load(URLRequest.init(url: url));
+        webView.mainFrame.load(URLRequest(url: url))
     }
 }
