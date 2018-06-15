@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Simplenote-Swift.h"
 @import Simperium_OSX;
 
 
@@ -17,6 +18,6 @@
  *              extra functionality, Simplenote-Y.
  */
 
-@interface LoginWindowController : SPAuthenticationWindowController
-
+@interface LoginWindowController : SPAuthenticationWindowController <NSWindowDelegate>
+    @property (nonatomic, strong) WPAuthWindowController *wpAuthWindowController;
 @end

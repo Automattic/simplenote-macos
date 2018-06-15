@@ -39,9 +39,13 @@
 		373B50E020179DFE000568A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DC20179DFE000568A6 /* Extensions.swift */; };
 		375581C220292AA800529D79 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375581C120292AA800529D79 /* About.storyboard */; };
 		375581C320292AA800529D79 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375581C120292AA800529D79 /* About.storyboard */; };
+		3765B88220CB2F31001A3269 /* WPAuthWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765B88020CB2F31001A3269 /* WPAuthWindowController.swift */; };
+		3765B88320CB2F31001A3269 /* WPAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3765B88120CB2F31001A3269 /* WPAuthWindowController.xib */; };
 		376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
+		3777F9E820D19BE100580AF6 /* WPAuthWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765B88020CB2F31001A3269 /* WPAuthWindowController.swift */; };
+		3777F9E920D19D5200580AF6 /* WPAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3765B88120CB2F31001A3269 /* WPAuthWindowController.xib */; };
 		378345021D38624100D45D46 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
@@ -299,6 +303,8 @@
 		373B50DC20179DFE000568A6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		375581C120292AA800529D79 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simplenote-Bridging-Header.h"; sourceTree = "<group>"; };
+		3765B88020CB2F31001A3269 /* WPAuthWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPAuthWindowController.swift; sourceTree = "<group>"; };
+		3765B88120CB2F31001A3269 /* WPAuthWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WPAuthWindowController.xib; sourceTree = "<group>"; };
 		376EE3EA202B748E00E3812E /* SPAboutTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAboutTextField.swift; sourceTree = "<group>"; };
 		378345001D38624100D45D46 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-DB5.plist"; sourceTree = "<group>"; };
@@ -580,6 +586,8 @@
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
+				3765B88020CB2F31001A3269 /* WPAuthWindowController.swift */,
+				3765B88120CB2F31001A3269 /* WPAuthWindowController.xib */,
 			);
 			path = Simplenote;
 			sourceTree = "<group>";
@@ -954,6 +962,7 @@
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
+				3765B88320CB2F31001A3269 /* WPAuthWindowController.xib in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 			);
@@ -963,6 +972,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3777F9E920D19D5200580AF6 /* WPAuthWindowController.xib in Resources */,
 				B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
@@ -1212,6 +1222,7 @@
 				46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */,
 				46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */,
 				46DD162F17A1E9C10093678C /* SPTagTextField.m in Sources */,
+				3765B88220CB2F31001A3269 /* WPAuthWindowController.swift in Sources */,
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
 				46F4EAB217B1A5F800697EAD /* SPSplitView.m in Sources */,
 				B5A4EF2F1AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
@@ -1300,6 +1311,7 @@
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
 				466FFED517CC10A800399652 /* SPSplitView.m in Sources */,
 				B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
+				3777F9E820D19BE100580AF6 /* WPAuthWindowController.swift in Sources */,
 				466FFED617CC10A800399652 /* NSString+Styling.m in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
