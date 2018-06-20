@@ -53,6 +53,7 @@
 		37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */ = {isa = PBXBuildFile; fileRef = 37AE49C51FFEBB0A00FCB165 /* markdown-default.css */; };
 		37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 37AE49C61FFEBB0B00FCB165 /* markdown-dark.css */; };
 		37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = 37AE49C61FFEBB0B00FCB165 /* markdown-dark.css */; };
+		37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		4623ABDC1773740700CE0441 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABD61773740700CE0441 /* .gitignore */; };
@@ -160,6 +161,7 @@
 		B51374F71AC0591900825FCC /* SPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B51374F51AC0591900825FCC /* SPConstants.m */; };
 		B52849741A4086F500F588CC /* NSColor+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B52849731A4086F500F588CC /* NSColor+Simplenote.m */; };
 		B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B52849731A4086F500F588CC /* NSColor+Simplenote.m */; };
+		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		B543BEA419DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */; };
 		B543BEA519DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */; };
 		B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
@@ -310,6 +312,8 @@
 		37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMarkdownParser.m; sourceTree = "<group>"; };
 		37AE49C51FFEBB0A00FCB165 /* markdown-default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "markdown-default.css"; sourceTree = "<group>"; };
 		37AE49C61FFEBB0B00FCB165 /* markdown-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "markdown-dark.css"; sourceTree = "<group>"; };
+		37D4DD6820B3574C00C225EA /* WPAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPAuthHandler.m; sourceTree = "<group>"; };
+		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37E11C841FFD742F000D2AF5 /* Simplenote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simplenote-Bridging-Header.h"; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -541,6 +545,7 @@
 				B59848891BCDB961005EFBBE /* Trackers */,
 				71233DD814DC500C00139E61 /* Transformers */,
 				714BA65514D3260000A6CCC1 /* Custom Views */,
+				37E10E7A20B356E800864E43 /* Tools */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
 				37F742EA202A382400A47D3A /* AboutViewController.swift */,
 				26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */,
@@ -634,6 +639,15 @@
 				37AE49C51FFEBB0A00FCB165 /* markdown-default.css */,
 			);
 			path = CSS;
+			sourceTree = "<group>";
+		};
+		37E10E7A20B356E800864E43 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
+				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 		4623ABD51773740700CE0441 /* INAppStoreWindow */ = {
@@ -1175,6 +1189,7 @@
 				7154812A14E5AB6000CB8964 /* houdini_href_e.c in Sources */,
 				7154812B14E5AB6000CB8964 /* houdini_html_e.c in Sources */,
 				B52849741A4086F500F588CC /* NSColor+Simplenote.m in Sources */,
+				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				7154812C14E5AB6000CB8964 /* html_smartypants.c in Sources */,
 				7154812D14E5AB6000CB8964 /* html.c in Sources */,
 				7154812E14E5AB6000CB8964 /* markdown.c in Sources */,
@@ -1259,6 +1274,7 @@
 				B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */,
 				466FFEBD17CC10A800399652 /* html_smartypants.c in Sources */,
 				466FFEBE17CC10A800399652 /* html.c in Sources */,
+				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
 				466FFEBF17CC10A800399652 /* markdown.c in Sources */,
 				466FFEC017CC10A800399652 /* stack.c in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+TruncateToWidth.m in Sources */,
