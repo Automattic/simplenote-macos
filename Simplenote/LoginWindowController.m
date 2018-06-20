@@ -59,18 +59,11 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(signInErrorAction:) name:SPSignInErrorNotificationName object:nil];
     
-    [self.window setDelegate:self];
-    
     return self;
 }
 
 - (IBAction)wpccSignInAction:(id)sender
 {
-    if (self.wpAuthWindowController != nil) {
-        [self.wpAuthWindowController.window makeKeyAndOrderFront:nil];
-        return;
-    }
-    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     
@@ -80,20 +73,13 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     
     NSString *requestUrl = [NSString stringWithFormat:SPWPSignInAuthURL, config[@"WPCCClientID"], config[@"WPCCRedirectURL"], sessionState];
     NSString *encodedUrl = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    self.wpAuthWindowController = [[WPAuthWindowController alloc] initWithWindowNibName:@"WPAuthWindowController"];
-    [self.wpAuthWindowController showWindow:self];
-    
-    [self.wpAuthWindowController loadUrlWithUrl:[NSURL URLWithString:encodedUrl]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedUrl]];
     
     [SPTracker trackWPCCButtonPressed];
 }
 
 - (IBAction)signInErrorAction:(NSNotification *)notification
 {
-    if (self.wpAuthWindowController != nil) {
-        [self.wpAuthWindowController close];
-    }
-    
     NSString *errorMessage = NSLocalizedString(@"An error was encountered while signing in.", @"Sign in error message");
     if (notification.userInfo != nil && notification.userInfo[@"errorString"]) {
         errorMessage = [notification.userInfo valueForKey:@"errorString"];
@@ -123,12 +109,6 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-}
-
-- (void)windowWillClose:(NSNotification *)notification {
-    if (self.wpAuthWindowController != nil) {
-        [self.wpAuthWindowController close];
-    }
 }
 
 @end
