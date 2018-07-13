@@ -39,7 +39,10 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
         [view setFrame:frame];
     }
     
-    NSButton *wpccButton = [NSButton buttonWithTitle:NSLocalizedString(@"Sign in with WordPress.com", @"button title for wp.com sign in button") target:self action:@selector(wpccSignInAction:)];
+    NSButton *wpccButton = [[NSButton alloc] init];
+    [wpccButton setTitle:NSLocalizedString(@"Sign in with WordPress.com", @"button title for wp.com sign in button")];
+    [wpccButton setTarget:self];
+    [wpccButton setAction:@selector(wpccSignInAction:)];
     [wpccButton setImage:[NSImage imageNamed:@"icon_wp"]];
     [wpccButton setImagePosition:NSImageLeft];
     [wpccButton setBordered:NO];
