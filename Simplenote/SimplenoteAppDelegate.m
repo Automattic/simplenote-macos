@@ -456,7 +456,7 @@
 - (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex
 {
     // Tag List: Don't draw separators
-    return (dividerIndex == SPSplitViewSectionTags);
+    return (self.noteListViewController.view.isHidden || dividerIndex == SPSplitViewSectionTags);
 }
 
 - (NSRect)splitView:(NSSplitView *)splitView effectiveRect:(NSRect)proposedEffectiveRect forDrawnRect:(NSRect)drawnRect ofDividerAtIndex:(NSInteger)dividerIndex
@@ -706,6 +706,15 @@
     
     [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
     [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
+    [self.splitView adjustSubviews];
+}
+
+- (IBAction)focusModeAction:(id)sender {
+    [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
+    
+    CGFloat alphaValue = [self.noteListViewController.view isHidden] ? 0.5f : 1.0f;
+    [self.toolbar setButtonsAlpha:alphaValue];
+    
     [self.splitView adjustSubviews];
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,6 +37,7 @@
             <connections>
                 <outlet property="delegate" destination="1461" id="1520"/>
             </connections>
+            <point key="canvasLocation" x="-58" y="411"/>
         </menu>
         <menu id="1504" userLabel="Note List Menu">
             <items>
@@ -612,6 +613,11 @@
                             <menuItem title="Toggle Sidebar" keyEquivalent="t" id="tkU-Gb-qGx">
                                 <connections>
                                     <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Focus Mode" keyEquivalent="F" id="nrD-mL-W7Q">
+                                <connections>
+                                    <action selector="focusModeAction:" target="494" id="3q6-ha-uEK"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Enter Full Screen" keyEquivalent="f" id="1324">
@@ -1283,7 +1289,7 @@
     <resources>
         <image name="button_new" width="22" height="22"/>
         <image name="icon_all_notes" width="22" height="22"/>
-        <image name="icon_preview" width="22" height="22"/>
+        <image name="icon_preview" width="44" height="44"/>
         <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>

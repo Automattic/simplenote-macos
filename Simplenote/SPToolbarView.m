@@ -86,6 +86,21 @@
     [previewButton setEnabled:enabled];
 }
 
+- (void)setButtonsAlpha:(CGFloat)alpha {
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        context.duration = 0.8;
+        addButton.animator.alphaValue = alpha;
+        sidebarButton.animator.alphaValue = alpha;
+        self.actionButton.animator.alphaValue = alpha;
+        shareButton.animator.alphaValue = alpha;
+        trashButton.animator.alphaValue = alpha;
+        restoreButton.animator.alphaValue = alpha;
+        historyButton.animator.alphaValue = alpha;
+        previewButton.animator.alphaValue = alpha;
+    }
+    completionHandler:nil];
+}
+
 - (void)noNoteLoaded:(id)sender {
     [self enableButtons:NO];
 }
