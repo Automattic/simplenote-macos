@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -179,16 +179,16 @@
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-9Z-mC2">
                                                         <rect key="frame" x="-2" y="34" width="291" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Apps" id="Vts-Vv-eaA">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Simperium" id="Vts-Vv-eaA">
                                                             <font key="font" metaFont="system" size="18"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0vA-jV-sGY" customClass="SPAboutTextField" customModule="Simplenote" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="15" width="101" height="19"/>
+                                                        <rect key="frame" x="-2" y="15" width="251" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="simplenote.com" id="kIQ-Xe-i8e">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Add sync to your app" id="kIQ-Xe-i8e">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -320,12 +320,12 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="appsLabel" destination="0vA-jV-sGY" id="zZc-rd-YxQ"/>
                         <outlet property="blogLabel" destination="eGT-Zs-dGY" id="8qK-hu-Twv"/>
                         <outlet property="copyrightLabel" destination="7QO-fG-liO" id="FLV-mx-gvF"/>
                         <outlet property="githubLabel" destination="eoo-VW-fOF" id="sT5-oi-gMy"/>
                         <outlet property="hiringLabel" destination="NvX-jo-5we" id="exi-aU-Qny"/>
                         <outlet property="privacyLabel" destination="zLM-6J-YYw" id="8LB-Pe-71z"/>
+                        <outlet property="simperiumLabel" destination="0vA-jV-sGY" id="1J9-C6-x5T"/>
                         <outlet property="tosLabel" destination="Mvl-zm-Us5" id="k1s-pJ-Uzf"/>
                         <outlet property="twitterLabel" destination="qq6-gc-pbW" id="qja-Z4-q7a"/>
                         <outlet property="versionLabel" destination="NgJ-g1-nEA" id="K8y-wG-uAc"/>
