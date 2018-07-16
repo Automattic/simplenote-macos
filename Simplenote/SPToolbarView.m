@@ -89,16 +89,23 @@
 - (void)setButtonsAlpha:(CGFloat)alpha {
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         context.duration = 0.8;
+        self.actionButton.animator.alphaValue = alpha;
         addButton.animator.alphaValue = alpha;
         sidebarButton.animator.alphaValue = alpha;
-        self.actionButton.animator.alphaValue = alpha;
         shareButton.animator.alphaValue = alpha;
         trashButton.animator.alphaValue = alpha;
         restoreButton.animator.alphaValue = alpha;
         historyButton.animator.alphaValue = alpha;
         previewButton.animator.alphaValue = alpha;
+        searchField.animator.alphaValue = alpha;
     }
     completionHandler:nil];
+}
+
+- (void)configureForFocusMode:(BOOL)enabled {
+    [searchField setEnabled:!enabled];
+    
+    [self setButtonsAlpha:enabled? 0.5 : 1.0];
 }
 
 - (void)noNoteLoaded:(id)sender {

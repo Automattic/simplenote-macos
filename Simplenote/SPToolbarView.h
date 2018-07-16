@@ -35,6 +35,6 @@
 - (void)setFullscreen:(BOOL)fullscreen;
 - (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right;
 - (void)applyStyle;
-- (void)setButtonsAlpha:(CGFloat)alpha;
+- (void)configureForFocusMode:(BOOL)enabled;
 
 @end
