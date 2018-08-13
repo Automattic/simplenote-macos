@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,6 +37,7 @@
             <connections>
                 <outlet property="delegate" destination="1461" id="1520"/>
             </connections>
+            <point key="canvasLocation" x="-58" y="411"/>
         </menu>
         <menu id="1504" userLabel="Note List Menu">
             <items>
@@ -614,6 +615,11 @@
                                     <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Focus Mode" keyEquivalent="F" id="nrD-mL-W7Q">
+                                <connections>
+                                    <action selector="focusModeAction:" target="494" id="3q6-ha-uEK"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Enter Full Screen" keyEquivalent="f" id="1324">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
@@ -953,7 +959,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
+                                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -1050,6 +1056,7 @@
             <connections>
                 <outlet property="backgroundView" destination="372" id="C2S-D2-Vn5"/>
                 <outlet property="emptyTrashItem" destination="1256" id="1776"/>
+                <outlet property="focusModeMenuItem" destination="nrD-mL-W7Q" id="9KY-QY-jI5"/>
                 <outlet property="mainWindowItem" destination="vor-dd-sYt" id="jUG-qn-XNJ"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListToolbarButton" destination="1680" id="1703"/>
@@ -1283,7 +1290,7 @@
     <resources>
         <image name="button_new" width="22" height="22"/>
         <image name="icon_all_notes" width="22" height="22"/>
-        <image name="icon_preview" width="22" height="22"/>
+        <image name="icon_preview" width="44" height="44"/>
         <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>

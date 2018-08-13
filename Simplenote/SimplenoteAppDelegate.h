@@ -20,6 +20,7 @@
 
 @interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate> {
     IBOutlet NSMenu *themeMenu;
+    IBOutlet NSMenuItem *focusModeMenuItem;
     IBOutlet SPBackgroundView *backgroundView;
 }
 
