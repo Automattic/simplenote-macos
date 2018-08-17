@@ -196,6 +196,11 @@
     
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
+    
+    if (@available(macOS 10.14, *)) {
+        // No need for Theme menu on Mojave and beyond
+        [_switchThemeItem setHidden:YES];
+    }
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(applyStyle) name:VSThemeManagerThemeDidChangeNotification object:nil];
