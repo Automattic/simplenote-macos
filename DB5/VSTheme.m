@@ -135,7 +135,7 @@ static NSColor *colorWithHexString(NSString *hexString);
 
 - (NSColor *)colorForKey:(NSString *)key {
     
-    // Special overrides for macOS Mojave
+    // Special overrides for macOS Mojave and beyond
     if (@available(macOS 10.14, *)) {
         if ([key isEqualToString:@"dividerColor"]) {
             return NSColor.separatorColor;

@@ -19,7 +19,7 @@
 
 #define kSearchCollapsedMargin  62
 #define kSearchCollapsedWidth   120
-#define kSearchExpandedMargin   156
+#define kSearchExpandedMargin   141
 #define kSearchExpandedWidth    79
 #define kFocusModeOnAlpha       0.5f
 #define kFocusModeOffAlpha      1.0f
