@@ -134,7 +134,20 @@ static NSColor *colorWithHexString(NSString *hexString);
 
 
 - (NSColor *)colorForKey:(NSString *)key {
-
+    
+    // Special overrides for macOS Mojave
+    if (@available(macOS 10.14, *)) {
+        if ([key isEqualToString:@"dividerColor"]) {
+            return NSColor.separatorColor;
+        } else if ([key isEqualToString:@"tableViewBackgroundColor"]) {
+            return NSColor.controlBackgroundColor;
+        } else if ([key isEqualToString:@"textColor"] || [key isEqualToString:@"noteHeadlineFontColor"]) {
+            return NSColor.textColor;
+        } else if ([key isEqualToString:@"secondaryTextColor"] || [key isEqualToString:@"noteBodyFontPreviewColor"]) {
+            return NSColor.secondaryLabelColor;
+        }
+    }
+    
 	NSColor *cachedColor = [self.colorCache objectForKey:key];
 	if (cachedColor != nil)
 		return cachedColor;
