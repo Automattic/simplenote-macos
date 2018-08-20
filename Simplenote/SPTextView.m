@@ -31,8 +31,12 @@
     [super drawRect:dirtyRect];
     
     CGFloat viewWidth = self.frame.size.width;
-    CGFloat insetX = viewWidth > kMaxEditorWidth ? [self getAdjustedInsetX:viewWidth] : kMinEditorPadding;
+    CGFloat insetX = [self shouldCalculateInset:viewWidth] ? [self getAdjustedInsetX:viewWidth] : kMinEditorPadding;
     [self setTextContainerInset: NSMakeSize(insetX, kMinEditorPadding)];
+}
+
+- (BOOL)shouldCalculateInset: (CGFloat)viewWidth {
+    return viewWidth > kMaxEditorWidth && ![[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey];
 }
 
 - (CGFloat)getAdjustedInsetX: (CGFloat)viewWidth {

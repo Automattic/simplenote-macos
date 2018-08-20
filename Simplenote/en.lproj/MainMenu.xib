@@ -530,23 +530,37 @@
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>
-                            <menuItem title="Font Size" id="FPg-7U-5Cl">
+                            <menuItem title="Note Editor" id="oYc-2J-WVc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Font Size" systemMenu="font" id="SxH-2F-lin">
+                                <menu key="submenu" id="o2X-H9-mTR">
                                     <items>
-                                        <menuItem title="Bigger" keyEquivalent="+" id="NAj-hV-Pza">
-                                            <connections>
-                                                <action selector="adjustFontSizeAction:" target="1107" id="JOY-pV-iLX"/>
-                                            </connections>
+                                        <menuItem title="Font Size" id="FPg-7U-5Cl">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Font Size" systemMenu="font" id="SxH-2F-lin">
+                                                <items>
+                                                    <menuItem title="Bigger" keyEquivalent="+" id="NAj-hV-Pza">
+                                                        <connections>
+                                                            <action selector="adjustFontSizeAction:" target="1107" id="JOY-pV-iLX"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Smaller" tag="1" keyEquivalent="-" id="w30-fb-a2C">
+                                                        <connections>
+                                                            <action selector="adjustFontSizeAction:" target="1107" id="6sp-XJ-jIQ"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Reset" tag="2" keyEquivalent="0" id="oS8-Vc-yog">
+                                                        <connections>
+                                                            <action selector="adjustFontSizeAction:" target="1107" id="bbs-YW-9tp"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
-                                        <menuItem title="Smaller" tag="1" keyEquivalent="-" id="w30-fb-a2C">
+                                        <menuItem isSeparatorItem="YES" id="byP-HD-jjJ"/>
+                                        <menuItem title="Full Width" id="bBW-To-3v3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="adjustFontSizeAction:" target="1107" id="6sp-XJ-jIQ"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Reset" tag="2" keyEquivalent="0" id="oS8-Vc-yog">
-                                            <connections>
-                                                <action selector="adjustFontSizeAction:" target="1107" id="bbs-YW-9tp"/>
+                                                <action selector="toggleEditorWidth:" target="1107" id="6Mk-ep-n1J"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -1077,6 +1091,7 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
+                <outlet property="editorWidthItem" destination="bBW-To-3v3" id="w4S-Rh-4Sg"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="i3Y-k0-nZS"/>
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>

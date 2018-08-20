@@ -118,6 +118,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
     
+    BOOL fullWidthEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey];
+    [editorWidthItem setState:fullWidthEnabled ? NSControlStateValueOn : NSControlStateValueOff];
+    
     tagTokenField = [self.bottomBar addTagField];
     tagTokenField.delegate = self;
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
@@ -1110,6 +1113,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         [self loadMarkdownContent];
     }
 }
+
+- (IBAction)toggleEditorWidth:(id)sender {
+    [editorWidthItem setState:editorWidthItem.state == NSControlStateValueOn ? NSControlStateValueOff : NSControlStateValueOn];
+    BOOL fullWidthEnabled = editorWidthItem.state == NSControlStateValueOn;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:fullWidthEnabled forKey:kEditorWidthPreferencesKey];
+    [self.noteEditor setNeedsDisplay:YES];
+}
+
 - (void)loadMarkdownContent {
     NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:self.note.content];
     [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
