@@ -101,11 +101,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (void)awakeFromNib
 {
-    CGFloat insetX = 20;
-    CGFloat insetY = 20;
-    
-    [self.noteEditor setTextContainerInset: NSMakeSize(insetX, insetY)];
-    [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-insetX/2, self.noteEditor.frame.size.height-insetY/2)];
+    [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage newInstance];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     
