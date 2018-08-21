@@ -21,8 +21,6 @@
 #define kSearchCollapsedWidth   120
 #define kSearchExpandedMargin   156
 #define kSearchExpandedWidth    79
-#define kFocusModeOnAlpha       0.5f
-#define kFocusModeOffAlpha      1.0f
 #define kFocusModeDuration      0.8f
 
 @implementation SPToolbarView
@@ -89,26 +87,8 @@
     [previewButton setEnabled:enabled];
 }
 
-- (void)setButtonsAlpha:(CGFloat)alpha {
-    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-        context.duration = kFocusModeDuration;
-        self.actionButton.animator.alphaValue = alpha;
-        addButton.animator.alphaValue = alpha;
-        sidebarButton.animator.alphaValue = alpha;
-        shareButton.animator.alphaValue = alpha;
-        trashButton.animator.alphaValue = alpha;
-        restoreButton.animator.alphaValue = alpha;
-        historyButton.animator.alphaValue = alpha;
-        previewButton.animator.alphaValue = alpha;
-        searchField.animator.alphaValue = alpha;
-    }
-    completionHandler:nil];
-}
-
 - (void)configureForFocusMode:(BOOL)enabled {
     [searchField setEnabled:!enabled];
-    
-    [self setButtonsAlpha:enabled? kFocusModeOnAlpha : kFocusModeOffAlpha];
 }
 
 - (void)noNoteLoaded:(id)sender {
