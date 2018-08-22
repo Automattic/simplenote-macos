@@ -118,8 +118,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
     
-    BOOL fullWidthEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey];
-    [editorWidthItem setState:fullWidthEnabled ? NSControlStateValueOn : NSControlStateValueOff];
+    int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
+    [self updateLineLengthMenuForPosition:lineLengthPosition];
     
     tagTokenField = [self.bottomBar addTagField];
     tagTokenField.delegate = self;
@@ -1115,11 +1115,26 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 }
 
 - (IBAction)toggleEditorWidth:(id)sender {
-    [editorWidthItem setState:editorWidthItem.state == NSControlStateValueOn ? NSControlStateValueOff : NSControlStateValueOn];
-    BOOL fullWidthEnabled = editorWidthItem.state == NSControlStateValueOn;
+    NSMenuItem *item = (NSMenuItem *)sender;
+    if (item.state == NSOnState) {
+        return;
+    }
     
-    [[NSUserDefaults standardUserDefaults] setBool:fullWidthEnabled forKey:kEditorWidthPreferencesKey];
+    [self updateLineLengthMenuForPosition:item.tag];
     [self.noteEditor setNeedsDisplay:YES];
+}
+
+- (void)updateLineLengthMenuForPosition:(NSInteger)position
+{
+    for (NSMenuItem *menuItem in lineLengthMenu.itemArray) {
+        if (menuItem.tag == position) {
+            [menuItem setState:NSOnState];
+        } else {
+            [menuItem setState:NSOffState];
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setBool:position == 1 forKey:kEditorWidthPreferencesKey];
 }
 
 - (void)loadMarkdownContent {

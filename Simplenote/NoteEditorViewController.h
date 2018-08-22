@@ -52,6 +52,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSButton *shareButton;
     IBOutlet NSView *statusView;
     IBOutlet NSTextField *noNoteText;
+    IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
     IBOutlet NSMenuItem *modifiedItem;
@@ -61,7 +62,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *deleteItem;
     IBOutlet NSMenuItem *printItem;
     IBOutlet NSMenuItem *collaborateItem;
-    IBOutlet NSMenuItem *editorWidthItem;
 }
 
 @property (nonatomic, assign) IBOutlet SPTextView           *noteEditor;
