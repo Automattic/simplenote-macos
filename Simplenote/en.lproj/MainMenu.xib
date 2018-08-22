@@ -530,25 +530,6 @@
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>
-                            <menuItem title="Note Display" id="tl2-gz-YEA">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
-                                    <items>
-                                        <menuItem title="Comfy" id="Qaj-k2-NOz">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="previewLinesAction:" target="874" id="d4I-8r-5Lj"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Condensed" tag="1" id="tQC-gw-hdq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="previewLinesAction:" target="874" id="X0J-e4-qfh"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Note Editor" id="oYc-2J-WVc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" id="o2X-H9-mTR">
@@ -598,21 +579,47 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Sort Order" id="QGk-SS-2Jf">
+                            <menuItem title="Notes List" id="lqT-82-IW9">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Sort Order" systemMenu="font" id="YpJ-fs-p4p">
+                                <menu key="submenu" title="Notes List" id="L8Y-u8-nu8">
                                     <items>
-                                        <menuItem title="Date Updated" id="fep-x2-0FA">
+                                        <menuItem title="Note Display" id="tl2-gz-YEA">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="sortPrefAction:" target="874" id="KsM-qb-OZu"/>
-                                            </connections>
+                                            <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
+                                                <items>
+                                                    <menuItem title="Comfy" id="Qaj-k2-NOz">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="previewLinesAction:" target="874" id="d4I-8r-5Lj"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Condensed" tag="1" id="tQC-gw-hdq">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="previewLinesAction:" target="874" id="X0J-e4-qfh"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
-                                        <menuItem title="Alphabetical" tag="1" id="i8p-Xx-VpF">
+                                        <menuItem title="Sort Order" id="QGk-SS-2Jf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="sortPrefAction:" target="874" id="wYh-RZ-Guv"/>
-                                            </connections>
+                                            <menu key="submenu" title="Sort Order" systemMenu="font" id="YpJ-fs-p4p">
+                                                <items>
+                                                    <menuItem title="Date Updated" id="fep-x2-0FA">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="sortPrefAction:" target="874" id="KsM-qb-OZu"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Alphabetical" tag="1" id="i8p-Xx-VpF">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="sortPrefAction:" target="874" id="wYh-RZ-Guv"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
                                     </items>
                                 </menu>
