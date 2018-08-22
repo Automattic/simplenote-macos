@@ -40,7 +40,7 @@
 }
 
 - (CGFloat)getAdjustedInsetX: (CGFloat)viewWidth {
-    CGFloat adjustedInset = (viewWidth - kMaxEditorWidth) / 2;
+    NSInteger adjustedInset = (viewWidth - kMaxEditorWidth) / 2;
     
     return adjustedInset + kMinEditorPadding;
 }
