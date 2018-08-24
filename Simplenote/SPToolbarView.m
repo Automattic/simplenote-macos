@@ -88,7 +88,9 @@
 }
 
 - (void)configureForFocusMode:(BOOL)enabled {
-    [searchField setEnabled:!enabled];
+    [searchField setHidden:enabled];
+    [addButton setHidden:enabled];
+    [splitter setHidden:enabled];
 }
 
 - (void)noNoteLoaded:(id)sender {
