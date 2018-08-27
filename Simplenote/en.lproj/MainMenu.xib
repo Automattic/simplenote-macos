@@ -530,43 +530,96 @@
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>
-                            <menuItem title="Font Size" id="FPg-7U-5Cl">
+                            <menuItem title="Note Editor" id="oYc-2J-WVc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Font Size" systemMenu="font" id="SxH-2F-lin">
+                                <menu key="submenu" id="o2X-H9-mTR">
                                     <items>
-                                        <menuItem title="Bigger" keyEquivalent="+" id="NAj-hV-Pza">
-                                            <connections>
-                                                <action selector="adjustFontSizeAction:" target="1107" id="JOY-pV-iLX"/>
-                                            </connections>
+                                        <menuItem title="Font Size" id="FPg-7U-5Cl">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Font Size" systemMenu="font" id="SxH-2F-lin">
+                                                <items>
+                                                    <menuItem title="Bigger" keyEquivalent="+" id="NAj-hV-Pza">
+                                                        <connections>
+                                                            <action selector="adjustFontSizeAction:" target="1107" id="JOY-pV-iLX"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Smaller" tag="1" keyEquivalent="-" id="w30-fb-a2C">
+                                                        <connections>
+                                                            <action selector="adjustFontSizeAction:" target="1107" id="6sp-XJ-jIQ"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Reset" tag="2" keyEquivalent="0" id="oS8-Vc-yog">
+                                                        <connections>
+                                                            <action selector="adjustFontSizeAction:" target="1107" id="bbs-YW-9tp"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
-                                        <menuItem title="Smaller" tag="1" keyEquivalent="-" id="w30-fb-a2C">
-                                            <connections>
-                                                <action selector="adjustFontSizeAction:" target="1107" id="6sp-XJ-jIQ"/>
-                                            </connections>
+                                        <menuItem title="Line Length" id="P9P-ed-21W">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Line Length" id="JgX-db-Pi6">
+                                                <items>
+                                                    <menuItem title="Narrow" id="lMi-2X-rR9">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="toggleEditorWidth:" target="1107" id="1D7-pl-Fcz"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Full" tag="1" id="bBW-To-3v3">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="toggleEditorWidth:" target="1107" id="Wf5-Ne-3W8"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
-                                        <menuItem title="Reset" tag="2" keyEquivalent="0" id="oS8-Vc-yog">
-                                            <connections>
-                                                <action selector="adjustFontSizeAction:" target="1107" id="bbs-YW-9tp"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="byP-HD-jjJ"/>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Sort Order" id="QGk-SS-2Jf">
+                            <menuItem title="Notes List" id="lqT-82-IW9">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Sort Order" systemMenu="font" id="YpJ-fs-p4p">
+                                <menu key="submenu" title="Notes List" id="L8Y-u8-nu8">
                                     <items>
-                                        <menuItem title="Date Updated" id="fep-x2-0FA">
+                                        <menuItem title="Note Display" id="tl2-gz-YEA">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="sortPrefAction:" target="874" id="KsM-qb-OZu"/>
-                                            </connections>
+                                            <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
+                                                <items>
+                                                    <menuItem title="Comfy" id="Qaj-k2-NOz">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="previewLinesAction:" target="874" id="d4I-8r-5Lj"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Condensed" tag="1" id="tQC-gw-hdq">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="previewLinesAction:" target="874" id="X0J-e4-qfh"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
-                                        <menuItem title="Alphabetical" tag="1" id="i8p-Xx-VpF">
+                                        <menuItem title="Sort Order" id="QGk-SS-2Jf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="sortPrefAction:" target="874" id="wYh-RZ-Guv"/>
-                                            </connections>
+                                            <menu key="submenu" title="Sort Order" systemMenu="font" id="YpJ-fs-p4p">
+                                                <items>
+                                                    <menuItem title="Date Updated" id="fep-x2-0FA">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="sortPrefAction:" target="874" id="KsM-qb-OZu"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Alphabetical" tag="1" id="i8p-Xx-VpF">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="sortPrefAction:" target="874" id="wYh-RZ-Guv"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -590,36 +643,18 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Note Display" id="tl2-gz-YEA">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
-                                    <items>
-                                        <menuItem title="Comfy" id="Qaj-k2-NOz">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="previewLinesAction:" target="874" id="d4I-8r-5Lj"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Condensed" tag="1" id="tQC-gw-hdq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="previewLinesAction:" target="874" id="X0J-e4-qfh"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
-                            <menuItem title="Toggle Sidebar" keyEquivalent="t" id="tkU-Gb-qGx">
-                                <connections>
-                                    <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Focus Mode" keyEquivalent="F" id="nrD-mL-W7Q">
                                 <connections>
                                     <action selector="focusModeAction:" target="494" id="3q6-ha-uEK"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Toggle Sidebar" keyEquivalent="t" id="tkU-Gb-qGx">
+                                <connections>
+                                    <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="cCS-jM-ycR"/>
                             <menuItem title="Enter Full Screen" keyEquivalent="f" id="1324">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
@@ -1077,7 +1112,10 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
+                <outlet property="editorWidthFullItem" destination="bBW-To-3v3" id="GmP-lr-AUQ"/>
+                <outlet property="editorWidthNarrowItem" destination="lMi-2X-rR9" id="8k8-KI-fR7"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="i3Y-k0-nZS"/>
+                <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>

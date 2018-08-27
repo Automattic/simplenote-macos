@@ -52,6 +52,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSButton *shareButton;
     IBOutlet NSView *statusView;
     IBOutlet NSTextField *noNoteText;
+    IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
     IBOutlet NSMenuItem *modifiedItem;
@@ -91,5 +92,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (IBAction)showSharePopover:(id)sender;
 - (IBAction)showVersionPopover:(id)sender;
 - (IBAction)toggleMarkdownView:(id)sender;
+- (IBAction)toggleEditorWidth:(id)sender;
 
 @end

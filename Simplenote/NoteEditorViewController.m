@@ -101,11 +101,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (void)awakeFromNib
 {
-    CGFloat insetX = 20;
-    CGFloat insetY = 20;
-    
-    [self.noteEditor setTextContainerInset: NSMakeSize(insetX, insetY)];
-    [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-insetX/2, self.noteEditor.frame.size.height-insetY/2)];
+    [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage newInstance];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     
@@ -121,6 +117,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 	for (NSString *key in preferences.allKeys) {
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
+    
+    int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
+    [self updateLineLengthMenuForPosition:lineLengthPosition];
     
     tagTokenField = [self.bottomBar addTagField];
     tagTokenField.delegate = self;
@@ -1114,6 +1113,30 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         [self loadMarkdownContent];
     }
 }
+
+- (IBAction)toggleEditorWidth:(id)sender {
+    NSMenuItem *item = (NSMenuItem *)sender;
+    if (item.state == NSOnState) {
+        return;
+    }
+    
+    [self updateLineLengthMenuForPosition:item.tag];
+    [self.noteEditor setNeedsDisplay:YES];
+}
+
+- (void)updateLineLengthMenuForPosition:(NSInteger)position
+{
+    for (NSMenuItem *menuItem in lineLengthMenu.itemArray) {
+        if (menuItem.tag == position) {
+            [menuItem setState:NSOnState];
+        } else {
+            [menuItem setState:NSOffState];
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setBool:position == 1 forKey:kEditorWidthPreferencesKey];
+}
+
 - (void)loadMarkdownContent {
     NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:self.note.content];
     [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];

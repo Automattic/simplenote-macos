@@ -10,6 +10,7 @@
 #import <hoedown/html.h>
 #import "VSTheme+Simplenote.h"
 #import "VSThemeManager.h"
+#import "SPTextView.h"
 
 @implementation SPMarkdownParser
 
@@ -40,6 +41,12 @@
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
             "<link href=\"https://fonts.googleapis.com/css?family=Noto+Serif\" rel=\"stylesheet\">"
             "<style media=\"screen\" type=\"text/css\">\n";
+    
+    // Limit the editor width if the full width setting is not enabled
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey]) {
+        headerStart = [headerStart stringByAppendingString:@".note-detail-markdown { max-width:750px;margin:0 auto; }"];
+    }
+    
     NSString *headerEnd = @"</style></head><body><div class=\"note-detail-markdown\"><div id=\"static_content\">";
     
     VSTheme *theme = [[VSThemeManager sharedManager] theme];

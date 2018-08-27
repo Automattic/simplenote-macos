@@ -8,6 +8,8 @@
 
 #import "SPTextView.h"
 
+#define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width
+
 @implementation SPTextView
 
 // Workaround NSTextView not allowing clicks
@@ -23,6 +25,24 @@
 - (id<SPTextViewDelegate>)textViewDelegate
 {
     return [self.delegate conformsToProtocol:@protocol(SPTextViewDelegate)] ? (id<SPTextViewDelegate>)self.delegate : nil;
+}
+
+- (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+    
+    CGFloat viewWidth = self.frame.size.width;
+    CGFloat insetX = [self shouldCalculateInset:viewWidth] ? [self getAdjustedInsetX:viewWidth] : kMinEditorPadding;
+    [self setTextContainerInset: NSMakeSize(insetX, kMinEditorPadding)];
+}
+
+- (BOOL)shouldCalculateInset: (CGFloat)viewWidth {
+    return viewWidth > kMaxEditorWidth && ![[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey];
+}
+
+- (CGFloat)getAdjustedInsetX: (CGFloat)viewWidth {
+    CGFloat adjustedInset = (viewWidth - kMaxEditorWidth) / 2;
+    
+    return lroundf(adjustedInset) + kMinEditorPadding;
 }
 
 @end
