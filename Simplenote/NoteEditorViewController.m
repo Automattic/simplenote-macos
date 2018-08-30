@@ -993,7 +993,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 		[theNoteEditor addObserver:self forKeyPath:property options:NSKeyValueObservingOptionNew context:nil];
 	}
 	
+    [self setNoteEditorSelectionColors];
+    
 	_noteEditor = theNoteEditor;
+}
+
+- (void)setNoteEditorSelectionColors
+{
+    [self.noteEditor setSelectedTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [self.theme colorForKey:@"selectionBackgroundColor"], NSBackgroundColorAttributeName,
+      [self.theme colorForKey:@"selectionTextColor"], NSForegroundColorAttributeName,
+      nil]];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -1046,6 +1057,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
+    
+    [self setNoteEditorSelectionColors];
 
     [self.bottomBar applyStyle];
     [self.bottomBar setNeedsDisplay:YES];

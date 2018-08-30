@@ -332,6 +332,10 @@
 		<string>13</string>
 		<key>shareUrlBackgroundColor</key>
 		<string>555555</string>
+		<key>selectionTextColor</key>
+		<string>ffffff</string>
+		<key>selectionBackgroundColor</key>
+		<string>000000</string>
 	</dict>
 	<key>Dark</key>
 	<dict>
@@ -473,6 +477,10 @@
 		<string>000000</string>
 		<key>shareUrlBackgroundColor</key>
 		<string>DDDDDD</string>
+		<key>selectionTextColor</key>
+		<string>000000</string>
+		<key>selectionBackgroundColor</key>
+		<string>ffffff</string>
 	</dict>
 </dict>
 </plist>
