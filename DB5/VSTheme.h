@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 @property (nonatomic, weak) VSTheme *parentTheme; /*can inherit*/
 
 - (BOOL)boolForKey:(NSString *)key;
+- (BOOL)isMojaveDarkMode;
 - (NSString *)stringForKey:(NSString *)key;
 - (NSInteger)integerForKey:(NSString *)key;
 - (NSNumber *)numberForKey:(NSString *)key;
@@ -40,7 +41,6 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 - (NSTimeInterval)timeIntervalForKey:(NSString *)key;
 
 - (VSTextCaseTransform)textCaseTransformForKey:(NSString *)key; /*lowercase or uppercase -- returns VSTextCaseTransformNone*/
-
 
 - (void)clearCaches;
 
