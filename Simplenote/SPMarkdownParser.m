@@ -57,8 +57,8 @@
         bgHexColor = theme.isMojaveDarkMode ? @"1e1e1e" : @"FFFFFF";
         textHexColor = theme.isMojaveDarkMode ? @"FFFFFF" : @"000000";
     } else {
-        bgHexColor = theme.isDark ? @"2d3034" : @"dbdee0";
-        textHexColor = theme.isDark ? @"FFFFFF" : @"2d3034";
+        bgHexColor = theme.isDark ? @"2d3034" : @"FFFFFF";
+        textHexColor = theme.isDark ? @"dbdee0" : @"2d3034";
     }
     
     headerStart = [headerStart stringByAppendingString:[NSString stringWithFormat:colorCSS, bgHexColor, textHexColor]];
