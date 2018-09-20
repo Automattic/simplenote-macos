@@ -19,7 +19,7 @@
 
 #define kSearchCollapsedMargin  62
 #define kSearchCollapsedWidth   120
-#define kSearchExpandedMargin   156
+#define kSearchExpandedMargin   141
 #define kSearchExpandedWidth    79
 #define kFocusModeDuration      0.8f
 
@@ -165,6 +165,11 @@
 }
 
 - (void)applySearchBoxStyle {
+    if (@available(macOS 10.14, *)) {
+        // Dark theme finally well supported in Mojave! No tweaks needed.
+        return;
+    }
+    
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
     
