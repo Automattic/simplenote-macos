@@ -172,6 +172,16 @@ static NSColor *colorWithHexString(NSString *hexString);
     return nil;
 }
 
+- (BOOL)isMojaveDarkMode {
+    if (@available(macOS 10.14, *)) {
+        NSString *interfaceStyle = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+        
+        return interfaceStyle != nil && [interfaceStyle isEqualToString:@"Dark"];
+    } else {
+        return NO;
+    }
+}
+
 - (NSEdgeInsets)edgeInsetsForKey:(NSString *)key {
 
 	CGFloat left = [self floatForKey:[key stringByAppendingString:@"Left"]];
