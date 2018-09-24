@@ -863,7 +863,6 @@
 				B5E372CA1896F010005EE097 /* CopyFiles */,
 				B51D44911945FEFD00496889 /* ShellScript */,
 				516D51EC5AEF5EB2EB2C1DE7 /* [CP] Embed Pods Frameworks */,
-				781EA4180C752C2D48538CA0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -887,7 +886,6 @@
 				B51D44821945EF7900496889 /* ShellScript */,
 				B58CF20C1A8121F000A9B4D2 /* ShellScript */,
 				D70F19DBCBC35255BE560AC0 /* [CP] Embed Pods Frameworks */,
-				BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1012,21 +1010,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		781EA4180C752C2D48538CA0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8346CBC02BCE6435853FB902 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1083,21 +1066,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "FABRIC_API_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricApiKey);\nFABRIC_BUILD_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricBuildKey);\n\nif [ ${FABRIC_API_KEY} == \"not-required\" ] || [ ${FABRIC_BUILD_KEY} == \"not-required\" ]; then\necho \"Could not find fabric keys. Check your config.plist.\";\nexit 0;\nfi\n\n./External/Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_KEY}\n";
-		};
-		BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		D70F19DBCBC35255BE560AC0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
