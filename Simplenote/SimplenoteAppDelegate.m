@@ -874,10 +874,15 @@
             return nil;
         }
     }
-    
+
+    NSDictionary *options = @{
+      NSMigratePersistentStoresAutomaticallyOption: @(YES),
+      NSInferMappingModelAutomaticallyOption: @(YES)
+    };
+
     NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"Simplenote.storedata"];
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
+    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:options error:&error]) {
         [[NSApplication sharedApplication] presentError:error];
         return nil;
     }
