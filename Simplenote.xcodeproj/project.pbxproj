@@ -202,6 +202,10 @@
 		B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5EC0C241D0EEF5700818458 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
+		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
+		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
+		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
+		B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
 		B5FA829B1B977A1F00082296 /* SPTextLinkifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */; };
 		B5FA829C1B977A1F00082296 /* SPTextLinkifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
@@ -438,6 +442,11 @@
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
 		B5E96B641BDE732500D707F5 /* LoginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
 		B5E96B651BDE732500D707F5 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
+		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
+		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Simperium+Simplenote.m"; sourceTree = "<group>"; };
+		B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Simperium+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82991B977A1F00082296 /* SPTextLinkifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTextLinkifier.h; sourceTree = "<group>"; };
 		B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTextLinkifier.m; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
@@ -672,6 +681,8 @@
 				2614F1DC1405A0B10031AE94 /* Note.m */,
 				2614F1DD1405A0B10031AE94 /* Tag.h */,
 				2614F1DE1405A0B10031AE94 /* Tag.m */,
+				B5F04FCA215949FD004B1AA0 /* Preferences.h */,
+				B5F04FCB215949FD004B1AA0 /* Preferences.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -707,6 +718,8 @@
 				B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */,
 				378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */,
 				378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */,
+				B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */,
+				B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1149,6 +1162,7 @@
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */,
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				7154812814E5AB6000CB8964 /* autolink.c in Sources */,
 				7154812914E5AB6000CB8964 /* buffer.c in Sources */,
@@ -1172,6 +1186,7 @@
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */,
 				4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */,
+				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
@@ -1234,6 +1249,7 @@
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				466FFEBA17CC10A800399652 /* buffer.c in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
 				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				466FFEBB17CC10A800399652 /* houdini_href_e.c in Sources */,
 				466FFEBC17CC10A800399652 /* houdini_html_e.c in Sources */,
@@ -1257,6 +1273,7 @@
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				466FFECC17CC10A800399652 /* INAppStoreWindow.m in Sources */,
 				466FFECD17CC10A800399652 /* INWindowButton.m in Sources */,
+				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				373B50E020179DFE000568A6 /* Extensions.swift in Sources */,
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
@@ -1648,10 +1665,11 @@
 		2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */,
 				2614F1E31405A0C60031AE94 /* Simplenote 2.xcdatamodel */,
 				2614F1E41405A0C60031AE94 /* Simplenote.xcdatamodel */,
 			);
-			currentVersion = 2614F1E31405A0C60031AE94 /* Simplenote 2.xcdatamodel */;
+			currentVersion = B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */;
 			path = Simplenote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
