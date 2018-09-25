@@ -231,11 +231,9 @@
 + (void)trackAutomatticEventWithName:(NSString *)name properties:(NSDictionary *)properties
 {
     if ([self isTrackingDisabled]) {
-        NSLog(@"## Disregarding Event %@", name);
         return;
     }
 
-    NSLog(@"## Sending Event %@", name);
     [[SPAutomatticTracker sharedInstance] trackEventWithName:name properties:properties];
 }
 
