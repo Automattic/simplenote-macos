@@ -202,6 +202,14 @@
 		B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5EC0C241D0EEF5700818458 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
+		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
+		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
+		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
+		B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
+		B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */; };
+		B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */; };
+		B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
+		B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
 		B5FA829B1B977A1F00082296 /* SPTextLinkifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */; };
 		B5FA829C1B977A1F00082296 /* SPTextLinkifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
@@ -438,6 +446,13 @@
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
 		B5E96B641BDE732500D707F5 /* LoginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
 		B5E96B651BDE732500D707F5 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
+		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
+		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Simperium+Simplenote.m"; sourceTree = "<group>"; };
+		B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Simperium+Simplenote.h"; sourceTree = "<group>"; };
+		B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Privacy.storyboard; sourceTree = "<group>"; };
+		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		B5FA82991B977A1F00082296 /* SPTextLinkifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTextLinkifier.h; sourceTree = "<group>"; };
 		B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTextLinkifier.m; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
@@ -548,6 +563,7 @@
 				37E10E7A20B356E800864E43 /* Tools */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
 				37F742EA202A382400A47D3A /* AboutViewController.swift */,
+				B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */,
 				26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */,
 				26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */,
 				B543BEA319DDEC1D0051D30C /* SPIntegrityHelper.h */,
@@ -588,6 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				375581C120292AA800529D79 /* About.storyboard */,
+				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
 				37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */,
 				378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */,
 				46A0BEB8175BFD540050E864 /* Simplenote.entitlements */,
@@ -672,6 +689,8 @@
 				2614F1DC1405A0B10031AE94 /* Note.m */,
 				2614F1DD1405A0B10031AE94 /* Tag.h */,
 				2614F1DE1405A0B10031AE94 /* Tag.m */,
+				B5F04FCA215949FD004B1AA0 /* Preferences.h */,
+				B5F04FCB215949FD004B1AA0 /* Preferences.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -707,6 +726,8 @@
 				B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */,
 				378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */,
 				378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */,
+				B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */,
+				B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -863,7 +884,6 @@
 				B5E372CA1896F010005EE097 /* CopyFiles */,
 				B51D44911945FEFD00496889 /* ShellScript */,
 				516D51EC5AEF5EB2EB2C1DE7 /* [CP] Embed Pods Frameworks */,
-				781EA4180C752C2D48538CA0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -887,7 +907,6 @@
 				B51D44821945EF7900496889 /* ShellScript */,
 				B58CF20C1A8121F000A9B4D2 /* ShellScript */,
 				D70F19DBCBC35255BE560AC0 /* [CP] Embed Pods Frameworks */,
-				BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -948,6 +967,7 @@
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				3712FCA21FE1ACAA008544AC /* Info.plist in Resources */,
 				4623ABDC1773740700CE0441 /* .gitignore in Resources */,
+				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				4623ABDF1773740700CE0441 /* README.md in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
@@ -966,6 +986,7 @@
 				B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
+				B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
@@ -1010,21 +1031,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		781EA4180C752C2D48538CA0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8346CBC02BCE6435853FB902 /* [CP] Check Pods Manifest.lock */ = {
@@ -1083,21 +1089,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "FABRIC_API_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricApiKey);\nFABRIC_BUILD_KEY=$(defaults read ${SRCROOT}/Simplenote/config.plist FabricBuildKey);\n\nif [ ${FABRIC_API_KEY} == \"not-required\" ] || [ ${FABRIC_BUILD_KEY} == \"not-required\" ]; then\necho \"Could not find fabric keys. Check your config.plist.\";\nexit 0;\nfi\n\n./External/Fabric.framework/run ${FABRIC_API_KEY} ${FABRIC_BUILD_KEY}\n";
-		};
-		BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		D70F19DBCBC35255BE560AC0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1181,6 +1172,7 @@
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */,
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				7154812814E5AB6000CB8964 /* autolink.c in Sources */,
 				7154812914E5AB6000CB8964 /* buffer.c in Sources */,
@@ -1204,6 +1196,7 @@
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */,
 				4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */,
+				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
@@ -1228,6 +1221,7 @@
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
+				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1266,6 +1260,7 @@
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				466FFEBA17CC10A800399652 /* buffer.c in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
 				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				466FFEBB17CC10A800399652 /* houdini_href_e.c in Sources */,
 				466FFEBC17CC10A800399652 /* houdini_html_e.c in Sources */,
@@ -1289,6 +1284,7 @@
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				466FFECC17CC10A800399652 /* INAppStoreWindow.m in Sources */,
 				466FFECD17CC10A800399652 /* INWindowButton.m in Sources */,
+				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				373B50E020179DFE000568A6 /* Extensions.swift in Sources */,
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
@@ -1313,6 +1309,7 @@
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
+				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1680,10 +1677,11 @@
 		2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */,
 				2614F1E31405A0C60031AE94 /* Simplenote 2.xcdatamodel */,
 				2614F1E41405A0C60031AE94 /* Simplenote.xcdatamodel */,
 			);
-			currentVersion = 2614F1E31405A0C60031AE94 /* Simplenote 2.xcdatamodel */;
+			currentVersion = B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */;
 			path = Simplenote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

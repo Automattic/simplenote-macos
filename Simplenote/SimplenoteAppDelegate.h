@@ -40,6 +40,7 @@
 - (IBAction)changeThemeAction:(id)sender;
 - (IBAction)ensureMainWindowIsVisible:(id)sender;
 - (IBAction)aboutAction:(id)sender;
+- (IBAction)privacyAction:(id)sender;
 
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;

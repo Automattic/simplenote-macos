@@ -4,3 +4,6 @@
 //
 
 #import "VSThemeManager.h"
+#import "SimplenoteAppDelegate.h"
+#import "Simperium+Simplenote.h"
+#import "SPConstants.h"
