@@ -47,7 +47,6 @@
     NSInteger indexOfBullet             = [lineString rangeOfString:stringToAppendToNewLine].location;
     NSString *insertionString           = nil;
     NSRange insertionRange              = lineRange;
-    NSRange newSelectedRange            = self.selectedRange;
     
     // Tab entered: Move the bullet along
     if (replacementText.isTabString) {
@@ -62,12 +61,10 @@
         }
         
         insertionString                 = [replacementText stringByAppendingString:lineString];
-        newSelectedRange.location       += replacementText.length;
         
     // Empty Line: Remove the bullet
     } else if (cleanLineString.length == 1) {
         insertionString                 = [NSString newLineString];
-        newSelectedRange.location       -= lineRange.length - 1;
         
     // Attempt to apply the bullet
     } else  {
@@ -89,7 +86,6 @@
         // Replace!
         insertionString                 = [[NSString newLineString] stringByAppendingString:stringToAppendToNewLine];
         insertionRange                  = replacementRange;
-        newSelectedRange.location       += insertionString.length;
     }
     
     // Apply the Replacements
@@ -97,9 +93,6 @@
     [storage beginEditing];
     [storage replaceCharactersInRange:insertionRange withString:insertionString];
     [storage endEditing];
-    
-    // Update the Selected Range (If needed)
-    [self setSelectedRange:newSelectedRange];
     
     // Signal that the text was changed!
     NSNotification *note = [NSNotification notificationWithName:NSTextDidChangeNotification object:nil];
