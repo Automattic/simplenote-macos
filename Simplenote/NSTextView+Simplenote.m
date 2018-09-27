@@ -59,7 +59,7 @@
         insertionString                 = [NSString.tabString stringByAppendingString:lineString];
         currentRange.location           += NSString.tabString.length;
         
-        // Empty Line: Remove the bullet
+    // Empty Line: Remove the bullet
     } else if (cleanLineString.length == 1) {
         insertionString                 = [NSString newLineString];
         currentRange.location           -= lineRange.length - 1;
