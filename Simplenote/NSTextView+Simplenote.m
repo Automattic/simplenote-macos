@@ -17,16 +17,12 @@
 
 @implementation NSTextView (Simplenote)
 
-- (BOOL)applyAutoBulletsWithReplacementText:(NSString *)replacementText replacementRange:(NSRange)replacementRange
+- (BOOL)applyAutoBulletsForTabPress: (BOOL)isTabPress
 {
-    // ReplacementText must be a TAB or NewLine
-    if (!replacementText.isNewlineString && !replacementText.isTabString) {
-        return NO;
-    }
-    
     // Determine what kind of bullet we should insert
+    NSRange currentRange                = self.selectedRange;
     NSString *rawString                 = self.string;
-    NSRange lineRange                   = [rawString lineRangeForRange:replacementRange];
+    NSRange lineRange                   = [rawString lineRangeForRange:currentRange];
     NSString *lineString                = [rawString substringWithRange:lineRange];
     NSString *cleanLineString           = [lineString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSArray *const bullets              = @[@"*", @"-", @"+"];
@@ -49,26 +45,26 @@
     NSRange insertionRange              = lineRange;
     
     // Tab entered: Move the bullet along
-    if (replacementText.isTabString) {
+    if (isTabPress) {
         // Proceed only if the user is entering Tab's right by the first one
         //  -   Something
         //     ^
         //
         NSInteger const IndentationIndexDelta = 2;
         
-        if (replacementRange.location != lineRange.location + indexOfBullet + IndentationIndexDelta) {
+        if (currentRange.location != lineRange.location + indexOfBullet + IndentationIndexDelta) {
             return NO;
         }
         
-        insertionString                 = [replacementText stringByAppendingString:lineString];
+        insertionString                 = [NSString.tabString stringByAppendingString:lineString];
+        currentRange.location           += NSString.tabString.length;
         
-    // Empty Line: Remove the bullet
+        // Empty Line: Remove the bullet
     } else if (cleanLineString.length == 1) {
         insertionString                 = [NSString newLineString];
-        
+        currentRange.location           -= lineRange.length - 1;
     // Attempt to apply the bullet
     } else  {
-        
         // Substring: [0 - Bullet]
         NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:stringToAppendToNewLine].location + 1);
         stringToAppendToNewLine         = [lineString substringWithRange:bulletPrefixRange];
@@ -85,14 +81,17 @@
         
         // Replace!
         insertionString                 = [[NSString newLineString] stringByAppendingString:stringToAppendToNewLine];
-        insertionRange                  = replacementRange;
+        insertionRange                  = currentRange;
+        currentRange.location           += insertionString.length;
     }
     
     // Apply the Replacements
-    NSTextStorage *storage = self.textStorage;
-    [storage beginEditing];
-    [storage replaceCharactersInRange:insertionRange withString:insertionString];
-    [storage endEditing];
+    [self insertText:insertionString replacementRange:insertionRange];
+    
+    // Update the Selected Range (If needed)
+    if (currentRange.length == 0) {
+        [self setSelectedRange:currentRange];
+    }
     
     // Signal that the text was changed!
     NSNotification *note = [NSNotification notificationWithName:NSTextDidChangeNotification object:nil];
