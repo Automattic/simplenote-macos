@@ -156,19 +156,27 @@
                       andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                     forEventClass:kInternetEventClass
                        andEventID:kAEGetURL];
+    
+    [self applyMojaveThemeOverrideIfNecessary];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-
     [SPTracker trackApplicationLaunched];
     
     [self configureWindow];
     [self hookWindowNotifications];
 
-    [self updateThemeMenuForPosition:[self.theme boolForKey:@"dark"] ? 1 : 0];
+    BOOL isDarkTheme = [self.theme boolForKey:@"dark"];
+    if (@available(macOS 10.14, *)) {
+        if (![[NSUserDefaults standardUserDefaults] stringForKey:VSThemeManagerThemePrefKey]) {
+            // Theme pref was never set, so default to system theme setting
+            isDarkTheme = [self.theme isMojaveDarkMode];
+        }
+    }
+    [self updateThemeMenuForPosition:isDarkTheme ? 1 : 0];
     [self applyStyle];
     
 	self.simperium = [self configureSimperium];
@@ -197,11 +205,6 @@
     
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
-    
-    if (@available(macOS 10.14, *)) {
-        // No need for Theme menu on Mojave and beyond
-        [_switchThemeItem setHidden:YES];
-    }
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(applyStyle) name:VSThemeManagerThemeDidChangeNotification object:nil];
@@ -781,6 +784,30 @@
     [self updateThemeMenuForPosition:[sender tag]];
 }
 
+- (void)applyMojaveThemeOverrideIfNecessary
+{
+    // Apply a theme override if necessary for >= 10.14
+    if (@available(macOS 10.14, *)) {
+        NSString *themeName = [[NSUserDefaults standardUserDefaults] objectForKey:VSThemeManagerThemePrefKey];
+        if (themeName) {
+            NSApplication *app = [NSApplication sharedApplication];
+            app.appearance = [NSAppearance appearanceNamed:
+                              [themeName isEqualToString:@"dark"] ?
+                                 NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
+        }
+    
+        // Delay needed here in order to properly adjust the stoplight buttons after theme changes
+        [self performSelector:@selector(adjustWindowButtons) withObject:nil afterDelay:0.1f];
+    }
+}
+
+// Adjusts the position of the 'stoplight' buttons in the window
+- (void)adjustWindowButtons
+{
+    SPWindow *customWindow = (SPWindow *)self.window;
+    [customWindow sp_layoutButtons];
+}
+
 - (void)updateThemeMenuForPosition:(NSInteger)position
 {
     for (NSMenuItem *menuItem in themeMenu.itemArray) {
@@ -794,6 +821,11 @@
 
 - (void)applyStyle
 {
+    if (@available(macOS 10.14, *)) {
+        [self applyMojaveThemeOverrideIfNecessary];
+        return;
+    }
+    
     self.textScrollView.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
     [backgroundView setNeedsDisplay:YES];
 
