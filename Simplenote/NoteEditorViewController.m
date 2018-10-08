@@ -440,9 +440,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)selector {
     if (selector == @selector(insertNewline:)) {
-        return [_noteEditor applyAutoBulletsForTabPress:NO];
+        return [_noteEditor applyAutoBulletsAfterReturnPressed];
     } else if (selector == @selector(insertTab:)) {
-        return [_noteEditor applyAutoBulletsForTabPress:YES];
+        return [_noteEditor applyAutoBulletsAfterTabPressed];
     }
     
     return NO;

@@ -17,7 +17,17 @@
 
 @implementation NSTextView (Simplenote)
 
-- (BOOL)applyAutoBulletsForTabPress: (BOOL)isTabPress
+- (BOOL)applyAutoBulletsAfterTabPressed
+{
+    return [self applyAutoBulletsForKeyPress:YES];
+}
+
+- (BOOL)applyAutoBulletsAfterReturnPressed
+{
+    return [self applyAutoBulletsForKeyPress:NO];
+}
+
+- (BOOL)applyAutoBulletsForKeyPress: (BOOL)isTabPress
 {
     // Determine what kind of bullet we should insert
     NSRange currentRange                = self.selectedRange;

@@ -10,7 +10,8 @@
 
 @interface NSTextView (Simplenote)
 
-- (BOOL)applyAutoBulletsForTabPress: (BOOL)isTabPress;
+- (BOOL)applyAutoBulletsAfterTabPressed;
+- (BOOL)applyAutoBulletsAfterReturnPressed;
 - (NSRange)visibleTextRange;
 
 @end
