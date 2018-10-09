@@ -10,7 +10,8 @@
 
 @interface NSTextView (Simplenote)
 
-- (BOOL)applyAutoBulletsWithReplacementText:(NSString *)replacementText replacementRange:(NSRange)replacementRange;
+- (BOOL)applyAutoBulletsAfterTabPressed;
+- (BOOL)applyAutoBulletsAfterReturnPressed;
 - (NSRange)visibleTextRange;
 
 @end

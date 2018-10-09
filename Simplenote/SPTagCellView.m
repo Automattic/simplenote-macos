@@ -168,10 +168,15 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     
     if (self.imageView.image) {
         NSString *imageName = [self.imageView.image.name stringByReplacingOccurrencesOfString:@"_highlighted" withString:@""];
-        if ([self.theme boolForKey:@"dark"] && ![imageName sp_containsString:@"dark"]) {
-            imageName = [imageName stringByAppendingString:@"_dark"];
-        } else if (![self.theme boolForKey:@"dark"] && [imageName sp_containsString:@"_dark"]) {
-            imageName = [imageName stringByReplacingOccurrencesOfString:@"_dark" withString:@""];
+        
+        if (@available(macOS 10.14, *)) {
+            // No imageName customization needed >= 10.14
+        } else {
+            if ([self.theme boolForKey:@"dark"] && ![imageName sp_containsString:@"dark"]) {
+                imageName = [imageName stringByAppendingString:@"_dark"];
+            } else if (![self.theme boolForKey:@"dark"] && [imageName sp_containsString:@"_dark"]) {
+                imageName = [imageName stringByReplacingOccurrencesOfString:@"_dark" withString:@""];
+            }
         }
 
         self.image = [NSImage imageNamed:imageName];

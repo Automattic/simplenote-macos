@@ -17,16 +17,22 @@
 
 @implementation NSTextView (Simplenote)
 
-- (BOOL)applyAutoBulletsWithReplacementText:(NSString *)replacementText replacementRange:(NSRange)replacementRange
+- (BOOL)applyAutoBulletsAfterTabPressed
 {
-    // ReplacementText must be a TAB or NewLine
-    if (!replacementText.isNewlineString && !replacementText.isTabString) {
-        return NO;
-    }
-    
+    return [self applyAutoBulletsForKeyPress:YES];
+}
+
+- (BOOL)applyAutoBulletsAfterReturnPressed
+{
+    return [self applyAutoBulletsForKeyPress:NO];
+}
+
+- (BOOL)applyAutoBulletsForKeyPress: (BOOL)isTabPress
+{
     // Determine what kind of bullet we should insert
+    NSRange currentRange                = self.selectedRange;
     NSString *rawString                 = self.string;
-    NSRange lineRange                   = [rawString lineRangeForRange:replacementRange];
+    NSRange lineRange                   = [rawString lineRangeForRange:currentRange];
     NSString *lineString                = [rawString substringWithRange:lineRange];
     NSString *cleanLineString           = [lineString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSArray *const bullets              = @[@"*", @"-", @"+"];
@@ -47,31 +53,28 @@
     NSInteger indexOfBullet             = [lineString rangeOfString:stringToAppendToNewLine].location;
     NSString *insertionString           = nil;
     NSRange insertionRange              = lineRange;
-    NSRange newSelectedRange            = self.selectedRange;
     
     // Tab entered: Move the bullet along
-    if (replacementText.isTabString) {
+    if (isTabPress) {
         // Proceed only if the user is entering Tab's right by the first one
         //  -   Something
         //     ^
         //
         NSInteger const IndentationIndexDelta = 2;
         
-        if (replacementRange.location != lineRange.location + indexOfBullet + IndentationIndexDelta) {
+        if (currentRange.location != lineRange.location + indexOfBullet + IndentationIndexDelta) {
             return NO;
         }
         
-        insertionString                 = [replacementText stringByAppendingString:lineString];
-        newSelectedRange.location       += replacementText.length;
+        insertionString                 = [NSString.tabString stringByAppendingString:lineString];
+        currentRange.location           += NSString.tabString.length;
         
     // Empty Line: Remove the bullet
     } else if (cleanLineString.length == 1) {
         insertionString                 = [NSString newLineString];
-        newSelectedRange.location       -= lineRange.length - 1;
-        
+        currentRange.location           -= lineRange.length - 1;
     // Attempt to apply the bullet
     } else  {
-        
         // Substring: [0 - Bullet]
         NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:stringToAppendToNewLine].location + 1);
         stringToAppendToNewLine         = [lineString substringWithRange:bulletPrefixRange];
@@ -88,18 +91,17 @@
         
         // Replace!
         insertionString                 = [[NSString newLineString] stringByAppendingString:stringToAppendToNewLine];
-        insertionRange                  = replacementRange;
-        newSelectedRange.location       += insertionString.length;
+        insertionRange                  = currentRange;
+        currentRange.location           += insertionString.length;
     }
     
     // Apply the Replacements
-    NSTextStorage *storage = self.textStorage;
-    [storage beginEditing];
-    [storage replaceCharactersInRange:insertionRange withString:insertionString];
-    [storage endEditing];
+    [self insertText:insertionString replacementRange:insertionRange];
     
     // Update the Selected Range (If needed)
-    [self setSelectedRange:newSelectedRange];
+    if (currentRange.length == 0) {
+        [self setSelectedRange:currentRange];
+    }
     
     // Signal that the text was changed!
     NSNotification *note = [NSNotification notificationWithName:NSTextDidChangeNotification object:nil];

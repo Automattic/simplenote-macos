@@ -10,6 +10,7 @@
 #import <hoedown/html.h>
 #import "VSTheme+Simplenote.h"
 #import "VSThemeManager.h"
+#import "SPTextView.h"
 
 @implementation SPMarkdownParser
 
@@ -40,11 +41,30 @@
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
             "<link href=\"https://fonts.googleapis.com/css?family=Noto+Serif\" rel=\"stylesheet\">"
             "<style media=\"screen\" type=\"text/css\">\n";
-    NSString *headerEnd = @"</style></head><body><div class=\"note-detail-markdown\"><div id=\"static_content\">";
+    
+    // Limit the editor width if the full width setting is not enabled
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey]) {
+        headerStart = [headerStart stringByAppendingString:@".note-detail-markdown { max-width:750px;margin:0 auto; }"];
+    }
     
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    NSString *path = [self cssPathForTheme:theme];
     
+    // set main background and font color
+    NSString *colorCSS = @"html { background-color: #%@; color: #%@ }\n";
+    NSString *bgHexColor;
+    NSString *textHexColor;
+    if (@available(macOS 10.14, *)) {
+        bgHexColor = theme.isMojaveDarkMode ? @"1e1e1e" : @"FFFFFF";
+        textHexColor = theme.isMojaveDarkMode ? @"FFFFFF" : @"000000";
+    } else {
+        bgHexColor = theme.isDark ? @"2d3034" : @"FFFFFF";
+        textHexColor = theme.isDark ? @"dbdee0" : @"2d3034";
+    }
+    
+    headerStart = [headerStart stringByAppendingString:[NSString stringWithFormat:colorCSS, bgHexColor, textHexColor]];
+    
+    NSString *headerEnd = @"</style></head><body><div class=\"note-detail-markdown\"><div id=\"static_content\">";
+    NSString *path = [self cssPathForTheme:theme];
     NSString *css = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:path withExtension:nil]
                                              encoding:NSUTF8StringEncoding error:nil];
     
@@ -53,11 +73,11 @@
 
 + (NSString *)cssPathForTheme:(VSTheme *)theme
 {
-    if (theme.isDark) {
-        return @"markdown-dark.css";
-    } else {
-        return @"markdown-default.css";
+    if (@available(macOS 10.14, *)) {
+        return theme.isMojaveDarkMode ? @"markdown-dark.css" : @"markdown-default.css";
     }
+    
+    return theme.isDark ? @"markdown-dark.css" : @"markdown-default.css";
 }
 
 + (NSString *)htmlFooter
