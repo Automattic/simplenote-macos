@@ -438,12 +438,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 #pragma mark - Text Delegates
 
-- (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)range replacementString:(NSString *)text
-{
-    // Apply Autobullets if needed
-    BOOL appliedAutoBullets = [self.noteEditor applyAutoBulletsWithReplacementText:text replacementRange:range];
-
-    return !appliedAutoBullets;
+- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)selector {
+    if (selector == @selector(insertNewline:)) {
+        return [_noteEditor applyAutoBulletsAfterReturnPressed];
+    } else if (selector == @selector(insertTab:)) {
+        return [_noteEditor applyAutoBulletsAfterTabPressed];
+    }
+    
+    return NO;
 }
 
 - (void)textDidChange:(NSNotification *)notification
