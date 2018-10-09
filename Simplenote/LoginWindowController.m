@@ -19,6 +19,11 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 - (instancetype)init {
     self = [super init];
     
+    // We want the login window to always have the 'light' aqua appearance
+    if (@available(macOS 10.14, *)) {
+        self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+    }
+    
     // Sanity check for accessing the root view
     if (self.window.contentView.subviews.count < 1) {
         return self;
