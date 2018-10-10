@@ -16,6 +16,6 @@
 
 @interface SPWindow : INAppStoreWindow
 
-- (void)sp_layoutButtons;
+- (void)applyMojaveThemeOverrideIfNecessary;
 
 @end

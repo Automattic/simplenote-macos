@@ -156,8 +156,6 @@
                       andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                     forEventClass:kInternetEventClass
                        andEventID:kAEGetURL];
-    
-    [self applyMojaveThemeOverrideIfNecessary];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -777,30 +775,6 @@
     [self updateThemeMenuForPosition:[sender tag]];
 }
 
-- (void)applyMojaveThemeOverrideIfNecessary
-{
-    // Apply a theme override if necessary for >= 10.14
-    if (@available(macOS 10.14, *)) {
-        NSString *themeName = [[NSUserDefaults standardUserDefaults] objectForKey:VSThemeManagerThemePrefKey];
-        if (themeName) {
-            NSApplication *app = [NSApplication sharedApplication];
-            app.appearance = [NSAppearance appearanceNamed:
-                              [themeName isEqualToString:@"dark"] ?
-                                 NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
-        }
-    
-        // Delay needed here in order to properly adjust the stoplight buttons after theme changes
-        [self performSelector:@selector(adjustWindowButtons) withObject:nil afterDelay:0.1f];
-    }
-}
-
-// Adjusts the position of the 'stoplight' buttons in the window
-- (void)adjustWindowButtons
-{
-    SPWindow *customWindow = (SPWindow *)self.window;
-    [customWindow sp_layoutButtons];
-}
-
 - (void)updateThemeMenuForPosition:(NSInteger)position
 {
     for (NSMenuItem *menuItem in themeMenu.itemArray) {
@@ -815,7 +789,8 @@
 - (void)applyStyle
 {
     if (@available(macOS 10.14, *)) {
-        [self applyMojaveThemeOverrideIfNecessary];
+        SPWindow *window = (SPWindow *)self.window;
+        [window applyMojaveThemeOverrideIfNecessary];
         return;
     }
     
