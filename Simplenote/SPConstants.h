@@ -18,6 +18,7 @@ extern NSString * const SPWelcomeNoteID;
 
 extern NSString * const SPSimperiumPreferencesObjectKey;
 extern NSString * const SPAutomatticAnalyticLearnMoreURL;
+extern NSString * const SPAnalyticsEnabledPreferencesKey;
 
 extern NSString * const SPSimplenotePublishURL;
 extern NSString * const SPSimplenoteForgotPasswordURL;

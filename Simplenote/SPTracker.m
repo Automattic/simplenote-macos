@@ -10,7 +10,7 @@
 #import "SPAutomatticTracker.h"
 #import "SimplenoteAppDelegate.h"
 #import "Simperium+Simplenote.h"
-
+#import "SPConstants.h"
 
 @implementation SPTracker
 
@@ -230,7 +230,7 @@
 
 + (void)trackAutomatticEventWithName:(NSString *)name properties:(NSDictionary *)properties
 {
-    if ([self isTrackingDisabled]) {
+    if (![self isTrackingEnabled]) {
         return;
     }
 
@@ -240,12 +240,14 @@
 
 #pragma mark - Automattic Tracks Helpers
 
-+ (BOOL)isTrackingDisabled
++ (BOOL)isTrackingEnabled
 {
     Preferences *preferences = [[[SimplenoteAppDelegate sharedDelegate] simperium] preferencesObject];
     NSNumber *enabled = [preferences analytics_enabled];
+    
+    BOOL userEnabledLocally = [[NSUserDefaults standardUserDefaults] boolForKey:SPAnalyticsEnabledPreferencesKey];
 
-    return [enabled boolValue] == false;
+    return userEnabledLocally && [enabled boolValue] == true;
 }
 
 @end

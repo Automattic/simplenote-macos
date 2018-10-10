@@ -26,10 +26,12 @@ class PrivacyViewController: NSViewController {
     ///
     private var isAnalyticsEnabled: Bool {
         guard let simperium = SimplenoteAppDelegate.shared()?.simperium, let preferences = simperium.preferencesObject() else {
-            return true
+            return false
         }
 
-        return preferences.analytics_enabled?.boolValue ==  true
+        let userEnabledLocally = UserDefaults.standard.bool(forKey: SPAnalyticsEnabledPreferencesKey)
+        
+        return userEnabledLocally && preferences.analytics_enabled?.boolValue == true
     }
 
     /// Deinitializer!
@@ -80,6 +82,7 @@ extension PrivacyViewController {
 
         let isEnabled = shareEnabledButton.state == .on
         preferences.analytics_enabled = NSNumber(booleanLiteral: isEnabled)
+        UserDefaults.standard.set(isEnabled, forKey: SPAnalyticsEnabledPreferencesKey)
         simperium.save()
     }
 
