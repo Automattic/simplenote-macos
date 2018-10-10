@@ -169,14 +169,7 @@
     [self configureWindow];
     [self hookWindowNotifications];
 
-    BOOL isDarkTheme = [self.theme boolForKey:@"dark"];
-    if (@available(macOS 10.14, *)) {
-        if (![[NSUserDefaults standardUserDefaults] stringForKey:VSThemeManagerThemePrefKey]) {
-            // Theme pref was never set, so default to system theme setting
-            isDarkTheme = [self.theme isMojaveDarkMode];
-        }
-    }
-    [self updateThemeMenuForPosition:isDarkTheme ? 1 : 0];
+    [self updateThemeMenuForPosition:[[VSThemeManager sharedManager] isDarkMode] ? 1 : 0];
     [self applyStyle];
     
 	self.simperium = [self configureSimperium];
