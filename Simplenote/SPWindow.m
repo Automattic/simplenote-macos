@@ -7,7 +7,7 @@
 //
 
 #import "SPWindow.h"
-
+#import "VSThemeManager.h"
 
 
 #pragma mark ====================================================================================
@@ -29,6 +29,8 @@
         [self startListeningToNotifications];
     }
     
+    [self applyMojaveThemeOverrideIfNecessary];
+    
     return self;
 }
 
@@ -39,6 +41,8 @@
         [self setupTitle];
         [self startListeningToNotifications];
     }
+    
+    [self applyMojaveThemeOverrideIfNecessary];
     
     return self;
 }
@@ -179,6 +183,22 @@
         NSRect buttonFrame      = button.frame;
         buttonFrame.origin.y    = floor((self.titleBarHeight - buttonFrame.size.height) * 0.9f);
         button.frame            = buttonFrame;
+    }
+}
+
+- (void)applyMojaveThemeOverrideIfNecessary
+{
+    // Apply a theme override if necessary for >= 10.14
+    if (@available(macOS 10.14, *)) {
+        NSString *themeName = [[NSUserDefaults standardUserDefaults] objectForKey:VSThemeManagerThemePrefKey];
+        if (themeName) {
+            self.appearance = [NSAppearance appearanceNamed:
+                              [themeName isEqualToString:@"dark"] ?
+                                 NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
+        }
+        
+        // Delay needed here in order to properly adjust the stoplight buttons after theme changes
+        [self performSelector:@selector(sp_layoutButtons) withObject:nil afterDelay:0.1f];
     }
 }
 

@@ -162,13 +162,12 @@
 {
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-
     [SPTracker trackApplicationLaunched];
     
     [self configureWindow];
     [self hookWindowNotifications];
 
-    [self updateThemeMenuForPosition:[self.theme boolForKey:@"dark"] ? 1 : 0];
+    [self updateThemeMenuForPosition:[[VSThemeManager sharedManager] isDarkMode] ? 1 : 0];
     [self applyStyle];
     
 	self.simperium = [self configureSimperium];
@@ -197,11 +196,6 @@
     
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
-    
-    if (@available(macOS 10.14, *)) {
-        // No need for Theme menu on Mojave and beyond
-        [_switchThemeItem setHidden:YES];
-    }
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(applyStyle) name:VSThemeManagerThemeDidChangeNotification object:nil];
@@ -794,6 +788,12 @@
 
 - (void)applyStyle
 {
+    if (@available(macOS 10.14, *)) {
+        SPWindow *window = (SPWindow *)self.window;
+        [window applyMojaveThemeOverrideIfNecessary];
+        return;
+    }
+    
     self.textScrollView.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
     [backgroundView setNeedsDisplay:YES];
 
