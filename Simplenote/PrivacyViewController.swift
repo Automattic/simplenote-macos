@@ -26,10 +26,10 @@ class PrivacyViewController: NSViewController {
     ///
     private var isAnalyticsEnabled: Bool {
         guard let simperium = SimplenoteAppDelegate.shared()?.simperium, let preferences = simperium.preferencesObject() else {
-            return true
+            return false
         }
 
-        return preferences.analytics_enabled?.boolValue ==  true
+        return preferences.analytics_enabled?.boolValue == true
     }
 
     /// Deinitializer!
