@@ -18,7 +18,6 @@ NSString * const SPWelcomeNoteID                    = @"welcomeNote-Mac";
 
 NSString * const SPSimperiumPreferencesObjectKey    = @"preferences-key";
 NSString * const SPAutomatticAnalyticLearnMoreURL   = @"https://automattic.com/cookies";
-NSString * const SPAnalyticsEnabledPreferencesKey   = @"analytics-locally-enabled";
 
 NSString * const SPSimplenotePublishURL             = @"http://simp.ly/publish/";
 NSString * const SPSimplenoteForgotPasswordURL      = @"https://app.simplenote.com/forgot/";

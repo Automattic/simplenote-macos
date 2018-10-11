@@ -29,9 +29,7 @@ class PrivacyViewController: NSViewController {
             return false
         }
 
-        let userEnabledLocally = UserDefaults.standard.bool(forKey: SPAnalyticsEnabledPreferencesKey)
-        
-        return userEnabledLocally && preferences.analytics_enabled?.boolValue == true
+        return preferences.analytics_enabled?.boolValue == true
     }
 
     /// Deinitializer!
@@ -82,7 +80,6 @@ extension PrivacyViewController {
 
         let isEnabled = shareEnabledButton.state == .on
         preferences.analytics_enabled = NSNumber(booleanLiteral: isEnabled)
-        UserDefaults.standard.set(isEnabled, forKey: SPAnalyticsEnabledPreferencesKey)
         simperium.save()
     }
 
