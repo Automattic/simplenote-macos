@@ -10,4 +10,10 @@
 
 @dynamic analytics_enabled;
 
+- (void)awakeFromInsert
+{
+    [super awakeFromInsert];
+    self.analytics_enabled = @(false);
+}
+
 @end
