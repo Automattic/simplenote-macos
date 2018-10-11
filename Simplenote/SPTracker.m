@@ -229,7 +229,7 @@
 
 + (void)trackAutomatticEventWithName:(NSString *)name properties:(NSDictionary *)properties
 {
-    if (![self isTrackingDisabled]) {
+    if ([self isTrackingDisabled]) {
         return;
     }
 
