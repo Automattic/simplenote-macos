@@ -791,6 +791,7 @@
     if (@available(macOS 10.14, *)) {
         SPWindow *window = (SPWindow *)self.window;
         [window applyMojaveThemeOverrideIfNecessary];
+        [self.noteEditorViewController applyStyle];
         return;
     }
     
