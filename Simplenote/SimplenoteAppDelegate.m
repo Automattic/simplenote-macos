@@ -46,6 +46,7 @@
 #define kFirstLaunchKey					@"SPFirstLaunch"
 #define kMinimumNoteListSplit			240
 #define kMaximumNoteListSplit			384
+#define kDefaultThemeAppearanceTag      2
 
 
 #pragma mark ====================================================================================
@@ -167,7 +168,12 @@
     [self configureWindow];
     [self hookWindowNotifications];
 
-    [self updateThemeMenuForPosition:[[VSThemeManager sharedManager] isDarkMode] ? 1 : 0];
+    VSThemeManager *themeManager = [VSThemeManager sharedManager];
+    if ([themeManager isMojaveWithNoThemeSet]) {
+        [self updateThemeMenuForPosition:kDefaultThemeAppearanceTag];
+    } else {
+        [self updateThemeMenuForPosition:[[VSThemeManager sharedManager] isDarkMode] ? 1 : 0];
+    }
     [self applyStyle];
     
 	self.simperium = [self configureSimperium];
@@ -228,6 +234,16 @@
     [self.textViewParent addSubview:markdownView];
     self.noteEditorViewController.markdownView = markdownView;
     [markdownView setNavigationDelegate:self.noteEditorViewController];
+    
+    // Add the System Appearance menu item to the 'Theme' menu on Mojave or later
+    if (@available(macOS 10.14, *)) {
+        NSMenuItem *separatorItem = [NSMenuItem separatorItem];
+        [themeMenu addItem:separatorItem];
+        
+        NSMenuItem *systemDefaultItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"System Appearance", @"Menu item for using default macOS theme appearance.") action:@selector(changeThemeAction:) keyEquivalent:@""];
+        systemDefaultItem.tag = kDefaultThemeAppearanceTag;
+        [themeMenu addItem:systemDefaultItem];
+    }
 
     [self configureToolbar];
 }
@@ -767,11 +783,20 @@
     if (item.state == NSOnState) {
         return;
     }
-
-    NSString *newTheme = ([sender tag] == 0) ? @"default" : @"dark";
     
-    [SPTracker trackSettingsThemeUpdated:newTheme];
-    [[VSThemeManager sharedManager] swapTheme:newTheme];
+    if ([sender tag] == kDefaultThemeAppearanceTag) {
+        // Resetting to default macOS theme appearance
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:VSThemeManagerThemePrefKey];
+        if (@available(macOS 10.14, *)) {
+            BOOL isMojaveDarkMode = [[[VSThemeManager sharedManager] theme] isMojaveDarkMode];
+            self.window.appearance = [NSAppearance appearanceNamed: isMojaveDarkMode ? NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
+        }
+    } else {
+        NSString *newTheme = ([sender tag] == 0) ? @"default" : @"dark";
+        [SPTracker trackSettingsThemeUpdated:newTheme];
+        [[VSThemeManager sharedManager] swapTheme:newTheme];
+    }
+    
     [self updateThemeMenuForPosition:[sender tag]];
 }
 
