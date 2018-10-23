@@ -150,7 +150,7 @@
                         <action selector="addAction:" target="1107" id="1662"/>
                     </connections>
                 </button>
-                <button toolTip="Add Note" id="gjI-ik-EKJ" userLabel="Add">
+                <button toolTip="Toggle Focus Mode" id="gjI-ik-EKJ" userLabel="Focus Mode">
                     <rect key="frame" x="414" y="19" width="27" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="focus_mode" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="J3f-yC-n9P">
