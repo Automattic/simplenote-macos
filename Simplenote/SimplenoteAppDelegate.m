@@ -788,8 +788,9 @@
         // Resetting to default macOS theme appearance
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:VSThemeManagerThemePrefKey];
         if (@available(macOS 10.14, *)) {
-            BOOL isMojaveDarkMode = [[[VSThemeManager sharedManager] theme] isMojaveDarkMode];
-            self.window.appearance = [NSAppearance appearanceNamed: isMojaveDarkMode ? NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
+            SPWindow *window = (SPWindow *)self.window;
+            window.appearance = nil;
+            [window applyMojaveThemeOverrideIfNecessary];
         }
     } else {
         NSString *newTheme = ([sender tag] == 0) ? @"default" : @"dark";
