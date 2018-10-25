@@ -206,6 +206,7 @@
     // Restore collapsed state of tag list based on autosaved width
     BOOL collapsed                              = self.tagListViewController.view.frame.size.width <= 1;
     self.tagListViewController.view.hidden      = collapsed;
+    self.noteListViewController.view.hidden     = NO;
     self.window.releasedWhenClosed              = NO;
     
     [self.splitView adjustSubviews];
