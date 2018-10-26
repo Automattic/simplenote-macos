@@ -91,4 +91,12 @@ NSString *const VSThemeManagerThemePrefKey = @"VSThemeManagerThemePrefKey";
     return isDarkTheme;
 }
 
+- (BOOL)isMojaveWithNoThemeSet {
+    if (@available(macOS 10.14, *)) {
+        return [[NSUserDefaults standardUserDefaults] stringForKey:VSThemeManagerThemePrefKey] == nil;
+    }
+    
+    return NO;
+}
+
 @end
