@@ -79,4 +79,24 @@ NSString *const VSThemeManagerThemePrefKey = @"VSThemeManagerThemePrefKey";
     }
 }
 
+- (BOOL)isDarkMode {
+    BOOL isDarkTheme = [self.theme boolForKey:@"dark"];
+    if (@available(macOS 10.14, *)) {
+        if (![[NSUserDefaults standardUserDefaults] stringForKey:VSThemeManagerThemePrefKey]) {
+            // Theme pref was never set, so default to system theme setting
+            isDarkTheme = [self.theme isMojaveDarkMode];
+        }
+    }
+    
+    return isDarkTheme;
+}
+
+- (BOOL)isMojaveWithNoThemeSet {
+    if (@available(macOS 10.14, *)) {
+        return [[NSUserDefaults standardUserDefaults] stringForKey:VSThemeManagerThemePrefKey] == nil;
+    }
+    
+    return NO;
+}
+
 @end

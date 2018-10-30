@@ -22,6 +22,7 @@
 #define kSearchExpandedMargin   141
 #define kSearchExpandedWidth    79
 #define kFocusModeDuration      0.8f
+#define kLeftButtonMargin       20
 
 @implementation SPToolbarView
 
@@ -88,9 +89,17 @@
 }
 
 - (void)configureForFocusMode:(BOOL)enabled {
+    [sidebarButton setHidden:enabled];
     [searchField setHidden:enabled];
     [addButton setHidden:enabled];
     [splitter setHidden:enabled];
+    
+    // Adjust focus mode button position
+    CGRect frame = focusModeButton.frame;
+    frame.origin.x = enabled
+        ? kLeftButtonMargin
+        : splitter.frame.origin.x + splitter.frame.size.width + kLeftButtonMargin;
+    [focusModeButton setFrame:frame];
 }
 
 - (void)noNoteLoaded:(id)sender {
@@ -155,6 +164,7 @@
     
     [self moveView:addButton x:distance y:0];
     [self moveView:splitter x:distance y:0];
+    [self moveView:focusModeButton x:distance y:0];
 }
 
 #pragma mark - Theme

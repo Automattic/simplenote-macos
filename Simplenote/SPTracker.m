@@ -11,7 +11,6 @@
 #import "SimplenoteAppDelegate.h"
 #import "Simperium+Simplenote.h"
 
-
 @implementation SPTracker
 
 

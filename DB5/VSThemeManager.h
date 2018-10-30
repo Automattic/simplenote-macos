@@ -22,5 +22,7 @@ extern NSString *const VSThemeManagerThemePrefKey;
 - (VSThemeLoader *)themeLoader;
 
 - (void)swapTheme:(NSString *)theme;
+- (BOOL)isDarkMode;
+- (BOOL)isMojaveWithNoThemeSet;
 
 @end

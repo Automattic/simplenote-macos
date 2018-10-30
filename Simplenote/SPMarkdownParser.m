@@ -47,24 +47,24 @@
         headerStart = [headerStart stringByAppendingString:@".note-detail-markdown { max-width:750px;margin:0 auto; }"];
     }
     
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
+    BOOL isDarkMode = [VSThemeManager sharedManager].isDarkMode;
     
     // set main background and font color
     NSString *colorCSS = @"html { background-color: #%@; color: #%@ }\n";
     NSString *bgHexColor;
     NSString *textHexColor;
     if (@available(macOS 10.14, *)) {
-        bgHexColor = theme.isMojaveDarkMode ? @"1e1e1e" : @"FFFFFF";
-        textHexColor = theme.isMojaveDarkMode ? @"FFFFFF" : @"000000";
+        bgHexColor = isDarkMode     ? @"1e1e1e" : @"FFFFFF";
+        textHexColor = isDarkMode   ? @"FFFFFF" : @"000000";
     } else {
-        bgHexColor = theme.isDark ? @"2d3034" : @"FFFFFF";
-        textHexColor = theme.isDark ? @"dbdee0" : @"2d3034";
+        bgHexColor = isDarkMode     ? @"2d3034" : @"FFFFFF";
+        textHexColor = isDarkMode   ? @"dbdee0" : @"2d3034";
     }
     
     headerStart = [headerStart stringByAppendingString:[NSString stringWithFormat:colorCSS, bgHexColor, textHexColor]];
     
     NSString *headerEnd = @"</style></head><body><div class=\"note-detail-markdown\"><div id=\"static_content\">";
-    NSString *path = [self cssPathForTheme:theme];
+    NSString *path = [self cssPathForTheme:[[VSThemeManager sharedManager] theme]];
     NSString *css = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:path withExtension:nil]
                                              encoding:NSUTF8StringEncoding error:nil];
     
