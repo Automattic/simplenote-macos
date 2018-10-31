@@ -41,6 +41,7 @@
 - (IBAction)ensureMainWindowIsVisible:(id)sender;
 - (IBAction)aboutAction:(id)sender;
 - (IBAction)privacyAction:(id)sender;
+- (IBAction)helpAction:(id)sender;
 
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;

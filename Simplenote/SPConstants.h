@@ -25,3 +25,6 @@ extern NSString * const SPSimplenoteLogoImageName;
 extern NSString * const SPWPServiceName;
 extern NSString * const SPSignInErrorNotificationName;
 extern NSString * const SPWPSignInAuthURL;
+extern NSString * const SPHelpURL;
+extern NSString * const SPContactUsURL;
+extern NSString * const SPTwitterURL;
