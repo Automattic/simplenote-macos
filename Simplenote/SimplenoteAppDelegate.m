@@ -778,6 +778,13 @@
     [self.splitView adjustSubviews];
 }
 
+- (IBAction)helpAction:(id)sender
+{
+    NSArray *helpLinks = @[SPHelpURL, SPContactUsURL, SPTwitterURL];
+    NSMenuItem *menuItem = (NSMenuItem *)sender;
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: helpLinks[menuItem.tag]]];
+}
+
 - (IBAction)changeThemeAction:(id)sender
 {
     NSMenuItem *item = (NSMenuItem *)sender;
