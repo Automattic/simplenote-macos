@@ -120,8 +120,16 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 - (void)sortTags
 {
     BOOL sortAlphabetically = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
-    NSString *sortKey = sortAlphabetically ? @"name" : @"index";
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:YES];
+    NSSortDescriptor *sortDescriptor;
+    if (sortAlphabetically) {
+        sortDescriptor = [[NSSortDescriptor alloc]
+                          initWithKey:@"name"
+                          ascending:YES
+                          selector:@selector(localizedCaseInsensitiveCompare:)];
+    } else {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    }
+
     self.tagArray = [self.tagArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 
