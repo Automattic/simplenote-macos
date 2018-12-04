@@ -642,6 +642,19 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Tags List" id="4QQ-5e-Vxl">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Tags List" autoenablesItems="NO" id="76D-S0-1JD">
+                                    <items>
+                                        <menuItem title="Sort Alphabetically" id="axW-cz-MnF">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="sortAction:" target="1461" id="jQp-2i-tQh"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Theme" id="Jtf-4C-imn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
@@ -1209,6 +1222,7 @@
                 <outlet property="tableView" destination="1453" id="1469"/>
                 <outlet property="tagBox" destination="1731" id="690-39-pWj"/>
                 <outlet property="tagMenu" destination="1510" id="1517"/>
+                <outlet property="tagSortMenuItem" destination="axW-cz-MnF" id="vio-Yr-jb6"/>
                 <outlet property="view" destination="1452" id="1462"/>
             </connections>
         </viewController>

@@ -23,6 +23,7 @@
 #define kTrashRow 2
 #define kSeparatorRow 3
 #define kStartOfTagListRow 4
+#define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
 #define kRowHeight 30
 #define kSeparatorHeight 24
@@ -76,6 +77,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
     
+    BOOL alphaTagSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
+    [tagSortMenuItem setState:alphaTagSort ? NSOnState : NSOffState];
+    
     awake = YES;
 }
 
@@ -115,7 +119,17 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)sortTags
 {
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    BOOL sortAlphabetically = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
+    NSSortDescriptor *sortDescriptor;
+    if (sortAlphabetically) {
+        sortDescriptor = [[NSSortDescriptor alloc]
+                          initWithKey:@"name"
+                          ascending:YES
+                          selector:@selector(localizedCaseInsensitiveCompare:)];
+    } else {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
+    }
+
     self.tagArray = [self.tagArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 
@@ -180,7 +194,6 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     
     // Force Resync!
     [notesArrayController fetchWithRequest:nil merge:NO error:nil];
-    
 }
 
 - (void)selectTag:(Tag *)tagToSelect
@@ -416,6 +429,15 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     [[NSNotificationCenter defaultCenter] postNotificationName:kDidEmptyTrash object:self];
 }
 
+- (IBAction)sortAction:(id)sender
+{
+    NSMenuItem *item = (NSMenuItem *)sender;
+    [item setState:item.state == NSOnState ? NSOffState : NSOnState];
+    [[NSUserDefaults standardUserDefaults] setBool:item.state == NSOnState forKey:kTagSortPreferencesKey];
+    
+    [self loadTags];
+}
+
 
 #pragma mark - NSTableView delegate
 
@@ -602,7 +624,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 // Much of this code is overly generalized for this use case, but it works
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-    if ([rowIndexes firstIndex] < kStartOfTagListRow) {
+    BOOL isAlphaSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
+    if (isAlphaSort || [rowIndexes firstIndex] < kStartOfTagListRow) {
+        // Alphabetical tag sorting should not allow drag and drop
         return NO;
     }
     
