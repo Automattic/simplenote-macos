@@ -7,10 +7,26 @@
 //
 
 #import "SPTextView.h"
+#import "NSImage+Colorize.h"
+#import "NSMutableAttributedString+Styling.h"
+#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 #define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width
+NSString *const CheckListRegExPattern = @"^- (\\[([ |x])\\])";
+NSString *const MarkdownUnchecked = @"- [ ]";
+NSString *const MarkdownChecked = @"- [x]";
 
 @implementation SPTextView
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    /*SPClickGestureRecognizer *clickGestureRecognizer = [[SPClickGestureRecognizer alloc]
+                                                        initWithTarget:self
+                                                        action:@selector(onTextTapped:)];
+    [self addGestureRecognizer:clickGestureRecognizer];*/
+}
 
 // Workaround NSTextView not allowing clicks
 // http://stackoverflow.com/a/10308359/1379066
@@ -19,6 +35,11 @@
     // Notify delegate that this text view was clicked and then
     // handled the click natively as well.
     [[self textViewDelegate] didClickTextView:self];
+    
+    if ([self checkForChecklistClick:theEvent]) {
+        return;
+    }
+    
     [super mouseDown:theEvent];
 }
 
@@ -43,6 +64,66 @@
     CGFloat adjustedInset = (viewWidth - kMaxEditorWidth) / 2;
     
     return lroundf(adjustedInset) + kMinEditorPadding;
+}
+
+- (void)processChecklists {
+    VSTheme *theme = [[VSThemeManager sharedManager] theme];
+    if (self.attributedString.length == 0) {
+        return;
+    }
+    
+    [self.textStorage addChecklistAttachmentsForHeight:self.font.pointSize andColor:[theme colorForKey:@"textColor"] andVerticalOffset:-4.0f];
+}
+
+// Processes content of note editor, and replaces special string attachments with their plain
+// text counterparts. Currently supports markdown checklists.
+- (NSString *)getPlainTextContent {
+    NSMutableAttributedString *adjustedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedString];
+    // Replace checkbox images with their markdown syntax equivalent
+    [adjustedString enumerateAttribute:NSAttachmentAttributeName inRange:[adjustedString.string rangeOfString:adjustedString.string] options:0 usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+        if ([value isKindOfClass:[SPTextAttachment class]]) {
+            SPTextAttachment *attachment = (SPTextAttachment *)value;
+            NSString *checkboxMarkdown = attachment.isChecked ? MarkdownChecked : MarkdownUnchecked;
+            [adjustedString replaceCharactersInRange:range withString:checkboxMarkdown];
+        }
+    }];
+    
+    return adjustedString.string;
+}
+
+- (BOOL)checkForChecklistClick:(NSEvent *)event
+{
+    // Location of the tap in text-container coordinates
+    NSLayoutManager *layoutManager = self.layoutManager;
+    CGPoint location = [event locationInWindow];
+    NSPoint viewPoint = [self convertPoint:location fromView:nil];
+    viewPoint.x -= self.textContainerInset.width;
+    viewPoint.y -= self.textContainerInset.height;
+    
+    // Find the character that's been tapped on
+    NSUInteger characterIndex;
+    characterIndex = [layoutManager characterIndexForPoint:viewPoint
+                                           inTextContainer:self.textContainer
+                  fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    if (characterIndex < self.textStorage.length) {
+        NSRange range;
+        if ([self.attributedString attribute:NSAttachmentAttributeName atIndex:characterIndex effectiveRange:&range]) {
+            id value = [self.attributedString attribute:NSAttachmentAttributeName atIndex:characterIndex effectiveRange:&range];
+            // A checkbox was tapped!
+            SPTextAttachment *attachment = (SPTextAttachment *)value;
+            BOOL wasChecked = attachment.isChecked;
+            [attachment setIsChecked:!wasChecked];
+     
+            NSNotification *note = [NSNotification notificationWithName:NSTextDidChangeNotification object:nil];
+            [self.delegate textDidChange:note];
+            [self setNeedsLayout:YES];
+            
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 @end

@@ -35,12 +35,13 @@
     NSRange lineRange                   = [rawString lineRangeForRange:currentRange];
     NSString *lineString                = [rawString substringWithRange:lineRange];
     NSString *cleanLineString           = [lineString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSArray *const bullets              = @[@"*", @"-", @"+"];
+    NSString *textAttachmentCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment
+    NSArray *const bullets              = @[@"*", @"-", @"+", textAttachmentCode];
     NSString *stringToAppendToNewLine   = nil;
     
     for (NSString *bullet in bullets) {
         if ([cleanLineString hasPrefix:bullet]) {
-            stringToAppendToNewLine = bullet;
+            stringToAppendToNewLine = [bullet isEqualToString:textAttachmentCode] ? @"- [ ] " : bullet;
             break;
         }
     }
@@ -50,9 +51,11 @@
         return NO;
     }
     
+    NSUInteger bulletLength             = stringToAppendToNewLine.length;
     NSInteger indexOfBullet             = [lineString rangeOfString:stringToAppendToNewLine].location;
     NSString *insertionString           = nil;
     NSRange insertionRange              = lineRange;
+    BOOL isApplyingChecklist = [lineString hasPrefix:textAttachmentCode];
     
     // Tab entered: Move the bullet along
     if (isTabPress) {
@@ -72,16 +75,18 @@
     // Empty Line: Remove the bullet
     } else if (cleanLineString.length == 1) {
         insertionString                 = [NSString newLineString];
-        currentRange.location           -= lineRange.length - 1;
+        currentRange.location           -= lineRange.length - (isApplyingChecklist ? 1 :  bulletLength);
     // Attempt to apply the bullet
     } else  {
         // Substring: [0 - Bullet]
-        NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:stringToAppendToNewLine].location + 1);
-        stringToAppendToNewLine         = [lineString substringWithRange:bulletPrefixRange];
+        if (!isApplyingChecklist) {
+            NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:stringToAppendToNewLine].location + 1);
+            stringToAppendToNewLine         = [lineString substringWithRange:bulletPrefixRange];
+        }
         
         // Do we need to append a whitespace?
-        if (lineRange.length > indexOfBullet + 1) {
-            unichar bulletTrailing      = [lineString characterAtIndex:indexOfBullet + 1];
+        if (lineRange.length > indexOfBullet + bulletLength) {
+            unichar bulletTrailing      = [lineString characterAtIndex:indexOfBullet + bulletLength];
             
             if ([[NSCharacterSet whitespaceCharacterSet] characterIsMember:bulletTrailing]) {
                 NSString *trailing      = [NSString stringWithFormat:@"%c", bulletTrailing];
@@ -92,7 +97,7 @@
         // Replace!
         insertionString                 = [[NSString newLineString] stringByAppendingString:stringToAppendToNewLine];
         insertionRange                  = currentRange;
-        currentRange.location           += insertionString.length;
+        currentRange.location           += isApplyingChecklist ? 3 : insertionString.length;
     }
     
     // Apply the Replacements
