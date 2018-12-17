@@ -826,6 +826,7 @@
         SPWindow *window = (SPWindow *)self.window;
         [window applyMojaveThemeOverrideIfNecessary];
         [self.noteEditorViewController applyStyle];
+        [self.noteEditorViewController fixChecklistColoring];
         return;
     }
     

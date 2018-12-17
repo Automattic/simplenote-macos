@@ -1068,6 +1068,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self showViewController:self.publishViewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
 }
 
+// Reprocesses note checklists after switching themes, so the apply the correct color
+- (void)fixChecklistColoring
+{
+    self.noteEditor.string = [self.noteEditor getPlainTextContent];
+    [self.noteEditor processChecklists];
+}
+
 #pragma mark - NSButton Delegate Methods
 
 - (IBAction)showSharePopover:(id)sender

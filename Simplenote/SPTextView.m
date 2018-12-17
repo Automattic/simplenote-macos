@@ -9,6 +9,7 @@
 #import "SPTextView.h"
 #import "NSImage+Colorize.h"
 #import "NSMutableAttributedString+Styling.h"
+#import "NSImage+Colorize.h"
 #import "VSThemeManager.h"
 #import "Simplenote-Swift.h"
 
@@ -21,15 +22,6 @@ NSString *const MarkdownChecked = @"- [x]";
 NSInteger const ChecklistCursorAdjustment = 3;
 
 @implementation SPTextView
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    /*SPClickGestureRecognizer *clickGestureRecognizer = [[SPClickGestureRecognizer alloc]
-                                                        initWithTarget:self
-                                                        action:@selector(onTextTapped:)];
-    [self addGestureRecognizer:clickGestureRecognizer];*/
-}
 
 // Workaround NSTextView not allowing clicks
 // http://stackoverflow.com/a/10308359/1379066
@@ -75,7 +67,16 @@ NSInteger const ChecklistCursorAdjustment = 3;
         return;
     }
     
-    [self.textStorage addChecklistAttachmentsForHeight:self.font.pointSize andColor:[theme colorForKey:@"textColor"] andVerticalOffset:-4.0f];
+    NSColor *checklistColor = [theme colorForKey:@"textColor"];
+    if (@available(macOS 10.14, *)) {
+        if (![[VSThemeManager sharedManager] isDarkMode]) {
+            // Workaround for wrong checklist color in overridden light theme on mojave
+            checklistColor = [NSColor blackColor];
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] objectForKey:VSThemeManagerThemePrefKey];
+    
+    [self.textStorage addChecklistAttachmentsForHeight:self.font.pointSize andColor:checklistColor andVerticalOffset:-4.0f];
 }
 
 // Processes content of note editor, and replaces special string attachments with their plain

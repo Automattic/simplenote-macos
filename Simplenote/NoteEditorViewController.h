@@ -83,6 +83,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data;
 - (void)applyStyle;
 - (void)showPublishPopover;
+- (void)fixChecklistColoring;
 - (NSUInteger)wordCount;
 - (NSUInteger)charCount;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
