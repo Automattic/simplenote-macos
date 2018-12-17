@@ -17,6 +17,9 @@ NSString *const CheckListRegExPattern = @"^- (\\[([ |x])\\])";
 NSString *const MarkdownUnchecked = @"- [ ]";
 NSString *const MarkdownChecked = @"- [x]";
 
+// One unicode character plus a space and a newline
+NSInteger const ChecklistCursorAdjustment = 3;
+
 @implementation SPTextView
 
 - (void)awakeFromNib {
@@ -118,12 +121,32 @@ NSString *const MarkdownChecked = @"- [x]";
             NSNotification *note = [NSNotification notificationWithName:NSTextDidChangeNotification object:nil];
             [self.delegate textDidChange:note];
             [self setNeedsLayout:YES];
+            [self.layoutManager invalidateDisplayForCharacterRange:range];
             
             return YES;
         }
     }
     
     return NO;
+}
+
+- (void)insertNewChecklist {
+    NSString *checkboxText = [MarkdownUnchecked stringByAppendingString:@" "];
+    if (self.selectedRange.location > 0) {
+        checkboxText = [@"\n" stringByAppendingString:checkboxText];
+    }
+    
+    NSTextStorage *storage = self.textStorage;
+    [storage beginEditing];
+    [storage replaceCharactersInRange:self.selectedRange withString:checkboxText];
+    [storage endEditing];
+    
+    // Update the cursor position
+    [self setSelectedRange:NSMakeRange(self.selectedRange.location + ChecklistCursorAdjustment, self.selectedRange.length)];
+    
+    [self processChecklists];
+    NSNotification *note = [NSNotification notificationWithName:NSTextDidChangeNotification object:nil];
+    [self.delegate textDidChange:note];
 }
 
 @end

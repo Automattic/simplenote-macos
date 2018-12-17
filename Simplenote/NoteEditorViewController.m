@@ -1151,6 +1151,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
+- (void)insertChecklistAction:(id)sender {
+    [self.noteEditor insertNewChecklist];
+}
+
 #pragma mark - NSSharingServicePicker delegate
 
 - (NSArray *)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker sharingServicesForItems:(NSArray *)items proposedSharingServices:(NSArray *)proposedServices

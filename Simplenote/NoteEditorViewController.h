@@ -93,5 +93,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (IBAction)showVersionPopover:(id)sender;
 - (IBAction)toggleMarkdownView:(id)sender;
 - (IBAction)toggleEditorWidth:(id)sender;
+- (IBAction)insertChecklistAction:(id)sender;
 
 @end
