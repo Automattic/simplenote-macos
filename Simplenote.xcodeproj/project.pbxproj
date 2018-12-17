@@ -24,8 +24,6 @@
 		26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
 		3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700E97521C1E390004771C9 /* SPTextAttachment.swift */; };
 		3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700E97521C1E390004771C9 /* SPTextAttachment.swift */; };
-		3700E97921C31C8C004771C9 /* SPClickGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700E97821C31C8C004771C9 /* SPClickGestureRecognizer.swift */; };
-		3700E97A21C31C8C004771C9 /* SPClickGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700E97821C31C8C004771C9 /* SPClickGestureRecognizer.swift */; };
 		3712FC821FE1ACAA008544AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC701FE1ACA9008544AC /* Storage.swift */; };
 		3712FC831FE1ACAA008544AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC701FE1ACA9008544AC /* Storage.swift */; };
 		3712FC861FE1ACAA008544AC /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC721FE1ACA9008544AC /* Element.swift */; };
@@ -302,7 +300,6 @@
 		26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplenoteAppDelegate.m; sourceTree = "<group>"; };
 		26F72AA214032D2A00A7935E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3700E97521C1E390004771C9 /* SPTextAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextAttachment.swift; sourceTree = "<group>"; };
-		3700E97821C31C8C004771C9 /* SPClickGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPClickGestureRecognizer.swift; sourceTree = "<group>"; };
 		3712FC701FE1ACA9008544AC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		3712FC721FE1ACA9008544AC /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notepad-macOS.swift"; sourceTree = "<group>"; };
@@ -810,7 +807,6 @@
 				B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */,
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
-				3700E97821C31C8C004771C9 /* SPClickGestureRecognizer.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -1221,7 +1217,6 @@
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */,
-				3700E97921C31C8C004771C9 /* SPClickGestureRecognizer.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
 				46B0F54C17B47C490071C809 /* MMScroller.m in Sources */,
@@ -1311,7 +1306,6 @@
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */,
-				3700E97A21C31C8C004771C9 /* SPClickGestureRecognizer.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
 				466FFED917CC10A800399652 /* MMScroller.m in Sources */,
