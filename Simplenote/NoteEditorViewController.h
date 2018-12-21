@@ -83,6 +83,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data;
 - (void)applyStyle;
 - (void)showPublishPopover;
+- (void)fixChecklistColoring;
 - (NSUInteger)wordCount;
 - (NSUInteger)charCount;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
@@ -93,5 +94,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (IBAction)showVersionPopover:(id)sender;
 - (IBAction)toggleMarkdownView:(id)sender;
 - (IBAction)toggleEditorWidth:(id)sender;
+- (IBAction)insertChecklistAction:(id)sender;
 
 @end

@@ -7,6 +7,10 @@
 //
 
 #import "NSString+Styling.h"
+#import "Simplenote-Swift.h"
+#import "NSImage+Colorize.h"
+#import "NSMutableAttributedString+Styling.h"
+#import "SPTextView.h"
 
 @implementation NSString (Styling)
 
@@ -17,8 +21,9 @@
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
 
-    
-    NSRange firstLineRange = [self rangeOfString:@"\n"];
+    CGFloat offset = -1.5f;
+    [attributedString addChecklistAttachmentsForHeight:bodyFont.pointSize andColor:bodyColor andVerticalOffset: offset];
+    NSRange firstLineRange = [attributedString.string rangeOfString:@"\n"];
     
     NSMutableParagraphStyle *bodyStyle = [[NSMutableParagraphStyle alloc] init];
     [bodyStyle setLineSpacing:6.0];
@@ -34,7 +39,7 @@
 
     // set title font
     NSRange titleRange, bodyRange;
-    NSInteger length = self.length;
+    NSInteger length = attributedString.string.length;
     if (firstLineRange.location != NSNotFound) {
         titleRange = NSMakeRange(0, firstLineRange.location);
 
