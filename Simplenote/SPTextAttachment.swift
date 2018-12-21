@@ -7,7 +7,7 @@
 import Foundation
 
 @objcMembers class SPTextAttachment: NSTextAttachment {
-    var checked = false
+    private var checked = false
     var attachmentColor: NSColor?
     
     @objc public convenience init(color: NSColor) {
