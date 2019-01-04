@@ -17,3 +17,4 @@ profile
 *.moved-aside
 Pods/
 Simplenote/config.plist
+/vendor
