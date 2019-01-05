@@ -41,6 +41,30 @@
 		373B50E020179DFE000568A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DC20179DFE000568A6 /* Extensions.swift */; };
 		375581C220292AA800529D79 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375581C120292AA800529D79 /* About.storyboard */; };
 		375581C320292AA800529D79 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375581C120292AA800529D79 /* About.storyboard */; };
+		375D290221E026AA007AB25A /* document.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28ED21E026A3007AB25A /* document.c */; };
+		375D290321E026AA007AB25A /* document.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28ED21E026A3007AB25A /* document.c */; };
+		375D290421E026AA007AB25A /* html_blocks.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28EE21E026A3007AB25A /* html_blocks.c */; };
+		375D290521E026AA007AB25A /* html_blocks.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28EE21E026A3007AB25A /* html_blocks.c */; };
+		375D290621E026AA007AB25A /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F321E026A4007AB25A /* buffer.c */; };
+		375D290721E026AA007AB25A /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F321E026A4007AB25A /* buffer.c */; };
+		375D290821E026AA007AB25A /* context_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F521E026A5007AB25A /* context_test.c */; };
+		375D290921E026AA007AB25A /* context_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F521E026A5007AB25A /* context_test.c */; };
+		375D290A21E026AA007AB25A /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F721E026A6007AB25A /* version.c */; };
+		375D290B21E026AA007AB25A /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F721E026A6007AB25A /* version.c */; };
+		375D290C21E026AA007AB25A /* html.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F821E026A6007AB25A /* html.c */; };
+		375D290D21E026AA007AB25A /* html.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F821E026A6007AB25A /* html.c */; };
+		375D290E21E026AA007AB25A /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F921E026A6007AB25A /* stack.c */; };
+		375D290F21E026AA007AB25A /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28F921E026A6007AB25A /* stack.c */; };
+		375D291021E026AA007AB25A /* escape.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FA21E026A6007AB25A /* escape.c */; };
+		375D291121E026AA007AB25A /* escape.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FA21E026A6007AB25A /* escape.c */; };
+		375D291221E026AA007AB25A /* autolink.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FB21E026A7007AB25A /* autolink.c */; };
+		375D291321E026AA007AB25A /* autolink.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FB21E026A7007AB25A /* autolink.c */; };
+		375D291421E026AA007AB25A /* html_smartypants.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FC21E026A7007AB25A /* html_smartypants.c */; };
+		375D291521E026AA007AB25A /* html_smartypants.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FC21E026A7007AB25A /* html_smartypants.c */; };
+		375D291621E026AA007AB25A /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FE21E026A8007AB25A /* hash.c */; };
+		375D291721E026AA007AB25A /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D28FE21E026A8007AB25A /* hash.c */; };
+		375D291821E026AA007AB25A /* html5_blocks.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D290121E026A9007AB25A /* html5_blocks.c */; };
+		375D291921E026AA007AB25A /* html5_blocks.c in Sources */ = {isa = PBXBuildFile; fileRef = 375D290121E026A9007AB25A /* html5_blocks.c */; };
 		376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
@@ -82,14 +106,6 @@
 		466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
 		466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7199A43014D8FD1C00B903A8 /* SPToolbarView.m */; };
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
-		466FFEB917CC10A800399652 /* autolink.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811914E5AB5F00CB8964 /* autolink.c */; };
-		466FFEBA17CC10A800399652 /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811B14E5AB5F00CB8964 /* buffer.c */; };
-		466FFEBB17CC10A800399652 /* houdini_href_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811D14E5AB5F00CB8964 /* houdini_href_e.c */; };
-		466FFEBC17CC10A800399652 /* houdini_html_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811E14E5AB5F00CB8964 /* houdini_html_e.c */; };
-		466FFEBD17CC10A800399652 /* html_smartypants.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812114E5AB5F00CB8964 /* html_smartypants.c */; };
-		466FFEBE17CC10A800399652 /* html.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812214E5AB5F00CB8964 /* html.c */; };
-		466FFEBF17CC10A800399652 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812414E5AB5F00CB8964 /* markdown.c */; };
-		466FFEC017CC10A800399652 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812614E5AB5F00CB8964 /* stack.c */; };
 		466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
 		466FFEC217CC10A800399652 /* SPTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 712DC91B1531FE2F0033CE85 /* SPTokenField.m */; };
 		466FFECC17CC10A800399652 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
@@ -140,14 +156,6 @@
 		714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
-		7154812814E5AB6000CB8964 /* autolink.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811914E5AB5F00CB8964 /* autolink.c */; };
-		7154812914E5AB6000CB8964 /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811B14E5AB5F00CB8964 /* buffer.c */; };
-		7154812A14E5AB6000CB8964 /* houdini_href_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811D14E5AB5F00CB8964 /* houdini_href_e.c */; };
-		7154812B14E5AB6000CB8964 /* houdini_html_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154811E14E5AB5F00CB8964 /* houdini_html_e.c */; };
-		7154812C14E5AB6000CB8964 /* html_smartypants.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812114E5AB5F00CB8964 /* html_smartypants.c */; };
-		7154812D14E5AB6000CB8964 /* html.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812214E5AB5F00CB8964 /* html.c */; };
-		7154812E14E5AB6000CB8964 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812414E5AB5F00CB8964 /* markdown.c */; };
-		7154812F14E5AB6000CB8964 /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 7154812614E5AB5F00CB8964 /* stack.c */; };
 		7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7199A43014D8FD1C00B903A8 /* SPToolbarView.m */; };
 		71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
 		71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
@@ -309,6 +317,27 @@
 		373B50DB20179DFD000568A6 /* UniversalTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalTypes.swift; sourceTree = "<group>"; };
 		373B50DC20179DFE000568A6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		375581C120292AA800529D79 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		375D28ED21E026A3007AB25A /* document.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = document.c; path = External/Hoextdown/document.c; sourceTree = SOURCE_ROOT; };
+		375D28EE21E026A3007AB25A /* html_blocks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = html_blocks.c; path = External/Hoextdown/html_blocks.c; sourceTree = SOURCE_ROOT; };
+		375D28EF21E026A3007AB25A /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stack.h; path = External/Hoextdown/stack.h; sourceTree = SOURCE_ROOT; };
+		375D28F021E026A3007AB25A /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = External/Hoextdown/version.h; sourceTree = SOURCE_ROOT; };
+		375D28F121E026A4007AB25A /* context_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = context_test.h; path = External/Hoextdown/context_test.h; sourceTree = SOURCE_ROOT; };
+		375D28F221E026A4007AB25A /* escape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = escape.h; path = External/Hoextdown/escape.h; sourceTree = SOURCE_ROOT; };
+		375D28F321E026A4007AB25A /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = buffer.c; path = External/Hoextdown/buffer.c; sourceTree = SOURCE_ROOT; };
+		375D28F421E026A5007AB25A /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = document.h; path = External/Hoextdown/document.h; sourceTree = SOURCE_ROOT; };
+		375D28F521E026A5007AB25A /* context_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = context_test.c; path = External/Hoextdown/context_test.c; sourceTree = SOURCE_ROOT; };
+		375D28F621E026A5007AB25A /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hash.h; path = External/Hoextdown/hash.h; sourceTree = SOURCE_ROOT; };
+		375D28F721E026A6007AB25A /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = External/Hoextdown/version.c; sourceTree = SOURCE_ROOT; };
+		375D28F821E026A6007AB25A /* html.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = html.c; path = External/Hoextdown/html.c; sourceTree = SOURCE_ROOT; };
+		375D28F921E026A6007AB25A /* stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stack.c; path = External/Hoextdown/stack.c; sourceTree = SOURCE_ROOT; };
+		375D28FA21E026A6007AB25A /* escape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = escape.c; path = External/Hoextdown/escape.c; sourceTree = SOURCE_ROOT; };
+		375D28FB21E026A7007AB25A /* autolink.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = autolink.c; path = External/Hoextdown/autolink.c; sourceTree = SOURCE_ROOT; };
+		375D28FC21E026A7007AB25A /* html_smartypants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = html_smartypants.c; path = External/Hoextdown/html_smartypants.c; sourceTree = SOURCE_ROOT; };
+		375D28FD21E026A7007AB25A /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = External/Hoextdown/buffer.h; sourceTree = SOURCE_ROOT; };
+		375D28FE21E026A8007AB25A /* hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hash.c; path = External/Hoextdown/hash.c; sourceTree = SOURCE_ROOT; };
+		375D28FF21E026A9007AB25A /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = autolink.h; path = External/Hoextdown/autolink.h; sourceTree = SOURCE_ROOT; };
+		375D290021E026A9007AB25A /* html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = html.h; path = External/Hoextdown/html.h; sourceTree = SOURCE_ROOT; };
+		375D290121E026A9007AB25A /* html5_blocks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = html5_blocks.c; path = External/Hoextdown/html5_blocks.c; sourceTree = SOURCE_ROOT; };
 		37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simplenote-Bridging-Header.h"; sourceTree = "<group>"; };
 		376EE3EA202B748E00E3812E /* SPAboutTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAboutTextField.swift; sourceTree = "<group>"; };
 		378345001D38624100D45D46 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
@@ -382,21 +411,6 @@
 		714BA66C14D4AE6200A6CCC1 /* DateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTransformer.h; sourceTree = "<group>"; };
 		714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTransformer.m; sourceTree = "<group>"; };
 		7154811614E5A9E800CB8964 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		7154811914E5AB5F00CB8964 /* autolink.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = autolink.c; path = Simplenote/autolink.c; sourceTree = "<group>"; };
-		7154811A14E5AB5F00CB8964 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = autolink.h; path = Simplenote/autolink.h; sourceTree = "<group>"; };
-		7154811B14E5AB5F00CB8964 /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = buffer.c; path = Simplenote/buffer.c; sourceTree = "<group>"; };
-		7154811C14E5AB5F00CB8964 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = Simplenote/buffer.h; sourceTree = "<group>"; };
-		7154811D14E5AB5F00CB8964 /* houdini_href_e.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = houdini_href_e.c; path = Simplenote/houdini_href_e.c; sourceTree = "<group>"; };
-		7154811E14E5AB5F00CB8964 /* houdini_html_e.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = houdini_html_e.c; path = Simplenote/houdini_html_e.c; sourceTree = "<group>"; };
-		7154811F14E5AB5F00CB8964 /* houdini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = houdini.h; path = Simplenote/houdini.h; sourceTree = "<group>"; };
-		7154812014E5AB5F00CB8964 /* html_blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = html_blocks.h; path = Simplenote/html_blocks.h; sourceTree = "<group>"; };
-		7154812114E5AB5F00CB8964 /* html_smartypants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = html_smartypants.c; path = Simplenote/html_smartypants.c; sourceTree = "<group>"; };
-		7154812214E5AB5F00CB8964 /* html.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = html.c; path = Simplenote/html.c; sourceTree = "<group>"; };
-		7154812314E5AB5F00CB8964 /* html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = html.h; path = Simplenote/html.h; sourceTree = "<group>"; };
-		7154812414E5AB5F00CB8964 /* markdown.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = markdown.c; path = Simplenote/markdown.c; sourceTree = "<group>"; };
-		7154812514E5AB5F00CB8964 /* markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = markdown.h; path = Simplenote/markdown.h; sourceTree = "<group>"; };
-		7154812614E5AB5F00CB8964 /* stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stack.c; path = Simplenote/stack.c; sourceTree = "<group>"; };
-		7154812714E5AB5F00CB8964 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stack.h; path = Simplenote/stack.h; sourceTree = "<group>"; };
 		7199A42F14D8FD1C00B903A8 /* SPToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPToolbarView.h; sourceTree = "<group>"; };
 		7199A43014D8FD1C00B903A8 /* SPToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPToolbarView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		71D83D6E14D744FB00A25E69 /* SPNoteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPNoteCellView.h; sourceTree = "<group>"; };
@@ -504,13 +518,13 @@
 		26DBB1F61405A6E600186392 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				375D28BF21E0265D007AB25A /* Hoextdown */,
 				3712FC6F1FE1ACA9008544AC /* Notepad */,
 				378AA70A1ACB05C400CA87DC /* DB5 */,
 				B58CF2171A81304300A9B4D2 /* Crashlytics */,
 				46B0F54417B47C490071C809 /* custom-scroller */,
 				4623ABD51773740700CE0441 /* INAppStoreWindow */,
 				B54739DC1A3F389300B68A4D /* HockeySDK */,
-				7154811814E5AAE800CB8964 /* Markdown */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -637,6 +651,34 @@
 			);
 			name = Notepad;
 			path = External/Notepad;
+			sourceTree = "<group>";
+		};
+		375D28BF21E0265D007AB25A /* Hoextdown */ = {
+			isa = PBXGroup;
+			children = (
+				375D28FB21E026A7007AB25A /* autolink.c */,
+				375D28FF21E026A9007AB25A /* autolink.h */,
+				375D28F321E026A4007AB25A /* buffer.c */,
+				375D28FD21E026A7007AB25A /* buffer.h */,
+				375D28F521E026A5007AB25A /* context_test.c */,
+				375D28F121E026A4007AB25A /* context_test.h */,
+				375D28ED21E026A3007AB25A /* document.c */,
+				375D28F421E026A5007AB25A /* document.h */,
+				375D28FA21E026A6007AB25A /* escape.c */,
+				375D28F221E026A4007AB25A /* escape.h */,
+				375D28FE21E026A8007AB25A /* hash.c */,
+				375D28F621E026A5007AB25A /* hash.h */,
+				375D28EE21E026A3007AB25A /* html_blocks.c */,
+				375D28FC21E026A7007AB25A /* html_smartypants.c */,
+				375D28F821E026A6007AB25A /* html.c */,
+				375D290021E026A9007AB25A /* html.h */,
+				375D290121E026A9007AB25A /* html5_blocks.c */,
+				375D28F921E026A6007AB25A /* stack.c */,
+				375D28EF21E026A3007AB25A /* stack.h */,
+				375D28F721E026A6007AB25A /* version.c */,
+				375D28F021E026A3007AB25A /* version.h */,
+			);
+			path = Hoextdown;
 			sourceTree = "<group>";
 		};
 		378AA70A1ACB05C400CA87DC /* DB5 */ = {
@@ -809,28 +851,6 @@
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 			);
 			name = "Custom Views";
-			sourceTree = "<group>";
-		};
-		7154811814E5AAE800CB8964 /* Markdown */ = {
-			isa = PBXGroup;
-			children = (
-				7154811914E5AB5F00CB8964 /* autolink.c */,
-				7154811A14E5AB5F00CB8964 /* autolink.h */,
-				7154811B14E5AB5F00CB8964 /* buffer.c */,
-				7154811C14E5AB5F00CB8964 /* buffer.h */,
-				7154811D14E5AB5F00CB8964 /* houdini_href_e.c */,
-				7154811E14E5AB5F00CB8964 /* houdini_html_e.c */,
-				7154811F14E5AB5F00CB8964 /* houdini.h */,
-				7154812014E5AB5F00CB8964 /* html_blocks.h */,
-				7154812114E5AB5F00CB8964 /* html_smartypants.c */,
-				7154812214E5AB5F00CB8964 /* html.c */,
-				7154812314E5AB5F00CB8964 /* html.h */,
-				7154812414E5AB5F00CB8964 /* markdown.c */,
-				7154812514E5AB5F00CB8964 /* markdown.h */,
-				7154812614E5AB5F00CB8964 /* stack.c */,
-				7154812714E5AB5F00CB8964 /* stack.h */,
-			);
-			name = Markdown;
 			sourceTree = "<group>";
 		};
 		B54739DC1A3F389300B68A4D /* HockeySDK */ = {
@@ -1020,7 +1040,6 @@
 				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
-				"${BUILT_PRODUCTS_DIR}/hoedown/hoedown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1030,7 +1049,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hoedown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1105,7 +1123,6 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
-				"${BUILT_PRODUCTS_DIR}/hoedown/hoedown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1113,7 +1130,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hoedown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1146,11 +1162,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */,
+				375D290621E026AA007AB25A /* buffer.c in Sources */,
+				375D290A21E026AA007AB25A /* version.c in Sources */,
 				378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */,
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
 				26F72A9914032D2A00A7935E /* main.m in Sources */,
 				B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				3712FC8A1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
+				375D290221E026AA007AB25A /* document.c in Sources */,
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
@@ -1160,12 +1179,14 @@
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
+				375D291021E026AA007AB25A /* escape.c in Sources */,
 				373B50DD20179DFE000568A6 /* UniversalTypes.swift in Sources */,
 				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				714BA65814D3264200A6CCC1 /* SPGradientView.m in Sources */,
 				714BA65B14D32DCB00A6CCC1 /* SPBackgroundView.m in Sources */,
 				714BA66314D37C2000A6CCC1 /* SPTableRowView.m in Sources */,
 				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
+				375D290821E026AA007AB25A /* context_test.c in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
 				71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */,
 				B5087A1E1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
@@ -1174,23 +1195,20 @@
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */,
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
+				375D291221E026AA007AB25A /* autolink.c in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */,
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
-				7154812814E5AB6000CB8964 /* autolink.c in Sources */,
-				7154812914E5AB6000CB8964 /* buffer.c in Sources */,
+				375D290E21E026AA007AB25A /* stack.c in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5FA829B1B977A1F00082296 /* SPTextLinkifier.m in Sources */,
-				7154812A14E5AB6000CB8964 /* houdini_href_e.c in Sources */,
-				7154812B14E5AB6000CB8964 /* houdini_html_e.c in Sources */,
+				375D290421E026AA007AB25A /* html_blocks.c in Sources */,
+				375D291621E026AA007AB25A /* hash.c in Sources */,
 				B52849741A4086F500F588CC /* NSColor+Simplenote.m in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
-				7154812C14E5AB6000CB8964 /* html_smartypants.c in Sources */,
-				7154812D14E5AB6000CB8964 /* html.c in Sources */,
-				7154812E14E5AB6000CB8964 /* markdown.c in Sources */,
-				7154812F14E5AB6000CB8964 /* stack.c in Sources */,
+				375D290C21E026AA007AB25A /* html.c in Sources */,
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,
 				712DC91C1531FE2F0033CE85 /* SPTokenField.m in Sources */,
 				B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
@@ -1219,12 +1237,14 @@
 				46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
+				375D291821E026AA007AB25A /* html5_blocks.c in Sources */,
 				46B0F54C17B47C490071C809 /* MMScroller.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				46B0F54D17B47C490071C809 /* MMScrollView.m in Sources */,
 				378E1F751CFCB5A7007486B5 /* NSString+Escaping.m in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */,
+				375D291421E026AA007AB25A /* html_smartypants.c in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
@@ -1235,11 +1255,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				466FFEA817CC10A800399652 /* main.m in Sources */,
+				375D290721E026AA007AB25A /* buffer.c in Sources */,
+				375D290B21E026AA007AB25A /* version.c in Sources */,
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				3712FC8B1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
+				375D290321E026AA007AB25A /* document.c in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
@@ -1249,37 +1272,36 @@
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				466FFEB017CC10A800399652 /* SPGradientView.m in Sources */,
+				375D291121E026AA007AB25A /* escape.c in Sources */,
 				373B50DE20179DFE000568A6 /* UniversalTypes.swift in Sources */,
 				466FFEB117CC10A800399652 /* SPBackgroundView.m in Sources */,
 				466FFEB217CC10A800399652 /* SPTableRowView.m in Sources */,
 				466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */,
 				466FFEB417CC10A800399652 /* DateTransformer.m in Sources */,
 				466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */,
+				375D290921E026AA007AB25A /* context_test.c in Sources */,
 				466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */,
 				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				B5087A1F1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
-				466FFEB917CC10A800399652 /* autolink.c in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
-				466FFEBA17CC10A800399652 /* buffer.c in Sources */,
+				375D291321E026AA007AB25A /* autolink.c in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
 				3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
-				466FFEBB17CC10A800399652 /* houdini_href_e.c in Sources */,
-				466FFEBC17CC10A800399652 /* houdini_html_e.c in Sources */,
+				375D290F21E026AA007AB25A /* stack.c in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5FA829C1B977A1F00082296 /* SPTextLinkifier.m in Sources */,
+				375D290521E026AA007AB25A /* html_blocks.c in Sources */,
+				375D291721E026AA007AB25A /* hash.c in Sources */,
 				B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */,
-				466FFEBD17CC10A800399652 /* html_smartypants.c in Sources */,
-				466FFEBE17CC10A800399652 /* html.c in Sources */,
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
-				466FFEBF17CC10A800399652 /* markdown.c in Sources */,
-				466FFEC017CC10A800399652 /* stack.c in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
 				B5686D041AEADF07009F9E20 /* VSTheme.m in Sources */,
+				375D290D21E026AA007AB25A /* html.c in Sources */,
 				466FFEC217CC10A800399652 /* SPTokenField.m in Sources */,
 				B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
 				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
@@ -1308,12 +1330,14 @@
 				466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
+				375D291921E026AA007AB25A /* html5_blocks.c in Sources */,
 				466FFED917CC10A800399652 /* MMScroller.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				466FFEDA17CC10A800399652 /* MMScrollView.m in Sources */,
 				B5EC0C241D0EEF5700818458 /* NSString+Escaping.m in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */,
+				375D291521E026AA007AB25A /* html_smartypants.c in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
