@@ -1,5 +1,5 @@
-/* C code produced by gperf version 3.0.3 */
-/* Command-line: gperf -N find_block_tag -H hash_block_tag -C -c -E --ignore-case html_block_names.txt  */
+/* ANSI-C code produced by gperf version 3.0.4 */
+/* Command-line: gperf -L ANSI-C -N hoedown_find_html5_block_tag -c -C -E -S 1 --ignore-case -m100 html5_block_names.gperf  */
 /* Computed positions: -k'1-2' */
 
 #if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
@@ -26,7 +26,7 @@
       && ('w' == 119) && ('x' == 120) && ('y' == 121) && ('z' == 122) \
       && ('{' == 123) && ('|' == 124) && ('}' == 125) && ('~' == 126))
 /* The character set is not based on ISO-646.  */
-error "gperf generated tables don't work with this execution character set. Please report a bug to <bug-gnu-gperf@gnu.org>."
+#error "gperf generated tables don't work with this execution character set. Please report a bug to <bug-gnu-gperf@gnu.org>."
 #endif
 
 /* maximum key range = 37, duplicates = 0 */
@@ -59,10 +59,7 @@ static unsigned char gperf_downcase[256] =
 #ifndef GPERF_CASE_STRNCMP
 #define GPERF_CASE_STRNCMP 1
 static int
-gperf_case_strncmp (s1, s2, n)
-     register const char *s1;
-     register const char *s2;
-     register unsigned int n;
+gperf_case_strncmp (register const char *s1, register const char *s2, register unsigned int n)
 {
   for (; n > 0;)
     {
@@ -87,9 +84,7 @@ inline
 #endif
 #endif
 static unsigned int
-hash_block_tag (str, len)
-     register const char *str;
-     register unsigned int len;
+hash (register const char *str, register unsigned int len)
 {
   static const unsigned char asso_values[] =
     {
@@ -98,13 +93,13 @@ hash_block_tag (str, len)
       38, 38, 38, 38, 38, 38, 38, 38, 38, 38,
       38, 38, 38, 38, 38, 38, 38, 38, 38, 38,
       38, 38, 38, 38, 38, 38, 38, 38, 38, 38,
-       8, 30, 25, 20, 15, 10, 38, 38, 38, 38,
-      38, 38, 38, 38, 38, 38,  0, 38,  0, 38,
-       5,  5,  5, 15,  0, 38, 38,  0, 15, 10,
-       0, 38, 38, 15,  0,  5, 38, 38, 38, 38,
-      38, 38, 38, 38, 38, 38, 38, 38,  0, 38,
-       0, 38,  5,  5,  5, 15,  0, 38, 38,  0,
-      15, 10,  0, 38, 38, 15,  0,  5, 38, 38,
+      26, 25, 24, 23, 22, 21, 38, 38, 38, 38,
+      38, 38, 38, 38, 38, 17, 14,  9, 10, 38,
+       2, 16,  8,  6,  1, 38, 38,  0, 13, 18,
+       0, 38, 38,  1,  4,  1, 13, 38, 38, 38,
+      38, 38, 38, 38, 38, 38, 38, 17, 14,  9,
+      10, 38,  2, 16,  8,  6,  1, 38, 38,  0,
+      13, 18,  0, 38, 38,  1,  4,  1, 13, 38,
       38, 38, 38, 38, 38, 38, 38, 38, 38, 38,
       38, 38, 38, 38, 38, 38, 38, 38, 38, 38,
       38, 38, 38, 38, 38, 38, 38, 38, 38, 38,
@@ -136,70 +131,142 @@ hash_block_tag (str, len)
 
 #ifdef __GNUC__
 __inline
-#ifdef __GNUC_STDC_INLINE__
+#if defined __GNUC_STDC_INLINE__ || defined __GNUC_GNU_INLINE__
 __attribute__ ((__gnu_inline__))
 #endif
 #endif
 const char *
-find_block_tag (str, len)
-     register const char *str;
-     register unsigned int len;
+hoedown_find_html5_block_tag (register const char *str, register unsigned int len)
 {
   enum
     {
-      TOTAL_KEYWORDS = 24,
+      TOTAL_KEYWORDS = 35,
       MIN_WORD_LENGTH = 1,
       MAX_WORD_LENGTH = 10,
       MIN_HASH_VALUE = 1,
       MAX_HASH_VALUE = 37
     };
 
-  static const char * const wordlist[] =
-    {
-      "",
-      "p",
-      "dl",
-      "div",
-      "math",
-      "table",
-      "",
-      "ul",
-      "del",
-      "form",
-      "blockquote",
-      "figure",
-      "ol",
-      "fieldset",
-      "",
-      "h1",
-      "",
-      "h6",
-      "pre",
-      "", "",
-      "script",
-      "h5",
-      "noscript",
-      "",
-      "style",
-      "iframe",
-      "h4",
-      "ins",
-      "", "", "",
-      "h3",
-      "", "", "", "",
-      "h2"
-    };
-
   if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
     {
-      register int key = hash_block_tag (str, len);
+      register int key = hash (str, len);
 
-      if (key <= MAX_HASH_VALUE && key >= 0)
+      if (key <= MAX_HASH_VALUE && key >= MIN_HASH_VALUE)
         {
-          register const char *s = wordlist[key];
+          register const char *resword;
 
-          if ((((unsigned char)*str ^ (unsigned char)*s) & ~32) == 0 && !gperf_case_strncmp (str, s, len) && s[len] == '\0')
-            return s;
+          switch (key - 1)
+            {
+              case 0:
+                resword = "p";
+                goto compare;
+              case 2:
+                resword = "ul";
+                goto compare;
+              case 3:
+                resword = "pre";
+                goto compare;
+              case 5:
+                resword = "form";
+                goto compare;
+              case 6:
+                resword = "style";
+                goto compare;
+              case 7:
+                resword = "footer";
+                goto compare;
+              case 8:
+                resword = "figure";
+                goto compare;
+              case 9:
+                resword = "section";
+                goto compare;
+              case 10:
+                resword = "fieldset";
+                goto compare;
+              case 11:
+                resword = "dl";
+                goto compare;
+              case 12:
+                resword = "figcaption";
+                goto compare;
+              case 13:
+                resword = "div";
+                goto compare;
+              case 14:
+                resword = "del";
+                goto compare;
+              case 15:
+                resword = "header";
+                goto compare;
+              case 16:
+                resword = "script";
+                goto compare;
+              case 17:
+                resword = "math";
+                goto compare;
+              case 18:
+                resword = "video";
+                goto compare;
+              case 19:
+                resword = "ol";
+                goto compare;
+              case 20:
+                resword = "noscript";
+                goto compare;
+              case 21:
+                resword = "hgroup";
+                goto compare;
+              case 22:
+                resword = "table";
+                goto compare;
+              case 23:
+                resword = "blockquote";
+                goto compare;
+              case 24:
+                resword = "article";
+                goto compare;
+              case 25:
+                resword = "aside";
+                goto compare;
+              case 26:
+                resword = "ins";
+                goto compare;
+              case 27:
+                resword = "iframe";
+                goto compare;
+              case 28:
+                resword = "canvas";
+                goto compare;
+              case 29:
+                resword = "nav";
+                goto compare;
+              case 30:
+                resword = "h6";
+                goto compare;
+              case 31:
+                resword = "h5";
+                goto compare;
+              case 32:
+                resword = "h4";
+                goto compare;
+              case 33:
+                resword = "h3";
+                goto compare;
+              case 34:
+                resword = "h2";
+                goto compare;
+              case 35:
+                resword = "h1";
+                goto compare;
+              case 36:
+                resword = "output";
+                goto compare;
+            }
+          return 0;
+        compare:
+          if ((((unsigned char)*str ^ (unsigned char)*resword) & ~32) == 0 && !gperf_case_strncmp (str, resword, len) && resword[len] == '\0')
+            return resword;
         }
     }
   return 0;
