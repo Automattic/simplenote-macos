@@ -639,7 +639,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         [versionSlider setObjectValue:[NSNumber numberWithInteger:versionSlider.maxValue]];
         [self updateVersionLabel:self.note.modificationDate];
         [self.noteEditor setEditable:NO];
-        [self.noteEditor setTextColor:[self.theme colorForKey:@"tagViewPlaceholderColor"]];
 
         // Request the version data from Simperium
         Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
@@ -674,7 +673,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
 	if (versionData != nil) {
 		self.noteEditor.string = (NSString *)[versionData objectForKey:@"content"];
-        [self.noteEditor setTextColor:[self.theme colorForKey:@"tagViewPlaceholderColor"]];
+        [self.noteEditor processChecklists];
 
 		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
 		[self updateVersionLabel:versionDate];
@@ -1094,7 +1093,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [SPTracker trackEditorVersionsAccessed];
-    [self showViewController:self.versionsViewController relativeToView:self.noteEditor preferredEdge:NSMinXEdge];
+    [self showViewController:self.versionsViewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
 }
 
 - (IBAction)shareNote:(id)sender
