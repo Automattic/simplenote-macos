@@ -19,7 +19,7 @@ NSString *const MarkdownUnchecked = @"- [ ]";
 NSString *const MarkdownChecked = @"- [x]";
 NSString *const TextAttachmentCharacterCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment
 
-// One unicode character plus a space and a newline
+// One unicode character plus a space
 NSInteger const ChecklistCursorAdjustment = 2;
 
 @implementation SPTextView
