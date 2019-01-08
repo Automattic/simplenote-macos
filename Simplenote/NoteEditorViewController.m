@@ -657,8 +657,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         
         // Unload versions and re-enable editor
         [self.noteEditor setEditable:YES];
-        [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
         self.noteVersionData = nil;
+        
+        // Refreshes the note content in the editor, in case the popover was canceled
+        [self didReceiveNewContent];
     }
 }
 
