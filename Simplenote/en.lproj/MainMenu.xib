@@ -1353,11 +1353,11 @@
                                 </connections>
                             </slider>
                             <button verticalHuggingPriority="750" id="1088">
-                                <rect key="frame" x="143" y="51" width="72" height="17"/>
+                                <rect key="frame" x="139" y="43" width="81" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="inline" title="Restore" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1089">
+                                <buttonCell key="cell" type="push" title="Restore" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1089">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="restoreVersionAction:" target="1107" id="1665"/>
@@ -1378,6 +1378,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="138.5" y="153.5"/>
         </customView>
         <menuItem title="Item" id="1668">
             <modifierMask key="keyEquivalentModifierMask"/>
