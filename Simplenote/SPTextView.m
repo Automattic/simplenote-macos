@@ -17,9 +17,10 @@
 NSString *const CheckListRegExPattern = @"^- (\\[([ |x])\\])";
 NSString *const MarkdownUnchecked = @"- [ ]";
 NSString *const MarkdownChecked = @"- [x]";
+NSString *const TextAttachmentCharacterCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment
 
-// One unicode character plus a space and a newline
-NSInteger const ChecklistCursorAdjustment = 3;
+// One unicode character plus a space
+NSInteger const ChecklistCursorAdjustment = 2;
 
 @implementation SPTextView
 
@@ -132,22 +133,68 @@ NSInteger const ChecklistCursorAdjustment = 3;
 }
 
 - (void)insertNewChecklist {
-    NSString *checkboxText = [MarkdownUnchecked stringByAppendingString:@" "];
-    if (self.selectedRange.location > 0) {
-        checkboxText = [@"\n" stringByAppendingString:checkboxText];
+    NSRange lineRange = [self.string lineRangeForRange:self.selectedRange];
+    NSUInteger cursorPosition = self.selectedRange.location;
+    NSUInteger selectionLength = self.selectedRange.length;
+    
+    // Check if cursor is at a checkbox, if so we won't adjust cursor position
+    BOOL cursorIsAtCheckbox = NO;
+    if (self.string.length >= self.selectedRange.location + 1) {
+        NSString *characterAtCursor = [self.string substringWithRange:NSMakeRange(self.selectedRange.location, 1)];
+        cursorIsAtCheckbox = [characterAtCursor isEqualToString:TextAttachmentCharacterCode];
+    }
+    
+    NSString *lineString = [self.string substringWithRange:lineRange];
+    BOOL didInsertCheckbox = NO;
+    NSString *resultString = @"";
+    
+    int addedCheckboxCount = 0;
+    if ([lineString hasPrefix:TextAttachmentCharacterCode] && [lineString length] >= ChecklistCursorAdjustment) {
+        // Remove the checkboxes in the selection
+        NSString *codeAndSpace = [TextAttachmentCharacterCode stringByAppendingString:@" "];
+        resultString = [lineString stringByReplacingOccurrencesOfString:codeAndSpace withString:@""];
+    } else {
+        // Add checkboxes to the selection
+        NSString *checkboxString = [MarkdownUnchecked stringByAppendingString:@" "];
+        NSArray *stringLines = [lineString componentsSeparatedByString:@"\n"];
+        for (int i=0; i < [stringLines count]; i++) {
+            NSString *line = stringLines[i];
+            // Skip the last line if it is empty
+            if (i != 0 && i == [stringLines count] - 1 && [line length] == 0) {
+                continue;
+            }
+            
+            resultString = [resultString stringByAppendingString:[checkboxString stringByAppendingString:line]];
+            // Skip adding newline to the last line
+            if (i != [stringLines count] - 1) {
+                resultString = [resultString stringByAppendingString:@"\n"];
+            }
+            addedCheckboxCount++;
+        }
+        
+        didInsertCheckbox = YES;
     }
     
     NSTextStorage *storage = self.textStorage;
     [storage beginEditing];
-    [storage replaceCharactersInRange:self.selectedRange withString:checkboxText];
+    [storage replaceCharactersInRange:lineRange withString:resultString];
     [storage endEditing];
-    
-    // Update the cursor position
-    [self setSelectedRange:NSMakeRange(self.selectedRange.location + ChecklistCursorAdjustment, self.selectedRange.length)];
     
     [self processChecklists];
     NSNotification *note = [NSNotification notificationWithName:NSTextDidChangeNotification object:nil];
     [self.delegate textDidChange:note];
+    
+    // Update the cursor position
+    NSUInteger cursorAdjustment = 0;
+    if (!cursorIsAtCheckbox) {
+        if (selectionLength > 0 && didInsertCheckbox) {
+            // Places cursor at end of insertion when text was selected
+            cursorAdjustment = selectionLength + (ChecklistCursorAdjustment * addedCheckboxCount);
+        } else {
+            cursorAdjustment = didInsertCheckbox ? ChecklistCursorAdjustment : -ChecklistCursorAdjustment;
+        }
+    }
+    [self setSelectedRange:NSMakeRange(cursorPosition + cursorAdjustment, 0)];
 }
 
 @end
