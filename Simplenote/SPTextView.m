@@ -14,7 +14,6 @@
 #import "Simplenote-Swift.h"
 
 #define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width
-NSString *const CheckListRegExPattern = @"^- (\\[([ |x])\\])";
 NSString *const MarkdownUnchecked = @"- [ ]";
 NSString *const MarkdownChecked = @"- [x]";
 NSString *const TextAttachmentCharacterCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment

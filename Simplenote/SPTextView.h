@@ -10,7 +10,8 @@
 
 #define kMinEditorPadding 20
 #define kEditorWidthPreferencesKey @"kEditorWidthPreferencesKey"
-#define kChecklistRegexPattern @"^- (\\[([ |x])\\])"
+#define kChecklistRegexPattern @"^(\\s+)?(-[ \t]+\\[[xX\\s]\\])"
+
 
 @protocol SPTextViewDelegate <NSTextViewDelegate>
 - (void)didClickTextView:(id)sender;
