@@ -68,14 +68,14 @@
     
     int positionAdjustment = 0;
     for (NSTextCheckingResult *match in matches) {
-        NSString *markdownTag = [noteString substringWithRange:match.range];
-        BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
-        
         if ([match numberOfRanges] < 3) {
             continue;
         }
         NSRange prefixRange = [match rangeAtIndex:1];
         NSRange checkboxRange = [match rangeAtIndex:2];
+        
+        NSString *markdownTag = [noteString substringWithRange:match.range];
+        BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
         
         SPTextAttachment *attachment = [[SPTextAttachment alloc] initWithColor:color];
         [attachment setIsChecked: isChecked];

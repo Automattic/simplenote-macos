@@ -92,7 +92,7 @@ const int ChecklistItemLength = 3;
         }
         
         // Do we need to append a whitespace?
-        if (lineRange.length > indexOfBullet + bulletLength) {
+        if (lineRange.length > indexOfBullet + bulletLength && !isApplyingChecklist) {
             unichar bulletTrailing      = [lineString characterAtIndex:indexOfBullet + bulletLength];
             
             if ([[NSCharacterSet whitespaceCharacterSet] characterIsMember:bulletTrailing]) {
