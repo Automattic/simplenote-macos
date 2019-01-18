@@ -63,6 +63,9 @@ const int ChecklistItemLength = 3;
     
     // Tab entered: Move the bullet along
     if (isTabPress) {
+        if (isApplyingChecklist) {
+            return NO;
+        }
         // Proceed only if the user is entering Tab's right by the first one
         //  -   Something
         //     ^

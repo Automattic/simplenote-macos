@@ -164,6 +164,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
             }
             
             NSString *prefixedWhitespace = [self getLeadingWhiteSpaceForString:line];
+            line = [line substringFromIndex:[prefixedWhitespace length]];
             resultString = [[resultString
                              stringByAppendingString:prefixedWhitespace]
                              stringByAppendingString:[checkboxString
