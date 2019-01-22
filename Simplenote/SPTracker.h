@@ -26,6 +26,7 @@
 + (void)trackApplicationTerminated;
 
 #pragma mark - Note Editor
++ (void)trackEditorChecklistInserted;
 + (void)trackEditorNoteCreated;
 + (void)trackEditorNoteDeleted;
 + (void)trackEditorNoteRestored;
