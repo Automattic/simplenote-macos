@@ -14,7 +14,6 @@
 #import "Simplenote-Swift.h"
 
 #define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width
-NSString *const CheckListRegExPattern = @"^- (\\[([ |x])\\])";
 NSString *const MarkdownUnchecked = @"- [ ]";
 NSString *const MarkdownChecked = @"- [x]";
 NSString *const TextAttachmentCharacterCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment
@@ -149,7 +148,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
     NSString *resultString = @"";
     
     int addedCheckboxCount = 0;
-    if ([lineString hasPrefix:TextAttachmentCharacterCode] && [lineString length] >= ChecklistCursorAdjustment) {
+    if ([lineString containsString:TextAttachmentCharacterCode] && [lineString length] >= ChecklistCursorAdjustment) {
         // Remove the checkboxes in the selection
         NSString *codeAndSpace = [TextAttachmentCharacterCode stringByAppendingString:@" "];
         resultString = [lineString stringByReplacingOccurrencesOfString:codeAndSpace withString:@""];
@@ -164,7 +163,12 @@ NSInteger const ChecklistCursorAdjustment = 2;
                 continue;
             }
             
-            resultString = [resultString stringByAppendingString:[checkboxString stringByAppendingString:line]];
+            NSString *prefixedWhitespace = [self getLeadingWhiteSpaceForString:line];
+            line = [line substringFromIndex:[prefixedWhitespace length]];
+            resultString = [[resultString
+                             stringByAppendingString:prefixedWhitespace]
+                             stringByAppendingString:[checkboxString
+                             stringByAppendingString:line]];
             // Skip adding newline to the last line
             if (i != [stringLines count] - 1) {
                 resultString = [resultString stringByAppendingString:@"\n"];
@@ -195,6 +199,15 @@ NSInteger const ChecklistCursorAdjustment = 2;
         }
     }
     [self setSelectedRange:NSMakeRange(cursorPosition + cursorAdjustment, 0)];
+}
+
+// Returns a NSString of any whitespace characters found at the start of a string
+- (NSString *)getLeadingWhiteSpaceForString: (NSString *)string
+{
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"^\\s*" options:0 error:NULL];
+    NSTextCheckingResult *match = [regex firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
+    
+    return [string substringWithRange:match.range];
 }
 
 @end

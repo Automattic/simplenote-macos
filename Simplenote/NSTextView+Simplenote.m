@@ -17,6 +17,8 @@
 
 @implementation NSTextView (Simplenote)
 
+const int ChecklistItemLength = 3;
+
 - (BOOL)applyAutoBulletsAfterTabPressed
 {
     return [self applyAutoBulletsForKeyPress:YES];
@@ -52,13 +54,18 @@
     }
     
     NSUInteger bulletLength             = stringToAppendToNewLine.length;
-    NSInteger indexOfBullet             = [lineString rangeOfString:stringToAppendToNewLine].location;
+    BOOL isApplyingChecklist            = [cleanLineString hasPrefix:textAttachmentCode];
+    NSInteger indexOfBullet             = [lineString rangeOfString:isApplyingChecklist
+                                           ? textAttachmentCode
+                                           : stringToAppendToNewLine].location;
     NSString *insertionString           = nil;
     NSRange insertionRange              = lineRange;
-    BOOL isApplyingChecklist = [lineString hasPrefix:textAttachmentCode];
     
     // Tab entered: Move the bullet along
     if (isTabPress) {
+        if (isApplyingChecklist) {
+            return NO;
+        }
         // Proceed only if the user is entering Tab's right by the first one
         //  -   Something
         //     ^
@@ -79,13 +86,16 @@
     // Attempt to apply the bullet
     } else  {
         // Substring: [0 - Bullet]
-        if (!isApplyingChecklist) {
+        if (isApplyingChecklist) {
+            NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:textAttachmentCode].location);
+            stringToAppendToNewLine         = [[lineString substringWithRange:bulletPrefixRange] stringByAppendingString:stringToAppendToNewLine];
+        } else {
             NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:stringToAppendToNewLine].location + 1);
             stringToAppendToNewLine         = [lineString substringWithRange:bulletPrefixRange];
         }
         
         // Do we need to append a whitespace?
-        if (lineRange.length > indexOfBullet + bulletLength) {
+        if (lineRange.length > indexOfBullet + bulletLength && !isApplyingChecklist) {
             unichar bulletTrailing      = [lineString characterAtIndex:indexOfBullet + bulletLength];
             
             if ([[NSCharacterSet whitespaceCharacterSet] characterIsMember:bulletTrailing]) {
@@ -97,7 +107,7 @@
         // Replace!
         insertionString                 = [[NSString newLineString] stringByAppendingString:stringToAppendToNewLine];
         insertionRange                  = currentRange;
-        currentRange.location           += isApplyingChecklist ? 3 : insertionString.length;
+        currentRange.location           += isApplyingChecklist ? [stringToAppendToNewLine length] - ChecklistItemLength : insertionString.length;
     }
     
     // Apply the Replacements
