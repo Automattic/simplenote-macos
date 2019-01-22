@@ -12,6 +12,10 @@
 
 @implementation NSMutableAttributedString (Styling)
 
+const int RegexExpectedMatchGroups  = 3;
+const int RegexGroupIndexPrefix     = 1;
+const int RegexGroupIndexContent    = 2;
+
 - (NSMutableAttributedString*)stringByTruncatingToWidth:(CGFloat)width withFont:(NSFont *)font
 {
     // Create copy that will be the returned result
@@ -68,11 +72,11 @@
     
     int positionAdjustment = 0;
     for (NSTextCheckingResult *match in matches) {
-        if ([match numberOfRanges] < 3) {
+        if ([match numberOfRanges] < RegexExpectedMatchGroups) {
             continue;
         }
-        NSRange prefixRange = [match rangeAtIndex:1];
-        NSRange checkboxRange = [match rangeAtIndex:2];
+        NSRange prefixRange = [match rangeAtIndex:RegexGroupIndexPrefix];
+        NSRange checkboxRange = [match rangeAtIndex:RegexGroupIndexContent];
         
         NSString *markdownTag = [noteString substringWithRange:match.range];
         BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
