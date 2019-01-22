@@ -15,7 +15,7 @@
 		<key>dividerColor</key>
 		<string>dbdee0</string>
 		<key>secondaryTextColor</key>
-		<string>899199</string>
+		<string>808080</string>
 		<key>noteHeadlineFont</key>
 		<string>@boldFontName</string>
 		<key>noteHeadlineFontSize</key>
@@ -39,7 +39,7 @@
 		<key>noteBodyFontSize~ipad</key>
 		<string>19</string>
 		<key>noteBodyFontPreviewColor</key>
-		<string>@secondaryTextColor</string>
+		<string>808080</string>
 		<key>noteCellBackgroundSelectionColor</key>
 		<string>@lightBlueColor</string>
 		<key>noteSidePadding</key>
@@ -344,13 +344,13 @@
 		<key>textColor</key>
 		<string>dbdee0</string>
 		<key>secondaryTextColor</key>
-		<string>899199</string>
+		<string>999999</string>
 		<key>dividerColor</key>
 		<string>4b5157</string>
 		<key>noteHeadlineFontColor</key>
 		<string>@textColor</string>
 		<key>noteBodyFontPreviewColor</key>
-		<string>@secondaryTextColor</string>
+		<string>999999</string>
 		<key>noteCellBackgroundSelectionColor</key>
 		<string>@lightBlueColor</string>
 		<key>switchTintColor</key>
