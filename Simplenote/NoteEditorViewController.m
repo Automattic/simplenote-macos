@@ -1161,6 +1161,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (void)insertChecklistAction:(id)sender {
     [self.noteEditor insertNewChecklist];
+    
+    [SPTracker trackEditorChecklistInserted];
 }
 
 #pragma mark - NSSharingServicePicker delegate
