@@ -81,6 +81,14 @@
         self.endEditing()
     }
     
+    override public func replaceCharacters(in range: NSRange, with attrString: NSAttributedString) {
+        self.beginEditing()
+        backingStore.replaceCharacters(in: range, with: attrString)
+        let change = attrString.length - range.length
+        self.edited(.editedCharacters, range: range, changeInLength: change)
+        self.endEditing()
+    }
+    
     override public func addAttribute(_ name: NSAttributedStringKey, value: Any, range: NSRange) {
         self.beginEditing()
         backingStore.addAttribute(name, value: value, range: range)
@@ -123,7 +131,7 @@
         guard let theme = self.theme else { return }
 
         let backingString = backingStore.string
-        backingStore.setAttributes(theme.body.attributes, range: range)
+        backingStore.addAttributes(theme.body.attributes, range: range)
 
         for (style) in theme.styles {
             style.regex.enumerateMatches(in: backingString, options: .withoutAnchoringBounds, range: range, using: { (match, flags, stop) in

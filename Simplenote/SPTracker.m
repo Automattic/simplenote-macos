@@ -41,6 +41,10 @@
 
 
 #pragma mark - Note Editor
++ (void)trackEditorChecklistInserted
+{
+    [self trackAutomatticEventWithName:@"editor_checklist_inserted" properties:nil];
+}
 
 + (void)trackEditorNoteCreated
 {

@@ -164,7 +164,7 @@ static NSColor *colorWithHexString(NSString *hexString);
             return NSColor.controlBackgroundColor;
         } else if ([key isEqualToString:@"textColor"] || [key isEqualToString:@"noteHeadlineFontColor"]) {
             return NSColor.textColor;
-        } else if ([key isEqualToString:@"secondaryTextColor"] || [key isEqualToString:@"noteBodyFontPreviewColor"]) {
+        } else if ([key isEqualToString:@"secondaryTextColor"]) {
             return NSColor.secondaryLabelColor;
         }
     }

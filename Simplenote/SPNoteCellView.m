@@ -8,7 +8,7 @@
 
 #import "SPNoteCellView.h"
 #import "Note.h"
-#import "NSMutableAttributedString+TruncateToWidth.h"
+#import "NSMutableAttributedString+Styling.h"
 #import "SPGradientView.h"
 #import "NSString+Condensing.h"
 #import "NSString+Styling.h"
@@ -50,7 +50,7 @@ static NSImage *pinImageHighlighted;
     NSColor *headlineColor = highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteHeadlineFontColor"];
     NSColor *previewColor = highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteBodyFontPreviewColor"];
     NSString *preview = [note.content length] == 0 ? @"New note..." : [note.content stringByGeneratingPreview];
-
+    
     NSAttributedString *noteSummary = [preview headlinedAttributedStringWithHeadlineFont:[self noteTitleFont] headlineColor:headlineColor bodyFont:[self notePreviewFont] bodyColor:previewColor];
 
     if (note.pinned) {

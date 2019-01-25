@@ -104,6 +104,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage newInstance];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
+    [self.noteEditor.layoutManager setDefaultAttachmentScaling:NSImageScaleProportionallyDown];
     
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
@@ -267,6 +268,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
         [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
     }
+    
+    [self.noteEditor processChecklists];
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -450,7 +453,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    self.note.content = self.noteEditor.string;
+    self.note.content = [self.noteEditor getPlainTextContent];
     
     [self updateShareButtonVisibility];
     
@@ -459,6 +462,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     // Update the note list preview
     [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
+    [self.noteEditor processChecklists];
 }
 
 -(void)updateShareButtonVisibility
@@ -478,7 +482,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
     NSRange newRange = NSMakeRange(newLocation, 0);
     [self.noteEditor setSelectedRange:newRange];
-
+    [self.noteEditor processChecklists];
+    
     [self updatePublishUI];
 }
 
@@ -490,7 +495,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
 	
     if (self.note != nil && ![self.noteEditor.string isEqualToString:@""]) {
-        self.note.content = self.noteEditor.string;
+        self.note.content = [self.noteEditor getPlainTextContent];
         [appDelegate.simperium saveWithoutSyncing];
     }
 }
@@ -634,7 +639,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         [versionSlider setObjectValue:[NSNumber numberWithInteger:versionSlider.maxValue]];
         [self updateVersionLabel:self.note.modificationDate];
         [self.noteEditor setEditable:NO];
-        [self.noteEditor setTextColor:[self.theme colorForKey:@"tagViewPlaceholderColor"]];
 
         // Request the version data from Simperium
         Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
@@ -653,8 +657,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
         
         // Unload versions and re-enable editor
         [self.noteEditor setEditable:YES];
-        [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
         self.noteVersionData = nil;
+        
+        // Refreshes the note content in the editor, in case the popover was canceled
+        [self didReceiveNewContent];
     }
 }
 
@@ -669,7 +675,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
 	if (versionData != nil) {
 		self.noteEditor.string = (NSString *)[versionData objectForKey:@"content"];
-        [self.noteEditor setTextColor:[self.theme colorForKey:@"tagViewPlaceholderColor"]];
+        [self.noteEditor processChecklists];
 
 		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
 		[self updateVersionLabel:versionDate];
@@ -680,9 +686,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     [SPTracker trackEditorNoteRestored];
     
-    self.note.content = [self.noteEditor string];
+    self.note.content = [self.noteEditor getPlainTextContent];
     [self save];
     [self dismissActivePopover];
+    [self.noteEditor processChecklists];
 }
 
 - (IBAction)pinAction:(id)sender
@@ -744,7 +751,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [[NSNotificationCenter defaultCenter] postNotificationName:SPWillAddNewNoteNotificationName object:self];
     
     // Save current note first
-    self.note.content = self.noteEditor.string;
+    self.note.content = [self.noteEditor getPlainTextContent];
     [self save];
     
     [notesArrayController setSelectsInsertedObjects:YES];
@@ -968,6 +975,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
     [self applyStyle];
     [self checkTextInDocument];
+    [self.noteEditor processChecklists];
 }
 
 #pragma mark - NoteEditor Preferences Helpers
@@ -1061,6 +1069,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     [self showViewController:self.publishViewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
 }
 
+// Reprocesses note checklists after switching themes, so they apply the correct color
+- (void)fixChecklistColoring
+{
+    self.noteEditor.string = [self.noteEditor getPlainTextContent];
+    [self.noteEditor processChecklists];
+}
+
 #pragma mark - NSButton Delegate Methods
 
 - (IBAction)showSharePopover:(id)sender
@@ -1080,7 +1095,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [SPTracker trackEditorVersionsAccessed];
-    [self showViewController:self.versionsViewController relativeToView:self.noteEditor preferredEdge:NSMinXEdge];
+    [self showViewController:self.versionsViewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
 }
 
 - (IBAction)shareNote:(id)sender
@@ -1142,6 +1157,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 - (void)loadMarkdownContent {
     NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:self.note.content];
     [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+}
+
+- (void)insertChecklistAction:(id)sender {
+    [self.noteEditor insertNewChecklist];
+    
+    [SPTracker trackEditorChecklistInserted];
 }
 
 #pragma mark - NSSharingServicePicker delegate

@@ -17,6 +17,8 @@
 
 @implementation NSTextView (Simplenote)
 
+const int ChecklistItemLength = 3;
+
 - (BOOL)applyAutoBulletsAfterTabPressed
 {
     return [self applyAutoBulletsForKeyPress:YES];
@@ -35,12 +37,13 @@
     NSRange lineRange                   = [rawString lineRangeForRange:currentRange];
     NSString *lineString                = [rawString substringWithRange:lineRange];
     NSString *cleanLineString           = [lineString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSArray *const bullets              = @[@"*", @"-", @"+"];
+    NSString *textAttachmentCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment
+    NSArray *const bullets              = @[@"*", @"-", @"+", textAttachmentCode];
     NSString *stringToAppendToNewLine   = nil;
     
     for (NSString *bullet in bullets) {
         if ([cleanLineString hasPrefix:bullet]) {
-            stringToAppendToNewLine = bullet;
+            stringToAppendToNewLine = [bullet isEqualToString:textAttachmentCode] ? @"- [ ] " : bullet;
             break;
         }
     }
@@ -50,12 +53,19 @@
         return NO;
     }
     
-    NSInteger indexOfBullet             = [lineString rangeOfString:stringToAppendToNewLine].location;
+    NSUInteger bulletLength             = stringToAppendToNewLine.length;
+    BOOL isApplyingChecklist            = [cleanLineString hasPrefix:textAttachmentCode];
+    NSInteger indexOfBullet             = [lineString rangeOfString:isApplyingChecklist
+                                           ? textAttachmentCode
+                                           : stringToAppendToNewLine].location;
     NSString *insertionString           = nil;
     NSRange insertionRange              = lineRange;
     
     // Tab entered: Move the bullet along
     if (isTabPress) {
+        if (isApplyingChecklist) {
+            return NO;
+        }
         // Proceed only if the user is entering Tab's right by the first one
         //  -   Something
         //     ^
@@ -72,16 +82,21 @@
     // Empty Line: Remove the bullet
     } else if (cleanLineString.length == 1) {
         insertionString                 = [NSString newLineString];
-        currentRange.location           -= lineRange.length - 1;
+        currentRange.location           -= lineRange.length - (isApplyingChecklist ? 1 :  bulletLength);
     // Attempt to apply the bullet
     } else  {
         // Substring: [0 - Bullet]
-        NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:stringToAppendToNewLine].location + 1);
-        stringToAppendToNewLine         = [lineString substringWithRange:bulletPrefixRange];
+        if (isApplyingChecklist) {
+            NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:textAttachmentCode].location);
+            stringToAppendToNewLine         = [[lineString substringWithRange:bulletPrefixRange] stringByAppendingString:stringToAppendToNewLine];
+        } else {
+            NSRange bulletPrefixRange       = NSMakeRange(0, [lineString rangeOfString:stringToAppendToNewLine].location + 1);
+            stringToAppendToNewLine         = [lineString substringWithRange:bulletPrefixRange];
+        }
         
         // Do we need to append a whitespace?
-        if (lineRange.length > indexOfBullet + 1) {
-            unichar bulletTrailing      = [lineString characterAtIndex:indexOfBullet + 1];
+        if (lineRange.length > indexOfBullet + bulletLength && !isApplyingChecklist) {
+            unichar bulletTrailing      = [lineString characterAtIndex:indexOfBullet + bulletLength];
             
             if ([[NSCharacterSet whitespaceCharacterSet] characterIsMember:bulletTrailing]) {
                 NSString *trailing      = [NSString stringWithFormat:@"%c", bulletTrailing];
@@ -92,7 +107,7 @@
         // Replace!
         insertionString                 = [[NSString newLineString] stringByAppendingString:stringToAppendToNewLine];
         insertionRange                  = currentRange;
-        currentRange.location           += insertionString.length;
+        currentRange.location           += isApplyingChecklist ? [stringToAppendToNewLine length] - ChecklistItemLength : insertionString.length;
     }
     
     // Apply the Replacements
