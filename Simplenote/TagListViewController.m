@@ -12,6 +12,7 @@
 #import "SPTagCellView.h"
 #import "SPTableRowView.h"
 #import "SPTableView.h"
+#import "SPConstants.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
 #import "VSThemeManager.h"
@@ -160,7 +161,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     self.tagArray = [[appDelegate.simperium bucketForName: @"Tag"] allObjects];
     [self sortTags];
 
-    [appDelegate.simperium save];
+    [self save];
     
     [self reloadDataAndPreserveSelection];
 }
@@ -256,9 +257,16 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     Tag *newTag = [tagBucket insertNewObjectForKey:tagKey];
     newTag.name = tagName;
     newTag.index = index == nil ? @([tagBucket numObjects]) : index;
-    [appDelegate.simperium save];
+    [self save];
     
     return newTag;
+}
+
+- (void)save
+{
+    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
+    [appDelegate.simperium save];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SPObjectSaveNotificationName object:self];
 }
 
 - (void)tagAddedFromEditor:(NSNotification *)notification
@@ -285,7 +293,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 	}
     
     renamedTag.name = newTagName;
-    [self.simperium save];
+    [self save];
     
     NSDictionary *userInfo = @{@"tagName": newTagName};
     [[NSNotificationCenter defaultCenter] postNotificationName:kTagUpdated object:self userInfo:userInfo];
@@ -314,7 +322,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
     [tagBucket deleteObject:tag];
-    [appDelegate.simperium save];
+    [self save];
     
     [self loadTags];
     
@@ -424,7 +432,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     for (Note *note in items) {
         [appDelegate.managedObjectContext deleteObject:note];
     }
-    [appDelegate.simperium save];
+    [self save];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kDidEmptyTrash object:self];
 }
@@ -735,8 +743,10 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)applyStyle
 {
-    [tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
-    [tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    VSTheme *theme = [[VSThemeManager sharedManager] theme];
+    [tableView setBackgroundColor:[theme colorForKey:@"tableViewBackgroundColor"]];
+    [tagBox setFillColor:[theme colorForKey:@"tableViewBackgroundColor"]];
+    [footerDivider setBorderColor:[theme colorForKey:@"dividerColor"]];
     [self reloadDataAndPreserveSelection];
 }
 

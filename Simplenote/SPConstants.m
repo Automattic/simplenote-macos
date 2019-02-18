@@ -17,6 +17,7 @@
 NSString * const SPWelcomeNoteID                    = @"welcomeNote-Mac";
 
 NSString * const SPSimperiumPreferencesObjectKey    = @"preferences-key";
+NSString * const SPLastSyncDateKey                  = @"SPLastSyncDateKey";
 NSString * const SPAutomatticAnalyticLearnMoreURL   = @"https://automattic.com/cookies";
 
 NSString * const SPSimplenotePublishURL             = @"http://simp.ly/publish/";
@@ -24,6 +25,7 @@ NSString * const SPSimplenoteForgotPasswordURL      = @"https://app.simplenote.c
 NSString * const SPSimplenoteLogoImageName          = @"logo";
 NSString * const SPWPServiceName                    = @"simplenote-wpcom";
 NSString * const SPSignInErrorNotificationName      = @"SPSignInErrorNotificationName";
+NSString * const SPObjectSaveNotificationName       = @"SPObjectSaveNotificationName";
 NSString * const SPWPSignInAuthURL                  = @"https://public-api.wordpress.com/oauth2/authorize?response_type=code&scope=global&client_id=%@&redirect_uri=%@&state=%@";
 NSString * const SPHelpURL                          = @"https://simplenote.com/help";
 NSString * const SPContactUsURL                     = @"https://simplenote.com/contact-us";

@@ -26,10 +26,10 @@ static NSString *kEntityName = @"Note";
 
 @implementation StatusChecker
 
-+ (BOOL)hasUnsentChanges:(Simperium *)simperium
++ (int)getUnsentChangeCount:(Simperium *)simperium
 {    
     if (simperium.user.authenticated == false) {
-        return false;
+        return 0;
     }
 
     SPBucket *bucket = [simperium bucketForName:kEntityName];
@@ -39,15 +39,38 @@ static NSString *kEntityName = @"Note";
     NSLog(@"<> Status Checker: Found %ld Entities [%f seconds elapsed]", (unsigned long)allNotes.count, startDate.timeIntervalSinceNow);
     
     // Compare the Ghost Content string, against the Entity Content
+    int localChangeCount = 0;
     for (Note *note in allNotes) {
         if ([bucket hasLocalChangesForKey:note.simperiumKey]) {
-            NSLog(@"<> Status Checker: FOUND entities with local changes [%f seconds elapsed]", startDate.timeIntervalSinceNow);
-            return true;
+            localChangeCount++;
         }
     }
 
-    NSLog(@"<> Status Checker: No entities with local changes [%f seconds elapsed]", startDate.timeIntervalSinceNow);
-    return false;
+    return localChangeCount;
+}
+
++ (NSString *)getUnsyncedNoteTitles:(Simperium *)simperium
+{
+    if (simperium.user.authenticated == false) {
+        return @"";
+    }
+    
+    SPBucket *bucket = [simperium bucketForName:kEntityName];
+    NSArray *allNotes = [bucket allObjects];
+    NSDate *startDate = [NSDate date];
+    
+    NSLog(@"<> Status Checker: Found %ld Entities [%f seconds elapsed]", (unsigned long)allNotes.count, startDate.timeIntervalSinceNow);
+    
+    // Compare the Ghost Content string, against the Entity Content
+    NSString *unsyncedNoteTitles = @"";
+    for (Note *note in allNotes) {
+        if ([bucket hasLocalChangesForKey:note.simperiumKey]) {
+            NSString *titleWithLineBreak = [NSString stringWithFormat:@"%@\n", note.titlePreview];
+            unsyncedNoteTitles = [unsyncedNoteTitles stringByAppendingString:titleWithLineBreak];
+        }
+    }
+    
+    return unsyncedNoteTitles;
 }
 
 @end
