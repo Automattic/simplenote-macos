@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -794,18 +795,37 @@
                                         <view key="contentView" id="2Nl-8a-lk8">
                                             <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <box boxType="custom" borderType="line" id="cnY-Zh-kDJ">
+                                                    <rect key="frame" x="0.0" y="19" width="136" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" id="6cu-0C-kbc">
+                                                        <rect key="frame" x="1" y="1" width="134" height="0.0"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </view>
+                                                </box>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="TZt-rq-BkI">
+                                                    <rect key="frame" x="0.0" y="3" width="120" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="wTc-f5-NNo">
+                                                        <font key="font" metaFont="system" size="10"/>
+                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
                                         </view>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
                                     <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452" customClass="MMScrollView">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
+                                        <rect key="frame" x="0.0" y="20" width="136" height="598"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="598"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="598"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -889,7 +909,7 @@
                                                                             <rect key="frame" x="0.0" y="15" width="151" height="1"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <view key="contentView" id="8LT-ym-mnf">
-                                                                                <rect key="frame" x="1" y="0.5" width="149" height="0.0"/>
+                                                                                <rect key="frame" x="1" y="1" width="149" height="0.0"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             </view>
                                                                         </box>
@@ -953,7 +973,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
                                             <rect key="frame" x="0.0" y="0.0" width="255" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="255" height="606"/>
@@ -1048,7 +1068,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
@@ -1155,6 +1175,7 @@
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>
                 <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
+                <outlet property="syncStatusLabel" destination="TZt-rq-BkI" id="CS6-dN-BF8"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
                 <outlet property="textScrollView" destination="933" id="1199"/>
                 <outlet property="textViewParent" destination="559" id="1198"/>
@@ -1228,6 +1249,7 @@
         <viewController id="1461" customClass="TagListViewController">
             <connections>
                 <outlet property="findMenu" destination="220" id="M2t-op-yAH"/>
+                <outlet property="footerDivider" destination="cnY-Zh-kDJ" id="y7c-B8-5O3"/>
                 <outlet property="noteListViewController" destination="874" id="1470"/>
                 <outlet property="notesArrayController" destination="573" id="1672"/>
                 <outlet property="tableView" destination="1453" id="1469"/>

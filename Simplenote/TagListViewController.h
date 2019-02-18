@@ -20,6 +20,7 @@
     IBOutlet NSMenu *findMenu;
     IBOutlet NSMenuItem *tagSortMenuItem;
     IBOutlet NSArrayController *notesArrayController;
+    IBOutlet NSBox *footerDivider;
 }
 
 @property (strong) IBOutlet SPTableView *tableView;

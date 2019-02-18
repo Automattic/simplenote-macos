@@ -165,6 +165,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
             [self.noteEditor setSelectedRange:range];
         }
     }
+
+    [self performSelector:@selector(sendObjectChangedNotification) withObject:nil afterDelay:0.1f];
+}
+
+- (void)sendObjectChangedNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SPObjectSaveNotificationName object:self];
 }
 
 - (void)saveAndSync:(NSTimer *)timer

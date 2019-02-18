@@ -205,6 +205,9 @@
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(applyStyle) name:VSThemeManagerThemeDidChangeNotification object:nil];
+    [nc addObserver:self selector:@selector(updateSyncIndicator) name:SPObjectSaveNotificationName object:nil];
+    [nc addObserver:self selector:@selector(updateSyncIndicator)  name:kSPReachabilityChangedNotification object:nil];
+    [nc addObserver:self selector:@selector(updateSyncIndicator)  name:ProcessorWillChangeObjectsNotification object:nil];
 }
 
 - (void)configureWindow
@@ -245,6 +248,9 @@
         systemDefaultItem.tag = kDefaultThemeAppearanceTag;
         [themeMenu addItem:systemDefaultItem];
     }
+    
+    NSClickGestureRecognizer *click = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(showSyncPanel)];
+    [self.syncStatusLabel addGestureRecognizer:click];
 
     [self configureToolbar];
 }
@@ -570,6 +576,7 @@
 - (void)simperiumDidLogin:(Simperium *)simperium
 {
     [SPTracker refreshMetadataWithEmail:simperium.user.email];
+    [self updateSyncIndicator];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
@@ -587,8 +594,11 @@
 
 - (void)bucket:(SPBucket *)bucket didChangeObjectForKey:(NSString *)key forChangeType:(SPBucketChangeType)change memberNames:(NSArray *)memberNames
 {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:SPLastSyncDateKey];
+    
     // Ignore acks
     if (change == SPBucketChangeTypeAcknowledge) {
+        [self updateSyncIndicator];
         return;
 	}
     
@@ -614,6 +624,45 @@
         // Tag change
         [self.tagListViewController loadTags];
     }
+}
+
+- (void)updateSyncIndicator
+{
+    int pendingChanges = [StatusChecker getUnsentChangeCount:self.simperium];
+    switch (pendingChanges) {
+        case 0: {
+            bool isOffline = [self.simperium requiresConnection];
+            if (isOffline) {
+                _syncStatusLabel.stringValue = @"No connection";
+                return;
+            } else {
+                _syncStatusLabel.stringValue = @"All changes synced";
+            }
+            break;
+        }
+        case 1:
+            _syncStatusLabel.stringValue = [NSString stringWithFormat:@"%d unsynced change", pendingChanges];
+            break;
+        default:
+            _syncStatusLabel.stringValue = [NSString stringWithFormat:@"%d unsynced changes", pendingChanges];
+    }
+}
+
+- (void)showSyncPanel
+{
+    SPSyncStatusViewController *viewController = [[SPSyncStatusViewController alloc] init];
+    
+    // Create popover
+    NSPopover *entryPopover = [[NSPopover alloc] init];
+    [entryPopover setContentSize:NSMakeSize(200.0, 200.0)];
+    [entryPopover setBehavior:NSPopoverBehaviorTransient];
+    [entryPopover setAnimates:YES];
+    [entryPopover setContentViewController:viewController];
+    
+    // Show popover
+    [entryPopover showRelativeToRect:self.syncStatusLabel.frame
+                              ofView:[[NSApp mainWindow] contentView]
+                       preferredEdge:NSMinYEdge];
 }
 
 - (void)bucket:(SPBucket *)bucket willChangeObjectsForKeys:(NSSet *)keys
@@ -650,7 +699,6 @@
     }
 }
 
-
 #pragma mark - Menu delegate
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
@@ -676,7 +724,7 @@
 - (IBAction)signOutAction:(id)sender
 {
     // Safety first: Check for unsynced notes before they are deleted!
-    if ([StatusChecker hasUnsentChanges:self.simperium] == false)  {
+    if ([StatusChecker getUnsentChangeCount:self.simperium] == 0)  {
         [self signOut];
         return;
     }

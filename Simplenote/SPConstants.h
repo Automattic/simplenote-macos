@@ -17,6 +17,7 @@
 extern NSString * const SPWelcomeNoteID;
 
 extern NSString * const SPSimperiumPreferencesObjectKey;
+extern NSString * const SPLastSyncDateKey;
 extern NSString * const SPAutomatticAnalyticLearnMoreURL;
 
 extern NSString * const SPSimplenotePublishURL;
@@ -24,6 +25,7 @@ extern NSString * const SPSimplenoteForgotPasswordURL;
 extern NSString * const SPSimplenoteLogoImageName;
 extern NSString * const SPWPServiceName;
 extern NSString * const SPSignInErrorNotificationName;
+extern NSString * const SPObjectSaveNotificationName;
 extern NSString * const SPWPSignInAuthURL;
 extern NSString * const SPHelpURL;
 extern NSString * const SPContactUsURL;

@@ -10,6 +10,7 @@
 
 @interface StatusChecker : NSObject
 
-+ (BOOL)hasUnsentChanges:(Simperium *)simperium;
++ (int)getUnsentChangeCount:(Simperium *)simperium;
++ (NSString *)getUnsyncedNoteTitles:(Simperium *)simperium;
 
 @end
