@@ -26,10 +26,10 @@ static NSString *kEntityName = @"Note";
 
 @implementation StatusChecker
 
-+ (int)getUnsentChangeCount:(Simperium *)simperium
++ (BOOL)hasUnsentChanges:(Simperium *)simperium
 {    
     if (simperium.user.authenticated == false) {
-        return 0;
+        return false;
     }
 
     SPBucket *bucket = [simperium bucketForName:kEntityName];
@@ -39,38 +39,15 @@ static NSString *kEntityName = @"Note";
     NSLog(@"<> Status Checker: Found %ld Entities [%f seconds elapsed]", (unsigned long)allNotes.count, startDate.timeIntervalSinceNow);
     
     // Compare the Ghost Content string, against the Entity Content
-    int localChangeCount = 0;
     for (Note *note in allNotes) {
         if ([bucket hasLocalChangesForKey:note.simperiumKey]) {
-            localChangeCount++;
+            NSLog(@"<> Status Checker: FOUND entities with local changes [%f seconds elapsed]", startDate.timeIntervalSinceNow);
+            return true;
         }
     }
 
-    return localChangeCount;
-}
-
-+ (NSString *)getUnsyncedNoteTitles:(Simperium *)simperium
-{
-    if (simperium.user.authenticated == false) {
-        return @"";
-    }
-    
-    SPBucket *bucket = [simperium bucketForName:kEntityName];
-    NSArray *allNotes = [bucket allObjects];
-    NSDate *startDate = [NSDate date];
-    
-    NSLog(@"<> Status Checker: Found %ld Entities [%f seconds elapsed]", (unsigned long)allNotes.count, startDate.timeIntervalSinceNow);
-    
-    // Compare the Ghost Content string, against the Entity Content
-    NSString *unsyncedNoteTitles = @"";
-    for (Note *note in allNotes) {
-        if ([bucket hasLocalChangesForKey:note.simperiumKey]) {
-            NSString *titleWithLineBreak = [NSString stringWithFormat:@"%@\n", note.titlePreview];
-            unsyncedNoteTitles = [unsyncedNoteTitles stringByAppendingString:titleWithLineBreak];
-        }
-    }
-    
-    return unsyncedNoteTitles;
+    NSLog(@"<> Status Checker: No entities with local changes [%f seconds elapsed]", startDate.timeIntervalSinceNow);
+    return false;
 }
 
 @end

@@ -73,12 +73,6 @@
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
 		378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		378E1F751CFCB5A7007486B5 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
-		379096D5220CB3D900FA27B9 /* SPSyncStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379096D3220CB3D900FA27B9 /* SPSyncStatusViewController.swift */; };
-		379096D6220CB3D900FA27B9 /* SPSyncStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379096D3220CB3D900FA27B9 /* SPSyncStatusViewController.swift */; };
-		379096D7220CB3D900FA27B9 /* SPSyncStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379096D4220CB3D900FA27B9 /* SPSyncStatusViewController.xib */; };
-		379096D8220CB3D900FA27B9 /* SPSyncStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379096D4220CB3D900FA27B9 /* SPSyncStatusViewController.xib */; };
-		379096DA220CCB3A00FA27B9 /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379096D9220CCB3A00FA27B9 /* NSDate+TimeAgo.swift */; };
-		379096DB220CCB3A00FA27B9 /* NSDate+TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379096D9220CCB3A00FA27B9 /* NSDate+TimeAgo.swift */; };
 		37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */; };
 		37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */; };
 		37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */ = {isa = PBXBuildFile; fileRef = 37AE49C51FFEBB0A00FCB165 /* markdown-default.css */; };
@@ -354,9 +348,6 @@
 		378AA7011ACB05B100CA87DC /* VSThemeLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSThemeLoader.m; path = DB5/VSThemeLoader.m; sourceTree = "<group>"; };
 		378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Escaping.h"; sourceTree = "<group>"; };
 		378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Escaping.m"; sourceTree = "<group>"; };
-		379096D3220CB3D900FA27B9 /* SPSyncStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSyncStatusViewController.swift; sourceTree = "<group>"; };
-		379096D4220CB3D900FA27B9 /* SPSyncStatusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SPSyncStatusViewController.xib; sourceTree = "<group>"; };
-		379096D9220CCB3A00FA27B9 /* NSDate+TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+TimeAgo.swift"; sourceTree = "<group>"; };
 		37AE49C01FFEB92A00FCB165 /* SPMarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMarkdownParser.h; sourceTree = "<group>"; };
 		37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMarkdownParser.m; sourceTree = "<group>"; };
 		37AE49C51FFEBB0A00FCB165 /* markdown-default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "markdown-default.css"; sourceTree = "<group>"; };
@@ -581,7 +572,6 @@
 		26F72A9214032D2A00A7935E /* Simplenote */ = {
 			isa = PBXGroup;
 			children = (
-				379096DC220CCBC200FA27B9 /* Extensions */,
 				463774DC171F114900E2E333 /* Categories */,
 				463774DB171F111600E2E333 /* Models */,
 				B59848891BCDB961005EFBBE /* Trackers */,
@@ -623,8 +613,6 @@
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
-				379096D3220CB3D900FA27B9 /* SPSyncStatusViewController.swift */,
-				379096D4220CB3D900FA27B9 /* SPSyncStatusViewController.xib */,
 			);
 			path = Simplenote;
 			sourceTree = "<group>";
@@ -705,14 +693,6 @@
 				B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */,
 			);
 			name = DB5;
-			sourceTree = "<group>";
-		};
-		379096DC220CCBC200FA27B9 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				379096D9220CCB3A00FA27B9 /* NSDate+TimeAgo.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		37AE49C41FFEBAF400FCB165 /* CSS */ = {
@@ -1007,7 +987,6 @@
 			files = (
 				26F72A9714032D2A00A7935E /* InfoPlist.strings in Resources */,
 				376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */,
-				379096D7220CB3D900FA27B9 /* SPSyncStatusViewController.xib in Resources */,
 				26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
@@ -1043,7 +1022,6 @@
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
-				379096D8220CB3D900FA27B9 /* SPSyncStatusViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1189,7 +1167,6 @@
 				378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */,
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
 				26F72A9914032D2A00A7935E /* main.m in Sources */,
-				379096D5220CB3D900FA27B9 /* SPSyncStatusViewController.swift in Sources */,
 				B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				3712FC8A1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
@@ -1215,7 +1192,6 @@
 				375D293621E033D1007AB25A /* document.c in Sources */,
 				71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */,
 				B5087A1E1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
-				379096DA220CCB3A00FA27B9 /* NSDate+TimeAgo.swift in Sources */,
 				71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */,
 				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
@@ -1284,7 +1260,6 @@
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
-				379096D6220CB3D900FA27B9 /* SPSyncStatusViewController.swift in Sources */,
 				B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				3712FC8B1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
@@ -1310,7 +1285,6 @@
 				375D293721E033D1007AB25A /* document.c in Sources */,
 				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				B5087A1F1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
-				379096DB220CCB3A00FA27B9 /* NSDate+TimeAgo.swift in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,

@@ -26,7 +26,6 @@
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
 @property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
-@property (strong, nonatomic) IBOutlet NSTextField              *syncStatusLabel;
 
 @property (strong, nonatomic) Simperium                         *simperium;
 @property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
