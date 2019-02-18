@@ -23,8 +23,6 @@ class SPSyncStatusViewController: NSViewController {
         let delegate = NSApplication.shared.delegate as! SimplenoteAppDelegate
         let simperium = delegate.simperium
         
-        //let isOffline = simperium!.reachability.currentReachabilityStatus() == NotReachable
-        
         let unsyncedNotes = StatusChecker.getUnsyncedNoteTitles(simperium)
         
         // 2 UI States: Sync Complete, and Resolve
