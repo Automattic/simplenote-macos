@@ -19,6 +19,8 @@
             let wholeRange = NSRange(location: 0, length: (self.string as NSString).length)
 
             self.beginEditing()
+            // Clear out the attributes on the backing NSTextStorage
+            self.backingStore.setAttributes([:], range: wholeRange)
             self.applyStyles(wholeRange)
             self.edited(.editedAttributes, range: wholeRange, changeInLength: 0)
             self.endEditing()
