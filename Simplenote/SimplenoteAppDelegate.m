@@ -633,18 +633,18 @@
         case 0: {
             bool isOffline = [self.simperium requiresConnection];
             if (isOffline) {
-                _syncStatusLabel.stringValue = @"No connection";
+                _syncStatusLabel.stringValue = NSLocalizedString(@"No connection", @"No internet connection");
                 return;
             } else {
-                _syncStatusLabel.stringValue = @"All changes synced";
+                _syncStatusLabel.stringValue = NSLocalizedString(@"All changes synced", @"All changes have synced with the server");
             }
             break;
         }
         case 1:
-            _syncStatusLabel.stringValue = [NSString stringWithFormat:@"%d unsynced change", pendingChanges];
+            _syncStatusLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%d unsynced change", @"App has a singular unsynced change"), pendingChanges];
             break;
         default:
-            _syncStatusLabel.stringValue = [NSString stringWithFormat:@"%d unsynced changes", pendingChanges];
+            _syncStatusLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"%d unsynced changes", @"App has unsynced changes (plural)"), pendingChanges];
     }
 }
 

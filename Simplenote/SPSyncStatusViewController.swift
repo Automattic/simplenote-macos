@@ -35,10 +35,10 @@ class SPSyncStatusViewController: NSViewController {
             allGoodSyncView.isHidden = false
             
             let lastSyncDate = UserDefaults.standard.object(forKey: SPLastSyncDateKey) as! NSDate
-            let lastSyncString = String(format: "Last sync: %@", lastSyncDate.timeAgoSinceDate(numericDates: false))
+            let lastSyncString = String(format: NSLocalizedString("Last sync: %@", comment: "Last sync date"), lastSyncDate.timeAgoSinceDate(numericDates: false))
             lastSyncTextField.stringValue = lastSyncString
             
-            syncTitleTextField.stringValue = "All Changes Synced"
+            syncTitleTextField.stringValue = NSLocalizedString("All Changes Synced", comment: "All note changes have been synced with the server")
             
             let theme = VSThemeManager.shared()?.theme()
             iconImageView.image = NSImage(named: "icon_sync_checkmark", colorizeWith: theme?.color(forKey: "tintColor"))
