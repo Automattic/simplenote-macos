@@ -65,7 +65,7 @@ static NSString *kEntityName = @"Note";
     NSString *unsyncedNoteTitles = @"";
     for (Note *note in allNotes) {
         if ([bucket hasLocalChangesForKey:note.simperiumKey]) {
-            NSString *titleWithLineBreak = [NSString stringWithFormat:@"%@\n", note.titlePreview];
+            NSString *titleWithLineBreak = [NSString stringWithFormat:@"\u2022 %@\n", note.titlePreview];
             unsyncedNoteTitles = [unsyncedNoteTitles stringByAppendingString:titleWithLineBreak];
         }
     }
