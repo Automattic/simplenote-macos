@@ -497,7 +497,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
     
-    [self.tableView reloadData];
+    [self reloadDataAndPreserveSelection];
 }
 
 - (IBAction)filterNotes:(id)sender {
