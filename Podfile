@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :osx, '10.8'
+platform :osx, '10.11'
 inhibit_all_warnings!
 use_frameworks!
 
@@ -8,7 +8,7 @@ use_frameworks!
 # Main
 #
 abstract_target 'Automattic' do
-	pod 'Automattic-Tracks-OSX', :git => 'https://github.com/Automattic/Automattic-Tracks-iOS.git', :tag => '0.1.0'
+	pod 'Automattic-Tracks-iOS', :git => 'https://github.com/Automattic/Automattic-Tracks-iOS.git'
 	pod 'Simperium-OSX', '0.8.19'
 
 	target 'Simplenote' do
