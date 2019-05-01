@@ -1034,7 +1034,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-OSX/AutomatticTracks.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
@@ -1053,7 +1053,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8346CBC02BCE6435853FB902 /* [CP] Check Pods Manifest.lock */ = {
@@ -1119,7 +1119,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-OSX/AutomatticTracks.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
@@ -1134,7 +1134,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF62B838E8D09F974293DD8B /* [CP] Check Pods Manifest.lock */ = {
