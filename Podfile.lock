@@ -1,5 +1,5 @@
 PODS:
-  - Automattic-Tracks-iOS (0.3.2-beta.1):
+  - Automattic-Tracks-iOS (0.3.3):
     - CocoaLumberjack (~> 3.4.1)
     - Reachability (~> 3.1)
     - UIDeviceIdentifier (~> 1.1.4)
@@ -24,33 +24,25 @@ PODS:
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
-  - Automattic-Tracks-iOS (from `https://github.com/Automattic/Automattic-Tracks-iOS.git`)
+  - Automattic-Tracks-iOS (= 0.3.3)
   - Simperium-OSX (= 0.8.19)
   - Sparkle (= 1.18.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Automattic-Tracks-iOS
     - CocoaLumberjack
     - Reachability
     - Simperium-OSX
     - Sparkle
 
-EXTERNAL SOURCES:
-  Automattic-Tracks-iOS:
-    :git: https://github.com/Automattic/Automattic-Tracks-iOS.git
-
-CHECKOUT OPTIONS:
-  Automattic-Tracks-iOS:
-    :commit: b3641f2e80317a60c2118c3633a52da9980af33d
-    :git: https://github.com/Automattic/Automattic-Tracks-iOS.git
-
 SPEC CHECKSUMS:
-  Automattic-Tracks-iOS: 7678d30a5e2dfe75ff93e6496024790eefcf441d
+  Automattic-Tracks-iOS: 4414d11f650bc6fc00676b730d4077f66056b805
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Simperium-OSX: 14761d688e7255f00d9959010f2d79255709ceab
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: eb9633cd628966251f0373720383a2fb3547635d
+PODFILE CHECKSUM: 98f0271c8a02d6caf862b83eb37e69ff1256850e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

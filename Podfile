@@ -8,7 +8,7 @@ use_frameworks!
 # Main
 #
 abstract_target 'Automattic' do
-	pod 'Automattic-Tracks-iOS', :git => 'https://github.com/Automattic/Automattic-Tracks-iOS.git'
+	pod 'Automattic-Tracks-iOS', '0.3.3'
 	pod 'Simperium-OSX', '0.8.19'
 
 	target 'Simplenote' do
