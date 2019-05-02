@@ -4,6 +4,28 @@
 
 A Simplenote client for macOS. Learn more about Simplenote at [Simplenote.com](https://simplenote.com).
 
+## Development Requirements
+
+* [CocoaPods](https://cocoapods.org/).
+* [Xcode](https://developer.apple.com/xcode/).
+
+
+## Setup Credentials
+
+Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium.com). We distribute **testing credentials** that help us authenticate your application, and verify that the API calls being made are valid.
+
+In order to create your own Simperium.com Application, please, [head over to our website](https://www.simperium.com) and signup for free.
+
+After you've created your own Simperium application, copy the sample config. For example:
+
+```
+cp Simplenote/config-demo.plist Simplenote/config.plist
+```
+
+Then edit the new config.plist file and change the SPSimperiumAppID and SPSimperiumApiKey fields to the correct values for your new app.
+
+This will allow you to compile and run the app on a device or a simulator.
+
 ## Running
 
 1.	Clone the repo: `git clone https://github.com/Automattic/simplenote-macos.git`
@@ -14,6 +36,10 @@ _Note: Simplenote API features such as sharing and publishing will not work with
 
 ## Contributing
 
-Follow the same guidelines as [WordPress for iOS](https://make.wordpress.org/mobile/handbook/pathways/ios/how-to-contribute/).
+Read our [Contributing Guide](CONTRIBUTING.md) to learn about reporting issues, contributing code, and more ways to contribute.
+
+## License
+
+Simplenote for macOS is an Open Source project covered by the [GNU General Public License version 2](LICENSE.md).
 
 Happy noting!
