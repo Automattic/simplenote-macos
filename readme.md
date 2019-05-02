@@ -14,7 +14,7 @@ A Simplenote client for macOS. Learn more about Simplenote at [Simplenote.com](h
 
 Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium.com). We distribute **testing credentials** that help us authenticate your application, and verify that the API calls being made are valid.
 
-(*Please note* → We're not accepting any new Simperium accounts at this time.)
+(**Please note** → We're not accepting any new Simperium accounts at this time.)
 
 After you've created your own Simperium application, copy the sample config. For example:
 
