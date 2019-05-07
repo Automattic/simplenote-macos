@@ -713,8 +713,8 @@
     
     [_simperium signOutAndRemoveLocalData:YES completion:^{
         // Auth window won't show up until next run loop, so be careful not to close main window until then
-        [_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
-        [_simperium authenticateIfNecessary];
+        [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
+        [self->_simperium authenticateIfNecessary];
     }];
 }
 
