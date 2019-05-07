@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		148FFD05321DE8DD0004B1D7 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1F05719FA33BB54134ECF7 /* Pods_Automattic_Simplenote_AppStore.framework */; };
 		2614F1DF1405A0B10031AE94 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
 		2614F1E01405A0B10031AE94 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DE1405A0B10031AE94 /* Tag.m */; };
 		2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */; };
@@ -148,7 +149,6 @@
 		46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46F0E66517A3300B005BB4D1 /* Localizable.strings */; };
 		46F4EAB217B1A5F800697EAD /* SPSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F4EAB117B1A5F800697EAD /* SPSplitView.m */; };
 		46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 46F6540517F3F6E80074422C /* simplenotebeta.iconset */; };
-		47BE336B148B61661EBD006B /* Pods_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9851AF06FA1A438139985BB5 /* Pods_Simplenote_AppStore.framework */; };
 		71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
 		712DC91C1531FE2F0033CE85 /* SPTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 712DC91B1531FE2F0033CE85 /* SPTokenField.m */; };
 		714BA65814D3264200A6CCC1 /* SPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65714D3264200A6CCC1 /* SPGradientView.m */; };
@@ -161,9 +161,6 @@
 		71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
 		71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
-		75D9D82F75E62724FA7BAF86 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1F05719FA33BB54134ECF7 /* Pods_Automattic_Simplenote_AppStore.framework */; };
-		7C10524EB4FF4B7943F255DF /* Pods_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6092FA74FC3FB8C3DD06FAD /* Pods_Simplenote.framework */; };
-		98B3BCC95C1228A7954FDF6C /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */; };
 		B5087A151AF3AB9D00505A2B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A141AF3AB9D00505A2B /* ShareViewController.m */; };
 		B5087A161AF3AB9D00505A2B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A141AF3AB9D00505A2B /* ShareViewController.m */; };
 		B5087A1E1AF3AF5E00505A2B /* VersionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A1D1AF3AF5E00505A2B /* VersionsViewController.m */; };
@@ -227,6 +224,7 @@
 		B5FA829C1B977A1F00082296 /* SPTextLinkifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
+		DF943F46D35165664F17D797 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */; };
 		E223B9A9178F20FF007E0272 /* SPButtonNoBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */; };
 /* End PBXBuildFile section */
 
@@ -424,7 +422,6 @@
 		71D83D7214D75C0A00A25E69 /* SPTagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTagCellView.m; sourceTree = "<group>"; };
 		71DCEBE5152E2ED1002744C0 /* NSMutableAttributedString+Styling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Styling.h"; sourceTree = "<group>"; };
 		71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Styling.m"; sourceTree = "<group>"; };
-		9851AF06FA1A438139985BB5 /* Pods_Simplenote_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simplenote_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A87415AA90AE50393BFC666C /* Pods-Simplenote-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simplenote-AppStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Simplenote-AppStore/Pods-Simplenote-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 		B5087A131AF3AB9D00505A2B /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		B5087A141AF3AB9D00505A2B /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
@@ -481,7 +478,6 @@
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
 		C9AD0F19A356BF59C78C5E3E /* Pods-Automattic-Simplenote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"; sourceTree = "<group>"; };
-		D6092FA74FC3FB8C3DD06FAD /* Pods_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7093101AF3272D7557F59C3 /* Pods-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simplenote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Simplenote/Pods-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
 		D925A7AA87B99791A347F806 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 		E223B9A7178F20FF007E0272 /* SPButtonNoBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPButtonNoBackground.h; sourceTree = "<group>"; };
@@ -500,8 +496,7 @@
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
 				B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
-				98B3BCC95C1228A7954FDF6C /* Pods_Automattic_Simplenote.framework in Frameworks */,
-				7C10524EB4FF4B7943F255DF /* Pods_Simplenote.framework in Frameworks */,
+				DF943F46D35165664F17D797 /* Pods_Automattic_Simplenote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,8 +512,7 @@
 				B55E98FE1BE03E3F0087CA48 /* Fabric.framework in Frameworks */,
 				466FFEE117CC10A800399652 /* Cocoa.framework in Frameworks */,
 				B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */,
-				47BE336B148B61661EBD006B /* Pods_Simplenote_AppStore.framework in Frameworks */,
-				75D9D82F75E62724FA7BAF86 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
+				148FFD05321DE8DD0004B1D7 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,8 +568,6 @@
 				2614F1EE1405A14D0031AE94 /* libsqlite3.dylib */,
 				2614F1EC1405A1450031AE94 /* libz.dylib */,
 				39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */,
-				D6092FA74FC3FB8C3DD06FAD /* Pods_Simplenote.framework */,
-				9851AF06FA1A438139985BB5 /* Pods_Simplenote_AppStore.framework */,
 				4B1F05719FA33BB54134ECF7 /* Pods_Automattic_Simplenote_AppStore.framework */,
 			);
 			name = Frameworks;
@@ -983,6 +975,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 26F72A7D14032D2900A7935E;
