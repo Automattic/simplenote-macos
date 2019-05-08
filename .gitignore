@@ -34,7 +34,6 @@ Simplenote/config.plist
 # Bundler
 /vendor/
 /vendor/bundle/
-.bundle/
 
 # Dependencies
 Pods/
