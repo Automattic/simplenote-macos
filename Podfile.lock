@@ -1,5 +1,5 @@
 PODS:
-  - Automattic-Tracks-iOS (0.3.3):
+  - Automattic-Tracks-iOS (0.3.4):
     - CocoaLumberjack (~> 3.4.1)
     - Reachability (~> 3.1)
     - UIDeviceIdentifier (~> 1.1.4)
@@ -24,7 +24,7 @@ PODS:
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
-  - Automattic-Tracks-iOS (= 0.3.3)
+  - Automattic-Tracks-iOS (= 0.3.4)
   - Simperium-OSX (= 0.8.19)
   - Sparkle (= 1.18.1)
 
@@ -37,12 +37,12 @@ SPEC REPOS:
     - Sparkle
 
 SPEC CHECKSUMS:
-  Automattic-Tracks-iOS: 4414d11f650bc6fc00676b730d4077f66056b805
+  Automattic-Tracks-iOS: 67d00f2f20e1978ee09154f26cdf3475d158508c
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Simperium-OSX: 14761d688e7255f00d9959010f2d79255709ceab
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: 98f0271c8a02d6caf862b83eb37e69ff1256850e
+PODFILE CHECKSUM: 9849ef6cedeb76d13423e1a52cbbd02437c7e02f
 
 COCOAPODS: 1.6.1
