@@ -1,0 +1,4 @@
+app_identifier("com.automattic.SimplenoteMac") # The bundle identifier of your app
+
+itc_team_id("299112") # App Store Connect Team ID
+team_id("PZYM8XX95Q") # Developer Portal Team ID
