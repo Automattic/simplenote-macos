@@ -1,15 +1,16 @@
 PODS:
-  - Automattic-Tracks-iOS (0.3.4):
-    - CocoaLumberjack (~> 3.4.1)
+  - Automattic-Tracks-iOS (0.3.5):
+    - CocoaLumberjack (~> 3.5.2)
     - Reachability (~> 3.1)
+    - Sentry (~> 4)
     - UIDeviceIdentifier (~> 1.1.4)
-  - CocoaLumberjack (3.4.2):
-    - CocoaLumberjack/Default (= 3.4.2)
-    - CocoaLumberjack/Extensions (= 3.4.2)
-  - CocoaLumberjack/Default (3.4.2)
-  - CocoaLumberjack/Extensions (3.4.2):
-    - CocoaLumberjack/Default
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
   - Reachability (3.2)
+  - Sentry (4.3.4):
+    - Sentry/Core (= 4.3.4)
+  - Sentry/Core (4.3.4)
   - Simperium-OSX (0.8.21):
     - Simperium-OSX/DiffMatchPach (= 0.8.21)
     - Simperium-OSX/JRSwizzle (= 0.8.21)
@@ -24,25 +25,36 @@ PODS:
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
-  - Automattic-Tracks-iOS (= 0.3.4)
+  - Automattic-Tracks-iOS (from `https://github.com/Automattic/Automattic-Tracks-iOS.git`, branch `add/support-for-tracking-crashes`)
   - Simperium-OSX (= 0.8.21)
   - Sparkle (= 1.18.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Automattic-Tracks-iOS
     - CocoaLumberjack
     - Reachability
+    - Sentry
     - Simperium-OSX
     - Sparkle
 
+EXTERNAL SOURCES:
+  Automattic-Tracks-iOS:
+    :branch: add/support-for-tracking-crashes
+    :git: https://github.com/Automattic/Automattic-Tracks-iOS.git
+
+CHECKOUT OPTIONS:
+  Automattic-Tracks-iOS:
+    :commit: 65186d190954e93f2254aef8a174f169b3dd7d16
+    :git: https://github.com/Automattic/Automattic-Tracks-iOS.git
+
 SPEC CHECKSUMS:
-  Automattic-Tracks-iOS: 67d00f2f20e1978ee09154f26cdf3475d158508c
-  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  Automattic-Tracks-iOS: f70428b35a07ede94edbddf403e56637b758ec66
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Sentry: 26f0e6492b103e87434d1a5eea2d241a36f2c2a2
   Simperium-OSX: 8eba2c7b1c0d1dfc37c66eedefdc1bd22c388c32
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: b6a524bc48fcccb0284d33c4c54ac08524b102a8
+PODFILE CHECKSUM: b6382b24bad59b093718d061e8e3a1187de555fa
 
 COCOAPODS: 1.6.1
