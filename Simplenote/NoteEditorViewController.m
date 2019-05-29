@@ -48,7 +48,7 @@ NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
-static NSInteger const SPVersionSliderMaxVersions       = 10;
+static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark ====================================================================================
@@ -504,7 +504,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     if (self.viewingVersions) {
         if (self.noteVersionData == nil) {
-            self.noteVersionData = [NSMutableDictionary dictionaryWithCapacity:10];
+            self.noteVersionData = [NSMutableDictionary dictionaryWithCapacity:SPVersionSliderMaxVersions];
         }
         
         [self.noteVersionData setObject:data forKey:@(version.integerValue)];
@@ -642,7 +642,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
         // Request the version data from Simperium
         Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
-        [[simperium bucketForName:@"Note"] requestVersions:10 key:self.note.simperiumKey];
+        [[simperium bucketForName:@"Note"] requestVersions:SPVersionSliderMaxVersions key:self.note.simperiumKey];
         
     } else if (self.activePopover.contentViewController == self.publishViewController) {
         NSLog(@"popOverDidShow update publish ui");
