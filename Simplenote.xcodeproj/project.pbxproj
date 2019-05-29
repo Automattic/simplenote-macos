@@ -20,7 +20,6 @@
 		26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F72A8C14032D2A00A7935E /* Cocoa.framework */; };
 		26F72A9714032D2A00A7935E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9514032D2A00A7935E /* InfoPlist.strings */; };
 		26F72A9914032D2A00A7935E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
-		26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9B14032D2A00A7935E /* Credits.rtf */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
 		3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700E97521C1E390004771C9 /* SPTextAttachment.swift */; };
@@ -83,10 +82,8 @@
 		37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
-		4623ABDC1773740700CE0441 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABD61773740700CE0441 /* .gitignore */; };
 		4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
 		4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
-		4623ABDF1773740700CE0441 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABDB1773740700CE0441 /* README.md */; };
 		46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558BB51793AF4B009CD695 /* NSImage+Colorize.m */; };
 		46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558C0017947E77009CD695 /* NoteEditorBottomBar.m */; };
 		466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = 469180F817CAD4C700648430 /* NSString+Bullets.m */; };
@@ -997,14 +994,11 @@
 			files = (
 				26F72A9714032D2A00A7935E /* InfoPlist.strings in Resources */,
 				376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */,
-				26F72A9D14032D2A00A7935E /* Credits.rtf in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				3712FCA21FE1ACAA008544AC /* Info.plist in Resources */,
-				4623ABDC1773740700CE0441 /* .gitignore in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
-				4623ABDF1773740700CE0441 /* README.md in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
