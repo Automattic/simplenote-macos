@@ -144,7 +144,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [SPTracker trackEditorNoteEdited];
-    
+
     // Focus can become lost when a note saves; work around that
     BOOL editorHasFocus = [[NSApp keyWindow] firstResponder] == self.noteEditor;
     NSRange range = [self.noteEditor selectedRange];
