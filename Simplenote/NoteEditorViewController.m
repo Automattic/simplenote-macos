@@ -148,7 +148,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     // Focus can become lost when a note saves; work around that
     BOOL editorHasFocus = [[NSApp keyWindow] firstResponder] == self.noteEditor;
     NSRange range = [self.noteEditor selectedRange];
-    
+
     self.note.modificationDate = [NSDate date];
     [self.note createPreviews:self.note.content];
     
