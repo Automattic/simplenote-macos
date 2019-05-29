@@ -25,7 +25,8 @@
                                                       HOEDOWN_EXT_AUTOLINK |
                                                       HOEDOWN_EXT_FENCED_CODE |
                                                       HOEDOWN_EXT_FOOTNOTES |
-                                                      HOEDOWN_EXT_TABLES,
+                                                      HOEDOWN_EXT_TABLES |
+                                                      HOEDOWN_EXT_SPAN ,
                                                       16, 0, NULL, NULL);
     hoedown_buffer *html = hoedown_buffer_new(16);
     
