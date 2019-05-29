@@ -157,7 +157,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
 	[self.saveTimer invalidate];
 	self.saveTimer = nil;
-    
+
     if (editorHasFocus) {
         [[NSApp keyWindow] makeFirstResponder:self.noteEditor];
         
