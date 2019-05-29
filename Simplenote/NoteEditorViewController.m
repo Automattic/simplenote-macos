@@ -160,7 +160,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
     if (editorHasFocus) {
         [[NSApp keyWindow] makeFirstResponder:self.noteEditor];
-        
+
         if (range.location != NSNotFound && range.location < self.noteEditor.string.length) {
             [self.noteEditor setSelectedRange:range];
         }
