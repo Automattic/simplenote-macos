@@ -3,7 +3,8 @@ import AutomatticTracks
 
 /// This exists to bridge CrashLogging with Objective-C. Once the App Delegate is moved over to Swift,
 /// this shim can be removed, and the cache methods moved to a `CrashLogging` extension. At that time,
-/// you, future developer, can just set up the Crash Logging system in the App Delegate using `SNCrashLoggingDataProvider`.
+/// you, future developer, can just set up the Crash Logging system in the App Delegate
+/// using `SNCrashLoggingDataProvider`.
 @objc(CrashLogging)
 class CrashLoggingShim: NSObject {
     @objc static func start(withSimperium simperium: Simperium) {
@@ -32,12 +33,13 @@ private class SNCrashLoggingDataProvider: CrashLoggingDataProvider {
     var sentryDSN: String {
         guard
             let configURL = Bundle.main.url(forResource: "config", withExtension: "plist"),
-            let dictionary = NSDictionary(contentsOf: configURL)
+            let dictionary = NSDictionary(contentsOf: configURL),
+            let dsn = dictionary.object(forKey: "SimplenoteSentryDSN") as? String
         else {
             fatalError("Unable to read config.plist. The app cannot continue running.")
         }
 
-        return dictionary.object(forKey: "SimplenoteSentryDSN") as! String
+        return dsn
     }
 
     var userHasOptedOut: Bool {
@@ -86,8 +88,8 @@ private class SNCrashLoggingDataProvider: CrashLoggingDataProvider {
  - Post-login: User data is set and cached
  - User changes analytics opt-in settings: Updated user data is cached
  - App Crashes
- - First Run after Crash: User data is retrieved from the crash and used to identify the user (and their opt-in settings)
- SNCrashLoggingDataProvider will use this cache in `currentUser` to fetch data on the user.
+ - First Run after Crash: User data is retrieved from the crash and used to identify the user (and their
+   opt-in settings) SNCrashLoggingDataProvider will use this cache in `currentUser` to fetch data on the user.
  */
 private struct CrashLoggingCache {
 
