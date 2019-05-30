@@ -560,6 +560,7 @@
 - (void)simperiumDidLogin:(Simperium *)simperium
 {
     [SPTracker refreshMetadataWithEmail:simperium.user.email];
+    [CrashLogging cacheUser: simperium.user];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
