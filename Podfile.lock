@@ -25,7 +25,7 @@ PODS:
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
-  - Automattic-Tracks-iOS (from `https://github.com/Automattic/Automattic-Tracks-iOS.git`, branch `add/support-for-tracking-crashes`)
+  - Automattic-Tracks-iOS (from `https://github.com/Automattic/Automattic-Tracks-iOS.git`, branch `develop`)
   - Simperium-OSX (= 0.8.21)
   - Sparkle (= 1.18.1)
 
@@ -39,12 +39,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Automattic-Tracks-iOS:
-    :branch: add/support-for-tracking-crashes
+    :branch: develop
     :git: https://github.com/Automattic/Automattic-Tracks-iOS.git
 
 CHECKOUT OPTIONS:
   Automattic-Tracks-iOS:
-    :commit: 65186d190954e93f2254aef8a174f169b3dd7d16
+    :commit: 9e92dcf9e4a6a1313b9a06b82e457f1b667b1dd1
     :git: https://github.com/Automattic/Automattic-Tracks-iOS.git
 
 SPEC CHECKSUMS:
@@ -55,6 +55,6 @@ SPEC CHECKSUMS:
   Simperium-OSX: 8eba2c7b1c0d1dfc37c66eedefdc1bd22c388c32
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: b6382b24bad59b093718d061e8e3a1187de555fa
+PODFILE CHECKSUM: 207c6b22b103043ced08fa75f2d1104128932d77
 
 COCOAPODS: 1.6.1

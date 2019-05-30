@@ -15,7 +15,7 @@ abstract_target 'Automattic' do
 
 	# Automattic Shared
 	#
-	pod 'Automattic-Tracks-iOS', :git => 'https://github.com/Automattic/Automattic-Tracks-iOS.git', :branch => 'add/support-for-tracking-crashes'
+	pod 'Automattic-Tracks-iOS', :git => 'https://github.com/Automattic/Automattic-Tracks-iOS.git', :branch => 'develop'
 	pod 'Simperium-OSX', '0.8.21'
 
 	# Main Target
