@@ -13,16 +13,17 @@ plugin 'cocoapods-repo-update'
 #
 abstract_target 'Automattic' do
 
-	# Automattic Shared
-	#
-	pod 'Automattic-Tracks-iOS', :git => 'https://github.com/Automattic/Automattic-Tracks-iOS.git', :branch => 'develop'
-	pod 'Simperium-OSX', '0.8.21'
+  # Automattic Shared
+  #
+  repo = 'https://github.com/Automattic/Automattic-Tracks-iOS.git'
+  pod 'Automattic-Tracks-iOS', git: repo, branch: 'develop'
+  pod 'Simperium-OSX', '0.8.21'
 
-	# Main Target
-	#
-	target 'Simplenote' do
-		pod 'Sparkle', '1.18.1'
-	end
+  # Main Target
+  #
+  target 'Simplenote' do
+    pod 'Sparkle', '1.18.1'
+  end
 
-	target 'Simplenote-AppStore'
+  target 'Simplenote-AppStore'
 end
