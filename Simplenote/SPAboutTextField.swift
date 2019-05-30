@@ -11,6 +11,12 @@ import Cocoa
 
     override func resetCursorRects() {
         self.addCursorRect(self.bounds, cursor: NSCursor.pointingHand)
+
+
+
+
+
+        
     }
     
 }
