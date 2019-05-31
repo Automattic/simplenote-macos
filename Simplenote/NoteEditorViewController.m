@@ -1216,13 +1216,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (NSPopover *)newPopoverWithContentViewController:(NSViewController *)viewController
 {
-    BOOL isDarkTheme                = [[[VSThemeManager sharedManager] theme] isDark];
-    NSAppearanceName appearanceName = isDarkTheme ? NSAppearanceNameVibrantLight : NSAppearanceNameVibrantDark;
-
-    NSPopover *popover              = [[NSPopover alloc] init];
+    NSPopover *popover              = [NSPopover new];
     popover.contentViewController   = viewController;
     popover.delegate                = self;
-    popover.appearance              = [NSAppearance appearanceNamed:appearanceName];
+    popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     popover.behavior                = NSPopoverBehaviorTransient;
     
     return popover;
