@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -802,7 +803,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
                                             <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
@@ -889,7 +890,7 @@
                                                                             <rect key="frame" x="0.0" y="15" width="151" height="1"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <view key="contentView" id="8LT-ym-mnf">
-                                                                                <rect key="frame" x="1" y="0.5" width="149" height="0.0"/>
+                                                                                <rect key="frame" x="1" y="1" width="149" height="0.0"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             </view>
                                                                         </box>
@@ -952,17 +953,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="255" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="606"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="606"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
                                                     <tableColumns>
-                                                        <tableColumn width="255" maxWidth="10000000" id="565">
+                                                        <tableColumn width="270" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -977,11 +978,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="CustomCell" id="607" customClass="SPNoteCellView">
-                                                                    <rect key="frame" x="0.0" y="4" width="255" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="270" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
-                                                                            <rect key="frame" x="18" y="0.0" width="229" height="59"/>
+                                                                            <rect key="frame" x="18" y="0.0" width="244" height="59"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
                                                                                 <font key="font" size="12" name="Helvetica"/>
@@ -1017,7 +1018,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="564" customClass="MMScroller">
-                                            <rect key="frame" x="255" y="0.0" width="15" height="618"/>
+                                            <rect key="frame" x="254" y="0.0" width="16" height="618"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <connections>
@@ -1047,8 +1048,8 @@
                                         <rect key="frame" x="0.0" y="43" width="493" height="575"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
@@ -1070,7 +1071,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936" customClass="MMScroller">
-                                            <rect key="frame" x="478" y="0.0" width="15" height="575"/>
+                                            <rect key="frame" x="477" y="0.0" width="16" height="575"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -1298,17 +1299,6 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.31" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <button toolTip="Publishes this note to a public web page" verticalHuggingPriority="750" id="1063">
-                                <rect key="frame" x="21" y="67" width="195" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="inline" title="Publish to Web Page" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="1064">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="publishAction:" target="1107" id="1664"/>
-                                </connections>
-                            </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1068">
                                 <rect key="frame" x="12" y="3" width="214" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1318,13 +1308,25 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button toolTip="Publishes this note to a public web page" verticalHuggingPriority="750" id="1063">
+                                <rect key="frame" x="9" y="56" width="220" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Publish to Web Page" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="1064">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <color key="contentTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="publishAction:" target="1107" id="1664"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="176" y="395.5"/>
+            <point key="canvasLocation" x="-191" y="607"/>
         </customView>
         <viewController id="1090" userLabel="Versions Popover Controller" customClass="VersionsViewController">
             <connections>
@@ -1378,7 +1380,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="138.5" y="153.5"/>
+            <point key="canvasLocation" x="107" y="580"/>
         </customView>
         <menuItem title="Item" id="1668">
             <modifierMask key="keyEquivalentModifierMask"/>

@@ -194,9 +194,9 @@
         if (themeName) {
             self.appearance = [NSAppearance appearanceNamed:
                               [themeName isEqualToString:@"dark"] ?
-                                 NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
+                                 NSAppearanceNameVibrantDark : NSAppearanceNameVibrantLight];
         }
-        
+
         // Delay needed here in order to properly adjust the stoplight buttons after theme changes
         [self performSelector:@selector(sp_layoutButtons) withObject:nil afterDelay:0.1f];
     }

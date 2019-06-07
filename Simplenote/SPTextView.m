@@ -74,7 +74,6 @@ NSInteger const ChecklistCursorAdjustment = 2;
             checklistColor = [NSColor secondaryLabelColor];
         }
     }
-    [[NSUserDefaults standardUserDefaults] objectForKey:VSThemeManagerThemePrefKey];
     
     [self.textStorage addChecklistAttachmentsForHeight:self.font.pointSize andColor:checklistColor andVerticalOffset:-4.0f];
 }

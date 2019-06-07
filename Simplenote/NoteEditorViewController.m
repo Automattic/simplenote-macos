@@ -144,11 +144,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [SPTracker trackEditorNoteEdited];
-    
+
     // Focus can become lost when a note saves; work around that
     BOOL editorHasFocus = [[NSApp keyWindow] firstResponder] == self.noteEditor;
     NSRange range = [self.noteEditor selectedRange];
-    
+
     self.note.modificationDate = [NSDate date];
     [self.note createPreviews:self.note.content];
     
@@ -157,10 +157,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
 	[self.saveTimer invalidate];
 	self.saveTimer = nil;
-    
+
     if (editorHasFocus) {
         [[NSApp keyWindow] makeFirstResponder:self.noteEditor];
-        
+
         if (range.location != NSNotFound && range.location < self.noteEditor.string.length) {
             [self.noteEditor setSelectedRange:range];
         }
@@ -1216,13 +1216,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (NSPopover *)newPopoverWithContentViewController:(NSViewController *)viewController
 {
-    BOOL isDarkTheme                = [[[VSThemeManager sharedManager] theme] isDark];
-    NSAppearanceName appearanceName = isDarkTheme ? NSAppearanceNameVibrantLight : NSAppearanceNameVibrantDark;
-
-    NSPopover *popover              = [[NSPopover alloc] init];
+    NSPopover *popover              = [NSPopover new];
     popover.contentViewController   = viewController;
     popover.delegate                = self;
-    popover.appearance              = [NSAppearance appearanceNamed:appearanceName];
+    popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     popover.behavior                = NSPopoverBehaviorTransient;
     
     return popover;
