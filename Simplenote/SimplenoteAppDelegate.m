@@ -566,6 +566,7 @@
 - (void)simperiumDidLogout:(Simperium *)simperium
 {
     [SPTracker refreshMetadataForAnonymousUser];
+    [CrashLogging clearCachedUser];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error

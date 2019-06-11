@@ -17,6 +17,11 @@ class CrashLoggingShim: NSObject {
         CrashLogging.setNeedsDataRefresh()
     }
 
+    @objc static func clearCachedUser() {
+        CrashLoggingCache.emailAddress = nil
+        CrashLogging.setNeedsDataRefresh()
+    }
+
     @objc static func cacheOptOutSetting(_ didOptOut: Bool) {
         CrashLoggingCache.didOptOut = didOptOut
     }
