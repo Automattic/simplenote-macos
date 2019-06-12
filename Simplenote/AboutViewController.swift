@@ -30,8 +30,6 @@ class AboutViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        CrashLogging.crash()
-
         let blogClick = NSClickGestureRecognizer(target: self, action: #selector(blogLabelClick))
         blogLabel.addGestureRecognizer(blogClick)
         
