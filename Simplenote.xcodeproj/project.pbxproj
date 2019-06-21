@@ -1529,7 +1529,7 @@
 					"-all_load",
 					"${inherited}",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.Simplenote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.beta;
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1579,7 +1579,7 @@
 					"-all_load",
 					"${inherited}",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.Simplenote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.beta;
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
