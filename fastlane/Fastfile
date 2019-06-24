@@ -1,10 +1,28 @@
 default_platform(:ios)
 fastlane_require 'dotenv'
 
+########################################################################
+# Environment
+########################################################################
+Dotenv.load('~/.simplenotemacos-env.default')
+ENV[GHHELPER_REPO="Automattic/simplenote-macos"]
+ENV["PROJECT_ROOT_FOLDER"]="./"
+
+########################################################################
+# Release Lanes
+########################################################################
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     build_app(workspace: "Simplenote.xcworkspace", scheme: "Simplenote")
     upload_to_testflight
   end
+end
+
+########################################################################
+# Helper Lanes
+########################################################################  
+desc "Get a list of pull request from `start_tag` to the current state"
+lane :get_pullrequests_list do | options |
+  get_prs_list(repository:GHHELPER_REPO, start_tag:"#{options[:start_tag]}", report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list.txt")
 end
