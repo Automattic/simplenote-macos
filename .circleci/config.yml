@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  # This uses the Orbs located at https://github.com/wordpress-mobile/circleci-orbs
+  ios: wordpress-mobile/ios@0.0.27
+
+jobs:
+  Build:
+    executor:
+      name: ios/default
+      xcode-version: "10.2.0"
+    steps:
+      - checkout
+      - run:
+          name: Copy demo config.plist
+          command: cp Simplenote/config-demo.plist Simplenote/config.plist
+      - ios/install-dependencies:
+          bundle-install: true
+          pod-install: true
+      - run:
+          name: Build
+          command: |
+            # Build without code signing to avoid missing cert errors
+            xcodebuild COMPILER_INDEX_STORE_ENABLE=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
+                       -workspace 'Simplenote.xcworkspace' \
+                       -scheme 'Simplenote' \
+                       -configuration 'Debug' \
+                       build
+
+workflows:
+  simplenote_macos:
+    jobs:
+      - Build

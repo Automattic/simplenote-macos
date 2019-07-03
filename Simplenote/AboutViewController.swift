@@ -4,6 +4,7 @@
 //
 
 import Cocoa
+import AutomatticTracks
 
 class AboutViewController: NSViewController {
     struct Constants {
@@ -28,7 +29,7 @@ class AboutViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let blogClick = NSClickGestureRecognizer(target: self, action: #selector(blogLabelClick))
         blogLabel.addGestureRecognizer(blogClick)
         

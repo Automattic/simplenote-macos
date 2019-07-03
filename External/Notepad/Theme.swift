@@ -44,14 +44,14 @@ public struct Theme {
         
         /* All Text */
         let attributes = [
-            NSAttributedStringKey.foregroundColor: theme?.color(forKey: "textColor"),
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: fontSize)
+            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "textColor"),
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: fontSize)
         ]
-        body = Style(element: .body, attributes: attributes as [NSAttributedStringKey : AnyObject])
+        body = Style(element: .body, attributes: attributes as [NSAttributedString.Key : AnyObject])
         
         /* Header Text */
         let firstLineAttributes = [
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: fontSize * 1.25)
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: fontSize * 1.25)
         ]
         styles.append(Style(element: Element.unknown.from(string: "firstLine"), attributes: firstLineAttributes))
         
@@ -61,7 +61,7 @@ public struct Theme {
         }
         
         let headingAttributes = [
-            NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: fontSize)
+            NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: fontSize)
         ]
         styles.append(Style(element: Element.unknown.from(string: "h1"), attributes: headingAttributes))
         styles.append(Style(element: Element.unknown.from(string: "h2"), attributes: headingAttributes))
@@ -69,15 +69,15 @@ public struct Theme {
         
         /* Bold Text*/
         let boldAttributes = [
-            NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: fontSize)
+            NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: fontSize)
         ]
         styles.append(Style(element: Element.unknown.from(string: "bold"), attributes: boldAttributes))
         
         let codeAttributes = [
-            NSAttributedStringKey.foregroundColor: theme?.color(forKey: "secondaryTextColor"),
-            NSAttributedStringKey.font: NSFont(name: "Courier", size: fontSize)
+            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "secondaryTextColor"),
+            NSAttributedString.Key.font: NSFont(name: "Courier", size: fontSize)
         ]
-        styles.append(Style(element: Element.unknown.from(string: "inlineCode"), attributes: codeAttributes as [NSAttributedStringKey : AnyObject]))
+        styles.append(Style(element: Element.unknown.from(string: "inlineCode"), attributes: codeAttributes as [NSAttributedString.Key : AnyObject]))
         
          /* Emphasized Text*/
         let fontManager = NSFontManager.shared;
@@ -85,9 +85,9 @@ public struct Theme {
         let italicFont = fontManager.convert(defaultFont, toHaveTrait: NSFontTraitMask.italicFontMask)
         
         let italicAttributes = [
-            NSAttributedStringKey.font: italicFont
+            NSAttributedString.Key.font: italicFont
         ]
-        styles.append(Style(element: Element.unknown.from(string: "italic"), attributes: italicAttributes as [NSAttributedStringKey : AnyObject]))
+        styles.append(Style(element: Element.unknown.from(string: "italic"), attributes: italicAttributes as [NSAttributedString.Key : AnyObject]))
         
          /* Quoted Text */
         let paragraphStyle = NSMutableParagraphStyle()
@@ -96,17 +96,17 @@ public struct Theme {
         paragraphStyle.tailIndent = -20.0;
         
         let quoteAttributes = [
-            NSAttributedStringKey.font: italicFont,
-            NSAttributedStringKey.foregroundColor: theme?.color(forKey: "secondaryTextColor") as Any,
-            NSAttributedStringKey.paragraphStyle: paragraphStyle
-            ] as [NSAttributedStringKey : Any]
-        styles.append(Style(element: Element.unknown.from(string: "quote"), attributes: quoteAttributes as [NSAttributedStringKey : AnyObject]))
+            NSAttributedString.Key.font: italicFont,
+            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "secondaryTextColor") as Any,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle
+            ] as [NSAttributedString.Key : Any]
+        styles.append(Style(element: Element.unknown.from(string: "quote"), attributes: quoteAttributes as [NSAttributedString.Key : AnyObject]))
         
          /* Links and Images */
         let urlAttributes = [
-            NSAttributedStringKey.foregroundColor: theme?.color(forKey: "tintColor")
+            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "tintColor")
         ]
-        styles.append(Style(element: Element.unknown.from(string: "url"), attributes: urlAttributes as [NSAttributedStringKey : AnyObject]))
-        styles.append(Style(element: Element.unknown.from(string: "image"), attributes: urlAttributes as [NSAttributedStringKey : AnyObject]))
+        styles.append(Style(element: Element.unknown.from(string: "url"), attributes: urlAttributes as [NSAttributedString.Key : AnyObject]))
+        styles.append(Style(element: Element.unknown.from(string: "image"), attributes: urlAttributes as [NSAttributedString.Key : AnyObject]))
     }
 }

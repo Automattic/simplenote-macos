@@ -32,9 +32,6 @@
 #if USE_HOCKEY
 #import <Sparkle/Sparkle.h>
 #import <HockeySDK/HockeySDK.h>
-#elif USE_CRASHLYTICS
-#import <Crashlytics/Crashlytics.h>
-#import <Fabric/Fabric.h>
 #endif
 
 
@@ -132,18 +129,6 @@
     updater.sendsSystemProfile = YES;
     updater.automaticallyChecksForUpdates = YES;
 }
-#elif USE_CRASHLYTICS
-- (void)configureCrashlyticsWithApiKey:(NSString *)apiKey
-{
-    NSLog(@"Initializing Crashlytics...");
-    
-    // Start up Fabric
-    [Fabric with:@[[Crashlytics class]]];
-    
-    // Start Up Crashlytics    
-    [Crashlytics startWithAPIKey:apiKey];
-    [[Crashlytics sharedInstance] setUserEmail:self.simperium.user.email];
-}
 #endif
 
 - (VSTheme *)theme
@@ -187,10 +172,10 @@
     
 #if USE_HOCKEY
     [self configureHockeyWithID:config[@"SPBitHockeyID"]];
-#elif USE_CRASHLYTICS
-    [self configureCrashlyticsWithApiKey:config[@"SPCrashlyticsKey"]];
 #endif
-    
+
+    [self setupCrashLogging];
+
 #if VERBOSE_LOGGING
     [self.simperium setVerboseLoggingEnabled:YES];
     [self redirectConsoleLogToDocumentFolder];
@@ -319,6 +304,11 @@
 
 
 #pragma mark - Other
+
+- (void)setupCrashLogging
+{
+    [CrashLogging startWithSimperium: self.simperium];
+}
 
 - (IBAction)ensureMainWindowIsVisible:(id)sender
 {
@@ -570,11 +560,13 @@
 - (void)simperiumDidLogin:(Simperium *)simperium
 {
     [SPTracker refreshMetadataWithEmail:simperium.user.email];
+    [CrashLogging cacheUser: simperium.user];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
 {
     [SPTracker refreshMetadataForAnonymousUser];
+    [CrashLogging clearCachedUser];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
@@ -713,8 +705,8 @@
     
     [_simperium signOutAndRemoveLocalData:YES completion:^{
         // Auth window won't show up until next run loop, so be careful not to close main window until then
-        [_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
-        [_simperium authenticateIfNecessary];
+        [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
+        [self->_simperium authenticateIfNecessary];
     }];
 }
 

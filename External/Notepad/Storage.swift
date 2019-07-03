@@ -67,7 +67,7 @@
     /// - parameter range:    The range to find attributes for.
     ///
     /// - returns: The attributes on a String within a certain range.
-    override public func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [NSAttributedStringKey : Any] {
+    override public func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [NSAttributedString.Key : Any] {
         return backingStore.attributes(at: location, effectiveRange: range)
     }
 
@@ -91,13 +91,13 @@
         self.endEditing()
     }
     
-    override public func addAttribute(_ name: NSAttributedStringKey, value: Any, range: NSRange) {
+    override public func addAttribute(_ name: NSAttributedString.Key, value: Any, range: NSRange) {
         self.beginEditing()
         backingStore.addAttribute(name, value: value, range: range)
         self.endEditing()
     }
     
-    override public func removeAttribute(_ name: NSAttributedStringKey, range: NSRange) {
+    override public func removeAttribute(_ name: NSAttributedString.Key, range: NSRange) {
         self.beginEditing()
         backingStore.removeAttribute(name, range: range)
         self.edited(.editedAttributes, range: range, changeInLength: 0)
@@ -108,7 +108,7 @@
     ///
     /// - parameter attrs: The attributes to add to the string for the range.
     /// - parameter range: The range in which to add attributes.
-    override public func setAttributes(_ attrs: [NSAttributedStringKey : Any]?, range: NSRange) {
+    override public func setAttributes(_ attrs: [NSAttributedString.Key : Any]?, range: NSRange) {
         self.beginEditing()
         backingStore.setAttributes(attrs, range: range)
         self.edited(.editedAttributes, range: range, changeInLength: 0)

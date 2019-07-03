@@ -48,7 +48,7 @@ NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
-static NSInteger const SPVersionSliderMaxVersions       = 10;
+static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark ====================================================================================
@@ -144,11 +144,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     }
     
     [SPTracker trackEditorNoteEdited];
-    
+
     // Focus can become lost when a note saves; work around that
     BOOL editorHasFocus = [[NSApp keyWindow] firstResponder] == self.noteEditor;
     NSRange range = [self.noteEditor selectedRange];
-    
+
     self.note.modificationDate = [NSDate date];
     [self.note createPreviews:self.note.content];
     
@@ -157,10 +157,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
     
 	[self.saveTimer invalidate];
 	self.saveTimer = nil;
-    
+
     if (editorHasFocus) {
         [[NSApp keyWindow] makeFirstResponder:self.noteEditor];
-        
+
         if (range.location != NSNotFound && range.location < self.noteEditor.string.length) {
             [self.noteEditor setSelectedRange:range];
         }
@@ -504,7 +504,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 {
     if (self.viewingVersions) {
         if (self.noteVersionData == nil) {
-            self.noteVersionData = [NSMutableDictionary dictionaryWithCapacity:10];
+            self.noteVersionData = [NSMutableDictionary dictionaryWithCapacity:SPVersionSliderMaxVersions];
         }
         
         [self.noteVersionData setObject:data forKey:@(version.integerValue)];
@@ -642,7 +642,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
         // Request the version data from Simperium
         Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
-        [[simperium bucketForName:@"Note"] requestVersions:10 key:self.note.simperiumKey];
+        [[simperium bucketForName:@"Note"] requestVersions:SPVersionSliderMaxVersions key:self.note.simperiumKey];
         
     } else if (self.activePopover.contentViewController == self.publishViewController) {
         NSLog(@"popOverDidShow update publish ui");
@@ -1216,13 +1216,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 10;
 
 - (NSPopover *)newPopoverWithContentViewController:(NSViewController *)viewController
 {
-    BOOL isDarkTheme                = [[[VSThemeManager sharedManager] theme] isDark];
-    NSAppearanceName appearanceName = isDarkTheme ? NSAppearanceNameVibrantLight : NSAppearanceNameVibrantDark;
-
-    NSPopover *popover              = [[NSPopover alloc] init];
+    NSPopover *popover              = [NSPopover new];
     popover.contentViewController   = viewController;
     popover.delegate                = self;
-    popover.appearance              = [NSAppearance appearanceNamed:appearanceName];
+    popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     popover.behavior                = NSPopoverBehaviorTransient;
     
     return popover;
