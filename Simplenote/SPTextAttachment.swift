@@ -22,7 +22,8 @@ import Foundation
         }
         set(isChecked) {
             checked = isChecked
-            image = NSImage(named: checked ? "icon_task_checked" : "icon_task_unchecked", colorizeWith: attachmentColor)
+            let name = checked ? "icon_task_checked" : "icon_task_unchecked"
+            image = NSImage(named: name)?.colorized(with: attachmentColor)
         }
     }
 }
