@@ -24,9 +24,11 @@
 static NSImage *pinImage;
 static NSImage *pinImageHighlighted;
 
+@interface SPNoteCellView()
+@property (nonatomic, assign) BOOL highlighted;
+@end
+
 @implementation SPNoteCellView
-@synthesize note;
-@synthesize contentPreview;
 
 - (VSTheme *)theme
 {
@@ -39,7 +41,7 @@ static NSImage *pinImageHighlighted;
     // because it's also being done via a binding. But ensures all fonts and colors are set appropriately.
     if (self.superview && [self.superview isKindOfClass:[NSTableRowView class]]) {
         NSTableRowView *row = (NSTableRowView*)self.superview;
-        highlighted = row.isSelected;
+        _highlighted = row.isSelected;
     }
 
     [self updatePreview];
@@ -47,18 +49,19 @@ static NSImage *pinImageHighlighted;
 
 - (void)updatePreview
 {
-    NSColor *headlineColor = highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteHeadlineFontColor"];
-    NSColor *previewColor = highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteBodyFontPreviewColor"];
-    NSString *preview = [note.content length] == 0 ? @"New note..." : [note.content stringByGeneratingPreview];
+    NSColor *headlineColor = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteHeadlineFontColor"];
+    NSColor *previewColor = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteBodyFontPreviewColor"];
+    NSString *preview = [_note.content length] == 0 ? @"New note..." : [_note.content stringByGeneratingPreview];
     
     NSAttributedString *noteSummary = [preview headlinedAttributedStringWithHeadlineFont:[self noteTitleFont] headlineColor:headlineColor bodyFont:[self notePreviewFont] bodyColor:previewColor];
 
-    if (note.pinned) {
+    if (_note.pinned) {
         // Add a pin image
         noteSummary = [self pinnedPreviewForNoteSummary:noteSummary];
     }
 
-    [contentPreview setAttributedStringValue:noteSummary];
+    _contentPreview.attributedStringValue = noteSummary;
+    _accessoryImageView.image = [_accessoryImageView.image colorizedWithColor:previewColor];
 }
 
 - (NSMutableAttributedString *)pinnedPreviewForNoteSummary:(NSAttributedString *)noteSummary
@@ -71,7 +74,7 @@ static NSImage *pinImageHighlighted;
         pinImageHighlighted = [NSImage imageNamed:@"icon_pin_highlighted"];
     }
     
-    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:highlighted ? pinImageHighlighted : pinImage];
+    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:_highlighted ? pinImageHighlighted : pinImage];
     NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
     [attachment setAttachmentCell:attachmentCell];
     
