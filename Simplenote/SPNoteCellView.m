@@ -51,7 +51,9 @@ static NSImage *pinImageHighlighted;
 {
     NSColor *headlineColor = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteHeadlineFontColor"];
     NSColor *previewColor = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteBodyFontPreviewColor"];
-    NSString *preview = [_note.content length] == 0 ? @"New note..." : [_note.content stringByGeneratingPreview];
+    NSString *preview = [_note.content length] == 0
+                            ? NSLocalizedString(@"New note...", @"Empty Note Preview Text")
+                            : [_note.content stringByGeneratingPreview];
     
     NSAttributedString *noteSummary = [preview headlinedAttributedStringWithHeadlineFont:[self noteTitleFont] headlineColor:headlineColor bodyFont:[self notePreviewFont] bodyColor:previewColor];
 
