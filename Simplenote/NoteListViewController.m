@@ -223,6 +223,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     Note *note = [[arrayController arrangedObjects] objectAtIndex:row];
     view.note = note;
     view.contentPreview.delegate = self.tableView;
+    view.accessoryImageView.image = note.published ? [NSImage imageNamed:@"icon_shared"] : nil;
+    view.accessoryImageView.hidden = !note.published;
 
     return view;
 }

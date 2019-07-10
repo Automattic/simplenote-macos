@@ -10,6 +10,6 @@
 
 @interface NSImage (Colorize)
 
-+ (NSImage *)imageNamed:(NSString *)imageName colorizeWithColor:(NSColor *)color;
+- (NSImage *)colorizedWithColor:(NSColor *)color;
 
 @end
