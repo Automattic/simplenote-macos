@@ -57,16 +57,7 @@ private class SNCrashLoggingDataProvider: CrashLoggingDataProvider {
     }
 
     var buildType: String {
-
-        #if APP_STORE_BUILD
-        return  "app-store"
-        #endif
-
-        #if PUBLIC_BUILD
-        return "public"
-        #endif
-
-        return "developer-internal"
+        return SPBuildType
     }
 
     var currentUser: TracksUser? {
