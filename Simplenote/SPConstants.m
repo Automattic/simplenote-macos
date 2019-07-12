@@ -28,3 +28,11 @@ NSString * const SPWPSignInAuthURL                  = @"https://public-api.wordp
 NSString * const SPHelpURL                          = @"https://simplenote.com/help";
 NSString * const SPContactUsURL                     = @"https://simplenote.com/contact-us";
 NSString * const SPTwitterURL                       = @"https://twitter.com/simplenoteapp";
+
+#if APP_STORE_BUILD
+NSString * const SPBuildType                       = @"app-store";
+#elif PUBLIC_BUILD
+NSString * const SPBuildType                       = @"public";
+#else
+NSString * const SPBuildType                       = @"developer-internal";
+#endif
