@@ -80,6 +80,24 @@ ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
     ios_tag_build()
   end
 
+  #####################################################################################
+  # finalize_release
+  # -----------------------------------------------------------------------------------
+  # This lane finalize a release: updates store metadata, pushes the final tag and  
+  # cleans all the temp ones
+  # -----------------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane finalize_release [skip_confirm:<skip confirm>] [version:<version>] 
+  #
+  # Example:
+  # bundle exec fastlane finalize_release 
+  # bundle exec fastlane finalize_release skip_confirm:true 
+  #####################################################################################
+  desc "Removes all the temp tags and puts the final one"
+  lane :finalize_release do | options |
+    ios_finalize_prechecks(options)
+    ios_final_tag(options)
+  end
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
