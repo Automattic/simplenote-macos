@@ -293,6 +293,12 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
+                            <menuItem title="Export Everything" hidden="YES" id="Pwd-hR-fBt">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="exportAcction:" target="494" id="0Ff-Xt-PdT"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Empty Trash" id="1256">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -1170,6 +1176,7 @@
             <connections>
                 <outlet property="backgroundView" destination="372" id="C2S-D2-Vn5"/>
                 <outlet property="emptyTrashItem" destination="1256" id="1776"/>
+                <outlet property="exportItem" destination="Pwd-hR-fBt" id="fmk-th-axO"/>
                 <outlet property="focusModeMenuItem" destination="nrD-mL-W7Q" id="9KY-QY-jI5"/>
                 <outlet property="mainWindowItem" destination="vor-dd-sYt" id="jUG-qn-XNJ"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
@@ -1412,7 +1419,7 @@
         <image name="focus_mode" width="27" height="22"/>
         <image name="icon_all_notes" width="22" height="22"/>
         <image name="icon_preview" width="44" height="44"/>
-        <image name="icon_shared" width="24" height="24"/>
+        <image name="icon_shared" width="22" height="22"/>
         <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>
