@@ -61,7 +61,7 @@ private extension SPExporter {
     ///
     func filename(for note: Note) -> String {
         let prefix = note.deleted ? Settings.trashedPrefix : Settings.regularPrefix
-        return prefix + "-" + note.simperiumKey.prefix(Settings.hashMaxLenght) + Settings.pathExtension
+        return prefix + "-" + note.simperiumKey.prefix(Settings.hashMaxLenght) + "." + Settings.pathExtension
     }
 
     /// Persists a collection of notes in a given location
