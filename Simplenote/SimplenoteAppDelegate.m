@@ -63,6 +63,7 @@
 @property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSButton                 *noteListToolbarButton;
+@property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *mainWindowItem;
@@ -184,7 +185,7 @@
 	[self.simperium authenticateWithAppID:config[@"SPSimperiumAppID"] APIKey:config[@"SPSimperiumApiKey"] window:self.window];
 
     [SPIntegrityHelper reloadInconsistentNotesIfNeeded:self.simperium];
-    
+
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
 
@@ -266,12 +267,8 @@
 {
     NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
     NSURL *url = [NSURL URLWithString:urlString];
-    
-    if (![[url host] isEqualToString:@"auth"]) {
-        return;
-    }
-    
-    if ([WPAuthHandler isWPAuthenticationUrl: url]) {
+
+    if ([WPAuthHandler isWPAuthenticationUrl:url]) {
         if (self.simperium.user.authenticated) {
             // We're already signed in
             [[NSNotificationCenter defaultCenter] postNotificationName:SPSignInErrorNotificationName
@@ -288,8 +285,14 @@
         }
         
         [SPTracker trackWPCCLoginSucceeded];
+        return;
+    }
+
+    if ([SPExporter mustEnableExportAction:url]) {
+        [self.exportItem setHidden:NO];
     }
 }
+
 
 #pragma mark - BITCrashReportManagerDelegate Methods
 
@@ -404,6 +407,11 @@
     [destination addSubview:overlay];
 
     return overlay;
+}
+
+- (IBAction)exportAcction:(id)sender
+{
+    [[SPExporter new] presentExporterFrom:self.window simperium:self.simperium];
 }
 
 - (IBAction)aboutAction:(id)sender

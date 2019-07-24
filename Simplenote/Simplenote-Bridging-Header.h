@@ -8,3 +8,4 @@
 #import "Simperium+Simplenote.h"
 #import "SPConstants.h"
 #import "NSImage+Colorize.h"
+#import "Note.h"
