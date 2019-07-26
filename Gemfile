@@ -6,7 +6,7 @@ source 'https://rubygems.org' do
   gem 'octokit', "~> 4.0"
   gem 'dotenv'
   gem 'rubyzip', "~> 1.2.2"
-  gem "fastlane", "~> 2.103"
+  gem "fastlane", "~> 2.127.2"
 end
 
 
