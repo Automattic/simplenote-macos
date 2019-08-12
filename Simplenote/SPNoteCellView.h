@@ -11,16 +11,10 @@
 @class Note;
 
 @interface SPNoteCellView : NSTableCellView
-{
-    IBOutlet NSTextField *dateField;
-    IBOutlet NSTextField *contentPreview;
-    IBOutlet NSTextField *titleField;
-    IBOutlet NSView *pinView;
-    BOOL highlighted;
-}
 
+@property (nonatomic, strong) IBOutlet NSTextField *contentPreview;
+@property (nonatomic, strong) IBOutlet NSImageView *accessoryImageView;
 @property (nonatomic, strong) Note *note;
-@property (nonatomic, strong) NSTextField *contentPreview;
 
 - (void)updatePreview;
 

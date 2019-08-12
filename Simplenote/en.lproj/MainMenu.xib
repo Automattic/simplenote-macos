@@ -293,6 +293,12 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
+                            <menuItem title="Export Everything" hidden="YES" id="Pwd-hR-fBt">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="exportAcction:" target="494" id="0Ff-Xt-PdT"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Empty Trash" id="1256">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -981,17 +987,37 @@
                                                                     <rect key="frame" x="0.0" y="4" width="270" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
-                                                                            <rect key="frame" x="18" y="0.0" width="244" height="59"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
-                                                                                <font key="font" size="12" name="Helvetica"/>
-                                                                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
+                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="OeL-cH-hPH">
+                                                                            <rect key="frame" x="19" y="0.0" width="250" height="59"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                            <subviews>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="59"/>
+                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
+                                                                                        <font key="font" size="12" name="Helvetica"/>
+                                                                                        <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="UKZ-a7-XwI">
+                                                                                    <rect key="frame" x="113" y="18" width="24" height="24"/>
+                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_shared" id="ghF-Js-YoS"/>
+                                                                                </imageView>
+                                                                            </subviews>
+                                                                            <visibilityPriorities>
+                                                                                <integer value="1000"/>
+                                                                                <integer value="1000"/>
+                                                                            </visibilityPriorities>
+                                                                            <customSpacing>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                            </customSpacing>
+                                                                        </stackView>
                                                                     </subviews>
                                                                     <connections>
+                                                                        <outlet property="accessoryImageView" destination="UKZ-a7-XwI" id="9My-vE-J3G"/>
                                                                         <outlet property="contentPreview" destination="1103" id="1729"/>
                                                                     </connections>
                                                                 </tableCellView>
@@ -1144,11 +1170,13 @@
                 <outlet property="delegate" destination="494" id="1423"/>
                 <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
+            <point key="canvasLocation" x="137" y="154"/>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
                 <outlet property="backgroundView" destination="372" id="C2S-D2-Vn5"/>
                 <outlet property="emptyTrashItem" destination="1256" id="1776"/>
+                <outlet property="exportItem" destination="Pwd-hR-fBt" id="fmk-th-axO"/>
                 <outlet property="focusModeMenuItem" destination="nrD-mL-W7Q" id="9KY-QY-jI5"/>
                 <outlet property="mainWindowItem" destination="vor-dd-sYt" id="jUG-qn-XNJ"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
@@ -1391,6 +1419,7 @@
         <image name="focus_mode" width="27" height="22"/>
         <image name="icon_all_notes" width="22" height="22"/>
         <image name="icon_preview" width="44" height="44"/>
+        <image name="icon_shared" width="22" height="22"/>
         <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>

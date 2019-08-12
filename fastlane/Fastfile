@@ -1,10 +1,116 @@
 default_platform(:ios)
 fastlane_require 'dotenv'
 
+########################################################################
+# Environment
+########################################################################
+Dotenv.load('~/.simplenotemacos-env.default')
+ENV[GHHELPER_REPO="Automattic/simplenote-macos"]
+ENV["PROJECT_NAME"]="Simplenote"
+ENV["PROJECT_ROOT_FOLDER"]="./"
+ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
+
+########################################################################
+# Release Lanes
+########################################################################
+  #####################################################################################
+  # code_freeze
+  # -----------------------------------------------------------------------------------
+  # This lane executes the steps planned on code freeze
+  # -----------------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane code_freeze [skip_confirm:<skip confirm>]
+  #
+  # Example:
+  # bundle exec fastlane code_freeze
+  # bundle exec fastlane code_freeze skip_confirm:true
+  #####################################################################################
+  desc "Creates a new release branch from the current develop"
+  lane :code_freeze do | options |
+    old_version = ios_codefreeze_prechecks(options)
+    
+    ios_bump_version_release(skip_glotpress: true)
+    new_version = ios_get_app_version()
+    setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
+    setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
+
+    ios_tag_build()
+    get_prs_list(repository:GHHELPER_REPO, start_tag:"#{old_version}", report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list_#{old_version}_#{new_version}.txt")
+  end
+
+  #####################################################################################
+  # new_beta_release
+  # -----------------------------------------------------------------------------------
+  # This lane updates the release branch for a new beta release. It will update the
+  # current release branch by default. If you want to update a different branch
+  # (i.e. hotfix branch) pass the related version with the 'base_version' param
+  # (example: base_version:10.6.1 will work on the 10.6.1 branch)
+  # -----------------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane new_beta_release [skip_confirm:<skip confirm>] [base_version:<version>]
+  #
+  # Example:
+  # bundle exec fastlane new_beta_release
+  # bundle exec fastlane new_beta_release skip_confirm:true
+  # bundle exec fastlane new_beta_release base_version:10.6.1
+  #####################################################################################
+  desc "Updates a release branch for a new beta release"
+  lane :new_beta_release do | options |
+    ios_betabuild_prechecks(options)
+    ios_bump_version_beta()
+    ios_tag_build()
+  end
+
+  #####################################################################################
+  # new_hotfix_release
+  # -----------------------------------------------------------------------------------
+  # This lane updates the release branch for a new hotix release. 
+  # -----------------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane new_hotfix_release [skip_confirm:<skip confirm>] [version:<version>]
+  #
+  # Example:
+  # bundle exec fastlane new_hotfix_release version:10.6.1
+  # bundle exec fastlane new_hotfix_release skip_confirm:true version:10.6.1
+  #####################################################################################
+  desc "Creates a new hotfix branch from the given tag"
+  lane :new_hotfix_release do | options |
+    prev_ver = ios_hotfix_prechecks(options)
+    ios_bump_version_hotfix(previous_version: prev_ver, version: options[:version])
+    ios_tag_build()
+  end
+
+  #####################################################################################
+  # finalize_release
+  # -----------------------------------------------------------------------------------
+  # This lane finalize a release: updates store metadata, pushes the final tag and  
+  # cleans all the temp ones
+  # -----------------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane finalize_release [skip_confirm:<skip confirm>] [version:<version>] 
+  #
+  # Example:
+  # bundle exec fastlane finalize_release 
+  # bundle exec fastlane finalize_release skip_confirm:true 
+  #####################################################################################
+  desc "Removes all the temp tags and puts the final one"
+  lane :finalize_release do | options |
+    ios_finalize_prechecks(options)
+    ios_final_tag(options)
+  end
+
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     build_app(workspace: "Simplenote.xcworkspace", scheme: "Simplenote")
     upload_to_testflight
   end
+end
+
+########################################################################
+# Helper Lanes
+########################################################################  
+desc "Get a list of pull request from `start_tag` to the current state"
+lane :get_pullrequests_list do | options |
+  get_prs_list(repository:GHHELPER_REPO, start_tag:"#{options[:start_tag]}", report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list.txt")
 end

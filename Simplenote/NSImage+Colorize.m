@@ -11,9 +11,9 @@
 
 @implementation NSImage (Colorize)
 
-+ (NSImage *)imageNamed:(NSString *)imageName colorizeWithColor:(NSColor *)color
+- (NSImage *)colorizedWithColor:(NSColor *)color
 {
-    NSImage *image = [[NSImage imageNamed:imageName] copy];
+    NSImage *image = [self copy];
     NSRect iconRect = NSMakeRect(0.0, 0.0, image.size.width, image.size.height);
     [image lockFocus];
     [color set];
