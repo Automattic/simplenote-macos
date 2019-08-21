@@ -36,15 +36,7 @@ private class SNCrashLoggingDataProvider: CrashLoggingDataProvider {
     }
 
     var sentryDSN: String {
-        guard
-            let configURL = Bundle.main.url(forResource: "config", withExtension: "plist"),
-            let dictionary = NSDictionary(contentsOf: configURL),
-            let dsn = dictionary.object(forKey: "SimplenoteSentryDSN") as? String
-        else {
-            fatalError("Unable to read config.plist. The app cannot continue running.")
-        }
-
-        return dsn
+        return SPCredentials.sentryDSN
     }
 
     var userHasOptedOut: Bool {
