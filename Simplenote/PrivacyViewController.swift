@@ -16,11 +16,28 @@ class PrivacyViewController: NSViewController {
 
     /// About Legend
     ///
-    @IBOutlet private var aboutTextField: SPAboutTextField!
+    @IBOutlet private var cookiePolicyTextField: SPAboutTextField!
 
     /// About Arrow Image
     ///
-    @IBOutlet private var aboutImageView: NSImageView!
+    @IBOutlet private var cookiePolicyImageView: NSImageView!
+
+    /// About Legend
+    ///
+    @IBOutlet private var privacyPolicyTextField: SPAboutTextField!
+
+    /// About Arrow Image
+    ///
+    @IBOutlet private var privacyPolicyImageView: NSImageView!
+
+    /// About Legend
+    ///
+    @IBOutlet private var trackingTextField: SPAboutTextField!
+
+    /// About Arrow Image
+    ///
+    @IBOutlet private var trackingImageView: NSImageView!
+
 
     /// Indicates if Analytics are Enabled
     ///
@@ -44,6 +61,7 @@ class PrivacyViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshInterface()
+        setupTextFields()
         setupGestureRecognizers()
         startListeningForNotifications()
     }
@@ -58,11 +76,31 @@ class PrivacyViewController: NSViewController {
     /// Initializes the About TextField / ImageView Click Recognizers
     ///
     private func setupGestureRecognizers() {
-        let textfieldRecognizer = NSClickGestureRecognizer(target: self, action: #selector(learnMoreWasPressed))
-        aboutTextField.addGestureRecognizer(textfieldRecognizer)
+        let cookieFieldGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(cookiePolicyWasPressed))
+        cookiePolicyTextField.addGestureRecognizer(cookieFieldGestureRecognizer)
 
-        let checkboxRecognizer = NSClickGestureRecognizer(target: self, action: #selector(learnMoreWasPressed))
-        aboutImageView.addGestureRecognizer(checkboxRecognizer)
+        let cookieImageGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(cookiePolicyWasPressed))
+        cookiePolicyImageView.addGestureRecognizer(cookieImageGestureRecognizer)
+
+        let privacyFieldGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(privacyPolicyWasPresed))
+        privacyPolicyTextField.addGestureRecognizer(privacyFieldGestureRecognizer)
+
+        let privacyImageGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(privacyPolicyWasPresed))
+        privacyPolicyImageView.addGestureRecognizer(privacyImageGestureRecognizer)
+
+        let trackingFieldGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(trackingWasPresed))
+        trackingTextField.addGestureRecognizer(trackingFieldGestureRecognizer)
+
+        let trackingImageGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(trackingWasPresed))
+        trackingImageView.addGestureRecognizer(trackingImageGestureRecognizer)
+    }
+
+    /// Sets up the TextField's Text
+    ///
+    private func setupTextFields() {
+        cookiePolicyTextField.stringValue = NSLocalizedString("Help us improve Simplenote by sharing usage data with our analytics tool.", comment: "Analytics Legend")
+        privacyPolicyTextField.stringValue = NSLocalizedString("This information helps us improve our products, make marketing more relevant to you, and more as detailed in our privacy policy.", comment: "Privacy Policy Legend")
+        trackingTextField.stringValue = NSLocalizedString("We use other tracking tools, including some from third parties. Read about these and how to control them.", comment: "Tracking Legend")
     }
 }
 
@@ -83,10 +121,24 @@ extension PrivacyViewController {
         simperium.save()
     }
 
-    /// Opens the Learn More URL
+    /// Opens the Cookie Policy URL
     ///
-    @IBAction func learnMoreWasPressed(sender: Any) {
-        NSWorkspace.shared.open(URL(string: SPAutomatticAnalyticLearnMoreURL)!)
+    @IBAction func cookiePolicyWasPressed(sender: Any) {
+        let targetURL = URL(string: SPAutomatticCookiePolicyURL)!
+        NSWorkspace.shared.open(targetURL)
+    }
+
+    /// Opens the Privacy Policy URL
+    ///
+    @IBAction func privacyPolicyWasPresed(sender: Any) {
+        let targetURL = URL(string: SPAutomatticPrivacyPolicyURL)!
+        NSWorkspace.shared.open(targetURL)
+    }
+
+    /// Opens the Tracking Policy URL. Which is... well, the same as the Cookie Policy. At least for now!
+    ///
+    @IBAction func trackingWasPresed(sender: Any) {
+        cookiePolicyWasPressed(sender: sender)
     }
 
     /// Dismisses the associated Window
