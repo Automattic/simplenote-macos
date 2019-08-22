@@ -11,6 +11,9 @@ jobs:
       xcode-version: "10.2.0"
     steps:
       - checkout
+      - run:
+          name: Copy Demo SPCredentials
+          command: mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
       - ios/install-dependencies:
           bundle-install: true
           pod-install: true
