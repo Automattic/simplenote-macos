@@ -9,7 +9,7 @@ class SPCredentials: NSObject {
 
     /// Sentry DSN
     ///
-    static let sentryDSN = "https://not.required"
+    static let sentryDSN = "https://00000000000000000000000000000000@sentry.io/00000000"
 
     /// Simperium: AppID
     ///
