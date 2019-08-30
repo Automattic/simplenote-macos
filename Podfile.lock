@@ -22,12 +22,12 @@ PODS:
   - Simperium-OSX/SocketRocket (0.8.21)
   - Simperium-OSX/SPReachability (0.8.21)
   - Simperium-OSX/SSKeychain (0.8.21)
-  - Sparkle (1.18.1)
+  - Sparkle (1.21.3)
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (~> 0.4)
   - Simperium-OSX (= 0.8.21)
-  - Sparkle (= 1.18.1)
+  - Sparkle (= 1.21.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -44,8 +44,8 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Sentry: 26f0e6492b103e87434d1a5eea2d241a36f2c2a2
   Simperium-OSX: 8eba2c7b1c0d1dfc37c66eedefdc1bd22c388c32
-  Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
+  Sparkle: 3f75576db8b0265adef36c43249d747f22d0b708
 
-PODFILE CHECKSUM: b33a6d8be3def4be567914c073a31116289068a4
+PODFILE CHECKSUM: e1a833cd7f75efd7589e97391fb298c0bd1ffddb
 
 COCOAPODS: 1.6.1
