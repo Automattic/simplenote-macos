@@ -1036,7 +1036,7 @@
 					26F72A8714032D2A00A7935E = {
 						DevelopmentTeam = PZYM8XX95Q;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					466FFEA617CC10A800399652 = {
 						DevelopmentTeam = PZYM8XX95Q;
@@ -1623,7 +1623,7 @@
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1670,7 +1670,7 @@
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
