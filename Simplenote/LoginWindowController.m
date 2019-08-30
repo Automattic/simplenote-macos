@@ -9,6 +9,8 @@
 #import "LoginWindowController.h"
 #import "SPConstants.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
+
 
 static CGFloat const SPLoginAdditionalHeight        = 40.0f;
 static CGFloat const SPLoginWPButtonWidth           = 270.0f;
@@ -73,15 +75,12 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 }
 
 - (IBAction)wpccSignInAction:(id)sender
-{
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
-    NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    
+{    
     NSString *sessionState = [[NSUUID UUID] UUIDString];
     sessionState = [@"app-" stringByAppendingString:sessionState];
     [[NSUserDefaults standardUserDefaults] setObject:sessionState forKey:SPAuthSessionKey];
-    
-    NSString *requestUrl = [NSString stringWithFormat:SPWPSignInAuthURL, config[@"WPCCClientID"], config[@"WPCCRedirectURL"], sessionState];
+
+    NSString *requestUrl = [NSString stringWithFormat:SPWPSignInAuthURL, SPCredentials.wpcomClientID, SPCredentials.wpcomRedirectURL, sessionState];
     NSString *encodedUrl = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:encodedUrl]];
     
