@@ -21,7 +21,7 @@ abstract_target 'Automattic' do
   # Main Target
   #
   target 'Simplenote' do
-    pod 'Sparkle', '1.21.3'
+    pod 'Sparkle', :git => 'https://github.com/jleandroperez/Sparkle/', :tag => "2.0-a8c-beta"
   end
 
   target 'Simplenote-AppStore'
