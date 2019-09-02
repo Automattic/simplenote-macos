@@ -22,9 +22,10 @@ abstract_target 'Automattic' do
   #
   target 'Simplenote' do
 
-  	# NOTE: The following Sparkle tag supports Sandboxing (whereas 1.x does not). Whenever updating this, make sure the OTA does not break!
+  	# NOTE: We've published a Sparkle WIP branch that has Sandboxing support.
+  	# Whenever replacing this, please make sure OTA support doesn't break.
   	#
-    pod 'Sparkle', :git => 'https://github.com/jleandroperez/Sparkle/', :tag => "2.0-a8c-beta"
+    pod 'Sparkle-A8C', '2.0.0'
   end
 
   target 'Simplenote-AppStore'
