@@ -206,9 +206,6 @@
 		B5A89195231ECB3C0007EDCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B5A8918A231ECB3C0007EDCB /* LICENSE */; };
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
-		B5A8919E231ECB540007EDCB /* org.sparkle-project.InstallerStatus.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B5A8919F231ECB540007EDCB /* org.sparkle-project.InstallerConnection.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B5A891A0231ECB540007EDCB /* org.sparkle-project.InstallerLauncher.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
@@ -242,15 +239,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4623ABF91773BC3200CE0441 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Fonts;
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		466FFF2517CC10A800399652 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -277,18 +265,6 @@
 			files = (
 				B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */,
 				B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5E372CA1896F010005EE097 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
-			files = (
-				B5A8919E231ECB540007EDCB /* org.sparkle-project.InstallerStatus.xpc in CopyFiles */,
-				B5A8919F231ECB540007EDCB /* org.sparkle-project.InstallerConnection.xpc in CopyFiles */,
-				B5A891A0231ECB540007EDCB /* org.sparkle-project.InstallerLauncher.xpc in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,8 +974,6 @@
 				26F72A8514032D2A00A7935E /* Frameworks */,
 				26F72A8614032D2A00A7935E /* Resources */,
 				71881504155F487D001F2E30 /* CopyFiles */,
-				4623ABF91773BC3200CE0441 /* CopyFiles */,
-				B5E372CA1896F010005EE097 /* CopyFiles */,
 				B51D44911945FEFD00496889 /* ShellScript */,
 				516D51EC5AEF5EB2EB2C1DE7 /* [CP] Embed Pods Frameworks */,
 			);
@@ -1240,7 +1214,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\nIDENTITY=\"Developer ID Application: Automattic, Inc.\"\n\necho \"Signing...\"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${LOCATION}/org.sparkle-project.InstallerConnection.xpc\"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${LOCATION}/org.sparkle-project.InstallerLauncher.xpc\"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${LOCATION}/org.sparkle-project.InstallerStatus.xpc\"\n";
+			shellScript = "IDENTITY=\"Developer ID Application: Automattic, Inc.\"\nSOURCE_PATH=\"${SRCROOT}/External/Sparkle/XPCServices\"\nTARGET_PATH=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\n\nNETWORK_XPC=\"org.sparkle-project.InstallerConnection.xpc\"\nLAUNCHER_XPC=\"org.sparkle-project.InstallerLauncher.xpc\"\nSTATUS_XPC=\"org.sparkle-project.InstallerStatus.xpc\"\n\n\n# Bail out whenever we're not in Release\n#\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then\n    echo \"NOT Signing in debug!\"\n    exit 0\nfi\n\n\n# Copy Phase\n#\necho \"Copying...\"\n\nmkdir \"${TARGET_PATH}\"\ncp -R \"${SOURCE_PATH}/${NETWORK_XPC}\" \"${TARGET_PATH}/${NETWORK_XPC}\"\ncp -R \"${SOURCE_PATH}/${LAUNCHER_XPC}\" \"${TARGET_PATH}/${LAUNCHER_XPC}\"\ncp -R \"${SOURCE_PATH}/${STATUS_XPC}\" \"${TARGET_PATH}/${STATUS_XPC}\"\n\n# Codesign Phase\n#\necho \"Signing... \"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${TARGET_PATH}/${NETWORK_XPC}\"\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${TARGET_PATH}/${LAUNCHER_XPC}\"\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${TARGET_PATH}/${STATUS_XPC}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
