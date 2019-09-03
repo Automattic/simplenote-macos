@@ -20,13 +20,6 @@ abstract_target 'Automattic' do
 
   # Main Target
   #
-  target 'Simplenote' do
-
-  	# NOTE: We've published a Sparkle WIP branch that has Sandboxing support.
-  	# Whenever replacing this, please make sure OTA support doesn't break.
-  	#
-    pod 'Sparkle-A8C', '2.0.0'
-  end
-
+  target 'Simplenote'
   target 'Simplenote-AppStore'
 end
