@@ -203,6 +203,13 @@
 		B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */; };
 		B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */; };
 		B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */; };
+		B5A89195231ECB3C0007EDCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B5A8918A231ECB3C0007EDCB /* LICENSE */; };
+		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
+		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
+		B5A8919E231ECB540007EDCB /* org.sparkle-project.InstallerStatus.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5A8919F231ECB540007EDCB /* org.sparkle-project.InstallerConnection.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5A891A0231ECB540007EDCB /* org.sparkle-project.InstallerLauncher.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
@@ -268,16 +275,20 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */,
 				B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B5E372CA1896F010005EE097 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
 			dstSubfolderSpec = 16;
 			files = (
+				B5A8919E231ECB540007EDCB /* org.sparkle-project.InstallerStatus.xpc in CopyFiles */,
+				B5A8919F231ECB540007EDCB /* org.sparkle-project.InstallerConnection.xpc in CopyFiles */,
+				B5A891A0231ECB540007EDCB /* org.sparkle-project.InstallerLauncher.xpc in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +479,12 @@
 		B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPopUpButtonCell.m; sourceTree = "<group>"; };
 		B5A4EF311AEEA03D007AB0AB /* SPPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPopUpButton.h; sourceTree = "<group>"; };
 		B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPopUpButton.m; sourceTree = "<group>"; };
+		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
+		B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerConnection.xpc"; sourceTree = "<group>"; };
+		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
+		B5A89191231ECB3C0007EDCB /* INSTALL.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = INSTALL.markdown; sourceTree = "<group>"; };
+		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Simplenote.h"; sourceTree = "<group>"; };
 		B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Simplenote.m"; sourceTree = "<group>"; };
 		B5C92EC71B03D7DB00A4FFD0 /* NSString+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Simplenote.h"; sourceTree = "<group>"; };
@@ -507,6 +524,7 @@
 				2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */,
 				2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */,
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
+				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
 				B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
 				DF943F46D35165664F17D797 /* Pods_Automattic_Simplenote.framework in Frameworks */,
@@ -542,6 +560,7 @@
 				46B0F54417B47C490071C809 /* custom-scroller */,
 				4623ABD51773740700CE0441 /* INAppStoreWindow */,
 				B54739DC1A3F389300B68A4D /* HockeySDK */,
+				B5A89189231ECB3C0007EDCB /* Sparkle */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -922,6 +941,36 @@
 			name = Trackers;
 			sourceTree = "<group>";
 		};
+		B5A89189231ECB3C0007EDCB /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				B5A89192231ECB3C0007EDCB /* Frameworks */,
+				B5A8918B231ECB3C0007EDCB /* XPCServices */,
+				B5A8918A231ECB3C0007EDCB /* LICENSE */,
+				B5A89191231ECB3C0007EDCB /* INSTALL.markdown */,
+			);
+			name = Sparkle;
+			path = External/Sparkle;
+			sourceTree = "<group>";
+		};
+		B5A8918B231ECB3C0007EDCB /* XPCServices */ = {
+			isa = PBXGroup;
+			children = (
+				B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */,
+				B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */,
+				B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */,
+			);
+			path = XPCServices;
+			sourceTree = "<group>";
+		};
+		B5A89192231ECB3C0007EDCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5A89194231ECB3C0007EDCB /* Sparkle.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		F833D437962BDE223D4E59DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,10 +1085,12 @@
 				8C902F8822D3ED910018D654 /* Simplenote.release.xcconfig in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				8C902F8D22D3EE350018D654 /* Version.public.xcconfig in Resources */,
+				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
 				3712FCA21FE1ACAA008544AC /* Info.plist in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
+				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
@@ -1107,8 +1158,6 @@
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
 				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
-				"${PODS_ROOT}/Sparkle-A8C/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle-A8C/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1117,8 +1166,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1193,7 +1240,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "plist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nyear=$(date \"+%Y\")\ncopyright=\"Copyright © $year Automattic. All rights reserved.\"\n\n# Set the version numbers in the buildPlist\n/usr/libexec/PlistBuddy -c \"Set :NSHumanReadableCopyright $copyright\" $plist\n";
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\nIDENTITY=\"Developer ID Application: Automattic, Inc.\"\n\necho \"Signing...\"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${LOCATION}/org.sparkle-project.InstallerConnection.xpc\"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${LOCATION}/org.sparkle-project.InstallerLauncher.xpc\"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${LOCATION}/org.sparkle-project.InstallerStatus.xpc\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1550,6 +1597,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
 					"$(PROJECT_DIR)/External",
+					"$(PROJECT_DIR)/External/Sparkle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
@@ -1598,6 +1646,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
 					"$(PROJECT_DIR)/External",
+					"$(PROJECT_DIR)/External/Sparkle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
