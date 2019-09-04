@@ -20,9 +20,6 @@ abstract_target 'Automattic' do
 
   # Main Target
   #
-  target 'Simplenote' do
-    pod 'Sparkle', '1.18.1'
-  end
-
+  target 'Simplenote'
   target 'Simplenote-AppStore'
 end

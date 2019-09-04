@@ -73,6 +73,10 @@
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
 
+#if USE_HOCKEY
+@property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
+#endif
+
 @end
 
 
@@ -124,11 +128,17 @@
     
     [hockeyManager configureWithIdentifier:hockeyID delegate:self];
     [hockeyManager startManager];
-        
-    // Sparkle
-    SUUpdater *updater = [SUUpdater sharedUpdater];
-    updater.sendsSystemProfile = YES;
-    updater.automaticallyChecksForUpdates = YES;
+}
+
+- (void)configureSparkle
+{
+    self.updaterController = [[SPUStandardUpdaterController alloc] initWithUpdaterDelegate:nil
+                                                                        userDriverDelegate:nil];
+
+    _updaterController.updater.sendsSystemProfile = YES;
+    _updaterController.updater.automaticallyChecksForUpdates = YES;
+
+    [_updaterController.updater checkForUpdatesInBackground];
 }
 #endif
 
@@ -173,6 +183,7 @@
     
 #if USE_HOCKEY
     [self configureHockeyWithID:config[@"SPBitHockeyID"]];
+    [self configureSparkle];
 #endif
 
     [self setupCrashLogging];
@@ -292,18 +303,6 @@
         [self.exportItem setHidden:NO];
     }
 }
-
-
-#pragma mark - BITCrashReportManagerDelegate Methods
-
-#if USE_HOCKEY
-
-- (NSArray *)feedParametersForUpdater:(SUUpdater *)updater sendingSystemProfile:(BOOL)sendingProfile
-{
-    return [[BITSystemProfile sharedSystemProfile] systemUsageData];
-}
-
-#endif
 
 
 #pragma mark - Other
