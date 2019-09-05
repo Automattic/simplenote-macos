@@ -12,6 +12,8 @@
 
 static CGFloat const SPLoginAdditionalHeight        = 40.0f;
 static CGFloat const SPLoginWPButtonWidth           = 270.0f;
+static NSInteger const SPLoginPasswordLength        = 4;
+static NSInteger const SPSignupPasswordLength       = 6;
 static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 @implementation LoginWindowController
@@ -101,7 +103,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     [alert runModal];
 }
 
-#pragma mark - Overriden Methods
+#pragma mark - Overridden Methods
 
 - (IBAction)signUpAction:(id)sender
 {
@@ -117,6 +119,13 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
+
+#pragma mark - Overridden Properties
+
+- (void)setSigningIn:(BOOL)signingIn {
+    [super setSigningIn:signingIn];
+    self.validator.minimumPasswordLength = signingIn ? SPLoginPasswordLength : SPSignupPasswordLength;
 }
 
 @end

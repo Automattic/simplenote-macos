@@ -10,7 +10,6 @@ class AboutViewController: NSViewController {
     struct Constants {
         static let blogUrl =       "https://simplenote.com/blog"
         static let twitterUrl =    "https://twitter.com/simplenoteapp"
-        static let simperiumUrl =  "https://simperium.com"
         static let githubUrl =     "https://github.com/automattic/simplenote-macos"
         static let hiringUrl =     "https://automattic.com/work-with-us"
         static let privacyUrl =    "https://simplenote.com/privacy/"
@@ -19,7 +18,6 @@ class AboutViewController: NSViewController {
     
     @IBOutlet var blogLabel:        SPAboutTextField!
     @IBOutlet var twitterLabel:     SPAboutTextField!
-    @IBOutlet var simperiumLabel:   SPAboutTextField!
     @IBOutlet var githubLabel:      SPAboutTextField!
     @IBOutlet var hiringLabel:      SPAboutTextField!
     @IBOutlet var privacyLabel:     SPAboutTextField!
@@ -35,10 +33,7 @@ class AboutViewController: NSViewController {
         
         let twitterClick = NSClickGestureRecognizer(target: self, action: #selector(twitterLabelClick))
         twitterLabel.addGestureRecognizer(twitterClick)
-        
-        let simperiumClick = NSClickGestureRecognizer(target: self, action: #selector(simperiumLabelClick))
-        simperiumLabel.addGestureRecognizer(simperiumClick)
-        
+
         let githubClick = NSClickGestureRecognizer(target: self, action: #selector(githubLabelClick))
         githubLabel.addGestureRecognizer(githubClick)
         
@@ -72,11 +67,7 @@ class AboutViewController: NSViewController {
     @objc func twitterLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.twitterUrl)!)
     }
-    
-    @objc func simperiumLabelClick() {
-        NSWorkspace.shared.open(URL(string: Constants.simperiumUrl)!)
-    }
-    
+
     @objc func githubLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.githubUrl)!)
     }
