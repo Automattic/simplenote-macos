@@ -209,11 +209,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SPNoteLoadedNotificationName object:self];
-    
-    // Save the scrollPosition of the current note
-    if (self.note != nil) {
-        NSValue *positionValue = [NSValue valueWithPoint:[[self.scrollView contentView] bounds].origin];
-        self.noteScrollPositions[self.note.simperiumKey] = positionValue;
+
+    // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
+    NSString *simperiumKey = self.note.simperiumKey;
+    if (simperiumKey != nil) {
+        // Save the scrollPosition of the current note
+        NSValue *positionValue = [NSValue valueWithPoint:self.scrollView.contentView.bounds.origin];
+        self.noteScrollPositions[simperiumKey] = positionValue;
     }
     
     // Issue #291:
