@@ -1,3 +1,8 @@
+1.7.1
+-----
+- Fixed a bug that crashed the app at launch
+
+
 1.6.0
 -----
 
