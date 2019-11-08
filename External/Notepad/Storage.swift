@@ -17,7 +17,7 @@ class Storage: NSTextStorage {
 
     /// The Theme for the Notepad
     ///
-    public var theme: Theme? {
+    private var theme: Theme = Theme(markdownEnabled: false) {
         didSet {
             let wholeRange = NSRange(location: 0, length: (self.backingString as NSString).length)
 
@@ -35,11 +35,11 @@ class Storage: NSTextStorage {
 
     /// The underlying text storage implementation.
     ///
-    var backingStore = NSMutableAttributedString(string: "", attributes: [:])
+    private let backingStore = NSMutableAttributedString(string: "", attributes: [:])
 
     /// Indicates if Markdown is enabled
     ///
-    var markdownEnabled = false
+    private var markdownEnabled = false
 
     /// Returns the BackingString
     ///
@@ -52,12 +52,6 @@ class Storage: NSTextStorage {
     ///
     override init() {
         super.init()
-    }
-
-    @objc class func newInstance() -> Storage {
-        let storage = Storage()
-        storage.theme = Theme(markdownEnabled: false)
-        return storage
     }
 
     override init(attributedString attrStr: NSAttributedString) {
