@@ -113,6 +113,7 @@ class Storage: NSTextStorage {
     override func addAttribute(_ name: NSAttributedString.Key, value: Any, range: NSRange) {
         self.beginEditing()
         backingStore.addAttribute(name, value: value, range: range)
+        self.edited(.editedAttributes, range: range, changeInLength: 0)
         self.endEditing()
     }
 
@@ -151,22 +152,20 @@ class Storage: NSTextStorage {
     ///
     /// - parameter range: The range in which to apply styles.
     ///
-    func applyStyles(_ range: NSRange) {
-        guard let theme = self.theme else {
-            return
-        }
-
+    private func applyStyles(_ range: NSRange) {
         let string = backingString
         backingStore.addAttributes(theme.body.attributes, range: range)
+        edited(.editedAttributes, range: range, changeInLength: 0)
 
-        for (style) in theme.styles {
-            style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range, using: { (match, flags, stop) in
-                guard let match = match else {
+        for style in theme.styles {
+            style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range) { (match, flags, stop) in
+                guard let range = match?.range(at: 0) else {
                     return
                 }
 
-                backingStore.addAttributes(style.attributes, range: match.range(at: 0))
-            })
+                backingStore.addAttributes(style.attributes, range: range)
+                edited(.editedAttributes, range: range, changeInLength: 0)
+            }
         }
     }
 
