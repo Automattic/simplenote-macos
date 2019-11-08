@@ -100,7 +100,7 @@ class Storage: NSTextStorage {
         replaceBackingStringSubrange(range, with: attrString.string)
 
         let change = attrString.length - range.length
-        self.edited(.editedCharacters, range: range, changeInLength: change)
+        self.edited([.editedCharacters, .editedAttributes], range: range, changeInLength: change)
         self.endEditing()
     }
 
