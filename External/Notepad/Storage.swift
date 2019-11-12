@@ -15,6 +15,18 @@
 @objc
 class Storage: NSTextStorage {
 
+    /// Indicates if the SelectionRange is biased (and the UI layer should, instead, consume `overrideSelectionRange`), or not
+    /// See `perserveRealEditedRange` for details.
+    ///
+    @objc
+    private(set) var shouldOverrideSelectionRange = false
+
+    /// Contains the "Real" Edited Range.
+    /// See `perserveRealEditedRange` for details.
+    ///
+    @objc
+    private(set) var overrideSelectionRange = NSRange()
+
     /// The Theme for the Notepad
     ///
     private var theme: Theme = Theme(markdownEnabled: false) {
@@ -138,8 +150,10 @@ class Storage: NSTextStorage {
         let indexRange = string.lineRange(for: nsRange)
         let extendedRange = NSUnionRange(editedRange, NSRange(indexRange, in: string))
 
-        applyStyles(extendedRange)
-        super.processEditing()
+        perserveRealEditedRange {
+            applyStyles(extendedRange)
+            super.processEditing()
+        }
     }
 
     /// Applies styles to a range on the backingString.
@@ -149,7 +163,6 @@ class Storage: NSTextStorage {
     private func applyStyles(_ range: NSRange) {
         let string = backingString
         backingStore.addAttributes(theme.body.attributes, range: range)
-        edited(.editedAttributes, range: range, changeInLength: 0)
 
         for style in theme.styles {
             style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range) { (match, flags, stop) in
@@ -158,9 +171,15 @@ class Storage: NSTextStorage {
                 }
 
                 backingStore.addAttributes(style.attributes, range: range)
-                edited(.editedAttributes, range: range, changeInLength: 0)
             }
         }
+
+        // HACK HACK: Only required in macOS Catalina
+        guard #available(macOS 10.15, *) else {
+            return
+        }
+
+        edited(.editedAttributes, range: range, changeInLength: 0)
     }
 
     @objc
@@ -170,6 +189,44 @@ class Storage: NSTextStorage {
 }
 
 
+// MARK: - macOS Catalina Workarounds. Yes.
+//
+private extension Storage {
+
+    /// What's going on:
+    ///
+    /// In macOS 10.15 (Catalina), when the document contains Emojis, applying fonts to the full edited range (within `processEditing` > `applyStyles`)
+    /// breaks the UI.
+    ///
+    /// This is *Unlesss* we signal we've `.editedAttributes` in the full string's range. Which makes sense, right?.
+    /// Now, the side effect of doing so, is that the `selectedRange` ends up being kicked to the end of the document (because, alledgedly, we've edited the full string).
+    ///
+    /// This is a major hack that allows us to:
+    ///
+    ///     A. Apply a given font to the entire BackingStore
+    ///     B. Signal that we've edited the font (so that emojis are properly rendered)
+    ///     C. Preserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
+    ///
+    func perserveRealEditedRange(block: () -> Void) {
+        // HACK HACK: Only required in macOS Catalina
+        guard #available(macOS 10.15, *) else {
+            block()
+            return
+        }
+
+        shouldOverrideSelectionRange = true
+        overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
+
+        block()
+
+        shouldOverrideSelectionRange = false
+    }
+
+}
+
+
+// MARK: - Helpers
+//
 private extension Storage {
 
     func replaceBackingStringSubrange(_ range: NSRange, with string: String) {
