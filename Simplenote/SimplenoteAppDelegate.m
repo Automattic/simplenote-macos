@@ -180,7 +180,7 @@
     [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
 
 #if USE_HOCKEY
-    [self configureHockeyWithID:config[@"SPBitHockeyID"]];
+    [self configureHockeyWithID:SPCredentials.bitHockeyIdentifier];
     [self configureSparkle];
 #endif
 

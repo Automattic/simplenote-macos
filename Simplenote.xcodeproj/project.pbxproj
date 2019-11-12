@@ -1111,7 +1111,6 @@
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
-				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
