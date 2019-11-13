@@ -15,9 +15,21 @@
 @objc
 class Storage: NSTextStorage {
 
+    /// Indicates if the SelectionRange is biased (and the UI layer should, instead, consume `overrideSelectionRange`), or not
+    /// See `perserveRealEditedRange` for details.
+    ///
+    @objc
+    private(set) var shouldOverrideSelectionRange = false
+
+    /// Contains the "Real" Edited Range.
+    /// See `perserveRealEditedRange` for details.
+    ///
+    @objc
+    private(set) var overrideSelectionRange = NSRange()
+
     /// The Theme for the Notepad
     ///
-    public var theme: Theme? {
+    private var theme: Theme = Theme(markdownEnabled: false) {
         didSet {
             let wholeRange = NSRange(location: 0, length: (self.backingString as NSString).length)
 
@@ -35,11 +47,11 @@ class Storage: NSTextStorage {
 
     /// The underlying text storage implementation.
     ///
-    var backingStore = NSMutableAttributedString(string: "", attributes: [:])
+    private let backingStore = NSMutableAttributedString(string: "", attributes: [:])
 
     /// Indicates if Markdown is enabled
     ///
-    var markdownEnabled = false
+    private var markdownEnabled = false
 
     /// Returns the BackingString
     ///
@@ -52,12 +64,6 @@ class Storage: NSTextStorage {
     ///
     override init() {
         super.init()
-    }
-
-    @objc class func newInstance() -> Storage {
-        let storage = Storage()
-        storage.theme = Theme(markdownEnabled: false)
-        return storage
     }
 
     override init(attributedString attrStr: NSAttributedString) {
@@ -106,13 +112,14 @@ class Storage: NSTextStorage {
         replaceBackingStringSubrange(range, with: attrString.string)
 
         let change = attrString.length - range.length
-        self.edited(.editedCharacters, range: range, changeInLength: change)
+        self.edited([.editedCharacters, .editedAttributes], range: range, changeInLength: change)
         self.endEditing()
     }
 
     override func addAttribute(_ name: NSAttributedString.Key, value: Any, range: NSRange) {
         self.beginEditing()
         backingStore.addAttribute(name, value: value, range: range)
+        self.edited(.editedAttributes, range: range, changeInLength: 0)
         self.endEditing()
     }
 
@@ -143,31 +150,54 @@ class Storage: NSTextStorage {
         let indexRange = string.lineRange(for: nsRange)
         let extendedRange = NSUnionRange(editedRange, NSRange(indexRange, in: string))
 
+        /// In macOS 10.15 (Catalina), editing documents that contain Emojis end up disappearing . We restore them by reapplying our font to the full edited range.
+        /// *But* in macOS Catalina, *UNLESS* we signal we've `.editedAttributes` with the fully edited range, the UI ends up broken.
+        ///
+        /// Now, the side effect of doing so, is that the `selectedRange` ends up being kicked to the end of the document (because, alledgedly, we've edited the full string).
+        ///
+        /// This is a major hack that allows us to:
+        ///
+        ///     A. Apply a given font to the entire BackingStore
+        ///     B. Signal that we've edited the font (so that emojis are properly rendered)
+        ///     C. Preserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
+        ///
+        ///  Ref. https://github.com/Automattic/simplenote-macos/pull/396
+        ///
+        if #available(macOS 10.15, *) {
+            shouldOverrideSelectionRange = true
+            overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
+        }
+
         applyStyles(extendedRange)
         super.processEditing()
+
+        shouldOverrideSelectionRange = false
     }
 
     /// Applies styles to a range on the backingString.
     ///
     /// - parameter range: The range in which to apply styles.
     ///
-    func applyStyles(_ range: NSRange) {
-        guard let theme = self.theme else {
-            return
-        }
-
+    private func applyStyles(_ range: NSRange) {
         let string = backingString
         backingStore.addAttributes(theme.body.attributes, range: range)
 
-        for (style) in theme.styles {
-            style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range, using: { (match, flags, stop) in
-                guard let match = match else {
+        for style in theme.styles {
+            style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range) { (match, flags, stop) in
+                guard let range = match?.range(at: 0) else {
                     return
                 }
 
-                backingStore.addAttributes(style.attributes, range: match.range(at: 0))
-            })
+                backingStore.addAttributes(style.attributes, range: range)
+            }
         }
+
+        // HACK HACK: Only required in macOS Catalina
+        guard #available(macOS 10.15, *) else {
+            return
+        }
+
+        edited(.editedAttributes, range: range, changeInLength: 0)
     }
 
     @objc
@@ -177,6 +207,8 @@ class Storage: NSTextStorage {
 }
 
 
+// MARK: - Helpers
+//
 private extension Storage {
 
     func replaceBackingStringSubrange(_ range: NSRange, with string: String) {
