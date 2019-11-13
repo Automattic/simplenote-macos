@@ -150,10 +150,28 @@ class Storage: NSTextStorage {
         let indexRange = string.lineRange(for: nsRange)
         let extendedRange = NSUnionRange(editedRange, NSRange(indexRange, in: string))
 
-        perserveRealEditedRange {
-            applyStyles(extendedRange)
-            super.processEditing()
+        /// In macOS 10.15 (Catalina), editing documents that contain Emojis end up disappearing . We restore them by reapplying our font to the full edited range.
+        /// *But* in macOS Catalina, *UNLESS* we signal we've `.editedAttributes` with the fully edited range, the UI ends up broken.
+        ///
+        /// Now, the side effect of doing so, is that the `selectedRange` ends up being kicked to the end of the document (because, alledgedly, we've edited the full string).
+        ///
+        /// This is a major hack that allows us to:
+        ///
+        ///     A. Apply a given font to the entire BackingStore
+        ///     B. Signal that we've edited the font (so that emojis are properly rendered)
+        ///     C. Preserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
+        ///
+        ///  Ref. https://github.com/Automattic/simplenote-macos/pull/396
+        ///
+        if #available(macOS 10.15, *) {
+            shouldOverrideSelectionRange = true
+            overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
         }
+
+        applyStyles(extendedRange)
+        super.processEditing()
+
+        shouldOverrideSelectionRange = false
     }
 
     /// Applies styles to a range on the backingString.
@@ -186,42 +204,6 @@ class Storage: NSTextStorage {
     func applyStyle(markdownEnabled: Bool) {
         self.theme = Theme(markdownEnabled: markdownEnabled)
     }
-}
-
-
-// MARK: - macOS Catalina Workarounds. Yes.
-//
-private extension Storage {
-
-    /// What's going on:
-    ///
-    /// In macOS 10.15 (Catalina), when the document contains Emojis, applying fonts to the full edited range (within `processEditing` > `applyStyles`)
-    /// breaks the UI.
-    ///
-    /// This is *Unlesss* we signal we've `.editedAttributes` in the full string's range. Which makes sense, right?.
-    /// Now, the side effect of doing so, is that the `selectedRange` ends up being kicked to the end of the document (because, alledgedly, we've edited the full string).
-    ///
-    /// This is a major hack that allows us to:
-    ///
-    ///     A. Apply a given font to the entire BackingStore
-    ///     B. Signal that we've edited the font (so that emojis are properly rendered)
-    ///     C. Preserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
-    ///
-    func perserveRealEditedRange(block: () -> Void) {
-        // HACK HACK: Only required in macOS Catalina
-        guard #available(macOS 10.15, *) else {
-            block()
-            return
-        }
-
-        shouldOverrideSelectionRange = true
-        overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
-
-        block()
-
-        shouldOverrideSelectionRange = false
-    }
-
 }
 
 
