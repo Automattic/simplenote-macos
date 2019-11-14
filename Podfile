@@ -17,9 +17,7 @@ abstract_target 'Automattic' do
   #
   pod 'Automattic-Tracks-iOS', '~> 0.4'
 
-  # We'll release a new Simperium version once this PR is merged // the hash won't be merged into develop!
-  pod 'Simperium-OSX', :git => 'https://github.com/Simperium/simperium-ios.git', :commit => 'c402580'
-  # pod 'Simperium-OSX', '0.8.21'
+  pod 'Simperium-OSX', '0.8.24'
 
   # Main Target
   #
