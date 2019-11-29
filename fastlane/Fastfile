@@ -131,6 +131,12 @@ end
   #####################################################################################
   desc "Builds and updates for beta distribution"
   lane :build_and_upload_beta do | options |
+    ensure_git_status_clean()
+
+    configure_apply()
+    sh("rake dependencies:pod:clean")
+    cocoapods()
+
     build_app(
       workspace: "Simplenote.xcworkspace", 
       scheme: "Simplenote",
