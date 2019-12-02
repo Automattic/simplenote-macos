@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B52D0EC8230DCAD7003F799D /* Build configuration list for PBXAggregateTarget "SimplenoteSecrets" */;
+			buildPhases = (
+				B52D0EC9230DCB15003F799D /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = SimplenoteSecrets;
+			productName = GenerateCredentials;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		148FFD05321DE8DD0004B1D7 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1F05719FA33BB54134ECF7 /* Pods_Automattic_Simplenote_AppStore.framework */; };
 		2614F1DF1405A0B10031AE94 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
@@ -68,7 +82,6 @@
 		376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
-		378345021D38624100D45D46 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
 		378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
@@ -190,7 +203,6 @@
 		B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B56B35741AC3160300B9F365 /* NSTextView+Simplenote.m */; };
 		B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
 		B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
-		B58A7B931D66643000B9DD13 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378345001D38624100D45D46 /* config.plist */; };
 		B58CF2161A81303E00A9B4D2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58CF2151A81303E00A9B4D2 /* Crashlytics.framework */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -217,6 +229,8 @@
 		B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
+		B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
+		B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5EC0C241D0EEF5700818458 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
@@ -237,6 +251,23 @@
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
 		F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B52D0ECC230DCEA8003F799D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B52D0EC5230DCAD7003F799D;
+			remoteInfo = GenerateCredentials;
+		};
+		B52D0ECE230DCEAC003F799D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B52D0EC5230DCAD7003F799D;
+			remoteInfo = GenerateCredentials;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		466FFF2517CC10A800399652 /* CopyFiles */ = {
@@ -334,7 +365,6 @@
 		375D293121E033D1007AB25A /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
 		37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simplenote-Bridging-Header.h"; sourceTree = "<group>"; };
 		376EE3EA202B748E00E3812E /* SPAboutTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAboutTextField.swift; sourceTree = "<group>"; };
-		378345001D38624100D45D46 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-DB5.plist"; sourceTree = "<group>"; };
 		378AA6FE1ACB05B100CA87DC /* VSTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VSTheme.h; path = DB5/VSTheme.h; sourceTree = "<group>"; };
 		378AA6FF1ACB05B100CA87DC /* VSTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSTheme.m; path = DB5/VSTheme.m; sourceTree = "<group>"; };
@@ -469,6 +499,7 @@
 		B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSThemeManager.m; path = DB5/VSThemeManager.m; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
+		B5E196C0230F5F5300F5658A /* SPCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = "<group>"; };
 		B5E96B641BDE732500D707F5 /* LoginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
 		B5E96B651BDE732500D707F5 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -587,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				463774DC171F114900E2E333 /* Categories */,
+				B52D0ECA230DCE22003F799D /* Credentials */,
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				463774DB171F111600E2E333 /* Models */,
 				B59848891BCDB961005EFBBE /* Trackers */,
@@ -647,7 +679,6 @@
 				26F72A9814032D2A00A7935E /* main.m */,
 				26F72A9A14032D2A00A7935E /* Simplenote-Prefix.pch */,
 				26F72A9B14032D2A00A7935E /* Credits.rtf */,
-				378345001D38624100D45D46 /* config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -889,6 +920,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		B52D0ECA230DCE22003F799D /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				B5E196C0230F5F5300F5658A /* SPCredentials.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
 		B54739DC1A3F389300B68A4D /* HockeySDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +1019,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B52D0ECD230DCEA8003F799D /* PBXTargetDependency */,
 			);
 			name = Simplenote;
 			productName = Simplenote;
@@ -1002,6 +1042,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B52D0ECF230DCEAC003F799D /* PBXTargetDependency */,
 			);
 			name = "Simplenote-AppStore";
 			productName = Simplenote;
@@ -1020,11 +1061,15 @@
 					26F72A8714032D2A00A7935E = {
 						DevelopmentTeam = PZYM8XX95Q;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					466FFEA617CC10A800399652 = {
 						DevelopmentTeam = PZYM8XX95Q;
 						LastSwiftMigration = 0920;
+						ProvisioningStyle = Manual;
+					};
+					B52D0EC5230DCAD7003F799D = {
+						CreatedOnToolsVersion = 11.0;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -1044,6 +1089,7 @@
 			targets = (
 				26F72A8714032D2A00A7935E /* Simplenote */,
 				466FFEA617CC10A800399652 /* Simplenote-AppStore */,
+				B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */,
 			);
 		};
 /* End PBXProject section */
@@ -1065,7 +1111,6 @@
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
-				B58A7B931D66643000B9DD13 /* config.plist in Resources */,
 				46F6540617F3F6E80074422C /* simplenotebeta.iconset in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
@@ -1088,7 +1133,6 @@
 				466FFEF017CC10A800399652 /* .gitignore in Resources */,
 				466FFEF117CC10A800399652 /* README.md in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
-				378345021D38624100D45D46 /* config.plist in Resources */,
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
@@ -1216,6 +1260,25 @@
 			shellPath = /bin/sh;
 			shellScript = "IDENTITY=\"Developer ID Application: Automattic, Inc.\"\nSOURCE_PATH=\"${SRCROOT}/External/Sparkle/XPCServices\"\nTARGET_PATH=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\n\nNETWORK_XPC=\"org.sparkle-project.InstallerConnection.xpc\"\nLAUNCHER_XPC=\"org.sparkle-project.InstallerLauncher.xpc\"\nSTATUS_XPC=\"org.sparkle-project.InstallerStatus.xpc\"\n\n\n# Bail out whenever we're not in Release\n#\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then\n    echo \"NOT Signing in debug!\"\n    exit 0\nfi\n\n\n# Copy Phase\n#\necho \"Copying...\"\n\nmkdir \"${TARGET_PATH}\"\ncp -R \"${SOURCE_PATH}/${NETWORK_XPC}\" \"${TARGET_PATH}/${NETWORK_XPC}\"\ncp -R \"${SOURCE_PATH}/${LAUNCHER_XPC}\" \"${TARGET_PATH}/${LAUNCHER_XPC}\"\ncp -R \"${SOURCE_PATH}/${STATUS_XPC}\" \"${TARGET_PATH}/${STATUS_XPC}\"\n\n# Codesign Phase\n#\necho \"Signing... \"\n\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${TARGET_PATH}/${NETWORK_XPC}\"\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${TARGET_PATH}/${LAUNCHER_XPC}\"\ncodesign --verbose --force --deep --sign \"${IDENTITY}\" \"${TARGET_PATH}/${STATUS_XPC}\"\n";
 		};
+		B52D0EC9230DCB15003F799D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"~/.mobile-secrets/macOS/simplenote/SPCredentials.swift",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Simplenote/Credentials/SPCredentials.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SOURCE_PATH=~/.mobile-secrets/iOS/simplenote/SPCredentials.swift\nTARGET_FOLDER=${SRCROOT}/Simplenote/Credentials\nTARGET_PATH=${TARGET_FOLDER}/SPCredentials.swift\n\nif [ ! -f ${SOURCE_PATH} ]; then\n    echo \"Unable to Copy Credentials =(\"\nelse\n    echo \"Copying Credentials...\"\n    mkdir -p ${TARGET_FOLDER}\n    cp ${SOURCE_PATH} ${TARGET_PATH}\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1278,6 +1341,7 @@
 				B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
 				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5087A151AF3AB9D00505A2B /* ShareViewController.m in Sources */,
+				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B543BEA419DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
@@ -1374,6 +1438,7 @@
 				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B543BEA519DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */,
 				B5087A161AF3AB9D00505A2B /* ShareViewController.m in Sources */,
+				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
@@ -1412,6 +1477,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B52D0ECD230DCEA8003F799D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */;
+			targetProxy = B52D0ECC230DCEA8003F799D /* PBXContainerItemProxy */;
+		};
+		B52D0ECF230DCEAC003F799D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */;
+			targetProxy = B52D0ECE230DCEAC003F799D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		26F72A9514032D2A00A7935E /* InfoPlist.strings */ = {
@@ -1564,7 +1642,7 @@
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1612,7 +1690,7 @@
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
@@ -1750,6 +1828,22 @@
 			};
 			name = Release;
 		};
+		B52D0EC6230DCAD7003F799D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B52D0EC7230DCAD7003F799D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1776,6 +1870,15 @@
 			buildConfigurations = (
 				466FFF2D17CC10A800399652 /* Debug */,
 				466FFF2E17CC10A800399652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B52D0EC8230DCAD7003F799D /* Build configuration list for PBXAggregateTarget "SimplenoteSecrets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B52D0EC6230DCAD7003F799D /* Debug */,
+				B52D0EC7230DCAD7003F799D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

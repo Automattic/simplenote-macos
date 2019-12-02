@@ -157,8 +157,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
-    NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     [SPTracker trackApplicationLaunched];
     
     [self configureWindow];
@@ -180,9 +178,9 @@
     [self.simperium setAllBucketDelegates:self];
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
     [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
-    
+
 #if USE_HOCKEY
-    [self configureHockeyWithID:config[@"SPBitHockeyID"]];
+    [self configureHockeyWithID:SPCredentials.bitHockeyIdentifier];
     [self configureSparkle];
 #endif
 
@@ -192,8 +190,8 @@
     [self.simperium setVerboseLoggingEnabled:YES];
     [self redirectConsoleLogToDocumentFolder];
 #endif
-    
-	[self.simperium authenticateWithAppID:config[@"SPSimperiumAppID"] APIKey:config[@"SPSimperiumApiKey"] window:self.window];
+
+	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
 
     [SPIntegrityHelper reloadInconsistentNotesIfNeeded:self.simperium];
 
@@ -286,10 +284,8 @@
                                                                 object:nil];
             return;
         }
-        
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
-        NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-        SPUser *newUser = [WPAuthHandler authorizeSimplenoteUserFromUrl:url forAppId:config[@"SPSimperiumAppID"]];
+
+        SPUser *newUser = [WPAuthHandler authorizeSimplenoteUserFromUrl:url forAppId:SPCredentials.simperiumAppID];
         if (newUser != nil) {
             self.simperium.user = newUser;
             [self.simperium authenticationDidSucceedForUsername:newUser.email token:newUser.authToken];

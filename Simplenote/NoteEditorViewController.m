@@ -102,7 +102,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)awakeFromNib
 {
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
-    self.storage = [Storage newInstance];
+    self.storage = [Storage new];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     [self.noteEditor.layoutManager setDefaultAttachmentScaling:NSImageScaleProportionallyDown];
     
@@ -209,11 +209,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SPNoteLoadedNotificationName object:self];
-    
-    // Save the scrollPosition of the current note
-    if (self.note != nil) {
-        NSValue *positionValue = [NSValue valueWithPoint:[[self.scrollView contentView] bounds].origin];
-        self.noteScrollPositions[self.note.simperiumKey] = positionValue;
+
+    // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
+    NSString *simperiumKey = self.note.simperiumKey;
+    if (simperiumKey != nil) {
+        // Save the scrollPosition of the current note
+        NSValue *positionValue = [NSValue valueWithPoint:self.scrollView.contentView.bounds.origin];
+        self.noteScrollPositions[simperiumKey] = positionValue;
     }
     
     // Issue #291:
