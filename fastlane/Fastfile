@@ -10,6 +10,24 @@ ENV["PROJECT_NAME"]="Simplenote"
 ENV["PROJECT_ROOT_FOLDER"]="./"
 ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
 
+USER_ENV_FILE_PATH = File.join(Dir.home, '.simplenotemacos-env.default')
+
+# Use this instead of getting values from ENV directly
+# It will throw an error if the requested value is missing
+def get_required_env(key)
+  unless ENV.key?(key)
+    UI.user_error!("Environment variable '#{key}' is not set. Have you setup #{USER_ENV_FILE_PATH} correctly?")
+  end
+  ENV[key]
+end
+
+before_all do
+  # Check that the env files exist
+  unless is_ci || File.file?(USER_ENV_FILE_PATH)
+    UI.user_error!("~/.simplenotemacos-env.default not found: Please copy env/user.env-example to #{USER_ENV_FILE_PATH} and fill in the values")
+  end
+end
+
 ########################################################################
 # Release Lanes
 ########################################################################
@@ -99,13 +117,51 @@ ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
     ios_final_tag(options)
   end
 
-platform :ios do
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
-    build_app(workspace: "Simplenote.xcworkspace", scheme: "Simplenote")
-    upload_to_testflight
+  #####################################################################################
+  # build_and_upload_beta
+  # -----------------------------------------------------------------------------------
+  # This lane builds the app and upload it for beta testing
+  # -----------------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane build_and_upload_beta [skip_confirm:<skip confirm>]
+  #
+  # Example:
+  # bundle exec fastlane build_and_upload_beta 
+  # bundle exec fastlane build_and_upload_beta skip_confirm:true 
+  #####################################################################################
+  desc "Builds and updates for beta distribution"
+  lane :build_and_upload_beta do | options |
+    ensure_git_status_clean()
+
+    configure_apply()
+    sh("rake dependencies:pod:clean")
+    cocoapods()
+
+    build_app(
+      workspace: "Simplenote.xcworkspace", 
+      scheme: "Simplenote",
+      clean: true,
+      output_directory: "./build/")
+
+    appcenter_upload(
+      api_token: get_required_env("APPCENTER_API_TOKEN"),
+      owner_name: "automattic",
+      owner_type: "organization", 
+      app_name: "Simplenote-OSX",
+      ipa: "./build/Simplenote.app",
+      notify_testers: false 
+    )
+    
+    dSYM_PATH = File.dirname(Dir.pwd) + "/build/Simplenote.app.dSYM.zip"
+
+    sentry_upload_dsym(
+      auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
+      org_slug: 'a8c',
+      project_slug: 'simplenote-macos',
+      dsym_path: dSYM_PATH,
+    )
+   
   end
-end
 
 ########################################################################
 # Helper Lanes
