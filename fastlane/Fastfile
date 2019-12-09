@@ -9,6 +9,7 @@ ENV[GHHELPER_REPO="Automattic/simplenote-macos"]
 ENV["PROJECT_NAME"]="Simplenote"
 ENV["PROJECT_ROOT_FOLDER"]="./"
 ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
+ENV["STRIP_LONG_VERSION"]="true"
 
 ########################################################################
 # Release Lanes
