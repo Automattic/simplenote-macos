@@ -1,3 +1,7 @@
+1.9.0
+-----
+- Fixed an issue affecting multibyte characters.
+
 1.8.1
 -----
 - Fixed a bug that caused notes with specific emoji sequences to crash the app
