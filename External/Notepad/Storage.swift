@@ -31,7 +31,7 @@ class Storage: NSTextStorage {
     ///
     private var theme: Theme = Theme(markdownEnabled: false) {
         didSet {
-            let wholeRange = NSRange(location: 0, length: (self.backingString as NSString).length)
+            let wholeRange = NSRange(location: 0, length: backingStore.length)
 
             self.beginEditing()
             self.backingStore.setAttributes([:], range: wholeRange)
@@ -47,7 +47,7 @@ class Storage: NSTextStorage {
 
     /// The underlying text storage implementation.
     ///
-    private let backingStore = NSMutableAttributedString(string: "", attributes: [:])
+    private let backingStore = NSMutableAttributedString()
 
     /// Indicates if Markdown is enabled
     ///
