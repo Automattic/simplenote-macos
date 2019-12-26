@@ -192,11 +192,9 @@ class Storage: NSTextStorage {
             }
         }
 
-        // HACK HACK: Only required in macOS Catalina
-        guard #available(macOS 10.15, *) else {
-            return
-        }
-
+        // Note: We *must* signal the whole range has been edited
+        //  -   This covers the `theme.body.attributes`
+        //  -   Any ranges affected during the theme.styles enumeration is expected, also, to be covered
         edited(.editedAttributes, range: range, changeInLength: 0)
     }
 
