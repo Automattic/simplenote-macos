@@ -15,18 +15,6 @@
 @objc
 class Storage: NSTextStorage {
 
-    /// Indicates if the SelectionRange is biased (and the UI layer should, instead, consume `overrideSelectionRange`), or not
-    /// See `perserveRealEditedRange` for details.
-    ///
-    @objc
-    private(set) var shouldOverrideSelectionRange = false
-
-    /// Contains the "Real" Edited Range.
-    /// See `perserveRealEditedRange` for details.
-    ///
-    @objc
-    private(set) var overrideSelectionRange = NSRange()
-
     /// The Theme for the Notepad
     ///
     private var theme: Theme = Theme(markdownEnabled: false) {
@@ -150,24 +138,8 @@ class Storage: NSTextStorage {
         let indexRange = string.lineRange(for: nsRange)
         let extendedRange = NSUnionRange(editedRange, NSRange(indexRange, in: string))
 
-        /// Running `applyStyles` affects might affect a range "longer" than the actual editedRange: we must consider the whole line range, for Markdown purposes.
-        ///
-        /// Now... that being said, if we do not signal `edited(.attributes)` with the actual edited range, we might end up with UI issues.
-        /// We've implemented a major hack that allows us to:
-        ///
-        /// This is a major hack that allows us topreserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
-        ///
-        /// Refs.
-        /// -   https://github.com/Automattic/simplenote-macos/pull/396
-        /// -   https://github.com/Automattic/simplenote-macos/issues/416
-        ///
-        shouldOverrideSelectionRange = true
-        overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
-
         applyStyles(extendedRange)
         super.processEditing()
-
-        shouldOverrideSelectionRange = false
     }
 
     /// Applies styles to a range on the backingString.
@@ -188,10 +160,17 @@ class Storage: NSTextStorage {
             }
         }
 
-        // Note: We *must* signal the whole range has been edited
-        //  -   This covers the `theme.body.attributes`
-        //  -   Any ranges affected during the theme.styles enumeration is expected, also, to be covered
-        edited(.editedAttributes, range: range, changeInLength: 0)
+        // NOTE:
+        //  -   We're literally adding the `body.attributes` to the whole range (which might be *way longer* than the
+        //      actual edited range, see `processEditing()).`
+        //  -   Since we're doing so, *not* signaling `edited(.editedAttributes, range: range)` was causing characters
+        //      to go AWOL
+        //  -   Signaling `edited(.attributes,...)` was messing with the selectedRange, and we ended up implementing a
+        //      supermassive hack. Ref. https://github.com/Automattic/simplenote-macos/pull/396/files
+        //  -   Simply calling `fixAttributes` prevents characters from going awol. For that reason, we're nuking the
+        //      selectedRange override. YAY!
+        //
+        backingStore.fixAttributes(in: range)
     }
 
     @objc
