@@ -150,23 +150,19 @@ class Storage: NSTextStorage {
         let indexRange = string.lineRange(for: nsRange)
         let extendedRange = NSUnionRange(editedRange, NSRange(indexRange, in: string))
 
-        /// In macOS 10.15 (Catalina), editing documents that contain Emojis end up disappearing . We restore them by reapplying our font to the full edited range.
-        /// *But* in macOS Catalina, *UNLESS* we signal we've `.editedAttributes` with the fully edited range, the UI ends up broken.
+        /// Running `applyStyles` affects might affect a range "longer" than the actual editedRange: we must consider the whole line range, for Markdown purposes.
         ///
-        /// Now, the side effect of doing so, is that the `selectedRange` ends up being kicked to the end of the document (because, alledgedly, we've edited the full string).
+        /// Now... that being said, if we do not signal `edited(.attributes)` with the actual edited range, we might end up with UI issues.
+        /// We've implemented a major hack that allows us to:
         ///
-        /// This is a major hack that allows us to:
+        /// This is a major hack that allows us topreserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
         ///
-        ///     A. Apply a given font to the entire BackingStore
-        ///     B. Signal that we've edited the font (so that emojis are properly rendered)
-        ///     C. Preserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
+        /// Refs.
+        /// -   https://github.com/Automattic/simplenote-macos/pull/396
+        /// -   https://github.com/Automattic/simplenote-macos/issues/416
         ///
-        ///  Ref. https://github.com/Automattic/simplenote-macos/pull/396
-        ///
-        if #available(macOS 10.15, *) {
-            shouldOverrideSelectionRange = true
-            overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
-        }
+        shouldOverrideSelectionRange = true
+        overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
 
         applyStyles(extendedRange)
         super.processEditing()
