@@ -172,9 +172,11 @@ class Storage: NSTextStorage {
         // Toggle
         theme.markdownEnabled = markdownEnabled
 
-        // Reset the full styles
+        // Reset the Style Keys: Do this for specific attributes. Otherwise we risk loosing the NSTextAttachment attribute!
         let range = backingStore.rangeOfEntireString
-        backingStore.setAttributes([:], range: range)
+        let attributeKeys: [NSAttributedString.Key] = [.font, .foregroundColor, .paragraphStyle]
+
+        backingStore.removeAttributes(attributeKeys, range: range)
 
         // After actually calling `endEditing` a `processEditing` loop will be triggered, and the sytles will be refreshed.
         // No need to explicitly call `process`.
