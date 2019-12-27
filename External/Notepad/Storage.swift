@@ -37,10 +37,6 @@ class Storage: NSTextStorage {
     ///
     private let backingStore = NSMutableAttributedString()
 
-    /// Indicates if Markdown is enabled
-    ///
-    private var markdownEnabled = false
-
     /// Returns the BackingString
     ///
     override var string: String {
