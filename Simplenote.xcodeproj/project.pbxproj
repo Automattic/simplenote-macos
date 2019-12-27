@@ -181,8 +181,8 @@
 		B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
 		B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */; };
 		B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */; };
-		B5283BD023B679C00085826F /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSAttributedString+Simplenote.swift */; };
-		B5283BD123B679C00085826F /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSAttributedString+Simplenote.swift */; };
+		B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
+		B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
 		B52849741A4086F500F588CC /* NSColor+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B52849731A4086F500F588CC /* NSColor+Simplenote.m */; };
 		B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B52849731A4086F500F588CC /* NSColor+Simplenote.m */; };
 		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
@@ -453,7 +453,7 @@
 		B51374F51AC0591900825FCC /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPConstants.m; sourceTree = "<group>"; };
 		B51E9FE022E615FA004F16B4 /* SPExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPExporter.swift; sourceTree = "<group>"; };
 		B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helpers.swift"; sourceTree = "<group>"; };
-		B5283BCF23B679C00085826F /* NSAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
+		B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
 		B52849721A4086F500F588CC /* NSColor+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Simplenote.h"; sourceTree = "<group>"; };
 		B52849731A4086F500F588CC /* NSColor+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Simplenote.m"; sourceTree = "<group>"; };
 		B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPIntegrityHelper.m; sourceTree = "<group>"; };
@@ -908,7 +908,7 @@
 			isa = PBXGroup;
 			children = (
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
-				B5283BCF23B679C00085826F /* NSAttributedString+Simplenote.swift */,
+				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1339,7 +1339,7 @@
 				4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
-				B5283BD023B679C00085826F /* NSAttributedString+Simplenote.swift in Sources */,
+				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
@@ -1435,7 +1435,7 @@
 				466FFECD17CC10A800399652 /* INWindowButton.m in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
-				B5283BD123B679C00085826F /* NSAttributedString+Simplenote.swift in Sources */,
+				B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				373B50E020179DFE000568A6 /* Extensions.swift in Sources */,
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,

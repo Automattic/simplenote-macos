@@ -1,9 +1,9 @@
 import Foundation
 
 
-// MARK: - NSAttributedString Simplenote Methods
+// MARK: - NSMutableAttributedString Simplenote Methods
 //
-extension NSAttributedString {
+extension NSMutableAttributedString {
 
     /// Returns the full range of the receiver
     ///
