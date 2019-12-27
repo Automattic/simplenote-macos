@@ -42,15 +42,10 @@
 		3712FC831FE1ACAA008544AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC701FE1ACA9008544AC /* Storage.swift */; };
 		3712FC861FE1ACAA008544AC /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC721FE1ACA9008544AC /* Element.swift */; };
 		3712FC871FE1ACAA008544AC /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC721FE1ACA9008544AC /* Element.swift */; };
-		3712FC8A1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */; };
-		3712FC8B1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */; };
 		3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC751FE1ACA9008544AC /* Style.swift */; };
 		3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC751FE1ACA9008544AC /* Style.swift */; };
 		3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC761FE1ACA9008544AC /* Theme.swift */; };
 		3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC761FE1ACA9008544AC /* Theme.swift */; };
-		3712FCA21FE1ACAA008544AC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3712FC811FE1ACA9008544AC /* Info.plist */; };
-		373B50DD20179DFE000568A6 /* UniversalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DB20179DFD000568A6 /* UniversalTypes.swift */; };
-		373B50DE20179DFE000568A6 /* UniversalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DB20179DFD000568A6 /* UniversalTypes.swift */; };
 		373B50DF20179DFE000568A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DC20179DFE000568A6 /* Extensions.swift */; };
 		373B50E020179DFE000568A6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B50DC20179DFE000568A6 /* Extensions.swift */; };
 		375581C220292AA800529D79 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375581C120292AA800529D79 /* About.storyboard */; };
@@ -337,11 +332,8 @@
 		3700E97521C1E390004771C9 /* SPTextAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextAttachment.swift; sourceTree = "<group>"; };
 		3712FC701FE1ACA9008544AC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		3712FC721FE1ACA9008544AC /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
-		3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notepad-macOS.swift"; sourceTree = "<group>"; };
 		3712FC751FE1ACA9008544AC /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		3712FC761FE1ACA9008544AC /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		3712FC811FE1ACA9008544AC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		373B50DB20179DFD000568A6 /* UniversalTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalTypes.swift; sourceTree = "<group>"; };
 		373B50DC20179DFE000568A6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		375581C120292AA800529D79 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		375D291D21E033D1007AB25A /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffer.c; sourceTree = "<group>"; };
@@ -690,13 +682,10 @@
 			isa = PBXGroup;
 			children = (
 				373B50DC20179DFE000568A6 /* Extensions.swift */,
-				373B50DB20179DFD000568A6 /* UniversalTypes.swift */,
 				3712FC701FE1ACA9008544AC /* Storage.swift */,
 				3712FC721FE1ACA9008544AC /* Element.swift */,
-				3712FC741FE1ACA9008544AC /* Notepad-macOS.swift */,
 				3712FC751FE1ACA9008544AC /* Style.swift */,
 				3712FC761FE1ACA9008544AC /* Theme.swift */,
-				3712FC811FE1ACA9008544AC /* Info.plist */,
 			);
 			name = Notepad;
 			path = External/Notepad;
@@ -1110,7 +1099,6 @@
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				8C902F8D22D3EE350018D654 /* Version.public.xcconfig in Resources */,
 				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
-				3712FCA21FE1ACAA008544AC /* Info.plist in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
@@ -1296,7 +1284,6 @@
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
 				26F72A9914032D2A00A7935E /* main.m in Sources */,
 				B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */,
-				3712FC8A1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
 				B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
@@ -1311,7 +1298,6 @@
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
 				375D293A21E033D1007AB25A /* stack.c in Sources */,
 				375D294221E033D1007AB25A /* html5_blocks.c in Sources */,
-				373B50DD20179DFE000568A6 /* UniversalTypes.swift in Sources */,
 				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				714BA65814D3264200A6CCC1 /* SPGradientView.m in Sources */,
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
@@ -1394,7 +1380,6 @@
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */,
-				3712FC8B1FE1ACAA008544AC /* Notepad-macOS.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
@@ -1409,7 +1394,6 @@
 				466FFEB017CC10A800399652 /* SPGradientView.m in Sources */,
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
-				373B50DE20179DFE000568A6 /* UniversalTypes.swift in Sources */,
 				466FFEB117CC10A800399652 /* SPBackgroundView.m in Sources */,
 				466FFEB217CC10A800399652 /* SPTableRowView.m in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
