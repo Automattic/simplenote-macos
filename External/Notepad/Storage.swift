@@ -159,8 +159,10 @@ class Storage: NSTextStorage {
         backingStore.fixAttributes(in: range)
     }
 
+    /// Refreshes the receiver's Attributes
+    ///
     @objc
-    func applyStyle(markdownEnabled: Bool) {
+    func refreshStyle(markdownEnabled: Bool) {
         guard theme.markdownEnabled != markdownEnabled else {
             return
         }
