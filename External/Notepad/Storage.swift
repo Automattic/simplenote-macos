@@ -17,7 +17,11 @@ class Storage: NSTextStorage {
 
     /// Simplenote's Active Theme
     ///
-    private let theme = Theme()
+    private var theme = Theme(markdownEnabled: false) {
+        didSet {
+            resetStyles()
+        }
+    }
 
     /// Backing String (Cache) reference
     ///
@@ -159,18 +163,10 @@ class Storage: NSTextStorage {
         backingStore.fixAttributes(in: range)
     }
 
-    /// Refreshes the receiver's Attributes
+    /// RE-Applies the Styles to the whole BackingStore
     ///
-    @objc
-    func refreshStyle(markdownEnabled: Bool) {
-        guard theme.markdownEnabled != markdownEnabled else {
-            return
-        }
-
+    private func resetStyles() {
         beginEditing()
-
-        // Toggle
-        theme.markdownEnabled = markdownEnabled
 
         // Reset the Style Keys: Do this for specific attributes. Otherwise we risk loosing the NSTextAttachment attribute!
         let range = backingStore.rangeOfEntireString
@@ -178,10 +174,17 @@ class Storage: NSTextStorage {
 
         backingStore.removeAttributes(attributeKeys, range: range)
 
-        // After actually calling `endEditing` a `processEditing` loop will be triggered, and the sytles will be refreshed.
-        // No need to explicitly call `process`.
+        // After actually calling `endEditing` a `processEditing` loop will be triggered, and the sytles will be re-applied.
+        // No need to explicitly call `process` (!)
         edited(.editedAttributes, range: range, changeInLength: 0)
         endEditing()
+    }
+
+    /// Refreshes the receiver's Attributes. We must always do this since `Markdown` isn't the only variable: FontSize might have been also updated!
+    ///
+    @objc
+    func refreshStyle(markdownEnabled: Bool) {
+        self.theme = Theme(markdownEnabled: markdownEnabled)
     }
 }
 

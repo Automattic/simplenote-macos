@@ -9,113 +9,58 @@
 
 import AppKit
 
+
+// MARK: - Theme
+//
 class Theme {
 
     /// Default Font Size
     ///
-    private let defaultFontSize = CGFloat(15)
+    private static let defaultFontSize = CGFloat(15)
 
     /// Headline Font Multiplier
     ///
-    private let firstLineFontMultiplier = CGFloat(1.25)
+    private static let firstLineFontMultiplier = CGFloat(1.25)
 
     /// The body style
     ///
     let bodyStyle: Style
 
-    /// Regular Styles: Active regardless of the Markdown state
+    /// All of the (other) Theme Styles
     ///
-    private let regularStyles: [Style]
-
-    /// Markdown Styles: Active only when Markdown is enabled
-    ///
-    private let markdownStyles: [Style]
-
-    /// All of the (other) Theme Styles)
-    ///
-    var styles: [Style] {
-        return markdownEnabled ? markdownStyles : regularStyles
-    }
+    let styles: [Style]
 
     /// Indicates if the Markdown Styles should be enabled (or not!)
     ///
-    var markdownEnabled = false
+    let markdownEnabled: Bool
     
 
     /// Designated Initializer
     ///
-    init() {
-        guard let theme = VSThemeManager.shared().theme() else {
-            fatalError("Fatal error while trying to load active Theme")
-        }
+    init(markdownEnabled: Bool) {
+        self.bodyStyle = Theme.bodyStyle
+        self.styles = markdownEnabled ? Theme.markdownStyles : Theme.regularStyles
+        self.markdownEnabled = markdownEnabled
+    }
+}
 
-        var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
-        if fontSize == 0 {
-            fontSize = defaultFontSize
-        }
-        
-        // Styles: Body
-        let bodyFont = NSFont.systemFont(ofSize: fontSize)
-        let bodyAttributes: [NSAttributedString.Key: AnyObject] = [
-            .foregroundColor: theme.color(forKey: "textColor"),
-            .font: bodyFont
-        ]
 
-        // Styles: First Line
-        let firstLineAttributes: [NSAttributedString.Key: AnyObject] = [
-            .font: NSFont.systemFont(ofSize: fontSize * firstLineFontMultiplier)
-        ]
+// MARK: - Styles
+//
+private extension Theme {
 
-        // Styles: Heading
-        let headingAttributes: [NSAttributedString.Key: AnyObject] = [
-            .font: NSFont.boldSystemFont(ofSize: fontSize)
-        ]
+    static var bodyStyle: Style {
+        return Style(element: .body, attributes: bodyAttributes)
+    }
 
-        // Styles: Bold
-        let boldAttributes: [NSAttributedString.Key: AnyObject] = [
-            .font: NSFont.boldSystemFont(ofSize: fontSize)
-        ]
-
-        // Styles: Code
-        let codeFont = NSFont(name: "Courier", size: fontSize) ?? bodyFont
-        let codeAttributes: [NSAttributedString.Key : AnyObject] = [
-            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
-            .font: codeFont
-        ]
-
-        // Styles: Italics
-        let defaultFont = NSFont.systemFont(ofSize: fontSize)
-        let italicFont = NSFontManager.shared.convert(defaultFont, toHaveTrait: .italicFontMask)
-        
-        let italicAttributes: [NSAttributedString.Key: AnyObject] = [
-            .font: italicFont
-        ]
-
-        // Styles: Quoted
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.headIndent = 20.0;
-        paragraphStyle.firstLineHeadIndent = 20.0;
-        paragraphStyle.tailIndent = -20.0;
-        
-        let quoteAttributes: [NSAttributedString.Key: AnyObject] = [
-            .font: italicFont,
-            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
-            .paragraphStyle: paragraphStyle
-        ]
-
-        // Links and Images
-        let urlAttributes: [NSAttributedString.Key : AnyObject] = [
-            .foregroundColor: theme.color(forKey: "tintColor")
-        ]
-
-        // Styles!
-        bodyStyle = Style(element: .body, attributes: bodyAttributes)
-
-        regularStyles = [
+    static var regularStyles: [Style] {
+        return [
             Style(element: .firstLine, attributes: firstLineAttributes)
         ]
+    }
 
-        markdownStyles = [
+    static var markdownStyles: [Style] {
+        return [
             Style(element: .h1, attributes: headingAttributes),
             Style(element: .h2, attributes: headingAttributes),
             Style(element: .firstLine, attributes: firstLineAttributes),
@@ -125,6 +70,95 @@ class Theme {
             Style(element: .quote, attributes: quoteAttributes),
             Style(element: .url, attributes: urlAttributes),
             Style(element: .image, attributes: urlAttributes),
+        ]
+    }
+}
+
+
+// MARK: - Private Methods
+//
+private extension Theme {
+
+    private static var theme: VSTheme {
+        return VSThemeManager.shared().theme()!
+    }
+
+    private static var fontSize: CGFloat {
+        var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
+        if fontSize == 0 {
+            fontSize = defaultFontSize
+        }
+
+        return fontSize
+    }
+
+    private static var italicFont: NSFont {
+        let defaultFont = NSFont.systemFont(ofSize: fontSize)
+        return NSFontManager.shared.convert(defaultFont, toHaveTrait: .italicFontMask)
+    }
+}
+
+
+// MARK: - Attributes
+//
+private extension Theme {
+
+    static var bodyAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .foregroundColor: theme.color(forKey: "textColor"),
+            .font: NSFont.systemFont(ofSize: fontSize)
+        ]
+    }
+
+    static var firstLineAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: NSFont.systemFont(ofSize: fontSize * firstLineFontMultiplier)
+        ]
+    }
+
+    static var headingAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: NSFont.boldSystemFont(ofSize: fontSize)
+        ]
+    }
+
+    static var boldAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: NSFont.boldSystemFont(ofSize: fontSize)
+        ]
+    }
+
+    static var codeAttributes: [NSAttributedString.Key: AnyObject] {
+        let codeFont = NSFont(name: "Courier", size: fontSize) ?? NSFont.systemFont(ofSize: fontSize)
+
+        return [
+            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .font: codeFont
+        ]
+    }
+
+    static var italicAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: italicFont
+        ]
+    }
+
+    static var quoteAttributes: [NSAttributedString.Key: AnyObject] {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.headIndent = 20.0
+        paragraphStyle.firstLineHeadIndent = 20.0
+        paragraphStyle.tailIndent = -20.0
+
+        return [
+            .font: italicFont,
+            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .paragraphStyle: paragraphStyle
+        ]
+    }
+
+    static var urlAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .foregroundColor: theme.color(forKey: "tintColor")
         ]
     }
 }
