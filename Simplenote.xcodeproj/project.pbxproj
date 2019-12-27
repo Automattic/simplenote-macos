@@ -85,7 +85,6 @@
 		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
 		378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
-		378E1F751CFCB5A7007486B5 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
 		37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */; };
 		37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */; };
 		37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */ = {isa = PBXBuildFile; fileRef = 37AE49C51FFEBB0A00FCB165 /* markdown-default.css */; };
@@ -189,8 +188,6 @@
 		B52849741A4086F500F588CC /* NSColor+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B52849731A4086F500F588CC /* NSColor+Simplenote.m */; };
 		B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B52849731A4086F500F588CC /* NSColor+Simplenote.m */; };
 		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
-		B543BEA419DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */; };
-		B543BEA519DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */; };
 		B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
@@ -233,7 +230,6 @@
 		B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
-		B5EC0C241D0EEF5700818458 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -242,8 +238,6 @@
 		B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */; };
 		B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
 		B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
-		B5FA829B1B977A1F00082296 /* SPTextLinkifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */; };
-		B5FA829C1B977A1F00082296 /* SPTextLinkifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		DF943F46D35165664F17D797 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */; };
@@ -370,15 +364,12 @@
 		378AA6FF1ACB05B100CA87DC /* VSTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSTheme.m; path = DB5/VSTheme.m; sourceTree = "<group>"; };
 		378AA7001ACB05B100CA87DC /* VSThemeLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VSThemeLoader.h; path = DB5/VSThemeLoader.h; sourceTree = "<group>"; };
 		378AA7011ACB05B100CA87DC /* VSThemeLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSThemeLoader.m; path = DB5/VSThemeLoader.m; sourceTree = "<group>"; };
-		378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Escaping.h"; sourceTree = "<group>"; };
-		378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Escaping.m"; sourceTree = "<group>"; };
 		37AE49C01FFEB92A00FCB165 /* SPMarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMarkdownParser.h; sourceTree = "<group>"; };
 		37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMarkdownParser.m; sourceTree = "<group>"; };
 		37AE49C51FFEBB0A00FCB165 /* markdown-default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "markdown-default.css"; sourceTree = "<group>"; };
 		37AE49C61FFEBB0B00FCB165 /* markdown-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "markdown-dark.css"; sourceTree = "<group>"; };
 		37D4DD6820B3574C00C225EA /* WPAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPAuthHandler.m; sourceTree = "<group>"; };
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
-		37E11C841FFD742F000D2AF5 /* Simplenote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simplenote-Bridging-Header.h"; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4623ABD61773740700CE0441 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -461,8 +452,6 @@
 		B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helpers.swift"; sourceTree = "<group>"; };
 		B52849721A4086F500F588CC /* NSColor+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Simplenote.h"; sourceTree = "<group>"; };
 		B52849731A4086F500F588CC /* NSColor+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Simplenote.m"; sourceTree = "<group>"; };
-		B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPIntegrityHelper.m; sourceTree = "<group>"; };
-		B543BEA319DDEC1D0051D30C /* SPIntegrityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPIntegrityHelper.h; sourceTree = "<group>"; };
 		B54EB18E1A3F683D00D472B3 /* SPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPWindow.h; sourceTree = "<group>"; };
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -509,8 +498,6 @@
 		B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Simperium+Simplenote.h"; sourceTree = "<group>"; };
 		B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Privacy.storyboard; sourceTree = "<group>"; };
 		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
-		B5FA82991B977A1F00082296 /* SPTextLinkifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTextLinkifier.h; sourceTree = "<group>"; };
-		B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTextLinkifier.m; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
 		C9AD0F19A356BF59C78C5E3E /* Pods-Automattic-Simplenote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"; sourceTree = "<group>"; };
@@ -630,12 +617,8 @@
 				B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */,
 				26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */,
 				26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */,
-				B543BEA319DDEC1D0051D30C /* SPIntegrityHelper.h */,
-				B543BEA219DDEC1D0051D30C /* SPIntegrityHelper.m */,
 				B5D3FCCB201F906E00A813B7 /* StatusChecker.h */,
 				B5D3FCCA201F906E00A813B7 /* StatusChecker.m */,
-				B5FA82991B977A1F00082296 /* SPTextLinkifier.h */,
-				B5FA829A1B977A1F00082296 /* SPTextLinkifier.m */,
 				46CF73051782C6B200FC2B5C /* TagListViewController.h */,
 				46CF73061782C6B200FC2B5C /* TagListViewController.m */,
 				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
@@ -652,7 +635,6 @@
 				B51374F51AC0591900825FCC /* SPConstants.m */,
 				B5087A131AF3AB9D00505A2B /* ShareViewController.h */,
 				B5087A141AF3AB9D00505A2B /* ShareViewController.m */,
-				37E11C841FFD742F000D2AF5 /* Simplenote-Bridging-Header.h */,
 				B5087A1C1AF3AF5E00505A2B /* VersionsViewController.h */,
 				B5087A1D1AF3AF5E00505A2B /* VersionsViewController.m */,
 				B5087A201AF3B16A00505A2B /* PublishViewController.h */,
@@ -818,8 +800,6 @@
 				B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */,
 				B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */,
 				B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */,
-				378E1F731CFCB5A7007486B5 /* NSString+Escaping.h */,
-				378E1F741CFCB5A7007486B5 /* NSString+Escaping.m */,
 				B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */,
 				B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */,
 			);
@@ -1332,7 +1312,6 @@
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
-				B5FA829B1B977A1F00082296 /* SPTextLinkifier.m in Sources */,
 				B52849741A4086F500F588CC /* NSColor+Simplenote.m in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				375D294821E033D1007AB25A /* html_blocks.c in Sources */,
@@ -1342,7 +1321,6 @@
 				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5087A151AF3AB9D00505A2B /* ShareViewController.m in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
-				B543BEA419DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */,
@@ -1371,7 +1349,6 @@
 				46B0F54C17B47C490071C809 /* MMScroller.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				46B0F54D17B47C490071C809 /* MMScrollView.m in Sources */,
-				378E1F751CFCB5A7007486B5 /* NSString+Escaping.m in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
@@ -1427,7 +1404,6 @@
 				375D294521E033D1007AB25A /* html.c in Sources */,
 				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
-				B5FA829C1B977A1F00082296 /* SPTextLinkifier.m in Sources */,
 				B52849751A4086F500F588CC /* NSColor+Simplenote.m in Sources */,
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
@@ -1436,7 +1412,6 @@
 				466FFEC217CC10A800399652 /* SPTokenField.m in Sources */,
 				B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
 				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
-				B543BEA519DDEC1D0051D30C /* SPIntegrityHelper.m in Sources */,
 				B5087A161AF3AB9D00505A2B /* ShareViewController.m in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
@@ -1468,7 +1443,6 @@
 				466FFED917CC10A800399652 /* MMScroller.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				466FFEDA17CC10A800399652 /* MMScrollView.m in Sources */,
-				B5EC0C241D0EEF5700818458 /* NSString+Escaping.m in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
