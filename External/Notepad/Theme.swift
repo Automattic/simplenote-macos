@@ -19,10 +19,6 @@ class Theme {
     ///
     private let firstLineFontMultiplier = CGFloat(1.25)
 
-    /// The body style
-    ///
-    let bodyStyle: Style
-
     /// Regular Styles: Active regardless of the Markdown state
     ///
     private let regularStyles: [Style]
@@ -30,6 +26,10 @@ class Theme {
     /// Markdown Styles: Active only when Markdown is enabled
     ///
     private let markdownStyles: [Style]
+
+    /// The body style
+    ///
+    let bodyStyle: Style
 
     /// All of the (other) Theme Styles)
     ///
@@ -39,12 +39,14 @@ class Theme {
 
     /// Indicates if the Markdown Styles should be enabled (or not!)
     ///
-    var markdownEnabled = false
+    let markdownEnabled: Bool
     
 
     /// Designated Initializer
     ///
-    init() {
+    init(markdownEnabled: Bool) {
+        self.markdownEnabled = markdownEnabled
+
         guard let theme = VSThemeManager.shared().theme() else {
             fatalError("Fatal error while trying to load active Theme")
         }
