@@ -14,7 +14,6 @@
 @property (nonatomic, assign) BOOL mouseInside;
 
 - (void)setSelected:(BOOL)selected;
-- (void)setDropdownMenu:(NSMenu *)menu;
 - (void)applyStyle;
 
 @end
