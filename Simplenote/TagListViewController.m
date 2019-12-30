@@ -98,20 +98,22 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 {
     trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
     trashDropdownMenu.delegate = self;
-    
     trashDropdownMenu.autoenablesItems = YES;
     [trashDropdownMenu addItemWithTitle:@"Empty Trash" action:@selector(emptyTrashAction:) keyEquivalent:@""];
-    for (NSMenuItem *item in trashDropdownMenu.itemArray)
+
+    for (NSMenuItem *item in trashDropdownMenu.itemArray) {
         [item setTarget:self];
+    }
     
     tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
     tagDropdownMenu.delegate = self;
     tagDropdownMenu.autoenablesItems = YES;
     [tagDropdownMenu addItemWithTitle:@"Rename Tag" action:@selector(renameAction:) keyEquivalent:@""];
     [tagDropdownMenu addItemWithTitle:@"Delete Tag" action:@selector(deleteAction:) keyEquivalent:@""];
-    for (NSMenuItem *item in tagDropdownMenu.itemArray)
-        [item setTarget:self];
 
+    for (NSMenuItem *item in tagDropdownMenu.itemArray) {
+        [item setTarget:self];
+    }
 }
 
 - (void)sortTags
