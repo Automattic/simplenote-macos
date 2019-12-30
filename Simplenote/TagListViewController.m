@@ -485,16 +485,27 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         tagView.textField.stringValue = NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if (row == kTrashRow) {
         tagView.textField.stringValue = NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-        [tagView setDropdownMenu:trashDropdownMenu];
     } else if (row == kSeparatorRow) {
         tagView.textField.stringValue = @"";
     } else {
         Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
         tagView.textField.stringValue = tag.name;
-        [tagView setDropdownMenu:tagDropdownMenu];
     }
     
     return tagView;
+}
+
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    switch (row) {
+        case kAllNotesRow:
+        case kSeparatorRow:
+            return nil;
+        case kTrashRow:
+            return trashDropdownMenu;
+        default:
+            return tagDropdownMenu;
+    }
 }
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
