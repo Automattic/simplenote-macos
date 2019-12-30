@@ -13,26 +13,6 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <menu id="1510" userLabel="Tag List Menu">
-            <items>
-                <menuItem title="Rename Tag" id="1511">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="renameAction:" target="1461" id="1515"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Delete Tag" id="1512">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="deleteAction:" target="1461" id="1516"/>
-                    </connections>
-                </menuItem>
-            </items>
-            <connections>
-                <outlet property="delegate" destination="1461" id="1520"/>
-            </connections>
-            <point key="canvasLocation" x="-58" y="411"/>
-        </menu>
         <menu id="1504" userLabel="Note List Menu">
             <items>
                 <menuItem title="Delete Note" id="1505" userLabel="Delete Note">
@@ -940,9 +920,6 @@
                                             <rect key="frame" x="-100" y="-100" width="16" height="576"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <connections>
-                                            <outlet property="menu" destination="1510" id="1519"/>
-                                        </connections>
                                     </scrollView>
                                 </subviews>
                             </customView>
@@ -1256,7 +1233,6 @@
                 <outlet property="notesArrayController" destination="573" id="1672"/>
                 <outlet property="tableView" destination="1453" id="1469"/>
                 <outlet property="tagBox" destination="1731" id="690-39-pWj"/>
-                <outlet property="tagMenu" destination="1510" id="1517"/>
                 <outlet property="tagSortMenuItem" destination="axW-cz-MnF" id="vio-Yr-jb6"/>
                 <outlet property="view" destination="1452" id="1462"/>
             </connections>
