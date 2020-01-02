@@ -1176,8 +1176,6 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
-                <outlet property="editorWidthFullItem" destination="bBW-To-3v3" id="GmP-lr-AUQ"/>
-                <outlet property="editorWidthNarrowItem" destination="lMi-2X-rR9" id="8k8-KI-fR7"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="i3Y-k0-nZS"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
