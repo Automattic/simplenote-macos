@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,6 +25,7 @@
             <connections>
                 <outlet property="delegate" destination="874" id="1526"/>
             </connections>
+            <point key="canvasLocation" x="139" y="401"/>
         </menu>
         <customView id="914" customClass="SPToolbarView">
             <rect key="frame" x="0.0" y="0.0" width="901" height="71"/>
@@ -46,7 +47,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="system"/>
                         <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
                             <items>
                                 <menuItem title="Item 1" image="toolbar_info" hidden="YES" id="1604"/>
@@ -94,6 +95,7 @@
                 </button>
                 <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1698">
                     <rect key="frame" x="158" y="19" width="190" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <view key="contentView" id="qdW-BD-GMh">
                         <rect key="frame" x="0.0" y="0.0" width="190" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -750,23 +752,24 @@
             <connections>
                 <outlet property="delegate" destination="494" id="ahP-nJ-8XG"/>
             </connections>
+            <point key="canvasLocation" x="139" y="154"/>
         </menu>
         <window title="Simplenote" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" id="371" customClass="SPWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="199" y="95" width="900" height="618"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="720" height="400"/>
             <view key="contentView" id="372" customClass="SPBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView autosaveName="" dividerStyle="thin" vertical="YES" id="557" customClass="SPSplitView">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView focusRingType="none" id="1436">
+                            <customView focusRingType="none" fixedFrame="YES" id="1436">
                                 <rect key="frame" x="0.0" y="0.0" width="135" height="618"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
@@ -788,14 +791,14 @@
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
                                                         <tableColumn identifier="NameColumn" width="136" minWidth="40" maxWidth="1000" id="1457">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
@@ -923,7 +926,7 @@
                                     </scrollView>
                                 </subviews>
                             </customView>
-                            <customView focusRingType="none" id="558">
+                            <customView focusRingType="none" fixedFrame="YES" id="558">
                                 <rect key="frame" x="136" y="0.0" width="270" height="618"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
@@ -936,19 +939,19 @@
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="270" height="606"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
                                                     <tableColumns>
                                                         <tableColumn width="270" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="568">
-                                                                <font key="font" metaFont="cellTitle"/>
+                                                                <font key="font" metaFont="label" size="12"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -959,22 +962,19 @@
                                                                     <rect key="frame" x="0.0" y="4" width="270" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
-                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="OeL-cH-hPH">
-                                                                            <rect key="frame" x="19" y="0.0" width="250" height="59"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-cH-hPH">
+                                                                            <rect key="frame" x="19" y="1" width="250" height="58"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1103">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="59"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1103">
+                                                                                    <rect key="frame" x="-2" y="16" width="216" height="42"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
-                                                                                        <font key="font" size="12" name="Helvetica"/>
+                                                                                        <font key="font" metaFont="user"/>
                                                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
-                                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="UKZ-a7-XwI">
-                                                                                    <rect key="frame" x="113" y="18" width="24" height="24"/>
-                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-a7-XwI">
+                                                                                    <rect key="frame" x="228" y="36" width="22" height="22"/>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_shared" id="ghF-Js-YoS"/>
                                                                                 </imageView>
                                                                             </subviews>
@@ -988,6 +988,12 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="OeL-cH-hPH" secondAttribute="trailing" constant="1" id="2t4-dI-hYn"/>
+                                                                        <constraint firstItem="OeL-cH-hPH" firstAttribute="top" secondItem="607" secondAttribute="top" constant="5" id="B4e-Je-2Gf"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="OeL-cH-hPH" secondAttribute="bottom" constant="1" id="JR7-WJ-i63"/>
+                                                                        <constraint firstItem="OeL-cH-hPH" firstAttribute="leading" secondItem="607" secondAttribute="leading" constant="19" id="q6F-oi-H0A"/>
+                                                                    </constraints>
                                                                     <connections>
                                                                         <outlet property="accessoryImageView" destination="UKZ-a7-XwI" id="9My-vE-J3G"/>
                                                                         <outlet property="contentPreview" destination="1103" id="1729"/>
@@ -1034,7 +1040,7 @@
                                     </textField>
                                 </subviews>
                             </customView>
-                            <customView focusRingType="none" id="559">
+                            <customView focusRingType="none" fixedFrame="YES" id="559">
                                 <rect key="frame" x="407" y="0.0" width="493" height="618"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
@@ -1258,7 +1264,7 @@
                                 <rect key="frame" x="12" y="39" width="214" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Add an email address as a tag to share this note with someone. Then you can both make changes to it." id="1637">
-                                    <font key="font" metaFont="smallSystem"/>
+                                    <font key="font" metaFont="message" size="11"/>
                                     <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1269,6 +1275,7 @@
                     <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
                 </box>
             </subviews>
+            <point key="canvasLocation" x="430" y="580"/>
         </customView>
         <viewController title="SharePopoverController" id="1040" userLabel="Publish Popover Controller" customClass="PublishViewController">
             <connections>
@@ -1302,7 +1309,7 @@
                                 <rect key="frame" x="12" y="3" width="214" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Publish this note to a web page. The page will stay updated with the contents of your note." id="1069">
-                                    <font key="font" metaFont="smallSystem"/>
+                                    <font key="font" metaFont="message" size="11"/>
                                     <color key="textColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
