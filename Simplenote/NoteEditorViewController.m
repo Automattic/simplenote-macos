@@ -526,22 +526,22 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)updatePublishUI
 {
     if (self.note.published && self.note.publishURL.length == 0) {
-        [publishLabel setStringValue:@"Publishing..."];
-        [publishButton setTitle:@"Publish to Web Page"];
+        publishLabel.stringValue = NSLocalizedString(@"Publishing...", @"Displayed during a Publish Operation");
+        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
         publishButton.enabled = NO;
     } else if (self.note.published && self.note.publishURL.length > 0) {
-        [publishLabel setStringValue:[NSString stringWithFormat:@"%@%@", SPSimplenotePublishURL, self.note.publishURL]];
-        [publishButton setTitle:@"Unpublish"];
+        publishLabel.stringValue = [NSString stringWithFormat:@"%@%@", SPSimplenotePublishURL, self.note.publishURL];
+        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
         publishButton.enabled = YES;
         publishButton.state = NSOnState; // clicking the button will toggle the state
     } else if (!self.note.published && self.note.publishURL.length == 0) {
-        [publishLabel setStringValue:@""];
-        [publishButton setTitle:@"Publish to Web Page"];
+        publishLabel.stringValue = @"";
+        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
         publishButton.enabled = YES;
         publishButton.state = NSOffState;// clicking the button will toggle the state
     } else if (!self.note.published && self.note.publishURL.length > 0) {
-        [publishLabel setStringValue:@"Unpublishing..."];
-        [publishButton setTitle:@"Unpublish"];
+        publishLabel.stringValue = NSLocalizedString(@"Unpublishing...", @"Displayed during an Unpublish Operation");
+        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
         publishButton.enabled = NO;
     }
 }
