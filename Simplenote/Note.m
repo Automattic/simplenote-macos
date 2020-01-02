@@ -181,28 +181,7 @@ static NSCalendar *gregorian = nil;
 			self.contentPreview = [self.contentPreview substringFromIndex:1];
         }
 	}
-	
-	if ([tags length] > 0) {
-		// Construct a list of tags that excludes email addresses, since they look ugly in the main note list
-//		NSArray *tagList = [tags JSONValue];
-//		NSString *tagsWithoutAddresses = @"";
-//		for (NSString *tagText in tagList) {
-//			// Rough, fairly slow email address detection
-//			if (![tagText isProbablyEmailAddress]) {
-//				// Filter active tag if viewing tags as folders
-//				SimplenoteAppDelegate *appDelegate = (SimplenoteAppDelegate *)[[NSApplication sharedApplication] delegate];	
-//				NSString *activeTag = appDelegate.noteListViewController.forcedSearch;
-//				if (activeTag == nil || activeTag.length == 0 || ![tagText isEqualToString:activeTag])
-//					tagsWithoutAddresses = [tagsWithoutAddresses stringByAppendingFormat:@"%@ ", tagText];
-//			}
-//		}
-//		// Remove trailing space
-//		if ([tagsWithoutAddresses hasSuffix:@" "])
-//			tagsWithoutAddresses = [tagsWithoutAddresses substringToIndex:tagsWithoutAddresses.length-1];
-//		if ([self.contentPreview length] > 0 && tagsWithoutAddresses.length > 0)
-//			self.contentPreview = [tagsWithoutAddresses stringByAppendingFormat: @":  %@", self.contentPreview];
-	}
-    
+	    
     // Remove Markdown #'s
     if ([self.titlePreview hasPrefix:@"#"]) {
         NSRange cutRange = [self.titlePreview rangeOfString:@"# "];
