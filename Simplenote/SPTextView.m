@@ -209,22 +209,4 @@ NSInteger const ChecklistCursorAdjustment = 2;
     return [string substringWithRange:match.range];
 }
 
-- (void)setSelectedRange:(NSRange)selectedRange
-{
-    NSRange patchedSelectionRange = [self fixSelectedRange:selectedRange];
-    [super setSelectedRange:patchedSelectionRange];
-}
-
-// HACK HACK: Only required in macOS Catalina.
-// See Storage.swift `perserveRealEditedRange` for details!
-- (NSRange)fixSelectedRange:(NSRange)selectedRange
-{
-    if (![self.textStorage isKindOfClass:[Storage class]]) {
-        return selectedRange;
-    }
-
-    Storage* storage = (Storage *)self.textStorage;
-    return storage.shouldOverrideSelectionRange ? storage.overrideSelectionRange : selectedRange;
-}
-
 @end
