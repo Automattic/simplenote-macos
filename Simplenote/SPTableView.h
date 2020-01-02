@@ -9,6 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "SPTextView.h"
 
+@protocol SPTableViewDelegate <NSTableViewDelegate>
+
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row;
+
+@end
+
+
+
 @interface SPTableView : NSTableView<SPTextViewDelegate, NSTextFieldDelegate> {
     NSMutableArray *validFirstResponders;
 }
