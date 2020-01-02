@@ -8,21 +8,12 @@
 
 import Foundation
 
-public struct Style {
-    var regex: NSRegularExpression!
-    var attributes: [NSAttributedString.Key: AnyObject] = [:]
+struct Style {
+    let regex: NSRegularExpression
+    let attributes: [NSAttributedString.Key: AnyObject]
 
     init(element: Element, attributes: [NSAttributedString.Key: AnyObject]) {
         self.regex = element.toRegex()
         self.attributes = attributes
-    }
-
-    init(regex: NSRegularExpression, attributes: [NSAttributedString.Key: AnyObject]) {
-        self.regex = regex
-        self.attributes = attributes
-    }
-
-    init() {
-        self.regex = Element.unknown.toRegex()
     }
 }

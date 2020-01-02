@@ -15,17 +15,11 @@
 @objc
 class Storage: NSTextStorage {
 
-    /// The Theme for the Notepad
+    /// Simplenote's Active Theme
     ///
-    private var theme: Theme = Theme(markdownEnabled: false) {
+    private var theme = Theme(markdownEnabled: false) {
         didSet {
-            let wholeRange = NSRange(location: 0, length: backingStore.length)
-
-            self.beginEditing()
-            self.backingStore.setAttributes([:], range: wholeRange)
-            self.applyStyles(wholeRange)
-            self.edited(.editedAttributes, range: wholeRange, changeInLength: 0)
-            self.endEditing()
+            resetStyles()
         }
     }
 
@@ -36,10 +30,6 @@ class Storage: NSTextStorage {
     /// The underlying text storage implementation.
     ///
     private let backingStore = NSMutableAttributedString()
-
-    /// Indicates if Markdown is enabled
-    ///
-    private var markdownEnabled = false
 
     /// Returns the BackingString
     ///
@@ -96,6 +86,7 @@ class Storage: NSTextStorage {
 
     override func replaceCharacters(in range: NSRange, with attrString: NSAttributedString) {
         self.beginEditing()
+
         backingStore.replaceCharacters(in: range, with: attrString)
         replaceBackingStringSubrange(range, with: attrString.string)
 
@@ -147,7 +138,7 @@ class Storage: NSTextStorage {
     ///
     private func applyStyles(_ range: NSRange) {
         let string = backingString
-        backingStore.addAttributes(theme.body.attributes, range: range)
+        backingStore.addAttributes(theme.bodyStyle.attributes, range: range)
 
         for style in theme.styles {
             style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range) { (match, flags, stop) in
@@ -172,8 +163,25 @@ class Storage: NSTextStorage {
         backingStore.fixAttributes(in: range)
     }
 
+    /// RE-Applies the Styles to the whole BackingStore
+    ///
+    private func resetStyles() {
+        beginEditing()
+
+        // Reset the full styles
+        let range = backingStore.rangeOfEntireString
+        backingStore.setAttributes([:], range: range)
+
+        // After actually calling `endEditing` a `processEditing` loop will be triggered, and the sytles will be re-applied.
+        // No need to explicitly call `process` (!)
+        edited(.editedAttributes, range: range, changeInLength: 0)
+        endEditing()
+    }
+
+    /// Refreshes the receiver's Attributes. We must always do this since `Markdown` isn't the only variable: FontSize might have been also updated!
+    ///
     @objc
-    func applyStyle(markdownEnabled: Bool) {
+    func refreshStyle(markdownEnabled: Bool) {
         self.theme = Theme(markdownEnabled: markdownEnabled)
     }
 }

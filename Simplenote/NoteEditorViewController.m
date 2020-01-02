@@ -246,7 +246,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [previewButton setHidden:!self.note.markdown || self.viewingTrash];
-    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
         // Restore scroll position for note if it was saved previously in this session
@@ -729,7 +729,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
     
     // Update editor to apply markdown styles
-    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     [self checkTextInDocument];
     
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
@@ -1050,7 +1050,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)applyStyle
 {
     if (self.note != nil) {
-        [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+        [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
         if (!self.markdownView.hidden) {
             [self loadMarkdownContent];
         }

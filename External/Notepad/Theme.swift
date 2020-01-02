@@ -9,104 +9,156 @@
 
 import AppKit
 
-public struct Theme {
-    /// The body style for the Notepad editor.
-    public fileprivate(set) var body: Style = Style()
-    /// The background color of the Notepad.
-    public fileprivate(set) var backgroundColor: NSColor = NSColor.white
-    /// The tint color (AKA cursor color) of the Notepad.
-    public fileprivate(set) var tintColor: NSColor = NSColor.blue
 
-    /// All of the other styles for the Notepad editor.
-    var styles: [Style] = []
+// MARK: - Theme
+//
+class Theme {
+
+    /// Default Font Size
+    ///
+    private static let defaultFontSize = CGFloat(15)
+
+    /// Headline Font Multiplier
+    ///
+    private static let firstLineFontMultiplier = CGFloat(1.25)
+
+    /// The body style
+    ///
+    let bodyStyle: Style
+
+    /// All of the (other) Theme Styles
+    ///
+    let styles: [Style]
+
+    /// Indicates if the Markdown Styles should be enabled (or not!)
+    ///
+    let markdownEnabled: Bool
     
 
-    /// Build a theme from a JSON theme file.
+    /// Designated Initializer
     ///
-    /// - parameter name: The name of the JSON theme file.
-    ///
-    /// - returns: The Theme.
-    public init(markdownEnabled: Bool) {
-        applyStyles(markdownEnabled: markdownEnabled)
+    init(markdownEnabled: Bool) {
+        self.bodyStyle = Theme.bodyStyle
+        self.styles = markdownEnabled ? Theme.markdownStyles : Theme.regularStyles
+        self.markdownEnabled = markdownEnabled
+    }
+}
+
+
+// MARK: - Styles
+//
+private extension Theme {
+
+    static var bodyStyle: Style {
+        return Style(element: .body, attributes: bodyAttributes)
     }
 
-    /// Style the
-    public mutating func applyStyles(markdownEnabled: Bool) {
-        let theme = VSThemeManager.shared().theme();
+    static var regularStyles: [Style] {
+        return [
+            Style(element: .firstLine, attributes: firstLineAttributes)
+        ]
+    }
 
-        backgroundColor = (theme?.color(forKey: "backgroundColor"))!
-        tintColor = (theme?.color(forKey: "tintColor"))!
-        
+    static var markdownStyles: [Style] {
+        return [
+            Style(element: .h1, attributes: headingAttributes),
+            Style(element: .h2, attributes: headingAttributes),
+            Style(element: .firstLine, attributes: firstLineAttributes),
+            Style(element: .bold, attributes: boldAttributes),
+            Style(element: .inlineCode, attributes: codeAttributes),
+            Style(element: .italic, attributes: italicAttributes),
+            Style(element: .quote, attributes: quoteAttributes),
+            Style(element: .url, attributes: urlAttributes),
+            Style(element: .image, attributes: urlAttributes),
+        ]
+    }
+}
+
+
+// MARK: - Private Methods
+//
+private extension Theme {
+
+    private static var theme: VSTheme {
+        return VSThemeManager.shared().theme()!
+    }
+
+    private static var fontSize: CGFloat {
         var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
-        if (fontSize == 0) {
-            fontSize = 15.0; // Just in case!
+        if fontSize == 0 {
+            fontSize = defaultFontSize
         }
-        
-        /* All Text */
-        let attributes = [
-            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "textColor"),
-            NSAttributedString.Key.font: NSFont.systemFont(ofSize: fontSize)
-        ]
-        body = Style(element: .body, attributes: attributes as [NSAttributedString.Key : AnyObject])
-        
-        /* Header Text */
-        let firstLineAttributes = [
-            NSAttributedString.Key.font: NSFont.systemFont(ofSize: fontSize * 1.25)
-        ]
-        styles.append(Style(element: Element.unknown.from(string: "firstLine"), attributes: firstLineAttributes))
-        
-        // Stop styling here if the note doesn't have markdown enabled
-        if (!markdownEnabled) {
-            return
-        }
-        
-        let headingAttributes = [
-            NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: fontSize)
-        ]
-        styles.append(Style(element: Element.unknown.from(string: "h1"), attributes: headingAttributes))
-        styles.append(Style(element: Element.unknown.from(string: "h2"), attributes: headingAttributes))
-        styles.append(Style(element: Element.unknown.from(string: "firstLine"), attributes: firstLineAttributes))
-        
-        /* Bold Text*/
-        let boldAttributes = [
-            NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: fontSize)
-        ]
-        styles.append(Style(element: Element.unknown.from(string: "bold"), attributes: boldAttributes))
-        
-        let codeAttributes = [
-            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "secondaryTextColor"),
-            NSAttributedString.Key.font: NSFont(name: "Courier", size: fontSize)
-        ]
-        styles.append(Style(element: Element.unknown.from(string: "inlineCode"), attributes: codeAttributes as [NSAttributedString.Key : AnyObject]))
-        
-         /* Emphasized Text*/
-        let fontManager = NSFontManager.shared;
+
+        return fontSize
+    }
+
+    private static var italicFont: NSFont {
         let defaultFont = NSFont.systemFont(ofSize: fontSize)
-        let italicFont = fontManager.convert(defaultFont, toHaveTrait: NSFontTraitMask.italicFontMask)
-        
-        let italicAttributes = [
-            NSAttributedString.Key.font: italicFont
+        return NSFontManager.shared.convert(defaultFont, toHaveTrait: .italicFontMask)
+    }
+}
+
+
+// MARK: - Attributes
+//
+private extension Theme {
+
+    static var bodyAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .foregroundColor: theme.color(forKey: "textColor"),
+            .font: NSFont.systemFont(ofSize: fontSize)
         ]
-        styles.append(Style(element: Element.unknown.from(string: "italic"), attributes: italicAttributes as [NSAttributedString.Key : AnyObject]))
-        
-         /* Quoted Text */
+    }
+
+    static var firstLineAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: NSFont.systemFont(ofSize: fontSize * firstLineFontMultiplier)
+        ]
+    }
+
+    static var headingAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: NSFont.boldSystemFont(ofSize: fontSize)
+        ]
+    }
+
+    static var boldAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: NSFont.boldSystemFont(ofSize: fontSize)
+        ]
+    }
+
+    static var codeAttributes: [NSAttributedString.Key: AnyObject] {
+        let codeFont = NSFont(name: "Courier", size: fontSize) ?? NSFont.systemFont(ofSize: fontSize)
+
+        return [
+            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .font: codeFont
+        ]
+    }
+
+    static var italicAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .font: italicFont
+        ]
+    }
+
+    static var quoteAttributes: [NSAttributedString.Key: AnyObject] {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.headIndent = 20.0;
-        paragraphStyle.firstLineHeadIndent = 20.0;
-        paragraphStyle.tailIndent = -20.0;
-        
-        let quoteAttributes = [
-            NSAttributedString.Key.font: italicFont,
-            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "secondaryTextColor") as Any,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle
-            ] as [NSAttributedString.Key : Any]
-        styles.append(Style(element: Element.unknown.from(string: "quote"), attributes: quoteAttributes as [NSAttributedString.Key : AnyObject]))
-        
-         /* Links and Images */
-        let urlAttributes = [
-            NSAttributedString.Key.foregroundColor: theme?.color(forKey: "tintColor")
+        paragraphStyle.headIndent = 20.0
+        paragraphStyle.firstLineHeadIndent = 20.0
+        paragraphStyle.tailIndent = -20.0
+
+        return [
+            .font: italicFont,
+            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .paragraphStyle: paragraphStyle
         ]
-        styles.append(Style(element: Element.unknown.from(string: "url"), attributes: urlAttributes as [NSAttributedString.Key : AnyObject]))
-        styles.append(Style(element: Element.unknown.from(string: "image"), attributes: urlAttributes as [NSAttributedString.Key : AnyObject]))
+    }
+
+    static var urlAttributes: [NSAttributedString.Key: AnyObject] {
+        return [
+            .foregroundColor: theme.color(forKey: "tintColor")
+        ]
     }
 }
