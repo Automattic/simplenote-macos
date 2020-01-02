@@ -1207,7 +1207,6 @@
             </connections>
         </viewController>
         <customObject id="420" customClass="NSFontManager"/>
-        <arrayController id="1305"/>
         <userDefaultsController representsSharedInstance="YES" id="596"/>
         <viewController id="874" customClass="NoteListViewController">
             <connections>
@@ -1388,9 +1387,6 @@
             </subviews>
             <point key="canvasLocation" x="107" y="580"/>
         </customView>
-        <menuItem title="Item" id="1668">
-            <modifierMask key="keyEquivalentModifierMask"/>
-        </menuItem>
     </objects>
     <resources>
         <image name="button_new" width="22" height="22"/>
