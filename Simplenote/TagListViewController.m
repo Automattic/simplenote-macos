@@ -96,25 +96,24 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)buildDropdownMenus
 {
-    // Dropdowns with this style need an empty item at the top; build them dynamically
     trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
     trashDropdownMenu.delegate = self;
-    
     trashDropdownMenu.autoenablesItems = YES;
-    [trashDropdownMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
     [trashDropdownMenu addItemWithTitle:@"Empty Trash" action:@selector(emptyTrashAction:) keyEquivalent:@""];
-    for (NSMenuItem *item in trashDropdownMenu.itemArray)
+
+    for (NSMenuItem *item in trashDropdownMenu.itemArray) {
         [item setTarget:self];
+    }
     
     tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
     tagDropdownMenu.delegate = self;
     tagDropdownMenu.autoenablesItems = YES;
-    [tagDropdownMenu addItemWithTitle:@"" action:nil keyEquivalent:@""];
     [tagDropdownMenu addItemWithTitle:@"Rename Tag" action:@selector(renameAction:) keyEquivalent:@""];
     [tagDropdownMenu addItemWithTitle:@"Delete Tag" action:@selector(deleteAction:) keyEquivalent:@""];
-    for (NSMenuItem *item in tagDropdownMenu.itemArray)
-        [item setTarget:self];
 
+    for (NSMenuItem *item in tagDropdownMenu.itemArray) {
+        [item setTarget:self];
+    }
 }
 
 - (void)sortTags
@@ -486,16 +485,27 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         tagView.textField.stringValue = NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if (row == kTrashRow) {
         tagView.textField.stringValue = NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-        [tagView setDropdownMenu:trashDropdownMenu];
     } else if (row == kSeparatorRow) {
         tagView.textField.stringValue = @"";
     } else {
         Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
         tagView.textField.stringValue = tag.name;
-        [tagView setDropdownMenu:tagDropdownMenu];
     }
     
     return tagView;
+}
+
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    switch (row) {
+        case kAllNotesRow:
+        case kSeparatorRow:
+            return nil;
+        case kTrashRow:
+            return trashDropdownMenu;
+        default:
+            return tagDropdownMenu;
+    }
 }
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
