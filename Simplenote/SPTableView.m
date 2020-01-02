@@ -53,12 +53,16 @@
 
 - (NSMenu *)menuForEvent:(NSEvent*)theEvent
 {
-    NSMenu *menu = [super menuForEvent:theEvent];
     NSPoint mousePoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     NSInteger row = [self rowAtPoint:mousePoint];
+    NSInteger column = [self columnAtPoint:mousePoint];
     [self selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-    
-    return menu;
+
+    if ([self.delegate respondsToSelector:@selector(tableView:menuForTableColumn:row:)] == false) {
+        return [super menuForEvent:theEvent];
+    }
+
+    return [(id<SPTableViewDelegate>)self.delegate tableView:self menuForTableColumn:column row:row];
 }
 
 @end

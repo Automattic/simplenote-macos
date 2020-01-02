@@ -14,7 +14,6 @@
 #import "TagListViewController.h"
 #import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
-#import "NSString+Escaping.h"
 #import "NSString+Metadata.h"
 #import "NSString+Bullets.h"
 #import "NSTextView+Simplenote.h"

@@ -18,7 +18,6 @@
 #import "SPWindow.h"
 #import "SPToolbarView.h"
 #import "NSImage+Colorize.h"
-#import "SPIntegrityHelper.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
 #import "VSThemeManager.h"
@@ -192,8 +191,6 @@
 #endif
 
 	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
-
-    [SPIntegrityHelper reloadInconsistentNotesIfNeeded:self.simperium];
 
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
