@@ -762,15 +762,15 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="720" height="400"/>
             <view key="contentView" id="372" customClass="SPBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
+                <rect key="frame" x="0.0" y="0.0" width="900" height="609"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView autosaveName="" dividerStyle="thin" vertical="YES" id="557" customClass="SPSplitView">
-                        <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="900" height="609"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView focusRingType="none" fixedFrame="YES" id="1436">
-                                <rect key="frame" x="0.0" y="0.0" width="135" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1731">
@@ -783,14 +783,14 @@
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
                                     <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452" customClass="MMScrollView">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="618"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -927,18 +927,18 @@
                                 </subviews>
                             </customView>
                             <customView focusRingType="none" fixedFrame="YES" id="558">
-                                <rect key="frame" x="136" y="0.0" width="270" height="618"/>
+                                <rect key="frame" x="136" y="0.0" width="270" height="609"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
                                     <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="560">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="609"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="270" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="609"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="606"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="597"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -1022,7 +1022,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="564" customClass="MMScroller">
-                                            <rect key="frame" x="254" y="0.0" width="16" height="618"/>
+                                            <rect key="frame" x="254" y="0.0" width="16" height="609"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <connections>
@@ -1030,7 +1030,7 @@
                                         </connections>
                                     </scrollView>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1766">
-                                        <rect key="frame" x="25" y="340" width="221" height="30"/>
+                                        <rect key="frame" x="25" y="335" width="221" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Notes" id="1767">
                                             <font key="font" size="20" name="HelveticaNeue"/>
@@ -1041,7 +1041,7 @@
                                 </subviews>
                             </customView>
                             <customView focusRingType="none" fixedFrame="YES" id="559">
-                                <rect key="frame" x="407" y="0.0" width="493" height="618"/>
+                                <rect key="frame" x="407" y="0.0" width="493" height="609"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <customView id="1549" customClass="NoteEditorBottomBar">
@@ -1049,18 +1049,18 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </customView>
                                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="933" customClass="MMScrollView">
-                                        <rect key="frame" x="0.0" y="43" width="493" height="575"/>
+                                        <rect key="frame" x="0.0" y="43" width="493" height="566"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="493" height="575"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="493" height="566"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="478" height="575"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="478" height="566"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="478" height="575"/>
+                                                    <size key="minSize" width="493" height="566"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1075,12 +1075,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936" customClass="MMScroller">
-                                            <rect key="frame" x="477" y="0.0" width="16" height="575"/>
+                                            <rect key="frame" x="477" y="0.0" width="16" height="566"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
                                     <customView hidden="YES" id="1440">
-                                        <rect key="frame" x="141" y="262" width="210" height="162"/>
+                                        <rect key="frame" x="141" y="257" width="210" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="1441">
