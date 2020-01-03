@@ -99,7 +99,10 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
     trashDropdownMenu.delegate = self;
     trashDropdownMenu.autoenablesItems = YES;
-    [trashDropdownMenu addItemWithTitle:@"Empty Trash" action:@selector(emptyTrashAction:) keyEquivalent:@""];
+
+    [trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
+                                 action:@selector(emptyTrashAction:)
+                          keyEquivalent:@""];
 
     for (NSMenuItem *item in trashDropdownMenu.itemArray) {
         [item setTarget:self];
@@ -108,8 +111,14 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
     tagDropdownMenu.delegate = self;
     tagDropdownMenu.autoenablesItems = YES;
-    [tagDropdownMenu addItemWithTitle:@"Rename Tag" action:@selector(renameAction:) keyEquivalent:@""];
-    [tagDropdownMenu addItemWithTitle:@"Delete Tag" action:@selector(deleteAction:) keyEquivalent:@""];
+
+    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Rename Tag", @"Rename Tag Action")
+                               action:@selector(renameAction:)
+                        keyEquivalent:@""];
+
+    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Delete Tag", @"Delete Tag Action")
+                               action:@selector(deleteAction:)
+                        keyEquivalent:@""];
 
     for (NSMenuItem *item in tagDropdownMenu.itemArray) {
         [item setTarget:self];
