@@ -3,6 +3,7 @@
 - Fixed an issue affecting multibyte characters.
 - Fixed a bug in which Checklist Icons were disappearing
 - Fixed a bug in which the Trash couldn't be emptied with a right click action
+- Fixed Checklists Assets for macOS < 10.15
 
 1.8.1
 -----
