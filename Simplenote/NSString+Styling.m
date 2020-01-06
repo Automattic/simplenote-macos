@@ -20,9 +20,8 @@
                                                         bodyColor:(NSColor *)bodyColor
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
+    [attributedString addChecklistAttachmentsWithColor:bodyColor];
 
-    CGFloat offset = -1.5f;
-    [attributedString addChecklistAttachmentsForHeight:bodyFont.pointSize andColor:bodyColor andVerticalOffset: offset];
     NSRange firstLineRange = [attributedString.string rangeOfString:@"\n"];
     
     NSMutableParagraphStyle *bodyStyle = [[NSMutableParagraphStyle alloc] init];
@@ -55,7 +54,7 @@
      NSForegroundColorAttributeName: headlineColor,
       NSParagraphStyleAttributeName: titleStyle}
                               range:titleRange];
-    
+
     return attributedString;
 }
 
