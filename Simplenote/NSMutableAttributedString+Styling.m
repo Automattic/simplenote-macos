@@ -17,7 +17,8 @@ const int RegexGroupIndexPrefix     = 1;
 const int RegexGroupIndexContent    = 2;
 
 // Replaces checklist markdown syntax with SPTextAttachment images in an attributed string
-- (void)addChecklistAttachmentsForHeight:(CGFloat) height andColor: (NSColor *)color andVerticalOffset:(CGFloat)verticalOffset {
+- (void)addChecklistAttachmentsWithColor:(NSColor *)color
+{
     if (self.length == 0) {
         return;
     }
@@ -44,11 +45,10 @@ const int RegexGroupIndexContent    = 2;
         NSString *markdownTag = [noteString substringWithRange:match.range];
         BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
         
-        SPTextAttachment *attachment = [[SPTextAttachment alloc] initWithColor:color];
-        [attachment setIsChecked: isChecked];
-        
-        attachment.bounds = CGRectMake(0, verticalOffset, height, height);
-        
+        SPTextAttachment *attachment = [SPTextAttachment new];
+        attachment.isChecked = isChecked;
+        attachment.tintColor = color;
+
         NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
         NSRange adjustedRange = NSMakeRange(checkboxRange.location - positionAdjustment, checkboxRange.length);
         [self replaceCharactersInRange:adjustedRange withAttributedString:attachmentString];
