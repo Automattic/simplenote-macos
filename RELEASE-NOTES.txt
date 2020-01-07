@@ -1,3 +1,8 @@
+1.10.0
+------
+- Checklists now will grow in size, and match your selected font
+- Checklists now will properly work in macOS 10.11 and 10.12
+
 1.9.0
 -----
 - Fixed an issue affecting multibyte characters.
