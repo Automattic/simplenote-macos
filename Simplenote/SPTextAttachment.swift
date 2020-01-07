@@ -19,14 +19,6 @@ class SPTextAttachment: NSTextAttachment {
         case unchecked = "icon_task_unchecked"
     }
 
-    /// Attachment Image Tint Color
-    ///
-    var tintColor: NSColor? {
-        didSet {
-            refreshImage()
-        }
-    }
-
     /// Indicates if the Attachment is checked or not. We're keeping this one as Boolean (for now) for ObjC interop purposes
     ///
     var isChecked = false {
@@ -35,6 +27,20 @@ class SPTextAttachment: NSTextAttachment {
         }
     }
 
+    /// Attachment Image Tint Color
+    ///
+    var tintColor: NSColor? {
+        didSet {
+            refreshImage()
+        }
+    }
+
+    ///
+    /// Note: Why not optional? Because of ObjC Interop. Optionals NSRect won't bridge.
+    ///
+    var overrideDynamicBounds: NSRect = .zero
+
+    // MARK: - Private Methods
 
     private func refreshImage() {
         guard let tintColor = tintColor else {
@@ -52,29 +58,43 @@ class SPTextAttachment: NSTextAttachment {
 //
 class SPTextAttachmentCell: NSTextAttachmentCell {
 
+    /// Parent TextAttachment, if any
+    ///
+    var parentTextAttachment: SPTextAttachment? {
+        return attachment as? SPTextAttachment
+    }
+
     // MARK: - Overridden Methods
 
     override func cellFrame(for textContainer: NSTextContainer, proposedLineFragment lineFrag: NSRect, glyphPosition position: NSPoint, characterIndex charIndex: Int) -> NSRect {
-        guard let image = image,
-            let storage = textContainer.layoutManager?.textStorage,
-            let font = storage.attribute(.font, at: charIndex, effectiveRange: nil) as? NSFont
-            else {
-                return super.cellFrame(for: textContainer, proposedLineFragment: lineFrag, glyphPosition: position, characterIndex: charIndex)
+        if let overriddenBounds = parentTextAttachment?.overrideDynamicBounds, overriddenBounds != .zero {
+            return overriddenBounds
         }
 
+        guard let image = image, let font = textContainer.layoutManager?.textStorage?.font(at: charIndex) else {
+            return super.cellFrame(for: textContainer, proposedLineFragment: lineFrag, glyphPosition: position, characterIndex: charIndex)
+        }
 
-        let ratio = font.pointSize / image.size.height
-        let side = floor(max(image.size.width, image.size.height) * ratio)
-        let paddingY = floor((lineFrag.height - side) * -0.5)
-
-        return CGRect(x: 0, y: paddingY, width: side, height: side)
+        return bounds(image: image, font: font, lineFragment: lineFrag)
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
         image?.draw(in: cellFrame)
+
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int, layoutManager: NSLayoutManager) {
         image?.draw(in: cellFrame)
+    }
+
+
+    // MARK: - Private Methods
+
+    private func bounds(image: NSImage, font: NSFont, lineFragment: NSRect) -> NSRect {
+        let ratio = font.pointSize / image.size.height
+        let side = max(image.size.width, image.size.height) * ratio
+        let paddingY = (lineFragment.height - side) * -0.5
+
+        return CGRect(x: 0, y: paddingY, width: side, height: side)
     }
 }
