@@ -35,8 +35,10 @@ class SPTextAttachment: NSTextAttachment {
         }
     }
 
+    /// This class relies on TextKit to calculate proper sizing and metrics, so that its image matches characters onScreen. However: in some scenarios, such as "Usage within NSTextField" (Notes List),
+    /// the LayoutManager is not always initialized / nor accessible.
     ///
-    /// Note: Why not optional? Because of ObjC Interop. Optionals NSRect won't bridge.
+    /// For this reason, we're providing an Override mechanism. Plus: Because of ObjC Interop, it must not be optional (otherwise it won't bridge).
     ///
     var overrideDynamicBounds: NSRect = .zero
 
@@ -80,7 +82,6 @@ class SPTextAttachmentCell: NSTextAttachmentCell {
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
         image?.draw(in: cellFrame)
-
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int, layoutManager: NSLayoutManager) {
