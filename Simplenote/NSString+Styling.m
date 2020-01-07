@@ -12,6 +12,8 @@
 #import "NSMutableAttributedString+Styling.h"
 #import "SPTextView.h"
 
+static NSEdgeInsets const SPTextAttachmentInsets = {-1.5, 0, 0, 0};
+
 @implementation NSString (Styling)
 
 - (NSAttributedString *)headlinedAttributedStringWithHeadlineFont:(NSFont *)headlineFont
@@ -20,7 +22,11 @@
                                                         bodyColor:(NSColor *)bodyColor
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
-    [attributedString addChecklistAttachmentsWithColor:bodyColor];
+    NSArray *attachments = [attributedString insertChecklistAttachmentsWithColor:bodyColor];
+
+    for (SPTextAttachment *attachment in attachments) {
+        attachment.overrideDynamicBounds = NSMakeRect(SPTextAttachmentInsets.left, SPTextAttachmentInsets.top, bodyFont.pointSize, bodyFont.pointSize);
+    }
 
     NSRange firstLineRange = [attributedString.string rangeOfString:@"\n"];
     
