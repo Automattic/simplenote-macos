@@ -10,6 +10,6 @@
 
 @interface NSMutableAttributedString (Styling)
 
-- (void)addChecklistAttachmentsWithColor:(NSColor *)color;
+- (NSArray *)insertChecklistAttachmentsWithColor:(NSColor *)color;
 
 @end

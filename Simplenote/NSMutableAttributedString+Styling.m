@@ -17,10 +17,11 @@ const int RegexGroupIndexPrefix     = 1;
 const int RegexGroupIndexContent    = 2;
 
 // Replaces checklist markdown syntax with SPTextAttachment images in an attributed string
-- (void)addChecklistAttachmentsWithColor:(NSColor *)color
+- (NSArray *)insertChecklistAttachmentsWithColor:(NSColor *)color
 {
+    NSMutableArray *attachments = [NSMutableArray new];
     if (self.length == 0) {
-        return;
+        return attachments;
     }
     
     NSError *error;
@@ -31,7 +32,7 @@ const int RegexGroupIndexContent    = 2;
     NSArray *matches = [regex matchesInString:noteString options:0 range:[noteString rangeOfString:noteString]];
     
     if (matches.count == 0) {
-        return;
+        return attachments;
     }
     
     int positionAdjustment = 0;
@@ -48,6 +49,7 @@ const int RegexGroupIndexContent    = 2;
         SPTextAttachment *attachment = [SPTextAttachment new];
         attachment.isChecked = isChecked;
         attachment.tintColor = color;
+        [attachments addObject:attachment];
 
         NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
         NSRange adjustedRange = NSMakeRange(checkboxRange.location - positionAdjustment, checkboxRange.length);
@@ -55,6 +57,8 @@ const int RegexGroupIndexContent    = 2;
         
         positionAdjustment += markdownTag.length - 1 - prefixRange.length;
     }
+
+    return attachments;
 }
 
 @end
