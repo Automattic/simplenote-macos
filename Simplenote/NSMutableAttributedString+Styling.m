@@ -17,9 +17,11 @@ const int RegexGroupIndexPrefix     = 1;
 const int RegexGroupIndexContent    = 2;
 
 // Replaces checklist markdown syntax with SPTextAttachment images in an attributed string
-- (void)addChecklistAttachmentsForHeight:(CGFloat) height andColor: (NSColor *)color andVerticalOffset:(CGFloat)verticalOffset {
+- (NSArray *)insertChecklistAttachmentsWithColor:(NSColor *)color
+{
+    NSMutableArray *attachments = [NSMutableArray new];
     if (self.length == 0) {
-        return;
+        return attachments;
     }
     
     NSError *error;
@@ -30,7 +32,7 @@ const int RegexGroupIndexContent    = 2;
     NSArray *matches = [regex matchesInString:noteString options:0 range:[noteString rangeOfString:noteString]];
     
     if (matches.count == 0) {
-        return;
+        return attachments;
     }
     
     int positionAdjustment = 0;
@@ -44,17 +46,19 @@ const int RegexGroupIndexContent    = 2;
         NSString *markdownTag = [noteString substringWithRange:match.range];
         BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
         
-        SPTextAttachment *attachment = [[SPTextAttachment alloc] initWithColor:color];
-        [attachment setIsChecked: isChecked];
-        
-        attachment.bounds = CGRectMake(0, verticalOffset, height, height);
-        
+        SPTextAttachment *attachment = [SPTextAttachment new];
+        attachment.isChecked = isChecked;
+        attachment.tintColor = color;
+        [attachments addObject:attachment];
+
         NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
         NSRange adjustedRange = NSMakeRange(checkboxRange.location - positionAdjustment, checkboxRange.length);
         [self replaceCharactersInRange:adjustedRange withAttributedString:attachmentString];
         
         positionAdjustment += markdownTag.length - 1 - prefixRange.length;
     }
+
+    return attachments;
 }
 
 @end

@@ -171,6 +171,8 @@
 		B5087A1F1AF3AF5E00505A2B /* VersionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A1D1AF3AF5E00505A2B /* VersionsViewController.m */; };
 		B5087A221AF3B16A00505A2B /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A211AF3B16A00505A2B /* PublishViewController.m */; };
 		B5087A231AF3B16A00505A2B /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A211AF3B16A00505A2B /* PublishViewController.m */; };
+		B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */; };
+		B5132FA923C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */; };
 		B51374F61AC0591900825FCC /* SPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B51374F51AC0591900825FCC /* SPConstants.m */; };
 		B51374F71AC0591900825FCC /* SPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B51374F51AC0591900825FCC /* SPConstants.m */; };
 		B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
@@ -437,6 +439,7 @@
 		B5087A1D1AF3AF5E00505A2B /* VersionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionsViewController.m; sourceTree = "<group>"; };
 		B5087A201AF3B16A00505A2B /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
 		B5087A211AF3B16A00505A2B /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
+		B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Simplenote.swift"; sourceTree = "<group>"; };
 		B51374F41AC0591900825FCC /* SPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPConstants.h; sourceTree = "<group>"; };
 		B51374F51AC0591900825FCC /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPConstants.m; sourceTree = "<group>"; };
 		B51E9FE022E615FA004F16B4 /* SPExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPExporter.swift; sourceTree = "<group>"; };
@@ -886,6 +889,7 @@
 			children = (
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
+				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1277,6 +1281,7 @@
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
 				714BA65B14D32DCB00A6CCC1 /* SPBackgroundView.m in Sources */,
 				714BA66314D37C2000A6CCC1 /* SPTableRowView.m in Sources */,
+				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
 				375D293621E033D1007AB25A /* document.c in Sources */,
@@ -1370,6 +1375,7 @@
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
 				466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */,
 				466FFEB417CC10A800399652 /* DateTransformer.m in Sources */,
+				B5132FA923C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */,
 				466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */,
 				375D293721E033D1007AB25A /* document.c in Sources */,

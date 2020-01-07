@@ -3,6 +3,8 @@
 - Fixed an issue affecting multibyte characters.
 - Fixed a bug in which Checklist Icons were disappearing
 - Fixed a bug in which the Trash couldn't be emptied with a right click action
+- Checklists now will grow in size, and match your selected font
+- Checklists now will properly work in macOS 10.11 and 10.12
 
 1.8.1
 -----

@@ -10,6 +10,6 @@
 
 @interface NSMutableAttributedString (Styling)
 
-- (void)addChecklistAttachmentsForHeight:(CGFloat) height andColor: (NSColor *)color andVerticalOffset:(CGFloat)verticalOffset;
+- (NSArray *)insertChecklistAttachmentsWithColor:(NSColor *)color;
 
 @end
