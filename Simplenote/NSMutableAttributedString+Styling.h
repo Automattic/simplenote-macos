@@ -10,7 +10,6 @@
 
 @interface NSMutableAttributedString (Styling)
 
-- (NSMutableAttributedString *)stringByTruncatingToWidth:(CGFloat)width withFont:(NSFont *)font;
-- (void)addChecklistAttachmentsForHeight:(CGFloat) height andColor: (NSColor *)color andVerticalOffset:(CGFloat)verticalOffset;
+- (NSArray *)insertChecklistAttachmentsWithColor:(NSColor *)color;
 
 @end

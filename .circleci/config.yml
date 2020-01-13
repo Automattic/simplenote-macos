@@ -8,7 +8,7 @@ jobs:
   Build:
     executor:
       name: ios/default
-      xcode-version: "10.2.0"
+      xcode-version: "11.2.1"
     steps:
       - checkout
       - run:

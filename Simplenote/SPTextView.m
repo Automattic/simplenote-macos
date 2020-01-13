@@ -75,7 +75,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
         }
     }
     
-    [self.textStorage addChecklistAttachmentsForHeight:self.font.pointSize andColor:checklistColor andVerticalOffset:-4.0f];
+    [self.textStorage insertChecklistAttachmentsWithColor:checklistColor];
 }
 
 // Processes content of note editor, and replaces special string attachments with their plain
@@ -207,24 +207,6 @@ NSInteger const ChecklistCursorAdjustment = 2;
     NSTextCheckingResult *match = [regex firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
     
     return [string substringWithRange:match.range];
-}
-
-- (void)setSelectedRange:(NSRange)selectedRange
-{
-    NSRange patchedSelectionRange = [self fixSelectedRange:selectedRange];
-    [super setSelectedRange:patchedSelectionRange];
-}
-
-// HACK HACK: Only required in macOS Catalina.
-// See Storage.swift `perserveRealEditedRange` for details!
-- (NSRange)fixSelectedRange:(NSRange)selectedRange
-{
-    if (![self.textStorage isKindOfClass:[Storage class]]) {
-        return selectedRange;
-    }
-
-    Storage* storage = (Storage *)self.textStorage;
-    return storage.shouldOverrideSelectionRange ? storage.overrideSelectionRange : selectedRange;
 }
 
 @end

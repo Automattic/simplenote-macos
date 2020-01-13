@@ -6,24 +6,96 @@
 
 import Foundation
 
-@objcMembers class SPTextAttachment: NSTextAttachment {
-    private var checked = false
-    var attachmentColor: NSColor?
-    
-    @objc public convenience init(color: NSColor) {
-        self.init()
-        
-        attachmentColor = color
+
+// MARK: - SPTextAttachment
+//
+@objcMembers
+class SPTextAttachment: NSTextAttachment {
+
+    /// Attachment State
+    ///
+    private enum State: String {
+        case checked = "icon_task_checked"
+        case unchecked = "icon_task_unchecked"
     }
-    
-    var isChecked: Bool {
-        get {
-            return checked
+
+    /// Indicates if the Attachment is checked or not. We're keeping this one as Boolean (for now) for ObjC interop purposes
+    ///
+    var isChecked = false {
+        didSet {
+            refreshImage()
         }
-        set(isChecked) {
-            checked = isChecked
-            let name = checked ? "icon_task_checked" : "icon_task_unchecked"
-            image = NSImage(named: name)?.colorized(with: attachmentColor)
+    }
+
+    /// Attachment Image Tint Color
+    ///
+    var tintColor: NSColor? {
+        didSet {
+            refreshImage()
         }
+    }
+
+    /// This class relies on TextKit to calculate proper sizing and metrics, so that its image matches characters onScreen. However: in some scenarios, such as "Usage within NSTextField" (Notes List),
+    /// the LayoutManager is not always initialized / nor accessible.
+    ///
+    /// For this reason, we're providing an Override mechanism. Plus: Because of ObjC Interop, it must not be optional (otherwise it won't bridge).
+    ///
+    var overrideDynamicBounds: NSRect = .zero
+
+    // MARK: - Private Methods
+
+    private func refreshImage() {
+        guard let tintColor = tintColor else {
+            return
+        }
+
+        let state = isChecked ? State.checked : State.unchecked
+        let image = NSImage(named: state.rawValue)?.colorized(with: tintColor)
+        attachmentCell = SPTextAttachmentCell(imageCell: image)
+    }
+}
+
+
+// MARK: - SPTextAttachmentCell
+//
+class SPTextAttachmentCell: NSTextAttachmentCell {
+
+    /// Parent TextAttachment, if any
+    ///
+    var parentTextAttachment: SPTextAttachment? {
+        return attachment as? SPTextAttachment
+    }
+
+    // MARK: - Overridden Methods
+
+    override func cellFrame(for textContainer: NSTextContainer, proposedLineFragment lineFrag: NSRect, glyphPosition position: NSPoint, characterIndex charIndex: Int) -> NSRect {
+        if let overriddenBounds = parentTextAttachment?.overrideDynamicBounds, overriddenBounds != .zero {
+            return overriddenBounds
+        }
+
+        guard let image = image, let font = textContainer.layoutManager?.textStorage?.font(at: charIndex) else {
+            return super.cellFrame(for: textContainer, proposedLineFragment: lineFrag, glyphPosition: position, characterIndex: charIndex)
+        }
+
+        return bounds(image: image, font: font, lineFragment: lineFrag)
+    }
+
+    override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
+        image?.draw(in: cellFrame)
+    }
+
+    override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int, layoutManager: NSLayoutManager) {
+        image?.draw(in: cellFrame)
+    }
+
+
+    // MARK: - Private Methods
+
+    private func bounds(image: NSImage, font: NSFont, lineFragment: NSRect) -> NSRect {
+        let ratio = font.pointSize / image.size.height
+        let side = max(image.size.width, image.size.height) * ratio
+        let paddingY = (lineFragment.height - side) * -0.5
+
+        return CGRect(x: 0, y: paddingY, width: side, height: side)
     }
 }

@@ -14,7 +14,6 @@
 #import "TagListViewController.h"
 #import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
-#import "NSString+Escaping.h"
 #import "NSString+Metadata.h"
 #import "NSString+Bullets.h"
 #import "NSTextView+Simplenote.h"
@@ -247,7 +246,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [previewButton setHidden:!self.note.markdown || self.viewingTrash];
-    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
         // Restore scroll position for note if it was saved previously in this session
@@ -527,22 +526,22 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)updatePublishUI
 {
     if (self.note.published && self.note.publishURL.length == 0) {
-        [publishLabel setStringValue:@"Publishing..."];
-        [publishButton setTitle:@"Publish to Web Page"];
+        publishLabel.stringValue = NSLocalizedString(@"Publishing...", @"Displayed during a Publish Operation");
+        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
         publishButton.enabled = NO;
     } else if (self.note.published && self.note.publishURL.length > 0) {
-        [publishLabel setStringValue:[NSString stringWithFormat:@"%@%@", SPSimplenotePublishURL, self.note.publishURL]];
-        [publishButton setTitle:@"Unpublish"];
+        publishLabel.stringValue = [NSString stringWithFormat:@"%@%@", SPSimplenotePublishURL, self.note.publishURL];
+        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
         publishButton.enabled = YES;
         publishButton.state = NSOnState; // clicking the button will toggle the state
     } else if (!self.note.published && self.note.publishURL.length == 0) {
-        [publishLabel setStringValue:@""];
-        [publishButton setTitle:@"Publish to Web Page"];
+        publishLabel.stringValue = @"";
+        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
         publishButton.enabled = YES;
         publishButton.state = NSOffState;// clicking the button will toggle the state
     } else if (!self.note.published && self.note.publishURL.length > 0) {
-        [publishLabel setStringValue:@"Unpublishing..."];
-        [publishButton setTitle:@"Unpublish"];
+        publishLabel.stringValue = NSLocalizedString(@"Unpublishing...", @"Displayed during an Unpublish Operation");
+        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
         publishButton.enabled = NO;
     }
 }
@@ -730,7 +729,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
     
     // Update editor to apply markdown styles
-    [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+    [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     [self checkTextInDocument];
     
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
@@ -1051,7 +1050,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)applyStyle
 {
     if (self.note != nil) {
-        [self.storage applyStyleWithMarkdownEnabled:self.note.markdown];
+        [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
         if (!self.markdownView.hidden) {
             [self loadMarkdownContent];
         }

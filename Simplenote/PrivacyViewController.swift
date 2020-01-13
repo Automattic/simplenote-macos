@@ -1,8 +1,3 @@
-//
-//  PrivacyViewController.swift
-//  Simplenote
-//
-
 import Cocoa
 
 
@@ -10,17 +5,33 @@ import Cocoa
 ///
 class PrivacyViewController: NSViewController {
 
-    /// Share Button
+    /// Title: TextField
+    ///
+    @IBOutlet private var titleTextField: NSTextField!
+
+    /// Share: TextField
+    ///
+    @IBOutlet private var shareTextField: NSTextField!
+
+    /// Share: Button
     ///
     @IBOutlet private var shareEnabledButton: NSButton!
 
-    /// About Legend
+    /// Section #1: TextField
     ///
-    @IBOutlet private var aboutTextField: SPAboutTextField!
+    @IBOutlet private var cookiePolicyTextField: SPAboutTextField!
 
-    /// About Arrow Image
+    /// Section #1: Action Image
     ///
-    @IBOutlet private var aboutImageView: NSImageView!
+    @IBOutlet private var cookiePolicyImageView: NSImageView!
+
+    /// Section #2: TextField
+    ///
+    @IBOutlet private var privacyTextField: SPAboutTextField!
+
+    /// Section #2: Action Image
+    ///
+    @IBOutlet private var privacyImageView: NSImageView!
 
     /// Indicates if Analytics are Enabled
     ///
@@ -43,26 +54,24 @@ class PrivacyViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTextFields()
         refreshInterface()
-        setupGestureRecognizers()
         startListeningForNotifications()
     }
 
+    /// Sets up all of the TextFields
+    ///
+    private func configureTextFields() {
+        titleTextField.stringValue = NSLocalizedString("Privacy Policy", comment: "Privacy Policy's Title")
+        shareTextField.stringValue = NSLocalizedString("Collect Information", comment: "Analytics Toggle Text")
+        cookiePolicyTextField.stringValue = NSLocalizedString("Share information with our analytics tool about your use of services while logged into your Simplenote.com account.", comment: "Cookie Policy Legend")
+        privacyTextField.stringValue = NSLocalizedString("This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy.", comment: "Privacy Policy")
+    }
 
     /// Updates the Share Button state
     ///
     private func refreshInterface() {
         shareEnabledButton.state = isAnalyticsEnabled ? .on : .off
-    }
-
-    /// Initializes the About TextField / ImageView Click Recognizers
-    ///
-    private func setupGestureRecognizers() {
-        let textfieldRecognizer = NSClickGestureRecognizer(target: self, action: #selector(learnMoreWasPressed))
-        aboutTextField.addGestureRecognizer(textfieldRecognizer)
-
-        let checkboxRecognizer = NSClickGestureRecognizer(target: self, action: #selector(learnMoreWasPressed))
-        aboutImageView.addGestureRecognizer(checkboxRecognizer)
     }
 }
 
@@ -83,10 +92,16 @@ extension PrivacyViewController {
         simperium.save()
     }
 
-    /// Opens the Learn More URL
+    /// Opens the Cookie Policy URL
     ///
-    @IBAction func learnMoreWasPressed(sender: Any) {
-        NSWorkspace.shared.open(URL(string: SPAutomatticAnalyticLearnMoreURL)!)
+    @IBAction func cookiePolicyWasPressed(sender: Any) {
+        NSWorkspace.shared.open(URL(string: SPAutomatticAnalyticCookiesURL)!)
+    }
+
+    /// Opens the Privacy Policy URL
+    ///
+    @IBAction func privacyPolicyWasPressed(sender: Any) {
+        NSWorkspace.shared.open(URL(string: SPAutomatticAnalyticPrivacyURL)!)
     }
 
     /// Dismisses the associated Window

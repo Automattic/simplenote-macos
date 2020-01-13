@@ -15,29 +15,11 @@
 @objc
 class Storage: NSTextStorage {
 
-    /// Indicates if the SelectionRange is biased (and the UI layer should, instead, consume `overrideSelectionRange`), or not
-    /// See `perserveRealEditedRange` for details.
+    /// Simplenote's Active Theme
     ///
-    @objc
-    private(set) var shouldOverrideSelectionRange = false
-
-    /// Contains the "Real" Edited Range.
-    /// See `perserveRealEditedRange` for details.
-    ///
-    @objc
-    private(set) var overrideSelectionRange = NSRange()
-
-    /// The Theme for the Notepad
-    ///
-    private var theme: Theme = Theme(markdownEnabled: false) {
+    private var theme = Theme(markdownEnabled: false) {
         didSet {
-            let wholeRange = NSRange(location: 0, length: (self.backingString as NSString).length)
-
-            self.beginEditing()
-            self.backingStore.setAttributes([:], range: wholeRange)
-            self.applyStyles(wholeRange)
-            self.edited(.editedAttributes, range: wholeRange, changeInLength: 0)
-            self.endEditing()
+            resetStyles()
         }
     }
 
@@ -47,11 +29,7 @@ class Storage: NSTextStorage {
 
     /// The underlying text storage implementation.
     ///
-    private let backingStore = NSMutableAttributedString(string: "", attributes: [:])
-
-    /// Indicates if Markdown is enabled
-    ///
-    private var markdownEnabled = false
+    private let backingStore = NSMutableAttributedString()
 
     /// Returns the BackingString
     ///
@@ -108,6 +86,7 @@ class Storage: NSTextStorage {
 
     override func replaceCharacters(in range: NSRange, with attrString: NSAttributedString) {
         self.beginEditing()
+
         backingStore.replaceCharacters(in: range, with: attrString)
         replaceBackingStringSubrange(range, with: attrString.string)
 
@@ -145,33 +124,12 @@ class Storage: NSTextStorage {
     /// Processes any edits made to the text in the editor.
     ///
     override func processEditing() {
-        let string = backingString
-        let nsRange = string.range(from: NSMakeRange(NSMaxRange(editedRange), 0))!
-        let indexRange = string.lineRange(for: nsRange)
-        let extendedRange = NSUnionRange(editedRange, NSRange(indexRange, in: string))
-
-        /// In macOS 10.15 (Catalina), editing documents that contain Emojis end up disappearing . We restore them by reapplying our font to the full edited range.
-        /// *But* in macOS Catalina, *UNLESS* we signal we've `.editedAttributes` with the fully edited range, the UI ends up broken.
-        ///
-        /// Now, the side effect of doing so, is that the `selectedRange` ends up being kicked to the end of the document (because, alledgedly, we've edited the full string).
-        ///
-        /// This is a major hack that allows us to:
-        ///
-        ///     A. Apply a given font to the entire BackingStore
-        ///     B. Signal that we've edited the font (so that emojis are properly rendered)
-        ///     C. Preserve the *actual* selectedRange (rather than kicking the cursor to the end of the string).
-        ///
-        ///  Ref. https://github.com/Automattic/simplenote-macos/pull/396
-        ///
-        if #available(macOS 10.15, *) {
-            shouldOverrideSelectionRange = true
-            overrideSelectionRange = NSRange(location: editedRange.location + editedRange.length, length: 0)
-        }
+        let foundationBackingString = backingString as NSString
+        let lineRange = foundationBackingString.lineRange(for: NSRange(location: NSMaxRange(editedRange), length: 0))
+        let extendedRange = NSUnionRange(editedRange, lineRange)
 
         applyStyles(extendedRange)
         super.processEditing()
-
-        shouldOverrideSelectionRange = false
     }
 
     /// Applies styles to a range on the backingString.
@@ -180,7 +138,7 @@ class Storage: NSTextStorage {
     ///
     private func applyStyles(_ range: NSRange) {
         let string = backingString
-        backingStore.addAttributes(theme.body.attributes, range: range)
+        backingStore.addAttributes(theme.bodyStyle.attributes, range: range)
 
         for style in theme.styles {
             style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range) { (match, flags, stop) in
@@ -192,16 +150,40 @@ class Storage: NSTextStorage {
             }
         }
 
-        // HACK HACK: Only required in macOS Catalina
-        guard #available(macOS 10.15, *) else {
-            return
-        }
-
-        edited(.editedAttributes, range: range, changeInLength: 0)
+        // NOTE:
+        //  -   We're literally adding the `body.attributes` to the whole range (which might be *way longer* than the
+        //      actual edited range, see `processEditing()).`
+        //  -   Since we're doing so, *not* signaling `edited(.editedAttributes, range: range)` was causing characters
+        //      to go AWOL
+        //  -   Signaling `edited(.attributes,...)` was messing with the selectedRange, and we ended up implementing a
+        //      supermassive hack. Ref. https://github.com/Automattic/simplenote-macos/pull/396/files
+        //  -   Simply calling `fixAttributes` prevents characters from going awol. For that reason, we're nuking the
+        //      selectedRange override. YAY!
+        //
+        backingStore.fixAttributes(in: range)
     }
 
+    /// RE-Applies the Styles to the whole BackingStore
+    ///
+    private func resetStyles() {
+        beginEditing()
+
+        // Reset the Style Keys: Do this for specific attributes. Otherwise we risk loosing the NSTextAttachment attribute!
+        let range = backingStore.rangeOfEntireString
+        let attributeKeys: [NSAttributedString.Key] = [.font, .foregroundColor, .paragraphStyle]
+
+        backingStore.removeAttributes(attributeKeys, range: range)
+
+        // After actually calling `endEditing` a `processEditing` loop will be triggered, and the sytles will be re-applied.
+        // No need to explicitly call `process` (!)
+        edited(.editedAttributes, range: range, changeInLength: 0)
+        endEditing()
+    }
+
+    /// Refreshes the receiver's Attributes. We must always do this since `Markdown` isn't the only variable: FontSize might have been also updated!
+    ///
     @objc
-    func applyStyle(markdownEnabled: Bool) {
+    func refreshStyle(markdownEnabled: Bool) {
         self.theme = Theme(markdownEnabled: markdownEnabled)
     }
 }

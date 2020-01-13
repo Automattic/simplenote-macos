@@ -64,15 +64,6 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     return _button;
 }
 
-- (void)setDropdownMenu:(NSMenu *)menu
-{
-    if (menu == nil) {
-        return;
-    }
-    
-    self.button.menu = menu;
-}
-
 - (void)setMouseInside:(BOOL)value
 {
     if (_mouseInside == value) {

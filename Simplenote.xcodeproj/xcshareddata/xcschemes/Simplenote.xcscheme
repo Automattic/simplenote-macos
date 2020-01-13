@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "466FFEA617CC10A800399652"
+               BlueprintIdentifier = "26F72A8714032D2A00A7935E"
                BuildableName = "Simplenote.app"
-               BlueprintName = "Simplenote-AppStore"
+               BlueprintName = "Simplenote"
                ReferencedContainer = "container:Simplenote.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,15 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466FFEA617CC10A800399652"
-            BuildableName = "Simplenote.app"
-            BlueprintName = "Simplenote-AppStore"
-            ReferencedContainer = "container:Simplenote.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>
@@ -53,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466FFEA617CC10A800399652"
+            BlueprintIdentifier = "26F72A8714032D2A00A7935E"
             BuildableName = "Simplenote.app"
-            BlueprintName = "Simplenote-AppStore"
+            BlueprintName = "Simplenote"
             ReferencedContainer = "container:Simplenote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -70,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "466FFEA617CC10A800399652"
+            BlueprintIdentifier = "26F72A8714032D2A00A7935E"
             BuildableName = "Simplenote.app"
-            BlueprintName = "Simplenote-AppStore"
+            BlueprintName = "Simplenote"
             ReferencedContainer = "container:Simplenote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
