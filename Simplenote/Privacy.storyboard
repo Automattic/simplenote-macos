@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,62 +33,81 @@
                 <customObject id="b5m-1i-Rei" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController showSeguePresentationStyle="single" id="MqH-XQ-fgw" customClass="PrivacyViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="jNR-As-MxY">
-                        <rect key="frame" x="0.0" y="0.0" width="451" height="318"/>
+                        <rect key="frame" x="0.0" y="0.0" width="514" height="418"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box fixedFrame="YES" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="jR0-c5-hne">
-                                <rect key="frame" x="0.0" y="0.0" width="451" height="318"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" ambiguous="YES" id="BDM-Ov-qG6">
-                                    <rect key="frame" x="0.0" y="0.0" width="451" height="318"/>
+                            <box boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="jR0-c5-hne">
+                                <rect key="frame" x="0.0" y="0.0" width="514" height="418"/>
+                                <view key="contentView" id="BDM-Ov-qG6">
+                                    <rect key="frame" x="0.0" y="0.0" width="514" height="418"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xe-xE-uDv" userLabel="Privacy">
-                                            <rect key="frame" x="80" y="243" width="291" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Privacy Settings" id="OVa-ev-GZS">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xe-xE-uDv" userLabel="Privacy">
+                                            <rect key="frame" x="112" y="354" width="291" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="287" id="Moh-eq-eyd"/>
+                                                <constraint firstAttribute="height" constant="30" id="dza-dd-QKp"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="?? Title" id="OVa-ev-GZS">
                                                 <font key="font" metaFont="system" size="24"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="6Nc-En-R6f">
-                                            <rect key="frame" x="82" y="200" width="287" height="1"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="2Kn-8e-Uf4">
-                                                <rect key="frame" x="1" y="1" width="285" height="0.0"/>
+                                        <box boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="6Nc-En-R6f" userLabel="Separator">
+                                            <rect key="frame" x="77" y="319" width="360" height="1"/>
+                                            <view key="contentView" id="2Kn-8e-Uf4">
+                                                <rect key="frame" x="1" y="1" width="358" height="0.0"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="SGg-td-q0Z"/>
+                                                <constraint firstAttribute="width" constant="360" id="iNF-Kc-BWF"/>
+                                            </constraints>
                                             <color key="borderColor" red="0.45882352939999999" green="0.68627450980000004" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </box>
-                                        <box fixedFrame="YES" boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UHw-ou-KCK">
-                                            <rect key="frame" x="82" y="135" width="287" height="66"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="ksN-Qa-WYh">
-                                                <rect key="frame" x="0.0" y="0.0" width="287" height="66"/>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hie-vG-TWU">
+                                            <rect key="frame" x="347" y="31" width="90" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="1cY-8K-duz"/>
+                                                <constraint firstAttribute="width" constant="90" id="uVF-QY-Htk"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" title="Dismiss" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ab-y0-Nnf">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="dismissWasPressedWithSender:" target="MqH-XQ-fgw" id="DZB-yg-WO7"/>
+                                            </connections>
+                                        </button>
+                                        <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UHw-ou-KCK" userLabel="Box #1">
+                                            <rect key="frame" x="77" y="250" width="360" height="70"/>
+                                            <view key="contentView" id="ksN-Qa-WYh">
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-xe-XlS">
-                                                        <rect key="frame" x="0.0" y="5" width="287" height="1"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" ambiguous="YES" id="e2g-Su-oaa">
-                                                            <rect key="frame" x="1" y="1" width="285" height="0.0"/>
+                                                            <rect key="frame" x="1" y="1" width="358" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                         <color key="borderColor" red="0.45882352939999999" green="0.68627450980000004" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </box>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HND-BA-rDk">
-                                                        <rect key="frame" x="-2" y="22" width="271" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Share Analytics" id="j8x-iT-CCF">
+                                                        <rect key="frame" x="-2" y="24" width="318" height="22"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="?? Collect" id="j8x-iT-CCF">
                                                             <font key="font" metaFont="system" size="18"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-iF-MGg">
-                                                        <rect key="frame" x="267" y="24" width="22" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="340" y="26" width="22" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6ei-GL-6va">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -100,68 +119,158 @@
                                                     </button>
                                                 </subviews>
                                             </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="EvA-nY-FKi"/>
+                                            </constraints>
                                             <color key="borderColor" red="0.93731015920000005" green="0.93701523539999998" blue="0.95686823129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </box>
-                                        <box fixedFrame="YES" boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="z3l-Ll-tYB">
-                                            <rect key="frame" x="82" y="72" width="287" height="66"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="K8E-BJ-rCp">
-                                                <rect key="frame" x="0.0" y="0.0" width="287" height="66"/>
+                                        <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="z3l-Ll-tYB" userLabel="Box #2">
+                                            <rect key="frame" x="77" y="180" width="360" height="70"/>
+                                            <view key="contentView" id="K8E-BJ-rCp">
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="fn5-LT-yPF">
-                                                        <rect key="frame" x="0.0" y="5" width="287" height="1"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" ambiguous="YES" id="Ibg-f7-cRy">
-                                                            <rect key="frame" x="1" y="1" width="285" height="0.0"/>
+                                                            <rect key="frame" x="1" y="1" width="358" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                         <color key="borderColor" red="0.45882352939999999" green="0.68627450980000004" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </box>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvX-jo-5we" customClass="SPAboutTextField" customModule="Simplenote" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="19" width="244" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Help us improve Simplenote by sharing usage data with our analytics tool." id="nFg-wt-adX">
+                                                        <rect key="frame" x="-2" y="5" width="320" height="56"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="nFg-wt-adX">
                                                             <font key="font" metaFont="system"/>
+                                                            <string key="title">?? Cookie Policy
+?? Cookie Policy
+?? Cookie Policy
+?? Cookie Policy</string>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oLM-IY-yTd">
-                                                        <rect key="frame" x="265" y="27" width="22" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <rect key="frame" x="338" y="24" width="22" height="22"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="1JP-im-Ces"/>
                                                         <color key="contentTintColor" red="0.31988218429999998" green="0.51438856119999998" blue="0.73730570080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </imageView>
                                                 </subviews>
+                                                <gestureRecognizers>
+                                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="a3o-oN-rOj">
+                                                        <connections>
+                                                            <action selector="cookiePolicyWasPressedWithSender:" target="MqH-XQ-fgw" id="Sj9-0x-Fax"/>
+                                                        </connections>
+                                                    </clickGestureRecognizer>
+                                                </gestureRecognizers>
                                             </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="MiB-Ht-nwZ"/>
+                                            </constraints>
                                         </box>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hie-vG-TWU">
-                                            <rect key="frame" x="290" y="31" width="79" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" title="Dismiss" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ab-y0-Nnf">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <color key="contentTintColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <connections>
-                                                <action selector="dismissWasPressedWithSender:" target="MqH-XQ-fgw" id="DZB-yg-WO7"/>
-                                            </connections>
-                                        </button>
+                                        <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="7XQ-In-bLS" userLabel="Box #3">
+                                            <rect key="frame" x="77" y="92" width="360" height="88"/>
+                                            <view key="contentView" id="j6w-t9-EwE">
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="88"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="wYv-rH-o9F">
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="1"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" ambiguous="YES" id="96G-nW-3Px">
+                                                            <rect key="frame" x="1" y="1" width="358" height="0.0"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </view>
+                                                        <color key="borderColor" red="0.45882352939999999" green="0.68627450980000004" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </box>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d2n-EK-hqK">
+                                                        <rect key="frame" x="338" y="33" width="22" height="22"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="0PB-Yb-ARh"/>
+                                                        <color key="contentTintColor" red="0.31988218429999998" green="0.51438856119999998" blue="0.73730570080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </imageView>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYn-51-BfO" customClass="SPAboutTextField" customModule="Simplenote" customModuleProvider="target">
+                                                        <rect key="frame" x="-2" y="5" width="320" height="74"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="KMw-e4-Q9R">
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="title">?? Privacy Policy
+?? Privacy Policy
+?? Privacy Policy
+?? Privacy Policy</string>
+                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <gestureRecognizers>
+                                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="svs-F3-lBt">
+                                                        <connections>
+                                                            <action selector="privacyPolicyWasPressedWithSender:" target="MqH-XQ-fgw" id="2Oo-Sj-UF6"/>
+                                                        </connections>
+                                                    </clickGestureRecognizer>
+                                                </gestureRecognizers>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="88" id="leF-zh-pHY"/>
+                                            </constraints>
+                                        </box>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="7XQ-In-bLS" firstAttribute="width" secondItem="6Nc-En-R6f" secondAttribute="width" id="54q-pr-lwj"/>
+                                        <constraint firstItem="6Nc-En-R6f" firstAttribute="centerX" secondItem="BDM-Ov-qG6" secondAttribute="centerX" id="GB4-CA-hbF"/>
+                                        <constraint firstItem="UHw-ou-KCK" firstAttribute="centerX" secondItem="BDM-Ov-qG6" secondAttribute="centerX" id="IYa-vZ-NhL"/>
+                                        <constraint firstItem="z3l-Ll-tYB" firstAttribute="width" secondItem="6Nc-En-R6f" secondAttribute="width" id="W5n-wb-5jm"/>
+                                        <constraint firstItem="hie-vG-TWU" firstAttribute="trailing" secondItem="7XQ-In-bLS" secondAttribute="trailing" id="ZbU-Sk-HEd"/>
+                                        <constraint firstItem="7XQ-In-bLS" firstAttribute="top" secondItem="z3l-Ll-tYB" secondAttribute="bottom" id="bVp-R7-REk"/>
+                                        <constraint firstItem="8xe-xE-uDv" firstAttribute="top" secondItem="BDM-Ov-qG6" secondAttribute="top" constant="34" id="lJl-Y2-gni"/>
+                                        <constraint firstItem="z3l-Ll-tYB" firstAttribute="centerX" secondItem="BDM-Ov-qG6" secondAttribute="centerX" id="o1i-qQ-01P"/>
+                                        <constraint firstItem="8xe-xE-uDv" firstAttribute="centerX" secondItem="BDM-Ov-qG6" secondAttribute="centerX" id="spl-qD-IkR"/>
+                                        <constraint firstItem="7XQ-In-bLS" firstAttribute="centerX" secondItem="BDM-Ov-qG6" secondAttribute="centerX" id="toi-2n-N08"/>
+                                        <constraint firstItem="UHw-ou-KCK" firstAttribute="width" secondItem="6Nc-En-R6f" secondAttribute="width" id="vN3-Um-M07"/>
+                                        <constraint firstAttribute="bottom" secondItem="hie-vG-TWU" secondAttribute="bottom" constant="31" id="wsm-62-Txz"/>
+                                        <constraint firstItem="UHw-ou-KCK" firstAttribute="top" secondItem="6Nc-En-R6f" secondAttribute="bottom" constant="-1" id="zB7-sQ-Yjn"/>
+                                        <constraint firstItem="6Nc-En-R6f" firstAttribute="top" secondItem="8xe-xE-uDv" secondAttribute="bottom" constant="34" id="zR8-cB-0af"/>
+                                        <constraint firstItem="z3l-Ll-tYB" firstAttribute="top" secondItem="UHw-ou-KCK" secondAttribute="bottom" id="zf2-dN-eDp"/>
+                                    </constraints>
                                 </view>
                                 <color key="fillColor" red="0.35608011484146118" green="0.57671457529067993" blue="0.82750791311264038" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </box>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="jR0-c5-hne" firstAttribute="leading" secondItem="jNR-As-MxY" secondAttribute="leading" id="1Hu-bX-fsx"/>
+                            <constraint firstAttribute="trailing" secondItem="jR0-c5-hne" secondAttribute="trailing" id="43A-Gh-B1p"/>
+                            <constraint firstItem="jR0-c5-hne" firstAttribute="top" secondItem="jNR-As-MxY" secondAttribute="top" id="UiJ-ME-MUW"/>
+                            <constraint firstAttribute="bottom" secondItem="jR0-c5-hne" secondAttribute="bottom" id="Vt6-4d-xhs"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="aboutImageView" destination="oLM-IY-yTd" id="9HQ-s6-iek"/>
-                        <outlet property="aboutTextField" destination="NvX-jo-5we" id="nAF-2t-GLM"/>
+                        <outlet property="cookiePolicyImageView" destination="oLM-IY-yTd" id="Snn-6M-iAx"/>
+                        <outlet property="cookiePolicyTextField" destination="NvX-jo-5we" id="0Ke-on-pZX"/>
+                        <outlet property="privacyImageView" destination="d2n-EK-hqK" id="mN9-c2-yHz"/>
+                        <outlet property="privacyTextField" destination="VYn-51-BfO" id="EyT-Fa-ffY"/>
                         <outlet property="shareEnabledButton" destination="9ge-iF-MGg" id="Wma-dj-3qr"/>
+                        <outlet property="shareTextField" destination="HND-BA-rDk" id="iSm-tl-Ahd"/>
+                        <outlet property="titleTextField" destination="8xe-xE-uDv" id="OCX-kI-ARp"/>
                     </connections>
                 </viewController>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="6ca-oP-cCa" customClass="SPAboutTextField" customModule="Simplenote" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="4DA-Iz-Dru">
+                        <font key="font" metaFont="system"/>
+                        <string key="title">?? Cookie Policy
+?? Cookie Policy
+?? Cookie Policy</string>
+                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </objects>
-            <point key="canvasLocation" x="713.5" y="117"/>
+            <point key="canvasLocation" x="745" y="167"/>
         </scene>
     </scenes>
     <resources>
