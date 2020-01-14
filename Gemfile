@@ -5,7 +5,7 @@ source 'https://rubygems.org' do
   gem 'xcpretty-travis-formatter'
   gem 'octokit', "~> 4.0"
   gem 'dotenv'
-  gem "fastlane", "~> 2.137"
+  gem 'fastlane', '~> 2'
 end
 
 
