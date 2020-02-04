@@ -1,3 +1,7 @@
+1.10.0
+------
+- Fixed a bug that caused the entire document to become linkified
+
 1.9.0
 -----
 - Fixed an issue affecting multibyte characters.
