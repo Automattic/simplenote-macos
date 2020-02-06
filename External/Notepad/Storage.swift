@@ -76,11 +76,16 @@ class Storage: NSTextStorage {
     override func replaceCharacters(in range: NSRange, with str: String) {
         self.beginEditing()
 
+        var performedActions: NSTextStorageEditActions = [.editedCharacters]
+        if fixAttributesBeforeReplacingCharacters(in: range) {
+            performedActions.insert(.editedAttributes)
+        }
+
         backingStore.replaceCharacters(in: range, with: str)
         replaceBackingStringSubrange(range, with: str)
 
         let change = str.utf16.count - range.length
-        self.edited(.editedCharacters, range: range, changeInLength: change)
+        self.edited(performedActions, range: range, changeInLength: change)
         self.endEditing()
     }
 
@@ -198,5 +203,20 @@ private extension Storage {
         let startIndex = utf16String.index(utf16String.startIndex, offsetBy: range.location)
         let endIndex = utf16String.index(startIndex, offsetBy: range.length)
         backingString.replaceSubrange(startIndex..<endIndex, with: string)
+    }
+
+    /// Drops the Link Attribute whenever we're about to replace the (full) range. This method should only be tied up to plain String replacements (non attributed), otherwise
+    /// it's not really needed
+    ///
+    /// Ref. https://github.com/Automattic/simplenote-macos/issues/448
+    ///
+    func fixAttributesBeforeReplacingCharacters(in range: NSRange) -> Bool {
+        guard range.length > 0 && range == backingStore.rangeOfEntireString else {
+            return false
+        }
+
+        backingStore.removeAttribute(.link, range: range)
+
+        return true
     }
 }
