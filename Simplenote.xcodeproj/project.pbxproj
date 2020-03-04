@@ -89,8 +89,6 @@
 		37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
-		4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
-		4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
 		46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558BB51793AF4B009CD695 /* NSImage+Colorize.m */; };
 		46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558C0017947E77009CD695 /* NoteEditorBottomBar.m */; };
 		466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = 469180F817CAD4C700648430 /* NSString+Bullets.m */; };
@@ -113,8 +111,6 @@
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
 		466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
 		466FFEC217CC10A800399652 /* SPTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 712DC91B1531FE2F0033CE85 /* SPTokenField.m */; };
-		466FFECC17CC10A800399652 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABD81773740700CE0441 /* INAppStoreWindow.m */; };
-		466FFECD17CC10A800399652 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
 		466FFECE17CC10A800399652 /* SPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EF5197177C4ECC00A139E0 /* SPApplication.m */; };
 		466FFECF17CC10A800399652 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF73061782C6B200FC2B5C /* TagListViewController.m */; };
 		466FFED017CC10A800399652 /* SPButtonNoBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */; };
@@ -137,8 +133,6 @@
 		466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9514032D2A00A7935E /* InfoPlist.strings */; };
 		466FFEE717CC10A800399652 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9B14032D2A00A7935E /* Credits.rtf */; };
 		466FFEE817CC10A800399652 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
-		466FFEF017CC10A800399652 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABD61773740700CE0441 /* .gitignore */; };
-		466FFEF117CC10A800399652 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4623ABDB1773740700CE0441 /* README.md */; };
 		466FFF1717CC10A800399652 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46F0E66517A3300B005BB4D1 /* Localizable.strings */; };
 		469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54617B47C490071C809 /* MMDrawingUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -365,12 +359,6 @@
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4623ABD61773740700CE0441 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		4623ABD71773740700CE0441 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
-		4623ABD81773740700CE0441 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
-		4623ABD91773740700CE0441 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
-		4623ABDA1773740700CE0441 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
-		4623ABDB1773740700CE0441 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		46558BB41793AF4B009CD695 /* NSImage+Colorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Colorize.h"; sourceTree = "<group>"; };
 		46558BB51793AF4B009CD695 /* NSImage+Colorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Colorize.m"; sourceTree = "<group>"; };
 		46558BFF17947E77009CD695 /* NoteEditorBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorBottomBar.h; sourceTree = "<group>"; };
@@ -547,7 +535,6 @@
 				378AA70A1ACB05C400CA87DC /* DB5 */,
 				B58CF2171A81304300A9B4D2 /* Crashlytics */,
 				46B0F54417B47C490071C809 /* custom-scroller */,
-				4623ABD51773740700CE0441 /* INAppStoreWindow */,
 				B54739DC1A3F389300B68A4D /* HockeySDK */,
 				B5A89189231ECB3C0007EDCB /* Sparkle */,
 			);
@@ -733,20 +720,6 @@
 				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
 			);
 			name = Tools;
-			sourceTree = "<group>";
-		};
-		4623ABD51773740700CE0441 /* INAppStoreWindow */ = {
-			isa = PBXGroup;
-			children = (
-				4623ABD61773740700CE0441 /* .gitignore */,
-				4623ABD71773740700CE0441 /* INAppStoreWindow.h */,
-				4623ABD81773740700CE0441 /* INAppStoreWindow.m */,
-				4623ABD91773740700CE0441 /* INWindowButton.h */,
-				4623ABDA1773740700CE0441 /* INWindowButton.m */,
-				4623ABDB1773740700CE0441 /* README.md */,
-			);
-			name = INAppStoreWindow;
-			path = External/INAppStoreWindow;
 			sourceTree = "<group>";
 		};
 		463774DB171F111600E2E333 /* Models */ = {
@@ -1100,8 +1073,6 @@
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
-				466FFEF017CC10A800399652 /* .gitignore in Resources */,
-				466FFEF117CC10A800399652 /* README.md in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
@@ -1312,8 +1283,6 @@
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
-				4623ABDD1773740700CE0441 /* INAppStoreWindow.m in Sources */,
-				4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
@@ -1406,8 +1375,6 @@
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
-				466FFECC17CC10A800399652 /* INAppStoreWindow.m in Sources */,
-				466FFECD17CC10A800399652 /* INWindowButton.m in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
