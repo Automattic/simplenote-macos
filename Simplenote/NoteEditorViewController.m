@@ -892,7 +892,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
            indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex
 {
     // Don't show auto-complete in fullscreen mode
-    BOOL fullscreen = ([self.view.window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;
+    BOOL fullscreen = ([self.view.window styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen;
     if (fullscreen)
         return [NSArray array];
     

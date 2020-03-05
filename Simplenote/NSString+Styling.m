@@ -40,7 +40,7 @@ static NSEdgeInsets const SPTextAttachmentInsets = {-1.5, 0, 0, 0};
     [titleStyle setParagraphSpacing:8];
     [titleStyle setMinimumLineHeight:0];
     [titleStyle setMaximumLineHeight:20];
-    [titleStyle setAlignment:NSLeftTextAlignment];
+    [titleStyle setAlignment:NSTextAlignmentLeft];
 
     // set title font
     NSRange titleRange, bodyRange;
