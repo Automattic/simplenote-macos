@@ -126,12 +126,6 @@
     [view setNeedsLayout:YES];
 }
 
-- (void)setFullscreen:(BOOL)fullscreen {
-    // Account for fullscreen button going away
-    //int moveRightX = fullscreen ? 36 : -36;
-    //[self moveView:self.actionButton x:moveRightX y:0];
-}
-
 - (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right {
     CGFloat distance = right - splitter.frame.origin.x;
     if (distance == 0) {

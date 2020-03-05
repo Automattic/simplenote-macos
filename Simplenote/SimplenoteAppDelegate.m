@@ -253,7 +253,6 @@
     self.toolbar.drawsSeparator                 = true;
     self.toolbar.drawsBackground                = true;
     self.toolbar.frame                          = toolbarFrame;
-    [self.toolbar setFullscreen:YES];
     
     [self.splitView.superview addSubview:self.toolbar];
 }
