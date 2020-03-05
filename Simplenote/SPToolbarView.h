@@ -13,8 +13,6 @@
 {
     IBOutlet NSWindow *window;
     IBOutlet NSButton *addButton;
-    IBOutlet NSButton *sidebarButton;
-    IBOutlet NSButton *focusModeButton;
     IBOutlet NSButton *historyButton;
     IBOutlet NSButton *trashButton;
     IBOutlet NSButton *restoreButton;

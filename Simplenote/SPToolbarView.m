@@ -22,7 +22,6 @@
 #define kSearchExpandedMargin   141
 #define kSearchExpandedWidth    79
 #define kFocusModeDuration      0.8f
-#define kLeftButtonMargin       20
 
 @implementation SPToolbarView
 
@@ -39,9 +38,6 @@
     
     NSButtonCell *shareNoteCell = [self.actionButton cell];
     [shareNoteCell setHighlightsBy:NSContentsCellMask];
-
-    NSButtonCell *sidebarCell = [sidebarButton cell];
-    [sidebarCell setHighlightsBy:NSContentsCellMask];
     
     [shareButton sendActionOn:NSLeftMouseDownMask];
     
@@ -89,17 +85,9 @@
 }
 
 - (void)configureForFocusMode:(BOOL)enabled {
-    [sidebarButton setHidden:enabled];
     [searchField setHidden:enabled];
     [addButton setHidden:enabled];
     [splitter setHidden:enabled];
-    
-    // Adjust focus mode button position
-    CGRect frame = focusModeButton.frame;
-    frame.origin.x = enabled
-        ? kLeftButtonMargin
-        : splitter.frame.origin.x + splitter.frame.size.width + kLeftButtonMargin;
-    [focusModeButton setFrame:frame];
 }
 
 - (void)noNoteLoaded:(id)sender {
@@ -142,11 +130,6 @@
     // Account for fullscreen button going away
     //int moveRightX = fullscreen ? 36 : -36;
     //[self moveView:self.actionButton x:moveRightX y:0];
-
-// This was hiding the button, actually!
-//     Account for traffic lights going away
-//    int moveLeftDistance = fullscreen ? -80 : 80;
-//    [self moveView:sidebarButton x:moveLeftDistance y:0];
 }
 
 - (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right {
@@ -164,7 +147,6 @@
     
     [self moveView:addButton x:distance y:0];
     [self moveView:splitter x:distance y:0];
-    [self moveView:focusModeButton x:distance y:0];
 }
 
 #pragma mark - Theme

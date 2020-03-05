@@ -61,7 +61,6 @@
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
 @property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
-@property (strong, nonatomic) IBOutlet NSButton                 *noteListToolbarButton;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
