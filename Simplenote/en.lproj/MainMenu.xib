@@ -1093,31 +1093,6 @@
                 </subviews>
             </view>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="titleBarHeight">
-                    <integer key="value" value="36"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="titleBarStartColor">
-                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="centerFullScreenButton" value="YES"/>
-                <userDefinedRuntimeAttribute type="color" keyPath="titleBarEndColor">
-                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="baselineSeparatorColor">
-                    <color key="value" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="fullScreenButtonRightMargin">
-                    <integer key="value" value="15"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="inactiveTitleBarStartColor">
-                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="inactiveTitleBarEndColor">
-                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="inactiveBaselineSeparatorColor">
-                    <color key="value" white="0.82999999999999996" alpha="1" colorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="excludedFromWindowsMenu" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
