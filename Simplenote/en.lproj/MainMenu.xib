@@ -1059,15 +1059,6 @@
                                         <rect key="frame" x="141" y="257" width="210" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="1441">
-                                                <rect key="frame" x="6" y="16" width="199" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="1442">
-                                                    <font key="font" size="20" name="HelveticaNeue"/>
-                                                    <color key="textColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="deviceWhite"/>
-                                                    <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
-                                                </textFieldCell>
-                                            </textField>
                                             <imageView id="1447">
                                                 <rect key="frame" x="55" y="50" width="100" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1131,7 +1122,6 @@
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
-                <outlet property="noNoteText" destination="1441" id="1531"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="noteListViewController" destination="874" id="1695"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
@@ -1155,7 +1145,6 @@
             </connections>
         </viewController>
         <customObject id="420" customClass="NSFontManager"/>
-        <userDefaultsController representsSharedInstance="YES" id="596"/>
         <viewController id="874" customClass="NoteListViewController">
             <connections>
                 <outlet property="arrayController" destination="573" id="1143"/>
@@ -1170,7 +1159,6 @@
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
                 <outlet property="view" destination="558" id="1699"/>
-                <outlet property="window" destination="371" id="1200"/>
             </connections>
         </viewController>
         <arrayController mode="entity" entityName="Note" fetchPredicateFormat="deleted == 0" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="573" customClass="NotesArrayController">
