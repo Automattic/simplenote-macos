@@ -17,9 +17,9 @@
     NSRect iconRect = NSMakeRect(0.0, 0.0, image.size.width, image.size.height);
     [image lockFocus];
     [color set];
-    NSRectFillUsingOperation(iconRect, NSCompositeSourceAtop);
+    NSRectFillUsingOperation(iconRect, NSCompositingOperationSourceAtop);
     [image unlockFocus];
-    [image drawInRect:iconRect fromRect:iconRect operation:NSCompositeSourceOver fraction:0.75];
+    [image drawInRect:iconRect fromRect:iconRect operation:NSCompositingOperationSourceOver fraction:0.75];
     
     return image;
 }

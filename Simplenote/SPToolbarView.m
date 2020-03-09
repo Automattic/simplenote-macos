@@ -39,7 +39,7 @@
     NSButtonCell *shareNoteCell = [self.actionButton cell];
     [shareNoteCell setHighlightsBy:NSContentsCellMask];
     
-    [shareButton sendActionOn:NSLeftMouseDownMask];
+    [shareButton sendActionOn:NSEventMaskLeftMouseDown];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noNoteLoaded:) name:SPNoNoteLoadedNotificationName object:nil];
     
