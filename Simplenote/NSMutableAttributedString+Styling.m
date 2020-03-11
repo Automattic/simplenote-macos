@@ -56,4 +56,17 @@ const NSInteger RegexGroupIndexContent    = 2;
     return attachments;
 }
 
+- (void)appendAttachment:(NSTextAttachment *)attachment
+{
+    NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attachment];
+    [self appendAttributedString:string];
+}
+
+- (void)appendString:(NSString *)aString
+{
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:aString];
+    [self appendAttributedString:string];
+}
+
+
 @end

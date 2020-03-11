@@ -14,4 +14,7 @@
 
 - (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color;
 
+- (void)appendAttachment:(NSTextAttachment *)attachment;
+- (void)appendString:(NSString *)aString;
+
 @end
