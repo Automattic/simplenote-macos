@@ -215,6 +215,9 @@
 		B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
 		B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */; };
 		B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */; };
+		B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
+		B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
+		B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */; };
 		B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
 		B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
@@ -485,6 +488,10 @@
 		B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Simplenote.m"; sourceTree = "<group>"; };
 		B5C92EC71B03D7DB00A4FFD0 /* NSString+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Simplenote.h"; sourceTree = "<group>"; };
 		B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Simplenote.m"; sourceTree = "<group>"; };
+		B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverter.swift; sourceTree = "<group>"; };
+		B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverterTests.swift; sourceTree = "<group>"; };
+		B5CBB069241976230003C271 /* SimplenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5CBB06D241976230003C271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CC81651AF2DAE1001D2A69 /* VSThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSThemeManager.h; path = DB5/VSThemeManager.h; sourceTree = "<group>"; };
 		B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSThemeManager.m; path = DB5/VSThemeManager.m; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
@@ -609,6 +616,7 @@
 			isa = PBXGroup;
 			children = (
 				463774DC171F114900E2E333 /* Categories */,
+				B5CBB05A241971240003C271 /* Converters */,
 				B52D0ECA230DCE22003F799D /* Credentials */,
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				463774DB171F111600E2E333 /* Models */,
@@ -976,6 +984,7 @@
 		B5CBB05A241971240003C271 /* Converters */ = {
 			isa = PBXGroup;
 			children = (
+				B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */,
 			);
 			name = Converters;
 			sourceTree = "<group>";
@@ -983,6 +992,8 @@
 		B5CBB06A241976230003C271 /* SimplenoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */,
+				B5CBB06D241976230003C271 /* Info.plist */,
 			);
 			path = SimplenoteTests;
 			sourceTree = "<group>";
@@ -1449,6 +1460,7 @@
 				46B0F54C17B47C490071C809 /* MMScroller.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				46B0F54D17B47C490071C809 /* MMScrollView.m in Sources */,
+				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
@@ -1543,10 +1555,19 @@
 				466FFED917CC10A800399652 /* MMScroller.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				466FFEDA17CC10A800399652 /* MMScrollView.m in Sources */,
+				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5CBB065241976230003C271 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
