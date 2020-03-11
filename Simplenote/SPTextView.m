@@ -15,7 +15,6 @@
 
 #define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width
 NSString *const MarkdownUnchecked = @"- [ ]";
-NSString *const MarkdownChecked = @"- [x]";
 NSString *const TextAttachmentCharacterCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment
 
 // One unicode character plus a space
@@ -76,17 +75,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
 
 - (NSString *)plainTextContent
 {
-    NSMutableAttributedString *adjustedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedString];
-    // Replace checkbox images with their markdown syntax equivalent
-    [adjustedString enumerateAttribute:NSAttachmentAttributeName inRange:[adjustedString.string rangeOfString:adjustedString.string] options:0 usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
-        if ([value isKindOfClass:[SPTextAttachment class]]) {
-            SPTextAttachment *attachment = (SPTextAttachment *)value;
-            NSString *checkboxMarkdown = attachment.isChecked ? MarkdownChecked : MarkdownUnchecked;
-            [adjustedString replaceCharactersInRange:range withString:checkboxMarkdown];
-        }
-    }];
-    
-    return adjustedString.string;
+    return [[NSAttributedStringToMarkdownConverter new] convertWithString:self.attributedString];
 }
 
 - (BOOL)checkForChecklistClick:(NSEvent *)event
