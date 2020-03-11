@@ -22,7 +22,7 @@ static NSEdgeInsets const SPTextAttachmentInsets = {-1.5, 0, 0, 0};
                                                         bodyColor:(NSColor *)bodyColor
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
-    NSArray *attachments = [attributedString insertChecklistAttachmentsWithColor:bodyColor];
+    NSArray *attachments = [attributedString processChecklistsWithColor:bodyColor];
 
     for (SPTextAttachment *attachment in attachments) {
         attachment.overrideDynamicBounds = NSMakeRect(SPTextAttachmentInsets.left, SPTextAttachmentInsets.top, bodyFont.pointSize, bodyFont.pointSize);

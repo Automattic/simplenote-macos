@@ -16,8 +16,7 @@
 const NSInteger RegexExpectedMatchGroups  = 3;
 const NSInteger RegexGroupIndexContent    = 2;
 
-// Replaces checklist markdown syntax with SPTextAttachment images in an attributed string
-- (NSArray *)insertChecklistAttachmentsWithColor:(NSColor *)color
+- (NSArray *)processChecklistsWithColor:(NSColor *)color
 {
     NSMutableArray *attachments = [NSMutableArray new];
     if (self.length == 0) {

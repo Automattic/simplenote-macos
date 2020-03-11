@@ -75,7 +75,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
         }
     }
     
-    [self.textStorage insertChecklistAttachmentsWithColor:checklistColor];
+    [self.textStorage processChecklistsWithColor:checklistColor];
 }
 
 // Processes content of note editor, and replaces special string attachments with their plain
