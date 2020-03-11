@@ -7,17 +7,17 @@ class NSAttributedStringToMarkdownConverter: NSObject {
 
     /// Markdown replacement for "Unchecked Checklist"
     ///
-    private let unchecked = "- [ ]"
+    private static let unchecked = "- [ ]"
 
     /// Markdown replacement for "Checked Checklist"
     ///
-    private let checked = "- [x]"
+    private static let checked = "- [x]"
 
 
     /// Returns the NSString representation of a given NSAttributedString.
     ///
     @objc
-    func convert(string: NSAttributedString) -> NSString {
+    static func convert(string: NSAttributedString) -> NSString {
         let adjusted = NSMutableAttributedString(attributedString: string)
         adjusted.enumerateAttribute(.attachment, in: adjusted.rangeOfEntireString, options: .reverse) { (value, range, _) in
             guard let attachment = value as? SPTextAttachment else {

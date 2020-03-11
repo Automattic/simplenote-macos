@@ -10,9 +10,7 @@ class NSAttributedStringToMarkdownConverterTests: XCTestCase {
     ///
     func testAttributedStringToMarkdownProperlyConvertsTextAttachmentsIntoMarkdownMarkers() {
         let (document, expected) = documentWithAttachments()
-
-        let converter = NSAttributedStringToMarkdownConverter()
-        let output = converter.convert(string: document)
+        let output = NSAttributedStringToMarkdownConverter.convert(string: document)
 
         XCTAssertEqual(output, expected)
     }
@@ -21,9 +19,7 @@ class NSAttributedStringToMarkdownConverterTests: XCTestCase {
     ///
     func testAttributedStringToMarkdownDoesNotAlterAttributedStringsWithoutAttachments() {
         let document = documentWithoutAttachments()
-
-        let converter = NSAttributedStringToMarkdownConverter()
-        let output = converter.convert(string: document)
+        let output = NSAttributedStringToMarkdownConverter.convert(string: document)
 
         XCTAssertEqual(output, document.string as NSString)
     }

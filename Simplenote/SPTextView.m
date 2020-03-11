@@ -75,7 +75,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
 
 - (NSString *)plainTextContent
 {
-    return [[NSAttributedStringToMarkdownConverter new] convertWithString:self.attributedString];
+    return [NSAttributedStringToMarkdownConverter convertWithString:self.attributedString];
 }
 
 - (BOOL)checkForChecklistClick:(NSEvent *)event
