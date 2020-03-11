@@ -19,4 +19,20 @@ extension NSMutableAttributedString {
             removeAttribute(name, range: range)
         }
     }
+
+    /// Returns a NSMutableAttributedString representing the specified TextAttachment
+    ///
+    @objc
+    func append(attachment: NSTextAttachment) {
+        let string = NSAttributedString(attachment: attachment)
+        append(string)
+    }
+
+    /// Returns a NSMutableAttributedString representing the specified string
+    ///
+    @objc
+    func append(string: String) {
+        let string = NSAttributedString(string: string)
+        append(string)
+    }
 }
