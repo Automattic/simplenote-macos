@@ -16,7 +16,7 @@
 const NSInteger RegexExpectedMatchGroups  = 3;
 const NSInteger RegexGroupIndexContent    = 2;
 
-- (NSArray *)processChecklistsWithColor:(NSColor *)color
+- (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color
 {
     NSMutableArray *attachments = [NSMutableArray new];
     if (self.length == 0) {

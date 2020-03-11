@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class SPTextAttachment;
+
 @interface NSMutableAttributedString (Styling)
 
-- (NSArray *)processChecklistsWithColor:(NSColor *)color;
+- (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color;
 
 @end
