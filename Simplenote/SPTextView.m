@@ -125,10 +125,10 @@ NSInteger const ChecklistCursorAdjustment = 2;
     return NO;
 }
 
-- (void)insertNewChecklist {
+- (void)insertNewChecklist
+{
     NSRange lineRange = [self.string lineRangeForRange:self.selectedRange];
-    NSUInteger cursorPosition = self.selectedRange.location;
-    NSUInteger selectionLength = self.selectedRange.length;
+    NSRange selectedRange = self.selectedRange;
     
     // Check if cursor is at a checkbox, if so we won't adjust cursor position
     BOOL cursorIsAtCheckbox = NO;
@@ -185,14 +185,14 @@ NSInteger const ChecklistCursorAdjustment = 2;
     // Update the cursor position
     NSUInteger cursorAdjustment = 0;
     if (!cursorIsAtCheckbox) {
-        if (selectionLength > 0 && didInsertCheckbox) {
+        if (selectedRange.length > 0 && didInsertCheckbox) {
             // Places cursor at end of insertion when text was selected
-            cursorAdjustment = selectionLength + (ChecklistCursorAdjustment * addedCheckboxCount);
+            cursorAdjustment = selectedRange.length + (ChecklistCursorAdjustment * addedCheckboxCount);
         } else {
             cursorAdjustment = didInsertCheckbox ? ChecklistCursorAdjustment : -ChecklistCursorAdjustment;
         }
     }
-    [self setSelectedRange:NSMakeRange(cursorPosition + cursorAdjustment, 0)];
+    [self setSelectedRange:NSMakeRange(selectedRange.location + cursorAdjustment, 0)];
 }
 
 // Returns a NSString of any whitespace characters found at the start of a string
