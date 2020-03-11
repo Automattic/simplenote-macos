@@ -7,6 +7,7 @@ extension NSMutableAttributedString {
 
     /// Returns the full range of the receiver
     ///
+    @objc
     var rangeOfEntireString: NSRange {
         return NSRange(location: 0, length: length)
     }
