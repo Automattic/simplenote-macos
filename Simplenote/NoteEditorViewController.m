@@ -454,7 +454,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)textDidChange:(NSNotification *)notification
 {
-    self.note.content = [self.noteEditor getPlainTextContent];
+    self.note.content = [self.noteEditor plainTextContent];
     
     [self updateShareButtonVisibility];
     
@@ -496,7 +496,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
 	
     if (self.note != nil && ![self.noteEditor.string isEqualToString:@""]) {
-        self.note.content = [self.noteEditor getPlainTextContent];
+        self.note.content = [self.noteEditor plainTextContent];
         [appDelegate.simperium saveWithoutSyncing];
     }
 }
@@ -687,7 +687,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     [SPTracker trackEditorNoteRestored];
     
-    self.note.content = [self.noteEditor getPlainTextContent];
+    self.note.content = [self.noteEditor plainTextContent];
     [self save];
     [self dismissActivePopover];
     [self.noteEditor processChecklists];
@@ -752,7 +752,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [[NSNotificationCenter defaultCenter] postNotificationName:SPWillAddNewNoteNotificationName object:self];
     
     // Save current note first
-    self.note.content = [self.noteEditor getPlainTextContent];
+    self.note.content = [self.noteEditor plainTextContent];
     [self save];
     
     [notesArrayController setSelectsInsertedObjects:YES];
@@ -1073,7 +1073,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 // Reprocesses note checklists after switching themes, so they apply the correct color
 - (void)fixChecklistColoring
 {
-    self.noteEditor.string = [self.noteEditor getPlainTextContent];
+    self.noteEditor.string = [self.noteEditor plainTextContent];
     [self.noteEditor processChecklists];
 }
 

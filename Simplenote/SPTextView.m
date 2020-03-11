@@ -74,9 +74,8 @@ NSInteger const ChecklistCursorAdjustment = 2;
     [self.textStorage processChecklistsWithColor:checklistColor];
 }
 
-// Processes content of note editor, and replaces special string attachments with their plain
-// text counterparts. Currently supports markdown checklists.
-- (NSString *)getPlainTextContent {
+- (NSString *)plainTextContent
+{
     NSMutableAttributedString *adjustedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedString];
     // Replace checkbox images with their markdown syntax equivalent
     [adjustedString enumerateAttribute:NSAttachmentAttributeName inRange:[adjustedString.string rangeOfString:adjustedString.string] options:0 usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
