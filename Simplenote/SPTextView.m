@@ -62,11 +62,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
 }
 
 - (void)processChecklists {
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    if (self.attributedString.length == 0) {
-        return;
-    }
-    
+    VSTheme *theme = [[VSThemeManager sharedManager] theme];    
     NSColor *checklistColor = [theme colorForKey:@"secondaryTextColor"];
     if (@available(macOS 10.14, *)) {
         if (![[VSThemeManager sharedManager] isDarkMode]) {
