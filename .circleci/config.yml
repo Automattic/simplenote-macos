@@ -5,7 +5,7 @@ orbs:
   ios: wordpress-mobile/ios@0.0.27
 
 jobs:
-  Build:
+  Test:
     executor:
       name: ios/default
       xcode-version: "11.2.1"
@@ -17,17 +17,12 @@ jobs:
       - ios/install-dependencies:
           bundle-install: true
           pod-install: true
-      - run:
+      - ios/test:
           name: Build
-          command: |
-            # Build without code signing to avoid missing cert errors
-            xcodebuild COMPILER_INDEX_STORE_ENABLE=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
-                       -workspace 'Simplenote.xcworkspace' \
-                       -scheme 'Simplenote' \
-                       -configuration 'Debug' \
-                       build
+          workspace: Simplenote.xcworkspace
+          scheme: Simplenote
 
 workflows:
   simplenote_macos:
     jobs:
-      - Build
+      - Test
