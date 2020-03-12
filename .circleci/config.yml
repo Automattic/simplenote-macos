@@ -6,18 +6,17 @@ orbs:
 
 jobs:
   Test:
-    executor:
-      name: ios/default
-      xcode-version: "11.2.1"
+    macos:
+      xcode: 11.2.1
     steps:
       - checkout
       - run:
           name: Copy Demo SPCredentials
           command: mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
-      - ios/install-dependencies:
+      - macos/install-dependencies:
           bundle-install: true
           pod-install: true
-      - ios/test:
+      - macos/test:
           name: Build
           workspace: Simplenote.xcworkspace
           scheme: Simplenote
