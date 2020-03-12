@@ -26,8 +26,6 @@ jobs:
                        -scheme 'Simplenote' \
                        -configuration 'Debug' \
                        test
-      - store_artifacts:
-          path: tmp/screenshots
 
 workflows:
   simplenote_macos:

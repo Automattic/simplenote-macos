@@ -220,6 +220,8 @@
 		B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */; };
 		B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
 		B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
+		B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
+		B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
@@ -494,6 +496,7 @@
 		B5CBB06D241976230003C271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CC81651AF2DAE1001D2A69 /* VSThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSThemeManager.h; path = DB5/VSThemeManager.h; sourceTree = "<group>"; };
 		B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSThemeManager.m; path = DB5/VSThemeManager.m; sourceTree = "<group>"; };
+		B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProcessInfo+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
 		B5E196C0230F5F5300F5658A /* SPCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = "<group>"; };
@@ -919,6 +922,7 @@
 			children = (
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
+				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 			);
 			name = Extensions;
@@ -1454,6 +1458,7 @@
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
+				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
@@ -1549,6 +1554,7 @@
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
+				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
