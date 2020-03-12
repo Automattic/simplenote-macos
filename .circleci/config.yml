@@ -6,8 +6,9 @@ orbs:
 
 jobs:
   Test:
-    macos:
-      xcode: 11.2.1
+    executor:
+      name: macos/default
+      xcode-version: "11.2.1"
     steps:
       - checkout
       - run:
