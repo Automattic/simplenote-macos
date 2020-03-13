@@ -53,7 +53,7 @@ private extension NSAttributedStringToMarkdownConverterTests {
 
     func documentWithoutAttachments() -> NSAttributedString {
         let sample = """
-                     orem ipsum dolor sit amet, consectetur adipiscing elit,
+                     lorem ipsum dolor sit amet, consectetur adipiscing elit,
                      sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                      nisi ut aliquid ex ea commodi consequat.
