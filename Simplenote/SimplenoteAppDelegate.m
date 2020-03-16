@@ -67,8 +67,6 @@
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *mainWindowItem;
 
-@property (strong, nonatomic) NSBox                             *inactiveOverlayBox;
-@property (strong, nonatomic) NSBox                             *inactiveOverlayTitleBox;
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
 
@@ -264,7 +262,6 @@
 - (void)hookWindowNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleWindowDidBecomeMainNote:)         name:NSApplicationDidBecomeActiveNotification   object:self.window];
     [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:)         name:NSApplicationDidResignActiveNotification   object:self.window];
     [nc addObserver:self selector:@selector(handleWindowDidResizeNote:)             name:NSWindowDidResizeNotification              object:self.window];
 }
@@ -389,18 +386,6 @@
     [_simperium save];
 }
 
-- (NSBox *)addOverlayView:(NSView *)destination
-{
-    NSBox *overlay = [[NSBox alloc] initWithFrame:destination.frame];
-    [overlay setBorderType:NSNoBorder];
-    [overlay setBoxType:NSBoxCustom];
-    [overlay setTitle:@""];
-    [overlay setFillColor:[NSColor colorWithCalibratedWhite:1.0 alpha:0.35]];
-    [destination addSubview:overlay];
-
-    return overlay;
-}
-
 - (IBAction)exportAcction:(id)sender
 {
     [[SPExporter new] presentExporterFrom:self.window simperium:self.simperium];
@@ -446,33 +431,9 @@
 
 - (void)handleWindowDidResignMainNote:(NSNotification *)notification
 {
-    // Effectively dim all controls; need two boxes because of the custom window class
-    SPWindow *customWindow = (SPWindow *)self.window;
-    self.inactiveOverlayBox = [self addOverlayView:self.window.contentView];
-    self.inactiveOverlayTitleBox = [self addOverlayView:[customWindow titleBarView]];
-    
-    // Fullscreen button isn't covered, so fade it
-    [customWindow.fullScreenButton setAlphaValue:0.5];
-    
     // Use this as an opportunity to re-sort by modify date when the user isn't looking
     // (otherwise it can be a little jarring)
     [self.noteListViewController reloadDataAndPreserveSelection];
-}
-
-- (void)handleWindowDidBecomeMainNote:(NSNotification *)notification
-{
-    if (!self.inactiveOverlayBox) {
-        return;
-    }
-    
-    // Remove dimmming effect
-    [self.inactiveOverlayBox removeFromSuperview];
-    self.inactiveOverlayBox = nil;
-    [self.inactiveOverlayTitleBox removeFromSuperview];
-    self.inactiveOverlayTitleBox = nil;
-    
-    SPWindow *customWindow = (SPWindow *)self.window;
-    [customWindow.fullScreenButton setAlphaValue:1.0];
 }
 
 

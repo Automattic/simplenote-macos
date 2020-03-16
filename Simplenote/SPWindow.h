@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Simperium. All rights reserved.
 //
 
-#import "INAppStoreWindow.h"
+#import <AppKit/AppKit.h>
 
 
 
@@ -14,7 +14,7 @@
 #pragma mark SPWindow
 #pragma mark ====================================================================================
 
-@interface SPWindow : INAppStoreWindow
+@interface SPWindow : NSWindow
 
 - (void)applyMojaveThemeOverrideIfNecessary;
 
