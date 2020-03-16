@@ -45,7 +45,7 @@
 
 - (NSUInteger)yosemiteMaskWithMask:(NSUInteger)mask
 {
-    mask |= NSUnifiedTitleAndToolbarWindowMask | NSFullSizeContentViewWindowMask;
+    mask |= NSWindowStyleMaskUnifiedTitleAndToolbar | NSWindowStyleMaskFullSizeContentView;
     return mask;
 }
 

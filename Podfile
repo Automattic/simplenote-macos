@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 use_frameworks!
 
-platform :osx, '10.11'
+platform :osx, '10.13'
 workspace 'Simplenote.xcworkspace'
 
 plugin 'cocoapods-repo-update'

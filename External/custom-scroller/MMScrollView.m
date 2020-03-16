@@ -19,19 +19,6 @@
     height = [self bounds].size.height;
 	frame = NSMakeRect([self bounds].size.width - 15, 0, 15, height);
 	[[self verticalScroller] setFrame:frame];
-
-
-    // The following (legacy) workaround triggers a layout loop in 10.12. Disabling this behavior for 10.12 and upwards.
-    // Ref. https://github.com/Automattic/simplenote-macos/issues/369
-    //
-    if (@available(macOS 10.12, *)) {
-        return;
-    }
-
-	[[self verticalScroller] retain];
-	[[self verticalScroller] removeFromSuperview];
-	[self addSubview:[self verticalScroller]];
-	[[self verticalScroller] release];
 }
 
 @end

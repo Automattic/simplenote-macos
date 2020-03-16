@@ -61,7 +61,6 @@
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
 @property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
-@property (strong, nonatomic) IBOutlet NSButton                 *noteListToolbarButton;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
@@ -254,7 +253,6 @@
     self.toolbar.drawsSeparator                 = true;
     self.toolbar.drawsBackground                = true;
     self.toolbar.frame                          = toolbarFrame;
-    [self.toolbar setFullscreen:YES];
     
     [self.splitView.superview addSubview:self.toolbar];
 }
