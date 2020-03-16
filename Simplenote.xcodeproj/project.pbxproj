@@ -121,9 +121,6 @@
 		466FFED517CC10A800399652 /* SPSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F4EAB117B1A5F800697EAD /* SPSplitView.m */; };
 		466FFED617CC10A800399652 /* NSString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CB82FA17B2D7EB00A8736D /* NSString+Styling.m */; };
 		466FFED717CC10A800399652 /* SPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EEA3C617B2FEA500914D1A /* SPTextView.m */; };
-		466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54617B47C490071C809 /* MMDrawingUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		466FFED917CC10A800399652 /* MMScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54817B47C490071C809 /* MMScroller.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		466FFEDA17CC10A800399652 /* MMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54A17B47C490071C809 /* MMScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = 469180F817CAD4C700648430 /* NSString+Bullets.m */; };
 		466FFEDD17CC10A800399652 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
 		466FFEDE17CC10A800399652 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EC1405A1450031AE94 /* libz.dylib */; };
@@ -135,9 +132,6 @@
 		466FFEE817CC10A800399652 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
 		466FFF1717CC10A800399652 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46F0E66517A3300B005BB4D1 /* Localizable.strings */; };
 		469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
-		46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54617B47C490071C809 /* MMDrawingUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		46B0F54C17B47C490071C809 /* MMScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54817B47C490071C809 /* MMScroller.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		46B0F54D17B47C490071C809 /* MMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54A17B47C490071C809 /* MMScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF73061782C6B200FC2B5C /* TagListViewController.m */; };
 		46DD162F17A1E9C10093678C /* SPTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD162E17A1E9C10093678C /* SPTagTextField.m */; };
 		46EEA3C317B2DC7200914D1A /* NSString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CB82FA17B2D7EB00A8736D /* NSString+Styling.m */; };
@@ -367,12 +361,6 @@
 		469512C817CC38790014A2BF /* simplenote.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = simplenote.iconset; sourceTree = SOURCE_ROOT; };
 		469512CB17CD23100014A2BF /* Simplenote-Info-Hockey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-Info-Hockey.plist"; sourceTree = "<group>"; };
 		46A0BEB8175BFD540050E864 /* Simplenote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Simplenote.entitlements; sourceTree = SOURCE_ROOT; };
-		46B0F54517B47C490071C809 /* MMDrawingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawingUtils.h; sourceTree = "<group>"; };
-		46B0F54617B47C490071C809 /* MMDrawingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawingUtils.m; sourceTree = "<group>"; };
-		46B0F54717B47C490071C809 /* MMScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScroller.h; sourceTree = "<group>"; };
-		46B0F54817B47C490071C809 /* MMScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScroller.m; sourceTree = "<group>"; };
-		46B0F54917B47C490071C809 /* MMScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScrollView.h; sourceTree = "<group>"; };
-		46B0F54A17B47C490071C809 /* MMScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScrollView.m; sourceTree = "<group>"; };
 		46CB82F917B2D7EB00A8736D /* NSString+Styling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Styling.h"; sourceTree = "<group>"; };
 		46CB82FA17B2D7EB00A8736D /* NSString+Styling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Styling.m"; sourceTree = "<group>"; };
 		46CF73051782C6B200FC2B5C /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
@@ -527,7 +515,6 @@
 				375D291C21E033D1007AB25A /* Hoextdown */,
 				3712FC6F1FE1ACA9008544AC /* Notepad */,
 				378AA70A1ACB05C400CA87DC /* DB5 */,
-				46B0F54417B47C490071C809 /* custom-scroller */,
 				B54739DC1A3F389300B68A4D /* HockeySDK */,
 				B5A89189231ECB3C0007EDCB /* Sparkle */,
 			);
@@ -763,20 +750,6 @@
 			);
 			name = Categories;
 			sourceTree = "<group>";
-		};
-		46B0F54417B47C490071C809 /* custom-scroller */ = {
-			isa = PBXGroup;
-			children = (
-				46B0F54517B47C490071C809 /* MMDrawingUtils.h */,
-				46B0F54617B47C490071C809 /* MMDrawingUtils.m */,
-				46B0F54717B47C490071C809 /* MMScroller.h */,
-				46B0F54817B47C490071C809 /* MMScroller.m */,
-				46B0F54917B47C490071C809 /* MMScrollView.h */,
-				46B0F54A17B47C490071C809 /* MMScrollView.m */,
-			);
-			name = "custom-scroller";
-			path = "External/custom-scroller";
-			sourceTree = SOURCE_ROOT;
 		};
 		71233DD814DC500C00139E61 /* Transformers */ = {
 			isa = PBXGroup;
@@ -1286,12 +1259,9 @@
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
-				46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
-				46B0F54C17B47C490071C809 /* MMScroller.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
-				46B0F54D17B47C490071C809 /* MMScrollView.m in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
@@ -1378,12 +1348,9 @@
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
-				466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
-				466FFED917CC10A800399652 /* MMScroller.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
-				466FFEDA17CC10A800399652 /* MMScrollView.m in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
