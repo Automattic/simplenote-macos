@@ -125,8 +125,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     tagTokenField.delegate = self;
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
-    [noNoteText setFont:[NSFont systemFontOfSize:20.0]];
-
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
@@ -892,7 +890,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
            indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex
 {
     // Don't show auto-complete in fullscreen mode
-    BOOL fullscreen = ([self.view.window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;
+    BOOL fullscreen = ([self.view.window styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen;
     if (fullscreen)
         return [NSArray array];
     
@@ -1055,6 +1053,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
             [self loadMarkdownContent];
         }
     }
+
+    [self.scrollView setBackgroundColor:[self.theme colorForKey:@"dividerColor"]];
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 

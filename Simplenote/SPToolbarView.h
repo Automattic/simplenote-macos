@@ -13,8 +13,6 @@
 {
     IBOutlet NSWindow *window;
     IBOutlet NSButton *addButton;
-    IBOutlet NSButton *sidebarButton;
-    IBOutlet NSButton *focusModeButton;
     IBOutlet NSButton *historyButton;
     IBOutlet NSButton *trashButton;
     IBOutlet NSButton *restoreButton;
@@ -33,7 +31,6 @@
 @property (nonatomic, assign) BOOL                      drawsSeparator;
 @property (nonatomic, assign) BOOL                      drawsBackground;
 
-- (void)setFullscreen:(BOOL)fullscreen;
 - (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right;
 - (void)applyStyle;
 - (void)configureForFocusMode:(BOOL)enabled;

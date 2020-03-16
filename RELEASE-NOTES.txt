@@ -1,6 +1,10 @@
+1.10.0
+------
+- Simplenote now requires macOS 10.13 or higher
+
 1.9.1
- ----
- - Fixed a bug that caused the entire document to become linkified
+-----
+- Fixed a bug that caused the entire document to become linkified
 
 1.9.0
 -----

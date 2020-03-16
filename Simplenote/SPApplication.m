@@ -12,8 +12,8 @@
 
 - (void)sendEvent:(NSEvent *)event
 {
-    if ([event type] == NSKeyDown) {
-        if (([event modifierFlags] & NSDeviceIndependentModifierFlagsMask) == NSCommandKeyMask) {
+    if ([event type] == NSEventTypeKeyDown) {
+        if (([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == NSEventModifierFlagCommand) {
             if ([[event charactersIgnoringModifiers] isEqualToString:@"l"]) {
                 if ([self sendAction:@selector(searchAction:) to:nil from:self])
                     return;

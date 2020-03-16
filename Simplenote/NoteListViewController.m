@@ -53,9 +53,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     [progressIndicator setAlphaValue:0.5];
     [progressIndicator setHidden:YES];
     
-    NSButtonCell *noteListToolbarCell = [self.noteListToolbarButton cell];
-    [noteListToolbarCell setHighlightsBy:NSContentsCellMask];
-    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
                                                  name: kNotesArrayDidChangeNotification

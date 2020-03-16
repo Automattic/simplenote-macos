@@ -19,7 +19,6 @@
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
 {
-    IBOutlet NSWindow *window;
     IBOutlet NSScrollView *scrollView;
     IBOutlet NSArrayController *arrayController;
     IBOutlet NoteEditorViewController *noteEditorViewController;
@@ -38,7 +37,6 @@
 
 @property (strong, nonatomic) IBOutlet SPTableView      *tableView;
 @property (strong, nonatomic) IBOutlet NSSearchField    *searchField;
-@property (strong, nonatomic) IBOutlet NSButton         *noteListToolbarButton;
 @property (assign, nonatomic) BOOL                      searching;
 
 - (void)loadNotes;
