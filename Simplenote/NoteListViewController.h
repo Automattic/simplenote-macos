@@ -19,7 +19,6 @@
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
 {
-    IBOutlet NSWindow *window;
     IBOutlet NSScrollView *scrollView;
     IBOutlet NSArrayController *arrayController;
     IBOutlet NoteEditorViewController *noteEditorViewController;

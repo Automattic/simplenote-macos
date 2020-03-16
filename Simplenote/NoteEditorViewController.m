@@ -125,8 +125,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     tagTokenField.delegate = self;
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
-    [noNoteText setFont:[NSFont systemFontOfSize:20.0]];
-
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
@@ -1055,6 +1053,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
             [self loadMarkdownContent];
         }
     }
+
+    [self.scrollView setBackgroundColor:[self.theme colorForKey:@"dividerColor"]];
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 
