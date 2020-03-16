@@ -12,6 +12,5 @@
 
 - (BOOL)applyAutoBulletsAfterTabPressed;
 - (BOOL)applyAutoBulletsAfterReturnPressed;
-- (NSRange)visibleTextRange;
 
 @end

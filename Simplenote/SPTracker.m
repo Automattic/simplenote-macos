@@ -10,6 +10,7 @@
 #import "SPAutomatticTracker.h"
 #import "SimplenoteAppDelegate.h"
 #import "Simperium+Simplenote.h"
+#import "Simplenote-Swift.h"
 
 @implementation SPTracker
 
@@ -18,11 +19,19 @@
 
 + (void)refreshMetadataWithEmail:(NSString *)email
 {
+    if ([NSProcessInfo isRunningTests]) {
+        return;
+    }
+
     [[SPAutomatticTracker sharedInstance] refreshMetadataWithEmail:email];
 }
 
 + (void)refreshMetadataForAnonymousUser
 {
+    if ([NSProcessInfo isRunningTests]) {
+        return;
+    }
+
     [[SPAutomatticTracker sharedInstance] refreshMetadataForAnonymousUser];
 }
 
@@ -234,6 +243,10 @@
 + (void)trackAutomatticEventWithName:(NSString *)name properties:(NSDictionary *)properties
 {
     if ([self isTrackingDisabled]) {
+        return;
+    }
+
+    if ([NSProcessInfo isRunningTests]) {
         return;
     }
 

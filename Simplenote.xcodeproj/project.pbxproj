@@ -21,7 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		148FFD05321DE8DD0004B1D7 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1F05719FA33BB54134ECF7 /* Pods_Automattic_Simplenote_AppStore.framework */; };
+		1E077730C2108B885911E3B5 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */; };
 		2614F1DF1405A0B10031AE94 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
 		2614F1E01405A0B10031AE94 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DE1405A0B10031AE94 /* Tag.m */; };
 		2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */; };
@@ -32,7 +32,6 @@
 		26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
 		26F592551408BF75003A5174 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
 		26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F72A8C14032D2A00A7935E /* Cocoa.framework */; };
-		26F72A9714032D2A00A7935E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26F72A9514032D2A00A7935E /* InfoPlist.strings */; };
 		26F72A9914032D2A00A7935E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F72AA114032D2A00A7935E /* MainMenu.xib */; };
@@ -204,8 +203,13 @@
 		B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
 		B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */; };
 		B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */; };
+		B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
+		B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
+		B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */; };
 		B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
 		B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
+		B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
+		B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
@@ -222,7 +226,8 @@
 		B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
-		DF943F46D35165664F17D797 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */; };
+		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
+		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
 		E223B9A9178F20FF007E0272 /* SPButtonNoBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */; };
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
 		F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
@@ -242,6 +247,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = B52D0EC5230DCAD7003F799D;
 			remoteInfo = GenerateCredentials;
+		};
+		B5CBB06E241976230003C271 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26F72A8714032D2A00A7935E;
+			remoteInfo = Simplenote;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -278,7 +290,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1FF9AE734A27EFE4B2767D77 /* Pods-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simplenote-AppStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Simplenote-AppStore/Pods-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
+		07BC80F83FE6EE9EED13F79B /* Pods-Automattic-Simplenote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.debug.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"; sourceTree = "<group>"; };
+		0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12DA3C73E1DAA3D88413DAC5 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.debug.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
+		22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_SimplenoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FCC18D2EF8FB85B32F04DD /* Pods-Automattic-SimplenoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-SimplenoteTests.debug.xcconfig"; path = "Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2614F1DB1405A0B10031AE94 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		2614F1DC1405A0B10031AE94 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		2614F1DD1405A0B10031AE94 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
@@ -350,6 +366,13 @@
 		37D4DD6820B3574C00C225EA /* WPAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPAuthHandler.m; sourceTree = "<group>"; };
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
+		4623ABD61773740700CE0441 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4623ABD71773740700CE0441 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
+		4623ABD81773740700CE0441 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
+		4623ABD91773740700CE0441 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
+		4623ABDA1773740700CE0441 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
+		4623ABDB1773740700CE0441 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46558BB41793AF4B009CD695 /* NSImage+Colorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Colorize.h"; sourceTree = "<group>"; };
 		46558BB51793AF4B009CD695 /* NSImage+Colorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Colorize.m"; sourceTree = "<group>"; };
@@ -377,9 +400,7 @@
 		46F4EAB017B1A5F800697EAD /* SPSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSplitView.h; sourceTree = "<group>"; };
 		46F4EAB117B1A5F800697EAD /* SPSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSplitView.m; sourceTree = "<group>"; };
 		46F6540517F3F6E80074422C /* simplenotebeta.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = simplenotebeta.iconset; sourceTree = SOURCE_ROOT; };
-		4B1F05719FA33BB54134ECF7 /* Pods_Automattic_Simplenote_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5029A6A980A04CF349D102B7 /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
-		6322EC965A0EA5AFCEB91C95 /* Pods-Automattic-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
+		5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-SimplenoteTests.release.xcconfig"; path = "Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.release.xcconfig"; sourceTree = "<group>"; };
 		71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NoteEditorViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NoteEditorViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		712DC91A1531FE2F0033CE85 /* SPTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTokenField.h; sourceTree = "<group>"; };
@@ -403,10 +424,11 @@
 		71D83D7214D75C0A00A25E69 /* SPTagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTagCellView.m; sourceTree = "<group>"; };
 		71DCEBE5152E2ED1002744C0 /* NSMutableAttributedString+Styling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Styling.h"; sourceTree = "<group>"; };
 		71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Styling.m"; sourceTree = "<group>"; };
+		86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C902F8722D3ED910018D654 /* Simplenote.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Simplenote.release.xcconfig; path = config/Simplenote.release.xcconfig; sourceTree = "<group>"; };
 		8C902F8C22D3EE350018D654 /* Version.public.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Version.public.xcconfig; path = config/Version.public.xcconfig; sourceTree = "<group>"; };
 		8C902F8E22D3EFE60018D654 /* Simplenote.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Simplenote.debug.xcconfig; path = config/Simplenote.debug.xcconfig; sourceTree = "<group>"; };
-		A87415AA90AE50393BFC666C /* Pods-Simplenote-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simplenote-AppStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Simplenote-AppStore/Pods-Simplenote-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
+		9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		B5087A131AF3AB9D00505A2B /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		B5087A141AF3AB9D00505A2B /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		B5087A1C1AF3AF5E00505A2B /* VersionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionsViewController.h; sourceTree = "<group>"; };
@@ -451,8 +473,13 @@
 		B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Simplenote.m"; sourceTree = "<group>"; };
 		B5C92EC71B03D7DB00A4FFD0 /* NSString+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Simplenote.h"; sourceTree = "<group>"; };
 		B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Simplenote.m"; sourceTree = "<group>"; };
+		B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverter.swift; sourceTree = "<group>"; };
+		B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverterTests.swift; sourceTree = "<group>"; };
+		B5CBB069241976230003C271 /* SimplenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5CBB06D241976230003C271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CC81651AF2DAE1001D2A69 /* VSThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSThemeManager.h; path = DB5/VSThemeManager.h; sourceTree = "<group>"; };
 		B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSThemeManager.m; path = DB5/VSThemeManager.m; sourceTree = "<group>"; };
+		B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProcessInfo+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
 		B5E196C0230F5F5300F5658A /* SPCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = "<group>"; };
@@ -467,12 +494,8 @@
 		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
-		C9AD0F19A356BF59C78C5E3E /* Pods-Automattic-Simplenote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"; sourceTree = "<group>"; };
-		D7093101AF3272D7557F59C3 /* Pods-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simplenote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Simplenote/Pods-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
-		D925A7AA87B99791A347F806 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.debug.xcconfig"; sourceTree = "<group>"; };
 		E223B9A7178F20FF007E0272 /* SPButtonNoBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPButtonNoBackground.h; sourceTree = "<group>"; };
 		E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPButtonNoBackground.m; sourceTree = "<group>"; };
-		E9C379B6BE4D4D447A61A2DA /* Pods-Simplenote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simplenote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Simplenote/Pods-Simplenote.debug.xcconfig"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -488,7 +511,7 @@
 				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
 				B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
-				DF943F46D35165664F17D797 /* Pods_Automattic_Simplenote.framework in Frameworks */,
+				D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +525,15 @@
 				466FFEE017CC10A800399652 /* CoreServices.framework in Frameworks */,
 				466FFEE117CC10A800399652 /* Cocoa.framework in Frameworks */,
 				B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */,
-				148FFD05321DE8DD0004B1D7 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
+				1E077730C2108B885911E3B5 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5CBB066241976230003C271 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,11 +557,11 @@
 			children = (
 				8C902F8B22D3EDB30018D654 /* config */,
 				26F72A9214032D2A00A7935E /* Simplenote */,
+				B5CBB06A241976230003C271 /* SimplenoteTests */,
 				26DBB1F61405A6E600186392 /* External */,
-				714BA64814D2333C00A6CCC1 /* Resources */,
 				26F72A8914032D2A00A7935E /* Products */,
 				26F72A8B14032D2A00A7935E /* Frameworks */,
-				F833D437962BDE223D4E59DF /* Pods */,
+				8343BE2DC268495E77AD67DF /* Pods */,
 				B57F50B2231971670074D535 /* RELEASE-NOTES.txt */,
 			);
 			sourceTree = "<group>";
@@ -540,6 +571,7 @@
 			children = (
 				26F72A8814032D2A00A7935E /* Simplenote.app */,
 				466FFF2F17CC10A800399652 /* Simplenote.app */,
+				B5CBB069241976230003C271 /* SimplenoteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -557,8 +589,9 @@
 				2614F1E81405A1150031AE94 /* CoreServices.framework */,
 				2614F1EE1405A14D0031AE94 /* libsqlite3.dylib */,
 				2614F1EC1405A1450031AE94 /* libz.dylib */,
-				39495891E6404DF15F4E400B /* Pods_Automattic_Simplenote.framework */,
-				4B1F05719FA33BB54134ECF7 /* Pods_Automattic_Simplenote_AppStore.framework */,
+				0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */,
+				86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */,
+				22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -567,6 +600,7 @@
 			isa = PBXGroup;
 			children = (
 				463774DC171F114900E2E333 /* Categories */,
+				B5CBB05A241971240003C271 /* Converters */,
 				B52D0ECA230DCE22003F799D /* Credentials */,
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				463774DB171F111600E2E333 /* Models */,
@@ -575,6 +609,7 @@
 				714BA65514D3260000A6CCC1 /* Custom Views */,
 				37E10E7A20B356E800864E43 /* Tools */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
+				714BA64814D2333C00A6CCC1 /* Resources */,
 				37F742EA202A382400A47D3A /* AboutViewController.swift */,
 				B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */,
 				26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */,
@@ -771,7 +806,6 @@
 				46F6540517F3F6E80074422C /* simplenotebeta.iconset */,
 			);
 			name = Resources;
-			path = Simplenote;
 			sourceTree = "<group>";
 		};
 		714BA65514D3260000A6CCC1 /* Custom Views */ = {
@@ -813,6 +847,19 @@
 			name = "Custom Views";
 			sourceTree = "<group>";
 		};
+		8343BE2DC268495E77AD67DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07BC80F83FE6EE9EED13F79B /* Pods-Automattic-Simplenote.debug.xcconfig */,
+				39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */,
+				12DA3C73E1DAA3D88413DAC5 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */,
+				9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */,
+				22FCC18D2EF8FB85B32F04DD /* Pods-Automattic-SimplenoteTests.debug.xcconfig */,
+				5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8C902F8B22D3EDB30018D654 /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +875,7 @@
 			children = (
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
+				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 			);
 			name = Extensions;
@@ -890,19 +938,21 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		F833D437962BDE223D4E59DF /* Pods */ = {
+		B5CBB05A241971240003C271 /* Converters */ = {
 			isa = PBXGroup;
 			children = (
-				C9AD0F19A356BF59C78C5E3E /* Pods-Automattic-Simplenote.debug.xcconfig */,
-				6322EC965A0EA5AFCEB91C95 /* Pods-Automattic-Simplenote.release.xcconfig */,
-				E9C379B6BE4D4D447A61A2DA /* Pods-Simplenote.debug.xcconfig */,
-				D7093101AF3272D7557F59C3 /* Pods-Simplenote.release.xcconfig */,
-				A87415AA90AE50393BFC666C /* Pods-Simplenote-AppStore.debug.xcconfig */,
-				1FF9AE734A27EFE4B2767D77 /* Pods-Simplenote-AppStore.release.xcconfig */,
-				D925A7AA87B99791A347F806 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */,
-				5029A6A980A04CF349D102B7 /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */,
+				B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */,
 			);
-			name = Pods;
+			name = Converters;
+			sourceTree = "<group>";
+		};
+		B5CBB06A241976230003C271 /* SimplenoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */,
+				B5CBB06D241976230003C271 /* Info.plist */,
+			);
+			path = SimplenoteTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -912,13 +962,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26F72AA914032D2A00A7935E /* Build configuration list for PBXNativeTarget "Simplenote" */;
 			buildPhases = (
-				8346CBC02BCE6435853FB902 /* [CP] Check Pods Manifest.lock */,
+				38E241AE28F50F41EF5E8346 /* [CP] Check Pods Manifest.lock */,
 				26F72A8414032D2A00A7935E /* Sources */,
 				26F72A8514032D2A00A7935E /* Frameworks */,
 				26F72A8614032D2A00A7935E /* Resources */,
 				71881504155F487D001F2E30 /* CopyFiles */,
 				B51D44911945FEFD00496889 /* ShellScript */,
-				516D51EC5AEF5EB2EB2C1DE7 /* [CP] Embed Pods Frameworks */,
+				BCBFB16555965D73674605BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -934,14 +984,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 466FFF2C17CC10A800399652 /* Build configuration list for PBXNativeTarget "Simplenote-AppStore" */;
 			buildPhases = (
-				4C3686051BB7B3681E3D7852 /* [CP] Check Pods Manifest.lock */,
+				33B84E0AFB91551B9B931E47 /* [CP] Check Pods Manifest.lock */,
 				466FFEA717CC10A800399652 /* Sources */,
 				466FFEDC17CC10A800399652 /* Frameworks */,
 				466FFEE517CC10A800399652 /* Resources */,
 				466FFF2517CC10A800399652 /* CopyFiles */,
 				466FFF2917CC10A800399652 /* CopyFiles */,
 				B51D44821945EF7900496889 /* ShellScript */,
-				A8D33BEDC55748FB80250CB8 /* [CP] Embed Pods Frameworks */,
+				4E51756AEE6CFE89EAD49829 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -953,12 +1003,33 @@
 			productReference = 466FFF2F17CC10A800399652 /* Simplenote.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B5CBB068241976230003C271 /* SimplenoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5CBB070241976230003C271 /* Build configuration list for PBXNativeTarget "SimplenoteTests" */;
+			buildPhases = (
+				5D570A1AB9A23CB9D29A17B9 /* [CP] Check Pods Manifest.lock */,
+				B5CBB065241976230003C271 /* Sources */,
+				B5CBB066241976230003C271 /* Frameworks */,
+				B5CBB067241976230003C271 /* Resources */,
+				2F8B019DB0CCFF7F9D77511B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5CBB06F241976230003C271 /* PBXTargetDependency */,
+			);
+			name = SimplenoteTests;
+			productName = SimplenoteTests;
+			productReference = B5CBB069241976230003C271 /* SimplenoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		26F72A7F14032D2900A7935E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Simperium;
 				TargetAttributes = {
@@ -975,6 +1046,12 @@
 					B52D0EC5230DCAD7003F799D = {
 						CreatedOnToolsVersion = 11.0;
 						ProvisioningStyle = Manual;
+					};
+					B5CBB068241976230003C271 = {
+						CreatedOnToolsVersion = 11.3.1;
+						DevelopmentTeam = PZYM8XX95Q;
+						ProvisioningStyle = Manual;
+						TestTargetID = 26F72A8714032D2A00A7935E;
 					};
 				};
 			};
@@ -994,6 +1071,7 @@
 				26F72A8714032D2A00A7935E /* Simplenote */,
 				466FFEA617CC10A800399652 /* Simplenote-AppStore */,
 				B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */,
+				B5CBB068241976230003C271 /* SimplenoteTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1003,7 +1081,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26F72A9714032D2A00A7935E /* InfoPlist.strings in Resources */,
 				376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
@@ -1037,10 +1114,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5CBB067241976230003C271 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C3686051BB7B3681E3D7852 /* [CP] Check Pods Manifest.lock */ = {
+		2F8B019DB0CCFF7F9D77511B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33B84E0AFB91551B9B931E47 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1062,42 +1176,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		516D51EC5AEF5EB2EB2C1DE7 /* [CP] Embed Pods Frameworks */ = {
+		38E241AE28F50F41EF5E8346 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
-				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8346CBC02BCE6435853FB902 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Automattic-Simplenote-checkManifestLockResult.txt",
 			);
@@ -1106,10 +1198,12 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A8D33BEDC55748FB80250CB8 /* [CP] Embed Pods Frameworks */ = {
+		4E51756AEE6CFE89EAD49829 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh",
@@ -1120,6 +1214,8 @@
 				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
@@ -1130,6 +1226,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D570A1AB9A23CB9D29A17B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Automattic-SimplenoteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B51D44821945EF7900496889 /* ShellScript */ = {
@@ -1176,6 +1294,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "SOURCE_PATH=~/.mobile-secrets/macOS/simplenote/SPCredentials.swift\nTARGET_FOLDER=${SRCROOT}/Simplenote/Credentials\nTARGET_PATH=${TARGET_FOLDER}/SPCredentials.swift\n\nif [ ! -f ${SOURCE_PATH} ]; then\n    echo \"Unable to Copy Credentials =(\"\nelse\n    echo \"Copying Credentials...\"\n    mkdir -p ${TARGET_FOLDER}\n    cp ${SOURCE_PATH} ${TARGET_PATH}\nfi\n";
+		};
+		BCBFB16555965D73674605BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1259,9 +1407,11 @@
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
+				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
+				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
@@ -1348,13 +1498,23 @@
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
+				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
+				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5CBB065241976230003C271 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1370,6 +1530,11 @@
 			isa = PBXTargetDependency;
 			target = B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */;
 			targetProxy = B52D0ECE230DCEAC003F799D /* PBXContainerItemProxy */;
+		};
+		B5CBB06F241976230003C271 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26F72A8714032D2A00A7935E /* Simplenote */;
+			targetProxy = B5CBB06E241976230003C271 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1517,7 +1682,7 @@
 		};
 		26F72AAA14032D2A00A7935E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9AD0F19A356BF59C78C5E3E /* Pods-Automattic-Simplenote.debug.xcconfig */;
+			baseConfigurationReference = 07BC80F83FE6EE9EED13F79B /* Pods-Automattic-Simplenote.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1565,7 +1730,7 @@
 		};
 		26F72AAB14032D2A00A7935E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6322EC965A0EA5AFCEB91C95 /* Pods-Automattic-Simplenote.release.xcconfig */;
+			baseConfigurationReference = 39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1615,7 +1780,7 @@
 		};
 		466FFF2D17CC10A800399652 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D925A7AA87B99791A347F806 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */;
+			baseConfigurationReference = 12DA3C73E1DAA3D88413DAC5 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1664,7 +1829,7 @@
 		};
 		466FFF2E17CC10A800399652 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5029A6A980A04CF349D102B7 /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */;
+			baseConfigurationReference = 9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1726,6 +1891,83 @@
 			};
 			name = Release;
 		};
+		B5CBB071241976230003C271 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22FCC18D2EF8FB85B32F04DD /* Pods-Automattic-SimplenoteTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SimplenoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simplenote.app/Contents/MacOS/Simplenote";
+			};
+			name = Debug;
+		};
+		B5CBB072241976230003C271 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = PZYM8XX95Q;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = SimplenoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simplenote.app/Contents/MacOS/Simplenote";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1761,6 +2003,15 @@
 			buildConfigurations = (
 				B52D0EC6230DCAD7003F799D /* Debug */,
 				B52D0EC7230DCAD7003F799D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5CBB070241976230003C271 /* Build configuration list for PBXNativeTarget "SimplenoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5CBB071241976230003C271 /* Debug */,
+				B5CBB072241976230003C271 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

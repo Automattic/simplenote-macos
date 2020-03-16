@@ -15,7 +15,6 @@
 
 #define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width
 NSString *const MarkdownUnchecked = @"- [ ]";
-NSString *const MarkdownChecked = @"- [x]";
 NSString *const TextAttachmentCharacterCode = @"\U0000fffc"; // Represents the glyph of an NSTextAttachment
 
 // One unicode character plus a space
@@ -62,11 +61,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
 }
 
 - (void)processChecklists {
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    if (self.attributedString.length == 0) {
-        return;
-    }
-    
+    VSTheme *theme = [[VSThemeManager sharedManager] theme];    
     NSColor *checklistColor = [theme colorForKey:@"secondaryTextColor"];
     if (@available(macOS 10.14, *)) {
         if (![[VSThemeManager sharedManager] isDarkMode]) {
@@ -75,23 +70,12 @@ NSInteger const ChecklistCursorAdjustment = 2;
         }
     }
     
-    [self.textStorage insertChecklistAttachmentsWithColor:checklistColor];
+    [self.textStorage processChecklistsWithColor:checklistColor];
 }
 
-// Processes content of note editor, and replaces special string attachments with their plain
-// text counterparts. Currently supports markdown checklists.
-- (NSString *)getPlainTextContent {
-    NSMutableAttributedString *adjustedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedString];
-    // Replace checkbox images with their markdown syntax equivalent
-    [adjustedString enumerateAttribute:NSAttachmentAttributeName inRange:[adjustedString.string rangeOfString:adjustedString.string] options:0 usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
-        if ([value isKindOfClass:[SPTextAttachment class]]) {
-            SPTextAttachment *attachment = (SPTextAttachment *)value;
-            NSString *checkboxMarkdown = attachment.isChecked ? MarkdownChecked : MarkdownUnchecked;
-            [adjustedString replaceCharactersInRange:range withString:checkboxMarkdown];
-        }
-    }];
-    
-    return adjustedString.string;
+- (NSString *)plainTextContent
+{
+    return [NSAttributedStringToMarkdownConverter convertWithString:self.attributedString];
 }
 
 - (BOOL)checkForChecklistClick:(NSEvent *)event
@@ -130,10 +114,10 @@ NSInteger const ChecklistCursorAdjustment = 2;
     return NO;
 }
 
-- (void)insertNewChecklist {
+- (void)insertNewChecklist
+{
     NSRange lineRange = [self.string lineRangeForRange:self.selectedRange];
-    NSUInteger cursorPosition = self.selectedRange.location;
-    NSUInteger selectionLength = self.selectedRange.length;
+    NSRange selectedRange = self.selectedRange;
     
     // Check if cursor is at a checkbox, if so we won't adjust cursor position
     BOOL cursorIsAtCheckbox = NO;
@@ -190,14 +174,14 @@ NSInteger const ChecklistCursorAdjustment = 2;
     // Update the cursor position
     NSUInteger cursorAdjustment = 0;
     if (!cursorIsAtCheckbox) {
-        if (selectionLength > 0 && didInsertCheckbox) {
+        if (selectedRange.length > 0 && didInsertCheckbox) {
             // Places cursor at end of insertion when text was selected
-            cursorAdjustment = selectionLength + (ChecklistCursorAdjustment * addedCheckboxCount);
+            cursorAdjustment = selectedRange.length + (ChecklistCursorAdjustment * addedCheckboxCount);
         } else {
             cursorAdjustment = didInsertCheckbox ? ChecklistCursorAdjustment : -ChecklistCursorAdjustment;
         }
     }
-    [self setSelectedRange:NSMakeRange(cursorPosition + cursorAdjustment, 0)];
+    [self setSelectedRange:NSMakeRange(selectedRange.location + cursorAdjustment, 0)];
 }
 
 // Returns a NSString of any whitespace characters found at the start of a string

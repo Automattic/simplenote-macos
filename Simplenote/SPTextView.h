@@ -20,7 +20,7 @@
 @interface SPTextView : NSTextView
 
 - (void)processChecklists;
-- (NSString *)getPlainTextContent;
+- (NSString *)plainTextContent;
 - (void)insertNewChecklist;
 
 @end

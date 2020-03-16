@@ -22,4 +22,9 @@ abstract_target 'Automattic' do
   #
   target 'Simplenote'
   target 'Simplenote-AppStore'
+
+  # Testing Target
+  #
+  target 'SimplenoteTests'
+
 end

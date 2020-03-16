@@ -125,20 +125,4 @@ const int ChecklistItemLength = 3;
     return YES;
 }
 
-- (NSRange)visibleTextRange
-{
-    NSLayoutManager *layoutManager  = self.layoutManager;
-    NSTextContainer *textContainer  = self.textContainer;
-    NSPoint containerOrigin         = self.textContainerOrigin;
-    
-    // Convert from view coordinates to container coordinates
-    NSRect theRect      = self.visibleRect;
-    theRect             = NSOffsetRect(theRect, -containerOrigin.x, -containerOrigin.y);
- 
-    NSRange glyphRange  = [layoutManager glyphRangeForBoundingRect:theRect inTextContainer:textContainer];
-    NSRange charRange   = [layoutManager characterRangeForGlyphRange:glyphRange actualGlyphRange:NULL];
-    
-    return charRange;
-}
-
 @end

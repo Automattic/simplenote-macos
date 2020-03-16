@@ -5,7 +5,7 @@ orbs:
   ios: wordpress-mobile/ios@0.0.27
 
 jobs:
-  Build:
+  Test:
     executor:
       name: ios/default
       xcode-version: "11.2.1"
@@ -25,9 +25,9 @@ jobs:
                        -workspace 'Simplenote.xcworkspace' \
                        -scheme 'Simplenote' \
                        -configuration 'Debug' \
-                       build
+                       test
 
 workflows:
   simplenote_macos:
     jobs:
-      - Build
+      - Test
