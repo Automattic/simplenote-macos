@@ -658,7 +658,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     [objectURIs addObject: [[objProxy objectID] URIRepresentation]];
     
     // Set them to paste board
-    [pboard setData:[NSArchiver archivedDataWithRootObject:objectURIs] forType:@"Tag"];
+    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:objectURIs] forType:@"Tag"];
     
     return YES;
 }
@@ -692,7 +692,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         
     // Get object URIs from paste board
     NSData *data        = [info.draggingPasteboard dataForType:@"Tag"];
-    NSArray *objectURIs = [NSUnarchiver unarchiveObjectWithData:data];
+    NSArray *objectURIs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     if (!objectURIs) {
         return NO;
