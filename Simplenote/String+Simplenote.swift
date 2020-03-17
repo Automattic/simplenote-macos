@@ -28,4 +28,10 @@ extension String {
     /// List Markers: *Only* the markers for Text based Lists
     ///
     static let textListMarkers = [ "*", "-", "+", "•" ]
+
+    /// Returns the receiver casted as a Foundation String. For convenience
+    ///
+    var asNSString: NSString {
+        self as NSString
+    }
 }
