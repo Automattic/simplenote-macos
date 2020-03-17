@@ -166,6 +166,8 @@
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
 		B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
 		B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */; };
+		B500993C24213B370037A431 /* String+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993B24213B370037A431 /* String+Simplenote.swift */; };
+		B500993D24213B370037A431 /* String+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993B24213B370037A431 /* String+Simplenote.swift */; };
 		B5087A151AF3AB9D00505A2B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A141AF3AB9D00505A2B /* ShareViewController.m */; };
 		B5087A161AF3AB9D00505A2B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A141AF3AB9D00505A2B /* ShareViewController.m */; };
 		B5087A1E1AF3AF5E00505A2B /* VersionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A1D1AF3AF5E00505A2B /* VersionsViewController.m */; };
@@ -450,6 +452,7 @@
 		9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnicodeScalar+Simplenote.swift"; sourceTree = "<group>"; };
 		B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeScalarSimplenoteTests.swift; sourceTree = "<group>"; };
+		B500993B24213B370037A431 /* String+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Simplenote.swift"; sourceTree = "<group>"; };
 		B5087A131AF3AB9D00505A2B /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		B5087A141AF3AB9D00505A2B /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		B5087A1C1AF3AF5E00505A2B /* VersionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionsViewController.h; sourceTree = "<group>"; };
@@ -929,6 +932,7 @@
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
+				B500993B24213B370037A431 /* String+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1395,6 +1399,7 @@
 				B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
+				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
 				F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */,
@@ -1492,6 +1497,7 @@
 				B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
+				B500993D24213B370037A431 /* String+Simplenote.swift in Sources */,
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
