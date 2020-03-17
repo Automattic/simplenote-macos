@@ -13,13 +13,13 @@ extension String {
     ///
     static let newline = "\n"
 
-    /// Tabs
-    ///
-    static let tab = "\t"
-
     /// Space
     ///
     static let space = " "
+
+    /// Tabs
+    ///
+    static let tab = "\t"
 
     /// All Markers: markers for Text and Media based Lists
     ///
