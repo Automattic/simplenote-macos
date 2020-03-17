@@ -28,5 +28,4 @@ class UnicodeScalarSimplenoteTests: XCTestCase {
             XCTAssert(UnicodeScalar(character)?.isWhitespace == false)
         }
     }
-
 }
