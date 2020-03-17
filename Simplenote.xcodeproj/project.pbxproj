@@ -164,6 +164,7 @@
 		71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
 		71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
+		B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
 		B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
 		B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */; };
 		B500993C24213B370037A431 /* String+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993B24213B370037A431 /* String+Simplenote.swift */; };
@@ -1503,6 +1504,7 @@
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
+				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5087A231AF3B16A00505A2B /* PublishViewController.m in Sources */,
 				B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
