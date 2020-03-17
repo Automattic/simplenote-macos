@@ -4,6 +4,17 @@ import Foundation
 // MARK: - Simplenote API
 //
 extension NSTextView {
+
+    /// Returns the line (range, string) at the current selected range
+    ///
+    func lineAtSelectedRange() -> (NSRange, String) {
+        let foundationString = string.asNSString
+        let range = foundationString.lineRange(for: selectedRange)
+        let string = foundationString.substring(with: range)
+
+        return (range, string)
+    }
+
     @objc
     func processTabInsertion() -> Bool {
         return true
