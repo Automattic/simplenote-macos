@@ -92,7 +92,6 @@
 		4623ABDE1773740700CE0441 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4623ABDA1773740700CE0441 /* INWindowButton.m */; };
 		46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558BB51793AF4B009CD695 /* NSImage+Colorize.m */; };
 		46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558C0017947E77009CD695 /* NoteEditorBottomBar.m */; };
-		466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = 469180F817CAD4C700648430 /* NSString+Bullets.m */; };
 		466FFEA817CC10A800399652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		466FFEAA17CC10A800399652 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
@@ -127,7 +126,6 @@
 		466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54617B47C490071C809 /* MMDrawingUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		466FFED917CC10A800399652 /* MMScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54817B47C490071C809 /* MMScroller.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		466FFEDA17CC10A800399652 /* MMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B0F54A17B47C490071C809 /* MMScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */ = {isa = PBXBuildFile; fileRef = 469180F817CAD4C700648430 /* NSString+Bullets.m */; };
 		466FFEDD17CC10A800399652 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
 		466FFEDE17CC10A800399652 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EC1405A1450031AE94 /* libz.dylib */; };
 		466FFEDF17CC10A800399652 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EA1405A1250031AE94 /* SystemConfiguration.framework */; };
@@ -201,8 +199,6 @@
 		B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
-		B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B56B35741AC3160300B9F365 /* NSTextView+Simplenote.m */; };
-		B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B56B35741AC3160300B9F365 /* NSTextView+Simplenote.m */; };
 		B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
 		B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -401,8 +397,6 @@
 		46558BFF17947E77009CD695 /* NoteEditorBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorBottomBar.h; sourceTree = "<group>"; };
 		46558C0017947E77009CD695 /* NoteEditorBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEditorBottomBar.m; sourceTree = "<group>"; };
 		466FFF2F17CC10A800399652 /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		469180F717CAD4C700648430 /* NSString+Bullets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Bullets.h"; sourceTree = "<group>"; };
-		469180F817CAD4C700648430 /* NSString+Bullets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Bullets.m"; sourceTree = "<group>"; };
 		469512C817CC38790014A2BF /* simplenote.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = simplenote.iconset; sourceTree = SOURCE_ROOT; };
 		469512CB17CD23100014A2BF /* Simplenote-Info-Hockey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-Info-Hockey.plist"; sourceTree = "<group>"; };
 		46A0BEB8175BFD540050E864 /* Simplenote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Simplenote.entitlements; sourceTree = SOURCE_ROOT; };
@@ -482,8 +476,6 @@
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B56B35731AC3160300B9F365 /* NSTextView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+Simplenote.h"; sourceTree = "<group>"; };
-		B56B35741AC3160300B9F365 /* NSTextView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+Simplenote.m"; sourceTree = "<group>"; };
 		B579E0B21AF2946F00A07036 /* VSTheme+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VSTheme+Simplenote.h"; sourceTree = "<group>"; };
 		B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VSTheme+Simplenote.m"; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
@@ -805,8 +797,6 @@
 		463774DC171F114900E2E333 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				469180F717CAD4C700648430 /* NSString+Bullets.h */,
-				469180F817CAD4C700648430 /* NSString+Bullets.m */,
 				26DBB1EF1405A6A800186392 /* NSString+Condensing.h */,
 				26DBB1F01405A6A800186392 /* NSString+Condensing.m */,
 				26DBB1F11405A6A800186392 /* NSString+Metadata.h */,
@@ -825,8 +815,6 @@
 				B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */,
 				B52849721A4086F500F588CC /* NSColor+Simplenote.h */,
 				B52849731A4086F500F588CC /* NSColor+Simplenote.m */,
-				B56B35731AC3160300B9F365 /* NSTextView+Simplenote.h */,
-				B56B35741AC3160300B9F365 /* NSTextView+Simplenote.m */,
 				B579E0B21AF2946F00A07036 /* VSTheme+Simplenote.h */,
 				B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */,
 				B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */,
@@ -1490,13 +1478,11 @@
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				46B0F54B17B47C490071C809 /* MMDrawingUtils.m in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
-				B56B35751AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
 				46B0F54C17B47C490071C809 /* MMScroller.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				46B0F54D17B47C490071C809 /* MMScrollView.m in Sources */,
 				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
-				466FFE9F17CAD71800399652 /* NSString+Bullets.m in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
@@ -1590,13 +1576,11 @@
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				466FFED817CC10A800399652 /* MMDrawingUtils.m in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
-				B56B35761AC3160300B9F365 /* NSTextView+Simplenote.m in Sources */,
 				466FFED917CC10A800399652 /* MMScroller.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				466FFEDA17CC10A800399652 /* MMScrollView.m in Sources */,
 				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
-				466FFEDB17CC10A800399652 /* NSString+Bullets.m in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
