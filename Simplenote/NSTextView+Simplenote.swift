@@ -15,3 +15,4 @@ extension NSTextView {
     func processNewlineInsertion() -> Bool {
         return true
     }
+}
