@@ -52,12 +52,12 @@ class NSTextViewSimplenoteTests: XCTestCase {
     /// Verifies that `removeText(at:)` effectively nukes the text at the specified range
     ///
     func testRemoveTextNukesSpecifiedRange() {
-        let sample = "- L1\n- L2\n- L3"
-        let expected = "- L1\n- L3"
-        let targetRange = NSRange(location: 5, length: 5)
+        let sample = sampleText.joined()
+        let expected = sampleText.dropFirst().joined()
+        let range = NSRange(location: .zero, length: sampleText[0].utf16.count)
 
         textView.string = sample
-        textView.removeText(at: targetRange)
+        textView.removeText(at: range)
 
         XCTAssertEqual(textView.string, expected)
     }
@@ -79,8 +79,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
     /// Verifies that `processTabInsertion` does nothing if there are no lists at the selected range
     ///
     func testProcessTabInsertionDoesNotIndentWheneverThereAreNoListsInTheCurrentRange() {
-        let lines = sampleText
-        let text = lines.joined()
+        let text = sampleText.joined()
         textView.string = text
 
         XCTAssertFalse(textView.processTabInsertion())
