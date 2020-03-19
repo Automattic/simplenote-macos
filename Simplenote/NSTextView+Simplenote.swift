@@ -15,8 +15,22 @@ extension NSTextView {
         return (range, string)
     }
 
+    /// Indents the List at the selected range (if any)
+    ///
     @objc
     func processTabInsertion() -> Bool {
+        let (lineRange, lineString) = lineAtSelectedRange()
+
+        // Verify the Selected Location is valid!
+        guard let _ = lineString.rangeOfListMarker else {
+            return false
+        }
+
+        let insertionRange = NSRange(location: lineRange.location, length: .zero)
+        insertText(String.tab, replacementRange: insertionRange)
+
+        notifyTextViewDidChange()
+
         return true
     }
 
