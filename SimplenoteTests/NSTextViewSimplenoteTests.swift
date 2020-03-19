@@ -76,7 +76,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         }
     }
 
-    /// Verifies that `processTabInsertion` does nothing if there are no lists at the selected range
+    /// Verifies that `processTabInsertion` does nothing if there are no lists at the document
     ///
     func testProcessTabInsertionDoesNotIndentWheneverThereAreNoListsInTheCurrentRange() {
         let text = sampleText.joined()
@@ -84,6 +84,66 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
         XCTAssertFalse(textView.processTabInsertion())
         XCTAssertEqual(textView.string, text)
+    }
+
+    /// Verifies that `processNewlineInsertion` does nothing if there are no lists in the document
+    ///
+    func testProcessNewlineInsertionDoesNothingWheneverThereAreNoListsInTheDocument() {
+        let text = sampleText.joined()
+        textView.string = text
+
+        XCTAssertFalse(textView.processNewlineInsertion())
+        XCTAssertEqual(textView.string, text)
+    }
+
+    /// Verifies that `processNewlineInsertion` does nothing whenever the Selected Range is set to the left hand side of the list marker
+    ///
+    func testProcessNewlineInsertionDoesNotInsertNewListMarkerWheneverTheSelectedLocationIsBeforeTheCurrentLineMarker() {
+        for (sample, _) in samplesForNewline {
+            guard let rangeOfMarker = sample.rangeOfListMarker else {
+                XCTFail()
+                continue
+            }
+
+            textView.string = sample
+
+            for location in 0...rangeOfMarker.location {
+                let newSelectedRange = NSRange(location: location, length: .zero)
+                textView.setSelectedRange(newSelectedRange)
+
+                XCTAssertFalse(textView.processNewlineInsertion())
+                XCTAssertEqual(textView.string, sample)
+            }
+        }
+    }
+
+    /// Verifies that `processNewlineInsertion` cleans up empty list lines, when hitting return at the end
+    ///
+    func testProcessNewlineRemovesListMarkerWhenHittingReturnAtTheEndOfAnEmptyListLine() {
+        for sample in samplesForNewlineRemoval {
+            textView.string = sample
+
+            let newSelectedRange = NSRange(location: sample.utf16.count, length: .zero)
+            textView.setSelectedRange(newSelectedRange)
+
+            XCTAssertTrue(textView.processNewlineInsertion())
+            XCTAssertEqual(textView.string, "")
+        }
+    }
+
+
+    /// Verifies that `processNewlineInsertion` effectively inserts a new bullet (with padding + tail) whenever we're at the end of a list, and hit return
+    ///
+    func testProcessNewlineInsertionEffectivelyInsertsBulletInNewlineWithPrefixAndSuffixWhenAppropriate() {
+        for (sample, expected) in samplesForNewline {
+            textView.string = sample
+
+            let newSelectedRange = NSRange(location: sample.utf16.count, length: .zero)
+            textView.setSelectedRange(newSelectedRange)
+
+            XCTAssertTrue(textView.processNewlineInsertion())
+            XCTAssertEqual(textView.string, expected)
+        }
     }
 }
 
@@ -95,16 +155,49 @@ private extension NSTextViewSimplenoteTests {
     var samplesForIndentation: [(text: String, indented: String)] {
         let marker = String.attachmentString
         return [
-            (text: "- L1",   indented: "\t- L1"),
-            (text: "\t- L2", indented: "\t\t- L2"),
-            (text: "  - L3", indented: "\t  - L3"),
-            (text: "* L1",   indented: "\t* L1"),
-            (text: "\t* L2", indented: "\t\t* L2"),
-            (text: "  * L3", indented: "\t  * L3"),
-            (text: "+ L1",   indented: "\t+ L1"),
-            (text: "\t+ L2", indented: "\t\t+ L2"),
-            (text: "  + L3", indented: "\t  + L3"),
-            (text: marker + " L1", indented: "\t" + marker + " L1"),
+            (text: "- L1",          indented: "\t- L1"),
+            (text: "\t- L2",        indented: "\t\t- L2"),
+            (text: "  - L3",        indented: "\t  - L3"),
+            (text: "* L1",          indented: "\t* L1"),
+            (text: "\t* L2",        indented: "\t\t* L2"),
+            (text: "  * L3",        indented: "\t  * L3"),
+            (text: "+ L1",          indented: "\t+ L1"),
+            (text: "\t+ L2",        indented: "\t\t+ L2"),
+            (text: "  + L3",        indented: "\t  + L3"),
+            (text: marker + " L1",  indented: "\t" + marker + " L1"),
+        ]
+    }
+
+    var samplesForNewline: [(text: String, enhanced: String)] {
+        let marker = String.attachmentString
+        return [
+            (text: "- L1",          enhanced: "- L1\n- "),
+            (text: "\t- L2",        enhanced: "\t- L2\n\t- "),
+            (text: "  - L3",        enhanced: "  - L3\n  - "),
+            (text: "* L1",          enhanced: "* L1\n* "),
+            (text: "\t* L2",        enhanced: "\t* L2\n\t* "),
+            (text: "  * L3",        enhanced: "  * L3\n  * "),
+            (text: "+ L1",          enhanced: "+ L1\n+ "),
+            (text: "\t+ L2",        enhanced: "\t+ L2\n\t+ "),
+            (text: "  + L3",        enhanced: "  + L3\n  + "),
+            (text: marker + " L1",  enhanced: marker + " L1\n" + marker + String.space),
+        ]
+    }
+
+    var samplesForNewlineRemoval: [String] {
+        let marker = String.attachmentString
+        return [
+            "-",
+            "\t- ",
+            "  - ",
+            "* ",
+            "\t* ",
+            "  * ",
+            "+ ",
+            "\t+ ",
+            "  + ",
+            marker,
+            "\t\t\t" + marker
         ]
     }
 

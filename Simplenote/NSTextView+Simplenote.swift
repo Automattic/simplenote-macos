@@ -17,7 +17,6 @@ extension NSTextView {
     func processTabInsertion() -> Bool {
         let (lineRange, lineString) = lineAtSelectedRange()
 
-        // Verify the Selected Location is valid!
         guard let _ = lineString.rangeOfListMarker else {
             return false
         }
@@ -34,6 +33,41 @@ extension NSTextView {
     ///
     @objc
     func processNewlineInsertion() -> Bool {
+        let (lineRange, lineString) = lineAtSelectedRange()
+
+        // Stop right here... if there's no bullet!
+        guard let rangeOfMarker = lineString.rangeOfListMarker else {
+            return false
+        }
+
+        // Avoid inserting a bullet when the caret isn't at the end of the line
+        let locationOfMarkerInText = lineRange.location + rangeOfMarker.location
+        guard selectedRange.location > locationOfMarkerInText else {
+            return false
+        }
+
+        // Empty Line: Remove the bullet
+        let trimmedString = lineString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard trimmedString.utf16.count != rangeOfMarker.length else {
+            removeText(at: lineRange)
+            return true
+        }
+
+        // Attempt to apply the bullet
+        let prefixAndMarkerRange = NSRange(location: lineRange.location, length: rangeOfMarker.upperBound)
+        let prefixAndMarkerString = attributedString().attributedSubstring(from: prefixAndMarkerRange)
+        let text = NSMutableAttributedString()
+
+        text.append(string: .newline)
+        text.append(prefixAndMarkerString)
+
+        if let character = lineString.unicodeScalar(at: rangeOfMarker.upperBound), character.isWhitespace {
+            text.append(string: String(character))
+        }
+
+        insertText(text, replacementRange: selectedRange)
+        notifyTextViewDidChange()
+
         return true
     }
 
