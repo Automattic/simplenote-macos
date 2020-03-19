@@ -88,7 +88,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
 }
 
 
-// MARK: -
+// MARK: - Helpers!
 //
 private extension NSTextViewSimplenoteTests {
 

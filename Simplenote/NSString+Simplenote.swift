@@ -5,6 +5,16 @@ import Foundation
 //
 extension NSString {
 
+    /// Returns the line (range, string) at the specified location
+    ///
+    func line(at location: Int) -> (NSRange, String) {
+        let queryRange = NSRange(location: location, length: .zero)
+        let resultRange = lineRange(for: queryRange)
+        let resultText = substring(with: resultRange)
+
+        return (resultRange, resultText)
+    }
+
     /// Returns the Range of the List Marker: This also includes NSTextAttachments
     ///
     var rangeOfListMarker: NSRange? {
