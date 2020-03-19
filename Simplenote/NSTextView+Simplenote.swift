@@ -29,7 +29,12 @@ extension NSTextView {
         return true
     }
 
+    /// Processes a Newline Insertion on List Items:
     ///
+    ///     -   No List Marker: in the current line, this method does nothing.
+    ///     -   SelectedRange.location < List Marker.location: NSTextView is expected to just insert a \n
+    ///     -   If the Line has *only* the List Marker, we'll nuke it
+    ///     -   Otherwise: We'll add a newline, with the same Marker indentation and padding!
     ///
     @objc
     func processNewlineInsertion() -> Bool {
