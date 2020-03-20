@@ -20,7 +20,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
     /// Verifies that `lineAtSelectedRange` returns the expected line Range / String
     ///
     func testLineAtSelectedRangeEffectivelyReturnsTheLineAtTheSelectedRange() {
-        let lines = sampleText
+        let lines = samplePlainText
         let text = lines.joined()
         textView.string = text
 
@@ -52,9 +52,9 @@ class NSTextViewSimplenoteTests: XCTestCase {
     /// Verifies that `removeText(at:)` effectively nukes the text at the specified range
     ///
     func testRemoveTextNukesSpecifiedRange() {
-        let sample = sampleText.joined()
-        let expected = sampleText.dropFirst().joined()
-        let range = NSRange(location: .zero, length: sampleText[0].utf16.count)
+        let sample = samplePlainText.joined()
+        let expected = samplePlainText.dropFirst().joined()
+        let range = NSRange(location: .zero, length: samplePlainText[0].utf16.count)
 
         textView.string = sample
         textView.removeText(at: range)
@@ -79,7 +79,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
     /// Verifies that `processTabInsertion` does nothing if there are no lists at the document
     ///
     func testProcessTabInsertionDoesNotIndentWheneverThereAreNoListsInTheCurrentRange() {
-        let text = sampleText.joined()
+        let text = samplePlainText.joined()
         textView.string = text
 
         XCTAssertFalse(textView.processTabInsertion())
@@ -89,7 +89,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
     /// Verifies that `processNewlineInsertion` does nothing if there are no lists in the document
     ///
     func testProcessNewlineInsertionDoesNothingWheneverThereAreNoListsInTheDocument() {
-        let text = sampleText.joined()
+        let text = samplePlainText.joined()
         textView.string = text
 
         XCTAssertFalse(textView.processNewlineInsertion())
@@ -201,7 +201,7 @@ private extension NSTextViewSimplenoteTests {
         ]
     }
 
-    var sampleText: [String] {
+    var samplePlainText: [String] {
         return [
             "Here comes the sun, here comes the sun\n",
             "And I say it's all right\n",
