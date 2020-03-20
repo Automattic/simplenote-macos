@@ -24,8 +24,6 @@ extension NSTextView {
         let insertionRange = NSRange(location: lineRange.location, length: .zero)
         insertText(String.tab, replacementRange: insertionRange)
 
-        notifyTextViewDidChange()
-
         return true
     }
 
@@ -71,7 +69,6 @@ extension NSTextView {
         }
 
         insertText(text, replacementRange: selectedRange)
-        notifyTextViewDidChange()
 
         return true
     }
@@ -80,13 +77,5 @@ extension NSTextView {
     ///
     func removeText(at range: NSRange) {
         insertText(String(), replacementRange: range)
-        notifyTextViewDidChange()
-    }
-
-    /// Notifies the delegate that the Text was updated
-    ///
-    private func notifyTextViewDidChange() {
-        let note = Notification(name: NSText.didChangeNotification)
-        delegate?.textDidChange?(note)
     }
 }
