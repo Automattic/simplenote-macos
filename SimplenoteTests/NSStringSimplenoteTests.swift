@@ -17,7 +17,7 @@ class NSStringSimplenoteTests: XCTestCase {
         ]
 
         for sample in samples {
-            XCTAssertEqual(sample.rangeOfListMarker, nil)
+            XCTAssertNil(sample.rangeOfListMarker)
         }
     }
 
@@ -25,43 +25,33 @@ class NSStringSimplenoteTests: XCTestCase {
     ///
     func testRangeOfListMarkerReturnsMarkerRangeWheneverTheLineStartsWithSomeBullet() {
         let expectedRange = NSRange(location: 0, length: 1)
-        let samples = [
-            "-NoSpaces",
-            "•NoSpaces",
-            "*NoSpaces",
-            "+NoSpaces",
-            String.attachmentString + "NoSpaces",
-            "- Space",
-            "• Space",
-            "* Space",
-            "+ Space",
-            String.attachmentString + " Space",
-            "-\tTab",
-            "•\tTab",
-            "*\tTab",
-            "+\tTab",
-            String.attachmentString + "\tTab"
-        ]
 
-        for sample in samples {
-            XCTAssertEqual(sample.rangeOfListMarker, expectedRange)
+        for marker in String.listMarkers {
+            let string0 = marker + "NoSpaces"
+            let string1 = marker + " Space"
+            let string2 = marker + "\tTab"
+
+            XCTAssertEqual(string0.rangeOfListMarker, expectedRange)
+            XCTAssertEqual(string1.rangeOfListMarker, expectedRange)
+            XCTAssertEqual(string2.rangeOfListMarker, expectedRange)
         }
     }
 
     /// Verifies that `rangeOfListMarker` returns the expected range whenever the receiver contains whitespaces
     ///
     func testRangeOfListMarkerReturnsMarkerRangeWhenStringContainsPrefixes() {
-        let samples = [
-            (text: " - Prefixed", location: 1),
-            (text: "    • Prefixed", location: 4),
-            (text: "\t * Prefixed", location: 2),
-            (text: "\t\t\t+ Prefixed", location: 3),
-            (text: "\t\t\t\t" + String.attachmentString + " Prefixed", location: 4),
-        ]
+        for marker in String.listMarkers {
+            let samples = [
+                (text: " "      + marker + " Prefixed", location: 1),
+                (text: "    "   + marker + " Prefixed", location: 4),
+                (text: "\t "    + marker + " Prefixed", location: 2),
+                (text: "\t\t\t" + marker + " Prefixed", location: 3),
+            ]
 
-        for (sample, location) in samples {
-            let range = NSRange(location: location, length: 1)
-            XCTAssertEqual(sample.rangeOfListMarker, range)
+            for (sample, location) in samples {
+                let range = NSRange(location: location, length: 1)
+                XCTAssertEqual(sample.rangeOfListMarker, range)
+            }
         }
     }
 
@@ -78,19 +68,19 @@ class NSStringSimplenoteTests: XCTestCase {
     ///
     func testRangeOfAnyPrefixReturnsExpectedRange() {
         let markers = ["•", "-", "+", "*"]
-        let sample = [
-            ("• Some sample string", NSRange(location: 0, length: 1)),
-            ("- Some sample string", NSRange(location: 0, length: 1)),
-            ("+ Some sample string", NSRange(location: 0, length: 1)),
-            ("* Some sample string", NSRange(location: 0, length: 1)),
-            ("\t- Some sample string", NSRange(location: 1, length: 1)),
-            ("  - Some sample string", NSRange(location: 2, length: 1)),
-            ("     * Some sample string", NSRange(location: 5, length: 1)),
-            ("     - Some sample string", NSRange(location: 5, length: 1)),
-        ]
+        for marker in markers {
+            let samples = [
+                (text: marker + " Some sample string",              location: 0),
+                (text: "\t" + marker + "  Some sample string",      location: 1),
+                (text: "  " + marker + " Some sample string",       location: 2),
+                (text: "     " + marker + " Some sample string",    location: 5),
+                (text: "     " + marker + " Some sample string",    location: 5),
+            ]
 
-        for (sample, range) in sample {
-            XCTAssertEqual(sample.rangeOfAnyPrefix(prefixes: markers), range)
+            for (text, location) in samples {
+                let range = NSRange(location: location, length: 1)
+                XCTAssertEqual(text.rangeOfAnyPrefix(prefixes: markers), range)
+            }
         }
     }
 
