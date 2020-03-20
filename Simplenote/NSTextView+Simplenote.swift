@@ -21,6 +21,7 @@ extension NSTextView {
             return false
         }
 
+        // Inject a Tab character at the beginning of the line
         let insertionRange = NSRange(location: lineRange.location, length: .zero)
         insertText(String.tab, replacementRange: insertionRange)
 
@@ -38,12 +39,12 @@ extension NSTextView {
     func processNewlineInsertion() -> Bool {
         let (lineRange, lineString) = lineAtSelectedRange()
 
-        // Stop right here... if there's no bullet!
+        // No Marker, no processing!
         guard let rangeOfMarker = lineString.rangeOfListMarker else {
             return false
         }
 
-        // Avoid inserting a bullet when the caret isn't at the end of the line
+        // Avoid inserting a *new* Marker when the caret isn't on the right hand side of the current one
         let locationOfMarkerInText = lineRange.location + rangeOfMarker.location
         guard selectedRange.location > locationOfMarkerInText else {
             return false
@@ -56,7 +57,7 @@ extension NSTextView {
             return true
         }
 
-        // Attempt to apply the bullet
+        // Insert: newline + Padding + Marker + Space?
         let prefixAndMarkerRange = NSRange(location: lineRange.location, length: rangeOfMarker.upperBound)
         let prefixAndMarkerString = attributedString().attributedSubstring(from: prefixAndMarkerRange)
         let text = NSMutableAttributedString()
