@@ -5,6 +5,13 @@ import Foundation
 //
 extension NSTextView {
 
+    /// Returns the Attributed Substring with the specified range
+    ///
+    func attributedSubstring(from start: Int, length: Int) -> NSAttributedString {
+        let range = NSRange(location: start, length: length)
+        return attributedString().attributedSubstring(from: range)
+    }
+
     /// Returns the line (range, string) at the current selected range
     ///
     func lineAtSelectedRange() -> (NSRange, String) {
@@ -58,18 +65,16 @@ extension NSTextView {
         }
 
         // Insert: newline + Padding + Marker + Space?
-        let prefixAndMarkerRange = NSRange(location: lineRange.location, length: rangeOfMarker.upperBound)
-        let prefixAndMarkerString = attributedString().attributedSubstring(from: prefixAndMarkerRange)
-        let text = NSMutableAttributedString()
+        let insertionText = NSMutableAttributedString(string: .newline)
 
-        text.append(string: .newline)
-        text.append(prefixAndMarkerString)
+        let paddingAndMarker = attributedSubstring(from: lineRange.location, length: rangeOfMarker.upperBound)
+        insertionText.append(paddingAndMarker)
 
-        if let character = lineString.unicodeScalar(at: rangeOfMarker.upperBound), character.isWhitespace {
-            text.append(string: String(character))
+        if let tail = lineString.unicodeScalar(at: rangeOfMarker.upperBound), tail.isWhitespace {
+            insertionText.append(character: tail)
         }
 
-        insertText(text, replacementRange: selectedRange)
+        insertText(insertionText, replacementRange: selectedRange)
 
         return true
     }

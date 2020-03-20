@@ -20,19 +20,24 @@ extension NSMutableAttributedString {
         }
     }
 
-    /// Returns a NSMutableAttributedString representing the specified TextAttachment
+    /// Appends the specified NSTextAttachment
     ///
-    @objc
     func append(attachment: NSTextAttachment) {
         let string = NSAttributedString(attachment: attachment)
         append(string)
     }
 
-    /// Returns a NSMutableAttributedString representing the specified string
+    /// Appends the specified String
     ///
-    @objc
     func append(string: String) {
         let string = NSAttributedString(string: string)
+        append(string)
+    }
+
+    /// Appends the specified UnicodeScalar
+    ///
+    func append(character: UnicodeScalar) {
+        let string = NSAttributedString(string: String(character))
         append(string)
     }
 }

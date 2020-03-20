@@ -17,6 +17,17 @@ class NSTextViewSimplenoteTests: XCTestCase {
         textView.string = String()
     }
 
+    /// Verifies that `attributedSubstring` yields the expected substring
+    ///
+    func testAttributedSubstringReturnsTheExpectedText() {
+        let text = samplePlainText.joined()
+        textView.string = text
+
+        let result = textView.attributedSubstring(from: .zero, length: text.utf16.count)
+        XCTAssertEqual(result.string, text)
+    }
+
+
     /// Verifies that `lineAtSelectedRange` returns the expected line Range / String
     ///
     func testLineAtSelectedRangeEffectivelyReturnsTheLineAtTheSelectedRange() {
