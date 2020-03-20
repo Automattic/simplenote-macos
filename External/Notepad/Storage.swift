@@ -174,7 +174,7 @@ class Storage: NSTextStorage {
         beginEditing()
 
         // Reset the Style Keys: Do this for specific attributes. Otherwise we risk loosing the NSTextAttachment attribute!
-        let range = backingStore.rangeOfEntireString
+        let range = backingStore.fullRange
         let attributeKeys: [NSAttributedString.Key] = [.font, .foregroundColor, .paragraphStyle]
 
         backingStore.removeAttributes(attributeKeys, range: range)
@@ -211,7 +211,7 @@ private extension Storage {
     /// Ref. https://github.com/Automattic/simplenote-macos/issues/448
     ///
     func fixAttributesBeforeReplacingCharacters(in range: NSRange) -> Bool {
-        guard range.length > 0 && range == backingStore.rangeOfEntireString else {
+        guard range.length > 0 && range == backingStore.fullRange else {
             return false
         }
 

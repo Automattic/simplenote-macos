@@ -29,7 +29,7 @@ const NSInteger RegexGroupIndexContent    = 2;
     NSString *noteString = self.string.copy;
     NSArray *matches = [[[regex matchesInString:noteString
                                         options:0
-                                          range:self.rangeOfEntireString] reverseObjectEnumerator] allObjects];
+                                          range:self.fullRange] reverseObjectEnumerator] allObjects];
     
     if (matches.count == 0) {
         return attachments;
