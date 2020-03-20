@@ -142,7 +142,6 @@ class NSTextViewSimplenoteTests: XCTestCase {
         }
     }
 
-
     /// Verifies that `processNewlineInsertion` effectively inserts a new bullet (with padding + tail) whenever we're at the end of a list, and hit return
     ///
     func testProcessNewlineInsertionEffectivelyInsertsBulletInNewlineWithPrefixAndSuffixWhenAppropriate() {
@@ -155,6 +154,34 @@ class NSTextViewSimplenoteTests: XCTestCase {
             XCTAssertTrue(textView.processNewlineInsertion())
             XCTAssertEqual(textView.string, expected)
         }
+    }
+
+    /// Verifies that `processNewlineInsertion` effectively inserts a new bullet (with padding + tail) whenever we're at the end of a list, and hit return
+    ///
+    func testProcessNewlineInsertionEffectivelyInsertNewTextAttachmentInstance() {
+        let sampleText = String.attachmentString + " L1"
+        textView.string = sampleText
+
+        // Inject the List Attachment
+        let attachment = SPTextAttachment()
+        let range = NSRange(location: .zero, length: String.attachmentString.utf16.count)
+        textView.textStorage?.addAttribute(.attachment, value: attachment, range: range)
+
+        // Select the tail of the first line
+        let newSelectedRange = NSRange(location: textView.string.utf16.count, length: .zero)
+        textView.setSelectedRange(newSelectedRange)
+
+        XCTAssertTrue(textView.processNewlineInsertion())
+
+        // Verify there are *two* different TextAttachment instances
+        var attachments = Set<SPTextAttachment>()
+
+        textView.attributedString().enumerateAttachments(of: SPTextAttachment.self) { (attachment, range) in
+            XCTAssertFalse(attachments.contains(attachment))
+            attachments.insert(attachment)
+        }
+
+        XCTAssertEqual(attachments.count, 2)
     }
 }
 

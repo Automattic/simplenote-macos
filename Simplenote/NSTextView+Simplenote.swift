@@ -74,6 +74,16 @@ extension NSTextView {
             insertionText.append(character: tail)
         }
 
+        // Replace any SPTextAttachments instances by a new one:
+        // Sharing the same SPTextAttachment instance with the previous line causes its inner state to be shared all over.
+        // Which in turn... makes it impossible to "Check" a single attachment.
+        //
+        insertionText.enumerateAttachments(of: SPTextAttachment.self) { (oldAttachment, range) in
+            let newAttachment = SPTextAttachment()
+            newAttachment.tintColor = oldAttachment.tintColor
+            insertionText.addAttribute(.attachment, value: newAttachment, range: range)
+        }
+
         insertText(insertionText, replacementRange: selectedRange)
 
         return true
