@@ -1,6 +1,7 @@
 1.10.0
 ------
 - Simplenote now requires macOS 10.13 or higher
+- Updated Checklist Icons
 
 1.9.1
 -----
