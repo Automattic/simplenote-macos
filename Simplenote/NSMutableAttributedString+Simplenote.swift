@@ -5,13 +5,6 @@ import Foundation
 //
 extension NSMutableAttributedString {
 
-    /// Returns the full range of the receiver
-    ///
-    @objc
-    var fullRange: NSRange {
-        return NSRange(location: 0, length: length)
-    }
-
     /// Nukes the specified attributes from a given range
     ///
     func removeAttributes(_ names: [NSAttributedString.Key], range: NSRange) {
@@ -39,17 +32,5 @@ extension NSMutableAttributedString {
     func append(character: UnicodeScalar) {
         let string = NSAttributedString(string: String(character))
         append(string)
-    }
-
-    /// Enumerates all of the NSTextAttachment(s) of the specified kind
-    ///
-    func enumerateAttachments<T: NSTextAttachment>(of type: T.Type, closure: (_ attachment: T, _ range: NSRange) -> Void) {
-        enumerateAttribute(.attachment, in: fullRange, options: .reverse) { (payload, range, _) in
-            guard let attachment = payload as? T else {
-                return
-            }
-
-            closure(attachment, range)
-        }
     }
 }

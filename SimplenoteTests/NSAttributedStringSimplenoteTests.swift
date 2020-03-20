@@ -2,9 +2,9 @@ import XCTest
 @testable import Simplenote
 
 
-// MARK: - NSMutableAttributedString Unit Tests
+// MARK: - NSAttributedString Unit Tests
 //
-class NSMutableAttributedStringSimplenoteTests: XCTestCase {
+class NSAttributedStringSimplenoteTests: XCTestCase {
 
     /// Verifies that `enumerateAttachments` calls the received closure with the ranges of the specified attachment kinds *ONLY*
     ///

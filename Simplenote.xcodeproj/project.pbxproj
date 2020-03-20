@@ -204,8 +204,10 @@
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
 		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5B17F362425641E00DD5B34 /* NSMutableAttributedStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F352425641E00DD5B34 /* NSMutableAttributedStringSimplenoteTests.swift */; };
+		B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */; };
 		B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F372425651700DD5B34 /* TestConstants.swift */; };
+		B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
+		B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
 		B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
@@ -474,8 +476,9 @@
 		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
 		B5A89191231ECB3C0007EDCB /* INSTALL.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = INSTALL.markdown; sourceTree = "<group>"; };
 		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		B5B17F352425641E00DD5B34 /* NSMutableAttributedStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringSimplenoteTests.swift; sourceTree = "<group>"; };
+		B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5B17F372425651700DD5B34 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Simplenote.h"; sourceTree = "<group>"; };
 		B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Simplenote.m"; sourceTree = "<group>"; };
 		B5C92EC71B03D7DB00A4FFD0 /* NSString+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Simplenote.h"; sourceTree = "<group>"; };
@@ -877,6 +880,7 @@
 			isa = PBXGroup;
 			children = (
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
+				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
@@ -956,8 +960,8 @@
 		B5CBB06A241976230003C271 /* SimplenoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */,
 				B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */,
-				B5B17F352425641E00DD5B34 /* NSMutableAttributedStringSimplenoteTests.swift */,
 				B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */,
 				B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */,
 				B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */,
@@ -1396,6 +1400,7 @@
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				375D294821E033D1007AB25A /* html_blocks.c in Sources */,
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,
+				B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				712DC91C1531FE2F0033CE85 /* SPTokenField.m in Sources */,
 				B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
 				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
@@ -1489,6 +1494,7 @@
 				B5686D041AEADF07009F9E20 /* VSTheme.m in Sources */,
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
 				466FFEC217CC10A800399652 /* SPTokenField.m in Sources */,
+				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
 				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5087A161AF3AB9D00505A2B /* ShareViewController.m in Sources */,
@@ -1534,7 +1540,7 @@
 				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
 				B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */,
 				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
-				B5B17F362425641E00DD5B34 /* NSMutableAttributedStringSimplenoteTests.swift in Sources */,
+				B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */,
 				B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
