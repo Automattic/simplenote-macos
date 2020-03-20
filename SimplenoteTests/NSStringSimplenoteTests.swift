@@ -6,72 +6,62 @@ import XCTest
 //
 class NSStringSimplenoteTests: XCTestCase {
 
-    /// Verifies that `rangeOfTextListMarker` returns nil whenever none of the sample strings contains a valid prefix
+    /// Verifies that `rangeOfListMarker` returns nil whenever none of the sample strings contains a valid prefix
     ///
-    func testRangeOfTextListMarkerReturnsNilWheneverThereAreNoValidPrefixes() {
+    func testRangeOfListMarkerReturnsNilWheneverThereAreNoValidPrefixes() {
         let samples = [
             "It's strictly business, Sonny",
             "Not a valid - checklist",
             "This one is + also not valid",
+            "This one contains a text attachment " + String.attachmentString + " somewhere in the middle"
         ]
 
         for sample in samples {
-            XCTAssertEqual(sample.rangeOfTextListMarker, nil)
+            XCTAssertEqual(sample.rangeOfListMarker, nil)
         }
     }
 
-    /// Verifies that `rangeOfTextListMarker` returns the expected range
+    /// Verifies that `rangeOfListMarker` returns the expected range
     ///
-    func testRangeOfTextListMarkerReturnsMarkerRangeWheneverTheLineStartsWithSomeBullet() {
+    func testRangeOfListMarkerReturnsMarkerRangeWheneverTheLineStartsWithSomeBullet() {
         let expectedRange = NSRange(location: 0, length: 1)
         let samples = [
             "-NoSpaces",
             "•NoSpaces",
             "*NoSpaces",
             "+NoSpaces",
+            String.attachmentString + "NoSpaces",
             "- Space",
             "• Space",
             "* Space",
             "+ Space",
+            String.attachmentString + " Space",
             "-\tTab",
             "•\tTab",
             "*\tTab",
             "+\tTab",
+            String.attachmentString + "\tTab"
         ]
-
-        for sample in samples {
-            XCTAssertEqual(sample.rangeOfTextListMarker, expectedRange)
-        }
-    }
-
-    /// Verifies that `rangeOfTextListMarker` returns the expected range whenever the receiver contains whitespaces
-    ///
-    func testRangeOfTextListMarkerReturnsMarkerRangeWhenStringContainsPrefixes() {
-        let samples = [
-            (" - Prefixed",         NSRange(location: 1, length: 1)),
-            ("    • Prefixed",      NSRange(location: 4, length: 1)),
-            ("\t * Prefixed",       NSRange(location: 2, length: 1)),
-            ("\t\t\t+ Prefixed",    NSRange(location: 3, length: 1)),
-        ]
-
-        for (sample, range) in samples {
-            XCTAssertEqual(sample.rangeOfTextListMarker, range)
-        }
-    }
-
-    /// Verifies that `rangeOfListMarker` returns the expected range whenever the receiver starts with a Text Attachment
-    ///
-    func testRangeOfListMarkerReturnsMarkerRangeWheneverTheLineStartsWithSomeTextAttachment() {
-        let expectedRange = NSRange(location: 0, length: 1)
-        let samples = [
-            String.attachmentString + "NoSpaces",
-            String.attachmentString + " Space",
-            String.attachmentString + "\tTab",
-        ]
-
 
         for sample in samples {
             XCTAssertEqual(sample.rangeOfListMarker, expectedRange)
+        }
+    }
+
+    /// Verifies that `rangeOfListMarker` returns the expected range whenever the receiver contains whitespaces
+    ///
+    func testRangeOfListMarkerReturnsMarkerRangeWhenStringContainsPrefixes() {
+        let samples = [
+            (text: " - Prefixed", location: 1),
+            (text: "    • Prefixed", location: 4),
+            (text: "\t * Prefixed", location: 2),
+            (text: "\t\t\t+ Prefixed", location: 3),
+            (text: "\t\t\t\t" + String.attachmentString + " Prefixed", location: 4),
+        ]
+
+        for (sample, location) in samples {
+            let range = NSRange(location: location, length: 1)
+            XCTAssertEqual(sample.rangeOfListMarker, range)
         }
     }
 

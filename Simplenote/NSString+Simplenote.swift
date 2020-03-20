@@ -18,13 +18,7 @@ extension NSString {
     /// Returns the Range of the List Marker: This also includes NSTextAttachments
     ///
     var rangeOfListMarker: NSRange? {
-        return rangeOfAnyPrefix(prefixes: String.allListMarkers)
-    }
-
-    /// Returns the Range of the Text List Marker (if any)
-    ///
-    var rangeOfTextListMarker: NSRange? {
-        return rangeOfAnyPrefix(prefixes: String.textListMarkers)
+        return rangeOfAnyPrefix(prefixes: String.listMarkers)
     }
 
     /// Returns the range of the Prefix contained in the receiver (if any!)

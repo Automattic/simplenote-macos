@@ -21,13 +21,9 @@ extension String {
     ///
     static let tab = "\t"
 
-    /// All Markers: markers for Text and Media based Lists
+    /// All of the supported List Markers
     ///
-    static let allListMarkers = [ attachmentString, "*", "-", "+", "•" ]
-
-    /// List Markers: *Only* the markers for Text based Lists
-    ///
-    static let textListMarkers = [ "*", "-", "+", "•" ]
+    static let listMarkers = [ attachmentString, "*", "-", "+", "•" ]
 
     /// Returns the receiver casted as a Foundation String. For convenience
     ///
