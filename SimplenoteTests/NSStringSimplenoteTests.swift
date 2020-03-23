@@ -6,6 +6,16 @@ import XCTest
 //
 class NSStringSimplenoteTests: XCTestCase {
 
+    /// Verifies that `fullRange` effectively returns a NSRange that wraps up the entire string
+    ///
+    func testFullRangeReturnsSomeRangeWrappingTheEntireString() {
+        let sample: NSString = "Lorem Ipsum Samplum String"
+        let range = sample.fullRange
+
+        XCTAssertEqual(range.location, .zero)
+        XCTAssertEqual(range.length, sample.length)
+    }
+
     /// Verifies that `leadingSpaces` effectively returns a string containing the receiver's spaces
     ///
     func testLeadingSpaceReturnsTheExpectedSubstring() {

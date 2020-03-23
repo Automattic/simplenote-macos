@@ -5,6 +5,13 @@ import Foundation
 //
 extension NSString {
 
+    /// Returns the full range of the receiver
+    ///
+    @objc
+    var fullRange: NSRange {
+        NSRange(location: .zero, length: length)
+    }
+
     /// Returns the Substring containing the receiver's leading spaces
     ///
     /// - Note: This includes both newlines and tabs
