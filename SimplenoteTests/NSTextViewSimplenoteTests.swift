@@ -241,10 +241,10 @@ private extension NSTextViewSimplenoteTests {
 
     var samplePlainText: [String] {
         return [
-            "Here comes the sun, here comes the sun\n",
-            "And I say it's all right\n",
-            "Little darling, it's been a long cold lonely winter\n",
-            "Little darling, it feels like years since it's been here"
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n",
+            "Donec in arcu efficitur, aliquam nulla sed, venenatis justo.\n",
+            "Nunc imperdiet sem quis ultricies efficitur.\n",
+            "Sed a enim at justo dictum pellentesque sollicitudin sed enim."
         ]
     }
 }
