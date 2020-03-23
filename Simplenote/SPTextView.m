@@ -57,9 +57,7 @@
 
 - (void)processChecklists
 {
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];    
-    NSColor *checklistColor = [theme colorForKey:@"secondaryTextColor"];
-
+    NSColor *checklistColor = [NSColor textListColor];
     [self.textStorage processChecklistsWithColor:checklistColor];
 }
 

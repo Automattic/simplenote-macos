@@ -80,7 +80,7 @@ private extension Theme {
 private extension Theme {
 
     private static var theme: VSTheme {
-        return VSThemeManager.shared().theme()!
+        return VSThemeManager.shared().theme()
     }
 
     private static var fontSize: CGFloat {

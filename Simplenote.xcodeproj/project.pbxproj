@@ -196,6 +196,8 @@
 		B5985ACE24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */; };
 		B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */; };
 		B5985AD12429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985AD02429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift */; };
+		B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */; };
+		B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */; };
 		B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; };
 		B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -468,6 +470,7 @@
 		B598487F1BCDB95A005EFBBE /* SPTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTracker.m; sourceTree = "<group>"; };
 		B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Simplenote.swift"; sourceTree = "<group>"; };
 		B5985AD02429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpressionSimplenoteTests.swift; sourceTree = "<group>"; };
+		B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Simplenote.swift"; sourceTree = "<group>"; };
 		B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONKit+Simplenote.h"; sourceTree = "<group>"; };
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
 		B59EBAA019A6884F00DBC657 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = External/HockeySDK.framework; sourceTree = "<group>"; };
@@ -884,16 +887,17 @@
 		B51E9FE322E64473004F16B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
+				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
-				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
+				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
+				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1389,6 +1393,7 @@
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5087A221AF3B16A00505A2B /* PublishViewController.m in Sources */,
 				B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
+				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
@@ -1484,6 +1489,7 @@
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5087A231AF3B16A00505A2B /* PublishViewController.m in Sources */,
 				B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
+				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */,

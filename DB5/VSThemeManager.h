@@ -10,9 +10,12 @@
 #import "VSTheme.h"
 #import "VSThemeLoader.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString *const VSThemeManagerThemeWillChangeNotification;
 extern NSString *const VSThemeManagerThemeDidChangeNotification;
 extern NSString *const VSThemeManagerThemePrefKey;
+
 
 @interface VSThemeManager : NSObject
 
@@ -26,3 +29,5 @@ extern NSString *const VSThemeManagerThemePrefKey;
 - (BOOL)isMojaveWithNoThemeSet;
 
 @end
+
+NS_ASSUME_NONNULL_END
