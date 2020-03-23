@@ -18,6 +18,18 @@ extension NSTextView {
         string.asNSString.line(at: selectedRange.location)
     }
 
+    /// Removes the text at the specified range, and notifies the delegate.
+    ///
+    func removeText(at range: NSRange) {
+        insertText(String(), replacementRange: range)
+    }
+}
+
+
+// MARK: - Processing Special Characters
+//
+extension NSTextView {
+
     /// Indents the List at the selected range (if any)
     ///
     @objc
@@ -88,10 +100,15 @@ extension NSTextView {
 
         return true
     }
+}
 
-    /// Remove the text at the specified range, and notifies the delegate.
+
+// MARK: - New Lists
+//
+extension NSTextView {
+
     ///
-    func removeText(at range: NSRange) {
-        insertText(String(), replacementRange: range)
+
+    func removeListMarker(from text: String, in range: NSRange) {
     }
 }
