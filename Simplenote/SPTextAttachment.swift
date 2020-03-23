@@ -49,12 +49,18 @@ class SPTextAttachment: NSTextAttachment {
     ///
     convenience init(tintColor: NSColor) {
         self.init()
+
         self.tintColor = tintColor
+        refreshImage()
     }
+}
 
-    // MARK: - Private Methods
 
-    private func refreshImage() {
+// MARK: - Private Methods
+//
+private extension SPTextAttachment {
+
+    func refreshImage() {
         guard let tintColor = tintColor else {
             return
         }
