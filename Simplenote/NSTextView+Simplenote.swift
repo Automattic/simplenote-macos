@@ -108,6 +108,9 @@ extension NSTextView {
 extension NSTextView {
 
     ///
+    @objc
+    func toggleListMarkersAtSelectedRange() {
+    }
 
     func removeListMarker(from text: String, in range: NSRange) {
     }
