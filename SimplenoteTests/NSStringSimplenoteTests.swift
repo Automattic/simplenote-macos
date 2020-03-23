@@ -6,6 +6,20 @@ import XCTest
 //
 class NSStringSimplenoteTests: XCTestCase {
 
+    /// Verifies that `leadingSpaces` effectively returns a string containing the receiver's spaces
+    ///
+    func testLeadingSpaceReturnsTheExpectedSubstring() {
+        let samples: [(sample: String, leading: String)] = [
+            ("Lorem Ipsum Non Spaces", ""),
+            ("   Lorem Ipsum Spaces", "   "),
+            (" \t  Lorem Ipsum Mixed", " \t  "),
+        ]
+
+        for (sample, leading) in samples {
+            XCTAssertEqual(sample.leadingSpaces(), leading)
+        }
+    }
+
     /// Verifies that `rangeOfListMarker` returns nil whenever none of the sample strings contains a valid prefix
     ///
     func testRangeOfListMarkerReturnsNilWheneverThereAreNoValidPrefixes() {

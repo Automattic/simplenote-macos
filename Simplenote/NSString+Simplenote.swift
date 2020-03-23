@@ -5,6 +5,19 @@ import Foundation
 //
 extension NSString {
 
+    /// Returns the Substring containing the receiver's leading spaces
+    ///
+    /// - Note: This includes both newlines and tabs
+    ///
+    func leadingSpaces() -> String {
+        let regex = NSRegularExpression.regexForLeadingSpaces
+        guard let match = regex.firstMatch(in: self as String, options: [], range: fullRange) else {
+            return String()
+        }
+
+        return substring(with: match.range)
+    }
+
     /// Returns the line (range, string) at the specified location
     ///
     func line(at location: Int) -> (NSRange, String) {
