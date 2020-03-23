@@ -12,10 +12,10 @@ extension NSTextView {
         return attributedString().attributedSubstring(from: range)
     }
 
-    /// Returns the line (range, string) at the current selected range
+    /// Returns the (Range, String) representing the line or lines at the Selected Range
     ///
     func lineAtSelectedRange() -> (NSRange, String) {
-        string.asNSString.line(at: selectedRange.location)
+        string.asNSString.line(at: selectedRange)
     }
 
     /// Removes the text at the specified range, and notifies the delegate.

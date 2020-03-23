@@ -30,6 +30,52 @@ class NSStringSimplenoteTests: XCTestCase {
         }
     }
 
+    /// Verifies that `line(at range:)` returns the expected line / range
+    ///
+    func testLineAtRangeReturnsTheLineAtTheSpecifiedRange() {
+        let samples = [
+            "Lorem Ipsum Sample Line\n",
+            "Lorem Ipsum Second Line\n",
+            "Lorem Ipsum Third Line"
+        ]
+
+        let sampleText = samples.joined() as NSString
+        var locationInText = Int.zero
+
+        for expectedText in samples {
+            for location in 0 ..< expectedText.utf16.count {
+                let rangeOfQuery = NSRange(location: locationInText + location, length: .zero)
+                let (retrievedRange, retrievedText) = sampleText.line(at: rangeOfQuery)
+
+                XCTAssertEqual(retrievedText, expectedText)
+                XCTAssertEqual(retrievedRange.location, locationInText)
+            }
+
+            locationInText += expectedText.utf16.count
+        }
+    }
+
+    /// Verifies that `line(at range:)` returns the range of the **full lines** affected by the specified range, even when it's partial
+    ///
+    func testLineAtRangeReturnsTheLinesAndRangeAffectingTheSpecifiedRangeEvenWhenItIsPartial() {
+        let samples = [
+            "Lorem Ipsum Sample Line\n",
+            "Lorem Ipsum Second Line\n",
+            "Lorem Ipsum Third Line\n",
+            "Lorem Ipsum Fourth Line\n",
+        ]
+
+        let sampleText = samples.joined()
+        let lengthOfPartialText = sampleText.utf16.count - samples[2].utf16.count + 1
+
+        let rangeOfQuery = NSRange(location: .zero, length: lengthOfPartialText)
+        let (retrievedRange, retrievedText) = sampleText.line(at: rangeOfQuery)
+
+        XCTAssertEqual(retrievedRange, sampleText.fullRange)
+        XCTAssertEqual(retrievedText, sampleText)
+        XCTAssertNotEqual(retrievedRange, rangeOfQuery)
+    }
+
     /// Verifies that `rangeOfListMarker` returns nil whenever none of the sample strings contains a valid prefix
     ///
     func testRangeOfListMarkerReturnsNilWheneverThereAreNoValidPrefixes() {

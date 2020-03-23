@@ -25,11 +25,10 @@ extension NSString {
         return substring(with: match.range)
     }
 
-    /// Returns the line (range, string) at the specified location
+    /// Returns the (Range, String) representing the line or lines containing a given range.
     ///
-    func line(at location: Int) -> (NSRange, String) {
-        let queryRange = NSRange(location: location, length: .zero)
-        let resultRange = lineRange(for: queryRange)
+    func line(at range: NSRange) -> (NSRange, String) {
+        let resultRange = lineRange(for: range)
         let resultText = substring(with: resultRange)
 
         return (resultRange, resultText)
