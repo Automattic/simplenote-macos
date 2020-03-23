@@ -42,6 +42,16 @@ class SPTextAttachment: NSTextAttachment {
     ///
     var overrideDynamicBounds: NSRect = .zero
 
+
+    /// Convenience Initializer
+    ///
+    ///     - tintColor: Text Attachment's Tint Color
+    ///
+    convenience init(tintColor: NSColor) {
+        self.init()
+        self.tintColor = tintColor
+    }
+
     // MARK: - Private Methods
 
     private func refreshImage() {
