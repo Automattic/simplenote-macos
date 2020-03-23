@@ -15,7 +15,7 @@ extension NSString {
         return (resultRange, resultText)
     }
 
-    /// Returns the Range of the List Marker: This also includes NSTextAttachments
+    /// Returns the Range of the List Marker in the receiver
     ///
     var rangeOfListMarker: NSRange? {
         return rangeOfAnyPrefix(prefixes: String.listMarkers)
@@ -35,7 +35,7 @@ extension NSString {
 
     /// Returns the UnicodeScalar at the specified location, if any.
     ///
-    /// - Note: For convenience, we'll check bounds!
+    /// - Note: For convenience, we'll disregard any `location` that is greater than the receiver's length
     ///
     func unicodeScalar(at location: Int) -> UnicodeScalar? {
         guard location < length else {
