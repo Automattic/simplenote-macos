@@ -21,6 +21,5 @@
 
 - (void)processChecklists;
 - (NSString *)plainTextContent;
-- (void)insertNewChecklist;
 
 @end
