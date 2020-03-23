@@ -63,13 +63,7 @@ NSInteger const ChecklistCursorAdjustment = 2;
 - (void)processChecklists {
     VSTheme *theme = [[VSThemeManager sharedManager] theme];    
     NSColor *checklistColor = [theme colorForKey:@"secondaryTextColor"];
-    if (@available(macOS 10.14, *)) {
-        if (![[VSThemeManager sharedManager] isDarkMode]) {
-            // Workaround for wrong checklist color in overridden light theme on mojave
-            checklistColor = [NSColor secondaryLabelColor];
-        }
-    }
-    
+
     [self.textStorage processChecklistsWithColor:checklistColor];
 }
 
