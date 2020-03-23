@@ -193,6 +193,9 @@
 		B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487F1BCDB95A005EFBBE /* SPTracker.m */; };
 		B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487F1BCDB95A005EFBBE /* SPTracker.m */; };
+		B5985ACE24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */; };
+		B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */; };
+		B5985AD12429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985AD02429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift */; };
 		B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; };
 		B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -463,6 +466,8 @@
 		B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAutomatticTracker.m; sourceTree = "<group>"; };
 		B598487E1BCDB95A005EFBBE /* SPTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTracker.h; sourceTree = "<group>"; };
 		B598487F1BCDB95A005EFBBE /* SPTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTracker.m; sourceTree = "<group>"; };
+		B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Simplenote.swift"; sourceTree = "<group>"; };
+		B5985AD02429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpressionSimplenoteTests.swift; sourceTree = "<group>"; };
 		B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONKit+Simplenote.h"; sourceTree = "<group>"; };
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
 		B59EBAA019A6884F00DBC657 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = External/HockeySDK.framework; sourceTree = "<group>"; };
@@ -883,6 +888,7 @@
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
+				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
@@ -917,6 +923,26 @@
 				B598487F1BCDB95A005EFBBE /* SPTracker.m */,
 			);
 			name = Trackers;
+			sourceTree = "<group>";
+		};
+		B5985AD2242949B00044EDE9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */,
+				B5985AD02429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift */,
+				B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */,
+				B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */,
+				B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		B5985AD3242949C30044EDE9 /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */,
+			);
+			name = Converters;
 			sourceTree = "<group>";
 		};
 		B5A89189231ECB3C0007EDCB /* Sparkle */ = {
@@ -960,11 +986,8 @@
 		B5CBB06A241976230003C271 /* SimplenoteTests */ = {
 			isa = PBXGroup;
 			children = (
-				B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */,
-				B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */,
-				B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */,
-				B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */,
-				B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */,
+				B5985AD3242949C30044EDE9 /* Converters */,
+				B5985AD2242949B00044EDE9 /* Extensions */,
 				B5CBB06D241976230003C271 /* Info.plist */,
 				B5B17F372425651700DD5B34 /* TestConstants.swift */,
 			);
@@ -1353,6 +1376,7 @@
 				378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */,
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
 				26F72A9914032D2A00A7935E /* main.m in Sources */,
+				B5985ACE24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
@@ -1447,6 +1471,7 @@
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
+				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
@@ -1536,6 +1561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5985AD12429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift in Sources */,
 				B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */,
 				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
 				B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */,
