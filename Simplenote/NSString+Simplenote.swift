@@ -12,6 +12,12 @@ extension NSString {
         NSRange(location: .zero, length: length)
     }
 
+    /// Indicates if the receiver contains an Attachment
+    ///
+    var containAttachment: Bool {
+        range(of: String.attachmentString).location != NSNotFound
+    }
+
     /// Returns the Substring containing the receiver's leading spaces
     ///
     /// - Note: This includes both newlines and tabs
@@ -35,6 +41,8 @@ extension NSString {
     }
 
     /// Returns the Range of the List Marker in the receiver
+    ///
+    /// - Important: Only Markers in the **first line** will be picked up.
     ///
     var rangeOfListMarker: NSRange? {
         return rangeOfAnyPrefix(prefixes: String.listMarkers)
@@ -78,17 +86,17 @@ extension NSString {
         let indexOfLastLine = lines.count - 1
 
         for (index, line) in lines.enumerated() {
-            // Skip the last line if it is empty
+            // Skip: Last Empty Line
             if index > 0 && index == indexOfLastLine && line.length == 0 {
                 continue
             }
 
-            // Insert: Prefix + Attachment + Space + Payload + (maybe) Newline
-            let prefix = line.leadingSpaces()
-            let payload = line.substring(from: prefix.utf16.count)
+            // Insert: Prefix + Attachment + Space + Payload
+            let leading = line.leadingSpaces()
+            let payload = line.substring(from: leading.utf16.count)
             let attachment = SPTextAttachment(tintColor: .textListColor)
 
-            output.append(string: prefix)
+            output.append(string: leading)
             output.append(attachment: attachment)
             output.append(string: .space)
             output.append(string: payload)
