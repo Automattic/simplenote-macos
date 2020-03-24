@@ -182,6 +182,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (!self.markdownView.isHidden) {
         [self toggleMarkdownView:nil];
     }
+
+    // Issue #472: Explicitly reset the UndoManager. NSTextView appears not to be doing so for us, in specific scenarios.
+    [self.noteEditor.undoManager removeAllActions];
     
     if (selectedNote == nil) {
         [self.noteEditor setEditable:NO];
@@ -296,7 +299,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         // fires `textDidChange` which will erroneously modify the note's modification
         // date and unintentionally change the sort order of the note in the list as a result
         [self.noteEditor setDelegate:nil];
+
+        // Issue #472: Linkification should not be undoable
+        [self.noteEditor.undoManager disableUndoRegistration];
         [self.noteEditor checkTextInDocument:nil];
+        [self.noteEditor.undoManager enableUndoRegistration];
+
         [self.noteEditor setNeedsDisplay:YES];
         [self.noteEditor setDelegate:self];
     });
