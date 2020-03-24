@@ -64,3 +64,16 @@ extension NSString {
         return UnicodeScalar(character(at: location))
     }
 }
+
+
+// MARK: - Lists Convenience API
+//
+extension NSString {
+
+    /// Returns a new String instance, by removing all of the List Markers in the receiver
+    ///
+    var removingListMarker: String {
+        return replacingOccurrences(of: .attachmentString + .space, with: String())
+    }
+}
+

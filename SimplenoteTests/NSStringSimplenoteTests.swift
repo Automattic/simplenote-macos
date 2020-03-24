@@ -174,4 +174,20 @@ class NSStringSimplenoteTests: XCTestCase {
             XCTAssertEqual(UInt32(sample.character(at: index)), scalar.value)
         }
     }
+
+    /// Verifies that `removingListMarker` returns a new String that does not contain our List Marker substrings (Attachment + Space).
+    ///
+    func testRemovingListMarkerEffectivelyNukesAttachmentAndWhitespacesInTheReceiver() {
+        let sample = [
+            String.attachmentString + String.space + "L1\n",
+            String.attachmentString + String.space + "L2\n",
+            "\n",
+            String.attachmentString + String.space + "L3\n",
+            "L4\n",
+            "L5"
+        ]
+        let expected = "L1\nL2\n\nL3\nL4\nL5"
+
+        XCTAssertEqual(sample.joined().removingListMarker, expected)
+    }
 }
