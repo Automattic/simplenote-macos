@@ -202,7 +202,7 @@ class NSStringSimplenoteTests: XCTestCase {
         XCTAssertEqual(sample.insertingListMarkers.string, expected)
     }
 
-    /// Verifies that `insertingListMarkers` respects the leading on every 
+    /// Verifies that `insertingListMarkers` respects the leading on every
     ///
     func testInsertingListMarkersRespectsTheLeadingOfEachLine() {
         let sample: [String] = [
