@@ -70,6 +70,37 @@ extension NSString {
 //
 extension NSString {
 
+    /// Returns a new AttributedString instance, by inserting list markers at the beginning of each line
+    ///
+    var insertingListMarkers: NSAttributedString {
+        let output = NSMutableAttributedString()
+        let lines = components(separatedBy: .newlines) as [NSString]
+        let indexOfLastLine = lines.count - 1
+
+        for (index, line) in lines.enumerated() {
+            // Skip the last line if it is empty
+            if index > 0 && index == indexOfLastLine && line.length == 0 {
+                continue
+            }
+
+            // Insert: Prefix + Attachment + Space + Payload + (maybe) Newline
+            let prefix = line.leadingSpaces()
+            let payload = line.substring(from: prefix.utf16.count)
+            let attachment = SPTextAttachment(tintColor: .textListColor)
+
+            output.append(string: prefix)
+            output.append(attachment: attachment)
+            output.append(string: .space)
+            output.append(string: payload)
+
+            if index != indexOfLastLine {
+                output.append(string: .newline)
+            }
+        }
+
+        return output
+    }
+
     /// Returns a new String instance, by removing all of the List Markers in the receiver
     ///
     var removingListMarker: String {

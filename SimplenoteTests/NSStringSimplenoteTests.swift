@@ -175,19 +175,72 @@ class NSStringSimplenoteTests: XCTestCase {
         }
     }
 
+    /// Verifies that `insertingListMarkers` skips the last line, when empty
+    ///
+    func testInsertingListMarkersDoesNotAddMarkersToTheLastEmptyLine() {
+        let sample = "L1\n"
+        let expected: String = .attachmentString + .space + "L1" + .newline
+
+        XCTAssertEqual(sample.insertingListMarkers.string, expected)
+    }
+
+    /// Veifies that `insertingListMarkers` adds markers to every line
+    ///
+    func testInsertingListMarkersAddsMarkersToEveryLine() {
+        let sample = "L1\nL2"
+        let expected: String = .attachmentString + .space + "L1" + .newline + .attachmentString + .space + "L2"
+
+        XCTAssertEqual(sample.insertingListMarkers.string, expected)
+    }
+
+    /// Verifies that `insertingListMarkers` adds the List Marker to an empty string
+    ///
+    func testInsertingListMarkersAddsMarkerToSingleLinedEmptyString() {
+        let sample = ""
+        let expected: String = .attachmentString + .space
+
+        XCTAssertEqual(sample.insertingListMarkers.string, expected)
+    }
+
+    /// Verifies that `insertingListMarkers` respects the leading on every 
+    ///
+    func testInsertingListMarkersRespectsTheLeadingOfEachLine() {
+        let sample: [String] = [
+            .space + "L1" + .newline,
+            .tab + "L2" + .newline,
+            .space + .space + .newline,
+            "L3" + .newline,
+        ]
+        let expected: [String] = [
+            .space + .attachmentString + .space + "L1" + .newline,
+            .tab + .attachmentString + .space + "L2" + .newline,
+            .space + .space + .attachmentString + .space + .newline,
+            .attachmentString + .space + "L3" + .newline,
+        ]
+
+        XCTAssertEqual(sample.joined().insertingListMarkers.string, expected.joined())
+    }
+
     /// Verifies that `removingListMarker` returns a new String that does not contain our List Marker substrings (Attachment + Space).
     ///
     func testRemovingListMarkerEffectivelyNukesAttachmentAndWhitespacesInTheReceiver() {
-        let sample = [
-            String.attachmentString + String.space + "L1\n",
-            String.attachmentString + String.space + "L2\n",
+        let sample: [String] = [
+            .attachmentString + .space + "L1" + .newline,
+            .attachmentString + .space + "L2" + .newline,
             "\n",
-            String.attachmentString + String.space + "L3\n",
+            .attachmentString + .space + "L3" + .newline,
             "L4\n",
             "L5"
         ]
         let expected = "L1\nL2\n\nL3\nL4\nL5"
 
         XCTAssertEqual(sample.joined().removingListMarker, expected)
+    }
+
+    /// Verifies that `removingListMarker` does nothing to strings that do not contain attachments
+    ///
+    func testRemovingListMarkerDoesNothingToStringsThatDontContainMarkers() {
+        let sample = "L1\nL2\n\nL3\nL4\nL5"
+        XCTAssertEqual(sample.removingListMarker, sample)
     }
 }
