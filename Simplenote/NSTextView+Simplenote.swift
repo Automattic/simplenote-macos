@@ -107,11 +107,17 @@ extension NSTextView {
 //
 extension NSTextView {
 
+    /// Inserts (or) Removes List Markers at the Selected Range
     ///
     @objc
     func toggleListMarkersAtSelectedRange() {
-    }
+        let (lineRange, lineString) = lineAtSelectedRange()
 
-    func removeListMarker(from text: String, in range: NSRange) {
+        guard lineString.containAttachment == false else {
+            insertText(lineString.removingListMarker, replacementRange: lineRange)
+            return
+        }
+
+        insertText(lineString.insertingListMarkers, replacementRange: lineRange)
     }
 }
