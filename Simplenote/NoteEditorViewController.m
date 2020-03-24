@@ -15,8 +15,6 @@
 #import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
-#import "NSString+Bullets.h"
-#import "NSTextView+Simplenote.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "SPToolbarView.h"
@@ -440,11 +438,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Text Delegates
 
-- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)selector {
+- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)selector
+{
     if (selector == @selector(insertNewline:)) {
-        return [_noteEditor applyAutoBulletsAfterReturnPressed];
-    } else if (selector == @selector(insertTab:)) {
-        return [_noteEditor applyAutoBulletsAfterTabPressed];
+        return [self.noteEditor processNewlineInsertion];
+    }
+
+    if (selector == @selector(insertTab:)) {
+        return [self.noteEditor processTabInsertion];
     }
     
     return NO;
