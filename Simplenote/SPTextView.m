@@ -55,15 +55,13 @@
     return lroundf(adjustedInset) + kMinEditorPadding;
 }
 
-- (void)processChecklists
+- (void)didChangeText
 {
+    [super didChangeText];
+
+    // TODO: FIX
     NSColor *checklistColor = [NSColor textListColor];
     [self.textStorage processChecklistsWithColor:checklistColor];
-}
-
-- (NSString *)plainTextContent
-{
-    return [NSAttributedStringToMarkdownConverter convertWithString:self.attributedString];
 }
 
 - (BOOL)checkForChecklistClick:(NSEvent *)event
