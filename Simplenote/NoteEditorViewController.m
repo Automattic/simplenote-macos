@@ -21,6 +21,7 @@
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
+#import "NSMutableAttributedString+Styling.h"
 
 #import "Simplenote-Swift.h"
 
@@ -62,6 +63,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
 @property (nonatomic, strong) Storage               *storage;
+@property (nonatomic, strong) TextViewInputHandler  *inputHandler;
 
 @property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
 @property (nonatomic, assign) BOOL                  viewingVersions;
@@ -115,6 +117,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	for (NSString *key in preferences.allKeys) {
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
+
+    // Realtime Markdown Support
+    self.inputHandler = [TextViewInputHandler new];
     
     int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
     [self updateLineLengthMenuForPosition:lineLengthPosition];
@@ -452,6 +457,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     return NO;
+}
+
+- (BOOL)textView:(NSTextView *)textView shouldChangeTextInRanges:(NSArray<NSValue *> *)affectedRanges replacementStrings:(NSArray<NSString *> *)replacementStrings
+{
+    return [self.inputHandler textView:textView shouldChangeTextInRanges:affectedRanges strings:replacementStrings];
 }
 
 - (void)textDidChange:(NSNotification *)notification
