@@ -26,7 +26,7 @@ extension NSTextView {
 }
 
 
-// MARK: - Processing Special Characters
+// MARK: - I/O
 //
 extension NSTextView {
 
@@ -41,6 +41,13 @@ extension NSTextView {
         string = content
         textStorage?.processChecklists(with: .textListColor)
         undoManager?.removeAllActions()
+    }
+
+    /// Returns the content represented as Plain Text
+    ///
+    @objc
+    func plainTextContent() -> String {
+        return NSAttributedStringToMarkdownConverter.convert(string: attributedString())
     }
 }
 
