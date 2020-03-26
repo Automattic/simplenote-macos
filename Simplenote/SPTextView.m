@@ -55,15 +55,6 @@
     return lroundf(adjustedInset) + kMinEditorPadding;
 }
 
-- (void)didChangeText
-{
-    [super didChangeText];
-
-    // FIXME: Realtime injection of `- [ ]` will trigger, still, an exception
-    NSColor *checklistColor = [NSColor textListColor];
-    [self.textStorage processChecklistsWithColor:checklistColor];
-}
-
 - (BOOL)checkForChecklistClick:(NSEvent *)event
 {
     // Location of the tap in text-container coordinates
