@@ -59,7 +59,7 @@
 {
     [super didChangeText];
 
-    // TODO: FIX
+    // FIXME: Realtime injection of `- [ ]` will trigger, still, an exception
     NSColor *checklistColor = [NSColor textListColor];
     [self.textStorage processChecklistsWithColor:checklistColor];
 }
