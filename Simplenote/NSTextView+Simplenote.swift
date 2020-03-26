@@ -30,6 +30,25 @@ extension NSTextView {
 //
 extension NSTextView {
 
+    /// Displays the specified Note's Contents
+    ///
+    ///     -   List Markers will be replaced by Text Attachments
+    ///     -   Our UndoManager will be reset right after processing the Lists. Otherwise CTRL + Z would
+    ///         result in Attachments replacee by `-[]`!
+    ///
+    @objc
+    func displayNote(content: String) {
+        string = content
+        textStorage?.processChecklists(with: .textListColor)
+        undoManager?.removeAllActions()
+    }
+}
+
+
+// MARK: - Processing Special Characters
+//
+extension NSTextView {
+
     /// Indents the List at the selected range (if any)
     ///
     @objc
