@@ -17,7 +17,7 @@ class NSAttributedStringToMarkdownConverter: NSObject {
     /// Returns the NSString representation of a given NSAttributedString.
     ///
     @objc
-    static func convert(string: NSAttributedString) -> NSString {
+    static func convert(string: NSAttributedString) -> String {
         let adjusted = NSMutableAttributedString(attributedString: string)
         adjusted.enumerateAttribute(.attachment, in: adjusted.fullRange, options: .reverse) { (value, range, _) in
             guard let attachment = value as? SPTextAttachment else {
@@ -28,6 +28,6 @@ class NSAttributedStringToMarkdownConverter: NSObject {
             adjusted.replaceCharacters(in: range, with: markdown)
         }
 
-        return adjusted.string as NSString
+        return adjusted.string
     }
 }

@@ -21,7 +21,7 @@ class NSAttributedStringToMarkdownConverterTests: XCTestCase {
         let document = documentWithoutAttachments()
         let output = NSAttributedStringToMarkdownConverter.convert(string: document)
 
-        XCTAssertEqual(output, document.string as NSString)
+        XCTAssertEqual(output, document.string)
     }
 }
 
@@ -30,7 +30,7 @@ class NSAttributedStringToMarkdownConverterTests: XCTestCase {
 //
 private extension NSAttributedStringToMarkdownConverterTests {
 
-    func documentWithAttachments(lines: Int = 100) -> (document: NSAttributedString, markdown: NSString) {
+    func documentWithAttachments(lines: Int = 100) -> (document: NSAttributedString, markdown: String) {
         let document = NSMutableAttributedString()
         var markdown = String()
 
@@ -48,7 +48,7 @@ private extension NSAttributedStringToMarkdownConverterTests {
             markdown += prefix + payload
         }
 
-        return (document, markdown as NSString)
+        return (document, markdown)
     }
 
     func documentWithoutAttachments() -> NSAttributedString {
