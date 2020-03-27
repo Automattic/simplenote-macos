@@ -5,18 +5,14 @@
 
 @implementation NSMutableAttributedString (Styling)
 
-const NSInteger RegexExpectedMatchGroups  = 3;
-const NSInteger RegexGroupIndexContent    = 2;
-
 - (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color
 {
     NSMutableArray *attachments = [NSMutableArray new];
     if (self.length == 0) {
         return attachments;
     }
-    
-    NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:kChecklistRegexPattern options:NSRegularExpressionAnchorsMatchLines error:&error];
+
+    NSRegularExpression *regex = [NSRegularExpression regexForChecklists];
 
     NSString *noteString = self.string.copy;
     NSArray *matches = [[[regex matchesInString:noteString
@@ -28,11 +24,11 @@ const NSInteger RegexGroupIndexContent    = 2;
     }
 
     for (NSTextCheckingResult *match in matches) {
-        if (match.numberOfRanges < RegexExpectedMatchGroups) {
+        if (NSRegularExpression.regexForChecklistsExpectedNumberOfRanges != match.numberOfRanges) {
             continue;
         }
 
-        NSRange checkboxRange = [match rangeAtIndex:RegexGroupIndexContent];
+        NSRange checkboxRange = [match rangeAtIndex:NSRegularExpression.regexForChecklistsMarkerRangeIndex];
         NSString *markdownTag = [noteString substringWithRange:match.range];
         BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
         
