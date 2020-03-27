@@ -6,71 +6,71 @@ import XCTest
 //
 class NSRegularExpressionSimplenoteTests: XCTestCase {
 
-    /// Verifies that `NSRegularExpression.regexForChecklists` will not match checklists that are in the middle of a string
+    /// Verifies that `NSRegularExpression.regexForListMarkers` will not match checklists that are in the middle of a string
     ///
-    func testRegexForChecklistsWillNotMatchChecklistsLocatedAtTheMiddleOfTheString() {
+    func testRegexForListMarkersWillNotMatchChecklistsLocatedAtTheMiddleOfTheString() {
         let string = "This is a badly formed todo - [ ] Buy avocados - []"
-        let regex = NSRegularExpression.regexForChecklists
+        let regex = NSRegularExpression.regexForListMarkers
         let matches = regex.matches(in: string, options: [], range: string.fullRange)
 
         XCTAssertTrue(matches.isEmpty)
     }
 
-    /// Verifies that `NSRegularExpression.regexForChecklists` matches multiple spacing prefixes
+    /// Verifies that `NSRegularExpression.regexForListMarkers` matches multiple spacing prefixes
     ///
-    func testRegexForChecklistsProperlyMatchesMultipleWhitespacePrefixes() {
+    func testRegexForListMarkersProperlyMatchesMultipleWhitespacePrefixes() {
         let string = "           - [ ] Buy avocados - [ ]"
-        let regex = NSRegularExpression.regexForChecklists
+        let regex = NSRegularExpression.regexForListMarkers
         let matches = regex.matches(in: string, options: [], range: string.fullRange)
 
         XCTAssertEqual(matches.count, 1)
     }
 
-    /// Verifies that `NSRegularExpression.regexForChecklists` only matches corretly formed strings
+    /// Verifies that `NSRegularExpression.regexForListMarkers` only matches corretly formed strings
     ///
-    func testRegexForChecklistsMatchProperlyFormattedChecklists() {
+    func testRegexForListMarkersMatchProperlyFormattedChecklists() {
         let string = "ToDo\n\n- [ ] Buy avocados\n- [ ] Ship it\n- [x ] Malformed!\n- [x] Correct."
-        let regex = NSRegularExpression.regexForChecklists
+        let regex = NSRegularExpression.regexForListMarkers
         let matches = regex.matches(in: string, options: [], range: string.fullRange)
 
         XCTAssertEqual(matches.count, 3)
     }
 
-    /// Verifies that `NSRegularExpression.regexForChecklists` will not match malformed strings
+    /// Verifies that `NSRegularExpression.regexForListMarkers` will not match malformed strings
     ///
-    func testRegexForChecklistsWillNotMatchMalformedChecklists() {
+    func testRegexForListMarkersWillNotMatchMalformedChecklists() {
         let string = "- [x ] Malformed!"
-        let regex = NSRegularExpression.regexForChecklists
+        let regex = NSRegularExpression.regexForListMarkers
         let matches = regex.matches(in: string, options: [], range: string.fullRange)
 
         XCTAssertTrue(matches.isEmpty)
     }
 
-    /// Verifies that `NSRegularExpression.regexForChecklists` will match checklists with no spaces between brackets
+    /// Verifies that `NSRegularExpression.regexForListMarkers` will match checklists with no spaces between brackets
     ///
-    func testRegexForChecklistsWillMatchChecklistsWithNoInternalSpaces() {
+    func testRegexForListMarkersWillMatchChecklistsWithNoInternalSpaces() {
         let string = "- [] Item"
-        let regex = NSRegularExpression.regexForChecklists
+        let regex = NSRegularExpression.regexForListMarkers
         let matches = regex.matches(in: string, options: [], range: string.fullRange)
 
         XCTAssertEqual(matches.count, 1)
     }
 
-    /// Verifies that `NSRegularExpression.regexForChecklists` always produces the expected number of ranges
+    /// Verifies that `NSRegularExpression.regexForListMarkers` always produces the expected number of ranges
     ///
-    func testRegexForChecklistsAlwaysProduceTwoRanges() {
+    func testRegexForListMarkersAlwaysProduceTwoRanges() {
         let samples = [
             (text: "           - [ ] Buy avocados - [ ]", expected: 1),
             (text: "ToDo\n\n- [ ] Buy avocados\n- [ ] Ship it\n- [x ] Malformed!\n- [x] Correct.", expected: 3),
             (text: "- [] Item", expected: 1)
         ]
 
-        let regex = NSRegularExpression.regexForChecklists
+        let regex = NSRegularExpression.regexForListMarkers
         for (sample, expected) in samples {
             let matches = regex.matches(in: sample, options: [], range: sample.fullRange)
             XCTAssertEqual(matches.count, expected)
 
-            for match in matches where match.numberOfRanges != NSRegularExpression.regexForChecklistsExpectedNumberOfRanges {
+            for match in matches where match.numberOfRanges != NSRegularExpression.regexForListMarkersExpectedNumberOfRanges {
                 XCTFail()
             }
         }

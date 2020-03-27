@@ -15,20 +15,21 @@ extension NSRegularExpression {
     /// Matches Checklists at the beginning of each line
     ///
     @objc
-    static let regexForChecklists: NSRegularExpression = {
+    static let regexForListMarkers: NSRegularExpression = {
         try! NSRegularExpression(pattern: "^\\s*(-[ \t]+\\[[xX\\s]?\\])", options: .anchorsMatchLines)
     }()
 
-    /// Both our Checklist regexes look like this: `"^\\s*(EXPRESSION)"`
-    /// This will produce two resulting NSRange(s): a top level one, including the full match, and a "capture group"
-    /// By requesting the Range for `EXPRESSION` we'd be able to track **exactly** the location of our list marker `- [ ]` (disregarding, thus, the leading space).
+    /// `regexForListMarkers` looks like this: `"^\\s*(EXPRESSION)"`
+    /// This produces two resulting NSRange(s): a top level one, including the full match, and a "capture group".
+    /// By requesting the Range for `EXPRESSION` we'd be able to track **exactly** the location of our list marker `- [ ]`
+    /// (disregarding, thus, the leading space).
     ///
     @objc
-    static let regexForChecklistsExpectedNumberOfRanges = 2
+    static let regexForListMarkersExpectedNumberOfRanges = 2
 
-    /// Checklist's Match Marker Range
+    /// ListMarker RegEx Replacement Range
     ///
     @objc
-    static let regexForChecklistsMarkerRangeIndex = 1
+    static let regexForListMarkersReplacementRangeIndex = 1
 
 }

@@ -12,7 +12,7 @@
         return attachments;
     }
 
-    NSRegularExpression *regex = [NSRegularExpression regexForChecklists];
+    NSRegularExpression *regex = [NSRegularExpression regexForListMarkers];
 
     NSString *noteString = self.string.copy;
     NSArray *matches = [[[regex matchesInString:noteString
@@ -24,11 +24,11 @@
     }
 
     for (NSTextCheckingResult *match in matches) {
-        if (NSRegularExpression.regexForChecklistsExpectedNumberOfRanges != match.numberOfRanges) {
+        if (NSRegularExpression.regexForListMarkersExpectedNumberOfRanges != match.numberOfRanges) {
             continue;
         }
 
-        NSRange checkboxRange = [match rangeAtIndex:NSRegularExpression.regexForChecklistsMarkerRangeIndex];
+        NSRange checkboxRange = [match rangeAtIndex:NSRegularExpression.regexForListMarkersReplacementRangeIndex];
         NSString *markdownTag = [noteString substringWithRange:match.range];
         BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
         
