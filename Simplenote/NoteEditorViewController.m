@@ -271,7 +271,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     self.note = nil;
     self.selectedNotes = notes;
-    [self.noteEditor setString:@""];
+    [self.noteEditor displayNoteWithContent:@""];
     [self.noteEditor setEditable:NO];
     [self.noteEditor setSelectable:NO];
     [tagTokenField setEditable:NO];
