@@ -7,7 +7,6 @@ extension NSRegularExpression {
 
     /// Matches Leading Whitespaces
     ///
-    @objc
     static let regexForLeadingSpaces: NSRegularExpression = {
         try! NSRegularExpression(pattern: "^\\s+", options: [])
     }()
