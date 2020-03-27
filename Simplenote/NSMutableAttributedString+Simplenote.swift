@@ -42,7 +42,6 @@ extension NSMutableAttributedString {
 
     /// Replaces the *FULL* contents of the receiver with the specified AttributedString. We also register the inverse OP in the UndoManager
     ///
-    @objc(replaceCharactersWithAttrString:undoManager:)
     func replaceCharacters(with attrString: NSAttributedString, undoManager: UndoManager) {
         let undoString = attributedSubstring(from: fullRange)
         let undoRange = attrString.fullRange
