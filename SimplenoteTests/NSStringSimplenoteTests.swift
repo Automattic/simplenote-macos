@@ -26,7 +26,7 @@ class NSStringSimplenoteTests: XCTestCase {
         ]
 
         for (sample, leading) in samples {
-            XCTAssertEqual(sample.leadingSpaces(), leading)
+            XCTAssertEqual(sample.leadingSpaces, leading)
         }
     }
 
@@ -221,9 +221,9 @@ class NSStringSimplenoteTests: XCTestCase {
         XCTAssertEqual(sample.joined().insertingListMarkers.string, expected.joined())
     }
 
-    /// Verifies that `removingListMarker` returns a new String that does not contain our List Marker substrings (Attachment + Space).
+    /// Verifies that `removingListMarkerss` returns a new String that does not contain our List Marker substrings (Attachment + Space).
     ///
-    func testRemovingListMarkerEffectivelyNukesAttachmentAndWhitespacesInTheReceiver() {
+    func testRemovingListMarkersEffectivelyNukesAttachmentAndWhitespacesInTheReceiver() {
         let sample: [String] = [
             .attachmentString + .space + "L1" + .newline,
             .attachmentString + .space + "L2" + .newline,
@@ -234,13 +234,25 @@ class NSStringSimplenoteTests: XCTestCase {
         ]
         let expected = "L1\nL2\n\nL3\nL4\nL5"
 
-        XCTAssertEqual(sample.joined().removingListMarker, expected)
+        XCTAssertEqual(sample.joined().removingListMarkers, expected)
     }
 
-    /// Verifies that `removingListMarker` does nothing to strings that do not contain attachments
+    /// Verifies that `removingListMarkerss` returns a new String that does not contain our List Marker substrings (Attachment).
     ///
-    func testRemovingListMarkerDoesNothingToStringsThatDontContainMarkers() {
+    func testRemovingListMarkersEffectivelyNukesAttachmentWithNoTrailingSpacesInTheReceiver() {
+        let sample: [String] = [
+            .attachmentString + "L1" + .newline,
+            .attachmentString + "L2" + .newline,
+        ]
+        let expected = "L1\nL2\n"
+
+        XCTAssertEqual(sample.joined().removingListMarkers, expected)
+    }
+
+    /// Verifies that `removingListMarkers` does nothing to strings that do not contain attachments
+    ///
+    func testRemovingListMarkersDoesNothingToStringsThatDontContainMarkers() {
         let sample = "L1\nL2\n\nL3\nL4\nL5"
-        XCTAssertEqual(sample.removingListMarker, sample)
+        XCTAssertEqual(sample.removingListMarkers, sample)
     }
 }
