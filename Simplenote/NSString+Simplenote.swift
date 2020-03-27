@@ -14,15 +14,15 @@ extension NSString {
 
     /// Indicates if the receiver contains an Attachment
     ///
-    var containAttachment: Bool {
-        range(of: String.attachmentString).location != NSNotFound
+    var containsAttachment: Bool {
+        range(of: .attachmentString).location != NSNotFound
     }
 
     /// Returns the Substring containing the receiver's leading spaces
     ///
     /// - Note: This includes both newlines and tabs
     ///
-    func leadingSpaces() -> String {
+    var leadingSpaces: String {
         let regex = NSRegularExpression.regexForLeadingSpaces
         guard let match = regex.firstMatch(in: self as String, options: [], range: fullRange) else {
             return String()
@@ -92,7 +92,7 @@ extension NSString {
             }
 
             // Insert: Prefix + Attachment + Space + Payload
-            let leading = line.leadingSpaces()
+            let leading = line.leadingSpaces
             let payload = line.substring(from: leading.utf16.count)
             let attachment = SPTextAttachment(tintColor: .textListColor)
 
@@ -109,10 +109,11 @@ extension NSString {
         return output
     }
 
-    /// Returns a new String instance, by removing all of the List Markers in the receiver
+    /// Returns a new String instance, by removing all of the List Markers (with or without trailing spaces) in the receiver
     ///
-    var removingListMarker: String {
+    var removingListMarkers: String {
         return replacingOccurrences(of: .attachmentString + .space, with: String())
+                .replacingOccurrences(of: String.attachmentString, with: String())
     }
 }
 
