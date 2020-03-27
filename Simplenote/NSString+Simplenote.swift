@@ -14,7 +14,7 @@ extension NSString {
 
     /// Indicates if the receiver contains an Attachment
     ///
-    var containAttachment: Bool {
+    var containsAttachment: Bool {
         range(of: String.attachmentString).location != NSNotFound
     }
 
