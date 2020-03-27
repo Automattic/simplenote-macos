@@ -118,6 +118,6 @@ extension NSTextView {
             return
         }
 
-        insertText(lineString.removingListMarker, replacementRange: lineRange)
+        insertText(lineString.removingListMarkers, replacementRange: lineRange)
     }
 }

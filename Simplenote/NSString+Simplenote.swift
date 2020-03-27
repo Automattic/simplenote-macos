@@ -109,10 +109,11 @@ extension NSString {
         return output
     }
 
-    /// Returns a new String instance, by removing all of the List Markers in the receiver
+    /// Returns a new String instance, by removing all of the List Markers (with or without trailing spaces) in the receiver
     ///
-    var removingListMarker: String {
+    var removingListMarkers: String {
         return replacingOccurrences(of: .attachmentString + .space, with: String())
+                .replacingOccurrences(of: String.attachmentString, with: String())
     }
 }
 
