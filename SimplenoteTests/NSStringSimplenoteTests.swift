@@ -26,7 +26,7 @@ class NSStringSimplenoteTests: XCTestCase {
         ]
 
         for (sample, leading) in samples {
-            XCTAssertEqual(sample.leadingSpaces(), leading)
+            XCTAssertEqual(sample.leadingSpaces, leading)
         }
     }
 
