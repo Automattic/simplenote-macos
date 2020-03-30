@@ -5,38 +5,40 @@ import Foundation
 //
 class TextViewInputHandler: NSObject {
 
-    /// Indicates if the TextView should perform the specified change (Ranges, Strings), or not:
+    /// Handles TextView's `shouldChangeTextInRanges:strings:` Delegate API:
     ///
     /// -   Note:
-    ///    Whenever the delta results in at least one new TextAttachment (because List Markers were added) this Handler will return *false* and
-    ///    will proceed to replacing such substrings with proper SPTextAttachments.
+    ///    Whenever all of the input parameters are valid, this method will always return *false* and will proceed with performing the Replacement OP.
+    ///
+    ///     A.  Both Strings and Ranges arrays must not be empty, and must have the exact same number of entries
+    ///     B.  TextView's TextStorage and UndoManager are not nil
     ///
     /// -   Important:
-    ///    Reason to have this mechanism is:
+    ///    Reason to have this mechanism is: whenever any of the Text Insertion OP(s) results in a (new) List Item to be rendered, we want to group
+    ///    the "Replacement" and "Process Checklists" operations as a single transaction.
     ///
-    ///     A.  Type `- [ `: the substring should show up without further issues
-    ///     B.  If the user inserts `]` we'll prevent this character from being visible. Immediately we'll insert a TextAttachment with a List Marker
-    ///     C. Pressing `CTRL + Z` should replace the Text Attachment with the `- [ ` substring again
-    ///
-    ///     It really boils down to keeping the UndoManager's stack in good shape.
+    ///    Pressing CMD + Z is expected to undo *both*, otherwise we'd risk UndoManager integrity issues.
     ///
     @objc
     func textView(_ textView: NSTextView, shouldChangeTextInRanges ranges: [NSValue], strings: [String]?) -> Bool {
-        guard let strings = strings, let storage = textView.textStorage, let undoManager = textView.undoManager else {
-            return true
+        guard let strings = strings,
+            !ranges.isEmpty,
+            ranges.count == strings.count,
+            let storage = textView.textStorage,
+            let undoManager = textView.undoManager
+            else {
+                return true
         }
 
-        let replacementString = NSMutableAttributedString(attributedString: storage)
-        guard replacementString.replaceCharacters(in: ranges, with: strings) else {
-            return true
+        undoManager.beginUndoGrouping()
+
+        for (range, string) in zip(ranges, strings).reversed() {
+            storage.replaceCharacters(in: range.rangeValue, string: string, undoManager: undoManager)
         }
 
-        let attachments = replacementString.processChecklists(with: .textListColor)
-        guard !attachments.isEmpty else {
-            return true
-        }
+        storage.processChecklists(with: .textListColor, undoManager: undoManager)
 
-        storage.replaceCharacters(with: replacementString, undoManager: undoManager)
+        undoManager.endUndoGrouping()
         textView.didChangeText()
 
         return false

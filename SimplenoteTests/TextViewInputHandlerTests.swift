@@ -47,22 +47,20 @@ class TextViewInputHandlerTests: XCTestCase {
         XCTAssertTrue(output)
     }
 
-    /// Verifies that `shouldChangeTextInRanges` returns `true` whenever the resulting text does not require a new TextAttachment
+    /// Verifies that `shouldChangeTextInRanges` returns `true` whenever both, Ranges and Strings, are empty
     ///
-    func testShouldChangeTextReturnsTrueWheneverTheResultingTextDoesNotRequireNewAttachments() {
-        let text = "Lorem Ipsum Text"
-
-        let range = NSRange(location: .zero, length: .zero)
-        let rangeAsValue = NSValue(range: range)
-
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [rangeAsValue], strings: [text])
+    func testShouldChangeTextReturnsFalseWhenBothRangesAndStringsAreEmpty() {
+        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [], strings: [])
         XCTAssertTrue(output)
     }
 
-    /// Verifies that `shouldChangeTextInRanges` returns `false` when the resulting string (after the proposed edition) contains at least
-    /// one Markdown List Item
+    /// Verifies that `shouldChangeTextInRanges` returns `false` when:
+    /// 
+    ///     1.  Ranges and Strings arrays are not empty, and their number of elements match
+    ///     2.  UndoManager is not nil
+    ///     3.  TextStorage is also not nil
     ///
-    func testShouldChangeTextReturnsFalseAndInsertsTextAttachmentsWhenResultingStringContainsListMarkers() {
+    func testShouldChangeTextReturnsFalseAndInsertsTextAttachmentsWhenInputParametersAreValid() {
         let initialText = "- [ "
         let replacementText = "]"
         let expectedText = initialText + replacementText
