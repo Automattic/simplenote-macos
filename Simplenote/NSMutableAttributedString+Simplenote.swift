@@ -55,7 +55,7 @@ extension NSMutableAttributedString {
 
     /// Replaces the specified Range with a given AttributedString, and registers the inverse OP in the specified UndoManager
     ///
-    @objc
+    @objc(replaceCharactersInRange:withAttributedString:undoManager:)
     func replaceCharacters(in range: NSRange, attrString: NSAttributedString, undoManager: UndoManager) {
         let undoString = attributedSubstring(from: range)
         let undoRange = NSRange(location: range.location, length: attrString.length)

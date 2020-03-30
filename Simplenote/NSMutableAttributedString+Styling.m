@@ -7,6 +7,11 @@
 
 - (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color
 {
+    return [self processChecklistsWithColor:color undoManager:nil];
+}
+
+- (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color undoManager:(NSUndoManager *)undoManager
+{
     NSMutableArray *attachments = [NSMutableArray new];
     if (self.length == 0) {
         return attachments;
@@ -38,7 +43,12 @@
         [attachments addObject:attachment];
 
         NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
-        [self replaceCharactersInRange:checkboxRange withAttributedString:attachmentString];
+
+        if (undoManager) {
+            [self replaceCharactersInRange:checkboxRange withAttributedString:attachmentString undoManager:undoManager];
+        } else {
+            [self replaceCharactersInRange:checkboxRange withAttributedString:attachmentString];
+        }
     }
 
     return attachments;

@@ -8,6 +8,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color;
 
+- (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color
+                                                undoManager:(nullable NSUndoManager *)undoManager;
+
 @end
 
 NS_ASSUME_NONNULL_END
