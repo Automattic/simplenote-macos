@@ -221,7 +221,7 @@ class NSStringSimplenoteTests: XCTestCase {
         XCTAssertEqual(sample.joined().insertingListMarkers.string, expected.joined())
     }
 
-    /// Verifies that `removingListMarkerss` returns a new String that does not contain our List Marker substrings (Attachment + Space).
+    /// Verifies that `removingListMarkers` returns a new String that does not contain our List Marker substrings (Attachment + Space).
     ///
     func testRemovingListMarkersEffectivelyNukesAttachmentAndWhitespacesInTheReceiver() {
         let sample: [String] = [
@@ -237,7 +237,7 @@ class NSStringSimplenoteTests: XCTestCase {
         XCTAssertEqual(sample.joined().removingListMarkers, expected)
     }
 
-    /// Verifies that `removingListMarkerss` returns a new String that does not contain our List Marker substrings (Attachment).
+    /// Verifies that `removingListMarkers` returns a new String that does not contain our List Marker substrings (Attachment).
     ///
     func testRemovingListMarkersEffectivelyNukesAttachmentWithNoTrailingSpacesInTheReceiver() {
         let sample: [String] = [
