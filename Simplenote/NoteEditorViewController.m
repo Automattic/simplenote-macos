@@ -21,7 +21,6 @@
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
-#import "NSMutableAttributedString+Styling.h"
 
 #import "Simplenote-Swift.h"
 
