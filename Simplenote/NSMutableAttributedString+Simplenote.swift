@@ -36,34 +36,34 @@ extension NSMutableAttributedString {
 }
 
 
-// MARK: - Text Replacement
+// MARK: - Replacement + Undo Support
 //
 extension NSMutableAttributedString {
 
-    /// Replaces the *FULL* contents of the receiver with the specified AttributedString. We also register the inverse OP in the UndoManager
+    /// Replaces the specified Range with a given String, and registers the inverse OP in the specified UndoManager
     ///
-    func replaceCharacters(with attrString: NSAttributedString, undoManager: UndoManager) {
-        let undoString = attributedSubstring(from: fullRange)
-        let undoRange = attrString.fullRange
+    func replaceCharacters(in range: NSRange, string: String, undoManager: UndoManager) {
+        let undoString = attributedSubstring(from: range)
+        let undoRange = NSRange(location: range.location, length: string.utf16.count)
 
         undoManager.registerUndo(withTarget: self) { _ in
             self.replaceCharacters(in: undoRange, with: undoString)
         }
 
-        replaceCharacters(in: fullRange, with: attrString)
+        replaceCharacters(in: range, with: string)
     }
 
-    /// Applies the changes encapsualted in a specified array of Ranges and Strings
+    /// Replaces the specified Range with a given AttributedString, and registers the inverse OP in the specified UndoManager
     ///
-    func replaceCharacters(in ranges: [NSValue], with strings: [String]) -> Bool {
-        guard ranges.count == strings.count else {
-            return false
+    @objc
+    func replaceCharacters(in range: NSRange, attrString: NSAttributedString, undoManager: UndoManager) {
+        let undoString = attributedSubstring(from: range)
+        let undoRange = NSRange(location: range.location, length: attrString.length)
+
+        undoManager.registerUndo(withTarget: self) { _ in
+            self.replaceCharacters(in: undoRange, with: undoString)
         }
 
-        for (value, string) in zip(ranges, strings).reversed() {
-            replaceCharacters(in: value.rangeValue, with: string)
-        }
-
-        return true
+        replaceCharacters(in: range, with: attrString)
     }
 }
