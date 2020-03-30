@@ -55,7 +55,7 @@ class TextViewInputHandlerTests: XCTestCase {
     }
 
     /// Verifies that `shouldChangeTextInRanges` returns `false` when:
-    /// 
+    ///
     ///     1.  Ranges and Strings arrays are not empty, and their number of elements match
     ///     2.  UndoManager is not nil
     ///     3.  TextStorage is also not nil
@@ -74,6 +74,37 @@ class TextViewInputHandlerTests: XCTestCase {
         XCTAssertFalse(output)
         XCTAssertTrue(textView.attributedString().containsAttachments)
         XCTAssertEqual(textView.plainTextContent(), expectedText)
+    }
+
+    /// Verifies that `shouldChangeTextInRanges` performs the requested Replacement OP in the TextView, and correctly sets the Selected Range
+    /// right after the newly inserted text.
+    ///
+    func testShouldChangeTextPerformsReplacementOPAndSetsExpectedRangeAfterInsertedContent() {
+        // Insert a string in between
+        let initialHead = "Heading\n\n"
+        let initialTail = "\nTail"
+
+        let replaceText = "- [ ] L1\n- [ ] L2\nLINE\n"
+        let replaceRange = NSRange(location: initialHead.utf16.count, length: .zero)
+        let replaceRangeAsValue = NSValue(range: replaceRange)
+
+        let initialText = initialHead + initialTail
+        let expectedText = initialHead + replaceText + initialTail
+
+        // Account for "Processed" List Items: the expected Selected Range should be shorter than the actual string length
+        let replacementLengthDelta = "- [ ] ".utf16.count - String.richListItem.utf16.count
+        let expectedLocation = initialHead.utf16.count + replaceText.utf16.count - replacementLengthDelta * 2
+        let expectedSelectedRange = NSRange(location: expectedLocation, length: .zero)
+
+        // And finally.. perform the actual OPs
+        textView.displayNote(content: initialText)
+        textView.setSelectedRange(replaceRange)
+
+        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [replaceRangeAsValue], strings: [replaceText])
+
+        XCTAssertFalse(output)
+        XCTAssertEqual(textView.plainTextContent(), expectedText)
+        XCTAssertEqual(textView.selectedRange(), expectedSelectedRange)
     }
 
     /// Verifies that `shouldChangeTextInRanges` performs an *undoable* operation whenever the resulting string contains at least one

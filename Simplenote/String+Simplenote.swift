@@ -25,6 +25,10 @@ extension String {
     ///
     static let listMarkers = [ attachmentString, "*", "-", "+", "•" ]
 
+    /// Rich List Item: Represented with an Attachment + Space
+    ///
+    static let richListItem = .attachmentString + .space
+
     /// Returns the receiver casted as a Foundation String. For convenience
     ///
     var asNSString: NSString {
