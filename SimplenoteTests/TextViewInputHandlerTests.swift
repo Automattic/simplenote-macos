@@ -40,10 +40,8 @@ class TextViewInputHandlerTests: XCTestCase {
     /// Verifies that `shouldChangeTextInRanges` returns `true` whenever the two input arrays don't have the same size
     ///
     func testShouldChangeTextReturnsTrueWheneverInputArraysDoNotMatch() {
-        let range = NSRange(location: .zero, length: .zero)
-        let rangeAsValue = NSValue(range: range)
-
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [rangeAsValue], strings: [])
+        let range = NSValue(range: .zero)
+        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [range], strings: [])
         XCTAssertTrue(output)
     }
 
@@ -133,13 +131,12 @@ class TextViewInputHandlerTests: XCTestCase {
     ///
     func testShouldChangeTextReplacementOperationPostsOneTextDidChangeNotification() {
         let replacementText = "- [ ]"
-        let replacementRange = NSRange(location: .zero, length: .zero)
-        let replacementAsValue = NSValue(range: replacementRange)
+        let replacementRange = NSValue(range: .zero)
 
         textView.displayNote(content: replacementText)
         XCTAssertTrue(delegate.receivedTextDidChangeNotifications.isEmpty)
 
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [replacementAsValue], strings: [replacementText])
+        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [replacementRange], strings: [replacementText])
         XCTAssertFalse(output)
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
     }
