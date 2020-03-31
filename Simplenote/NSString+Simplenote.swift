@@ -106,7 +106,7 @@ extension NSString {
     /// Returns a new AttributedString instance, by removing all of the List Markers (with or without trailing spaces) in the receiver
     ///
     var removingListMarkers: NSAttributedString {
-        let output = replacingOccurrences(of: .attachmentString + .space, with: String())
+        let output = replacingOccurrences(of: .richListMarker, with: String())
                         .replacingOccurrences(of: String.attachmentString, with: String())
 
         return NSAttributedString(string: output)
