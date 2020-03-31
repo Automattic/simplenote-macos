@@ -92,7 +92,7 @@ class TextViewInputHandlerTests: XCTestCase {
         let expectedText = initialHead + replaceText + initialTail
 
         // Account for "Processed" List Items: the expected Selected Range should be shorter than the actual string length
-        let replacementLengthDelta = "- [ ] ".utf16.count - String.richListItem.utf16.count
+        let replacementLengthDelta = "- [ ] ".utf16.count - String.richListMarker.utf16.count
         let expectedLocation = initialHead.utf16.count + replaceText.utf16.count - replacementLengthDelta * 2
         let expectedSelectedRange = NSRange(location: expectedLocation, length: .zero)
 

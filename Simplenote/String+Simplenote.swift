@@ -27,11 +27,17 @@ extension String {
 
     /// Rich List Item: Represented with an Attachment + Space
     ///
-    static let richListItem = .attachmentString + .space
+    static let richListMarker = .attachmentString + .space
 
     /// Returns the receiver casted as a Foundation String. For convenience
     ///
     var asNSString: NSString {
         self as NSString
+    }
+
+    /// Returns a copy of the receiver minus its trailing newline (if any)
+    ///
+    func dropTrailingNewline() -> String {
+        return last == Character(.newline) ? String(dropLast()) : self
     }
 }
