@@ -280,9 +280,9 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, expected)
     }
 
-    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected location (when adding a list)
+    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected location
     ///
-    func testToggleListMarkersAtSelectedRangeMovesCursorMatchingInsertedMarkerLengthWhenAddingLists() {
+    func testToggleListMarkersAtSelectedRangeMovesCursorMatchingInsertedMarkerLength() {
         let text = "Automattic"
 
         textView.string = text + .newline + .newline
@@ -294,19 +294,8 @@ class NSTextViewSimplenoteTests: XCTestCase {
         let textRange = textView.string.asNSString.range(of: text)
 
         XCTAssertEqual(selectedRange.location, textRange.location)
-    }
-
-    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected location (when removing a list)
-    ///
-    func testToggleListMarkersAtSelectedRangeMovesCursorMatchingInsertedMarkerLengthWhenRemovingLists() {
-        let text = "Automattic"
-
-        textView.string = text + .newline + .newline
-        textView.setSelectedRange(.zero)
 
         textView.toggleListMarkersAtSelectedRange()
-        textView.toggleListMarkersAtSelectedRange()
-
         XCTAssertEqual(textView.selectedRange(), .zero)
     }
 
