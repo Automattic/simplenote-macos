@@ -10,12 +10,19 @@ class NSTextViewSimplenoteTests: XCTestCase {
     ///
     private var textView = MockupTextView()
 
+    /// Mockup TextViewDelegate
+    ///
+    private let delegate = MockupTextViewDelegate()
+
 
     // MARK: - Overridden Methods
 
     override func setUp() {
+        textView.delegate = delegate
         textView.string = String()
         textView.internalUndoManager.removeAllActions()
+
+        delegate.reset()
     }
 
     /// Verifies that `attributedSubstring` yields the expected substring
@@ -74,6 +81,54 @@ class NSTextViewSimplenoteTests: XCTestCase {
         textView.removeText(at: range)
 
         XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `performUndoableReplacement(at:string:)` updates the specified (Range,  String) and posts a textDidChange Note.
+    ///
+    func testPerformUndoableReplacementWithStringReplacesTextAndPostsTextDidChangeNotification() {
+        let sample = samplePlainText.dropFirst().joined()
+        let replacement = samplePlainText[.zero]
+        let expected = samplePlainText.joined()
+
+        textView.string = sample
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacement(at: .zero, string: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `performUndoableReplacement(at:attrString:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
+    ///
+    func testPerformUndoableReplacementWithAttrStringReplacesTextAndPostsTextDidChangeNotification() {
+        let sample = samplePlainText.dropFirst().joined()
+        let replacement = NSAttributedString(string: samplePlainText[.zero])
+        let expected = samplePlainText.joined()
+
+        textView.string = sample
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacement(at: .zero, attrString: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `performUndoableReplacementProcessingLists(at:string:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
+    ///
+    func testPerformUndoableReplacementsProcessingListsReplacesTextAndPostsTextDidChangeNotification() {
+        let sample = sampleListText.dropFirst().joined()
+        let replacement = sampleListText[.zero]
+        let expected = sampleListText.joined()
+
+        textView.string = sample
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacementProcessingLists(at: .zero, string: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertEqual(textView.plainTextContent(), expected)
     }
 
     /// Verifies that `processTabInsertion` indents the List at the selected range
