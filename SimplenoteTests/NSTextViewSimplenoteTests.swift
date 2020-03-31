@@ -99,6 +99,41 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, expected)
     }
 
+    /// Verifies that `performUndoableReplacement(at:string:)` reverts the Replaced Text and post a TextDidChange Note on Undo.
+    ///
+    func testPerformUndoableReplacementWithStringRevertsReplacementeAndPostsTextDidChangeOnUndo() {
+        let initial = samplePlainText.dropFirst().joined()
+        let replacement = samplePlainText[.zero]
+
+        textView.string = initial
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacement(at: .zero, string: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertTrue(textView.internalUndoManager.canUndo)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.string, initial)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 2)
+    }
+
+    /// Verifies that `performUndoableReplacement(at:string:)` restores the SelectedRange On Undo.
+    ///
+    func testPerformUndoableReplacementWithStringRestoresSelectedRangeOnUndo() {
+        let initial = samplePlainText.dropFirst().joined()
+        let replacement = samplePlainText[.zero]
+
+        textView.string = initial
+
+        textView.setSelectedRange(.zero)
+        textView.performUndoableReplacement(at: .zero, string: replacement)
+        XCTAssertEqual(textView.selectedRange.location, replacement.utf16.count)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.selectedRange, .zero)
+    }
+
     /// Verifies that `performUndoableReplacement(at:attrString:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
     ///
     func testPerformUndoableReplacementWithAttrStringReplacesTextAndPostsTextDidChangeNotification() {
@@ -115,6 +150,41 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, expected)
     }
 
+    /// Verifies that `performUndoableReplacement(at:attrString:)` reverts the Replaced Text and post a TextDidChange Note on Undo.
+    ///
+    func testPerformUndoableReplacementWithAttrStringRevertsReplacementeAndPostsTextDidChangeOnUndo() {
+        let initial = samplePlainText.dropFirst().joined()
+        let replacement = NSAttributedString(string: samplePlainText[.zero])
+
+        textView.string = initial
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacement(at: .zero, attrString: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertTrue(textView.internalUndoManager.canUndo)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.string, initial)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 2)
+    }
+
+    /// Verifies that `performUndoableReplacement(at:attrString:)` restores the SelectedRange On Undo.
+    ///
+    func testPerformUndoableReplacementWithAttrStringRestoresSelectedRangeOnUndo() {
+        let initial = samplePlainText.dropFirst().joined()
+        let replacement = NSAttributedString(string: samplePlainText[.zero])
+
+        textView.string = initial
+
+        textView.setSelectedRange(.zero)
+        textView.performUndoableReplacement(at: .zero, attrString: replacement)
+        XCTAssertEqual(textView.selectedRange.location, replacement.length)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.selectedRange, .zero)
+    }
+
     /// Verifies that `performUndoableReplacementProcessingLists(at:string:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
     ///
     func testPerformUndoableReplacementsProcessingListsReplacesTextAndPostsTextDidChangeNotification() {
@@ -129,6 +199,41 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
 
         XCTAssertEqual(textView.plainTextContent(), expected)
+    }
+
+    /// Verifies that `performUndoableReplacementProcessingLists(at:string:)` reverts the Replaced Text and post a TextDidChange Note on Undo.
+    ///
+    func testPerformUndoableReplacementsProcessingListsRevertsReplacementeAndPostsTextDidChangeOnUndo() {
+        let sample = sampleListText.dropFirst().joined()
+        let replacement = sampleListText[.zero]
+
+        textView.string = sample
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacementProcessingLists(at: .zero, string: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertTrue(textView.internalUndoManager.canUndo)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.plainTextContent(), sample)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 2)
+    }
+
+    /// Verifies that `performUndoableReplacementProcessingLists(at:string:)` restores the SelectedRange On Undo.
+    ///
+    func testPerformUndoableReplacementsProcessingListsRestoresSelectedRangeOnUndo() {
+        let initial = samplePlainText.dropFirst().joined()
+        let replacement = samplePlainText[.zero]
+
+        textView.string = initial
+
+        textView.setSelectedRange(.zero)
+        textView.performUndoableReplacementProcessingLists(at: .zero, string: replacement)
+        XCTAssertEqual(textView.selectedRange.location, replacement.utf16.count)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.selectedRange, .zero)
     }
 
     /// Verifies that `processTabInsertion` indents the List at the selected range
