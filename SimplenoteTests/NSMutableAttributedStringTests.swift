@@ -17,7 +17,7 @@ class NSMutableAttributedStringTests: XCTestCase {
         let replacementText = "long long "
         let replacementRange = NSRange(location: initialPrefix.utf16.count, length: .zero)
 
-        let expectedText = "A lala lala long long le long long long"
+        let expectedText = initialPrefix + replacementText + initialTail
 
         let undoManager = UndoManager()
         let sample = NSMutableAttributedString(string: initialText)
@@ -40,11 +40,10 @@ class NSMutableAttributedStringTests: XCTestCase {
         let initialTail = " le long long long"
         let initialText = initialPrefix + initialTail
 
-        let replacementAttach = SPTextAttachment()
-        let replacementText = NSAttributedString(attachment: replacementAttach)
+        let replacementText = NSAttributedString(attachment: SPTextAttachment())
         let replacementRange = NSRange(location: initialPrefix.utf16.count, length: .zero)
 
-        let expectedText = "A lala lala " + String.attachmentString +  " le long long long"
+        let expectedText = initialPrefix + .attachmentString +  initialTail
 
         let undoManager = UndoManager()
         let sample = NSMutableAttributedString(string: initialText)

@@ -46,8 +46,8 @@ extension NSMutableAttributedString {
         let undoString = attributedSubstring(from: range)
         let undoRange = NSRange(location: range.location, length: string.utf16.count)
 
-        undoManager.registerUndo(withTarget: self) { _ in
-            self.replaceCharacters(in: undoRange, with: undoString)
+        undoManager.registerUndo(withTarget: self) { mutableString in
+            mutableString.replaceCharacters(in: undoRange, with: undoString)
         }
 
         replaceCharacters(in: range, with: string)
@@ -60,8 +60,8 @@ extension NSMutableAttributedString {
         let undoString = attributedSubstring(from: range)
         let undoRange = NSRange(location: range.location, length: attrString.length)
 
-        undoManager.registerUndo(withTarget: self) { _ in
-            self.replaceCharacters(in: undoRange, with: undoString)
+        undoManager.registerUndo(withTarget: self) { mutableString in
+            mutableString.replaceCharacters(in: undoRange, with: undoString)
         }
 
         replaceCharacters(in: range, with: attrString)
