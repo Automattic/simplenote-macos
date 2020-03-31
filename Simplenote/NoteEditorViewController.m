@@ -458,9 +458,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     return NO;
 }
 
-- (BOOL)textView:(NSTextView *)textView shouldChangeTextInRanges:(NSArray<NSValue *> *)affectedRanges replacementStrings:(NSArray<NSString *> *)replacementStrings
+- (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString
 {
-    return [self.inputHandler textView:textView shouldChangeTextInRanges:affectedRanges strings:replacementStrings];
+    return [self.inputHandler textView:textView shouldChangeTextInRange:affectedCharRange string:replacementString];
 }
 
 - (void)textDidChange:(NSNotification *)notification
