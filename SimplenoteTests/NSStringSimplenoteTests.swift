@@ -175,20 +175,11 @@ class NSStringSimplenoteTests: XCTestCase {
         }
     }
 
-    /// Verifies that `insertingListMarkers` skips the last line, when empty
-    ///
-    func testInsertingListMarkersDoesNotAddMarkersToTheLastEmptyLine() {
-        let sample = "L1\n"
-        let expected: String = .attachmentString + .space + "L1" + .newline
-
-        XCTAssertEqual(sample.insertingListMarkers.string, expected)
-    }
-
-    /// Veifies that `insertingListMarkers` adds markers to every line
+    /// Veifies that `insertingListMarkers` adds markers to every line (including empty lines)
     ///
     func testInsertingListMarkersAddsMarkersToEveryLine() {
-        let sample = "L1\nL2"
-        let expected: String = .attachmentString + .space + "L1" + .newline + .attachmentString + .space + "L2"
+        let sample = "L1\nL2\n"
+        let expected = .richListMarker + "L1" + .newline + .richListMarker + "L2" + .newline + .richListMarker
 
         XCTAssertEqual(sample.insertingListMarkers.string, expected)
     }
@@ -197,7 +188,7 @@ class NSStringSimplenoteTests: XCTestCase {
     ///
     func testInsertingListMarkersAddsMarkerToSingleLinedEmptyString() {
         let sample = ""
-        let expected: String = .attachmentString + .space
+        let expected = String.richListMarker
 
         XCTAssertEqual(sample.insertingListMarkers.string, expected)
     }
@@ -209,35 +200,35 @@ class NSStringSimplenoteTests: XCTestCase {
             .space + "L1" + .newline,
             .tab + "L2" + .newline,
             .space + .space + .newline,
-            "L3" + .newline,
+            "L3"
         ]
         let expected: [String] = [
-            .space + .attachmentString + .space + "L1" + .newline,
-            .tab + .attachmentString + .space + "L2" + .newline,
-            .space + .space + .attachmentString + .space + .newline,
-            .attachmentString + .space + "L3" + .newline,
+            .space + .richListMarker + "L1" + .newline,
+            .tab + .richListMarker + "L2" + .newline,
+            .space + .space + .richListMarker + .newline,
+            .richListMarker + "L3"
         ]
 
         XCTAssertEqual(sample.joined().insertingListMarkers.string, expected.joined())
     }
 
-    /// Verifies that `removingListMarkerss` returns a new String that does not contain our List Marker substrings (Attachment + Space).
+    /// Verifies that `removingListMarkers` returns a new String that does not contain our List Marker substrings (Attachment + Space).
     ///
     func testRemovingListMarkersEffectivelyNukesAttachmentAndWhitespacesInTheReceiver() {
         let sample: [String] = [
-            .attachmentString + .space + "L1" + .newline,
-            .attachmentString + .space + "L2" + .newline,
+            .richListMarker + "L1" + .newline,
+            .richListMarker + "L2" + .newline,
             "\n",
-            .attachmentString + .space + "L3" + .newline,
+            .richListMarker + "L3" + .newline,
             "L4\n",
             "L5"
         ]
         let expected = "L1\nL2\n\nL3\nL4\nL5"
 
-        XCTAssertEqual(sample.joined().removingListMarkers, expected)
+        XCTAssertEqual(sample.joined().removingListMarkers.string, expected)
     }
 
-    /// Verifies that `removingListMarkerss` returns a new String that does not contain our List Marker substrings (Attachment).
+    /// Verifies that `removingListMarkers` returns a new String that does not contain our List Marker substrings (Attachment).
     ///
     func testRemovingListMarkersEffectivelyNukesAttachmentWithNoTrailingSpacesInTheReceiver() {
         let sample: [String] = [
@@ -246,13 +237,13 @@ class NSStringSimplenoteTests: XCTestCase {
         ]
         let expected = "L1\nL2\n"
 
-        XCTAssertEqual(sample.joined().removingListMarkers, expected)
+        XCTAssertEqual(sample.joined().removingListMarkers.string, expected)
     }
 
     /// Verifies that `removingListMarkers` does nothing to strings that do not contain attachments
     ///
     func testRemovingListMarkersDoesNothingToStringsThatDontContainMarkers() {
         let sample = "L1\nL2\n\nL3\nL4\nL5"
-        XCTAssertEqual(sample.removingListMarkers, sample)
+        XCTAssertEqual(sample.removingListMarkers.string, sample)
     }
 }
