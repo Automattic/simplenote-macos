@@ -28,33 +28,35 @@ class NSTextViewSimplenoteTests: XCTestCase {
     }
 
 
-    /// Verifies that `lineAtSelectedRange` returns the expected line Range / String
+    /// Verifies that `selectedLineDroppingTrailingNewline` returns the expected line Range / String, excluding trailing newlines
     ///
-    func testLineAtSelectedRangeEffectivelyReturnsTheLineAtTheSelectedRange() {
+    func testSelectedLineDroppingTrailingNewlineEffectivelyReturnsTheLineAtTheSelectedRange() {
         let lines = samplePlainText
         let text = lines.joined()
         textView.string = text
 
         var absoluteLocation = Int.zero
-        for expectedLine in lines {
+        for line in lines {
 
-            for relativeLocation in Int.zero ..< expectedLine.count {
+            for relativeLocation in Int.zero ..< line.count {
                 let selectecRange = NSRange(location: absoluteLocation + relativeLocation, length: .zero)
                 textView.setSelectedRange(selectecRange)
 
-                let (retrievedRange, retrievedLine) = textView.lineAtSelectedRange()
+                let (retrievedRange, retrievedLine) = textView.selectedLineDroppingTrailingNewline()
+                let expectedLine = line.dropTrailingNewline()
+
                 XCTAssertEqual(retrievedLine, expectedLine)
                 XCTAssertEqual(text.asNSString.substring(with: retrievedRange), expectedLine)
             }
 
-            absoluteLocation += expectedLine.count
+            absoluteLocation += line.count
         }
     }
 
     /// Verifies that `lineAtSelectedRange` does not trigger any exception when the TextView is empty
     ///
-    func testLineAtSelectedRangeDoesNotCrashWithEmptyStrings() {
-        let (range, line) = textView.lineAtSelectedRange()
+    func testSelectedLineDroppingTrailingNewlineDoesNotCrashOnEmptyStrings() {
+        let (range, line) = textView.selectedLineDroppingTrailingNewline()
 
         XCTAssertEqual(line, String())
         XCTAssertEqual(range, .zero)
