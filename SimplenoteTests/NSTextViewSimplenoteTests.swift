@@ -8,13 +8,14 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
     /// TextView!
     ///
-    private var textView = NSTextView()
+    private var textView = MockupTextView()
 
 
     // MARK: - Overridden Methods
 
     override func setUp() {
         textView.string = String()
+        textView.internalUndoManager.removeAllActions()
     }
 
     /// Verifies that `attributedSubstring` yields the expected substring
@@ -87,6 +88,25 @@ class NSTextViewSimplenoteTests: XCTestCase {
         }
     }
 
+    /// Verifies that `processTabInsertion` registers an Undo OP when indenting Text Lists
+    ///
+    func testProcessTabInsertionRegistersAnUndoableOperationWhenIndentingTextLists() {
+        let undoManager = textView.internalUndoManager
+
+        for (initial, _) in samplesForIndentation {
+            textView.string = initial
+
+            let selectedRange = NSRange(location: .zero, length: .zero)
+            textView.setSelectedRange(selectedRange)
+
+            XCTAssertTrue(textView.processTabInsertion())
+            XCTAssertTrue(undoManager.canUndo)
+
+            undoManager.undo()
+            XCTAssertEqual(textView.string, initial)
+        }
+    }
+
     /// Verifies that `processTabInsertion` does nothing if there are no lists at the document
     ///
     func testProcessTabInsertionDoesNotIndentWheneverThereAreNoListsInTheCurrentRange() {
@@ -142,6 +162,25 @@ class NSTextViewSimplenoteTests: XCTestCase {
         }
     }
 
+    /// Verifies that `processNewlineInsertion` registers an Undoable OP whenever a new list marker is inserted
+    ///
+    func testProcessNewlineRegistersAnUndoableOperationWhenRemovingListMarkersfromEmptyListLine() {
+        let undoManager = textView.internalUndoManager
+
+        for sample in samplesForNewlineRemoval {
+            textView.string = sample
+
+            let newSelectedRange = NSRange(location: sample.utf16.count, length: .zero)
+            textView.setSelectedRange(newSelectedRange)
+
+            XCTAssertTrue(textView.processNewlineInsertion())
+            XCTAssertTrue(undoManager.canUndo)
+
+            undoManager.undo()
+            XCTAssertEqual(textView.string, sample)
+        }
+    }
+
     /// Verifies that `processNewlineInsertion` effectively inserts a new bullet (with padding + tail) whenever we're at the end of a list, and hit return
     ///
     func testProcessNewlineInsertionEffectivelyInsertsBulletInNewlineWithPrefixAndSuffixWhenAppropriate() {
@@ -153,6 +192,25 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
             XCTAssertTrue(textView.processNewlineInsertion())
             XCTAssertEqual(textView.string, expected)
+        }
+    }
+
+    /// Verifies that `processNewlineInsertion` registers an Undoable OP whenever a new list marker is inserted
+    ///
+    func testProcessNewlineInsertionRegistersAnUndoableOperationWhenInsertingListMarkers() {
+        let undoManager = textView.internalUndoManager
+
+        for (initial, _) in samplesForNewline {
+            textView.string = initial
+
+            let newSelectedRange = NSRange(location: initial.utf16.count, length: .zero)
+            textView.setSelectedRange(newSelectedRange)
+
+            XCTAssertTrue(textView.processNewlineInsertion())
+            XCTAssertTrue(undoManager.canUndo)
+
+            undoManager.undo()
+            XCTAssertEqual(textView.string, initial)
         }
     }
 
@@ -227,6 +285,22 @@ class NSTextViewSimplenoteTests: XCTestCase {
         textView.toggleListMarkersAtSelectedRange()
 
         XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` registers an Undoable OP when inserting List Markers on every line
+    ///
+    func testToggleListMarkersAtSelectedRangeRegistersAnUndoableOperationWhenInsertingListMarkers() {
+        let sample = "L1" + .newline + "L2"
+
+        textView.string = sample
+        textView.setSelectedRange(sample.asNSString.fullRange)
+        textView.toggleListMarkersAtSelectedRange()
+
+        let undoManager = textView.internalUndoManager
+        XCTAssertTrue(undoManager.canUndo)
+
+        undoManager.undo()
+        XCTAssertEqual(textView.string, sample)
     }
 
     /// Verifies that `toggleListMarkersAtSelectedRange` nukes all list markers from the SelectedRange, whenver there is at least one marker
