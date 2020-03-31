@@ -136,7 +136,6 @@ class TextViewInputHandlerTests: XCTestCase {
         let replacementRange = NSRange(location: .zero, length: .zero)
         let replacementAsValue = NSValue(range: replacementRange)
 
-
         textView.displayNote(content: replacementText)
         XCTAssertTrue(delegate.receivedTextDidChangeNotifications.isEmpty)
 
