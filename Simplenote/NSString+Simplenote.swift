@@ -86,12 +86,6 @@ extension NSString {
         let indexOfLastLine = lines.count - 1
 
         for (index, line) in lines.enumerated() {
-            // Skip: Last Empty Line
-            if index > 0 && index == indexOfLastLine && line.length == 0 {
-                continue
-            }
-
-            // Insert: Prefix + Attachment + Space + Payload
             let leading = line.leadingSpaces
             let payload = line.substring(from: leading.utf16.count)
             let attachment = SPTextAttachment(tintColor: .textListColor)
@@ -118,4 +112,3 @@ extension NSString {
         return NSAttributedString(string: output)
     }
 }
-
