@@ -1169,9 +1169,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
-- (void)insertChecklistAction:(id)sender {
-    [self.noteEditor insertNewChecklist];
-    
+- (void)insertChecklistAction:(id)sender
+{
+    [self.noteEditor toggleListMarkersAtSelectedRange];
     [SPTracker trackEditorChecklistInserted];
 }
 

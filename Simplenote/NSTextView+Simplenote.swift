@@ -12,17 +12,36 @@ extension NSTextView {
         return attributedString().attributedSubstring(from: range)
     }
 
-    /// Returns the line (range, string) at the current selected range
+    /// Returns the (Range, String) representing the line or lines at the Selected Range.
+    /// 
+    /// - Important: The trailing `\n` will be dropped from both, the resulting String and Range.
     ///
-    func lineAtSelectedRange() -> (NSRange, String) {
-        string.asNSString.line(at: selectedRange.location)
+    func selectedLineDroppingTrailingNewline() -> (NSRange, String) {
+        let (range, line) = string.asNSString.line(at: selectedRange)
+
+        let trimmedLine = line.dropTrailingNewline()
+        let trimmedRange = NSRange(location: range.location, length: trimmedLine.utf16.count)
+
+        return (trimmedRange, trimmedLine)
     }
+
+    /// Removes the text at the specified range, and notifies the delegate.
+    ///
+    func removeText(at range: NSRange) {
+        insertText(String(), replacementRange: range)
+    }
+}
+
+
+// MARK: - Processing Special Characters
+//
+extension NSTextView {
 
     /// Indents the List at the selected range (if any)
     ///
     @objc
     func processTabInsertion() -> Bool {
-        let (lineRange, lineString) = lineAtSelectedRange()
+        let (lineRange, lineString) = selectedLineDroppingTrailingNewline()
 
         guard let _ = lineString.rangeOfListMarker else {
             return false
@@ -44,7 +63,7 @@ extension NSTextView {
     ///
     @objc
     func processNewlineInsertion() -> Bool {
-        let (lineRange, lineString) = lineAtSelectedRange()
+        let (lineRange, lineString) = selectedLineDroppingTrailingNewline()
 
         // No Marker, no processing!
         guard let rangeOfMarker = lineString.rangeOfListMarker else {
@@ -88,10 +107,25 @@ extension NSTextView {
 
         return true
     }
+}
 
-    /// Remove the text at the specified range, and notifies the delegate.
+
+// MARK: - New Lists
+//
+extension NSTextView {
+
+    /// Inserts (or) Removes List Markers at the Selected Range
     ///
-    func removeText(at range: NSRange) {
-        insertText(String(), replacementRange: range)
+    @objc
+    func toggleListMarkersAtSelectedRange() {
+        let (range, line) = selectedLineDroppingTrailingNewline()
+        let updated = line.containsAttachment ? line.removingListMarkers : line.insertingListMarkers
+
+        let oldSelectedRange = selectedRange()
+        insertText(updated, replacementRange: range)
+
+        let delta = updated.length - range.length
+        let newSelectedRange = NSRange(location: oldSelectedRange.upperBound + delta, length: .zero)
+        setSelectedRange(newSelectedRange)
     }
 }

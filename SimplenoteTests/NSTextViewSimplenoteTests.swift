@@ -28,36 +28,38 @@ class NSTextViewSimplenoteTests: XCTestCase {
     }
 
 
-    /// Verifies that `lineAtSelectedRange` returns the expected line Range / String
+    /// Verifies that `selectedLineDroppingTrailingNewline` returns the expected line Range / String, excluding trailing newlines
     ///
-    func testLineAtSelectedRangeEffectivelyReturnsTheLineAtTheSelectedRange() {
+    func testSelectedLineDroppingTrailingNewlineEffectivelyReturnsTheLineAtTheSelectedRange() {
         let lines = samplePlainText
         let text = lines.joined()
         textView.string = text
 
         var absoluteLocation = Int.zero
-        for expectedLine in lines {
+        for line in lines {
 
-            for relativeLocation in Int.zero ..< expectedLine.count {
+            for relativeLocation in Int.zero ..< line.count {
                 let selectecRange = NSRange(location: absoluteLocation + relativeLocation, length: .zero)
                 textView.setSelectedRange(selectecRange)
 
-                let (retrievedRange, retrievedLine) = textView.lineAtSelectedRange()
+                let (retrievedRange, retrievedLine) = textView.selectedLineDroppingTrailingNewline()
+                let expectedLine = line.dropTrailingNewline()
+
                 XCTAssertEqual(retrievedLine, expectedLine)
                 XCTAssertEqual(text.asNSString.substring(with: retrievedRange), expectedLine)
             }
 
-            absoluteLocation += expectedLine.count
+            absoluteLocation += line.count
         }
     }
 
     /// Verifies that `lineAtSelectedRange` does not trigger any exception when the TextView is empty
     ///
-    func testLineAtSelectedRangeDoesNotCrashWithEmptyStrings() {
-        let (range, line) = textView.lineAtSelectedRange()
+    func testSelectedLineDroppingTrailingNewlineDoesNotCrashOnEmptyStrings() {
+        let (range, line) = textView.selectedLineDroppingTrailingNewline()
 
         XCTAssertEqual(line, String())
-        XCTAssertEqual(range, NSRange(location: .zero, length: .zero))
+        XCTAssertEqual(range, .zero)
     }
 
     /// Verifies that `removeText(at:)` effectively nukes the text at the specified range
@@ -78,9 +80,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
     func testProcessTabInsertionEffectivelyIndentsTextListsWhenTheCurrentLineContainsSomeListMarker() {
         for (text, indented) in samplesForIndentation {
             textView.string = text
-
-            let selectedRange = NSRange(location: .zero, length: .zero)
-            textView.setSelectedRange(selectedRange)
+            textView.setSelectedRange(.zero)
 
             XCTAssertTrue(textView.processTabInsertion())
             XCTAssertEqual(textView.string, indented)
@@ -182,6 +182,136 @@ class NSTextViewSimplenoteTests: XCTestCase {
         }
 
         XCTAssertEqual(attachments.count, 2)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` inserts a List on empty documents
+    ///
+    func testToggleListMarkersAtSelectedRangeInsertsListMarkerOnEmptyDocument() {
+        let sample = ""
+        let expected: String = .attachmentString + .space
+
+        textView.string = sample
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` inserts List Markers on every line, ignoring the last empty one
+    ///
+    func testToggleListMarkersAtSelectedRangeIgnoresLastEmptyLine() {
+        let sample = "L1" + .newline
+        let expected: String = .attachmentString + .space + "L1" + .newline
+
+        textView.string = sample
+        textView.setSelectedRange(sample.asNSString.fullRange)
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` inserts a List Marker on every selected line
+    ///
+    func testToggleListMarkersAtSelectedRangeInsertsListMarkerOnEveryLine() {
+        let sample = [
+            "L1" + .newline +
+            "L2"
+        ].joined()
+
+        let expected = [
+            .richListMarker + "L1" + .newline,
+            .richListMarker + "L2"
+        ].joined()
+
+        textView.string = sample
+        textView.setSelectedRange(sample.asNSString.fullRange)
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` nukes all list markers from the SelectedRange, whenver there is at least one marker
+    ///
+    func testToggleListMarkersAtSelectedRangeRemovesAllMarkersWheneverThereWasAtLeastOneAttachmentInTheText() {
+        let sample = [
+            .space + "L1" + .newline,
+            .tab + "L2" + .newline,
+            .richListMarker + .newline,
+            "L3" + .newline,
+        ].joined()
+
+        let expected = [
+            .space + "L1" + .newline,
+            .tab + "L2" + .newline,
+            .newline,
+            "L3" + .newline,
+        ].joined()
+
+        textView.string = sample
+        textView.setSelectedRange(sample.asNSString.fullRange)
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` removes all markers in the selected range
+    ///
+    func testToggleListMarkersAtSelectedRangeRemovesListMarkerAtSelectedRange() {
+        let sample = [
+            .space + .attachmentString + .space + "L1" + .newline,
+            .tab + .attachmentString + .space + "L2" + .newline,
+            .attachmentString + .space + .newline,
+            .attachmentString + .space + "L3" + .newline,
+        ]
+
+        let expected = [
+            .space + "L1" + .newline,
+            .tab + "L2" + .newline,
+            .attachmentString + .space + .newline,
+            .attachmentString + .space + "L3" + .newline,
+        ].joined()
+
+        let rangeForFirstTwoLines = NSRange(location: .zero, length: sample[0].utf16.count + 2)
+
+        textView.string = sample.joined()
+        textView.setSelectedRange(rangeForFirstTwoLines)
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.string, expected)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected location
+    ///
+    func testToggleListMarkersAtSelectedRangeMovesCursorMatchingInsertedMarkerLength() {
+        let text = "Automattic"
+
+        textView.string = text + .newline + .newline
+        textView.setSelectedRange(.zero)
+        textView.toggleListMarkersAtSelectedRange()
+
+        let selectedRange = textView.selectedRange()
+        let expectedSelectedLocation = textView.string.asNSString.range(of: text).location
+        XCTAssertEqual(selectedRange.location, expectedSelectedLocation)
+
+        textView.toggleListMarkersAtSelectedRange()
+        XCTAssertEqual(textView.selectedRange(), .zero)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` affects only the current line
+    ///
+    func testToggleListMarkerAtSelectedRangeAffectsOnlyCurrentLine() {
+        let text = "L1\n"
+        let expected: String = .richListMarker + "L1\n" + .richListMarker
+
+        textView.string = text
+
+        let lastLineRange = NSRange(location: text.utf16.count, length: .zero)
+        textView.setSelectedRange(lastLineRange)
+        textView.toggleListMarkersAtSelectedRange()
+
+        textView.setSelectedRange(.zero)
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.string, expected)
     }
 }
 
