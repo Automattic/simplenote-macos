@@ -16,28 +16,18 @@ extension NSTextView {
     ///
     @discardableResult
     func performUndoableReplacement(at range: NSRange, string: String) -> Bool {
-        guard let storage = textStorage, let undoManager = undoManager else {
-            return false
+        performUndoableTextChangeOperation { (undoManager, storage) in
+            storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
         }
-
-        storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
-        didChangeText()
-
-        return true
     }
 
     /// Replaces the receiver's contents at a given range, with the specified AttributedString, and registers the inverse OP in our UndoManager.
     ///
     @discardableResult
     func performUndoableReplacement(at range: NSRange, attrString: NSAttributedString) -> Bool {
-        guard let storage = textStorage, let undoManager = undoManager else {
-            return false
+        performUndoableTextChangeOperation { (undoManager, storage) in
+            storage.replaceCharacters(in: range, attrString: attrString, undoManager: undoManager)
         }
-
-        storage.replaceCharacters(in: range, attrString: attrString, undoManager: undoManager)
-        didChangeText()
-
-        return true
     }
 
     /// Replaces the receiver's contents at a given range, with the specified String, and registers the inverse OP in our UndoManager.
@@ -45,19 +35,10 @@ extension NSTextView {
     ///
     @discardableResult
     func performUndoableReplacementProcessingLists(at range: NSRange, string: String) -> Bool {
-        guard let storage = textStorage, let undoManager = undoManager else {
-            return false
+        performUndoableTextChangeOperation { (undoManager, storage) in
+            storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
+            storage.processChecklists(with: .textListColor, undoManager: undoManager)
         }
-
-        undoManager.beginUndoGrouping()
-
-        storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
-        storage.processChecklists(with: .textListColor, undoManager: undoManager)
-
-        undoManager.endUndoGrouping()
-        didChangeText()
-
-        return true
     }
 
     /// Returns the (Range, String) representing the line or lines at the Selected Range.
@@ -78,6 +59,38 @@ extension NSTextView {
     @discardableResult
     func removeText(at range: NSRange) -> Bool {
         performUndoableReplacement(at: range, string: String())
+    }
+}
+
+
+// MARK: - Private!
+//
+private extension NSTextView {
+
+    /// Performs an Undoable TextChange OP:
+    ///
+    ///     A.  Posts a TextDidChange Notification
+    ///     B.  Registers an Undo Operation, which will restore the SelectedRange and post a TextDidChange Note
+    ///
+    func performUndoableTextChangeOperation(block: (UndoManager, NSTextStorage) -> Void) -> Bool {
+        guard let storage = textStorage, let undoManager = undoManager else {
+            return false
+        }
+
+        let undoSelectedRange = selectedRange()
+
+        undoManager.beginUndoGrouping()
+        undoManager.registerUndo(withTarget: self) { textView in
+            textView.setSelectedRange(undoSelectedRange)
+            textView.didChangeText()
+        }
+
+        block(undoManager, storage)
+        undoManager.endUndoGrouping()
+
+        didChangeText()
+
+        return true
     }
 }
 
