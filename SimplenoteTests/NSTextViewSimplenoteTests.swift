@@ -278,6 +278,40 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
         XCTAssertEqual(textView.string, expected)
     }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected line
+    ///
+    func testToggleListMarkersAtSelectedRangeMovesCursorLocationToTheEndOfTheLine() {
+        let text = "Automattic"
+
+        textView.string = text + .newline + .newline
+        textView.setSelectedRange(.zero)
+
+        textView.toggleListMarkersAtSelectedRange()
+
+        let selectedRange = textView.selectedRange()
+        let textRange = textView.string.asNSString.range(of: text)
+
+        XCTAssertEqual(selectedRange.location, textRange.location)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` affects only the current line
+    ///
+    func testToggleListMarkerAtSelectedRangeAffectsOnlyCurrentLine() {
+        let text = "L1\n"
+        let expected: String = .richListMarker + "L1\n" + .richListMarker
+
+        textView.string = text
+
+        let lastLineRange = NSRange(location: text.utf16.count, length: .zero)
+        textView.setSelectedRange(lastLineRange)
+        textView.toggleListMarkersAtSelectedRange()
+
+        textView.setSelectedRange(.zero)
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.string, expected)
+    }
 }
 
 
