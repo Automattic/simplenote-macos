@@ -75,8 +75,9 @@ extension NSTextView {
 
     /// Removes the text at the specified range, and notifies the delegate.
     ///
-    func removeText(at range: NSRange) {
-        insertText(String(), replacementRange: range)
+    @discardableResult
+    func removeText(at range: NSRange) -> Bool {
+        performUndoableReplacement(at: range, string: String())
     }
 }
 
@@ -153,8 +154,7 @@ extension NSTextView {
         // Empty Line: Remove the bullet
         let trimmedString = lineString.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedString.utf16.count != rangeOfMarker.length else {
-            removeText(at: lineRange)
-            return true
+            return removeText(at: lineRange)
         }
 
         // Insert: newline + Padding + Marker + Space?
