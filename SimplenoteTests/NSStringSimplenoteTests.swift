@@ -234,7 +234,7 @@ class NSStringSimplenoteTests: XCTestCase {
         ]
         let expected = "L1\nL2\n\nL3\nL4\nL5"
 
-        XCTAssertEqual(sample.joined().removingListMarkers, expected)
+        XCTAssertEqual(sample.joined().removingListMarkers.string, expected)
     }
 
     /// Verifies that `removingListMarkers` returns a new String that does not contain our List Marker substrings (Attachment).
@@ -246,13 +246,13 @@ class NSStringSimplenoteTests: XCTestCase {
         ]
         let expected = "L1\nL2\n"
 
-        XCTAssertEqual(sample.joined().removingListMarkers, expected)
+        XCTAssertEqual(sample.joined().removingListMarkers.string, expected)
     }
 
     /// Verifies that `removingListMarkers` does nothing to strings that do not contain attachments
     ///
     func testRemovingListMarkersDoesNothingToStringsThatDontContainMarkers() {
         let sample = "L1\nL2\n\nL3\nL4\nL5"
-        XCTAssertEqual(sample.removingListMarkers, sample)
+        XCTAssertEqual(sample.removingListMarkers.string, sample)
     }
 }
