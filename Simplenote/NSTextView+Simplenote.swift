@@ -111,13 +111,9 @@ extension NSTextView {
     ///
     @objc
     func toggleListMarkersAtSelectedRange() {
-        let (lineRange, lineString) = lineAtSelectedRange()
+        let (range, line) = lineAtSelectedRange()
+        let updated = line.containsAttachment ? line.removingListMarkers : line.insertingListMarkers
 
-        guard lineString.containsAttachment else {
-            insertText(lineString.insertingListMarkers, replacementRange: lineRange)
-            return
-        }
-
-        insertText(lineString.removingListMarkers, replacementRange: lineRange)
+        insertText(updated, replacementRange: range)
     }
 }
