@@ -57,11 +57,10 @@ class TextViewInputHandlerTests: XCTestCase {
     /// right after the newly inserted text.
     ///
     func testShouldChangeTextPerformsReplacementOPAndSetsExpectedRangeAfterInsertedContent() {
-        // Insert a string in between
-        let initialHead = "Heading\n\n"
-        let initialTail = "\nTail"
+        let initialHead = "Heading" + .newline + .newline
+        let initialTail = .newline + "Tail"
 
-        let replaceText = "- [ ] L1\n- [ ] L2\nLINE\n"
+        let replaceText = "- [ ] L1" + .newline + "- [ ] L2" + .newline + "LINE" + .newline
         let replaceRange = NSRange(location: initialHead.utf16.count, length: .zero)
 
         let initialText = initialHead + initialTail
@@ -77,7 +76,6 @@ class TextViewInputHandlerTests: XCTestCase {
         textView.setSelectedRange(replaceRange)
 
         let output = inputHandler.textView(textView, shouldChangeTextInRange: replaceRange, string: replaceText)
-
         XCTAssertFalse(output)
         XCTAssertEqual(textView.plainTextContent(), expectedText)
         XCTAssertEqual(textView.selectedRange(), expectedSelectedRange)
@@ -92,8 +90,8 @@ class TextViewInputHandlerTests: XCTestCase {
         let replacementRange = NSRange(location: initialText.utf16.count, length: .zero)
 
         textView.displayNote(content: initialText)
-        let output = inputHandler.textView(textView, shouldChangeTextInRange: replacementRange, string: replacementText)
 
+        let output = inputHandler.textView(textView, shouldChangeTextInRange: replacementRange, string: replacementText)
         XCTAssertFalse(output)
 
         XCTAssertTrue(textView.internalUndoManager.canUndo)
