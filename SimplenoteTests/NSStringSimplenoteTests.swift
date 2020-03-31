@@ -212,10 +212,10 @@ class NSStringSimplenoteTests: XCTestCase {
             "L3" + .newline,
         ]
         let expected: [String] = [
-            .space + .attachmentString + .space + "L1" + .newline,
-            .tab + .attachmentString + .space + "L2" + .newline,
-            .space + .space + .attachmentString + .space + .newline,
-            .attachmentString + .space + "L3" + .newline,
+            .space + .richListMarker + "L1" + .newline,
+            .tab + .richListMarker + "L2" + .newline,
+            .space + .space + .richListMarker + .newline,
+            .richListMarker + "L3"
         ]
 
         XCTAssertEqual(sample.joined().insertingListMarkers.string, expected.joined())
@@ -225,10 +225,10 @@ class NSStringSimplenoteTests: XCTestCase {
     ///
     func testRemovingListMarkersEffectivelyNukesAttachmentAndWhitespacesInTheReceiver() {
         let sample: [String] = [
-            .attachmentString + .space + "L1" + .newline,
-            .attachmentString + .space + "L2" + .newline,
+            .richListMarker + "L1" + .newline,
+            .richListMarker + "L2" + .newline,
             "\n",
-            .attachmentString + .space + "L3" + .newline,
+            .richListMarker + "L3" + .newline,
             "L4\n",
             "L5"
         ]
