@@ -219,8 +219,8 @@ class NSTextViewSimplenoteTests: XCTestCase {
         ].joined()
 
         let expected = [
-            .attachmentString + .space + "L1" + .newline,
-            .attachmentString + .space + "L2"
+            .richListMarker + "L1" + .newline,
+            .richListMarker + "L2"
         ].joined()
 
         textView.string = sample
@@ -236,7 +236,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         let sample = [
             .space + "L1" + .newline,
             .tab + "L2" + .newline,
-            .attachmentString + .space + .newline,
+            .richListMarker + .newline,
             "L3" + .newline,
         ].joined()
 
@@ -280,9 +280,9 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, expected)
     }
 
-    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected line
+    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected location (when adding a list)
     ///
-    func testToggleListMarkersAtSelectedRangeMovesCursorLocationToTheEndOfTheLine() {
+    func testToggleListMarkersAtSelectedRangeMovesCursorMatchingInsertedMarkerLengthWhenAddingLists() {
         let text = "Automattic"
 
         textView.string = text + .newline + .newline
@@ -294,6 +294,20 @@ class NSTextViewSimplenoteTests: XCTestCase {
         let textRange = textView.string.asNSString.range(of: text)
 
         XCTAssertEqual(selectedRange.location, textRange.location)
+    }
+
+    /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected location (when removing a list)
+    ///
+    func testToggleListMarkersAtSelectedRangeMovesCursorMatchingInsertedMarkerLengthWhenRemovingLists() {
+        let text = "Automattic"
+
+        textView.string = text + .newline + .newline
+        textView.setSelectedRange(.zero)
+
+        textView.toggleListMarkersAtSelectedRange()
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.selectedRange(), .zero)
     }
 
     /// Verifies that `toggleListMarkersAtSelectedRange` affects only the current line
