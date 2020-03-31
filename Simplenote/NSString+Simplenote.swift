@@ -86,12 +86,6 @@ extension NSString {
         let indexOfLastLine = lines.count - 1
 
         for (index, line) in lines.enumerated() {
-            // Skip: Last Empty Line
-            if index > 0 && index == indexOfLastLine && line.length == 0 {
-                continue
-            }
-
-            // Insert: Prefix + Attachment + Space + Payload
             let leading = line.leadingSpaces
             let payload = line.substring(from: leading.utf16.count)
             let attachment = SPTextAttachment(tintColor: .textListColor)
@@ -109,11 +103,12 @@ extension NSString {
         return output
     }
 
-    /// Returns a new String instance, by removing all of the List Markers (with or without trailing spaces) in the receiver
+    /// Returns a new AttributedString instance, by removing all of the List Markers (with or without trailing spaces) in the receiver
     ///
-    var removingListMarkers: String {
-        return replacingOccurrences(of: .attachmentString + .space, with: String())
-                .replacingOccurrences(of: String.attachmentString, with: String())
+    var removingListMarkers: NSAttributedString {
+        let output = replacingOccurrences(of: .attachmentString + .space, with: String())
+                        .replacingOccurrences(of: String.attachmentString, with: String())
+
+        return NSAttributedString(string: output)
     }
 }
-
