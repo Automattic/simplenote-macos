@@ -29,52 +29,31 @@ class TextViewInputHandlerTests: XCTestCase {
         delegate.reset()
     }
 
-    /// Verifies that `shouldChangeTextInRanges` returns `true` whenever the replacement strings are null. We expect the TextView's default
+    /// Verifies that `shouldChangeTextInRange` returns `true` whenever the replacement string is null. We expect the TextView's default
     /// behavior in such cases.
     ///
-    func testShouldChangeTextReturnsNilWheneverTheStringsArrayIsNil() {
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [], strings: nil)
+    func testShouldChangeTextReturnsNilWheneverTheStringIsNil() {
+        let output = inputHandler.textView(textView, shouldChangeTextInRange: .zero, string: nil)
         XCTAssertTrue(output)
     }
 
-    /// Verifies that `shouldChangeTextInRanges` returns `true` whenever the two input arrays don't have the same size
-    ///
-    func testShouldChangeTextReturnsTrueWheneverInputArraysDoNotMatch() {
-        let range = NSValue(range: .zero)
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [range], strings: [])
-        XCTAssertTrue(output)
-    }
-
-    /// Verifies that `shouldChangeTextInRanges` returns `true` whenever both, Ranges and Strings, are empty
-    ///
-    func testShouldChangeTextReturnsFalseWhenBothRangesAndStringsAreEmpty() {
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [], strings: [])
-        XCTAssertTrue(output)
-    }
-
-    /// Verifies that `shouldChangeTextInRanges` returns `false` when:
-    ///
-    ///     1.  Ranges and Strings arrays are not empty, and their number of elements match
-    ///     2.  UndoManager is not nil
-    ///     3.  TextStorage is also not nil
+    /// Verifies that `shouldChangeTextInRange` returns `false` whenever the `Strings`, `UndoManager` and `TextStorage` aren't nil.
     ///
     func testShouldChangeTextReturnsFalseAndInsertsTextAttachmentsWhenInputParametersAreValid() {
         let initialText = "- [ "
         let replacementText = "]"
         let expectedText = initialText + replacementText
-
         let replacementRange = NSRange(location: initialText.utf16.count, length: .zero)
-        let replacementAsValue = NSValue(range: replacementRange)
 
         textView.displayNote(content: initialText)
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [replacementAsValue], strings: [replacementText])
+        let output = inputHandler.textView(textView, shouldChangeTextInRange: replacementRange, string: replacementText)
 
         XCTAssertFalse(output)
         XCTAssertTrue(textView.attributedString().containsAttachments)
         XCTAssertEqual(textView.plainTextContent(), expectedText)
     }
 
-    /// Verifies that `shouldChangeTextInRanges` performs the requested Replacement OP in the TextView, and correctly sets the Selected Range
+    /// Verifies that `shouldChangeTextInRange` performs the requested Replacement OP in the TextView, and correctly sets the Selected Range
     /// right after the newly inserted text.
     ///
     func testShouldChangeTextPerformsReplacementOPAndSetsExpectedRangeAfterInsertedContent() {
@@ -84,7 +63,6 @@ class TextViewInputHandlerTests: XCTestCase {
 
         let replaceText = "- [ ] L1\n- [ ] L2\nLINE\n"
         let replaceRange = NSRange(location: initialHead.utf16.count, length: .zero)
-        let replaceRangeAsValue = NSValue(range: replaceRange)
 
         let initialText = initialHead + initialTail
         let expectedText = initialHead + replaceText + initialTail
@@ -98,25 +76,23 @@ class TextViewInputHandlerTests: XCTestCase {
         textView.displayNote(content: initialText)
         textView.setSelectedRange(replaceRange)
 
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [replaceRangeAsValue], strings: [replaceText])
+        let output = inputHandler.textView(textView, shouldChangeTextInRange: replaceRange, string: replaceText)
 
         XCTAssertFalse(output)
         XCTAssertEqual(textView.plainTextContent(), expectedText)
         XCTAssertEqual(textView.selectedRange(), expectedSelectedRange)
     }
 
-    /// Verifies that `shouldChangeTextInRanges` performs an *undoable* operation whenever the resulting string contains at least one
+    /// Verifies that `shouldChangeTextInRange` performs an *undoable* operation whenever the resulting string contains at least one
     /// Markdown List Item.
     ///
     func testShouldChangeTextMarkdownReplacementOperationIsUndoableAndRunningSuchResultsInTheInitialString() {
         let initialText = "- [ "
         let replacementText = "]"
-
         let replacementRange = NSRange(location: initialText.utf16.count, length: .zero)
-        let replacementAsValue = NSValue(range: replacementRange)
 
         textView.displayNote(content: initialText)
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [replacementAsValue], strings: [replacementText])
+        let output = inputHandler.textView(textView, shouldChangeTextInRange: replacementRange, string: replacementText)
 
         XCTAssertFalse(output)
 
@@ -126,17 +102,16 @@ class TextViewInputHandlerTests: XCTestCase {
         XCTAssertEqual(textView.plainTextContent(), initialText)
     }
 
-    /// Verifies that `shouldChangeTextInRanges` posts a `textDidChange` notification whenever the Replacement OP is handled by the
-    /// TextInputHandler itself.
+    /// Verifies that `shouldChangeTextInRange` posts a `textDidChange` notification whenever the Replacement OP is handled by itself.
     ///
     func testShouldChangeTextReplacementOperationPostsOneTextDidChangeNotification() {
         let replacementText = "- [ ]"
-        let replacementRange = NSValue(range: .zero)
+        let replacementRange = NSRange.zero
 
         textView.displayNote(content: replacementText)
         XCTAssertTrue(delegate.receivedTextDidChangeNotifications.isEmpty)
 
-        let output = inputHandler.textView(textView, shouldChangeTextInRanges: [replacementRange], strings: [replacementText])
+        let output = inputHandler.textView(textView, shouldChangeTextInRange: replacementRange, string: replacementText)
         XCTAssertFalse(output)
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
     }
