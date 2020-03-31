@@ -175,16 +175,6 @@ class NSStringSimplenoteTests: XCTestCase {
         }
     }
 
-    /// Verifies that `insertingListMarkers` skips the last line, when empty
-    ///
-    func testInsertingListMarkersDoesNotAddMarkersToTheLastEmptyLine() {
-        let sample = "L1\n"
-        let expected: String = .attachmentString + .space + "L1" + .newline
-
-        XCTAssertEqual(sample.insertingListMarkers.string, expected)
-    }
-
-    /// Veifies that `insertingListMarkers` adds markers to every line
     ///
     func testInsertingListMarkersAddsMarkersToEveryLine() {
         let sample = "L1\nL2"
