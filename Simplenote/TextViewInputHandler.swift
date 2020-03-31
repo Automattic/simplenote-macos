@@ -13,9 +13,7 @@ class TextViewInputHandler: NSObject {
     ///
     /// -   Important:
     ///    Reason to have this mechanism is: whenever any of the Text Insertion OP(s) results in a (new) List Item to be rendered, we want to group
-    ///    the "Replacement" and "Process Checklists" operations as a single transaction.
-    ///
-    ///    Pressing CMD + Z is expected to undo *both*, otherwise we'd risk UndoManager integrity issues.
+    ///    the "Replacement" and "Process Checklists" operations as a single transaction: **CMD + Z** is expected to undo *both*.
     ///
     @objc
     func textView(_ textView: NSTextView, shouldChangeTextInRange range: NSRange, string: String?) -> Bool {
