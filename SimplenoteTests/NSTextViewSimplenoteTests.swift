@@ -96,9 +96,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
         for (initial, _) in samplesForIndentation {
             textView.string = initial
-
-            let selectedRange = NSRange(location: .zero, length: .zero)
-            textView.setSelectedRange(selectedRange)
+            textView.setSelectedRange(.zero)
 
             XCTAssertTrue(textView.processTabInsertion())
             XCTAssertTrue(undoManager.canUndo)
