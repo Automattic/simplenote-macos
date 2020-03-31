@@ -175,10 +175,11 @@ class NSStringSimplenoteTests: XCTestCase {
         }
     }
 
+    /// Veifies that `insertingListMarkers` adds markers to every line (including empty lines)
     ///
     func testInsertingListMarkersAddsMarkersToEveryLine() {
-        let sample = "L1\nL2"
-        let expected: String = .attachmentString + .space + "L1" + .newline + .attachmentString + .space + "L2"
+        let sample = "L1\nL2\n"
+        let expected = .richListMarker + "L1" + .newline + .richListMarker + "L2" + .newline + .richListMarker
 
         XCTAssertEqual(sample.insertingListMarkers.string, expected)
     }
@@ -187,7 +188,7 @@ class NSStringSimplenoteTests: XCTestCase {
     ///
     func testInsertingListMarkersAddsMarkerToSingleLinedEmptyString() {
         let sample = ""
-        let expected: String = .attachmentString + .space
+        let expected = String.richListMarker
 
         XCTAssertEqual(sample.insertingListMarkers.string, expected)
     }
@@ -199,7 +200,7 @@ class NSStringSimplenoteTests: XCTestCase {
             .space + "L1" + .newline,
             .tab + "L2" + .newline,
             .space + .space + .newline,
-            "L3" + .newline,
+            "L3"
         ]
         let expected: [String] = [
             .space + .richListMarker + "L1" + .newline,
