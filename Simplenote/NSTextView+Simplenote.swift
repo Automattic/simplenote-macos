@@ -12,6 +12,54 @@ extension NSTextView {
         return attributedString().attributedSubstring(from: range)
     }
 
+    /// Replaces the receiver's contents at a given range, with the specified String, and registers the inverse OP in our UndoManager.
+    ///
+    @discardableResult
+    func performUndoableReplacement(at range: NSRange, string: String) -> Bool {
+        guard let storage = textStorage, let undoManager = undoManager else {
+            return false
+        }
+
+        storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
+        didChangeText()
+
+        return true
+    }
+
+    /// Replaces the receiver's contents at a given range, with the specified AttributedString, and registers the inverse OP in our UndoManager.
+    ///
+    @discardableResult
+    func performUndoableReplacement(at range: NSRange, attrString: NSAttributedString) -> Bool {
+        guard let storage = textStorage, let undoManager = undoManager else {
+            return false
+        }
+
+        storage.replaceCharacters(in: range, attrString: attrString, undoManager: undoManager)
+        didChangeText()
+
+        return true
+    }
+
+    /// Replaces the receiver's contents at a given range, with the specified String, and registers the inverse OP in our UndoManager.
+    /// This API will also process Markdown Lists: both the Replacement and List Processing will be undoable in a single step.
+    ///
+    @discardableResult
+    func performUndoableReplacementProcessingLists(at range: NSRange, string: String) -> Bool {
+        guard let storage = textStorage, let undoManager = undoManager else {
+            return false
+        }
+
+        undoManager.beginUndoGrouping()
+
+        storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
+        storage.processChecklists(with: .textListColor, undoManager: undoManager)
+
+        undoManager.endUndoGrouping()
+        didChangeText()
+
+        return true
+    }
+
     /// Returns the (Range, String) representing the line or lines at the Selected Range.
     /// 
     /// - Important: The trailing `\n` will be dropped from both, the resulting String and Range.
