@@ -201,6 +201,8 @@
 		B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; };
 		B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
+		B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A4EF2F1AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */; };
 		B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */; };
 		B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */; };
@@ -474,6 +476,7 @@
 		B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONKit+Simplenote.h"; sourceTree = "<group>"; };
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
 		B59EBAA019A6884F00DBC657 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = External/HockeySDK.framework; sourceTree = "<group>"; };
+		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
 		B5A4EF2D1AEE76B8007AB0AB /* SPPopUpButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPopUpButtonCell.h; sourceTree = "<group>"; };
 		B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPopUpButtonCell.m; sourceTree = "<group>"; };
 		B5A4EF311AEEA03D007AB0AB /* SPPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPopUpButton.h; sourceTree = "<group>"; };
@@ -890,6 +893,7 @@
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
+				B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
@@ -1395,6 +1399,7 @@
 				B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
+				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
@@ -1491,6 +1496,7 @@
 				B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
+				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
 				466FFEB017CC10A800399652 /* SPGradientView.m in Sources */,
