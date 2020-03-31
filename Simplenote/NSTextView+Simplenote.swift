@@ -61,7 +61,7 @@ extension NSTextView {
     }
 
     /// Returns the (Range, String) representing the line or lines at the Selected Range.
-    /// 
+    ///
     /// - Important: The trailing `\n` will be dropped from both, the resulting String and Range.
     ///
     func selectedLineDroppingTrailingNewline() -> (NSRange, String) {
@@ -124,9 +124,7 @@ extension NSTextView {
 
         // Inject a Tab character at the beginning of the line
         let insertionRange = NSRange(location: lineRange.location, length: .zero)
-        insertText(String.tab, replacementRange: insertionRange)
-
-        return true
+        return performUndoableReplacement(at: insertionRange, string: .tab)
     }
 
     /// Processes a Newline Insertion on List Items:
@@ -177,9 +175,7 @@ extension NSTextView {
             insertionText.addAttribute(.attachment, value: newAttachment, range: range)
         }
 
-        insertText(insertionText, replacementRange: selectedRange)
-
-        return true
+        return performUndoableReplacement(at: selectedRange, attrString: insertionText)
     }
 }
 
@@ -190,16 +186,20 @@ extension NSTextView {
 
     /// Inserts (or) Removes List Markers at the Selected Range
     ///
-    @objc
-    func toggleListMarkersAtSelectedRange() {
+    @discardableResult @objc
+    func toggleListMarkersAtSelectedRange() -> Bool {
         let (range, line) = selectedLineDroppingTrailingNewline()
         let updated = line.containsAttachment ? line.removingListMarkers : line.insertingListMarkers
-
         let oldSelectedRange = selectedRange()
-        insertText(updated, replacementRange: range)
+
+        guard performUndoableReplacement(at: range, attrString: updated) else {
+            return false
+        }
 
         let delta = updated.length - range.length
         let newSelectedRange = NSRange(location: oldSelectedRange.upperBound + delta, length: .zero)
         setSelectedRange(newSelectedRange)
+
+        return true
     }
 }
