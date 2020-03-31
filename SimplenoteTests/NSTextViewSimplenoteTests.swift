@@ -57,7 +57,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         let (range, line) = textView.lineAtSelectedRange()
 
         XCTAssertEqual(line, String())
-        XCTAssertEqual(range, NSRange(location: .zero, length: .zero))
+        XCTAssertEqual(range, .zero)
     }
 
     /// Verifies that `removeText(at:)` effectively nukes the text at the specified range
@@ -79,8 +79,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         for (text, indented) in samplesForIndentation {
             textView.string = text
 
-            let selectedRange = NSRange(location: .zero, length: .zero)
-            textView.setSelectedRange(selectedRange)
+            textView.setSelectedRange(.zero)
 
             XCTAssertTrue(textView.processTabInsertion())
             XCTAssertEqual(textView.string, indented)
