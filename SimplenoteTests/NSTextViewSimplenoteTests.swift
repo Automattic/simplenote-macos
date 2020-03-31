@@ -279,6 +279,42 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, expected)
     }
 
+    /// Verifies that `displayNote` effectively replaces all of the List Markers (`- [ ]`) with a corresponding TextAttachment
+    ///
+    func testDisplayNoteAddsOneTextAttachmentPerValidListMarker() {
+        let list = sampleListText
+        let text = list.joined()
+
+        textView.displayNote(content: text)
+
+        let attrString = textView.attributedString()
+        var attachments = Set<NSTextAttachment>()
+
+        attrString.enumerateAttribute(.attachment, in: attrString.fullRange, options: []) { (attachment, _, _) in
+            guard let attachment = attachment as? NSTextAttachment else {
+                return
+            }
+
+            attachments.insert(attachment)
+        }
+
+        XCTAssertEqual(sampleListText.count, attachments.count)
+    }
+
+    /// Verifies that `plainTextContent` encodes (TextAttachment based) Lists as Markdown
+    ///
+    func testPlainTextContentEncodesTextAttachmentBasedListsAsMarkdown() {
+        let sample = samplePlainText.joined()
+        let expected = sampleListText.joined()
+
+        textView.displayNote(content: sample)
+
+        textView.setSelectedRange(sample.asNSString.fullRange)
+        textView.toggleListMarkersAtSelectedRange()
+
+        XCTAssertEqual(textView.plainTextContent(), expected)
+    }
+
     /// Verifies that `toggleListMarkersAtSelectedRange` preserves the currently selected location
     ///
     func testToggleListMarkersAtSelectedRangeMovesCursorMatchingInsertedMarkerLength() {
@@ -375,6 +411,15 @@ private extension NSTextViewSimplenoteTests {
             "Donec in arcu efficitur, aliquam nulla sed, venenatis justo.\n",
             "Nunc imperdiet sem quis ultricies efficitur.\n",
             "Sed a enim at justo dictum pellentesque sollicitudin sed enim."
+        ]
+    }
+
+    var sampleListText: [String] {
+        return [
+            "- [ ] Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n",
+            "- [ ] Donec in arcu efficitur, aliquam nulla sed, venenatis justo.\n",
+            "- [ ] Nunc imperdiet sem quis ultricies efficitur.\n",
+            "- [ ] Sed a enim at justo dictum pellentesque sollicitudin sed enim."
         ]
     }
 }

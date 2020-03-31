@@ -55,15 +55,13 @@
     return lroundf(adjustedInset) + kMinEditorPadding;
 }
 
-- (void)processChecklists
+- (void)didChangeText
 {
+    [super didChangeText];
+
+    // FIXME: Realtime injection of `- [ ]` will trigger, still, an exception
     NSColor *checklistColor = [NSColor textListColor];
     [self.textStorage processChecklistsWithColor:checklistColor];
-}
-
-- (NSString *)plainTextContent
-{
-    return [NSAttributedStringToMarkdownConverter convertWithString:self.attributedString];
 }
 
 - (BOOL)checkForChecklistClick:(NSEvent *)event

@@ -183,13 +183,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self toggleMarkdownView:nil];
     }
 
-    // Issue #472: Explicitly reset the UndoManager. NSTextView appears not to be doing so for us, in specific scenarios.
-    [self.noteEditor.undoManager removeAllActions];
-    
     if (selectedNote == nil) {
         [self.noteEditor setEditable:NO];
         [self.noteEditor setSelectable:NO];
-        [self.noteEditor setString:@""];
+        [self.noteEditor displayNoteWithContent:@""];
         [tagTokenField setEditable:NO];
         [self.bottomBar setEnabled:NO];
         
@@ -239,9 +236,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         // Force selection to start; not doing this can cause an NSTextStorage exception when
         // switching away from long notes (> 5000 characters)
         [self.noteEditor setSelectedRange:NSMakeRange(0, 0)];
-        self.noteEditor.string = self.note.content;
+        [self.noteEditor displayNoteWithContent:self.note.content];
     } else {
-        self.noteEditor.string = @"";
+        [self.noteEditor displayNoteWithContent:@""];
     }
     
     [previewButton setHidden:!self.note.markdown || self.viewingTrash];
@@ -268,15 +265,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
         [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
     }
-    
-    [self.noteEditor processChecklists];
 }
 
 - (void)displayNotes:(NSArray *)notes
 {
     self.note = nil;
     self.selectedNotes = notes;
-    [self.noteEditor setString:@""];
+    [self.noteEditor displayNoteWithContent:@""];
     [self.noteEditor setEditable:NO];
     [self.noteEditor setSelectable:NO];
     [tagTokenField setEditable:NO];
@@ -470,7 +465,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Update the note list preview
     [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
-    [self.noteEditor processChecklists];
 }
 
 -(void)updateShareButtonVisibility
@@ -486,12 +480,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                              oldText:self.noteContentBeforeRemoteUpdate
                                      currentLocation:self.cursorLocationBeforeRemoteUpdate];
 
-    self.noteEditor.string = self.note.content;
-    
-    NSRange newRange = NSMakeRange(newLocation, 0);
-    [self.noteEditor setSelectedRange:newRange];
-    [self.noteEditor processChecklists];
-    
+    [self.noteEditor displayNoteWithContent:self.note.content];
+    self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
+
     [self updatePublishUI];
 }
 
@@ -682,8 +673,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
 	if (versionData != nil) {
-		self.noteEditor.string = (NSString *)[versionData objectForKey:@"content"];
-        [self.noteEditor processChecklists];
+        NSString *content = (NSString *)[versionData objectForKey:@"content"];
+        [self.noteEditor displayNoteWithContent:content];
 
 		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
 		[self updateVersionLabel:versionDate];
@@ -697,7 +688,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.note.content = [self.noteEditor plainTextContent];
     [self save];
     [self dismissActivePopover];
-    [self.noteEditor processChecklists];
 }
 
 - (IBAction)pinAction:(id)sender
@@ -983,7 +973,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
     [self applyStyle];
     [self checkTextInDocument];
-    [self.noteEditor processChecklists];
 }
 
 #pragma mark - NoteEditor Preferences Helpers
@@ -1082,8 +1071,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 // Reprocesses note checklists after switching themes, so they apply the correct color
 - (void)fixChecklistColoring
 {
-    self.noteEditor.string = [self.noteEditor plainTextContent];
-    [self.noteEditor processChecklists];
+    NSString *content = [self.noteEditor plainTextContent];
+    [self.noteEditor displayNoteWithContent:content];
 }
 
 #pragma mark - NSButton Delegate Methods
