@@ -80,7 +80,6 @@ class NSTextViewSimplenoteTests: XCTestCase {
     func testProcessTabInsertionEffectivelyIndentsTextListsWhenTheCurrentLineContainsSomeListMarker() {
         for (text, indented) in samplesForIndentation {
             textView.string = text
-
             textView.setSelectedRange(.zero)
 
             XCTAssertTrue(textView.processTabInsertion())
@@ -287,13 +286,11 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
         textView.string = text + .newline + .newline
         textView.setSelectedRange(.zero)
-
         textView.toggleListMarkersAtSelectedRange()
 
         let selectedRange = textView.selectedRange()
-        let textRange = textView.string.asNSString.range(of: text)
-
-        XCTAssertEqual(selectedRange.location, textRange.location)
+        let expectedSelectedLocation = textView.string.asNSString.range(of: text).location
+        XCTAssertEqual(selectedRange.location, expectedSelectedLocation)
 
         textView.toggleListMarkersAtSelectedRange()
         XCTAssertEqual(textView.selectedRange(), .zero)
