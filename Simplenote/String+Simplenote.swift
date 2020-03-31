@@ -34,4 +34,10 @@ extension String {
     var asNSString: NSString {
         self as NSString
     }
+
+    /// Returns a copy of the receiver minus its trailing newline (if any)
+    ///
+    func dropTrailingNewline() -> String {
+        return last == Character(.newline) ? String(dropLast()) : self
+    }
 }
