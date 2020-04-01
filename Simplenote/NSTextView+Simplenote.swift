@@ -34,7 +34,7 @@ extension NSTextView {
     /// This API will also process Markdown Lists: both the Replacement and List Processing will be undoable in a single step.
     ///
     @discardableResult
-    func performUndoableReplacementProcessingLists(at range: NSRange, string: String) -> Bool {
+    func performUndoableReplacementAndProcessLists(at range: NSRange, string: String) -> Bool {
         performUndoableTextChangeOperation { (undoManager, storage) in
             storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
             storage.processChecklists(with: .textListColor, undoManager: undoManager)

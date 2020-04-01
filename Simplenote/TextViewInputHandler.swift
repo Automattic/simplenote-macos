@@ -17,7 +17,7 @@ class TextViewInputHandler: NSObject {
     ///
     @objc
     func textView(_ textView: NSTextView, shouldChangeTextInRange range: NSRange, string: String?) -> Bool {
-        guard let string = string, textView.performUndoableReplacementProcessingLists(at: range, string: string) else {
+        guard let string = string, textView.performUndoableReplacementAndProcessLists(at: range, string: string) else {
             return true
         }
 

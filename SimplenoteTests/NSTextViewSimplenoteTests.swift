@@ -185,7 +185,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.selectedRange, .zero)
     }
 
-    /// Verifies that `performUndoableReplacementProcessingLists(at:string:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
     ///
     func testPerformUndoableReplacementsProcessingListsReplacesTextAndPostsTextDidChangeNotification() {
         let sample = sampleListText.dropFirst().joined()
@@ -195,13 +195,13 @@ class NSTextViewSimplenoteTests: XCTestCase {
         textView.string = sample
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
 
-        textView.performUndoableReplacementProcessingLists(at: .zero, string: replacement)
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
 
         XCTAssertEqual(textView.plainTextContent(), expected)
     }
 
-    /// Verifies that `performUndoableReplacementProcessingLists(at:string:)` reverts the Replaced Text and post a TextDidChange Note on Undo.
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` reverts the Replaced Text and post a TextDidChange Note on Undo.
     ///
     func testPerformUndoableReplacementsProcessingListsRevertsReplacementeAndPostsTextDidChangeOnUndo() {
         let sample = sampleListText.dropFirst().joined()
@@ -210,7 +210,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         textView.string = sample
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
 
-        textView.performUndoableReplacementProcessingLists(at: .zero, string: replacement)
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
 
         XCTAssertTrue(textView.internalUndoManager.canUndo)
@@ -220,7 +220,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 2)
     }
 
-    /// Verifies that `performUndoableReplacementProcessingLists(at:string:)` restores the SelectedRange On Undo.
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` restores the SelectedRange On Undo.
     ///
     func testPerformUndoableReplacementsProcessingListsRestoresSelectedRangeOnUndo() {
         let initial = samplePlainText.dropFirst().joined()
@@ -229,7 +229,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
         textView.string = initial
 
         textView.setSelectedRange(.zero)
-        textView.performUndoableReplacementProcessingLists(at: .zero, string: replacement)
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
         XCTAssertEqual(textView.selectedRange.location, replacement.utf16.count)
 
         textView.internalUndoManager.undo()
