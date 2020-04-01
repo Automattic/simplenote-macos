@@ -32,12 +32,26 @@ class TextViewInputHandlerTests: XCTestCase {
     /// Verifies that `shouldChangeTextInRange` returns `true` whenever the replacement string is null. We expect the TextView's default
     /// behavior in such cases.
     ///
-    func testShouldChangeTextReturnsNilWheneverTheStringIsNil() {
+    func testShouldChangeTextReturnsFalseWheneverTheStringIsNil() {
         let output = inputHandler.textView(textView, shouldChangeTextInRange: .zero, string: nil)
         XCTAssertTrue(output)
     }
 
-    /// Verifies that `shouldChangeTextInRange` returns `false` whenever the `Strings`, `UndoManager` and `TextStorage` aren't nil.
+    /// Verifies that `shouldChangeTextInRange` returns `true` whenever the resulting string does not require Markdown Lists Processing.
+    ///
+    func testShouldChangeTextReturnsFalseWheneverTheResultingDocumentDoesNotRequireExtraProcessing() {
+        let initialText = "Auto"
+        let replacementText = "mattic"
+        let replacementRange = NSRange(location: initialText.utf16.count, length: .zero)
+
+        textView.displayNote(content: initialText)
+        let output = inputHandler.textView(textView, shouldChangeTextInRange: replacementRange, string: replacementText)
+
+        XCTAssertTrue(output)
+    }
+
+    /// Verifies that `shouldChangeTextInRange` returns `false` whenever the resulting document contains at least one Markdown Item
+    /// that must be processed (replaced by a NSTextAttachment)
     ///
     func testShouldChangeTextReturnsFalseAndInsertsTextAttachmentsWhenInputParametersAreValid() {
         let initialText = "- [ "
