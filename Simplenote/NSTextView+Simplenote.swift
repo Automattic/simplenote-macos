@@ -13,24 +13,6 @@ extension NSTextView {
     }
 
     /// Replaces the receiver's contents at a given range, with the specified String, and registers the inverse OP in our UndoManager.
-    ///
-    @discardableResult
-    func performUndoableReplacement(at range: NSRange, string: String) -> Bool {
-        performUndoableTextChangeOperation { (undoManager, storage) in
-            storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
-        }
-    }
-
-    /// Replaces the receiver's contents at a given range, with the specified AttributedString, and registers the inverse OP in our UndoManager.
-    ///
-    @discardableResult
-    func performUndoableReplacement(at range: NSRange, attrString: NSAttributedString) -> Bool {
-        performUndoableTextChangeOperation { (undoManager, storage) in
-            storage.replaceCharacters(in: range, attrString: attrString, undoManager: undoManager)
-        }
-    }
-
-    /// Replaces the receiver's contents at a given range, with the specified String, and registers the inverse OP in our UndoManager.
     /// This API will also process Markdown Lists: both the Replacement and List Processing will be undoable in a single step.
     ///
     @discardableResult
@@ -56,9 +38,8 @@ extension NSTextView {
 
     /// Removes the text at the specified range, and notifies the delegate.
     ///
-    @discardableResult
-    func removeText(at range: NSRange) -> Bool {
-        performUndoableReplacement(at: range, string: String())
+    func removeText(at range: NSRange) {
+        insertText(String(), replacementRange: range)
     }
 }
 
@@ -137,7 +118,9 @@ extension NSTextView {
 
         // Inject a Tab character at the beginning of the line
         let insertionRange = NSRange(location: lineRange.location, length: .zero)
-        return performUndoableReplacement(at: insertionRange, string: .tab)
+        insertText(String.tab, replacementRange: insertionRange)
+
+        return true
     }
 
     /// Processes a Newline Insertion on List Items:
@@ -165,7 +148,8 @@ extension NSTextView {
         // Empty Line: Remove the bullet
         let trimmedString = lineString.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmedString.utf16.count != rangeOfMarker.length else {
-            return removeText(at: lineRange)
+            removeText(at: lineRange)
+            return true
         }
 
         // Insert: newline + Padding + Marker + Space?
@@ -188,7 +172,9 @@ extension NSTextView {
             insertionText.addAttribute(.attachment, value: newAttachment, range: range)
         }
 
-        return performUndoableReplacement(at: selectedRange, attrString: insertionText)
+        insertText(insertionText, replacementRange: selectedRange)
+
+        return true
     }
 }
 
@@ -199,20 +185,16 @@ extension NSTextView {
 
     /// Inserts (or) Removes List Markers at the Selected Range
     ///
-    @discardableResult @objc
-    func toggleListMarkersAtSelectedRange() -> Bool {
+    @objc
+    func toggleListMarkersAtSelectedRange() {
         let (range, line) = selectedLineDroppingTrailingNewline()
         let updated = line.containsAttachment ? line.removingListMarkers : line.insertingListMarkers
-        let oldSelectedRange = selectedRange()
 
-        guard performUndoableReplacement(at: range, attrString: updated) else {
-            return false
-        }
+        let oldSelectedRange = selectedRange()
+        insertText(updated, replacementRange: range)
 
         let delta = updated.length - range.length
         let newSelectedRange = NSRange(location: oldSelectedRange.upperBound + delta, length: .zero)
         setSelectedRange(newSelectedRange)
-
-        return true
     }
 }
