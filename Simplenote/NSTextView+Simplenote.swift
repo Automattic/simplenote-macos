@@ -23,12 +23,6 @@ extension NSTextView {
         }
     }
 
-    /// Removes the text at the specified range, and notifies the delegate.
-    ///
-    func removeText(at range: NSRange) {
-        insertText(String(), replacementRange: range)
-    }
-
     /// Returns the (Range, String) representing the line or lines at the Selected Range.
     ///
     /// - Important: The trailing `\n` will be dropped from both, the resulting String and Range.
@@ -40,6 +34,12 @@ extension NSTextView {
         let trimmedRange = NSRange(location: range.location, length: trimmedLine.utf16.count)
 
         return (trimmedRange, trimmedLine)
+    }
+
+    /// Removes the text at the specified range, and notifies the delegate.
+    ///
+    func removeText(at range: NSRange) {
+        insertText(String(), replacementRange: range)
     }
 }
 
