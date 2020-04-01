@@ -17,9 +17,9 @@ extension NSTextView {
     ///
     @discardableResult
     func performUndoableReplacementAndProcessLists(at range: NSRange, string: String) -> Bool {
-        performUndoableTextChangeOperation { (undoManager, storage) in
-            storage.replaceCharacters(in: range, string: string, undoManager: undoManager)
-            storage.processChecklists(with: .textListColor, undoManager: undoManager)
+        performUndoableOperation { storage in
+            storage.replaceCharacters(in: range, with: string)
+            storage.processChecklists(with: .textListColor)
         }
     }
 
@@ -48,30 +48,42 @@ extension NSTextView {
 //
 private extension NSTextView {
 
-    /// Performs an Undoable TextChange OP:
+    /// Performs an Undoable Operation `in a transactional fashion`: an Undo Group will wrap the execution of the specified Block.
     ///
-    ///     A.  Posts a TextDidChange Notification
-    ///     B.  Registers an Undo Operation, which will restore the SelectedRange and post a TextDidChange Note
+    ///     1.  Registers an Undo Operation which is expected to restore the TextView in its previous state
+    ///     2.  Wrap up a given `Block` within an Undo Group
+    ///     3.  Post a TextDidChange Notification
     ///
-    func performUndoableTextChangeOperation(block: (UndoManager, NSTextStorage) -> Void) -> Bool {
+    func performUndoableOperation(block: (NSTextStorage) -> Void) -> Bool {
         guard let storage = textStorage, let undoManager = undoManager else {
             return false
         }
 
-        let undoSelectedRange = selectedRange()
-
         undoManager.beginUndoGrouping()
-        undoManager.registerUndo(withTarget: self) { textView in
-            textView.setSelectedRange(undoSelectedRange)
-            textView.didChangeText()
-        }
-
-        block(undoManager, storage)
+        registerUndoOperation(in: undoManager, storage: storage)
+        block(storage)
         undoManager.endUndoGrouping()
 
         didChangeText()
 
         return true
+    }
+
+    /// Registers an Undo Operation, which is expected to restore the receiver to its previous state:
+    ///
+    ///     1.  Restores the full contents of our TextStorage
+    ///     2.  Reverts the SelectedRange
+    ///     3.  Post a textDidChange Notification
+    ///
+    func registerUndoOperation(in undoManager: UndoManager, storage: NSTextStorage) {
+        let oldSelectedRange = selectedRange()
+        let oldText = storage.attributedSubstring(from: storage.fullRange)
+
+        undoManager.registerUndo(withTarget: self) { textView in
+            storage.replaceCharacters(in: storage.fullRange, with: oldText)
+            textView.setSelectedRange(oldSelectedRange)
+            textView.didChangeText()
+        }
     }
 }
 

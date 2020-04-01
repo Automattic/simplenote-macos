@@ -34,36 +34,3 @@ extension NSMutableAttributedString {
         append(string)
     }
 }
-
-
-// MARK: - Replacement + Undo Support
-//
-extension NSMutableAttributedString {
-
-    /// Replaces the specified Range with a given String, and registers the inverse OP in the specified UndoManager
-    ///
-    func replaceCharacters(in range: NSRange, string: String, undoManager: UndoManager) {
-        let undoString = attributedSubstring(from: range)
-        let undoRange = NSRange(location: range.location, length: string.utf16.count)
-
-        undoManager.registerUndo(withTarget: self) { mutableString in
-            mutableString.replaceCharacters(in: undoRange, with: undoString)
-        }
-
-        replaceCharacters(in: range, with: string)
-    }
-
-    /// Replaces the specified Range with a given AttributedString, and registers the inverse OP in the specified UndoManager
-    ///
-    @objc(replaceCharactersInRange:withAttributedString:undoManager:)
-    func replaceCharacters(in range: NSRange, attrString: NSAttributedString, undoManager: UndoManager) {
-        let undoString = attributedSubstring(from: range)
-        let undoRange = NSRange(location: range.location, length: attrString.length)
-
-        undoManager.registerUndo(withTarget: self) { mutableString in
-            mutableString.replaceCharacters(in: undoRange, with: undoString)
-        }
-
-        replaceCharacters(in: range, with: attrString)
-    }
-}

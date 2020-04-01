@@ -85,7 +85,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
     /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
     ///
-    func testPerformUndoableReplacementsProcessingListsReplacesTextAndPostsTextDidChangeNotification() {
+    func testPerformUndoableReplacementsAndProcessListsReplacesTextAndPostsTextDidChangeNotification() {
         let sample = sampleListText.dropFirst().joined()
         let replacement = sampleListText[.zero]
         let expected = sampleListText.joined()
@@ -99,9 +99,18 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.plainTextContent(), expected)
     }
 
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` replaces Markdown Items with Attachments
+    ///
+    func testPerformUndoableReplacementsAndProcessListsEffectivelyReplacesMarkdownItemsWithAttachments() {
+        let replacement = sampleListText[0]
+
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
+        XCTAssertTrue(textView.string.containsAttachment)
+    }
+
     /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` reverts the Replaced Text and post a TextDidChange Note on Undo.
     ///
-    func testPerformUndoableReplacementsProcessingListsRevertsReplacementeAndPostsTextDidChangeOnUndo() {
+    func testPerformUndoableReplacementsAndProcessListsRevertsReplacementeAndPostsTextDidChangeOnUndo() {
         let sample = sampleListText.dropFirst().joined()
         let replacement = sampleListText[.zero]
 
@@ -120,7 +129,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
     /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` restores the SelectedRange On Undo.
     ///
-    func testPerformUndoableReplacementsProcessingListsRestoresSelectedRangeOnUndo() {
+    func testPerformUndoableReplacementsAndProcessListsRestoresSelectedRangeOnUndo() {
         let initial = samplePlainText.dropFirst().joined()
         let replacement = samplePlainText[.zero]
 
