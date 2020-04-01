@@ -80,6 +80,10 @@ private extension NSTextView {
         let oldText = storage.attributedSubstring(from: storage.fullRange)
 
         undoManager.registerUndo(withTarget: self) { textView in
+            // Register an Undo *during* an Undo? > Also known as Redo!
+            textView.registerUndoOperation(in: undoManager, storage: storage)
+
+            // And the actual Undo!
             storage.replaceCharacters(in: storage.fullRange, with: oldText)
             textView.setSelectedRange(oldSelectedRange)
             textView.didChangeText()
