@@ -22,14 +22,7 @@ class TextViewInputHandler: NSObject {
     ///
     @objc
     func textView(_ textView: NSTextView, shouldChangeTextInRange range: NSRange, string: String?) -> Bool {
-        guard let string = string else {
-            return true
-        }
-
-        let oldText = textView.string as NSString
-        let newText = oldText.replacingCharacters(in: range, with: string)
-
-        guard let _ = regexForListMarkers.firstMatch(in: newText, options: [], range: newText.fullRange) else {
+        guard let string = string, mustOverrideTextInsertion(of: string, at: range, in: textView) else {
             return true
         }
 
@@ -38,5 +31,18 @@ class TextViewInputHandler: NSObject {
         }
 
         return false
+    }
+
+    /// Indicates if we must override NSTextView's default processing: this is only true whenever we'll require Markdown Processing.
+    ///
+    private func mustOverrideTextInsertion(of string: String, at range: NSRange, in textView: NSTextView) -> Bool {
+        let oldText = textView.string as NSString
+        let newText = oldText.replacingCharacters(in: range, with: string)
+
+        guard let _ = regexForListMarkers.firstMatch(in: newText, options: [], range: newText.fullRange) else {
+            return false
+        }
+
+        return true
     }
 }

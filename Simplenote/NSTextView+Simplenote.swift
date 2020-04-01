@@ -50,8 +50,8 @@ private extension NSTextView {
 
     /// Performs an Undoable Operation `in a transactional fashion`: an Undo Group will wrap the execution of the specified Block.
     ///
-    ///     1.  Registers an Undo Operation which is expected to restore the TextView in its previous state
-    ///     2.  Wrap up a given `Block` within an Undo Group
+    ///     1.  Registers an Undo Operation which is expected to restore the TextView to its previous state
+    ///     2.  Wraps up a given `Block` within an Undo Group
     ///     3.  Post a TextDidChange Notification
     ///
     func performUndoableOperation(block: (NSTextStorage) -> Void) -> Bool {
