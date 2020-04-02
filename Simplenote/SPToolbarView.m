@@ -154,11 +154,11 @@
         // Dark theme finally well supported in Mojave! No tweaks needed.
         return;
     }
-    
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
+
     [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
 
-    NSAppearanceName name = theme.isDark ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
+    BOOL isDarkMode = [[VSThemeManager sharedManager] isDarkMode];
+    NSAppearanceName name = isDarkMode ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
     searchField.appearance = [NSAppearance appearanceNamed:name];
 }
 
