@@ -157,14 +157,9 @@
     
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
-    
-    if (@available(macOS 10.10, *)) {
-        if (theme.isDark) {
-            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-        } else {
-            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
-        }
-    }
+
+    NSAppearanceName name = theme.isDark ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
+    searchField.appearance = [NSAppearance appearanceNamed:name];
 }
 
 @end
