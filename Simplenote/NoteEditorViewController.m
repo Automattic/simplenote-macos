@@ -62,6 +62,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
 @property (nonatomic, strong) Storage               *storage;
+@property (nonatomic, strong) TextViewInputHandler  *inputHandler;
 
 @property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
 @property (nonatomic, assign) BOOL                  viewingVersions;
@@ -115,6 +116,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	for (NSString *key in preferences.allKeys) {
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
+
+    // Realtime Markdown Support
+    self.inputHandler = [TextViewInputHandler new];
     
     int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
     [self updateLineLengthMenuForPosition:lineLengthPosition];
@@ -452,6 +456,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     return NO;
+}
+
+- (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString
+{
+    return [self.inputHandler textView:textView shouldChangeTextInRange:affectedCharRange string:replacementString];
 }
 
 - (void)textDidChange:(NSNotification *)notification

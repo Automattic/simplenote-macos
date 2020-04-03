@@ -3,6 +3,7 @@
 - Simplenote now requires macOS 10.13 or higher
 - Updated Checklist Icons
 - Fixed a crash related to Text Linkification and Undo Support
+- Fixed several Undo issues when dealing with Checklists
 
 1.9.1
 -----

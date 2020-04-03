@@ -12,8 +12,19 @@ extension NSTextView {
         return attributedString().attributedSubstring(from: range)
     }
 
+    /// Replaces the receiver's contents at a given range, with the specified String, and registers the inverse OP in our UndoManager.
+    /// This API will also process Markdown Lists: both the Replacement and List Processing will be undoable in a single step.
+    ///
+    @discardableResult
+    func performUndoableReplacementAndProcessLists(at range: NSRange, string: String) -> Bool {
+        registerUndoCheckpointAndPerform { storage in
+            storage.replaceCharacters(in: range, with: string)
+            storage.processChecklists(with: .textListColor)
+        }
+    }
+
     /// Returns the (Range, String) representing the line or lines at the Selected Range.
-    /// 
+    ///
     /// - Important: The trailing `\n` will be dropped from both, the resulting String and Range.
     ///
     func selectedLineDroppingTrailingNewline() -> (NSRange, String) {
@@ -29,6 +40,54 @@ extension NSTextView {
     ///
     func removeText(at range: NSRange) {
         insertText(String(), replacementRange: range)
+    }
+}
+
+
+// MARK: - Private!
+//
+private extension NSTextView {
+
+    /// Registers an Undo Checkpoint, and performs a given block `in a transactional fashion`: an Undo Group will wrap its execution
+    ///
+    ///     1.  Registers an Undo Operation which is expected to restore the TextView to its previous state
+    ///     2.  Wraps up a given `Block` within an Undo Group
+    ///     3.  Post a TextDidChange Notification
+    ///
+    func registerUndoCheckpointAndPerform(block: (NSTextStorage) -> Void) -> Bool {
+        guard let storage = textStorage, let undoManager = undoManager else {
+            return false
+        }
+
+        undoManager.beginUndoGrouping()
+        registerUndoCheckpoint(in: undoManager, storage: storage)
+        block(storage)
+        undoManager.endUndoGrouping()
+
+        didChangeText()
+
+        return true
+    }
+
+    /// Registers an Undo Checkpoint, which is expected to restore the receiver to its previous state:
+    ///
+    ///     1.  Restores the full contents of our TextStorage
+    ///     2.  Reverts the SelectedRange
+    ///     3.  Post a textDidChange Notification
+    ///
+    func registerUndoCheckpoint(in undoManager: UndoManager, storage: NSTextStorage) {
+        let oldSelectedRange = selectedRange()
+        let oldText = storage.attributedSubstring(from: storage.fullRange)
+
+        undoManager.registerUndo(withTarget: self) { textView in
+            // Register an Undo *during* an Undo? > Also known as Redo!
+            textView.registerUndoCheckpoint(in: undoManager, storage: storage)
+
+            // And the actual Undo!
+            storage.replaceCharacters(in: storage.fullRange, with: oldText)
+            textView.setSelectedRange(oldSelectedRange)
+            textView.didChangeText()
+        }
     }
 }
 

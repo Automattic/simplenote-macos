@@ -10,12 +10,19 @@ class NSTextViewSimplenoteTests: XCTestCase {
     ///
     private var textView = MockupTextView()
 
+    /// Mockup TextViewDelegate
+    ///
+    private let delegate = MockupTextViewDelegate()
+
 
     // MARK: - Overridden Methods
 
     override func setUp() {
+        textView.delegate = delegate
         textView.string = String()
         textView.internalUndoManager.removeAllActions()
+
+        delegate.reset()
     }
 
     /// Verifies that `attributedSubstring` yields the expected substring
@@ -76,6 +83,102 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, expected)
     }
 
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` updates the specified (Range,  AttrString) and posts a textDidChange Note.
+    ///
+    func testPerformUndoableReplacementsAndProcessListsReplacesTextAndPostsTextDidChangeNotification() {
+        let sample = sampleListText.dropFirst().joined()
+        let replacement = sampleListText[.zero]
+        let expected = sampleListText.joined()
+
+        textView.string = sample
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertEqual(textView.plainTextContent(), expected)
+    }
+
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` replaces Markdown Items with Attachments
+    ///
+    func testPerformUndoableReplacementsAndProcessListsEffectivelyReplacesMarkdownItemsWithAttachments() {
+        let replacement = sampleListText[0]
+
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
+        XCTAssertTrue(textView.string.containsAttachment)
+    }
+
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` reverts the Replaced Text and post a TextDidChange Note on Undo.
+    ///
+    func testPerformUndoableReplacementsAndProcessListsRevertsReplacementeAndPostsTextDidChangeOnUndo() {
+        let sample = sampleListText.dropFirst().joined()
+        let replacement = sampleListText[.zero]
+
+        textView.string = sample
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, .zero)
+
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+        XCTAssertTrue(textView.internalUndoManager.canUndo)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.plainTextContent(), sample)
+        XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 2)
+    }
+
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` restores the SelectedRange On Undo.
+    ///
+    func testPerformUndoableReplacementsAndProcessListsRestoresSelectedRangeOnUndo() {
+        let initial = samplePlainText.dropFirst().joined()
+        let replacement = samplePlainText[.zero]
+
+        textView.string = initial
+
+        textView.setSelectedRange(.zero)
+        textView.performUndoableReplacementAndProcessLists(at: .zero, string: replacement)
+        XCTAssertEqual(textView.selectedRange.location, replacement.utf16.count)
+
+        textView.internalUndoManager.undo()
+        XCTAssertEqual(textView.selectedRange, .zero)
+    }
+
+    /// Verifies that `performUndoableReplacementAndProcessLists(at:string:)` properly registers Redo OP(s).
+    ///
+    func testPerformUndoableReplacementsAndProcessListsProperlyRegistersRedoOperations() {
+        var range = NSRange.zero
+        var oldText = ""
+        var newText = ""
+
+        for line in sampleListText {
+            newText += line
+            range.location = textView.string.count
+
+            // Step #1: Replace
+            textView.performUndoableReplacementAndProcessLists(at: range, string: line)
+
+            XCTAssertEqual(textView.plainTextContent(), newText)
+            XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 1)
+
+            // Step #2: Undo
+            XCTAssertTrue(textView.internalUndoManager.canUndo)
+            textView.internalUndoManager.undo()
+
+            XCTAssertEqual(textView.plainTextContent(), oldText)
+            XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 2)
+
+            // Step #3: Redo
+            XCTAssertTrue(textView.internalUndoManager.canRedo)
+            textView.internalUndoManager.redo()
+
+            XCTAssertEqual(textView.plainTextContent(), newText)
+            XCTAssertEqual(delegate.receivedTextDidChangeNotifications.count, 3)
+
+            oldText = newText
+            delegate.reset()
+        }
+    }
+
     /// Verifies that `processTabInsertion` indents the List at the selected range
     ///
     func testProcessTabInsertionEffectivelyIndentsTextListsWhenTheCurrentLineContainsSomeListMarker() {
@@ -95,9 +198,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
         for (initial, _) in samplesForIndentation {
             textView.string = initial
-
-            let selectedRange = NSRange(location: .zero, length: .zero)
-            textView.setSelectedRange(selectedRange)
+            textView.setSelectedRange(.zero)
 
             XCTAssertTrue(textView.processTabInsertion())
             XCTAssertTrue(undoManager.canUndo)
