@@ -187,6 +187,8 @@
 		B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
+		B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA78E2437C672002CB9FF /* ColorStudio.swift */; };
+		B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA78E2437C672002CB9FF /* ColorStudio.swift */; };
 		B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
@@ -467,6 +469,7 @@
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B56FA78E2437C672002CB9FF /* ColorStudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorStudio.swift; sourceTree = "<group>"; };
 		B574CA72242D552100F8D02F /* TextViewInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputHandler.swift; sourceTree = "<group>"; };
 		B579E0B21AF2946F00A07036 /* VSTheme+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VSTheme+Simplenote.h"; sourceTree = "<group>"; };
 		B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VSTheme+Simplenote.m"; sourceTree = "<group>"; };
@@ -928,6 +931,14 @@
 				B59EBAA019A6884F00DBC657 /* HockeySDK.framework */,
 			);
 			name = HockeySDK;
+			sourceTree = "<group>";
+		};
+		B56FA78D2437C650002CB9FF /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				B56FA78E2437C672002CB9FF /* ColorStudio.swift */,
+			);
+			name = Themes;
 			sourceTree = "<group>";
 		};
 		B574CA71242D539400F8D02F /* Handlers */ = {
@@ -1452,6 +1463,7 @@
 				71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */,
 				B5087A1E1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
 				71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */,
+				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */,
@@ -1550,6 +1562,7 @@
 				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				B5087A1F1AF3AF5E00505A2B /* VersionsViewController.m in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
+				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
