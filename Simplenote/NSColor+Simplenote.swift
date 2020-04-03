@@ -5,11 +5,9 @@ import Foundation
 //
 extension NSColor {
 
-    private static let defaultAlpha = CGFloat(1.0)
-
     /// Initializes a new UIColor instance with the specified HexString Code.
     ///
-    convenience init(hexString: String, alpha: CGFloat = defaultAlpha) {
+    convenience init(hexString: String, alpha: CGFloat = AppKitConstants.alpha1_0) {
         let hexString = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
         let scanner = Scanner(string: hexString)
         if hexString.hasPrefix("#") {
