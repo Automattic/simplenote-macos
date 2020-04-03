@@ -14,7 +14,6 @@
 #import "NoteEditorBottomBar.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
-#import "NSColor+Simplenote.h"
 @import Simperium_OSX;
 
 #define kSearchCollapsedMargin  62
