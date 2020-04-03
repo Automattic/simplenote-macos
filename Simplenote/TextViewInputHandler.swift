@@ -14,7 +14,7 @@ class TextViewInputHandler: NSObject {
     ///
     /// -   Note:
     ///    This method will `only return false` (and thus, will override NSTextView's default Text Insertion) whenever the resulting
-    ///    document contains  `at least` one Markdown List Item, this method
+    ///    document contains  `at least` one Markdown List Item.
     ///
     /// -   Important:
     ///    Reason to have this mechanism is: whenever any of the Text Insertion OP(s) results in a (new) List Item to be rendered, we want to group
