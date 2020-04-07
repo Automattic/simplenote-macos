@@ -41,6 +41,20 @@
     self.versionTextField.textColor = [theme colorForKey:@"popoverTextColor"];
 }
 
+
+#pragma mark - Public API(s)
+
+- (void)updateSliderWithMinimum:(NSInteger)minimum maximum:(NSInteger)maximum
+{
+    self.versionSlider.maxValue = maximum;
+    self.versionSlider.minValue = minimum;
+    self.versionSlider.numberOfTickMarks = maximum - minimum + 1;
+    [self.versionSlider setObjectValue:@(maximum)];
+}
+
+
+#pragma mark - Properties
+
 - (BOOL)restoreActionEnabled
 {
     return self.restoreButton.enabled;
@@ -60,6 +74,23 @@
 {
     self.versionTextField.stringValue = text;
 }
+
+- (NSInteger)maxSliderValue
+{
+    return self.versionSlider.maxValue;
+}
+
+
+#pragma mark - IBAction(s)
+
+- (IBAction)restoreWasPressed:(id)sender
+{
+    [self.delegate versionsControllerDidClickRestore:self];
+}
+
+- (IBAction)versionSliderChanged:(id)sender
+{
+    [self.delegate versionsController:self updatedSlider:self.versionSlider.integerValue];
 }
 
 @end
