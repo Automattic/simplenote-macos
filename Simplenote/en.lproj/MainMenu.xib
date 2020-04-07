@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -774,7 +774,6 @@
                                                     <tableColumns>
                                                         <tableColumn identifier="NameColumn" width="136" minWidth="40" maxWidth="1000" id="1457">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
@@ -922,7 +921,6 @@
                                                     <tableColumns>
                                                         <tableColumn width="270" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
@@ -1131,15 +1129,11 @@
                 <outlet property="publishButton" destination="1063" id="1327"/>
                 <outlet property="publishLabel" destination="1058" id="1322"/>
                 <outlet property="publishViewController" destination="1040" id="5kS-We-Atz"/>
-                <outlet property="restoreVersionButton" destination="1088" id="1312"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
                 <outlet property="shareViewController" destination="1643" id="Ahf-1p-0Qr"/>
                 <outlet property="statusView" destination="1440" id="1769"/>
                 <outlet property="tableView" destination="561" id="1282"/>
-                <outlet property="versionLabel" destination="1320" id="1321"/>
-                <outlet property="versionSlider" destination="1084" id="1311"/>
-                <outlet property="versionsViewController" destination="1090" id="YBW-MY-NP8"/>
                 <outlet property="view" destination="934" id="1185"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>
             </connections>
@@ -1267,60 +1261,6 @@
                 </box>
             </subviews>
             <point key="canvasLocation" x="-191" y="607"/>
-        </customView>
-        <viewController id="1090" userLabel="Versions Popover Controller" customClass="VersionsViewController">
-            <connections>
-                <outlet property="restoreButton" destination="1088" id="7o6-F9-Ovb"/>
-                <outlet property="versionsTextField" destination="1319" id="qXF-FG-DDr"/>
-                <outlet property="view" destination="1072" id="1093"/>
-            </connections>
-        </viewController>
-        <customView appearanceType="aqua" id="1072" userLabel="Version View">
-            <rect key="frame" x="0.0" y="0.0" width="221" height="71"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" transparent="YES" id="1077">
-                    <rect key="frame" x="-6" y="-42" width="232" height="88"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView" id="wjc-Rf-oKU">
-                        <rect key="frame" x="1" y="1" width="230" height="86"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <slider verticalHuggingPriority="750" id="1084">
-                                <rect key="frame" x="13" y="48" width="119" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1085"/>
-                                <connections>
-                                    <action selector="versionSliderChanged:" target="1107" id="1313"/>
-                                </connections>
-                            </slider>
-                            <button verticalHuggingPriority="750" id="1088">
-                                <rect key="frame" x="139" y="43" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Restore" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1089">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="restoreVersionAction:" target="1107" id="1665"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </view>
-                    <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                </box>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1319">
-                    <rect key="frame" x="7" y="47" width="206" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version: Current" id="1320">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </subviews>
-            <point key="canvasLocation" x="107" y="580"/>
         </customView>
     </objects>
     <resources>
