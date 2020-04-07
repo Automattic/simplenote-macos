@@ -684,7 +684,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
-#pragma mark - Actions
+#pragma mark - VersionsViewController Delegate
 
 - (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
 {
@@ -710,6 +710,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
     [self dismissActivePopover];
 }
+
+
+#pragma mark - Actions
 
 - (IBAction)pinAction:(id)sender
 {
