@@ -53,8 +53,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController() <NSTextDelegate, NSTextViewDelegate, NSPopoverDelegate,
-                                       NSTokenFieldDelegate, SPBucketDelegate, NSMenuDelegate>
+@interface NoteEditorViewController() <NSMenuDelegate,
+                                        NSPopoverDelegate,
+                                        NSTextDelegate,
+                                        NSTextViewDelegate,
+                                        NSTokenFieldDelegate,
+                                        SPBucketDelegate,
+                                        VersionsViewControllerDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 
@@ -445,6 +450,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.versionsViewController.versionText = text;
 }
 
+- (void)updateVersionSlider
+{
+    [self.versionsViewController updateSliderWithMinimum:[self minimumNoteVersion]
+                                                 maximum:[self.note.version integerValue]];
+}
+
 
 
 #pragma mark - Text Delegates
@@ -645,10 +656,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (self.activePopover.contentViewController == self.versionsViewController) {
         // Prepare the UI
         self.viewingVersions = YES;
-        versionSlider.maxValue = [self.note.version integerValue];
-        versionSlider.minValue = [self minimumNoteVersion];
-        versionSlider.numberOfTickMarks = versionSlider.maxValue - versionSlider.minValue + 1;
-        [versionSlider setObjectValue:[NSNumber numberWithInteger:versionSlider.maxValue]];
+        [self updateVersionSlider];
         [self updateVersionLabel:self.note.modificationDate];
         [self.noteEditor setEditable:NO];
 
@@ -678,13 +686,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Actions
 
-- (IBAction)versionSliderChanged:(id)sender
+- (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
 {
-    NSInteger versionInt = [versionSlider integerValue]; // can be a float, so get the int
-	NSDictionary *versionData = [self.noteVersionData objectForKey:[NSNumber numberWithInteger:versionInt]];
-    NSLog(@"Loading version %ld", (long)versionInt);
+	NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
+    NSLog(@"Loading version %ld", (long)newValue);
 
-    self.versionsViewController.restoreActionEnabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
+    self.versionsViewController.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
 
 	if (versionData != nil) {
         NSString *content = (NSString *)[versionData objectForKey:@"content"];
@@ -695,7 +702,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	}
 }
 
-- (IBAction)restoreVersionAction:(id)sender
+- (void)versionsControllerDidClickRestore:(VersionsViewController *)sender
 {
     [SPTracker trackEditorNoteRestored];
     
@@ -1108,8 +1115,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [SPTracker trackEditorVersionsAccessed];
-    self.versionsViewController = [VersionsViewController new];
-    [self showViewController:self.versionsViewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+
+    VersionsViewController *viewController = [VersionsViewController new];
+    viewController.delegate = self;
+
+    [self showViewController:viewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+    self.versionsViewController = viewController;
 }
 
 - (IBAction)shareNote:(id)sender
