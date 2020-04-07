@@ -50,6 +50,16 @@
 {
     self.restoreButton.enabled = restoreActionEnabled;
 }
+
+- (NSString *)versionText
+{
+    return self.versionTextField.stringValue;
+}
+
+- (void)setVersionText:(NSString *)text
+{
+    self.versionTextField.stringValue = text;
+}
 }
 
 @end

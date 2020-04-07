@@ -436,12 +436,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [wordCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numWordsString, wordStr]];
 }
 
-- (void)updateVersionLabel:(NSDate *)versionDate {
-    NSString *versionStr = [@"  " stringByAppendingFormat:@"%@: %@",
-							NSLocalizedString(@"Version", @"Label for the current version of a note"),
-							[self.note getDateString:versionDate brief:NO]];
-    
-    versionLabel.stringValue = versionStr;
+- (void)updateVersionLabel:(NSDate *)versionDate
+{
+    NSString *text = [NSString stringWithFormat:@"  %@: %@",
+                      NSLocalizedString(@"Version", @"Label for the current version of a note"),
+                      [self.note getDateString:versionDate brief:NO]];
+
+    self.versionsViewController.versionText = text;
 }
 
 
