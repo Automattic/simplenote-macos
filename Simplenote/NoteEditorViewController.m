@@ -12,6 +12,7 @@
 #import "Tag.h"
 #import "NoteListViewController.h"
 #import "TagListViewController.h"
+#import "VersionsViewController.h"
 #import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
@@ -55,18 +56,20 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @interface NoteEditorViewController() <NSTextDelegate, NSTextViewDelegate, NSPopoverDelegate,
                                        NSTokenFieldDelegate, SPBucketDelegate, NSMenuDelegate>
 
-@property (nonatomic, strong) NSTimer               *saveTimer;
-@property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
-@property (nonatomic, strong) NSMutableDictionary   *noteScrollPositions;
-@property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
-@property (nonatomic, strong) NSArray               *selectedNotes;
-@property (nonatomic, strong) NSPopover             *activePopover;
-@property (nonatomic, strong) Storage               *storage;
-@property (nonatomic, strong) TextViewInputHandler  *inputHandler;
+@property (nonatomic, strong) VersionsViewController    *versionsViewController;
 
-@property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
-@property (nonatomic, assign) BOOL                  viewingVersions;
-@property (nonatomic, assign) BOOL                  viewingTrash;
+@property (nonatomic, strong) NSTimer                   *saveTimer;
+@property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
+@property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
+@property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
+@property (nonatomic, strong) NSArray                   *selectedNotes;
+@property (nonatomic, strong) NSPopover                 *activePopover;
+@property (nonatomic, strong) Storage                   *storage;
+@property (nonatomic, strong) TextViewInputHandler      *inputHandler;
+
+@property (nonatomic, assign) NSUInteger                cursorLocationBeforeRemoteUpdate;
+@property (nonatomic, assign) BOOL                      viewingVersions;
+@property (nonatomic, assign) BOOL                      viewingTrash;
 
 @end
 
