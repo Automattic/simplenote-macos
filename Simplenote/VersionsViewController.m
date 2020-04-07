@@ -4,7 +4,8 @@
 
 
 @interface VersionsViewController ()
-@property (nonatomic, strong) IBOutlet NSTextField  *versionsTextField;
+@property (nonatomic, strong) IBOutlet NSSlider     *versionSlider;
+@property (nonatomic, strong) IBOutlet NSTextField  *versionTextField;
 @property (nonatomic, strong) IBOutlet NSButton     *restoreButton;
 @end
 
@@ -15,25 +16,30 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)awakeFromNib
+- (void)viewDidLoad
 {
-    [super awakeFromNib];
-    
+    [super viewDidLoad];
+    [self startListeningToNotifications];
+    [self applyStyle];
+}
+
+- (void)startListeningToNotifications
+{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applyStyle)
                                                  name:VSThemeManagerThemeDidChangeNotification
                                                object:nil];
-    
-    [self applyStyle];
 }
 
 - (void)applyStyle
 {
-    NSAssert(self.versionsTextField, @"Missing Outlet");
-    NSAssert(self.restoreButton, @"Missing Outlet");
+    NSParameterAssert(self.versionSlider);
+    NSParameterAssert(self.versionTextField);
+    NSParameterAssert(self.restoreButton);
     
-    VSTheme *theme                      = [[VSThemeManager sharedManager] theme];
-    self.versionsTextField.textColor    = [theme colorForKey:@"popoverTextColor"];
+    VSTheme *theme = [[VSThemeManager sharedManager] theme];
+    self.versionTextField.textColor = [theme colorForKey:@"popoverTextColor"];
+}
 }
 
 @end
