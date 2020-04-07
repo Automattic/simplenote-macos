@@ -2,4 +2,5 @@
 
 @interface VersionsViewController : NSViewController
 
+@property (nonatomic, assign)   BOOL                                restoreActionEnabled;
 @end

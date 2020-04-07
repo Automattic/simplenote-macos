@@ -682,8 +682,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     NSInteger versionInt = [versionSlider integerValue]; // can be a float, so get the int
 	NSDictionary *versionData = [self.noteVersionData objectForKey:[NSNumber numberWithInteger:versionInt]];
     NSLog(@"Loading version %ld", (long)versionInt);
-    
-    restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
+
+    self.versionsViewController.restoreActionEnabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
+
 	if (versionData != nil) {
         NSString *content = (NSString *)[versionData objectForKey:@"content"];
         [self.noteEditor displayNoteWithContent:content];

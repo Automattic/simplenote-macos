@@ -40,6 +40,16 @@
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     self.versionTextField.textColor = [theme colorForKey:@"popoverTextColor"];
 }
+
+- (BOOL)restoreActionEnabled
+{
+    return self.restoreButton.enabled;
+}
+
+- (void)setRestoreActionEnabled:(BOOL)restoreActionEnabled
+{
+    self.restoreButton.enabled = restoreActionEnabled;
+}
 }
 
 @end
