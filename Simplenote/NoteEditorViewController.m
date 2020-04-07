@@ -56,7 +56,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @interface NoteEditorViewController() <NSTextDelegate, NSTextViewDelegate, NSPopoverDelegate,
                                        NSTokenFieldDelegate, SPBucketDelegate, NSMenuDelegate>
 
-@property (nonatomic, strong) VersionsViewController    *versionsViewController;
+@property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
@@ -1107,6 +1107,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [SPTracker trackEditorVersionsAccessed];
+    self.versionsViewController = [VersionsViewController new];
     [self showViewController:self.versionsViewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
 }
 
