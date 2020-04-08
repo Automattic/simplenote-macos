@@ -35,11 +35,14 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <color key="contentTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="buttonWasPressedWithSender:" target="-2" id="N47-vM-FHI"/>
+                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JS2-kB-Lc4">
                     <rect key="frame" x="13" y="20" width="214" height="42"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Publish this note to a web page. The page will stay updated with the contents of your note." id="X6T-5m-caF">
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                         <color key="textColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

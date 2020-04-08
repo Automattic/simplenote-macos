@@ -1,6 +1,23 @@
 import Foundation
 
 
+// MARK: - Represents the PublishViewController's Internal State
+//
+enum PublishState {
+    case publishing
+    case published(url: String)
+    case unpublishing
+    case unpublished
+}
+
+// MARK: - VersionsViewControllerDelegate
+//
+@objc
+protocol PublishViewControllerDelegate {
+    func publishControllerDidClickPublish(_ controller: PublishViewController)
+}
+
+
 // MARK: - PublishViewController
 //
 class PublishViewController: NSViewController {
@@ -17,6 +34,25 @@ class PublishViewController: NSViewController {
     ///
     @IBOutlet private var urlTextField: NSTextField!
 
+    /// Internal State
+    ///
+    private var state: PublishState = .unpublishing {
+        didSet {
+            refreshInterface(newState: state)
+        }
+    }
+
+    /// Returns the Publish Button's Internal State
+    ///
+    @objc
+    var publishButtonState: NSControl.StateValue {
+        publishButton.state
+    }
+
+    /// Old School delegate
+    ///
+    weak var delegate: PublishViewControllerDelegate?
+
 
     // MARK - View Lifecycle
 
@@ -29,10 +65,21 @@ class PublishViewController: NSViewController {
         startListeningToNotifications()
         applyStyle()
     }
+
+    ///
+    ///
+    @objc
+    func refreshState(published: Bool, url: String) {
+        state = stateForNote(published: published, url: url)
+    }
+
+    @IBAction func buttonWasPressed(sender: Any) {
+        delegate?.publishControllerDidClickPublish(self)
+    }
 }
 
 
-// MARK: - Private
+// MARK: - Style
 //
 private extension PublishViewController {
 
@@ -70,6 +117,46 @@ private extension PublishViewController {
                                            comment: "Text presented when the note is about to be published")
 
         legendTextField.attributedStringValue = NSAttributedString(string: legendText, attributes: legendAttributes)
+    }
+}
+
+
+// MARK: - Private
+//
+private extension PublishViewController {
+
+    func stateForNote(published: Bool, url: String) -> PublishState {
+        if published {
+            return url.isEmpty ? .publishing : .published(url: url)
+        }
+
+        return url.isEmpty ? .unpublished : .unpublishing
+    }
+
+    func refreshInterface(newState: PublishState) {
+        switch newState {
+        case .publishing:
+            urlTextField.stringValue = NSLocalizedString("Publishing...", comment: "Displayed during a Publish Operation")
+            publishButton.title = NSLocalizedString("Publish to Web Page", comment: "Publish to WebPage Action")
+            publishButton.isEnabled = false
+
+        case .published(let url):
+            urlTextField.stringValue = SPSimplenotePublishURL + url
+            publishButton.title = NSLocalizedString("Unpublish", comment: "Unpublish Note Action")
+            publishButton.isEnabled = true
+            publishButton.state = .on
+
+        case .unpublished:
+            urlTextField.stringValue = ""
+            publishButton.title = NSLocalizedString("Publish to Web Page", comment: "Publish to WebPage Action")
+            publishButton.isEnabled = true
+            publishButton.state = .off
+
+        case .unpublishing:
+            urlTextField.stringValue = NSLocalizedString("Unpublishing...", comment: "Displayed during an Unpublish Operation")
+            publishButton.title = NSLocalizedString("Unpublish", comment: "Unpublish Note Action")
+            publishButton.isEnabled = false
+        }
     }
 }
 
