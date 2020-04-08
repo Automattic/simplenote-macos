@@ -639,10 +639,11 @@
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				B574CA71242D539400F8D02F /* Handlers */,
 				463774DB171F111600E2E333 /* Models */,
+				37E10E7A20B356E800864E43 /* Tools */,
 				B59848891BCDB961005EFBBE /* Trackers */,
 				71233DD814DC500C00139E61 /* Transformers */,
-				714BA65514D3260000A6CCC1 /* Custom Views */,
-				37E10E7A20B356E800864E43 /* Tools */,
+				714BA65514D3260000A6CCC1 /* Views */,
+				B5C7DD4B243E697F00BEE354 /* ViewControllers */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
 				714BA64814D2333C00A6CCC1 /* Resources */,
 				37F742EA202A382400A47D3A /* AboutViewController.swift */,
@@ -665,12 +666,6 @@
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B51374F41AC0591900825FCC /* SPConstants.h */,
 				B51374F51AC0591900825FCC /* SPConstants.m */,
-				B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */,
-				B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */,
-				B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */,
-				B5C19D8A243D30690014086C /* VersionsViewController.xib */,
-				B5C7DD45243E51E200BEE354 /* PublishViewController.swift */,
-				B5C7DD48243E524000BEE354 /* PublishViewController.xib */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
@@ -839,7 +834,7 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		714BA65514D3260000A6CCC1 /* Custom Views */ = {
+		714BA65514D3260000A6CCC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7199A42F14D8FD1C00B903A8 /* SPToolbarView.h */,
@@ -875,7 +870,7 @@
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 			);
-			name = "Custom Views";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		8343BE2DC268495E77AD67DF /* Pods */ = {
@@ -1019,6 +1014,19 @@
 				B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */,
 			);
 			name = Mockups;
+			sourceTree = "<group>";
+		};
+		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */,
+				B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */,
+				B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */,
+				B5C19D8A243D30690014086C /* VersionsViewController.xib */,
+				B5C7DD45243E51E200BEE354 /* PublishViewController.swift */,
+				B5C7DD48243E524000BEE354 /* PublishViewController.xib */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B5CBB05A241971240003C271 /* Converters */ = {
