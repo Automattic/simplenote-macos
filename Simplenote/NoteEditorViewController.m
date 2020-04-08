@@ -689,7 +689,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
 {
-	NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
+    NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
     NSLog(@"Loading version %ld", (long)newValue);
 
     self.versionsViewController.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
