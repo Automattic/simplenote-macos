@@ -16,22 +16,24 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 };
 
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class VSAnimationSpecifier;
 
 @interface VSTheme : NSObject
 
-- (id)initWithDictionary:(NSDictionary *)themeDictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)themeDictionary;
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, weak) VSTheme *parentTheme; /*can inherit*/
 
 - (BOOL)boolForKey:(NSString *)key;
 - (BOOL)isMojaveDarkMode;
-- (NSString *)stringForKey:(NSString *)key;
+- (nullable NSString *)stringForKey:(NSString *)key;
 - (NSInteger)integerForKey:(NSString *)key;
 - (NSNumber *)numberForKey:(NSString *)key;
 - (CGFloat)floatForKey:(NSString *)key;
-- (NSImage *)imageForKey:(NSString *)key; /*Via UIImage imageNamed:*/
+- (nullable NSImage *)imageForKey:(NSString *)key; /*Via UIImage imageNamed:*/
 - (NSColor *)colorForKey:(NSString *)key; /*123ABC or #123ABC: 6 digits, leading # allowed but not required*/
 - (NSEdgeInsets)edgeInsetsForKey:(NSString *)key; /*xTop, xLeft, xRight, xBottom keys*/
 - (NSFont *)fontForKey:(NSString *)key; /*x and xSize keys*/
@@ -45,3 +47,6 @@ typedef NS_ENUM(NSUInteger, VSTextCaseTransform) {
 - (void)clearCaches;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
