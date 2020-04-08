@@ -157,8 +157,6 @@
 		B500993C24213B370037A431 /* String+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993B24213B370037A431 /* String+Simplenote.swift */; };
 		B500993D24213B370037A431 /* String+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993B24213B370037A431 /* String+Simplenote.swift */; };
 		B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */; };
-		B5087A221AF3B16A00505A2B /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A211AF3B16A00505A2B /* PublishViewController.m */; };
-		B5087A231AF3B16A00505A2B /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5087A211AF3B16A00505A2B /* PublishViewController.m */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */; };
@@ -225,6 +223,10 @@
 		B5C7DD41243E4A7D00BEE354 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */; };
 		B5C7DD43243E4A8E00BEE354 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */; };
 		B5C7DD44243E4A8E00BEE354 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */; };
+		B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD45243E51E200BEE354 /* PublishViewController.swift */; };
+		B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD45243E51E200BEE354 /* PublishViewController.swift */; };
+		B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD48243E524000BEE354 /* PublishViewController.xib */; };
+		B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD48243E524000BEE354 /* PublishViewController.xib */; };
 		B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
 		B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
 		B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */; };
@@ -451,8 +453,6 @@
 		B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeScalarSimplenoteTests.swift; sourceTree = "<group>"; };
 		B500993B24213B370037A431 /* String+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Simplenote.swift"; sourceTree = "<group>"; };
 		B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringSimplenoteTests.swift; sourceTree = "<group>"; };
-		B5087A201AF3B16A00505A2B /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
-		B5087A211AF3B16A00505A2B /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
 		B5117997242036B0005F8936 /* NSString+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Simplenote.swift"; sourceTree = "<group>"; };
 		B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Simplenote.swift"; sourceTree = "<group>"; };
@@ -501,6 +501,8 @@
 		B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsViewController.swift; sourceTree = "<group>"; };
 		B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
+		B5C7DD45243E51E200BEE354 /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
+		B5C7DD48243E524000BEE354 /* PublishViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublishViewController.xib; sourceTree = "<group>"; };
 		B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Simplenote.h"; sourceTree = "<group>"; };
 		B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Simplenote.m"; sourceTree = "<group>"; };
 		B5C92EC71B03D7DB00A4FFD0 /* NSString+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Simplenote.h"; sourceTree = "<group>"; };
@@ -667,8 +669,8 @@
 				B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */,
 				B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */,
 				B5C19D8A243D30690014086C /* VersionsViewController.xib */,
-				B5087A201AF3B16A00505A2B /* PublishViewController.h */,
-				B5087A211AF3B16A00505A2B /* PublishViewController.m */,
+				B5C7DD45243E51E200BEE354 /* PublishViewController.swift */,
+				B5C7DD48243E524000BEE354 /* PublishViewController.xib */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
@@ -1169,6 +1171,7 @@
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */,
 				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
+				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
@@ -1199,6 +1202,7 @@
 				469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
+				B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */,
 				B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1437,7 +1441,6 @@
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
 				2614F1E01405A0B10031AE94 /* Tag.m in Sources */,
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
-				B5087A221AF3B16A00505A2B /* PublishViewController.m in Sources */,
 				B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
@@ -1461,6 +1464,7 @@
 				71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */,
 				71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */,
 				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
+				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
@@ -1535,7 +1539,6 @@
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
-				B5087A231AF3B16A00505A2B /* PublishViewController.m in Sources */,
 				B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
@@ -1559,6 +1562,7 @@
 				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
+				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
