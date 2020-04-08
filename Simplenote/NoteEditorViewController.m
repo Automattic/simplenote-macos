@@ -12,7 +12,6 @@
 #import "Tag.h"
 #import "NoteListViewController.h"
 #import "TagListViewController.h"
-#import "VersionsViewController.h"
 #import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
@@ -452,8 +451,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)updateVersionSlider
 {
-    [self.versionsViewController updateSliderWithMinimum:[self minimumNoteVersion]
-                                                 maximum:[self.note.version integerValue]];
+    NSInteger maximum = [self.note.version integerValue];
+    NSInteger minimum = [self minimumNoteVersion];
+
+    [self.versionsViewController refreshSliderWithMax:maximum min:minimum];
 }
 
 
