@@ -48,7 +48,7 @@ private extension PublishViewController {
         let urlPlaceholder = NSLocalizedString("Not Published", comment: "Placeholder displayed when a note hasn't been published.")
         let urlAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: theme.color(forKey: "popoverTextColor"),
-            .font: theme.color(forKey: "popoverTextFont")
+            .font: theme.font(forKey: "popoverTextFont")
         ]
 
         urlTextField.placeholderAttributedString = NSAttributedString(string: urlPlaceholder, attributes: urlAttributes)
