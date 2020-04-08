@@ -34,14 +34,14 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="restoreWasPressed:" target="-2" id="om5-zd-BtC"/>
+                        <action selector="restoreWasPressedWithSender:" target="-2" id="GQh-jH-D8m"/>
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YmD-u4-Leg">
                     <rect key="frame" x="8" y="7" width="118" height="24"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="QNH-mD-6Bz"/>
                     <connections>
-                        <action selector="versionSliderChanged:" target="-2" id="d2J-iB-cZK"/>
+                        <action selector="versionSliderChangedWithSender:" target="-2" id="zdb-9j-H47"/>
                     </connections>
                 </slider>
             </subviews>
