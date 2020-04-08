@@ -62,6 +62,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 @property (nonatomic,   weak) ShareViewController       *shareViewController;
+@property (nonatomic,   weak) PublishViewController     *publishViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
@@ -1091,7 +1092,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)showPublishPopover
 {
-    [self showViewController:self.publishViewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    PublishViewController *viewController = [PublishViewController new];
+    [self showViewController:viewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    self.publishViewController = viewController;
 }
 
 // Reprocesses note checklists after switching themes, so they apply the correct color
