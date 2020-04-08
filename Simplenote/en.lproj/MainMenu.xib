@@ -1131,7 +1131,6 @@
                 <outlet property="publishViewController" destination="1040" id="5kS-We-Atz"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
-                <outlet property="shareViewController" destination="1643" id="Ahf-1p-0Qr"/>
                 <outlet property="statusView" destination="1440" id="1769"/>
                 <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="view" destination="934" id="1185"/>
@@ -1171,40 +1170,6 @@
                 <outlet property="view" destination="1452" id="1462"/>
             </connections>
         </viewController>
-        <viewController title="SharePopoverController" id="1643" userLabel="Share Popover Controller" customClass="ShareViewController">
-            <connections>
-                <outlet property="shareTextField" destination="1635" id="tyH-Yd-JcH"/>
-                <outlet property="view" destination="1630" id="1647"/>
-            </connections>
-        </viewController>
-        <customView appearanceType="aqua" id="1630" userLabel="Share View">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="71"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" transparent="YES" id="1631">
-                    <rect key="frame" x="0.0" y="-32" width="240" height="172"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView" id="Mat-L4-REB">
-                        <rect key="frame" x="1" y="1" width="238" height="170"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1635">
-                                <rect key="frame" x="12" y="39" width="214" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Add an email address as a tag to share this note with someone. Then you can both make changes to it." id="1637">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                    <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                </box>
-            </subviews>
-            <point key="canvasLocation" x="430" y="580"/>
-        </customView>
         <viewController title="SharePopoverController" id="1040" userLabel="Publish Popover Controller" customClass="PublishViewController">
             <connections>
                 <outlet property="legendTextField" destination="1068" id="byG-5z-i09"/>
