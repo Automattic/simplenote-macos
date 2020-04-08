@@ -61,6 +61,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                         VersionsViewControllerDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
+@property (nonatomic,   weak) ShareViewController       *shareViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
@@ -1105,8 +1106,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (IBAction)showSharePopover:(id)sender
 {
     [SPTracker trackEditorCollaboratorsAccessed];
-    [self showViewController:self.shareViewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+
+    ShareViewController *viewController = [ShareViewController new];
+    [self showViewController:viewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+
     [self.bottomBar.tokenField becomeFirstResponder];
+    self.shareViewController = viewController;
 }
 
 - (IBAction)showVersionPopover:(id)sender
