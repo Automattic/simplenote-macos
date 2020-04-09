@@ -20,6 +20,7 @@ protocol PublishViewControllerDelegate {
 
 // MARK: - PublishViewController
 //
+@objcMembers
 class PublishViewController: NSViewController {
 
     /// Publish Legend
@@ -44,7 +45,6 @@ class PublishViewController: NSViewController {
 
     /// Returns the Publish Button's Internal State
     ///
-    @objc
     var publishButtonState: NSControl.StateValue {
         publishButton.state
     }
@@ -66,7 +66,11 @@ class PublishViewController: NSViewController {
         applyStyle()
     }
 
+    /// Refreshes the Internal State
     ///
+    /// - Parameters:
+    ///     -   published: Indicates if the note we're dealing with is already published (or not)
+    ///     -   url: Published note URL (if any)
     ///
     @objc
     func refreshState(published: Bool, url: String) {

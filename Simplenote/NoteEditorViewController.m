@@ -1080,6 +1080,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)showPublishPopover
 {
     PublishViewController *viewController = [PublishViewController new];
+    viewController.delegate = self;
+
     [self showViewController:viewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
     self.publishViewController = viewController;
 }
