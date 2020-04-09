@@ -57,11 +57,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                         NSTextDelegate,
                                         NSTextViewDelegate,
                                         NSTokenFieldDelegate,
+                                        PublishViewControllerDelegate,
                                         SPBucketDelegate,
                                         VersionsViewControllerDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 @property (nonatomic,   weak) ShareViewController       *shareViewController;
+@property (nonatomic,   weak) PublishViewController     *publishViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
@@ -549,25 +551,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)updatePublishUI
 {
-    if (self.note.published && self.note.publishURL.length == 0) {
-        publishLabel.stringValue = NSLocalizedString(@"Publishing...", @"Displayed during a Publish Operation");
-        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
-        publishButton.enabled = NO;
-    } else if (self.note.published && self.note.publishURL.length > 0) {
-        publishLabel.stringValue = [NSString stringWithFormat:@"%@%@", SPSimplenotePublishURL, self.note.publishURL];
-        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
-        publishButton.enabled = YES;
-        publishButton.state = NSOnState; // clicking the button will toggle the state
-    } else if (!self.note.published && self.note.publishURL.length == 0) {
-        publishLabel.stringValue = @"";
-        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
-        publishButton.enabled = YES;
-        publishButton.state = NSOffState;// clicking the button will toggle the state
-    } else if (!self.note.published && self.note.publishURL.length > 0) {
-        publishLabel.stringValue = NSLocalizedString(@"Unpublishing...", @"Displayed during an Unpublish Operation");
-        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
-        publishButton.enabled = NO;
-    }
+    [self.publishViewController refreshStateWithPublished:self.note.published
+                                                      url:self.note.publishURL];
 }
 
 - (void)publishNote
@@ -686,6 +671,19 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
+#pragma mark - PublishViewController Delegate
+
+- (void)publishControllerDidClickPublish:(PublishViewController *)controller
+{
+    // The button state is toggled when user clicks on it
+    if (controller.publishButtonState == NSOnState) {
+        [self publishNote];
+    } else {
+        [self unpublishNote];
+    }
+}
+
+
 #pragma mark - VersionsViewController Delegate
 
 - (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
@@ -756,16 +754,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self checkTextInDocument];
     
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
-}
-
-- (IBAction)publishAction:(id)sender
-{
-    // The button state is toggled when user clicks on it
-    if (publishButton.state == NSOnState) {
-        [self publishNote];
-    } else {
-        [self unpublishNote];
-    }
 }
 
 - (IBAction)addAction:(id)sender
@@ -1091,7 +1079,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)showPublishPopover
 {
-    [self showViewController:self.publishViewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    PublishViewController *viewController = [PublishViewController new];
+    viewController.delegate = self;
+
+    [self showViewController:viewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    self.publishViewController = viewController;
 }
 
 // Reprocesses note checklists after switching themes, so they apply the correct color
