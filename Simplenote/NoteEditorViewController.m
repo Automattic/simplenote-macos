@@ -52,21 +52,29 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController() <NSTextDelegate, NSTextViewDelegate, NSPopoverDelegate,
-                                       NSTokenFieldDelegate, SPBucketDelegate, NSMenuDelegate>
+@interface NoteEditorViewController() <NSMenuDelegate,
+                                        NSPopoverDelegate,
+                                        NSTextDelegate,
+                                        NSTextViewDelegate,
+                                        NSTokenFieldDelegate,
+                                        SPBucketDelegate,
+                                        VersionsViewControllerDelegate>
 
-@property (nonatomic, strong) NSTimer               *saveTimer;
-@property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
-@property (nonatomic, strong) NSMutableDictionary   *noteScrollPositions;
-@property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
-@property (nonatomic, strong) NSArray               *selectedNotes;
-@property (nonatomic, strong) NSPopover             *activePopover;
-@property (nonatomic, strong) Storage               *storage;
-@property (nonatomic, strong) TextViewInputHandler  *inputHandler;
+@property (nonatomic,   weak) VersionsViewController    *versionsViewController;
+@property (nonatomic,   weak) ShareViewController       *shareViewController;
 
-@property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
-@property (nonatomic, assign) BOOL                  viewingVersions;
-@property (nonatomic, assign) BOOL                  viewingTrash;
+@property (nonatomic, strong) NSTimer                   *saveTimer;
+@property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
+@property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
+@property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
+@property (nonatomic, strong) NSArray                   *selectedNotes;
+@property (nonatomic, strong) NSPopover                 *activePopover;
+@property (nonatomic, strong) Storage                   *storage;
+@property (nonatomic, strong) TextViewInputHandler      *inputHandler;
+
+@property (nonatomic, assign) NSUInteger                cursorLocationBeforeRemoteUpdate;
+@property (nonatomic, assign) BOOL                      viewingVersions;
+@property (nonatomic, assign) BOOL                      viewingTrash;
 
 @end
 
@@ -433,12 +441,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [wordCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numWordsString, wordStr]];
 }
 
-- (void)updateVersionLabel:(NSDate *)versionDate {
-    NSString *versionStr = [@"  " stringByAppendingFormat:@"%@: %@",
-							NSLocalizedString(@"Version", @"Label for the current version of a note"),
-							[self.note getDateString:versionDate brief:NO]];
-    
-    versionLabel.stringValue = versionStr;
+- (void)updateVersionLabel:(NSDate *)versionDate
+{
+    NSString *text = [NSString stringWithFormat:@"  %@: %@",
+                      NSLocalizedString(@"Version", @"Label for the current version of a note"),
+                      [self.note getDateString:versionDate brief:NO]];
+
+    self.versionsViewController.versionText = text;
+}
+
+- (void)updateVersionSlider
+{
+    NSInteger maximum = [self.note.version integerValue];
+    NSInteger minimum = [self minimumNoteVersion];
+
+    [self.versionsViewController refreshSliderWithMax:maximum min:minimum];
 }
 
 
@@ -641,10 +658,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (self.activePopover.contentViewController == self.versionsViewController) {
         // Prepare the UI
         self.viewingVersions = YES;
-        versionSlider.maxValue = [self.note.version integerValue];
-        versionSlider.minValue = [self minimumNoteVersion];
-        versionSlider.numberOfTickMarks = versionSlider.maxValue - versionSlider.minValue + 1;
-        [versionSlider setObjectValue:[NSNumber numberWithInteger:versionSlider.maxValue]];
+        [self updateVersionSlider];
         [self updateVersionLabel:self.note.modificationDate];
         [self.noteEditor setEditable:NO];
 
@@ -672,15 +686,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
-#pragma mark - Actions
+#pragma mark - VersionsViewController Delegate
 
-- (IBAction)versionSliderChanged:(id)sender
+- (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
 {
-    NSInteger versionInt = [versionSlider integerValue]; // can be a float, so get the int
-	NSDictionary *versionData = [self.noteVersionData objectForKey:[NSNumber numberWithInteger:versionInt]];
-    NSLog(@"Loading version %ld", (long)versionInt);
-    
-    restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
+    NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
+    NSLog(@"Loading version %ld", (long)newValue);
+
+    self.versionsViewController.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
+
 	if (versionData != nil) {
         NSString *content = (NSString *)[versionData objectForKey:@"content"];
         [self.noteEditor displayNoteWithContent:content];
@@ -690,7 +704,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	}
 }
 
-- (IBAction)restoreVersionAction:(id)sender
+- (void)versionsControllerDidClickRestore:(VersionsViewController *)sender
 {
     [SPTracker trackEditorNoteRestored];
     
@@ -698,6 +712,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
     [self dismissActivePopover];
 }
+
+
+#pragma mark - Actions
 
 - (IBAction)pinAction:(id)sender
 {
@@ -1089,8 +1106,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (IBAction)showSharePopover:(id)sender
 {
     [SPTracker trackEditorCollaboratorsAccessed];
-    [self showViewController:self.shareViewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+
+    ShareViewController *viewController = [ShareViewController new];
+    [self showViewController:viewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+
     [self.bottomBar.tokenField becomeFirstResponder];
+    self.shareViewController = viewController;
 }
 
 - (IBAction)showVersionPopover:(id)sender
@@ -1103,7 +1124,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [SPTracker trackEditorVersionsAccessed];
-    [self showViewController:self.versionsViewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+
+    VersionsViewController *viewController = [VersionsViewController new];
+    viewController.delegate = self;
+
+    [self showViewController:viewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+    self.versionsViewController = viewController;
 }
 
 - (IBAction)shareNote:(id)sender
