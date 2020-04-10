@@ -39,7 +39,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @interface NoteEditorViewController : NSViewController <NSSharingServicePickerDelegate, WKNavigationDelegate>
 {
     IBOutlet NSTableView *tableView;
-    IBOutlet NoteListViewController *noteListViewController;
     IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSTokenField *tagTokenField;
     IBOutlet NSButton *previewButton;

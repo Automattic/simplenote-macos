@@ -1121,7 +1121,6 @@
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
-                <outlet property="noteListViewController" destination="874" id="1695"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
                 <outlet property="previewButton" destination="OMI-hx-wfj" id="8d5-5c-auI"/>
@@ -1138,7 +1137,6 @@
         <viewController id="874" customClass="NoteListViewController">
             <connections>
                 <outlet property="arrayController" destination="573" id="1143"/>
-                <outlet property="noteEditorViewController" destination="1107" id="1675"/>
                 <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
