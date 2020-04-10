@@ -55,9 +55,13 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 #endif
 
+@property (strong, nonatomic) IBOutlet NSWindow                 *window;
+
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
+@property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
+
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
 @property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
@@ -68,6 +72,11 @@
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
+
+@property (strong, nonatomic) Simperium                         *simperium;
+@property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
+@property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
+@property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
 
 #if USE_HOCKEY
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
