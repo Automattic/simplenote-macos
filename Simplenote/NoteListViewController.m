@@ -101,6 +101,13 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     [arrayController fetch:self];
 }
 
+// TODO: Work in Progress. Decouple with a delegate please
+//
+- (NoteEditorViewController *)noteEditorViewController
+{
+    return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
+}
+
 - (void)reset
 {
     [self.searchField setStringValue:@""];
@@ -140,10 +147,12 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)predicateDidChange
 {
-    if ([[arrayController arrangedObjects] count] == 0) {
-        [noteEditorViewController displayNote:nil];
-        [statusField setHidden:NO];
+    if ([[arrayController arrangedObjects] count] != 0) {
+        return;
     }
+
+    [self.noteEditorViewController displayNote:nil];
+    [statusField setHidden:NO];
 }
 
 - (void)setWaitingForIndex:(BOOL)waiting
@@ -229,7 +238,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
     BOOL shouldSelect = YES;
-    if (preserveSelection && [self rowForNoteKey:noteEditorViewController.note.simperiumKey] != row) {
+    if (preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
         shouldSelect = NO;
     }
     
@@ -246,15 +255,15 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     NSUInteger numNotes = [[arrayController arrangedObjects] count];
     
     // As soon as at least one note is added, select it
-    if (numNotes > 0 && noteEditorViewController.note == nil) {
+    if (numNotes > 0 && self.noteEditorViewController.note == nil) {
         [self selectRow:0];
     }
     
     [statusField setHidden:numNotes > 0];
     
-    if (numNotes == 0)
-        [noteEditorViewController displayNote:nil];
-    else if (self.searching) {
+    if (numNotes == 0) {
+        [self.noteEditorViewController displayNote:nil];
+    } else if (self.searching) {
         [self selectRow:0];
     }
 }
@@ -263,7 +272,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     // Check for empty list and clear editor contents if necessary
     if ([[arrayController arrangedObjects] count] == 0) {
-        [noteEditorViewController displayNote:nil];
+        [self.noteEditorViewController displayNote:nil];
     }
     
     NSInteger selectedRow = [self.tableView selectedRow];
@@ -274,12 +283,12 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
     if ([self.tableView numberOfSelectedRows] == 1) {
         Note *note = [[arrayController arrangedObjects] objectAtIndex:selectedRow];
-        if (![note.simperiumKey isEqualToString: noteEditorViewController.note.simperiumKey]) {
+        if (![note.simperiumKey isEqualToString: self.noteEditorViewController.note.simperiumKey]) {
             [SPTracker trackListNoteOpened];
-            [noteEditorViewController displayNote:note];
+            [self.noteEditorViewController displayNote:note];
         }
     } else {
-        [noteEditorViewController displayNotes:[self selectedNotes]];
+        [self.noteEditorViewController displayNotes:[self selectedNotes]];
     }
 }
 
@@ -362,10 +371,12 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)didEmptyTrash:(NSNotification *)notification
 {
-    if ([[arrayController arrangedObjects] count] == 0) {
-        [noteEditorViewController displayNote:nil];
-        [statusField setHidden:NO];
+    if ([[arrayController arrangedObjects] count] != 0) {
+        return;
     }
+
+    [self.noteEditorViewController displayNote:nil];
+    [statusField setHidden:NO];
 }
 
 - (void)willAddNewNote:(NSNotification *)notification
