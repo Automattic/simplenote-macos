@@ -63,7 +63,6 @@
 @property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
 
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
-@property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
@@ -790,8 +789,7 @@
         [self.noteListViewController applyStyle];
         return;
     }
-    
-    self.textScrollView.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
+
     [backgroundView setNeedsDisplay:YES];
 
     [self.splitView applyStyle];
