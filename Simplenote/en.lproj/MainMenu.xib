@@ -1138,7 +1138,6 @@
         <viewController id="874" customClass="NoteListViewController">
             <connections>
                 <outlet property="arrayController" destination="573" id="1143"/>
-                <outlet property="noteEditor" destination="934" id="1299"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1675"/>
                 <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
