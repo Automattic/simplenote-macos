@@ -745,34 +745,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="900" height="609"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView focusRingType="none" fixedFrame="YES" id="1436">
+                            <customView focusRingType="none" id="1436">
                                 <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1731">
-                                        <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1731">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
                                         <view key="contentView" id="2Nl-8a-lk8">
-                                            <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="NameColumn" width="136" minWidth="40" maxWidth="1000" id="1457">
+                                                        <tableColumn identifier="NameColumn" width="135" minWidth="40" maxWidth="1000" id="1457">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -785,11 +783,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="AllNotesCell" id="1463" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="2" width="136" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="2" width="135" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1464" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="7" width="85" height="22"/>
+                                                                            <rect key="frame" x="47" y="7" width="84" height="22"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1465">
                                                                                 <font key="font" metaFont="system"/>
@@ -809,11 +807,11 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="TrashCell" id="1480" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="36" width="136" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="36" width="135" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1482" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="6" width="85" height="22"/>
+                                                                            <rect key="frame" x="47" y="6" width="84" height="22"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1483">
                                                                                 <font key="font" metaFont="system"/>
@@ -833,11 +831,11 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="SeparatorCell" id="1494" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="70" width="136" height="36"/>
+                                                                    <rect key="frame" x="0.0" y="70" width="135" height="36"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1496" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="20" y="6" width="109" height="24"/>
+                                                                            <rect key="frame" x="20" y="6" width="108" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1497">
                                                                                 <font key="font" metaFont="system"/>
@@ -860,11 +858,11 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="TagCell" id="1487" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="110" width="136" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="110" width="135" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1489" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="17" y="3" width="103" height="21"/>
+                                                                            <rect key="frame" x="17" y="3" width="102" height="21"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" usesSingleLineMode="YES" id="1490">
                                                                                 <font key="font" metaFont="system"/>
@@ -900,6 +898,16 @@
                                         </scroller>
                                     </scrollView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1731" secondAttribute="trailing" id="3Uj-fR-at6"/>
+                                    <constraint firstItem="1452" firstAttribute="leading" secondItem="1436" secondAttribute="leading" id="KYh-fz-7dG"/>
+                                    <constraint firstAttribute="bottom" secondItem="1731" secondAttribute="bottom" id="WfA-jZ-MZh"/>
+                                    <constraint firstItem="1452" firstAttribute="top" secondItem="1436" secondAttribute="top" id="X8N-gH-844"/>
+                                    <constraint firstAttribute="trailing" secondItem="1452" secondAttribute="trailing" id="fxz-QC-nP0"/>
+                                    <constraint firstItem="1731" firstAttribute="leading" secondItem="1436" secondAttribute="leading" id="p26-aj-J9G"/>
+                                    <constraint firstAttribute="bottom" secondItem="1452" secondAttribute="bottom" id="w0G-Tu-M9B"/>
+                                    <constraint firstItem="1731" firstAttribute="top" secondItem="1436" secondAttribute="top" id="xbD-e8-bDS"/>
+                                </constraints>
                             </customView>
                             <customView focusRingType="none" fixedFrame="YES" id="558">
                                 <rect key="frame" x="136" y="0.0" width="270" height="609"/>
