@@ -1126,9 +1126,6 @@
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
                 <outlet property="previewButton" destination="OMI-hx-wfj" id="8d5-5c-auI"/>
                 <outlet property="printItem" destination="78" id="1659"/>
-                <outlet property="publishButton" destination="1063" id="1327"/>
-                <outlet property="publishLabel" destination="1058" id="1322"/>
-                <outlet property="publishViewController" destination="1040" id="5kS-We-Atz"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
                 <outlet property="statusView" destination="1440" id="1769"/>
@@ -1170,63 +1167,6 @@
                 <outlet property="view" destination="1452" id="1462"/>
             </connections>
         </viewController>
-        <viewController title="SharePopoverController" id="1040" userLabel="Publish Popover Controller" customClass="PublishViewController">
-            <connections>
-                <outlet property="legendTextField" destination="1068" id="byG-5z-i09"/>
-                <outlet property="publishButton" destination="1063" id="D7W-G1-Z38"/>
-                <outlet property="urlTextField" destination="1057" id="74T-7P-yyE"/>
-                <outlet property="view" destination="1043" id="1046"/>
-            </connections>
-        </viewController>
-        <customView appearanceType="aqua" id="1043" userLabel="Publish View">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="125"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" transparent="YES" id="1053">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="155"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <view key="contentView" id="6WY-fZ-mE4">
-                        <rect key="frame" x="1" y="1" width="238" height="153"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1057">
-                                <rect key="frame" x="15" y="92" width="208" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" placeholderString="Not published" drawsBackground="YES" usesSingleLineMode="YES" id="1058">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.31" colorSpace="calibratedWhite"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1068">
-                                <rect key="frame" x="12" y="3" width="214" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Publish this note to a web page. The page will stay updated with the contents of your note." id="1069">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button toolTip="Publishes this note to a public web page" verticalHuggingPriority="750" id="1063">
-                                <rect key="frame" x="9" y="56" width="220" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Publish to Web Page" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="1064">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <color key="contentTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="publishAction:" target="1107" id="1664"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </view>
-                    <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                </box>
-            </subviews>
-            <point key="canvasLocation" x="-191" y="607"/>
-        </customView>
     </objects>
     <resources>
         <image name="button_new" width="22" height="22"/>
