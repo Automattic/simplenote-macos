@@ -44,7 +44,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSButton *previewButton;
     IBOutlet NSButton *historyButton;
     IBOutlet NSButton *shareButton;
-    IBOutlet NSView *statusView;
+    IBOutlet NSImageView *statusView;
     IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
