@@ -913,6 +913,12 @@
                                 <rect key="frame" x="136" y="0.0" width="270" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="hNQ-eu-s3V" userLabel="Search View">
+                                        <rect key="frame" x="0.0" y="526" width="270" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="GyE-k7-nJM"/>
+                                        </constraints>
+                                    </customView>
                                     <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="560">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
@@ -1019,13 +1025,16 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="hNQ-eu-s3V" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="BJb-75-Kd9"/>
                                     <constraint firstItem="560" firstAttribute="top" secondItem="558" secondAttribute="top" id="Ge2-ST-RkZ"/>
                                     <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
+                                    <constraint firstAttribute="trailing" secondItem="hNQ-eu-s3V" secondAttribute="trailing" id="SdD-uJ-48L"/>
                                     <constraint firstItem="560" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="Zi0-eC-oVT"/>
                                     <constraint firstItem="1766" firstAttribute="leading" secondItem="558" secondAttribute="leading" constant="12" id="cPD-Ix-UuZ"/>
                                     <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
                                     <constraint firstItem="1766" firstAttribute="top" secondItem="558" secondAttribute="top" constant="220" id="eS2-b5-fRK"/>
                                     <constraint firstAttribute="bottom" secondItem="560" secondAttribute="bottom" id="niy-wS-lMG"/>
+                                    <constraint firstItem="hNQ-eu-s3V" firstAttribute="top" secondItem="558" secondAttribute="top" id="pl2-ke-Y6M"/>
                                 </constraints>
                             </customView>
                             <customView focusRingType="none" id="559">
@@ -1049,7 +1058,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="538"/>
+                                                    <size key="minSize" width="478" height="538"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
