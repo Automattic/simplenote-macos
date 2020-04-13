@@ -25,7 +25,7 @@
             <connections>
                 <outlet property="delegate" destination="874" id="1526"/>
             </connections>
-            <point key="canvasLocation" x="139" y="401"/>
+            <point key="canvasLocation" x="268" y="-269"/>
         </menu>
         <customView id="914" customClass="SPToolbarView">
             <rect key="frame" x="0.0" y="0.0" width="901" height="71"/>
@@ -193,7 +193,7 @@
                 <outlet property="trashButton" destination="mXz-OM-6A3" id="XnP-Bb-cph"/>
                 <outlet property="window" destination="371" id="1247"/>
             </connections>
-            <point key="canvasLocation" x="-866.5" y="585.5"/>
+            <point key="canvasLocation" x="139" y="-163"/>
         </customView>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
@@ -728,7 +728,7 @@
             <connections>
                 <outlet property="delegate" destination="494" id="ahP-nJ-8XG"/>
             </connections>
-            <point key="canvasLocation" x="139" y="154"/>
+            <point key="canvasLocation" x="-85" y="-270"/>
         </menu>
         <window title="Simplenote" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" id="371" customClass="SPWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
@@ -1088,7 +1088,7 @@
                 <outlet property="delegate" destination="494" id="1423"/>
                 <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
-            <point key="canvasLocation" x="137" y="154"/>
+            <point key="canvasLocation" x="138" y="263"/>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
