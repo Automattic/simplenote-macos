@@ -18,7 +18,8 @@
 
 @implementation SPToolbarView
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
 
     NSButtonCell *addNoteCell = [addButton cell];
@@ -28,21 +29,54 @@
     [shareNoteCell setHighlightsBy:NSContentsCellMask];
     
     [shareButton sendActionOn:NSEventMaskLeftMouseDown];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noNoteLoaded:) name:SPNoNoteLoadedNotificationName object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noteLoaded:) name:SPNoteLoadedNotificationName object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
-
+    [self startListeningToNotifications];
     [self applyStyle];
 }
 
-- (void)enableButtons:(BOOL)enabled {
+#pragma mark - Notifications
+
+- (void)startListeningToNotifications
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+
+    [nc addObserver:self selector:@selector(noNoteLoaded:) name:SPNoNoteLoadedNotificationName object:nil];
+    [nc addObserver:self selector:@selector(noteLoaded:) name:SPNoteLoadedNotificationName object:nil];
+    [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
+    [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
+    [nc addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
+}
+
+- (void)noNoteLoaded:(NSNotification *)sender
+{
+    [self enableButtons:NO];
+}
+
+- (void)noteLoaded:(NSNotification *)sender
+{
+    [self enableButtons:YES];
+}
+
+- (void)trashDidLoad:(NSNotification *)notification
+{
+    [self configureForTrash:YES];
+}
+
+- (void)tagsDidLoad:(NSNotification *)notification
+{
+    [self configureForTrash:NO];
+}
+
+- (void)trashDidEmpty:(NSNotification *)notification
+{
+    [trashButton setEnabled:NO];
+}
+
+
+#pragma mark - Private
+
+- (void)enableButtons:(BOOL)enabled
+{
     [self.actionButton setEnabled:enabled];
     [shareButton setEnabled:enabled];
     [trashButton setEnabled:enabled];
@@ -51,15 +85,8 @@
     [previewButton setEnabled:enabled];
 }
 
-- (void)noNoteLoaded:(id)sender {
-    [self enableButtons:NO];
-}
-
-- (void)noteLoaded:(id)sender {
-    [self enableButtons:YES];
-}
-
-- (void)configureForTrash:(BOOL)trash {
+- (void)configureForTrash:(BOOL)trash
+{
     [self.actionButton setEnabled:!trash];
     [shareButton setHidden:trash];
     [addButton setEnabled:!trash];
@@ -70,42 +97,21 @@
     [noteEditor setSelectable:!trash];
 }
 
-- (void)trashDidLoad:(NSNotification *)notification {
-    [self configureForTrash:YES];
-}
-
-- (void)tagsDidLoad:(NSNotification *)notification {
-    [self configureForTrash:NO];
-}
-
-- (void)trashDidEmpty:(NSNotification *)notification {
-    [trashButton setEnabled:NO];
-}
-
 
 #pragma mark - Theme
 
-- (void)applyStyle {
-    [self applySearchBoxStyle];
-    [splitter setFillColor:[self.theme colorForKey:@"dividerColor"]];
-}
-
-- (void)applySearchBoxStyle {
+- (void)applyStyle
+{
+    // Dark theme finally well supported in Mojave! No tweaks needed.
     if (@available(macOS 10.14, *)) {
-        // Dark theme finally well supported in Mojave! No tweaks needed.
         return;
     }
     
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
-    
-    if (@available(macOS 10.10, *)) {
-        if (theme.isDark) {
-            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-        } else {
-            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
-        }
-    }
+    [searchField setTextColor:[theme colorForKey:@"textColor"]];
+
+    NSAppearanceName name = theme.isDark ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
+    searchField.appearance = [NSAppearance appearanceNamed:name];
 }
 
 @end

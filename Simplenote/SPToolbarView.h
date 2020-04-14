@@ -22,7 +22,7 @@
     IBOutlet NSSearchField *searchField;
 }
 
-@property (nonatomic, strong) IBOutlet NSPopUpButton    *actionButton;
+@property (nonatomic, strong) IBOutlet NSPopUpButton *actionButton;
 
 - (void)applyStyle;
 
