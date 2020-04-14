@@ -298,7 +298,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [tagTokenField setSelectable:NO];
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
-    [shareButton setEnabled:NO];
+    [self.shareButton setEnabled:NO];
     [self.previewButton setEnabled:NO];
     [self.historyButton setEnabled:NO];
     
@@ -503,7 +503,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 -(void)updateShareButtonVisibility
 {
-    [shareButton setEnabled:self.note.content.length > 0];
+    [self.shareButton setEnabled:self.note.content.length > 0];
 }
 
 #pragma mark - Simperium
@@ -1088,7 +1088,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     PublishViewController *viewController = [PublishViewController new];
     viewController.delegate = self;
 
-    [self showViewController:viewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.shareButton preferredEdge:NSMaxYEdge];
     self.publishViewController = viewController;
 }
 
@@ -1138,7 +1138,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
     sharingPicker.delegate = self;
-    [sharingPicker showRelativeToRect:shareButton.bounds ofView:shareButton preferredEdge:NSMinYEdge];
+    [sharingPicker showRelativeToRect:self.shareButton.bounds ofView:self.shareButton preferredEdge:NSMinYEdge];
 }
 
 - (IBAction)toggleMarkdownView:(id)sender
