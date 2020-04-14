@@ -41,7 +41,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSTokenField *tagTokenField;
-    IBOutlet NSButton *previewButton;
     IBOutlet NSButton *historyButton;
     IBOutlet NSButton *shareButton;
     IBOutlet NSImageView *statusView;
@@ -57,6 +56,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
+@property (nonatomic, strong) IBOutlet NSButton             *previewButton;
 @property (nonatomic,   weak) IBOutlet SPTextView           *noteEditor;
 @property (nonatomic,   weak) IBOutlet NSScrollView         *scrollView;
 @property (nonatomic,   weak) IBOutlet NoteEditorBottomBar  *bottomBar;

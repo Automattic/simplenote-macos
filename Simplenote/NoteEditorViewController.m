@@ -249,8 +249,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     [self updateTagField];
     [self updateShareButtonVisibility];
-    [previewButton setEnabled:YES];
     [historyButton setEnabled:YES];
+    [self.previewButton setEnabled:YES];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -261,7 +261,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.noteEditor displayNoteWithContent:@""];
     }
     
-    [previewButton setHidden:!self.note.markdown || self.viewingTrash];
+    [self.previewButton setHidden:!self.note.markdown || self.viewingTrash];
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
@@ -299,8 +299,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
     [shareButton setEnabled:NO];
-    [previewButton setEnabled:NO];
     [historyButton setEnabled:NO];
+    [self.previewButton setEnabled:NO];
     
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -343,7 +343,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)trashDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = YES;
-    [previewButton setHidden:YES];
+    [self.previewButton setHidden:YES];
     [self.bottomBar setEnabled:NO];
 }
 
@@ -742,7 +742,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     // Toggle the markdown state
     BOOL isEnabled = markdownItem.state == NSOffState;
-    [previewButton setHidden:!isEnabled];
+    [self.previewButton setHidden:!isEnabled];
     
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.markdown = isEnabled;
@@ -1155,8 +1155,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor setHidden:markdownVisible];
     [self.markdownView setHidden:!markdownVisible];
     
-    [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
     [historyButton setEnabled:!markdownVisible];
+    [self.previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
     
     if (markdownVisible) {
         [self loadMarkdownContent];
