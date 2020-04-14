@@ -748,6 +748,32 @@
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="hNQ-eu-s3V" userLabel="Search View">
                                         <rect key="frame" x="0.0" y="562" width="270" height="56"/>
+                                        <subviews>
+                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="915">
+                                                <rect key="frame" x="20" y="17" width="190" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="916">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </searchFieldCell>
+                                                <connections>
+                                                    <action selector="filterNotes:" target="874" id="dQa-U1-MUq"/>
+                                                    <outlet property="delegate" destination="874" id="c6x-8I-Ool"/>
+                                                </connections>
+                                            </searchField>
+                                            <button toolTip="Add Note" id="987" userLabel="Add Note">
+                                                <rect key="frame" x="228" y="17" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="988">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="addAction:" target="1107" id="1662"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="GyE-k7-nJM"/>
                                         </constraints>
@@ -856,16 +882,21 @@
                                             <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
                                         </textFieldCell>
                                     </textField>
+                                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1732">
+                                        <rect key="frame" x="127" y="339" width="16" height="16"/>
+                                    </progressIndicator>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="560" firstAttribute="top" secondItem="hNQ-eu-s3V" secondAttribute="bottom" id="3lc-mr-zTS"/>
                                     <constraint firstItem="hNQ-eu-s3V" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="BJb-75-Kd9"/>
                                     <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
                                     <constraint firstAttribute="trailing" secondItem="hNQ-eu-s3V" secondAttribute="trailing" id="SdD-uJ-48L"/>
+                                    <constraint firstItem="1732" firstAttribute="centerX" secondItem="558" secondAttribute="centerX" id="ULH-jy-Aeh"/>
                                     <constraint firstItem="560" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="Zi0-eC-oVT"/>
                                     <constraint firstItem="1766" firstAttribute="leading" secondItem="558" secondAttribute="leading" constant="12" id="cPD-Ix-UuZ"/>
                                     <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
                                     <constraint firstItem="1766" firstAttribute="top" secondItem="558" secondAttribute="top" constant="220" id="eS2-b5-fRK"/>
+                                    <constraint firstItem="1732" firstAttribute="top" secondItem="1766" secondAttribute="bottom" constant="20" id="fI6-MP-z0s"/>
                                     <constraint firstAttribute="bottom" secondItem="560" secondAttribute="bottom" id="niy-wS-lMG"/>
                                     <constraint firstItem="hNQ-eu-s3V" firstAttribute="top" secondItem="558" secondAttribute="top" id="pl2-ke-Y6M"/>
                                 </constraints>
@@ -876,6 +907,103 @@
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="6g3-GJ-ldC" userLabel="Actions View">
                                         <rect key="frame" x="0.0" y="562" width="493" height="56"/>
+                                        <subviews>
+                                            <button toolTip="Preview Markdown" verticalHuggingPriority="750" id="OMI-hx-wfj" userLabel="Markdown">
+                                                <rect key="frame" x="272" y="17" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_preview" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Q9W-kz-F4v">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
+                                                </connections>
+                                            </button>
+                                            <button toolTip="History" verticalHuggingPriority="750" id="7hm-UJ-0zw" userLabel="Versions">
+                                                <rect key="frame" x="314" y="17" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_revisions" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="showVersionPopover:" target="1107" id="6bi-5c-YJd"/>
+                                                </connections>
+                                            </button>
+                                            <button toolTip="Share" verticalHuggingPriority="750" id="qmA-vO-wPh" userLabel="Share">
+                                                <rect key="frame" x="356" y="17" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_share" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L1E-HD-wfM">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="shareNote:" target="1107" id="W9o-Z7-kgJ"/>
+                                                </connections>
+                                            </button>
+                                            <button toolTip="Trash" verticalHuggingPriority="750" id="mXz-OM-6A3" userLabel="Trash">
+                                                <rect key="frame" x="397" y="17" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_trash_highlighted" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
+                                                </connections>
+                                            </button>
+                                            <button toolTip="Restore" verticalHuggingPriority="750" id="fA9-bG-luR" userLabel="Restore">
+                                                <rect key="frame" x="397" y="17" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="X3f-rW-nRp">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
+                                                </connections>
+                                            </button>
+                                            <popUpButton toolTip="Info" id="1601" userLabel="Information">
+                                                <rect key="frame" x="429" y="7" width="44" height="42"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
+                                                        <items>
+                                                            <menuItem title="Item 1" image="toolbar_info" hidden="YES" id="1604"/>
+                                                            <menuItem title="0 Words" enabled="NO" id="1605"/>
+                                                            <menuItem title="0 Characters" enabled="NO" id="1606"/>
+                                                            <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem isSeparatorItem="YES" id="1614"/>
+                                                            <menuItem title="Pin to Top" state="on" id="1615">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                <connections>
+                                                                    <action selector="pinAction:" target="1107" id="1661"/>
+                                                                </connections>
+                                                            </menuItem>
+                                                            <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                <connections>
+                                                                    <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
+                                                                </connections>
+                                                            </menuItem>
+                                                            <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                <connections>
+                                                                    <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
+                                                                </connections>
+                                                            </menuItem>
+                                                        </items>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="1107" id="1627"/>
+                                                        </connections>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                            </popUpButton>
+                                        </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Arq-CS-yXs"/>
                                         </constraints>
@@ -978,7 +1106,6 @@
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
                 <outlet property="textViewParent" destination="559" id="1198"/>
                 <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
-                <outlet property="toolbar" destination="914" id="1386"/>
                 <outlet property="window" destination="371" id="748"/>
             </connections>
         </customObject>
@@ -988,7 +1115,8 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
-                <outlet property="historyButton" destination="7hm-UJ-0zw" id="i3Y-k0-nZS"/>
+                <outlet property="historyButton" destination="7hm-UJ-0zw" id="Akk-jW-3aL"/>
+                <outlet property="infoButton" destination="1601" id="gKx-fO-RJ3"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
@@ -996,12 +1124,14 @@
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
-                <outlet property="previewButton" destination="OMI-hx-wfj" id="8d5-5c-auI"/>
+                <outlet property="previewButton" destination="OMI-hx-wfj" id="k6N-mT-8M2"/>
                 <outlet property="printItem" destination="78" id="1659"/>
+                <outlet property="restoreButton" destination="fA9-bG-luR" id="NTt-WA-9HM"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
-                <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
+                <outlet property="shareButton" destination="qmA-vO-wPh" id="GCl-32-Zvq"/>
                 <outlet property="statusView" destination="1447" id="QiL-Iy-BtA"/>
                 <outlet property="tableView" destination="561" id="1282"/>
+                <outlet property="trashButton" destination="mXz-OM-6A3" id="BDW-ec-6Eq"/>
                 <outlet property="view" destination="934" id="1185"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>
             </connections>
@@ -1009,12 +1139,13 @@
         <customObject id="420" customClass="NSFontManager"/>
         <viewController id="874" customClass="NoteListViewController">
             <connections>
+                <outlet property="addButton" destination="987" id="XGb-HK-Vao"/>
                 <outlet property="arrayController" destination="573" id="1143"/>
                 <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
                 <outlet property="scrollView" destination="560" id="cOa-P7-TFZ"/>
-                <outlet property="searchField" destination="915" id="sRB-gO-6Ra"/>
+                <outlet property="searchField" destination="915" id="EJA-tY-VLr"/>
                 <outlet property="sortMenu" destination="YpJ-fs-p4p" id="ncf-ZC-vxK"/>
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
