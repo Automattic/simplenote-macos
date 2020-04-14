@@ -213,8 +213,7 @@
     self.window.releasedWhenClosed              = NO;
     
     [self.splitView adjustSubviews];
-    [self notifySplitDidChange];
-    
+
     // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.12)
     WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
     WKPreferences *prefs = [[WKPreferences alloc] init];
@@ -258,8 +257,6 @@
     toolbarFrame.size.width                     = splitFrame.size.width;
     
     self.toolbar.autoresizingMask               = NSViewWidthSizable | NSViewMinXMargin | NSViewMinYMargin;
-    self.toolbar.drawsSeparator                 = true;
-    self.toolbar.drawsBackground                = true;
     self.toolbar.frame                          = toolbarFrame;
     
     [self.splitView.superview addSubview:self.toolbar];
@@ -432,7 +429,6 @@
 - (void)handleWindowDidResizeNote:(NSNotification *)notification
 {
     [self.splitView adjustSubviews];
-    [self notifySplitDidChange];
 }
 
 - (void)handleWindowDidResignMainNote:(NSNotification *)notification
@@ -488,18 +484,11 @@
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
 {
-    [self notifySplitDidChange];
-    
     return proposedPosition;
 }
 
 
 #pragma mark - Split view Helpers
-
-- (void)splitViewDidResizeSubviews:(NSNotification *)notification
-{
-    [self notifySplitDidChange];
-}
 
 - (CGFloat)tagListWidth
 {
@@ -514,11 +503,6 @@
 - (CGFloat)tagListSplitPosition
 {
     return self.tagListViewController.view.bounds.size.width;
-}
-
-- (void)notifySplitDidChange
-{
-    [self.toolbar setSplitPositionLeft:[self tagListSplitPosition] right:[self editorSplitPosition]];
 }
 
 
@@ -725,8 +709,6 @@
     [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
     
     BOOL isEnteringFocusMode = [self.noteListViewController.view isHidden];
-    // Enable/disable buttons and search bar in the toolbar
-    [self.toolbar configureForFocusMode: isEnteringFocusMode];
     [focusModeMenuItem setState:isEnteringFocusMode ? NSOnState : NSOffState];
     
     if (!isEnteringFocusMode && tagListWasVisibleUponFocusMode) {

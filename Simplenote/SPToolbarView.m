@@ -10,25 +10,13 @@
 #import "NoteListViewController.h"
 #import "TagListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "Note.h"
-#import "NoteEditorBottomBar.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "NSColor+Simplenote.h"
 @import Simperium_OSX;
 
-#define kSearchCollapsedMargin  62
-#define kSearchCollapsedWidth   120
-#define kSearchExpandedMargin   141
-#define kSearchExpandedWidth    79
-#define kFocusModeDuration      0.8f
 
 @implementation SPToolbarView
-
-- (VSTheme *)theme {
-
-    return [[VSThemeManager sharedManager] theme];
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -54,27 +42,6 @@
     [self applyStyle];
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-
-    if (_drawsBackground) {
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] setFill];
-        NSRectFill(dirtyRect);
-    }
-    
-
-    if (_drawsSeparator) {
-        CGContextRef context    = [[NSGraphicsContext currentContext] graphicsPort];
-        NSRect separator        = self.bounds;
-        separator.size.height   = 1.0f;
-        
-        CGContextBeginPath(context);
-
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"] setFill];
-        CGContextFillRect(context, separator);
-    }    
-}
-
 - (void)enableButtons:(BOOL)enabled {
     [self.actionButton setEnabled:enabled];
     [shareButton setEnabled:enabled];
@@ -82,12 +49,6 @@
     [restoreButton setEnabled:enabled];
     [historyButton setEnabled:enabled];
     [previewButton setEnabled:enabled];
-}
-
-- (void)configureForFocusMode:(BOOL)enabled {
-    [searchField setHidden:enabled];
-    [addButton setHidden:enabled];
-    [splitter setHidden:enabled];
 }
 
 - (void)noNoteLoaded:(id)sender {
@@ -121,27 +82,6 @@
     [trashButton setEnabled:NO];
 }
 
-- (void)moveView:(NSView *)view x:(CGFloat)x y:(CGFloat)y {
-    [view setFrame:NSMakeRect(view.frame.origin.x + x, view.frame.origin.y + y, view.frame.size.width, view.frame.size.height)];
-    [view setNeedsLayout:YES];
-}
-
-- (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right {
-    CGFloat distance = right - splitter.frame.origin.x;
-    if (distance == 0) {
-        return;
-    }
-
-    BOOL collapsed = left <= 1;
-    CGRect searchFrame = searchBox.frame;
-    searchFrame.origin.x = collapsed ? kSearchCollapsedMargin : kSearchExpandedMargin;
-    CGFloat searchFrameAdjustment = collapsed ? kSearchCollapsedWidth : kSearchExpandedWidth;
-    searchFrame.size.width = tableViewController.view.frame.size.width - searchFrameAdjustment;
-    [searchBox setFrame: searchFrame];
-    
-    [self moveView:addButton x:distance y:0];
-    [self moveView:splitter x:distance y:0];
-}
 
 #pragma mark - Theme
 
