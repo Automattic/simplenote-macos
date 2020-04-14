@@ -14,7 +14,6 @@
 #import "NoteEditorBottomBar.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
-#import "NSColor+Simplenote.h"
 @import Simperium_OSX;
 
 #define kSearchCollapsedMargin  62
@@ -155,17 +154,12 @@
         // Dark theme finally well supported in Mojave! No tweaks needed.
         return;
     }
-    
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
+
     [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
-    
-    if (@available(macOS 10.10, *)) {
-        if (theme.isDark) {
-            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-        } else {
-            searchField.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
-        }
-    }
+
+    BOOL isDarkMode = [[VSThemeManager sharedManager] isDarkMode];
+    NSAppearanceName name = isDarkMode ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
+    searchField.appearance = [NSAppearance appearanceNamed:name];
 }
 
 @end

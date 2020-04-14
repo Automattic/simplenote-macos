@@ -7,8 +7,8 @@
 //
 
 #import "SPTableRowView.h"
-#import "NSColor+Simplenote.h"
 #import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 @implementation SPTableRowView
 @synthesize drawBorder;
