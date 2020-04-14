@@ -57,6 +57,10 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong) IBOutlet NSButton             *previewButton;
 @property (nonatomic, strong) IBOutlet NSButton             *historyButton;
 @property (nonatomic, strong) IBOutlet NSButton             *shareButton;
+@property (nonatomic, strong) IBOutlet NSButton             *trashButton;
+@property (nonatomic, strong) IBOutlet NSButton             *restoreButton;
+@property (nonatomic, strong) IBOutlet NSPopUpButton        *infoButton;
+
 @property (nonatomic,   weak) IBOutlet SPTextView           *noteEditor;
 @property (nonatomic,   weak) IBOutlet NSScrollView         *scrollView;
 @property (nonatomic,   weak) IBOutlet NoteEditorBottomBar  *bottomBar;
