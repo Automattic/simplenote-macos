@@ -146,6 +146,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self applyStyle];
 }
 
+// TODO: Work in Progress. Decouple with a delegate please
+//
+- (NoteListViewController *)noteListViewController
+{
+    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
+}
+
 - (void)save
 {
     if (![self.note hasChanges]) {
@@ -492,7 +499,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
     // Update the note list preview
-    [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
+    [self.noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
 }
 
 -(void)updateShareButtonVisibility
@@ -729,7 +736,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Update the list
     [notesArrayController rearrangeObjects];
-    [noteListViewController selectRowForNoteKey:self.note.simperiumKey];
+    [self.noteListViewController selectRowForNoteKey:self.note.simperiumKey];
 }
 
 - (IBAction)markdownAction:(id)sender
@@ -793,7 +800,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)prepareForNewNote:(Note *)newNote
 {
-    [noteListViewController selectRowForNoteKey:newNote.simperiumKey];
+    [self.noteListViewController selectRowForNoteKey:newNote.simperiumKey];
     [tableView scrollRowToVisible:[tableView selectedRow]];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -808,7 +815,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         }
         
         [SPTracker trackEditorNoteDeleted];
-        [noteListViewController deleteNote:noteToDelete];
+        [self.noteListViewController deleteNote:noteToDelete];
     }
 }
 

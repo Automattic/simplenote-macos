@@ -141,18 +141,25 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     self.tagArray = [self.tagArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 
+// TODO: Work in Progress. Decouple with a delegate please
+//
+- (NoteListViewController *)noteListViewController
+{
+    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
+}
+
 - (void)reloadDataAndPreserveSelection
 {
     // Remember last selections
     NSInteger tagRow = [self.tableView selectedRow];
-    NSInteger noteRow = [noteListViewController.tableView selectedRow];
+    NSInteger noteRow = [self.noteListViewController.tableView selectedRow];
     
     [self.tableView reloadData];
     
     // Restore last selections
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:tagRow] byExtendingSelection:NO];
     
-    [noteListViewController.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:noteRow] byExtendingSelection:NO];
+    [self.noteListViewController.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:noteRow] byExtendingSelection:NO];
 
 }
 
@@ -544,9 +551,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     BOOL isViewingTrash = [self.tableView selectedRow] == kTrashRow;
     NSString *notificationName = isViewingTrash ? kDidBeginViewingTrash : kTagsDidLoad;
     [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self];
-    
-    [noteListViewController filterNotes:nil];
-    [noteListViewController selectRow:0];
+
+    [self.noteListViewController filterNotes:nil];
+    [self.noteListViewController selectRow:0];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
