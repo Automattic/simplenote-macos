@@ -16,7 +16,6 @@
 #import "NoteEditorViewController.h"
 #import "SPMarkdownParser.h"
 #import "SPWindow.h"
-#import "SPToolbarView.h"
 #import "NSImage+Colorize.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
@@ -60,7 +59,6 @@
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
-@property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
 
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
@@ -241,25 +239,6 @@
         systemDefaultItem.tag = kDefaultThemeAppearanceTag;
         [themeMenu addItem:systemDefaultItem];
     }
-
-    [self configureToolbar];
-}
-
-- (void)configureToolbar
-{
-    NSRect splitFrame                           = self.splitView.frame;
-    NSRect toolbarFrame                         = self.toolbar.frame;
-    
-    splitFrame.size.height                      -= toolbarFrame.size.height;
-    self.splitView.frame                        = splitFrame;
-    
-    toolbarFrame.origin.y                       = splitFrame.size.height;
-    toolbarFrame.size.width                     = splitFrame.size.width;
-    
-    self.toolbar.autoresizingMask               = NSViewWidthSizable | NSViewMinXMargin | NSViewMinYMargin;
-    self.toolbar.frame                          = toolbarFrame;
-    
-    [self.splitView.superview addSubview:self.toolbar];
 }
 
 - (void)hookWindowNotifications
@@ -775,8 +754,6 @@
     [backgroundView setNeedsDisplay:YES];
 
     [self.splitView applyStyle];
-    [self.toolbar applyStyle];
-    [self.toolbar setNeedsDisplay:YES];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
