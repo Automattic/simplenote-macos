@@ -1,20 +1,4 @@
-//
-//  CustomToolbar.m
-//  Simplenote
-//
-//  Created by Rainieri Ventura on 1/31/12.
-//  Copyright (c) 2012 Simperium. All rights reserved.
-//
-
-#import "SPToolbarView.h"
-#import "NoteListViewController.h"
-#import "TagListViewController.h"
-#import "SimplenoteAppDelegate.h"
-#import "VSThemeManager.h"
-#import "VSTheme+Simplenote.h"
-#import "NSColor+Simplenote.h"
-@import Simperium_OSX;
-
+/*
 
 @implementation SPToolbarView
 
@@ -115,3 +99,6 @@
 }
 
 @end
+
+
+*/

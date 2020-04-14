@@ -105,7 +105,6 @@
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
 		466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
-		466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7199A43014D8FD1C00B903A8 /* SPToolbarView.m */; };
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
 		466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
 		466FFEC217CC10A800399652 /* SPTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 712DC91B1531FE2F0033CE85 /* SPTokenField.m */; };
@@ -146,7 +145,6 @@
 		714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
-		7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7199A43014D8FD1C00B903A8 /* SPToolbarView.m */; };
 		71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
 		71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
@@ -1472,7 +1470,6 @@
 				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
-				7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
@@ -1565,7 +1562,6 @@
 				466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */,
 				466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */,
 				375D293721E033D1007AB25A /* document.c in Sources */,
-				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
