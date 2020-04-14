@@ -249,8 +249,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     [self updateTagField];
     [self updateShareButtonVisibility];
-    [historyButton setEnabled:YES];
     [self.previewButton setEnabled:YES];
+    [self.historyButton setEnabled:YES];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -299,8 +299,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
     [shareButton setEnabled:NO];
-    [historyButton setEnabled:NO];
     [self.previewButton setEnabled:NO];
+    [self.historyButton setEnabled:NO];
     
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -1126,7 +1126,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     VersionsViewController *viewController = [VersionsViewController new];
     viewController.delegate = self;
 
-    [self showViewController:viewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.historyButton preferredEdge:NSMaxYEdge];
     self.versionsViewController = viewController;
 }
 
@@ -1155,8 +1155,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor setHidden:markdownVisible];
     [self.markdownView setHidden:!markdownVisible];
     
-    [historyButton setEnabled:!markdownVisible];
     [self.previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
+    [self.historyButton setEnabled:!markdownVisible];
     
     if (markdownVisible) {
         [self loadMarkdownContent];
