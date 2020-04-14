@@ -1090,7 +1090,7 @@
                 <outlet property="delegate" destination="494" id="1423"/>
                 <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
-            <point key="canvasLocation" x="138" y="249"/>
+            <point key="canvasLocation" x="137" y="137"/>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
@@ -1145,7 +1145,7 @@
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
                 <outlet property="scrollView" destination="560" id="cOa-P7-TFZ"/>
-                <outlet property="searchField" destination="915" id="EJA-tY-VLr"/>
+                <outlet property="searchField" destination="915" id="IND-YH-L2s"/>
                 <outlet property="sortMenu" destination="YpJ-fs-p4p" id="ncf-ZC-vxK"/>
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
