@@ -33,8 +33,10 @@
     CGFloat rowHeight;
 }
 
+@property (nonatomic, strong) IBOutlet NSSearchField    *searchField;
+@property (nonatomic, strong) IBOutlet NSButton         *addButton;
+
 @property (strong, nonatomic) IBOutlet SPTableView      *tableView;
-@property (strong, nonatomic) IBOutlet NSSearchField    *searchField;
 @property (assign, nonatomic) BOOL                      searching;
 
 - (void)loadNotes;
