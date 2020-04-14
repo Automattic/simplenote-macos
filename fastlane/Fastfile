@@ -137,22 +137,27 @@ end
     sh("rake dependencies:pod:clean")
     cocoapods()
 
+    BUILD_PATH = "./build/"
+    APP_PATH = "#{BUILD_PATH}Simplenote.app"
+
     build_app(
       workspace: "Simplenote.xcworkspace", 
       scheme: "Simplenote",
       clean: true,
-      output_directory: "./build/")
+      output_directory: BUILD_PATH)
+
+    notarize(APP_PATH)
 
     appcenter_upload(
       api_token: get_required_env("APPCENTER_API_TOKEN"),
       owner_name: "automattic",
       owner_type: "organization", 
       app_name: "Simplenote-OSX",
-      ipa: "./build/Simplenote.app",
+      ipa: APP_PATH,
       notify_testers: false 
     )
     
-    dSYM_PATH = File.dirname(Dir.pwd) + "/build/Simplenote.app.dSYM.zip"
+    dSYM_PATH = File.dirname(Dir.pwd) + "#{BUILD_PATH}Simplenote.app.dSYM.zip"
 
     sentry_upload_dsym(
       auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
@@ -161,6 +166,8 @@ end
       dsym_path: dSYM_PATH,
     )
    
+    sh("rm #{APP_PATH}")
+    sh("rm #{dSYM_PATH}")
   end
 
 ########################################################################
