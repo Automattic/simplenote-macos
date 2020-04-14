@@ -74,20 +74,16 @@
     headerStart = [headerStart stringByAppendingString:[NSString stringWithFormat:colorCSS, bgHexColor, textHexColor]];
     
     NSString *headerEnd = @"</style></head><body><div class=\"note-detail-markdown\"><div id=\"static_content\">";
-    NSString *path = [self cssPathForTheme:[[VSThemeManager sharedManager] theme]];
+    NSString *path = [self cssPathForDarkMode:isDarkMode];
     NSString *css = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:path withExtension:nil]
                                              encoding:NSUTF8StringEncoding error:nil];
     
     return [[headerStart stringByAppendingString:css] stringByAppendingString:headerEnd];
 }
 
-+ (NSString *)cssPathForTheme:(VSTheme *)theme
++ (NSString *)cssPathForDarkMode:(BOOL)isDarkMode
 {
-    if (@available(macOS 10.14, *)) {
-        return theme.isMojaveDarkMode ? @"markdown-dark.css" : @"markdown-default.css";
-    }
-    
-    return theme.isDark ? @"markdown-dark.css" : @"markdown-default.css";
+    return isDarkMode ? @"markdown-dark.css" : @"markdown-default.css";
 }
 
 + (NSString *)htmlFooter
