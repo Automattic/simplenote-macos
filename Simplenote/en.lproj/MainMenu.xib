@@ -27,17 +27,6 @@
             </connections>
             <point key="canvasLocation" x="268" y="-269"/>
         </menu>
-        <customView id="914" customClass="SPToolbarView">
-            <rect key="frame" x="0.0" y="0.0" width="901" height="71"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-            <subviews>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="1732">
-                    <rect key="frame" x="455" y="22" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                </progressIndicator>
-            </subviews>
-            <point key="canvasLocation" x="139" y="-163"/>
-        </customView>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="Simplenote" id="56">
