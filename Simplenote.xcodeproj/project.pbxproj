@@ -441,7 +441,6 @@
 		714BA66C14D4AE6200A6CCC1 /* DateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTransformer.h; sourceTree = "<group>"; };
 		714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTransformer.m; sourceTree = "<group>"; };
 		7154811614E5A9E800CB8964 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		7199A43014D8FD1C00B903A8 /* SPToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPToolbarView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		71D83D6E14D744FB00A25E69 /* SPNoteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPNoteCellView.h; sourceTree = "<group>"; };
 		71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPNoteCellView.m; sourceTree = "<group>"; };
 		71D83D7114D75C0900A25E69 /* SPTagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTagCellView.h; sourceTree = "<group>"; };
@@ -845,7 +844,6 @@
 		714BA65514D3260000A6CCC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7199A43014D8FD1C00B903A8 /* SPToolbarView.m */,
 				E223B9A7178F20FF007E0272 /* SPButtonNoBackground.h */,
 				E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */,
 				712DC91A1531FE2F0033CE85 /* SPTokenField.h */,
