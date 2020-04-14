@@ -17,7 +17,6 @@
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
-#import "SPToolbarView.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
