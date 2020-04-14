@@ -1038,14 +1038,35 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447">
-                                        <rect key="frame" x="197" y="309" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="K7T-Uk-2Hq"/>
-                                            <constraint firstAttribute="width" constant="100" id="qla-yo-Qy7"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_grey" id="1448"/>
-                                    </imageView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-eG-X1q">
+                                        <rect key="frame" x="197" y="243" width="100" height="133"/>
+                                        <subviews>
+                                            <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447">
+                                                <rect key="frame" x="0.0" y="33" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="K7T-Uk-2Hq"/>
+                                                    <constraint firstAttribute="width" constant="100" id="qla-yo-Qy7"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_grey" id="1448"/>
+                                            </imageView>
+                                            <textField verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0B4-5y-QKp">
+                                                <rect key="frame" x="46" y="0.0" width="8" height="23"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="mup-Kw-eHZ">
+                                                    <font key="font" size="20" name="HelveticaNeue"/>
+                                                    <color key="textColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="deviceWhite"/>
+                                                    <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" userLabel="Bottom Bar" customClass="NoteEditorBottomBar">
                                         <rect key="frame" x="0.0" y="0.0" width="493" height="44"/>
                                         <constraints>
@@ -1064,8 +1085,8 @@
                                     <constraint firstAttribute="trailing" secondItem="6g3-GJ-ldC" secondAttribute="trailing" id="TJy-5q-TJh"/>
                                     <constraint firstAttribute="bottom" secondItem="1549" secondAttribute="bottom" id="Vsf-z4-w1B"/>
                                     <constraint firstItem="6g3-GJ-ldC" firstAttribute="top" secondItem="559" secondAttribute="top" id="YsW-AY-EtH"/>
-                                    <constraint firstItem="1447" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" constant="-50" id="icV-Jp-4Pb"/>
-                                    <constraint firstItem="1447" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="wMH-bp-3vg"/>
+                                    <constraint firstItem="OdD-eG-X1q" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="fSM-Yc-m5A"/>
+                                    <constraint firstItem="OdD-eG-X1q" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" id="vEB-oI-x75"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -1129,7 +1150,8 @@
                 <outlet property="restoreButton" destination="fA9-bG-luR" id="NTt-WA-9HM"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="GCl-32-Zvq"/>
-                <outlet property="statusView" destination="1447" id="QiL-Iy-BtA"/>
+                <outlet property="statusImageView" destination="1447" id="fQR-cd-rsD"/>
+                <outlet property="statusTextField" destination="0B4-5y-QKp" id="2yz-Kd-ZIN"/>
                 <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="trashButton" destination="mXz-OM-6A3" id="BDW-ec-6Eq"/>
                 <outlet property="view" destination="934" id="1185"/>
