@@ -16,8 +16,8 @@
 #import "VSTheme+Simplenote.h"
 @import Simperium_OSX;
 
-#define kSearchCollapsedMargin  62
-#define kSearchCollapsedWidth   120
+#define kSearchCollapsedMargin  18
+#define kSearchCollapsedWidth   76
 #define kSearchExpandedMargin   141
 #define kSearchExpandedWidth    79
 #define kFocusModeDuration      0.8f
