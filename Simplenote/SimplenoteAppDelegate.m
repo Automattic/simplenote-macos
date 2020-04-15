@@ -508,7 +508,7 @@
 
 - (CGFloat)editorSplitPosition
 {
-    return [self tagListWidth] + self.noteListViewController.view.bounds.size.width;
+    return [self tagListSplitPosition] + self.noteListViewController.view.bounds.size.width;
 }
 
 - (CGFloat)tagListSplitPosition
