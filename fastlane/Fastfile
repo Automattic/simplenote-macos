@@ -144,9 +144,16 @@ end
       workspace: "Simplenote.xcworkspace", 
       scheme: "Simplenote",
       clean: true,
-      output_directory: BUILD_PATH)
+      output_directory: BUILD_PATH,
+      skip_package_pkg: true,
+      export_options: {
+        method: "developer-id"
+      }
+    )
 
-    notarize(APP_PATH)
+    notarize(package: APP_PATH, 
+    print_log: true,
+    asc_provider: "AutomatticInc")
 
     appcenter_upload(
       api_token: get_required_env("APPCENTER_API_TOKEN"),
