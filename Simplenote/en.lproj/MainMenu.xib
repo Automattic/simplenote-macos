@@ -755,6 +755,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="xT1-td-pyW"/>
+                                        </constraints>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
                                     <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
@@ -888,6 +891,9 @@
                                                 </tableView>
                                             </subviews>
                                         </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="XV6-d7-Lfo"/>
+                                        </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1454">
                                             <rect key="frame" x="-100" y="-100" width="152" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -903,8 +909,6 @@
                                     <constraint firstItem="1452" firstAttribute="leading" secondItem="1436" secondAttribute="leading" id="KYh-fz-7dG"/>
                                     <constraint firstAttribute="bottom" secondItem="1731" secondAttribute="bottom" id="WfA-jZ-MZh"/>
                                     <constraint firstItem="1452" firstAttribute="top" secondItem="1436" secondAttribute="top" id="X8N-gH-844"/>
-                                    <constraint firstAttribute="trailing" secondItem="1452" secondAttribute="trailing" id="fxz-QC-nP0"/>
-                                    <constraint firstItem="1731" firstAttribute="leading" secondItem="1436" secondAttribute="leading" id="p26-aj-J9G"/>
                                     <constraint firstAttribute="bottom" secondItem="1452" secondAttribute="bottom" id="w0G-Tu-M9B"/>
                                     <constraint firstItem="1731" firstAttribute="top" secondItem="1436" secondAttribute="top" id="xbD-e8-bDS"/>
                                 </constraints>
@@ -1049,7 +1053,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="478" height="538"/>
+                                                    <size key="minSize" width="493" height="538"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>

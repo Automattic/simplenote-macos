@@ -513,7 +513,11 @@
 
 - (CGFloat)tagListSplitPosition
 {
-    return self.tagListViewController.view.bounds.size.width;
+    if (self.tagListViewController.view.isHidden) {
+        return 0;
+    }
+
+    return self.tagListViewController.view.bounds.size.width + self.splitView.dividerThickness;
 }
 
 - (void)notifySplitDidChange
