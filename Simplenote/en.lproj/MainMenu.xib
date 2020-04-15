@@ -936,7 +936,7 @@
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="568">
-                                                                <font key="font" metaFont="label" size="12"/>
+                                                                <font key="font" metaFont="controlContent"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1072,7 +1072,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447">
+                                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447" userLabel="Status Image View">
                                         <rect key="frame" x="204" y="291" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="K7T-Uk-2Hq"/>
@@ -1080,6 +1080,14 @@
                                         </constraints>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_grey" id="1448"/>
                                     </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faw-Qh-Cm9" userLabel="Status Label">
+                                        <rect key="frame" x="252" y="262" width="4" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" id="nme-7B-meh">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1549" secondAttribute="trailing" id="43w-jU-8rz"/>
@@ -1090,6 +1098,8 @@
                                     <constraint firstItem="933" firstAttribute="top" secondItem="559" secondAttribute="top" id="RwU-ma-qoC"/>
                                     <constraint firstAttribute="bottom" secondItem="1549" secondAttribute="bottom" id="Vsf-z4-w1B"/>
                                     <constraint firstItem="1447" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" constant="-50" id="icV-Jp-4Pb"/>
+                                    <constraint firstItem="faw-Qh-Cm9" firstAttribute="top" secondItem="1447" secondAttribute="bottom" constant="12" id="kMg-Op-C1s"/>
+                                    <constraint firstItem="faw-Qh-Cm9" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="lR0-BQ-Ruk"/>
                                     <constraint firstItem="1447" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="wMH-bp-3vg"/>
                                 </constraints>
                             </customView>
@@ -1153,7 +1163,8 @@
                 <outlet property="printItem" destination="78" id="1659"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
-                <outlet property="statusView" destination="1447" id="QiL-Iy-BtA"/>
+                <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
+                <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="view" destination="934" id="1185"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>

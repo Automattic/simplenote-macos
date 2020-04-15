@@ -197,7 +197,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     [self save];
     [self showStatusText:nil];
-    [self.statusView setHidden: selectedNote != nil];
+    [self.statusImageView setHidden: selectedNote != nil];
     
     if (!self.markdownView.isHidden) {
         [self toggleMarkdownView:nil];
@@ -327,17 +327,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)showStatusText:(NSString *)text
 {
-    // Quick and dirty status text for now
-    NSTextField *statusField = [self.statusView viewWithTag:1];
+    BOOL shouldHideImage = text == nil || text.length == 0;
 
-    if (text == nil || [text length] == 0) {
-        [statusField setStringValue:@""];
-        [self.statusView setHidden:YES];
-        return;
-    }
-    
-    [self.statusView setHidden:NO];
-    [statusField setStringValue:text];
+    self.statusTextField.stringValue = text ?: @"";
+    self.statusImageView.hidden = shouldHideImage;
 }
 
 - (void)trashDidLoad:(NSNotification *)notification
