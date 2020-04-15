@@ -718,7 +718,8 @@
     [self.splitView adjustSubviews];
 }
 
-- (IBAction)focusModeAction:(id)sender {
+- (IBAction)focusModeAction:(id)sender
+{
     // Check if the tags list is visible, if so close it
     BOOL tagsVisible = ![self.tagListViewController.view isHidden];
     if (tagsVisible) {
