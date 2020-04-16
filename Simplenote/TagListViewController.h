@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SPTableView;
+
 @class NoteListViewController;
 
 @interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination> {
@@ -20,7 +20,7 @@
     IBOutlet NSArrayController *notesArrayController;
 }
 
-@property (nonatomic, strong) IBOutlet SPTableView *tableView;
+@property (nonatomic, strong) IBOutlet NSTableView *tableView;
 @property (nonatomic, strong) NSArray *tagArray;
 
 extern NSString * const kTagsDidLoad;
