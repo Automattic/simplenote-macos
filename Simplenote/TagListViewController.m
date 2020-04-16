@@ -456,31 +456,20 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    NSString *cellId = @"TagCell";
-    
     if (row == kAllNotesRow) {
-        cellId = @"AllNotesCell";
-    } else if (row == kTrashRow) {
-        cellId = @"TrashCell";
-    } else if (row == kTagHeaderRow) {
+        return [self allNotesTableViewCell];
+    }
+
+    if (row == kTrashRow) {
+        return [self trashTableViewCell];
+    }
+
+    if (row == kTagHeaderRow) {
         return [self tagHeaderTableViewCell];
     }
-    
-    SPTagCellView *tagView = [self.tableView makeViewWithIdentifier:cellId owner:self];
-    [tagView.textField setDelegate:self];
 
-    if (row == kAllNotesRow) {
-        tagView.textField.stringValue = NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
-    } else if (row == kTrashRow) {
-        tagView.textField.stringValue = NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if (row == kTagHeaderRow) {
-        tagView.textField.stringValue = @"";
-    } else {
-        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
-        tagView.textField.stringValue = tag.name;
-    }
-    
-    return tagView;
+    Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
+    return [self tagTableViewCellForTag:tag];
 }
 
 - (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -526,16 +515,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
     [self.noteListViewController filterNotes:nil];
     [self.noteListViewController selectRow:0];
-}
-
-
-#pragma mark - NSTableViewDelegate Helpers
-
-- (HeaderTableCellView *)tagHeaderTableViewCell
-{
-    HeaderTableCellView *headerView = [self.tableView makeViewWithIdentifier:HeaderTableCellView.reuseIdentifier owner:self];
-    headerView.textField.stringValue = [NSLocalizedString(@"Tags", @"Tags Section Name") uppercaseString];
-    return headerView;
 }
 
 
