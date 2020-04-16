@@ -11,7 +11,7 @@
 
 @interface SPTagCellView : NSTableCellView
 
-@property (nonatomic, assign) BOOL mouseInside;
+@property (nonatomic, assign, readonly) BOOL mouseInside;
 
 - (void)setSelected:(BOOL)selected;
 - (void)applyStyle;

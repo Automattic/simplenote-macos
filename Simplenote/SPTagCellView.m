@@ -20,6 +20,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 @property (nonatomic, strong) SPPopUpButton     *button;
 @property (nonatomic, strong) NSTrackingArea    *trackingArea;
 @property (nonatomic, assign) BOOL              highlighted;
+@property (nonatomic, assign) BOOL              mouseInside;
 @end
 
 @implementation SPTagCellView
@@ -89,11 +90,13 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 - (void)mouseEntered:(NSEvent *)theEvent
 {
     self.mouseInside = YES;
+    [[NSCursor pointingHandCursor] set];
 }
 
 - (void)mouseExited:(NSEvent *)theEvent
 {
     self.mouseInside = NO;
+    [[NSCursor arrowCursor] set];
 }
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle
@@ -123,6 +126,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 {
     _highlighted = selected;
     [self updateTextAndImageColors];
+// TODO: Background!
 }
 
 - (void)applyStyle
@@ -135,10 +139,17 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     [[self.button cell] setArrowColor:textColor];
     
     if (self.imageView.image) {
-        // TODO: Apply Tint Color
+// TODO: Apply Tint Color
 
         [self updateTextAndImageColors];
     }
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.mouseInside = NO;
+    [self applyStyle];
 }
 
 @end

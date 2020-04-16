@@ -20,9 +20,10 @@
 
 @import Simperium_OSX;
 
+
 #define kAllNotesRow 0
 #define kTrashRow 1
-#define kSeparatorRow 2
+#define kTagHeaderRow 2
 #define kStartOfTagListRow 3
 #define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
@@ -445,7 +446,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
         return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if(row == kTrashRow) {
         return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if(row == kSeparatorRow) {
+    } else if(row == kTagHeaderRow) {
         return @"";
     } else {
         Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
@@ -474,7 +475,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
         tagView.textField.stringValue = NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if (row == kTrashRow) {
         tagView.textField.stringValue = NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if (row == kSeparatorRow) {
+    } else if (row == kTagHeaderRow) {
         tagView.textField.stringValue = @"";
     } else {
         Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
@@ -488,7 +489,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 {
     switch (row) {
         case kAllNotesRow:
-        case kSeparatorRow:
+        case kTagHeaderRow:
             return nil;
         case kTrashRow:
             return trashDropdownMenu;
@@ -508,7 +509,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
-    if (row == kSeparatorRow) {
+    if (row == kTagHeaderRow) {
         return NO;
     }
     
