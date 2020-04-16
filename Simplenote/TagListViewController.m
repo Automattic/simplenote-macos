@@ -45,8 +45,6 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 @end
 
 @implementation TagListViewController
-@synthesize tableView;
-@synthesize tagArray;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -166,7 +164,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 - (void)reset
 {
     self.tagArray = [NSArray array];
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)loadTags
@@ -198,7 +196,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         return @"";
     }
     
-    Tag *tag = [tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
+    Tag *tag = [self.tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
     return tag.name;
 }
 
@@ -412,7 +410,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 	NSInteger row = NSNotFound;
 	
 	if(sender == self.tableView) {
-		row = [tableView selectedRow];
+		row = [self.tableView selectedRow];
 	} else {
 		row = [self highlightedTagRowIndex];
 	}
@@ -458,7 +456,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return kStartOfTagListRow + [tagArray count];
+    return kStartOfTagListRow + self.tagArray.count;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -470,7 +468,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     } else if(row == kTopRow || row == kSeparatorRow) {
         return @"";
     } else {
-        Tag *tag = [tagArray objectAtIndex:row-kStartOfTagListRow];
+        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
         return tag.name;
     }
 }
@@ -761,7 +759,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)applyStyle
 {
-    [tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    [self.tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     [tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     [self reloadDataAndPreserveSelection];
 }
