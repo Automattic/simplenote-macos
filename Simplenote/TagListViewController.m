@@ -39,37 +39,19 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 @interface TagListViewController () {
     BOOL menuShowing;
     NSString *tagNameBeingEdited;
-    BOOL awake;
 }
 
 @end
 
 @implementation TagListViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
+    [super viewDidLoad];
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    // awakeFromNib is called each time a cell is created; work around that (must be careful
-    // not to register for notifications multiple times)
-    // http://stackoverflow.com/a/7187492/1379066
-    if (awake)
-        return;
-    
     [self buildDropdownMenus];
 
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];
-    
+    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
     
@@ -77,8 +59,6 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     
     BOOL alphaTagSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
     [tagSortMenuItem setState:alphaTagSort ? NSOnState : NSOffState];
-    
-    awake = YES;
 }
 
 - (void)viewWillAppear
