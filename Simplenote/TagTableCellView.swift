@@ -7,21 +7,29 @@ import AppKit
 @objcMembers
 class TagTableCellView: NSTableCellView {
 
-    ///
+    /// Indicates if the mouse was last seen inside the receiver's bounds
     ///
     private(set) var mouseInside = false
 
-    ///
+    /// Tracking Areas
     ///
     private lazy var trackingArea: NSTrackingArea = {
         NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
     }()
 
 
+    // MARK: - Overridden Methods
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        applyStyle()
         mouseInside = false
+        imageView?.isHidden = false
+        textField?.isEditable = false
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
         applyStyle()
     }
 

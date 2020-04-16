@@ -821,7 +821,7 @@
                                                                                         <constraint firstAttribute="width" constant="20" id="o7x-J0-TJl"/>
                                                                                         <constraint firstAttribute="height" constant="20" id="yj9-Nx-L8y"/>
                                                                                     </constraints>
-                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="button_all_notes" id="WXD-wJ-HTt"/>
+                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WXD-wJ-HTt"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="SPTagTextField">
                                                                                     <rect key="frame" x="25" y="4" width="74" height="16"/>
@@ -1025,7 +1025,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="508" height="538"/>
+                                                    <size key="minSize" width="493" height="538"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1174,7 +1174,6 @@
         </viewController>
     </objects>
     <resources>
-        <image name="button_all_notes" width="24" height="24"/>
         <image name="button_new" width="22" height="22"/>
         <image name="icon_preview" width="44" height="44"/>
         <image name="icon_shared" width="22" height="22"/>
