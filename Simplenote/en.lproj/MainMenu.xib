@@ -833,7 +833,7 @@
                                                                         <outlet property="textField" destination="1482" id="1485"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="SeparatorCell" id="1494" customClass="SPTagCellView">
+                                                                <tableCellView identifier="HeaderTableCellView" id="1494" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="70" width="120" height="36"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
@@ -936,7 +936,7 @@
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="568">
-                                                                <font key="font" metaFont="controlContent"/>
+                                                                <font key="font" metaFont="label" size="12"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1083,7 +1083,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faw-Qh-Cm9" userLabel="Status Label">
                                         <rect key="frame" x="252" y="262" width="4" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" id="nme-7B-meh">
-                                            <font key="font" metaFont="system" size="14"/>
+                                            <font key="font" metaFont="menu" size="14"/>
                                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
