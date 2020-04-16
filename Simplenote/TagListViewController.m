@@ -26,15 +26,13 @@
 #define kStartOfTagListRow 3
 #define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
-#define kRowHeight 30
-#define kSeparatorHeight 24
-
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
 NSString * const kTagUpdated = @"SPTagUpdated";
 NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
 NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
+CGFloat const SPListEstimatedRowHeight = 30;
 
 @interface TagListViewController ()
 
@@ -51,6 +49,8 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
     [self buildDropdownMenus];
 
+    self.tableView.rowHeight = SPListEstimatedRowHeight;
+    self.tableView.usesAutomaticRowHeights = YES;
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
@@ -527,15 +527,6 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
     [self.noteListViewController filterNotes:nil];
     [self.noteListViewController selectRow:0];
-}
-
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    if (row == kSeparatorRow) {
-        return kSeparatorHeight;
-    }
-
-    return kRowHeight;
 }
 
 
