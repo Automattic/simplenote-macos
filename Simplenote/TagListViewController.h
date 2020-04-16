@@ -20,8 +20,8 @@
     IBOutlet NSArrayController *notesArrayController;
 }
 
-@property (strong) IBOutlet SPTableView *tableView;
-@property (strong) NSArray *tagArray;
+@property (nonatomic, strong) IBOutlet SPTableView *tableView;
+@property (nonatomic, strong) NSArray *tagArray;
 
 extern NSString * const kTagsDidLoad;
 extern NSString * const kTagUpdated;
