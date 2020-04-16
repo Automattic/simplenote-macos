@@ -253,6 +253,12 @@
 		B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */; };
 		B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */; };
 		B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */; };
+		B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */; };
+		B5E086332448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */; };
+		B5E086352448EA3C00DEF476 /* TagTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086342448EA3C00DEF476 /* TagTableCellView.swift */; };
+		B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086342448EA3C00DEF476 /* TagTableCellView.swift */; };
+		B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */; };
+		B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */; };
 		B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
@@ -534,6 +540,9 @@
 		B5E086272448B57200DEF476 /* HeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableCellView.swift; sourceTree = "<group>"; };
 		B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableViewCell+Simplenote.swift"; sourceTree = "<group>"; };
 		B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageName+Simplenote.swift"; sourceTree = "<group>"; };
+		B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagListViewController+Swift.swift"; sourceTree = "<group>"; };
+		B5E086342448EA3C00DEF476 /* TagTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableCellView.swift; sourceTree = "<group>"; };
+		B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5E196C0230F5F5300F5658A /* SPCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = "<group>"; };
 		B5E96B641BDE732500D707F5 /* LoginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
 		B5E96B651BDE732500D707F5 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
@@ -672,6 +681,7 @@
 				B5D3FCCA201F906E00A813B7 /* StatusChecker.m */,
 				46CF73051782C6B200FC2B5C /* TagListViewController.h */,
 				46CF73061782C6B200FC2B5C /* TagListViewController.m */,
+				B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */,
 				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
 				714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */,
 				26F592531408BF75003A5174 /* NotesArrayController.h */,
@@ -926,16 +936,18 @@
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
+				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
+				B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */,
+				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
-				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1089,6 +1101,7 @@
 			isa = PBXGroup;
 			children = (
 				B5E086272448B57200DEF476 /* HeaderTableCellView.swift */,
+				B5E086342448EA3C00DEF476 /* TagTableCellView.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -1517,12 +1530,14 @@
 				71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
+				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
+				B5E086352448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
@@ -1544,6 +1559,7 @@
 				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
+				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
@@ -1621,12 +1637,14 @@
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
+				B5E086332448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
 				3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
@@ -1648,6 +1666,7 @@
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */,
+				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
