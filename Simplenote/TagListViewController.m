@@ -16,18 +16,18 @@
 #import "NSString+Metadata.h"
 #import "VSThemeManager.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
+
 @import Simperium_OSX;
 
-#define kTopRow 0
-#define kAllNotesRow 1
-#define kTrashRow 2
-#define kSeparatorRow 3
-#define kStartOfTagListRow 4
+#define kAllNotesRow 0
+#define kTrashRow 1
+#define kSeparatorRow 2
+#define kStartOfTagListRow 3
 #define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
 #define kRowHeight 30
 #define kSeparatorHeight 24
-#define kTopRowHeight 14
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
@@ -445,7 +445,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if(row == kTrashRow) {
         return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if(row == kTopRow || row == kSeparatorRow) {
+    } else if(row == kSeparatorRow) {
         return @"";
     } else {
         Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
@@ -455,11 +455,6 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if (row == kTopRow) {
-        // Just a spacer
-        return nil;
-    }
-    
     NSString *cellId = @"TagCell";
     
     if (row == kAllNotesRow) {
@@ -513,7 +508,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
-    if (row == kTopRow || row == kSeparatorRow) {
+    if (row == kSeparatorRow) {
         return NO;
     }
     
@@ -539,11 +534,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     if (row == kSeparatorRow) {
         return kSeparatorHeight;
     }
-    
-    if (row == kTopRow) {
-        return kTopRowHeight;
-    }
-    
+
     return kRowHeight;
 }
 
