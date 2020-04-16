@@ -894,6 +894,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="XV6-d7-Lfo"/>
                                         </constraints>
+                                        <edgeInsets key="contentInsets" left="0.0" right="0.0" top="14" bottom="0.0"/>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1454">
                                             <rect key="frame" x="-100" y="-100" width="152" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
