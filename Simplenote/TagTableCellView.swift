@@ -7,9 +7,37 @@ import AppKit
 @objcMembers
 class TagTableCellView: NSTableCellView {
 
+    /// Workaround: In AppKit, TableView Cell Selection works at the Row level
+    ///
+    override var backgroundStyle: NSView.BackgroundStyle {
+        didSet {
+            refreshSelectedState()
+        }
+    }
+
     /// Indicates if the mouse was last seen inside the receiver's bounds
     ///
-    private(set) var mouseInside = false
+    private(set) var mouseInside = false {
+        didSet {
+            guard oldValue != mouseInside else {
+                return
+            }
+
+            refreshStyle()
+        }
+    }
+
+    /// Indicates if the receiver's associated NSTableRowView is *selected*
+    ///
+    private var selected = false {
+        didSet {
+            guard oldValue != selected else {
+                return
+            }
+
+            refreshStyle()
+        }
+    }
 
     /// Tracking Areas
     ///
@@ -22,19 +50,27 @@ class TagTableCellView: NSTableCellView {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        applyStyle()
         mouseInside = false
+        selected = false
         imageView?.isHidden = false
         textField?.isEditable = false
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        applyStyle()
+        refreshStyle()
     }
 
-    func applyStyle() {
+    func refreshStyle() {
+        let theme = VSThemeManager.shared().theme()
+        let alphaValue = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0;
 
+        imageView?.wantsLayer = true
+        imageView?.alphaValue = alphaValue
+
+        textField?.wantsLayer = true
+        textField?.alphaValue = alphaValue
+        textField?.textColor = selected ? theme.color(forKey: "tintColor") : theme.color(forKey: "textColor")
     }
 }
 
@@ -59,5 +95,19 @@ extension TagTableCellView {
     override func mouseExited(with event: NSEvent) {
         mouseInside = false
         NSCursor.arrow.set()
+    }
+}
+
+
+// MARK: - Selection Workaround
+//
+extension TagTableCellView {
+
+    func refreshSelectedState() {
+        guard let row = superview as? NSTableRowView else {
+            return
+        }
+
+        selected = row.isSelected
     }
 }

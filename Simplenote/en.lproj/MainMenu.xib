@@ -824,9 +824,9 @@
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WXD-wJ-HTt"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="SPTagTextField">
-                                                                                    <rect key="frame" x="25" y="4" width="74" height="16"/>
+                                                                                    <rect key="frame" x="25" y="1" width="74" height="19"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Title" placeholderString="" id="eVq-2Q-sAB">
-                                                                                        <font key="font" metaFont="system"/>
+                                                                                        <font key="font" metaFont="system" size="15"/>
                                                                                         <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -1055,7 +1055,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faw-Qh-Cm9" userLabel="Status Label">
                                         <rect key="frame" x="252" y="262" width="4" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" id="nme-7B-meh">
-                                            <font key="font" metaFont="menu" size="14"/>
+                                            <font key="font" metaFont="system" size="14"/>
                                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
