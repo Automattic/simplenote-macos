@@ -9,7 +9,6 @@
 #import "TagListViewController.h"
 #import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "SPTagCellView.h"
 #import "SPTableRowView.h"
 #import "SPTableView.h"
 #import "Tag.h"
@@ -335,9 +334,9 @@ CGFloat const SPListEstimatedRowHeight = 30;
 		 NSInteger columnIndex = -1;
 		 while(++columnIndex < rowView.numberOfColumns) {
 			 
-			 SPTagCellView* tagCellView = (SPTagCellView*)[rowView viewAtColumn:columnIndex];
+			 TagTableCellView* tagCellView = (TagTableCellView*)[rowView viewAtColumn:columnIndex];
 			 
-			 if([tagCellView isKindOfClass:[SPTagCellView class]] && tagCellView.mouseInside) {
+			 if([tagCellView isKindOfClass:[TagTableCellView class]] && tagCellView.mouseInside) {
 				 tagIndex = row;
 				 break;
 			 }
@@ -397,7 +396,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 	}
 	
 	if(row != NSNotFound) {
-		SPTagCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
+		TagTableCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
 		[tagView.textField becomeFirstResponder];
 	}
 }

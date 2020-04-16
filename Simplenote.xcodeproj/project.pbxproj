@@ -104,7 +104,6 @@
 		466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
-		466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
 		466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7199A43014D8FD1C00B903A8 /* SPToolbarView.m */; };
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
 		466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
@@ -147,7 +146,6 @@
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
 		7199A43114D8FD1C00B903A8 /* SPToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7199A43014D8FD1C00B903A8 /* SPToolbarView.m */; };
 		71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
-		71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D7214D75C0A00A25E69 /* SPTagCellView.m */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
 		B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */; };
 		B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
@@ -457,8 +455,6 @@
 		7199A43014D8FD1C00B903A8 /* SPToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SPToolbarView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		71D83D6E14D744FB00A25E69 /* SPNoteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPNoteCellView.h; sourceTree = "<group>"; };
 		71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPNoteCellView.m; sourceTree = "<group>"; };
-		71D83D7114D75C0900A25E69 /* SPTagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTagCellView.h; sourceTree = "<group>"; };
-		71D83D7214D75C0A00A25E69 /* SPTagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTagCellView.m; sourceTree = "<group>"; };
 		71DCEBE5152E2ED1002744C0 /* NSMutableAttributedString+Styling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Styling.h"; sourceTree = "<group>"; };
 		71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Styling.m"; sourceTree = "<group>"; };
 		86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -872,8 +868,6 @@
 				714BA66214D37C2000A6CCC1 /* SPTableRowView.m */,
 				71D83D6E14D744FB00A25E69 /* SPNoteCellView.h */,
 				71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */,
-				71D83D7114D75C0900A25E69 /* SPTagCellView.h */,
-				71D83D7214D75C0A00A25E69 /* SPTagCellView.m */,
 				714BA65614D3264200A6CCC1 /* SPGradientView.h */,
 				714BA65714D3264200A6CCC1 /* SPGradientView.m */,
 				714BA65914D32DCB00A6CCC1 /* SPBackgroundView.h */,
@@ -1527,7 +1521,6 @@
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
 				375D293621E033D1007AB25A /* document.c in Sources */,
 				71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */,
-				71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
@@ -1631,7 +1624,6 @@
 				466FFEB417CC10A800399652 /* DateTransformer.m in Sources */,
 				B5132FA923C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */,
-				466FFEB617CC10A800399652 /* SPTagCellView.m in Sources */,
 				375D293721E033D1007AB25A /* document.c in Sources */,
 				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
