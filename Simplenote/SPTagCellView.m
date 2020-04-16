@@ -19,8 +19,6 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 @interface SPTagCellView ()
 @property (nonatomic, strong) SPPopUpButton     *button;
 @property (nonatomic, strong) NSTrackingArea    *trackingArea;
-@property (nonatomic, strong) NSImage           *image;
-@property (nonatomic, strong) NSImage           *imageHighlighted;
 @property (nonatomic, assign) BOOL              highlighted;
 @end
 
@@ -33,13 +31,6 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.autoresizesSubviews = YES;
-
-    if (self.imageView.image) {
-        NSString *highlightedImageName = [self.imageView.image.name stringByAppendingString:@"_highlighted"];
-        self.imageHighlighted = [NSImage imageNamed:highlightedImageName];
-    }
-
     [self addSubview:self.button];
     [self applyStyle];
 }
@@ -95,14 +86,6 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     }
 }
 
-- (void)positionButtonRelativeToTextField
-{
-    NSDictionary *attributes = @{NSFontSizeAttribute: @14.0};
-    NSSize tagSize = [self.textField.stringValue sizeWithAttributes:attributes];
-    CGFloat buttonX = self.textField.frame.origin.x + tagSize.width + 10;
-    [self.button setFrameOrigin:CGPointMake(buttonX, self.button.frame.origin.y)];
-}
-
 - (void)mouseEntered:(NSEvent *)theEvent
 {
     self.mouseInside = YES;
@@ -127,7 +110,6 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 - (void)updateTextAndImageColors
 {
     self.textField.textColor    = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"textColor"];
-    self.imageView.image        = self.highlighted ? self.imageHighlighted : self.image;
 
     CGFloat alphaValue          = !_highlighted && _mouseInside ? 0.6f : 1.0f;
     self.imageView.wantsLayer   = YES;
@@ -153,19 +135,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     [[self.button cell] setArrowColor:textColor];
     
     if (self.imageView.image) {
-        NSString *imageName = [self.imageView.image.name stringByReplacingOccurrencesOfString:@"_highlighted" withString:@""];
-        
-        if (@available(macOS 10.14, *)) {
-            // No imageName customization needed >= 10.14
-        } else {
-            if ([self.theme boolForKey:@"dark"] && ![imageName sp_containsString:@"dark"]) {
-                imageName = [imageName stringByAppendingString:@"_dark"];
-            } else if (![self.theme boolForKey:@"dark"] && [imageName sp_containsString:@"_dark"]) {
-                imageName = [imageName stringByReplacingOccurrencesOfString:@"_dark" withString:@""];
-            }
-        }
-
-        self.image = [NSImage imageNamed:imageName];
+        // TODO: Apply Tint Color
 
         [self updateTextAndImageColors];
     }
