@@ -462,15 +462,13 @@ CGFloat const SPListEstimatedRowHeight = 30;
         cellId = @"AllNotesCell";
     } else if (row == kTrashRow) {
         cellId = @"TrashCell";
-    } else if (row == kSeparatorRow) {
-        cellId = @"SeparatorCell";
+    } else if (row == kTagHeaderRow) {
+        return [self tagHeaderTableViewCell];
     }
     
     SPTagCellView *tagView = [self.tableView makeViewWithIdentifier:cellId owner:self];
     [tagView.textField setDelegate:self];
-    [tagView setMouseInside:NO];
-    [tagView applyStyle];
-    
+
     if (row == kAllNotesRow) {
         tagView.textField.stringValue = NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if (row == kTrashRow) {
@@ -528,6 +526,16 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
     [self.noteListViewController filterNotes:nil];
     [self.noteListViewController selectRow:0];
+}
+
+
+#pragma mark - NSTableViewDelegate Helpers
+
+- (HeaderTableCellView *)tagHeaderTableViewCell
+{
+    HeaderTableCellView *headerView = [self.tableView makeViewWithIdentifier:HeaderTableCellView.reuseIdentifier owner:self];
+    headerView.textField.stringValue = [NSLocalizedString(@"Tags", @"Tags Section Name") uppercaseString];
+    return headerView;
 }
 
 
