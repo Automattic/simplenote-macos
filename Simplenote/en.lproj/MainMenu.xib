@@ -821,7 +821,7 @@
                                                                                         <constraint firstAttribute="width" constant="20" id="o7x-J0-TJl"/>
                                                                                         <constraint firstAttribute="height" constant="20" id="yj9-Nx-L8y"/>
                                                                                     </constraints>
-                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WXD-wJ-HTt"/>
+                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="button_all_notes" id="WXD-wJ-HTt"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="SPTagTextField">
                                                                                     <rect key="frame" x="25" y="1" width="74" height="19"/>
@@ -1174,6 +1174,7 @@
         </viewController>
     </objects>
     <resources>
+        <image name="button_all_notes" width="24" height="24"/>
         <image name="button_new" width="22" height="22"/>
         <image name="icon_preview" width="44" height="44"/>
         <image name="icon_shared" width="22" height="22"/>
