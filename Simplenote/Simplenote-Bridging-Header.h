@@ -11,6 +11,7 @@
 #pragma mark - Simplenote-Y
 
 #import "Note.h"
+#import "Tag.h"
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"
 
