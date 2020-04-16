@@ -760,13 +760,13 @@
                                         </constraints>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <scrollView borderType="none" horizontalLineScroll="33" horizontalPageScroll="10" verticalLineScroll="33" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
+                                    <scrollView borderType="none" horizontalLineScroll="48" horizontalPageScroll="10" verticalLineScroll="48" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="44" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
@@ -786,7 +786,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="HeaderTableCellView" id="o2b-qa-J8S" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="2" width="120" height="28"/>
+                                                                    <rect key="frame" x="0.0" y="2" width="120" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Fr-VHA" customClass="SPTagTextField">
@@ -799,7 +799,7 @@
                                                                         </textField>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="top" secondItem="o2b-qa-J8S" secondAttribute="top" constant="6" id="1Sj-pQ-a14"/>
+                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="top" secondItem="o2b-qa-J8S" secondAttribute="top" constant="22" id="1Sj-pQ-a14"/>
                                                                         <constraint firstAttribute="trailing" secondItem="wK9-Fr-VHA" secondAttribute="trailing" constant="12" id="bF5-z7-8WW"/>
                                                                         <constraint firstItem="wK9-Fr-VHA" firstAttribute="leading" secondItem="o2b-qa-J8S" secondAttribute="leading" constant="17" id="nC5-Iq-Kwe"/>
                                                                         <constraint firstAttribute="bottom" secondItem="wK9-Fr-VHA" secondAttribute="bottom" constant="6" id="yWU-iN-Wkp"/>
@@ -809,7 +809,7 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="TagTableCellView" id="xs7-Qb-oqk" userLabel="Tag" customClass="TagTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="34" width="120" height="29"/>
+                                                                    <rect key="frame" x="0.0" y="50" width="120" height="29"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bif-Ap-TPi">
@@ -1055,7 +1055,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faw-Qh-Cm9" userLabel="Status Label">
                                         <rect key="frame" x="252" y="262" width="4" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" id="nme-7B-meh">
-                                            <font key="font" metaFont="system" size="14"/>
+                                            <font key="font" metaFont="menu" size="14"/>
                                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1097,7 +1097,7 @@
                 <outlet property="delegate" destination="494" id="1423"/>
                 <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
-            <point key="canvasLocation" x="138" y="262.5"/>
+            <point key="canvasLocation" x="138" y="262"/>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>

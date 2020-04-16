@@ -41,9 +41,7 @@ class TagTableCellView: NSTableCellView {
 
     /// Tracking Areas
     ///
-    private lazy var trackingArea: NSTrackingArea = {
-        NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
-    }()
+    private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
 
     // MARK: - Overridden Methods
@@ -62,15 +60,18 @@ class TagTableCellView: NSTableCellView {
     }
 
     func refreshStyle() {
+        // TODO: Replace VSTheme with ColorStudio, once we update the Background Style
         let theme = VSThemeManager.shared().theme()
-        let alphaValue = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0;
+        let targetAlpha = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0;
+        let targetColor = selected ? theme.color(forKey: "tintColor") : theme.color(forKey: "textColor")
 
         imageView?.wantsLayer = true
-        imageView?.alphaValue = alphaValue
+        imageView?.alphaValue = targetAlpha
+        imageView?.image = imageView?.image?.tinted(with: targetColor)
 
         textField?.wantsLayer = true
-        textField?.alphaValue = alphaValue
-        textField?.textColor = selected ? theme.color(forKey: "tintColor") : theme.color(forKey: "textColor")
+        textField?.alphaValue = targetAlpha
+        textField?.textColor = targetColor
     }
 }
 
@@ -81,10 +82,9 @@ extension TagTableCellView {
 
     override func updateTrackingAreas() {
         super.updateTrackingAreas()
-        guard trackingAreas.contains(trackingArea) == false else {
-            return
+        if !trackingAreas.contains(trackingArea) {
+            addTrackingArea(trackingArea)
         }
-        addTrackingArea(trackingArea)
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -101,7 +101,7 @@ extension TagTableCellView {
 
 // MARK: - Selection Workaround
 //
-extension TagTableCellView {
+private extension TagTableCellView {
 
     func refreshSelectedState() {
         guard let row = superview as? NSTableRowView else {
