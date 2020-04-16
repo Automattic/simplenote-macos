@@ -790,8 +790,8 @@
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Fr-VHA" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="15" y="6" width="95" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Header" placeholderString="" id="qGL-DU-S4n">
+                                                                            <rect key="frame" x="14" y="6" width="96" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Header" placeholderString="" usesSingleLineMode="YES" id="qGL-DU-S4n">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -801,7 +801,7 @@
                                                                     <constraints>
                                                                         <constraint firstItem="wK9-Fr-VHA" firstAttribute="top" secondItem="o2b-qa-J8S" secondAttribute="top" constant="22" id="1Sj-pQ-a14"/>
                                                                         <constraint firstAttribute="trailing" secondItem="wK9-Fr-VHA" secondAttribute="trailing" constant="12" id="bF5-z7-8WW"/>
-                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="leading" secondItem="o2b-qa-J8S" secondAttribute="leading" constant="17" id="nC5-Iq-Kwe"/>
+                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="leading" secondItem="o2b-qa-J8S" secondAttribute="leading" constant="16" id="nC5-Iq-Kwe"/>
                                                                         <constraint firstAttribute="bottom" secondItem="wK9-Fr-VHA" secondAttribute="bottom" constant="6" id="yWU-iN-Wkp"/>
                                                                     </constraints>
                                                                     <connections>
@@ -812,11 +812,11 @@
                                                                     <rect key="frame" x="0.0" y="50" width="120" height="29"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bif-Ap-TPi">
-                                                                            <rect key="frame" x="17" y="7" width="97" height="20"/>
+                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bif-Ap-TPi">
+                                                                            <rect key="frame" x="16" y="4" width="98" height="21"/>
                                                                             <subviews>
                                                                                 <imageView translatesAutoresizingMaskIntoConstraints="NO" id="4Ju-l4-pVB">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                                    <rect key="frame" x="0.0" y="1" width="20" height="20"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="20" id="o7x-J0-TJl"/>
                                                                                         <constraint firstAttribute="height" constant="20" id="yj9-Nx-L8y"/>
@@ -824,8 +824,8 @@
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="button_all_notes" id="WXD-wJ-HTt"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="SPTagTextField">
-                                                                                    <rect key="frame" x="25" y="1" width="74" height="19"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Title" placeholderString="" id="eVq-2Q-sAB">
+                                                                                    <rect key="frame" x="26" y="2" width="74" height="19"/>
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Title" placeholderString="" usesSingleLineMode="YES" id="eVq-2Q-sAB">
                                                                                         <font key="font" metaFont="system" size="15"/>
                                                                                         <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -843,9 +843,9 @@
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="bif-Ap-TPi" firstAttribute="leading" secondItem="xs7-Qb-oqk" secondAttribute="leading" constant="17" id="Fh2-tv-4jd"/>
-                                                                        <constraint firstItem="bif-Ap-TPi" firstAttribute="top" secondItem="xs7-Qb-oqk" secondAttribute="top" constant="2" id="ads-b0-mMh"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="bif-Ap-TPi" secondAttribute="bottom" constant="7" id="gQ3-mq-daO"/>
+                                                                        <constraint firstItem="bif-Ap-TPi" firstAttribute="leading" secondItem="xs7-Qb-oqk" secondAttribute="leading" constant="16" id="Fh2-tv-4jd"/>
+                                                                        <constraint firstItem="bif-Ap-TPi" firstAttribute="top" secondItem="xs7-Qb-oqk" secondAttribute="top" constant="4" id="ads-b0-mMh"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="bif-Ap-TPi" secondAttribute="bottom" constant="4" id="gQ3-mq-daO"/>
                                                                         <constraint firstAttribute="trailing" secondItem="bif-Ap-TPi" secondAttribute="trailing" constant="6" id="oJf-G0-n1H"/>
                                                                     </constraints>
                                                                     <connections>
