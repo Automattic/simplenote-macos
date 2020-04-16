@@ -815,16 +815,16 @@
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bif-Ap-TPi">
                                                                             <rect key="frame" x="16" y="4" width="98" height="21"/>
                                                                             <subviews>
-                                                                                <imageView translatesAutoresizingMaskIntoConstraints="NO" id="4Ju-l4-pVB">
+                                                                                <imageView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ju-l4-pVB">
                                                                                     <rect key="frame" x="0.0" y="1" width="20" height="20"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="20" id="o7x-J0-TJl"/>
                                                                                         <constraint firstAttribute="height" constant="20" id="yj9-Nx-L8y"/>
                                                                                     </constraints>
-                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="button_all_notes" id="WXD-wJ-HTt"/>
+                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WXD-wJ-HTt"/>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="SPTagTextField">
-                                                                                    <rect key="frame" x="26" y="2" width="74" height="19"/>
+                                                                                    <rect key="frame" x="-2" y="2" width="102" height="19"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Title" placeholderString="" usesSingleLineMode="YES" id="eVq-2Q-sAB">
                                                                                         <font key="font" metaFont="system" size="15"/>
                                                                                         <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -1174,7 +1174,6 @@
         </viewController>
     </objects>
     <resources>
-        <image name="button_all_notes" width="24" height="24"/>
         <image name="button_new" width="22" height="22"/>
         <image name="icon_preview" width="44" height="44"/>
         <image name="icon_shared" width="22" height="22"/>

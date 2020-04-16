@@ -20,6 +20,7 @@ extension TagListViewController {
     func allNotesTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.imageView?.image = NSImage(named: .allNotes)
+        tagView.imageView?.isHidden = false
         tagView.textField?.stringValue = NSLocalizedString("All Notes", comment: "Title of the view that displays all your notes")
 
         return tagView
@@ -31,6 +32,7 @@ extension TagListViewController {
     func trashTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.imageView?.image = NSImage(named: .trash)
+        tagView.imageView?.isHidden = false
         tagView.textField?.stringValue = NSLocalizedString("Trash", comment: "Title of the view that displays all your deleted notes")
 
         return tagView
@@ -41,7 +43,6 @@ extension TagListViewController {
     @objc(tagTableViewCellForTag:)
     func tagTableViewCell(for tag: Tag) -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
-        tagView.imageView?.isHidden = true
         tagView.textField?.delegate = self
         tagView.textField?.isEditable = true
         tagView.textField?.stringValue = tag.name
