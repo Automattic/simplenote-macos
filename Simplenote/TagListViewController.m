@@ -36,10 +36,10 @@ NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
 NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
-@interface TagListViewController () {
-    BOOL menuShowing;
-    NSString *tagNameBeingEdited;
-}
+@interface TagListViewController ()
+
+@property (nonatomic, assign) BOOL      menuShowing;
+@property (nonatomic, strong) NSString  *tagNameBeingEdited;
 
 @end
 
@@ -559,35 +559,35 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     }
     
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)
-    return [self.tableView selectedRow] >= kStartOfTagListRow && tagNameBeingEdited == nil;
+    return [self.tableView selectedRow] >= kStartOfTagListRow && self.tagNameBeingEdited == nil;
 }
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
-    menuShowing = YES;
+    self.menuShowing = YES;
 }
 
 - (void)menuDidClose:(NSMenu *)menu
 {
-    menuShowing = NO;
+    self.menuShowing = NO;
 }
 
 #pragma mark - NSTextField delegate
 
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
 {
-    return !menuShowing;
+    return !self.menuShowing;
 }
 
 - (void)controlTextDidBeginEditing:(NSNotification *)notification
 {
     NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
-    tagNameBeingEdited = [textView.string copy];
+    self.tagNameBeingEdited = [textView.string copy];
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    if (tagNameBeingEdited) {
+    if (self.tagNameBeingEdited) {
         // This can get triggered before renaming has started; don't do anything in that case
 
         NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
@@ -600,10 +600,10 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         NSString *newTagName = [textView.string copy];
         
         BOOL tagAlreadyExists = [self tagWithName:newTagName] != nil;
-        if ([newTagName length] > 0 && !tagAlreadyExists && ![tagNameBeingEdited isEqualToString:newTagName])
-            [self changeTagName:tagNameBeingEdited toName:newTagName];
+        if ([newTagName length] > 0 && !tagAlreadyExists && ![self.tagNameBeingEdited isEqualToString:newTagName])
+            [self changeTagName:self.tagNameBeingEdited toName:newTagName];
         
-        tagNameBeingEdited = nil;
+        self.tagNameBeingEdited = nil;
     }
 }
 
