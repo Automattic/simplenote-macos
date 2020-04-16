@@ -7,7 +7,6 @@
 //
 
 #import "SPTagCellView.h"
-#import "SPButtonNoBackground.h"
 #import "SPPopUpButton.h"
 #import "SPPopUpButtonCell.h"
 #import "NSImage+Colorize.h"

@@ -7,7 +7,6 @@
 //
 
 #import <AppKit/AppKit.h>
-@class SPButtonNoBackground;
 
 @interface SPTagCellView : NSTableCellView
 
