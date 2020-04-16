@@ -760,13 +760,13 @@
                                         </constraints>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
+                                    <scrollView borderType="none" horizontalLineScroll="33" horizontalPageScroll="10" verticalLineScroll="33" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
@@ -785,88 +785,106 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <tableCellView identifier="AllNotesCell" id="1463" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="2" width="120" height="30"/>
+                                                                <tableCellView identifier="AllNotesCell" id="1463" userLabel="AllNotes" customClass="SPTagCellView">
+                                                                    <rect key="frame" x="0.0" y="2" width="120" height="29"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1464" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="7" width="69" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1464" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="43" y="7" width="73" height="20"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1465">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <imageView id="1473">
-                                                                            <rect key="frame" x="18" y="7" width="22" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_all_notes" id="1474"/>
+                                                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1473">
+                                                                            <rect key="frame" x="18" y="7" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="20" id="5vE-gc-WNn"/>
+                                                                                <constraint firstAttribute="height" constant="20" id="9h2-Ij-7LF"/>
+                                                                            </constraints>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="button_all_notes" id="1474"/>
                                                                         </imageView>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="1464" secondAttribute="trailing" constant="6" id="1fG-0Z-rIb"/>
+                                                                        <constraint firstItem="1464" firstAttribute="leading" secondItem="1473" secondAttribute="trailing" constant="7" id="AB5-d0-et1"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="1464" secondAttribute="bottom" constant="7" id="JWJ-3n-rkz"/>
+                                                                        <constraint firstItem="1473" firstAttribute="leading" secondItem="1463" secondAttribute="leading" constant="18" id="kXB-vK-4If"/>
+                                                                        <constraint firstItem="1473" firstAttribute="top" secondItem="1463" secondAttribute="top" constant="2" id="qTq-dP-fc5"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="1473" secondAttribute="bottom" constant="7" id="seU-uO-t69"/>
+                                                                        <constraint firstItem="1464" firstAttribute="top" secondItem="1463" secondAttribute="top" constant="2" id="zYg-kQ-up2"/>
+                                                                    </constraints>
                                                                     <connections>
                                                                         <outlet property="imageView" destination="1473" id="1475"/>
                                                                         <outlet property="textField" destination="1464" id="1466"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="TrashCell" id="1480" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="36" width="120" height="30"/>
+                                                                <tableCellView identifier="TrashCell" id="1480" userLabel="Trash" customClass="SPTagCellView">
+                                                                    <rect key="frame" x="0.0" y="35" width="120" height="29"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1482" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="6" width="69" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1482" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="43" y="7" width="73" height="20"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1483">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <imageView id="1481">
-                                                                            <rect key="frame" x="18" y="7" width="22" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_trash" id="1484"/>
+                                                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1481">
+                                                                            <rect key="frame" x="18" y="7" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="QA4-mp-54b"/>
+                                                                                <constraint firstAttribute="width" constant="20" id="trQ-9u-XdC"/>
+                                                                            </constraints>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="button_trash" id="1484"/>
                                                                         </imageView>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="1482" firstAttribute="top" secondItem="1480" secondAttribute="top" constant="2" id="2o0-LF-did"/>
+                                                                        <constraint firstItem="1482" firstAttribute="leading" secondItem="1481" secondAttribute="trailing" constant="7" id="GeH-Ik-rRt"/>
+                                                                        <constraint firstItem="1481" firstAttribute="leading" secondItem="1480" secondAttribute="leading" constant="18" id="NOq-lc-nI4"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="1482" secondAttribute="trailing" constant="6" id="R30-Xm-vta"/>
+                                                                        <constraint firstItem="1481" firstAttribute="top" secondItem="1480" secondAttribute="top" constant="2" id="epI-nm-uTF"/>
+                                                                        <constraint firstItem="1482" firstAttribute="leading" secondItem="1481" secondAttribute="trailing" constant="7" id="qsh-2O-gnv"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="1482" secondAttribute="bottom" constant="7" id="xpv-0v-nUa"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="1481" secondAttribute="bottom" constant="7" id="zLf-tP-d8d"/>
+                                                                    </constraints>
                                                                     <connections>
                                                                         <outlet property="imageView" destination="1481" id="1486"/>
                                                                         <outlet property="textField" destination="1482" id="1485"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="HeaderTableCellView" id="1494" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="70" width="120" height="36"/>
+                                                                <tableCellView identifier="HeaderTableCellView" id="1494" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="68" width="120" height="28"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1496" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="20" y="6" width="93" height="24"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1497">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1496" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="15" y="6" width="95" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Header" placeholderString="" id="1497">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <box boxType="custom" borderType="line" id="vWM-3v-GoR">
-                                                                            <rect key="frame" x="0.0" y="15" width="151" height="1"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            <view key="contentView" id="8LT-ym-mnf">
-                                                                                <rect key="frame" x="1" y="1" width="149" height="0.0"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                            </view>
-                                                                        </box>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="1496" secondAttribute="trailing" constant="12" id="53K-T7-6rC"/>
+                                                                        <constraint firstItem="1496" firstAttribute="leading" secondItem="1494" secondAttribute="leading" constant="17" id="E3e-Wz-x6w"/>
+                                                                        <constraint firstItem="1496" firstAttribute="top" secondItem="1494" secondAttribute="top" constant="6" id="SI9-O5-a65"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="1496" secondAttribute="bottom" constant="6" id="e5k-fj-lyl"/>
+                                                                    </constraints>
                                                                     <connections>
-                                                                        <outlet property="dividerView" destination="vWM-3v-GoR" id="7oD-Wl-Ses"/>
-                                                                        <outlet property="textField" destination="1496" id="1499"/>
+                                                                        <outlet property="textField" destination="1496" id="vAr-u3-qAx"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="TagCell" id="1487" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="110" width="120" height="30"/>
+                                                                <tableCellView identifier="TagCell" id="1487" userLabel="Tags" customClass="SPTagCellView">
+                                                                    <rect key="frame" x="0.0" y="100" width="120" height="28"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1489" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="17" y="3" width="87" height="21"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1489" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="15" y="6" width="95" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" usesSingleLineMode="YES" id="1490">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -877,6 +895,12 @@
                                                                             </connections>
                                                                         </textField>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="bottom" secondItem="1489" secondAttribute="bottom" constant="6" id="5UU-Ec-XQ3"/>
+                                                                        <constraint firstItem="1489" firstAttribute="leading" secondItem="1487" secondAttribute="leading" constant="17" id="B4U-gi-Evb"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="1489" secondAttribute="trailing" constant="12" id="Uxa-wf-M9d"/>
+                                                                        <constraint firstItem="1489" firstAttribute="top" secondItem="1487" secondAttribute="top" constant="6" id="kJa-9z-XVT"/>
+                                                                    </constraints>
                                                                     <connections>
                                                                         <outlet property="textField" destination="1489" id="1492"/>
                                                                     </connections>
@@ -894,7 +918,6 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="XV6-d7-Lfo"/>
                                         </constraints>
-                                        <edgeInsets key="contentInsets" left="0.0" right="0.0" top="14" bottom="0.0"/>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1454">
                                             <rect key="frame" x="-100" y="-100" width="152" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1054,7 +1077,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="538"/>
+                                                    <size key="minSize" width="508" height="538"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1126,7 +1149,7 @@
                 <outlet property="delegate" destination="494" id="1423"/>
                 <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
-            <point key="canvasLocation" x="138" y="263"/>
+            <point key="canvasLocation" x="138" y="262.5"/>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
@@ -1203,11 +1226,11 @@
         </viewController>
     </objects>
     <resources>
+        <image name="button_all_notes" width="24" height="24"/>
         <image name="button_new" width="22" height="22"/>
-        <image name="icon_all_notes" width="22" height="22"/>
+        <image name="button_trash" width="24" height="24"/>
         <image name="icon_preview" width="44" height="44"/>
         <image name="icon_shared" width="22" height="22"/>
-        <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>
         <image name="logo_grey" width="128" height="128"/>
         <image name="toolbar_info" width="22" height="22"/>
