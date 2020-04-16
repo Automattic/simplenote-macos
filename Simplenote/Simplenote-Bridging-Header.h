@@ -19,5 +19,4 @@
 #pragma mark - Extensions
 
 #import "Simperium+Simplenote.h"
-#import "NSImage+Colorize.h"
 #import "NSMutableAttributedString+Styling.h"

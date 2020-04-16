@@ -7,7 +7,6 @@
 //
 
 #import "SPTagCellView.h"
-#import "NSImage+Colorize.h"
 #import "NSString+Simplenote.h"
 #import "VSThemeManager.h"
 
