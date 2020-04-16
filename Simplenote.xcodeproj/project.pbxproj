@@ -248,6 +248,10 @@
 		B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
+		B5E086282448B57200DEF476 /* HeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086272448B57200DEF476 /* HeaderTableCellView.swift */; };
+		B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086272448B57200DEF476 /* HeaderTableCellView.swift */; };
+		B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */; };
+		B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */; };
 		B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
@@ -527,6 +531,8 @@
 		B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProcessInfo+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
+		B5E086272448B57200DEF476 /* HeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableCellView.swift; sourceTree = "<group>"; };
+		B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableViewCell+Simplenote.swift"; sourceTree = "<group>"; };
 		B5E196C0230F5F5300F5658A /* SPCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = "<group>"; };
 		B5E96B641BDE732500D707F5 /* LoginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
 		B5E96B651BDE732500D707F5 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
@@ -848,6 +854,7 @@
 		714BA65514D3260000A6CCC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B5E0862A2448B58D00DEF476 /* TableViewCells */,
 				7199A42F14D8FD1C00B903A8 /* SPToolbarView.h */,
 				7199A43014D8FD1C00B903A8 /* SPToolbarView.m */,
 				E223B9A7178F20FF007E0272 /* SPButtonNoBackground.h */,
@@ -931,6 +938,7 @@
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
+				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1078,6 +1086,14 @@
 				B5B17F372425651700DD5B34 /* TestConstants.swift */,
 			);
 			path = SimplenoteTests;
+			sourceTree = "<group>";
+		};
+		B5E0862A2448B58D00DEF476 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				B5E086272448B57200DEF476 /* HeaderTableCellView.swift */,
+			);
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1464,6 +1480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */,
+				B5E086282448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
 				375D294621E033D1007AB25A /* version.c in Sources */,
 				378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */,
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
@@ -1511,6 +1528,7 @@
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
 				B56FA7922437C672002CB9FF /* NSColor+Studio.swift in Sources */,
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
@@ -1566,6 +1584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				466FFEA817CC10A800399652 /* main.m in Sources */,
+				B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
 				375D294721E033D1007AB25A /* version.c in Sources */,
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
@@ -1613,6 +1632,7 @@
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
 				3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */,
+				B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
 				B56FA7932437C672002CB9FF /* NSColor+Studio.swift in Sources */,
 				375D293321E033D1007AB25A /* buffer.c in Sources */,
 				375D294521E033D1007AB25A /* html.c in Sources */,
