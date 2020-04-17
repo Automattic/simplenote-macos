@@ -204,10 +204,6 @@
 		<string>@lightBlueColor</string>
 		<key>tagViewDeletionBackgroundBorderColor</key>
 		<string>cbdff3</string>
-		<key>tagViewDeletionImage</key>
-		<string>button_delete_small</string>
-		<key>searchBarBackgroundImage</key>
-		<string>searchbar_background</string>
 		<key>searchBarFontSize</key>
 		<real>16.5</real>
 		<key>searchBarFontColor</key>
@@ -302,22 +298,6 @@
 		<integer>21</integer>
 		<key>versionPickerDateFontColor</key>
 		<string>@textColor</string>
-		<key>navigationBarBackgroundImage</key>
-		<string>navigation_bar_background</string>
-		<key>navigationBarBackgroundPromptImage</key>
-		<string>navigation_bar_background_prompt</string>
-		<key>navigationBarBackgroundLandscapePhone</key>
-		<string>navigation_bar_background_landscape</string>
-		<key>navigationBarBackgroundLandscapePhonePrompt</key>
-		<string>navigation_bar_background_landscape_prompt</string>
-		<key>navigationBarShadowImage</key>
-		<string>navigation_bar_shadow</string>
-		<key>toolbarBackgroundImage</key>
-		<string>toolbar_background</string>
-		<key>toolbarBackgroundLandscapeImage</key>
-		<string>toolbar_background_landscape</string>
-		<key>toolbarShadowImage</key>
-		<string>@navigationBarShadowImage</string>
 		<key>emptyListViewFontSize</key>
 		<string>21</string>
 		<key>emptyListViewFontColor</key>
@@ -401,12 +381,8 @@
 		<string>@lightBlueColor</string>
 		<key>tagViewDeletionBackgroundBorderColor</key>
 		<string>2d4259</string>
-		<key>tagViewDeletionImage</key>
-		<string>button_delete_small_dark</string>
 		<key>searchFieldBackgroundColor</key>
 		<string>@tagViewPlaceholderColor</string>
-		<key>searchBarBackgroundImage</key>
-		<string>searchbar_background_dark</string>
 		<key>searchHighlightFontColor</key>
 		<string>f9f9f9</string>
 		<key>searchBarImageColor</key>
@@ -447,22 +423,6 @@
 		<string>@dividerColor</string>
 		<key>versionPickerDateFontColor</key>
 		<string>@textColor</string>
-		<key>navigationBarBackgroundImage</key>
-		<string>navigation_bar_background_dark</string>
-		<key>navigationBarBackgroundPromptImage</key>
-		<string>navigation_bar_background_prompt_dark</string>
-		<key>navigationBarBackgroundLandscapePhone</key>
-		<string>navigation_bar_background_landscape_dark</string>
-		<key>navigationBarBackgroundLandscapePhonePrompt</key>
-		<string>navigation_bar_background_landscape_prompt_dark</string>
-		<key>navigationBarShadowImage</key>
-		<string>navigation_bar_shadow_dark</string>
-		<key>toolbarBackgroundImage</key>
-		<string>toolbar_background_dark</string>
-		<key>toolbarBackgroundLandscapeImage</key>
-		<string>toolbar_background_landscape_dark</string>
-		<key>toolbarShadowImage</key>
-		<string>@navigationBarShadowImage</string>
 		<key>emptyListViewFontColor</key>
 		<string>@secondaryTextColor</string>
 		<key>lockBackgroundColor</key>
