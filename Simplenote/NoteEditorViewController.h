@@ -41,10 +41,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSTokenField *tagTokenField;
-    IBOutlet NSButton *previewButton;
-    IBOutlet NSButton *historyButton;
-    IBOutlet NSButton *shareButton;
-    IBOutlet NSView *statusView;
     IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
@@ -57,9 +53,14 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
-@property (nonatomic, assign) IBOutlet SPTextView           *noteEditor;
-@property (nonatomic, assign) IBOutlet NSScrollView         *scrollView;
-@property (nonatomic, assign) IBOutlet NoteEditorBottomBar  *bottomBar;
+@property (nonatomic, strong) IBOutlet NSImageView          *statusImageView;
+@property (nonatomic, strong) IBOutlet NSTextField          *statusTextField;
+@property (nonatomic, strong) IBOutlet NSButton             *previewButton;
+@property (nonatomic, strong) IBOutlet NSButton             *historyButton;
+@property (nonatomic, strong) IBOutlet NSButton             *shareButton;
+@property (nonatomic,   weak) IBOutlet SPTextView           *noteEditor;
+@property (nonatomic,   weak) IBOutlet NSScrollView         *scrollView;
+@property (nonatomic,   weak) IBOutlet NoteEditorBottomBar  *bottomBar;
 @property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
 @property (nonatomic,   weak) Note                          *note;
 @property (nonatomic, strong) WKWebView                     *markdownView;

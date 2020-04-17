@@ -17,7 +17,6 @@
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
-#import "SPToolbarView.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
@@ -198,7 +197,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     [self save];
     [self showStatusText:nil];
-    [statusView setHidden: selectedNote != nil];
+    [self.statusImageView setHidden: selectedNote != nil];
     
     if (!self.markdownView.isHidden) {
         [self toggleMarkdownView:nil];
@@ -250,8 +249,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     [self updateTagField];
     [self updateShareButtonVisibility];
-    [previewButton setEnabled:YES];
-    [historyButton setEnabled:YES];
+    [self.previewButton setEnabled:YES];
+    [self.historyButton setEnabled:YES];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -262,7 +261,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.noteEditor displayNoteWithContent:@""];
     }
     
-    [previewButton setHidden:!self.note.markdown || self.viewingTrash];
+    [self.previewButton setHidden:!self.note.markdown || self.viewingTrash];
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
@@ -299,9 +298,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [tagTokenField setSelectable:NO];
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
-    [shareButton setEnabled:NO];
-    [previewButton setEnabled:NO];
-    [historyButton setEnabled:NO];
+    [self.shareButton setEnabled:NO];
+    [self.previewButton setEnabled:NO];
+    [self.historyButton setEnabled:NO];
     
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -328,23 +327,16 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)showStatusText:(NSString *)text
 {
-    // Quick and dirty status text for now
-    NSTextField *statusField = [statusView viewWithTag:1];
+    BOOL shouldHideImage = text == nil || text.length == 0;
 
-    if (text == nil || [text length] == 0) {
-        [statusField setStringValue:@""];
-        [statusView setHidden:YES];
-        return;
-    }
-    
-    [statusView setHidden:NO];
-    [statusField setStringValue:text];
+    self.statusTextField.stringValue = text ?: @"";
+    self.statusImageView.hidden = shouldHideImage;
 }
 
 - (void)trashDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = YES;
-    [previewButton setHidden:YES];
+    [self.previewButton setHidden:YES];
     [self.bottomBar setEnabled:NO];
 }
 
@@ -504,7 +496,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 -(void)updateShareButtonVisibility
 {
-    [shareButton setEnabled:self.note.content.length > 0];
+    [self.shareButton setEnabled:self.note.content.length > 0];
 }
 
 #pragma mark - Simperium
@@ -743,7 +735,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     // Toggle the markdown state
     BOOL isEnabled = markdownItem.state == NSOffState;
-    [previewButton setHidden:!isEnabled];
+    [self.previewButton setHidden:!isEnabled];
     
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.markdown = isEnabled;
@@ -1073,7 +1065,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         }
     }
 
-    [self.scrollView setBackgroundColor:[self.theme colorForKey:@"dividerColor"]];
+    self.noteEditor.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 
@@ -1089,7 +1081,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     PublishViewController *viewController = [PublishViewController new];
     viewController.delegate = self;
 
-    [self showViewController:viewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.shareButton preferredEdge:NSMaxYEdge];
     self.publishViewController = viewController;
 }
 
@@ -1127,7 +1119,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     VersionsViewController *viewController = [VersionsViewController new];
     viewController.delegate = self;
 
-    [self showViewController:viewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.historyButton preferredEdge:NSMaxYEdge];
     self.versionsViewController = viewController;
 }
 
@@ -1139,7 +1131,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
     sharingPicker.delegate = self;
-    [sharingPicker showRelativeToRect:shareButton.bounds ofView:shareButton preferredEdge:NSMinYEdge];
+    [sharingPicker showRelativeToRect:self.shareButton.bounds ofView:self.shareButton preferredEdge:NSMinYEdge];
 }
 
 - (IBAction)toggleMarkdownView:(id)sender
@@ -1156,8 +1148,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor setHidden:markdownVisible];
     [self.markdownView setHidden:!markdownVisible];
     
-    [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
-    [historyButton setEnabled:!markdownVisible];
+    [self.previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
+    [self.historyButton setEnabled:!markdownVisible];
     
     if (markdownVisible) {
         [self loadMarkdownContent];
