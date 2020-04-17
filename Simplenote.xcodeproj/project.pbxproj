@@ -99,7 +99,6 @@
 		466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
 		466FFEB017CC10A800399652 /* SPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65714D3264200A6CCC1 /* SPGradientView.m */; };
 		466FFEB117CC10A800399652 /* SPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65A14D32DCB00A6CCC1 /* SPBackgroundView.m */; };
-		466FFEB217CC10A800399652 /* SPTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66214D37C2000A6CCC1 /* SPTableRowView.m */; };
 		466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
@@ -138,7 +137,6 @@
 		712DC91C1531FE2F0033CE85 /* SPTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 712DC91B1531FE2F0033CE85 /* SPTokenField.m */; };
 		714BA65814D3264200A6CCC1 /* SPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65714D3264200A6CCC1 /* SPGradientView.m */; };
 		714BA65B14D32DCB00A6CCC1 /* SPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65A14D32DCB00A6CCC1 /* SPBackgroundView.m */; };
-		714BA66314D37C2000A6CCC1 /* SPTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66214D37C2000A6CCC1 /* SPTableRowView.m */; };
 		714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
@@ -440,8 +438,6 @@
 		714BA65714D3264200A6CCC1 /* SPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGradientView.m; sourceTree = "<group>"; };
 		714BA65914D32DCB00A6CCC1 /* SPBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBackgroundView.h; sourceTree = "<group>"; };
 		714BA65A14D32DCB00A6CCC1 /* SPBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBackgroundView.m; sourceTree = "<group>"; };
-		714BA66114D37C1F00A6CCC1 /* SPTableRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTableRowView.h; sourceTree = "<group>"; };
-		714BA66214D37C2000A6CCC1 /* SPTableRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTableRowView.m; sourceTree = "<group>"; };
 		714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListViewController.h; sourceTree = "<group>"; };
 		714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListViewController.m; sourceTree = "<group>"; };
 		714BA66C14D4AE6200A6CCC1 /* DateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTransformer.h; sourceTree = "<group>"; };
@@ -856,8 +852,6 @@
 				7199A43014D8FD1C00B903A8 /* SPToolbarView.m */,
 				712DC91A1531FE2F0033CE85 /* SPTokenField.h */,
 				712DC91B1531FE2F0033CE85 /* SPTokenField.m */,
-				714BA66114D37C1F00A6CCC1 /* SPTableRowView.h */,
-				714BA66214D37C2000A6CCC1 /* SPTableRowView.m */,
 				71D83D6E14D744FB00A25E69 /* SPNoteCellView.h */,
 				71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */,
 				714BA65614D3264200A6CCC1 /* SPGradientView.h */,
@@ -1506,7 +1500,6 @@
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
 				714BA65B14D32DCB00A6CCC1 /* SPBackgroundView.m in Sources */,
 				B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
-				714BA66314D37C2000A6CCC1 /* SPTableRowView.m in Sources */,
 				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
@@ -1607,7 +1600,6 @@
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
 				466FFEB117CC10A800399652 /* SPBackgroundView.m in Sources */,
-				466FFEB217CC10A800399652 /* SPTableRowView.m in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
 				466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
