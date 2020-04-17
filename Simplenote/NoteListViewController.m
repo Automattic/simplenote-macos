@@ -7,7 +7,6 @@
 //
 
 #import "NoteListViewController.h"
-#import "SPTableRowView.h"
 #import "SPNoteCellView.h"
 #import "Note.h"
 #import "NoteEditorViewController.h"
@@ -18,6 +17,7 @@
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
 
 @import Simperium_OSX;
 
@@ -213,9 +213,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-    SPTableRowView *rowView = [[SPTableRowView alloc]initWithFrame:NSZeroRect];
-    rowView.drawBorder = NO;
-    return rowView;
+    return [TableRowView new];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
