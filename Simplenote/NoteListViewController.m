@@ -147,7 +147,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)predicateDidChange
 {
-    if ([[arrayController arrangedObjects] count] != 0) {
+    if (self.allNotes.count != 0) {
         return;
     }
 
@@ -247,12 +247,17 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSArray *)selectedNotes
 {
-    return [[arrayController arrangedObjects] objectsAtIndexes:[self.tableView selectedRowIndexes]];
+    return [self.allNotes objectsAtIndexes:[self.tableView selectedRowIndexes]];
+}
+
+- (NSArray<Note *> *)allNotes
+{
+    return arrayController.arrangedObjects;
 }
 
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
-    NSUInteger numNotes = [[arrayController arrangedObjects] count];
+    NSUInteger numNotes = self.allNotes.count;
     
     // As soon as at least one note is added, select it
     if (numNotes > 0 && self.noteEditorViewController.note == nil) {
@@ -271,7 +276,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)notesArraySelectionDidChange:(NSNotification *)notification
 {
     // Check for empty list and clear editor contents if necessary
-    if ([[arrayController arrangedObjects] count] == 0) {
+    if (self.allNotes.count == 0) {
         [self.noteEditorViewController displayNote:nil];
     }
     
@@ -371,7 +376,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)didEmptyTrash:(NSNotification *)notification
 {
-    if ([[arrayController arrangedObjects] count] != 0) {
+    if (self.allNotes.count != 0) {
         return;
     }
 
