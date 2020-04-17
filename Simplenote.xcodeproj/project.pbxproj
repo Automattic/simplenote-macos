@@ -265,6 +265,8 @@
 		B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */; };
 		B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
 		B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
+		B5F3150924496A970036872D /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3150824496A970036872D /* TableRowView.swift */; };
+		B5F3150A24496A970036872D /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3150824496A970036872D /* TableRowView.swift */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
@@ -540,6 +542,7 @@
 		B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Simperium+Simplenote.h"; sourceTree = "<group>"; };
 		B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Privacy.storyboard; sourceTree = "<group>"; };
 		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		B5F3150824496A970036872D /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
@@ -1080,6 +1083,7 @@
 		B5E0862A2448B58D00DEF476 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				B5F3150824496A970036872D /* TableRowView.swift */,
 				B5E086272448B57200DEF476 /* HeaderTableCellView.swift */,
 				B5E086342448EA3C00DEF476 /* TagTableCellView.swift */,
 			);
@@ -1559,6 +1563,7 @@
 				B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
+				B5F3150924496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
@@ -1663,6 +1668,7 @@
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
+				B5F3150A24496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
