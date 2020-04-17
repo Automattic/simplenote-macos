@@ -186,7 +186,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     [self.tableView selectRowIndexes:allNotesIndex byExtendingSelection:NO];
     
     // Force Resync!
-    [notesArrayController fetchWithRequest:nil merge:NO error:nil];
+    [self.notesArrayController fetchWithRequest:nil merge:NO error:nil];
 }
 
 - (void)selectTag:(Tag *)tagToSelect
@@ -740,7 +740,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 - (void)applyStyle
 {
     [self.tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
-    [tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    [self.tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     [self reloadDataAndPreserveSelection];
 }
 
