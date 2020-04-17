@@ -1102,7 +1102,6 @@
                 <outlet property="splitView" destination="557" id="1477"/>
                 <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
-                <outlet property="textScrollView" destination="933" id="1199"/>
                 <outlet property="textViewParent" destination="559" id="1198"/>
                 <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
                 <outlet property="toolbar" destination="914" id="1386"/>
