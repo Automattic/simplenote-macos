@@ -1,4 +1,5 @@
 import Foundation
+import os.log
 
 
 // MARK: - NSImage + Simplenote
@@ -15,6 +16,7 @@ extension NSImage {
 
         return NSImage(size: size, flipped: false) { bounds in
             guard let context = NSGraphicsContext.current?.cgContext else {
+                os_log("☠️ Error: Cannot acquire current CGContext")
                 return false
             }
 
