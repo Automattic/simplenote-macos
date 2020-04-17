@@ -110,11 +110,8 @@ private extension TagTableCellView {
     }
 
     func refreshStyle() {
-        // TODO: Replace VSTheme with ColorStudio, once we update the Background Style
-        let theme = VSThemeManager.shared().theme()
-        let targetAlpha = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0;
-        let targetColor = selected ? theme.color(forKey: "tintColor") : theme.color(forKey: "textColor")
-
+        let targetAlpha = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0
+        let targetColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
         imageView?.wantsLayer = true
         imageView?.alphaValue = targetAlpha
         imageView?.image = imageView?.image?.tinted(with: targetColor)
