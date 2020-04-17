@@ -87,9 +87,7 @@
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@implementation SimplenoteAppDelegate {
-    BOOL tagListWasVisibleUponFocusMode;
-}
+@implementation SimplenoteAppDelegate
 
 #pragma mark - Startup
 // Can be used for bugs that don't show up while debugging from Xcode
@@ -710,7 +708,6 @@
     CGFloat editorSplitPosition = [self editorSplitPosition];
     BOOL collapsed = ![self.tagListViewController.view isHidden];
     [self.tagListViewController.view setHidden:collapsed];
-    tagListWasVisibleUponFocusMode = NO;
     
     [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
     [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
@@ -723,7 +720,7 @@
     BOOL tagsVisible = ![self.tagListViewController.view isHidden];
     if (tagsVisible) {
         [self toggleSidebarAction:nil];
-        tagListWasVisibleUponFocusMode = YES;
+        tagsVisible = YES;
     }
     
     [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
@@ -733,7 +730,7 @@
     [self.toolbar configureForFocusMode: isEnteringFocusMode];
     [focusModeMenuItem setState:isEnteringFocusMode ? NSOnState : NSOffState];
     
-    if (!isEnteringFocusMode && tagListWasVisibleUponFocusMode) {
+    if (!isEnteringFocusMode && tagsVisible) {
         // If ending focus mode and the tag view was previously visible, show it agian
         [self toggleSidebarAction:nil];
     }

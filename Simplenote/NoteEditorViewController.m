@@ -1065,7 +1065,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         }
     }
 
-    [self.scrollView setBackgroundColor:[self.theme colorForKey:@"dividerColor"]];
+    self.noteEditor.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 
