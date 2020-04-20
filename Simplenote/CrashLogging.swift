@@ -21,10 +21,6 @@ class CrashLoggingShim: NSObject {
         CrashLoggingCache.emailAddress = nil
         CrashLogging.setNeedsDataRefresh()
     }
-
-    @objc static func cacheOptOutSetting(_ didOptOut: Bool) {
-        CrashLoggingCache.didOptOut = didOptOut
-    }
 }
 
 private class SNCrashLoggingDataProvider: CrashLoggingDataProvider {
@@ -78,7 +74,6 @@ private struct CrashLoggingCache {
 
     struct User: Codable {
         var emailAddress: String?
-        var didOptOut: Bool = true
 
         static var empty = User()
     }
@@ -90,17 +85,6 @@ private struct CrashLoggingCache {
         set {
             var updatedUser = cachedUser ?? User.empty
             updatedUser.emailAddress = newValue
-            cachedUser = updatedUser
-        }
-    }
-
-    static var didOptOut: Bool {
-        get {
-            return cachedUser?.didOptOut ?? true
-        }
-        set {
-            var updatedUser = cachedUser ?? User.empty
-            updatedUser.didOptOut = newValue
             cachedUser = updatedUser
         }
     }
