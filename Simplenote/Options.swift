@@ -15,7 +15,6 @@ class Options: NSObject {
     private let defaults: UserDefaults
 
 
-
     /// Designated Initializer
     ///
     /// - Note: Should be *private*, but for unit testing purposes, we're opening this up.
@@ -23,6 +22,12 @@ class Options: NSObject {
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         super.init()
+    }
+
+    /// Drops all the known settings
+    ///
+    func reset() {
+        defaults.removeObject(forKey: .analyticsEnabled)
     }
 }
 
@@ -35,20 +40,10 @@ extension Options {
     ///
     var analyticsEnabled: Bool {
         get {
-            return defaults.bool(forKey: .analyticsEnabled)
+            defaults.bool(forKey: .analyticsEnabled)
         }
         set {
             defaults.set(newValue, forKey: .analyticsEnabled)
         }
-    }
-}
-
-
-// MARK: - Public Methods
-//
-extension Options {
-
-    func reset() {
-        defaults.removeObject(forKey: .analyticsEnabled)
     }
 }
