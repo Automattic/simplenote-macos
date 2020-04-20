@@ -5,15 +5,11 @@ import AppKit
 // MARK: - TagTableCellView
 //
 @objcMembers
-class TagTableCellView: NSTableCellView {
+class TagTableCellView: NSTableCellView, TableCellView {
 
-    /// Workaround: In AppKit, TableView Cell Selection works at the Row level
+    /// Tracking Areas
     ///
-    override var backgroundStyle: NSView.BackgroundStyle {
-        didSet {
-            refreshSelectedState()
-        }
-    }
+    private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
     /// Indicates if the mouse was last seen inside the receiver's bounds
     ///
@@ -29,19 +25,15 @@ class TagTableCellView: NSTableCellView {
 
     /// Indicates if the receiver's associated NSTableRowView is *selected*
     ///
-    private var selected = false {
+    var isSelected = false {
         didSet {
-            guard oldValue != selected else {
+            guard oldValue != isSelected else {
                 return
             }
 
             refreshStyle()
         }
     }
-
-    /// Tracking Areas
-    ///
-    private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
 
     // MARK: - Overridden Methods
@@ -84,34 +76,20 @@ extension TagTableCellView {
 }
 
 
-// MARK: - Selection Workaround
-//
-private extension TagTableCellView {
-
-    func refreshSelectedState() {
-        guard let row = superview as? NSTableRowView else {
-            return
-        }
-
-        selected = row.isSelected
-    }
-}
-
-
 // MARK: - Styling
 //
 private extension TagTableCellView {
 
     func reset() {
         mouseInside = false
-        selected = false
+        isSelected = false
         imageView?.isHidden = true
         textField?.isEditable = false
     }
 
     func refreshStyle() {
-        let targetAlpha = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0
-        let targetColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
+        let targetAlpha = !isSelected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0
+        let targetColor = isSelected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
         imageView?.wantsLayer = true
         imageView?.alphaValue = targetAlpha
         imageView?.image = imageView?.image?.tinted(with: targetColor)
