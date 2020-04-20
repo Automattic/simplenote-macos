@@ -195,6 +195,8 @@
 
 	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
 
+    [[MigrationsHandler new] ensureUpdateIsHandled];
+
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
 
