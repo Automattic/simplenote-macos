@@ -13,9 +13,9 @@ class MigrationsHandler: NSObject {
 
     /// Stores the last known version.
     ///
-    private var lastKnownVersion: String {
+    private var lastKnownVersion: String? {
         get {
-            UserDefaults.standard.string(forKey: .lastKnownVersion) ?? String()
+            UserDefaults.standard.string(forKey: .lastKnownVersion)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: .lastKnownVersion)
@@ -29,7 +29,7 @@ class MigrationsHandler: NSObject {
             return
         }
 
-        processMigrations(from: lastKnownVersion, to: runtimeVersion)
+        processMigrations(to: runtimeVersion)
         lastKnownVersion = runtimeVersion
     }
 }
@@ -41,26 +41,18 @@ private extension MigrationsHandler {
 
     /// Handles a migration *from* a given version, *towards* a given version
     ///
-    func processMigrations(from: String, to: String) {
+    func processMigrations(to: String) {
         processPreferencesMigrations()
     }
-}
-
-
-// MARK: - Concrete migration handlers
-//
-private extension MigrationsHandler {
 
     /// Moves the Analytics flag from Simperium to UserDefaults.
     /// This must be done just once, right after upgrading. Our main goal is not to sync this flag anymore via Simperium, so that fresh installs are off by default.
     ///
     func processPreferencesMigrations() {
-        guard UserDefaults.standard.containsObject(forKey: .analyticsEnabled) == false else {
-            return
-        }
-
-        guard let simperium = SimplenoteAppDelegate.shared()?.simperium, let preferences = simperium.preferencesObject() else {
-            return
+        guard UserDefaults.standard.containsObject(forKey: .analyticsEnabled) == false,
+            let preferences = SimplenoteAppDelegate.shared()?.simperium?.preferencesObject()
+            else {
+                return
         }
 
         os_log("<> Migrating Preferences flag from Simperium")
