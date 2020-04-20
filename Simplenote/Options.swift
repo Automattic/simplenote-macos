@@ -36,7 +36,7 @@ class Options: NSObject {
 //
 extension Options {
 
-    /// Indicates if Analytics should be enabled
+    /// Indicates if Analytics should be enabled. Empty value defaults to `false`
     ///
     var analyticsEnabled: Bool {
         get {
