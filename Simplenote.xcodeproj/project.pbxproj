@@ -197,6 +197,8 @@
 		B57CB875244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
 		B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */; };
 		B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */; };
+		B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */; };
+		B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */; };
 		B57CB87E244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -489,6 +491,7 @@
 		B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VSTheme+Simplenote.m"; sourceTree = "<group>"; };
 		B57CB873244DEBC300BA7969 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Simplenote.swift"; sourceTree = "<group>"; };
+		B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationsHandler.swift; sourceTree = "<group>"; };
 		B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Simplenote.swift"; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B598487C1BCDB95A005EFBBE /* SPAutomatticTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAutomatticTracker.h; sourceTree = "<group>"; };
@@ -783,6 +786,7 @@
 			isa = PBXGroup;
 			children = (
 				F998F3EA22853C29008C2B59 /* CrashLogging.swift */,
+				B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */,
 				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
@@ -1502,6 +1506,7 @@
 				B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
+				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
@@ -1607,6 +1612,7 @@
 				B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
+				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
