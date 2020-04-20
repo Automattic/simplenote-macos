@@ -40,12 +40,7 @@ private class SNCrashLoggingDataProvider: CrashLoggingDataProvider {
     }
 
     var userHasOptedOut: Bool {
-
-        if let analyticsEnabledSetting = simperium.preferencesObject()?.analytics_enabled {
-            return !analyticsEnabledSetting.boolValue
-        }
-
-        return CrashLoggingCache.didOptOut
+        return !Options.shared.analyticsEnabled
     }
 
     var buildType: String {
