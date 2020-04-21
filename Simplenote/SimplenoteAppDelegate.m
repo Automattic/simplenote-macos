@@ -195,6 +195,8 @@
 
 	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
 
+    [[MigrationsHandler new] ensureUpdateIsHandled];
+
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
 
@@ -673,6 +675,9 @@
     [self.noteListViewController setWaitingForIndex:YES];
     
     [_simperium signOutAndRemoveLocalData:YES completion:^{
+        // Nuke User Settings
+        [[Options shared] reset];
+
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self->_simperium authenticateIfNecessary];
