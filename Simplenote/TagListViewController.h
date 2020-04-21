@@ -20,8 +20,9 @@
     IBOutlet NSArrayController *notesArrayController;
 }
 
-@property (nonatomic, strong) IBOutlet NSTableView *tableView;
-@property (nonatomic, strong) NSArray *tagArray;
+@property (nonatomic, strong, readwrite) IBOutlet NSTableView   *tableView;
+@property (nonatomic, assign,  readonly) BOOL                   menuShowing;
+@property (nonatomic, strong, readwrite) NSArray                *tagArray;
 
 extern NSString * const kTagsDidLoad;
 extern NSString * const kTagUpdated;
