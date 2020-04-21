@@ -179,7 +179,6 @@
             <connections>
                 <outlet property="actionButton" destination="1601" id="gdu-Es-X6I"/>
                 <outlet property="addButton" destination="987" id="1424"/>
-                <outlet property="arrayController" destination="573" id="1148"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
                 <outlet property="noteEditor" destination="934" id="1154"/>
                 <outlet property="previewButton" destination="OMI-hx-wfj" id="XYV-Pc-8mE"/>
@@ -187,11 +186,7 @@
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
                 <outlet property="searchField" destination="915" id="L6k-Ak-N34"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="GK2-GI-0Eu"/>
-                <outlet property="splitter" destination="1387" id="1438"/>
-                <outlet property="tableView" destination="561" id="1109"/>
-                <outlet property="tableViewController" destination="874" id="1271"/>
                 <outlet property="trashButton" destination="mXz-OM-6A3" id="XnP-Bb-cph"/>
-                <outlet property="window" destination="371" id="1247"/>
             </connections>
             <point key="canvasLocation" x="139" y="-163"/>
         </customView>

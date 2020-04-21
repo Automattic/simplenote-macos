@@ -11,17 +11,13 @@
 
 @interface SPToolbarView : NSView
 {
-    IBOutlet NSWindow *window;
     IBOutlet NSButton *addButton;
     IBOutlet NSButton *historyButton;
     IBOutlet NSButton *trashButton;
     IBOutlet NSButton *restoreButton;
     IBOutlet NSButton *shareButton;
     IBOutlet NSButton *previewButton;
-    IBOutlet NSTableView *tableView;
-    IBOutlet NSArrayController *arrayController;
     IBOutlet NSTextView *noteEditor;
-    IBOutlet NoteListViewController *tableViewController;
     IBOutlet NSBox *searchBox;
     IBOutlet NSSearchField *searchField;
 }
