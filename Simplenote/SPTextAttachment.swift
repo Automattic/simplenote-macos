@@ -66,7 +66,7 @@ private extension SPTextAttachment {
         }
 
         let state = isChecked ? State.checked : State.unchecked
-        let image = NSImage(named: state.rawValue)?.colorized(with: tintColor)
+        let image = NSImage(named: state.rawValue)?.tinted(with: tintColor)
         attachmentCell = SPTextAttachmentCell(imageCell: image)
     }
 }

@@ -11,6 +11,7 @@
 #pragma mark - Simplenote-Y
 
 #import "Note.h"
+#import "Tag.h"
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"
 
@@ -18,5 +19,4 @@
 #pragma mark - Extensions
 
 #import "Simperium+Simplenote.h"
-#import "NSImage+Colorize.h"
 #import "NSMutableAttributedString+Styling.h"

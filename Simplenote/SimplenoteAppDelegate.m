@@ -17,7 +17,6 @@
 #import "SPMarkdownParser.h"
 #import "SPWindow.h"
 #import "SPToolbarView.h"
-#import "NSImage+Colorize.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
 #import "VSThemeManager.h"

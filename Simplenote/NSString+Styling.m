@@ -8,7 +8,6 @@
 
 #import "NSString+Styling.h"
 #import "Simplenote-Swift.h"
-#import "NSImage+Colorize.h"
 #import "NSMutableAttributedString+Styling.h"
 #import "SPTextView.h"
 

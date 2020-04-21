@@ -36,42 +36,22 @@ NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
 NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
-@interface TagListViewController () {
-    BOOL menuShowing;
-    NSString *tagNameBeingEdited;
-    BOOL awake;
-}
+@interface TagListViewController ()
+
+@property (nonatomic, assign) BOOL      menuShowing;
+@property (nonatomic, strong) NSString  *tagNameBeingEdited;
 
 @end
 
 @implementation TagListViewController
-@synthesize tableView;
-@synthesize tagArray;
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
+    [super viewDidLoad];
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    // awakeFromNib is called each time a cell is created; work around that (must be careful
-    // not to register for notifications multiple times)
-    // http://stackoverflow.com/a/7187492/1379066
-    if (awake)
-        return;
-    
     [self buildDropdownMenus];
 
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];
-    
+    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
     
@@ -79,8 +59,6 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     
     BOOL alphaTagSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
     [tagSortMenuItem setState:alphaTagSort ? NSOnState : NSOffState];
-    
-    awake = YES;
 }
 
 - (void)viewWillAppear
@@ -166,7 +144,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 - (void)reset
 {
     self.tagArray = [NSArray array];
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)loadTags
@@ -198,7 +176,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         return @"";
     }
     
-    Tag *tag = [tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
+    Tag *tag = [self.tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
     return tag.name;
 }
 
@@ -208,7 +186,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     [self.tableView selectRowIndexes:allNotesIndex byExtendingSelection:NO];
     
     // Force Resync!
-    [notesArrayController fetchWithRequest:nil merge:NO error:nil];
+    [self.notesArrayController fetchWithRequest:nil merge:NO error:nil];
 }
 
 - (void)selectTag:(Tag *)tagToSelect
@@ -412,7 +390,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 	NSInteger row = NSNotFound;
 	
 	if(sender == self.tableView) {
-		row = [tableView selectedRow];
+		row = [self.tableView selectedRow];
 	} else {
 		row = [self highlightedTagRowIndex];
 	}
@@ -458,7 +436,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return kStartOfTagListRow + [tagArray count];
+    return kStartOfTagListRow + self.tagArray.count;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -470,7 +448,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     } else if(row == kTopRow || row == kSeparatorRow) {
         return @"";
     } else {
-        Tag *tag = [tagArray objectAtIndex:row-kStartOfTagListRow];
+        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
         return tag.name;
     }
 }
@@ -590,35 +568,35 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     }
     
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)
-    return [self.tableView selectedRow] >= kStartOfTagListRow && tagNameBeingEdited == nil;
+    return [self.tableView selectedRow] >= kStartOfTagListRow && self.tagNameBeingEdited == nil;
 }
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
-    menuShowing = YES;
+    self.menuShowing = YES;
 }
 
 - (void)menuDidClose:(NSMenu *)menu
 {
-    menuShowing = NO;
+    self.menuShowing = NO;
 }
 
 #pragma mark - NSTextField delegate
 
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
 {
-    return !menuShowing;
+    return !self.menuShowing;
 }
 
 - (void)controlTextDidBeginEditing:(NSNotification *)notification
 {
     NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
-    tagNameBeingEdited = [textView.string copy];
+    self.tagNameBeingEdited = [textView.string copy];
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    if (tagNameBeingEdited) {
+    if (self.tagNameBeingEdited) {
         // This can get triggered before renaming has started; don't do anything in that case
 
         NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
@@ -631,10 +609,10 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         NSString *newTagName = [textView.string copy];
         
         BOOL tagAlreadyExists = [self tagWithName:newTagName] != nil;
-        if ([newTagName length] > 0 && !tagAlreadyExists && ![tagNameBeingEdited isEqualToString:newTagName])
-            [self changeTagName:tagNameBeingEdited toName:newTagName];
+        if ([newTagName length] > 0 && !tagAlreadyExists && ![self.tagNameBeingEdited isEqualToString:newTagName])
+            [self changeTagName:self.tagNameBeingEdited toName:newTagName];
         
-        tagNameBeingEdited = nil;
+        self.tagNameBeingEdited = nil;
     }
 }
 
@@ -761,8 +739,8 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)applyStyle
 {
-    [tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
-    [tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    [self.tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    [self.tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     [self reloadDataAndPreserveSelection];
 }
 

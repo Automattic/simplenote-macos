@@ -7,17 +7,11 @@
 //
 
 #import "SPTagCellView.h"
-#import "SPButtonNoBackground.h"
-#import "SPPopUpButton.h"
-#import "SPPopUpButtonCell.h"
-#import "NSImage+Colorize.h"
 #import "NSString+Simplenote.h"
 #import "VSThemeManager.h"
 
-static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
 
 @interface SPTagCellView ()
-@property (nonatomic, strong) SPPopUpButton     *button;
 @property (nonatomic, strong) NSTrackingArea    *trackingArea;
 @property (nonatomic, strong) NSImage           *image;
 @property (nonatomic, strong) NSImage           *imageHighlighted;
@@ -41,27 +35,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
         self.imageHighlighted = [NSImage imageNamed:highlightedImageName];
     }
 
-    [self addSubview:self.button];
     [self applyStyle];
-}
-
-- (SPPopUpButton *)button
-{
-    if (!_button) {
-        CGRect textFrame = self.textField.frame;
-        CGRect buttonFrame = CGRectMake(self.frame.size.width - textFrame.size.height,
-                                        textFrame.origin.y,
-                                        textFrame.size.height,
-                                        textFrame.size.height
-                                        );
-        SPPopUpButton *button = [[SPPopUpButton alloc] initWithFrame:buttonFrame pullsDown:YES];
-        button.bordered = NO;
-        button.hidden = YES;
-        button.alphaValue = SPTagCellPopUpButtonAlpha;
-        _button = button;
-    }
-    
-    return _button;
 }
 
 - (void)setMouseInside:(BOOL)value
@@ -73,11 +47,6 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     _mouseInside = value;
     [self updateTextAndImageColors];
     [self setNeedsDisplay:YES];
-    
-    // Display the Menu -If it has at least one item!-
-    if (self.button.menu.itemArray.count > 0) {
-        [self.button setHidden:!_mouseInside];
-    }
 }
 
 - (void)ensureTrackingArea
@@ -94,14 +63,6 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     if (![[self trackingAreas] containsObject:self.trackingArea]) {
         [self addTrackingArea:self.trackingArea];
     }
-}
-
-- (void)positionButtonRelativeToTextField
-{
-    NSDictionary *attributes = @{NSFontSizeAttribute: @14.0};
-    NSSize tagSize = [self.textField.stringValue sizeWithAttributes:attributes];
-    CGFloat buttonX = self.textField.frame.origin.x + tagSize.width + 10;
-    [self.button setFrameOrigin:CGPointMake(buttonX, self.button.frame.origin.y)];
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent
@@ -151,8 +112,7 @@ static CGFloat SPTagCellPopUpButtonAlpha    = 0.5f;
     
     [self.textField setFont:textFont];
     [self.textField setTextColor:textColor];
-    [[self.button cell] setArrowColor:textColor];
-    
+
     if (self.dividerView) {
         [self.dividerView setBorderColor:[self.theme colorForKey:@"dividerColor"]];
     }

@@ -88,7 +88,6 @@
 		37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
-		46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558BB51793AF4B009CD695 /* NSImage+Colorize.m */; };
 		46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558C0017947E77009CD695 /* NoteEditorBottomBar.m */; };
 		466FFEA817CC10A800399652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
@@ -111,8 +110,6 @@
 		466FFEC217CC10A800399652 /* SPTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 712DC91B1531FE2F0033CE85 /* SPTokenField.m */; };
 		466FFECE17CC10A800399652 /* SPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EF5197177C4ECC00A139E0 /* SPApplication.m */; };
 		466FFECF17CC10A800399652 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF73061782C6B200FC2B5C /* TagListViewController.m */; };
-		466FFED017CC10A800399652 /* SPButtonNoBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */; };
-		466FFED117CC10A800399652 /* NSImage+Colorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558BB51793AF4B009CD695 /* NSImage+Colorize.m */; };
 		466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558C0017947E77009CD695 /* NoteEditorBottomBar.m */; };
 		466FFED317CC10A800399652 /* SPTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD162E17A1E9C10093678C /* SPTagTextField.m */; };
 		466FFED417CC10A800399652 /* SPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F0E66217A32269005BB4D1 /* SPTableView.m */; };
@@ -215,10 +212,6 @@
 		B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
-		B5A4EF2F1AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */; };
-		B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */; };
-		B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */; };
-		B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */; };
 		B5A89195231ECB3C0007EDCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B5A8918A231ECB3C0007EDCB /* LICENSE */; };
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
@@ -256,6 +249,8 @@
 		B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
+		B5E0863B2449012700DEF476 /* NSImage+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */; };
+		B5E0863C2449012700DEF476 /* NSImage+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */; };
 		B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
 		B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
@@ -272,7 +267,6 @@
 		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
-		E223B9A9178F20FF007E0272 /* SPButtonNoBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */; };
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
 		F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
 /* End PBXBuildFile section */
@@ -411,8 +405,6 @@
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
-		46558BB41793AF4B009CD695 /* NSImage+Colorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Colorize.h"; sourceTree = "<group>"; };
-		46558BB51793AF4B009CD695 /* NSImage+Colorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Colorize.m"; sourceTree = "<group>"; };
 		46558BFF17947E77009CD695 /* NoteEditorBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteEditorBottomBar.h; sourceTree = "<group>"; };
 		46558C0017947E77009CD695 /* NoteEditorBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteEditorBottomBar.m; sourceTree = "<group>"; };
 		466FFF2F17CC10A800399652 /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -505,10 +497,6 @@
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
 		B59EBAA019A6884F00DBC657 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = External/HockeySDK.framework; sourceTree = "<group>"; };
 		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
-		B5A4EF2D1AEE76B8007AB0AB /* SPPopUpButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPopUpButtonCell.h; sourceTree = "<group>"; };
-		B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPopUpButtonCell.m; sourceTree = "<group>"; };
-		B5A4EF311AEEA03D007AB0AB /* SPPopUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPopUpButton.h; sourceTree = "<group>"; };
-		B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPopUpButton.m; sourceTree = "<group>"; };
 		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
 		B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerConnection.xpc"; sourceTree = "<group>"; };
@@ -539,6 +527,7 @@
 		B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProcessInfo+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
+		B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Simplenote.swift"; sourceTree = "<group>"; };
 		B5E196C0230F5F5300F5658A /* SPCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = "<group>"; };
 		B5E96B641BDE732500D707F5 /* LoginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
 		B5E96B651BDE732500D707F5 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
@@ -551,8 +540,6 @@
 		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
-		E223B9A7178F20FF007E0272 /* SPButtonNoBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPButtonNoBackground.h; sourceTree = "<group>"; };
-		E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPButtonNoBackground.m; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -821,8 +808,6 @@
 				46CB82FA17B2D7EB00A8736D /* NSString+Styling.m */,
 				71DCEBE5152E2ED1002744C0 /* NSMutableAttributedString+Styling.h */,
 				71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */,
-				46558BB41793AF4B009CD695 /* NSImage+Colorize.h */,
-				46558BB51793AF4B009CD695 /* NSImage+Colorize.m */,
 				B5FA82A21B977E8300082296 /* NSView+Simplenote.h */,
 				B5FA82A31B977E8300082296 /* NSView+Simplenote.m */,
 				B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */,
@@ -864,8 +849,6 @@
 			children = (
 				7199A42F14D8FD1C00B903A8 /* SPToolbarView.h */,
 				7199A43014D8FD1C00B903A8 /* SPToolbarView.m */,
-				E223B9A7178F20FF007E0272 /* SPButtonNoBackground.h */,
-				E223B9A8178F20FF007E0272 /* SPButtonNoBackground.m */,
 				712DC91A1531FE2F0033CE85 /* SPTokenField.h */,
 				712DC91B1531FE2F0033CE85 /* SPTokenField.m */,
 				714BA66114D37C1F00A6CCC1 /* SPTableRowView.h */,
@@ -888,10 +871,6 @@
 				46EEA3C617B2FEA500914D1A /* SPTextView.m */,
 				B54EB18E1A3F683D00D472B3 /* SPWindow.h */,
 				B54EB18F1A3F683D00D472B3 /* SPWindow.m */,
-				B5A4EF2D1AEE76B8007AB0AB /* SPPopUpButtonCell.h */,
-				B5A4EF2E1AEE76B8007AB0AB /* SPPopUpButtonCell.m */,
-				B5A4EF311AEEA03D007AB0AB /* SPPopUpButton.h */,
-				B5A4EF321AEEA03D007AB0AB /* SPPopUpButton.m */,
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 			);
@@ -937,6 +916,7 @@
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
+				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
@@ -1511,6 +1491,7 @@
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
+				B5E0863B2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
 				375D293A21E033D1007AB25A /* stack.c in Sources */,
 				B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
@@ -1528,7 +1509,6 @@
 				71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */,
 				71D83D7314D75C0A00A25E69 /* SPTagCellView.m in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
-				B5A4EF331AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
@@ -1564,15 +1544,12 @@
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
 				46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */,
-				E223B9A9178F20FF007E0272 /* SPButtonNoBackground.m in Sources */,
-				46558BB61793AF4B009CD695 /* NSImage+Colorize.m in Sources */,
 				46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */,
 				B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				46DD162F17A1E9C10093678C /* SPTagTextField.m in Sources */,
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				46F4EAB217B1A5F800697EAD /* SPSplitView.m in Sources */,
-				B5A4EF2F1AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
 				46EEA3C317B2DC7200914D1A /* NSString+Styling.m in Sources */,
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */,
@@ -1617,6 +1594,7 @@
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
+				B5E0863C2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				466FFEB017CC10A800399652 /* SPGradientView.m in Sources */,
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
 				B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
@@ -1636,7 +1614,6 @@
 				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
-				B5A4EF341AEEA03D007AB0AB /* SPPopUpButton.m in Sources */,
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
@@ -1670,15 +1647,12 @@
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
-				466FFED017CC10A800399652 /* SPButtonNoBackground.m in Sources */,
-				466FFED117CC10A800399652 /* NSImage+Colorize.m in Sources */,
 				466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				466FFED317CC10A800399652 /* SPTagTextField.m in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
 				375D293921E033D1007AB25A /* escape.c in Sources */,
 				466FFED517CC10A800399652 /* SPSplitView.m in Sources */,
-				B5A4EF301AEE76B8007AB0AB /* SPPopUpButtonCell.m in Sources */,
 				466FFED617CC10A800399652 /* NSString+Styling.m in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,
