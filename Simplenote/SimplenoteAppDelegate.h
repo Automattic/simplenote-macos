@@ -32,7 +32,6 @@
 @property (strong, nonatomic, readonly) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic, readonly) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic, readonly) IBOutlet NoteEditorViewController *noteEditorViewController;
-@property (strong, nonatomic, readonly) IBOutlet SPToolbarView            *toolbar;
 
 @property (strong, nonatomic, readonly) Simperium                         *simperium;
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator      *persistentStoreCoordinator;

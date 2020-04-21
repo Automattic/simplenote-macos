@@ -1103,7 +1103,6 @@
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
                 <outlet property="textViewParent" destination="559" id="1198"/>
                 <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
-                <outlet property="toolbar" destination="914" id="1386"/>
                 <outlet property="window" destination="371" id="748"/>
             </connections>
         </customObject>
