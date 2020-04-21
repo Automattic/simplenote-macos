@@ -686,6 +686,7 @@
 				26F592541408BF75003A5174 /* NotesArrayController.m */,
 				71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */,
 				71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */,
+				B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */,
 				46558BFF17947E77009CD695 /* NoteEditorBottomBar.h */,
 				46558C0017947E77009CD695 /* NoteEditorBottomBar.m */,
 				46EF5196177C4ECC00A139E0 /* SPApplication.h */,
@@ -695,7 +696,6 @@
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
-				B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */,
 			);
 			path = Simplenote;
 			sourceTree = "<group>";
