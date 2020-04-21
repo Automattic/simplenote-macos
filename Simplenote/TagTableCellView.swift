@@ -122,7 +122,6 @@ private extension TagTableCellView {
         let targetColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
 
         iconImageView.image = iconImageView.image?.tinted(with: targetColor)
-        iconImageView.image = iconImageView.image?.tinted(with: targetColor)
 
         nameTextField.isSelected = selected
         nameTextField.textColor = targetColor
