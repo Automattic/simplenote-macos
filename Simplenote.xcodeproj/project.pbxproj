@@ -239,6 +239,8 @@
 		B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
+		B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D58879244F890100345916 /* NSButton+Simplenote.swift */; };
+		B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D58879244F890100345916 /* NSButton+Simplenote.swift */; };
 		B5E086282448B57200DEF476 /* HeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086272448B57200DEF476 /* HeaderTableCellView.swift */; };
 		B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086272448B57200DEF476 /* HeaderTableCellView.swift */; };
 		B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */; };
@@ -523,6 +525,7 @@
 		B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProcessInfo+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
+		B5D58879244F890100345916 /* NSButton+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Simplenote.swift"; sourceTree = "<group>"; };
 		B5E086272448B57200DEF476 /* HeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableCellView.swift; sourceTree = "<group>"; };
 		B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableViewCell+Simplenote.swift"; sourceTree = "<group>"; };
 		B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageName+Simplenote.swift"; sourceTree = "<group>"; };
@@ -927,6 +930,7 @@
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
+				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1537,6 +1541,7 @@
 				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
+				B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */,
 				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
@@ -1642,6 +1647,7 @@
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */,
+				B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */,
 				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
