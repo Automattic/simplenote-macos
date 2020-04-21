@@ -8,8 +8,7 @@
 
 #import "SPToolbarView.h"
 #import "TagListViewController.h"
-#import "VSThemeManager.h"
-#import "VSTheme+Simplenote.h"
+#import "NoteEditorViewController.h"
 
 
 @implementation SPToolbarView
@@ -31,15 +30,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
-}
-
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-
-    if (_drawsBackground) {
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] setFill];
-        NSRectFill(dirtyRect);
-    }
 }
 
 - (void)enableButtons:(BOOL)enabled {

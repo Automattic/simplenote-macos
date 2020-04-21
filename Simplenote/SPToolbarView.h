@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "NoteListViewController.h"
+
 
 @interface SPToolbarView : NSView
 {
@@ -20,6 +20,5 @@
 }
 
 @property (nonatomic, strong) IBOutlet NSPopUpButton    *actionButton;
-@property (nonatomic, assign) BOOL                      drawsBackground;
 
 @end
