@@ -34,6 +34,7 @@
 
 @property (strong, nonatomic) IBOutlet SPTableView      *tableView;
 @property (strong, nonatomic) IBOutlet NSSearchField    *searchField;
+@property (strong, nonatomic) IBOutlet NSButton         *addNoteButton;
 @property (assign, nonatomic) BOOL                      searching;
 
 - (void)loadNotes;

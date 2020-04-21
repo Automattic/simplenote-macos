@@ -18,8 +18,6 @@
     IBOutlet NSButton *shareButton;
     IBOutlet NSButton *previewButton;
     IBOutlet NSTextView *noteEditor;
-    IBOutlet NSBox *searchBox;
-    IBOutlet NSSearchField *searchField;
 }
 
 @property (nonatomic, strong) IBOutlet NSPopUpButton    *actionButton;
