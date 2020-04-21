@@ -54,6 +54,5 @@
 - (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
-- (void)applyStyle;
 
 @end

@@ -39,6 +39,16 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteEmptyStateTextColor: NSColor {
+        NSColor(lightColor: .gray5, darkColor: .darkGray3)
+    }
+
+    @objc
+    static var simplenoteSearchBarTextColor: NSColor {
+        NSColor(lightColor: .black, darkColor: .white)
+    }
+
+    @objc
     static var simplenoteTagListRegularTextColor: NSColor {
         NSColor(lightColor: .gray80, darkColor: .white)
     }

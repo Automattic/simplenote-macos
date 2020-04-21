@@ -486,6 +486,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     [self.view.window makeFirstResponder:self.searchField];
 }
 
+
 #pragma mark - NSMenuValidation delegate
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
@@ -495,26 +496,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 }
 
 
-#pragma mark - Theme
-
-- (void)applyStyle
-{
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    self.statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
-
-    [self.addNoteButton tintImageWithColor:NSColor.simplenoteActionButtonTintColor];
-
-    [self reloadDataAndPreserveSelection];
-
-    // Dark theme finally well supported in Mojave! No tweaks needed.
-    if (@available(macOS 10.14, *)) {
-        return;
-    }
-
-    NSAppearanceName name = theme.isDark ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
-    self.searchField.appearance = [NSAppearance appearanceNamed:name];
-    self.searchField.textColor = [theme colorForKey:@"textColor"];
-}
+#pragma mark - IBActions
 
 - (IBAction)filterNotes:(id)sender
 {
