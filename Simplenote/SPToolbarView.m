@@ -39,8 +39,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trashDidEmpty:) name:kDidEmptyTrash object:nil];
-
-    [self applyStyle];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -90,22 +88,6 @@
 
 - (void)trashDidEmpty:(NSNotification *)notification {
     [trashButton setEnabled:NO];
-}
-
-#pragma mark - Theme
-
-- (void)applyStyle
-{
-    if (@available(macOS 10.14, *)) {
-        // Dark theme finally well supported in Mojave! No tweaks needed.
-        return;
-    }
-
-    [searchField setTextColor:[self.theme colorForKey:@"textColor"]];
-
-    BOOL isDarkMode = [[VSThemeManager sharedManager] isDarkMode];
-    NSAppearanceName name = isDarkMode ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
-    searchField.appearance = [NSAppearance appearanceNamed:name];
 }
 
 @end

@@ -25,6 +25,4 @@
 @property (nonatomic, strong) IBOutlet NSPopUpButton    *actionButton;
 @property (nonatomic, assign) BOOL                      drawsBackground;
 
-- (void)applyStyle;
-
 @end

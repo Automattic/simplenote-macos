@@ -778,7 +778,6 @@
     [backgroundView setNeedsDisplay:YES];
 
     [self.splitView applyStyle];
-    [self.toolbar applyStyle];
     [self.toolbar setNeedsDisplay:YES];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];

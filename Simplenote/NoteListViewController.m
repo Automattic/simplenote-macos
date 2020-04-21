@@ -509,8 +509,17 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
-    
+
     [self reloadDataAndPreserveSelection];
+
+    // Dark theme finally well supported in Mojave! No tweaks needed.
+    if (@available(macOS 10.14, *)) {
+        return;
+    }
+
+    NSAppearanceName name = theme.isDark ? NSAppearanceNameVibrantDark : NSAppearanceNameAqua;
+    self.searchField.appearance = [NSAppearance appearanceNamed:name];
+    self.searchField.textColor = [theme colorForKey:@"textColor"];
 }
 
 - (IBAction)filterNotes:(id)sender {
