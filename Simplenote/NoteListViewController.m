@@ -143,7 +143,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     }
 
     [self.noteEditorViewController displayNote:nil];
-    [statusField setHidden:NO];
+    [self.statusField setHidden:NO];
 }
 
 - (void)setWaitingForIndex:(BOOL)waiting
@@ -253,7 +253,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         [self selectRow:0];
     }
     
-    [statusField setHidden:numNotes > 0];
+    self.statusField.hidden = numNotes > 0;
     
     if (numNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
@@ -370,7 +370,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     }
 
     [self.noteEditorViewController displayNote:nil];
-    [statusField setHidden:NO];
+    [self.statusField setHidden:NO];
 }
 
 - (void)willAddNewNote:(NSNotification *)notification
@@ -498,7 +498,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)applyStyle
 {
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
+    self.statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
 
     [self.addNoteButton tintImageWithColor:NSColor.simplenoteActionButtonTintColor];
 

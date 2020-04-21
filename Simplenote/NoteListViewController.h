@@ -21,7 +21,6 @@
 {
     IBOutlet NSScrollView *scrollView;
     IBOutlet NSArrayController *arrayController;
-    IBOutlet NSTextField *statusField;
     IBOutlet NSMenu *sortMenu;
     IBOutlet NSMenu *previewLinesMenu;
     IBOutlet NSMenuItem *previewLinesMenuItem;
@@ -30,6 +29,7 @@
     CGFloat rowHeight;
 }
 
+@property (strong, nonatomic) IBOutlet NSTextField          *statusField;
 @property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (strong, nonatomic) IBOutlet SPTableView          *tableView;
 @property (strong, nonatomic) IBOutlet NSSearchField        *searchField;
