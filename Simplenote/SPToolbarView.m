@@ -7,20 +7,10 @@
 //
 
 #import "SPToolbarView.h"
-#import "NoteListViewController.h"
 #import "TagListViewController.h"
-#import "SimplenoteAppDelegate.h"
-#import "Note.h"
-#import "NoteEditorBottomBar.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
-@import Simperium_OSX;
 
-#define kSearchCollapsedMargin  18
-#define kSearchCollapsedWidth   76
-#define kSearchExpandedMargin   141
-#define kSearchExpandedWidth    79
-#define kFocusModeDuration      0.8f
 
 @implementation SPToolbarView
 
@@ -69,11 +59,6 @@
     [restoreButton setEnabled:enabled];
     [historyButton setEnabled:enabled];
     [previewButton setEnabled:enabled];
-}
-
-- (void)configureForFocusMode:(BOOL)enabled {
-    [searchField setHidden:enabled];
-    [addButton setHidden:enabled];
 }
 
 - (void)noNoteLoaded:(id)sender {
