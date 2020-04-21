@@ -34,7 +34,6 @@ class TagTableCellView: NSTableCellView {
             guard oldValue != selected else {
                 return
             }
-
             refreshStyle()
         }
     }
