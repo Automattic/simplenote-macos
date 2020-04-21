@@ -50,3 +50,13 @@ extension TagListViewController {
         return tagView
     }
 }
+
+
+// MARK: - TextFieldDelegate
+//
+extension TagListViewController: TextFieldDelegate {
+
+    func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
+        !menuShowing
+    }
+}

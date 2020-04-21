@@ -549,11 +549,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 #pragma mark - NSTextField delegate
 
-- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
-{
-    return !self.menuShowing;
-}
-
 - (void)controlTextDidBeginEditing:(NSNotification *)notification
 {
     NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
