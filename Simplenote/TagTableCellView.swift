@@ -122,7 +122,7 @@ private extension TagTableCellView {
     }
 
     func refreshStyle() {
-        let tintColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
+        let tintColor: NSColor = selected ? .simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
 
         iconImageView.tintImage(color: tintColor)
         nameTextField.isSelected = selected
