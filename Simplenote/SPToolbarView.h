@@ -16,7 +16,6 @@
     IBOutlet NSButton *restoreButton;
     IBOutlet NSButton *shareButton;
     IBOutlet NSButton *previewButton;
-    IBOutlet NSTextView *noteEditor;
 }
 
 @property (nonatomic, strong) IBOutlet NSPopUpButton    *actionButton;

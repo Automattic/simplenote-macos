@@ -55,8 +55,6 @@
     [historyButton setHidden:trash];
     [trashButton setHidden:trash];
     [restoreButton setHidden:!trash];
-    [noteEditor setEditable:!trash];
-    [noteEditor setSelectable:!trash];
 }
 
 - (void)trashDidLoad:(NSNotification *)notification {
