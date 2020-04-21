@@ -202,6 +202,8 @@
 		B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
+		B5A5AF79244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */; };
+		B5A5AF7A244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */; };
 		B5A89195231ECB3C0007EDCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B5A8918A231ECB3C0007EDCB /* LICENSE */; };
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
@@ -495,6 +497,7 @@
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
 		B59EBAA019A6884F00DBC657 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = External/HockeySDK.framework; sourceTree = "<group>"; };
 		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
+		B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteListViewController+Swift.swift"; sourceTree = "<group>"; };
 		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
 		B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerConnection.xpc"; sourceTree = "<group>"; };
@@ -675,6 +678,7 @@
 				B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */,
 				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
 				714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */,
+				B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */,
 				26F592531408BF75003A5174 /* NotesArrayController.h */,
 				26F592541408BF75003A5174 /* NotesArrayController.m */,
 				71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */,
@@ -1511,6 +1515,7 @@
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
 				375D293621E033D1007AB25A /* document.c in Sources */,
 				71D83D7014D744FB00A25E69 /* SPNoteCellView.m in Sources */,
+				B5A5AF79244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
@@ -1617,6 +1622,7 @@
 				375D293721E033D1007AB25A /* document.c in Sources */,
 				466FFEB717CC10A800399652 /* SPToolbarView.m in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
+				B5A5AF7A244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
 				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5E086332448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,

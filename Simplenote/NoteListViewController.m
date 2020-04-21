@@ -356,11 +356,13 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     [SPTracker trackListTrashPressed];
     self.viewingTrash = YES;
+    [self refreshEnabledActions];
 }
 
 - (void)willFinishViewingTrash:(NSNotification *)notification
 {
     self.viewingTrash = NO;
+    [self refreshEnabledActions];
 }
 
 - (void)didEmptyTrash:(NSNotification *)notification
