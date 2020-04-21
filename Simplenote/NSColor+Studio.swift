@@ -34,6 +34,11 @@ extension NSColor {
 extension NSColor {
 
     @objc
+    static var simplenoteActionButtonTintColor: NSColor {
+        NSColor(lightColor: .blue50, darkColor: .blue30)
+    }
+
+    @objc
     static var simplenoteTagListRegularTextColor: NSColor {
         NSColor(lightColor: .gray80, darkColor: .white)
     }
