@@ -30,17 +30,10 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 @implementation NoteListViewController
 
-- (void)awakeFromNib
+- (void)viewDidLoad
 {
-    [super awakeFromNib];
-    
-    // awakeFromNib is called each time a cell is created; work around that (must be careful
-    // not to register for notifications multiple times)
-    // http://stackoverflow.com/a/7187492/1379066
-    if (awake) {
-        return;
-    }
-    
+    [super viewDidLoad];
+
     oldTags = @"";
 
     // Set the active preferences in the menu
@@ -78,8 +71,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
                                              selector: @selector(willAddNewNote:)
                                                  name: SPWillAddNewNoteNotificationName
                                                object: nil];
-    
-    awake = YES;
 
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];

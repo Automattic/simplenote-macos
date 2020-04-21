@@ -29,7 +29,6 @@
     NSString *oldTags;
     BOOL preserveSelection;
     BOOL viewingTrash;
-    BOOL awake;
     CGFloat rowHeight;
 }
 
