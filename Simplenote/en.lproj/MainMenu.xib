@@ -126,10 +126,6 @@
                         <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
                     </connections>
                 </button>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="1732">
-                    <rect key="frame" x="455" y="22" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                </progressIndicator>
             </subviews>
             <connections>
                 <outlet property="actionButton" destination="1601" id="gdu-Es-X6I"/>
@@ -979,12 +975,17 @@
                                             <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
                                         </textFieldCell>
                                     </textField>
+                                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1732">
+                                        <rect key="frame" x="127" y="308" width="16" height="16"/>
+                                    </progressIndicator>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="R5E-ls-WXI" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="2oM-hX-68u"/>
                                     <constraint firstItem="560" firstAttribute="top" secondItem="R5E-ls-WXI" secondAttribute="bottom" id="3ff-OZ-Xhg"/>
+                                    <constraint firstItem="1732" firstAttribute="centerX" secondItem="558" secondAttribute="centerX" id="5aZ-Pe-Gyu"/>
                                     <constraint firstAttribute="trailing" secondItem="R5E-ls-WXI" secondAttribute="trailing" id="9ZK-Zw-uGl"/>
                                     <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
+                                    <constraint firstItem="1732" firstAttribute="top" secondItem="1766" secondAttribute="bottom" constant="15" id="PvY-Xw-rqH"/>
                                     <constraint firstItem="560" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="Zi0-eC-oVT"/>
                                     <constraint firstItem="1766" firstAttribute="leading" secondItem="558" secondAttribute="leading" constant="12" id="cPD-Ix-UuZ"/>
                                     <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
@@ -1014,7 +1015,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="508" height="538"/>
+                                                    <size key="minSize" width="493" height="538"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
