@@ -355,12 +355,12 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)didBeginViewingTrash:(NSNotification *)notification
 {
     [SPTracker trackListTrashPressed];
-    viewingTrash = YES;
+    self.viewingTrash = YES;
 }
 
 - (void)willFinishViewingTrash:(NSNotification *)notification
 {
-    viewingTrash = NO;
+    self.viewingTrash = NO;
 }
 
 - (void)didEmptyTrash:(NSNotification *)notification
@@ -489,9 +489,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
     // Disable menu items when viewing trash
-    return !viewingTrash;
+    return !self.viewingTrash;
 }
-
 
 
 #pragma mark - Theme
@@ -500,6 +499,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     VSTheme *theme = [[VSThemeManager sharedManager] theme];
     statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
+
+    [self.addNoteButton tintImageWithColor:NSColor.simplenoteActionButtonTintColor];
 
     [self reloadDataAndPreserveSelection];
 
@@ -513,11 +514,12 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     self.searchField.textColor = [theme colorForKey:@"textColor"];
 }
 
-- (IBAction)filterNotes:(id)sender {
+- (IBAction)filterNotes:(id)sender
+{
     NSString *searchText = [self.searchField stringValue];
     
-    NSMutableArray *predicateList = [[NSMutableArray alloc] init];
-    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", [NSNumber numberWithBool:viewingTrash]]];
+    NSMutableArray *predicateList = [NSMutableArray new];
+    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", @(self.viewingTrash)]];
     
     NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
     if (selectedTag.length > 0) {

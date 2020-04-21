@@ -28,7 +28,6 @@
     IBOutlet NSMenuItem *previewLinesMenuItem;
     NSString *oldTags;
     BOOL preserveSelection;
-    BOOL viewingTrash;
     CGFloat rowHeight;
 }
 
@@ -36,6 +35,7 @@
 @property (strong, nonatomic) IBOutlet NSSearchField    *searchField;
 @property (strong, nonatomic) IBOutlet NSButton         *addNoteButton;
 @property (assign, nonatomic) BOOL                      searching;
+@property (assign, nonatomic) BOOL                      viewingTrash;
 
 - (void)loadNotes;
 - (void)reset;
