@@ -17,15 +17,7 @@ class TagTableCellView: NSTableCellView {
 
     /// Indicates if the mouse was last seen inside the receiver's bounds
     ///
-    private(set) var mouseInside = false {
-        didSet {
-            guard oldValue != mouseInside else {
-                return
-            }
-
-            refreshStyle()
-        }
-    }
+    private(set) var mouseInside = false
 
     /// Indicates if the receiver's associated NSTableRowView is *selected*
     ///
@@ -110,14 +102,12 @@ private extension TagTableCellView {
     }
 
     func refreshStyle() {
-        let targetAlpha = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0
         let targetColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
+
         imageView?.wantsLayer = true
-        imageView?.alphaValue = targetAlpha
         imageView?.image = imageView?.image?.tinted(with: targetColor)
 
         textField?.wantsLayer = true
-        textField?.alphaValue = targetAlpha
         textField?.textColor = targetColor
     }
 }

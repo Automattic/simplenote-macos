@@ -12,16 +12,16 @@
 @class NoteListViewController;
 
 @interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination> {
-    IBOutlet NSBox *tagBox;
     IBOutlet NSMenu *tagDropdownMenu;
     IBOutlet NSMenu *trashDropdownMenu;
     IBOutlet NSMenu *findMenu;
     IBOutlet NSMenuItem *tagSortMenuItem;
-    IBOutlet NSArrayController *notesArrayController;
 }
 
-@property (nonatomic, strong) IBOutlet NSTableView *tableView;
-@property (nonatomic, strong) NSArray *tagArray;
+@property (nonatomic, strong) IBOutlet NSBox                *tagBox;
+@property (nonatomic, strong) IBOutlet NSTableView          *tableView;
+@property (nonatomic, strong) IBOutlet NSArrayController    *notesArrayController;
+@property (nonatomic, strong) NSArray                       *tagArray;
 
 extern NSString * const kTagsDidLoad;
 extern NSString * const kTagUpdated;
