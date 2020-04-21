@@ -49,12 +49,15 @@ class TagTableCellView: NSTableCellView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupSubviews()
-        refreshStyle()
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         reset()
+    }
+
+    override func viewWillDraw() {
+        super.viewWillDraw()
         refreshStyle()
     }
 }
@@ -120,8 +123,8 @@ private extension TagTableCellView {
 
     func refreshStyle() {
         let tintColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
-        iconImageView.tintImage(color: tintColor)
 
+        iconImageView.tintImage(color: tintColor)
         nameTextField.isSelected = selected
     }
 }
