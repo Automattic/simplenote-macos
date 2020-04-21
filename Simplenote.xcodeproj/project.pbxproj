@@ -109,7 +109,6 @@
 		466FFECE17CC10A800399652 /* SPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EF5197177C4ECC00A139E0 /* SPApplication.m */; };
 		466FFECF17CC10A800399652 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF73061782C6B200FC2B5C /* TagListViewController.m */; };
 		466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 46558C0017947E77009CD695 /* NoteEditorBottomBar.m */; };
-		466FFED317CC10A800399652 /* SPTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD162E17A1E9C10093678C /* SPTagTextField.m */; };
 		466FFED417CC10A800399652 /* SPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F0E66217A32269005BB4D1 /* SPTableView.m */; };
 		466FFED517CC10A800399652 /* SPSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F4EAB117B1A5F800697EAD /* SPSplitView.m */; };
 		466FFED617CC10A800399652 /* NSString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CB82FA17B2D7EB00A8736D /* NSString+Styling.m */; };
@@ -125,7 +124,6 @@
 		466FFF1717CC10A800399652 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46F0E66517A3300B005BB4D1 /* Localizable.strings */; };
 		469512CA17CC38BA0014A2BF /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CF73061782C6B200FC2B5C /* TagListViewController.m */; };
-		46DD162F17A1E9C10093678C /* SPTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD162E17A1E9C10093678C /* SPTagTextField.m */; };
 		46EEA3C317B2DC7200914D1A /* NSString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CB82FA17B2D7EB00A8736D /* NSString+Styling.m */; };
 		46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EEA3C617B2FEA500914D1A /* SPTextView.m */; };
 		46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EF5197177C4ECC00A139E0 /* SPApplication.m */; };
@@ -419,8 +417,6 @@
 		46CB82FA17B2D7EB00A8736D /* NSString+Styling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Styling.m"; sourceTree = "<group>"; };
 		46CF73051782C6B200FC2B5C /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
 		46CF73061782C6B200FC2B5C /* TagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListViewController.m; sourceTree = "<group>"; };
-		46DD162D17A1E9C10093678C /* SPTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTagTextField.h; sourceTree = "<group>"; };
-		46DD162E17A1E9C10093678C /* SPTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTagTextField.m; sourceTree = "<group>"; };
 		46EEA3C517B2FEA500914D1A /* SPTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTextView.h; sourceTree = "<group>"; };
 		46EEA3C617B2FEA500914D1A /* SPTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTextView.m; sourceTree = "<group>"; };
 		46EF5196177C4ECC00A139E0 /* SPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPApplication.h; sourceTree = "<group>"; };
@@ -861,8 +857,6 @@
 				714BA65714D3264200A6CCC1 /* SPGradientView.m */,
 				714BA65914D32DCB00A6CCC1 /* SPBackgroundView.h */,
 				714BA65A14D32DCB00A6CCC1 /* SPBackgroundView.m */,
-				46DD162D17A1E9C10093678C /* SPTagTextField.h */,
-				46DD162E17A1E9C10093678C /* SPTagTextField.m */,
 				46F0E66117A32269005BB4D1 /* SPTableView.h */,
 				46F0E66217A32269005BB4D1 /* SPTableView.m */,
 				46F4EAB017B1A5F800697EAD /* SPSplitView.h */,
@@ -1551,7 +1545,6 @@
 				46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */,
 				46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */,
 				B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
-				46DD162F17A1E9C10093678C /* SPTagTextField.m in Sources */,
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				46F4EAB217B1A5F800697EAD /* SPSplitView.m in Sources */,
@@ -1656,7 +1649,6 @@
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
 				466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
-				466FFED317CC10A800399652 /* SPTagTextField.m in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
 				375D293921E033D1007AB25A /* escape.c in Sources */,
 				466FFED517CC10A800399652 /* SPSplitView.m in Sources */,
