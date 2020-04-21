@@ -11,7 +11,6 @@
 
 @interface SPToolbarView : NSView
 {
-    IBOutlet NSButton *addButton;
     IBOutlet NSButton *historyButton;
     IBOutlet NSButton *trashButton;
     IBOutlet NSButton *restoreButton;

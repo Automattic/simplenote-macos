@@ -14,17 +14,9 @@
 
 @implementation SPToolbarView
 
-- (VSTheme *)theme {
-
-    return [[VSThemeManager sharedManager] theme];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    NSButtonCell *addNoteCell = [addButton cell];
-    [addNoteCell setHighlightsBy:NSContentsCellMask];
-    
     NSButtonCell *shareNoteCell = [self.actionButton cell];
     [shareNoteCell setHighlightsBy:NSContentsCellMask];
     
