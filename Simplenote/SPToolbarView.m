@@ -62,7 +62,8 @@
 - (void)configureForTrash:(BOOL)trash {
     [self.actionButton setEnabled:!trash];
     [shareButton setHidden:trash];
-    [addButton setEnabled:!trash];
+// TODO: Fixme
+//    [addButton setEnabled:!trash];
     [historyButton setHidden:trash];
     [trashButton setHidden:trash];
     [restoreButton setHidden:!trash];
