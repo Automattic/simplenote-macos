@@ -838,9 +838,8 @@
                                 <rect key="frame" x="121" y="0.0" width="270" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view id="R5E-ls-WXI" userLabel="SearchView">
+                                    <view translatesAutoresizingMaskIntoConstraints="NO" id="R5E-ls-WXI" userLabel="SearchView">
                                         <rect key="frame" x="0.0" y="526" width="270" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-wS-KTc" userLabel="SearchField">
                                                 <rect key="frame" x="12" y="14" width="202" height="28"/>
@@ -868,6 +867,7 @@
                                         <constraints>
                                             <constraint firstItem="987" firstAttribute="centerY" secondItem="zSa-wS-KTc" secondAttribute="centerY" id="6It-ew-rYg"/>
                                             <constraint firstItem="zSa-wS-KTc" firstAttribute="top" secondItem="R5E-ls-WXI" secondAttribute="top" constant="14" id="JXf-hI-aj6"/>
+                                            <constraint firstAttribute="height" constant="56" id="Uit-II-RdA"/>
                                             <constraint firstAttribute="bottom" secondItem="zSa-wS-KTc" secondAttribute="bottom" constant="14" id="Y55-u5-pm9"/>
                                             <constraint firstItem="987" firstAttribute="leading" secondItem="zSa-wS-KTc" secondAttribute="trailing" constant="16" id="frX-8E-CX1"/>
                                             <constraint firstAttribute="trailing" secondItem="987" secondAttribute="trailing" constant="16" id="qtg-G5-0js"/>
@@ -875,13 +875,13 @@
                                         </constraints>
                                     </view>
                                     <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="560">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="526"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="526"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="526"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -963,7 +963,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="564">
-                                            <rect key="frame" x="254" y="0.0" width="16" height="582"/>
+                                            <rect key="frame" x="254" y="0.0" width="16" height="526"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <connections>
@@ -980,13 +980,16 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="560" firstAttribute="top" secondItem="558" secondAttribute="top" id="Ge2-ST-RkZ"/>
+                                    <constraint firstItem="R5E-ls-WXI" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="2oM-hX-68u"/>
+                                    <constraint firstItem="560" firstAttribute="top" secondItem="R5E-ls-WXI" secondAttribute="bottom" id="3ff-OZ-Xhg"/>
+                                    <constraint firstAttribute="trailing" secondItem="R5E-ls-WXI" secondAttribute="trailing" id="9ZK-Zw-uGl"/>
                                     <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
                                     <constraint firstItem="560" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="Zi0-eC-oVT"/>
                                     <constraint firstItem="1766" firstAttribute="leading" secondItem="558" secondAttribute="leading" constant="12" id="cPD-Ix-UuZ"/>
                                     <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
                                     <constraint firstItem="1766" firstAttribute="top" secondItem="558" secondAttribute="top" constant="220" id="eS2-b5-fRK"/>
                                     <constraint firstAttribute="bottom" secondItem="560" secondAttribute="bottom" id="niy-wS-lMG"/>
+                                    <constraint firstItem="R5E-ls-WXI" firstAttribute="top" secondItem="558" secondAttribute="top" id="zUD-Hd-qwk"/>
                                 </constraints>
                             </customView>
                             <customView focusRingType="none" id="559">
