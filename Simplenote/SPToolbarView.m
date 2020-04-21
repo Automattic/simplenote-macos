@@ -60,18 +60,6 @@
         [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] setFill];
         NSRectFill(dirtyRect);
     }
-    
-
-    if (_drawsSeparator) {
-        CGContextRef context    = [[NSGraphicsContext currentContext] graphicsPort];
-        NSRect separator        = self.bounds;
-        separator.size.height   = 1.0f;
-        
-        CGContextBeginPath(context);
-
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"] setFill];
-        CGContextFillRect(context, separator);
-    }    
 }
 
 - (void)enableButtons:(BOOL)enabled {
@@ -86,7 +74,6 @@
 - (void)configureForFocusMode:(BOOL)enabled {
     [searchField setHidden:enabled];
     [addButton setHidden:enabled];
-    [splitter setHidden:enabled];
 }
 
 - (void)noNoteLoaded:(id)sender {
@@ -120,36 +107,10 @@
     [trashButton setEnabled:NO];
 }
 
-- (void)moveView:(NSView *)view x:(CGFloat)x y:(CGFloat)y {
-    [view setFrame:NSMakeRect(view.frame.origin.x + x, view.frame.origin.y + y, view.frame.size.width, view.frame.size.height)];
-    [view setNeedsLayout:YES];
-}
-
-- (void)setSplitPositionLeft:(CGFloat)left right:(CGFloat)right {
-    CGFloat distance = right - splitter.frame.origin.x;
-    if (distance == 0) {
-        return;
-    }
-
-    BOOL collapsed = left <= 1;
-    CGRect searchFrame = searchBox.frame;
-    searchFrame.origin.x = collapsed ? kSearchCollapsedMargin : kSearchExpandedMargin;
-    CGFloat searchFrameAdjustment = collapsed ? kSearchCollapsedWidth : kSearchExpandedWidth;
-    searchFrame.size.width = tableViewController.view.frame.size.width - searchFrameAdjustment;
-    [searchBox setFrame: searchFrame];
-    
-    [self moveView:addButton x:distance y:0];
-    [self moveView:splitter x:distance y:0];
-}
-
 #pragma mark - Theme
 
-- (void)applyStyle {
-    [self applySearchBoxStyle];
-    [splitter setFillColor:[self.theme colorForKey:@"dividerColor"]];
-}
-
-- (void)applySearchBoxStyle {
+- (void)applyStyle
+{
     if (@available(macOS 10.14, *)) {
         // Dark theme finally well supported in Mojave! No tweaks needed.
         return;
