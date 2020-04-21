@@ -7,6 +7,14 @@ import AppKit
 @objcMembers
 class TagTableCellView: NSTableCellView {
 
+    /// Icon rendered on the left hand side
+    ///
+    @IBOutlet var iconImageView: NSImageView!
+
+    /// We really can't use the default `.textField` property
+    ///
+    @IBOutlet var nameTextField: TextField!
+
     /// Workaround: In AppKit, TableView Cell Selection works at the Row level
     ///
     override var backgroundStyle: NSView.BackgroundStyle {
@@ -48,6 +56,7 @@ class TagTableCellView: NSTableCellView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupSubviews()
         refreshStyle()
     }
 
@@ -102,22 +111,29 @@ private extension TagTableCellView {
 //
 private extension TagTableCellView {
 
+    func setupSubviews() {
+        iconImageView.wantsLayer = true
+        nameTextField.wantsLayer = true
+        nameTextField.textRegularColor = .simplenoteTagListRegularTextColor
+        nameTextField.textSelectionColor = .simplenoteTagListSelectedTextColor
+        nameTextField.textEditionColor = .simplenoteTagListEditingTextColor
+    }
+
     func reset() {
         mouseInside = false
         selected = false
-        imageView?.isHidden = true
-        textField?.isEditable = false
+        iconImageView.isHidden = true
+        nameTextField.isEditable = false
     }
 
     func refreshStyle() {
         let targetAlpha = !selected && mouseInside ? AppKitConstants.alpha0_6 : AppKitConstants.alpha1_0
         let targetColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
-        imageView?.wantsLayer = true
-        imageView?.alphaValue = targetAlpha
-        imageView?.image = imageView?.image?.tinted(with: targetColor)
 
-        textField?.wantsLayer = true
-        textField?.alphaValue = targetAlpha
-        textField?.textColor = targetColor
+        iconImageView.alphaValue = targetAlpha
+        iconImageView.image = iconImageView.image?.tinted(with: targetColor)
+
+        nameTextField.alphaValue = targetAlpha
+        nameTextField.isSelected = selected
     }
 }
