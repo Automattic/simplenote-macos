@@ -42,9 +42,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     int previewLinesPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kPreviewLinesPref] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
-    [progressIndicator setWantsLayer:YES];
-    [progressIndicator setAlphaValue:0.5];
-    [progressIndicator setHidden:YES];
+    [self.progressIndicator setWantsLayer:YES];
+    [self.progressIndicator setAlphaValue:0.5];
+    [self.progressIndicator setHidden:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
@@ -149,11 +149,11 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)setWaitingForIndex:(BOOL)waiting
 {
     if (waiting) {
-        [progressIndicator setHidden:NO];
-        [progressIndicator startAnimation:nil];
+        [self.progressIndicator setHidden:NO];
+        [self.progressIndicator startAnimation:nil];
     } else {
-        [progressIndicator setHidden:YES];
-        [progressIndicator stopAnimation:nil];
+        [self.progressIndicator setHidden:YES];
+        [self.progressIndicator stopAnimation:nil];
     }
 }
 
