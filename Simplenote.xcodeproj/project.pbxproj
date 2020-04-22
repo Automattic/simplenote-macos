@@ -186,6 +186,14 @@
 		B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
 		B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */; };
+		B57CB874244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
+		B57CB875244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
+		B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */; };
+		B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */; };
+		B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */; };
+		B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */; };
+		B57CB87E244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
+		B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487F1BCDB95A005EFBBE /* SPTracker.m */; };
@@ -479,6 +487,10 @@
 		B574CA72242D552100F8D02F /* TextViewInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputHandler.swift; sourceTree = "<group>"; };
 		B579E0B21AF2946F00A07036 /* VSTheme+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VSTheme+Simplenote.h"; sourceTree = "<group>"; };
 		B579E0B31AF2946F00A07036 /* VSTheme+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VSTheme+Simplenote.m"; sourceTree = "<group>"; };
+		B57CB873244DEBC300BA7969 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Simplenote.swift"; sourceTree = "<group>"; };
+		B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationsHandler.swift; sourceTree = "<group>"; };
+		B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Simplenote.swift"; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B598487C1BCDB95A005EFBBE /* SPAutomatticTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAutomatticTracker.h; sourceTree = "<group>"; };
 		B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAutomatticTracker.m; sourceTree = "<group>"; };
@@ -651,6 +663,7 @@
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				B574CA71242D539400F8D02F /* Handlers */,
 				463774DB171F111600E2E333 /* Models */,
+				B57CB879244DEBD500BA7969 /* Settings */,
 				B56FA78D2437C650002CB9FF /* Themes */,
 				37E10E7A20B356E800864E43 /* Tools */,
 				B59848891BCDB961005EFBBE /* Trackers */,
@@ -773,10 +786,11 @@
 		37E10E7A20B356E800864E43 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F998F3EA22853C29008C2B59 /* CrashLogging.swift */,
+				B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */,
+				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
-				F998F3EA22853C29008C2B59 /* CrashLogging.swift */,
-				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -908,6 +922,7 @@
 		B51E9FE322E64473004F16B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */,
 				B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
@@ -925,6 +940,7 @@
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
+				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -961,6 +977,14 @@
 				B574CA72242D552100F8D02F /* TextViewInputHandler.swift */,
 			);
 			name = Handlers;
+			sourceTree = "<group>";
+		};
+		B57CB879244DEBD500BA7969 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B57CB873244DEBC300BA7969 /* Options.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		B59848891BCDB961005EFBBE /* Trackers */ = {
@@ -1487,6 +1511,7 @@
 				B579E0B41AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
+				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
@@ -1494,6 +1519,7 @@
 				B5E0863B2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
 				375D293A21E033D1007AB25A /* stack.c in Sources */,
+				B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294221E033D1007AB25A /* html5_blocks.c in Sources */,
 				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				714BA65814D3264200A6CCC1 /* SPGradientView.m in Sources */,
@@ -1521,6 +1547,7 @@
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
 				B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */,
+				B57CB874244DEBC300BA7969 /* Options.swift in Sources */,
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
@@ -1554,6 +1581,7 @@
 				46EEA3C317B2DC7200914D1A /* NSString+Styling.m in Sources */,
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */,
+				B57CB87E244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
 				B5F3150924496A970036872D /* TableRowView.swift in Sources */,
@@ -1591,6 +1619,7 @@
 				B579E0B51AF2946F00A07036 /* VSTheme+Simplenote.m in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
+				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
@@ -1598,6 +1627,7 @@
 				B5E0863C2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				466FFEB017CC10A800399652 /* SPGradientView.m in Sources */,
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
+				B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
 				466FFEB117CC10A800399652 /* SPBackgroundView.m in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
@@ -1625,6 +1655,7 @@
 				375D293321E033D1007AB25A /* buffer.c in Sources */,
 				375D294521E033D1007AB25A /* html.c in Sources */,
 				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
+				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
@@ -1658,6 +1689,7 @@
 				466FFED617CC10A800399652 /* NSString+Styling.m in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,
+				B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
 				B5F3150A24496A970036872D /* TableRowView.swift in Sources */,
