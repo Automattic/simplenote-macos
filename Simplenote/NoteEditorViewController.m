@@ -1150,7 +1150,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor setHidden:markdownVisible];
     [self.markdownView setHidden:!markdownVisible];
 
-    [self.previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
+    // TODO: So, SO gone in the next PR
+    [self.previewButton setImage:[NSImage imageNamed:markdownVisible ? @"button_preview_on" : @"button_preview_off"]];
     [self.historyButton setEnabled:!markdownVisible];
     
     if (markdownVisible) {
