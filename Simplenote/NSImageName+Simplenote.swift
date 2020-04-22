@@ -11,6 +11,10 @@ extension NSImage.Name {
 
     ///
     ///
+    static let history = NSImage.Name("button_history")
+
+    ///
+    ///
     static let info = NSImage.Name("button_info")
 
     /// New Note Icon, meant to be used in the Notes List
