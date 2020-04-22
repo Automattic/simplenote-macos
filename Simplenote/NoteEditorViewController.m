@@ -15,8 +15,6 @@
 #import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
-#import "NSString+Bullets.h"
-#import "NSTextView+Simplenote.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "SPToolbarView.h"
@@ -64,6 +62,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @property (nonatomic, strong) NSArray               *selectedNotes;
 @property (nonatomic, strong) NSPopover             *activePopover;
 @property (nonatomic, strong) Storage               *storage;
+@property (nonatomic, strong) TextViewInputHandler  *inputHandler;
 
 @property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
 @property (nonatomic, assign) BOOL                  viewingVersions;
@@ -117,6 +116,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	for (NSString *key in preferences.allKeys) {
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
+
+    // Realtime Markdown Support
+    self.inputHandler = [TextViewInputHandler new];
     
     int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
     [self updateLineLengthMenuForPosition:lineLengthPosition];
@@ -125,8 +127,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     tagTokenField.delegate = self;
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
-    [noNoteText setFont:[NSFont systemFontOfSize:20.0]];
-
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
@@ -186,11 +186,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (!self.markdownView.isHidden) {
         [self toggleMarkdownView:nil];
     }
-    
+
     if (selectedNote == nil) {
         [self.noteEditor setEditable:NO];
         [self.noteEditor setSelectable:NO];
-        [self.noteEditor setString:@""];
+        [self.noteEditor displayNoteWithContent:@""];
         [tagTokenField setEditable:NO];
         [self.bottomBar setEnabled:NO];
         
@@ -240,9 +240,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         // Force selection to start; not doing this can cause an NSTextStorage exception when
         // switching away from long notes (> 5000 characters)
         [self.noteEditor setSelectedRange:NSMakeRange(0, 0)];
-        self.noteEditor.string = self.note.content;
+        [self.noteEditor displayNoteWithContent:self.note.content];
     } else {
-        self.noteEditor.string = @"";
+        [self.noteEditor displayNoteWithContent:@""];
     }
     
     [previewButton setHidden:!self.note.markdown || self.viewingTrash];
@@ -269,15 +269,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
         [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
     }
-    
-    [self.noteEditor processChecklists];
 }
 
 - (void)displayNotes:(NSArray *)notes
 {
     self.note = nil;
     self.selectedNotes = notes;
-    [self.noteEditor setString:@""];
+    [self.noteEditor displayNoteWithContent:@""];
     [self.noteEditor setEditable:NO];
     [self.noteEditor setSelectable:NO];
     [tagTokenField setEditable:NO];
@@ -300,7 +298,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         // fires `textDidChange` which will erroneously modify the note's modification
         // date and unintentionally change the sort order of the note in the list as a result
         [self.noteEditor setDelegate:nil];
+
+        // Issue #472: Linkification should not be undoable
+        [self.noteEditor.undoManager disableUndoRegistration];
         [self.noteEditor checkTextInDocument:nil];
+        [self.noteEditor.undoManager enableUndoRegistration];
+
         [self.noteEditor setNeedsDisplay:YES];
         [self.noteEditor setDelegate:self];
     });
@@ -442,19 +445,27 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Text Delegates
 
-- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)selector {
+- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)selector
+{
     if (selector == @selector(insertNewline:)) {
-        return [_noteEditor applyAutoBulletsAfterReturnPressed];
-    } else if (selector == @selector(insertTab:)) {
-        return [_noteEditor applyAutoBulletsAfterTabPressed];
+        return [self.noteEditor processNewlineInsertion];
+    }
+
+    if (selector == @selector(insertTab:)) {
+        return [self.noteEditor processTabInsertion];
     }
     
     return NO;
 }
 
+- (BOOL)textView:(NSTextView *)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString
+{
+    return [self.inputHandler textView:textView shouldChangeTextInRange:affectedCharRange string:replacementString];
+}
+
 - (void)textDidChange:(NSNotification *)notification
 {
-    self.note.content = [self.noteEditor getPlainTextContent];
+    self.note.content = [self.noteEditor plainTextContent];
     
     [self updateShareButtonVisibility];
     
@@ -463,7 +474,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Update the note list preview
     [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
-    [self.noteEditor processChecklists];
 }
 
 -(void)updateShareButtonVisibility
@@ -479,12 +489,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                              oldText:self.noteContentBeforeRemoteUpdate
                                      currentLocation:self.cursorLocationBeforeRemoteUpdate];
 
-    self.noteEditor.string = self.note.content;
-    
-    NSRange newRange = NSMakeRange(newLocation, 0);
-    [self.noteEditor setSelectedRange:newRange];
-    [self.noteEditor processChecklists];
-    
+    [self.noteEditor displayNoteWithContent:self.note.content];
+    self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
+
     [self updatePublishUI];
 }
 
@@ -496,7 +503,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
 	
     if (self.note != nil && ![self.noteEditor.string isEqualToString:@""]) {
-        self.note.content = [self.noteEditor getPlainTextContent];
+        self.note.content = [self.noteEditor plainTextContent];
         [appDelegate.simperium saveWithoutSyncing];
     }
 }
@@ -675,8 +682,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
 	if (versionData != nil) {
-		self.noteEditor.string = (NSString *)[versionData objectForKey:@"content"];
-        [self.noteEditor processChecklists];
+        NSString *content = (NSString *)[versionData objectForKey:@"content"];
+        [self.noteEditor displayNoteWithContent:content];
 
 		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
 		[self updateVersionLabel:versionDate];
@@ -687,10 +694,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     [SPTracker trackEditorNoteRestored];
     
-    self.note.content = [self.noteEditor getPlainTextContent];
+    self.note.content = [self.noteEditor plainTextContent];
     [self save];
     [self dismissActivePopover];
-    [self.noteEditor processChecklists];
 }
 
 - (IBAction)pinAction:(id)sender
@@ -752,7 +758,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [[NSNotificationCenter defaultCenter] postNotificationName:SPWillAddNewNoteNotificationName object:self];
     
     // Save current note first
-    self.note.content = [self.noteEditor getPlainTextContent];
+    self.note.content = [self.noteEditor plainTextContent];
     [self save];
     
     [notesArrayController setSelectsInsertedObjects:YES];
@@ -892,7 +898,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
            indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex
 {
     // Don't show auto-complete in fullscreen mode
-    BOOL fullscreen = ([self.view.window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask;
+    BOOL fullscreen = ([self.view.window styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen;
     if (fullscreen)
         return [NSArray array];
     
@@ -976,7 +982,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
     [self applyStyle];
     [self checkTextInDocument];
-    [self.noteEditor processChecklists];
 }
 
 #pragma mark - NoteEditor Preferences Helpers
@@ -1055,6 +1060,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
             [self loadMarkdownContent];
         }
     }
+
+    [self.scrollView setBackgroundColor:[self.theme colorForKey:@"dividerColor"]];
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 
@@ -1073,8 +1080,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 // Reprocesses note checklists after switching themes, so they apply the correct color
 - (void)fixChecklistColoring
 {
-    self.noteEditor.string = [self.noteEditor getPlainTextContent];
-    [self.noteEditor processChecklists];
+    NSString *content = [self.noteEditor plainTextContent];
+    [self.noteEditor displayNoteWithContent:content];
 }
 
 #pragma mark - NSButton Delegate Methods
@@ -1160,9 +1167,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
-- (void)insertChecklistAction:(id)sender {
-    [self.noteEditor insertNewChecklist];
-    
+- (void)insertChecklistAction:(id)sender
+{
+    [self.noteEditor toggleListMarkersAtSelectedRange];
     [SPTracker trackEditorChecklistInserted];
 }
 

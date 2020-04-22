@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -82,17 +82,6 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <button toolTip="Show Sidebar" id="1680" userLabel="Sidebar">
-                    <rect key="frame" x="20" y="19" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_tags" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="1681">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="toggleSidebarAction:" target="494" id="1693"/>
-                    </connections>
-                </button>
                 <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1698">
                     <rect key="frame" x="158" y="19" width="190" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -125,17 +114,6 @@
                     </buttonCell>
                     <connections>
                         <action selector="addAction:" target="1107" id="1662"/>
-                    </connections>
-                </button>
-                <button toolTip="Toggle Focus Mode" id="gjI-ik-EKJ" userLabel="Focus Mode">
-                    <rect key="frame" x="414" y="19" width="27" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="focus_mode" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="J3f-yC-n9P">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="focusModeAction:" target="494" id="tTG-Ig-axe"/>
                     </connections>
                 </button>
                 <button toolTip="Trash" verticalHuggingPriority="750" id="mXz-OM-6A3">
@@ -202,7 +180,6 @@
                 <outlet property="actionButton" destination="1601" id="gdu-Es-X6I"/>
                 <outlet property="addButton" destination="987" id="1424"/>
                 <outlet property="arrayController" destination="573" id="1148"/>
-                <outlet property="focusModeButton" destination="gjI-ik-EKJ" id="ziE-7L-9pP"/>
                 <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
                 <outlet property="noteEditor" destination="934" id="1154"/>
                 <outlet property="previewButton" destination="OMI-hx-wfj" id="XYV-Pc-8mE"/>
@@ -210,7 +187,6 @@
                 <outlet property="searchBox" destination="1698" id="wme-tN-dmD"/>
                 <outlet property="searchField" destination="915" id="L6k-Ak-N34"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="GK2-GI-0Eu"/>
-                <outlet property="sidebarButton" destination="1680" id="1687"/>
                 <outlet property="splitter" destination="1387" id="1438"/>
                 <outlet property="tableView" destination="561" id="1109"/>
                 <outlet property="tableViewController" destination="874" id="1271"/>
@@ -771,7 +747,7 @@
                         <subviews>
                             <customView focusRingType="none" fixedFrame="YES" id="1436">
                                 <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1731">
                                         <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
@@ -782,7 +758,7 @@
                                         </view>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452" customClass="MMScrollView">
+                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452">
                                         <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
@@ -919,7 +895,7 @@
                                             <rect key="frame" x="-100" y="-100" width="152" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1456" customClass="MMScroller">
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1456">
                                             <rect key="frame" x="-100" y="-100" width="16" height="576"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -928,7 +904,7 @@
                             </customView>
                             <customView focusRingType="none" fixedFrame="YES" id="558">
                                 <rect key="frame" x="136" y="0.0" width="270" height="609"/>
-                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="560">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="609"/>
@@ -1021,7 +997,7 @@
                                             <rect key="frame" x="-100" y="-100" width="235" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="564" customClass="MMScroller">
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="564">
                                             <rect key="frame" x="254" y="0.0" width="16" height="609"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -1042,16 +1018,16 @@
                             </customView>
                             <customView focusRingType="none" fixedFrame="YES" id="559">
                                 <rect key="frame" x="407" y="0.0" width="493" height="609"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <customView id="1549" customClass="NoteEditorBottomBar">
                                         <rect key="frame" x="0.0" y="0.0" width="493" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </customView>
-                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="933" customClass="MMScrollView">
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="933">
                                         <rect key="frame" x="0.0" y="43" width="493" height="566"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <clipView key="contentView" copiesOnScroll="NO" id="LKV-y0-209">
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LKV-y0-209">
                                             <rect key="frame" x="0.0" y="0.0" width="493" height="566"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1060,7 +1036,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="566"/>
+                                                    <size key="minSize" width="478" height="566"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1074,7 +1050,7 @@
                                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936" customClass="MMScroller">
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936">
                                             <rect key="frame" x="477" y="0.0" width="16" height="566"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -1083,15 +1059,6 @@
                                         <rect key="frame" x="141" y="257" width="210" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="1441">
-                                                <rect key="frame" x="6" y="16" width="199" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="1442">
-                                                    <font key="font" size="20" name="HelveticaNeue"/>
-                                                    <color key="textColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="deviceWhite"/>
-                                                    <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
-                                                </textFieldCell>
-                                            </textField>
                                             <imageView id="1447">
                                                 <rect key="frame" x="55" y="50" width="100" height="100"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1117,31 +1084,6 @@
                 </subviews>
             </view>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="titleBarHeight">
-                    <integer key="value" value="36"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="titleBarStartColor">
-                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="centerFullScreenButton" value="YES"/>
-                <userDefinedRuntimeAttribute type="color" keyPath="titleBarEndColor">
-                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="baselineSeparatorColor">
-                    <color key="value" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="fullScreenButtonRightMargin">
-                    <integer key="value" value="15"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="inactiveTitleBarStartColor">
-                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="inactiveTitleBarEndColor">
-                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="inactiveBaselineSeparatorColor">
-                    <color key="value" white="0.82999999999999996" alpha="1" colorSpace="calibratedWhite"/>
-                </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="excludedFromWindowsMenu" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
@@ -1158,7 +1100,6 @@
                 <outlet property="focusModeMenuItem" destination="nrD-mL-W7Q" id="9KY-QY-jI5"/>
                 <outlet property="mainWindowItem" destination="vor-dd-sYt" id="jUG-qn-XNJ"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
-                <outlet property="noteListToolbarButton" destination="1680" id="1703"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>
                 <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
@@ -1181,7 +1122,6 @@
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
-                <outlet property="noNoteText" destination="1441" id="1531"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="noteListViewController" destination="874" id="1695"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
@@ -1205,13 +1145,11 @@
             </connections>
         </viewController>
         <customObject id="420" customClass="NSFontManager"/>
-        <userDefaultsController representsSharedInstance="YES" id="596"/>
         <viewController id="874" customClass="NoteListViewController">
             <connections>
                 <outlet property="arrayController" destination="573" id="1143"/>
                 <outlet property="noteEditor" destination="934" id="1299"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1675"/>
-                <outlet property="noteListToolbarButton" destination="1680" id="31v-9A-zpm"/>
                 <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
@@ -1221,7 +1159,6 @@
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
                 <outlet property="view" destination="558" id="1699"/>
-                <outlet property="window" destination="371" id="1200"/>
             </connections>
         </viewController>
         <arrayController mode="entity" entityName="Note" fetchPredicateFormat="deleted == 0" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="573" customClass="NotesArrayController">
@@ -1388,11 +1325,9 @@
     </objects>
     <resources>
         <image name="button_new" width="22" height="22"/>
-        <image name="focus_mode" width="27" height="22"/>
         <image name="icon_all_notes" width="22" height="22"/>
         <image name="icon_preview" width="44" height="44"/>
         <image name="icon_shared" width="22" height="22"/>
-        <image name="icon_tags" width="22" height="22"/>
         <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>
         <image name="logo_grey" width="128" height="128"/>

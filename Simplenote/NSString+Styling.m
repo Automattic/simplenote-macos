@@ -22,7 +22,7 @@ static NSEdgeInsets const SPTextAttachmentInsets = {-1.5, 0, 0, 0};
                                                         bodyColor:(NSColor *)bodyColor
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
-    NSArray *attachments = [attributedString insertChecklistAttachmentsWithColor:bodyColor];
+    NSArray *attachments = [attributedString processChecklistsWithColor:bodyColor];
 
     for (SPTextAttachment *attachment in attachments) {
         attachment.overrideDynamicBounds = NSMakeRect(SPTextAttachmentInsets.left, SPTextAttachmentInsets.top, bodyFont.pointSize, bodyFont.pointSize);
@@ -40,7 +40,7 @@ static NSEdgeInsets const SPTextAttachmentInsets = {-1.5, 0, 0, 0};
     [titleStyle setParagraphSpacing:8];
     [titleStyle setMinimumLineHeight:0];
     [titleStyle setMaximumLineHeight:20];
-    [titleStyle setAlignment:NSLeftTextAlignment];
+    [titleStyle setAlignment:NSTextAlignmentLeft];
 
     // set title font
     NSRange titleRange, bodyRange;
