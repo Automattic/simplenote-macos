@@ -17,6 +17,10 @@ extension NSImage.Name {
     ///
     static let newNote = NSImage.Name("button_new_note")
 
+    ///
+    ///
+    static let restore = NSImage.Name("button_restore")
+
     /// Trash Icon, meant to be used in the Tags List
     ///
     static let trash = NSImage.Name("button_trash")
