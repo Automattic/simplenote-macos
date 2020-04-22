@@ -126,6 +126,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
 
+    // Preload CSS in webview, prevents 'flashing' when first loading the markdown view
+    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
+    [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+
     // Realtime Markdown Support
     self.inputHandler = [TextViewInputHandler new];
     

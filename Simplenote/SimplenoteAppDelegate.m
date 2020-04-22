@@ -14,7 +14,6 @@
 #import "LoginWindowController.h"
 #import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
-#import "SPMarkdownParser.h"
 #import "SPWindow.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
@@ -208,30 +207,7 @@
     self.window.releasedWhenClosed              = NO;
     
     [self.splitView adjustSubviews];
-    
-    // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.12)
 
-    // TODO: Oh god this is SO GONE in the next PR
-    WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
-    WKPreferences *prefs = [[WKPreferences alloc] init];
-    prefs.javaScriptEnabled = NO;
-    webConfig.preferences = prefs;
-    CGRect frame = CGRectMake(0,
-                              43.0f,
-                              self.textViewParent.frame.size.width,
-                              self.textViewParent.frame.size.height - 43.0f - 56.0f);
-    WKWebView *markdownView = [[WKWebView alloc] initWithFrame:frame configuration:webConfig];
-    [markdownView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [markdownView setHidden:YES];
-    
-    // Preload CSS in webview, prevents 'flashing' when first loading the markdown view
-    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
-    [markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
-    
-    [self.textViewParent addSubview:markdownView];
-    self.noteEditorViewController.markdownView = markdownView;
-    [markdownView setNavigationDelegate:self.noteEditorViewController];
-    
     // Add the System Appearance menu item to the 'Theme' menu on Mojave or later
     if (@available(macOS 10.14, *)) {
         NSMenuItem *separatorItem = [NSMenuItem separatorItem];
