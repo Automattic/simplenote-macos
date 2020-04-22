@@ -21,8 +21,6 @@
 {
     IBOutlet NSScrollView *scrollView;
     IBOutlet NSArrayController *arrayController;
-    IBOutlet NoteEditorViewController *noteEditorViewController;
-    IBOutlet NSTextView *noteEditor;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSTextField *statusField;
     IBOutlet NSMenu *sortMenu;

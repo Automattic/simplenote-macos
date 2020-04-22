@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,14 +25,14 @@
             <connections>
                 <outlet property="delegate" destination="874" id="1526"/>
             </connections>
-            <point key="canvasLocation" x="139" y="401"/>
+            <point key="canvasLocation" x="268" y="-269"/>
         </menu>
         <customView id="914" customClass="SPToolbarView">
             <rect key="frame" x="0.0" y="0.0" width="901" height="71"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" boxType="custom" borderType="line" borderWidth="0.0" title="Box" titlePosition="noTitle" id="1387">
-                    <rect key="frame" x="393" y="1" width="1" height="70"/>
+                    <rect key="frame" x="396" y="1" width="1" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <view key="contentView" id="uXT-Dz-pKp">
                         <rect key="frame" x="0.0" y="0.0" width="1" height="70"/>
@@ -193,7 +193,7 @@
                 <outlet property="trashButton" destination="mXz-OM-6A3" id="XnP-Bb-cph"/>
                 <outlet property="window" destination="371" id="1247"/>
             </connections>
-            <point key="canvasLocation" x="-866.5" y="585.5"/>
+            <point key="canvasLocation" x="139" y="-163"/>
         </customView>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
@@ -728,7 +728,7 @@
             <connections>
                 <outlet property="delegate" destination="494" id="ahP-nJ-8XG"/>
             </connections>
-            <point key="canvasLocation" x="139" y="154"/>
+            <point key="canvasLocation" x="-85" y="-270"/>
         </menu>
         <window title="Simplenote" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" id="371" customClass="SPWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
@@ -738,43 +738,43 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="720" height="400"/>
             <view key="contentView" id="372" customClass="SPBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="900" height="609"/>
+                <rect key="frame" x="0.0" y="0.0" width="900" height="582"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView autosaveName="" dividerStyle="thin" vertical="YES" id="557" customClass="SPSplitView">
-                        <rect key="frame" x="0.0" y="0.0" width="900" height="609"/>
+                        <rect key="frame" x="0.0" y="0.0" width="900" height="582"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView focusRingType="none" fixedFrame="YES" id="1436">
-                                <rect key="frame" x="0.0" y="0.0" width="135" height="609"/>
+                            <customView focusRingType="none" id="1436">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="1731">
-                                        <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <box autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1731">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                         <view key="contentView" id="2Nl-8a-lk8">
-                                            <rect key="frame" x="0.0" y="0.0" width="233" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="xT1-td-pyW"/>
+                                        </constraints>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="1452">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
-                                            <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="609"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="NameColumn" width="136" minWidth="40" maxWidth="1000" id="1457">
+                                                        <tableColumn identifier="NameColumn" width="120" minWidth="40" maxWidth="1000" id="1457">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
@@ -786,11 +786,11 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="AllNotesCell" id="1463" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="2" width="136" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="2" width="120" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1464" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="7" width="85" height="22"/>
+                                                                            <rect key="frame" x="47" y="7" width="69" height="22"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1465">
                                                                                 <font key="font" metaFont="system"/>
@@ -810,11 +810,11 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="TrashCell" id="1480" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="36" width="136" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="36" width="120" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1482" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="6" width="85" height="22"/>
+                                                                            <rect key="frame" x="47" y="6" width="69" height="22"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1483">
                                                                                 <font key="font" metaFont="system"/>
@@ -834,11 +834,11 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="SeparatorCell" id="1494" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="70" width="136" height="36"/>
+                                                                    <rect key="frame" x="0.0" y="70" width="120" height="36"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1496" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="20" y="6" width="109" height="24"/>
+                                                                            <rect key="frame" x="20" y="6" width="93" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1497">
                                                                                 <font key="font" metaFont="system"/>
@@ -861,11 +861,11 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="TagCell" id="1487" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="110" width="136" height="30"/>
+                                                                    <rect key="frame" x="0.0" y="110" width="120" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1489" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="17" y="3" width="103" height="21"/>
+                                                                            <rect key="frame" x="17" y="3" width="87" height="21"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" usesSingleLineMode="YES" id="1490">
                                                                                 <font key="font" metaFont="system"/>
@@ -891,6 +891,9 @@
                                                 </tableView>
                                             </subviews>
                                         </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="XV6-d7-Lfo"/>
+                                        </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1454">
                                             <rect key="frame" x="-100" y="-100" width="152" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -901,20 +904,27 @@
                                         </scroller>
                                     </scrollView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1731" secondAttribute="trailing" id="3Uj-fR-at6"/>
+                                    <constraint firstItem="1452" firstAttribute="leading" secondItem="1436" secondAttribute="leading" id="KYh-fz-7dG"/>
+                                    <constraint firstAttribute="bottom" secondItem="1731" secondAttribute="bottom" id="WfA-jZ-MZh"/>
+                                    <constraint firstItem="1452" firstAttribute="top" secondItem="1436" secondAttribute="top" id="X8N-gH-844"/>
+                                    <constraint firstAttribute="bottom" secondItem="1452" secondAttribute="bottom" id="w0G-Tu-M9B"/>
+                                    <constraint firstItem="1731" firstAttribute="top" secondItem="1436" secondAttribute="top" id="xbD-e8-bDS"/>
+                                </constraints>
                             </customView>
-                            <customView focusRingType="none" fixedFrame="YES" id="558">
-                                <rect key="frame" x="136" y="0.0" width="270" height="609"/>
+                            <customView focusRingType="none" id="558">
+                                <rect key="frame" x="121" y="0.0" width="270" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="560">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="609"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="560">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
-                                            <rect key="frame" x="0.0" y="0.0" width="270" height="609"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="597"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -922,12 +932,11 @@
                                                     <tableColumns>
                                                         <tableColumn width="270" maxWidth="10000000" id="565">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="568">
-                                                                <font key="font" metaFont="label" size="12"/>
+                                                                <font key="font" metaFont="controlContent"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -991,23 +1000,21 @@
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="0.0074358092780256735" blue="0.18312235167695623" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </clipView>
-                                        <edgeInsets key="contentInsets" left="0.0" right="0.0" top="12" bottom="0.0"/>
-                                        <edgeInsets key="scrollerInsets" left="0.0" right="0.0" top="-12" bottom="0.0"/>
+                                        <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="562">
                                             <rect key="frame" x="-100" y="-100" width="235" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="564">
-                                            <rect key="frame" x="254" y="0.0" width="16" height="609"/>
+                                            <rect key="frame" x="254" y="0.0" width="16" height="582"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <connections>
                                             <outlet property="menu" destination="1504" id="1509"/>
                                         </connections>
                                     </scrollView>
-                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1766">
-                                        <rect key="frame" x="25" y="335" width="221" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1766">
+                                        <rect key="frame" x="10" y="339" width="250" height="23"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Notes" id="1767">
                                             <font key="font" size="20" name="HelveticaNeue"/>
                                             <color key="textColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="deviceWhite"/>
@@ -1015,28 +1022,38 @@
                                         </textFieldCell>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="560" firstAttribute="top" secondItem="558" secondAttribute="top" id="Ge2-ST-RkZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
+                                    <constraint firstItem="560" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="Zi0-eC-oVT"/>
+                                    <constraint firstItem="1766" firstAttribute="leading" secondItem="558" secondAttribute="leading" constant="12" id="cPD-Ix-UuZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
+                                    <constraint firstItem="1766" firstAttribute="top" secondItem="558" secondAttribute="top" constant="220" id="eS2-b5-fRK"/>
+                                    <constraint firstAttribute="bottom" secondItem="560" secondAttribute="bottom" id="niy-wS-lMG"/>
+                                </constraints>
                             </customView>
-                            <customView focusRingType="none" fixedFrame="YES" id="559">
-                                <rect key="frame" x="407" y="0.0" width="493" height="609"/>
+                            <customView focusRingType="none" id="559">
+                                <rect key="frame" x="392" y="0.0" width="508" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <customView id="1549" customClass="NoteEditorBottomBar">
-                                        <rect key="frame" x="0.0" y="0.0" width="493" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" customClass="NoteEditorBottomBar">
+                                        <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="B83-60-TJb"/>
+                                        </constraints>
                                     </customView>
-                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="933">
-                                        <rect key="frame" x="0.0" y="43" width="493" height="566"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="933">
+                                        <rect key="frame" x="0.0" y="44" width="508" height="538"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="493" height="566"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="508" height="538"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="478" height="566"/>
+                                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="538"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="478" height="566"/>
+                                                    <size key="minSize" width="493" height="538"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1051,22 +1068,40 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936">
-                                            <rect key="frame" x="477" y="0.0" width="16" height="566"/>
+                                            <rect key="frame" x="492" y="0.0" width="16" height="538"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <customView hidden="YES" id="1440">
-                                        <rect key="frame" x="141" y="257" width="210" height="162"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView id="1447">
-                                                <rect key="frame" x="55" y="50" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_grey" id="1448"/>
-                                            </imageView>
-                                        </subviews>
-                                    </customView>
+                                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447" userLabel="Status Image View">
+                                        <rect key="frame" x="204" y="291" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="K7T-Uk-2Hq"/>
+                                            <constraint firstAttribute="width" constant="100" id="qla-yo-Qy7"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo_grey" id="1448"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faw-Qh-Cm9" userLabel="Status Label">
+                                        <rect key="frame" x="252" y="262" width="4" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" id="nme-7B-meh">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1549" secondAttribute="trailing" id="43w-jU-8rz"/>
+                                    <constraint firstItem="1549" firstAttribute="top" secondItem="933" secondAttribute="bottom" id="8gP-zE-3fX"/>
+                                    <constraint firstItem="933" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="Any-4j-QRE"/>
+                                    <constraint firstItem="1549" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="BCb-vv-F7J"/>
+                                    <constraint firstAttribute="trailing" secondItem="933" secondAttribute="trailing" id="ITM-To-mHT"/>
+                                    <constraint firstItem="933" firstAttribute="top" secondItem="559" secondAttribute="top" id="RwU-ma-qoC"/>
+                                    <constraint firstAttribute="bottom" secondItem="1549" secondAttribute="bottom" id="Vsf-z4-w1B"/>
+                                    <constraint firstItem="1447" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" constant="-50" id="icV-Jp-4Pb"/>
+                                    <constraint firstItem="faw-Qh-Cm9" firstAttribute="top" secondItem="1447" secondAttribute="bottom" constant="12" id="kMg-Op-C1s"/>
+                                    <constraint firstItem="faw-Qh-Cm9" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="lR0-BQ-Ruk"/>
+                                    <constraint firstItem="1447" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="wMH-bp-3vg"/>
+                                </constraints>
                             </customView>
                         </subviews>
                         <holdingPriorities>
@@ -1090,7 +1125,7 @@
                 <outlet property="delegate" destination="494" id="1423"/>
                 <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
-            <point key="canvasLocation" x="137" y="154"/>
+            <point key="canvasLocation" x="138" y="263"/>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
@@ -1104,7 +1139,6 @@
                 <outlet property="splitView" destination="557" id="1477"/>
                 <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
-                <outlet property="textScrollView" destination="933" id="1199"/>
                 <outlet property="textViewParent" destination="559" id="1198"/>
                 <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
                 <outlet property="toolbar" destination="914" id="1386"/>
@@ -1123,23 +1157,15 @@
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
-                <outlet property="noteListViewController" destination="874" id="1695"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
                 <outlet property="previewButton" destination="OMI-hx-wfj" id="8d5-5c-auI"/>
                 <outlet property="printItem" destination="78" id="1659"/>
-                <outlet property="publishButton" destination="1063" id="1327"/>
-                <outlet property="publishLabel" destination="1058" id="1322"/>
-                <outlet property="publishViewController" destination="1040" id="5kS-We-Atz"/>
-                <outlet property="restoreVersionButton" destination="1088" id="1312"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
-                <outlet property="shareViewController" destination="1643" id="Ahf-1p-0Qr"/>
-                <outlet property="statusView" destination="1440" id="1769"/>
+                <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
+                <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
-                <outlet property="versionLabel" destination="1320" id="1321"/>
-                <outlet property="versionSlider" destination="1084" id="1311"/>
-                <outlet property="versionsViewController" destination="1090" id="YBW-MY-NP8"/>
                 <outlet property="view" destination="934" id="1185"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>
             </connections>
@@ -1148,8 +1174,6 @@
         <viewController id="874" customClass="NoteListViewController">
             <connections>
                 <outlet property="arrayController" destination="573" id="1143"/>
-                <outlet property="noteEditor" destination="934" id="1299"/>
-                <outlet property="noteEditorViewController" destination="1107" id="1675"/>
                 <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
@@ -1169,7 +1193,6 @@
         <viewController id="1461" customClass="TagListViewController">
             <connections>
                 <outlet property="findMenu" destination="220" id="M2t-op-yAH"/>
-                <outlet property="noteListViewController" destination="874" id="1470"/>
                 <outlet property="notesArrayController" destination="573" id="1672"/>
                 <outlet property="tableView" destination="1453" id="1469"/>
                 <outlet property="tagBox" destination="1731" id="690-39-pWj"/>
@@ -1177,151 +1200,6 @@
                 <outlet property="view" destination="1452" id="1462"/>
             </connections>
         </viewController>
-        <viewController title="SharePopoverController" id="1643" userLabel="Share Popover Controller" customClass="ShareViewController">
-            <connections>
-                <outlet property="shareTextField" destination="1635" id="tyH-Yd-JcH"/>
-                <outlet property="view" destination="1630" id="1647"/>
-            </connections>
-        </viewController>
-        <customView appearanceType="aqua" id="1630" userLabel="Share View">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="71"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" transparent="YES" id="1631">
-                    <rect key="frame" x="0.0" y="-32" width="240" height="172"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView" id="Mat-L4-REB">
-                        <rect key="frame" x="1" y="1" width="238" height="170"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1635">
-                                <rect key="frame" x="12" y="39" width="214" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Add an email address as a tag to share this note with someone. Then you can both make changes to it." id="1637">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                    <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                </box>
-            </subviews>
-            <point key="canvasLocation" x="430" y="580"/>
-        </customView>
-        <viewController title="SharePopoverController" id="1040" userLabel="Publish Popover Controller" customClass="PublishViewController">
-            <connections>
-                <outlet property="legendTextField" destination="1068" id="byG-5z-i09"/>
-                <outlet property="publishButton" destination="1063" id="D7W-G1-Z38"/>
-                <outlet property="urlTextField" destination="1057" id="74T-7P-yyE"/>
-                <outlet property="view" destination="1043" id="1046"/>
-            </connections>
-        </viewController>
-        <customView appearanceType="aqua" id="1043" userLabel="Publish View">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="125"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" transparent="YES" id="1053">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="155"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <view key="contentView" id="6WY-fZ-mE4">
-                        <rect key="frame" x="1" y="1" width="238" height="153"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1057">
-                                <rect key="frame" x="15" y="92" width="208" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" placeholderString="Not published" drawsBackground="YES" usesSingleLineMode="YES" id="1058">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.31" colorSpace="calibratedWhite"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1068">
-                                <rect key="frame" x="12" y="3" width="214" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Publish this note to a web page. The page will stay updated with the contents of your note." id="1069">
-                                    <font key="font" metaFont="message" size="11"/>
-                                    <color key="textColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button toolTip="Publishes this note to a public web page" verticalHuggingPriority="750" id="1063">
-                                <rect key="frame" x="9" y="56" width="220" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Publish to Web Page" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="1064">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <color key="contentTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="publishAction:" target="1107" id="1664"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </view>
-                    <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <color key="fillColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                </box>
-            </subviews>
-            <point key="canvasLocation" x="-191" y="607"/>
-        </customView>
-        <viewController id="1090" userLabel="Versions Popover Controller" customClass="VersionsViewController">
-            <connections>
-                <outlet property="restoreButton" destination="1088" id="7o6-F9-Ovb"/>
-                <outlet property="versionsTextField" destination="1319" id="qXF-FG-DDr"/>
-                <outlet property="view" destination="1072" id="1093"/>
-            </connections>
-        </viewController>
-        <customView appearanceType="aqua" id="1072" userLabel="Version View">
-            <rect key="frame" x="0.0" y="0.0" width="221" height="71"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" transparent="YES" id="1077">
-                    <rect key="frame" x="-6" y="-42" width="232" height="88"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <view key="contentView" id="wjc-Rf-oKU">
-                        <rect key="frame" x="1" y="1" width="230" height="86"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <slider verticalHuggingPriority="750" id="1084">
-                                <rect key="frame" x="13" y="48" width="119" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1085"/>
-                                <connections>
-                                    <action selector="versionSliderChanged:" target="1107" id="1313"/>
-                                </connections>
-                            </slider>
-                            <button verticalHuggingPriority="750" id="1088">
-                                <rect key="frame" x="139" y="43" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Restore" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1089">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="restoreVersionAction:" target="1107" id="1665"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </view>
-                    <color key="borderColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                </box>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1319">
-                    <rect key="frame" x="7" y="47" width="206" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version: Current" id="1320">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </subviews>
-            <point key="canvasLocation" x="107" y="580"/>
-        </customView>
     </objects>
     <resources>
         <image name="button_new" width="22" height="22"/>

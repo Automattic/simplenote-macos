@@ -7,7 +7,6 @@
 //
 
 #import "SPBackgroundView.h"
-#import "NSColor+Simplenote.h"
 #import "VSThemeManager.h"
 
 @implementation SPBackgroundView

@@ -13,9 +13,9 @@
 #import "NSString+Condensing.h"
 #import "NSString+Styling.h"
 #import "NSString+Simplenote.h"
-#import "NSImage+Colorize.h"
 #import "VSThemeManager.h"
 #import "SPTableRowView.h"
+#import "Simplenote-Swift.h"
 
 #define kHighlightColor [NSColor colorWithCalibratedRed:65.f/255.f green:132.f/255.f blue:191.f/255.f alpha:1.0]
 #define kHeadlineColor [NSColor colorWithCalibratedRed:21.f/255.f green:21.f/255.f blue:21.f/255.f alpha:1.0]
@@ -63,7 +63,7 @@ static NSImage *pinImageHighlighted;
     }
 
     _contentPreview.attributedStringValue = noteSummary;
-    _accessoryImageView.image = [_accessoryImageView.image colorizedWithColor:previewColor];
+    _accessoryImageView.image = [_accessoryImageView.image tintedWithColor:previewColor];
 }
 
 - (NSMutableAttributedString *)pinnedPreviewForNoteSummary:(NSAttributedString *)noteSummary

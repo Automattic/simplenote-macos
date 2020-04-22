@@ -39,18 +39,8 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @interface NoteEditorViewController : NSViewController <NSSharingServicePickerDelegate, WKNavigationDelegate>
 {
     IBOutlet NSTableView *tableView;
-    IBOutlet NoteListViewController *noteListViewController;
     IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSTokenField *tagTokenField;
-    IBOutlet NSButton *restoreVersionButton;
-    IBOutlet NSSlider *versionSlider;
-    IBOutlet NSTextFieldCell *versionLabel;
-    IBOutlet NSTextFieldCell *publishLabel;
-    IBOutlet NSButton *previewButton;
-    IBOutlet NSButton *publishButton;
-    IBOutlet NSButton *historyButton;
-    IBOutlet NSButton *shareButton;
-    IBOutlet NSView *statusView;
     IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
@@ -63,12 +53,14 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
-@property (nonatomic, assign) IBOutlet SPTextView           *noteEditor;
-@property (nonatomic, assign) IBOutlet NSScrollView         *scrollView;
-@property (nonatomic, assign) IBOutlet NoteEditorBottomBar  *bottomBar;
-@property (nonatomic, strong) IBOutlet NSViewController     *shareViewController;
-@property (nonatomic, strong) IBOutlet NSViewController     *publishViewController;
-@property (nonatomic, strong) IBOutlet NSViewController     *versionsViewController;
+@property (nonatomic, strong) IBOutlet NSImageView          *statusImageView;
+@property (nonatomic, strong) IBOutlet NSTextField          *statusTextField;
+@property (nonatomic, strong) IBOutlet NSButton             *previewButton;
+@property (nonatomic, strong) IBOutlet NSButton             *historyButton;
+@property (nonatomic, strong) IBOutlet NSButton             *shareButton;
+@property (nonatomic,   weak) IBOutlet SPTextView           *noteEditor;
+@property (nonatomic,   weak) IBOutlet NSScrollView         *scrollView;
+@property (nonatomic,   weak) IBOutlet NoteEditorBottomBar  *bottomBar;
 @property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
 @property (nonatomic,   weak) Note                          *note;
 @property (nonatomic, strong) WKWebView                     *markdownView;

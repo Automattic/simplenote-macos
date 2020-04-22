@@ -17,7 +17,6 @@
 #import "SPMarkdownParser.h"
 #import "SPWindow.h"
 #import "SPToolbarView.h"
-#import "NSImage+Colorize.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
 #import "VSThemeManager.h"
@@ -55,11 +54,14 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 #endif
 
+@property (strong, nonatomic) IBOutlet NSWindow                 *window;
+
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
+@property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
+
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
-@property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
@@ -68,6 +70,11 @@
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
+
+@property (strong, nonatomic) Simperium                         *simperium;
+@property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
+@property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
+@property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
 
 #if USE_HOCKEY
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
@@ -80,9 +87,7 @@
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@implementation SimplenoteAppDelegate {
-    BOOL tagListWasVisibleUponFocusMode;
-}
+@implementation SimplenoteAppDelegate
 
 #pragma mark - Startup
 // Can be used for bugs that don't show up while debugging from Xcode
@@ -188,6 +193,8 @@
 #endif
 
 	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
+
+    [[MigrationsHandler new] ensureUpdateIsHandled];
 
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
@@ -500,12 +507,16 @@
 
 - (CGFloat)editorSplitPosition
 {
-    return [self tagListWidth] + self.noteListViewController.view.bounds.size.width;
+    return [self tagListSplitPosition] + self.noteListViewController.view.bounds.size.width;
 }
 
 - (CGFloat)tagListSplitPosition
 {
-    return self.tagListViewController.view.bounds.size.width;
+    if (self.tagListViewController.view.isHidden) {
+        return 0;
+    }
+
+    return self.tagListViewController.view.bounds.size.width + self.splitView.dividerThickness;
 }
 
 - (void)notifySplitDidChange
@@ -663,6 +674,9 @@
     [self.noteListViewController setWaitingForIndex:YES];
     
     [_simperium signOutAndRemoveLocalData:YES completion:^{
+        // Nuke User Settings
+        [[Options shared] reset];
+
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self->_simperium authenticateIfNecessary];
@@ -699,19 +713,19 @@
     CGFloat editorSplitPosition = [self editorSplitPosition];
     BOOL collapsed = ![self.tagListViewController.view isHidden];
     [self.tagListViewController.view setHidden:collapsed];
-    tagListWasVisibleUponFocusMode = NO;
     
     [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
     [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
     [self.splitView adjustSubviews];
 }
 
-- (IBAction)focusModeAction:(id)sender {
+- (IBAction)focusModeAction:(id)sender
+{
     // Check if the tags list is visible, if so close it
     BOOL tagsVisible = ![self.tagListViewController.view isHidden];
     if (tagsVisible) {
         [self toggleSidebarAction:nil];
-        tagListWasVisibleUponFocusMode = YES;
+        tagsVisible = YES;
     }
     
     [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
@@ -721,7 +735,7 @@
     [self.toolbar configureForFocusMode: isEnteringFocusMode];
     [focusModeMenuItem setState:isEnteringFocusMode ? NSOnState : NSOffState];
     
-    if (!isEnteringFocusMode && tagListWasVisibleUponFocusMode) {
+    if (!isEnteringFocusMode && tagsVisible) {
         // If ending focus mode and the tag view was previously visible, show it agian
         [self toggleSidebarAction:nil];
     }
@@ -781,8 +795,7 @@
         [self.noteListViewController applyStyle];
         return;
     }
-    
-    self.textScrollView.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
+
     [backgroundView setNeedsDisplay:YES];
 
     [self.splitView applyStyle];

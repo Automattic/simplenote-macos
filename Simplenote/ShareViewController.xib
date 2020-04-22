@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ShareViewController" customModule="Simplenote" customModuleProvider="target">
+            <connections>
+                <outlet property="shareTextField" destination="07M-AN-65d" id="ofc-3H-Zci"/>
+                <outlet property="view" destination="3UL-37-8ha" id="1qo-2W-x9C"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView appearanceType="aqua" id="3UL-37-8ha" userLabel="Share View">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="62"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="07M-AN-65d">
+                    <rect key="frame" x="13" y="10" width="214" height="42"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Add an email address as a tag to share this note with someone. Then you can both make changes to it." id="Nnf-EV-oUG">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="07M-AN-65d" secondAttribute="bottom" constant="10" id="Qaz-Wx-oIA"/>
+                <constraint firstItem="07M-AN-65d" firstAttribute="top" secondItem="3UL-37-8ha" secondAttribute="top" constant="10" id="Tba-Q6-8EP"/>
+                <constraint firstAttribute="trailing" secondItem="07M-AN-65d" secondAttribute="trailing" constant="15" id="vZe-fa-ULT"/>
+                <constraint firstItem="07M-AN-65d" firstAttribute="leading" secondItem="3UL-37-8ha" secondAttribute="leading" constant="15" id="zeD-kk-eH4"/>
+            </constraints>
+            <point key="canvasLocation" x="430" y="580"/>
+        </customView>
+    </objects>
+</document>

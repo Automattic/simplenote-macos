@@ -17,7 +17,6 @@
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
-#import "SPToolbarView.h"
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
@@ -52,21 +51,31 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController() <NSTextDelegate, NSTextViewDelegate, NSPopoverDelegate,
-                                       NSTokenFieldDelegate, SPBucketDelegate, NSMenuDelegate>
+@interface NoteEditorViewController() <NSMenuDelegate,
+                                        NSPopoverDelegate,
+                                        NSTextDelegate,
+                                        NSTextViewDelegate,
+                                        NSTokenFieldDelegate,
+                                        PublishViewControllerDelegate,
+                                        SPBucketDelegate,
+                                        VersionsViewControllerDelegate>
 
-@property (nonatomic, strong) NSTimer               *saveTimer;
-@property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
-@property (nonatomic, strong) NSMutableDictionary   *noteScrollPositions;
-@property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
-@property (nonatomic, strong) NSArray               *selectedNotes;
-@property (nonatomic, strong) NSPopover             *activePopover;
-@property (nonatomic, strong) Storage               *storage;
-@property (nonatomic, strong) TextViewInputHandler  *inputHandler;
+@property (nonatomic,   weak) VersionsViewController    *versionsViewController;
+@property (nonatomic,   weak) ShareViewController       *shareViewController;
+@property (nonatomic,   weak) PublishViewController     *publishViewController;
 
-@property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
-@property (nonatomic, assign) BOOL                  viewingVersions;
-@property (nonatomic, assign) BOOL                  viewingTrash;
+@property (nonatomic, strong) NSTimer                   *saveTimer;
+@property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
+@property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
+@property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
+@property (nonatomic, strong) NSArray                   *selectedNotes;
+@property (nonatomic, strong) NSPopover                 *activePopover;
+@property (nonatomic, strong) Storage                   *storage;
+@property (nonatomic, strong) TextViewInputHandler      *inputHandler;
+
+@property (nonatomic, assign) NSUInteger                cursorLocationBeforeRemoteUpdate;
+@property (nonatomic, assign) BOOL                      viewingVersions;
+@property (nonatomic, assign) BOOL                      viewingTrash;
 
 @end
 
@@ -136,6 +145,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self applyStyle];
 }
 
+// TODO: Work in Progress. Decouple with a delegate please
+//
+- (NoteListViewController *)noteListViewController
+{
+    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
+}
+
 - (void)save
 {
     if (![self.note hasChanges]) {
@@ -181,7 +197,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     [self save];
     [self showStatusText:nil];
-    [statusView setHidden: selectedNote != nil];
+    [self.statusImageView setHidden: selectedNote != nil];
     
     if (!self.markdownView.isHidden) {
         [self toggleMarkdownView:nil];
@@ -233,8 +249,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     [self updateTagField];
     [self updateShareButtonVisibility];
-    [previewButton setEnabled:YES];
-    [historyButton setEnabled:YES];
+    [self.previewButton setEnabled:YES];
+    [self.historyButton setEnabled:YES];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -245,7 +261,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.noteEditor displayNoteWithContent:@""];
     }
     
-    [previewButton setHidden:!self.note.markdown || self.viewingTrash];
+    [self.previewButton setHidden:!self.note.markdown || self.viewingTrash];
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
@@ -282,9 +298,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [tagTokenField setSelectable:NO];
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
-    [shareButton setEnabled:NO];
-    [previewButton setEnabled:NO];
-    [historyButton setEnabled:NO];
+    [self.shareButton setEnabled:NO];
+    [self.previewButton setEnabled:NO];
+    [self.historyButton setEnabled:NO];
     
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -311,23 +327,16 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)showStatusText:(NSString *)text
 {
-    // Quick and dirty status text for now
-    NSTextField *statusField = [statusView viewWithTag:1];
+    BOOL shouldHideImage = text == nil || text.length == 0;
 
-    if (text == nil || [text length] == 0) {
-        [statusField setStringValue:@""];
-        [statusView setHidden:YES];
-        return;
-    }
-    
-    [statusView setHidden:NO];
-    [statusField setStringValue:text];
+    self.statusTextField.stringValue = text ?: @"";
+    self.statusImageView.hidden = shouldHideImage;
 }
 
 - (void)trashDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = YES;
-    [previewButton setHidden:YES];
+    [self.previewButton setHidden:YES];
     [self.bottomBar setEnabled:NO];
 }
 
@@ -433,12 +442,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [wordCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numWordsString, wordStr]];
 }
 
-- (void)updateVersionLabel:(NSDate *)versionDate {
-    NSString *versionStr = [@"  " stringByAppendingFormat:@"%@: %@",
-							NSLocalizedString(@"Version", @"Label for the current version of a note"),
-							[self.note getDateString:versionDate brief:NO]];
-    
-    versionLabel.stringValue = versionStr;
+- (void)updateVersionLabel:(NSDate *)versionDate
+{
+    NSString *text = [NSString stringWithFormat:@"  %@: %@",
+                      NSLocalizedString(@"Version", @"Label for the current version of a note"),
+                      [self.note getDateString:versionDate brief:NO]];
+
+    self.versionsViewController.versionText = text;
+}
+
+- (void)updateVersionSlider
+{
+    NSInteger maximum = [self.note.version integerValue];
+    NSInteger minimum = [self minimumNoteVersion];
+
+    [self.versionsViewController refreshSliderWithMax:maximum min:minimum];
 }
 
 
@@ -473,12 +491,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
     // Update the note list preview
-    [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
+    [self.noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
 }
 
 -(void)updateShareButtonVisibility
 {
-    [shareButton setEnabled:self.note.content.length > 0];
+    [self.shareButton setEnabled:self.note.content.length > 0];
 }
 
 #pragma mark - Simperium
@@ -532,25 +550,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)updatePublishUI
 {
-    if (self.note.published && self.note.publishURL.length == 0) {
-        publishLabel.stringValue = NSLocalizedString(@"Publishing...", @"Displayed during a Publish Operation");
-        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
-        publishButton.enabled = NO;
-    } else if (self.note.published && self.note.publishURL.length > 0) {
-        publishLabel.stringValue = [NSString stringWithFormat:@"%@%@", SPSimplenotePublishURL, self.note.publishURL];
-        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
-        publishButton.enabled = YES;
-        publishButton.state = NSOnState; // clicking the button will toggle the state
-    } else if (!self.note.published && self.note.publishURL.length == 0) {
-        publishLabel.stringValue = @"";
-        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
-        publishButton.enabled = YES;
-        publishButton.state = NSOffState;// clicking the button will toggle the state
-    } else if (!self.note.published && self.note.publishURL.length > 0) {
-        publishLabel.stringValue = NSLocalizedString(@"Unpublishing...", @"Displayed during an Unpublish Operation");
-        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
-        publishButton.enabled = NO;
-    }
+    [self.publishViewController refreshStateWithPublished:self.note.published
+                                                      url:self.note.publishURL];
 }
 
 - (void)publishNote
@@ -641,10 +642,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (self.activePopover.contentViewController == self.versionsViewController) {
         // Prepare the UI
         self.viewingVersions = YES;
-        versionSlider.maxValue = [self.note.version integerValue];
-        versionSlider.minValue = [self minimumNoteVersion];
-        versionSlider.numberOfTickMarks = versionSlider.maxValue - versionSlider.minValue + 1;
-        [versionSlider setObjectValue:[NSNumber numberWithInteger:versionSlider.maxValue]];
+        [self updateVersionSlider];
         [self updateVersionLabel:self.note.modificationDate];
         [self.noteEditor setEditable:NO];
 
@@ -672,15 +670,28 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
-#pragma mark - Actions
+#pragma mark - PublishViewController Delegate
 
-- (IBAction)versionSliderChanged:(id)sender
+- (void)publishControllerDidClickPublish:(PublishViewController *)controller
 {
-    NSInteger versionInt = [versionSlider integerValue]; // can be a float, so get the int
-	NSDictionary *versionData = [self.noteVersionData objectForKey:[NSNumber numberWithInteger:versionInt]];
-    NSLog(@"Loading version %ld", (long)versionInt);
-    
-    restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
+    // The button state is toggled when user clicks on it
+    if (controller.publishButtonState == NSOnState) {
+        [self publishNote];
+    } else {
+        [self unpublishNote];
+    }
+}
+
+
+#pragma mark - VersionsViewController Delegate
+
+- (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
+{
+    NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
+    NSLog(@"Loading version %ld", (long)newValue);
+
+    self.versionsViewController.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
+
 	if (versionData != nil) {
         NSString *content = (NSString *)[versionData objectForKey:@"content"];
         [self.noteEditor displayNoteWithContent:content];
@@ -690,7 +701,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	}
 }
 
-- (IBAction)restoreVersionAction:(id)sender
+- (void)versionsControllerDidClickRestore:(VersionsViewController *)sender
 {
     [SPTracker trackEditorNoteRestored];
     
@@ -698,6 +709,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
     [self dismissActivePopover];
 }
+
+
+#pragma mark - Actions
 
 - (IBAction)pinAction:(id)sender
 {
@@ -714,14 +728,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Update the list
     [notesArrayController rearrangeObjects];
-    [noteListViewController selectRowForNoteKey:self.note.simperiumKey];
+    [self.noteListViewController selectRowForNoteKey:self.note.simperiumKey];
 }
 
 - (IBAction)markdownAction:(id)sender
 {
     // Toggle the markdown state
     BOOL isEnabled = markdownItem.state == NSOffState;
-    [previewButton setHidden:!isEnabled];
+    [self.previewButton setHidden:!isEnabled];
     
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.markdown = isEnabled;
@@ -739,16 +753,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self checkTextInDocument];
     
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
-}
-
-- (IBAction)publishAction:(id)sender
-{
-    // The button state is toggled when user clicks on it
-    if (publishButton.state == NSOnState) {
-        [self publishNote];
-    } else {
-        [self unpublishNote];
-    }
 }
 
 - (IBAction)addAction:(id)sender
@@ -788,7 +792,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)prepareForNewNote:(Note *)newNote
 {
-    [noteListViewController selectRowForNoteKey:newNote.simperiumKey];
+    [self.noteListViewController selectRowForNoteKey:newNote.simperiumKey];
     [tableView scrollRowToVisible:[tableView selectedRow]];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -803,7 +807,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         }
         
         [SPTracker trackEditorNoteDeleted];
-        [noteListViewController deleteNote:noteToDelete];
+        [self.noteListViewController deleteNote:noteToDelete];
     }
 }
 
@@ -1061,7 +1065,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         }
     }
 
-    [self.scrollView setBackgroundColor:[self.theme colorForKey:@"dividerColor"]];
+    self.noteEditor.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
 
@@ -1074,7 +1078,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)showPublishPopover
 {
-    [self showViewController:self.publishViewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    PublishViewController *viewController = [PublishViewController new];
+    viewController.delegate = self;
+
+    [self showViewController:viewController relativeToView:self.shareButton preferredEdge:NSMaxYEdge];
+    self.publishViewController = viewController;
 }
 
 // Reprocesses note checklists after switching themes, so they apply the correct color
@@ -1089,8 +1097,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (IBAction)showSharePopover:(id)sender
 {
     [SPTracker trackEditorCollaboratorsAccessed];
-    [self showViewController:self.shareViewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+
+    ShareViewController *viewController = [ShareViewController new];
+    [self showViewController:viewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+
     [self.bottomBar.tokenField becomeFirstResponder];
+    self.shareViewController = viewController;
 }
 
 - (IBAction)showVersionPopover:(id)sender
@@ -1103,7 +1115,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [SPTracker trackEditorVersionsAccessed];
-    [self showViewController:self.versionsViewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+
+    VersionsViewController *viewController = [VersionsViewController new];
+    viewController.delegate = self;
+
+    [self showViewController:viewController relativeToView:self.historyButton preferredEdge:NSMaxYEdge];
+    self.versionsViewController = viewController;
 }
 
 - (IBAction)shareNote:(id)sender
@@ -1114,7 +1131,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
     sharingPicker.delegate = self;
-    [sharingPicker showRelativeToRect:shareButton.bounds ofView:shareButton preferredEdge:NSMinYEdge];
+    [sharingPicker showRelativeToRect:self.shareButton.bounds ofView:self.shareButton preferredEdge:NSMinYEdge];
 }
 
 - (IBAction)toggleMarkdownView:(id)sender
@@ -1131,8 +1148,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor setHidden:markdownVisible];
     [self.markdownView setHidden:!markdownVisible];
     
-    [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
-    [historyButton setEnabled:!markdownVisible];
+    [self.previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
+    [self.historyButton setEnabled:!markdownVisible];
     
     if (markdownVisible) {
         [self loadMarkdownContent];

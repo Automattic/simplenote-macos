@@ -7,9 +7,7 @@
 //
 
 #import "SPTextView.h"
-#import "NSImage+Colorize.h"
 #import "NSMutableAttributedString+Styling.h"
-#import "NSImage+Colorize.h"
 #import "VSThemeManager.h"
 #import "Simplenote-Swift.h"
 

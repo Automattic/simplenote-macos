@@ -12,6 +12,9 @@
 @import Simperium_OSX;
 
 
+@class NoteListViewController;
+@class NoteEditorViewController;
+@class TagListViewController;
 @class SPToolbarView;
 
 #pragma mark ====================================================================================
@@ -24,13 +27,17 @@
     IBOutlet SPBackgroundView *backgroundView;
 }
 
-@property (strong, nonatomic) IBOutlet NSWindow                 *window;
-@property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
+@property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;
 
-@property (strong, nonatomic) Simperium                         *simperium;
-@property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
-@property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
-@property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
+@property (strong, nonatomic, readonly) IBOutlet TagListViewController    *tagListViewController;
+@property (strong, nonatomic, readonly) IBOutlet NoteListViewController   *noteListViewController;
+@property (strong, nonatomic, readonly) IBOutlet NoteEditorViewController *noteEditorViewController;
+@property (strong, nonatomic, readonly) IBOutlet SPToolbarView            *toolbar;
+
+@property (strong, nonatomic, readonly) Simperium                         *simperium;
+@property (strong, nonatomic, readonly) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
+@property (strong, nonatomic, readonly) NSManagedObjectModel              *managedObjectModel;
+@property (strong, nonatomic, readonly) NSManagedObjectContext            *managedObjectContext;
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 
