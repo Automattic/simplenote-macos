@@ -68,27 +68,27 @@ private extension ToolbarView {
 
     @objc
     func noNoteLoaded(_ note: Notification) {
-        updateAllButtons(enabled: false)
+        refreshButtons(enabled: false)
     }
 
     @objc
     func noteLoaded(_ note: Notification) {
-        updateAllButtons(enabled: true)
+        refreshButtons(enabled: true)
     }
 
     @objc
     func trashDidLoad(_ note: Notification) {
-        updateButtons(trashOnScreen: true)
+        refreshButtons(trashOnScreen: true)
     }
 
     @objc
     func tagsDidLoad(_ note: Notification) {
-        updateButtons(trashOnScreen: false)
+        refreshButtons(trashOnScreen: false)
     }
 
     @objc
     func trashDidEmpty(_ note: Notification) {
-        updateAllButtons(enabled: false)
+        refreshButtons(enabled: false)
     }
 }
 
@@ -97,18 +97,27 @@ private extension ToolbarView {
 //
 private extension ToolbarView {
 
+    var allButtons: [NSButton] {
+        return [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+    }
+
     func setupSubviews() {
-        for case let subview as NSButton in stackView.subviews {
-            subview.tintImage(color: .simplenoteActionButtonTintColor)
+        for button in allButtons {
+            button.tintImage(color: .simplenoteActionButtonTintColor)
         }
     }
 
-    func updateAllButtons(enabled: Bool) {
-        for case let subview as NSButton in stackView.subviews {
-            subview.isEnabled = enabled
+    func refreshButtons(enabled: Bool) {
+        for button in allButtons {
+            button.isEnabled = enabled
         }
     }
 
-    func updateButtons(trashOnScreen: Bool) {
+    func refreshButtons(trashOnScreen: Bool) {
+        actionButton.isEnabled = !trashOnScreen
+        historyButton.isHidden = trashOnScreen
+        restoreButton.isHidden = !trashOnScreen
+        shareButton.isHidden = trashOnScreen
+        trashButton.isHidden = trashOnScreen
     }
 }
