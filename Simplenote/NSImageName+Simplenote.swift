@@ -5,35 +5,39 @@ import Foundation
 //
 extension NSImage.Name {
 
-    /// All Notes Icon, meant to be used in the Tags List
+    /// Tag List: All Notes
     ///
     static let allNotes = NSImage.Name("button_all_notes")
 
-    ///
+    /// Toolbar: History
     ///
     static let history = NSImage.Name("button_history")
 
-    ///
+    /// Toolbar: Info
     ///
     static let info = NSImage.Name("button_info")
 
-    /// New Note Icon, meant to be used in the Notes List
+    /// Notes List: New Note
     ///
     static let newNote = NSImage.Name("button_new_note")
 
-    ///
+    /// Toolbar: Preview Off
     ///
     static let previewOff = NSImage.Name("button_preview_off")
 
-    ///
+    /// Toolbar: Preview On
     ///
     static let previewOn = NSImage.Name("button_preview_on")
 
-    ///
+    /// Toolbar: Restore
     ///
     static let restore = NSImage.Name("button_restore")
 
-    /// Trash Icon, meant to be used in the Tags List
+    /// Toolbar: Share
+    ///
+    static let share = NSImage.Name("button_share")
+
+    /// Tag List: Trash
     ///
     static let trash = NSImage.Name("button_trash")
 }
