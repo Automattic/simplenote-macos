@@ -23,6 +23,14 @@ extension NSImage.Name {
 
     ///
     ///
+    static let previewOff = NSImage.Name("button_preview_off")
+
+    ///
+    ///
+    static let previewOn = NSImage.Name("button_preview_on")
+
+    ///
+    ///
     static let restore = NSImage.Name("button_restore")
 
     /// Trash Icon, meant to be used in the Tags List
