@@ -16,7 +16,6 @@
 #import "NoteEditorViewController.h"
 #import "SPMarkdownParser.h"
 #import "SPWindow.h"
-#import "SPToolbarView.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
 #import "VSThemeManager.h"
