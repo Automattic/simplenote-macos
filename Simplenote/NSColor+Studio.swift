@@ -34,9 +34,18 @@ extension NSColor {
 extension NSColor {
 
     @objc
-    static var colorForCellSelection: NSColor {
-        // TODO: Replace with ColorStudio
-        NSColor(calibratedRed: 165.0/255.0, green: 190.0/255.0, blue: 234.0/255.0, alpha: 1.0)
+    static var simplenoteTagListRegularTextColor: NSColor {
+        NSColor(lightColor: .gray80, darkColor: .white)
+    }
+
+    @objc
+    static var simplenoteTagListSelectedTextColor: NSColor {
+        .white
+    }
+
+    @objc
+    static var simplenoteTagListSelectedBackgroundColor: NSColor {
+        NSColor(studioColor: .blue50)
     }
 
     @objc

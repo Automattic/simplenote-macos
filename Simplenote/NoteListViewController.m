@@ -7,7 +7,6 @@
 //
 
 #import "NoteListViewController.h"
-#import "SPTableRowView.h"
 #import "SPNoteCellView.h"
 #import "Note.h"
 #import "NoteEditorViewController.h"
@@ -18,6 +17,7 @@
 #import "VSThemeManager.h"
 #import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
 
 @import Simperium_OSX;
 
@@ -147,7 +147,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)predicateDidChange
 {
-    if ([[arrayController arrangedObjects] count] != 0) {
+    if (self.allNotes.count != 0) {
         return;
     }
 
@@ -213,9 +213,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-    SPTableRowView *rowView = [[SPTableRowView alloc]initWithFrame:NSZeroRect];
-    rowView.drawBorder = NO;
-    return rowView;
+    return [TableRowView new];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
@@ -247,12 +245,17 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSArray *)selectedNotes
 {
-    return [[arrayController arrangedObjects] objectsAtIndexes:[self.tableView selectedRowIndexes]];
+    return [self.allNotes objectsAtIndexes:[self.tableView selectedRowIndexes]];
+}
+
+- (NSArray<Note *> *)allNotes
+{
+    return arrayController.arrangedObjects;
 }
 
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
-    NSUInteger numNotes = [[arrayController arrangedObjects] count];
+    NSUInteger numNotes = self.allNotes.count;
     
     // As soon as at least one note is added, select it
     if (numNotes > 0 && self.noteEditorViewController.note == nil) {
@@ -271,7 +274,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)notesArraySelectionDidChange:(NSNotification *)notification
 {
     // Check for empty list and clear editor contents if necessary
-    if ([[arrayController arrangedObjects] count] == 0) {
+    if (self.allNotes.count == 0) {
         [self.noteEditorViewController displayNote:nil];
     }
     
@@ -371,7 +374,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)didEmptyTrash:(NSNotification *)notification
 {
-    if ([[arrayController arrangedObjects] count] != 0) {
+    if (self.allNotes.count != 0) {
         return;
     }
 

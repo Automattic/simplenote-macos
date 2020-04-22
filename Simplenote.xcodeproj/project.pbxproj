@@ -99,7 +99,6 @@
 		466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
 		466FFEB017CC10A800399652 /* SPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65714D3264200A6CCC1 /* SPGradientView.m */; };
 		466FFEB117CC10A800399652 /* SPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65A14D32DCB00A6CCC1 /* SPBackgroundView.m */; };
-		466FFEB217CC10A800399652 /* SPTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66214D37C2000A6CCC1 /* SPTableRowView.m */; };
 		466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB517CC10A800399652 /* SPNoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */; };
@@ -138,7 +137,6 @@
 		712DC91C1531FE2F0033CE85 /* SPTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 712DC91B1531FE2F0033CE85 /* SPTokenField.m */; };
 		714BA65814D3264200A6CCC1 /* SPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65714D3264200A6CCC1 /* SPGradientView.m */; };
 		714BA65B14D32DCB00A6CCC1 /* SPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA65A14D32DCB00A6CCC1 /* SPBackgroundView.m */; };
-		714BA66314D37C2000A6CCC1 /* SPTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66214D37C2000A6CCC1 /* SPTableRowView.m */; };
 		714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
@@ -273,6 +271,8 @@
 		B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */; };
 		B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
 		B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */; };
+		B5F3150924496A970036872D /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3150824496A970036872D /* TableRowView.swift */; };
+		B5F3150A24496A970036872D /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3150824496A970036872D /* TableRowView.swift */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
@@ -446,8 +446,6 @@
 		714BA65714D3264200A6CCC1 /* SPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGradientView.m; sourceTree = "<group>"; };
 		714BA65914D32DCB00A6CCC1 /* SPBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBackgroundView.h; sourceTree = "<group>"; };
 		714BA65A14D32DCB00A6CCC1 /* SPBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBackgroundView.m; sourceTree = "<group>"; };
-		714BA66114D37C1F00A6CCC1 /* SPTableRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTableRowView.h; sourceTree = "<group>"; };
-		714BA66214D37C2000A6CCC1 /* SPTableRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTableRowView.m; sourceTree = "<group>"; };
 		714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListViewController.h; sourceTree = "<group>"; };
 		714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListViewController.m; sourceTree = "<group>"; };
 		714BA66C14D4AE6200A6CCC1 /* DateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTransformer.h; sourceTree = "<group>"; };
@@ -552,6 +550,7 @@
 		B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Simperium+Simplenote.h"; sourceTree = "<group>"; };
 		B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Privacy.storyboard; sourceTree = "<group>"; };
 		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		B5F3150824496A970036872D /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
@@ -867,8 +866,6 @@
 				7199A43014D8FD1C00B903A8 /* SPToolbarView.m */,
 				712DC91A1531FE2F0033CE85 /* SPTokenField.h */,
 				712DC91B1531FE2F0033CE85 /* SPTokenField.m */,
-				714BA66114D37C1F00A6CCC1 /* SPTableRowView.h */,
-				714BA66214D37C2000A6CCC1 /* SPTableRowView.m */,
 				71D83D6E14D744FB00A25E69 /* SPNoteCellView.h */,
 				71D83D6F14D744FB00A25E69 /* SPNoteCellView.m */,
 				714BA65614D3264200A6CCC1 /* SPGradientView.h */,
@@ -1104,6 +1101,7 @@
 		B5E0862A2448B58D00DEF476 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				B5F3150824496A970036872D /* TableRowView.swift */,
 				B5E086272448B57200DEF476 /* HeaderTableCellView.swift */,
 				B5E086342448EA3C00DEF476 /* TagTableCellView.swift */,
 			);
@@ -1528,7 +1526,6 @@
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
 				714BA65B14D32DCB00A6CCC1 /* SPBackgroundView.m in Sources */,
 				B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
-				714BA66314D37C2000A6CCC1 /* SPTableRowView.m in Sources */,
 				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
@@ -1587,6 +1584,7 @@
 				B57CB87E244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
+				B5F3150924496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
@@ -1632,7 +1630,6 @@
 				B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
 				466FFEB117CC10A800399652 /* SPBackgroundView.m in Sources */,
-				466FFEB217CC10A800399652 /* SPTableRowView.m in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
 				466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
@@ -1695,6 +1692,7 @@
 				B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
+				B5F3150A24496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,

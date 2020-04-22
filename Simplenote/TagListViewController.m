@@ -9,7 +9,6 @@
 #import "TagListViewController.h"
 #import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "SPTableRowView.h"
 #import "SPTableView.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
@@ -486,10 +485,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-    SPTableRowView *rowView = [[SPTableRowView alloc] initWithFrame:NSZeroRect];
-    rowView.drawBorder = NO;
-    rowView.grayBackground = YES;
-    
+    TableRowView *rowView = [TableRowView new];
+    rowView.selectedBackgroundColor = [NSColor simplenoteTagListSelectedBackgroundColor];
     return rowView;
 }
 
@@ -502,7 +499,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
     if ([self.tableView selectedRow] == kTrashRow) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kWillFinishViewingTrash object:self];
     }
-    
+
     return YES;
 }
 

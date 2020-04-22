@@ -10,21 +10,6 @@
 
 @implementation SPTagTextField
 
-- (instancetype)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
-
-- (void)setDelegate:(id<NSTextFieldDelegate>)anObject
-{
-    [super setDelegate:anObject];
-}
-
 - (BOOL)resignFirstResponder
 {
     return YES;
