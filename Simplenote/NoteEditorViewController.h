@@ -37,7 +37,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 #pragma mark NoteEditorViewController
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController : NSViewController <NSSharingServicePickerDelegate, WKNavigationDelegate>
+@interface NoteEditorViewController : NSViewController <NSSharingServicePickerDelegate>
 {
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
@@ -64,7 +64,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic,   weak) IBOutlet NSScrollView         *scrollView;
 @property (nonatomic,   weak) IBOutlet NoteEditorBottomBar  *bottomBar;
 @property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
-@property (nonatomic, strong) IBOutlet WKWebView            *markdownView;
+@property (nonatomic,   weak) IBOutlet WKWebView            *markdownView;
 @property (nonatomic,   weak) Note                          *note;
 @property (nonatomic, assign, readonly) BOOL                viewingTrash;
 
