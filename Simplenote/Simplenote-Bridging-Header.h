@@ -14,6 +14,7 @@
 #import "Tag.h"
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"
+#import "TagListViewController.h"
 
 
 #pragma mark - Extensions

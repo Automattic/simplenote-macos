@@ -14,7 +14,6 @@
 #import "NSString+Styling.h"
 #import "NSString+Simplenote.h"
 #import "VSThemeManager.h"
-#import "SPTableRowView.h"
 #import "Simplenote-Swift.h"
 
 #define kHighlightColor [NSColor colorWithCalibratedRed:65.f/255.f green:132.f/255.f blue:191.f/255.f alpha:1.0]

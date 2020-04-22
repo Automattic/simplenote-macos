@@ -760,16 +760,15 @@
                                         </constraints>
                                         <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </box>
-                                    <scrollView borderType="none" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
+                                    <scrollView borderType="none" horizontalLineScroll="43" horizontalPageScroll="10" verticalLineScroll="43" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="43" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <size key="intercellSpacing" width="0.0" height="4"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
@@ -785,100 +784,75 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <tableCellView identifier="AllNotesCell" id="1463" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="2" width="120" height="30"/>
+                                                                <tableCellView identifier="HeaderTableCellView" id="o2b-qa-J8S" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1464" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="7" width="69" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1465">
-                                                                                <font key="font" metaFont="system"/>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Fr-VHA" customClass="SPTagTextField">
+                                                                            <rect key="frame" x="14" y="6" width="96" height="15"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Header" placeholderString="" usesSingleLineMode="YES" id="qGL-DU-S4n">
+                                                                                <font key="font" metaFont="system" size="12"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <imageView id="1473">
-                                                                            <rect key="frame" x="18" y="7" width="22" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_all_notes" id="1474"/>
-                                                                        </imageView>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="top" secondItem="o2b-qa-J8S" secondAttribute="top" constant="22" id="1Sj-pQ-a14"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="wK9-Fr-VHA" secondAttribute="trailing" constant="12" id="bF5-z7-8WW"/>
+                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="leading" secondItem="o2b-qa-J8S" secondAttribute="leading" constant="16" id="nC5-Iq-Kwe"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="wK9-Fr-VHA" secondAttribute="bottom" constant="6" id="yWU-iN-Wkp"/>
+                                                                    </constraints>
                                                                     <connections>
-                                                                        <outlet property="imageView" destination="1473" id="1475"/>
-                                                                        <outlet property="textField" destination="1464" id="1466"/>
+                                                                        <outlet property="textField" destination="wK9-Fr-VHA" id="pUE-tE-BBr"/>
                                                                     </connections>
                                                                 </tableCellView>
-                                                                <tableCellView identifier="TrashCell" id="1480" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="36" width="120" height="30"/>
+                                                                <tableCellView identifier="TagTableCellView" id="xs7-Qb-oqk" userLabel="Tag" customClass="TagTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="43" width="120" height="29"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1482" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="47" y="6" width="69" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1483">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
-                                                                        <imageView id="1481">
-                                                                            <rect key="frame" x="18" y="7" width="22" height="22"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_trash" id="1484"/>
-                                                                        </imageView>
+                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bif-Ap-TPi">
+                                                                            <rect key="frame" x="16" y="4" width="98" height="21"/>
+                                                                            <subviews>
+                                                                                <imageView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ju-l4-pVB">
+                                                                                    <rect key="frame" x="0.0" y="1" width="20" height="20"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="20" id="o7x-J0-TJl"/>
+                                                                                        <constraint firstAttribute="height" constant="20" id="yj9-Nx-L8y"/>
+                                                                                    </constraints>
+                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WXD-wJ-HTt"/>
+                                                                                </imageView>
+                                                                                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="SPTagTextField">
+                                                                                    <rect key="frame" x="-2" y="1" width="102" height="20"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="uzi-U7-cJn"/>
+                                                                                    </constraints>
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Title" placeholderString="" usesSingleLineMode="YES" id="eVq-2Q-sAB">
+                                                                                        <font key="font" metaFont="menu" size="14"/>
+                                                                                        <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                            </subviews>
+                                                                            <visibilityPriorities>
+                                                                                <integer value="1000"/>
+                                                                                <integer value="1000"/>
+                                                                            </visibilityPriorities>
+                                                                            <customSpacing>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                            </customSpacing>
+                                                                        </stackView>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="bif-Ap-TPi" firstAttribute="leading" secondItem="xs7-Qb-oqk" secondAttribute="leading" constant="16" id="Fh2-tv-4jd"/>
+                                                                        <constraint firstItem="bif-Ap-TPi" firstAttribute="top" secondItem="xs7-Qb-oqk" secondAttribute="top" constant="4" id="ads-b0-mMh"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="bif-Ap-TPi" secondAttribute="bottom" constant="4" id="gQ3-mq-daO"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="bif-Ap-TPi" secondAttribute="trailing" constant="6" id="oJf-G0-n1H"/>
+                                                                    </constraints>
                                                                     <connections>
-                                                                        <outlet property="imageView" destination="1481" id="1486"/>
-                                                                        <outlet property="textField" destination="1482" id="1485"/>
-                                                                    </connections>
-                                                                </tableCellView>
-                                                                <tableCellView identifier="SeparatorCell" id="1494" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="70" width="120" height="36"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1496" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="20" y="6" width="93" height="24"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" id="1497">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
-                                                                        <box boxType="custom" borderType="line" id="vWM-3v-GoR">
-                                                                            <rect key="frame" x="0.0" y="15" width="151" height="1"/>
-                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            <view key="contentView" id="8LT-ym-mnf">
-                                                                                <rect key="frame" x="1" y="1" width="149" height="0.0"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                            </view>
-                                                                        </box>
-                                                                    </subviews>
-                                                                    <connections>
-                                                                        <outlet property="dividerView" destination="vWM-3v-GoR" id="7oD-Wl-Ses"/>
-                                                                        <outlet property="textField" destination="1496" id="1499"/>
-                                                                    </connections>
-                                                                </tableCellView>
-                                                                <tableCellView identifier="TagCell" id="1487" customClass="SPTagCellView">
-                                                                    <rect key="frame" x="0.0" y="110" width="120" height="30"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                    <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="1489" customClass="SPTagTextField">
-                                                                            <rect key="frame" x="17" y="3" width="87" height="21"/>
-                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Tag Name" placeholderString="" usesSingleLineMode="YES" id="1490">
-                                                                                <font key="font" metaFont="system"/>
-                                                                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                            <connections>
-                                                                                <outlet property="delegate" destination="1461" id="1524"/>
-                                                                            </connections>
-                                                                        </textField>
-                                                                    </subviews>
-                                                                    <connections>
-                                                                        <outlet property="textField" destination="1489" id="1492"/>
+                                                                        <outlet property="imageView" destination="4Ju-l4-pVB" id="aJt-lq-V1P"/>
+                                                                        <outlet property="textField" destination="AHm-MN-xFJ" id="C0Q-Cc-uWw"/>
                                                                     </connections>
                                                                 </tableCellView>
                                                             </prototypeCellViews>
@@ -905,7 +879,7 @@
                                     </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1731" secondAttribute="trailing" id="3Uj-fR-at6"/>
+                                    <constraint firstItem="1731" firstAttribute="leading" secondItem="1436" secondAttribute="leading" id="Fpd-lS-NON"/>
                                     <constraint firstItem="1452" firstAttribute="leading" secondItem="1436" secondAttribute="leading" id="KYh-fz-7dG"/>
                                     <constraint firstAttribute="bottom" secondItem="1731" secondAttribute="bottom" id="WfA-jZ-MZh"/>
                                     <constraint firstItem="1452" firstAttribute="top" secondItem="1436" secondAttribute="top" id="X8N-gH-844"/>
@@ -936,7 +910,7 @@
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="568">
-                                                                <font key="font" metaFont="controlContent"/>
+                                                                <font key="font" metaFont="system" size="12"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1083,7 +1057,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="faw-Qh-Cm9" userLabel="Status Label">
                                         <rect key="frame" x="252" y="262" width="4" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" id="nme-7B-meh">
-                                            <font key="font" metaFont="system" size="14"/>
+                                            <font key="font" metaFont="menu" size="14"/>
                                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1125,7 +1099,7 @@
                 <outlet property="delegate" destination="494" id="1423"/>
                 <outlet property="initialFirstResponder" destination="934" id="IAf-Xp-Jjj"/>
             </connections>
-            <point key="canvasLocation" x="138" y="263"/>
+            <point key="canvasLocation" x="138" y="262"/>
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
@@ -1203,10 +1177,8 @@
     </objects>
     <resources>
         <image name="button_new" width="22" height="22"/>
-        <image name="icon_all_notes" width="22" height="22"/>
         <image name="icon_preview" width="44" height="44"/>
         <image name="icon_shared" width="22" height="22"/>
-        <image name="icon_trash" width="22" height="22"/>
         <image name="icon_trash_highlighted" width="22" height="22"/>
         <image name="logo_grey" width="128" height="128"/>
         <image name="toolbar_info" width="22" height="22"/>

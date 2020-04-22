@@ -9,25 +9,22 @@
 #import "TagListViewController.h"
 #import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "SPTagCellView.h"
 #import "SPTableRowView.h"
 #import "SPTableView.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
 #import "VSThemeManager.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
+
 @import Simperium_OSX;
 
-#define kTopRow 0
-#define kAllNotesRow 1
-#define kTrashRow 2
-#define kSeparatorRow 3
-#define kStartOfTagListRow 4
-#define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
-#define kRowHeight 30
-#define kSeparatorHeight 24
-#define kTopRowHeight 14
+#define kAllNotesRow 0
+#define kTrashRow 1
+#define kTagHeaderRow 2
+#define kStartOfTagListRow 3
+#define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
@@ -35,6 +32,7 @@ NSString * const kTagUpdated = @"SPTagUpdated";
 NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
 NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
+CGFloat const SPListEstimatedRowHeight = 30;
 
 @interface TagListViewController ()
 
@@ -51,6 +49,8 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
     [self buildDropdownMenus];
 
+    self.tableView.rowHeight = SPListEstimatedRowHeight;
+    self.tableView.usesAutomaticRowHeights = YES;
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
@@ -334,9 +334,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 		 NSInteger columnIndex = -1;
 		 while(++columnIndex < rowView.numberOfColumns) {
 			 
-			 SPTagCellView* tagCellView = (SPTagCellView*)[rowView viewAtColumn:columnIndex];
+			 TagTableCellView* tagCellView = (TagTableCellView*)[rowView viewAtColumn:columnIndex];
 			 
-			 if([tagCellView isKindOfClass:[SPTagCellView class]] && tagCellView.mouseInside) {
+			 if([tagCellView isKindOfClass:[TagTableCellView class]] && tagCellView.mouseInside) {
 				 tagIndex = row;
 				 break;
 			 }
@@ -396,7 +396,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 	}
 	
 	if(row != NSNotFound) {
-		SPTagCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
+		TagTableCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
 		[tagView.textField becomeFirstResponder];
 	}
 }
@@ -445,7 +445,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if(row == kTrashRow) {
         return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if(row == kTopRow || row == kSeparatorRow) {
+    } else if(row == kTagHeaderRow) {
         return @"";
     } else {
         Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
@@ -455,45 +455,27 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if (row == kTopRow) {
-        // Just a spacer
-        return nil;
-    }
-    
-    NSString *cellId = @"TagCell";
-    
     if (row == kAllNotesRow) {
-        cellId = @"AllNotesCell";
-    } else if (row == kTrashRow) {
-        cellId = @"TrashCell";
-    } else if (row == kSeparatorRow) {
-        cellId = @"SeparatorCell";
+        return [self allNotesTableViewCell];
     }
-    
-    SPTagCellView *tagView = [self.tableView makeViewWithIdentifier:cellId owner:self];
-    [tagView.textField setDelegate:self];
-    [tagView setMouseInside:NO];
-    [tagView applyStyle];
-    
-    if (row == kAllNotesRow) {
-        tagView.textField.stringValue = NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
-    } else if (row == kTrashRow) {
-        tagView.textField.stringValue = NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if (row == kSeparatorRow) {
-        tagView.textField.stringValue = @"";
-    } else {
-        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
-        tagView.textField.stringValue = tag.name;
+
+    if (row == kTrashRow) {
+        return [self trashTableViewCell];
     }
-    
-    return tagView;
+
+    if (row == kTagHeaderRow) {
+        return [self tagHeaderTableViewCell];
+    }
+
+    Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
+    return [self tagTableViewCellForTag:tag];
 }
 
 - (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     switch (row) {
         case kAllNotesRow:
-        case kSeparatorRow:
+        case kTagHeaderRow:
             return nil;
         case kTrashRow:
             return trashDropdownMenu;
@@ -513,7 +495,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
-    if (row == kTopRow || row == kSeparatorRow) {
+    if (row == kTagHeaderRow) {
         return NO;
     }
     
@@ -532,19 +514,6 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
     [self.noteListViewController filterNotes:nil];
     [self.noteListViewController selectRow:0];
-}
-
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    if (row == kSeparatorRow) {
-        return kSeparatorHeight;
-    }
-    
-    if (row == kTopRow) {
-        return kTopRowHeight;
-    }
-    
-    return kRowHeight;
 }
 
 
