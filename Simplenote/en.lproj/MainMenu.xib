@@ -891,11 +891,11 @@
                                         <rect key="frame" x="0.0" y="526" width="508" height="56"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-k3-T1Z">
-                                                <rect key="frame" x="208" y="0.0" width="284" height="56"/>
+                                                <rect key="frame" x="216" y="0.0" width="220" height="56"/>
                                                 <subviews>
                                                     <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-hx-wfj" userLabel="Markdown">
                                                         <rect key="frame" x="0.0" y="16" width="24" height="24"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_preview_off" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Q9W-kz-F4v">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_preview_off" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q9W-kz-F4v">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -905,7 +905,7 @@
                                                     </button>
                                                     <button toolTip="History" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-UJ-0zw" userLabel="History">
                                                         <rect key="frame" x="49" y="16" width="24" height="24"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_history" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_history" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="KJV-0C-wVw">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -915,7 +915,7 @@
                                                     </button>
                                                     <button toolTip="Share" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qmA-vO-wPh" userLabel="Share">
                                                         <rect key="frame" x="98" y="16" width="24" height="24"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_share" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L1E-HD-wfM">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_share" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="L1E-HD-wfM">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -925,7 +925,7 @@
                                                     </button>
                                                     <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fA9-bG-luR" userLabel="Restore">
                                                         <rect key="frame" x="147" y="16" width="24" height="24"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="X3f-rW-nRp">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="X3f-rW-nRp">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -935,7 +935,7 @@
                                                     </button>
                                                     <button toolTip="Trash" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mXz-OM-6A3" userLabel="Trash">
                                                         <rect key="frame" x="196" y="16" width="24" height="24"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_trash" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_trash" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ZqN-rU-FdU">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -943,48 +943,8 @@
                                                             <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
                                                         </connections>
                                                     </button>
-                                                    <popUpButton toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1601" userLabel="Info">
-                                                        <rect key="frame" x="245" y="14" width="39" height="28"/>
-                                                        <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                            <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
-                                                                <items>
-                                                                    <menuItem title="Item 1" image="button_info" hidden="YES" id="1604"/>
-                                                                    <menuItem title="0 Words" enabled="NO" id="1605"/>
-                                                                    <menuItem title="0 Characters" enabled="NO" id="1606"/>
-                                                                    <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                    <menuItem isSeparatorItem="YES" id="1614"/>
-                                                                    <menuItem title="Pin to Top" state="on" id="1615">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                        <connections>
-                                                                            <action selector="pinAction:" target="1107" id="1661"/>
-                                                                        </connections>
-                                                                    </menuItem>
-                                                                    <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                        <connections>
-                                                                            <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
-                                                                        </connections>
-                                                                    </menuItem>
-                                                                    <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                        <connections>
-                                                                            <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
-                                                                        </connections>
-                                                                    </menuItem>
-                                                                </items>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="1107" id="1627"/>
-                                                                </connections>
-                                                            </menu>
-                                                        </popUpButtonCell>
-                                                    </popUpButton>
                                                 </subviews>
                                                 <visibilityPriorities>
-                                                    <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
@@ -997,15 +957,55 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
+                                            <popUpButton toolTip="Info" translatesAutoresizingMaskIntoConstraints="NO" id="1601" userLabel="Info">
+                                                <rect key="frame" x="453" y="15" width="39" height="28"/>
+                                                <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="left" lineBreakMode="truncatingTail" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
+                                                        <items>
+                                                            <menuItem image="button_info" hidden="YES" id="1604"/>
+                                                            <menuItem title="0 Words" enabled="NO" id="1605"/>
+                                                            <menuItem title="0 Characters" enabled="NO" id="1606"/>
+                                                            <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem isSeparatorItem="YES" id="1614"/>
+                                                            <menuItem title="Pin to Top" state="on" id="1615">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                <connections>
+                                                                    <action selector="pinAction:" target="1107" id="1661"/>
+                                                                </connections>
+                                                            </menuItem>
+                                                            <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                <connections>
+                                                                    <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
+                                                                </connections>
+                                                            </menuItem>
+                                                            <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                <connections>
+                                                                    <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
+                                                                </connections>
+                                                            </menuItem>
+                                                        </items>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="1107" id="1627"/>
+                                                        </connections>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                            </popUpButton>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="9kE-k3-T1Z" secondAttribute="trailing" constant="16" id="488-TF-wVl"/>
                                             <constraint firstAttribute="bottom" secondItem="9kE-k3-T1Z" secondAttribute="bottom" id="5W5-wh-50M"/>
                                             <constraint firstAttribute="height" constant="56" id="YC2-TE-Xyy"/>
+                                            <constraint firstItem="1601" firstAttribute="leading" secondItem="9kE-k3-T1Z" secondAttribute="trailing" constant="17" id="iW0-YY-Mes"/>
                                             <constraint firstItem="9kE-k3-T1Z" firstAttribute="top" secondItem="914" secondAttribute="top" id="ljV-yK-2ql"/>
+                                            <constraint firstAttribute="trailing" secondItem="1601" secondAttribute="trailing" constant="16" id="n5f-qs-NMn"/>
+                                            <constraint firstItem="1601" firstAttribute="centerY" secondItem="914" secondAttribute="centerY" constant="-1" id="sa9-ds-jNa"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="actionButton" destination="1601" id="Wxi-gS-9YP"/>
@@ -1028,7 +1028,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="508" height="482"/>
+                                                    <size key="minSize" width="493" height="482"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1149,6 +1149,7 @@
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
+                <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="view" destination="934" id="1185"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>
             </connections>

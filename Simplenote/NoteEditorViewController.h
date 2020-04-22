@@ -14,6 +14,7 @@
 
 @class NoteListViewController;
 @class NoteEditorBottomBar;
+@class ToolbarView;
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
     NoteFontSizeMinimum = 10,
@@ -53,6 +54,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
+@property (nonatomic, strong) IBOutlet ToolbarView          *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView          *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusTextField;
 @property (nonatomic, strong) IBOutlet NSButton             *previewButton;
