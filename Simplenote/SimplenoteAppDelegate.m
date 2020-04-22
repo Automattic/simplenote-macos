@@ -58,7 +58,6 @@
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
 
-@property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
@@ -413,7 +412,7 @@
 - (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview
 {
     // When resizing the window, only resize the note editor
-    return (subview == self.textViewParent);
+    return (subview == splitView.arrangedSubviews.lastObject);
 }
  
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex
