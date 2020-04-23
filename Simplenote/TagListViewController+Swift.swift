@@ -52,9 +52,9 @@ extension TagListViewController {
 }
 
 
-// MARK: - TextFieldDelegate
+// MARK: - SPTextFieldDelegate
 //
-extension TagListViewController: TextFieldDelegate {
+extension TagListViewController: SPTextFieldDelegate {
 
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
         !menuShowing

@@ -258,10 +258,7 @@
 
 + (BOOL)isTrackingDisabled
 {
-    Preferences *preferences = [[[SimplenoteAppDelegate sharedDelegate] simperium] preferencesObject];
-    NSNumber *enabled = [preferences analytics_enabled];
-
-    return [enabled boolValue] == false;
+    return [[Options shared] analyticsEnabled] == false;
 }
 
 @end
