@@ -63,6 +63,7 @@ class TextField: NSTextField {
         innerDelegate?.controlAcceptsFirstResponder(self) ?? false
     }
 
+    @discardableResult
     override func becomeFirstResponder() -> Bool {
         guard super.becomeFirstResponder() else {
             return false
