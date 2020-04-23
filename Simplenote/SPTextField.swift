@@ -1,18 +1,18 @@
 import Foundation
 
 
-// MARK: - TextFieldDelegate: Our custom protocol.
+// MARK: - SPTextFieldDelegate: Our custom protocol.
 //         Why: Because `shouldBeginEditing`'s API requires a non null NSText instance, which we really can't acquire
 //         within `acceptsFirstResponder`.
 //
-protocol TextFieldDelegate: NSTextFieldDelegate {
+protocol SPTextFieldDelegate: NSTextFieldDelegate {
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool
 }
 
 
-// MARK: - TextField
+// MARK: - SPTextField
 //
-class TextField: NSTextField {
+class SPTextField: NSTextField {
 
     /// Indicates if the receiver is Editing
     ///
@@ -60,7 +60,7 @@ class TextField: NSTextField {
     // MARK: - Overridden
 
     override var acceptsFirstResponder: Bool {
-        let textFieldDelegate = delegate as? TextFieldDelegate
+        let textFieldDelegate = delegate as? SPTextFieldDelegate
         return textFieldDelegate?.controlAcceptsFirstResponder(self) ?? false
     }
 
@@ -83,7 +83,7 @@ class TextField: NSTextField {
 
 // MARK: - Private
 //
-private extension TextField {
+private extension SPTextField {
 
     var activeTextColor: NSColor? {
         if isEditing {
