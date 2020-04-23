@@ -52,7 +52,7 @@ extension TagListViewController {
 }
 
 
-// MARK: - TextFieldDelegate
+// MARK: - SPTextFieldDelegate
 //
 extension TagListViewController: SPTextFieldDelegate {
 
