@@ -7,6 +7,14 @@ import AppKit
 @objcMembers
 class TagTableCellView: NSTableCellView {
 
+    /// Icon rendered on the left hand side
+    ///
+    @IBOutlet var iconImageView: NSImageView!
+
+    /// We really can't use the default `.textField` property
+    ///
+    @IBOutlet var nameTextField: SPTextField!
+
     /// Workaround: In AppKit, TableView Cell Selection works at the Row level
     ///
     override var backgroundStyle: NSView.BackgroundStyle {
@@ -39,12 +47,16 @@ class TagTableCellView: NSTableCellView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        refreshStyle()
+        setupSubviews()
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         reset()
+    }
+
+    override func viewWillDraw() {
+        super.viewWillDraw()
         refreshStyle()
     }
 }
@@ -93,20 +105,25 @@ private extension TagTableCellView {
 //
 private extension TagTableCellView {
 
+    func setupSubviews() {
+        iconImageView.wantsLayer = true
+        nameTextField.wantsLayer = true
+        nameTextField.textRegularColor = .simplenoteTagListRegularTextColor
+        nameTextField.textSelectionColor = .simplenoteTagListSelectedTextColor
+        nameTextField.textEditionColor = .simplenoteTagListEditingTextColor
+    }
+
     func reset() {
         mouseInside = false
         selected = false
-        imageView?.isHidden = true
-        textField?.isEditable = false
+        iconImageView.isHidden = true
+        nameTextField.isEditable = false
     }
 
     func refreshStyle() {
-        let targetColor = selected ? NSColor.simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
+        let tintColor: NSColor = selected ? .simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
 
-        imageView?.wantsLayer = true
-        imageView?.image = imageView?.image?.tinted(with: targetColor)
-
-        textField?.wantsLayer = true
-        textField?.textColor = targetColor
+        iconImageView.tintImage(color: tintColor)
+        nameTextField.isSelected = selected
     }
 }

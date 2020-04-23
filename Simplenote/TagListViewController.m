@@ -396,7 +396,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 	
 	if(row != NSNotFound) {
 		TagTableCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
-		[tagView.textField becomeFirstResponder];
+		[tagView.nameTextField becomeFirstResponder];
 	}
 }
 
@@ -548,11 +548,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
 }
 
 #pragma mark - NSTextField delegate
-
-- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
-{
-    return !self.menuShowing;
-}
 
 - (void)controlTextDidBeginEditing:(NSNotification *)notification
 {

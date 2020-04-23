@@ -18,10 +18,11 @@
     IBOutlet NSMenuItem *tagSortMenuItem;
 }
 
-@property (nonatomic, strong) IBOutlet NSBox                *tagBox;
-@property (nonatomic, strong) IBOutlet NSTableView          *tableView;
-@property (nonatomic, strong) IBOutlet NSArrayController    *notesArrayController;
-@property (nonatomic, strong) NSArray                       *tagArray;
+@property (nonatomic, strong, readwrite) IBOutlet NSBox             *tagBox;
+@property (nonatomic, strong, readwrite) IBOutlet NSTableView       *tableView;
+@property (nonatomic, strong, readwrite) IBOutlet NSArrayController *notesArrayController;
+@property (nonatomic, assign,  readonly) BOOL                       menuShowing;
+@property (nonatomic, strong) NSArray                               *tagArray;
 
 extern NSString * const kTagsDidLoad;
 extern NSString * const kTagUpdated;

@@ -44,6 +44,11 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteTagListEditingTextColor: NSColor {
+        NSColor(lightColor: .gray80, darkColor: .white)
+    }
+
+    @objc
     static var simplenoteTagListSelectedBackgroundColor: NSColor {
         NSColor(studioColor: .blue50)
     }
