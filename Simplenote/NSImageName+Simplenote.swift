@@ -9,6 +9,10 @@ extension NSImage.Name {
     ///
     static let allNotes = NSImage.Name("button_all_notes")
 
+    /// Privacy: Top Right Arrow
+    ///
+    static let arrowTopRight = NSImage.Name("icon_arrow_top_right")
+
     /// Toolbar: History
     ///
     static let history = NSImage.Name("button_history")
