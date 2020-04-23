@@ -60,7 +60,8 @@ class TextField: NSTextField {
     // MARK: - Overridden
 
     override var acceptsFirstResponder: Bool {
-        innerDelegate?.controlAcceptsFirstResponder(self) ?? false
+        let textFieldDelegate = delegate as? TextFieldDelegate
+        return textFieldDelegate?.controlAcceptsFirstResponder(self) ?? false
     }
 
     @discardableResult
@@ -90,10 +91,6 @@ private extension TextField {
         }
 
         return isSelected ? textSelectionColor : textRegularColor
-    }
-
-    var innerDelegate: TextFieldDelegate? {
-        delegate as? TextFieldDelegate
     }
 
     func refreshTextColor() {
