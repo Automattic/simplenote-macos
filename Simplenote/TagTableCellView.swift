@@ -13,7 +13,7 @@ class TagTableCellView: NSTableCellView {
 
     /// We really can't use the default `.textField` property
     ///
-    @IBOutlet var nameTextField: TextField!
+    @IBOutlet var nameTextField: SPTextField!
 
     /// Workaround: In AppKit, TableView Cell Selection works at the Row level
     ///

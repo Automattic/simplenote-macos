@@ -654,7 +654,7 @@
                                                                                     </constraints>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WXD-wJ-HTt"/>
                                                                                 </imageView>
-                                                                                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="TextField" customModule="Simplenote" customModuleProvider="target">
+                                                                                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHm-MN-xFJ" customClass="SPTextField" customModule="Simplenote" customModuleProvider="target">
                                                                                     <rect key="frame" x="-2" y="1" width="102" height="20"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="uzi-U7-cJn"/>

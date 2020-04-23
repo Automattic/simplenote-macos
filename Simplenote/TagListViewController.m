@@ -396,7 +396,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 	
 	if(row != NSNotFound) {
 		TagTableCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
-		[tagView.textField becomeFirstResponder];
+		[tagView.nameTextField becomeFirstResponder];
 	}
 }
 
