@@ -43,6 +43,7 @@ class ToolbarView: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupSubviews()
+        refreshStyle()
         startListeningToNotifications()
         startListeningToThemeNotificationsIfNeeded()
     }
@@ -110,7 +111,8 @@ private extension ToolbarView {
         return [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
     }
 
-    func setupSubviews() {
+    @objc
+    func refreshStyle() {
         for button in allButtons {
             button.tintImage(color: .simplenoteActionButtonTintColor)
         }
@@ -128,5 +130,14 @@ private extension ToolbarView {
         restoreButton.isHidden = !trashOnScreen
         shareButton.isHidden = trashOnScreen
         trashButton.isHidden = trashOnScreen
+    }
+
+    func setupSubviews() {
+        actionButton.toolTip = NSLocalizedString("Details", comment: "Tooltip: Note Details")
+        historyButton.toolTip = NSLocalizedString("History", comment: "Tooltip: History Picker")
+        previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
+        restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
+        shareButton.toolTip = NSLocalizedString("Share", comment: "Tooltip: Share a note")
+        trashButton.toolTip = NSLocalizedString("Trash", comment: "Tooltip: Trash a Note")
     }
 }
