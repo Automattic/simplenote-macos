@@ -44,6 +44,7 @@ class ToolbarView: NSView {
         super.awakeFromNib()
         setupSubviews()
         startListeningToNotifications()
+        startListeningToThemeNotificationsIfNeeded()
     }
 }
 
@@ -60,6 +61,14 @@ private extension ToolbarView {
         nc.addObserver(self, selector: #selector(trashDidLoad), name: NSNotification.Name(rawValue: kDidBeginViewingTrash), object: nil)
         nc.addObserver(self, selector: #selector(tagsDidLoad), name: NSNotification.Name(rawValue: kTagsDidLoad), object: nil)
         nc.addObserver(self, selector: #selector(trashDidEmpty), name: NSNotification.Name(rawValue: kDidEmptyTrash), object: nil)
+    }
+
+    func startListeningToThemeNotificationsIfNeeded() {
+        if #available(macOS 10.15, *) {
+            return
+        }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .VSThemeManagerThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
