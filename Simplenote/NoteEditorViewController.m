@@ -1159,6 +1159,24 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
+// TODO: Nuke Me
+- (NSButton *)previewButton
+{
+    return self.toolbarView.previewButton;
+}
+
+// TODO: Nuke Me
+- (NSButton *)historyButton
+{
+    return self.toolbarView.historyButton;
+}
+
+// TODO: Nuke Me
+- (NSButton *)shareButton
+{
+    return self.toolbarView.shareButton;
+}
+
 - (IBAction)toggleEditorWidth:(id)sender {
     NSMenuItem *item = (NSMenuItem *)sender;
     if (item.state == NSOnState) {

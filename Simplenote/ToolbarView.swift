@@ -57,6 +57,7 @@ private extension ToolbarView {
     func startListeningToNotifications() {
         let nc = NotificationCenter.default
 
+// TODO: Proper constants
         nc.addObserver(self, selector: #selector(noNoteLoaded), name: NSNotification.Name(rawValue: SPNoNoteLoadedNotificationName), object: nil)
         nc.addObserver(self, selector: #selector(noteLoaded), name: NSNotification.Name(rawValue: SPNoteLoadedNotificationName), object: nil)
         nc.addObserver(self, selector: #selector(trashDidLoad), name: NSNotification.Name(rawValue: kDidBeginViewingTrash), object: nil)

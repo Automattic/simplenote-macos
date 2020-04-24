@@ -1134,7 +1134,6 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
-                <outlet property="historyButton" destination="7hm-UJ-0zw" id="i3Y-k0-nZS"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
@@ -1142,10 +1141,8 @@
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
-                <outlet property="previewButton" destination="OMI-hx-wfj" id="8d5-5c-auI"/>
                 <outlet property="printItem" destination="78" id="1659"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
-                <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
