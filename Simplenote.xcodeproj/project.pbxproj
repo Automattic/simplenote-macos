@@ -1447,7 +1447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Codesign\n#\nIDENTITY=\"Developer ID Application: Automattic, Inc.\"\nSPARKLE_BIN=\"${SRCROOT}/External/Sparkle/bin\"\nCODESIGN_TOOL=\"${SPARKLE_BIN}/codesign_embedded_executable\"\n\n# XPC\n#\nXPC_SOURCE=\"${SRCROOT}/External/Sparkle/XPCServices\"\nXPC_TARGET=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\n\n# Services\n#\nXPC_NETWORK=\"org.sparkle-project.InstallerConnection.xpc\"\nXPC_LAUNCHER=\"org.sparkle-project.InstallerLauncher.xpc\"\nXPC_STATUS=\"org.sparkle-project.InstallerStatus.xpc\"\n\n\n# Bail out whenever we're not in Release\n#\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then\n    echo \"NOT Signing in debug!\"\n    exit 0\nfi\n\n# Reset: Sparkle's Codesign fails when attempting to re-sign\n#\necho \"Nuking old XPC...\"\n\nrm -r \"${XPC_TARGET}\"\n\n# Copy Phase\n#\necho \"Copying...\"\n\nmkdir \"${XPC_TARGET}\"\ncp -R \"${XPC_SOURCE}/${XPC_NETWORK}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\ncp -R \"${XPC_SOURCE}/${XPC_LAUNCHER}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\ncp -R \"${XPC_SOURCE}/${XPC_STATUS}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n\n# Codesign Phase\n#\necho \"Signing... \"\n\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n\n";
+			shellScript = "# Codesign\n#\nIDENTITY=\"Developer ID Application: Automattic, Inc.\"\nSPARKLE_BIN=\"${SRCROOT}/External/Sparkle/bin\"\nCODESIGN_TOOL=\"${SPARKLE_BIN}/codesign_embedded_executable\"\nCODESIGN_HARDENEDRUNTIME_CMD=\"codesign --force -o runtime -s\"\n\n# XPC\n#\nXPC_SOURCE=\"${SRCROOT}/External/Sparkle/XPCServices\"\nXPC_TARGET=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\n\n# Services\n#\nXPC_NETWORK=\"org.sparkle-project.InstallerConnection.xpc\"\nXPC_LAUNCHER=\"org.sparkle-project.InstallerLauncher.xpc\"\nXPC_STATUS=\"org.sparkle-project.InstallerStatus.xpc\"\n\n# UPDATER\nUPDATER_TARGET=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework/Versions/A/Resources\"\nSPARKLE_AUTOUPDATE=\"Autoupdate\"\nSPARKLE_UPDATER=\"Updater.app/Contents/MacOS/Updater\"\n\n# Bail out whenever we're not in Release\n#\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then\n    echo \"NOT Signing in debug!\"\n    exit 0\nfi\n\n# Reset: Sparkle's Codesign fails when attempting to re-sign\n#\necho \"Nuking old XPC...\"\n\nrm -r \"${XPC_TARGET}\"\n\n# Copy Phase\n#\necho \"Copying...\"\n\nmkdir \"${XPC_TARGET}\"\ncp -R \"${XPC_SOURCE}/${XPC_NETWORK}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\ncp -R \"${XPC_SOURCE}/${XPC_LAUNCHER}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\ncp -R \"${XPC_SOURCE}/${XPC_STATUS}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n\n# Codesign Phase\n#\necho \"Signing... \"\n\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n${CODESIGN_HARDENEDRUNTIME_CMD} \"${IDENTITY}\" \"${UPDATER_TARGET}/${SPARKLE_AUTOUPDATE}\"\n${CODESIGN_HARDENEDRUNTIME_CMD} \"${IDENTITY}\" \"${UPDATER_TARGET}/${SPARKLE_UPDATER}\"\n";
 		};
 		B52D0EC9230DCB15003F799D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1915,6 +1915,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
@@ -1964,6 +1965,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
