@@ -27,7 +27,7 @@
 
 @import Simperium_OSX;
 
-#if USE_HOCKEY
+#if SPARKLE_OTA
 #import <Sparkle/Sparkle.h>
 #endif
 
@@ -71,7 +71,7 @@
 @property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
 
-#if USE_HOCKEY
+#if SPARKLE_OTA
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
 #endif
 
@@ -115,7 +115,7 @@
     return simperium;
 }
 
-#if USE_HOCKEY
+#if SPARKLE_OTA
 - (void)configureSparkle
 {
     self.updaterController = [[SPUStandardUpdaterController alloc] initWithUpdaterDelegate:nil
@@ -165,7 +165,7 @@
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
     [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
 
-#if USE_HOCKEY
+#if SPARKLE_OTA
     [self configureSparkle];
 #endif
 
