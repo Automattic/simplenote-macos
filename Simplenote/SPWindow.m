@@ -1,69 +1,44 @@
-//
-//  SPWindow.m
-//  Simplenote
-//
-//  Created by Jorge Leandro Perez on 12/15/14.
-//  Copyright (c) 2014 Simperium. All rights reserved.
-//
-
 #import "SPWindow.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 
-#pragma mark ====================================================================================
-#pragma mark SPWindow
-#pragma mark ====================================================================================
+#pragma mark - SPWindow
 
 @implementation SPWindow
 
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)styleMask backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
 {
-    styleMask = [self yosemiteMaskWithMask:styleMask];
     if (self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag]) {
         [self setupTitle];
+        [self applyMojaveThemeOverrideIfNecessary];
     }
-    
-    [self applyMojaveThemeOverrideIfNecessary];
-    
+
     return self;
 }
 
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)styleMask backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag screen:(NSScreen *)screen
 {
-    styleMask = [self yosemiteMaskWithMask:styleMask];
     if ((self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag screen:screen])) {
         [self setupTitle];
+        [self applyMojaveThemeOverrideIfNecessary];
     }
-    
-    [self applyMojaveThemeOverrideIfNecessary];
-    
+
     return self;
 }
 
 
 #pragma mark - Initialization Helpers
 
-- (NSUInteger)yosemiteMaskWithMask:(NSUInteger)mask
-{
-    mask |= NSWindowStyleMaskUnifiedTitleAndToolbar | NSWindowStyleMaskFullSizeContentView;
-    return mask;
-}
-
 - (void)setupTitle
 {
-    self.titleVisibility            = NSWindowTitleHidden;
-    self.titlebarAppearsTransparent = YES;
+    self.titleVisibility = NSWindowTitleHidden;
 }
 
 - (void)applyMojaveThemeOverrideIfNecessary
 {
     if (@available(macOS 10.14, *)) {
-        NSString *themeName = [[NSUserDefaults standardUserDefaults] objectForKey:VSThemeManagerThemePrefKey];
-        if (themeName) {
-            self.appearance = [NSAppearance appearanceNamed:
-                              [themeName isEqualToString:@"dark"] ?
-                                 NSAppearanceNameVibrantDark : NSAppearanceNameVibrantLight];
-        }
+        NSAppearanceName name = [SPUserInterface isDark] ? NSAppearanceNameVibrantDark : NSAppearanceNameVibrantLight;
+        self.appearance = [NSAppearance appearanceNamed:name];
     }
 }
 
