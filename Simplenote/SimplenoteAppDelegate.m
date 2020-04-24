@@ -29,7 +29,6 @@
 
 #if USE_HOCKEY
 #import <Sparkle/Sparkle.h>
-#import <HockeySDK/HockeySDK.h>
 #endif
 
 
@@ -48,11 +47,7 @@
 #pragma mark Private
 #pragma mark ====================================================================================
 
-#if USE_HOCKEY
-@interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate, BITHockeyManagerDelegate>
-#else
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
-#endif
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
 
@@ -121,16 +116,6 @@
 }
 
 #if USE_HOCKEY
-- (void)configureHockeyWithID:(NSString *)hockeyID
-{
-    NSLog(@"Initializing HockeyApp... ");
-    
-    BITHockeyManager *hockeyManager = [BITHockeyManager sharedHockeyManager];
-    
-    [hockeyManager configureWithIdentifier:hockeyID delegate:self];
-    [hockeyManager startManager];
-}
-
 - (void)configureSparkle
 {
     self.updaterController = [[SPUStandardUpdaterController alloc] initWithUpdaterDelegate:nil
@@ -181,7 +166,6 @@
     [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
 
 #if USE_HOCKEY
-    [self configureHockeyWithID:SPCredentials.bitHockeyIdentifier];
     [self configureSparkle];
 #endif
 
