@@ -11,7 +11,7 @@ class ToolbarView: NSView {
 
     /// Info Button
     ///
-    @IBOutlet var actionButton: NSPopUpButton!
+    @IBOutlet private var actionButton: NSPopUpButton!
 
     /// Note History
     ///
@@ -23,7 +23,7 @@ class ToolbarView: NSView {
 
     /// Restore Trashed Note
     ///
-    @IBOutlet var restoreButton: NSButton!
+    @IBOutlet private var restoreButton: NSButton!
 
     /// Share Contents
     ///
@@ -31,7 +31,7 @@ class ToolbarView: NSView {
 
     /// Move to Trash
     ///
-    @IBOutlet var trashButton: NSButton!
+    @IBOutlet private var trashButton: NSButton!
 
 
     // MARK: - Overridden
