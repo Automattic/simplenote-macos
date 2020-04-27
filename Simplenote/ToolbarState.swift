@@ -36,6 +36,10 @@ struct ToolbarState {
         (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
     }
 
+    var isActionButtonHidden: Bool {
+        isViewingTrash
+    }
+
     var isHistoryActionEnabled: Bool {
         isDisplayingNote && !isDisplayingMarkdown
     }

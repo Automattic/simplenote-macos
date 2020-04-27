@@ -891,7 +891,7 @@
                                         <rect key="frame" x="0.0" y="526" width="508" height="56"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-k3-T1Z">
-                                                <rect key="frame" x="216" y="0.0" width="220" height="56"/>
+                                                <rect key="frame" x="223" y="0.0" width="269" height="56"/>
                                                 <subviews>
                                                     <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-hx-wfj" userLabel="Markdown">
                                                         <rect key="frame" x="0.0" y="16" width="24" height="24"/>
@@ -943,8 +943,63 @@
                                                             <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
                                                         </connections>
                                                     </button>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8v5-GT-vWz" userLabel="Info Wrapper">
+                                                        <rect key="frame" x="245" y="16" width="24" height="24"/>
+                                                        <subviews>
+                                                            <popUpButton toolTip="Info" translatesAutoresizingMaskIntoConstraints="NO" id="1601" userLabel="Info">
+                                                                <rect key="frame" x="-10" y="0.0" width="39" height="28"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="28" id="7r3-Ja-Dai"/>
+                                                                    <constraint firstAttribute="width" constant="39" id="sT0-vd-mRC"/>
+                                                                </constraints>
+                                                                <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" lineBreakMode="truncatingTail" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
+                                                                        <items>
+                                                                            <menuItem image="button_info" hidden="YES" id="1604"/>
+                                                                            <menuItem title="0 Words" enabled="NO" id="1605"/>
+                                                                            <menuItem title="0 Characters" enabled="NO" id="1606"/>
+                                                                            <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                            </menuItem>
+                                                                            <menuItem isSeparatorItem="YES" id="1614"/>
+                                                                            <menuItem title="Pin to Top" state="on" id="1615">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                <connections>
+                                                                                    <action selector="pinAction:" target="1107" id="1661"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                            <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                <connections>
+                                                                                    <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                            <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                <connections>
+                                                                                    <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="1107" id="1627"/>
+                                                                        </connections>
+                                                                    </menu>
+                                                                </popUpButtonCell>
+                                                            </popUpButton>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="1601" firstAttribute="top" secondItem="8v5-GT-vWz" secondAttribute="top" constant="-4" id="1yZ-h1-6Pc"/>
+                                                            <constraint firstItem="1601" firstAttribute="leading" secondItem="8v5-GT-vWz" secondAttribute="leading" constant="-10" id="KDJ-lE-7F7"/>
+                                                            <constraint firstAttribute="height" constant="24" id="jwT-I4-4FH"/>
+                                                            <constraint firstAttribute="width" constant="24" id="uCv-Mv-JUH"/>
+                                                        </constraints>
+                                                    </customView>
                                                 </subviews>
                                                 <visibilityPriorities>
+                                                    <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
@@ -957,58 +1012,19 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <popUpButton toolTip="Info" translatesAutoresizingMaskIntoConstraints="NO" id="1601" userLabel="Info">
-                                                <rect key="frame" x="453" y="15" width="39" height="28"/>
-                                                <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="left" lineBreakMode="truncatingTail" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                    <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
-                                                        <items>
-                                                            <menuItem image="button_info" hidden="YES" id="1604"/>
-                                                            <menuItem title="0 Words" enabled="NO" id="1605"/>
-                                                            <menuItem title="0 Characters" enabled="NO" id="1606"/>
-                                                            <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
-                                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                                            </menuItem>
-                                                            <menuItem isSeparatorItem="YES" id="1614"/>
-                                                            <menuItem title="Pin to Top" state="on" id="1615">
-                                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                                                <connections>
-                                                                    <action selector="pinAction:" target="1107" id="1661"/>
-                                                                </connections>
-                                                            </menuItem>
-                                                            <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
-                                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                                                <connections>
-                                                                    <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
-                                                                </connections>
-                                                            </menuItem>
-                                                            <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
-                                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                                                <connections>
-                                                                    <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
-                                                                </connections>
-                                                            </menuItem>
-                                                        </items>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="1107" id="1627"/>
-                                                        </connections>
-                                                    </menu>
-                                                </popUpButtonCell>
-                                            </popUpButton>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="9kE-k3-T1Z" secondAttribute="bottom" id="5W5-wh-50M"/>
                                             <constraint firstAttribute="height" constant="56" id="YC2-TE-Xyy"/>
-                                            <constraint firstItem="1601" firstAttribute="leading" secondItem="9kE-k3-T1Z" secondAttribute="trailing" constant="17" id="iW0-YY-Mes"/>
                                             <constraint firstItem="9kE-k3-T1Z" firstAttribute="top" secondItem="914" secondAttribute="top" id="ljV-yK-2ql"/>
-                                            <constraint firstAttribute="trailing" secondItem="1601" secondAttribute="trailing" constant="16" id="n5f-qs-NMn"/>
-                                            <constraint firstItem="1601" firstAttribute="centerY" secondItem="914" secondAttribute="centerY" constant="-1" id="sa9-ds-jNa"/>
+                                            <constraint firstAttribute="trailing" secondItem="9kE-k3-T1Z" secondAttribute="trailing" constant="16" id="m9W-Sv-7fY"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="actionButton" destination="1601" id="Wxi-gS-9YP"/>
+                                            <outlet property="actionWrapperView" destination="8v5-GT-vWz" id="aPy-bF-7F2"/>
                                             <outlet property="historyButton" destination="7hm-UJ-0zw" id="2dg-q8-LW8"/>
                                             <outlet property="previewButton" destination="OMI-hx-wfj" id="CUq-cy-7jJ"/>
                                             <outlet property="restoreButton" destination="fA9-bG-luR" id="MWN-e9-omM"/>
