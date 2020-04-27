@@ -7,31 +7,31 @@ extension NoteEditorViewController {
 
     /// Indicates if there's a Note onScreen
     ///
-    var displayingNote: Bool {
+    var isDisplayingNote: Bool {
         note != nil
-    }
-
-    /// Indicates if the Markdown Preview UI is active
-    ///
-    var displayingMarkdown: Bool {
-        markdownView?.isHidden == false
     }
 
     /// Indicates if the current document is expected to support Markdown
     ///
-    var isMarkdownAllowed: Bool {
-        note?.markdown == true
+    var isMarkdownEnabled: Bool {
+        note?.markdown == true && note?.deleted == false
+    }
+
+    /// Indicates if the Markdown Preview UI is active
+    ///
+    var isDisplayingMarkdown: Bool {
+        markdownView?.isHidden == false
     }
 
     /// Indicates if the current document can be shared
     ///
-    var isShareAllowed: Bool {
+    var isShareEnabled: Bool {
         note?.content?.isEmpty == false
     }
 
     /// Indicates if there are multiple selected notes
     ///
-    var multipleSelection: Bool {
+    var isSelectingMultipleNotes: Bool {
         guard let selection = selectedNotes else {
             return false
         }
@@ -44,20 +44,22 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshEditorActions() {
-        noteEditor.isEditable = displayingNote && !viewingTrash
-        noteEditor.isSelectable = displayingNote && !viewingTrash
-        noteEditor.isHidden = displayingMarkdown
+        noteEditor.isEditable = isDisplayingNote && !viewingTrash
+        noteEditor.isSelectable = isDisplayingNote && !viewingTrash
+        noteEditor.isHidden = isDisplayingMarkdown
     }
 
     /// Refreshes the Toolbar's Inner State
     ///
     @objc
     func refreshToolbarActions() {
-        toolbarView.displayingNote = displayingNote
-        toolbarView.multipleSelection = multipleSelection
-        toolbarView.displayingTrash = viewingTrash
-        toolbarView.displayingMarkdown = displayingMarkdown
-        toolbarView.isMarkdownAllowed = isMarkdownAllowed
-        toolbarView.isShareAllowed = isShareAllowed
+        toolbarView.isDisplayingNote = isDisplayingNote
+        toolbarView.isDisplayingMarkdown = isDisplayingMarkdown
+
+        toolbarView.isMarkdownEnabled = isMarkdownEnabled
+        toolbarView.isSelectingMultipleNotes = isSelectingMultipleNotes
+        toolbarView.isShareEnabled = isShareEnabled
+        toolbarView.isViewingTrash = viewingTrash
+
     }
 }

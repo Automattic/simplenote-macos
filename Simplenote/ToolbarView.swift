@@ -36,74 +36,74 @@ class ToolbarView: NSView {
 
     ///
     ///
-    var displayingNote = false {
+    var isDisplayingNote = false {
         didSet {
-            guard oldValue != displayingNote else {
+            guard oldValue != isDisplayingNote else {
                 return
             }
 
-            refreshInterface()
+            needsDisplay = true
         }
     }
 
     ///
     ///
-    var displayingMarkdown = false {
+    var isDisplayingMarkdown = false {
         didSet {
-            guard oldValue != displayingMarkdown else {
+            guard oldValue != isDisplayingMarkdown else {
                 return
             }
 
             refreshPreviewImage()
-            refreshInterface()
+            needsDisplay = true
+        }
+    }
+
+    /// Indicates if the Markdown Action is to be Enabled
+    ///
+    var isMarkdownEnabled = false {
+        didSet {
+            guard oldValue != isMarkdownEnabled else {
+                return
+            }
+
+            needsDisplay = true
         }
     }
 
     ///
     ///
-    var displayingTrash = false {
+    var isSelectingMultipleNotes = false {
         didSet {
-            guard oldValue != displayingTrash else {
+            guard oldValue != isSelectingMultipleNotes else {
                 return
             }
 
-            refreshInterface()
+            needsDisplay = true
         }
     }
 
     ///
     ///
-    var isMarkdownAllowed = false {
+    var isShareEnabled = false {
         didSet {
-            guard oldValue != isMarkdownAllowed else {
+            guard oldValue != isShareEnabled else {
                 return
             }
 
-            refreshInterface()
+            needsDisplay = true
         }
     }
 
     ///
     ///
-    var isShareAllowed = false {
+    var isViewingTrash = false {
         didSet {
-            guard oldValue != isShareAllowed else {
+            guard oldValue != isViewingTrash else {
                 return
             }
 
-            refreshInterface()
-        }
-    }
-
-    ///
-    ///
-    var multipleSelection = false {
-        didSet {
-            guard oldValue != multipleSelection else {
-                return
-            }
-
-            refreshInterface()
+            needsDisplay = true
         }
     }
 
@@ -119,6 +119,11 @@ class ToolbarView: NSView {
         setupSubviews()
         refreshStyle()
         startListeningToNotifications()
+    }
+
+    override func viewWillDraw() {
+        super.viewWillDraw()
+        refreshInterface()
     }
 }
 
@@ -146,26 +151,25 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     func refreshInterface() {
-        actionButton.isEnabled = (displayingNote || multipleSelection) && !displayingTrash
+        actionButton.isEnabled = (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
 
-        historyButton.isEnabled = displayingNote && !displayingMarkdown
-        historyButton.isHidden = displayingTrash
+        historyButton.isEnabled = isDisplayingNote && !isDisplayingMarkdown
+        historyButton.isHidden = isViewingTrash
 
-        previewButton.isEnabled = displayingNote
-        previewButton.isHidden = !isMarkdownAllowed || displayingTrash
+        previewButton.isHidden = !isMarkdownEnabled
 
-        restoreButton.isEnabled = displayingNote
-        restoreButton.isHidden = !displayingTrash
+        restoreButton.isEnabled = isDisplayingNote
+        restoreButton.isHidden = !isViewingTrash
 
-        shareButton.isEnabled = isShareAllowed && displayingNote
-        shareButton.isHidden = displayingTrash
+        shareButton.isEnabled = isShareEnabled
+        shareButton.isHidden = isViewingTrash
 
-        trashButton.isEnabled = displayingNote
-        trashButton.isHidden = displayingTrash
+        trashButton.isEnabled = isDisplayingNote
+        trashButton.isHidden = isViewingTrash
     }
 
     func refreshPreviewImage() {
-        let name: NSImage.Name = displayingMarkdown ? .previewOn : .previewOff
+        let name: NSImage.Name = isDisplayingMarkdown ? .previewOn : .previewOff
 
         previewButton.image = NSImage(named: name)
         previewButton.tintImage(color: .simplenoteActionButtonTintColor)
