@@ -45,7 +45,7 @@ struct ToolbarState {
     }
 
     var isPreviewActionHidden: Bool {
-        !isMarkdownEnabled
+        !isMarkdownEnabled || isViewingTrash
     }
 
     var isRestoreActionEnabled: Bool {

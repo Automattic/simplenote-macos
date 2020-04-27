@@ -20,7 +20,7 @@ extension NoteEditorViewController {
     /// Indicates if the current document is expected to support Markdown
     ///
     var isMarkdownEnabled: Bool {
-        note?.markdown == true && note?.deleted == false
+        note?.markdown == true
     }
 
     /// Indicates if the current document can be shared
