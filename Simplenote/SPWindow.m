@@ -31,8 +31,7 @@
 
 - (void)setupTitle
 {
-    self.titleVisibility            = NSWindowTitleHidden;
-    self.titlebarAppearsTransparent = YES;
+    self.titleVisibility = NSWindowTitleHidden;
 }
 
 - (void)applyMojaveThemeOverrideIfNecessary

@@ -3,35 +3,48 @@ import Foundation
 
 // MARK: - ToolbarView
 //
+@objcMembers
 class ToolbarView: NSView {
 
     /// Internal StackView
     ///
-    @IBOutlet private var stackView: NSStackView!
+    @IBOutlet private(set) var stackView: NSStackView!
 
     /// Info Button
     ///
-    @IBOutlet var actionButton: NSPopUpButton!
+    @IBOutlet private(set) var actionButton: NSPopUpButton!
+
+    /// Info Wrapper: NSPopUpButton is allocating extra width, due to its inner menu. Violent hack to normalize width(s)
+    ///
+    @IBOutlet private(set) var actionWrapperView: NSView!
 
     /// Note History
     ///
-    @IBOutlet var historyButton: NSButton!
+    @IBOutlet private(set) var historyButton: NSButton!
 
     /// Markdown Preview
     ///
-    @IBOutlet var previewButton: NSButton!
+    @IBOutlet private(set) var previewButton: NSButton!
 
     /// Restore Trashed Note
     ///
-    @IBOutlet var restoreButton: NSButton!
+    @IBOutlet private(set) var restoreButton: NSButton!
 
     /// Share Contents
     ///
-    @IBOutlet var shareButton: NSButton!
+    @IBOutlet private(set) var shareButton: NSButton!
 
     /// Move to Trash
     ///
-    @IBOutlet var trashButton: NSButton!
+    @IBOutlet private(set) var trashButton: NSButton!
+
+    /// Represents the Toolbar's State
+    ///
+    var state: ToolbarState  = .default {
+        didSet {
+            refreshInterface()
+        }
+    }
 
 
     // MARK: - Overridden
@@ -43,6 +56,7 @@ class ToolbarView: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupSubviews()
+        refreshStyle()
         startListeningToNotifications()
     }
 }
@@ -53,42 +67,15 @@ class ToolbarView: NSView {
 private extension ToolbarView {
 
     func startListeningToNotifications() {
-        let nc = NotificationCenter.default
+        if #available(macOS 10.15, *) {
+            return
+        }
 
-        nc.addObserver(self, selector: #selector(noNoteLoaded), name: NSNotification.Name(rawValue: SPNoNoteLoadedNotificationName), object: nil)
-        nc.addObserver(self, selector: #selector(noteLoaded), name: NSNotification.Name(rawValue: SPNoteLoadedNotificationName), object: nil)
-        nc.addObserver(self, selector: #selector(trashDidLoad), name: NSNotification.Name(rawValue: kDidBeginViewingTrash), object: nil)
-        nc.addObserver(self, selector: #selector(tagsDidLoad), name: NSNotification.Name(rawValue: kTagsDidLoad), object: nil)
-        nc.addObserver(self, selector: #selector(trashDidEmpty), name: NSNotification.Name(rawValue: kDidEmptyTrash), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .VSThemeManagerThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
         NotificationCenter.default.removeObserver(self)
-    }
-
-    @objc
-    func noNoteLoaded(_ note: Notification) {
-        refreshButtons(enabled: false)
-    }
-
-    @objc
-    func noteLoaded(_ note: Notification) {
-        refreshButtons(enabled: true)
-    }
-
-    @objc
-    func trashDidLoad(_ note: Notification) {
-        refreshButtons(trashOnScreen: true)
-    }
-
-    @objc
-    func tagsDidLoad(_ note: Notification) {
-        refreshButtons(trashOnScreen: false)
-    }
-
-    @objc
-    func trashDidEmpty(_ note: Notification) {
-        refreshButtons(enabled: false)
     }
 }
 
@@ -97,27 +84,42 @@ private extension ToolbarView {
 //
 private extension ToolbarView {
 
-    var allButtons: [NSButton] {
-        return [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+    func refreshInterface() {
+        actionButton.isEnabled = state.isActionButtonEnabled
+        actionWrapperView.isHidden = state.isActionButtonHidden
+
+        historyButton.isEnabled = state.isHistoryActionEnabled
+        historyButton.isHidden = state.isHistoryActionHidden
+
+        previewButton.isHidden = state.isPreviewActionHidden
+        previewButton.image = state.previewActionImage
+        previewButton.tintImage(color: .simplenoteActionButtonTintColor)
+
+        restoreButton.isEnabled = state.isRestoreActionEnabled
+        restoreButton.isHidden = state.isRestoreActionHidden
+
+        shareButton.isEnabled = state.isShareActionEnabled
+        shareButton.isHidden = state.isShareActionHidden
+
+        trashButton.isEnabled = state.isTrashActionEnabled
+        trashButton.isHidden = state.isTrashActionHidden
     }
 
-    func setupSubviews() {
-        for button in allButtons {
+    @objc
+    func refreshStyle() {
+        let buttons: [NSButton] = [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+
+        for button in buttons {
             button.tintImage(color: .simplenoteActionButtonTintColor)
         }
     }
 
-    func refreshButtons(enabled: Bool) {
-        for button in allButtons {
-            button.isEnabled = enabled
-        }
-    }
-
-    func refreshButtons(trashOnScreen: Bool) {
-        actionButton.isEnabled = !trashOnScreen
-        historyButton.isHidden = trashOnScreen
-        restoreButton.isHidden = !trashOnScreen
-        shareButton.isHidden = trashOnScreen
-        trashButton.isHidden = trashOnScreen
+    func setupSubviews() {
+        actionButton.toolTip = NSLocalizedString("Details", comment: "Tooltip: Note Details")
+        historyButton.toolTip = NSLocalizedString("History", comment: "Tooltip: History Picker")
+        previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
+        restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
+        shareButton.toolTip = NSLocalizedString("Share", comment: "Tooltip: Share a note")
+        trashButton.toolTip = NSLocalizedString("Trash", comment: "Tooltip: Trash a Note")
     }
 }
