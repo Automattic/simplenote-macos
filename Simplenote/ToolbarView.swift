@@ -3,35 +3,109 @@ import Foundation
 
 // MARK: - ToolbarView
 //
+@objcMembers
 class ToolbarView: NSView {
 
     /// Internal StackView
     ///
-    @IBOutlet private var stackView: NSStackView!
+    @IBOutlet private(set) var stackView: NSStackView!
 
     /// Info Button
     ///
-    @IBOutlet private var actionButton: NSPopUpButton!
+    @IBOutlet private(set) var actionButton: NSPopUpButton!
 
     /// Note History
     ///
-    @IBOutlet var historyButton: NSButton!
+    @IBOutlet private(set) var historyButton: NSButton!
 
     /// Markdown Preview
     ///
-    @IBOutlet var previewButton: NSButton!
+    @IBOutlet private(set) var previewButton: NSButton!
 
     /// Restore Trashed Note
     ///
-    @IBOutlet private var restoreButton: NSButton!
+    @IBOutlet private(set) var restoreButton: NSButton!
 
     /// Share Contents
     ///
-    @IBOutlet var shareButton: NSButton!
+    @IBOutlet private(set) var shareButton: NSButton!
 
     /// Move to Trash
     ///
-    @IBOutlet private var trashButton: NSButton!
+    @IBOutlet private(set) var trashButton: NSButton!
+
+    ///
+    ///
+    var displayingNote = false {
+        didSet {
+            guard oldValue != displayingNote else {
+                return
+            }
+
+            refreshInterface()
+        }
+    }
+
+    ///
+    ///
+    var displayingMarkdown = false {
+        didSet {
+            guard oldValue != displayingMarkdown else {
+                return
+            }
+
+            refreshPreviewImage()
+            refreshInterface()
+        }
+    }
+
+    ///
+    ///
+    var displayingTrash = false {
+        didSet {
+            guard oldValue != displayingTrash else {
+                return
+            }
+
+            refreshInterface()
+        }
+    }
+
+    ///
+    ///
+    var isMarkdownAllowed = false {
+        didSet {
+            guard oldValue != isMarkdownAllowed else {
+                return
+            }
+
+            refreshInterface()
+        }
+    }
+
+    ///
+    ///
+    var isShareAllowed = false {
+        didSet {
+            guard oldValue != isShareAllowed else {
+                return
+            }
+
+            refreshInterface()
+        }
+    }
+
+    ///
+    ///
+    var multipleSelection = false {
+        didSet {
+            guard oldValue != multipleSelection else {
+                return
+            }
+
+            refreshInterface()
+        }
+    }
 
 
     // MARK: - Overridden
@@ -45,7 +119,6 @@ class ToolbarView: NSView {
         setupSubviews()
         refreshStyle()
         startListeningToNotifications()
-        startListeningToThemeNotificationsIfNeeded()
     }
 }
 
@@ -55,17 +128,6 @@ class ToolbarView: NSView {
 private extension ToolbarView {
 
     func startListeningToNotifications() {
-        let nc = NotificationCenter.default
-
-// TODO: Proper constants
-        nc.addObserver(self, selector: #selector(noNoteLoaded), name: NSNotification.Name(rawValue: SPNoNoteLoadedNotificationName), object: nil)
-        nc.addObserver(self, selector: #selector(noteLoaded), name: NSNotification.Name(rawValue: SPNoteLoadedNotificationName), object: nil)
-        nc.addObserver(self, selector: #selector(trashDidLoad), name: NSNotification.Name(rawValue: kDidBeginViewingTrash), object: nil)
-        nc.addObserver(self, selector: #selector(tagsDidLoad), name: NSNotification.Name(rawValue: kTagsDidLoad), object: nil)
-        nc.addObserver(self, selector: #selector(trashDidEmpty), name: NSNotification.Name(rawValue: kDidEmptyTrash), object: nil)
-    }
-
-    func startListeningToThemeNotificationsIfNeeded() {
         if #available(macOS 10.15, *) {
             return
         }
@@ -76,31 +138,6 @@ private extension ToolbarView {
     func stopListeningToNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
-
-    @objc
-    func noNoteLoaded(_ note: Notification) {
-        refreshButtons(enabled: false)
-    }
-
-    @objc
-    func noteLoaded(_ note: Notification) {
-        refreshButtons(enabled: true)
-    }
-
-    @objc
-    func trashDidLoad(_ note: Notification) {
-        refreshButtons(trashOnScreen: true)
-    }
-
-    @objc
-    func tagsDidLoad(_ note: Notification) {
-        refreshButtons(trashOnScreen: false)
-    }
-
-    @objc
-    func trashDidEmpty(_ note: Notification) {
-        refreshButtons(enabled: false)
-    }
 }
 
 
@@ -108,29 +145,39 @@ private extension ToolbarView {
 //
 private extension ToolbarView {
 
-    var allButtons: [NSButton] {
-        return [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+    func refreshInterface() {
+        actionButton.isEnabled = (displayingNote || multipleSelection) && !displayingTrash
+
+        historyButton.isEnabled = displayingNote && !displayingMarkdown
+        historyButton.isHidden = displayingTrash
+
+        previewButton.isEnabled = displayingNote
+        previewButton.isHidden = !isMarkdownAllowed || displayingTrash
+
+        restoreButton.isEnabled = displayingNote
+        restoreButton.isHidden = !displayingTrash
+
+        shareButton.isEnabled = isShareAllowed && displayingNote
+        shareButton.isHidden = displayingTrash
+
+        trashButton.isEnabled = displayingNote
+        trashButton.isHidden = displayingTrash
+    }
+
+    func refreshPreviewImage() {
+        let name: NSImage.Name = displayingMarkdown ? .previewOn : .previewOff
+
+        previewButton.image = NSImage(named: name)
+        previewButton.tintImage(color: .simplenoteActionButtonTintColor)
     }
 
     @objc
     func refreshStyle() {
-        for button in allButtons {
+        let buttons: [NSButton] = [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+
+        for button in buttons {
             button.tintImage(color: .simplenoteActionButtonTintColor)
         }
-    }
-
-    func refreshButtons(enabled: Bool) {
-        for button in allButtons {
-            button.isEnabled = enabled
-        }
-    }
-
-    func refreshButtons(trashOnScreen: Bool) {
-        actionButton.isEnabled = !trashOnScreen
-        historyButton.isHidden = trashOnScreen
-        restoreButton.isHidden = !trashOnScreen
-        shareButton.isHidden = trashOnScreen
-        trashButton.isHidden = trashOnScreen
     }
 
     func setupSubviews() {

@@ -27,8 +27,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 #pragma mark Notifications
 #pragma mark ====================================================================================
 
-extern NSString * const SPNoNoteLoadedNotificationName;
-extern NSString * const SPNoteLoadedNotificationName;
 extern NSString * const SPTagAddedFromEditorNotificationName;
 extern NSString * const SPWillAddNewNoteNotificationName;
 
@@ -63,6 +61,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
 @property (nonatomic,   weak) Note                          *note;
 @property (nonatomic, strong) WKWebView                     *markdownView;
+@property (nonatomic, strong, readonly) NSArray<Note *>     *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                viewingTrash;
 
 - (void)save;
