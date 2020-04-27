@@ -11,16 +11,16 @@ extension NoteEditorViewController {
         note != nil
     }
 
-    /// Indicates if the current document is expected to support Markdown
-    ///
-    var isMarkdownEnabled: Bool {
-        note?.markdown == true && note?.deleted == false
-    }
-
     /// Indicates if the Markdown Preview UI is active
     ///
     var isDisplayingMarkdown: Bool {
         markdownView?.isHidden == false
+    }
+
+    /// Indicates if the current document is expected to support Markdown
+    ///
+    var isMarkdownEnabled: Bool {
+        note?.markdown == true && note?.deleted == false
     }
 
     /// Indicates if the current document can be shared
@@ -53,13 +53,13 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshToolbarActions() {
-        toolbarView.isDisplayingNote = isDisplayingNote
-        toolbarView.isDisplayingMarkdown = isDisplayingMarkdown
-
-        toolbarView.isMarkdownEnabled = isMarkdownEnabled
-        toolbarView.isSelectingMultipleNotes = isSelectingMultipleNotes
-        toolbarView.isShareEnabled = isShareEnabled
-        toolbarView.isViewingTrash = viewingTrash
+        let newState = ToolbarState(isDisplayingNote: isDisplayingNote,
+                                    isDisplayingMarkdown: isDisplayingMarkdown,
+                                    isMarkdownEnabled: isMarkdownEnabled,
+                                    isShareEnabled: isShareEnabled,
+                                    isSelectingMultipleNotes: isSelectingMultipleNotes,
+                                    isViewingTrash: viewingTrash)
+        toolbarView.state = newState
 
     }
 }

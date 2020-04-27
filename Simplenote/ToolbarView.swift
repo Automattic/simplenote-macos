@@ -34,76 +34,11 @@ class ToolbarView: NSView {
     ///
     @IBOutlet private(set) var trashButton: NSButton!
 
+    /// Represents the Toolbar's State
     ///
-    ///
-    var isDisplayingNote = false {
+    var state: ToolbarState  = .default {
         didSet {
-            guard oldValue != isDisplayingNote else {
-                return
-            }
-
-            needsDisplay = true
-        }
-    }
-
-    ///
-    ///
-    var isDisplayingMarkdown = false {
-        didSet {
-            guard oldValue != isDisplayingMarkdown else {
-                return
-            }
-
-            refreshPreviewImage()
-            needsDisplay = true
-        }
-    }
-
-    /// Indicates if the Markdown Action is to be Enabled
-    ///
-    var isMarkdownEnabled = false {
-        didSet {
-            guard oldValue != isMarkdownEnabled else {
-                return
-            }
-
-            needsDisplay = true
-        }
-    }
-
-    ///
-    ///
-    var isSelectingMultipleNotes = false {
-        didSet {
-            guard oldValue != isSelectingMultipleNotes else {
-                return
-            }
-
-            needsDisplay = true
-        }
-    }
-
-    ///
-    ///
-    var isShareEnabled = false {
-        didSet {
-            guard oldValue != isShareEnabled else {
-                return
-            }
-
-            needsDisplay = true
-        }
-    }
-
-    ///
-    ///
-    var isViewingTrash = false {
-        didSet {
-            guard oldValue != isViewingTrash else {
-                return
-            }
-
-            needsDisplay = true
+            refreshInterface()
         }
     }
 
@@ -119,11 +54,6 @@ class ToolbarView: NSView {
         setupSubviews()
         refreshStyle()
         startListeningToNotifications()
-    }
-
-    override func viewWillDraw() {
-        super.viewWillDraw()
-        refreshInterface()
     }
 }
 
@@ -151,28 +81,23 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     func refreshInterface() {
-        actionButton.isEnabled = (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
+        actionButton.isEnabled = state.isActionButtonEnabled
 
-        historyButton.isEnabled = isDisplayingNote && !isDisplayingMarkdown
-        historyButton.isHidden = isViewingTrash
+        historyButton.isEnabled = state.isHistoryActionEnabled
+        historyButton.isHidden = state.isHistoryActionHidden
 
-        previewButton.isHidden = !isMarkdownEnabled
-
-        restoreButton.isEnabled = isDisplayingNote
-        restoreButton.isHidden = !isViewingTrash
-
-        shareButton.isEnabled = isShareEnabled
-        shareButton.isHidden = isViewingTrash
-
-        trashButton.isEnabled = isDisplayingNote
-        trashButton.isHidden = isViewingTrash
-    }
-
-    func refreshPreviewImage() {
-        let name: NSImage.Name = isDisplayingMarkdown ? .previewOn : .previewOff
-
-        previewButton.image = NSImage(named: name)
+        previewButton.isHidden = state.isPreviewActionHidden
+        previewButton.image = state.previewActionImage
         previewButton.tintImage(color: .simplenoteActionButtonTintColor)
+
+        restoreButton.isEnabled = state.isRestoreActionEnabled
+        restoreButton.isHidden = state.isRestoreActionHidden
+
+        shareButton.isEnabled = state.isShareActionEnabled
+        shareButton.isHidden = state.isShareActionHidden
+
+        trashButton.isEnabled = state.isTrashActionEnabled
+        trashButton.isHidden = state.isTrashActionHidden
     }
 
     @objc
