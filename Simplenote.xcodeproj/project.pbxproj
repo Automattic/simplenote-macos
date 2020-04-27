@@ -206,8 +206,6 @@
 		B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */; };
 		B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */; };
 		B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
-		B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; };
-		B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B59EBAA019A6884F00DBC657 /* HockeySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A89195231ECB3C0007EDCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B5A8918A231ECB3C0007EDCB /* LICENSE */; };
@@ -333,7 +331,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */,
-				B59EBAA819A6887F00DBC657 /* HockeySDK.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +500,6 @@
 		B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Simplenote.swift"; sourceTree = "<group>"; };
 		B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONKit+Simplenote.h"; sourceTree = "<group>"; };
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
-		B59EBAA019A6884F00DBC657 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = External/HockeySDK.framework; sourceTree = "<group>"; };
 		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
 		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
@@ -568,7 +564,6 @@
 				2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */,
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
 				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
-				B59EBAA119A6884F00DBC657 /* HockeySDK.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
 				D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */,
 			);
@@ -605,7 +600,6 @@
 				375D291C21E033D1007AB25A /* Hoextdown */,
 				3712FC6F1FE1ACA9008544AC /* Notepad */,
 				378AA70A1ACB05C400CA87DC /* DB5 */,
-				B54739DC1A3F389300B68A4D /* HockeySDK */,
 				B5A89189231ECB3C0007EDCB /* Sparkle */,
 			);
 			name = External;
@@ -953,14 +947,6 @@
 				B5E196C0230F5F5300F5658A /* SPCredentials.swift */,
 			);
 			path = Credentials;
-			sourceTree = "<group>";
-		};
-		B54739DC1A3F389300B68A4D /* HockeySDK */ = {
-			isa = PBXGroup;
-			children = (
-				B59EBAA019A6884F00DBC657 /* HockeySDK.framework */,
-			);
-			name = HockeySDK;
 			sourceTree = "<group>";
 		};
 		B56FA78D2437C650002CB9FF /* Themes */ = {
@@ -1957,7 +1943,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"USE_HOCKEY=1",
+					"SPARKLE_OTA=1",
 					"VERBOSE_LOGGING=1",
 					"${inherited}",
 					"PUBLIC_BUILD=1",
