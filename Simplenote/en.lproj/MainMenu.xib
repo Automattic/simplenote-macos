@@ -1145,11 +1145,9 @@
                 <outlet property="emptyTrashItem" destination="1256" id="1776"/>
                 <outlet property="exportItem" destination="Pwd-hR-fBt" id="fmk-th-axO"/>
                 <outlet property="focusModeMenuItem" destination="nrD-mL-W7Q" id="9KY-QY-jI5"/>
-                <outlet property="mainWindowItem" destination="vor-dd-sYt" id="jUG-qn-XNJ"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>
-                <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
                 <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
                 <outlet property="window" destination="371" id="748"/>
