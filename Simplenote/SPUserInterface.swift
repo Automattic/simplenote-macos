@@ -24,6 +24,7 @@ class SPUserInterface: NSObject {
 
     /// Indicates if the System Theme is selected: Starting from +10.14, whenever the theme's name is nil
     ///
+    @objc
     static var isSystemThemeSelected: Bool {
         guard #available(macOS 10.14, *) else {
             return false

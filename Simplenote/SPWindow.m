@@ -37,6 +37,11 @@
 - (void)applyMojaveThemeOverrideIfNecessary
 {
     if (@available(macOS 10.14, *)) {
+        if ([SPUserInterface isSystemThemeSelected]) {
+            self.appearance = nil;
+            return;
+        }
+
         NSAppearanceName name = [SPUserInterface isDark] ? NSAppearanceNameVibrantDark : NSAppearanceNameVibrantLight;
         self.appearance = [NSAppearance appearanceNamed:name];
     }
