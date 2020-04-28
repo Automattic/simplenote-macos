@@ -8,20 +8,25 @@
 #import "VSThemeManager.h"
 
 
-#pragma mark - Simplenote-Y
+#pragma mark - Model
 
 #import "Note.h"
 #import "Tag.h"
+
+
+#pragma mark - Simplenote-Y
+
+#import "NoteEditorBottomBar.h"
+#import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "SPTracker.h"
 #import "TagListViewController.h"
-#import "NoteListViewController.h"
-#import "NoteEditorBottomBar.h"
 
 
 #pragma mark - Extensions
 
 #import "Simperium+Simplenote.h"
+#import "NSNotification+Simplenote.h"
 #import "NSMutableAttributedString+Styling.h"
