@@ -15,11 +15,11 @@ class SPUserInterface: NSObject {
     ///
     @objc
     static var isDark: Bool {
-        guard isSystemThemeSelected else {
-            return Options.shared.themeName == ThemeOption.dark.themeName
+        if isSystemThemeSelected {
+            return isSystemInDarkMode
         }
 
-        return isSystemInDarkMode
+        return Options.shared.themeName == ThemeOption.dark.themeName
     }
 
     /// Indicates if the System Theme is selected: Starting from +10.14, whenever the theme's name is nil
