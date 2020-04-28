@@ -694,7 +694,6 @@
 				46CF73051782C6B200FC2B5C /* TagListViewController.h */,
 				46CF73061782C6B200FC2B5C /* TagListViewController.m */,
 				B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */,
-				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
 				714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */,
 				B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */,
@@ -712,7 +711,6 @@
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
-				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
 			);
 			path = Simplenote;
 			sourceTree = "<group>";
@@ -1076,6 +1074,8 @@
 		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
+				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
 				B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */,
 				B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */,
 				B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */,
