@@ -56,6 +56,10 @@ NSString *const VSThemeManagerThemePrefKey = @"VSThemeManagerThemePrefKey";
     VSTheme *theme = [self.themeLoader themeNamed:themeName];
     
     if (theme) {
+        // TODO
+        // This entire class is scheduled to be out >> SOON >>
+        // `Options.themeName`'s key is expected to exactly match `VSThemeManagerThemePrefKey`
+        //
         [[NSUserDefaults standardUserDefaults] setObject:themeName
                                                   forKey:VSThemeManagerThemePrefKey];
         
