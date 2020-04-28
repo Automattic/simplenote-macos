@@ -7,13 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WebKit.h>
 #import "Note.h"
 #import "SPTextView.h"
 @import Simperium_OSX;
 
 @class NoteListViewController;
 @class NoteEditorBottomBar;
+@class MarkdownViewController;
 @class ToolbarView;
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
@@ -52,17 +52,16 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
-@property (nonatomic, strong) IBOutlet ToolbarView          *toolbarView;
-@property (nonatomic, strong) IBOutlet NSImageView          *statusImageView;
-@property (nonatomic, strong) IBOutlet NSTextField          *statusTextField;
-@property (nonatomic,   weak) IBOutlet SPTextView           *noteEditor;
-@property (nonatomic,   weak) IBOutlet NSScrollView         *scrollView;
-@property (nonatomic,   weak) IBOutlet NoteEditorBottomBar  *bottomBar;
-@property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
-@property (nonatomic,   weak) IBOutlet WKWebView            *markdownView;
-@property (nonatomic,   weak) Note                          *note;
-@property (nonatomic, strong, readonly) NSArray<Note *>     *selectedNotes;
-@property (nonatomic, assign, readonly) BOOL                viewingTrash;
+@property (nonatomic, strong) IBOutlet ToolbarView              *toolbarView;
+@property (nonatomic, strong) IBOutlet NSImageView              *statusImageView;
+@property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;
+@property (nonatomic,   weak) IBOutlet SPTextView               *noteEditor;
+@property (nonatomic,   weak) IBOutlet NSScrollView             *scrollView;
+@property (nonatomic,   weak) IBOutlet NoteEditorBottomBar      *bottomBar;
+@property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
+@property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
+@property (nonatomic, assign, readonly) BOOL                    viewingTrash;
+@property (nonatomic,   weak) Note                              *note;
 
 - (void)save;
 - (void)displayNote:(Note *)selectedNote;

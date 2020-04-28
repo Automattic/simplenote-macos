@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -600,7 +599,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="43" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="526"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="568"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -697,7 +696,7 @@
                                                     </connections>
                                                 </tableView>
                                             </subviews>
-                                            <edgeInsets key="contentInsets" left="0.0" right="0.0" top="56" bottom="0.0"/>
+                                            <edgeInsets key="contentInsets" left="0.0" right="0.0" top="14" bottom="0.0"/>
                                         </clipView>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="XV6-d7-Lfo"/>
@@ -999,6 +998,18 @@
                                                         </constraints>
                                                     </customView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="7hm-UJ-0zw" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="4dz-bP-NlX"/>
+                                                    <constraint firstItem="mXz-OM-6A3" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="78W-gy-0Mk"/>
+                                                    <constraint firstItem="fA9-bG-luR" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="F8s-23-6zM"/>
+                                                    <constraint firstItem="qmA-vO-wPh" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="T88-WW-K9W"/>
+                                                    <constraint firstItem="7hm-UJ-0zw" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="YVA-ky-JFG"/>
+                                                    <constraint firstItem="8v5-GT-vWz" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="ayp-2U-vy3"/>
+                                                    <constraint firstItem="fA9-bG-luR" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="bqG-7k-aNw"/>
+                                                    <constraint firstItem="mXz-OM-6A3" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="jj1-ao-yfJ"/>
+                                                    <constraint firstItem="qmA-vO-wPh" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="kV9-RK-Fch"/>
+                                                    <constraint firstItem="8v5-GT-vWz" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="wyd-ma-BRd"/>
+                                                </constraints>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
@@ -1064,16 +1075,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <wkWebView hidden="YES" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YQS-oI-aLa">
-                                        <rect key="frame" x="0.0" y="44" width="508" height="482"/>
-                                        <wkWebViewConfiguration key="configuration">
-                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                            <wkPreferences key="preferences" javaScriptEnabled="NO"/>
-                                        </wkWebViewConfiguration>
-                                        <connections>
-                                            <outlet property="navigationDelegate" destination="1107" id="yNW-pX-8wT"/>
-                                        </connections>
-                                    </wkWebView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" customClass="NoteEditorBottomBar">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
                                         <constraints>
@@ -1101,17 +1102,13 @@
                                     <constraint firstItem="914" firstAttribute="top" secondItem="559" secondAttribute="top" id="3PK-69-leP"/>
                                     <constraint firstAttribute="trailing" secondItem="1549" secondAttribute="trailing" id="43w-jU-8rz"/>
                                     <constraint firstItem="1549" firstAttribute="top" secondItem="933" secondAttribute="bottom" id="8gP-zE-3fX"/>
-                                    <constraint firstAttribute="trailing" secondItem="YQS-oI-aLa" secondAttribute="trailing" id="9Iq-6h-uB2"/>
                                     <constraint firstItem="933" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="Any-4j-QRE"/>
                                     <constraint firstItem="1549" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="BCb-vv-F7J"/>
-                                    <constraint firstItem="1549" firstAttribute="top" secondItem="YQS-oI-aLa" secondAttribute="bottom" id="IIk-xg-Oml"/>
                                     <constraint firstAttribute="trailing" secondItem="933" secondAttribute="trailing" id="ITM-To-mHT"/>
-                                    <constraint firstItem="YQS-oI-aLa" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="Jqw-ls-aAe"/>
                                     <constraint firstAttribute="bottom" secondItem="1549" secondAttribute="bottom" id="Vsf-z4-w1B"/>
                                     <constraint firstItem="1447" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" constant="-50" id="icV-Jp-4Pb"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="top" secondItem="1447" secondAttribute="bottom" constant="12" id="kMg-Op-C1s"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="lR0-BQ-Ruk"/>
-                                    <constraint firstItem="YQS-oI-aLa" firstAttribute="top" secondItem="914" secondAttribute="bottom" id="pha-Ej-b6Y"/>
                                     <constraint firstItem="914" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="qRw-HR-wJ7"/>
                                     <constraint firstItem="933" firstAttribute="top" secondItem="914" secondAttribute="bottom" id="qb4-sb-xbo"/>
                                     <constraint firstAttribute="trailing" secondItem="914" secondAttribute="trailing" id="tB1-vi-gSn"/>
@@ -1166,7 +1163,6 @@
                 <outlet property="deleteItem" destination="1655" id="1660"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
-                <outlet property="markdownView" destination="YQS-oI-aLa" id="1YJ-Jo-BQ7"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
@@ -1178,7 +1174,7 @@
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
-                <outlet property="view" destination="934" id="1185"/>
+                <outlet property="view" destination="559" id="vPQ-pl-pqe"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>
             </connections>
         </viewController>
