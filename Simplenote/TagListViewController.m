@@ -700,7 +700,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)applyStyle
 {
-    [self.tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     [self.tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     [self reloadDataAndPreserveSelection];
 }
