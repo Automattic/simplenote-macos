@@ -6,7 +6,6 @@
 #pragma mark - External
 
 #import "VSThemeManager.h"
-#import "VSTheme+Simplenote.h"
 
 
 #pragma mark - Simplenote-Y
