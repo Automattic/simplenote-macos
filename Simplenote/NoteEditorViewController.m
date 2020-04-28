@@ -1129,7 +1129,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (self.isDisplayingMarkdown) {
         [self dismissMarkdownPreview];
     } else {
-        [self displayMarkdownPreviewWithContent:self.note.content];
+        [self displayMarkdownPreview:self.note.content];
     }
 
     [self refreshEditorActions];

@@ -17,9 +17,9 @@ class MarkdownViewController: NSViewController {
 
     /// Markdown Text to be rendered
     ///
-    var content: String? {
+    var markdown: String? {
         didSet {
-            reload()
+            reloadHTML()
         }
     }
 
@@ -49,7 +49,7 @@ class MarkdownViewController: NSViewController {
         }
 
         loadView()
-        reload()
+        reloadHTML()
     }
 }
 
@@ -86,7 +86,7 @@ extension MarkdownViewController: WKNavigationDelegate {
 extension MarkdownViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: .VSThemeManagerThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHTML), name: .VSThemeManagerThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
@@ -94,9 +94,9 @@ extension MarkdownViewController {
     }
 
     @objc
-    func reload() {
-        let markdown = content ?? ""
-        let html = SPMarkdownParser.renderHTML(fromMarkdownString: markdown) ?? ""
+    func reloadHTML() {
+        let content = markdown ?? ""
+        let html = SPMarkdownParser.renderHTML(fromMarkdownString: content) ?? ""
 
         // Workaround: Prevents UI flashes by hiding / unhiding when rendering is done
         webView.isHidden = true

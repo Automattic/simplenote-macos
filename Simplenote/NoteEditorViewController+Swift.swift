@@ -70,9 +70,9 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
-    @objc(displayMarkdownPreviewWithContent:)
-    func displayMarkdownPreview(_ content: String) {
-        markdownViewController.content = content
+    @objc(displayMarkdownPreview:)
+    func displayMarkdownPreview(_ markdown: String) {
+        markdownViewController.markdown = markdown
 
         let markdownView = markdownViewController.view
         markdownView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +90,7 @@ extension NoteEditorViewController {
 
     @objc
     func dismissMarkdownPreview() {
-        markdownViewController.content = nil
+        markdownViewController.markdown = nil
         markdownViewController.view.removeFromSuperview()
         markdownViewController.removeFromParent()
     }
