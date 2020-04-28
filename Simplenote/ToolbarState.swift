@@ -28,9 +28,12 @@ struct ToolbarState {
     /// Indicates if Trash is on Screen
     ///
     let isViewingTrash: Bool
+}
 
 
-    // MARK: - UI Initialization Helpers
+// MARK: - Derived Properties
+//
+extension ToolbarState {
 
     var isActionButtonEnabled: Bool {
         (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
@@ -83,7 +86,7 @@ struct ToolbarState {
 }
 
 
-// MARK: - Helpers
+// MARK: - Default State
 //
 extension ToolbarState {
 
