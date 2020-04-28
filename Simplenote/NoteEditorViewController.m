@@ -277,12 +277,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [self checkTextInDocument];
-    
-    if (selectedNote.markdown) {
-        // Reset markdown preview content
-        NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
-        [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
-    }
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -1133,9 +1127,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (IBAction)toggleMarkdownView:(id)sender
 {
     if (self.isDisplayingMarkdown) {
-        [self dismissMarkdownContent];
+        [self dismissMarkdownPreview];
     } else {
-        [self displayMarkdownContent:self.note.content];
+        [self displayMarkdownPreviewWithContent:self.note.content];
     }
 
     [self refreshEditorActions];
