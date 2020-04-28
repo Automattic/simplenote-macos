@@ -7,6 +7,7 @@ extension UserDefaults {
     enum Key: String {
         case analyticsEnabled
         case lastKnownVersion
+        case theme = "VSThemeManagerThemePrefKey"
     }
 }
 
