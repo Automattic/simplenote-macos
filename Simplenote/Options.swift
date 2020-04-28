@@ -49,12 +49,12 @@ extension Options {
 
     /// Stores the name of the selected theme. Null indicates that the system's default theme should be picked, when possible
     ///
-    var theme: String? {
+    var themeName: String? {
         get {
-            defaults.string(forKey: .theme)
+            defaults.string(forKey: .themeName)
         }
         set {
-            defaults.set(newValue, forKey: .theme)
+            defaults.set(newValue, forKey: .themeName)
             SPTracker.trackSettingsThemeUpdated(newValue)
             NotificationCenter.default.post(name: .ThemeDidChange, object: nil)
         }

@@ -15,7 +15,7 @@ class SPUserInterface: NSObject {
     ///
     static var isDark: Bool {
         guard isSystemThemeSelected else {
-            return Options.shared.theme == "dark"
+            return Options.shared.themeName == "dark"
         }
 
         return isSystemInDarkMode
@@ -28,7 +28,7 @@ class SPUserInterface: NSObject {
             return false
         }
 
-        return Options.shared.theme == nil
+        return Options.shared.themeName == nil
     }
 
     /// Indicates if macOS is in Dark Mode
