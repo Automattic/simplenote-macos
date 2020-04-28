@@ -26,9 +26,8 @@
 
 @import Simperium_OSX;
 
-#if USE_HOCKEY
+#if SPARKLE_OTA
 #import <Sparkle/Sparkle.h>
-#import <HockeySDK/HockeySDK.h>
 #endif
 
 
@@ -47,11 +46,7 @@
 #pragma mark Private
 #pragma mark ====================================================================================
 
-#if USE_HOCKEY
-@interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate, BITHockeyManagerDelegate>
-#else
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
-#endif
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
 
@@ -74,7 +69,7 @@
 @property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
 
-#if USE_HOCKEY
+#if SPARKLE_OTA
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
 #endif
 
@@ -118,17 +113,7 @@
     return simperium;
 }
 
-#if USE_HOCKEY
-- (void)configureHockeyWithID:(NSString *)hockeyID
-{
-    NSLog(@"Initializing HockeyApp... ");
-    
-    BITHockeyManager *hockeyManager = [BITHockeyManager sharedHockeyManager];
-    
-    [hockeyManager configureWithIdentifier:hockeyID delegate:self];
-    [hockeyManager startManager];
-}
-
+#if SPARKLE_OTA
 - (void)configureSparkle
 {
     self.updaterController = [[SPUStandardUpdaterController alloc] initWithUpdaterDelegate:nil
@@ -178,8 +163,7 @@
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
     [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
 
-#if USE_HOCKEY
-    [self configureHockeyWithID:SPCredentials.bitHockeyIdentifier];
+#if SPARKLE_OTA
     [self configureSparkle];
 #endif
 
