@@ -9,7 +9,6 @@
 #import "VSThemeManager.h"
 
 
-NSString *const VSThemeManagerThemeDidChangeNotification = @"VSThemeManagerThemeDidChangeNotification";
 NSString *const VSThemeManagerThemePrefKey = @"VSThemeManagerThemePrefKey";
 
 @interface VSThemeManager ()
@@ -61,8 +60,6 @@ NSString *const VSThemeManagerThemePrefKey = @"VSThemeManagerThemePrefKey";
                                                   forKey:VSThemeManagerThemePrefKey];
         
         _theme = theme;
-        [[NSNotificationCenter defaultCenter] postNotificationName:VSThemeManagerThemeDidChangeNotification
-                                                            object:nil];
     }
 }
 
