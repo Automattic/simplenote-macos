@@ -88,7 +88,7 @@ class PublishViewController: NSViewController {
 private extension PublishViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .VSThemeManagerThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .ThemeDidChange, object: nil)
     }
 
     @objc

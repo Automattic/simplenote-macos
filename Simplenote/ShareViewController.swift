@@ -33,7 +33,7 @@ class ShareViewController: NSViewController {
 private extension ShareViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .VSThemeManagerThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .ThemeDidChange, object: nil)
     }
 
     @objc
