@@ -1158,6 +1158,7 @@
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>
+                <outlet property="systemThemeItem" destination="x6g-cH-Wdm" id="fDA-Qs-0fg"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
                 <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
                 <outlet property="window" destination="371" id="748"/>

@@ -57,6 +57,7 @@
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
+@property (strong, nonatomic) IBOutlet NSMenuItem               *systemThemeItem;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
@@ -523,6 +524,10 @@
 {
     if (menuItem == self.emptyTrashItem) {
         return [self numDeletedNotes] > 0;
+    }
+
+    if (menuItem == self.systemThemeItem) {
+        return NSApplication.runningOnMojaveOrLater;
     }
 
     return YES;

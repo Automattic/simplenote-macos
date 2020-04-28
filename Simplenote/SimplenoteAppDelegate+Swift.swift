@@ -26,14 +26,6 @@ extension SimplenoteAppDelegate {
 //
 extension SimplenoteAppDelegate {
 
-    func displaySystemThemeOptionIfNeeded() {
-        guard #available(macOS 10.14, *) else {
-            return
-        }
-
-        themeMenu.item(withTag: ThemeOption.system.rawValue)?.isHidden = false
-    }
-
     func refreshThemeMenu() {
         let selectedItemTag = SPUserInterface.activeThemeOption.rawValue
 
@@ -53,7 +45,6 @@ extension SimplenoteAppDelegate: NSMenuDelegate {
             return
         }
 
-        displaySystemThemeOptionIfNeeded()
         refreshThemeMenu()
     }
 }
