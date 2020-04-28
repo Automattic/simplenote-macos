@@ -275,6 +275,10 @@
 		B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* LoginWindowController.m */; };
 		B5EB3AD12458B9940089858D /* NSNotification+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */; };
 		B5EB3AD22458B9940089858D /* NSNotification+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */; };
+		B5EB3AD42458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */; };
+		B5EB3AD52458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */; };
+		B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
+		B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -558,6 +562,8 @@
 		B5E96B651BDE732500D707F5 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
 		B5EB3ACF2458B9940089858D /* NSNotification+Simplenote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotification+Simplenote.h"; sourceTree = "<group>"; };
 		B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+Simplenote.m"; sourceTree = "<group>"; };
+		B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimplenoteAppDelegate+Swift.swift"; sourceTree = "<group>"; };
+		B5EB3AD62458CDB50089858D /* ThemeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeOption.swift; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -689,6 +695,7 @@
 				B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */,
 				26F72A9E14032D2A00A7935E /* SimplenoteAppDelegate.h */,
 				26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */,
+				B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */,
 				B5D3FCCB201F906E00A813B7 /* StatusChecker.h */,
 				B5D3FCCA201F906E00A813B7 /* StatusChecker.m */,
 				46CF73051782C6B200FC2B5C /* TagListViewController.h */,
@@ -974,6 +981,7 @@
 				B56FA78E2437C672002CB9FF /* ColorStudio.swift */,
 				B56FA78F2437C672002CB9FF /* NSColor+Studio.swift */,
 				B56FA7972437C79D002CB9FF /* SPUserInterface.swift */,
+				B5EB3AD62458CDB50089858D /* ThemeOption.swift */,
 			);
 			name = Themes;
 			sourceTree = "<group>";
@@ -1589,6 +1597,7 @@
 				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
+				B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				B56FA7982437C79D002CB9FF /* SPUserInterface.swift in Sources */,
@@ -1615,6 +1624,7 @@
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
+				B5EB3AD42458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */,
 				B5EB3AD12458B9940089858D /* NSNotification+Simplenote.m in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
@@ -1703,6 +1713,7 @@
 				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
+				B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				B56FA7992437C79D002CB9FF /* SPUserInterface.swift in Sources */,
@@ -1729,6 +1740,7 @@
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
+				B5EB3AD52458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */,
 				B5EB3AD22458B9940089858D /* NSNotification+Simplenote.m in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
