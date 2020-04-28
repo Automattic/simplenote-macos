@@ -14,8 +14,6 @@
 #import "NotesArrayController.h"
 #import "TagListViewController.h"
 #import "SPTableView.h"
-#import "VSThemeManager.h"
-#import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 
