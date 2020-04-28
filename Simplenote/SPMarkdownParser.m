@@ -8,8 +8,8 @@
 
 #import "SPMarkdownParser.h"
 #import "html.h"
-#import "VSThemeManager.h"
 #import "SPTextView.h"
+#import "Simplenote-Swift.h"
 
 @implementation SPMarkdownParser
 
@@ -55,8 +55,8 @@
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey]) {
         headerStart = [headerStart stringByAppendingString:@".note-detail-markdown { max-width:750px;margin:0 auto; }"];
     }
-    
-    BOOL isDarkMode = [VSThemeManager sharedManager].isDarkMode;
+
+    BOOL isDarkMode = SPUserInterface.isDark;
     
     // set main background and font color
     NSString *colorCSS = @"html { background-color: #%@; color: #%@ }\n";
