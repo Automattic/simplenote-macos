@@ -19,8 +19,6 @@ static NSColor *colorWithHexString(NSString *hexString);
 @property (nonatomic, strong) NSDictionary *themeDictionary;
 @property (nonatomic, strong) NSCache *colorCache;
 @property (nonatomic, strong) NSCache *fontCache;
-@property (nonatomic, strong) NSCache *userSizedFontCache;
-@property (nonatomic, strong) NSFont *systemBodyFont;
 
 @end
 
@@ -48,11 +46,6 @@ static NSColor *colorWithHexString(NSString *hexString);
     
     _colorCache = [NSCache new];
 	_fontCache = [NSCache new];
-	_userSizedFontCache = [NSCache new];
-
-    NSFontDescriptor *titleDescriptor = [NSFontDescriptor fontDescriptorWithFontAttributes:nil];
-    _systemBodyFont = [NSFont fontWithDescriptor:titleDescriptor
-                                            size:0.0];
 }
 
 - (id)objectForKey:(NSString *)key {
