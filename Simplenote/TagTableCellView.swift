@@ -108,9 +108,6 @@ private extension TagTableCellView {
     func setupSubviews() {
         iconImageView.wantsLayer = true
         nameTextField.wantsLayer = true
-        nameTextField.textRegularColor = .simplenoteTagListRegularTextColor
-        nameTextField.textSelectionColor = .simplenoteTagListSelectedTextColor
-        nameTextField.textEditionColor = .simplenoteTagListEditingTextColor
     }
 
     func reset() {
@@ -125,5 +122,8 @@ private extension TagTableCellView {
 
         iconImageView.tintImage(color: tintColor)
         nameTextField.isSelected = selected
+        nameTextField.textRegularColor = .simplenoteTagListRegularTextColor
+        nameTextField.textSelectionColor = .simplenoteTagListSelectedTextColor
+        nameTextField.textEditionColor = .simplenoteTagListEditingTextColor
     }
 }
