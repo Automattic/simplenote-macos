@@ -4,15 +4,16 @@ import AppKit
 
 // MARK: - Simplenote's Theme
 //
-@objcMembers
 class SPUserInterface: NSObject {
 
     /// Ladies and gentlemen, this is a singleton.
     ///
+    @objc
     static let shared = SPUserInterface()
 
     /// Indicates if the User Interface is in Dark Mode
     ///
+    @objc
     static var isDark: Bool {
         guard isSystemThemeSelected else {
             return Options.shared.themeName == "dark"
@@ -42,3 +43,18 @@ class SPUserInterface: NSObject {
     }
 }
 
+
+// MARK: - Helpers
+//
+extension SPUserInterface {
+
+    /// Returns the active ThemeOption, based on the `Options.theme` status (and / or) macOS's Dark Mode Status
+    ///
+    static var activeThemeOption: ThemeOption {
+        if isSystemThemeSelected {
+            return .system
+        }
+
+        return isDark ? .dark : .light
+    }
+}
