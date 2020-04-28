@@ -180,7 +180,7 @@
     [self configureWelcomeNoteIfNeeded];
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(applyStyle) name:VSThemeManagerThemeDidChangeNotification object:nil];
+    [nc addObserver:self selector:@selector(applyStyle) name:ThemeDidChangeNotification object:nil];
 }
 
 - (void)configureWindow
