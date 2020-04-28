@@ -16,8 +16,8 @@ extension SimplenoteAppDelegate {
         }
 
         // TODO: VSTheme is **SO**... SOO absolutely gone >> SOON
-        Options.shared.themeName = option.themeName
         VSThemeManager.shared().swapTheme(option.themeName)
+        Options.shared.themeName = option.themeName
     }
 }
 
