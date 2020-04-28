@@ -462,7 +462,17 @@
                                                 <action selector="changeThemeAction:" target="494" id="Hpg-KZ-zUj"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
+                                        <menuItem title="System Appearance" tag="2" enabled="NO" id="x6g-cH-Wdm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="changeThemeAction:" target="494" id="p3W-qh-QIJ"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
+                                    <connections>
+                                        <outlet property="delegate" destination="494" id="x9M-iD-ZJY"/>
+                                    </connections>
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
