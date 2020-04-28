@@ -6,6 +6,7 @@
 #pragma mark - External
 
 #import "VSThemeManager.h"
+#import "VSTheme+Simplenote.h"
 
 
 #pragma mark - Simplenote-Y
@@ -15,6 +16,7 @@
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"
 #import "TagListViewController.h"
+#import "NoteListViewController.h"
 
 
 #pragma mark - Extensions

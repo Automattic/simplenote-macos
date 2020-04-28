@@ -9,6 +9,6 @@ extension NSAppearance {
     ///
     @available(OSX 10.14, *)
     var isDark: Bool {
-        name == .darkAqua
+        name == .darkAqua || name == .vibrantDark
     }
 }

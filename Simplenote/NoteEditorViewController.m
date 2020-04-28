@@ -337,12 +337,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     self.viewingTrash = YES;
     [self.previewButton setHidden:YES];
+    [self refreshEnabledActions];
     [self.bottomBar setEnabled:NO];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = NO;
+    [self refreshEnabledActions];
     [self.bottomBar setEnabled:YES];
 }
 

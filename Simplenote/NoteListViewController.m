@@ -30,17 +30,10 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 @implementation NoteListViewController
 
-- (void)awakeFromNib
+- (void)viewDidLoad
 {
-    [super awakeFromNib];
-    
-    // awakeFromNib is called each time a cell is created; work around that (must be careful
-    // not to register for notifications multiple times)
-    // http://stackoverflow.com/a/7187492/1379066
-    if (awake) {
-        return;
-    }
-    
+    [super viewDidLoad];
+
     oldTags = @"";
 
     // Set the active preferences in the menu
@@ -49,9 +42,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     int previewLinesPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kPreviewLinesPref] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
-    [progressIndicator setWantsLayer:YES];
-    [progressIndicator setAlphaValue:0.5];
-    [progressIndicator setHidden:YES];
+    [self.progressIndicator setWantsLayer:YES];
+    [self.progressIndicator setAlphaValue:0.5];
+    [self.progressIndicator setHidden:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
@@ -78,8 +71,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
                                              selector: @selector(willAddNewNote:)
                                                  name: SPWillAddNewNoteNotificationName
                                                object: nil];
-    
-    awake = YES;
 
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
@@ -152,17 +143,17 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     }
 
     [self.noteEditorViewController displayNote:nil];
-    [statusField setHidden:NO];
+    [self.statusField setHidden:NO];
 }
 
 - (void)setWaitingForIndex:(BOOL)waiting
 {
     if (waiting) {
-        [progressIndicator setHidden:NO];
-        [progressIndicator startAnimation:nil];
+        [self.progressIndicator setHidden:NO];
+        [self.progressIndicator startAnimation:nil];
     } else {
-        [progressIndicator setHidden:YES];
-        [progressIndicator stopAnimation:nil];
+        [self.progressIndicator setHidden:YES];
+        [self.progressIndicator stopAnimation:nil];
     }
 }
 
@@ -262,7 +253,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         [self selectRow:0];
     }
     
-    [statusField setHidden:numNotes > 0];
+    self.statusField.hidden = numNotes > 0;
     
     if (numNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
@@ -364,12 +355,14 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)didBeginViewingTrash:(NSNotification *)notification
 {
     [SPTracker trackListTrashPressed];
-    viewingTrash = YES;
+    self.viewingTrash = YES;
+    [self refreshEnabledActions];
 }
 
 - (void)willFinishViewingTrash:(NSNotification *)notification
 {
-    viewingTrash = NO;
+    self.viewingTrash = NO;
+    [self refreshEnabledActions];
 }
 
 - (void)didEmptyTrash:(NSNotification *)notification
@@ -379,7 +372,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     }
 
     [self.noteEditorViewController displayNote:nil];
-    [statusField setHidden:NO];
+    [self.statusField setHidden:NO];
 }
 
 - (void)willAddNewNote:(NSNotification *)notification
@@ -493,31 +486,24 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     [self.view.window makeFirstResponder:self.searchField];
 }
 
+
 #pragma mark - NSMenuValidation delegate
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
     // Disable menu items when viewing trash
-    return !viewingTrash;
+    return !self.viewingTrash;
 }
 
 
+#pragma mark - IBActions
 
-#pragma mark - Theme
-
-- (void)applyStyle
+- (IBAction)filterNotes:(id)sender
 {
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
-    
-    [self reloadDataAndPreserveSelection];
-}
-
-- (IBAction)filterNotes:(id)sender {
     NSString *searchText = [self.searchField stringValue];
     
-    NSMutableArray *predicateList = [[NSMutableArray alloc] init];
-    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", [NSNumber numberWithBool:viewingTrash]]];
+    NSMutableArray *predicateList = [NSMutableArray new];
+    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", @(self.viewingTrash)]];
     
     NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
     if (selectedTag.length > 0) {

@@ -64,6 +64,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
 @property (nonatomic,   weak) Note                          *note;
 @property (nonatomic, strong) WKWebView                     *markdownView;
+@property (nonatomic, assign, readonly) BOOL                viewingTrash;
 
 - (void)save;
 - (void)displayNote:(Note *)selectedNote;

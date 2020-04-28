@@ -21,21 +21,21 @@
 {
     IBOutlet NSScrollView *scrollView;
     IBOutlet NSArrayController *arrayController;
-    IBOutlet NSProgressIndicator *progressIndicator;
-    IBOutlet NSTextField *statusField;
     IBOutlet NSMenu *sortMenu;
     IBOutlet NSMenu *previewLinesMenu;
     IBOutlet NSMenuItem *previewLinesMenuItem;
     NSString *oldTags;
     BOOL preserveSelection;
-    BOOL viewingTrash;
-    BOOL awake;
     CGFloat rowHeight;
 }
 
-@property (strong, nonatomic) IBOutlet SPTableView      *tableView;
-@property (strong, nonatomic) IBOutlet NSSearchField    *searchField;
-@property (assign, nonatomic) BOOL                      searching;
+@property (strong, nonatomic) IBOutlet NSTextField          *statusField;
+@property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (strong, nonatomic) IBOutlet SPTableView          *tableView;
+@property (strong, nonatomic) IBOutlet NSSearchField        *searchField;
+@property (strong, nonatomic) IBOutlet NSButton             *addNoteButton;
+@property (assign, nonatomic) BOOL                          searching;
+@property (assign, nonatomic) BOOL                          viewingTrash;
 
 - (void)loadNotes;
 - (void)reset;
@@ -54,6 +54,5 @@
 - (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
-- (void)applyStyle;
 
 @end

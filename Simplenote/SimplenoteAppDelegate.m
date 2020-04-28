@@ -54,7 +54,6 @@
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
-@property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
 
 @property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
@@ -196,7 +195,6 @@
     self.window.releasedWhenClosed              = NO;
     
     [self.splitView adjustSubviews];
-    [self notifySplitDidChange];
     
     // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.12)
     WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
@@ -225,27 +223,6 @@
         systemDefaultItem.tag = kDefaultThemeAppearanceTag;
         [themeMenu addItem:systemDefaultItem];
     }
-
-    [self configureToolbar];
-}
-
-- (void)configureToolbar
-{
-    NSRect splitFrame                           = self.splitView.frame;
-    NSRect toolbarFrame                         = self.toolbar.frame;
-    
-    splitFrame.size.height                      -= toolbarFrame.size.height;
-    self.splitView.frame                        = splitFrame;
-    
-    toolbarFrame.origin.y                       = splitFrame.size.height;
-    toolbarFrame.size.width                     = splitFrame.size.width;
-    
-    self.toolbar.autoresizingMask               = NSViewWidthSizable | NSViewMinXMargin | NSViewMinYMargin;
-    self.toolbar.drawsSeparator                 = true;
-    self.toolbar.drawsBackground                = true;
-    self.toolbar.frame                          = toolbarFrame;
-    
-    [self.splitView.superview addSubview:self.toolbar];
 }
 
 - (void)hookWindowNotifications
@@ -415,7 +392,6 @@
 - (void)handleWindowDidResizeNote:(NSNotification *)notification
 {
     [self.splitView adjustSubviews];
-    [self notifySplitDidChange];
 }
 
 - (void)handleWindowDidResignMainNote:(NSNotification *)notification
@@ -471,18 +447,11 @@
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
 {
-    [self notifySplitDidChange];
-    
     return proposedPosition;
 }
 
 
 #pragma mark - Split view Helpers
-
-- (void)splitViewDidResizeSubviews:(NSNotification *)notification
-{
-    [self notifySplitDidChange];
-}
 
 - (CGFloat)tagListWidth
 {
@@ -501,11 +470,6 @@
     }
 
     return self.tagListViewController.view.bounds.size.width + self.splitView.dividerThickness;
-}
-
-- (void)notifySplitDidChange
-{
-    [self.toolbar setSplitPositionLeft:[self tagListSplitPosition] right:[self editorSplitPosition]];
 }
 
 
@@ -716,7 +680,6 @@
     
     BOOL isEnteringFocusMode = [self.noteListViewController.view isHidden];
     // Enable/disable buttons and search bar in the toolbar
-    [self.toolbar configureForFocusMode: isEnteringFocusMode];
     [focusModeMenuItem setState:isEnteringFocusMode ? NSOnState : NSOffState];
     
     if (!isEnteringFocusMode && tagsVisible) {
@@ -783,8 +746,6 @@
     [backgroundView setNeedsDisplay:YES];
 
     [self.splitView applyStyle];
-    [self.toolbar applyStyle];
-    [self.toolbar setNeedsDisplay:YES];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
