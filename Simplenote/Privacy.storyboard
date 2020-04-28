@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,7 +90,7 @@
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-xe-XlS">
                                                         <rect key="frame" x="0.0" y="0.0" width="360" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" ambiguous="YES" id="e2g-Su-oaa">
+                                                        <view key="contentView" id="e2g-Su-oaa">
                                                             <rect key="frame" x="1" y="1" width="358" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
@@ -133,7 +133,7 @@
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="fn5-LT-yPF">
                                                         <rect key="frame" x="0.0" y="0.0" width="360" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" ambiguous="YES" id="Ibg-f7-cRy">
+                                                        <view key="contentView" id="Ibg-f7-cRy">
                                                             <rect key="frame" x="1" y="1" width="358" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
@@ -156,7 +156,7 @@
                                                         <rect key="frame" x="338" y="24" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="1JP-im-Ces"/>
-                                                        <color key="contentTintColor" red="0.31988218429999998" green="0.51438856119999998" blue="0.73730570080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                 </subviews>
                                                 <gestureRecognizers>
@@ -180,7 +180,7 @@
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="wYv-rH-o9F">
                                                         <rect key="frame" x="0.0" y="0.0" width="360" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" ambiguous="YES" id="96G-nW-3Px">
+                                                        <view key="contentView" id="96G-nW-3Px">
                                                             <rect key="frame" x="1" y="1" width="358" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
@@ -190,7 +190,7 @@
                                                         <rect key="frame" x="338" y="33" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="0PB-Yb-ARh"/>
-                                                        <color key="contentTintColor" red="0.31988218429999998" green="0.51438856119999998" blue="0.73730570080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYn-51-BfO" customClass="SPAboutTextField" customModule="Simplenote" customModuleProvider="target">
                                                         <rect key="frame" x="-2" y="5" width="320" height="74"/>
@@ -274,6 +274,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_arrow_top_right" width="22" height="22"/>
+        <image name="icon_arrow_top_right" width="24" height="24"/>
     </resources>
 </document>

@@ -15,7 +15,6 @@
 @class NoteListViewController;
 @class NoteEditorViewController;
 @class TagListViewController;
-@class SPToolbarView;
 
 #pragma mark ====================================================================================
 #pragma mark SimplenoteAppDelegate
