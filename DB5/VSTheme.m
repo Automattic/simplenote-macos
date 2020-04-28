@@ -91,16 +91,6 @@ static NSColor *colorWithHexString(NSString *hexString);
 	return nil;
 }
 
-
-- (NSInteger)integerForKey:(NSString *)key {
-
-	id obj = [self objectForKey:key];
-	if (obj == nil)
-		return 0;
-	return [obj integerValue];
-}
-
-
 - (CGFloat)floatForKey:(NSString *)key {
 	
 	id obj = [self objectForKey:key];
@@ -108,30 +98,6 @@ static NSColor *colorWithHexString(NSString *hexString);
 		return  0.0f;
 	return [obj floatValue];
 }
-
-- (NSNumber *)numberForKey:(NSString *)key {
-
-	return [NSNumber numberWithFloat:[self floatForKey:key]];
-}
-
-- (NSTimeInterval)timeIntervalForKey:(NSString *)key {
-
-	id obj = [self objectForKey:key];
-	if (obj == nil)
-		return 0.0;
-	return [obj doubleValue];
-}
-
-
-- (NSImage *)imageForKey:(NSString *)key {
-	
-	NSString *imageName = [self stringForKey:key];
-	if (stringIsEmpty(imageName))
-		return nil;
-	
-	return [NSImage imageNamed:imageName];
-}
-
 
 - (NSColor *)colorForKey:(NSString *)key {
     NSColor *mojaveColor = [self getMojaveColorForKey:key];
@@ -172,28 +138,6 @@ static NSColor *colorWithHexString(NSString *hexString);
     return nil;
 }
 
-- (BOOL)isMojaveDarkMode {
-    if (@available(macOS 10.14, *)) {
-        NSString *interfaceStyle = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
-        
-        return interfaceStyle != nil && [interfaceStyle isEqualToString:@"Dark"];
-    } else {
-        return NO;
-    }
-}
-
-- (NSEdgeInsets)edgeInsetsForKey:(NSString *)key {
-
-	CGFloat left = [self floatForKey:[key stringByAppendingString:@"Left"]];
-	CGFloat top = [self floatForKey:[key stringByAppendingString:@"Top"]];
-	CGFloat right = [self floatForKey:[key stringByAppendingString:@"Right"]];
-	CGFloat bottom = [self floatForKey:[key stringByAppendingString:@"Bottom"]];
-
-	NSEdgeInsets edgeInsets = NSEdgeInsetsMake(top, left, bottom, right);
-	return edgeInsets;
-}
-
-
 - (NSFont *)fontForKey:(NSString *)key {
 
 	NSFont *cachedFont = [self.fontCache objectForKey:key];
@@ -219,70 +163,6 @@ static NSColor *colorWithHexString(NSString *hexString);
 	[self.fontCache setObject:font forKey:key];
 
 	return font;
-}
-
-- (NSFont *)fontWithSystemSizeForKey:(NSString *)key {
-    
-    NSFont *cachedFont = [self.userSizedFontCache objectForKey:key];
-	if (cachedFont != nil)
-		return cachedFont;
-    
-	NSString *fontName = [self stringForKey:key];
-	CGFloat fontSize = _systemBodyFont.pointSize;
-    
-	if (fontSize < 1.0f)
-		fontSize = 15.0f;
-    else if (fontSize > 26.0f) // implement max font size
-        fontSize = 26.0f;
-        
-	NSFont *font = nil;
-    
-	if (stringIsEmpty(fontName))
-		font = _systemBodyFont;
-	else
-		font = [NSFont fontWithName:fontName size:fontSize];
-    
-	if (font == nil)
-		font = _systemBodyFont;
-    
-	[self.userSizedFontCache setObject:font forKey:key];
-    
-	return font;
-}
-
-
-- (CGPoint)pointForKey:(NSString *)key {
-
-	CGFloat pointX = [self floatForKey:[key stringByAppendingString:@"X"]];
-	CGFloat pointY = [self floatForKey:[key stringByAppendingString:@"Y"]];
-
-	CGPoint point = CGPointMake(pointX, pointY);
-	return point;
-}
-
-
-- (CGSize)sizeForKey:(NSString *)key {
-
-	CGFloat width = [self floatForKey:[key stringByAppendingString:@"Width"]];
-	CGFloat height = [self floatForKey:[key stringByAppendingString:@"Height"]];
-
-	CGSize size = CGSizeMake(width, height);
-	return size;
-}
-
-
-- (VSTextCaseTransform)textCaseTransformForKey:(NSString *)key {
-
-	NSString *s = [self stringForKey:key];
-	if (s == nil)
-		return VSTextCaseTransformNone;
-
-	if ([s caseInsensitiveCompare:@"lowercase"] == NSOrderedSame)
-		return VSTextCaseTransformLower;
-	else if ([s caseInsensitiveCompare:@"uppercase"] == NSOrderedSame)
-		return VSTextCaseTransformUpper;
-
-	return VSTextCaseTransformNone;
 }
 
 @end
