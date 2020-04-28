@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (VSThemeManager *)sharedManager;
 - (VSTheme *)theme;
 
-- (void)swapTheme:(NSString *)theme;
+- (void)swapTheme:(nullable NSString *)theme;
 
 @end
 
