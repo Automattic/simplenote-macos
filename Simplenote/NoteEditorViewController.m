@@ -62,6 +62,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 @property (nonatomic,   weak) ShareViewController       *shareViewController;
 @property (nonatomic,   weak) PublishViewController     *publishViewController;
+@property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
@@ -107,6 +108,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage new];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
@@ -125,9 +128,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
 
-    // Preload CSS in webview, prevents 'flashing' when first loading the markdown view
-    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
-    [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+    // Preload Markdown Preview
+    self.markdownViewController = [MarkdownViewController new];
+    [self.markdownViewController preloadView];
 
     // Realtime Markdown Support
     self.inputHandler = [TextViewInputHandler new];
