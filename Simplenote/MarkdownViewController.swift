@@ -59,7 +59,7 @@ class MarkdownViewController: NSViewController {
 extension MarkdownViewController: WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-       webView.isHidden = false
+        webView.isHidden = false
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
