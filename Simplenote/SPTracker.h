@@ -15,6 +15,8 @@
  *              either Automattic Tracks, or Google Analytics.
  */
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SPTracker : NSObject
 
 #pragma mark - Metadata
@@ -49,7 +51,7 @@
 #pragma mark - Preferences
 + (void)trackSettingsFontSizeUpdated;
 + (void)trackSettingsAlphabeticalSortEnabled:(BOOL)isOn;
-+ (void)trackSettingsThemeUpdated:(NSString *)themeName;
++ (void)trackSettingsThemeUpdated:(nullable NSString *)themeName;
 + (void)trackSettingsListCondensedEnabled;
 
 #pragma mark - Sidebar
@@ -71,3 +73,5 @@
 + (void)trackWPCCLoginFailed;
 
 @end
+
+NS_ASSUME_NONNULL_END
