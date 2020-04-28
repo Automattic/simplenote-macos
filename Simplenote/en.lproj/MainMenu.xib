@@ -453,20 +453,20 @@
                                         <menuItem title="Light" id="Zhe-Bb-jvT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="changeThemeAction:" target="494" id="9TU-eH-R16"/>
+                                                <action selector="clickedThemeItem:" target="494" id="mgq-M0-lcf"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Dark" tag="1" id="qcT-FY-eHe">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="changeThemeAction:" target="494" id="Hpg-KZ-zUj"/>
+                                                <action selector="clickedThemeItem:" target="494" id="wom-f8-fYq"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
                                         <menuItem title="System Appearance" tag="2" enabled="NO" id="x6g-cH-Wdm">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="changeThemeAction:" target="494" id="p3W-qh-QIJ"/>
+                                                <action selector="clickedThemeItem:" target="494" id="b76-s6-4Ql"/>
                                             </connections>
                                         </menuItem>
                                     </items>

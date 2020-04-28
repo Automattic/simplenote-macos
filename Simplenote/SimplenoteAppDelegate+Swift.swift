@@ -6,7 +6,7 @@ import Foundation
 extension SimplenoteAppDelegate {
 
     @IBAction
-    func changeThemeAction(_ sender: Any) {
+    func clickedThemeItem(_ sender: Any) {
         guard let item = sender as? NSMenuItem, item.state != .on else {
             return
         }
