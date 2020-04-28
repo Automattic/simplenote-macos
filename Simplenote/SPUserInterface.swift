@@ -16,7 +16,7 @@ class SPUserInterface: NSObject {
     @objc
     static var isDark: Bool {
         guard isSystemThemeSelected else {
-            return Options.shared.themeName == "dark"
+            return Options.shared.themeName == ThemeOption.dark.themeName
         }
 
         return isSystemInDarkMode
