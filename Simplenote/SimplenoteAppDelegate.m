@@ -123,11 +123,6 @@
 }
 #endif
 
-- (VSTheme *)theme
-{
-    return [[VSThemeManager sharedManager] theme];
-}
-
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
     [eventManager setEventHandler:self
