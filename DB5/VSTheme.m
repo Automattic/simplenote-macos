@@ -62,16 +62,6 @@ static NSColor *colorWithHexString(NSString *hexString);
 	return obj;
 }
 
-
-- (BOOL)boolForKey:(NSString *)key {
-
-	id obj = [self objectForKey:key];
-	if (obj == nil)
-		return NO;
-	return [obj boolValue];
-}
-
-
 - (NSString *)stringForKey:(NSString *)key {
 	
 	id obj = [self objectForKey:key];

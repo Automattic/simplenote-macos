@@ -68,9 +68,11 @@ static NSImage *pinImageHighlighted;
 - (NSMutableAttributedString *)pinnedPreviewForNoteSummary:(NSAttributedString *)noteSummary
 {
     // Update image if theme has changed
-    if (!pinImage || ([self.theme boolForKey:@"dark"] && ![pinImage.name sp_containsString:@"dark"]) ||
-        (![self.theme boolForKey:@"dark"] && [pinImage.name sp_containsString:@"dark"])) {
-        NSString *imageName = [self.theme boolForKey:@"dark"] ? @"icon_pin_dark" : @"icon_pin";
+    // Oh. This snippet is SO GONE >> REALLY >> SOON
+    //
+    if (!pinImage || (SPUserInterface.isDark && ![pinImage.name sp_containsString:@"dark"]) ||
+        (!SPUserInterface.isDark && [pinImage.name sp_containsString:@"dark"])) {
+        NSString *imageName = SPUserInterface.isDark ? @"icon_pin_dark" : @"icon_pin";
         pinImage = [NSImage imageNamed:imageName];
         pinImageHighlighted = [NSImage imageNamed:@"icon_pin_highlighted"];
     }

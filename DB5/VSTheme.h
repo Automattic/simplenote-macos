@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, weak) VSTheme *parentTheme; /*can inherit*/
 
-- (BOOL)boolForKey:(NSString *)key;
 - (NSColor *)colorForKey:(NSString *)key; /*123ABC or #123ABC: 6 digits, leading # allowed but not required*/
 - (NSFont *)fontForKey:(NSString *)key; /*x and xSize keys*/
 
