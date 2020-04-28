@@ -834,8 +834,6 @@
 		463774DC171F114900E2E333 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				B5EB3ACF2458B9940089858D /* NSNotification+Simplenote.h */,
-				B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */,
 				26DBB1EF1405A6A800186392 /* NSString+Condensing.h */,
 				26DBB1F01405A6A800186392 /* NSString+Condensing.m */,
 				26DBB1F11405A6A800186392 /* NSString+Metadata.h */,
@@ -935,6 +933,8 @@
 			isa = PBXGroup;
 			children = (
 				B501AAD12437E5250084CDA3 /* AppKitConstants.swift */,
+				B5EB3ACF2458B9940089858D /* NSNotification+Simplenote.h */,
+				B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
