@@ -48,7 +48,6 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
-@property (strong, nonatomic) IBOutlet NSMenu                   *themeMenu;
 
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
@@ -57,7 +56,6 @@
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *systemThemeItem;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
@@ -526,8 +524,8 @@
         return [self numDeletedNotes] > 0;
     }
 
-    if (menuItem == self.systemThemeItem) {
-        return NSApplication.runningOnMojaveOrLater;
+    if ([self isThemeMenuItem:menuItem]) {
+        return [self validateThemeMenuItem:menuItem];
     }
 
     return YES;

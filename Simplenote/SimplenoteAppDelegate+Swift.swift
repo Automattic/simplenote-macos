@@ -1,7 +1,7 @@
 import Foundation
 
 
-// MARK: - MARK: Actions!
+// MARK: - Actions!
 //
 extension SimplenoteAppDelegate {
 
@@ -22,29 +22,24 @@ extension SimplenoteAppDelegate {
 }
 
 
-// MARK: - Theme Menu
+// MARK: - MenuItem(s) Validation
 //
 extension SimplenoteAppDelegate {
 
-    func refreshThemeMenu() {
-        let selectedItemTag = SPUserInterface.activeThemeOption.rawValue
-
-        for item in themeMenu.items {
-            item.state = (item.tag == selectedItemTag) ? .on : .off
-        }
+    @objc
+    func isThemeMenuItem(_ item: NSMenuItem) -> Bool {
+        return item.action == #selector(clickedThemeItem)
     }
-}
 
-
-// MARK: - NSMenuDelegate
-//
-extension SimplenoteAppDelegate: NSMenuDelegate {
-
-    public func menuWillOpen(_ menu: NSMenu) {
-        guard menu == themeMenu else {
-            return
+    @objc
+    func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
+        guard let option = ThemeOption(rawValue: item.tag) else {
+            return false
         }
 
-        refreshThemeMenu()
+        item.state = SPUserInterface.activeThemeOption == option ? .on : .off
+
+        // System Appearance must only be available in Mojave
+        return option != .system ? true : NSApplication.runningOnMojaveOrLater
     }
 }

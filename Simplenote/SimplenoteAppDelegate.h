@@ -26,7 +26,6 @@
 }
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;
-@property (strong, nonatomic, readonly) IBOutlet NSMenu                   *themeMenu;
 
 @property (strong, nonatomic, readonly) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic, readonly) IBOutlet NoteListViewController   *noteListViewController;
