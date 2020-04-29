@@ -59,12 +59,6 @@
     return enabled;
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] setFill];
-    NSRectFill(dirtyRect);
-    [super drawRect:dirtyRect];
-}
-
 - (void)applyStyle
 {
     [self.tokenField setTextColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"textColor"]];
