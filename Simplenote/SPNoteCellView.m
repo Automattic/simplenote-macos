@@ -16,16 +16,8 @@
 #import "VSThemeManager.h"
 #import "Simplenote-Swift.h"
 
-#define kHighlightColor [NSColor colorWithCalibratedRed:65.f/255.f green:132.f/255.f blue:191.f/255.f alpha:1.0]
-#define kHeadlineColor [NSColor colorWithCalibratedRed:21.f/255.f green:21.f/255.f blue:21.f/255.f alpha:1.0]
-#define kPreviewColor [NSColor colorWithCalibratedRed:130.f/255.f green:130.f/255.f blue:130.f/255.f alpha:1.0]
 
 static NSImage *pinImage;
-static NSImage *pinImageHighlighted;
-
-@interface SPNoteCellView()
-@property (nonatomic, assign) BOOL highlighted;
-@end
 
 @implementation SPNoteCellView
 
@@ -36,20 +28,13 @@ static NSImage *pinImageHighlighted;
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle
 {
-    // This will cause every displayed note to have its preview set manually, which is inefficient
-    // because it's also being done via a binding. But ensures all fonts and colors are set appropriately.
-    if (self.superview && [self.superview isKindOfClass:[NSTableRowView class]]) {
-        NSTableRowView *row = (NSTableRowView*)self.superview;
-        _highlighted = row.isSelected;
-    }
-
     [self updatePreview];
 }
 
 - (void)updatePreview
 {
-    NSColor *headlineColor = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteHeadlineFontColor"];
-    NSColor *previewColor = _highlighted ? [self.theme colorForKey:@"tintColor"] : [self.theme colorForKey:@"noteBodyFontPreviewColor"];
+    NSColor *headlineColor = [self.theme colorForKey:@"noteHeadlineFontColor"];
+    NSColor *previewColor = [self.theme colorForKey:@"noteBodyFontPreviewColor"];
     NSString *preview = [_note.content length] == 0
                             ? NSLocalizedString(@"New note...", @"Empty Note Preview Text")
                             : [_note.content stringByGeneratingPreview];
@@ -67,17 +52,12 @@ static NSImage *pinImageHighlighted;
 
 - (NSMutableAttributedString *)pinnedPreviewForNoteSummary:(NSAttributedString *)noteSummary
 {
-    // Update image if theme has changed
-    // Oh. This snippet is SO GONE >> REALLY >> SOON
-    //
-    if (!pinImage || (SPUserInterface.isDark && ![pinImage.name sp_containsString:@"dark"]) ||
-        (!SPUserInterface.isDark && [pinImage.name sp_containsString:@"dark"])) {
+    if (!pinImage) {
         NSString *imageName = SPUserInterface.isDark ? @"icon_pin_dark" : @"icon_pin";
         pinImage = [NSImage imageNamed:imageName];
-        pinImageHighlighted = [NSImage imageNamed:@"icon_pin_highlighted"];
     }
     
-    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:_highlighted ? pinImageHighlighted : pinImage];
+    NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:pinImage];
     NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
     [attachment setAttachmentCell:attachmentCell];
     
