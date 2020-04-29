@@ -28,7 +28,11 @@ extension SimplenoteAppDelegate {
 
     @objc
     func isThemeMenuItem(_ item: NSMenuItem) -> Bool {
-        return item.action == #selector(clickedThemeItem)
+        guard let identifier = item.menu?.identifier else {
+            return false
+        }
+
+        return identifier == .themeMenuIdentifier
     }
 
     @objc

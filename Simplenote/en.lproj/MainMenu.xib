@@ -448,7 +448,7 @@
                             </menuItem>
                             <menuItem title="Theme" id="Jtf-4C-imn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
+                                <menu key="submenu" title="Theme" systemMenu="font" identifier="themeMenuIdentifier" id="SIP-Tf-W7J">
                                     <items>
                                         <menuItem title="Light" id="Zhe-Bb-jvT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
