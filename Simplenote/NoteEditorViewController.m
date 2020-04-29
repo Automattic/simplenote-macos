@@ -930,15 +930,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark - Fonts
-- (NSColor *)noteBodyColor
-{
-    return [self.theme colorForKey:@"textColor"];
-}
-
-- (NSColor *)noteTitleColor
-{
-    return [self.theme colorForKey:@"noteHeadlineFontColor"];
-}
 
 - (NSInteger)getFontSize
 {
