@@ -29,6 +29,7 @@
     CGFloat rowHeight;
 }
 
+@property (strong, nonatomic) IBOutlet NSBox                *backgroundBox;
 @property (strong, nonatomic) IBOutlet NSTextField          *statusField;
 @property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (strong, nonatomic) IBOutlet SPTableView          *tableView;

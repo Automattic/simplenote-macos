@@ -22,6 +22,7 @@ extension NoteListViewController {
         searchField.appearance = NSAppearance(named: name)
         searchField.textColor = .simplenoteSearchBarTextColor
         statusField.textColor = .simplenoteEmptyStateTextColor
+        backgroundBox.fillColor = .simplenoteSecondaryControlBackgroundColor
 
         reloadDataAndPreserveSelection()
     }

@@ -724,6 +724,13 @@
                                 <rect key="frame" x="121" y="0.0" width="270" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-iG-45a" userLabel="BackgroundBox">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
+                                        <view key="contentView" id="kx9-tu-nxI">
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </box>
                                     <view translatesAutoresizingMaskIntoConstraints="NO" id="R5E-ls-WXI" userLabel="SearchView">
                                         <rect key="frame" x="0.0" y="526" width="270" height="56"/>
                                         <subviews>
@@ -869,17 +876,21 @@
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qWg-iG-45a" secondAttribute="bottom" id="2Um-CY-p4X"/>
                                     <constraint firstItem="R5E-ls-WXI" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="2oM-hX-68u"/>
                                     <constraint firstItem="560" firstAttribute="top" secondItem="R5E-ls-WXI" secondAttribute="bottom" id="3ff-OZ-Xhg"/>
                                     <constraint firstItem="1732" firstAttribute="centerX" secondItem="558" secondAttribute="centerX" id="5aZ-Pe-Gyu"/>
                                     <constraint firstAttribute="trailing" secondItem="R5E-ls-WXI" secondAttribute="trailing" id="9ZK-Zw-uGl"/>
                                     <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
                                     <constraint firstItem="1732" firstAttribute="top" secondItem="1766" secondAttribute="bottom" constant="15" id="PvY-Xw-rqH"/>
+                                    <constraint firstAttribute="trailing" secondItem="qWg-iG-45a" secondAttribute="trailing" id="S3U-7v-ziN"/>
                                     <constraint firstItem="560" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="Zi0-eC-oVT"/>
                                     <constraint firstItem="1766" firstAttribute="leading" secondItem="558" secondAttribute="leading" constant="12" id="cPD-Ix-UuZ"/>
                                     <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
                                     <constraint firstItem="1766" firstAttribute="top" secondItem="558" secondAttribute="top" constant="220" id="eS2-b5-fRK"/>
                                     <constraint firstAttribute="bottom" secondItem="560" secondAttribute="bottom" id="niy-wS-lMG"/>
+                                    <constraint firstItem="qWg-iG-45a" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="ofo-Cv-Fnz"/>
+                                    <constraint firstItem="qWg-iG-45a" firstAttribute="top" secondItem="558" secondAttribute="top" id="vXg-j8-Nte"/>
                                     <constraint firstItem="R5E-ls-WXI" firstAttribute="top" secondItem="558" secondAttribute="top" id="zUD-Hd-qwk"/>
                                 </constraints>
                             </customView>
@@ -1180,6 +1191,7 @@
             <connections>
                 <outlet property="addNoteButton" destination="987" id="3H3-Zp-93V"/>
                 <outlet property="arrayController" destination="573" id="1143"/>
+                <outlet property="backgroundBox" destination="qWg-iG-45a" id="23f-YP-IT7"/>
                 <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
