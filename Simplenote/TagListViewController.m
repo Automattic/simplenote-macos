@@ -700,7 +700,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)applyStyle
 {
-    [self.tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    NSAppearanceName name = SPUserInterface.isDark ? NSAppearanceNameVibrantDark: NSAppearanceNameVibrantLight;
+    self.visualEffectsView.appearance = [NSAppearance appearanceNamed:name];
     [self reloadDataAndPreserveSelection];
 }
 
