@@ -47,7 +47,8 @@ const CGFloat SPSplitViewDefaultWidth = 120.0;
 
 - (CGFloat)dividerThickness
 {
-    return 1.0;
+    // Expected to yield exactly 1 pixel, no matter if we're in SD or HD
+    return 1.0 / [[NSScreen mainScreen] backingScaleFactor];
 }
 
 - (void)drawDividerInRect:(NSRect)rect
