@@ -202,7 +202,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-    return [TableRowView new];
+    TableRowView *rowView = [TableRowView new];
+    rowView.selectedBackgroundColor = [NSColor simplenoteSecondarySelectedBackgroundColor];
+    return rowView;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
