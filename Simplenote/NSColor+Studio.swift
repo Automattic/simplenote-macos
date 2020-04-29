@@ -11,19 +11,31 @@ extension NSColor {
         self.init(hexString: studioColor.rawValue)
     }
 
-    /// Initializes a new NSColor instance with a given ColorStudio Dark / Light set.
-    /// Note: in `macOS <10.15` this method will always return a NSColor matching the `Current` Interface mode
+    /// Initializes a new dynamic NSColor instance that will automatically react to Appearance changes
+    /// Note: In `macOS <10.15` this API will always return the NSColor matching the `Current` Appearance
     ///
-    convenience init(lightColor: ColorStudio, darkColor: ColorStudio) {
+    static func dynamicColor(lightStudio: ColorStudio, darkStudio: ColorStudio) -> NSColor {
         guard #available(macOS 10.15, *) else {
-            let targetColor = SPUserInterface.isDark ? darkColor : lightColor
-            self.init(studioColor: targetColor)
-            return
+            let targetColor = SPUserInterface.isDark ? darkStudio : lightStudio
+            return NSColor(studioColor: targetColor)
         }
 
-        self.init(name: nil, dynamicProvider: { appearance in
-            let studioColor = appearance.isDark ? darkColor : lightColor
+        return NSColor(name: nil, dynamicProvider: { appearance in
+            let studioColor = appearance.isDark ? darkStudio : lightStudio
             return NSColor(studioColor: studioColor)
+        })
+    }
+
+    /// Initializes a new dynamic NSColor instance, that will automatically react to Appearance changes
+    /// Note: In `macOS <10.15` this API will always return the NSColor matching the `Current` Appearance
+    ///
+    static func dynamicColor(lightColor: NSColor, darkColor: NSColor) -> NSColor {
+        guard #available(macOS 10.15, *) else {
+            return SPUserInterface.isDark ? darkColor : lightColor
+        }
+
+        return NSColor(name: nil, dynamicProvider: { appearance in
+            return appearance.isDark ? darkColor : lightColor
         })
     }
 }
@@ -34,23 +46,18 @@ extension NSColor {
 extension NSColor {
 
     @objc
-    static var simplenoteActionButtonTintColor: NSColor {
-        NSColor(lightColor: .blue50, darkColor: .blue30)
-    }
-
-    @objc
     static var simplenoteEmptyStateTextColor: NSColor {
-        NSColor(lightColor: .gray5, darkColor: .darkGray3)
+        dynamicColor(lightStudio: .gray5, darkStudio: .darkGray3)
     }
 
     @objc
     static var simplenoteSearchBarTextColor: NSColor {
-        NSColor(lightColor: .black, darkColor: .white)
+        dynamicColor(lightStudio: .black, darkStudio: .white)
     }
 
     @objc
     static var simplenoteTagListRegularTextColor: NSColor {
-        NSColor(lightColor: .gray80, darkColor: .white)
+        dynamicColor(lightStudio: .gray80, darkStudio: .white)
     }
 
     @objc
@@ -60,11 +67,21 @@ extension NSColor {
 
     @objc
     static var simplenoteTagListEditingTextColor: NSColor {
-        NSColor(lightColor: .gray80, darkColor: .white)
+        dynamicColor(lightStudio: .gray80, darkStudio: .white)
+    }
+
+
+
+
+
+
+    @objc
+    static var simplenoteActionButtonTintColor: NSColor {
+        dynamicColor(lightStudio: .blue50, darkStudio: .blue30)
     }
 
     @objc
-    static var simplenoteTagListSelectedBackgroundColor: NSColor {
+    static var simplenoteSelectedBackgroundColor: NSColor {
         NSColor(studioColor: .blue50)
     }
 

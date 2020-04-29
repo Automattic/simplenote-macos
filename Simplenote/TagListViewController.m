@@ -486,7 +486,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
     TableRowView *rowView = [TableRowView new];
-    rowView.selectedBackgroundColor = [NSColor simplenoteTagListSelectedBackgroundColor];
+    rowView.selectedBackgroundColor = [NSColor simplenoteSelectedBackgroundColor];
     return rowView;
 }
 
