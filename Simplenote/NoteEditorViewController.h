@@ -14,6 +14,7 @@
 
 @class NoteListViewController;
 @class NoteEditorBottomBar;
+@class ToolbarView;
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
     NoteFontSizeMinimum = 10,
@@ -26,8 +27,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 #pragma mark Notifications
 #pragma mark ====================================================================================
 
-extern NSString * const SPNoNoteLoadedNotificationName;
-extern NSString * const SPNoteLoadedNotificationName;
 extern NSString * const SPTagAddedFromEditorNotificationName;
 extern NSString * const SPWillAddNewNoteNotificationName;
 
@@ -53,17 +52,16 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
+@property (nonatomic, strong) IBOutlet ToolbarView          *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView          *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusTextField;
-@property (nonatomic, strong) IBOutlet NSButton             *previewButton;
-@property (nonatomic, strong) IBOutlet NSButton             *historyButton;
-@property (nonatomic, strong) IBOutlet NSButton             *shareButton;
 @property (nonatomic,   weak) IBOutlet SPTextView           *noteEditor;
 @property (nonatomic,   weak) IBOutlet NSScrollView         *scrollView;
 @property (nonatomic,   weak) IBOutlet NoteEditorBottomBar  *bottomBar;
 @property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
 @property (nonatomic,   weak) Note                          *note;
 @property (nonatomic, strong) WKWebView                     *markdownView;
+@property (nonatomic, strong, readonly) NSArray<Note *>     *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                viewingTrash;
 
 - (void)save;

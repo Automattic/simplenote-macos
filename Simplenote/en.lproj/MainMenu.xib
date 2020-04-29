@@ -27,116 +27,6 @@
             </connections>
             <point key="canvasLocation" x="268" y="-269"/>
         </menu>
-        <customView id="914" customClass="SPToolbarView">
-            <rect key="frame" x="0.0" y="0.0" width="901" height="71"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-            <subviews>
-                <popUpButton toolTip="Info" id="1601" userLabel="Action">
-                    <rect key="frame" x="847" y="10" width="44" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Item 1" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
-                            <items>
-                                <menuItem title="Item 1" image="toolbar_info" hidden="YES" id="1604"/>
-                                <menuItem title="0 Words" enabled="NO" id="1605"/>
-                                <menuItem title="0 Characters" enabled="NO" id="1606"/>
-                                <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem isSeparatorItem="YES" id="1614"/>
-                                <menuItem title="Pin to Top" state="on" id="1615">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="pinAction:" target="1107" id="1661"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
-                                    </connections>
-                                </menuItem>
-                                <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
-                                    </connections>
-                                </menuItem>
-                            </items>
-                            <connections>
-                                <outlet property="delegate" destination="1107" id="1627"/>
-                            </connections>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
-                <button toolTip="Trash" verticalHuggingPriority="750" id="mXz-OM-6A3">
-                    <rect key="frame" x="818" y="18" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_trash_highlighted" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZqN-rU-FdU">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
-                    </connections>
-                </button>
-                <button toolTip="History" verticalHuggingPriority="750" id="7hm-UJ-0zw">
-                    <rect key="frame" x="735" y="18" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_revisions" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="KJV-0C-wVw">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="showVersionPopover:" target="1107" id="6bi-5c-YJd"/>
-                    </connections>
-                </button>
-                <button toolTip="Restore" verticalHuggingPriority="750" id="fA9-bG-luR">
-                    <rect key="frame" x="818" y="18" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_trash_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="X3f-rW-nRp">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
-                    </connections>
-                </button>
-                <button toolTip="Share" verticalHuggingPriority="750" id="qmA-vO-wPh">
-                    <rect key="frame" x="777" y="18" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toolbar_share" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L1E-HD-wfM">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="shareNote:" target="1107" id="W9o-Z7-kgJ"/>
-                    </connections>
-                </button>
-                <button toolTip="Preview Markdown" verticalHuggingPriority="750" id="OMI-hx-wfj">
-                    <rect key="frame" x="693" y="18" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_preview" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Q9W-kz-F4v">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
-                    </connections>
-                </button>
-            </subviews>
-            <connections>
-                <outlet property="actionButton" destination="1601" id="gdu-Es-X6I"/>
-                <outlet property="historyButton" destination="7hm-UJ-0zw" id="1wy-uD-TOl"/>
-                <outlet property="previewButton" destination="OMI-hx-wfj" id="XYV-Pc-8mE"/>
-                <outlet property="restoreButton" destination="fA9-bG-luR" id="WSi-qs-xAS"/>
-                <outlet property="shareButton" destination="qmA-vO-wPh" id="GK2-GI-0Eu"/>
-                <outlet property="trashButton" destination="mXz-OM-6A3" id="XnP-Bb-cph"/>
-            </connections>
-            <point key="canvasLocation" x="139" y="-163"/>
-        </customView>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="Simplenote" id="56">
@@ -733,7 +623,7 @@
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Fr-VHA">
                                                                             <rect key="frame" x="14" y="6" width="96" height="15"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Header" placeholderString="" usesSingleLineMode="YES" id="qGL-DU-S4n">
-                                                                                <font key="font" metaFont="controlContent"/>
+                                                                                <font key="font" metaFont="label" size="12"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -889,7 +779,7 @@
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="568">
-                                                                <font key="font" metaFont="controlContent"/>
+                                                                <font key="font" metaFont="label" size="12"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -997,24 +887,164 @@
                                 <rect key="frame" x="392" y="0.0" width="508" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" customClass="NoteEditorBottomBar">
-                                        <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="914" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="526" width="508" height="56"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-k3-T1Z">
+                                                <rect key="frame" x="223" y="0.0" width="269" height="56"/>
+                                                <subviews>
+                                                    <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-hx-wfj" userLabel="Markdown">
+                                                        <rect key="frame" x="0.0" y="16" width="24" height="24"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_preview_off" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q9W-kz-F4v">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="History" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-UJ-0zw" userLabel="History">
+                                                        <rect key="frame" x="49" y="16" width="24" height="24"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_history" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="KJV-0C-wVw">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="showVersionPopover:" target="1107" id="6bi-5c-YJd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="Share" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qmA-vO-wPh" userLabel="Share">
+                                                        <rect key="frame" x="98" y="16" width="24" height="24"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_share" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="L1E-HD-wfM">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="shareNote:" target="1107" id="W9o-Z7-kgJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fA9-bG-luR" userLabel="Restore">
+                                                        <rect key="frame" x="147" y="16" width="24" height="24"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="X3f-rW-nRp">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="Trash" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mXz-OM-6A3" userLabel="Trash">
+                                                        <rect key="frame" x="196" y="16" width="24" height="24"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_trash" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ZqN-rU-FdU">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
+                                                        </connections>
+                                                    </button>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8v5-GT-vWz" userLabel="Info Wrapper">
+                                                        <rect key="frame" x="245" y="16" width="24" height="24"/>
+                                                        <subviews>
+                                                            <popUpButton toolTip="Info" translatesAutoresizingMaskIntoConstraints="NO" id="1601" userLabel="Info">
+                                                                <rect key="frame" x="-10" y="0.0" width="39" height="28"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="28" id="7r3-Ja-Dai"/>
+                                                                    <constraint firstAttribute="width" constant="39" id="sT0-vd-mRC"/>
+                                                                </constraints>
+                                                                <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" lineBreakMode="truncatingTail" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" id="1602">
+                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <menu key="menu" title="OtherViews" autoenablesItems="NO" id="1603">
+                                                                        <items>
+                                                                            <menuItem image="button_info" hidden="YES" id="1604"/>
+                                                                            <menuItem title="0 Words" enabled="NO" id="1605"/>
+                                                                            <menuItem title="0 Characters" enabled="NO" id="1606"/>
+                                                                            <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="1613">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                            </menuItem>
+                                                                            <menuItem isSeparatorItem="YES" id="1614"/>
+                                                                            <menuItem title="Pin to Top" state="on" id="1615">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                <connections>
+                                                                                    <action selector="pinAction:" target="1107" id="1661"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                            <menuItem title="Markdown Formatted" state="on" id="HN9-TP-CJw">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                <connections>
+                                                                                    <action selector="markdownAction:" target="1107" id="I0L-QP-fay"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                            <menuItem title="Collaborate..." id="1616" userLabel="Menu Item - Share...">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                <connections>
+                                                                                    <action selector="showSharePopover:" target="1107" id="Ghd-O8-lWm"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="1107" id="1627"/>
+                                                                        </connections>
+                                                                    </menu>
+                                                                </popUpButtonCell>
+                                                            </popUpButton>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="1601" firstAttribute="top" secondItem="8v5-GT-vWz" secondAttribute="top" constant="-4" id="1yZ-h1-6Pc"/>
+                                                            <constraint firstItem="1601" firstAttribute="leading" secondItem="8v5-GT-vWz" secondAttribute="leading" constant="-10" id="KDJ-lE-7F7"/>
+                                                            <constraint firstAttribute="height" constant="24" id="jwT-I4-4FH"/>
+                                                            <constraint firstAttribute="width" constant="24" id="uCv-Mv-JUH"/>
+                                                        </constraints>
+                                                    </customView>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="B83-60-TJb"/>
+                                            <constraint firstAttribute="bottom" secondItem="9kE-k3-T1Z" secondAttribute="bottom" id="5W5-wh-50M"/>
+                                            <constraint firstAttribute="height" constant="56" id="YC2-TE-Xyy"/>
+                                            <constraint firstItem="9kE-k3-T1Z" firstAttribute="top" secondItem="914" secondAttribute="top" id="ljV-yK-2ql"/>
+                                            <constraint firstAttribute="trailing" secondItem="9kE-k3-T1Z" secondAttribute="trailing" constant="16" id="m9W-Sv-7fY"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="actionButton" destination="1601" id="Wxi-gS-9YP"/>
+                                            <outlet property="actionWrapperView" destination="8v5-GT-vWz" id="aPy-bF-7F2"/>
+                                            <outlet property="historyButton" destination="7hm-UJ-0zw" id="2dg-q8-LW8"/>
+                                            <outlet property="previewButton" destination="OMI-hx-wfj" id="CUq-cy-7jJ"/>
+                                            <outlet property="restoreButton" destination="fA9-bG-luR" id="MWN-e9-omM"/>
+                                            <outlet property="shareButton" destination="qmA-vO-wPh" id="YxO-si-thc"/>
+                                            <outlet property="stackView" destination="9kE-k3-T1Z" id="Wzq-cS-z25"/>
+                                            <outlet property="trashButton" destination="mXz-OM-6A3" id="Qhb-kM-MQx"/>
+                                        </connections>
                                     </customView>
                                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="933">
-                                        <rect key="frame" x="0.0" y="44" width="508" height="538"/>
+                                        <rect key="frame" x="0.0" y="44" width="508" height="482"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="508" height="538"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="508" height="482"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="538"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="482"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="538"/>
+                                                    <size key="minSize" width="493" height="482"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1029,10 +1059,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936">
-                                            <rect key="frame" x="492" y="0.0" width="16" height="538"/>
+                                            <rect key="frame" x="492" y="0.0" width="16" height="482"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" customClass="NoteEditorBottomBar">
+                                        <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="B83-60-TJb"/>
+                                        </constraints>
+                                    </customView>
                                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447" userLabel="Status Image View">
                                         <rect key="frame" x="204" y="291" width="100" height="100"/>
                                         <constraints>
@@ -1051,16 +1087,19 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="914" firstAttribute="top" secondItem="559" secondAttribute="top" id="3PK-69-leP"/>
                                     <constraint firstAttribute="trailing" secondItem="1549" secondAttribute="trailing" id="43w-jU-8rz"/>
                                     <constraint firstItem="1549" firstAttribute="top" secondItem="933" secondAttribute="bottom" id="8gP-zE-3fX"/>
                                     <constraint firstItem="933" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="Any-4j-QRE"/>
                                     <constraint firstItem="1549" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="BCb-vv-F7J"/>
                                     <constraint firstAttribute="trailing" secondItem="933" secondAttribute="trailing" id="ITM-To-mHT"/>
-                                    <constraint firstItem="933" firstAttribute="top" secondItem="559" secondAttribute="top" id="RwU-ma-qoC"/>
                                     <constraint firstAttribute="bottom" secondItem="1549" secondAttribute="bottom" id="Vsf-z4-w1B"/>
                                     <constraint firstItem="1447" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" constant="-50" id="icV-Jp-4Pb"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="top" secondItem="1447" secondAttribute="bottom" constant="12" id="kMg-Op-C1s"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="lR0-BQ-Ruk"/>
+                                    <constraint firstItem="914" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="qRw-HR-wJ7"/>
+                                    <constraint firstItem="933" firstAttribute="top" secondItem="914" secondAttribute="bottom" id="qb4-sb-xbo"/>
+                                    <constraint firstAttribute="trailing" secondItem="914" secondAttribute="trailing" id="tB1-vi-gSn"/>
                                     <constraint firstItem="1447" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="wMH-bp-3vg"/>
                                 </constraints>
                             </customView>
@@ -1111,7 +1150,6 @@
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
-                <outlet property="historyButton" destination="7hm-UJ-0zw" id="i3Y-k0-nZS"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="HN9-TP-CJw" id="JGo-Bq-qMr"/>
                 <outlet property="modifiedItem" destination="1613" id="1628"/>
@@ -1119,13 +1157,12 @@
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
                 <outlet property="pinnedItem" destination="1615" id="1629"/>
-                <outlet property="previewButton" destination="OMI-hx-wfj" id="8d5-5c-auI"/>
                 <outlet property="printItem" destination="78" id="1659"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
-                <outlet property="shareButton" destination="qmA-vO-wPh" id="Q66-fK-ISA"/>
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
+                <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="view" destination="934" id="1185"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>
             </connections>
@@ -1163,14 +1200,14 @@
         </viewController>
     </objects>
     <resources>
+        <image name="button_history" width="24" height="24"/>
+        <image name="button_info" width="24" height="24"/>
         <image name="button_new_note" width="24" height="24"/>
-        <image name="icon_preview" width="44" height="44"/>
+        <image name="button_preview_off" width="24" height="24"/>
+        <image name="button_restore" width="24" height="24"/>
+        <image name="button_share" width="24" height="24"/>
+        <image name="button_trash" width="24" height="24"/>
         <image name="icon_shared" width="22" height="22"/>
-        <image name="icon_trash_highlighted" width="22" height="22"/>
         <image name="logo_grey" width="128" height="128"/>
-        <image name="toolbar_info" width="22" height="22"/>
-        <image name="toolbar_revisions" width="22" height="22"/>
-        <image name="toolbar_share" width="22" height="22"/>
-        <image name="toolbar_trash_restore" width="22" height="22"/>
     </resources>
 </document>

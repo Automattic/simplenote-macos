@@ -196,11 +196,16 @@
     [self.splitView adjustSubviews];
     
     // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.12)
+
+    // TODO: Oh god this is SO GONE in the next PR
     WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
     WKPreferences *prefs = [[WKPreferences alloc] init];
     prefs.javaScriptEnabled = NO;
     webConfig.preferences = prefs;
-    CGRect frame = CGRectMake(0, 43.0f, self.textViewParent.frame.size.width, self.textViewParent.frame.size.height - 43.0f);
+    CGRect frame = CGRectMake(0,
+                              43.0f,
+                              self.textViewParent.frame.size.width,
+                              self.textViewParent.frame.size.height - 43.0f - 56.0f);
     WKWebView *markdownView = [[WKWebView alloc] initWithFrame:frame configuration:webConfig];
     [markdownView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [markdownView setHidden:YES];

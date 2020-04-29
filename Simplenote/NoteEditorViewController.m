@@ -31,8 +31,6 @@
 #pragma mark Notifications
 #pragma mark ====================================================================================
 
-NSString * const SPNoNoteLoadedNotificationName         = @"SPNoNoteLoaded";
-NSString * const SPNoteLoadedNotificationName           = @"SPNoteLoaded";
 NSString * const SPTagAddedFromEditorNotificationName   = @"SPTagAddedFromEditor";
 NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 
@@ -204,26 +202,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 
     if (selectedNote == nil) {
-        [self.noteEditor setEditable:NO];
-        [self.noteEditor setSelectable:NO];
-        [self.noteEditor displayNoteWithContent:@""];
-        [tagTokenField setEditable:NO];
-        [self.bottomBar setEnabled:NO];
-        
         self.note = nil;
-        self.selectedNotes = [NSArray array];
-        
-        [tagTokenField setObjectValue:[NSArray array]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SPNoNoteLoadedNotificationName object:self];
-        
+        self.selectedNotes = @[];
+        [self refreshToolbarActions];
+        [self refreshEditorActions];
+        [self.noteEditor displayNoteWithContent:@""];
+        [self.bottomBar setEnabled:NO];
+        [tagTokenField setEditable:NO];
+        [tagTokenField setObjectValue:@[]];
+
         return;
     }
 
     if ([self.note.simperiumKey isEqualToString:selectedNote.simperiumKey]) {
         return;
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:SPNoteLoadedNotificationName object:self];
 
     // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
     NSString *simperiumKey = self.note.simperiumKey;
@@ -248,9 +241,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.selectedNotes          = [NSArray arrayWithObject:self.note];
     
     [self updateTagField];
-    [self updateShareButtonVisibility];
-    [self.previewButton setEnabled:YES];
-    [self.historyButton setEnabled:YES];
+    [self refreshToolbarActions];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -260,8 +251,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     } else {
         [self.noteEditor displayNoteWithContent:@""];
     }
-    
-    [self.previewButton setHidden:!self.note.markdown || self.viewingTrash];
+
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
@@ -292,16 +282,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.note = nil;
     self.selectedNotes = notes;
     [self.noteEditor displayNoteWithContent:@""];
-    [self.noteEditor setEditable:NO];
-    [self.noteEditor setSelectable:NO];
+
+    [self refreshToolbarActions];
+    [self refreshEditorActions];
+
     [tagTokenField setEditable:NO];
     [tagTokenField setSelectable:NO];
     [tagTokenField setObjectValue:[NSArray array]];
     [self.bottomBar setEnabled:NO];
-    [self.shareButton setEnabled:NO];
-    [self.previewButton setEnabled:NO];
-    [self.historyButton setEnabled:NO];
-    
+
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
 }
@@ -336,15 +325,16 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)trashDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = YES;
-    [self.previewButton setHidden:YES];
-    [self refreshEnabledActions];
+    [self refreshEditorActions];
+    [self refreshToolbarActions];
     [self.bottomBar setEnabled:NO];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = NO;
-    [self refreshEnabledActions];
+    [self refreshEditorActions];
+    [self refreshToolbarActions];
     [self.bottomBar setEnabled:YES];
 }
 
@@ -487,7 +477,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     self.note.content = [self.noteEditor plainTextContent];
     
-    [self updateShareButtonVisibility];
+    [self refreshToolbarActions];
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
@@ -496,10 +486,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
 }
 
--(void)updateShareButtonVisibility
-{
-    [self.shareButton setEnabled:self.note.content.length > 0];
-}
 
 #pragma mark - Simperium
 
@@ -737,17 +723,17 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     // Toggle the markdown state
     BOOL isEnabled = markdownItem.state == NSOffState;
-    [self.previewButton setHidden:!isEnabled];
-    
+
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.markdown = isEnabled;
     }
-    
+
     // Switch back to the editor if markdown is disabled
     if (!isEnabled && ![self.markdownView isHidden]) {
         [self toggleMarkdownView:nil];
     }
-    
+
+    [self refreshToolbarActions];
     [self save];
     
     // Update editor to apply markdown styles
@@ -1083,7 +1069,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     PublishViewController *viewController = [PublishViewController new];
     viewController.delegate = self;
 
-    [self showViewController:viewController relativeToView:self.shareButton preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.toolbarView.shareButton preferredEdge:NSMaxYEdge];
     self.publishViewController = viewController;
 }
 
@@ -1121,7 +1107,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     VersionsViewController *viewController = [VersionsViewController new];
     viewController.delegate = self;
 
-    [self showViewController:viewController relativeToView:self.historyButton preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.toolbarView.historyButton preferredEdge:NSMaxYEdge];
     self.versionsViewController = viewController;
 }
 
@@ -1130,10 +1116,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (!self.note.content) {
         return;
     }
+
+    NSButton *sourceButton = self.toolbarView.shareButton;
     NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
+
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
     sharingPicker.delegate = self;
-    [sharingPicker showRelativeToRect:self.shareButton.bounds ofView:self.shareButton preferredEdge:NSMinYEdge];
+    [sharingPicker showRelativeToRect:sourceButton.bounds ofView:sourceButton preferredEdge:NSMinYEdge];
 }
 
 - (IBAction)toggleMarkdownView:(id)sender
@@ -1143,16 +1132,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     BOOL markdownVisible = self.markdownView.hidden;
-    
+
     [self.editorScrollView setHidden:markdownVisible];
-    [self.noteEditor setSelectable:!markdownVisible];
-    [self.noteEditor setEditable:!markdownVisible];
-    [self.noteEditor setHidden:markdownVisible];
     [self.markdownView setHidden:!markdownVisible];
 
-    [self.previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
-    [self.historyButton setEnabled:!markdownVisible];
-    
+    [self refreshEditorActions];
+    [self refreshToolbarActions];
+
     if (markdownVisible) {
         [self loadMarkdownContent];
     }
