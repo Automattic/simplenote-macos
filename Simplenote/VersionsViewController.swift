@@ -93,8 +93,7 @@ private extension VersionsViewController {
 
     @objc
     func applyStyle() {
-        let theme = VSThemeManager.shared().theme()
-        versionTextField.textColor = theme.color(forKey: "popoverTextColor")
+        versionTextField.textColor = .simplenotePopoverTextColor
     }
 }
 
