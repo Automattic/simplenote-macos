@@ -577,7 +577,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="720" height="400"/>
             <view key="contentView" id="372" customClass="SPBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="900" height="583"/>
+                <rect key="frame" x="0.0" y="0.0" width="900" height="582"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView autosaveName="" dividerStyle="thin" vertical="YES" id="557" customClass="SPSplitView">
