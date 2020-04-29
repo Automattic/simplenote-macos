@@ -18,9 +18,7 @@
 + (SPGradientView *)horizontalDividerForRect:(NSRect)rect
 {
     SPGradientView *gradient = [[SPGradientView alloc] initWithFrame:rect];
-    gradient.startingColor = [[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"];
-    //gradient.middleColor = [NSColor colorWithCalibratedWhite:0.85 alpha:1.0];
-    //gradient.endingColor = [NSColor colorWithCalibratedWhite:0.85 alpha:0.25];
+    gradient.startingColor = [NSColor simplenoteDividerColor];
     gradient.gradientProportion = 1.0;
     gradient.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
 
@@ -81,7 +79,7 @@
 
 - (void)applyStyle
 {
-    startingColor = [[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"];
+    startingColor = [NSColor simplenoteDividerColor];
 }
 
 @end

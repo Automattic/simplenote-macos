@@ -58,7 +58,7 @@ const CGFloat SPSplitViewDefaultWidth = 120.0;
         [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] set];
         NSRectFill(rect);
     } else {
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"] set];
+        [[NSColor simplenoteDividerColor] set];
         NSRectFill(rect);
     }
 }
