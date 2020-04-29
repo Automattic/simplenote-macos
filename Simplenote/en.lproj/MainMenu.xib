@@ -569,7 +569,7 @@
             </connections>
             <point key="canvasLocation" x="-85" y="-270"/>
         </menu>
-        <window title="Simplenote" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" id="371" customClass="SPWindow">
+        <window title="Simplenote" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" titleVisibility="hidden" id="371" customClass="SPWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -577,7 +577,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="720" height="400"/>
             <view key="contentView" id="372" customClass="SPBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="900" height="582"/>
+                <rect key="frame" x="0.0" y="0.0" width="900" height="583"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView autosaveName="" dividerStyle="thin" vertical="YES" id="557" customClass="SPSplitView">

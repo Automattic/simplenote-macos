@@ -9,7 +9,6 @@
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)styleMask backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
 {
     if (self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag]) {
-        [self setupTitle];
         [self applyMojaveThemeOverrideIfNecessary];
     }
 
@@ -19,7 +18,6 @@
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)styleMask backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag screen:(NSScreen *)screen
 {
     if ((self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag screen:screen])) {
-        [self setupTitle];
         [self applyMojaveThemeOverrideIfNecessary];
     }
 
@@ -28,11 +26,6 @@
 
 
 #pragma mark - Initialization Helpers
-
-- (void)setupTitle
-{
-    self.titleVisibility = NSWindowTitleHidden;
-}
 
 - (void)applyMojaveThemeOverrideIfNecessary
 {
