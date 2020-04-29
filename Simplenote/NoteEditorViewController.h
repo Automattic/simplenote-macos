@@ -52,6 +52,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
+@property (nonatomic, strong) IBOutlet NSBox                    *backgroundBox;
 @property (nonatomic, strong) IBOutlet ToolbarView              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;

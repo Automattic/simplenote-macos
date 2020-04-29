@@ -898,6 +898,13 @@
                                 <rect key="frame" x="392" y="0.0" width="508" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DhD-jJ-r4u" userLabel="BackgroundBox">
+                                        <rect key="frame" x="0.0" y="0.0" width="508" height="582"/>
+                                        <view key="contentView" id="tco-MH-Nya">
+                                            <rect key="frame" x="0.0" y="0.0" width="508" height="582"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </box>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="914" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="526" width="508" height="56"/>
                                         <subviews>
@@ -1062,7 +1069,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="508" height="482"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
+                                                <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="493" height="482"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1117,9 +1124,13 @@
                                     <constraint firstItem="1549" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="BCb-vv-F7J"/>
                                     <constraint firstAttribute="trailing" secondItem="933" secondAttribute="trailing" id="ITM-To-mHT"/>
                                     <constraint firstAttribute="bottom" secondItem="1549" secondAttribute="bottom" id="Vsf-z4-w1B"/>
+                                    <constraint firstItem="DhD-jJ-r4u" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="WPF-Xo-4cC"/>
                                     <constraint firstItem="1447" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" constant="-50" id="icV-Jp-4Pb"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="top" secondItem="1447" secondAttribute="bottom" constant="12" id="kMg-Op-C1s"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="lR0-BQ-Ruk"/>
+                                    <constraint firstItem="DhD-jJ-r4u" firstAttribute="top" secondItem="559" secondAttribute="top" id="mGm-Zh-HQK"/>
+                                    <constraint firstAttribute="bottom" secondItem="DhD-jJ-r4u" secondAttribute="bottom" id="pWP-nN-6Kr"/>
+                                    <constraint firstAttribute="trailing" secondItem="DhD-jJ-r4u" secondAttribute="trailing" id="qMy-ea-pTs"/>
                                     <constraint firstItem="914" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="qRw-HR-wJ7"/>
                                     <constraint firstItem="933" firstAttribute="top" secondItem="914" secondAttribute="bottom" id="qb4-sb-xbo"/>
                                     <constraint firstAttribute="trailing" secondItem="914" secondAttribute="trailing" id="tB1-vi-gSn"/>
@@ -1165,6 +1176,7 @@
         </customObject>
         <viewController id="1107" userLabel="Note Editor Controller" customClass="NoteEditorViewController">
             <connections>
+                <outlet property="backgroundBox" destination="DhD-jJ-r4u" id="Iu0-KH-ZrT"/>
                 <outlet property="bottomBar" destination="1549" id="1558"/>
                 <outlet property="characterCountItem" destination="1606" id="1626"/>
                 <outlet property="collaborateItem" destination="1616" id="1770"/>
