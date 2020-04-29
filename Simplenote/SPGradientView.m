@@ -7,7 +7,9 @@
 //
 
 #import "SPGradientView.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
+
+
 @implementation SPGradientView
 @synthesize startingColor;
 @synthesize middleColor;

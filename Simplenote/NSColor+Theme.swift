@@ -41,7 +41,7 @@ extension NSColor {
 }
 
 
-// MARK: - Simplenote colors!
+// MARK: - Simplenote Colors!
 //
 extension NSColor {
 

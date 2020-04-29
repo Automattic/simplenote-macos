@@ -12,7 +12,6 @@
 #import "SPTableView.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
-#import "VSThemeManager.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 
