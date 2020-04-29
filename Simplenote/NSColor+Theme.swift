@@ -1,7 +1,7 @@
 import Foundation
 
 
-// MARK: - NSColor + ColorStudio API
+// MARK: - NSColor + Theme API
 //
 extension NSColor {
 
@@ -86,8 +86,72 @@ extension NSColor {
     }
 
     @objc
-    static var textListColor: NSColor {
-        // TODO: Replace with ColorStudio
-        return VSThemeManager.shared().theme().color(forKey: "secondaryTextColor")
+    static var simplenoteSecondarySelectedBackgroundColor: NSColor {
+        dynamicColor(lightColor: .mojaveBlue197, darkColor: .mojaveBlack85)
+    }
+
+    @objc
+    static var simplenoteDividerColor: NSColor {
+        dynamicColor(lightColor: NSColor(studioColor: .gray10), darkColor: .black)
+    }
+
+    @objc
+    static var simplenoteControlBackgroundColor: NSColor {
+        dynamicColor(lightColor: .white, darkColor: .mojaveBlack85)
+    }
+
+    @objc
+    static var simplenoteSecondaryControlBackgroundColor: NSColor {
+        dynamicColor(lightColor: .white, darkColor: .mojaveBlack)
+    }
+
+
+    @objc
+    static var simplenotePopoverTextColor: NSColor {
+        .white
+    }
+
+    @objc
+    static var simplenoteTextColor: NSColor {
+        dynamicColor(lightStudio: .gray80, darkStudio: .white)
+    }
+
+    /// Note Preview Body
+    @objc
+    static var simplenoteSecondaryTextColor: NSColor {
+        dynamicColor(lightStudio: .gray60, darkStudio: .gray20)
+    }
+
+
+
+    @objc
+    static var simplenoteSecondaryPlaceholderColor: NSColor {
+        dynamicColor(lightStudio: .gray50, darkStudio: .gray20)
+    }
+
+    @objc
+    static var simplenoteLinkColor: NSColor {
+        NSColor(studioColor: .blue30)
+    }
+
+
+
+
+    @objc
+    static var simplenoteTextListColor: NSColor {
+        .simplenoteTextColor
+    }
+
+    class var mojaveBlack: NSColor {
+        NSColor(red: 45.0/255.0, green: 45.0/255.0, blue: 45.0/255.0, alpha: 1.0)
+    }
+
+    @objc
+    class var mojaveBlack85: NSColor {
+        NSColor(red: 54.0/255.0, green: 54.0/255.0, blue: 54.0/255.0, alpha: 0.4)
+    }
+
+    class var mojaveBlue197: NSColor {
+        NSColor(calibratedRed: 197.0 / 255.0, green: 217.0 / 255.0, blue: 237.0 / 255.0, alpha: 1.0)
     }
 }
