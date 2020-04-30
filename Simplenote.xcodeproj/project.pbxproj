@@ -199,6 +199,8 @@
 		B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B57CB881244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
 		B57CB882244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
+		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
+		B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487F1BCDB95A005EFBBE /* SPTracker.m */; };
@@ -512,6 +514,7 @@
 		B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Simplenote.swift"; sourceTree = "<group>"; };
 		B57CB880244E421400BA7969 /* SPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextField.swift; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
+		B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Simplenote.swift"; sourceTree = "<group>"; };
 		B598487C1BCDB95A005EFBBE /* SPAutomatticTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAutomatticTracker.h; sourceTree = "<group>"; };
 		B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAutomatticTracker.m; sourceTree = "<group>"; };
 		B598487E1BCDB95A005EFBBE /* SPTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTracker.h; sourceTree = "<group>"; };
@@ -964,6 +967,7 @@
 				B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
 				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
+				B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
 				B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */,
 				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
@@ -1562,6 +1566,7 @@
 				375D293A21E033D1007AB25A /* stack.c in Sources */,
 				B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294221E033D1007AB25A /* html5_blocks.c in Sources */,
+				B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
 				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				714BA65814D3264200A6CCC1 /* SPGradientView.m in Sources */,
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
@@ -1665,6 +1670,7 @@
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
+				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
