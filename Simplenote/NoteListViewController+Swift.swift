@@ -42,7 +42,7 @@ private extension NoteListViewController {
         let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: NSColor.simplenoteSecondaryTextColor,
-            .font: NSFont.simplenotePopoverTextFont
+            .font: NSFont.simplenoteSecondaryTextFont
         ]
 
         return NSAttributedString(string: text, attributes: attributes)
