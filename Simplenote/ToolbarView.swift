@@ -93,7 +93,7 @@ private extension ToolbarView {
 
         previewButton.isHidden = state.isPreviewActionHidden
         previewButton.image = state.previewActionImage
-        previewButton.tintImage(color: .simplenoteActionButtonTintColor)
+        previewButton.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
 
         restoreButton.isEnabled = state.isRestoreActionEnabled
         restoreButton.isHidden = state.isRestoreActionHidden
@@ -110,7 +110,7 @@ private extension ToolbarView {
         let buttons: [NSButton] = [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
 
         for button in buttons {
-            button.tintImage(color: .simplenoteActionButtonTintColor)
+            button.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
         }
     }
 
