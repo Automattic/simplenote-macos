@@ -105,7 +105,7 @@ private extension Theme {
 
     static var bodyAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor: theme.color(forKey: "textColor"),
+            .foregroundColor: NSColor.simplenoteTextColor,
             .font: NSFont.systemFont(ofSize: fontSize)
         ]
     }

@@ -1045,6 +1045,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.noteEditor.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
     [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
+    [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
+    [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];
 
     [self.bottomBar applyStyle];
     [self.bottomBar setNeedsDisplay:YES];

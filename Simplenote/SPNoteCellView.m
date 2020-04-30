@@ -13,18 +13,12 @@
 #import "NSString+Condensing.h"
 #import "NSString+Styling.h"
 #import "NSString+Simplenote.h"
-#import "VSThemeManager.h"
 #import "Simplenote-Swift.h"
 
 
 static NSImage *pinImage;
 
 @implementation SPNoteCellView
-
-- (VSTheme *)theme
-{
-    return [[VSThemeManager sharedManager] theme];
-}
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle
 {
@@ -33,8 +27,8 @@ static NSImage *pinImage;
 
 - (void)updatePreview
 {
-    NSColor *headlineColor = [self.theme colorForKey:@"noteHeadlineFontColor"];
-    NSColor *previewColor = [self.theme colorForKey:@"noteBodyFontPreviewColor"];
+    NSColor *headlineColor = [NSColor simplenoteTextColor];
+    NSColor *previewColor = [NSColor simplenoteSecondaryTextColor];
     NSString *preview = [_note.content length] == 0
                             ? NSLocalizedString(@"New note...", @"Empty Note Preview Text")
                             : [_note.content stringByGeneratingPreview];

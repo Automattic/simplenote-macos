@@ -61,8 +61,8 @@
 
 - (void)applyStyle
 {
-    [self.tokenField setTextColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"textColor"]];
     [self.tokenField setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    self.tokenField.textColor = [NSColor simplenoteTextColor];
     [bottomBorder applyStyle];
     [bottomBorder setNeedsDisplay:YES];
 }
