@@ -42,7 +42,9 @@
 - (void)refreshTagField:(BOOL)showPlaceholder
 {
     NSString *tagPlaceholder = NSLocalizedString(@"Add a tag...", @"Placeholder text in the text field where you need to tap in order to add a tag");
-    NSDictionary *colorAttribute = @{NSForegroundColorAttributeName:[[[VSThemeManager sharedManager] theme] colorForKey:@"tagViewPlaceholderColor"]};
+    NSDictionary *colorAttribute = @{
+        NSForegroundColorAttributeName: [NSColor simplenoteSecondaryTextColor]
+    };
     NSString *placeholderText = showPlaceholder ? tagPlaceholder : @"";
     [[self.tokenField cell] setPlaceholderAttributedString:[[NSAttributedString alloc] initWithString:placeholderText attributes:colorAttribute]];
     [tagImageView setHidden:!showPlaceholder];

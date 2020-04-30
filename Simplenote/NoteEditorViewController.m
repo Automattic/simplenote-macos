@@ -1036,6 +1036,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     }
 
+    [self.statusTextField setTextColor:[NSColor simplenoteSecondaryTextColor]];
     [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
     [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];
 

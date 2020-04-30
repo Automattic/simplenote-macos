@@ -98,7 +98,7 @@ private extension PublishViewController {
         // URL
         let urlPlaceholder = NSLocalizedString("Not Published", comment: "Placeholder displayed when a note hasn't been published.")
         let urlAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: theme.color(forKey: "popoverTextColor"),
+            .foregroundColor: NSColor.simplenoteSelectedTextColor,
             .font: NSFont.simplenotePopoverTextFont
         ]
 
@@ -112,8 +112,8 @@ private extension PublishViewController {
         legendParagraph.maximumLineHeight = Constants.lineHeight
 
         let legendAttributes: [NSAttributedString.Key: Any] = [
-            .font: theme.font(forKey: "popoverTextFont"),
-            .foregroundColor: NSColor.simplenotePopoverTextColor,
+            .font: NSFont.simplenotePopoverTextFont,
+            .foregroundColor: NSColor.simplenoteSelectedTextColor,
             .paragraphStyle: legendParagraph
         ]
 

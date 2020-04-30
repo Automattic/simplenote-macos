@@ -93,7 +93,7 @@ private extension VersionsViewController {
 
     @objc
     func applyStyle() {
-        versionTextField.textColor = .simplenotePopoverTextColor
+        versionTextField.textColor = .simplenoteSelectedTextColor
     }
 }
 

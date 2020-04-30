@@ -38,6 +38,6 @@ private extension ShareViewController {
 
     @objc
     func applyStyle() {
-        shareTextField.textColor = .simplenotePopoverTextColor
+        shareTextField.textColor = .simplenoteSelectedTextColor
     }
 }

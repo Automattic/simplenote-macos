@@ -20,8 +20,8 @@ extension NoteListViewController {
 
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
         searchField.appearance = NSAppearance(named: name)
-        searchField.textColor = .simplenoteSearchBarTextColor
-        statusField.textColor = .simplenoteEmptyStateTextColor
+        searchField.textColor = .simplenoteTextColor
+        statusField.textColor = .simplenoteSecondaryTextColor
 
         reloadDataAndPreserveSelection()
     }
