@@ -16,15 +16,20 @@ extension NoteListViewController {
     ///
     @objc
     func applyStyle() {
-        let name: NSAppearance.Name = SPUserInterface.isDark ? .vibrantDark : .aqua
-
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
-        searchField.appearance = NSAppearance(named: name)
         searchField.textColor = .simplenoteTextColor
         searchField.placeholderAttributedString = searchFieldPlaceholderString
         statusField.textColor = .simplenoteSecondaryTextColor
 
         reloadDataAndPreserveSelection()
+
+        // Legacy Support: High Sierra
+        if #available(macOS 10.14, *) {
+            return
+        }
+
+        let name: NSAppearance.Name = SPUserInterface.isDark ? .vibrantDark : .aqua
+        searchField.appearance = NSAppearance(named: name)
     }
 }
 
