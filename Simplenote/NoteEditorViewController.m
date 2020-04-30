@@ -1188,9 +1188,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     // If needed, dismiss any active popovers
     [self dismissActivePopover];
     
-    // Create a new Popover + Show it
-    self.activePopover = [self newPopoverWithContentViewController:viewController];
-    [self.activePopover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
+    // New PopOver
+    NSPopover *popover = [self newPopoverWithContentViewController:viewController];;
+
+    // Override Appearance: Our ViewController is not inheriting the Popover Appearance!
+    viewController.view.appearance = popover.appearance;
+
+    // Finally display!
+    [popover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
+    self.activePopover = popover;
 }
 
 - (void)dismissActivePopover
@@ -1206,7 +1212,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     popover.delegate                = self;
     popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     popover.behavior                = NSPopoverBehaviorTransient;
-    
+
     return popover;
 }
 
