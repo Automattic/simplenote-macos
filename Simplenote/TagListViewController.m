@@ -699,9 +699,23 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)applyStyle
 {
-    NSAppearanceName name = SPUserInterface.isDark ? NSAppearanceNameVibrantDark: NSAppearanceNameVibrantLight;
-    self.visualEffectsView.appearance = [NSAppearance appearanceNamed:name];
+    self.visualEffectsView.appearance = [NSAppearance appearanceNamed:self.appearanceNameForVisualEffectsView];
+    self.visualEffectsView.material = self.materialForVisualEffectsView;
     [self reloadDataAndPreserveSelection];
+}
+
+- (NSAppearanceName)appearanceNameForVisualEffectsView
+{
+    return SPUserInterface.isDark ? NSAppearanceNameVibrantDark: NSAppearanceNameVibrantLight;
+}
+
+- (NSVisualEffectMaterial)materialForVisualEffectsView
+{
+    if (@available(macOS 10.14, *)) {
+        return NSVisualEffectMaterialUnderWindowBackground;
+    }
+
+    return NSVisualEffectMaterialAppearanceBased;
 }
 
 @end
