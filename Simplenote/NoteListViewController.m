@@ -72,6 +72,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
+
+    [self setupSearchBar];
 }
 
 - (void)viewWillAppear

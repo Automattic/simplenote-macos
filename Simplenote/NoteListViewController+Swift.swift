@@ -5,6 +5,13 @@ import Foundation
 //
 extension NoteListViewController {
 
+    /// Setup: SearchBar
+    ///
+    @objc
+    func setupSearchBar() {
+        searchField.centersPlaceholder = false
+    }
+
     /// Ensures only the actions that are valid can be performed
     ///
     @objc
@@ -20,7 +27,6 @@ extension NoteListViewController {
         searchField.textColor = .simplenoteTextColor
         searchField.placeholderAttributedString = searchFieldPlaceholderString
         statusField.textColor = .simplenoteSecondaryTextColor
-
         reloadDataAndPreserveSelection()
 
         // Legacy Support: High Sierra
