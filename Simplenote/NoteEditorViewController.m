@@ -17,7 +17,6 @@
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
-#import "VSThemeManager.h"
 #import "SPTracker.h"
 
 #import "Simplenote-Swift.h"
@@ -84,11 +83,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark ====================================================================================
 
 @implementation NoteEditorViewController
-
-- (VSTheme *)theme {
-
-    return [[VSThemeManager sharedManager] theme];
-}
 
 - (void)dealloc
 {
@@ -1042,9 +1036,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     }
 
-    self.noteEditor.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
-    [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
-    [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
     [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
     [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];
 
