@@ -6,7 +6,7 @@ import Foundation
 extension NSFont {
 
     @objc
-    static var simplenotePopoverTextFont: NSFont {
+    static var simplenoteSecondaryTextFont: NSFont {
         .systemFont(ofSize: 13)
     }
 }
