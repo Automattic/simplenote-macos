@@ -7,9 +7,17 @@ import WebKit
 @objcMembers
 class MarkdownViewController: NSViewController {
 
+    /// BackgroundView
+    ///
+    @IBOutlet private var backgroundView: SPBackgroundView!
+
     /// Main WebView
     ///
-    @IBOutlet private var webView: WKWebView!
+    @IBOutlet private var webView: WKWebView! {
+        didSet {
+            setupWebView(webView)
+        }
+    }
 
     /// Allowed Outgoing link Schemes
     ///
@@ -19,7 +27,7 @@ class MarkdownViewController: NSViewController {
     ///
     var markdown: String? {
         didSet {
-            reloadHTML()
+            refreshHTML()
         }
     }
 
@@ -40,6 +48,10 @@ class MarkdownViewController: NSViewController {
         startListeningToNotifications()
     }
 
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        refreshStyle()
+    }
 
     /// For performance purposes: We'll ensure the WebView is ready to refresh in a split second
     ///
@@ -49,7 +61,7 @@ class MarkdownViewController: NSViewController {
         }
 
         loadView()
-        reloadHTML()
+        refreshHTML()
     }
 }
 
@@ -73,12 +85,22 @@ extension MarkdownViewController: WKNavigationDelegate {
 }
 
 
+// MARK: - Private
+//
+private extension MarkdownViewController {
+
+    func setupWebView(_ webView: WKWebView) {
+        webView.setValue(false, forKey: "drawsBackground")
+    }
+}
+
+
 // MARK: - Notification Helpers
 //
-extension MarkdownViewController {
+private extension MarkdownViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHTML), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshInterface), name: .ThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
@@ -86,7 +108,16 @@ extension MarkdownViewController {
     }
 
     @objc
-    func reloadHTML() {
+    func refreshInterface() {
+        refreshStyle()
+        refreshHTML()
+    }
+
+    func refreshStyle() {
+        backgroundView.fillColor = .simplenoteBackgroundColor
+    }
+
+    func refreshHTML() {
         let content = markdown ?? ""
         let html = SPMarkdownParser.renderHTML(fromMarkdownString: content) ?? ""
 
