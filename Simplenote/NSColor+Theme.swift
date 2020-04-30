@@ -113,12 +113,12 @@ private extension NSColor {
             return dynamicColor(lightColor: .white, darkColor: .underPageBackgroundColor)
         }
 
-        return dynamicColor(lightColor: .white, darkColor: .simplenoteSecondarySelectedBackgroundDarkColor)
+        return dynamicColor(lightColor: .white, darkColor: .simplenoteUnderPageBackgroundDarkColor)
     }
 
     // TODO: Review
-    static var simplenoteControlBackgroundDarkColor: NSColor {
-        NSColor(red: 38.0/255.0, green: 41.0/255.0, blue: 43.0/255.0, alpha: 1.0)
+    static var simplenoteUnderPageBackgroundDarkColor: NSColor {
+        NSColor(red: 41.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
     }
 
     // TODO: Review
