@@ -18,7 +18,7 @@
         <wkWebView wantsLayer="YES" id="9ne-G9-eFP">
             <rect key="frame" x="0.0" y="0.0" width="381" height="300"/>
             <autoresizingMask key="autoresizingMask"/>
-            <wkWebViewConfiguration key="configuration">
+            <wkWebViewConfiguration key="configuration" suppressesIncrementalRendering="YES">
                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                 <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO" javaScriptEnabled="NO"/>
             </wkWebViewConfiguration>
