@@ -90,6 +90,11 @@ extension MarkdownViewController: WKNavigationDelegate {
 private extension MarkdownViewController {
 
     func setupWebView(_ webView: WKWebView) {
+
+        /// Hack:
+        /// In macOS... this is absolutely the only way to prevent WebKit from rendering its background. We intend to use `backgroundView` to render BG, and have the MarkdownPreview
+        /// rendering on top, with full transparency.
+        ///
         webView.setValue(false, forKey: "drawsBackground")
     }
 }
