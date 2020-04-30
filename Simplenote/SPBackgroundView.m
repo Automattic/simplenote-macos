@@ -15,7 +15,11 @@
 {
     [super drawRect:dirtyRect];
 
-    [[NSColor simplenoteBackgroundColor] setFill];
+    if (!self.fillColor) {
+        return;
+    }
+
+    [self.fillColor setFill];
     NSRectFill(dirtyRect);
 }
 

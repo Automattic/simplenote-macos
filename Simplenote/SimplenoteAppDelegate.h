@@ -21,7 +21,6 @@
 
 @interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate> {
     IBOutlet NSMenuItem *focusModeMenuItem;
-    IBOutlet SPBackgroundView *backgroundView;
 }
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;

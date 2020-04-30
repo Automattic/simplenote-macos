@@ -18,7 +18,6 @@
 #import "SPWindow.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
-#import "VSThemeManager.h"
 #import "SPSplitView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
@@ -48,6 +47,7 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
+@property (strong, nonatomic) IBOutlet SPBackgroundView         *backgroundView;
 
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
@@ -658,18 +658,16 @@
 
 - (void)applyStyle
 {
+    // TODO: Obliterate this from the AppDelegate ASAP
     if (@available(macOS 10.14, *)) {
         SPWindow *window = (SPWindow *)self.window;
         [window applyMojaveThemeOverrideIfNecessary];
-        [self.noteEditorViewController applyStyle];
         [self.noteEditorViewController fixChecklistColoring];
-        [self.noteListViewController applyStyle];
-        return;
+    } else {
+        [self.splitView applyStyle];
     }
 
-    [backgroundView setNeedsDisplay:YES];
-
-    [self.splitView applyStyle];
+    self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
