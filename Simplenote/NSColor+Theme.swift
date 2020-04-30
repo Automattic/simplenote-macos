@@ -117,15 +117,6 @@ private extension NSColor {
     }
 
     // TODO: Review
-    static var simplenoteControlBackgroundColor: NSColor {
-        if #available(OSX 10.14, *) {
-            return dynamicColor(lightColor: .white, darkColor: .controlBackgroundColor)
-        }
-
-        return dynamicColor(lightColor: .white, darkColor: .simplenoteControlBackgroundDarkColor)
-    }
-
-    // TODO: Review
     static var simplenoteControlBackgroundDarkColor: NSColor {
         NSColor(red: 38.0/255.0, green: 41.0/255.0, blue: 43.0/255.0, alpha: 1.0)
     }
