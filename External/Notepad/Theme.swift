@@ -158,7 +158,7 @@ private extension Theme {
 
     static var urlAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor: theme.color(forKey: "tintColor")
+            .foregroundColor: NSColor.simplenoteLinkColor
         ]
     }
 }

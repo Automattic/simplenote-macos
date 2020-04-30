@@ -131,7 +131,7 @@ extension NSColor {
 
     @objc
     static var simplenoteLinkColor: NSColor {
-        NSColor(studioColor: .blue30)
+        dynamicColor(lightStudio: .blue50, darkStudio: .blue30)
     }
 
 

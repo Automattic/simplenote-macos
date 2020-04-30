@@ -116,7 +116,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
-       NSForegroundColorAttributeName: [self.theme colorForKey:@"tintColor"],
+       NSForegroundColorAttributeName: [NSColor simplenoteLinkColor],
         NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle],
                 NSCursorAttributeName: [NSCursor pointingHandCursor]
      }];
