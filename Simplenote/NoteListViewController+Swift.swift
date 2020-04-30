@@ -21,8 +21,25 @@ extension NoteListViewController {
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
         searchField.appearance = NSAppearance(named: name)
         searchField.textColor = .simplenoteTextColor
+        searchField.placeholderAttributedString = searchFieldPlaceholderString
         statusField.textColor = .simplenoteSecondaryTextColor
 
         reloadDataAndPreserveSelection()
+    }
+}
+
+
+// MARK: - Helpers
+//
+private extension NoteListViewController {
+
+    var searchFieldPlaceholderString: NSAttributedString {
+        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
+            .font: NSFont.simplenotePopoverTextFont
+        ]
+
+        return NSAttributedString(string: text, attributes: attributes)
     }
 }
