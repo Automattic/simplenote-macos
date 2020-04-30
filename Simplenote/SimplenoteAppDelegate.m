@@ -658,17 +658,18 @@
 
 - (void)applyStyle
 {
-    // TODO: Obliterate this from the AppDelegate ASAP
-    if (@available(macOS 10.14, *)) {
-        [self.noteEditorViewController fixChecklistColoring];
-    } else {
-        [self.splitView applyStyle];
-    }
-
     self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
+    [self.noteEditorViewController fixChecklistColoring];
+
+    // TODO: Obliterate this from the AppDelegate ASAP
+    if (@available(macOS 10.14, *)) {
+        return;
+    }
+
+    [self.splitView applyStyle];
 }
 
 
