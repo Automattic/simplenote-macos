@@ -93,8 +93,6 @@ private extension PublishViewController {
 
     @objc
     func applyStyle() {
-        let theme = VSThemeManager.shared().theme()
-
         // URL
         let urlPlaceholder = NSLocalizedString("Not Published", comment: "Placeholder displayed when a note hasn't been published.")
         let urlAttributes: [NSAttributedString.Key: Any] = [
@@ -103,7 +101,7 @@ private extension PublishViewController {
         ]
 
         urlTextField.placeholderAttributedString = NSAttributedString(string: urlPlaceholder, attributes: urlAttributes)
-        urlTextField.backgroundColor = theme.color(forKey: "shareUrlBackgroundColor")
+        urlTextField.backgroundColor = .simplenoteBackgroundColor
 
         // Legend
         let legendParagraph = NSMutableParagraphStyle()

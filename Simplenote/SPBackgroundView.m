@@ -7,7 +7,7 @@
 //
 
 #import "SPBackgroundView.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 @implementation SPBackgroundView
 
@@ -15,7 +15,7 @@
 {
     [super drawRect:dirtyRect];
 
-    [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] setFill];
+    [[NSColor simplenoteBackgroundColor] setFill];
     NSRectFill(dirtyRect);
 }
 

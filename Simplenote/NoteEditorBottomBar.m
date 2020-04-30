@@ -9,7 +9,7 @@
 #import "NoteEditorBottomBar.h"
 #import "SPGradientView.h"
 #import "SPTokenField.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 
 @implementation NoteEditorBottomBar
@@ -63,8 +63,8 @@
 
 - (void)applyStyle
 {
-    [self.tokenField setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
     self.tokenField.textColor = [NSColor simplenoteTextColor];
+    self.tokenField.backgroundColor = [NSColor simplenoteBackgroundColor];
     [bottomBorder applyStyle];
     [bottomBorder setNeedsDisplay:YES];
 }
