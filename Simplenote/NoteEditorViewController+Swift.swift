@@ -13,8 +13,9 @@ extension NoteEditorViewController {
 
     /// Indicates if the Markdown Preview UI is active
     ///
+    @objc
     var isDisplayingMarkdown: Bool {
-        markdownView?.isHidden == false
+        markdownViewController.parent != nil
     }
 
     /// Indicates if the current document is expected to support Markdown
@@ -61,5 +62,36 @@ extension NoteEditorViewController {
                                     isViewingTrash: viewingTrash)
         toolbarView.state = newState
 
+    }
+}
+
+
+// MARK: - Markdown Rendering
+//
+extension NoteEditorViewController {
+
+    @objc(displayMarkdownPreview:)
+    func displayMarkdownPreview(_ markdown: String) {
+        markdownViewController.markdown = markdown
+
+        let markdownView = markdownViewController.view
+        markdownView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(markdownView)
+
+        NSLayoutConstraint.activate([
+            markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
+            markdownView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
+        ])
+
+        addChild(markdownViewController)
+    }
+
+    @objc
+    func dismissMarkdownPreview() {
+        markdownViewController.markdown = nil
+        markdownViewController.view.removeFromSuperview()
+        markdownViewController.removeFromParent()
     }
 }

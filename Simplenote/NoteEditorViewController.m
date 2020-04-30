@@ -56,11 +56,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                         NSTokenFieldDelegate,
                                         PublishViewControllerDelegate,
                                         SPBucketDelegate,
-                                        VersionsViewControllerDelegate>
+                                        VersionsViewControllerDelegate,
+                                        WKNavigationDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 @property (nonatomic,   weak) ShareViewController       *shareViewController;
 @property (nonatomic,   weak) PublishViewController     *publishViewController;
+@property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
 @property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
@@ -106,6 +108,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage new];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
@@ -123,6 +127,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	for (NSString *key in preferences.allKeys) {
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
+
+    // Preload Markdown Preview
+    self.markdownViewController = [MarkdownViewController new];
+    [self.markdownViewController preloadView];
 
     // Realtime Markdown Support
     self.inputHandler = [TextViewInputHandler new];
@@ -197,7 +205,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self showStatusText:nil];
     [self.statusImageView setHidden: selectedNote != nil];
     
-    if (!self.markdownView.isHidden) {
+    if (self.isDisplayingMarkdown) {
         [self toggleMarkdownView:nil];
     }
 
@@ -269,12 +277,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [self checkTextInDocument];
-    
-    if (selectedNote.markdown) {
-        // Reset markdown preview content
-        NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
-        [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
-    }
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -729,7 +731,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 
     // Switch back to the editor if markdown is disabled
-    if (!isEnabled && ![self.markdownView isHidden]) {
+    if (!isEnabled && self.isDisplayingMarkdown) {
         [self toggleMarkdownView:nil];
     }
 
@@ -1048,9 +1050,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     if (self.note != nil) {
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
-        if (!self.markdownView.hidden) {
-            [self loadMarkdownContent];
-        }
     }
 
     self.noteEditor.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
@@ -1127,24 +1126,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (IBAction)toggleMarkdownView:(id)sender
 {
-    if (self.markdownView == nil) {
-        return;
+    if (self.isDisplayingMarkdown) {
+        [self dismissMarkdownPreview];
+    } else {
+        [self displayMarkdownPreview:self.note.content];
     }
-    
-    BOOL markdownVisible = self.markdownView.hidden;
-
-    [self.editorScrollView setHidden:markdownVisible];
-    [self.markdownView setHidden:!markdownVisible];
 
     [self refreshEditorActions];
     [self refreshToolbarActions];
-
-    if (markdownVisible) {
-        [self loadMarkdownContent];
-    }
 }
 
-- (IBAction)toggleEditorWidth:(id)sender {
+- (IBAction)toggleEditorWidth:(id)sender
+{
     NSMenuItem *item = (NSMenuItem *)sender;
     if (item.state == NSOnState) {
         return;
@@ -1165,11 +1158,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [[NSUserDefaults standardUserDefaults] setBool:position == 1 forKey:kEditorWidthPreferencesKey];
-}
-
-- (void)loadMarkdownContent {
-    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:self.note.content];
-    [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 - (void)insertChecklistAction:(id)sender
@@ -1236,28 +1224,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     popover.behavior                = NSPopoverBehaviorTransient;
     
     return popover;
-}
-
-- (BOOL)urlSchemeIsAllowed: (NSString *) scheme {
-    return [scheme isEqualToString:@"http"] ||
-        [scheme isEqualToString:@"https"] ||
-        [scheme isEqualToString:@"mailto"];
-}
-
-#pragma mark - WKNavigationDelegate
-
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        NSURL *linkUrl = navigationAction.request.URL;
-        if ([self urlSchemeIsAllowed:linkUrl.scheme]) {
-            [[NSWorkspace sharedWorkspace] openURL:linkUrl];
-        }
-        
-        decisionHandler(WKNavigationActionPolicyCancel);
-        return;
-    }
-    
-    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 @end

@@ -599,7 +599,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="43" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="526"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="568"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -696,7 +696,7 @@
                                                     </connections>
                                                 </tableView>
                                             </subviews>
-                                            <edgeInsets key="contentInsets" left="0.0" right="0.0" top="56" bottom="0.0"/>
+                                            <edgeInsets key="contentInsets" left="0.0" right="0.0" top="14" bottom="0.0"/>
                                         </clipView>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="XV6-d7-Lfo"/>
@@ -998,6 +998,18 @@
                                                         </constraints>
                                                     </customView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="7hm-UJ-0zw" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="4dz-bP-NlX"/>
+                                                    <constraint firstItem="mXz-OM-6A3" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="78W-gy-0Mk"/>
+                                                    <constraint firstItem="fA9-bG-luR" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="F8s-23-6zM"/>
+                                                    <constraint firstItem="qmA-vO-wPh" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="T88-WW-K9W"/>
+                                                    <constraint firstItem="7hm-UJ-0zw" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="YVA-ky-JFG"/>
+                                                    <constraint firstItem="8v5-GT-vWz" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="ayp-2U-vy3"/>
+                                                    <constraint firstItem="fA9-bG-luR" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="bqG-7k-aNw"/>
+                                                    <constraint firstItem="mXz-OM-6A3" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="jj1-ao-yfJ"/>
+                                                    <constraint firstItem="qmA-vO-wPh" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="kV9-RK-Fch"/>
+                                                    <constraint firstItem="8v5-GT-vWz" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="wyd-ma-BRd"/>
+                                                </constraints>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
@@ -1139,7 +1151,6 @@
                 <outlet property="splitView" destination="557" id="1477"/>
                 <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
-                <outlet property="textViewParent" destination="559" id="1198"/>
                 <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
                 <outlet property="window" destination="371" id="748"/>
             </connections>
@@ -1163,7 +1174,7 @@
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
-                <outlet property="view" destination="934" id="1185"/>
+                <outlet property="view" destination="559" id="vPQ-pl-pqe"/>
                 <outlet property="wordCountItem" destination="1605" id="1625"/>
             </connections>
         </viewController>
