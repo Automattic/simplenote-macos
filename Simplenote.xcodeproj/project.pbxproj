@@ -76,9 +76,6 @@
 		376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 469512C817CC38790014A2BF /* simplenote.iconset */; };
 		376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
 		376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376EE3EA202B748E00E3812E /* SPAboutTextField.swift */; };
-		378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
-		378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
-		378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */; };
 		37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */; };
 		37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */ = {isa = PBXBuildFile; fileRef = 37AE49C51FFEBB0A00FCB165 /* markdown-default.css */; };
@@ -173,8 +170,6 @@
 		B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
-		B5686D041AEADF07009F9E20 /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA6FF1ACB05B100CA87DC /* VSTheme.m */; };
-		B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 378AA7011ACB05B100CA87DC /* VSThemeLoader.m */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B56EA2AA244F4CC70061EAD8 /* NSImageView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */; };
@@ -225,7 +220,6 @@
 		B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F372425651700DD5B34 /* TestConstants.swift */; };
 		B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
 		B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
-		B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */; };
 		B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5F33C243244F100F31720 /* TextViewInputHandlerTests.swift */; };
 		B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
@@ -248,8 +242,6 @@
 		B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
 		B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
 		B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */; };
-		B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
-		B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */; };
 		B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
@@ -424,11 +416,6 @@
 		375D293121E033D1007AB25A /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
 		37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simplenote-Bridging-Header.h"; sourceTree = "<group>"; };
 		376EE3EA202B748E00E3812E /* SPAboutTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAboutTextField.swift; sourceTree = "<group>"; };
-		378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-DB5.plist"; sourceTree = "<group>"; };
-		378AA6FE1ACB05B100CA87DC /* VSTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VSTheme.h; path = DB5/VSTheme.h; sourceTree = "<group>"; };
-		378AA6FF1ACB05B100CA87DC /* VSTheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSTheme.m; path = DB5/VSTheme.m; sourceTree = "<group>"; };
-		378AA7001ACB05B100CA87DC /* VSThemeLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VSThemeLoader.h; path = DB5/VSThemeLoader.h; sourceTree = "<group>"; };
-		378AA7011ACB05B100CA87DC /* VSThemeLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VSThemeLoader.m; path = DB5/VSThemeLoader.m; sourceTree = "<group>"; };
 		37AE49C01FFEB92A00FCB165 /* SPMarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMarkdownParser.h; sourceTree = "<group>"; };
 		37AE49C11FFEB92A00FCB165 /* SPMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMarkdownParser.m; sourceTree = "<group>"; };
 		37AE49C51FFEBB0A00FCB165 /* markdown-default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "markdown-default.css"; sourceTree = "<group>"; };
@@ -552,8 +539,6 @@
 		B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverterTests.swift; sourceTree = "<group>"; };
 		B5CBB069241976230003C271 /* SimplenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CBB06D241976230003C271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5CC81651AF2DAE1001D2A69 /* VSThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSThemeManager.h; path = DB5/VSThemeManager.h; sourceTree = "<group>"; };
-		B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VSThemeManager.m; path = DB5/VSThemeManager.m; sourceTree = "<group>"; };
 		B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProcessInfo+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
@@ -633,7 +618,6 @@
 			children = (
 				375D291C21E033D1007AB25A /* Hoextdown */,
 				3712FC6F1FE1ACA9008544AC /* Notepad */,
-				378AA70A1ACB05C400CA87DC /* DB5 */,
 				B5A89189231ECB3C0007EDCB /* Sparkle */,
 			);
 			name = External;
@@ -739,7 +723,6 @@
 				375581C120292AA800529D79 /* About.storyboard */,
 				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
 				37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */,
-				378AA6F71ACB04FD00CA87DC /* Simplenote-DB5.plist */,
 				46A0BEB8175BFD540050E864 /* Simplenote.entitlements */,
 				26F72A9414032D2A00A7935E /* Simplenote-Info.plist */,
 				469512CB17CD23100014A2BF /* Simplenote-Info-Hockey.plist */,
@@ -792,19 +775,6 @@
 			);
 			name = Hoextdown;
 			path = External/Hoextdown;
-			sourceTree = "<group>";
-		};
-		378AA70A1ACB05C400CA87DC /* DB5 */ = {
-			isa = PBXGroup;
-			children = (
-				378AA6FE1ACB05B100CA87DC /* VSTheme.h */,
-				378AA6FF1ACB05B100CA87DC /* VSTheme.m */,
-				378AA7001ACB05B100CA87DC /* VSThemeLoader.h */,
-				378AA7011ACB05B100CA87DC /* VSThemeLoader.m */,
-				B5CC81651AF2DAE1001D2A69 /* VSThemeManager.h */,
-				B5CC81661AF2DAE1001D2A69 /* VSThemeManager.m */,
-			);
-			name = DB5;
 			sourceTree = "<group>";
 		};
 		37AE49C41FFEBAF400FCB165 /* CSS */ = {
@@ -1277,7 +1247,6 @@
 			files = (
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				376EE3E9202A558E00E3812E /* simplenote.iconset in Resources */,
-				378AA6F81ACB04FD00CA87DC /* Simplenote-DB5.plist in Resources */,
 				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
@@ -1298,7 +1267,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5B410BF1B17F28500CFCF8D /* Simplenote-DB5.plist in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */,
@@ -1534,10 +1502,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				378AA7051ACB05B100CA87DC /* VSTheme.m in Sources */,
 				B5E086282448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
 				375D294621E033D1007AB25A /* version.c in Sources */,
-				378AA7071ACB05B100CA87DC /* VSThemeLoader.m in Sources */,
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
 				26F72A9914032D2A00A7935E /* main.m in Sources */,
 				B5985ACE24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
@@ -1607,7 +1573,6 @@
 				B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				712DC91C1531FE2F0033CE85 /* SPTokenField.m in Sources */,
 				B5C7DD40243E4A7D00BEE354 /* ShareViewController.swift in Sources */,
-				B5CC81671AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
 				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
@@ -1720,17 +1685,14 @@
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
-				B5686D041AEADF07009F9E20 /* VSTheme.m in Sources */,
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
 				466FFEC217CC10A800399652 /* SPTokenField.m in Sources */,
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
-				B5CC81681AF2DAE1001D2A69 /* VSThemeManager.m in Sources */,
 				B5C7DD41243E4A7D00BEE354 /* ShareViewController.swift in Sources */,
 				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
-				B5686D051AEADF0B009F9E20 /* VSThemeLoader.m in Sources */,
 				B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */,
 				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
