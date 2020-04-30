@@ -58,14 +58,6 @@ class MarkdownViewController: NSViewController {
 //
 extension MarkdownViewController: WKNavigationDelegate {
 
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        webView.isHidden = false
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        webView.isHidden = false
-    }
-
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard navigationAction.navigationType == .linkActivated else {
             decisionHandler(.allow)
@@ -98,8 +90,6 @@ extension MarkdownViewController {
         let content = markdown ?? ""
         let html = SPMarkdownParser.renderHTML(fromMarkdownString: content) ?? ""
 
-        // Workaround: Prevents UI flashes by hiding / unhiding when rendering is done
-        webView.isHidden = true
         webView.loadHTMLString(html, baseURL: Bundle.main.bundleURL)
     }
 }
