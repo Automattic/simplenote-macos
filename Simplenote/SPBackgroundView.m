@@ -11,6 +11,12 @@
 
 @implementation SPBackgroundView
 
+- (void)setFillColor:(NSColor *)fillColor
+{
+    _fillColor = fillColor;
+    [self setNeedsDisplay:YES];
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
