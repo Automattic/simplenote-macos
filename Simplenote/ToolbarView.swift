@@ -80,13 +80,9 @@ private extension ToolbarView {
 }
 
 
-// MARK: - Initialization
+// MARK: - State Management
 //
 private extension ToolbarView {
-
-    var allButtons: [NSButton] {
-        [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
-    }
 
     func refreshInterface() {
         actionButton.isEnabled = state.isActionButtonEnabled
@@ -108,12 +104,35 @@ private extension ToolbarView {
         trashButton.isEnabled = state.isTrashActionEnabled
         trashButton.isHidden = state.isTrashActionHidden
     }
+}
+
+
+// MARK: - Theming
+//
+private extension ToolbarView {
+
+    var allButtons: [NSButton] {
+        [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+    }
 
     @objc
     func refreshStyle() {
+        refreshButtonsStyle()
+        refreshActionMenuStyle()
+    }
+
+    func refreshButtonsStyle() {
         for button in allButtons {
             button.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
         }
+    }
+
+    func refreshActionMenuStyle() {
+        guard let actionButtonItem = actionButton.menu?.items.first, let image = actionButtonItem.image else {
+            return
+        }
+
+        actionButtonItem.image = image.tinted(with: .simplenoteSecondaryActionButtonTintColor)
     }
 
     func setupSubviews() {
