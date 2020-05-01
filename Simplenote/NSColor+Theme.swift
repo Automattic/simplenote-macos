@@ -123,11 +123,11 @@ private extension NSColor {
 
     // TODO: Review
     static var simplenoteSecondarySelectedBackgroundDarkColor: NSColor {
-        NSColor(red: 54.0 / 255.0, green: 54.0 / 255.0, blue: 54.0 / 255.0, alpha: 0.4)
+        NSColor(red: 54.0/255.0, green: 54.0/255.0, blue: 54.0/255.0, alpha: 0.4)
     }
 
     // TODO: Review
     static var simplenoteSecondarySelectedBackgroundLightColor: NSColor {
-        NSColor(red: 197.0 / 255.0, green: 217.0 / 255.0, blue: 237.0 / 255.0, alpha: 1.0)
+        NSColor(red: 197.0/255.0, green: 217.0/255.0, blue: 237.0/255.0, alpha: 1.0)
     }
 }
