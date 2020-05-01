@@ -40,7 +40,7 @@ class SPUserInterface: NSObject {
             return false
         }
 
-        return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+        return NSApp.effectiveAppearance.isDark
     }
 }
 
