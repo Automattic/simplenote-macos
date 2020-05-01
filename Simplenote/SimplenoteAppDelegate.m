@@ -11,6 +11,7 @@
 #import "DateTransformer.h"
 #import "Note.h"
 #import "Tag.h"
+#import "NSNotification+Simplenote.h"
 #import "LoginWindowController.h"
 #import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
@@ -38,7 +39,6 @@
 #define kFirstLaunchKey					@"SPFirstLaunch"
 #define kMinimumNoteListSplit			240
 #define kMaximumNoteListSplit			384
-#define kDefaultThemeAppearanceTag      2
 
 
 #pragma mark ====================================================================================
@@ -55,9 +55,7 @@
 
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *mainWindowItem;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
@@ -124,11 +122,6 @@
 }
 #endif
 
-- (VSTheme *)theme
-{
-    return [[VSThemeManager sharedManager] theme];
-}
-
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
     [eventManager setEventHandler:self
@@ -143,13 +136,6 @@
     
     [self configureWindow];
     [self hookWindowNotifications];
-
-    VSThemeManager *themeManager = [VSThemeManager sharedManager];
-    if ([themeManager isMojaveWithNoThemeSet]) {
-        [self updateThemeMenuForPosition:kDefaultThemeAppearanceTag];
-    } else {
-        [self updateThemeMenuForPosition:[[VSThemeManager sharedManager] isDarkMode] ? 1 : 0];
-    }
     [self applyStyle];
     
 	self.simperium = [self configureSimperium];
@@ -180,7 +166,7 @@
     [self configureWelcomeNoteIfNeeded];
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(applyStyle) name:VSThemeManagerThemeDidChangeNotification object:nil];
+    [nc addObserver:self selector:@selector(applyStyle) name:ThemeDidChangeNotification object:nil];
 }
 
 - (void)configureWindow
@@ -192,16 +178,6 @@
     self.window.releasedWhenClosed              = NO;
     
     [self.splitView adjustSubviews];
-
-    // Add the System Appearance menu item to the 'Theme' menu on Mojave or later
-    if (@available(macOS 10.14, *)) {
-        NSMenuItem *separatorItem = [NSMenuItem separatorItem];
-        [themeMenu addItem:separatorItem];
-        
-        NSMenuItem *systemDefaultItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"System Appearance", @"Menu item for using default macOS theme appearance.") action:@selector(changeThemeAction:) keyEquivalent:@""];
-        systemDefaultItem.tag = kDefaultThemeAppearanceTag;
-        [themeMenu addItem:systemDefaultItem];
-    }
 }
 
 - (void)hookWindowNotifications
@@ -548,6 +524,10 @@
         return [self numDeletedNotes] > 0;
     }
 
+    if ([self isThemeMenuItem:menuItem]) {
+        return [self validateThemeMenuItem:menuItem];
+    }
+
     return YES;
 }
 
@@ -674,41 +654,6 @@
     NSArray *helpLinks = @[SPHelpURL, SPContactUsURL, SPTwitterURL];
     NSMenuItem *menuItem = (NSMenuItem *)sender;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: helpLinks[menuItem.tag]]];
-}
-
-- (IBAction)changeThemeAction:(id)sender
-{
-    NSMenuItem *item = (NSMenuItem *)sender;
-    if (item.state == NSOnState) {
-        return;
-    }
-    
-    if ([sender tag] == kDefaultThemeAppearanceTag) {
-        // Resetting to default macOS theme appearance
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:VSThemeManagerThemePrefKey];
-        if (@available(macOS 10.14, *)) {
-            SPWindow *window = (SPWindow *)self.window;
-            window.appearance = nil;
-            [window applyMojaveThemeOverrideIfNecessary];
-        }
-    } else {
-        NSString *newTheme = ([sender tag] == 0) ? @"default" : @"dark";
-        [SPTracker trackSettingsThemeUpdated:newTheme];
-        [[VSThemeManager sharedManager] swapTheme:newTheme];
-    }
-    
-    [self updateThemeMenuForPosition:[sender tag]];
-}
-
-- (void)updateThemeMenuForPosition:(NSInteger)position
-{
-    for (NSMenuItem *menuItem in themeMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
 }
 
 - (void)applyStyle

@@ -162,9 +162,12 @@
 
 + (void)trackSettingsThemeUpdated:(NSString *)themeName
 {
-    NSParameterAssert(themeName);
-    
-    [self trackAutomatticEventWithName:@"settings_theme_updated" properties:@{ @"name" : themeName }];
+    NSDictionary *properties = nil;
+    if (themeName != nil) {
+        properties = @{ @"name": themeName };
+    }
+
+    [self trackAutomatticEventWithName:@"settings_theme_updated" properties:properties];
 }
 
 + (void)trackSettingsListCondensedEnabled

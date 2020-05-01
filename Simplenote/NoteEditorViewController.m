@@ -18,7 +18,6 @@
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "VSThemeManager.h"
-#import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
 
 #import "Simplenote-Swift.h"

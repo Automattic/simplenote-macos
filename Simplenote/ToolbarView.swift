@@ -71,7 +71,7 @@ private extension ToolbarView {
             return
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .VSThemeManagerThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {

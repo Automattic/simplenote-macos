@@ -46,4 +46,17 @@ extension Options {
             defaults.set(newValue, forKey: .analyticsEnabled)
         }
     }
+
+    /// Stores the name of the selected theme. Null indicates that the system's default theme should be picked, when possible
+    ///
+    var themeName: String? {
+        get {
+            defaults.string(forKey: .themeName)
+        }
+        set {
+            defaults.set(newValue, forKey: .themeName)
+            SPTracker.trackSettingsThemeUpdated(newValue)
+            NotificationCenter.default.post(name: .ThemeDidChange, object: nil)
+        }
+    }
 }

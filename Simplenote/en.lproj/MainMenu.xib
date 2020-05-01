@@ -448,18 +448,25 @@
                             </menuItem>
                             <menuItem title="Theme" id="Jtf-4C-imn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
+                                <menu key="submenu" title="Theme" systemMenu="font" identifier="themeMenuIdentifier" id="SIP-Tf-W7J">
                                     <items>
                                         <menuItem title="Light" id="Zhe-Bb-jvT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="changeThemeAction:" target="494" id="9TU-eH-R16"/>
+                                                <action selector="clickedThemeItem:" target="494" id="mgq-M0-lcf"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Dark" tag="1" id="qcT-FY-eHe">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="changeThemeAction:" target="494" id="Hpg-KZ-zUj"/>
+                                                <action selector="clickedThemeItem:" target="494" id="wom-f8-fYq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
+                                        <menuItem title="System Appearance" tag="2" enabled="NO" id="x6g-cH-Wdm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="clickedThemeItem:" target="494" id="b76-s6-4Ql"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -590,11 +597,12 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="xT1-td-pyW"/>
                                         </constraints>
-                                        <color key="fillColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="borderColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <scrollView borderType="none" horizontalLineScroll="43" horizontalPageScroll="10" verticalLineScroll="43" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
-                                        <clipView key="contentView" copiesOnScroll="NO" id="UOf-YZ-mq1">
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="UOf-YZ-mq1">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="582"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1145,13 +1153,10 @@
                 <outlet property="emptyTrashItem" destination="1256" id="1776"/>
                 <outlet property="exportItem" destination="Pwd-hR-fBt" id="fmk-th-axO"/>
                 <outlet property="focusModeMenuItem" destination="nrD-mL-W7Q" id="9KY-QY-jI5"/>
-                <outlet property="mainWindowItem" destination="vor-dd-sYt" id="jUG-qn-XNJ"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>
-                <outlet property="switchThemeItem" destination="Jtf-4C-imn" id="Ecp-X5-nqO"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
-                <outlet property="themeMenu" destination="SIP-Tf-W7J" id="JRR-o7-vPq"/>
                 <outlet property="window" destination="371" id="748"/>
             </connections>
         </customObject>

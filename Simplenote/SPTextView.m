@@ -8,7 +8,6 @@
 
 #import "SPTextView.h"
 #import "NSMutableAttributedString+Styling.h"
-#import "VSThemeManager.h"
 #import "Simplenote-Swift.h"
 
 #define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width

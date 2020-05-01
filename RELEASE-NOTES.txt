@@ -1,3 +1,7 @@
+1.11.0
+------
+- Simplenote will now react dynamically to macOS Appearance updates when the System Theme is selected.
+
 1.10.0
 ------
 - Simplenote now requires macOS 10.13 or higher

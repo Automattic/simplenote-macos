@@ -8,8 +8,7 @@
 
 #import "VSThemeManager.h"
 
-NSString *const VSThemeManagerThemeWillChangeNotification = @"VSThemeManagerThemeWillChangeNotification";
-NSString *const VSThemeManagerThemeDidChangeNotification = @"VSThemeManagerThemeDidChangeNotification";
+
 NSString *const VSThemeManagerThemePrefKey = @"VSThemeManagerThemePrefKey";
 
 @interface VSThemeManager ()
@@ -52,50 +51,20 @@ NSString *const VSThemeManagerThemePrefKey = @"VSThemeManagerThemePrefKey";
     return _themeLoader;
 }
 
-- (void)contentSizeCategoryDidChange:(NSNotification *)notification {
-    
-    for (VSTheme *theme in self.themeLoader.themes) {
-        
-        [theme clearCaches];
-    }
-    
-    [self swapTheme:self.theme.name];
-}
-
 - (void)swapTheme:(NSString *)themeName {
     
     VSTheme *theme = [self.themeLoader themeNamed:themeName];
     
     if (theme) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:VSThemeManagerThemeWillChangeNotification
-                                                            object:nil];
-        
+        // TODO
+        // This entire class is scheduled to be out >> SOON >>
+        // `Options.themeName`'s key is expected to exactly match `VSThemeManagerThemePrefKey`
+        //
         [[NSUserDefaults standardUserDefaults] setObject:themeName
                                                   forKey:VSThemeManagerThemePrefKey];
         
         _theme = theme;
-        [[NSNotificationCenter defaultCenter] postNotificationName:VSThemeManagerThemeDidChangeNotification
-                                                            object:nil];
     }
-}
-
-- (BOOL)isDarkMode {
-    if (@available(macOS 10.14, *)) {
-        if (![[NSUserDefaults standardUserDefaults] stringForKey:VSThemeManagerThemePrefKey]) {
-            // Theme pref was never set, so default to system theme setting
-            return [self.theme isMojaveDarkMode];
-        }
-    }
-
-    return [self.theme boolForKey:@"dark"];
-}
-
-- (BOOL)isMojaveWithNoThemeSet {
-    if (@available(macOS 10.14, *)) {
-        return [[NSUserDefaults standardUserDefaults] stringForKey:VSThemeManagerThemePrefKey] == nil;
-    }
-    
-    return NO;
 }
 
 @end

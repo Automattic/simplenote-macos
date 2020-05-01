@@ -21,7 +21,6 @@
 #pragma mark ====================================================================================
 
 @interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate> {
-    IBOutlet NSMenu *themeMenu;
     IBOutlet NSMenuItem *focusModeMenuItem;
     IBOutlet SPBackgroundView *backgroundView;
 }
@@ -42,7 +41,6 @@
 - (IBAction)signOutAction:(id)sender;
 - (IBAction)emptyTrashAction:(id)sender;
 - (IBAction)toggleSidebarAction:(id)sender;
-- (IBAction)changeThemeAction:(id)sender;
 - (IBAction)ensureMainWindowIsVisible:(id)sender;
 - (IBAction)aboutAction:(id)sender;
 - (IBAction)privacyAction:(id)sender;

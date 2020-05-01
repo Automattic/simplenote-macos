@@ -78,7 +78,7 @@ extension MarkdownViewController: WKNavigationDelegate {
 extension MarkdownViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHTML), name: .VSThemeManagerThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHTML), name: .ThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
