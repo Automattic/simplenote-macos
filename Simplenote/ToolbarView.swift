@@ -84,6 +84,10 @@ private extension ToolbarView {
 //
 private extension ToolbarView {
 
+    var allButtons: [NSButton] {
+        [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+    }
+
     func refreshInterface() {
         actionButton.isEnabled = state.isActionButtonEnabled
         actionWrapperView.isHidden = state.isActionButtonHidden
@@ -107,9 +111,7 @@ private extension ToolbarView {
 
     @objc
     func refreshStyle() {
-        let buttons: [NSButton] = [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
-
-        for button in buttons {
+        for button in allButtons {
             button.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
         }
     }
@@ -121,5 +123,10 @@ private extension ToolbarView {
         restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
         shareButton.toolTip = NSLocalizedString("Share", comment: "Tooltip: Share a note")
         trashButton.toolTip = NSLocalizedString("Trash", comment: "Tooltip: Trash a Note")
+
+        let cells = allButtons.compactMap { $0.cell as? NSButtonCell }
+        for cell in cells {
+            cell.highlightsBy = .pushInCellMask
+        }
     }
 }
