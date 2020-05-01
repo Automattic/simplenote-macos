@@ -15,6 +15,7 @@
 @import Simperium_OSX;
 
 @class NoteEditorViewController;
+@class SPBackgroundView;
 @class SPTableView;
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
@@ -29,6 +30,7 @@
     CGFloat rowHeight;
 }
 
+@property (strong, nonatomic) IBOutlet SPBackgroundView     *backgroundView;
 @property (strong, nonatomic) IBOutlet NSTextField          *statusField;
 @property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (strong, nonatomic) IBOutlet SPTableView          *tableView;

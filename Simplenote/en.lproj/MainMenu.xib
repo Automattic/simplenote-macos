@@ -725,6 +725,9 @@
                                 <rect key="frame" x="121" y="0.0" width="270" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="3JQ-IY-iXS" customClass="SPBackgroundView">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
+                                    </customView>
                                     <view translatesAutoresizingMaskIntoConstraints="NO" id="R5E-ls-WXI" userLabel="SearchView">
                                         <rect key="frame" x="0.0" y="510" width="270" height="72"/>
                                         <subviews>
@@ -870,17 +873,21 @@
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3JQ-IY-iXS" secondAttribute="bottom" id="0RE-eN-082"/>
                                     <constraint firstItem="R5E-ls-WXI" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="2oM-hX-68u"/>
                                     <constraint firstItem="560" firstAttribute="top" secondItem="R5E-ls-WXI" secondAttribute="bottom" id="3ff-OZ-Xhg"/>
                                     <constraint firstItem="1732" firstAttribute="centerX" secondItem="558" secondAttribute="centerX" id="5aZ-Pe-Gyu"/>
                                     <constraint firstAttribute="trailing" secondItem="R5E-ls-WXI" secondAttribute="trailing" id="9ZK-Zw-uGl"/>
+                                    <constraint firstItem="3JQ-IY-iXS" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="O9A-7i-lMv"/>
                                     <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
                                     <constraint firstItem="1732" firstAttribute="top" secondItem="1766" secondAttribute="bottom" constant="15" id="PvY-Xw-rqH"/>
                                     <constraint firstItem="560" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="Zi0-eC-oVT"/>
                                     <constraint firstItem="1766" firstAttribute="leading" secondItem="558" secondAttribute="leading" constant="12" id="cPD-Ix-UuZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="3JQ-IY-iXS" secondAttribute="trailing" id="di2-mZ-wKA"/>
                                     <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
                                     <constraint firstItem="1766" firstAttribute="top" secondItem="558" secondAttribute="top" constant="220" id="eS2-b5-fRK"/>
                                     <constraint firstAttribute="bottom" secondItem="560" secondAttribute="bottom" id="niy-wS-lMG"/>
+                                    <constraint firstItem="3JQ-IY-iXS" firstAttribute="top" secondItem="558" secondAttribute="top" id="q5f-BH-9rg"/>
                                     <constraint firstItem="R5E-ls-WXI" firstAttribute="top" secondItem="558" secondAttribute="top" id="zUD-Hd-qwk"/>
                                 </constraints>
                             </customView>
@@ -1057,7 +1064,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="508" height="466"/>
+                                                    <size key="minSize" width="493" height="466"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1181,6 +1188,7 @@
             <connections>
                 <outlet property="addNoteButton" destination="987" id="3H3-Zp-93V"/>
                 <outlet property="arrayController" destination="573" id="1143"/>
+                <outlet property="backgroundView" destination="3JQ-IY-iXS" id="CzV-R2-JPS"/>
                 <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
                 <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
