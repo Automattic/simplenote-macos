@@ -75,6 +75,11 @@ extension NSColor {
     }
 
     @objc
+    static var simplenotePopoverBackgroundColor: NSColor {
+        .simplenoteUnderPageBackgroundDarkColor
+    }
+
+    @objc
     static var simplenoteSecondarySelectedBackgroundColor: NSColor {
         dynamicColor(lightColor: .simplenoteSecondarySelectedBackgroundLightColor, darkColor: .simplenoteSecondarySelectedBackgroundDarkColor)
     }
@@ -111,11 +116,7 @@ extension NSColor {
 private extension NSColor {
 
     static var simplenoteUnderPageBackgroundColor: NSColor {
-        if #available(OSX 10.14, *) {
-            return dynamicColor(lightColor: .white, darkColor: .underPageBackgroundColor)
-        }
-
-        return dynamicColor(lightColor: .white, darkColor: .simplenoteUnderPageBackgroundDarkColor)
+        dynamicColor(lightColor: .white, darkColor: .simplenoteUnderPageBackgroundDarkColor)
     }
 
     static var simplenoteControlBackgroundColor: NSColor {
@@ -127,7 +128,11 @@ private extension NSColor {
     }
 
     static var simplenoteUnderPageBackgroundDarkColor: NSColor {
-        NSColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
+        if #available(OSX 10.14, *) {
+            return .underPageBackgroundColor
+        }
+
+        return NSColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
     }
 
     static var simplenoteControlBackgroundDarkColor: NSColor {
