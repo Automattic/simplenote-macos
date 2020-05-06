@@ -51,7 +51,7 @@ extension NSColor {
 
     @objc
     static var simplenoteActionButtonTintColor: NSColor {
-        dynamicColor(lightStudio: .blue50, darkStudio: .blue30)
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
     }
 
     @objc
@@ -71,7 +71,7 @@ extension NSColor {
 
     @objc
     static var simplenoteSelectedBackgroundColor: NSColor {
-        NSColor(studioColor: .blue50)
+        NSColor(studioColor: .spBlue50)
     }
 
     @objc
@@ -91,7 +91,7 @@ extension NSColor {
 
     @objc
     static var simplenoteLinkColor: NSColor {
-        dynamicColor(lightStudio: .blue50, darkStudio: .blue30)
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
     }
 
     @objc
