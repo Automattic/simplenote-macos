@@ -165,6 +165,7 @@
 		B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529F7B424586D8700B168F1 /* MarkdownViewController.swift */; };
 		B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B529F7B724586DF800B168F1 /* MarkdownViewController.xib */; };
 		B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B529F7B724586DF800B168F1 /* MarkdownViewController.xib */; };
+		B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
 		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		B5438012246358B700F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
 		B5438013246358BA00F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
@@ -1739,6 +1740,7 @@
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
+				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
