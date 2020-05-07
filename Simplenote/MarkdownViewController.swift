@@ -36,16 +36,19 @@ class MarkdownViewController: NSViewController {
 
     deinit {
         stopListeningToNotifications()
+        stopListeningToSystemNotifications()
     }
 
     override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         startListeningToNotifications()
+        startListeningToSystemNotifications()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         startListeningToNotifications()
+        startListeningToSystemNotifications()
     }
 
     override func viewWillAppear() {
@@ -109,7 +112,17 @@ private extension MarkdownViewController {
     }
 
     func stopListeningToNotifications() {
-        NotificationCenter.default.removeObserver(self)
+        DistributedNotificationCenter.default().removeObserver(self)
+    }
+
+    @objc
+    func startListeningToSystemNotifications() {
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(refreshInterface), name: .AppleInterfaceThemeChanged, object: nil)
+    }
+
+    @objc
+    func stopListeningToSystemNotifications() {
+        DistributedNotificationCenter.default().removeObserver(self)
     }
 
     @objc
