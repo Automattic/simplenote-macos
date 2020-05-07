@@ -121,6 +121,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
 
+    // StatusImage
+    [self setupStatusImageView];
+
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
     [self.markdownViewController preloadView];
