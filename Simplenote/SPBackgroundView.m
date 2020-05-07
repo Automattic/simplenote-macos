@@ -11,12 +11,8 @@
 
 @implementation SPBackgroundView
 
-- (void)setFillColor:(NSColor *)fillColor
+- (void)setFillCol1or:(NSColor *)fillColor
 {
-    if (_fillColor == fillColor) {
-        return;
-    }
-
     _fillColor = fillColor;
     [self setNeedsDisplay:YES];
 }
