@@ -248,7 +248,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundBox" destination="jR0-c5-hne" id="Ekq-9q-TBQ"/>
                         <outlet property="cookiePolicyImageView" destination="oLM-IY-yTd" id="Snn-6M-iAx"/>
                         <outlet property="cookiePolicyTextField" destination="NvX-jo-5we" id="0Ke-on-pZX"/>
                         <outlet property="privacyImageView" destination="d2n-EK-hqK" id="mN9-c2-yHz"/>
