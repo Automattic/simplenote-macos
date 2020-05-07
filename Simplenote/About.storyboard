@@ -281,6 +281,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="backgroundBox" destination="jR0-c5-hne" id="EZe-0S-a1H"/>
                         <outlet property="blogLabel" destination="eGT-Zs-dGY" id="8qK-hu-Twv"/>
                         <outlet property="copyrightLabel" destination="7QO-fG-liO" id="FLV-mx-gvF"/>
                         <outlet property="githubLabel" destination="eoo-VW-fOF" id="sT5-oi-gMy"/>
