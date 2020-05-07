@@ -13,6 +13,10 @@
 
 - (void)setFillColor:(NSColor *)fillColor
 {
+    if (_fillColor == fillColor) {
+        return;
+    }
+
     _fillColor = fillColor;
     [self setNeedsDisplay:YES];
 }

@@ -1191,7 +1191,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     // New PopOver
     NSPopover *popover = [self newPopoverWithContentViewController:viewController];;
 
-    // Override Appearance: Our ViewController is not inheriting the Popover Appearance!
+    // Note:
+    // NSPopover appears not to be applying it's NSAppearance to the `contentViewController` automatically.
+    // For that reason, we'll ensure the ViewController matches the Popover's Appearance.
+    //
     viewController.view.appearance = popover.appearance;
 
     // Finally display!
