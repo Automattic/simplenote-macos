@@ -31,7 +31,7 @@ class AboutViewController: NSViewController {
         super.viewDidLoad()
 
         logoImageView.image = NSImage(named: .simplenoteLogo)
-        backgroundBox.fillColor = .simplenoteSelectedBackgroundColor
+        backgroundBox.fillColor = .simplenoteBrandColor
 
         let blogClick = NSClickGestureRecognizer(target: self, action: #selector(blogLabelClick))
         blogLabel.addGestureRecognizer(blogClick)

@@ -113,6 +113,11 @@ extension NSColor {
     static var simplenoteSelectedTextColor: NSColor {
         .white
     }
+
+    @objc
+    static var simplenoteBrandColor: NSColor {
+        NSColor(studioColor: .spBlue50)
+    }
 }
 
 
