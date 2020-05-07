@@ -16,6 +16,7 @@ class AboutViewController: NSViewController {
         static let termsUrl =      "https://simplenote.com/terms/"
     }
 
+    @IBOutlet var logoImageView:    NSImageView!
     @IBOutlet var backgroundBox:    NSBox!
     @IBOutlet var blogLabel:        SPAboutTextField!
     @IBOutlet var twitterLabel:     SPAboutTextField!
@@ -29,6 +30,7 @@ class AboutViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        logoImageView.image = NSImage(named: .simplenoteLogo)
         backgroundBox.fillColor = .simplenoteSelectedBackgroundColor
 
         let blogClick = NSClickGestureRecognizer(target: self, action: #selector(blogLabelClick))
