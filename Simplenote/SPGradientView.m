@@ -7,7 +7,9 @@
 //
 
 #import "SPGradientView.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
+
+
 @implementation SPGradientView
 @synthesize startingColor;
 @synthesize middleColor;
@@ -18,9 +20,7 @@
 + (SPGradientView *)horizontalDividerForRect:(NSRect)rect
 {
     SPGradientView *gradient = [[SPGradientView alloc] initWithFrame:rect];
-    gradient.startingColor = [[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"];
-    //gradient.middleColor = [NSColor colorWithCalibratedWhite:0.85 alpha:1.0];
-    //gradient.endingColor = [NSColor colorWithCalibratedWhite:0.85 alpha:0.25];
+    gradient.startingColor = [NSColor simplenoteDividerColor];
     gradient.gradientProportion = 1.0;
     gradient.autoresizingMask = NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin;
 
@@ -29,13 +29,16 @@
 
 + (SPGradientView *)horizontalDividerInView:(NSView *)view location:(CGPoint)location
 {
-    CGRect frame = NSMakeRect(location.x, location.y, view.frame.size.width-location.x*2-location.x/2+5, 1.0);
+    CGFloat height = [[NSScreen mainScreen] pointToPixelRatio];
+    CGFloat width = view.frame.size.width - (location.x * 2) - (location.x / 2) + 5;
+    CGRect frame = NSMakeRect(location.x, location.y, width, height);
     return [self horizontalDividerForRect:frame];
 }
 
 + (SPGradientView *)horizontalDividerWithWidth:(CGFloat)width paddingX:(CGFloat)paddingX locationY:(CGFloat)locationY
 {
-    CGRect frame = NSMakeRect(paddingX, locationY, width-paddingX*2, 1.0);
+    CGFloat height = [[NSScreen mainScreen] pointToPixelRatio];
+    CGRect frame = NSMakeRect(paddingX, locationY, width-paddingX*2, height);
     return [self horizontalDividerForRect:frame];
 }
 
@@ -81,7 +84,7 @@
 
 - (void)applyStyle
 {
-    startingColor = [[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"];
+    startingColor = [NSColor simplenoteDividerColor];
 }
 
 @end

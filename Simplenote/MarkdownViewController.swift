@@ -7,9 +7,17 @@ import WebKit
 @objcMembers
 class MarkdownViewController: NSViewController {
 
+    /// BackgroundView
+    ///
+    @IBOutlet private var backgroundView: SPBackgroundView!
+
     /// Main WebView
     ///
-    @IBOutlet private var webView: WKWebView!
+    @IBOutlet private var webView: WKWebView! {
+        didSet {
+            setupWebView(webView)
+        }
+    }
 
     /// Allowed Outgoing link Schemes
     ///
@@ -19,7 +27,7 @@ class MarkdownViewController: NSViewController {
     ///
     var markdown: String? {
         didSet {
-            reloadHTML()
+            refreshHTML()
         }
     }
 
@@ -28,18 +36,25 @@ class MarkdownViewController: NSViewController {
 
     deinit {
         stopListeningToNotifications()
+        stopListeningToSystemNotifications()
     }
 
     override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         startListeningToNotifications()
+        startListeningToSystemNotifications()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         startListeningToNotifications()
+        startListeningToSystemNotifications()
     }
 
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        refreshStyle()
+    }
 
     /// For performance purposes: We'll ensure the WebView is ready to refresh in a split second
     ///
@@ -49,7 +64,7 @@ class MarkdownViewController: NSViewController {
         }
 
         loadView()
-        reloadHTML()
+        refreshHTML()
     }
 }
 
@@ -73,20 +88,54 @@ extension MarkdownViewController: WKNavigationDelegate {
 }
 
 
+// MARK: - Private
+//
+private extension MarkdownViewController {
+
+    func setupWebView(_ webView: WKWebView) {
+
+        /// Hack:
+        /// In macOS... this is absolutely the only way to prevent WebKit from rendering its background. We intend to
+        /// use `backgroundView` to render BG, and have the MarkdownPreview rendering on top, with full transparency.
+        ///
+        webView.setValue(false, forKey: "drawsBackground")
+    }
+}
+
+
 // MARK: - Notification Helpers
 //
-extension MarkdownViewController {
+private extension MarkdownViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHTML), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshInterface), name: .ThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
-        NotificationCenter.default.removeObserver(self)
+        DistributedNotificationCenter.default().removeObserver(self)
     }
 
     @objc
-    func reloadHTML() {
+    func startListeningToSystemNotifications() {
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(refreshInterface), name: .AppleInterfaceThemeChanged, object: nil)
+    }
+
+    @objc
+    func stopListeningToSystemNotifications() {
+        DistributedNotificationCenter.default().removeObserver(self)
+    }
+
+    @objc
+    func refreshInterface() {
+        refreshStyle()
+        refreshHTML()
+    }
+
+    func refreshStyle() {
+        backgroundView.fillColor = .simplenoteBackgroundColor
+    }
+
+    func refreshHTML() {
         let content = markdown ?? ""
         let html = SPMarkdownParser.renderHTML(fromMarkdownString: content) ?? ""
 

@@ -14,6 +14,7 @@
 #import "NotesArrayController.h"
 #import "TagListViewController.h"
 #import "SPTableView.h"
+#import "SPBackgroundView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 
@@ -72,6 +73,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
+
+    [self setupSearchBar];
 }
 
 - (void)viewWillAppear
@@ -202,7 +205,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-    return [TableRowView new];
+    TableRowView *rowView = [TableRowView new];
+    rowView.selectedBackgroundColor = [NSColor simplenoteSecondarySelectedBackgroundColor];
+    return rowView;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row

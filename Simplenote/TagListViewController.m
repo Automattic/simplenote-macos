@@ -12,7 +12,6 @@
 #import "SPTableView.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
-#import "VSThemeManager.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 
@@ -486,7 +485,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
     TableRowView *rowView = [TableRowView new];
-    rowView.selectedBackgroundColor = [NSColor simplenoteTagListSelectedBackgroundColor];
+    rowView.selectedBackgroundColor = [NSColor simplenoteSelectedBackgroundColor];
     return rowView;
 }
 
@@ -700,8 +699,23 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)applyStyle
 {
-    [self.tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    self.visualEffectsView.appearance = [NSAppearance appearanceNamed:self.appearanceNameForVisualEffectsView];
+    self.visualEffectsView.material = self.materialForVisualEffectsView;
     [self reloadDataAndPreserveSelection];
+}
+
+- (NSAppearanceName)appearanceNameForVisualEffectsView
+{
+    return SPUserInterface.isDark ? NSAppearanceNameVibrantDark: NSAppearanceNameVibrantLight;
+}
+
+- (NSVisualEffectMaterial)materialForVisualEffectsView
+{
+    if (@available(macOS 10.14, *)) {
+        return NSVisualEffectMaterialUnderWindowBackground;
+    }
+
+    return NSVisualEffectMaterialAppearanceBased;
 }
 
 @end

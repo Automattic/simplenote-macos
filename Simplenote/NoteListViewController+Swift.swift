@@ -5,6 +5,13 @@ import Foundation
 //
 extension NoteListViewController {
 
+    /// Setup: SearchBar
+    ///
+    @objc
+    func setupSearchBar() {
+        searchField.centersPlaceholder = false
+    }
+
     /// Ensures only the actions that are valid can be performed
     ///
     @objc
@@ -16,13 +23,35 @@ extension NoteListViewController {
     ///
     @objc
     func applyStyle() {
-        let name: NSAppearance.Name = SPUserInterface.isDark ? .vibrantDark : .aqua
-
+        backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
-        searchField.appearance = NSAppearance(named: name)
-        searchField.textColor = .simplenoteSearchBarTextColor
-        statusField.textColor = .simplenoteEmptyStateTextColor
-
+        searchField.textColor = .simplenoteTextColor
+        searchField.placeholderAttributedString = searchFieldPlaceholderString
+        statusField.textColor = .simplenoteSecondaryTextColor
         reloadDataAndPreserveSelection()
+
+        // Legacy Support: High Sierra
+        if #available(macOS 10.14, *) {
+            return
+        }
+
+        let name: NSAppearance.Name = SPUserInterface.isDark ? .vibrantDark : .aqua
+        searchField.appearance = NSAppearance(named: name)
+    }
+}
+
+
+// MARK: - Helpers
+//
+private extension NoteListViewController {
+
+    var searchFieldPlaceholderString: NSAttributedString {
+        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
+            .font: NSFont.simplenoteSecondaryTextFont
+        ]
+
+        return NSAttributedString(string: text, attributes: attributes)
     }
 }

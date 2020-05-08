@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SPBackgroundView : NSView
-
+@property (nonatomic, strong, nullable) NSColor *fillColor;
 @end

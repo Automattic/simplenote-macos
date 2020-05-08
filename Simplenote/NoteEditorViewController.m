@@ -17,7 +17,6 @@
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
-#import "VSThemeManager.h"
 #import "SPTracker.h"
 
 #import "Simplenote-Swift.h"
@@ -85,11 +84,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 @implementation NoteEditorViewController
 
-- (VSTheme *)theme {
-
-    return [[VSThemeManager sharedManager] theme];
-}
-
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -116,7 +110,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
-       NSForegroundColorAttributeName: [self.theme colorForKey:@"tintColor"],
+       NSForegroundColorAttributeName: [NSColor simplenoteLinkColor],
         NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle],
                 NSCursorAttributeName: [NSCursor pointingHandCursor]
      }];
@@ -930,15 +924,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark - Fonts
-- (NSColor *)noteBodyColor
-{
-    return [self.theme colorForKey:@"textColor"];
-}
-
-- (NSColor *)noteTitleColor
-{
-    return [self.theme colorForKey:@"noteHeadlineFontColor"];
-}
 
 - (NSInteger)getFontSize
 {
@@ -1051,9 +1036,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     }
 
-    self.noteEditor.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
-    [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
-    [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
+    [self.statusTextField setTextColor:[NSColor simplenoteSecondaryTextColor]];
+    [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
+    [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];
 
     [self.bottomBar applyStyle];
     [self.bottomBar setNeedsDisplay:YES];
@@ -1203,9 +1188,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     // If needed, dismiss any active popovers
     [self dismissActivePopover];
     
-    // Create a new Popover + Show it
-    self.activePopover = [self newPopoverWithContentViewController:viewController];
-    [self.activePopover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
+    // New PopOver
+    NSPopover *popover = [self newPopoverWithContentViewController:viewController];;
+
+    // Note:
+    // NSPopover appears not to be applying it's NSAppearance to the `contentViewController` automatically.
+    // For that reason, we'll ensure the ViewController matches the Popover's Appearance.
+    //
+    viewController.view.appearance = popover.appearance;
+
+    // Finally display!
+    [popover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
+    self.activePopover = popover;
 }
 
 - (void)dismissActivePopover
@@ -1221,7 +1215,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     popover.delegate                = self;
     popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     popover.behavior                = NSPopoverBehaviorTransient;
-    
+
     return popover;
 }
 

@@ -6,11 +6,16 @@
 
 @implementation SPWindow
 
+- (void)dealloc
+{
+    [self stopListeningToNotifications];
+}
+
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)styleMask backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
 {
     if (self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag]) {
-        [self setupTitle];
-        [self applyMojaveThemeOverrideIfNecessary];
+        [self startListeningToNotifications];
+        [self reloadAppearance];
     }
 
     return self;
@@ -19,8 +24,8 @@
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)styleMask backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag screen:(NSScreen *)screen
 {
     if ((self = [super initWithContentRect:contentRect styleMask:styleMask backing:bufferingType defer:flag screen:screen])) {
-        [self setupTitle];
-        [self applyMojaveThemeOverrideIfNecessary];
+        [self startListeningToNotifications];
+        [self reloadAppearance];
     }
 
     return self;
@@ -29,12 +34,18 @@
 
 #pragma mark - Initialization Helpers
 
-- (void)setupTitle
+- (void)startListeningToNotifications
 {
-    self.titleVisibility = NSWindowTitleHidden;
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(reloadAppearance) name:ThemeDidChangeNotification object:nil];
 }
 
-- (void)applyMojaveThemeOverrideIfNecessary
+- (void)stopListeningToNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)reloadAppearance
 {
     if (@available(macOS 10.14, *)) {
         if ([SPUserInterface isSystemThemeSelected]) {

@@ -38,7 +38,6 @@ private extension ShareViewController {
 
     @objc
     func applyStyle() {
-        let theme = VSThemeManager.shared().theme()
-        shareTextField.textColor = theme.color(forKey: "popoverTextColor")
+        shareTextField.textColor = .simplenoteSelectedTextColor
     }
 }

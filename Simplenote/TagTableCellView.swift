@@ -118,12 +118,12 @@ private extension TagTableCellView {
     }
 
     func refreshStyle() {
-        let tintColor: NSColor = selected ? .simplenoteTagListSelectedTextColor : .simplenoteTagListRegularTextColor
+        let tintColor: NSColor = selected ? .simplenoteSelectedTextColor : .simplenoteTextColor
 
         iconImageView.tintImage(color: tintColor)
         nameTextField.isSelected = selected
-        nameTextField.textRegularColor = .simplenoteTagListRegularTextColor
-        nameTextField.textSelectionColor = .simplenoteTagListSelectedTextColor
-        nameTextField.textEditionColor = .simplenoteTagListEditingTextColor
+        nameTextField.textRegularColor = .simplenoteTextColor
+        nameTextField.textSelectionColor = .simplenoteSelectedTextColor
+        nameTextField.textEditionColor = .simplenoteTextColor
     }
 }

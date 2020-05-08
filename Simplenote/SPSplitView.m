@@ -7,7 +7,7 @@
 //
 
 #import "SPSplitView.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 #pragma mark ====================================================================================
 #pragma mark Constants
@@ -47,17 +47,18 @@ const CGFloat SPSplitViewDefaultWidth = 120.0;
 
 - (CGFloat)dividerThickness
 {
-    return 1.0;
+    // Expected to yield exactly 1 pixel, no matter if we're in SD or HD
+    return [[NSScreen mainScreen] pointToPixelRatio];
 }
 
 - (void)drawDividerInRect:(NSRect)rect
 {
     // Slight hack to make left divider the background color when tags view is collapsed
     if (rect.origin.x <= 1) {
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] set];
+        [[NSColor simplenoteBackgroundColor] set];
         NSRectFill(rect);
     } else {
-        [[[[VSThemeManager sharedManager] theme] colorForKey:@"dividerColor"] set];
+        [[NSColor simplenoteDividerColor] set];
         NSRectFill(rect);
     }
 }

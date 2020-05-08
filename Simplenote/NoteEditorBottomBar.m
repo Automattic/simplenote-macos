@@ -9,7 +9,7 @@
 #import "NoteEditorBottomBar.h"
 #import "SPGradientView.h"
 #import "SPTokenField.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 
 @implementation NoteEditorBottomBar
@@ -42,7 +42,9 @@
 - (void)refreshTagField:(BOOL)showPlaceholder
 {
     NSString *tagPlaceholder = NSLocalizedString(@"Add a tag...", @"Placeholder text in the text field where you need to tap in order to add a tag");
-    NSDictionary *colorAttribute = @{NSForegroundColorAttributeName:[[[VSThemeManager sharedManager] theme] colorForKey:@"tagViewPlaceholderColor"]};
+    NSDictionary *colorAttribute = @{
+        NSForegroundColorAttributeName: [NSColor simplenoteSecondaryTextColor]
+    };
     NSString *placeholderText = showPlaceholder ? tagPlaceholder : @"";
     [[self.tokenField cell] setPlaceholderAttributedString:[[NSAttributedString alloc] initWithString:placeholderText attributes:colorAttribute]];
     [tagImageView setHidden:!showPlaceholder];
@@ -59,16 +61,10 @@
     return enabled;
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] setFill];
-    NSRectFill(dirtyRect);
-    [super drawRect:dirtyRect];
-}
-
 - (void)applyStyle
 {
-    [self.tokenField setTextColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"textColor"]];
-    [self.tokenField setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    self.tokenField.textColor = [NSColor simplenoteTextColor];
+    self.tokenField.backgroundColor = [NSColor simplenoteBackgroundColor];
     [bottomBorder applyStyle];
     [bottomBorder setNeedsDisplay:YES];
 }

@@ -1,5 +1,6 @@
 1.11.0
 ------
+- New Color Scheme for Light and Dark Modes!
 - Simplenote will now react dynamically to macOS Appearance updates when the System Theme is selected.
 
 1.10.0

@@ -79,10 +79,6 @@ private extension Theme {
 //
 private extension Theme {
 
-    private static var theme: VSTheme {
-        return VSThemeManager.shared().theme()
-    }
-
     private static var fontSize: CGFloat {
         var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
         if fontSize == 0 {
@@ -105,7 +101,7 @@ private extension Theme {
 
     static var bodyAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor: theme.color(forKey: "textColor"),
+            .foregroundColor: NSColor.simplenoteTextColor,
             .font: NSFont.systemFont(ofSize: fontSize)
         ]
     }
@@ -132,7 +128,7 @@ private extension Theme {
         let codeFont = NSFont(name: "Courier", size: fontSize) ?? NSFont.systemFont(ofSize: fontSize)
 
         return [
-            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
             .font: codeFont
         ]
     }
@@ -151,14 +147,14 @@ private extension Theme {
 
         return [
             .font: italicFont,
-            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
             .paragraphStyle: paragraphStyle
         ]
     }
 
     static var urlAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor: theme.color(forKey: "tintColor")
+            .foregroundColor: NSColor.simplenoteLinkColor
         ]
     }
 }

@@ -7,25 +7,25 @@
 //
 
 #import "SPBackgroundView.h"
-#import "VSThemeManager.h"
+#import "Simplenote-Swift.h"
 
 @implementation SPBackgroundView
 
-- (instancetype)initWithFrame:(NSRect)frame
+- (void)setFillColor:(NSColor *)fillColor
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+    _fillColor = fillColor;
+    [self setNeedsDisplay:YES];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
 
-    [[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"] setFill];
+    if (!self.fillColor) {
+        return;
+    }
+
+    [self.fillColor setFill];
     NSRectFill(dirtyRect);
 }
 

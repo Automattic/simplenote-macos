@@ -40,7 +40,13 @@ class SPUserInterface: NSObject {
             return false
         }
 
-        return NSApp.effectiveAppearance.isDark
+        /// Note:
+        ///  -   Yes. We must restort to UserDefaults to check if the system is in Dark Mode.
+        ///  -   Reason: `NSApp.effectiveAppearance.isDark` might fall out of sync, in specific conditions, such as...
+        ///         1.  systemAppearance setting in Simplenote
+        ///         2.  Switching back and forth from Light / Dark (macOS 10.15)
+        ///
+        return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
     }
 }
 

@@ -19,7 +19,7 @@ extension NSTextView {
     func performUndoableReplacementAndProcessLists(at range: NSRange, string: String) -> Bool {
         registerUndoCheckpointAndPerform { storage in
             storage.replaceCharacters(in: range, with: string)
-            storage.processChecklists(with: .textListColor)
+            storage.processChecklists(with: .simplenoteTextColor)
         }
     }
 
@@ -105,7 +105,7 @@ extension NSTextView {
     @objc
     func displayNote(content: String) {
         string = content
-        textStorage?.processChecklists(with: .textListColor)
+        textStorage?.processChecklists(with: .simplenoteTextColor)
         undoManager?.removeAllActions()
     }
 

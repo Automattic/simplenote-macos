@@ -3,11 +3,6 @@
 //
 
 
-#pragma mark - External
-
-#import "VSThemeManager.h"
-
-
 #pragma mark - Model
 
 #import "Note.h"

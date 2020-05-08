@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "VSTheme.h"
 #import "SPBackgroundView.h"
 @import Simperium_OSX;
 
@@ -22,7 +21,6 @@
 
 @interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate> {
     IBOutlet NSMenuItem *focusModeMenuItem;
-    IBOutlet SPBackgroundView *backgroundView;
 }
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;

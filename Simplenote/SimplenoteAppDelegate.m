@@ -18,7 +18,6 @@
 #import "SPWindow.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
-#import "VSThemeManager.h"
 #import "SPSplitView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
@@ -48,6 +47,7 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
+@property (strong, nonatomic) IBOutlet SPBackgroundView         *backgroundView;
 
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
@@ -164,9 +164,7 @@
 
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
-
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(applyStyle) name:ThemeDidChangeNotification object:nil];
+    [self startListeningForThemeNotifications];
 }
 
 - (void)configureWindow
@@ -656,23 +654,39 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: helpLinks[menuItem.tag]]];
 }
 
+- (void)startListeningForThemeNotifications
+{
+    // Note: This *definitely* has to go, the second backgroundView is relocated
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(applyStyle)
+                                                            name:AppleInterfaceThemeChangedNotification
+                                                          object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applyStyle)
+                                                 name:ThemeDidChangeNotification
+                                               object:nil];
+}
+
+- (void)stopListeningForThemeNotifications
+{
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)applyStyle
 {
-    if (@available(macOS 10.14, *)) {
-        SPWindow *window = (SPWindow *)self.window;
-        [window applyMojaveThemeOverrideIfNecessary];
-        [self.noteEditorViewController applyStyle];
-        [self.noteEditorViewController fixChecklistColoring];
-        [self.noteListViewController applyStyle];
-        return;
-    }
-
-    [backgroundView setNeedsDisplay:YES];
-
-    [self.splitView applyStyle];
+    self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
+    [self.noteEditorViewController fixChecklistColoring];
+
+    // TODO: Obliterate this from the AppDelegate ASAP
+    if (@available(macOS 10.14, *)) {
+        return;
+    }
+
+    [self.splitView applyStyle];
 }
 
 

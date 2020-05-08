@@ -9,8 +9,6 @@
 #import <AppKit/AppKit.h>
 #import "NoteEditorViewController.h"
 
-@interface SPTokenField : NSTokenField <NSTextFieldDelegate, NSControlTextEditingDelegate>{
-    IBOutlet NoteEditorViewController *noteEditorViewController;
-}
+@interface SPTokenField : NSTokenField <NSTextFieldDelegate, NSControlTextEditingDelegate>
 
 @end

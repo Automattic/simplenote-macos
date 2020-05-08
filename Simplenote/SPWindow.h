@@ -5,6 +5,4 @@
 
 @interface SPWindow : NSWindow
 
-- (void)applyMojaveThemeOverrideIfNecessary;
-
 @end
