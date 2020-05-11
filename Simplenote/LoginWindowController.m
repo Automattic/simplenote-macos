@@ -47,12 +47,13 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
         frame.origin.y += SPLoginAdditionalHeight;
         [view setFrame:frame];
     }
-    
+
+    NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
     NSButton *wpccButton = [[NSButton alloc] init];
     [wpccButton setTitle:NSLocalizedString(@"Sign in with WordPress.com", @"button title for wp.com sign in button")];
     [wpccButton setTarget:self];
     [wpccButton setAction:@selector(wpccSignInAction:)];
-    [wpccButton setImage:[NSImage imageNamed:@"icon_wp"]];
+    [wpccButton setImage:wpIcon];
     [wpccButton setImagePosition:NSImageLeft];
     [wpccButton setBordered:NO];
     [wpccButton setFont:[NSFont systemFontOfSize:16.0]];

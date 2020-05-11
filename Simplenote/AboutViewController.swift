@@ -15,7 +15,9 @@ class AboutViewController: NSViewController {
         static let privacyUrl =    "https://simplenote.com/privacy/"
         static let termsUrl =      "https://simplenote.com/terms/"
     }
-    
+
+    @IBOutlet var logoImageView:    NSImageView!
+    @IBOutlet var backgroundBox:    NSBox!
     @IBOutlet var blogLabel:        SPAboutTextField!
     @IBOutlet var twitterLabel:     SPAboutTextField!
     @IBOutlet var githubLabel:      SPAboutTextField!
@@ -27,6 +29,9 @@ class AboutViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        logoImageView.image = NSImage(named: .simplenoteLogo)
+        backgroundBox.fillColor = .simplenoteBrandColor
 
         let blogClick = NSClickGestureRecognizer(target: self, action: #selector(blogLabelClick))
         blogLabel.addGestureRecognizer(blogClick)

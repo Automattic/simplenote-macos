@@ -30,7 +30,8 @@
 + (SPGradientView *)horizontalDividerInView:(NSView *)view location:(CGPoint)location
 {
     CGFloat height = [[NSScreen mainScreen] pointToPixelRatio];
-    CGRect frame = NSMakeRect(location.x, location.y, view.frame.size.width-location.x*2-location.x/2+5, height);
+    CGFloat width = view.frame.size.width - (location.x * 2) - (location.x / 2) + 5;
+    CGRect frame = NSMakeRect(location.x, location.y, width, height);
     return [self horizontalDividerForRect:frame];
 }
 

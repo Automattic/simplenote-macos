@@ -104,6 +104,7 @@
     
     SPAuthenticationConfiguration *config           = [SPAuthenticationConfiguration sharedInstance];
     config.logoImageName                            = SPSimplenoteLogoImageName;
+    config.controlColor                             = [NSColor simplenoteBrandColor];
     config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
     
     return simperium;
@@ -164,9 +165,7 @@
 
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
-
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(applyStyle) name:ThemeDidChangeNotification object:nil];
+    [self startListeningForThemeNotifications];
 }
 
 - (void)configureWindow
@@ -654,6 +653,25 @@
     NSArray *helpLinks = @[SPHelpURL, SPContactUsURL, SPTwitterURL];
     NSMenuItem *menuItem = (NSMenuItem *)sender;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: helpLinks[menuItem.tag]]];
+}
+
+- (void)startListeningForThemeNotifications
+{
+    // Note: This *definitely* has to go, the second backgroundView is relocated
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(applyStyle)
+                                                            name:AppleInterfaceThemeChangedNotification
+                                                          object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applyStyle)
+                                                 name:ThemeDidChangeNotification
+                                               object:nil];
+}
+
+- (void)stopListeningForThemeNotifications
+{
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)applyStyle

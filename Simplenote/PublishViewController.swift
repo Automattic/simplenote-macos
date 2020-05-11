@@ -101,7 +101,7 @@ private extension PublishViewController {
         ]
 
         urlTextField.placeholderAttributedString = NSAttributedString(string: urlPlaceholder, attributes: urlAttributes)
-        urlTextField.backgroundColor = .simplenoteBackgroundColor
+        urlTextField.backgroundColor = .simplenotePopoverBackgroundColor
 
         // Legend
         let legendParagraph = NSMutableParagraphStyle()

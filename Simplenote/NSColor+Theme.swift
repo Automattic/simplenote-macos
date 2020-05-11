@@ -17,21 +17,6 @@ extension NSColor {
 //
 extension NSColor {
 
-    /// Initializes a new dynamic NSColor instance that will automatically react to Appearance changes
-    /// Note: In `macOS <10.15` this API will always return the NSColor matching the `Current` Appearance
-    ///
-    static func dynamicColor(lightStudio: ColorStudio, darkStudio: ColorStudio) -> NSColor {
-        guard #available(macOS 10.15, *) else {
-            let targetColor = SPUserInterface.isDark ? darkStudio : lightStudio
-            return NSColor(studioColor: targetColor)
-        }
-
-        return NSColor(name: nil, dynamicProvider: { appearance in
-            let studioColor = appearance.isDark ? darkStudio : lightStudio
-            return NSColor(studioColor: studioColor)
-        })
-    }
-
     /// Initializes a new dynamic NSColor instance, that will automatically react to Appearance changes
     /// Note: In `macOS <10.15` this API will always return the NSColor matching the `Current` Appearance
     ///
@@ -40,9 +25,22 @@ extension NSColor {
             return SPUserInterface.isDark ? darkColor : lightColor
         }
 
-        return NSColor(name: nil, dynamicProvider: { appearance in
-            return appearance.isDark ? darkColor : lightColor
-        })
+        return NSColor(name: nil) {
+            $0.isDark ? darkColor : lightColor
+        }
+    }
+
+    /// Initializes a new dynamic NSColor instance that will automatically react to Appearance changes
+    /// Note: In `macOS <10.15` this API will always return the NSColor matching the `Current` Appearance
+    ///
+    static func dynamicColor(lightStudio: ColorStudio, darkStudio: ColorStudio) -> NSColor {
+        guard #available(macOS 10.15, *) else {
+            return NSColor(studioColor: SPUserInterface.isDark ? darkStudio : lightStudio)
+        }
+
+        return NSColor(name: nil) {
+            NSColor(studioColor: $0.isDark ? darkStudio : lightStudio)
+        }
     }
 }
 
@@ -53,7 +51,7 @@ extension NSColor {
 
     @objc
     static var simplenoteActionButtonTintColor: NSColor {
-        dynamicColor(lightStudio: .blue50, darkStudio: .blue30)
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
     }
 
     @objc
@@ -67,8 +65,23 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteSecondaryBackgroundColor: NSColor {
+        .simplenoteControlBackgroundColor
+    }
+
+    @objc
     static var simplenoteSelectedBackgroundColor: NSColor {
-        NSColor(studioColor: .blue50)
+        NSColor(studioColor: .spBlue50)
+    }
+
+    @objc
+    static var simplenotePopoverBackgroundColor: NSColor {
+        .simplenoteUnderPageBackgroundDarkColor
+    }
+
+    @objc
+    static var simplenotePlaceholderTintColor: NSColor {
+        dynamicColor(lightStudio: .gray5, darkStudio: .gray60)
     }
 
     @objc
@@ -83,7 +96,7 @@ extension NSColor {
 
     @objc
     static var simplenoteLinkColor: NSColor {
-        dynamicColor(lightStudio: .blue50, darkStudio: .blue30)
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
     }
 
     @objc
@@ -100,6 +113,11 @@ extension NSColor {
     static var simplenoteSelectedTextColor: NSColor {
         .white
     }
+
+    @objc
+    static var simplenoteBrandColor: NSColor {
+        NSColor(studioColor: .spBlue50)
+    }
 }
 
 
@@ -107,27 +125,35 @@ extension NSColor {
 //
 private extension NSColor {
 
-    // TODO: Review
     static var simplenoteUnderPageBackgroundColor: NSColor {
+        dynamicColor(lightColor: .white, darkColor: .simplenoteUnderPageBackgroundDarkColor)
+    }
+
+    static var simplenoteControlBackgroundColor: NSColor {
         if #available(OSX 10.14, *) {
-            return dynamicColor(lightColor: .white, darkColor: .underPageBackgroundColor)
+            return dynamicColor(lightColor: .white, darkColor: .controlBackgroundColor)
         }
 
-        return dynamicColor(lightColor: .white, darkColor: .simplenoteUnderPageBackgroundDarkColor)
+        return dynamicColor(lightColor: .white, darkColor: .simplenoteControlBackgroundDarkColor)
     }
 
-    // TODO: Review
     static var simplenoteUnderPageBackgroundDarkColor: NSColor {
-        NSColor(red: 41.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
+        if #available(OSX 10.14, *) {
+            return .underPageBackgroundColor
+        }
+
+        return NSColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
     }
 
-    // TODO: Review
+    static var simplenoteControlBackgroundDarkColor: NSColor {
+        NSColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+    }
+
     static var simplenoteSecondarySelectedBackgroundDarkColor: NSColor {
-        NSColor(red: 54.0 / 255.0, green: 54.0 / 255.0, blue: 54.0 / 255.0, alpha: 0.4)
+        NSColor(red: 54.0/255.0, green: 54.0/255.0, blue: 54.0/255.0, alpha: 0.4)
     }
 
-    // TODO: Review
     static var simplenoteSecondarySelectedBackgroundLightColor: NSColor {
-        NSColor(red: 197.0 / 255.0, green: 217.0 / 255.0, blue: 237.0 / 255.0, alpha: 1.0)
+        NSColor(studioColor: .spBlue5)
     }
 }

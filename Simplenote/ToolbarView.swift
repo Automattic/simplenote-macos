@@ -80,7 +80,7 @@ private extension ToolbarView {
 }
 
 
-// MARK: - Initialization
+// MARK: - State Management
 //
 private extension ToolbarView {
 
@@ -104,14 +104,35 @@ private extension ToolbarView {
         trashButton.isEnabled = state.isTrashActionEnabled
         trashButton.isHidden = state.isTrashActionHidden
     }
+}
+
+
+// MARK: - Theming
+//
+private extension ToolbarView {
+
+    var allButtons: [NSButton] {
+        [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+    }
 
     @objc
     func refreshStyle() {
-        let buttons: [NSButton] = [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+        refreshButtonsStyle()
+        refreshActionMenuStyle()
+    }
 
-        for button in buttons {
+    func refreshButtonsStyle() {
+        for button in allButtons {
             button.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
         }
+    }
+
+    func refreshActionMenuStyle() {
+        guard let actionButtonItem = actionButton.menu?.items.first, let image = actionButtonItem.image else {
+            return
+        }
+
+        actionButtonItem.image = image.tinted(with: .simplenoteSecondaryActionButtonTintColor)
     }
 
     func setupSubviews() {
@@ -121,5 +142,10 @@ private extension ToolbarView {
         restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
         shareButton.toolTip = NSLocalizedString("Share", comment: "Tooltip: Share a note")
         trashButton.toolTip = NSLocalizedString("Trash", comment: "Tooltip: Trash a Note")
+
+        let cells = allButtons.compactMap { $0.cell as? NSButtonCell }
+        for cell in cells {
+            cell.highlightsBy = .pushInCellMask
+        }
     }
 }
