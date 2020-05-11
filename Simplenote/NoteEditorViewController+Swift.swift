@@ -1,6 +1,18 @@
 import Foundation
 
 
+// MARK: - Interface Initialization
+//
+extension NoteEditorViewController {
+
+    @objc
+    func setupStatusImageView() {
+        statusImageView.image = NSImage(named: .simplenoteLogoInner)
+        statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
+    }
+}
+
+
 // MARK: - Private Helpers
 //
 extension NoteEditorViewController {

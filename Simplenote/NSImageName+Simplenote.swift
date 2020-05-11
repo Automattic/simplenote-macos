@@ -37,6 +37,14 @@ extension NSImage.Name {
     ///
     static let restore = NSImage.Name("button_restore")
 
+    /// Logo: Simplenote
+    ///
+    static let simplenoteLogo = NSImage.Name("icon_simplenote")
+
+    /// Logo: Simplenote (Inner)
+    ///
+    static let simplenoteLogoInner = NSImage.Name("icon_simplenote_inner")
+
     /// Toolbar: Share
     ///
     static let share = NSImage.Name("button_share")
@@ -44,4 +52,8 @@ extension NSImage.Name {
     /// Tag List: Trash
     ///
     static let trash = NSImage.Name("button_trash")
+
+    /// Logo: WordPress
+    ///
+    static let wordPressLogo = NSImage.Name("icon_wp")
 }

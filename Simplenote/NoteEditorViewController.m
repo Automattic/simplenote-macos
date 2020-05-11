@@ -121,6 +121,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
 
+    // StatusImage
+    [self setupStatusImageView];
+
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
     [self.markdownViewController preloadView];
@@ -1169,7 +1172,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     if (firstString) {
-        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:@"Publish to Web" image:[NSImage imageNamed:@"share_icon"] alternateImage:nil handler:^{
+        NSImage *image = [NSImage imageNamed:@"icon_simplenote"];
+        NSString *title = NSLocalizedString(@"Publish to Web", @"Publish to Web Service");
+        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:title image:image alternateImage:nil handler:^{
             [self showPublishPopover];
         }];
         

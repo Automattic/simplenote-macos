@@ -104,6 +104,7 @@
     
     SPAuthenticationConfiguration *config           = [SPAuthenticationConfiguration sharedInstance];
     config.logoImageName                            = SPSimplenoteLogoImageName;
+    config.controlColor                             = [NSColor simplenoteBrandColor];
     config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
     
     return simperium;

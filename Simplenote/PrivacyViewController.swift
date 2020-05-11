@@ -5,6 +5,10 @@ import Cocoa
 ///
 class PrivacyViewController: NSViewController {
 
+    /// Background Box
+    ///
+    @IBOutlet private var backgroundBox: NSBox!
+
     /// Title: TextField
     ///
     @IBOutlet private var titleTextField: NSTextField!
@@ -44,8 +48,15 @@ class PrivacyViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBackgroundBox()
         configureTextFields()
         refreshInterface()
+    }
+
+    /// Setup: Background
+    ///
+    private func configureBackgroundBox() {
+        backgroundBox.fillColor = .simplenoteBrandColor
     }
 
     /// Sets up all of the TextFields

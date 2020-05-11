@@ -46,7 +46,7 @@
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8W-lq-bJP">
                                             <rect key="frame" x="178" y="389" width="95" height="95"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="simplenote" id="eup-pb-NgT"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eup-pb-NgT"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NgJ-g1-nEA">
                                             <rect key="frame" x="80" y="333" width="291" height="19"/>
@@ -281,10 +281,12 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="backgroundBox" destination="jR0-c5-hne" id="EZe-0S-a1H"/>
                         <outlet property="blogLabel" destination="eGT-Zs-dGY" id="8qK-hu-Twv"/>
                         <outlet property="copyrightLabel" destination="7QO-fG-liO" id="FLV-mx-gvF"/>
                         <outlet property="githubLabel" destination="eoo-VW-fOF" id="sT5-oi-gMy"/>
                         <outlet property="hiringLabel" destination="NvX-jo-5we" id="exi-aU-Qny"/>
+                        <outlet property="logoImageView" destination="O8W-lq-bJP" id="JSr-Cl-2Hq"/>
                         <outlet property="privacyLabel" destination="zLM-6J-YYw" id="8LB-Pe-71z"/>
                         <outlet property="tosLabel" destination="Mvl-zm-Us5" id="k1s-pJ-Uzf"/>
                         <outlet property="twitterLabel" destination="qq6-gc-pbW" id="qja-Z4-q7a"/>
@@ -297,6 +299,5 @@
     </scenes>
     <resources>
         <image name="icon_arrow_top_right" width="24" height="24"/>
-        <image name="simplenote" width="512" height="512"/>
     </resources>
 </document>
