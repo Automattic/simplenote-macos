@@ -580,7 +580,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="900" height="582"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <splitView autosaveName="" dividerStyle="thin" vertical="YES" id="557" customClass="SPSplitView">
+                    <splitView autosaveName="" dividerStyle="thin" vertical="YES" id="557">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="582"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
