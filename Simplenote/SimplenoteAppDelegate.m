@@ -514,30 +514,6 @@
 }
 
 
-#pragma mark - Menu delegate
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    if ([self isEmptyTrashMenuItem:menuItem]) {
-        return [self numDeletedNotes] > 0;
-    }
-
-    if ([self isFocusMenuItem:menuItem]) {
-        return [self validateFocusMenuItem:menuItem];
-    }
-
-    if ([self isThemeMenuItem:menuItem]) {
-        return [self validateThemeMenuItem:menuItem];
-    }
-
-    if ([self isExportMenuItem:menuItem]) {
-        return [self validateExportMenuItem:menuItem];
-    }
-
-    return YES;
-}
-
-
 #pragma mark - Static Helpers
 
 + (SimplenoteAppDelegate *)sharedDelegate

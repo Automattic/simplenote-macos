@@ -22,41 +22,41 @@ extension SimplenoteAppDelegate {
 
 // MARK: - MenuItem(s) Validation
 //
-extension SimplenoteAppDelegate {
+extension SimplenoteAppDelegate: NSMenuItemValidation {
 
-    @objc
-    func isEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        return item.identifier == NSUserInterfaceItemIdentifier.emptyTrashItemIdentifier
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
+        }
+
+        switch identifier {
+        case .emptyTrashItemIdentifier:
+            return validateTrashMenuItem(menuItem)
+        case .exportItemIdentifier:
+            return validateExportMenuItem(menuItem)
+        case .focusItemIdentifier:
+            return validateFocusMenuItem(menuItem)
+        case .themeMenuIdentifier:
+            return validateThemeMenuItem(menuItem)
+        default:
+            return true
+        }
     }
 
-    @objc
-    func isFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        return item.identifier == NSUserInterfaceItemIdentifier.focusItemIdentifier
+    func validateTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        return numDeletedNotes() > .zero
     }
 
-    @objc
-    func isThemeMenuItem(_ item: NSMenuItem) -> Bool {
-        return item.menu?.identifier == NSUserInterfaceItemIdentifier.themeMenuIdentifier
-    }
-
-    @objc
-    func isExportMenuItem(_ item: NSMenuItem) -> Bool {
-        return item.identifier == NSUserInterfaceItemIdentifier.exportItemIdentifier
-    }
-
-    @objc
     func validateExportMenuItem(_ item: NSMenuItem) -> Bool {
         item.isHidden = !exportUnlocked
         return true
     }
 
-    @objc
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = noteListViewController.view.isHidden ? .on : .off
+        item.state = splitViewController.isNotesListCollapsed ? .on : .off
         return true
     }
 
-    @objc
     func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
         guard let option = ThemeOption(rawValue: item.tag) else {
             return false
