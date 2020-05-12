@@ -576,7 +576,7 @@
             <rect key="contentRect" x="199" y="95" width="900" height="618"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="720" height="400"/>
-            <view key="contentView" id="372" customClass="SPBackgroundView">
+            <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="900" height="582"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -1156,7 +1156,6 @@
         </window>
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
-                <outlet property="backgroundView" destination="372" id="C2S-D2-Vn5"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>

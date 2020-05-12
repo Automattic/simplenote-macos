@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SPBackgroundView.h"
 @import Simperium_OSX;
 
 

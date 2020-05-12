@@ -47,7 +47,6 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
-@property (strong, nonatomic) IBOutlet SPBackgroundView         *backgroundView;
 
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
@@ -657,7 +656,6 @@
 
 - (void)applyStyle
 {
-    self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
