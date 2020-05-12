@@ -18,7 +18,6 @@
 #import "SPWindow.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
-#import "SPSplitView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 #import "WPAuthHandler.h"
@@ -36,8 +35,7 @@
 #pragma mark ====================================================================================
 
 #define kFirstLaunchKey					@"SPFirstLaunch"
-#define kMinimumNoteListSplit			240
-#define kMaximumNoteListSplit			384
+
 
 
 #pragma mark ====================================================================================
@@ -52,7 +50,6 @@
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
 
-@property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
@@ -173,15 +170,12 @@
     self.tagListViewController.view.hidden      = collapsed;
     self.noteListViewController.view.hidden     = NO;
     self.window.releasedWhenClosed              = NO;
-    
-    [self.splitView adjustSubviews];
 }
 
 - (void)hookWindowNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:)         name:NSApplicationDidResignActiveNotification   object:self.window];
-    [nc addObserver:self selector:@selector(handleWindowDidResizeNote:)             name:NSWindowDidResizeNotification              object:self.window];
+    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:) name:NSApplicationDidResignActiveNotification object:self.window];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -340,11 +334,6 @@
 
 
 #pragma mark - NSWindow Notification Handlers
-
-- (void)handleWindowDidResizeNote:(NSNotification *)notification
-{
-    [self.splitView adjustSubviews];
-}
 
 - (void)handleWindowDidResignMainNote:(NSNotification *)notification
 {

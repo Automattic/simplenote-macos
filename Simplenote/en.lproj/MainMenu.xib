@@ -1158,7 +1158,6 @@
             <connections>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
-                <outlet property="splitView" destination="557" id="1477"/>
                 <outlet property="tagListViewController" destination="1461" id="1472"/>
                 <outlet property="window" destination="371" id="748"/>
             </connections>
