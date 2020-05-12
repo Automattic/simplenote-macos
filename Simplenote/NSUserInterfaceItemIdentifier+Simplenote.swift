@@ -5,19 +5,19 @@ import Foundation
 //
 extension NSUserInterfaceItemIdentifier {
 
-    /// Identifier: Empty Trash Item
+    /// Identifier: EmptyTrash MenuItem
     ///
-    static let emptyTrashItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "emptyTrashItemIdentifier")
+    static let emptyTrashMenuItem = NSUserInterfaceItemIdentifier(rawValue: "emptyTrashMenuItem")
 
-    /// Identifier: Export Item
+    /// Identifier: Export MenuItem
     ///
-    static let exportItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "exportItemIdentifier")
+    static let exportMenuItem = NSUserInterfaceItemIdentifier(rawValue: "exportMenuItem")
 
-    /// Identifier: Focus Item
+    /// Identifier: Focus MenuItem
     ///
-    static let focusItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "focusItemIdentifier")
+    static let focusMenuItem = NSUserInterfaceItemIdentifier(rawValue: "focusMenuItem")
 
     /// Identifier: Theme Menu
     ///
-    static let themeMenuIdentifier = NSUserInterfaceItemIdentifier(rawValue: "themeMenuIdentifier")
+    static let themeMenu = NSUserInterfaceItemIdentifier(rawValue: "themeMenu")
 }

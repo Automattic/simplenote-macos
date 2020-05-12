@@ -31,13 +31,13 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .emptyTrashItemIdentifier:
+        case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
-        case .exportItemIdentifier:
+        case .exportMenuItem:
             return validateExportMenuItem(menuItem)
-        case .focusItemIdentifier:
+        case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
-        case .themeMenuIdentifier:
+        case .themeMenu:
             return validateThemeMenuItem(menuItem)
         default:
             return true
