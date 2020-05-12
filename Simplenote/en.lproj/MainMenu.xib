@@ -698,7 +698,7 @@
                                             <edgeInsets key="contentInsets" left="0.0" right="0.0" top="72" bottom="0.0"/>
                                         </clipView>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="XV6-d7-Lfo"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="XV6-d7-Lfo"/>
                                         </constraints>
                                         <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1454">
@@ -718,6 +718,7 @@
                                     <constraint firstItem="1452" firstAttribute="top" secondItem="1436" secondAttribute="top" id="X8N-gH-844"/>
                                     <constraint firstItem="Re0-xq-32H" firstAttribute="top" secondItem="1436" secondAttribute="top" id="bV5-b8-3Na"/>
                                     <constraint firstAttribute="bottom" secondItem="Re0-xq-32H" secondAttribute="bottom" id="bkl-jV-THQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="1452" secondAttribute="trailing" id="hfA-3R-4K3"/>
                                     <constraint firstAttribute="bottom" secondItem="1452" secondAttribute="bottom" id="w0G-Tu-M9B"/>
                                 </constraints>
                             </customView>
