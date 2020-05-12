@@ -193,6 +193,8 @@
 		B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B57CB881244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
 		B57CB882244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
+		B586C062245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
+		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -499,6 +501,7 @@
 		B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Simplenote.swift"; sourceTree = "<group>"; };
 		B57CB880244E421400BA7969 /* SPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextField.swift; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
+		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Simplenote.swift"; sourceTree = "<group>"; };
 		B598487C1BCDB95A005EFBBE /* SPAutomatticTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAutomatticTracker.h; sourceTree = "<group>"; };
 		B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAutomatticTracker.m; sourceTree = "<group>"; };
@@ -1062,6 +1065,7 @@
 		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
 				B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */,
@@ -1511,6 +1515,7 @@
 				B5E061772450AEDA0076111A /* ToolbarView.swift in Sources */,
 				F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
+				B586C062245CCD35009508EC /* SplitViewController.swift in Sources */,
 				2614F1E01405A0B10031AE94 /* Tag.m in Sources */,
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
@@ -1684,6 +1689,7 @@
 				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5C7DD41243E4A7D00BEE354 /* ShareViewController.swift in Sources */,
 				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
+				B586C063245CCD35009508EC /* SplitViewController.swift in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */,

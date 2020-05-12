@@ -13,6 +13,7 @@
 @class NoteListViewController;
 @class NoteEditorViewController;
 @class TagListViewController;
+@class SplitViewController;
 
 #pragma mark ====================================================================================
 #pragma mark SimplenoteAppDelegate
@@ -20,18 +21,20 @@
 
 @interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
-@property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;
+@property (strong, nonatomic, readonly) IBOutlet NSWindow                   *window;
+@property (strong, nonatomic, readonly) IBOutlet TagListViewController      *tagListViewController;
+@property (strong, nonatomic, readonly) IBOutlet NoteListViewController     *noteListViewController;
+@property (strong, nonatomic, readonly) IBOutlet NoteEditorViewController   *noteEditorViewController;
 
-@property (strong, nonatomic, readonly) IBOutlet TagListViewController    *tagListViewController;
-@property (strong, nonatomic, readonly) IBOutlet NoteListViewController   *noteListViewController;
-@property (strong, nonatomic, readonly) IBOutlet NoteEditorViewController *noteEditorViewController;
+@property (strong, nonatomic, readonly) Simperium                           *simperium;
+@property (strong, nonatomic, readonly) NSPersistentStoreCoordinator        *persistentStoreCoordinator;
+@property (strong, nonatomic, readonly) NSManagedObjectModel                *managedObjectModel;
+@property (strong, nonatomic, readonly) NSManagedObjectContext              *managedObjectContext;
 
-@property (strong, nonatomic, readonly) Simperium                         *simperium;
-@property (strong, nonatomic, readonly) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
-@property (strong, nonatomic, readonly) NSManagedObjectModel              *managedObjectModel;
-@property (strong, nonatomic, readonly) NSManagedObjectContext            *managedObjectContext;
+@property (assign, nonatomic, readonly) BOOL                                exportUnlocked;
 
-@property (assign, nonatomic, readonly) BOOL                              exportUnlocked;
+@property (strong, nonatomic) SplitViewController                           *splitViewController;
+
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 

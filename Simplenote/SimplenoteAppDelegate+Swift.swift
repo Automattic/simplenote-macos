@@ -5,6 +5,32 @@ import Foundation
 //
 extension SimplenoteAppDelegate {
 
+    @objc
+    func configureWindow() {
+        let splitViewController = SplitViewController()
+
+        let splitItems = [
+            NSSplitViewItem(sidebarWithViewController: tagListViewController),
+            NSSplitViewItem(contentListWithViewController: noteListViewController),
+            NSSplitViewItem(viewController: noteEditorViewController)
+        ]
+
+        for splitItem in splitItems {
+            splitItem.collapseBehavior = .useConstraints
+            splitViewController.addSplitViewItem(splitItem)
+        }
+
+        window.contentViewController = splitViewController
+        window.initialFirstResponder = noteEditorViewController.noteEditor
+        self.splitViewController = splitViewController
+    }
+}
+
+
+// MARK: - Actions!
+//
+extension SimplenoteAppDelegate {
+
     @IBAction
     func clickedThemeItem(_ sender: Any) {
         guard let item = sender as? NSMenuItem, item.state != .on else {
@@ -54,7 +80,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = noteListViewController.view.isHidden ? .on : .off
+        item.state = splitViewController.isNotesListCollapsed ? .on : .off
         return true
     }
 

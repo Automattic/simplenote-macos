@@ -163,15 +163,6 @@
     [self startListeningForThemeNotifications];
 }
 
-- (void)configureWindow
-{
-    // Restore collapsed state of tag list based on autosaved width
-    BOOL collapsed                              = self.tagListViewController.view.frame.size.width <= 1;
-    self.tagListViewController.view.hidden      = collapsed;
-    self.noteListViewController.view.hidden     = NO;
-    self.window.releasedWhenClosed              = NO;
-}
-
 - (void)hookWindowNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -503,10 +494,12 @@
 
 - (IBAction)toggleSidebarAction:(id)sender
 {
+    [self.splitViewController toggleSidebarActionWithSender:sender];
 }
 
 - (IBAction)focusModeAction:(id)sender
 {
+    [self.splitViewController focusModeActionWithSender:sender];
 }
 
 - (IBAction)helpAction:(id)sender
@@ -537,6 +530,7 @@
 
 - (void)applyStyle
 {
+    [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
