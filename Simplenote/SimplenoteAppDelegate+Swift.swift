@@ -54,7 +54,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = splitViewController.isNotesListCollapsed ? .on : .off
+        item.state = noteListViewController.view.isHidden ? .on : .off
         return true
     }
 
