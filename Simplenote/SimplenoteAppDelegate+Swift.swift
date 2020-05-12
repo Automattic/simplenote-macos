@@ -40,6 +40,17 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func isExportMenuItem(_ item: NSMenuItem) -> Bool {
+        return item.identifier == NSUserInterfaceItemIdentifier.exportItemIdentifier
+    }
+
+    @objc
+    func validateExportMenuItem(_ item: NSMenuItem) -> Bool {
+        item.isHidden = !exportUnlocked
+        return true
+    }
+
+    @objc
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
         item.state = noteListViewController.view.isHidden ? .on : .off
         return true

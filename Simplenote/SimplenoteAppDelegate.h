@@ -32,6 +32,8 @@
 @property (strong, nonatomic, readonly) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic, readonly) NSManagedObjectContext            *managedObjectContext;
 
+@property (assign, nonatomic, readonly) BOOL                              exportUnlocked;
+
 + (SimplenoteAppDelegate *)sharedDelegate;
 
 - (IBAction)signOutAction:(id)sender;

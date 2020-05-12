@@ -9,6 +9,10 @@ extension NSUserInterfaceItemIdentifier {
     ///
     static let emptyTrashItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "emptyTrashItemIdentifier")
 
+    /// Identifier: Export Item
+    ///
+    static let exportItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "exportItemIdentifier")
+
     /// Identifier: Focus Item
     ///
     static let focusItemIdentifier = NSUserInterfaceItemIdentifier(rawValue: "focusItemIdentifier")

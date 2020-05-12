@@ -78,7 +78,7 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Export Everything" hidden="YES" id="Pwd-hR-fBt">
+                            <menuItem title="Export Everything" hidden="YES" identifier="exportItemIdentifier" id="Pwd-hR-fBt">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="exportAcction:" target="494" id="0Ff-Xt-PdT"/>
@@ -1150,7 +1150,6 @@
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
                 <outlet property="backgroundView" destination="372" id="C2S-D2-Vn5"/>
-                <outlet property="exportItem" destination="Pwd-hR-fBt" id="fmk-th-axO"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>

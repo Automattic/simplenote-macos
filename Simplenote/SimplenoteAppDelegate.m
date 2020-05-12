@@ -54,7 +54,7 @@
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
 
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
+@property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
@@ -209,7 +209,7 @@
     }
 
     if ([SPExporter mustEnableExportAction:url]) {
-        [self.exportItem setHidden:NO];
+        self.exportUnlocked = YES;
     }
 }
 
@@ -528,6 +528,10 @@
 
     if ([self isThemeMenuItem:menuItem]) {
         return [self validateThemeMenuItem:menuItem];
+    }
+
+    if ([self isExportMenuItem:menuItem]) {
+        return [self validateExportMenuItem:menuItem];
     }
 
     return YES;
