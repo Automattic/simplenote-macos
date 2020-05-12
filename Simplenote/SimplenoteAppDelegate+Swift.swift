@@ -25,13 +25,14 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate: NSMenuItemValidation {
 
     public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        guard let identifier = menuItem.identifier else {
+        // Whenever a given NSMenuItem doesn't have an Identifier set, we'll check if the containing NSMenu has one
+        guard let identifier = menuItem.identifier ?? menuItem.menu?.identifier else {
             return true
         }
 
         switch identifier {
         case .emptyTrashItemIdentifier:
-            return validateTrashMenuItem(menuItem)
+            return validateEmptyTrashMenuItem(menuItem)
         case .exportItemIdentifier:
             return validateExportMenuItem(menuItem)
         case .focusItemIdentifier:
@@ -43,7 +44,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
     }
 
-    func validateTrashMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
         return numDeletedNotes() > .zero
     }
 
