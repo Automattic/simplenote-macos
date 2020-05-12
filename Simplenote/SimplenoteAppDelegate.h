@@ -18,7 +18,7 @@
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate>
+@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;
 
