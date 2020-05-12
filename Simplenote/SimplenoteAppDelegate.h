@@ -19,9 +19,7 @@
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate> {
-    IBOutlet NSMenuItem *focusModeMenuItem;
-}
+@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;
 

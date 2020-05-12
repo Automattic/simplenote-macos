@@ -84,7 +84,7 @@
                                     <action selector="exportAcction:" target="494" id="0Ff-Xt-PdT"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Empty Trash" id="1256">
+                            <menuItem title="Empty Trash" identifier="emptyTrashItemIdentifier" id="1256">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="emptyTrashAction:" target="494" id="1688"/>
@@ -473,7 +473,7 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
-                            <menuItem title="Focus Mode" keyEquivalent="F" id="nrD-mL-W7Q">
+                            <menuItem title="Focus Mode" keyEquivalent="F" identifier="focusItemIdentifier" id="nrD-mL-W7Q">
                                 <connections>
                                     <action selector="focusModeAction:" target="494" id="3q6-ha-uEK"/>
                                 </connections>
@@ -1150,9 +1150,7 @@
         <customObject id="494" customClass="SimplenoteAppDelegate">
             <connections>
                 <outlet property="backgroundView" destination="372" id="C2S-D2-Vn5"/>
-                <outlet property="emptyTrashItem" destination="1256" id="1776"/>
                 <outlet property="exportItem" destination="Pwd-hR-fBt" id="fmk-th-axO"/>
-                <outlet property="focusModeMenuItem" destination="nrD-mL-W7Q" id="9KY-QY-jI5"/>
                 <outlet property="noteEditorViewController" destination="1107" id="1674"/>
                 <outlet property="noteListViewController" destination="874" id="1476"/>
                 <outlet property="splitView" destination="557" id="1477"/>

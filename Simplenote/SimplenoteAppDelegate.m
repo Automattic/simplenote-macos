@@ -55,7 +55,6 @@
 
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
@@ -519,8 +518,12 @@
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
-    if (menuItem == self.emptyTrashItem) {
+    if ([self isEmptyTrashMenuItem:menuItem]) {
         return [self numDeletedNotes] > 0;
+    }
+
+    if ([self isFocusMenuItem:menuItem]) {
+        return [self validateFocusMenuItem:menuItem];
     }
 
     if ([self isThemeMenuItem:menuItem]) {
@@ -637,8 +640,6 @@
     [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
     
     BOOL isEnteringFocusMode = [self.noteListViewController.view isHidden];
-    // Enable/disable buttons and search bar in the toolbar
-    [focusModeMenuItem setState:isEnteringFocusMode ? NSOnState : NSOffState];
     
     if (!isEnteringFocusMode && tagsVisible) {
         // If ending focus mode and the tag view was previously visible, show it agian

@@ -25,12 +25,24 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @objc
-    func isThemeMenuItem(_ item: NSMenuItem) -> Bool {
-        guard let identifier = item.menu?.identifier else {
-            return false
-        }
+    func isEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        return item.identifier == NSUserInterfaceItemIdentifier.emptyTrashItemIdentifier
+    }
 
-        return identifier == .themeMenuIdentifier
+    @objc
+    func isFocusMenuItem(_ item: NSMenuItem) -> Bool {
+        return item.identifier == NSUserInterfaceItemIdentifier.focusItemIdentifier
+    }
+
+    @objc
+    func isThemeMenuItem(_ item: NSMenuItem) -> Bool {
+        return item.menu?.identifier == NSUserInterfaceItemIdentifier.themeMenuIdentifier
+    }
+
+    @objc
+    func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = splitViewController.isNotesListCollapsed ? .on : .off
+        return true
     }
 
     @objc
