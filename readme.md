@@ -71,6 +71,13 @@ This will allow you to compile and run the app on a device or a simulator.
 
 _Note: Simplenote API features such as sharing and publishing will not work with development builds._
 
+## Style Guidelines
+
+ We follow the WordPress iOS Style Guidelines, and we're constantly improving / adopting latest techniques.
+
+ - [Swift Standard](https://github.com/wordpress-mobile/swift-style-guide)
+ - [ObjC Standard](https://github.com/wordpress-mobile/objective-c-style-guide)
+
 ## Contributing
 
 Read our [Contributing Guide](CONTRIBUTING.md) to learn about reporting issues, contributing code, and more ways to contribute.
