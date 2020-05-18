@@ -1,7 +1,7 @@
 import Foundation
 
 
-// MARK: - Actions!
+// MARK: - Initialization
 //
 extension SimplenoteAppDelegate {
 
