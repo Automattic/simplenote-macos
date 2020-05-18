@@ -80,8 +80,10 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = splitViewController.isNotesListCollapsed ? .on : .off
-        return true
+        let inFocusModeEnabled = splitViewController.isFocusModeEnabled
+        item.state = inFocusModeEnabled ? .on : .off
+
+        return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
     }
 
     func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {

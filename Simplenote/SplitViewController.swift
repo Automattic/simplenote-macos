@@ -8,7 +8,7 @@ class SplitViewController: NSSplitViewController {
 
     /// Indicates if the Notes List is collapsed
     ///
-    var isNotesListCollapsed: Bool {
+    var isFocusModeEnabled: Bool {
         splitViewItem(named: .notesList).isCollapsed
     }
 
@@ -48,7 +48,7 @@ extension SplitViewController {
         SPTracker.trackSidebarButtonPresed()
 
         // Stop focus mode when the sidebar button is pressed with focus mode active
-        guard !isNotesListCollapsed else {
+        guard !isFocusModeEnabled else {
             focusModeAction(sender: sender)
             return
         }
@@ -59,7 +59,7 @@ extension SplitViewController {
 
     @IBAction
     func focusModeAction(sender: Any) {
-        let nextState = !isNotesListCollapsed
+        let nextState = !isFocusModeEnabled
 
         let collapsibleItemNames: [SplitViewItemName] = [.tagsList, .notesList]
 
