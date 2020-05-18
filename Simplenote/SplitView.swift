@@ -5,15 +5,19 @@ import Foundation
 //
 class SplitView: NSSplitView {
 
-    /// Divider Thickness to be applied, whenever NSScreen.main is inaccessible
+    /// Default Divider Thickness: To be applied whenever NSScreen.main is inaccessible
     ///
     private let defaultDividerThickness = CGFloat(1)
+
+    /// Default Divider Color
+    ///
+    private let defaultDividerColor = NSColor.simplenoteDividerColor
 
     /// Divider Color
     ///
     var simplenoteDividerColor: NSColor? {
         didSet {
-            setNeedsDisplay(bounds)
+            needsDisplay = true
         }
     }
 
@@ -24,12 +28,12 @@ class SplitView: NSSplitView {
         NSScreen.main?.pointToPixelRatio ?? defaultDividerThickness
     }
 
-    override func drawDivider(in rect: NSRect) {
-        guard let dividerColor = simplenoteDividerColor else {
-            return
-        }
+    override var dividerColor: NSColor {
+        simplenoteDividerColor ?? defaultDividerColor
+    }
 
-        dividerColor.setFill()
+    override func drawDivider(in rect: NSRect) {
+        dividerColor.set()
         NSBezierPath(rect: rect).fill()
     }
 }
