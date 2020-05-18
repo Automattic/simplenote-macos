@@ -448,22 +448,22 @@
                             </menuItem>
                             <menuItem title="Theme" id="Jtf-4C-imn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Theme" systemMenu="font" identifier="themeMenu" id="SIP-Tf-W7J">
+                                <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
                                     <items>
-                                        <menuItem title="Light" id="Zhe-Bb-jvT">
+                                        <menuItem title="Light" identifier="themeLightMenuItem" id="Zhe-Bb-jvT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="clickedThemeItem:" target="494" id="mgq-M0-lcf"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Dark" tag="1" id="qcT-FY-eHe">
+                                        <menuItem title="Dark" tag="1" identifier="themeDarkMenuItem" id="qcT-FY-eHe">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="clickedThemeItem:" target="494" id="wom-f8-fYq"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
-                                        <menuItem title="System Appearance" tag="2" enabled="NO" id="x6g-cH-Wdm">
+                                        <menuItem title="System Appearance" tag="2" enabled="NO" identifier="themeSystemMenuItem" id="x6g-cH-Wdm">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="clickedThemeItem:" target="494" id="b76-s6-4Ql"/>
