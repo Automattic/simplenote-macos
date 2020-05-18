@@ -17,7 +17,15 @@ extension NSUserInterfaceItemIdentifier {
     ///
     static let focusMenuItem = NSUserInterfaceItemIdentifier(rawValue: "focusMenuItem")
 
-    /// Identifier: Theme Menu
+    /// Identifier: Dark Theme MenuItem
     ///
-    static let themeMenu = NSUserInterfaceItemIdentifier(rawValue: "themeMenu")
+    static let themeDarkMenuItem = NSUserInterfaceItemIdentifier(rawValue: "themeDarkMenuItem")
+
+    /// Identifier: Light Theme MenuItem
+    ///
+    static let themeLightMenuItem = NSUserInterfaceItemIdentifier(rawValue: "themeLightMenuItem")
+
+    /// Identifier: System Theme MenuItem
+    ///
+    static let themeSystemMenuItem = NSUserInterfaceItemIdentifier(rawValue: "themeSystemMenuItem")
 }

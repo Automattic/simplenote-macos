@@ -25,8 +25,7 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate: NSMenuItemValidation {
 
     public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        // Whenever a given NSMenuItem doesn't have an Identifier set, we'll check if the containing NSMenu has one
-        guard let identifier = menuItem.identifier ?? menuItem.menu?.identifier else {
+        guard let identifier = menuItem.identifier else {
             return true
         }
 
@@ -37,7 +36,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
             return validateExportMenuItem(menuItem)
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
-        case .themeMenu:
+        case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
         default:
             return true
