@@ -54,8 +54,11 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = noteListViewController.view.isHidden ? .on : .off
-        return true
+        let inFocusMode = noteListViewController.view.isHidden
+        item.state = inFocusMode ? .on : .off
+
+        // Prevent toggling Focus Mode whenever the editor is empty
+        return inFocusMode || noteEditorViewController.isDisplayingNote
     }
 
     func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
