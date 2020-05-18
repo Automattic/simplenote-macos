@@ -33,6 +33,10 @@ class SplitViewController: NSSplitViewController {
 //
 private extension SplitViewController {
 
+    var simplenoteSplitView: SplitView {
+        splitView as! SplitView
+    }
+
     func splitViewItem(named name: SplitViewItemName) -> NSSplitViewItem {
         splitViewItems[name.index]
     }
@@ -71,11 +75,7 @@ extension SplitViewController {
 
     @objc
     func refreshStyle() {
-        guard let splitView = splitView as? SplitView else {
-            return
-        }
-
-        splitView.simplenoteDividerColor = .simplenoteDividerColor
+        simplenoteSplitView.simplenoteDividerColor = .simplenoteDividerColor
     }
 }
 
