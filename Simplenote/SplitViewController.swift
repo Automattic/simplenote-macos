@@ -62,26 +62,3 @@ class SplitViewController: NSSplitViewController {
         splitView.simplenoteDividerColor = .simplenoteDividerColor
     }
 }
-
-
-class SplitView: NSSplitView {
-
-    var simplenoteDividerColor: NSColor? {
-        didSet {
-            setNeedsDisplay(bounds)
-        }
-    }
-
-    override var dividerThickness: CGFloat {
-        NSScreen.main?.pointToPixelRatio ?? 1
-    }
-
-    override func drawDivider(in rect: NSRect) {
-        guard let dividerColor = simplenoteDividerColor else {
-            return
-        }
-
-        dividerColor.setFill()
-        NSBezierPath(rect: rect).fill()
-    }
-}
