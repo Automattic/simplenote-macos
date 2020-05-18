@@ -6,10 +6,10 @@ import Foundation
 @objc
 class SplitViewController: NSSplitViewController {
 
-    ///
+    /// Indicates if the Notes List is collapsed
     ///
     var isNotesListCollapsed: Bool {
-        splitViewItems[1].isCollapsed
+        splitViewItem(named: .notesList).isCollapsed
     }
 
 
@@ -26,9 +26,22 @@ class SplitViewController: NSSplitViewController {
         super.viewDidLoad()
         splitView.autosaveName = "Please Save Me!"
     }
+}
 
 
-    // MARK: - Actions
+// MARK: - Private Methods
+//
+private extension SplitViewController {
+
+    func splitViewItem(named name: SplitViewItemName) -> NSSplitViewItem {
+        splitViewItems[name.index]
+    }
+}
+
+
+// MARK: - Actions
+//
+extension SplitViewController {
 
     @IBAction
     func toggleSidebarAction(sender: Any) {
@@ -40,7 +53,7 @@ class SplitViewController: NSSplitViewController {
             return
         }
 
-        let tagsSplitItem = splitViewItems[0]
+        let tagsSplitItem = splitViewItem(named: .tagsList)
         tagsSplitItem.animator().isCollapsed = !tagsSplitItem.isCollapsed
     }
 
@@ -48,8 +61,11 @@ class SplitViewController: NSSplitViewController {
     func focusModeAction(sender: Any) {
         let nextState = !isNotesListCollapsed
 
-        for splitItem in [splitViewItems[0], splitViewItems[1]] {
-            splitItem.animator().isCollapsed = nextState
+        let collapsibleItemNames: [SplitViewItemName] = [.tagsList, .notesList]
+
+        for itemName in collapsibleItemNames {
+            let item = splitViewItem(named: itemName)
+            item.animator().isCollapsed = nextState
         }
     }
 
@@ -60,5 +76,22 @@ class SplitViewController: NSSplitViewController {
         }
 
         splitView.simplenoteDividerColor = .simplenoteDividerColor
+    }
+}
+
+
+
+// MARK: SplitViewItem(s) Enum
+//
+enum SplitViewItemName: Int {
+    case tagsList = 0
+    case notesList = 1
+    case editor = 2
+}
+
+
+extension SplitViewItemName {
+    var index: Int {
+        rawValue
     }
 }
