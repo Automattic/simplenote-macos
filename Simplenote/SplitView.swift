@@ -14,6 +14,10 @@ class SplitView: NSSplitView {
     ///
     var simplenoteDividerColor: NSColor = .simplenoteDividerColor {
         didSet {
+            guard simplenoteDividerColor != oldValue else {
+                return
+            }
+
             /// Forcing Redraw:
             /// Believe me. Standard API(s) to trigger redraw aren't forcing the Dividers to re-render. That includes the following:
             ///
