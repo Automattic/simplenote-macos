@@ -321,6 +321,7 @@
     
     NSStoryboard *aboutStoryboard = [NSStoryboard storyboardWithName:@"About" bundle:nil];
     self.aboutWindowController = [aboutStoryboard instantiateControllerWithIdentifier:@"AboutWindowController"];
+    [self.aboutWindowController.window center];
     [self.aboutWindowController showWindow:self];
 }
 
