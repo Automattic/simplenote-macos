@@ -33,6 +33,10 @@ class SplitViewController: NSSplitViewController {
 //
 extension SplitViewController {
 
+    /// Inserts a SplitViewItem of the specified kind:
+    /// -   Position will be automatically set for you
+    /// -   Maximum and Minimum thickness is derived from the Item Kind
+    ///
     func insertSplitViewItem(_ splitViewItem: NSSplitViewItem, kind: SplitItemKind) {
         splitViewItem.collapseBehavior = .useConstraints
         splitViewItem.minimumThickness = kind.minimumThickness

@@ -70,7 +70,7 @@ private extension SplitView {
     }
 
     /// Rick-Level Hack:
-    /// Forces the receiver to re-render, by toggling it's orientation back and forth
+    /// Forces the receiver to re-render, by toggling it's orientation back and forth.
     ///
     func performHighSierraRedawHack() {
         isVertical = false
