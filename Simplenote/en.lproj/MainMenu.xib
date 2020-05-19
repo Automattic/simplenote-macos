@@ -1137,9 +1137,6 @@
                             <real value="250"/>
                             <real value="250"/>
                         </holdingPriorities>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="simplenoteAutosaveName" value="SPSplitView"/>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="delegate" destination="494" id="1437"/>
                         </connections>
