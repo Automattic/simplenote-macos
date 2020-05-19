@@ -9,18 +9,32 @@ class SplitView: NSSplitView {
     ///
     private let defaultDividerThickness = CGFloat(1)
 
-    /// Default Divider Color
-    ///
-    private let defaultDividerColor = NSColor.simplenoteDividerColor
 
     /// Divider Color
     ///
-    var simplenoteDividerColor: NSColor? {
+    var simplenoteDividerColor: NSColor = .simplenoteDividerColor {
         didSet {
-            needsDisplay = true
+            /// Forcing Redraw:
+            /// Believe me. Standard API(s) to trigger redraw aren't forcing the Dividers to re-render. That includes the following:
+            ///
+            /// - `layerContentsRedrawPolicy = .onSetNeedsDisplay`
+            /// - `needsDisplay = true`
+            /// - `needsLayout = true`
+            ///
+            /// macOS Catalina doesn't require any special treatment, because of the new Dynamic NSColor API.
+            ///
+            if #available(macOS 10.15, *) {
+                return
+            }
+
+            if #available(macOS 10.14, *) {
+                performMojaveRedrawHack()
+                return
+            }
+
+            performHighSierraRedawHack()
         }
     }
-
 
     // MARK: - Overridden Methods
 
@@ -29,11 +43,33 @@ class SplitView: NSSplitView {
     }
 
     override var dividerColor: NSColor {
-        simplenoteDividerColor ?? defaultDividerColor
+        return simplenoteDividerColor
+    }
+}
+
+
+// MARK: - Forced Redraw Hacks. Please Nuke!
+//
+private extension SplitView {
+
+    /// Hack:
+    /// Forces the entire window to re-render, by switching the appearance back and forth.
+    ///
+    func performMojaveRedrawHack() {
+        guard let window = window else {
+            return
+        }
+
+        let oldAppearance = window.appearance
+        window.appearance = nil
+        window.appearance = oldAppearance
     }
 
-    override func drawDivider(in rect: NSRect) {
-        dividerColor.set()
-        NSBezierPath(rect: rect).fill()
+    /// Rick-Level Hack:
+    /// Forces the receiver to re-render, by toggling it's orientation back and forth
+    ///
+    func performHighSierraRedawHack() {
+        isVertical = false
+        isVertical = true
     }
 }
