@@ -6,20 +6,29 @@ import Foundation
 extension SimplenoteAppDelegate {
 
     @objc
-    func configureWindow() {
-        let splitViewController = SplitViewController()
+    func configureSplitView() {
+        precondition(tagListViewController != nil)
+        precondition(noteListViewController != nil)
+        precondition(noteEditorViewController != nil)
 
         let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
         let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
         let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
 
+        let splitViewController = SplitViewController()
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
+        self.splitViewController = splitViewController
+    }
+
+    @objc
+    func configureWindow() {
+        precondition(window != nil)
+        precondition(splitViewController != nil)
 
         window.contentViewController = splitViewController
         window.initialFirstResponder = noteEditorViewController.noteEditor
-        self.splitViewController = splitViewController
     }
 }
 

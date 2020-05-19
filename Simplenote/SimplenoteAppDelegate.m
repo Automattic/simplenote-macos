@@ -129,7 +129,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [SPTracker trackApplicationLaunched];
-    
+
+    [self configureSplitView];
     [self configureWindow];
     [self hookWindowNotifications];
     [self applyStyle];
