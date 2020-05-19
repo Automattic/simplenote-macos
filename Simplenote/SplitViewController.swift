@@ -9,7 +9,7 @@ class SplitViewController: NSSplitViewController {
     /// Indicates if the Notes List is collapsed
     ///
     var isFocusModeEnabled: Bool {
-        splitViewItem(named: .notesList).isCollapsed
+        splitViewItem(ofKind: .notes).isCollapsed
     }
 
 
@@ -29,22 +29,35 @@ class SplitViewController: NSSplitViewController {
 }
 
 
-// MARK: - Private Methods
+// MARK: - Public API
+//
+extension SplitViewController {
+
+    func insertSplitViewItem(_ splitViewItem: NSSplitViewItem, kind: SplitItemKind) {
+        splitViewItem.collapseBehavior = .useConstraints
+        splitViewItem.minimumThickness = kind.minimumThickness
+        splitViewItem.maximumThickness = kind.maximumThickness
+        insertSplitViewItem(splitViewItem, at: kind.index)
+    }
+}
+
+
+// MARK: - Private API(s)
 //
 private extension SplitViewController {
 
     var collapsibleItems: [NSSplitViewItem] {
-        SplitViewItemName.allCases.compactMap { name in
-            guard name.isCollapsible else {
+        SplitItemKind.allCases.compactMap { kind in
+            guard kind.isCollapsible else {
                 return nil
             }
 
-            return splitViewItem(named: name)
+            return splitViewItem(ofKind: kind)
         }
     }
 
-    func splitViewItem(named name: SplitViewItemName) -> NSSplitViewItem {
-        splitViewItems[name.index]
+    func splitViewItem(ofKind kind: SplitItemKind) -> NSSplitViewItem {
+        splitViewItems[kind.index]
     }
 }
 
@@ -63,7 +76,7 @@ extension SplitViewController {
             return
         }
 
-        let tagsSplitItem = splitViewItem(named: .tagsList)
+        let tagsSplitItem = splitViewItem(ofKind: .tags)
         tagsSplitItem.animator().isCollapsed = !tagsSplitItem.isCollapsed
     }
 
@@ -88,20 +101,60 @@ extension SplitViewController {
 
 
 
-// MARK: SplitViewItem(s) Enum
+// MARK: SplitItemName(s) Enum
 //
-enum SplitViewItemName: Int, CaseIterable {
-    case tagsList = 0
-    case notesList = 1
+enum SplitItemKind: Int, CaseIterable {
+    case tags = 0
+    case notes = 1
     case editor = 2
 }
 
 
-extension SplitViewItemName {
+// MARK: - SplitItemName Properties
+//
+extension SplitItemKind {
+
     var index: Int {
         rawValue
     }
+
     var isCollapsible: Bool {
         self != .editor
     }
+
+    var minimumThickness: CGFloat {
+        switch self {
+        case .tags:
+            return Metrics.tagsMinWidth
+        case .notes:
+            return Metrics.listMinWidth
+        case .editor:
+            return Metrics.mainMinWidth
+        }
+    }
+
+    var maximumThickness: CGFloat {
+        switch self {
+        case .tags:
+            return Metrics.tagsMaxWidth
+        case .notes:
+            return Metrics.listMaxWidth
+        case .editor:
+            return Metrics.mainMaxWidth
+        }
+    }
+}
+
+
+// MARK: - SplitView's Metrics
+//
+private enum Metrics {
+    static let tagsMinWidth: CGFloat = 150
+    static let tagsMaxWidth: CGFloat = 300
+
+    static let listMinWidth: CGFloat = 200
+    static let listMaxWidth: CGFloat = 500
+
+    static let mainMinWidth: CGFloat = 300
+    static let mainMaxWidth: CGFloat = NSSplitViewItem.unspecifiedDimension
 }

@@ -9,16 +9,13 @@ extension SimplenoteAppDelegate {
     func configureWindow() {
         let splitViewController = SplitViewController()
 
-        let splitItems = [
-            NSSplitViewItem(sidebarWithViewController: tagListViewController),
-            NSSplitViewItem(contentListWithViewController: noteListViewController),
-            NSSplitViewItem(viewController: noteEditorViewController)
-        ]
+        let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
+        let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
+        let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
 
-        for splitItem in splitItems {
-            splitItem.collapseBehavior = .useConstraints
-            splitViewController.addSplitViewItem(splitItem)
-        }
+        splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
+        splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
+        splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
 
         window.contentViewController = splitViewController
         window.initialFirstResponder = noteEditorViewController.noteEditor
