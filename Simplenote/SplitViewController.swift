@@ -33,8 +33,14 @@ class SplitViewController: NSSplitViewController {
 //
 private extension SplitViewController {
 
-    var simplenoteSplitView: SplitView {
-        splitView as! SplitView
+    var collapsibleItems: [NSSplitViewItem] {
+        SplitViewItemName.allCases.compactMap { name in
+            guard name.isCollapsible else {
+                return nil
+            }
+
+            return splitViewItem(named: name)
+        }
     }
 
     func splitViewItem(named name: SplitViewItemName) -> NSSplitViewItem {
@@ -52,7 +58,7 @@ extension SplitViewController {
         SPTracker.trackSidebarButtonPresed()
 
         // Stop focus mode when the sidebar button is pressed with focus mode active
-        guard !isFocusModeEnabled else {
+        if isFocusModeEnabled {
             focusModeAction(sender: sender)
             return
         }
@@ -65,17 +71,18 @@ extension SplitViewController {
     func focusModeAction(sender: Any) {
         let nextState = !isFocusModeEnabled
 
-        let collapsibleItemNames: [SplitViewItemName] = [.tagsList, .notesList]
-
-        for itemName in collapsibleItemNames {
-            let item = splitViewItem(named: itemName)
-            item.animator().isCollapsed = nextState
+        for splitItem in collapsibleItems {
+            splitItem.animator().isCollapsed = nextState
         }
     }
 
     @objc
     func refreshStyle() {
-        simplenoteSplitView.simplenoteDividerColor = .simplenoteDividerColor
+        guard let splitView = splitView as? SplitView else {
+            fatalError()
+        }
+
+        splitView.simplenoteDividerColor = .simplenoteDividerColor
     }
 }
 
@@ -83,7 +90,7 @@ extension SplitViewController {
 
 // MARK: SplitViewItem(s) Enum
 //
-enum SplitViewItemName: Int {
+enum SplitViewItemName: Int, CaseIterable {
     case tagsList = 0
     case notesList = 1
     case editor = 2
@@ -93,5 +100,8 @@ enum SplitViewItemName: Int {
 extension SplitViewItemName {
     var index: Int {
         rawValue
+    }
+    var isCollapsible: Bool {
+        self != .editor
     }
 }
