@@ -102,9 +102,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
-// TODO: FIXME
-        let alphaTagSort = UserDefaults.standard.bool(forKey: "kTagSortPreferencesKey")
-        item.state = alphaTagSort ? .on : .off
+        item.state = Options.shared.alphabeticallySortTags ? .on : .off
 
         return true
     }

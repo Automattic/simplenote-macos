@@ -5,6 +5,7 @@ import Foundation
 //
 extension UserDefaults {
     enum Key: String {
+        case alphabeticallySortTags = "kTagSortPreferencesKey"
         case analyticsEnabled
         case lastKnownVersion
         case themeName = "VSThemeManagerThemePrefKey"
