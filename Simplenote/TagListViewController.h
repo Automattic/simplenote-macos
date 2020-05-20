@@ -11,10 +11,7 @@
 
 @class NoteListViewController;
 
-@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination> {
-    IBOutlet NSMenu *tagDropdownMenu;
-    IBOutlet NSMenu *trashDropdownMenu;
-}
+@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;

@@ -33,8 +33,10 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 @interface TagListViewController ()
 
-@property (nonatomic, assign) BOOL      menuShowing;
+@property (nonatomic, strong) NSMenu    *tagDropdownMenu;
+@property (nonatomic, strong) NSMenu    *trashDropdownMenu;
 @property (nonatomic, strong) NSString  *tagNameBeingEdited;
+@property (nonatomic, assign) BOOL      menuShowing;
 
 @end
 
@@ -68,31 +70,31 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)buildDropdownMenus
 {
-    trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
-    trashDropdownMenu.delegate = self;
-    trashDropdownMenu.autoenablesItems = YES;
+    self.trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
+    self.trashDropdownMenu.delegate = self;
+    self.trashDropdownMenu.autoenablesItems = YES;
 
-    [trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
-                                 action:@selector(emptyTrashAction:)
-                          keyEquivalent:@""];
+    [self.trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
+                                      action:@selector(emptyTrashAction:)
+                               keyEquivalent:@""];
 
-    for (NSMenuItem *item in trashDropdownMenu.itemArray) {
+    for (NSMenuItem *item in self.trashDropdownMenu.itemArray) {
         [item setTarget:self];
     }
     
-    tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
-    tagDropdownMenu.delegate = self;
-    tagDropdownMenu.autoenablesItems = YES;
+    self.tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
+    self.tagDropdownMenu.delegate = self;
+    self.tagDropdownMenu.autoenablesItems = YES;
 
-    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Rename Tag", @"Rename Tag Action")
-                               action:@selector(renameAction:)
-                        keyEquivalent:@""];
+    [self.tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Rename Tag", @"Rename Tag Action")
+                                    action:@selector(renameAction:)
+                             keyEquivalent:@""];
 
-    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Delete Tag", @"Delete Tag Action")
-                               action:@selector(deleteAction:)
-                        keyEquivalent:@""];
+    [self.tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Delete Tag", @"Delete Tag Action")
+                                    action:@selector(deleteAction:)
+                             keyEquivalent:@""];
 
-    for (NSMenuItem *item in tagDropdownMenu.itemArray) {
+    for (NSMenuItem *item in self.tagDropdownMenu.itemArray) {
         [item setTarget:self];
     }
 }
@@ -470,9 +472,9 @@ CGFloat const SPListEstimatedRowHeight = 30;
         case kTagHeaderRow:
             return nil;
         case kTrashRow:
-            return trashDropdownMenu;
+            return self.trashDropdownMenu;
         default:
-            return tagDropdownMenu;
+            return self.tagDropdownMenu;
     }
 }
 
@@ -512,12 +514,12 @@ CGFloat const SPListEstimatedRowHeight = 30;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
     // Tag dropdowns are always valid
-    if (menuItem.menu == tagDropdownMenu) {
+    if (menuItem.menu == self.tagDropdownMenu) {
         return YES;
     }
     
     // For trash dropdown, check if there are deleted notes
-    if (menuItem.menu == trashDropdownMenu) {
+    if (menuItem.menu == self.trashDropdownMenu) {
 		SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
         return [appDelegate numDeletedNotes] > 0;
     }
