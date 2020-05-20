@@ -31,7 +31,6 @@ extern NSString * const kDidEmptyTrash;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)renameAction:(id)sender;
 - (IBAction)emptyTrashAction:(id)sender;
-- (IBAction)sortAction:(id)sender;
 - (void)reset;
 - (void)applyStyle;
 

@@ -8,4 +8,5 @@ extern NSString * const AppleInterfaceThemeChangedNotification;
 
 // MARK: - Simplenote Notifications: Someone forgot to bridge NSNotification.Name over to ObjC. =(
 //
+extern NSString * const TagSortModeDidChangeNotification;
 extern NSString * const ThemeDidChangeNotification;

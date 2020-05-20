@@ -44,6 +44,7 @@ extension Options {
         }
         set {
             defaults.set(newValue, forKey: .alphabeticallySortTags)
+            NotificationCenter.default.post(name: .TagSortModeDidChange, object: nil)
         }
     }
 

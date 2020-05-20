@@ -46,6 +46,12 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func clickedTagsSortModeItem(_ sender: Any) {
+        let options = Options.shared
+        options.alphabeticallySortTags = !options.alphabeticallySortTags
+    }
+
+    @IBAction
     func clickedThemeItem(_ sender: Any) {
         guard let item = sender as? NSMenuItem, item.state != .on else {
             return

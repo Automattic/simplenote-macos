@@ -42,6 +42,11 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 @implementation TagListViewController
 
+- (void)deinit
+{
+    [self stopListeningToNotifications];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -53,14 +58,27 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
+
+    [self startListeningToNotifications];
 }
+
 
 - (void)viewWillAppear
 {
     [super viewWillAppear];
     [self applyStyle];
+}
+
+- (void)startListeningToNotifications
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
+    [nc addObserver:self selector:@selector(sortModeWasUpdated:) name:TagSortModeDidChangeNotification object:nil];
+}
+
+- (void)stopListeningToNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (Simperium *)simperium
@@ -255,6 +273,11 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self loadTags];
 }
 
+- (void)sortModeWasUpdated:(NSNotification *)notification
+{
+    [self loadTags];
+}
+
 - (void)changeTagName:(NSString *)oldTagName toName:(NSString *)newTagName
 {
     [SPTracker trackTagRowRenamed];
@@ -415,14 +438,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [appDelegate.simperium save];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kDidEmptyTrash object:self];
-}
-
-- (IBAction)sortAction:(id)sender
-{
-    Options *options = [Options shared];
-    options.alphabeticallySortTags = !options.alphabeticallySortTags;
-
-    [self loadTags];
 }
 
 
