@@ -76,6 +76,8 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
             return validateExportMenuItem(menuItem)
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
+        case .tagSortMenuItem:
+            return validateTagSortMenuItem(menuItem)
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
         default:
@@ -97,6 +99,14 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.state = inFocusModeEnabled ? .on : .off
 
         return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
+    }
+
+    func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
+// TODO: FIXME
+        let alphaTagSort = UserDefaults.standard.bool(forKey: "kTagSortPreferencesKey")
+        item.state = alphaTagSort ? .on : .off
+
+        return true
     }
 
     func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {

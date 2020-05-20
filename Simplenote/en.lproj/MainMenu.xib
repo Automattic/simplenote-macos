@@ -437,7 +437,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Tags List" autoenablesItems="NO" id="76D-S0-1JD">
                                     <items>
-                                        <menuItem title="Sort Alphabetically" id="axW-cz-MnF">
+                                        <menuItem title="Sort Alphabetically" identifier="tagSortMenuItem" id="axW-cz-MnF">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="sortAction:" target="1461" id="jQp-2i-tQh"/>
@@ -1207,7 +1207,6 @@
             <connections>
                 <outlet property="notesArrayController" destination="573" id="1672"/>
                 <outlet property="tableView" destination="1453" id="1469"/>
-                <outlet property="tagSortMenuItem" destination="axW-cz-MnF" id="vio-Yr-jb6"/>
                 <outlet property="view" destination="1436" id="yYB-xb-VWb"/>
                 <outlet property="visualEffectsView" destination="Re0-xq-32H" id="udB-MT-oME"/>
             </connections>

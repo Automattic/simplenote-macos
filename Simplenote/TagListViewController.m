@@ -54,9 +54,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
-    
-    BOOL alphaTagSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
-    [tagSortMenuItem setState:alphaTagSort ? NSOnState : NSOffState];
 }
 
 - (void)viewWillAppear
