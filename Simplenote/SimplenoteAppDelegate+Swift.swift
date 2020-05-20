@@ -11,6 +11,14 @@ extension SimplenoteAppDelegate {
         precondition(noteListViewController != nil)
         precondition(noteEditorViewController != nil)
 
+        // NOTE:
+        // This initialization is in a midway stage. We're essentially "stealing" the ViewController(s) views,
+        // which are already in the hierarchy defined by MainMenu.nib, and placing them in a fresh SplitViewController.
+        //
+        // Our endgame is to initialize the three viewController via code, and split / simplify the main nib.
+        //
+        //  >>> To be revisited >>> REALLY >>> SOON >>>
+        //
         let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
         let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
         let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
