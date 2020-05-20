@@ -40,6 +40,7 @@
 @property (assign, nonatomic) BOOL                          viewingTrash;
 
 - (void)loadNotes;
+- (void)reloadSynchronously;
 - (void)reset;
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (void)setNotesPredicate:(NSPredicate *)predicate;
