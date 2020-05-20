@@ -1205,7 +1205,6 @@
         </arrayController>
         <viewController id="1461" customClass="TagListViewController">
             <connections>
-                <outlet property="findMenu" destination="220" id="M2t-op-yAH"/>
                 <outlet property="notesArrayController" destination="573" id="1672"/>
                 <outlet property="tableView" destination="1453" id="1469"/>
                 <outlet property="tagSortMenuItem" destination="axW-cz-MnF" id="vio-Yr-jb6"/>

@@ -14,7 +14,6 @@
 @interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination> {
     IBOutlet NSMenu *tagDropdownMenu;
     IBOutlet NSMenu *trashDropdownMenu;
-    IBOutlet NSMenu *findMenu;
     IBOutlet NSMenuItem *tagSortMenuItem;
 }
 

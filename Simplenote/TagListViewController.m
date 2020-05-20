@@ -528,10 +528,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
         return [appDelegate numDeletedNotes] > 0;
     }
     
-    if (menuItem.menu == findMenu) {
-        return YES;
-    }
-    
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)
     return [self.tableView selectedRow] >= kStartOfTagListRow && self.tagNameBeingEdited == nil;
 }
