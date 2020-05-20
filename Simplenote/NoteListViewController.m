@@ -48,11 +48,11 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
                                                  name: kNotesArrayDidChangeNotification
-                                               object: arrayController];
+                                               object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArraySelectionDidChange:)
                                                  name: kNotesArraySelectionDidChangeNotification
-                                               object: arrayController];
+                                               object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didBeginViewingTrash:)
                                                  name: kDidBeginViewingTrash
@@ -90,7 +90,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)loadNotes
 {
-    [arrayController fetch:self];
+    [self.arrayController fetch:self];
 }
 
 // TODO: Work in Progress. Decouple with a delegate please
@@ -107,9 +107,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)setNotesPredicate:(NSPredicate *)predicate
 {
-    [arrayController setFetchPredicate:predicate];
-    arrayController.sortDescriptors = [self sortDescriptors];
-    [arrayController rearrangeObjects];
+    [self.arrayController setFetchPredicate:predicate];
+    self.arrayController.sortDescriptors = [self sortDescriptors];
+    [self.arrayController rearrangeObjects];
     [self.tableView reloadData];
 
     // The re-fetch won't happen until next run loop
@@ -164,7 +164,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (NSInteger)rowForNoteKey:(NSString *)key
 {
     NSInteger row = 0;
-    for (Note *note in [arrayController arrangedObjects]) {
+    for (Note *note in [self.arrayController arrangedObjects]) {
         if ([note.simperiumKey isEqualToString:key])
             return row;
         row += 1;
@@ -185,7 +185,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)selectRow:(NSInteger)row
 {
     if (row >= 0) {
-        [arrayController setSelectionIndex:row];
+        [self.arrayController setSelectionIndex:row];
     }
 }
 
@@ -218,7 +218,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     SPNoteCellView *view = [tableView makeViewWithIdentifier:@"CustomCell" owner:self];
-    Note *note = [[arrayController arrangedObjects] objectAtIndex:row];
+    Note *note = [[self.arrayController arrangedObjects] objectAtIndex:row];
     view.note = note;
     view.contentPreview.delegate = self.tableView;
     view.accessoryImageView.image = note.published ? [NSImage imageNamed:@"icon_shared"] : nil;
@@ -244,7 +244,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSArray<Note *> *)allNotes
 {
-    return arrayController.arrangedObjects;
+    return self.arrayController.arrangedObjects;
 }
 
 - (void)notesArrayDidChange:(NSNotification *)notification
@@ -279,7 +279,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     }
 
     if ([self.tableView numberOfSelectedRows] == 1) {
-        Note *note = [[arrayController arrangedObjects] objectAtIndex:selectedRow];
+        Note *note = [[self.arrayController arrangedObjects] objectAtIndex:selectedRow];
         if (![note.simperiumKey isEqualToString: self.noteEditorViewController.note.simperiumKey]) {
             [SPTracker trackListNoteOpened];
             [self.noteEditorViewController displayNote:note];
@@ -293,8 +293,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     preserveSelection = YES;
     // Reset the fetch predicate
-    [arrayController setFetchPredicate:[arrayController fetchPredicate]];
-    arrayController.sortDescriptors = [self sortDescriptors];
+    [self.arrayController setFetchPredicate:self.arrayController.fetchPredicate];
+    self.arrayController.sortDescriptors = [self sortDescriptors];
     [self.tableView reloadData];
     preserveSelection = NO;
     
@@ -321,7 +321,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)noteKeysAdded:(NSSet *)keys
 {
-    [arrayController setFetchPredicate:[arrayController fetchPredicate]];
+    [self.arrayController setFetchPredicate:[self.arrayController fetchPredicate]];
     [self.tableView reloadData];
 }
 
