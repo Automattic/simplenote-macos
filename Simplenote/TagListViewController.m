@@ -22,7 +22,6 @@
 #define kTrashRow 1
 #define kTagHeaderRow 2
 #define kStartOfTagListRow 3
-#define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
@@ -100,9 +99,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)sortTags
 {
-    BOOL sortAlphabetically = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
     NSSortDescriptor *sortDescriptor;
-    if (sortAlphabetically) {
+    if (Options.shared.alphabeticallySortTags) {
         sortDescriptor = [[NSSortDescriptor alloc]
                           initWithKey:@"name"
                           ascending:YES
@@ -419,10 +417,9 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (IBAction)sortAction:(id)sender
 {
-    NSMenuItem *item = (NSMenuItem *)sender;
-    [item setState:item.state == NSOnState ? NSOffState : NSOnState];
-    [[NSUserDefaults standardUserDefaults] setBool:item.state == NSOnState forKey:kTagSortPreferencesKey];
-    
+    Options *options = [Options shared];
+    options.alphabeticallySortTags = !options.alphabeticallySortTags;
+
     [self loadTags];
 }
 
@@ -581,7 +578,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 // Much of this code is overly generalized for this use case, but it works
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-    BOOL isAlphaSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
+    BOOL isAlphaSort = Options.shared.alphabeticallySortTags;
     if (isAlphaSort || [rowIndexes firstIndex] < kStartOfTagListRow) {
         // Alphabetical tag sorting should not allow drag and drop
         return NO;
