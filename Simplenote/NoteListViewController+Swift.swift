@@ -61,8 +61,6 @@ private extension NoteListViewController {
 //
 extension NoteListViewController {
 
-    ///
-    ///
     @objc(noteTableViewCellForNote:)
     func noteTableViewCell(for note: Note) -> NoteTableCellView {
         note.ensurePreviewStringsAreAvailable()
@@ -74,6 +72,14 @@ extension NoteListViewController {
         noteView.titleString = note.titlePreview
         noteView.bodyString = note.bodyPreview
         noteView.rendersInCondensedMode = Options.shared.condensedNotesList
+
+        // Pendings:
+        //  1.  Checklists Support
+
+//    NSAttributedString *noteSummary = [preview headlinedAttributedStringWithHeadlineFont:
+//                                                                           headlineColor:
+//                                                                                bodyFont:[self notePreviewFont]
+//                                                                               bodyColor:previewColor];
 
         return noteView
     }
