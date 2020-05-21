@@ -59,6 +59,18 @@ extension Options {
         }
     }
 
+    /// Indicates if the Notes List must render in condensed mode
+    ///
+    @objc
+    var condensedNotesList: Bool {
+        get {
+            defaults.bool(forKey: .condensedNotesList)
+        }
+        set {
+            defaults.set(newValue, forKey: .condensedNotesList)
+        }
+    }
+
     /// Stores the name of the selected theme. Null indicates that the system's default theme should be picked, when possible
     ///
     var themeName: String? {

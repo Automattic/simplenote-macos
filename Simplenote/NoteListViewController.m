@@ -22,7 +22,6 @@
 
 CGFloat const SPNotesEstimatedRowHeight = 72;
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
-NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 @implementation NoteListViewController
 
@@ -35,7 +34,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     // Set the active preferences in the menu
     int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
     [self updateSortMenuForPosition:sortPrefPosition];
-    int previewLinesPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kPreviewLinesPref] ? 1 : 0;
+
+    int previewLinesPosition = [[Options shared] condensedNotesList] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
     [self.progressIndicator setWantsLayer:YES];
@@ -473,7 +473,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         }
     }
 
-    [[NSUserDefaults standardUserDefaults] setBool:(position == 1) forKey:kPreviewLinesPref];
+    // NOTE: temporary snippet. On it's way out, as part of #458 revamp
+    BOOL isCondensedOn = (position == 1);
+    [[Options shared] setCondensedNotesList:isCondensedOn];
 }
 
 - (void)searchAction:(id)sender

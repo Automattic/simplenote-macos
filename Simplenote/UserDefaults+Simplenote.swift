@@ -7,6 +7,7 @@ extension UserDefaults {
     enum Key: String {
         case alphabeticallySortTags = "kTagSortPreferencesKey"
         case analyticsEnabled
+        case condensedNotesList = "kPreviewLinesPref"
         case lastKnownVersion
         case themeName = "VSThemeManagerThemePrefKey"
     }
