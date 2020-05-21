@@ -7,23 +7,23 @@ import AppKit
 @objcMembers
 class NoteTableCellView: NSTableCellView {
 
-    ///
+    /// TextField: Title
     ///
     @IBOutlet private var titleTextField: NSTextField!
 
-    ///
+    /// TextField: Body
     ///
     @IBOutlet private var bodyTextField: NSTextField!
 
-    ///
+    /// LeftImage: Pinned Indicator
     ///
     @IBOutlet private var leftImageView: NSImageView!
 
-    ///
+    /// RightImage: Shared Indicator
     ///
     @IBOutlet private var rightImageView: NSImageView!
 
-    ///
+    /// Indicates if the receiver displays the pinned indicator
     ///
     var displaysPinnedIndicator: Bool {
         get {
@@ -34,7 +34,7 @@ class NoteTableCellView: NSTableCellView {
         }
     }
 
-    ///
+    /// Indicates if the receiver displays the shared indicator
     ///
     var displaysSharedIndicator: Bool {
         get {
@@ -43,6 +43,65 @@ class NoteTableCellView: NSTableCellView {
         set {
             rightImageView.isHidden = !newValue
         }
+    }
+
+    /// Note's Title String
+    ///
+    var titleString: String {
+        get {
+            titleTextField.stringValue
+        }
+        set {
+            titleTextField.stringValue = newValue
+        }
+    }
+
+    /// Note's Body String
+    ///
+    var bodyString: String {
+        get {
+            bodyTextField.stringValue
+        }
+        set {
+            bodyTextField.stringValue = newValue
+        }
+    }
+
+
+    // MARK: - Overridden Methods
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupTitleField()
+        setupBodyField()
+        setupLeftImage()
+        setupRightImage()
+    }
+}
+
+
+// MARK: - Interface Initialization
+//
+private extension NoteTableCellView {
+
+    func setupTitleField() {
+        titleTextField.maximumNumberOfLines = Metrics.maximumNumberOfTitleLines
+        titleTextField.textColor = .simplenoteTextColor
+    }
+
+    func setupBodyField() {
+        bodyTextField.maximumNumberOfLines = Metrics.maximumNumberOfBodyLines
+        bodyTextField.textColor = .simplenoteSecondaryTextColor
+    }
+
+    func setupLeftImage() {
+        leftImageView.image = NSImage(named: .pin)
+        leftImageView.tintImage(color: .simplenoteActionButtonTintColor)
+    }
+
+    func setupRightImage() {
+        rightImageView.image = NSImage(named: .shared)
+        rightImageView.tintImage(color: .simplenoteActionButtonTintColor)
     }
 }
 
