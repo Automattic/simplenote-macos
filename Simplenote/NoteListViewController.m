@@ -222,14 +222,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    SPNoteCellView *view = [tableView makeViewWithIdentifier:@"CustomCell" owner:self];
-    Note *note = [[self.arrayController arrangedObjects] objectAtIndex:row];
-    view.note = note;
-    view.contentPreview.delegate = self.tableView;
-    view.accessoryImageView.image = note.published ? [NSImage imageNamed:@"icon_shared"] : nil;
-    view.accessoryImageView.hidden = !note.published;
-
-    return view;
+    Note *note = [self.arrayController.arrangedObjects objectAtIndex:row];
+    return [self noteTableViewCellForNote:note];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row

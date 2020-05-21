@@ -55,3 +55,21 @@ private extension NoteListViewController {
         return NSAttributedString(string: text, attributes: attributes)
     }
 }
+
+
+// MARK: - NSTableViewDelegate Helpers
+//
+extension NoteListViewController {
+
+    ///
+    ///
+    @objc(noteTableViewCellForNote:)
+    func noteTableViewCell(for note: Note) -> NoteTableCellView {
+        let noteView = tableView.makeTableViewCell(ofType: NoteTableCellView.self)
+
+        noteView.displaysPinnedIndicator = note.pinned
+        noteView.displaysSharedIndicator = note.published
+
+        return noteView
+    }
+}
