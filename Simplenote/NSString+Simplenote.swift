@@ -112,3 +112,16 @@ extension NSString {
         return NSAttributedString(string: output)
     }
 }
+
+
+// MARK: - Constants
+//
+extension NSString {
+
+    /// Returns
+    ///
+    @objc
+    class var space: NSString {
+        " "
+    }
+}
