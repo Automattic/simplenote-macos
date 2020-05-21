@@ -12,13 +12,6 @@ import Foundation
 @objcMembers
 class SPTextAttachment: NSTextAttachment {
 
-    /// Attachment State
-    ///
-    private enum State: String {
-        case checked = "icon_task_checked"
-        case unchecked = "icon_task_unchecked"
-    }
-
     /// Indicates if the Attachment is checked or not. We're keeping this one as Boolean (for now) for ObjC interop purposes
     ///
     var isChecked = false {
@@ -65,8 +58,9 @@ private extension SPTextAttachment {
             return
         }
 
-        let state = isChecked ? State.checked : State.unchecked
-        let image = NSImage(named: state.rawValue)?.tinted(with: tintColor)
+        let state: NSImage.Name = isChecked ? .taskChecked : .taskUnchecked
+        let image = NSImage(named: state)?.tinted(with: tintColor)
+
         attachmentCell = SPTextAttachmentCell(imageCell: image)
     }
 }
