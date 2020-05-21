@@ -7,7 +7,6 @@
 //
 
 #import "NoteListViewController.h"
-#import "SPNoteCellView.h"
 #import "Note.h"
 #import "NoteEditorViewController.h"
 #import "SimplenoteAppDelegate.h"
