@@ -25,7 +25,6 @@
     IBOutlet NSMenuItem *previewLinesMenuItem;
     NSString *oldTags;
     BOOL preserveSelection;
-    CGFloat rowHeight;
 }
 
 @property (strong, nonatomic) IBOutlet NSArrayController    *arrayController;

@@ -20,10 +20,7 @@
 @import Simperium_OSX;
 
 
-// TODO: FIXME
-CGFloat const SPNoteRowHeight = 72;
-CGFloat const SPNoteRowHeightCompact = 38;
-
+CGFloat const SPNotesEstimatedRowHeight = 72;
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
@@ -71,6 +68,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
                                                  name: SPWillAddNewNoteNotificationName
                                                object: nil];
 
+    self.tableView.rowHeight = SPNotesEstimatedRowHeight;
+    self.tableView.usesAutomaticRowHeights = YES;
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
 
@@ -213,11 +212,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     TableRowView *rowView = [TableRowView new];
     rowView.selectedBackgroundColor = [NSColor simplenoteSecondarySelectedBackgroundColor];
     return rowView;
-}
-
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    return rowHeight;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -479,7 +473,6 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         }
     }
 
-    rowHeight = (position == 1) ? SPNoteRowHeightCompact : SPNoteRowHeight;
     [[NSUserDefaults standardUserDefaults] setBool:(position == 1) forKey:kPreviewLinesPref];
 }
 
