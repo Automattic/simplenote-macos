@@ -14,13 +14,15 @@
 
 
 @interface Note (PrimitiveAccessors)
-- (void)createPreviews:(NSString *)aString;
 - (NSString *)primitiveContent;
 - (void)setPrimitiveContent:(NSString *)newContent;
 @end
 
 @implementation Note
-@synthesize creationDatePreview, modificationDatePreview, contentPreview, titlePreview;
+@synthesize creationDatePreview;
+@synthesize modificationDatePreview;
+@synthesize titlePreview;
+@synthesize bodyPreview;
 @synthesize tagsArray;
 @dynamic content;
 @dynamic creationDate;
@@ -46,7 +48,7 @@ static NSCalendar *gregorian = nil;
 - (void)awakeFromFetch
 {
     [super awakeFromFetch];
-    [self createPreviews:content];
+    [self createPreview];
     [self updateTagsArray];
     [self updateSystemTagsArray];
     [self updateSystemTagFlags];
@@ -159,35 +161,30 @@ static NSCalendar *gregorian = nil;
 	return [note.content caseInsensitiveCompare:self.content];
 }
 
-- (void)createPreviews:(NSString *)aString
+- (void)ensurePreviewStringsAreAvailable
 {
+    if (self.titlePreview != nil) {
+        return;
+    }
+
+    [self createPreview];
+}
+
+- (void)createPreview
+{
+    NSString *aString = self.content;
     if (aString.length > 500) {
         aString = [aString substringToIndex:500];
     }
-    
-	NSString *contentTest = [aString stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-	
-	NSRange firstNewline = [contentTest rangeOfString: @"\n"];	
-	if (firstNewline.location == NSNotFound) {
-		self.titlePreview = contentTest;//[content stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-		self.contentPreview = aString;
-	} else {
-		self.titlePreview = [contentTest substringToIndex:firstNewline.location];
-		self.contentPreview = [[contentTest substringFromIndex: firstNewline.location+1] stringByReplacingOccurrencesOfString:@"\n\n" withString:@" \n"];
-		
-		// Remove leading newline if applicable
-		NSRange nextNewline = [self.contentPreview rangeOfString: @"\n"];
-        if (nextNewline.location == 0) {
-			self.contentPreview = [self.contentPreview substringFromIndex:1];
-        }
-	}
-	    
-    // Remove Markdown #'s
-    if ([self.titlePreview hasPrefix:@"#"]) {
-        NSRange cutRange = [self.titlePreview rangeOfString:@"# "];
-        if (cutRange.location != NSNotFound) {
-            self.titlePreview = [self.titlePreview substringFromIndex:cutRange.location + cutRange.length];
-        }
+
+    [aString generatePreviewStrings:^(NSString *title, NSString *body) {
+        self.titlePreview = title;
+        self.bodyPreview = body;
+    }];
+
+    if (self.titlePreview.length == 0) {
+        self.titlePreview = NSLocalizedString(@"New note...", @"Empty Note Placeholder");
+        self.bodyPreview = nil;
     }
 }
 

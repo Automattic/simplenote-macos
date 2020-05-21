@@ -285,7 +285,7 @@
     welcomeNote.modificationDate = [NSDate date];
     welcomeNote.creationDate = [NSDate date];
     welcomeNote.content = NSLocalizedString(@"welcomeNote-Mac", @"A welcome note for new Mac users");
-    [welcomeNote createPreviews:welcomeNote.content];
+    [welcomeNote createPreview];
 	
     [_simperium save];
 }
