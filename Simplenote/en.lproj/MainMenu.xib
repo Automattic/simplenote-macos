@@ -622,7 +622,7 @@
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Fr-VHA">
                                                                             <rect key="frame" x="14" y="6" width="96" height="15"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Header" placeholderString="" usesSingleLineMode="YES" id="qGL-DU-S4n">
-                                                                                <font key="font" metaFont="label" size="12"/>
+                                                                                <font key="font" metaFont="system" size="12"/>
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -784,7 +784,7 @@
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="568">
-                                                                <font key="font" metaFont="label" size="12"/>
+                                                                <font key="font" metaFont="system" size="12"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -796,7 +796,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sci-ow-SCG" userLabel="Left Image View">
-                                                                            <rect key="frame" x="7" y="48" width="12" height="12"/>
+                                                                            <rect key="frame" x="7" y="47" width="12" height="12"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="12" id="put-lU-HVa"/>
                                                                                 <constraint firstAttribute="height" constant="12" id="tBi-lD-3iU"/>
@@ -804,21 +804,21 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_pin" id="SkA-qV-YHn"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UbS-Lj-ZrC">
-                                                                            <rect key="frame" x="24" y="17" width="230" height="44"/>
+                                                                            <rect key="frame" x="24" y="12" width="230" height="49"/>
                                                                             <subviews>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="251.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-cH-hPH">
-                                                                                    <rect key="frame" x="0.0" y="30" width="230" height="14"/>
+                                                                                    <rect key="frame" x="0.0" y="32" width="230" height="17"/>
                                                                                     <subviews>
                                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1103" userLabel="Title Label">
-                                                                                            <rect key="frame" x="-2" y="0.0" width="222" height="14"/>
+                                                                                            <rect key="frame" x="-2" y="0.0" width="222" height="17"/>
                                                                                             <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Note Title!" placeholderString="" allowsEditingTextAttributes="YES" id="1104">
-                                                                                                <font key="font" metaFont="user"/>
+                                                                                                <font key="font" metaFont="systemMedium" size="14"/>
                                                                                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-a7-XwI" userLabel="Right Image View">
-                                                                                            <rect key="frame" x="218" y="1" width="12" height="12"/>
+                                                                                            <rect key="frame" x="218" y="3" width="12" height="12"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="12" id="VBh-7j-S9H"/>
                                                                                                 <constraint firstAttribute="height" constant="12" id="t0N-F2-6wT"/>
@@ -836,11 +836,9 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQu-bW-rx8" userLabel="Body Label">
-                                                                                    <rect key="frame" x="-2" y="0.0" width="75" height="28"/>
-                                                                                    <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" placeholderString="" allowsEditingTextAttributes="YES" id="TM7-SJ-chj">
-                                                                                        <font key="font" metaFont="user"/>
-                                                                                        <string key="title">Body Line #1
-Body Line #2</string>
+                                                                                    <rect key="frame" x="-2" y="0.0" width="234" height="30"/>
+                                                                                    <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Entered of cordial do on no hearted. Yet agreed whence and unable limit…" placeholderString="" allowsEditingTextAttributes="YES" id="TM7-SJ-chj">
+                                                                                        <font key="font" metaFont="system" size="12"/>
                                                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
