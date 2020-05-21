@@ -1,9 +1,3 @@
-//
-//  SPTextAttachment.swift
-//  Simplenote
-//  Used in the note editor to distinguish if a checklist item is ticked or not.
-//
-
 import Foundation
 
 
@@ -28,12 +22,9 @@ class SPTextAttachment: NSTextAttachment {
         }
     }
 
-    /// This class relies on TextKit to calculate proper sizing and metrics, so that its image matches characters onScreen. However: in some scenarios, such as "Usage within NSTextField" (Notes List),
-    /// the LayoutManager is not always initialized / nor accessible.
+    /// Font to be used for Attachment Sizing purposes
     ///
-    /// For this reason, we're providing an Override mechanism. Plus: Because of ObjC Interop, it must not be optional (otherwise it won't bridge).
-    ///
-    var overrideDynamicBounds: NSRect = .zero
+    var sizingFont: NSFont?
 
 
     /// Convenience Initializer
@@ -79,11 +70,9 @@ class SPTextAttachmentCell: NSTextAttachmentCell {
     // MARK: - Overridden Methods
 
     override func cellFrame(for textContainer: NSTextContainer, proposedLineFragment lineFrag: NSRect, glyphPosition position: NSPoint, characterIndex charIndex: Int) -> NSRect {
-        if let overriddenBounds = parentTextAttachment?.overrideDynamicBounds, overriddenBounds != .zero {
-            return overriddenBounds
-        }
+        let targetFont = parentTextAttachment?.sizingFont ?? textContainer.layoutManager?.textStorage?.font(at: charIndex)
 
-        guard let image = image, let font = textContainer.layoutManager?.textStorage?.font(at: charIndex) else {
+        guard let image = image, let font = targetFont else {
             return super.cellFrame(for: textContainer, proposedLineFragment: lineFrag, glyphPosition: position, characterIndex: charIndex)
         }
 
