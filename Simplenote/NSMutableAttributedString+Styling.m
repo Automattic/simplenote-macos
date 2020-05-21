@@ -1,47 +1,67 @@
 #import "NSMutableAttributedString+Styling.h"
 #import "Simplenote-Swift.h"
-#import "SPTextView.h"
 
 
 @implementation NSMutableAttributedString (Styling)
 
-- (NSArray<SPTextAttachment *> *)processChecklistsWithColor:(NSColor *)color
+- (void)processChecklistsWithColor:(NSColor *)color
 {
-    NSMutableArray *attachments = [NSMutableArray new];
+    [self processChecklistsWithColor:color sizingFont:nil allowsMultiplePerLine:NO];
+}
+
+- (void)processChecklistsWithColor:(NSColor *)color
+                        sizingFont:(NSFont *)sizingFont
+             allowsMultiplePerLine:(BOOL)allowsMultiplePerLine
+{
     if (self.length == 0) {
-        return attachments;
+        return;
     }
 
-    NSRegularExpression *regex = [NSRegularExpression regexForListMarkers];
-
-    NSString *noteString = self.string.copy;
-    NSArray *matches = [[[regex matchesInString:noteString
+    NSString *plainString = [self.string copy];
+    NSRegularExpression *regex = allowsMultiplePerLine ? NSRegularExpression.regexForListMarkersEmbeddedAnywhere : NSRegularExpression.regexForListMarkers;
+    NSArray *matches = [[[regex matchesInString:plainString
                                         options:0
-                                          range:self.fullRange] reverseObjectEnumerator] allObjects];
-    
-    if (matches.count == 0) {
-        return attachments;
-    }
+                                          range:plainString.fullRange] reverseObjectEnumerator] allObjects];
 
     for (NSTextCheckingResult *match in matches) {
         if (NSRegularExpression.regexForListMarkersExpectedNumberOfRanges != match.numberOfRanges) {
             continue;
         }
 
-        NSRange checkboxRange = [match rangeAtIndex:NSRegularExpression.regexForListMarkersReplacementRangeIndex];
-        NSString *markdownTag = [noteString substringWithRange:match.range];
-        BOOL isChecked = [markdownTag localizedCaseInsensitiveContainsString:@"x"];
-        
-        SPTextAttachment *attachment = [SPTextAttachment new];
-        attachment.isChecked = isChecked;
-        attachment.tintColor = color;
-        [attachments addObject:attachment];
+        NSRange matchedRange = [match rangeAtIndex:NSRegularExpression.regexForListMarkersReplacementRangeIndex];
+        if (matchedRange.location == NSNotFound || NSMaxRange(matchedRange) > self.length) {
+            continue;
+        }
 
-        NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
-        [self replaceCharactersInRange:checkboxRange withAttributedString:attachmentString];
+        NSString *matchedString = [plainString substringWithRange:matchedRange];
+        BOOL isChecked = [matchedString localizedCaseInsensitiveContainsString:@"x"];
+
+        SPTextAttachment *textAttachment = [SPTextAttachment new];
+        textAttachment.isChecked = isChecked;
+        textAttachment.tintColor = color;
+        textAttachment.sizingFont = sizingFont;
+
+        NSMutableAttributedString *attachmentString = [NSMutableAttributedString new];
+        if (allowsMultiplePerLine && matchedRange.location != 0) {
+            [attachmentString appendString:NSString.space];
+        }
+
+        [attachmentString appendAttachment:textAttachment];
+
+        [self replaceCharactersInRange:matchedRange withAttributedString:attachmentString];
     }
+}
 
-    return attachments;
+- (void)appendAttachment:(NSTextAttachment *)attachment
+{
+    NSAttributedString *string = [NSAttributedString attributedStringWithAttachment:attachment];
+    [self appendAttributedString:string];
+}
+
+- (void)appendString:(NSString *)aString
+{
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:aString];
+    [self appendAttributedString:string];
 }
 
 @end
