@@ -65,16 +65,16 @@ extension NoteListViewController {
     ///
     @objc(noteTableViewCellForNote:)
     func noteTableViewCell(for note: Note) -> NoteTableCellView {
-        let noteView = tableView.makeTableViewCell(ofType: NoteTableCellView.self)
-
         note.ensurePreviewStringsAreAvailable()
+
+        let noteView = tableView.makeTableViewCell(ofType: NoteTableCellView.self)
 
         noteView.displaysPinnedIndicator = note.pinned
         noteView.displaysSharedIndicator = note.published
-        noteView.rendersInCondensedMode = Options.shared.condensedNotesList
-
         noteView.titleString = note.titlePreview
         noteView.bodyString = note.bodyPreview
+        noteView.rendersInCondensedMode = Options.shared.condensedNotesList
+
         return noteView
     }
 }
