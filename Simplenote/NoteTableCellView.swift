@@ -58,23 +58,23 @@ class NoteTableCellView: NSTableCellView {
 
     /// Note's Title String
     ///
-    var titleString: String {
+    var titleString: String? {
         get {
             titleTextField.stringValue
         }
         set {
-            titleTextField.stringValue = newValue
+            titleTextField.stringValue = newValue ?? String()
         }
     }
 
     /// Note's Body String
     ///
-    var bodyString: String {
+    var bodyString: String? {
         get {
             bodyTextField.stringValue
         }
         set {
-            bodyTextField.stringValue = newValue
+            bodyTextField.stringValue = newValue ?? String()
         }
     }
 
