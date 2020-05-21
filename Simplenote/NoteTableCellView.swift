@@ -136,7 +136,6 @@ extension NSAttributedString {
     /// List Markers will be replaced by Text Attachments
     ///
     static func previewString(text: String, font: NSFont, color: NSColor) -> NSAttributedString {
-
         let attrString = NSMutableAttributedString(string: text)
         attrString.processChecklists(with: color, sizingFont: font, allowsMultiplePerLine: true)
 
