@@ -23,6 +23,27 @@ class NoteTableCellView: NSTableCellView {
     ///
     @IBOutlet private var rightImageView: NSImageView!
 
+    ///
+    ///
+    var displaysPinnedIndicator: Bool {
+        get {
+            !leftImageView.isHidden
+        }
+        set {
+            leftImageView.isHidden = !newValue
+        }
+    }
+
+    ///
+    ///
+    var displaysSharedIndicator: Bool {
+        get {
+            !rightImageView.isHidden
+        }
+        set {
+            rightImageView.isHidden = !newValue
+        }
+    }
 }
 
 
