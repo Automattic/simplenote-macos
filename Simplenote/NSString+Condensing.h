@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (NSString *)stringByReplacingNewlinesWithSpaces;
 
+/// Legacy String Preview API. Already nuked in a follow up PR!
+///
 - (NSString *)stringByGeneratingPreview;
 
 @end
