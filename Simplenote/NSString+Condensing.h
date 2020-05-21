@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 - (NSString *)stringByReplacingNewlinesWithSpaces;
 
+- (NSString *)stringByGeneratingPreview;
+
 @end
 
 NS_ASSUME_NONNULL_END
