@@ -73,14 +73,6 @@ extension NoteListViewController {
         noteView.bodyString = note.bodyPreview
         noteView.rendersInCondensedMode = Options.shared.condensedNotesList
 
-        // Pendings:
-        //  1.  Checklists Support
-
-//    NSAttributedString *noteSummary = [preview headlinedAttributedStringWithHeadlineFont:
-//                                                                           headlineColor:
-//                                                                                bodyFont:[self notePreviewFont]
-//                                                                               bodyColor:previewColor];
-
         return noteView
     }
 }
