@@ -159,7 +159,7 @@ class NSRegularExpressionSimplenoteTests: XCTestCase {
             let matches = regex.matches(in: sample, options: [], range: sample.fullRange)
             XCTAssertEqual(matches.count, expected)
 
-            for match in matches where match.numberOfRanges != NSRegularExpression.regexForChecklistsExpectedNumberOfRanges {
+            for match in matches where match.numberOfRanges != NSRegularExpression.regexForListMarkersExpectedNumberOfRanges {
                 XCTFail()
             }
         }
