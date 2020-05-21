@@ -20,9 +20,10 @@
 
 @import Simperium_OSX;
 
-CGFloat const kNoteRowHeight = 64;
-CGFloat const kNoteListTopMargin = 12;
-CGFloat const kNoteRowHeightCompact = 24;
+
+// TODO: FIXME
+CGFloat const SPNoteRowHeight = 72;
+CGFloat const SPNoteRowHeightCompact = 38;
 
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
@@ -479,7 +480,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         }
     }
 
-    rowHeight = (position == 1) ? kNoteRowHeightCompact : kNoteRowHeight;
+    rowHeight = (position == 1) ? SPNoteRowHeightCompact : SPNoteRowHeight;
     [[NSUserDefaults standardUserDefaults] setBool:(position == 1) forKey:kPreviewLinesPref];
 }
 
