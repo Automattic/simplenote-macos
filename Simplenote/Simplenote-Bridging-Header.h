@@ -17,6 +17,7 @@
 #import "SPBackgroundView.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
+#import "SPTableView.h"
 #import "SPTracker.h"
 #import "TagListViewController.h"
 
