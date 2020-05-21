@@ -95,13 +95,14 @@ private extension NoteTableCellView {
     }
 
     func setupLeftImage() {
-        leftImageView.image = NSImage(named: .pin)
-        leftImageView.tintImage(color: .simplenoteActionButtonTintColor)
+        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the color!
+        let image = NSImage(named: .pin)
+        leftImageView.image = image?.tinted(with: .simplenoteActionButtonTintColor)
     }
 
     func setupRightImage() {
-        rightImageView.image = NSImage(named: .shared)
-        rightImageView.tintImage(color: .simplenoteActionButtonTintColor)
+        let image = NSImage(named: .shared)
+        rightImageView.image = image?.tinted(with: .simplenoteSecondaryTextColor)
     }
 }
 
