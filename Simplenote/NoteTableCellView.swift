@@ -45,6 +45,17 @@ class NoteTableCellView: NSTableCellView {
         }
     }
 
+    /// In condensed mode we simply won't render the bodyTextField
+    ///
+    var rendersInCondensedMode: Bool {
+        get {
+            bodyTextField.isHidden
+        }
+        set {
+            bodyTextField.isHidden = newValue
+        }
+    }
+
     /// Note's Title String
     ///
     var titleString: String {

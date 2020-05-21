@@ -69,6 +69,7 @@ extension NoteListViewController {
 
         noteView.displaysPinnedIndicator = note.pinned
         noteView.displaysSharedIndicator = note.published
+        noteView.rendersInCondensedMode = Options.shared.condensedNotesList
 
         return noteView
     }
