@@ -34,7 +34,6 @@ class ToolbarView: NSView {
     ///
     @IBOutlet private(set) var trashButton: NSButton!
 
-
     /// Represents the Toolbar's State
     ///
     var state: ToolbarState  = .default {
