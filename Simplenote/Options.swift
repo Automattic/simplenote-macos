@@ -62,12 +62,13 @@ extension Options {
     /// Indicates if the Notes List must render in condensed mode
     ///
     @objc
-    var condensedNotesList: Bool {
+    var notesListCondensed: Bool {
         get {
-            defaults.bool(forKey: .condensedNotesList)
+            defaults.bool(forKey: .notesListCondensed)
         }
         set {
-            defaults.set(newValue, forKey: .condensedNotesList)
+            defaults.set(newValue, forKey: .notesListCondensed)
+            NotificationCenter.default.post(name: .NoteListCondensedDidChange, object: nil)
         }
     }
 

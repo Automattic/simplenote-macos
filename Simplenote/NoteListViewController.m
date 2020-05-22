@@ -38,7 +38,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
     [self updateSortMenuForPosition:sortPrefPosition];
 
-    int previewLinesPosition = [[Options shared] condensedNotesList] ? 1 : 0;
+    int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
     [self.progressIndicator setWantsLayer:YES];
@@ -487,7 +487,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
     // NOTE: temporary snippet. On it's way out, as part of #458 revamp
     BOOL isCondensedOn = (position == 1);
-    [[Options shared] setCondensedNotesList:isCondensedOn];
+    [[Options shared] setNotesListCondensed:isCondensedOn];
 
     rowHeight = isCondensedOn ? kNoteRowHeightCompact : kNoteRowHeight;
 }
