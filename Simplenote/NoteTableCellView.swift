@@ -131,7 +131,7 @@ extension NoteTableCellView {
         let outerInsets = Metrics.outerVerticalStackViewInsets
         let insertTitleHeight = outerInsets.top + Metrics.lineHeightForTitle + outerInsets.bottom
 
-        if Options.shared.condensedNotesList {
+        if Options.shared.notesListCondensed {
             return insertTitleHeight
         }
 
