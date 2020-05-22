@@ -43,7 +43,7 @@
             <connections>
                 <outlet property="delegate" destination="1107" id="bVF-oJ-0wy"/>
             </connections>
-            <point key="canvasLocation" x="598" y="-177"/>
+            <point key="canvasLocation" x="481" y="-214"/>
         </menu>
         <menu id="1504" userLabel="Note List Menu">
             <items>
@@ -1035,7 +1035,7 @@
                                                             <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
                                                         </connections>
                                                     </button>
-                                                    <button toolTip="Trash" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXM-Do-Iy7" userLabel="Info">
+                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXM-Do-Iy7" userLabel="Info">
                                                         <rect key="frame" x="225" y="18" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1oR-T8-cRe">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
