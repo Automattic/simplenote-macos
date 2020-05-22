@@ -118,9 +118,44 @@ private extension NoteTableCellView {
 }
 
 
+// MARK: - Interface Initialization
+//
+extension NoteTableCellView {
+
+    /// Returns the Height that the receiver would require to be rendered, given the current User Settings (number of preview lines).
+    ///
+    /// Note: Why these calculations? (1) Performance and (2) we need to enforce two body lines
+    ///
+    @objc
+    static var rowHeight: CGFloat {
+        let outerInsets = Metrics.outerVerticalStackViewInsets
+        let insertTitleHeight = outerInsets.top + Metrics.lineHeightForTitle + outerInsets.bottom
+
+        if Options.shared.condensedNotesList {
+            return insertTitleHeight
+        }
+
+        let bodyHeight = CGFloat(Metrics.maximumNumberOfBodyLines) * Metrics.lineHeightForBody
+        return insertTitleHeight + Metrics.outerVerticalStackViewSpacing + bodyHeight
+    }
+}
+
+
 // MARK: - Metrics!
 //
 private enum Metrics {
+    static let lineHeightForTitle = Fonts.body.boundingRectForFont.height.rounded(.up)
+    static let lineHeightForBody = Fonts.title.boundingRectForFont.height.rounded(.up)
     static let maximumNumberOfTitleLines = 1
     static let maximumNumberOfBodyLines = 2
+    static let outerVerticalStackViewInsets = NSEdgeInsets(top: 11, left: 24, bottom: 11, right: 16)
+    static let outerVerticalStackViewSpacing = CGFloat(2)
+}
+
+
+// MARK: - Interface Settings
+//
+private enum Fonts {
+    static let title = NSFont.systemFont(ofSize: 14)
+    static let body = NSFont.systemFont(ofSize: 12)
 }
