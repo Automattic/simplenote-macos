@@ -3,6 +3,7 @@ import Foundation
 
 // MARK: - BackgroundView
 //
+@objcMembers
 class BackgroundView: NSView {
 
     /// Bottom Border: Color

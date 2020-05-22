@@ -13,7 +13,6 @@
 #import "NotesArrayController.h"
 #import "TagListViewController.h"
 #import "SPTableView.h"
-#import "SPBackgroundView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 

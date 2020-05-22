@@ -18,7 +18,6 @@
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "SPTracker.h"
-#import "SPBackgroundView.h"
 
 #import "Simplenote-Swift.h"
 

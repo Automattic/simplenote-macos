@@ -758,7 +758,7 @@
                                 <rect key="frame" x="121" y="0.0" width="270" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="3JQ-IY-iXS" customClass="SPBackgroundView">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="3JQ-IY-iXS" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="YF7-at-XJm" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
@@ -979,7 +979,7 @@
                                 <rect key="frame" x="392" y="0.0" width="508" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ktP-Hd-KgH" customClass="SPBackgroundView">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ktP-Hd-KgH" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="582"/>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="qdg-eJ-cRo" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
