@@ -155,14 +155,6 @@ private enum Fonts {
 }
 
 
-// MARK: - Interface Settings
-//
-private enum Fonts {
-    static let title = NSFont.systemFont(ofSize: 14)
-    static let body = NSFont.systemFont(ofSize: 12)
-}
-
-
 // MARK: - AttributedStrings Helpers
 //
 extension NSAttributedString {
