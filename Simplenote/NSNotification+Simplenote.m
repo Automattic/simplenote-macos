@@ -7,5 +7,6 @@ NSString * const AppleInterfaceThemeChangedNotification = @"AppleInterfaceThemeC
 
 // MARK: - Simplenote's Notifications
 //
+NSString * const NoteListCondensedDidChangeNotification = @"NoteListCondensedDidChangeNotification";
 NSString * const TagSortModeDidChangeNotification = @"TagSortModeDidChangeNotification";
 NSString * const ThemeDidChangeNotification = @"ThemeDidChangeNotification";

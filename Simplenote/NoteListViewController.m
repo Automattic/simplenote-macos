@@ -20,7 +20,6 @@
 @import Simperium_OSX;
 
 
-CGFloat const SPNotesEstimatedRowHeight = 72;
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
 @implementation NoteListViewController
@@ -35,7 +34,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
     [self updateSortMenuForPosition:sortPrefPosition];
 
-    int previewLinesPosition = [[Options shared] condensedNotesList] ? 1 : 0;
+    int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
     [self.progressIndicator setWantsLayer:YES];
@@ -68,8 +67,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: SPWillAddNewNoteNotificationName
                                                object: nil];
 
-    self.tableView.rowHeight = SPNotesEstimatedRowHeight;
-    self.tableView.usesAutomaticRowHeights = YES;
+    self.tableView.rowHeight = [NoteTableCellView rowHeight];
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
 
@@ -475,7 +473,9 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
     // NOTE: temporary snippet. On it's way out, as part of #458 revamp
     BOOL isCondensedOn = (position == 1);
-    [[Options shared] setCondensedNotesList:isCondensedOn];
+    [[Options shared] setNotesListCondensed:isCondensedOn];
+
+    self.tableView.rowHeight = [NoteTableCellView rowHeight];
 }
 
 - (void)searchAction:(id)sender
