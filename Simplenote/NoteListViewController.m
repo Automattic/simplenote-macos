@@ -50,6 +50,10 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: kNotesArraySelectionDidChangeNotification
                                                object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(notesCondensedModeDidChange:)
+                                                 name: NoteListCondensedDidChangeNotification
+                                               object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didBeginViewingTrash:)
                                                  name: kDidBeginViewingTrash
                                                object: nil];
@@ -297,6 +301,11 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
 #pragma mark - Notification handlers
 
+- (void)notesCondensedModeDidChange:(NSNotification *)note
+{
+    self.tableView.rowHeight = [NoteTableCellView rowHeight];
+}
+
 - (void)noteKeysWillChange:(NSSet *)keys
 {
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -474,8 +483,6 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     // NOTE: temporary snippet. On it's way out, as part of #458 revamp
     BOOL isCondensedOn = (position == 1);
     [[Options shared] setNotesListCondensed:isCondensedOn];
-
-    self.tableView.rowHeight = [NoteTableCellView rowHeight];
 }
 
 - (void)searchAction:(id)sender
