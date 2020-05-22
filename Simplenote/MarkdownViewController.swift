@@ -9,7 +9,7 @@ class MarkdownViewController: NSViewController {
 
     /// BackgroundView
     ///
-    @IBOutlet private var backgroundView: SPBackgroundView!
+    @IBOutlet private var backgroundView: BackgroundView!
 
     /// Main WebView
     ///
