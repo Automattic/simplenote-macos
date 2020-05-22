@@ -214,6 +214,8 @@
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
 		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5ACE42E24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
+		B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
 		B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */; };
 		B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F372425651700DD5B34 /* TestConstants.swift */; };
 		B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
@@ -518,6 +520,7 @@
 		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
 		B5A89191231ECB3C0007EDCB /* INSTALL.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = INSTALL.markdown; sourceTree = "<group>"; };
 		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5B17F372425651700DD5B34 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
@@ -877,6 +880,7 @@
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 				B57CB880244E421400BA7969 /* SPTextField.swift */,
+				B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1597,6 +1601,7 @@
 				46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */,
 				46558C0117947E77009CD695 /* NoteEditorBottomBar.m in Sources */,
 				B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
+				B5ACE42E24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
 				B5DD0F912476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
 				375D293821E033D1007AB25A /* escape.c in Sources */,
@@ -1714,6 +1719,7 @@
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				466FFED217CC10A800399652 /* NoteEditorBottomBar.m in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
+				B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
 				B5DD0F922476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
 				375D293921E033D1007AB25A /* escape.c in Sources */,
