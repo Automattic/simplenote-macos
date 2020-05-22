@@ -43,7 +43,7 @@
             <connections>
                 <outlet property="delegate" destination="1107" id="bVF-oJ-0wy"/>
             </connections>
-            <point key="canvasLocation" x="598" y="-177"/>
+            <point key="canvasLocation" x="481" y="-214"/>
         </menu>
         <menu id="1504" userLabel="Note List Menu">
             <items>

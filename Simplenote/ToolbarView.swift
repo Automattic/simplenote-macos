@@ -34,10 +34,6 @@ class ToolbarView: NSView {
     ///
     @IBOutlet private(set) var trashButton: NSButton!
 
-    /// Action Menu
-    ///
-    @IBOutlet private(set) var actionMenu: NSMenu!
-
 
     /// Represents the Toolbar's State
     ///
