@@ -24,6 +24,7 @@ class SplitViewController: NSSplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Note: we must manually set the `autosaveName`, otherwise divider location(s) won't be properly persisted
         splitView.autosaveName = "Please Save Me!"
     }
 }
