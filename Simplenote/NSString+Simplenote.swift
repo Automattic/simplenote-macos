@@ -118,7 +118,7 @@ extension NSString {
 //
 extension NSString {
 
-    /// Returns
+    /// Space: We simply refuse to inject `" "` all over!
     ///
     @objc
     class var space: NSString {
