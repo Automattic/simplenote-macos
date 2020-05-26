@@ -106,7 +106,7 @@ private extension NoteTableCellView {
     }
 
     func setupLeftImage() {
-        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the color!
+        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
         let image = NSImage(named: .pin)
         leftImageView.image = image?.tinted(with: .simplenoteActionButtonTintColor)
     }
