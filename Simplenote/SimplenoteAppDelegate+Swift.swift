@@ -22,18 +22,44 @@ extension SimplenoteAppDelegate {
 
 // MARK: - MenuItem(s) Validation
 //
-extension SimplenoteAppDelegate {
+extension SimplenoteAppDelegate: NSMenuItemValidation {
 
-    @objc
-    func isThemeMenuItem(_ item: NSMenuItem) -> Bool {
-        guard let identifier = item.menu?.identifier else {
-            return false
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
         }
 
-        return identifier == .themeMenuIdentifier
+        switch identifier {
+        case .emptyTrashMenuItem:
+            return validateEmptyTrashMenuItem(menuItem)
+        case .exportMenuItem:
+            return validateExportMenuItem(menuItem)
+        case .focusMenuItem:
+            return validateFocusMenuItem(menuItem)
+        case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
+            return validateThemeMenuItem(menuItem)
+        default:
+            return true
+        }
     }
 
-    @objc
+    func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        return numDeletedNotes() > .zero
+    }
+
+    func validateExportMenuItem(_ item: NSMenuItem) -> Bool {
+        item.isHidden = !exportUnlocked
+        return true
+    }
+
+    func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
+        let inFocusMode = noteListViewController.view.isHidden
+        item.state = inFocusMode ? .on : .off
+
+        // Prevent toggling Focus Mode whenever the editor is empty
+        return inFocusMode || noteEditorViewController.isDisplayingNote
+    }
+
     func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
         guard let option = ThemeOption(rawValue: item.tag) else {
             return false

@@ -19,9 +19,7 @@
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate> {
-    IBOutlet NSMenuItem *focusModeMenuItem;
-}
+@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate>
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow                 *window;
 
@@ -33,6 +31,8 @@
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
 @property (strong, nonatomic, readonly) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic, readonly) NSManagedObjectContext            *managedObjectContext;
+
+@property (assign, nonatomic, readonly) BOOL                              exportUnlocked;
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 

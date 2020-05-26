@@ -54,8 +54,7 @@
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
 
 @property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
+@property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
@@ -210,7 +209,7 @@
     }
 
     if ([SPExporter mustEnableExportAction:url]) {
-        [self.exportItem setHidden:NO];
+        self.exportUnlocked = YES;
     }
 }
 
@@ -516,22 +515,6 @@
 }
 
 
-#pragma mark - Menu delegate
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    if (menuItem == self.emptyTrashItem) {
-        return [self numDeletedNotes] > 0;
-    }
-
-    if ([self isThemeMenuItem:menuItem]) {
-        return [self validateThemeMenuItem:menuItem];
-    }
-
-    return YES;
-}
-
-
 #pragma mark - Static Helpers
 
 + (SimplenoteAppDelegate *)sharedDelegate
@@ -638,8 +621,6 @@
     [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
     
     BOOL isEnteringFocusMode = [self.noteListViewController.view isHidden];
-    // Enable/disable buttons and search bar in the toolbar
-    [focusModeMenuItem setState:isEnteringFocusMode ? NSOnState : NSOffState];
     
     if (!isEnteringFocusMode && tagsVisible) {
         // If ending focus mode and the tag view was previously visible, show it agian
