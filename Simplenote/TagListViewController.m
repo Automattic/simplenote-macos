@@ -298,7 +298,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 	for (Note *note in notes) {
         [note stripTag:oldTagName];
         [note addTag:newTagName];
-        [note createPreviews:note.content];
+        [note createPreview];
 	}
     
     renamedTag.name = newTagName;
@@ -325,7 +325,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
     // Strip this tag from all notes
 	for (Note *note in notes) {
 		[note stripTag: tag.name];
-		[note createPreviews:note.content];
+		[note createPreview];
 	}
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];

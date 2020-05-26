@@ -25,7 +25,6 @@ CGFloat const kNoteListTopMargin = 12;
 CGFloat const kNoteRowHeightCompact = 24;
 
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
-NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 @implementation NoteListViewController
 
@@ -38,7 +37,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     // Set the active preferences in the menu
     int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
     [self updateSortMenuForPosition:sortPrefPosition];
-    int previewLinesPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kPreviewLinesPref] ? 1 : 0;
+
+    int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
     [self.progressIndicator setWantsLayer:YES];
@@ -485,8 +485,11 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         }
     }
 
-    rowHeight = (position == 1) ? kNoteRowHeightCompact : kNoteRowHeight;
-    [[NSUserDefaults standardUserDefaults] setBool:(position == 1) forKey:kPreviewLinesPref];
+    // NOTE: temporary snippet. On it's way out, as part of #458 revamp
+    BOOL isCondensedOn = (position == 1);
+    [[Options shared] setNotesListCondensed:isCondensedOn];
+
+    rowHeight = isCondensedOn ? kNoteRowHeightCompact : kNoteRowHeight;
 }
 
 - (void)searchAction:(id)sender

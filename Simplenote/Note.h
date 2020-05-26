@@ -12,8 +12,6 @@
 	NSString *content;
 	NSString *modificationDatePreview;
 	NSString *creationDatePreview;
-	NSString *titlePreview;
-	NSString *contentPreview;
 	NSString *shareURL;
 	NSString *publishURL;
 	NSDate *creationDate;
@@ -67,7 +65,7 @@
 @property (copy, nonatomic) NSString *modificationDatePreview;
 @property (copy, nonatomic) NSString *creationDatePreview;
 @property (copy, nonatomic) NSString *titlePreview;
-@property (copy, nonatomic) NSString *contentPreview;
+@property (copy, nonatomic) NSString *bodyPreview;
 @property (assign, nonatomic) BOOL pinned;
 @property (assign, nonatomic) BOOL markdown;
 @property (assign, nonatomic) BOOL shared;
@@ -91,7 +89,8 @@
 - (BOOL)hasSystemTag:(NSString *)tag;
 - (void)setTagsFromList:(NSArray *)tagList;
 - (void)stripTag:(NSString *)tag;
-- (void)createPreviews:(NSString *)aString;
+- (void)ensurePreviewStringsAreAvailable;
+- (void)createPreview;
 - (NSDictionary *)noteDictionaryWithContent:(BOOL)include;
 - (void)updateFromDictionary:(NSDictionary *)note fromServer:(BOOL)synced;
 - (BOOL)isList;

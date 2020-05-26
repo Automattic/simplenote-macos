@@ -24,5 +24,6 @@
 #pragma mark - Extensions
 
 #import "Simperium+Simplenote.h"
+#import "NSString+Condensing.h"
 #import "NSNotification+Simplenote.h"
 #import "NSMutableAttributedString+Styling.h"

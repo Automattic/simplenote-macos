@@ -168,7 +168,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     NSRange range = [self.noteEditor selectedRange];
 
     self.note.modificationDate = [NSDate date];
-    [self.note createPreviews:self.note.content];
+    [self.note createPreview];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     [appDelegate.simperium save];

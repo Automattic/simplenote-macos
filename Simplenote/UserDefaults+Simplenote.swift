@@ -8,6 +8,7 @@ extension UserDefaults {
         case alphabeticallySortTags = "kTagSortPreferencesKey"
         case analyticsEnabled
         case lastKnownVersion
+        case notesListCondensed = "kPreviewLinesPref"
         case themeName = "VSThemeManagerThemePrefKey"
     }
 }
