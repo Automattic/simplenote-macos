@@ -18,6 +18,7 @@
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "SPTracker.h"
+#import "SPBackgroundView.h"
 
 #import "Simplenote-Swift.h"
 
@@ -1039,6 +1040,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     }
 
+    self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
     [self.statusTextField setTextColor:[NSColor simplenoteSecondaryTextColor]];
     [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
     [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];

@@ -15,6 +15,7 @@
 @class NoteEditorBottomBar;
 @class MarkdownViewController;
 @class ToolbarView;
+@class SPBackgroundView;
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
     NoteFontSizeMinimum = 10,
@@ -52,6 +53,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
+@property (nonatomic, strong) IBOutlet SPBackgroundView         *backgroundView;
 @property (nonatomic, strong) IBOutlet ToolbarView              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;

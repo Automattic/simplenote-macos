@@ -18,7 +18,6 @@
 #import "SPWindow.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
-#import "SPSplitView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 #import "WPAuthHandler.h"
@@ -36,8 +35,7 @@
 #pragma mark ====================================================================================
 
 #define kFirstLaunchKey					@"SPFirstLaunch"
-#define kMinimumNoteListSplit			240
-#define kMaximumNoteListSplit			384
+
 
 
 #pragma mark ====================================================================================
@@ -47,13 +45,11 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
-@property (strong, nonatomic) IBOutlet SPBackgroundView         *backgroundView;
 
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
 
-@property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
@@ -133,7 +129,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [SPTracker trackApplicationLaunched];
-    
+
+    [self configureSplitView];
     [self configureWindow];
     [self hookWindowNotifications];
     [self applyStyle];
@@ -167,22 +164,10 @@
     [self startListeningForThemeNotifications];
 }
 
-- (void)configureWindow
-{
-    // Restore collapsed state of tag list based on autosaved width
-    BOOL collapsed                              = self.tagListViewController.view.frame.size.width <= 1;
-    self.tagListViewController.view.hidden      = collapsed;
-    self.noteListViewController.view.hidden     = NO;
-    self.window.releasedWhenClosed              = NO;
-    
-    [self.splitView adjustSubviews];
-}
-
 - (void)hookWindowNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:)         name:NSApplicationDidResignActiveNotification   object:self.window];
-    [nc addObserver:self selector:@selector(handleWindowDidResizeNote:)             name:NSWindowDidResizeNotification              object:self.window];
+    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:) name:NSApplicationDidResignActiveNotification object:self.window];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -343,87 +328,11 @@
 
 #pragma mark - NSWindow Notification Handlers
 
-- (void)handleWindowDidResizeNote:(NSNotification *)notification
-{
-    [self.splitView adjustSubviews];
-}
-
 - (void)handleWindowDidResignMainNote:(NSNotification *)notification
 {
     // Use this as an opportunity to re-sort by modify date when the user isn't looking
     // (otherwise it can be a little jarring)
     [self.noteListViewController reloadDataAndPreserveSelection];
-}
-
-
-#pragma mark - Split view Handling
-
-- (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex
-{
-    // Tag List: Don't draw separators
-    return (self.noteListViewController.view.isHidden || dividerIndex == SPSplitViewSectionTags);
-}
-
-- (NSRect)splitView:(NSSplitView *)splitView effectiveRect:(NSRect)proposedEffectiveRect forDrawnRect:(NSRect)drawnRect ofDividerAtIndex:(NSInteger)dividerIndex
-{
-    // Tag List: Don't draw separators
-    return (dividerIndex == SPSplitViewSectionTags) ? CGRectZero : proposedEffectiveRect;
-}
-
-- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview
-{
-    // When resizing the window, only resize the note editor
-    return (subview == splitView.arrangedSubviews.lastObject);
-}
- 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-    // Tag: Split should be fixed
-    CGFloat minTagListWidth = [self.tagListViewController.view isHidden] ? 0 : SPSplitViewDefaultWidth;
-    if (dividerIndex == SPSplitViewSectionTags) {
-        return minTagListWidth;
-    }
-	
-    // List: Split should be dynamic
-    return minTagListWidth + kMinimumNoteListSplit;
-}
-
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-    // Tag: Split should be fixed
-    if (dividerIndex == SPSplitViewSectionTags) {
-        return SPSplitViewDefaultWidth;
-	}
-
-    // List: Split should be dynamic
-    return [self tagListWidth] + kMaximumNoteListSplit;
-}
-
-- (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-    return proposedPosition;
-}
-
-
-#pragma mark - Split view Helpers
-
-- (CGFloat)tagListWidth
-{
-    return [self.tagListViewController.view isHidden] ? 0 : self.tagListViewController.view.bounds.size.width;
-}
-
-- (CGFloat)editorSplitPosition
-{
-    return [self tagListSplitPosition] + self.noteListViewController.view.bounds.size.width;
-}
-
-- (CGFloat)tagListSplitPosition
-{
-    if (self.tagListViewController.view.isHidden) {
-        return 0;
-    }
-
-    return self.tagListViewController.view.bounds.size.width + self.splitView.dividerThickness;
 }
 
 
@@ -585,49 +494,14 @@
     [self.noteListViewController searchAction:sender];
 }
 
-- (BOOL)isInFocusMode {
-    return [self.noteListViewController.view isHidden];
-}
-
 - (IBAction)toggleSidebarAction:(id)sender
 {
-    [SPTracker trackSidebarButtonPresed];
-    
-    // Stop focus mode when the sidebar button is pressed with focus mode active
-    if ([self isInFocusMode]) {
-        [self focusModeAction:nil];
-        return;
-    }
-
-    CGFloat tagListSplitPosition = MAX([self tagListSplitPosition], SPSplitViewDefaultWidth);
-    CGFloat editorSplitPosition = [self editorSplitPosition];
-    BOOL collapsed = ![self.tagListViewController.view isHidden];
-    [self.tagListViewController.view setHidden:collapsed];
-    
-    [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
-    [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
-    [self.splitView adjustSubviews];
+    [self.splitViewController toggleSidebarActionWithSender:sender];
 }
 
 - (IBAction)focusModeAction:(id)sender
 {
-    // Check if the tags list is visible, if so close it
-    BOOL tagsVisible = ![self.tagListViewController.view isHidden];
-    if (tagsVisible) {
-        [self toggleSidebarAction:nil];
-        tagsVisible = YES;
-    }
-    
-    [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
-    
-    BOOL isEnteringFocusMode = [self.noteListViewController.view isHidden];
-    
-    if (!isEnteringFocusMode && tagsVisible) {
-        // If ending focus mode and the tag view was previously visible, show it agian
-        [self toggleSidebarAction:nil];
-    }
-    
-    [self.splitView adjustSubviews];
+    [self.splitViewController focusModeActionWithSender:sender];
 }
 
 - (IBAction)helpAction:(id)sender
@@ -658,18 +532,11 @@
 
 - (void)applyStyle
 {
-    self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
+    [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
     [self.noteEditorViewController fixChecklistColoring];
-
-    // TODO: Obliterate this from the AppDelegate ASAP
-    if (@available(macOS 10.14, *)) {
-        return;
-    }
-
-    [self.splitView applyStyle];
 }
 
 

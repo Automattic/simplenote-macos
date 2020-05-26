@@ -1,6 +1,46 @@
 import Foundation
 
 
+// MARK: - Initialization
+//
+extension SimplenoteAppDelegate {
+
+    @objc
+    func configureSplitView() {
+        precondition(tagListViewController != nil)
+        precondition(noteListViewController != nil)
+        precondition(noteEditorViewController != nil)
+
+        // NOTE:
+        // This initialization is in a midway stage. We're essentially "stealing" the ViewController(s) views,
+        // which are already in the hierarchy defined by MainMenu.nib, and placing them in a fresh SplitViewController.
+        //
+        // Our endgame is to initialize the three viewController via code, and split / simplify the main nib.
+        //
+        //  >>> To be revisited >>> REALLY >>> SOON >>>
+        //
+        let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
+        let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
+        let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
+
+        let splitViewController = SplitViewController()
+        splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
+        splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
+        splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
+        self.splitViewController = splitViewController
+    }
+
+    @objc
+    func configureWindow() {
+        precondition(window != nil)
+        precondition(splitViewController != nil)
+
+        window.contentViewController = splitViewController
+        window.initialFirstResponder = noteEditorViewController.noteEditor
+    }
+}
+
+
 // MARK: - Actions!
 //
 extension SimplenoteAppDelegate {
@@ -53,11 +93,10 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        let inFocusMode = noteListViewController.view.isHidden
-        item.state = inFocusMode ? .on : .off
+        let inFocusModeEnabled = splitViewController.isFocusModeEnabled
+        item.state = inFocusModeEnabled ? .on : .off
 
-        // Prevent toggling Focus Mode whenever the editor is empty
-        return inFocusMode || noteEditorViewController.isDisplayingNote
+        return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
     }
 
     func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
