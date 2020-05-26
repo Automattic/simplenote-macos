@@ -197,9 +197,15 @@ CGFloat const SPListEstimatedRowHeight = 30;
 {
     NSIndexSet *allNotesIndex = [NSIndexSet indexSetWithIndex:kAllNotesRow];
     [self.tableView selectRowIndexes:allNotesIndex byExtendingSelection:NO];
-    
-    // Force Resync!
-    [self.notesArrayController fetchWithRequest:nil merge:NO error:nil];
+
+    // Notes:
+    //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
+    //  2.  Because of the above, NoteListController's predicate is already refreshed
+    //  3.  Standard mechanism will refresh the UI in the next runloop cycle
+    //
+    // Since this API is expected to be synchronous, we'll force a resync.
+    //
+    [self.noteListViewController reloadSynchronously];
 }
 
 - (void)selectTag:(Tag *)tagToSelect

@@ -21,7 +21,6 @@
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
 {
     IBOutlet NSScrollView *scrollView;
-    IBOutlet NSArrayController *arrayController;
     IBOutlet NSMenu *sortMenu;
     IBOutlet NSMenu *previewLinesMenu;
     IBOutlet NSMenuItem *previewLinesMenuItem;
@@ -30,6 +29,7 @@
     CGFloat rowHeight;
 }
 
+@property (strong, nonatomic) IBOutlet NSArrayController    *arrayController;
 @property (strong, nonatomic) IBOutlet SPBackgroundView     *backgroundView;
 @property (strong, nonatomic) IBOutlet NSTextField          *statusField;
 @property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
@@ -40,6 +40,7 @@
 @property (assign, nonatomic) BOOL                          viewingTrash;
 
 - (void)loadNotes;
+- (void)reloadSynchronously;
 - (void)reset;
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (void)setNotesPredicate:(NSPredicate *)predicate;

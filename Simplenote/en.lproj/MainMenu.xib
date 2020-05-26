@@ -1205,7 +1205,6 @@
         </arrayController>
         <viewController id="1461" customClass="TagListViewController">
             <connections>
-                <outlet property="notesArrayController" destination="573" id="1672"/>
                 <outlet property="tableView" destination="1453" id="1469"/>
                 <outlet property="view" destination="1436" id="yYB-xb-VWb"/>
                 <outlet property="visualEffectsView" destination="Re0-xq-32H" id="udB-MT-oME"/>

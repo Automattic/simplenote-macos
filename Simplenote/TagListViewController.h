@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
-@property (nonatomic, strong, readwrite) IBOutlet NSArrayController     *notesArrayController;
 @property (nonatomic, strong, readwrite) NSArray                        *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
 
