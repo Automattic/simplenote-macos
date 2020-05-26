@@ -11,12 +11,7 @@
 
 @class NoteListViewController;
 
-@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination> {
-    IBOutlet NSMenu *tagDropdownMenu;
-    IBOutlet NSMenu *trashDropdownMenu;
-    IBOutlet NSMenu *findMenu;
-    IBOutlet NSMenuItem *tagSortMenuItem;
-}
+@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
@@ -36,7 +31,6 @@ extern NSString * const kDidEmptyTrash;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)renameAction:(id)sender;
 - (IBAction)emptyTrashAction:(id)sender;
-- (IBAction)sortAction:(id)sender;
 - (void)reset;
 - (void)applyStyle;
 

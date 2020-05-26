@@ -36,6 +36,18 @@ class Options: NSObject {
 //
 extension Options {
 
+    /// Indicates if Tags must be sort Alphabetically
+    ///
+    var alphabeticallySortTags: Bool {
+        get {
+            defaults.bool(forKey: .alphabeticallySortTags)
+        }
+        set {
+            defaults.set(newValue, forKey: .alphabeticallySortTags)
+            NotificationCenter.default.post(name: .TagSortModeDidChange, object: nil)
+        }
+    }
+
     /// Indicates if Analytics should be enabled. Empty value defaults to `false`
     ///
     var analyticsEnabled: Bool {

@@ -17,6 +17,10 @@ extension NSUserInterfaceItemIdentifier {
     ///
     static let focusMenuItem = NSUserInterfaceItemIdentifier(rawValue: "focusMenuItem")
 
+    /// Identifier: Tags Sort MenuItem
+    ///
+    static let tagSortMenuItem = NSUserInterfaceItemIdentifier(rawValue: "tagSortMenuItem")
+
     /// Identifier: Dark Theme MenuItem
     ///
     static let themeDarkMenuItem = NSUserInterfaceItemIdentifier(rawValue: "themeDarkMenuItem")

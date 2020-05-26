@@ -22,7 +22,6 @@
 #define kTrashRow 1
 #define kTagHeaderRow 2
 #define kStartOfTagListRow 3
-#define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
@@ -34,12 +33,19 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 @interface TagListViewController ()
 
-@property (nonatomic, assign) BOOL      menuShowing;
+@property (nonatomic, strong) NSMenu    *tagDropdownMenu;
+@property (nonatomic, strong) NSMenu    *trashDropdownMenu;
 @property (nonatomic, strong) NSString  *tagNameBeingEdited;
+@property (nonatomic, assign) BOOL      menuShowing;
 
 @end
 
 @implementation TagListViewController
+
+- (void)deinit
+{
+    [self stopListeningToNotifications];
+}
 
 - (void)viewDidLoad
 {
@@ -52,17 +58,27 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
-    
-    BOOL alphaTagSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
-    [tagSortMenuItem setState:alphaTagSort ? NSOnState : NSOffState];
+
+    [self startListeningToNotifications];
 }
+
 
 - (void)viewWillAppear
 {
     [super viewWillAppear];
     [self applyStyle];
+}
+
+- (void)startListeningToNotifications
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
+    [nc addObserver:self selector:@selector(sortModeWasUpdated:) name:TagSortModeDidChangeNotification object:nil];
+}
+
+- (void)stopListeningToNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (Simperium *)simperium
@@ -72,40 +88,39 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)buildDropdownMenus
 {
-    trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
-    trashDropdownMenu.delegate = self;
-    trashDropdownMenu.autoenablesItems = YES;
+    self.trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
+    self.trashDropdownMenu.delegate = self;
+    self.trashDropdownMenu.autoenablesItems = YES;
 
-    [trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
-                                 action:@selector(emptyTrashAction:)
-                          keyEquivalent:@""];
+    [self.trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
+                                      action:@selector(emptyTrashAction:)
+                               keyEquivalent:@""];
 
-    for (NSMenuItem *item in trashDropdownMenu.itemArray) {
+    for (NSMenuItem *item in self.trashDropdownMenu.itemArray) {
         [item setTarget:self];
     }
     
-    tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
-    tagDropdownMenu.delegate = self;
-    tagDropdownMenu.autoenablesItems = YES;
+    self.tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
+    self.tagDropdownMenu.delegate = self;
+    self.tagDropdownMenu.autoenablesItems = YES;
 
-    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Rename Tag", @"Rename Tag Action")
-                               action:@selector(renameAction:)
-                        keyEquivalent:@""];
+    [self.tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Rename Tag", @"Rename Tag Action")
+                                    action:@selector(renameAction:)
+                             keyEquivalent:@""];
 
-    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Delete Tag", @"Delete Tag Action")
-                               action:@selector(deleteAction:)
-                        keyEquivalent:@""];
+    [self.tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Delete Tag", @"Delete Tag Action")
+                                    action:@selector(deleteAction:)
+                             keyEquivalent:@""];
 
-    for (NSMenuItem *item in tagDropdownMenu.itemArray) {
+    for (NSMenuItem *item in self.tagDropdownMenu.itemArray) {
         [item setTarget:self];
     }
 }
 
 - (void)sortTags
 {
-    BOOL sortAlphabetically = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
     NSSortDescriptor *sortDescriptor;
-    if (sortAlphabetically) {
+    if (Options.shared.alphabeticallySortTags) {
         sortDescriptor = [[NSSortDescriptor alloc]
                           initWithKey:@"name"
                           ascending:YES
@@ -255,6 +270,11 @@ CGFloat const SPListEstimatedRowHeight = 30;
 - (void)tagAddedFromEditor:(NSNotification *)notification
 {
     [self addTagWithName:[notification.userInfo objectForKey:@"tagName"]];
+    [self loadTags];
+}
+
+- (void)sortModeWasUpdated:(NSNotification *)notification
+{
     [self loadTags];
 }
 
@@ -420,15 +440,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [[NSNotificationCenter defaultCenter] postNotificationName:kDidEmptyTrash object:self];
 }
 
-- (IBAction)sortAction:(id)sender
-{
-    NSMenuItem *item = (NSMenuItem *)sender;
-    [item setState:item.state == NSOnState ? NSOffState : NSOnState];
-    [[NSUserDefaults standardUserDefaults] setBool:item.state == NSOnState forKey:kTagSortPreferencesKey];
-    
-    [self loadTags];
-}
-
 
 #pragma mark - NSTableView delegate
 
@@ -476,9 +487,9 @@ CGFloat const SPListEstimatedRowHeight = 30;
         case kTagHeaderRow:
             return nil;
         case kTrashRow:
-            return trashDropdownMenu;
+            return self.trashDropdownMenu;
         default:
-            return tagDropdownMenu;
+            return self.tagDropdownMenu;
     }
 }
 
@@ -518,18 +529,14 @@ CGFloat const SPListEstimatedRowHeight = 30;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
     // Tag dropdowns are always valid
-    if (menuItem.menu == tagDropdownMenu) {
+    if (menuItem.menu == self.tagDropdownMenu) {
         return YES;
     }
     
     // For trash dropdown, check if there are deleted notes
-    if (menuItem.menu == trashDropdownMenu) {
+    if (menuItem.menu == self.trashDropdownMenu) {
 		SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
         return [appDelegate numDeletedNotes] > 0;
-    }
-    
-    if (menuItem.menu == findMenu) {
-        return YES;
     }
     
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)
@@ -588,7 +595,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 // Much of this code is overly generalized for this use case, but it works
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-    BOOL isAlphaSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
+    BOOL isAlphaSort = Options.shared.alphabeticallySortTags;
     if (isAlphaSort || [rowIndexes firstIndex] < kStartOfTagListRow) {
         // Alphabetical tag sorting should not allow drag and drop
         return NO;

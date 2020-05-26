@@ -46,6 +46,12 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func clickedTagsSortModeItem(_ sender: Any) {
+        let options = Options.shared
+        options.alphabeticallySortTags = !options.alphabeticallySortTags
+    }
+
+    @IBAction
     func clickedThemeItem(_ sender: Any) {
         guard let item = sender as? NSMenuItem, item.state != .on else {
             return
@@ -76,6 +82,8 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
             return validateExportMenuItem(menuItem)
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
+        case .tagSortMenuItem:
+            return validateTagSortMenuItem(menuItem)
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
         default:
@@ -97,6 +105,12 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.state = inFocusModeEnabled ? .on : .off
 
         return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
+    }
+
+    func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.alphabeticallySortTags ? .on : .off
+
+        return true
     }
 
     func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
