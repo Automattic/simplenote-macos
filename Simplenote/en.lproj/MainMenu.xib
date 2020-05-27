@@ -1227,6 +1227,7 @@
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
+                <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
                 <outlet property="view" destination="559" id="vPQ-pl-pqe"/>
                 <outlet property="wordCountItem" destination="oDJ-Mn-z2x" id="gmB-Y8-oCY"/>
             </connections>
@@ -1245,6 +1246,7 @@
                 <outlet property="sortMenu" destination="YpJ-fs-p4p" id="ncf-ZC-vxK"/>
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
+                <outlet property="topDividerView" destination="YF7-at-XJm" id="Owc-m2-TC2"/>
                 <outlet property="view" destination="558" id="1699"/>
             </connections>
         </viewController>

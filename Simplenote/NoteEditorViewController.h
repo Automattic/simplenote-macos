@@ -55,6 +55,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 
 @property (nonatomic, strong) IBOutlet NSMenu                   *detailsMenu;
 @property (nonatomic, strong) IBOutlet BackgroundView           *backgroundView;
+@property (nonatomic, strong) IBOutlet BackgroundView           *topDividerView;
 @property (nonatomic, strong) IBOutlet ToolbarView              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;

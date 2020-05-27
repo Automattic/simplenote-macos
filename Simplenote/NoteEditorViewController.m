@@ -1050,6 +1050,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 
     self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
+    self.topDividerView.borderColor = [NSColor simplenoteDividerColor];
     [self.statusTextField setTextColor:[NSColor simplenoteSecondaryTextColor]];
     [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
     [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];

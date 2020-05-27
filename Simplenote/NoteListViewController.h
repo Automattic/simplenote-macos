@@ -29,6 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet NSArrayController    *arrayController;
 @property (strong, nonatomic) IBOutlet BackgroundView       *backgroundView;
+@property (strong, nonatomic) IBOutlet BackgroundView       *topDividerView;
 @property (strong, nonatomic) IBOutlet NSTextField          *statusField;
 @property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (strong, nonatomic) IBOutlet SPTableView          *tableView;
