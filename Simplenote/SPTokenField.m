@@ -17,21 +17,6 @@
 
 @implementation SPTokenField
 
-- (instancetype)initWithFrame:(NSRect)frameRect
-{
-    if ((self = [super initWithFrame:frameRect])) {
-        NSMutableCharacterSet *charSet = [[NSCharacterSet whitespaceAndNewlineCharacterSet] mutableCopy];
-        [charSet formUnionWithCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@";, "]];
-        [self setTokenizingCharacterSet:charSet];
-        [self setCompletionDelay:0.1];
-        [self setBordered:NO];
-        [self setAutoresizingMask:NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
-        [[self cell] setWraps:YES];
-        [self setFocusRingType:NSFocusRingTypeNone];
-    }
-    return self;
-}
-
 - (void)textDidBeginEditing:(NSNotification *)aNotification
 {
     [super textDidBeginEditing:aNotification];
