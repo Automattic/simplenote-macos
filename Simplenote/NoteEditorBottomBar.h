@@ -7,15 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SPGradientView.h"
 
 @class SPTokenField;
 
 @interface NoteEditorBottomBar : NSView {
     BOOL enabled;
     NSMutableAttributedString *tagFieldPlaceholder;
-    NSImageView *tagImageView;
-    SPGradientView *bottomBorder;
 }
 
 @property (strong) SPTokenField *tokenField;

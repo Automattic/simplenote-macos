@@ -7,7 +7,6 @@
 //
 
 #import "NoteEditorBottomBar.h"
-#import "SPGradientView.h"
 #import "SPTokenField.h"
 #import "Simplenote-Swift.h"
 
@@ -32,22 +31,18 @@
         [self applyStyle];
         [self addSubview:self.tokenField];
     }
-
-    bottomBorder = [SPGradientView horizontalDividerWithWidth:self.frame.size.width paddingX:20 locationY:self.frame.size.height-2];
-    [self addSubview:bottomBorder];
     
     return self.tokenField;
 }
 
 - (void)refreshTagField:(BOOL)showPlaceholder
 {
-    NSString *tagPlaceholder = NSLocalizedString(@"Add a tag...", @"Placeholder text in the text field where you need to tap in order to add a tag");
+    NSString *tagPlaceholder = NSLocalizedString(@"Add tag...", @"Placeholder text in the text field where you need to tap in order to add a tag");
     NSDictionary *colorAttribute = @{
         NSForegroundColorAttributeName: [NSColor simplenoteSecondaryTextColor]
     };
     NSString *placeholderText = showPlaceholder ? tagPlaceholder : @"";
     [[self.tokenField cell] setPlaceholderAttributedString:[[NSAttributedString alloc] initWithString:placeholderText attributes:colorAttribute]];
-    [tagImageView setHidden:!showPlaceholder];
 }
 
 - (void)setEnabled:(BOOL)on
@@ -65,8 +60,6 @@
 {
     self.tokenField.textColor = [NSColor simplenoteTextColor];
     self.tokenField.backgroundColor = [NSColor simplenoteBackgroundColor];
-    [bottomBorder applyStyle];
-    [bottomBorder setNeedsDisplay:YES];
 }
 
 @end

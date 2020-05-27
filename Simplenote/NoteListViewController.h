@@ -10,7 +10,7 @@
 #import "Note.h"
 #import "NoteListViewController.h"
 #import "SPTokenField.h"
-#import "SPGradientView.h"
+
 @import Simperium_OSX;
 
 @class BackgroundView;
