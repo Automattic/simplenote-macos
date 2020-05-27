@@ -701,6 +701,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Actions
 
+- (IBAction)detailsAction:(id)sender
+{
+    NSButton *infoButton = (NSButton *)sender;
+    NSRect infoFrame = infoButton.frame;
+    NSPoint origin = NSMakePoint(CGRectGetMidX(infoFrame), CGRectGetMinY(infoFrame));
+
+    [self.detailsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
+}
+
 - (IBAction)pinAction:(id)sender
 {
     [SPTracker trackEditorNotePinningToggled];

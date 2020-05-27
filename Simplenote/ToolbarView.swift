@@ -12,11 +12,7 @@ class ToolbarView: NSView {
 
     /// Info Button
     ///
-    @IBOutlet private(set) var actionButton: NSPopUpButton!
-
-    /// Info Wrapper: NSPopUpButton is allocating extra width, due to its inner menu. Violent hack to normalize width(s)
-    ///
-    @IBOutlet private(set) var actionWrapperView: NSView!
+    @IBOutlet private(set) var actionButton: NSButton!
 
     /// Note History
     ///
@@ -86,7 +82,7 @@ private extension ToolbarView {
 
     func refreshInterface() {
         actionButton.isEnabled = state.isActionButtonEnabled
-        actionWrapperView.isHidden = state.isActionButtonHidden
+        actionButton.isHidden = state.isActionButtonHidden
 
         historyButton.isEnabled = state.isHistoryActionEnabled
         historyButton.isHidden = state.isHistoryActionHidden
