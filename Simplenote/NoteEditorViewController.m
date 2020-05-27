@@ -475,6 +475,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)textDidChange:(NSNotification *)notification
 {
     self.note.content = [self.noteEditor plainTextContent];
+    [self.note createPreview];
     
     [self refreshToolbarActions];
     

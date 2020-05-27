@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-#import "SPNoteCellView.h"
 #import "NoteListViewController.h"
 #import "SPTokenField.h"
 #import "SPGradientView.h"
@@ -26,7 +25,6 @@
     IBOutlet NSMenuItem *previewLinesMenuItem;
     NSString *oldTags;
     BOOL preserveSelection;
-    CGFloat rowHeight;
 }
 
 @property (strong, nonatomic) IBOutlet NSArrayController    *arrayController;

@@ -7,7 +7,6 @@
 //
 
 #import "NoteListViewController.h"
-#import "SPNoteCellView.h"
 #import "Note.h"
 #import "NoteEditorViewController.h"
 #import "SimplenoteAppDelegate.h"
@@ -20,9 +19,6 @@
 
 @import Simperium_OSX;
 
-CGFloat const kNoteRowHeight = 64;
-CGFloat const kNoteListTopMargin = 12;
-CGFloat const kNoteRowHeightCompact = 24;
 
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
@@ -54,6 +50,10 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: kNotesArraySelectionDidChangeNotification
                                                object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(notesCondensedModeDidChange:)
+                                                 name: NoteListCondensedDidChangeNotification
+                                               object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didBeginViewingTrash:)
                                                  name: kDidBeginViewingTrash
                                                object: nil];
@@ -71,6 +71,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: SPWillAddNewNoteNotificationName
                                                object: nil];
 
+    self.tableView.rowHeight = [NoteTableCellView rowHeight];
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
 
@@ -215,21 +216,10 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     return rowView;
 }
 
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    return rowHeight;
-}
-
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    SPNoteCellView *view = [tableView makeViewWithIdentifier:@"CustomCell" owner:self];
-    Note *note = [[self.arrayController arrangedObjects] objectAtIndex:row];
-    view.note = note;
-    view.contentPreview.delegate = self.tableView;
-    view.accessoryImageView.image = note.published ? [NSImage imageNamed:@"icon_shared"] : nil;
-    view.accessoryImageView.hidden = !note.published;
-
-    return view;
+    Note *note = [self.arrayController.arrangedObjects objectAtIndex:row];
+    return [self noteTableViewCellForNote:note];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
@@ -310,6 +300,11 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 }
 
 #pragma mark - Notification handlers
+
+- (void)notesCondensedModeDidChange:(NSNotification *)note
+{
+    self.tableView.rowHeight = [NoteTableCellView rowHeight];
+}
 
 - (void)noteKeysWillChange:(NSSet *)keys
 {
@@ -488,8 +483,6 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     // NOTE: temporary snippet. On it's way out, as part of #458 revamp
     BOOL isCondensedOn = (position == 1);
     [[Options shared] setNotesListCondensed:isCondensedOn];
-
-    rowHeight = isCondensedOn ? kNoteRowHeightCompact : kNoteRowHeight;
 }
 
 - (void)searchAction:(id)sender

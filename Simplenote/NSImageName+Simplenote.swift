@@ -25,6 +25,10 @@ extension NSImage.Name {
     ///
     static let newNote = NSImage.Name("button_new_note")
 
+    /// Note List: Pinned
+    ///
+    static let pin = NSImage.Name("icon_pin")
+
     /// Toolbar: Preview Off
     ///
     static let previewOff = NSImage.Name("button_preview_off")
@@ -36,6 +40,10 @@ extension NSImage.Name {
     /// Toolbar: Restore
     ///
     static let restore = NSImage.Name("button_restore")
+
+    /// Note List: Shared
+    ///
+    static let shared = NSImage.Name("icon_shared")
 
     /// Logo: Simplenote
     ///

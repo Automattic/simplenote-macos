@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -765,13 +765,13 @@
                                             <constraint firstItem="zSa-wS-KTc" firstAttribute="leading" secondItem="R5E-ls-WXI" secondAttribute="leading" constant="12" id="rni-D6-IDd"/>
                                         </constraints>
                                     </view>
-                                    <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="560">
+                                    <scrollView focusRingType="none" borderType="none" horizontalLineScroll="80" horizontalPageScroll="10" verticalLineScroll="80" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="560">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="510"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
                                             <rect key="frame" x="0.0" y="0.0" width="270" height="510"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
+                                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="72" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="270" height="510"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="8"/>
@@ -788,29 +788,65 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
-                                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="contentPreview"/>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
-                                                                <tableCellView identifier="CustomCell" id="607" customClass="SPNoteCellView">
-                                                                    <rect key="frame" x="0.0" y="4" width="270" height="64"/>
+                                                                <tableCellView identifier="NoteTableCellView" id="607" customClass="NoteTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="4" width="270" height="72"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
-                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-cH-hPH">
-                                                                            <rect key="frame" x="19" y="1" width="250" height="58"/>
+                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sci-ow-SCG" userLabel="Pin Image View">
+                                                                            <rect key="frame" x="7" y="50" width="12" height="12"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="12" id="put-lU-HVa"/>
+                                                                                <constraint firstAttribute="height" constant="12" id="tBi-lD-3iU"/>
+                                                                            </constraints>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_pin" id="SkA-qV-YHn"/>
+                                                                        </imageView>
+                                                                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UbS-Lj-ZrC">
+                                                                            <rect key="frame" x="24" y="15" width="230" height="49"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1103">
-                                                                                    <rect key="frame" x="-2" y="16" width="216" height="42"/>
-                                                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This is some text in a note that is long enough to allow us to preview what it will look like inside the app." placeholderString="" allowsEditingTextAttributes="YES" id="1104">
-                                                                                        <font key="font" metaFont="user"/>
+                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="251.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-cH-hPH">
+                                                                                    <rect key="frame" x="0.0" y="32" width="230" height="17"/>
+                                                                                    <subviews>
+                                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1103" userLabel="Title Label">
+                                                                                            <rect key="frame" x="-2" y="0.0" width="222" height="17"/>
+                                                                                            <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Note Title!" placeholderString="" allowsEditingTextAttributes="YES" id="1104">
+                                                                                                <font key="font" metaFont="systemMedium" size="14"/>
+                                                                                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </textFieldCell>
+                                                                                        </textField>
+                                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-a7-XwI" userLabel="Shared Image View">
+                                                                                            <rect key="frame" x="218" y="3" width="12" height="12"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="width" constant="12" id="VBh-7j-S9H"/>
+                                                                                                <constraint firstAttribute="height" constant="12" id="t0N-F2-6wT"/>
+                                                                                            </constraints>
+                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_shared" id="ghF-Js-YoS"/>
+                                                                                        </imageView>
+                                                                                    </subviews>
+                                                                                    <visibilityPriorities>
+                                                                                        <integer value="1000"/>
+                                                                                        <integer value="1000"/>
+                                                                                    </visibilityPriorities>
+                                                                                    <customSpacing>
+                                                                                        <real value="3.4028234663852886e+38"/>
+                                                                                        <real value="3.4028234663852886e+38"/>
+                                                                                    </customSpacing>
+                                                                                </stackView>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQu-bW-rx8" userLabel="Body Label">
+                                                                                    <rect key="frame" x="-2" y="0.0" width="234" height="30"/>
+                                                                                    <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Entered of cordial do on no hearted. Yet agreed whence and unable limit…" placeholderString="" allowsEditingTextAttributes="YES" id="TM7-SJ-chj">
+                                                                                        <font key="font" metaFont="label" size="12"/>
                                                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
-                                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-a7-XwI">
-                                                                                    <rect key="frame" x="228" y="36" width="22" height="22"/>
-                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_shared" id="ghF-Js-YoS"/>
-                                                                                </imageView>
                                                                             </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="OeL-cH-hPH" firstAttribute="leading" secondItem="UbS-Lj-ZrC" secondAttribute="leading" id="0CF-v6-lnA"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="OeL-cH-hPH" secondAttribute="trailing" id="jhE-CE-w5L"/>
+                                                                            </constraints>
                                                                             <visibilityPriorities>
                                                                                 <integer value="1000"/>
                                                                                 <integer value="1000"/>
@@ -822,14 +858,18 @@
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="OeL-cH-hPH" secondAttribute="trailing" constant="1" id="2t4-dI-hYn"/>
-                                                                        <constraint firstItem="OeL-cH-hPH" firstAttribute="top" secondItem="607" secondAttribute="top" constant="5" id="B4e-Je-2Gf"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="OeL-cH-hPH" secondAttribute="bottom" constant="1" id="JR7-WJ-i63"/>
-                                                                        <constraint firstItem="OeL-cH-hPH" firstAttribute="leading" secondItem="607" secondAttribute="leading" constant="19" id="q6F-oi-H0A"/>
+                                                                        <constraint firstItem="UbS-Lj-ZrC" firstAttribute="leading" secondItem="607" secondAttribute="leading" constant="24" id="0ps-wy-gBQ"/>
+                                                                        <constraint firstItem="Sci-ow-SCG" firstAttribute="leading" secondItem="607" secondAttribute="leading" constant="7" id="LBM-RR-s7p"/>
+                                                                        <constraint firstItem="UbS-Lj-ZrC" firstAttribute="top" secondItem="607" secondAttribute="top" constant="8" id="Xx4-QF-Tta"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="UbS-Lj-ZrC" secondAttribute="trailing" constant="16" id="ndM-DZ-k6A"/>
+                                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UbS-Lj-ZrC" secondAttribute="bottom" constant="8" id="y2b-ul-Jpc"/>
+                                                                        <constraint firstItem="OeL-cH-hPH" firstAttribute="centerY" secondItem="Sci-ow-SCG" secondAttribute="centerY" id="z9F-mM-3ju"/>
                                                                     </constraints>
                                                                     <connections>
-                                                                        <outlet property="accessoryImageView" destination="UKZ-a7-XwI" id="9My-vE-J3G"/>
-                                                                        <outlet property="contentPreview" destination="1103" id="1729"/>
+                                                                        <outlet property="bodyTextField" destination="QQu-bW-rx8" id="dIp-pP-cVE"/>
+                                                                        <outlet property="pinnedImageView" destination="Sci-ow-SCG" id="mDq-42-85Y"/>
+                                                                        <outlet property="sharedImageView" destination="UKZ-a7-XwI" id="ess-md-kLZ"/>
+                                                                        <outlet property="titleTextField" destination="1103" id="iML-MA-1ql"/>
                                                                     </connections>
                                                                 </tableCellView>
                                                             </prototypeCellViews>
@@ -1219,6 +1259,7 @@
         <image name="button_restore" width="24" height="24"/>
         <image name="button_share" width="24" height="24"/>
         <image name="button_trash" width="24" height="24"/>
-        <image name="icon_shared" width="22" height="22"/>
+        <image name="icon_pin" width="16" height="16"/>
+        <image name="icon_shared" width="16" height="16"/>
     </resources>
 </document>
