@@ -833,7 +833,7 @@
                                                                     <rect key="frame" x="0.0" y="4" width="270" height="72"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
-                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sci-ow-SCG" userLabel="Left Image View">
+                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sci-ow-SCG" userLabel="Pin Image View">
                                                                             <rect key="frame" x="7" y="50" width="12" height="12"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="12" id="put-lU-HVa"/>
@@ -855,7 +855,7 @@
                                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
-                                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-a7-XwI" userLabel="Right Image View">
+                                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-a7-XwI" userLabel="Shared Image View">
                                                                                             <rect key="frame" x="218" y="3" width="12" height="12"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="12" id="VBh-7j-S9H"/>
@@ -906,8 +906,8 @@
                                                                     </constraints>
                                                                     <connections>
                                                                         <outlet property="bodyTextField" destination="QQu-bW-rx8" id="dIp-pP-cVE"/>
-                                                                        <outlet property="leftImageView" destination="Sci-ow-SCG" id="nWj-4J-Vn4"/>
-                                                                        <outlet property="rightImageView" destination="UKZ-a7-XwI" id="9jK-CD-D4R"/>
+                                                                        <outlet property="pinnedImageView" destination="Sci-ow-SCG" id="mDq-42-85Y"/>
+                                                                        <outlet property="sharedImageView" destination="UKZ-a7-XwI" id="ess-md-kLZ"/>
                                                                         <outlet property="titleTextField" destination="1103" id="iML-MA-1ql"/>
                                                                     </connections>
                                                                 </tableCellView>
