@@ -8,15 +8,27 @@ class BackgroundView: NSView {
 
     /// Bottom Border: Color
     ///
-    var bottomBorderColor: NSColor? = .simplenoteDividerColor
+    var bottomBorderColor: NSColor? = .simplenoteDividerColor {
+        didSet {
+            needsDisplay = true
+        }
+    }
 
     /// Bottom Border: Width
     ///
-    var bottomBorderWidth = NSScreen.main?.pointToPixelRatio
+    var bottomBorderWidth = NSScreen.main?.pointToPixelRatio {
+       didSet {
+           needsDisplay = true
+       }
+   }
 
     /// Fill Color
     ///
-    var fillColor: NSColor?
+    var fillColor: NSColor? {
+       didSet {
+           needsDisplay = true
+       }
+   }
 
 
     // MARK: - Overridden Methods
