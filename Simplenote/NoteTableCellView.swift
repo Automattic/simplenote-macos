@@ -17,20 +17,20 @@ class NoteTableCellView: NSTableCellView {
 
     /// LeftImage: Pinned Indicator
     ///
-    @IBOutlet private var leftImageView: NSImageView!
+    @IBOutlet private var pinnedImageView: NSImageView!
 
     /// RightImage: Shared Indicator
     ///
-    @IBOutlet private var rightImageView: NSImageView!
+    @IBOutlet private var sharedImageView: NSImageView!
 
     /// Indicates if the receiver displays the pinned indicator
     ///
     var displaysPinnedIndicator: Bool {
         get {
-            !leftImageView.isHidden
+            !pinnedImageView.isHidden
         }
         set {
-            leftImageView.isHidden = !newValue
+            pinnedImageView.isHidden = !newValue
         }
     }
 
@@ -38,10 +38,10 @@ class NoteTableCellView: NSTableCellView {
     ///
     var displaysSharedIndicator: Bool {
         get {
-            !rightImageView.isHidden
+            !sharedImageView.isHidden
         }
         set {
-            rightImageView.isHidden = !newValue
+            sharedImageView.isHidden = !newValue
         }
     }
 
@@ -56,15 +56,15 @@ class NoteTableCellView: NSTableCellView {
         }
     }
 
-    /// Note's Title String
+    /// Note's Title
     /// - Note: Once the cell is fully initialized, please remember to run `refreshAttributedStrings`
     ///
-    var titleString: String?
+    var title: String?
 
-    /// Note's Body String
+    /// Note's Body
     /// - Note: Once the cell is fully initialized, please remember to run `refreshAttributedStrings`
     ///
-    var bodyString: String?
+    var body: String?
 
 
     // MARK: - Overridden Methods
@@ -84,11 +84,11 @@ extension NoteTableCellView {
     /// Refreshed the Label(s) Attributed Strings: Keywords, Bullets and the Body Prefix will be taken into consideration
     ///
     func refreshAttributedStrings() {
-        titleTextField.attributedStringValue = titleString.map {
+        titleTextField.attributedStringValue = title.map {
             NSAttributedString.previewString(text: $0, font: Fonts.title, color: .simplenoteTextColor)
         } ?? NSAttributedString()
 
-        bodyTextField.attributedStringValue = bodyString.map {
+        bodyTextField.attributedStringValue = body.map {
             NSAttributedString.previewString(text: $0, font: Fonts.body, color: .simplenoteSecondaryTextColor)
         } ?? NSAttributedString()
     }
@@ -105,9 +105,9 @@ private extension NoteTableCellView {
     }
 
     func setupImageViews() {
-        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the color!
-        leftImageView.image = NSImage(named: .pin)?.tinted(with: .simplenoteActionButtonTintColor)
-        rightImageView.image = NSImage(named: .shared)?.tinted(with: .simplenoteSecondaryTextColor)
+        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
+        pinnedImageView.image = NSImage(named: .pin)?.tinted(with: .simplenoteActionButtonTintColor)
+        sharedImageView.image = NSImage(named: .shared)?.tinted(with: .simplenoteSecondaryTextColor)
     }
 }
 

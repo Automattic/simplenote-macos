@@ -22,7 +22,10 @@ class SPTextAttachment: NSTextAttachment {
         }
     }
 
-    /// Font to be used for Attachment Sizing purposes
+    /// Sizing Font:
+    ///
+    /// -   Note: When non nil, the TextAttachment will calculate its sized based on the specified font. Otherwise, we'll attempt
+    ///    to determine the TextStorage font applied.
     ///
     var sizingFont: NSFont?
 
