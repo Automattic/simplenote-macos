@@ -7,12 +7,9 @@
 //
 
 #import "SPTokenField.h"
-#import "SimplenoteAppDelegate.h"
-#import "Note.h"
 
-@interface SPTokenField() {
-    NSArray *tokenCopies;
-}
+@interface SPTokenField()
+@property (nonatomic, strong) NSArray *tokenCopies;
 @end
 
 @implementation SPTokenField
@@ -20,14 +17,14 @@
 - (void)textDidBeginEditing:(NSNotification *)aNotification
 {
     [super textDidBeginEditing:aNotification];
-    tokenCopies = [self.objectValue copy];
+    self.tokenCopies = [self.objectValue copy];
 }
 
 - (void)textDidChange:(NSNotification *)obj
 {
     [super textDidChange:obj];
     NSUInteger numTokens = [self.objectValue count];
-    NSUInteger previousNumTokens = [tokenCopies count];
+    NSUInteger previousNumTokens = [self.tokenCopies count];
 
     if (previousNumTokens > numTokens) {
         if ([[self delegate] respondsToSelector:@selector(tokenFieldDidChange:)]) {
@@ -35,7 +32,7 @@
         }
     }
     
-    tokenCopies = [self.objectValue copy];
+    self.tokenCopies = [self.objectValue copy];
 }
 
 - (void)textDidEndEditing:(NSNotification *)aNotification
