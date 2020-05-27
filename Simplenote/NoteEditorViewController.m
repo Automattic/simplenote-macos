@@ -121,7 +121,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
 
-    // StatusImage
+    // Interface Initialization
+    [self setupScrollView];
+    [self setupTopDivider];
     [self setupStatusImageView];
 
     // Preload Markdown Preview
@@ -143,7 +145,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
-    
+
+    [self startListeningToScrollNotifications];
+
     [self applyStyle];
 }
 

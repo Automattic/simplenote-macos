@@ -10,6 +10,16 @@ extension NoteEditorViewController {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
         statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
     }
+
+    @objc
+    func setupScrollView() {
+        scrollView.contentView.postsBoundsChangedNotifications = true
+    }
+
+    @objc
+    func setupTopDivider() {
+        topDividerView.alphaValue = .zero
+    }
 }
 
 
@@ -106,4 +116,37 @@ extension NoteEditorViewController {
         markdownViewController.view.removeFromSuperview()
         markdownViewController.removeFromParent()
     }
+}
+
+
+// MARK: - Notifications
+//
+extension NoteEditorViewController {
+
+    @objc
+    func startListeningToScrollNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(clipViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: scrollView.contentView)
+    }
+
+    @objc
+    func clipViewDidScroll(sender: Notification) {
+        refreshTopDividerAlpha()
+    }
+
+    func refreshTopDividerAlpha() {
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y
+        let newAlpha = min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+
+        topDividerView.alphaValue = newAlpha
+    }
+}
+
+
+// MARK: - Settings
+//
+private enum Settings {
+    static let maximumAlphaGradientOffset = CGFloat(30)
 }
