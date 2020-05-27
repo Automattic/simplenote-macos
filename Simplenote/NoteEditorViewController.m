@@ -193,8 +193,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)updateTagField
 {
-    [self.tagTokenField setObjectValue: [self.note.tagsArray count] > 0 ? self.note.tagsArray : [NSArray array]];
-    [self.tagTokenField setNeedsDisplay:YES];
+    self.tagsView.tags = self.note.tagsArray;
 }
 
 - (void)displayNote:(Note *)selectedNote
@@ -213,9 +212,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self refreshToolbarActions];
         [self refreshEditorActions];
         [self.noteEditor displayNoteWithContent:@""];
-        [self.tagsView setEnabled:NO];
-        [self.tagTokenField setEditable:NO];
-        [self.tagTokenField setObjectValue:@[]];
+        [self.tagsView setDisplaysPlaceholder:NO];
+        [self.tagsView setEditable:NO];
+        [self.tagsView setTags:@[]];
 
         return;
     }
@@ -234,17 +233,17 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)
-    self.noteEditor.editable    = false;
-    self.noteEditor.editable    = !self.viewingTrash;
+    self.noteEditor.editable = false;
+    self.noteEditor.editable = !self.viewingTrash;
     
-    self.noteEditor.selectable  = !self.viewingTrash;
+    self.noteEditor.selectable = !self.viewingTrash;
     
-    self.tagTokenField.editable = !self.viewingTrash;
-    self.tagTokenField.selectable   = !self.viewingTrash;
-    self.tagsView.enabled       = !self.viewingTrash;
+    self.tagsView.editable = !self.viewingTrash;
+    self.tagsView.selectable = !self.viewingTrash;
+    self.tagsView.displaysPlaceholder = !self.viewingTrash;
 
-    self.note                   = selectedNote;
-    self.selectedNotes          = [NSArray arrayWithObject:self.note];
+    self.note = selectedNote;
+    self.selectedNotes = [NSArray arrayWithObject:self.note];
     
     [self updateTagField];
     [self refreshToolbarActions];
@@ -286,10 +285,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self refreshToolbarActions];
     [self refreshEditorActions];
 
-    [self.tagTokenField setEditable:NO];
-    [self.tagTokenField setSelectable:NO];
-    [self.tagTokenField setObjectValue:[NSArray array]];
-    [self.tagsView setEnabled:NO];
+    [self.tagsView setDisplaysPlaceholder:NO];
+    [self.tagsView setEditable:NO];
+    [self.tagsView setSelectable:NO];
+    [self.tagsView setTags:@[]];
 
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -332,7 +331,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = YES;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.tagsView setEnabled:NO];
+    [self.tagsView setDisplaysPlaceholder:NO];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -340,7 +339,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = NO;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.tagsView setEnabled:YES];
+    [self.tagsView setDisplaysPlaceholder:YES];
 }
 
 - (void)tagUpdated:(NSNotification *)notification

@@ -10,11 +10,45 @@ class TagsView: NSView {
     ///
     @IBOutlet private(set) var tokenField: SPTokenField!
 
-    /// Indicates if the
+    /// Indicates if the receiver should display a Placeholder when empty
     ///
-    var enabled = true {
+    var displaysPlaceholder = true {
         didSet {
             refreshPlaceholder()
+        }
+    }
+
+    /// Indicates if the TokenField is enabled
+    ///
+    var editable: Bool {
+        get {
+            tokenField.isEditable
+        }
+        set {
+            tokenField.isEditable = newValue
+        }
+    }
+
+    /// Indicates if the TokenField is selectable
+    ///
+    var selectable: Bool {
+        get {
+            tokenField.isSelectable
+        }
+        set {
+            tokenField.isSelectable = newValue
+        }
+    }
+
+    /// List of Tags to be rendered
+    ///
+    var tags: [String]? {
+        get {
+            tokenField.objectValue as? [String]
+        }
+        set {
+            tokenField.objectValue = newValue ?? []
+            tokenField.needsDisplay = true
         }
     }
 
@@ -51,7 +85,7 @@ private extension TagsView {
     }
 
     func refreshPlaceholder() {
-        tokenField.placeholderAttributedString = enabled ? placeholderAttributedString : nil
+        tokenField.placeholderAttributedString = displaysPlaceholder ? placeholderAttributedString : nil
     }
 
     func setupTokenField() {
