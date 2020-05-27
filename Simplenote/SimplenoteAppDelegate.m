@@ -371,7 +371,6 @@
             case SPBucketChangeTypeUpdate:
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
-                    [self.noteEditorViewController updateTagField];
                 }
                 [self.noteListViewController noteKeyDidChange:key memberNames:memberNames];
 

@@ -85,6 +85,16 @@ extension NoteEditorViewController {
         toolbarView.state = newState
 
     }
+
+    /// Refreshes the Tags Editor's Inner State
+    ///
+    @objc
+    func refreshTagsEditor() {
+        tagsView.displaysPlaceholder = isDisplayingNote && !viewingTrash
+        tagsView.editable = isDisplayingNote && !viewingTrash
+        tagsView.selectable = isDisplayingNote && !viewingTrash
+        tagsView.tags = note?.tagsArray as? [String]
+    }
 }
 
 

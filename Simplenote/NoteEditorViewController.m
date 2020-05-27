@@ -191,11 +191,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
 }
 
-- (void)updateTagField
-{
-    self.tagsView.tags = self.note.tagsArray;
-}
-
 - (void)displayNote:(Note *)selectedNote
 {
     [self save];
@@ -211,10 +206,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         self.selectedNotes = @[];
         [self refreshToolbarActions];
         [self refreshEditorActions];
+        [self refreshTagsEditor];
         [self.noteEditor displayNoteWithContent:@""];
-        [self.tagsView setDisplaysPlaceholder:NO];
-        [self.tagsView setEditable:NO];
-        [self.tagsView setTags:@[]];
 
         return;
     }
@@ -237,16 +230,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.noteEditor.editable = !self.viewingTrash;
     
     self.noteEditor.selectable = !self.viewingTrash;
-    
-    self.tagsView.editable = !self.viewingTrash;
-    self.tagsView.selectable = !self.viewingTrash;
-    self.tagsView.displaysPlaceholder = !self.viewingTrash;
 
     self.note = selectedNote;
     self.selectedNotes = [NSArray arrayWithObject:self.note];
     
-    [self updateTagField];
     [self refreshToolbarActions];
+    [self refreshTagsEditor];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -284,11 +273,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     [self refreshToolbarActions];
     [self refreshEditorActions];
-
-    [self.tagsView setDisplaysPlaceholder:NO];
-    [self.tagsView setEditable:NO];
-    [self.tagsView setSelectable:NO];
-    [self.tagsView setTags:@[]];
+    [self refreshTagsEditor];
 
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -296,6 +281,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (SPTokenField *)tagTokenField
 {
+    // TODO: Nuke!
     return self.tagsView.tokenField;
 }
 
@@ -331,7 +317,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = YES;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.tagsView setDisplaysPlaceholder:NO];
+    [self refreshTagsEditor];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -339,12 +325,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = NO;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.tagsView setDisplaysPlaceholder:YES];
+    [self refreshTagsEditor];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
 {
-    [self updateTagField];
+    [self refreshTagsEditor];
 }
 
 - (void)simperiumWillSave:(NSNotification *)notification
@@ -502,6 +488,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     [self.noteEditor displayNoteWithContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
+    [self refreshTagsEditor];
 
     [self updatePublishUI];
 }
@@ -907,7 +894,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     BOOL fullscreen = ([self.view.window styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen;
     if (fullscreen)
         return [NSArray array];
-    
+
     // Supply an auto-complete list based on substrings
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];

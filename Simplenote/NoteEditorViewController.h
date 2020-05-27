@@ -70,7 +70,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)displayNote:(Note *)selectedNote;
 - (void)displayNotes:(NSArray *)selectedNotes;
 - (void)didReceiveNewContent;
-- (void)updateTagField;
 - (void)willReceiveNewContent;
 - (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data;
 - (void)applyStyle;
