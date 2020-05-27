@@ -17,20 +17,20 @@ class NoteTableCellView: NSTableCellView {
 
     /// LeftImage: Pinned Indicator
     ///
-    @IBOutlet private var leftImageView: NSImageView!
+    @IBOutlet private var pinnedImageView: NSImageView!
 
     /// RightImage: Shared Indicator
     ///
-    @IBOutlet private var rightImageView: NSImageView!
+    @IBOutlet private var sharedImageView: NSImageView!
 
     /// Indicates if the receiver displays the pinned indicator
     ///
     var displaysPinnedIndicator: Bool {
         get {
-            !leftImageView.isHidden
+            !pinnedImageView.isHidden
         }
         set {
-            leftImageView.isHidden = !newValue
+            pinnedImageView.isHidden = !newValue
         }
     }
 
@@ -38,10 +38,10 @@ class NoteTableCellView: NSTableCellView {
     ///
     var displaysSharedIndicator: Bool {
         get {
-            !rightImageView.isHidden
+            !sharedImageView.isHidden
         }
         set {
-            rightImageView.isHidden = !newValue
+            sharedImageView.isHidden = !newValue
         }
     }
 
@@ -58,7 +58,7 @@ class NoteTableCellView: NSTableCellView {
 
     /// Note's Title String
     ///
-    var titleString: String? {
+    var title: String? {
         get {
             titleTextField.stringValue
         }
@@ -69,7 +69,7 @@ class NoteTableCellView: NSTableCellView {
 
     /// Note's Body String
     ///
-    var bodyString: String? {
+    var body: String? {
         get {
             bodyTextField.stringValue
         }
@@ -108,12 +108,12 @@ private extension NoteTableCellView {
     func setupLeftImage() {
         // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
         let image = NSImage(named: .pin)
-        leftImageView.image = image?.tinted(with: .simplenoteActionButtonTintColor)
+        pinnedImageView.image = image?.tinted(with: .simplenoteActionButtonTintColor)
     }
 
     func setupRightImage() {
         let image = NSImage(named: .shared)
-        rightImageView.image = image?.tinted(with: .simplenoteSecondaryTextColor)
+        sharedImageView.image = image?.tinted(with: .simplenoteSecondaryTextColor)
     }
 }
 
