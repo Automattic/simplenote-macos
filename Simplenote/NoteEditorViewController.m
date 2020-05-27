@@ -12,7 +12,6 @@
 #import "Tag.h"
 #import "NoteListViewController.h"
 #import "TagListViewController.h"
-#import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
@@ -136,8 +135,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
     [self updateLineLengthMenuForPosition:lineLengthPosition];
     
-    tagTokenField = [self.bottomBar addTagField];
-    tagTokenField.delegate = self;
+    self.tagTokenField.delegate = self;
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -195,8 +193,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)updateTagField
 {
-    [tagTokenField setObjectValue: [self.note.tagsArray count] > 0 ? self.note.tagsArray : [NSArray array]];
-    [tagTokenField setNeedsDisplay:YES];
+    [self.tagTokenField setObjectValue: [self.note.tagsArray count] > 0 ? self.note.tagsArray : [NSArray array]];
+    [self.tagTokenField setNeedsDisplay:YES];
 }
 
 - (void)displayNote:(Note *)selectedNote
@@ -215,9 +213,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self refreshToolbarActions];
         [self refreshEditorActions];
         [self.noteEditor displayNoteWithContent:@""];
-        [self.bottomBar setEnabled:NO];
-        [tagTokenField setEditable:NO];
-        [tagTokenField setObjectValue:@[]];
+        [self.tagsView setEnabled:NO];
+        [self.tagTokenField setEditable:NO];
+        [self.tagTokenField setObjectValue:@[]];
 
         return;
     }
@@ -241,9 +239,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     self.noteEditor.selectable  = !self.viewingTrash;
     
-    tagTokenField.editable      = !self.viewingTrash;
-    tagTokenField.selectable    = !self.viewingTrash;
-    self.bottomBar.enabled      = !self.viewingTrash;
+    self.tagTokenField.editable = !self.viewingTrash;
+    self.tagTokenField.selectable   = !self.viewingTrash;
+    self.tagsView.enabled       = !self.viewingTrash;
 
     self.note                   = selectedNote;
     self.selectedNotes          = [NSArray arrayWithObject:self.note];
@@ -288,13 +286,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self refreshToolbarActions];
     [self refreshEditorActions];
 
-    [tagTokenField setEditable:NO];
-    [tagTokenField setSelectable:NO];
-    [tagTokenField setObjectValue:[NSArray array]];
-    [self.bottomBar setEnabled:NO];
+    [self.tagTokenField setEditable:NO];
+    [self.tagTokenField setSelectable:NO];
+    [self.tagTokenField setObjectValue:[NSArray array]];
+    [self.tagsView setEnabled:NO];
 
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
+}
+
+- (SPTokenField *)tagTokenField
+{
+    return self.tagsView.tokenField;
 }
 
 // Linkifies text in the editor
@@ -329,7 +332,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = YES;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.bottomBar setEnabled:NO];
+    [self.tagsView setEnabled:NO];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -337,7 +340,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = NO;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.bottomBar setEnabled:YES];
+    [self.tagsView setEnabled:YES];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
@@ -1053,15 +1056,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     }
 
-    self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
-    self.topDividerView.borderColor = [NSColor simplenoteDividerColor];
-    [self.statusTextField setTextColor:[NSColor simplenoteSecondaryTextColor]];
-    [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
-    [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];
+    self.backgroundView.fillColor       = [NSColor simplenoteBackgroundColor];
+    self.topDividerView.borderColor     = [NSColor simplenoteDividerColor];
+    self.statusTextField.textColor      = [NSColor simplenoteSecondaryTextColor];
+    self.noteEditor.insertionPointColor = [NSColor simplenoteTextColor];
+    self.noteEditor.textColor           = [NSColor simplenoteTextColor];
 
-    [self.bottomBar applyStyle];
-    [self.bottomBar setNeedsDisplay:YES];
-    [self.bottomBar setEnabled:[self.bottomBar isEnabled]];
+    [self.tagsView refreshStyle];
 
     [self dismissActivePopover];
 }
@@ -1082,6 +1083,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor displayNoteWithContent:content];
 }
 
+
 #pragma mark - NSButton Delegate Methods
 
 - (IBAction)showSharePopover:(id)sender
@@ -1089,9 +1091,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [SPTracker trackEditorCollaboratorsAccessed];
 
     ShareViewController *viewController = [ShareViewController new];
-    [self showViewController:viewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.tagsView preferredEdge:NSMaxYEdge];
 
-    [self.bottomBar.tokenField becomeFirstResponder];
+    [self.tagsView.tokenField becomeFirstResponder];
     self.shareViewController = viewController;
 }
 

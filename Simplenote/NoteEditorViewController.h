@@ -13,8 +13,8 @@
 
 @class BackgroundView;
 @class NoteListViewController;
-@class NoteEditorBottomBar;
 @class MarkdownViewController;
+@class TagsView;
 @class ToolbarView;
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
@@ -40,7 +40,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 {
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
-    IBOutlet NSTokenField *tagTokenField;
     IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
@@ -61,7 +60,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;
 @property (nonatomic,   weak) IBOutlet SPTextView               *noteEditor;
 @property (nonatomic,   weak) IBOutlet NSScrollView             *scrollView;
-@property (nonatomic,   weak) IBOutlet NoteEditorBottomBar      *bottomBar;
+@property (nonatomic,   weak) IBOutlet TagsView                 *tagsView;
 @property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
 @property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                    viewingTrash;

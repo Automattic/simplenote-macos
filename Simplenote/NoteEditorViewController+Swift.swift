@@ -104,7 +104,7 @@ extension NoteEditorViewController {
             markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
-            markdownView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
+            markdownView.bottomAnchor.constraint(equalTo: tagsView.topAnchor),
         ])
 
         addChild(markdownViewController)
