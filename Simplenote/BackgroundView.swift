@@ -8,15 +8,33 @@ class BackgroundView: NSView {
 
     /// Bottom Border: Color
     ///
-    var bottomBorderColor: NSColor? = .simplenoteDividerColor
+    var borderColor: NSColor? = .simplenoteDividerColor {
+        didSet {
+            needsDisplay = true
+        }
+    }
 
     /// Bottom Border: Width
     ///
-    var bottomBorderWidth = NSScreen.main?.pointToPixelRatio
+    var borderWidth = NSScreen.main?.pointToPixelRatio {
+       didSet {
+           needsDisplay = true
+       }
+   }
+
+    var drawsBottomBorder = true {
+        didSet {
+            needsDisplay = true
+        }
+    }
 
     /// Fill Color
     ///
-    var fillColor: NSColor?
+    var fillColor: NSColor? {
+        didSet {
+            needsDisplay = true
+        }
+    }
 
 
     // MARK: - Overridden Methods
@@ -27,9 +45,9 @@ class BackgroundView: NSView {
             NSBezierPath(rect: dirtyRect).fill()
         }
 
-        if let bottomBorderWidth = bottomBorderWidth, let bottomBorderColor = bottomBorderColor {
-            let bottomRect = NSRect(x: .zero, y: .zero, width: dirtyRect.width, height: bottomBorderWidth)
-            bottomBorderColor.set()
+        if drawsBottomBorder, let borderWidth = borderWidth, let borderColor = borderColor {
+            let bottomRect = NSRect(x: .zero, y: .zero, width: dirtyRect.width, height: borderWidth)
+            borderColor.set()
             NSBezierPath(rect: bottomRect).fill()
         }
     }

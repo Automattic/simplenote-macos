@@ -24,6 +24,7 @@ extension NoteListViewController {
     @objc
     func applyStyle() {
         backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
+        topDividerView.borderColor = .simplenoteDividerColor
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
         searchField.textColor = .simplenoteTextColor
         searchField.placeholderAttributedString = searchFieldPlaceholderString
