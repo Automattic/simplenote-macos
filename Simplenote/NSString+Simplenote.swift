@@ -112,3 +112,16 @@ extension NSString {
         return NSAttributedString(string: output)
     }
 }
+
+
+// MARK: - Constants
+//
+extension NSString {
+
+    /// Space: We simply refuse to inject `" "` all over!
+    ///
+    @objc
+    class var space: NSString {
+        " "
+    }
+}

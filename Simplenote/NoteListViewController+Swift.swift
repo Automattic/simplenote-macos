@@ -73,6 +73,8 @@ extension NoteListViewController {
         noteView.body = note.bodyPreview
         noteView.rendersInCondensedMode = Options.shared.notesListCondensed
 
+        noteView.refreshAttributedStrings()
+
         return noteView
     }
 }

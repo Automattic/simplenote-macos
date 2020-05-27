@@ -57,6 +57,14 @@ extension NSImage.Name {
     ///
     static let share = NSImage.Name("button_share")
 
+    /// List Marker: Checked
+    ///
+    static let taskChecked = NSImage.Name("icon_task_checked")
+
+    /// List Marker: Unchecked
+    ///
+    static let taskUnchecked = NSImage.Name("icon_task_unchecked")
+
     /// Tag List: Trash
     ///
     static let trash = NSImage.Name("button_trash")

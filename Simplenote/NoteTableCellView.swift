@@ -56,37 +56,41 @@ class NoteTableCellView: NSTableCellView {
         }
     }
 
-    /// Note's Title String
+    /// Note's Title
+    /// - Note: Once the cell is fully initialized, please remember to run `refreshAttributedStrings`
     ///
-    var title: String? {
-        get {
-            titleTextField.stringValue
-        }
-        set {
-            titleTextField.stringValue = newValue ?? String()
-        }
-    }
+    var title: String?
 
-    /// Note's Body String
+    /// Note's Body
+    /// - Note: Once the cell is fully initialized, please remember to run `refreshAttributedStrings`
     ///
-    var body: String? {
-        get {
-            bodyTextField.stringValue
-        }
-        set {
-            bodyTextField.stringValue = newValue ?? String()
-        }
-    }
+    var body: String?
 
 
     // MARK: - Overridden Methods
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupTitleField()
-        setupBodyField()
-        setupLeftImage()
-        setupRightImage()
+        setupTextFields()
+        setupImageViews()
+    }
+}
+
+
+// MARK: - Public API(s)
+//
+extension NoteTableCellView {
+
+    /// Refreshed the Label(s) Attributed Strings: Keywords, Bullets and the Body Prefix will be taken into consideration
+    ///
+    func refreshAttributedStrings() {
+        titleTextField.attributedStringValue = title.map {
+            NSAttributedString.previewString(text: $0, font: Fonts.title, color: .simplenoteTextColor)
+        } ?? NSAttributedString()
+
+        bodyTextField.attributedStringValue = body.map {
+            NSAttributedString.previewString(text: $0, font: Fonts.body, color: .simplenoteSecondaryTextColor)
+        } ?? NSAttributedString()
     }
 }
 
@@ -95,25 +99,15 @@ class NoteTableCellView: NSTableCellView {
 //
 private extension NoteTableCellView {
 
-    func setupTitleField() {
+    func setupTextFields() {
         titleTextField.maximumNumberOfLines = Metrics.maximumNumberOfTitleLines
-        titleTextField.textColor = .simplenoteTextColor
-    }
-
-    func setupBodyField() {
         bodyTextField.maximumNumberOfLines = Metrics.maximumNumberOfBodyLines
-        bodyTextField.textColor = .simplenoteSecondaryTextColor
     }
 
-    func setupLeftImage() {
+    func setupImageViews() {
         // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
-        let image = NSImage(named: .pin)
-        pinnedImageView.image = image?.tinted(with: .simplenoteActionButtonTintColor)
-    }
-
-    func setupRightImage() {
-        let image = NSImage(named: .shared)
-        sharedImageView.image = image?.tinted(with: .simplenoteSecondaryTextColor)
+        pinnedImageView.image = NSImage(named: .pin)?.tinted(with: .simplenoteActionButtonTintColor)
+        sharedImageView.image = NSImage(named: .shared)?.tinted(with: .simplenoteSecondaryTextColor)
     }
 }
 
@@ -158,4 +152,24 @@ private enum Metrics {
 private enum Fonts {
     static let title = NSFont.systemFont(ofSize: 14)
     static let body = NSFont.systemFont(ofSize: 12)
+}
+
+
+// MARK: - AttributedStrings Helpers
+//
+extension NSAttributedString {
+
+    /// Returns a NSAttributedString representation of a given String, with the specified parameters.
+    /// List Markers will be replaced by Text Attachments
+    ///
+    static func previewString(text: String, font: NSFont, color: NSColor) -> NSAttributedString {
+        let attrString = NSMutableAttributedString(string: text)
+        attrString.processChecklists(with: color, sizingFont: font, allowsMultiplePerLine: true)
+
+        let fullRange = attrString.fullRange
+        attrString.addAttribute(.font, value: font, range: fullRange)
+        attrString.addAttribute(.foregroundColor, value: color, range: fullRange)
+
+        return attrString
+    }
 }
