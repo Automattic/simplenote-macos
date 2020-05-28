@@ -49,6 +49,36 @@ extension NoteListViewController {
 }
 
 
+// MARK: - Autolayout FTW
+//
+extension NoteListViewController {
+
+    open override func updateViewConstraints() {
+        if mustUpdateSearchViewConstraint {
+            updateSearchViewTopConstraint()
+        }
+
+        super.updateViewConstraints()
+    }
+
+    var mustUpdateSearchViewConstraint: Bool {
+        // Why check `.isActive`?:
+        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
+        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
+        searchViewTopConstraint == nil || searchViewTopConstraint?.isActive == false
+    }
+
+    func updateSearchViewTopConstraint() {
+        guard let layoutGuide = searchView.window?.contentLayoutGuide as? NSLayoutGuide else {
+            return
+        }
+
+        searchViewTopConstraint = searchView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
+        searchViewTopConstraint.isActive = true
+    }
+}
+
+
 // MARK: - Helpers
 //
 private extension NoteListViewController {

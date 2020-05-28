@@ -36,6 +36,8 @@
 @property (strong, nonatomic) IBOutlet NSView               *searchView;
 @property (strong, nonatomic) IBOutlet NSSearchField        *searchField;
 @property (strong, nonatomic) IBOutlet NSButton             *addNoteButton;
+
+@property (strong, nonatomic) NSLayoutConstraint            *searchViewTopConstraint;
 @property (assign, nonatomic) BOOL                          searching;
 @property (assign, nonatomic) BOOL                          viewingTrash;
 
