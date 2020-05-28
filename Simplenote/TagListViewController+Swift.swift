@@ -5,21 +5,6 @@ import Foundation
 //
 extension TagListViewController {
 
-    /// Returns a PaddingTableCellView instance, meant to be used as Tags List Header
-    /// -   Note:
-    ///     Why the universe has to be SO complicated?
-    ///
-    /// -   Note:
-    ///     When entering / leaving fullscreen, we need to adjust the ScrollView's contentInsets: the titlebar disappears, or shows up, right?
-    ///     For that reason, we really need to enable `NSScrollView.automaticallyAdjustsContentInsets`, since handling is for free.
-    ///     Problem is that macOS does not provide a mechanism to provide `Additional Content Insets` (iOS does!).
-    ///     And yes, you guessed right. Workaround: inject an `Empty / Padding Cell`.
-    ///
-    @objc
-    func paddingTableViewCell() -> PaddingTableCellView {
-        return tableView.makeTableViewCell(ofType: PaddingTableCellView.self)
-    }
-
     /// Returns a HeaderTableCellView instance, meant to be used as Tags List Header
     ///
     @objc
