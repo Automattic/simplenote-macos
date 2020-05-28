@@ -19,6 +19,7 @@ extension NoteEditorViewController {
     @objc
     func setupTopDivider() {
         topDividerView.alphaValue = .zero
+        topDividerView.drawsBottomBorder = true
     }
 }
 
