@@ -75,6 +75,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     self.tableView.backgroundColor = [NSColor clearColor];
 
     [self setupSearchBar];
+    [self setupTopDivider];
 }
 
 - (void)viewWillAppear

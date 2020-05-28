@@ -12,6 +12,13 @@ extension NoteListViewController {
         searchField.centersPlaceholder = false
     }
 
+    /// Setup: Top Divider
+    ///
+    @objc
+    func setupTopDivider() {
+        topDividerView.drawsBottomBorder = true
+    }
+
     /// Ensures only the actions that are valid can be performed
     ///
     @objc

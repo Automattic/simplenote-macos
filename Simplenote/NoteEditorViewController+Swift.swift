@@ -19,6 +19,7 @@ extension NoteEditorViewController {
     @objc
     func setupTopDivider() {
         topDividerView.alphaValue = .zero
+        topDividerView.drawsBottomBorder = true
     }
 }
 
@@ -95,7 +96,18 @@ extension NoteEditorViewController {
     @objc(displayMarkdownPreview:)
     func displayMarkdownPreview(_ markdown: String) {
         markdownViewController.markdown = markdown
+        attachMarkdownViewController()
+        refreshTopDividerAlpha()
+    }
 
+    @objc
+    func dismissMarkdownPreview() {
+        markdownViewController.markdown = nil
+        detachMarkdownViewController()
+        refreshTopDividerAlpha()
+    }
+
+    private func attachMarkdownViewController() {
         let markdownView = markdownViewController.view
         markdownView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(markdownView)
@@ -110,9 +122,7 @@ extension NoteEditorViewController {
         addChild(markdownViewController)
     }
 
-    @objc
-    func dismissMarkdownPreview() {
-        markdownViewController.markdown = nil
+    private func detachMarkdownViewController() {
         markdownViewController.view.removeFromSuperview()
         markdownViewController.removeFromParent()
     }
@@ -137,10 +147,16 @@ extension NoteEditorViewController {
     }
 
     func refreshTopDividerAlpha() {
-        let contentOffSetY = scrollView.documentVisibleRect.origin.y
-        let newAlpha = min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+        topDividerView.alphaValue = alphaForTopDivider
+    }
 
-        topDividerView.alphaValue = newAlpha
+    var alphaForTopDivider: CGFloat {
+        guard markdownViewController.parent == nil else {
+            return AppKitConstants.alpha1_0
+        }
+
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y
+        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
     }
 }
 
