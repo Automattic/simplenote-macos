@@ -18,10 +18,11 @@
 @import Simperium_OSX;
 
 
-#define kAllNotesRow 0
-#define kTrashRow 1
-#define kTagHeaderRow 2
-#define kStartOfTagListRow 3
+#define kPaddingRow 0
+#define kAllNotesRow 1
+#define kTrashRow 2
+#define kTagHeaderRow 3
+#define kStartOfTagListRow 4
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
@@ -456,15 +457,21 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if (row == kAllNotesRow) {
-        return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
-    } else if(row == kTrashRow) {
-        return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if(row == kTagHeaderRow) {
-        return @"";
-    } else {
-        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
-        return tag.name;
+    switch (row) {
+        case kAllNotesRow:
+            return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
+
+        case kTrashRow:
+            return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
+
+        case kTagHeaderRow:
+        case kPaddingRow:
+            return @"";
+
+        default: {
+            Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
+            return tag.name;
+        }
     }
 }
 
@@ -482,6 +489,10 @@ CGFloat const SPListEstimatedRowHeight = 30;
         return [self tagHeaderTableViewCell];
     }
 
+    if (row == kPaddingRow) {
+        return [self paddingTableViewCell];
+    }
+
     Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
     return [self tagTableViewCellForTag:tag];
 }
@@ -491,6 +502,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
     switch (row) {
         case kAllNotesRow:
         case kTagHeaderRow:
+        case kPaddingRow:
             return nil;
         case kTrashRow:
             return self.trashDropdownMenu;
@@ -508,7 +520,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
-    if (row == kTagHeaderRow) {
+    if (row == kTagHeaderRow || row == kPaddingRow) {
         return NO;
     }
     
