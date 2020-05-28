@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 
+@class ClipView;
 @class NoteListViewController;
 
 @interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
+@property (nonatomic, strong, readwrite) IBOutlet ClipView              *clipView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
 @property (nonatomic, strong, readwrite) NSArray                        *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;

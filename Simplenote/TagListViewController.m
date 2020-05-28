@@ -59,6 +59,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
+    [self refreshExtendedContentInsets];
     [self startListeningToNotifications];
 }
 
