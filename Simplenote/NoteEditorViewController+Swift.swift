@@ -103,8 +103,8 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
-            markdownView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
+            markdownView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            markdownView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
 
         addChild(markdownViewController)
