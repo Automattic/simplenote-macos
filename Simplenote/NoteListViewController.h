@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet NSTextField          *statusField;
 @property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (strong, nonatomic) IBOutlet SPTableView          *tableView;
+@property (strong, nonatomic) IBOutlet NSView               *searchView;
 @property (strong, nonatomic) IBOutlet NSSearchField        *searchField;
 @property (strong, nonatomic) IBOutlet NSButton             *addNoteButton;
 @property (assign, nonatomic) BOOL                          searching;

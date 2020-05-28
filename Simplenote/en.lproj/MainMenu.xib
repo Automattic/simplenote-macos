@@ -1242,6 +1242,7 @@
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
                 <outlet property="scrollView" destination="560" id="cOa-P7-TFZ"/>
                 <outlet property="searchField" destination="zSa-wS-KTc" id="RrK-Bq-99o"/>
+                <outlet property="searchView" destination="R5E-ls-WXI" id="6fE-Dx-iG7"/>
                 <outlet property="sortMenu" destination="YpJ-fs-p4p" id="ncf-ZC-vxK"/>
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
