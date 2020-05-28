@@ -61,9 +61,11 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic,   weak) IBOutlet SPTextView               *noteEditor;
 @property (nonatomic,   weak) IBOutlet NSScrollView             *scrollView;
 @property (nonatomic,   weak) IBOutlet TagsView                 *tagsView;
+
 @property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
 @property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                    viewingTrash;
+@property (nonatomic, strong) NSLayoutConstraint                *toolbarViewTopConstraint;
 @property (nonatomic,   weak) Note                              *note;
 
 - (void)save;

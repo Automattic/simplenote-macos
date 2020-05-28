@@ -12,6 +12,13 @@ extension NoteListViewController {
         searchField.centersPlaceholder = false
     }
 
+    /// Setup: Top Divider
+    ///
+    @objc
+    func setupTopDivider() {
+        topDividerView.drawsBottomBorder = true
+    }
+
     /// Ensures only the actions that are valid can be performed
     ///
     @objc
@@ -38,6 +45,36 @@ extension NoteListViewController {
 
         let name: NSAppearance.Name = SPUserInterface.isDark ? .vibrantDark : .aqua
         searchField.appearance = NSAppearance(named: name)
+    }
+}
+
+
+// MARK: - Autolayout FTW
+//
+extension NoteListViewController {
+
+    open override func updateViewConstraints() {
+        if mustUpdateSearchViewConstraint {
+            updateSearchViewTopConstraint()
+        }
+
+        super.updateViewConstraints()
+    }
+
+    var mustUpdateSearchViewConstraint: Bool {
+        // Why check `.isActive`?:
+        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
+        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
+        searchViewTopConstraint == nil || searchViewTopConstraint?.isActive == false
+    }
+
+    func updateSearchViewTopConstraint() {
+        guard let layoutGuide = searchView.window?.contentLayoutGuide as? NSLayoutGuide else {
+            return
+        }
+
+        searchViewTopConstraint = searchView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
+        searchViewTopConstraint.isActive = true
     }
 }
 

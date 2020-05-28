@@ -19,6 +19,37 @@ extension NoteEditorViewController {
     @objc
     func setupTopDivider() {
         topDividerView.alphaValue = .zero
+        topDividerView.drawsBottomBorder = true
+    }
+}
+
+
+// MARK: - Autolayout FTW
+//
+extension NoteEditorViewController {
+
+    open override func updateViewConstraints() {
+        if mustUpdateToolbarConstraint {
+            updateToolbarTopConstraint()
+        }
+
+        super.updateViewConstraints()
+    }
+
+    var mustUpdateToolbarConstraint: Bool {
+        // Why check `.isActive`?:
+        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
+        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
+        toolbarViewTopConstraint == nil || toolbarViewTopConstraint?.isActive == false
+    }
+
+    func updateToolbarTopConstraint() {
+        guard let layoutGuide = toolbarView.window?.contentLayoutGuide as? NSLayoutGuide else {
+            return
+        }
+
+        toolbarViewTopConstraint = toolbarView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
+        toolbarViewTopConstraint.isActive = true
     }
 }
 
@@ -105,7 +136,18 @@ extension NoteEditorViewController {
     @objc(displayMarkdownPreview:)
     func displayMarkdownPreview(_ markdown: String) {
         markdownViewController.markdown = markdown
+        attachMarkdownViewController()
+        refreshTopDividerAlpha()
+    }
 
+    @objc
+    func dismissMarkdownPreview() {
+        markdownViewController.markdown = nil
+        detachMarkdownViewController()
+        refreshTopDividerAlpha()
+    }
+
+    private func attachMarkdownViewController() {
         let markdownView = markdownViewController.view
         markdownView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(markdownView)
@@ -113,16 +155,14 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
-            markdownView.bottomAnchor.constraint(equalTo: tagsView.topAnchor),
+            markdownView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            markdownView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
 
         addChild(markdownViewController)
     }
 
-    @objc
-    func dismissMarkdownPreview() {
-        markdownViewController.markdown = nil
+    private func detachMarkdownViewController() {
         markdownViewController.view.removeFromSuperview()
         markdownViewController.removeFromParent()
     }
@@ -147,10 +187,16 @@ extension NoteEditorViewController {
     }
 
     func refreshTopDividerAlpha() {
-        let contentOffSetY = scrollView.documentVisibleRect.origin.y
-        let newAlpha = min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+        topDividerView.alphaValue = alphaForTopDivider
+    }
 
-        topDividerView.alphaValue = newAlpha
+    var alphaForTopDivider: CGFloat {
+        guard markdownViewController.parent == nil else {
+            return AppKitConstants.alpha1_0
+        }
+
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y
+        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
     }
 }
 

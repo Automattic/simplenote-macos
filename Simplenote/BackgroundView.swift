@@ -22,7 +22,7 @@ class BackgroundView: NSView {
        }
    }
 
-    var drawsBottomBorder = true {
+    var drawsBottomBorder = false {
         didSet {
             needsDisplay = true
         }

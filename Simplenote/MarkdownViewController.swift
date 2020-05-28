@@ -12,6 +12,11 @@ class MarkdownViewController: NSViewController {
     @IBOutlet private var backgroundView: BackgroundView!
 
     /// Main WebView
+    /// -   Note: We're embedding the WebView inside a NSScrollView, as a workaround to fix an annoying layout bug.
+    ///
+    /// -   Bug: Whenever the containing window has the `fullSizeContentView` mask, WebKit is assuming the Position Y is always zero.
+    ///         This has the super cool side effect of cutting off the content. As per macOS 10.15, WKWebView is no longer exposing the
+    ///         internal ScrollView, so there is no direct way to fix this, other than providing a different enclosing environment.
     ///
     @IBOutlet private var webView: WKWebView! {
         didSet {
