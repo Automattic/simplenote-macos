@@ -235,7 +235,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
         }
 
         // Search Tags starting with the new keyword
-        guard let suggestions = SimplenoteAppDelegate.shared()?.simperium?.searchTags(with: substring) else {
+        guard let suggestions = SimplenoteAppDelegate.shared()?.simperium?.searchTagNames(prefix: substring) else {
             return []
         }
 

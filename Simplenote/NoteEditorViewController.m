@@ -843,7 +843,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Create any new tags that don't already exist
     for (NSString *token in tokens) {
-        Tag *tag = [simperium findTagWithName:token];
+        Tag *tag = [simperium searchTagWithName:token];
         if (!tag && ![token containsEmailAddress]) {
             NSDictionary *userInfo = @{@"tagName":token};
             [[NSNotificationCenter defaultCenter] postNotificationName:SPTagAddedFromEditorNotificationName

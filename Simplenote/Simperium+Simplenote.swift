@@ -5,10 +5,10 @@ import Foundation
 //
 extension Simperium {
 
-    /// Returns the subset of Tags that start with the specified string
+    /// Returns the subset of Tag Names that start with the specified string
     ///
-    func searchTags(with keyword: String) -> [String] {
-        let lowercasedKeyword = keyword.lowercased()
+    func searchTagNames(prefix: String) -> [String] {
+        let lowercasedKeyword = prefix.lowercased()
 
         return allTags.compactMap { tag in
             guard tag.name.lowercased().starts(with: lowercasedKeyword) else {
@@ -22,7 +22,7 @@ extension Simperium {
     /// Returns the Tag instance with a specified Name
     ///
     @objc
-    func findTag(name: String) -> Tag? {
+    func searchTag(name: String) -> Tag? {
         let lowercasedName = name.lowercased()
 
         return allTags.first { tag in
