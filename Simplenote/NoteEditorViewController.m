@@ -124,6 +124,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self setupScrollView];
     [self setupTopDivider];
     [self setupStatusImageView];
+    [self setupTagsField];
 
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
@@ -134,8 +135,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
     [self updateLineLengthMenuForPosition:lineLengthPosition];
-    
-    self.tagTokenField.delegate = self;
+
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -277,12 +277,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
-}
-
-- (SPTokenField *)tagTokenField
-{
-    // TODO: Nuke!
-    return self.tagsView.tokenField;
 }
 
 // Linkifies text in the editor

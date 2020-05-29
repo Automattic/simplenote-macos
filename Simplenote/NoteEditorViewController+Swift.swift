@@ -21,6 +21,11 @@ extension NoteEditorViewController {
         topDividerView.alphaValue = .zero
         topDividerView.drawsBottomBorder = true
     }
+
+    @objc
+    func setupTagsField() {
+        tagsView.tokenField.delegate = self
+    }
 }
 
 
