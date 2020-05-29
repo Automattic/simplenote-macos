@@ -48,9 +48,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 @interface NoteEditorViewController() <NSMenuDelegate,
                                         NSPopoverDelegate,
+                                        NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
-                                        NSTokenFieldDelegate,
                                         PublishViewControllerDelegate,
                                         SPBucketDelegate,
                                         VersionsViewControllerDelegate>
