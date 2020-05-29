@@ -1,6 +1,17 @@
 import Foundation
 
 
+// MARK: - Interface Initialization
+//
+extension TagListViewController {
+
+    @objc
+    func refreshExtendedContentInsets() {
+        clipView.extendedContentInsets.top = Settings.extendedTopInset
+    }
+}
+
+
 // MARK: - NSTableViewDelegate Helpers
 //
 extension TagListViewController {
@@ -59,4 +70,11 @@ extension TagListViewController: SPTextFieldDelegate {
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
         !menuShowing
     }
+}
+
+
+// MARK: - Settings!
+//
+private enum Settings {
+    static let extendedTopInset = CGFloat(48)
 }

@@ -24,6 +24,36 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Autolayout FTW
+//
+extension NoteEditorViewController {
+
+    open override func updateViewConstraints() {
+        if mustUpdateToolbarConstraint {
+            updateToolbarTopConstraint()
+        }
+
+        super.updateViewConstraints()
+    }
+
+    var mustUpdateToolbarConstraint: Bool {
+        // Why check `.isActive`?:
+        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
+        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
+        toolbarViewTopConstraint == nil || toolbarViewTopConstraint?.isActive == false
+    }
+
+    func updateToolbarTopConstraint() {
+        guard let layoutGuide = toolbarView.window?.contentLayoutGuide as? NSLayoutGuide else {
+            return
+        }
+
+        toolbarViewTopConstraint = toolbarView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
+        toolbarViewTopConstraint.isActive = true
+    }
+}
+
+
 // MARK: - Private Helpers
 //
 extension NoteEditorViewController {
@@ -115,8 +145,8 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
-            markdownView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
+            markdownView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            markdownView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
 
         addChild(markdownViewController)
