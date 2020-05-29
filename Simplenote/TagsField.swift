@@ -5,6 +5,8 @@ import AppKit
 // MARK: - TagsFieldDelegate
 //
 protocol TagsFieldDelegate: NSTokenFieldDelegate {
+
+    /// This API will be executed whenever a new token is Added / Removed
     func tokenField(_ tokenField: NSTokenField, didChange tokens: [String])
 }
 
@@ -14,9 +16,20 @@ protocol TagsFieldDelegate: NSTokenFieldDelegate {
 @objcMembers
 class TagsField: NSTokenField {
 
-    /// Keeps the collection of Tokens **before** Edition begins
+    /// Number of Tokens **before** Edition
     ///
-    private var tokensBeforeEdition: [String]?
+    private var numberOfTokensBeforeEdition = Int.zero
+
+    /// Returns the number of Tokens in the receiver
+    /// - Note: When there's an Editor set, the source of truth is the LayoutManager's AttributedString
+    ///
+    private var numberOfTokens: Int {
+        guard let textView = currentEditor() as? NSTextView, let layoutManager = textView.layoutManager else {
+            return attributedStringValue.numberOfAttachments
+        }
+
+        return layoutManager.attributedString().numberOfAttachments
+    }
 
     /// `Extended Delegate` Helper
     ///
@@ -94,20 +107,18 @@ extension TagsField {
 
     override func textDidBeginEditing(_ notification: Notification) {
         super.textDidBeginEditing(notification)
-        tokensBeforeEdition = tokens
+        numberOfTokensBeforeEdition = numberOfTokens
     }
 
     override func textDidChange(_ notification: Notification) {
         super.textDidChange(notification)
 
-        let newTokens = tokens
-
-        // Immediately Notify when a Token was removed
-        if let oldTokens = tokensBeforeEdition, oldTokens.count > newTokens.count {
-            tagsFieldDelegate?.tokenField(self, didChange: newTokens)
+        let currentNumberOfTokens = numberOfTokens
+        if numberOfTokensBeforeEdition != currentNumberOfTokens  {
+            tagsFieldDelegate?.tokenField(self, didChange: tokens)
         }
 
-        tokensBeforeEdition = newTokens
+        numberOfTokensBeforeEdition = currentNumberOfTokens
     }
 
     override func textDidEndEditing(_ notification: Notification) {
@@ -116,7 +127,6 @@ extension TagsField {
         // Tokens can get created when the control loses focus, but none of the expected events fire.
         // Fire one manually instead.
         tagsFieldDelegate?.tokenField(self, didChange: tokens)
-        tokensBeforeEdition = nil
     }
 }
 
