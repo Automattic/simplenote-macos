@@ -53,8 +53,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                         NSTokenFieldDelegate,
                                         PublishViewControllerDelegate,
                                         SPBucketDelegate,
-                                        VersionsViewControllerDelegate,
-                                        WKNavigationDelegate>
+                                        VersionsViewControllerDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 @property (nonatomic,   weak) ShareViewController       *shareViewController;
