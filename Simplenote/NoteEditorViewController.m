@@ -1040,8 +1040,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.statusTextField.textColor      = [NSColor simplenoteSecondaryTextColor];
     self.noteEditor.insertionPointColor = [NSColor simplenoteTextColor];
     self.noteEditor.textColor           = [NSColor simplenoteTextColor];
-
-    [self.tagsView refreshStyle];
+    self.tagsField.textColor            = [NSColor simplenoteTextColor];
+    self.tagsField.placeholderTextColor = [NSColor simplenoteSecondaryTextColor];
 
     [self dismissActivePopover];
 }
@@ -1070,9 +1070,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [SPTracker trackEditorCollaboratorsAccessed];
 
     ShareViewController *viewController = [ShareViewController new];
-    [self showViewController:viewController relativeToView:self.tagsView preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.tagsField preferredEdge:NSMaxYEdge];
 
-    [self.tagsView.tokenField becomeFirstResponder];
+    [self.tagsField becomeFirstResponder];
     self.shareViewController = viewController;
 }
 

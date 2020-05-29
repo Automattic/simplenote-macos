@@ -1132,7 +1132,7 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" userLabel="Tags View">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
                                         <subviews>
-                                            <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="SPTokenField">
+                                            <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
                                                 <rect key="frame" x="21" y="20" width="466" height="15"/>
                                                 <tokenFieldCell key="cell" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS">
                                                     <font key="font" metaFont="label" size="12"/>
@@ -1147,9 +1147,6 @@
                                             <constraint firstItem="UWL-9x-FH2" firstAttribute="top" secondItem="1549" secondAttribute="top" constant="9" id="Ck7-36-vd1"/>
                                             <constraint firstItem="UWL-9x-FH2" firstAttribute="leading" secondItem="1549" secondAttribute="leading" constant="23" id="zbN-Zb-f77"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="tokenField" destination="UWL-9x-FH2" id="hCp-Q3-n7S"/>
-                                        </connections>
                                     </customView>
                                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447" userLabel="Status Image View">
                                         <rect key="frame" x="204" y="259" width="100" height="100"/>
@@ -1238,6 +1235,7 @@
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
+                <outlet property="tagsField" destination="UWL-9x-FH2" id="8o3-nm-rjz"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
                 <outlet property="view" destination="559" id="vPQ-pl-pqe"/>

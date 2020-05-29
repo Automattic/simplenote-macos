@@ -24,7 +24,10 @@ extension NoteEditorViewController {
 
     @objc
     func setupTagsField() {
-        tagsView.tokenField.delegate = self
+        tagsField.delegate = self
+        tagsField.focusRingType = .none
+        tagsField.font = .simplenoteSecondaryTextFont
+        tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
     }
 }
 
@@ -126,10 +129,8 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshTagsEditor() {
-        tagsView.displaysPlaceholder = isDisplayingNote && !viewingTrash
-        tagsView.editable = isDisplayingNote && !viewingTrash
-        tagsView.selectable = isDisplayingNote && !viewingTrash
-        tagsView.tags = note?.tagsArray as? [String]
+        tagsField.isHidden = !isDisplayingNote || viewingTrash
+        tagsField.tokens = note?.tagsArray as? [String] ?? []
     }
 }
 

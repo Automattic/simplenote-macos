@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
 #import "NoteListViewController.h"
-#import "SPTokenField.h"
+
 
 @import Simperium_OSX;
 
