@@ -20,7 +20,8 @@ class TagsField: NSTokenField {
     ///
     private var numberOfTokensBeforeEdition = Int.zero
 
-    /// Returns the number of Tokens in the receiver
+    /// Returns the number of Tokens in the receiver: We'll need to count the acutal TextAttachment instances
+    ///
     /// - Note: When there's an Editor set, the source of truth is the LayoutManager's AttributedString
     ///
     private var numberOfTokens: Int {
@@ -113,7 +114,13 @@ extension TagsField {
     override func textDidChange(_ notification: Notification) {
         super.textDidChange(notification)
 
+        /// During edition, `Non Terminated Tokens` will show up in the `objectValue` array.
+        /// We'll calculate the number of TextAttachments (bubbles), and signal the delegate when the number changes.
+        ///
+        /// Capisci?
+        ///
         let currentNumberOfTokens = numberOfTokens
+
         if numberOfTokensBeforeEdition != currentNumberOfTokens  {
             tagsFieldDelegate?.tokenField(self, didChange: tokens)
         }
