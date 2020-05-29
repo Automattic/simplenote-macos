@@ -825,7 +825,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 
-#pragma mark - Token delegate
+#pragma mark - Token Helpers
 
 - (void)parseTagTokens:(NSArray *)tokens
 {
@@ -876,31 +876,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     for (NSString *tag in addedTags) {
         [SPTracker trackEditorTagAdded:tag.containsEmailAddress];
     }
-}
-
-- (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring
-           indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex
-{
-    // Don't show auto-complete in fullscreen mode
-    BOOL fullscreen = ([self.view.window styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen;
-    if (fullscreen)
-        return [NSArray array];
-
-    // Supply an auto-complete list based on substrings
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
-    NSArray *tags = [tagBucket allObjects];
-    NSMutableArray *results = [NSMutableArray arrayWithCapacity:3];
-
-    for (Tag *tag in tags) {
-        BOOL tagFound = [tag.name rangeOfString:substring options:NSCaseInsensitiveSearch].location == 0;
-        BOOL tagAlreadyAdded = [self.note.tags rangeOfString:substring options:NSCaseInsensitiveSearch].location != NSNotFound;
-        if (tagFound && !tagAlreadyAdded) {
-            [results addObject:tag.name];
-        }
-    }
-    
-    return results;
 }
 
 

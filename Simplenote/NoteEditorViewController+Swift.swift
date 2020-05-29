@@ -227,6 +227,22 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController: TagsFieldDelegate {
 
+    public func tokenField(_ tokenField: NSTokenField, completionsForSubstring substring: String, indexOfToken tokenIndex: Int, indexOfSelectedItem selectedIndex: UnsafeMutablePointer<Int>?) -> [Any]? {
+        // Disable Autocomplete:
+        // We cannot control the direction of the suggestions layer. Fullscreen causes such element to be offscreen.
+        guard tokenField.window?.styleMask.contains(.fullScreen) == false else {
+            return []
+        }
+
+        // Search Tags starting with the new keyword
+        guard let suggestions = SimplenoteAppDelegate.shared()?.simperium?.searchTags(with: substring) else {
+            return []
+        }
+
+        // Return **Only** the Sorted Subset that's not already in the note.
+        return note.filterMissingTags(from: suggestions).sorted()
+    }
+
     public func tokenField(_ tokenField: NSTokenField, shouldAdd tokens: [Any], at index: Int) -> [Any] {
         guard let note = note, let tags = tokens as? [String] else {
             return []
