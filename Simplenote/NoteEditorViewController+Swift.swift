@@ -195,11 +195,11 @@ extension NoteEditorViewController {
         refreshTopDividerAlpha()
     }
 
-    func refreshTopDividerAlpha() {
+    private func refreshTopDividerAlpha() {
         topDividerView.alphaValue = alphaForTopDivider
     }
 
-    var alphaForTopDivider: CGFloat {
+    private var alphaForTopDivider: CGFloat {
         guard markdownViewController.parent == nil else {
             return AppKitConstants.alpha1_0
         }
