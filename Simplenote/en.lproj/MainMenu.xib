@@ -758,8 +758,11 @@
                                 <rect key="frame" x="121" y="0.0" width="270" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="3JQ-IY-iXS" customClass="SPBackgroundView">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="3JQ-IY-iXS" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="582"/>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="YF7-at-XJm" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="526" width="270" height="56"/>
                                     </customView>
                                     <view translatesAutoresizingMaskIntoConstraints="NO" id="R5E-ls-WXI" userLabel="SearchView">
                                         <rect key="frame" x="0.0" y="526" width="270" height="56"/>
@@ -955,6 +958,8 @@
                                     <constraint firstItem="560" firstAttribute="top" secondItem="R5E-ls-WXI" secondAttribute="bottom" id="3ff-OZ-Xhg"/>
                                     <constraint firstItem="1732" firstAttribute="centerX" secondItem="558" secondAttribute="centerX" id="5aZ-Pe-Gyu"/>
                                     <constraint firstAttribute="trailing" secondItem="R5E-ls-WXI" secondAttribute="trailing" id="9ZK-Zw-uGl"/>
+                                    <constraint firstItem="YF7-at-XJm" firstAttribute="width" secondItem="R5E-ls-WXI" secondAttribute="width" id="FJ3-wi-Rod"/>
+                                    <constraint firstItem="R5E-ls-WXI" firstAttribute="leading" secondItem="YF7-at-XJm" secondAttribute="leading" id="Ld4-DR-lK1"/>
                                     <constraint firstItem="3JQ-IY-iXS" firstAttribute="leading" secondItem="558" secondAttribute="leading" id="O9A-7i-lMv"/>
                                     <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" id="OMT-pD-ntj"/>
                                     <constraint firstItem="1732" firstAttribute="top" secondItem="1766" secondAttribute="bottom" constant="15" id="PvY-Xw-rqH"/>
@@ -963,7 +968,9 @@
                                     <constraint firstAttribute="trailing" secondItem="3JQ-IY-iXS" secondAttribute="trailing" id="di2-mZ-wKA"/>
                                     <constraint firstAttribute="trailing" secondItem="1766" secondAttribute="trailing" constant="12" id="dvr-hd-5FP"/>
                                     <constraint firstItem="1766" firstAttribute="top" secondItem="558" secondAttribute="top" constant="220" id="eS2-b5-fRK"/>
+                                    <constraint firstItem="YF7-at-XJm" firstAttribute="height" secondItem="R5E-ls-WXI" secondAttribute="height" id="keB-Nh-fVt"/>
                                     <constraint firstAttribute="bottom" secondItem="560" secondAttribute="bottom" id="niy-wS-lMG"/>
+                                    <constraint firstItem="R5E-ls-WXI" firstAttribute="top" secondItem="YF7-at-XJm" secondAttribute="top" id="oIp-b8-pL8"/>
                                     <constraint firstItem="3JQ-IY-iXS" firstAttribute="top" secondItem="558" secondAttribute="top" id="q5f-BH-9rg"/>
                                     <constraint firstItem="R5E-ls-WXI" firstAttribute="top" secondItem="558" secondAttribute="top" id="zUD-Hd-qwk"/>
                                 </constraints>
@@ -972,8 +979,11 @@
                                 <rect key="frame" x="392" y="0.0" width="508" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ktP-Hd-KgH" customClass="SPBackgroundView">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ktP-Hd-KgH" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="582"/>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qdg-eJ-cRo" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="526" width="508" height="56"/>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="914" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="526" width="508" height="56"/>
@@ -1103,7 +1113,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="508" height="482"/>
+                                                    <size key="minSize" width="493" height="482"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1147,19 +1157,23 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ktP-Hd-KgH" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="2jv-zo-kNs"/>
+                                    <constraint firstItem="qdg-eJ-cRo" firstAttribute="leading" secondItem="914" secondAttribute="leading" id="397-ue-QJx"/>
                                     <constraint firstItem="914" firstAttribute="top" secondItem="559" secondAttribute="top" id="3PK-69-leP"/>
                                     <constraint firstAttribute="trailing" secondItem="1549" secondAttribute="trailing" id="43w-jU-8rz"/>
                                     <constraint firstItem="1549" firstAttribute="top" secondItem="933" secondAttribute="bottom" id="8gP-zE-3fX"/>
                                     <constraint firstItem="933" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="Any-4j-QRE"/>
                                     <constraint firstItem="1549" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="BCb-vv-F7J"/>
                                     <constraint firstAttribute="trailing" secondItem="933" secondAttribute="trailing" id="ITM-To-mHT"/>
+                                    <constraint firstItem="qdg-eJ-cRo" firstAttribute="top" secondItem="914" secondAttribute="top" id="MDS-2S-KsW"/>
                                     <constraint firstAttribute="bottom" secondItem="ktP-Hd-KgH" secondAttribute="bottom" id="OJZ-Ll-qCz"/>
                                     <constraint firstItem="ktP-Hd-KgH" firstAttribute="top" secondItem="559" secondAttribute="top" id="OYj-Gf-fWA"/>
                                     <constraint firstAttribute="trailing" secondItem="ktP-Hd-KgH" secondAttribute="trailing" id="UoP-QC-yPt"/>
+                                    <constraint firstItem="qdg-eJ-cRo" firstAttribute="height" secondItem="914" secondAttribute="height" id="V9d-hv-xce"/>
                                     <constraint firstAttribute="bottom" secondItem="1549" secondAttribute="bottom" id="Vsf-z4-w1B"/>
                                     <constraint firstItem="1447" firstAttribute="centerY" secondItem="559" secondAttribute="centerY" id="icV-Jp-4Pb"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="top" secondItem="1447" secondAttribute="bottom" constant="12" id="kMg-Op-C1s"/>
                                     <constraint firstItem="faw-Qh-Cm9" firstAttribute="centerX" secondItem="559" secondAttribute="centerX" id="lR0-BQ-Ruk"/>
+                                    <constraint firstItem="qdg-eJ-cRo" firstAttribute="width" secondItem="914" secondAttribute="width" id="mfO-fG-Cpm"/>
                                     <constraint firstItem="914" firstAttribute="leading" secondItem="559" secondAttribute="leading" id="qRw-HR-wJ7"/>
                                     <constraint firstItem="933" firstAttribute="top" secondItem="914" secondAttribute="bottom" id="qb4-sb-xbo"/>
                                     <constraint firstAttribute="trailing" secondItem="914" secondAttribute="trailing" id="tB1-vi-gSn"/>
@@ -1213,6 +1227,7 @@
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
+                <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
                 <outlet property="view" destination="559" id="vPQ-pl-pqe"/>
                 <outlet property="wordCountItem" destination="oDJ-Mn-z2x" id="gmB-Y8-oCY"/>
             </connections>
@@ -1231,6 +1246,7 @@
                 <outlet property="sortMenu" destination="YpJ-fs-p4p" id="ncf-ZC-vxK"/>
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
+                <outlet property="topDividerView" destination="YF7-at-XJm" id="Owc-m2-TC2"/>
                 <outlet property="view" destination="558" id="1699"/>
             </connections>
         </viewController>

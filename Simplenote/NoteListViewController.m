@@ -13,7 +13,6 @@
 #import "NotesArrayController.h"
 #import "TagListViewController.h"
 #import "SPTableView.h"
-#import "SPBackgroundView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 
@@ -76,6 +75,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     self.tableView.backgroundColor = [NSColor clearColor];
 
     [self setupSearchBar];
+    [self setupTopDivider];
 }
 
 - (void)viewWillAppear

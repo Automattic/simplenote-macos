@@ -10,6 +10,17 @@ extension NoteEditorViewController {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
         statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
     }
+
+    @objc
+    func setupScrollView() {
+        scrollView.contentView.postsBoundsChangedNotifications = true
+    }
+
+    @objc
+    func setupTopDivider() {
+        topDividerView.alphaValue = .zero
+        topDividerView.drawsBottomBorder = true
+    }
 }
 
 
@@ -85,7 +96,18 @@ extension NoteEditorViewController {
     @objc(displayMarkdownPreview:)
     func displayMarkdownPreview(_ markdown: String) {
         markdownViewController.markdown = markdown
+        attachMarkdownViewController()
+        refreshTopDividerAlpha()
+    }
 
+    @objc
+    func dismissMarkdownPreview() {
+        markdownViewController.markdown = nil
+        detachMarkdownViewController()
+        refreshTopDividerAlpha()
+    }
+
+    private func attachMarkdownViewController() {
         let markdownView = markdownViewController.view
         markdownView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(markdownView)
@@ -100,10 +122,47 @@ extension NoteEditorViewController {
         addChild(markdownViewController)
     }
 
-    @objc
-    func dismissMarkdownPreview() {
-        markdownViewController.markdown = nil
+    private func detachMarkdownViewController() {
         markdownViewController.view.removeFromSuperview()
         markdownViewController.removeFromParent()
     }
+}
+
+
+// MARK: - Notifications
+//
+extension NoteEditorViewController {
+
+    @objc
+    func startListeningToScrollNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(clipViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: scrollView.contentView)
+    }
+
+    @objc
+    func clipViewDidScroll(sender: Notification) {
+        refreshTopDividerAlpha()
+    }
+
+    private func refreshTopDividerAlpha() {
+        topDividerView.alphaValue = alphaForTopDivider
+    }
+
+    private var alphaForTopDivider: CGFloat {
+        guard markdownViewController.parent == nil else {
+            return AppKitConstants.alpha1_0
+        }
+
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y
+        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+    }
+}
+
+
+// MARK: - Settings
+//
+private enum Settings {
+    static let maximumAlphaGradientOffset = CGFloat(30)
 }

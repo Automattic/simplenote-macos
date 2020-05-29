@@ -14,7 +14,6 @@
 #import "NoteEditorBottomBar.h"
 #import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "SPBackgroundView.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
 #import "SPTableView.h"

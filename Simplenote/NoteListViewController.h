@@ -13,8 +13,8 @@
 #import "SPGradientView.h"
 @import Simperium_OSX;
 
+@class BackgroundView;
 @class NoteEditorViewController;
-@class SPBackgroundView;
 @class SPTableView;
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
@@ -28,7 +28,8 @@
 }
 
 @property (strong, nonatomic) IBOutlet NSArrayController    *arrayController;
-@property (strong, nonatomic) IBOutlet SPBackgroundView     *backgroundView;
+@property (strong, nonatomic) IBOutlet BackgroundView       *backgroundView;
+@property (strong, nonatomic) IBOutlet BackgroundView       *topDividerView;
 @property (strong, nonatomic) IBOutlet NSTextField          *statusField;
 @property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (strong, nonatomic) IBOutlet SPTableView          *tableView;
