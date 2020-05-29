@@ -830,7 +830,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)didUpdateTags:(NSArray<NSString *> *)tokens
 {
     SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket                 = [appDelegate.simperium bucketForName:@"Tag"];
+    Simperium *simperium                = appDelegate.simperium;
     Note *note                          = self.note;
     NSString *oldTags                   = note.tags;
     NSArray *oldTagArray                = note.tagsArray;
@@ -843,8 +843,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Create any new tags that don't already exist
     for (NSString *token in tokens) {
-        NSString *tagKey = [[token lowercaseString] sp_urlEncodeString];
-        Tag *tag = [tagBucket objectForKey:tagKey];
+        Tag *tag = [simperium findTagWithName:token];
         if (!tag && ![token containsEmailAddress]) {
             NSDictionary *userInfo = @{@"tagName":token};
             [[NSNotificationCenter defaultCenter] postNotificationName:SPTagAddedFromEditorNotificationName
@@ -857,7 +856,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [note setTagsFromList:tokens];
 
     // Ensure the right Tag remains selected
-    if ([deletedTags containsObject:appDelegate.selectedTagName]) {
+    if ([note hasTag:appDelegate.selectedTagName] == false) {
         [appDelegate selectAllNotesTag];
         [appDelegate selectNoteWithKey:note.simperiumKey];
     }
