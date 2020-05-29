@@ -129,10 +129,10 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshTagsEditor() {
-        let active = isDisplayingNote && !viewingTrash
-        tagsField.drawsPlaceholder = active
-        tagsField.isEditable = active
-        tagsField.isSelectable = active
+        let isEnabled = isDisplayingNote && !viewingTrash
+        tagsField.drawsPlaceholder = isEnabled
+        tagsField.isEditable = isEnabled
+        tagsField.isSelectable = isEnabled
         tagsField.tokens = note?.tagsArray as? [String] ?? []
     }
 }
@@ -213,6 +213,8 @@ extension NoteEditorViewController {
 // MARK: - TagsFieldDelegate
 //
 extension NoteEditorViewController: TagsFieldDelegate {
+    public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
+    }
 }
 
 
