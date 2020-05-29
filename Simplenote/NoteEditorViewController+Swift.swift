@@ -129,7 +129,10 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshTagsEditor() {
-        tagsField.isHidden = !isDisplayingNote || viewingTrash
+        let active = isDisplayingNote && !viewingTrash
+        tagsField.drawsPlaceholder = active
+        tagsField.isEditable = active
+        tagsField.isSelectable = active
         tagsField.tokens = note?.tagsArray as? [String] ?? []
     }
 }

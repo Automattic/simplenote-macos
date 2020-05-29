@@ -111,11 +111,19 @@ extension TagsField {
 //
 private extension TagsField {
 
-    func refreshPlaceholder() {
-        placeholderAttributedString = NSAttributedString(string: placeholderText, attributes: [
+    var simplenotePlaceholderAttributedString: NSAttributedString? {
+        guard drawsPlaceholder else {
+            return nil
+        }
+
+        return NSAttributedString(string: placeholderText, attributes: [
             .font: placeholderFont,
             .foregroundColor: placeholderTextColor
         ])
+    }
+
+    func refreshPlaceholder() {
+        placeholderAttributedString = simplenotePlaceholderAttributedString
     }
 
     func setupDefaultParameters() {

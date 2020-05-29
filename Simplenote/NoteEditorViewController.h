@@ -36,7 +36,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 #pragma mark NoteEditorViewController
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController : NSViewController <NSTokenFieldDelegate>
+@interface NoteEditorViewController : NSViewController
 {
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
