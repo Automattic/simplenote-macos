@@ -19,6 +19,17 @@ extension Simperium {
         }
     }
 
+    /// Returns the Tag instance with a specified Name
+    ///
+    @objc
+    func findTag(name: String) -> Tag? {
+        let lowercasedName = name.lowercased()
+
+        return allTags.first { tag in
+            tag.name.lowercased() == lowercasedName
+        }
+    }
+
     /// Returns all of the available `Tags`
     ///
     var allTags: [Tag] {
