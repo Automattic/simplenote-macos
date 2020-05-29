@@ -125,14 +125,27 @@ extension NoteEditorViewController {
 
     }
 
-    /// Refreshes the Tags Editor's Inner State
+    /// Refreshes all of the TagsField properties: Tokens and allowed actions
     ///
     @objc
-    func refreshTagsEditor() {
+    func refreshTagsField() {
+        refreshTagsFieldActions()
+        refreshTagsFieldTokens()
+    }
+
+    /// Refreshes the TagsField's Inner State
+    ///
+    @objc
+    func refreshTagsFieldActions() {
         let isEnabled = isDisplayingNote && !viewingTrash
         tagsField.drawsPlaceholder = isEnabled
         tagsField.isEditable = isEnabled
         tagsField.isSelectable = isEnabled
+    }
+
+    /// Refreshes the TagsField's Tokens
+    ///
+    private func refreshTagsFieldTokens() {
         tagsField.tokens = note?.tagsArray as? [String] ?? []
     }
 }

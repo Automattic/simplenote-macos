@@ -205,7 +205,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         self.selectedNotes = @[];
         [self refreshToolbarActions];
         [self refreshEditorActions];
-        [self refreshTagsEditor];
+        [self refreshTagsField];
         [self.noteEditor displayNoteWithContent:@""];
 
         return;
@@ -234,7 +234,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.selectedNotes = [NSArray arrayWithObject:self.note];
     
     [self refreshToolbarActions];
-    [self refreshTagsEditor];
+    [self refreshTagsField];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -272,7 +272,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     [self refreshToolbarActions];
     [self refreshEditorActions];
-    [self refreshTagsEditor];
+    [self refreshTagsField];
 
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -310,7 +310,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = YES;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self refreshTagsEditor];
+    [self refreshTagsFieldActions];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -318,12 +318,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = NO;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self refreshTagsEditor];
+    [self refreshTagsFieldActions];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
 {
-    [self refreshTagsEditor];
+    [self refreshTagsField];
 }
 
 - (void)simperiumWillSave:(NSNotification *)notification
@@ -481,7 +481,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     [self.noteEditor displayNoteWithContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
-    [self refreshTagsEditor];
+    [self refreshTagsField];
 
     [self updatePublishUI];
 }
