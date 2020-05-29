@@ -92,12 +92,12 @@ class TagsField: NSTokenField {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        setupDefaultParameters()
+        setupTokenizationSettings()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupDefaultParameters()
+        setupTokenizationSettings()
     }
 }
 
@@ -156,7 +156,7 @@ private extension TagsField {
         placeholderAttributedString = simplenotePlaceholderAttributedString
     }
 
-    func setupDefaultParameters() {
+    func setupTokenizationSettings() {
         completionDelay = TokenizationSettings.completionDelay
         tokenizingCharacterSet = TokenizationSettings.characterSet
     }
