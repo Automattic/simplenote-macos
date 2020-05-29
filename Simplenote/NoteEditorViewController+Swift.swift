@@ -226,6 +226,15 @@ extension NoteEditorViewController {
 // MARK: - TagsFieldDelegate
 //
 extension NoteEditorViewController: TagsFieldDelegate {
+
+    public func tokenField(_ tokenField: NSTokenField, shouldAdd tokens: [Any], at index: Int) -> [Any] {
+        guard let note = note, let tags = tokens as? [String] else {
+            return []
+        }
+
+        return note.filterMissingTokens(tags)
+    }
+
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
     }
 }

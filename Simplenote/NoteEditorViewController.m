@@ -903,16 +903,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     return results;
 }
 
-- (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
-{
-    NSString *tagNameToAdd = [tokens objectAtIndex:0];
-    if (![self.note hasTag:tagNameToAdd]) {
-        [self parseTagTokens:[tokenField objectValue]];
-        return tokens;
-    }
-
-    return [NSArray array];
-}
 
 - (void)tokenFieldDidChange:(NSTokenField *)tokenField
 {
