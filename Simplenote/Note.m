@@ -492,7 +492,7 @@ static NSCalendar *gregorian = nil;
     }
     
     for (NSString *tagCheck in tagsArray) {
-        if ([tagCheck compare:tag] == NSOrderedSame) {
+        if ([tagCheck caseInsensitiveCompare:tag] == NSOrderedSame) {
             return YES;
         }
     }
