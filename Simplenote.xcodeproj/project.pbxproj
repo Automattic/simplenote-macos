@@ -290,6 +290,8 @@
 		B5F50916247319360042FA1D /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F50914247319360042FA1D /* SplitView.swift */; };
 		B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
+		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
+		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
@@ -564,6 +566,7 @@
 		B5F3150824496A970036872D /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
+		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
 		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
 		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
@@ -929,6 +932,7 @@
 				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
+				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
@@ -1602,6 +1606,7 @@
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
+				B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */,
 				B57CB87E244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
@@ -1719,6 +1724,7 @@
 				375D293921E033D1007AB25A /* escape.c in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
+				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,
 				B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
