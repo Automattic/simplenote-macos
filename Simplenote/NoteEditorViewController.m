@@ -827,7 +827,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Token Helpers
 
-- (void)parseTagTokens:(NSArray *)tokens
+- (void)didUpdateTags:(NSArray<NSString *> *)tokens
 {
     SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
     SPBucket *tagBucket                 = [appDelegate.simperium bucketForName:@"Tag"];
@@ -876,12 +876,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     for (NSString *tag in addedTags) {
         [SPTracker trackEditorTagAdded:tag.containsEmailAddress];
     }
-}
-
-
-- (void)tokenFieldDidChange:(NSTokenField *)tokenField
-{
-    [self parseTagTokens:[tokenField objectValue]];
 }
 
 

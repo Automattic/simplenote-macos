@@ -252,6 +252,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
     }
 
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
+        didUpdateTags(tokens)
     }
 }
 
