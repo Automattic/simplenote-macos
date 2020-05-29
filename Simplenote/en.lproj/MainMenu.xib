@@ -1129,7 +1129,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" userLabel="Tags View" customClass="TagsView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" userLabel="Tags View">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
                                         <subviews>
                                             <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="SPTokenField">
@@ -1238,7 +1238,6 @@
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
-                <outlet property="tagsView" destination="1549" id="ZF0-gh-bjJ"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
                 <outlet property="view" destination="559" id="vPQ-pl-pqe"/>
