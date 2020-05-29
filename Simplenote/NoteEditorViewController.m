@@ -852,17 +852,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                                               userInfo:userInfo];
         }
     }
-    
-    // Note:
-    // If the currently selected tag was removed from the note, switch to 'All Notes', and preserve the current
-    // note selection
+
+    // Update Tags: Internally they're JSON Encoded!
+    [note setTagsFromList:tokens];
+
+    // Ensure the right Tag remains selected
     if ([deletedTags containsObject:appDelegate.selectedTagName]) {
         [appDelegate selectAllNotesTag];
         [appDelegate selectNoteWithKey:note.simperiumKey];
     }
-    
-    // Resolve tokens to tags
-    [note setTagsFromList:tokens];
     
     if ([self.note.tags isEqualToString:oldTags]) {
         return;
