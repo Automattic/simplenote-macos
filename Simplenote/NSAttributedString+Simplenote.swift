@@ -23,4 +23,15 @@ extension NSAttributedString {
             closure(attachment, range)
         }
     }
+
+    /// Returns the number of TextAttachment(s) the receiver has
+    ///
+    var numberOfAttachments: Int {
+        var attachments = [NSTextAttachment]()
+        enumerateAttachments(of: NSTextAttachment.self) { (attachment, _) in
+            attachments.append(attachment)
+        }
+
+        return attachments.count
+    }
 }

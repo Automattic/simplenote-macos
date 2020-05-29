@@ -27,4 +27,24 @@ class NSAttributedStringSimplenoteTests: XCTestCase {
 
         waitForExpectations(timeout: TestConstants.defaultTimeout, handler: nil)
     }
+
+    /// Verifies that `numberOfAttachments` returns zero whenever the receiver has no attachments
+    ///
+    func testNumberOfAttachmentsReturnsZeroWheneverThereAreNoAttachments() {
+        let count = NSAttributedString().numberOfAttachments
+        XCTAssertEqual(count, .zero)
+    }
+
+    /// Verifies that `numberOfAttachments` returns zero whenever the receiver has no attachments
+    ///
+    func testNumberOfAttachmentsReturnsTheExpectedNumberOfAttachments() {
+        let sample = NSMutableAttributedString()
+        let count = 20
+
+        for _ in 0 ..< count {
+            sample.append(attachment: NSTextAttachment())
+        }
+
+        XCTAssertEqual(sample.numberOfAttachments, count)
+    }
 }
