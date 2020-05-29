@@ -210,6 +210,12 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - TagsFieldDelegate
+//
+extension NoteEditorViewController: TagsFieldDelegate {
+}
+
+
 // MARK: - Settings
 //
 private enum Settings {

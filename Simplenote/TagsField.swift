@@ -24,6 +24,15 @@ class TagsField: NSTokenField {
         delegate as? TagsFieldDelegate
     }
 
+    /// indicates if the Placeholder String should be rendered
+    ///
+    var drawsPlaceholder = true {
+        didSet {
+            refreshPlaceholder()
+        }
+    }
+
+    /// Placeholder's Foreground Color
     ///
     var placeholderTextColor: NSColor = .simplenoteSecondaryTextColor {
         didSet {
@@ -31,6 +40,7 @@ class TagsField: NSTokenField {
         }
     }
 
+    /// Placeholder's Font
     ///
     var placeholderFont: NSFont = .simplenoteSecondaryTextFont {
            didSet {
@@ -38,6 +48,10 @@ class TagsField: NSTokenField {
            }
        }
 
+    /// Placeholder Text:
+    ///
+    /// - Note: We use a different ivar than `placeholderString`, since we wanna keep the Placeholder String around when
+    ///         rendering of such is disabled.
     ///
     var placeholderText = String() {
         didSet {
