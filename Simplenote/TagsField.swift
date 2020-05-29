@@ -115,8 +115,7 @@ extension TagsField {
         super.textDidChange(notification)
 
         /// During edition, `Non Terminated Tokens` will show up in the `objectValue` array.
-        /// We'll calculate the number of TextAttachments (bubbles), and signal the delegate when the number changes.
-        ///
+        /// We need the actual number of `Closed Tokens`, and we'll simply count how many TextAttachments we've got.
         /// Capisci?
         ///
         let currentNumberOfTokens = numberOfTokens
