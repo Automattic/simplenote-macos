@@ -232,7 +232,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
             return []
         }
 
-        return note.filterMissingTokens(tags)
+        return note.filterMissingTags(from: tags)
     }
 
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
