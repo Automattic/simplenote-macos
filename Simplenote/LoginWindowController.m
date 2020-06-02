@@ -18,6 +18,11 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 @implementation LoginWindowController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
+
 - (instancetype)init {
     self = [super init];
     
@@ -113,10 +118,6 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 {
     [super signInAction:sender];
     [SPTracker trackUserSignedIn];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 @end
