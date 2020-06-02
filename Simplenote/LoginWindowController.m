@@ -79,7 +79,11 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 }
 
 - (IBAction)wpccSignInAction:(id)sender
-{    
+{
+    if (super.isAnimatingProgress) {
+        return;
+    }
+
     NSString *sessionState = [[NSUUID UUID] UUIDString];
     sessionState = [@"app-" stringByAppendingString:sessionState];
     [[NSUserDefaults standardUserDefaults] setObject:sessionState forKey:SPAuthSessionKey];
