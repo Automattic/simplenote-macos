@@ -16,7 +16,7 @@ abstract_target 'Automattic' do
   # Automattic Shared
   #
   pod 'Automattic-Tracks-iOS', '~> 0.4'
-  pod 'Simperium-OSX', :git => 'https://github.com/Simperium/simperium-ios.git', :commit => '7c0c627'
+  pod 'Simperium-OSX', :git => 'https://github.com/Simperium/simperium-ios.git', :commit => 'f8c48e4'
 
   # Main Target
   #
