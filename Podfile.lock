@@ -11,21 +11,21 @@ PODS:
   - Sentry (4.4.3):
     - Sentry/Core (= 4.4.3)
   - Sentry/Core (4.4.3)
-  - Simperium-OSX (0.8.27):
-    - Simperium-OSX/DiffMatchPach (= 0.8.27)
-    - Simperium-OSX/JRSwizzle (= 0.8.27)
-    - Simperium-OSX/SocketRocket (= 0.8.27)
-    - Simperium-OSX/SPReachability (= 0.8.27)
-    - Simperium-OSX/SSKeychain (= 0.8.27)
-  - Simperium-OSX/DiffMatchPach (0.8.27)
-  - Simperium-OSX/JRSwizzle (0.8.27)
-  - Simperium-OSX/SocketRocket (0.8.27)
-  - Simperium-OSX/SPReachability (0.8.27)
-  - Simperium-OSX/SSKeychain (0.8.27)
+  - Simperium-OSX (0.8.28):
+    - Simperium-OSX/DiffMatchPach (= 0.8.28)
+    - Simperium-OSX/JRSwizzle (= 0.8.28)
+    - Simperium-OSX/SocketRocket (= 0.8.28)
+    - Simperium-OSX/SPReachability (= 0.8.28)
+    - Simperium-OSX/SSKeychain (= 0.8.28)
+  - Simperium-OSX/DiffMatchPach (0.8.28)
+  - Simperium-OSX/JRSwizzle (0.8.28)
+  - Simperium-OSX/SocketRocket (0.8.28)
+  - Simperium-OSX/SPReachability (0.8.28)
+  - Simperium-OSX/SSKeychain (0.8.28)
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (~> 0.4)
-  - Simperium-OSX (from `https://github.com/Simperium/simperium-ios.git`, commit `90398ae`)
+  - Simperium-OSX (= 0.8.28)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -33,24 +33,15 @@ SPEC REPOS:
     - CocoaLumberjack
     - Reachability
     - Sentry
-
-EXTERNAL SOURCES:
-  Simperium-OSX:
-    :commit: 90398ae
-    :git: https://github.com/Simperium/simperium-ios.git
-
-CHECKOUT OPTIONS:
-  Simperium-OSX:
-    :commit: 90398ae
-    :git: https://github.com/Simperium/simperium-ios.git
+    - Simperium-OSX
 
 SPEC CHECKSUMS:
   Automattic-Tracks-iOS: 5515b3e6a5e55183a244ca6cb013df26810fa994
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Sentry: 14bdd673870e8cf64932b149fad5bbbf39a9b390
-  Simperium-OSX: df6a79220de6b1e2a2718521c97efb19d37db69f
+  Simperium-OSX: aaa21852e3d5348e3d25bb25d6c1dfbec3b91429
 
-PODFILE CHECKSUM: 2f9d7953a0326172b7628b6b784ca2609f914de7
+PODFILE CHECKSUM: 78bf76028858af587c14629c496341ab7f2fb75f
 
 COCOAPODS: 1.6.1
