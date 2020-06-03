@@ -57,10 +57,10 @@ class TagsField: NSTokenField {
     /// Placeholder's Font
     ///
     var placeholderFont: NSFont = .simplenoteSecondaryTextFont {
-           didSet {
-               refreshPlaceholder()
-           }
-       }
+        didSet {
+            refreshPlaceholder()
+        }
+    }
 
     /// Placeholder Text:
     ///
