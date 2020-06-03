@@ -22,7 +22,10 @@ class BackgroundView: NSView {
        }
    }
 
-    var drawsBottomBorder = false {
+    /// Indicates if the bottom border should be rendered
+    ///
+    @IBInspectable
+    var drawsBottomBorder: Bool = false {
         didSet {
             needsDisplay = true
         }
