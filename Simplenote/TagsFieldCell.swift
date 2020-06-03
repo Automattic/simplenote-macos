@@ -57,31 +57,28 @@ private extension TagsFieldCell {
     func extractTokens(from attrString: NSAttributedString) -> [String] {
         var tokens = [String]()
 
-        attrString.enumerateAttribute(.attachment, in: attrString.fullRange, options: []) { (payload, range, nil) in
+        attrString.enumerateAttribute(.attachment, in: attrString.fullRange, options: []) { (payload, range, _) in
             if let attach = payload as? NSTextAttachment, let cell = attach.attachmentCell as? NSTextAttachmentCell {
                 tokens.append(cell.stringValue)
                 return
             }
 
-            /// `NSAttributedString.enumerateAttribute` loops thru `segments`, including ranges in which there is no actual attachment.
-            /// We'll rely on a private TokenFieldCell instance to actually produce a valid token
-            ///
-            let attrString = attrString.attributedSubstring(from: range)
-            internalTokenFieldCell.attributedStringValue = attrString
-
-            if let parsed = internalTokenFieldCell.objectValue as? [String], let tag = parsed.first {
-                tokens.append(tag)
+            /// `NSAttributedString.enumerateAttribute` loops thru `segments`, including ranges in which there is no actual attachment (just text!)
+            if let parsed = self.parseTokens(in: attrString, at: range) {
+                tokens += parsed
                 return
             }
-
-            /// Fallback: No Attachment, and no tokens!
-            ///
-            tokens.append(attrString.string)
         }
 
         return tokens
     }
 
+    /// Attempts to parse new Tokens (by means of an internal NSTokenFieldCell Instance) contained in a given AttributedString
+    ///
+    func parseTokens(in attrString: NSAttributedString, at range: NSRange) -> [String]? {
+        internalTokenFieldCell.attributedStringValue = attrString.attributedSubstring(from: range)
+        return internalTokenFieldCell.objectValue as? [String]
+    }
 
     /// Replaces all of the NSTextAttachmentCell(s) with our own implementation
     ///
@@ -100,7 +97,7 @@ private extension TagsFieldCell {
     /// Listening to TextStorage Changes
     ///
     func ensureTextStorageIsInitialized(in editor: NSText) {
-        guard let textView = editor as? NSTextView, let lm = textView.layoutManager, let storage = lm.textStorage else {
+        guard let textView = editor as? NSTextView, let storage = textView.layoutManager?.textStorage else {
             return
         }
 
