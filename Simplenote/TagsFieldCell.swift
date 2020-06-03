@@ -102,6 +102,10 @@ private extension TagsFieldCell {
         }
 
         let newTextStorage = TagsTextStorage(attributedString: storage)
+        newTextStorage.onAttachmentUpsert = { [weak self] attrString in
+            self?.replaceAttachmentCells(in: attrString)
+        }
+
         lm.replaceTextStorage(newTextStorage)
     }
 }

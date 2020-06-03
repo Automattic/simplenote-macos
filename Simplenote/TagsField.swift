@@ -137,6 +137,8 @@ extension TagsField {
 }
 
 
+// MARK: - NSTextViewDelegate Methods
+//
 extension TagsField: NSTextViewDelegate {
 
     func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {

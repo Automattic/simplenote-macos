@@ -5,7 +5,14 @@ import Foundation
 //
 class TagsTextStorage: NSTextStorage {
 
+    /// Internal Storage
+    ///
     private let backingStore = NSMutableAttributedString()
+
+    /// Callback executed whenever a NSTextAttachment is Upsert
+    ///
+    var onAttachmentUpsert: ((NSAttributedString) -> Void)?
+
 
     override var string: String {
         backingStore.string
@@ -42,7 +49,10 @@ class TagsTextStorage: NSTextStorage {
         self.beginEditing()
 
         backingStore.addAttribute(name, value: value, range: range)
-        replaceAttachmentCells()
+
+        if name == .attachment {
+            onAttachmentUpsert?(backingStore)
+        }
 
         self.edited(.editedAttributes, range: range, changeInLength: .zero)
         self.endEditing()
@@ -52,7 +62,10 @@ class TagsTextStorage: NSTextStorage {
         self.beginEditing()
 
         backingStore.setAttributes(attrs, range: range)
-        replaceAttachmentCells()
+
+        if let _ = attrs?[.attachment]  {
+            onAttachmentUpsert?(backingStore)
+        }
 
         self.edited(.editedAttributes, range: range, changeInLength: .zero)
         self.endEditing()
@@ -71,29 +84,13 @@ class TagsTextStorage: NSTextStorage {
         self.beginEditing()
 
         backingStore.replaceCharacters(in: range, with: attrString)
-        replaceAttachmentCells()
+
+        if attrString.numberOfAttachments > .zero {
+            onAttachmentUpsert?(backingStore)
+        }
 
         let change = attrString.length - range.length
         self.edited([.editedCharacters, .editedAttributes], range: range, changeInLength: change)
         self.endEditing()
-    }
-}
-
-
-// MARK: - Private API(s)
-//
-private extension TagsTextStorage {
-
-// TODO: Relocate
-    func replaceAttachmentCells() {
-        backingStore.enumerateAttachments(of: NSTextAttachment.self) { (attach, range) in
-            guard let attachCell = attach.attachmentCell as? NSCell, !(attachCell is TagAttachmentCell) else {
-                return
-            }
-
-            let tagCell = TagAttachmentCell()
-            tagCell.attributedStringValue = attachCell.attributedStringValue
-            attach.attachmentCell = tagCell
-        }
     }
 }
