@@ -77,7 +77,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)applyStyle;
 - (void)showPublishPopover;
 - (void)fixChecklistColoring;
-- (void)didUpdateTags:(NSArray<NSString *> *)tokens;
+- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
 - (NSUInteger)wordCount;
 - (NSUInteger)charCount;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;

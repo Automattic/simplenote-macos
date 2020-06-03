@@ -825,22 +825,15 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 
-#pragma mark - Token Helpers
+#pragma mark - TagsField Helpers
 
-- (void)didUpdateTags:(NSArray<NSString *> *)tokens
+- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens
 {
     SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
     Simperium *simperium                = appDelegate.simperium;
     Note *note                          = self.note;
     NSString *oldTags                   = note.tags;
-    NSArray *oldTagArray                = note.tagsArray;
-    
-    NSMutableSet *deletedTags           = [NSMutableSet setWithArray:oldTagArray];
-    [deletedTags minusSet:[NSSet setWithArray:tokens]];
-    
-    NSMutableSet *addedTags             = [NSMutableSet setWithArray:tokens];
-    [addedTags minusSet:[NSSet setWithArray:oldTagArray]];
-    
+
     // Create any new tags that don't already exist
     for (NSString *token in tokens) {
         Tag *tag = [simperium searchTagWithName:token];
@@ -866,15 +859,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [self save];
-    
-    // Tracker
-    for (NSString *tag in deletedTags) {
-        [SPTracker trackEditorTagRemoved:tag.containsEmailAddress];
-    }
-    
-    for (NSString *tag in addedTags) {
-        [SPTracker trackEditorTagAdded:tag.containsEmailAddress];
-    }
 }
 
 
