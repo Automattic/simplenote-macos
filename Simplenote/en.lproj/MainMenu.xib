@@ -979,7 +979,7 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="ktP-Hd-KgH" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="618"/>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qdg-eJ-cRo" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qdg-eJ-cRo" userLabel="Top Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570" width="508" height="48"/>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="914" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
@@ -1132,7 +1132,7 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" userLabel="Tags View">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
                                         <subviews>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="xSv-Qg-Lo6" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="xSv-Qg-Lo6" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                                 <rect key="frame" x="23" y="43" width="462" height="1"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="IEb-cM-YoK"/>
@@ -1231,6 +1231,7 @@
         <viewController id="1107" userLabel="Note Editor Controller" customClass="NoteEditorViewController">
             <connections>
                 <outlet property="backgroundView" destination="ktP-Hd-KgH" id="KFX-EY-NpR"/>
+                <outlet property="bottomDividerView" destination="xSv-Qg-Lo6" id="76h-Kc-UnK"/>
                 <outlet property="characterCountItem" destination="PtU-L0-FKA" id="m38-pg-CRX"/>
                 <outlet property="collaborateItem" destination="avN-8J-w5V" id="A6J-03-6wx"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
