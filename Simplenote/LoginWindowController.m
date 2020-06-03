@@ -14,11 +14,14 @@
 
 static CGFloat const SPLoginAdditionalHeight        = 40.0f;
 static CGFloat const SPLoginWPButtonWidth           = 270.0f;
-static NSInteger const SPLoginPasswordLength        = 4;
-static NSInteger const SPSignupPasswordLength       = 6;
 static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 @implementation LoginWindowController
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
 
 - (instancetype)init {
     self = [super init];
@@ -27,7 +30,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     if (@available(macOS 10.14, *)) {
         self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
     }
-    
+
     // Sanity check for accessing the root view
     if (self.window.contentView.subviews.count < 1) {
         return self;
@@ -76,7 +79,11 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 }
 
 - (IBAction)wpccSignInAction:(id)sender
-{    
+{
+    if (super.isAnimatingProgress) {
+        return;
+    }
+
     NSString *sessionState = [[NSUUID UUID] UUIDString];
     sessionState = [@"app-" stringByAppendingString:sessionState];
     [[NSUserDefaults standardUserDefaults] setObject:sessionState forKey:SPAuthSessionKey];
@@ -115,17 +122,6 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 {
     [super signInAction:sender];
     [SPTracker trackUserSignedIn];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
-}
-
-#pragma mark - Overridden Properties
-
-- (void)setSigningIn:(BOOL)signingIn {
-    [super setSigningIn:signingIn];
-    self.validator.minimumPasswordLength = signingIn ? SPLoginPasswordLength : SPSignupPasswordLength;
 }
 
 @end
