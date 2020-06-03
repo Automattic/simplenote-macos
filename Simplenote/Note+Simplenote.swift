@@ -5,11 +5,11 @@ import Foundation
 //
 extension Note {
 
-    /// Given a collection of tags, this API will return the subset that's not already included by the receiver
+    /// Given a collection of Tag Names, this API will return the subset that's not already associated with the receiver.
     ///
-    func filterMissingTags(from tags: [String]) -> [String] {
-        return tags.filter { tag in
-            self.hasTag(tag) == false
+    func filterMissingTagNames(from names: [String]) -> [String] {
+        return names.filter { name in
+            self.hasTag(name) == false
         }
     }
 }

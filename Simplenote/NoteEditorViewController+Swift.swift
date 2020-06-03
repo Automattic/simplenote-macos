@@ -240,7 +240,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
         }
 
         // Return **Only** the Sorted Subset that's not already in the note.
-        return note.filterMissingTags(from: suggestions).sorted()
+        return note.filterMissingTagNames(from: suggestions).sorted()
     }
 
     public func tokenField(_ tokenField: NSTokenField, shouldAdd tokens: [Any], at index: Int) -> [Any] {
@@ -248,7 +248,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
             return []
         }
 
-        return note.filterMissingTags(from: tags)
+        return note.filterMissingTagNames(from: tags)
     }
 
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
