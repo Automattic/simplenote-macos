@@ -252,7 +252,13 @@ extension NoteEditorViewController: TagsFieldDelegate {
     }
 
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
-        updateTags(withTokens: tokens)
+        // NSTokenField is expected to call `shouldAdd` before this API runs. However... that doesn't always happen.
+        // Whenever there's a new Tag onscreen (not yet `committed`), and the user clicks elsewhere,
+        // the `shouldAdd` API won't get hit.
+        //
+        // For that reason, we'll filtering out duplicates.
+        //
+        updateTags(withTokens: tokens.unique)
     }
 }
 
