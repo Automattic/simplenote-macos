@@ -4,6 +4,7 @@
 - Simplenote will now react dynamically to macOS Appearance updates when the System Theme is selected.
 - Sidebar and Notes List will now be presented with a super awesome animation.
 - Your Notes List will now fit more content onscreen.
+- Updated Password Strength requirements.
 
 1.10.0
 ------

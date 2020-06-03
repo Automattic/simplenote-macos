@@ -92,6 +92,7 @@
                                                                            coordinator:self.persistentStoreCoordinator];
     simperium.delegate                              = self;
     simperium.verboseLoggingEnabled                 = NO;
+    simperium.presentsLoginByDefault                = YES;
     simperium.authenticationWindowControllerClass   = [LoginWindowController class];
     
     SPAuthenticator *authenticator                  = simperium.authenticator;
@@ -101,6 +102,7 @@
     config.logoImageName                            = SPSimplenoteLogoImageName;
     config.controlColor                             = [NSColor simplenoteBrandColor];
     config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
+    config.resetPasswordURL                         = SPSimplenoteResetPasswordURL;
     
     return simperium;
 }
