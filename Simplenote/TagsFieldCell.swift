@@ -89,10 +89,10 @@ private extension TagsFieldCell {
             }
 
             let tagCell = TagAttachmentCell()
-            tagCell.stringValue = attachCell.stringValue
-
             // Why?: Setting the Cell's Font fixes a million layout issues.
             tagCell.font = self.font
+            tagCell.representedObject = attachCell.representedObject
+            tagCell.stringValue = attachCell.stringValue
             attach.attachmentCell = tagCell
         }
     }
