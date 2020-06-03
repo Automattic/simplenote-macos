@@ -31,12 +31,19 @@ class TagsFieldCell: NSTokenFieldCell {
         }
     }
 
-    /// Field Editor Initialization: We'll replace the NSTextStorage instance with a customized implementation
+    /// Listen to TextStorage Changes: Replace NSTextAttachment(s) on the fly
     ///
     override func setUpFieldEditorAttributes(_ textObj: NSText) -> NSText {
         let editor = super.setUpFieldEditorAttributes(textObj)
         ensureTextStorageIsInitialized(in: editor)
         return editor
+    }
+
+    /// Drops the TextStorage Link
+    ///
+    override func endEditing(_ textObj: NSText) {
+        ensureTextStorageIsDeinitialized(in: textObj)
+        super.endEditing(textObj)
     }
 }
 
@@ -90,22 +97,33 @@ private extension TagsFieldCell {
         }
     }
 
-    /// Initializes the Field Editor: We'll need a custom TextStorage, in order to inject our own NSCell(s)
+    /// Listening to TextStorage Changes
     ///
     func ensureTextStorageIsInitialized(in editor: NSText) {
         guard let textView = editor as? NSTextView, let lm = textView.layoutManager, let storage = lm.textStorage else {
             return
         }
 
-        if storage is TagsTextStorage {
+        storage.delegate = self
+    }
+
+    /// Deinitializing TextStorage Hook!
+    ///
+    func ensureTextStorageIsDeinitialized(in editor: NSText) {
+        guard let textView = editor as? NSTextView, let storage = textView.layoutManager?.textStorage else {
             return
         }
 
-        let newTextStorage = TagsTextStorage(attributedString: storage)
-        newTextStorage.onAttachmentUpsert = { [weak self] attrString in
-            self?.replaceAttachmentCells(in: attrString)
-        }
+        storage.delegate = nil
+    }
+}
 
-        lm.replaceTextStorage(newTextStorage)
+
+// MARK: - NSTextStorageDelegate Conformance
+//
+extension TagsFieldCell: NSTextStorageDelegate {
+
+    func textStorage(_ textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int) {
+        replaceAttachmentCells(in: textStorage)
     }
 }
