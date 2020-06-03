@@ -1146,7 +1146,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="rev-lo-78z"/>
                                                 </constraints>
-                                                <tokenFieldCell key="cell" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS">
+                                                <tokenFieldCell key="cell" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS" customClass="TagsFieldCell" customModule="Simplenote" customModuleProvider="target">
                                                     <font key="font" metaFont="label" size="12"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
