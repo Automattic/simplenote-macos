@@ -27,11 +27,11 @@ extension NSAttributedString {
     /// Returns the number of TextAttachment(s) contained within the receiver.
     ///
     var numberOfAttachments: Int {
-        var attachments = [NSTextAttachment]()
-        enumerateAttachments(of: NSTextAttachment.self) { (attachment, _) in
-            attachments.append(attachment)
+        var count = Int.zero
+        enumerateAttachments(of: NSTextAttachment.self) { (_, _) in
+            count += 1
         }
 
-        return attachments.count
+        return count
     }
 }
