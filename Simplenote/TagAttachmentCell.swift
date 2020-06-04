@@ -10,26 +10,20 @@ class TagAttachmentCell: NSTextAttachmentCell {
     }
 
     override func cellSize() -> NSSize {
-        let size = nsStringValue.size(withAttributes: Drawing.attributes)
+        let textSize    = nsStringValue.size(withAttributes: Drawing.attributes)
+        let width       = textSize.width.rounded(.up) + Drawing.textInsets.left + Drawing.textInsets.right + Drawing.spacing
+        let height      = textSize.height.rounded(.up) + Drawing.textInsets.top + Drawing.textInsets.bottom
 
-        return NSSize(width: size.width.rounded(.up) + Drawing.textInsets.left + Drawing.textInsets.right + Drawing.spacing,
-                      height: size.height.rounded(.up) + Drawing.textInsets.top + Drawing.textInsets.bottom)
-    }
-
-    override func cellFrame(for textContainer: NSTextContainer, proposedLineFragment lineFrag: NSRect, glyphPosition position: NSPoint, characterIndex charIndex: Int) -> NSRect {
-        let size = cellSize()
-        guard let targetFont = textContainer.layoutManager?.textStorage?.font(at: charIndex) else {
-            return CGRect(x: .zero, y: .zero, width: size.width, height: size.height)
-        }
-// TODO: FIX
-        let paddingY = (targetFont.pointSize - size.height - Drawing.textInsets.top) * 0.5
-        return CGRect(x: .zero, y: paddingY, width: size.width, height: size.height)
+        return NSSize(width: width, height: height)
     }
 
     override func cellBaselineOffset() -> NSPoint {
-// TODO: FIX
-        return .zero
-//        return NSMakePoint(0, font?.descender ?? .zero)
+        guard let font = font else {
+            return .zero
+        }
+
+        let offsetY = abs(font.descender).rounded(.up) + Drawing.textInsets.bottom
+        return NSPoint(x: .zero, y: offsetY * -1)
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
