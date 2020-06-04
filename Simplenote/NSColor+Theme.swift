@@ -180,6 +180,6 @@ private extension NSColor {
     }
 
     static var simplenoteTokenSelectedBackgroundDarkColor: NSColor {
-        NSColor(calibratedWhite: 1.0, alpha: 0.52)
+        NSColor(calibratedWhite: 1.0, alpha: 0.42)
     }
 }
