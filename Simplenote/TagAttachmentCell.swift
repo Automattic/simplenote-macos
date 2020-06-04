@@ -27,14 +27,15 @@ class TagAttachmentCell: NSTextAttachmentCell {
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
-        drawBezier(in: cellFrame, selected: false)
+        drawBackground(in: cellFrame)
         drawText(in: cellFrame)
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int, layoutManager: NSLayoutManager) {
-        let selected = isSelected(in: controlView, charIndex: charIndex)
+        let textView = controlView as? NSTextView
+        let selected = textView?.isCharacterSelected(at: charIndex) ?? false
 
-        drawBezier(in: cellFrame, selected: selected)
+        drawBackground(in: cellFrame, selected: selected)
         drawText(in: cellFrame)
     }
 
@@ -56,22 +57,23 @@ class TagAttachmentCell: NSTextAttachmentCell {
 //
 private extension TagAttachmentCell {
 
-    func drawBezier(in frame: NSRect, selected: Bool) {
+    func drawBackground(in frame: NSRect, selected: Bool = false) {
         var updated = frame
         updated.size.width -= Drawing.spacing
 
-// TODO: FIX
-        if selected {
-            NSColor.red.setFill()
-        } else {
-            NSColor(calibratedWhite: 1.0, alpha: 0.22).setFill()
-        }
+        let bgColor = backgroundColor(selected: selected)
+        bgColor.setFill()
+
         NSBezierPath(roundedRect: updated, xRadius: Drawing.radius, yRadius: Drawing.radius).fill()
     }
 
     func drawText(in frame: NSRect) {
         let updated = frame.insetBy(dx: Drawing.textInsets.left, dy: Drawing.textInsets.top)
         nsStringValue.draw(in: updated, withAttributes: Drawing.attributes)
+    }
+
+    func backgroundColor(selected: Bool) -> NSColor {
+        selected ? .simplenoteSelectedBackgroundColor : .simplenoteTokenBackgroundColor
     }
 }
 
