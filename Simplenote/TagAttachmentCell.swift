@@ -89,7 +89,7 @@ private extension TagAttachmentCell {
     }
 
     func backgroundColor(selected: Bool) -> NSColor {
-        selected ? .simplenoteSelectedBackgroundColor : .simplenoteTokenBackgroundColor
+        selected ? .simplenoteTokenSelectedBackgroundColor : .simplenoteTokenBackgroundColor
     }
 }
 

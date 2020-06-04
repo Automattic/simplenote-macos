@@ -123,6 +123,11 @@ extension NSColor {
     static var simplenoteTokenBackgroundColor: NSColor {
         dynamicColor(lightColor: .simplenoteTokenBackgroundLightColor, darkColor: .simplenoteTokenBackgroundDarkColor)
     }
+
+    @objc
+    static var simplenoteTokenSelectedBackgroundColor: NSColor {
+        dynamicColor(lightColor: .simplenoteTokenSelectedBackgroundLightColor, darkColor: .simplenoteTokenSelectedBackgroundDarkColor)
+    }
 }
 
 
@@ -168,5 +173,13 @@ private extension NSColor {
 
     static var simplenoteTokenBackgroundDarkColor: NSColor {
         NSColor(calibratedWhite: 1.0, alpha: 0.22)
+    }
+
+    static var simplenoteTokenSelectedBackgroundLightColor: NSColor {
+        NSColor(calibratedWhite: 176.0 / 255.0, alpha: 1.0)
+    }
+
+    static var simplenoteTokenSelectedBackgroundDarkColor: NSColor {
+        NSColor(calibratedWhite: 1.0, alpha: 0.52)
     }
 }
