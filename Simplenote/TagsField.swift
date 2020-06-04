@@ -73,7 +73,6 @@ class TagsField: NSTokenField {
         }
     }
 
-
     /// List of Tags to be rendered
     ///
     var tokens: [String] {
