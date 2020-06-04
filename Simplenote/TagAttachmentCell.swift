@@ -45,6 +45,10 @@ class TagAttachmentCell: NSTextAttachmentCell {
 //
 extension TagAttachmentCell {
 
+    /// Listen to Click Events:
+    /// - Note: Alternative involves overwriting `clickedOn` | `doubleClickedOn` in TagsField, but when doing so,
+    ///         the cursor shows up for a split second before the attachment is properly highlighted.
+    ///
     override func trackMouse(with theEvent: NSEvent, in cellFrame: NSRect, of controlView: NSView?, atCharacterIndex charIndex: Int, untilMouseUp flag: Bool) -> Bool {
         guard let textView = controlView as? NSTextView else {
             return false
