@@ -38,17 +38,29 @@ class TagAttachmentCell: NSTextAttachmentCell {
         drawBackground(in: cellFrame, selected: selected)
         drawText(in: cellFrame)
     }
+}
 
-    func isSelected(in controlView: NSView?, charIndex: Int) -> Bool {
+
+// MARK: - Mouse Handling
+//
+extension TagAttachmentCell {
+
+    override func trackMouse(with theEvent: NSEvent, in cellFrame: NSRect, of controlView: NSView?, atCharacterIndex charIndex: Int, untilMouseUp flag: Bool) -> Bool {
         guard let textView = controlView as? NSTextView else {
             return false
         }
 
-        for wrappedRange in textView.selectedRanges where NSLocationInRange(charIndex, wrappedRange.rangeValue) {
+        let newRange = NSRange(location: charIndex, length: 1)
+
+        // Click: Select
+        guard textView.isCharacterSelected(at: charIndex) else {
+            textView.setSelectedRange(newRange)
             return true
         }
 
-        return false
+        // Double Click: Switch to edition
+        textView.replaceCharacters(in: newRange, with: stringValue)
+        return true
     }
 }
 
