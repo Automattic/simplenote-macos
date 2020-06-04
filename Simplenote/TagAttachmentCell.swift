@@ -81,11 +81,11 @@ private extension TagAttachmentCell {
 // MARK: - Drawing Constants
 //
 private enum Drawing {
-    static let attributes: [NSAttributedString.Key: Any] = [
+    static var attributes: [NSAttributedString.Key: Any] = [
         .font:              NSFont.simplenoteSecondaryTextFont,
         .foregroundColor:   NSColor.simplenoteTextColor
     ]
-    static let textInsets = NSEdgeInsets(top: 4, left: 12, bottom: 6, right: 12)
-    static let spacing = CGFloat(8)
-    static let radius = CGFloat(13)
+    static let radius       = CGFloat(13)
+    static let spacing      = CGFloat(8)
+    static let textInsets   = NSEdgeInsets(top: 4, left: 12, bottom: 6, right: 12)
 }
