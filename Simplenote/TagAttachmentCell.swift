@@ -22,8 +22,8 @@ class TagAttachmentCell: NSTextAttachmentCell {
             return .zero
         }
 
-        let offsetY = abs(font.descender).rounded(.up) + Drawing.textInsets.bottom
-        return NSPoint(x: .zero, y: offsetY * -1)
+        let offsetY = font.descender.rounded(.down) - Drawing.textInsets.bottom
+        return NSPoint(x: .zero, y: offsetY)
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
