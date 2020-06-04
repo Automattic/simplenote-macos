@@ -137,26 +137,6 @@ extension TagsField {
 }
 
 
-// MARK: - NSTextViewDelegate Methods
-//
-extension TagsField: NSTextViewDelegate {
-
-    func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
-        let range = NSRange(location: charIndex, length: 1)
-        textView.setSelectedRange(range)
-    }
-
-    func textView(_ textView: NSTextView, doubleClickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
-        guard let attachmentCell = cell as? TagAttachmentCell else {
-            return
-        }
-
-        let range = NSRange(location: charIndex, length: 1)
-        textView.replaceCharacters(in: range, with: attachmentCell.stringValue)
-    }
-}
-
-
 // MARK: - Private Methods
 //
 private extension TagsField {
