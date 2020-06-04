@@ -101,7 +101,7 @@ private enum Drawing {
         .font:              NSFont.simplenoteSecondaryTextFont,
         .foregroundColor:   NSColor.simplenoteTextColor
     ]
-    static let radius       = CGFloat(13)
+    static let radius       = CGFloat(11.5)
     static let spacing      = CGFloat(8)
-    static let textInsets   = NSEdgeInsets(top: 4, left: 12, bottom: 6, right: 12)
+    static let textInsets   = NSEdgeInsets(top: 2, left: 10, bottom: 4, right: 10)
 }
