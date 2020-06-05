@@ -1142,10 +1142,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </customView>
                                             <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="12" width="466" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="rev-lo-78z"/>
-                                                </constraints>
+                                                <rect key="frame" x="21" y="15" width="466" height="15"/>
                                                 <tokenFieldCell key="cell" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS" customClass="TagsFieldCell" customModule="Simplenote" customModuleProvider="target">
                                                     <font key="font" metaFont="label" size="12"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

@@ -12,7 +12,7 @@ class TagAttachmentCell: NSTextAttachmentCell {
     override func cellSize() -> NSSize {
         let textSize    = nsStringValue.size(withAttributes: Drawing.attributes)
         let width       = textSize.width.rounded(.up) + Drawing.textInsets.left + Drawing.textInsets.right + Drawing.spacing
-        let height      = textSize.height.rounded(.up) + Drawing.textInsets.top + Drawing.textInsets.bottom
+        let height      = textSize.height.rounded(.up) + Drawing.textInsets.top + Drawing.textInsets.bottom + Drawing.bgInsets.top
 
         return NSSize(width: width, height: height)
     }
@@ -76,6 +76,8 @@ private extension TagAttachmentCell {
     func drawBackground(in frame: NSRect, selected: Bool = false) {
         var updated = frame
         updated.size.width -= Drawing.spacing
+        updated.origin.y += Drawing.bgInsets.top
+        updated.size.height -= Drawing.bgInsets.top
 
         let bgColor = backgroundColor(selected: selected)
         bgColor.setFill()
@@ -84,7 +86,13 @@ private extension TagAttachmentCell {
     }
 
     func drawText(in frame: NSRect) {
-        let updated = frame.insetBy(dx: Drawing.textInsets.left, dy: Drawing.textInsets.top)
+        var updated = frame
+        updated.origin.x += Drawing.textInsets.left
+        updated.origin.y += Drawing.textInsets.top + Drawing.bgInsets.top
+
+        updated.size.width -= Drawing.textInsets.left + Drawing.textInsets.right
+        updated.size.height -= Drawing.textInsets.top + Drawing.textInsets.bottom
+
         nsStringValue.draw(in: updated, withAttributes: Drawing.attributes)
     }
 
@@ -104,4 +112,5 @@ private enum Drawing {
     static let radius       = CGFloat(11.5)
     static let spacing      = CGFloat(8)
     static let textInsets   = NSEdgeInsets(top: 2, left: 10, bottom: 4, right: 10)
+    static let bgInsets     = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 }
