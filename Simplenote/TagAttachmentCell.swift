@@ -112,5 +112,5 @@ private enum Drawing {
     static let radius       = CGFloat(11.5)
     static let spacing      = CGFloat(8)
     static let textInsets   = NSEdgeInsets(top: 2, left: 10, bottom: 4, right: 10)
-    static let bgInsets     = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    static let bgInsets     = NSEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
 }

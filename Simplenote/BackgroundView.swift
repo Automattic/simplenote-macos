@@ -22,6 +22,15 @@ class BackgroundView: NSView {
        }
    }
 
+    /// Indicates if the top border should be rendered
+    ///
+    @IBInspectable
+    var drawsTopBorder: Bool = false {
+        didSet {
+            needsDisplay = true
+        }
+    }
+
     /// Indicates if the bottom border should be rendered
     ///
     @IBInspectable
@@ -50,6 +59,12 @@ class BackgroundView: NSView {
 
         if drawsBottomBorder, let borderWidth = borderWidth, let borderColor = borderColor {
             let bottomRect = NSRect(x: .zero, y: .zero, width: dirtyRect.width, height: borderWidth)
+            borderColor.set()
+            NSBezierPath(rect: bottomRect).fill()
+        }
+
+        if drawsTopBorder, let borderWidth = borderWidth, let borderColor = borderColor {
+            let bottomRect = NSRect(x: .zero, y: dirtyRect.height - borderWidth, width: dirtyRect.width, height: borderWidth)
             borderColor.set()
             NSBezierPath(rect: bottomRect).fill()
         }

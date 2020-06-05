@@ -1110,7 +1110,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="526"/>
+                                                    <size key="minSize" width="508" height="526"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1138,11 +1138,11 @@
                                                     <constraint firstAttribute="height" constant="1" id="IEb-cM-YoK"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsTopBorder" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </customView>
                                             <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="15" width="466" height="15"/>
+                                                <rect key="frame" x="21" y="16" width="466" height="15"/>
                                                 <tokenFieldCell key="cell" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS" customClass="TagsFieldCell" customModule="Simplenote" customModuleProvider="target">
                                                     <font key="font" metaFont="label" size="12"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1156,7 +1156,7 @@
                                             <constraint firstItem="xSv-Qg-Lo6" firstAttribute="top" secondItem="1549" secondAttribute="top" id="51w-fq-wCi"/>
                                             <constraint firstAttribute="height" constant="44" id="B83-60-TJb"/>
                                             <constraint firstItem="xSv-Qg-Lo6" firstAttribute="leading" secondItem="1549" secondAttribute="leading" constant="20" id="SjX-1w-Pxn"/>
-                                            <constraint firstItem="UWL-9x-FH2" firstAttribute="centerY" secondItem="1549" secondAttribute="centerY" id="jru-aE-hmI"/>
+                                            <constraint firstItem="UWL-9x-FH2" firstAttribute="centerY" secondItem="1549" secondAttribute="centerY" constant="-1" id="jru-aE-hmI"/>
                                             <constraint firstItem="UWL-9x-FH2" firstAttribute="leading" secondItem="1549" secondAttribute="leading" constant="23" id="zbN-Zb-f77"/>
                                         </constraints>
                                     </customView>
