@@ -248,7 +248,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
             return []
         }
 
-        return note.filterUnassociatedTagNames(from: tags)
+        return note.filterUnassociatedTagNames(from: tags).unique
     }
 
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
