@@ -18,9 +18,17 @@ class Theme {
     ///
     private static let defaultFontSize = CGFloat(14)
 
+    /// Body Line Height Multiplier
+    ///
+    private static let bodyLineHeightMultiplier = CGFloat(1.43)
+
     /// Headline Font Multiplier
     ///
     private static let headlingFontMultiplier = CGFloat(1.7)
+
+    /// Headling Spacing
+    ///
+    private static let headlineSpacing = CGFloat.zero
 
     /// The body style
     ///
@@ -101,14 +109,16 @@ private extension Theme {
 
     static var bodyAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor: NSColor.simplenoteTextColor,
-            .font: NSFont.systemFont(ofSize: fontSize)
+            .foregroundColor:   NSColor.simplenoteTextColor,
+            .font:              NSFont.systemFont(ofSize: fontSize),
+            .paragraphStyle:    bodyParagraphStyle
         ]
     }
 
     static var firstLineAttributes: [NSAttributedString.Key: AnyObject] {
         return [
             .font:              NSFont.boldSystemFont(ofSize: ceil(fontSize * headlingFontMultiplier)),
+            .paragraphStyle:    headlineParagraphStyle
         ]
     }
 
@@ -156,5 +166,32 @@ private extension Theme {
         return [
             .foregroundColor: NSColor.simplenoteLinkColor
         ]
+    }
+}
+
+
+// MARK: - Paragraph styles
+//
+private extension Theme {
+
+    static var bodyParagraphStyle: NSParagraphStyle {
+        let textHeight = fontSize
+        let multipliedLineHeight = floor(textHeight * bodyLineHeightMultiplier)
+        let spacing = floor((multipliedLineHeight - textHeight) * 0.5)
+
+        // We're aiming at rendering the text, in relation to the TextView's caret.
+        // For that reason, we'll adjust both, lineSpacing (bottom spacing) and lineHeight (top spacing).
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.minimumLineHeight = spacing + textHeight
+        paragraph.maximumLineHeight = spacing + textHeight
+        paragraph.lineSpacing = spacing
+
+        return paragraph
+    }
+
+    static var headlineParagraphStyle: NSParagraphStyle {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.paragraphSpacing = headlineSpacing
+        return paragraph
     }
 }
