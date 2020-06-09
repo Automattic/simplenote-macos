@@ -16,7 +16,7 @@ class Theme {
 
     /// Default Font Size
     ///
-    private static let defaultFontSize = CGFloat(15)
+    private static let defaultFontSize = CGFloat(14)
 
     /// Headline Font Multiplier
     ///

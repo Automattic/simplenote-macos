@@ -19,7 +19,7 @@
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
     NoteFontSizeMinimum = 10,
-    NoteFontSizeNormal = 15,
+    NoteFontSizeNormal = 14,
     NoteFontSizeMaximum = 30
 };
 
