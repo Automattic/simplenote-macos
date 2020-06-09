@@ -979,7 +979,7 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="ktP-Hd-KgH" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="618"/>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qdg-eJ-cRo" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qdg-eJ-cRo" userLabel="Top Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570" width="508" height="48"/>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="914" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
@@ -1129,10 +1129,38 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" customClass="NoteEditorBottomBar">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" userLabel="Tags View">
                                         <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="xSv-Qg-Lo6" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="43" width="468" height="1"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="IEb-cM-YoK"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </customView>
+                                            <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
+                                                <rect key="frame" x="21" y="12" width="466" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="rev-lo-78z"/>
+                                                </constraints>
+                                                <tokenFieldCell key="cell" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS">
+                                                    <font key="font" metaFont="label" size="12"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </tokenFieldCell>
+                                            </tokenField>
+                                        </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="UWL-9x-FH2" secondAttribute="trailing" constant="23" id="1x1-Sc-U64"/>
+                                            <constraint firstAttribute="trailing" secondItem="xSv-Qg-Lo6" secondAttribute="trailing" constant="20" id="2Kt-6b-aW2"/>
+                                            <constraint firstItem="xSv-Qg-Lo6" firstAttribute="top" secondItem="1549" secondAttribute="top" id="51w-fq-wCi"/>
                                             <constraint firstAttribute="height" constant="44" id="B83-60-TJb"/>
+                                            <constraint firstItem="xSv-Qg-Lo6" firstAttribute="leading" secondItem="1549" secondAttribute="leading" constant="20" id="SjX-1w-Pxn"/>
+                                            <constraint firstItem="UWL-9x-FH2" firstAttribute="centerY" secondItem="1549" secondAttribute="centerY" id="jru-aE-hmI"/>
+                                            <constraint firstItem="UWL-9x-FH2" firstAttribute="leading" secondItem="1549" secondAttribute="leading" constant="23" id="zbN-Zb-f77"/>
                                         </constraints>
                                     </customView>
                                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="1447" userLabel="Status Image View">
@@ -1206,7 +1234,7 @@
         <viewController id="1107" userLabel="Note Editor Controller" customClass="NoteEditorViewController">
             <connections>
                 <outlet property="backgroundView" destination="ktP-Hd-KgH" id="KFX-EY-NpR"/>
-                <outlet property="bottomBar" destination="1549" id="1558"/>
+                <outlet property="bottomDividerView" destination="xSv-Qg-Lo6" id="76h-Kc-UnK"/>
                 <outlet property="characterCountItem" destination="PtU-L0-FKA" id="m38-pg-CRX"/>
                 <outlet property="collaborateItem" destination="avN-8J-w5V" id="A6J-03-6wx"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
@@ -1223,6 +1251,7 @@
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
                 <outlet property="tableView" destination="561" id="1282"/>
+                <outlet property="tagsField" destination="UWL-9x-FH2" id="8o3-nm-rjz"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
                 <outlet property="view" destination="559" id="vPQ-pl-pqe"/>

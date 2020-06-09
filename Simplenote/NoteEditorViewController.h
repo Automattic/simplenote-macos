@@ -13,8 +13,8 @@
 
 @class BackgroundView;
 @class NoteListViewController;
-@class NoteEditorBottomBar;
 @class MarkdownViewController;
+@class TagsField;
 @class ToolbarView;
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
@@ -36,11 +36,10 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 #pragma mark NoteEditorViewController
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController : NSViewController <NSSharingServicePickerDelegate>
+@interface NoteEditorViewController : NSViewController
 {
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
-    IBOutlet NSTokenField *tagTokenField;
     IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
@@ -56,12 +55,13 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong) IBOutlet NSMenu                   *detailsMenu;
 @property (nonatomic, strong) IBOutlet BackgroundView           *backgroundView;
 @property (nonatomic, strong) IBOutlet BackgroundView           *topDividerView;
+@property (nonatomic, strong) IBOutlet BackgroundView           *bottomDividerView;
 @property (nonatomic, strong) IBOutlet ToolbarView              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;
 @property (nonatomic,   weak) IBOutlet SPTextView               *noteEditor;
 @property (nonatomic,   weak) IBOutlet NSScrollView             *scrollView;
-@property (nonatomic,   weak) IBOutlet NoteEditorBottomBar      *bottomBar;
+@property (nonatomic,   weak) IBOutlet TagsField                *tagsField;
 
 @property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
 @property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
@@ -73,12 +73,12 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)displayNote:(Note *)selectedNote;
 - (void)displayNotes:(NSArray *)selectedNotes;
 - (void)didReceiveNewContent;
-- (void)updateTagField;
 - (void)willReceiveNewContent;
 - (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data;
 - (void)applyStyle;
 - (void)showPublishPopover;
 - (void)fixChecklistColoring;
+- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
 - (NSUInteger)wordCount;
 - (NSUInteger)charCount;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;

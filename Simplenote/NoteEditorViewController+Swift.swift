@@ -21,6 +21,14 @@ extension NoteEditorViewController {
         topDividerView.alphaValue = .zero
         topDividerView.drawsBottomBorder = true
     }
+
+    @objc
+    func setupTagsField() {
+        tagsField.delegate = self
+        tagsField.focusRingType = .none
+        tagsField.font = .simplenoteSecondaryTextFont
+        tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
+    }
 }
 
 
@@ -116,6 +124,30 @@ extension NoteEditorViewController {
         toolbarView.state = newState
 
     }
+
+    /// Refreshes all of the TagsField properties: Tokens and allowed actions
+    ///
+    @objc
+    func refreshTagsField() {
+        refreshTagsFieldActions()
+        refreshTagsFieldTokens()
+    }
+
+    /// Refreshes the TagsField's Inner State
+    ///
+    @objc
+    func refreshTagsFieldActions() {
+        let isEnabled = isDisplayingNote && !viewingTrash
+        tagsField.drawsPlaceholder = isEnabled
+        tagsField.isEditable = isEnabled
+        tagsField.isSelectable = isEnabled
+    }
+
+    /// Refreshes the TagsField's Tokens
+    ///
+    private func refreshTagsFieldTokens() {
+        tagsField.tokens = note?.tagsArray as? [String] ?? []
+    }
 }
 
 
@@ -187,6 +219,46 @@ extension NoteEditorViewController {
 
         let contentOffSetY = scrollView.documentVisibleRect.origin.y
         return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+    }
+}
+
+
+// MARK: - TagsFieldDelegate
+//
+extension NoteEditorViewController: TagsFieldDelegate {
+
+    public func tokenField(_ tokenField: NSTokenField, completionsForSubstring substring: String, indexOfToken tokenIndex: Int, indexOfSelectedItem selectedIndex: UnsafeMutablePointer<Int>?) -> [Any]? {
+        // Disable Autocomplete:
+        // We cannot control the direction of the suggestions layer. Fullscreen causes such element to be offscreen.
+        guard tokenField.window?.styleMask.contains(.fullScreen) == false else {
+            return []
+        }
+
+        // Search Tags starting with the new keyword
+        guard let suggestions = SimplenoteAppDelegate.shared()?.simperium?.searchTagNames(prefix: substring) else {
+            return []
+        }
+
+        // Return **Only** the Sorted Subset that's not already in the note.
+        return note.filterUnassociatedTagNames(from: suggestions).sorted()
+    }
+
+    public func tokenField(_ tokenField: NSTokenField, shouldAdd tokens: [Any], at index: Int) -> [Any] {
+        guard let note = note, let tags = tokens as? [String] else {
+            return []
+        }
+
+        return note.filterUnassociatedTagNames(from: tags).unique
+    }
+
+    public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
+        // NSTokenField is expected to call `shouldAdd` before this API runs. However... that doesn't always happen.
+        // Whenever there's a new Tag onscreen (not yet `committed`), and the user clicks elsewhere,
+        // the `shouldAdd` API won't get hit.
+        //
+        // For that reason, we'll filtering out duplicates.
+        //
+        updateTags(withTokens: tokens.unique)
     }
 }
 

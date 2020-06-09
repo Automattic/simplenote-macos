@@ -12,7 +12,6 @@
 #import "Tag.h"
 #import "NoteListViewController.h"
 #import "TagListViewController.h"
-#import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
@@ -49,13 +48,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 @interface NoteEditorViewController() <NSMenuDelegate,
                                         NSPopoverDelegate,
+                                        NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
-                                        NSTokenFieldDelegate,
                                         PublishViewControllerDelegate,
                                         SPBucketDelegate,
-                                        VersionsViewControllerDelegate,
-                                        WKNavigationDelegate>
+                                        VersionsViewControllerDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 @property (nonatomic,   weak) ShareViewController       *shareViewController;
@@ -125,6 +123,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self setupScrollView];
     [self setupTopDivider];
     [self setupStatusImageView];
+    [self setupTagsField];
 
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
@@ -135,9 +134,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
     [self updateLineLengthMenuForPosition:lineLengthPosition];
-    
-    tagTokenField = [self.bottomBar addTagField];
-    tagTokenField.delegate = self;
+
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -193,12 +190,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
 }
 
-- (void)updateTagField
-{
-    [tagTokenField setObjectValue: [self.note.tagsArray count] > 0 ? self.note.tagsArray : [NSArray array]];
-    [tagTokenField setNeedsDisplay:YES];
-}
-
 - (void)displayNote:(Note *)selectedNote
 {
     [self save];
@@ -214,10 +205,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         self.selectedNotes = @[];
         [self refreshToolbarActions];
         [self refreshEditorActions];
+        [self refreshTagsField];
         [self.noteEditor displayNoteWithContent:@""];
-        [self.bottomBar setEnabled:NO];
-        [tagTokenField setEditable:NO];
-        [tagTokenField setObjectValue:@[]];
 
         return;
     }
@@ -236,20 +225,16 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)
-    self.noteEditor.editable    = false;
-    self.noteEditor.editable    = !self.viewingTrash;
+    self.noteEditor.editable = false;
+    self.noteEditor.editable = !self.viewingTrash;
     
-    self.noteEditor.selectable  = !self.viewingTrash;
-    
-    tagTokenField.editable      = !self.viewingTrash;
-    tagTokenField.selectable    = !self.viewingTrash;
-    self.bottomBar.enabled      = !self.viewingTrash;
+    self.noteEditor.selectable = !self.viewingTrash;
 
-    self.note                   = selectedNote;
-    self.selectedNotes          = [NSArray arrayWithObject:self.note];
+    self.note = selectedNote;
+    self.selectedNotes = [NSArray arrayWithObject:self.note];
     
-    [self updateTagField];
     [self refreshToolbarActions];
+    [self refreshTagsField];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -287,11 +272,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     [self refreshToolbarActions];
     [self refreshEditorActions];
-
-    [tagTokenField setEditable:NO];
-    [tagTokenField setSelectable:NO];
-    [tagTokenField setObjectValue:[NSArray array]];
-    [self.bottomBar setEnabled:NO];
+    [self refreshTagsField];
 
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
@@ -329,7 +310,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = YES;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.bottomBar setEnabled:NO];
+    [self refreshTagsFieldActions];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -337,12 +318,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.viewingTrash = NO;
     [self refreshEditorActions];
     [self refreshToolbarActions];
-    [self.bottomBar setEnabled:YES];
+    [self refreshTagsFieldActions];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
 {
-    [self updateTagField];
+    [self refreshTagsField];
 }
 
 - (void)simperiumWillSave:(NSNotification *)notification
@@ -500,6 +481,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     [self.noteEditor displayNoteWithContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
+    [self refreshTagsField];
 
     [self updatePublishUI];
 }
@@ -843,26 +825,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 
-#pragma mark - Token delegate
+#pragma mark - TagsField Helpers
 
-- (void)parseTagTokens:(NSArray *)tokens
+- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens
 {
     SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket                 = [appDelegate.simperium bucketForName:@"Tag"];
+    Simperium *simperium                = appDelegate.simperium;
     Note *note                          = self.note;
     NSString *oldTags                   = note.tags;
-    NSArray *oldTagArray                = note.tagsArray;
-    
-    NSMutableSet *deletedTags           = [NSMutableSet setWithArray:oldTagArray];
-    [deletedTags minusSet:[NSSet setWithArray:tokens]];
-    
-    NSMutableSet *addedTags             = [NSMutableSet setWithArray:tokens];
-    [addedTags minusSet:[NSSet setWithArray:oldTagArray]];
-    
+
     // Create any new tags that don't already exist
     for (NSString *token in tokens) {
-        NSString *tagKey = [[token lowercaseString] sp_urlEncodeString];
-        Tag *tag = [tagBucket objectForKey:tagKey];
+        Tag *tag = [simperium searchTagWithName:token];
         if (!tag && ![token containsEmailAddress]) {
             NSDictionary *userInfo = @{@"tagName":token};
             [[NSNotificationCenter defaultCenter] postNotificationName:SPTagAddedFromEditorNotificationName
@@ -870,73 +844,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                                               userInfo:userInfo];
         }
     }
-    
-    // Note:
-    // If the currently selected tag was removed from the note, switch to 'All Notes', and preserve the current
-    // note selection
-    if ([deletedTags containsObject:appDelegate.selectedTagName]) {
+
+    // Update Tags: Internally they're JSON Encoded!
+    [note setTagsFromList:tokens];
+
+    // Ensure the right Tag remains selected
+    if ([note hasTag:appDelegate.selectedTagName] == false) {
         [appDelegate selectAllNotesTag];
         [appDelegate selectNoteWithKey:note.simperiumKey];
     }
-    
-    // Resolve tokens to tags
-    [note setTagsFromList:tokens];
     
     if ([self.note.tags isEqualToString:oldTags]) {
         return;
     }
     
     [self save];
-    
-    // Tracker
-    for (NSString *tag in deletedTags) {
-        [SPTracker trackEditorTagRemoved:tag.containsEmailAddress];
-    }
-    
-    for (NSString *tag in addedTags) {
-        [SPTracker trackEditorTagAdded:tag.containsEmailAddress];
-    }
-}
-
-- (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring
-           indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex
-{
-    // Don't show auto-complete in fullscreen mode
-    BOOL fullscreen = ([self.view.window styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen;
-    if (fullscreen)
-        return [NSArray array];
-    
-    // Supply an auto-complete list based on substrings
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
-    NSArray *tags = [tagBucket allObjects];
-    NSMutableArray *results = [NSMutableArray arrayWithCapacity:3];
-
-    for (Tag *tag in tags) {
-        BOOL tagFound = [tag.name rangeOfString:substring options:NSCaseInsensitiveSearch].location == 0;
-        BOOL tagAlreadyAdded = [self.note.tags rangeOfString:substring options:NSCaseInsensitiveSearch].location != NSNotFound;
-        if (tagFound && !tagAlreadyAdded) {
-            [results addObject:tag.name];
-        }
-    }
-    
-    return results;
-}
-
-- (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
-{
-    NSString *tagNameToAdd = [tokens objectAtIndex:0];
-    if (![self.note hasTag:tagNameToAdd]) {
-        [self parseTagTokens:[tokenField objectValue]];
-        return tokens;
-    }
-
-    return [NSArray array];
-}
-
-- (void)tokenFieldDidChange:(NSTokenField *)tokenField
-{
-    [self parseTagTokens:[tokenField objectValue]];
 }
 
 
@@ -1053,15 +975,14 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     }
 
-    self.backgroundView.fillColor = [NSColor simplenoteBackgroundColor];
-    self.topDividerView.borderColor = [NSColor simplenoteDividerColor];
-    [self.statusTextField setTextColor:[NSColor simplenoteSecondaryTextColor]];
-    [self.noteEditor setInsertionPointColor:[NSColor simplenoteTextColor]];
-    [self.noteEditor setTextColor:[NSColor simplenoteTextColor]];
-
-    [self.bottomBar applyStyle];
-    [self.bottomBar setNeedsDisplay:YES];
-    [self.bottomBar setEnabled:[self.bottomBar isEnabled]];
+    self.backgroundView.fillColor       = [NSColor simplenoteBackgroundColor];
+    self.topDividerView.borderColor     = [NSColor simplenoteDividerColor];
+    self.bottomDividerView.borderColor  = [NSColor simplenoteDividerColor];
+    self.statusTextField.textColor      = [NSColor simplenoteSecondaryTextColor];
+    self.noteEditor.insertionPointColor = [NSColor simplenoteTextColor];
+    self.noteEditor.textColor           = [NSColor simplenoteTextColor];
+    self.tagsField.textColor            = [NSColor simplenoteTextColor];
+    self.tagsField.placeholderTextColor = [NSColor simplenoteSecondaryTextColor];
 
     [self dismissActivePopover];
 }
@@ -1082,6 +1003,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor displayNoteWithContent:content];
 }
 
+
 #pragma mark - NSButton Delegate Methods
 
 - (IBAction)showSharePopover:(id)sender
@@ -1089,9 +1011,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [SPTracker trackEditorCollaboratorsAccessed];
 
     ShareViewController *viewController = [ShareViewController new];
-    [self showViewController:viewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
+    [self showViewController:viewController relativeToView:self.tagsField preferredEdge:NSMaxYEdge];
 
-    [self.bottomBar.tokenField becomeFirstResponder];
+    [self.tagsField becomeFirstResponder];
     self.shareViewController = viewController;
 }
 
