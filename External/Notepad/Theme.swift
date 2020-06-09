@@ -20,7 +20,7 @@ class Theme {
 
     /// Headline Font Multiplier
     ///
-    private static let firstLineFontMultiplier = CGFloat(1.25)
+    private static let headlingFontMultiplier = CGFloat(1.7)
 
     /// The body style
     ///
@@ -108,7 +108,7 @@ private extension Theme {
 
     static var firstLineAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .font: NSFont.systemFont(ofSize: fontSize * firstLineFontMultiplier)
+            .font:              NSFont.boldSystemFont(ofSize: ceil(fontSize * headlingFontMultiplier)),
         ]
     }
 
