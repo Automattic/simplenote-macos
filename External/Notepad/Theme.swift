@@ -63,7 +63,7 @@ private extension Theme {
 
     static var regularStyles: [Style] {
         return [
-            Style(element: .firstLine, attributes: firstLineAttributes)
+            Style(element: .firstLine, attributes: headlineAttributes)
         ]
     }
 
@@ -71,7 +71,7 @@ private extension Theme {
         return [
             Style(element: .h1, attributes: headingAttributes),
             Style(element: .h2, attributes: headingAttributes),
-            Style(element: .firstLine, attributes: firstLineAttributes),
+            Style(element: .firstLine, attributes: headlineAttributes),
             Style(element: .bold, attributes: boldAttributes),
             Style(element: .inlineCode, attributes: codeAttributes),
             Style(element: .italic, attributes: italicAttributes),
@@ -115,7 +115,7 @@ private extension Theme {
         ]
     }
 
-    static var firstLineAttributes: [NSAttributedString.Key: AnyObject] {
+    static var headlineAttributes: [NSAttributedString.Key: AnyObject] {
         return [
             .font:              NSFont.boldSystemFont(ofSize: ceil(fontSize * headlingFontMultiplier)),
             .paragraphStyle:    headlineParagraphStyle
