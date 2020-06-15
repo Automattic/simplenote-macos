@@ -160,7 +160,7 @@ private extension NSColor {
     }
 
     static var simplenoteSecondarySelectedBackgroundDarkColor: NSColor {
-        NSColor(red: 54.0/255.0, green: 54.0/255.0, blue: 54.0/255.0, alpha: 0.4)
+        NSColor(calibratedWhite: 1.0, alpha: 0.1)
     }
 
     static var simplenoteSecondarySelectedBackgroundLightColor: NSColor {
