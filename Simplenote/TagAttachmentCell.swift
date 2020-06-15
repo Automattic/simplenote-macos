@@ -5,14 +5,24 @@ import Foundation
 //
 class TagAttachmentCell: NSTextAttachmentCell {
 
-    var nsStringValue: NSString {
+    /// Text Color
+    ///
+    var textColor: NSColor = .simplenoteTextColor
+
+    /// Font
+    ///
+    var textFont: NSFont = .simplenoteSecondaryTextFont
+
+    /// Returns the receiver's StringValue as a Foundation String
+    ///
+    private var nsStringValue: NSString {
         stringValue as NSString
     }
 
     override func cellSize() -> NSSize {
-        let textSize    = nsStringValue.size(withAttributes: Drawing.attributes)
-        let width       = textSize.width.rounded(.up) + Drawing.textInsets.left + Drawing.textInsets.right + Drawing.spacing
-        let height      = textSize.height.rounded(.up) + Drawing.textInsets.top + Drawing.textInsets.bottom + Drawing.bgInsets.top
+        let textSize    = nsStringValue.size(withAttributes: attributes)
+        let width       = textSize.width.rounded(.up) + Metrics.textInsets.left + Metrics.textInsets.right + Metrics.spacing
+        let height      = textSize.height.rounded(.up) + Metrics.textInsets.top + Metrics.textInsets.bottom + Metrics.bgInsets.top
 
         return NSSize(width: width, height: height)
     }
@@ -22,7 +32,7 @@ class TagAttachmentCell: NSTextAttachmentCell {
             return .zero
         }
 
-        let offsetY = font.descender.rounded(.down) - Drawing.textInsets.bottom
+        let offsetY = font.descender.rounded(.down) - Metrics.textInsets.bottom
         return NSPoint(x: .zero, y: offsetY)
     }
 
@@ -75,25 +85,25 @@ private extension TagAttachmentCell {
 
     func drawBackground(in frame: NSRect, selected: Bool = false) {
         var updated = frame
-        updated.size.width -= Drawing.spacing
-        updated.origin.y += Drawing.bgInsets.top
-        updated.size.height -= Drawing.bgInsets.top
+        updated.size.width -= Metrics.spacing
+        updated.origin.y += Metrics.bgInsets.top
+        updated.size.height -= Metrics.bgInsets.top
 
         let bgColor = backgroundColor(selected: selected)
         bgColor.setFill()
 
-        NSBezierPath(roundedRect: updated, xRadius: Drawing.radius, yRadius: Drawing.radius).fill()
+        NSBezierPath(roundedRect: updated, xRadius: Metrics.radius, yRadius: Metrics.radius).fill()
     }
 
     func drawText(in frame: NSRect) {
         var updated = frame
-        updated.origin.x += Drawing.textInsets.left
-        updated.origin.y += Drawing.textInsets.top + Drawing.bgInsets.top
+        updated.origin.x += Metrics.textInsets.left
+        updated.origin.y += Metrics.textInsets.top + Metrics.bgInsets.top
 
-        updated.size.width -= Drawing.textInsets.left + Drawing.textInsets.right
-        updated.size.height -= Drawing.textInsets.top + Drawing.textInsets.bottom
+        updated.size.width -= Metrics.textInsets.left + Metrics.textInsets.right
+        updated.size.height -= Metrics.textInsets.top + Metrics.textInsets.bottom
 
-        nsStringValue.draw(in: updated, withAttributes: Drawing.attributes)
+        nsStringValue.draw(in: updated, withAttributes: attributes)
     }
 
     func backgroundColor(selected: Bool) -> NSColor {
@@ -102,13 +112,22 @@ private extension TagAttachmentCell {
 }
 
 
-// MARK: - Drawing Constants
+// MARK: - Dynamic Properties
 //
-private enum Drawing {
-    static var attributes: [NSAttributedString.Key: Any] = [
-        .font:              NSFont.simplenoteSecondaryTextFont,
-        .foregroundColor:   NSColor.simplenoteTextColor
-    ]
+private extension TagAttachmentCell {
+
+    var attributes: [NSAttributedString.Key: Any] {
+        [
+            .font:              NSFont.simplenoteSecondaryTextFont,
+            .foregroundColor:   NSColor.simplenoteTextColor
+        ]
+    }
+}
+
+
+// MARK: - Drawing Metrics
+//
+private enum Metrics {
     static let radius       = CGFloat(11.5)
     static let spacing      = CGFloat(8)
     static let textInsets   = NSEdgeInsets(top: 2, left: 10, bottom: 4, right: 10)
