@@ -21,7 +21,7 @@ class TagAttachmentCell: NSTextAttachmentCell {
 
     override func cellSize() -> NSSize {
         let textSize    = nsStringValue.size(withAttributes: attributes)
-        let width       = textSize.width.rounded(.up) + Metrics.textInsets.left + Metrics.textInsets.right + Metrics.spacing
+        let width       = textSize.width.rounded(.up) + Metrics.textInsets.left + Metrics.textInsets.right + Metrics.bgInsets.left + Metrics.bgInsets.right
         let height      = textSize.height.rounded(.up) + Metrics.textInsets.top + Metrics.textInsets.bottom + Metrics.bgInsets.top
 
         return NSSize(width: width, height: height)
@@ -85,8 +85,9 @@ private extension TagAttachmentCell {
 
     func drawBackground(in frame: NSRect, selected: Bool = false) {
         var updated = frame
-        updated.size.width -= Metrics.spacing
+        updated.origin.x += Metrics.bgInsets.left
         updated.origin.y += Metrics.bgInsets.top
+        updated.size.width -= Metrics.bgInsets.left + Metrics.bgInsets.right
         updated.size.height -= Metrics.bgInsets.top
 
         let bgColor = backgroundColor(selected: selected)
@@ -97,7 +98,7 @@ private extension TagAttachmentCell {
 
     func drawText(in frame: NSRect) {
         var updated = frame
-        updated.origin.x += Metrics.textInsets.left
+        updated.origin.x += Metrics.textInsets.left + Metrics.bgInsets.left
         updated.origin.y += Metrics.textInsets.top + Metrics.bgInsets.top
 
         updated.size.width -= Metrics.textInsets.left + Metrics.textInsets.right
@@ -129,7 +130,6 @@ private extension TagAttachmentCell {
 //
 private enum Metrics {
     static let radius       = CGFloat(11.5)
-    static let spacing      = CGFloat(8)
     static let textInsets   = NSEdgeInsets(top: 2, left: 10, bottom: 4, right: 10)
-    static let bgInsets     = NSEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
+    static let bgInsets     = NSEdgeInsets(top: 2, left: 4, bottom: 0, right: 4)
 }
