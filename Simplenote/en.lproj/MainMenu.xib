@@ -1100,17 +1100,17 @@
                                         </connections>
                                     </customView>
                                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="933">
-                                        <rect key="frame" x="0.0" y="44" width="508" height="526"/>
+                                        <rect key="frame" x="0.0" y="48" width="508" height="522"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LKV-y0-209">
-                                            <rect key="frame" x="0.0" y="0.0" width="508" height="526"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="508" height="522"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="526"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="522"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="508" height="526"/>
+                                                    <size key="minSize" width="508" height="522"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1125,15 +1125,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936">
-                                            <rect key="frame" x="492" y="0.0" width="16" height="526"/>
+                                            <rect key="frame" x="492" y="0.0" width="16" height="522"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="1549" userLabel="Tags View">
-                                        <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="508" height="48"/>
                                         <subviews>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="xSv-Qg-Lo6" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="43" width="468" height="1"/>
+                                                <rect key="frame" x="20" y="47" width="468" height="1"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="IEb-cM-YoK"/>
                                                 </constraints>
@@ -1142,7 +1142,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </customView>
                                             <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
-                                                <rect key="frame" x="21" y="16" width="466" height="15"/>
+                                                <rect key="frame" x="21" y="18" width="466" height="15"/>
                                                 <tokenFieldCell key="cell" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS" customClass="TagsFieldCell" customModule="Simplenote" customModuleProvider="target">
                                                     <font key="font" metaFont="label" size="12"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1154,7 +1154,7 @@
                                             <constraint firstAttribute="trailing" secondItem="UWL-9x-FH2" secondAttribute="trailing" constant="23" id="1x1-Sc-U64"/>
                                             <constraint firstAttribute="trailing" secondItem="xSv-Qg-Lo6" secondAttribute="trailing" constant="20" id="2Kt-6b-aW2"/>
                                             <constraint firstItem="xSv-Qg-Lo6" firstAttribute="top" secondItem="1549" secondAttribute="top" id="51w-fq-wCi"/>
-                                            <constraint firstAttribute="height" constant="44" id="B83-60-TJb"/>
+                                            <constraint firstAttribute="height" constant="48" id="B83-60-TJb"/>
                                             <constraint firstItem="xSv-Qg-Lo6" firstAttribute="leading" secondItem="1549" secondAttribute="leading" constant="20" id="SjX-1w-Pxn"/>
                                             <constraint firstItem="UWL-9x-FH2" firstAttribute="centerY" secondItem="1549" secondAttribute="centerY" constant="-1" id="jru-aE-hmI"/>
                                             <constraint firstItem="UWL-9x-FH2" firstAttribute="leading" secondItem="1549" secondAttribute="leading" constant="23" id="zbN-Zb-f77"/>
