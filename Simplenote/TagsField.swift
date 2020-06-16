@@ -83,6 +83,7 @@ class TagsField: NSTokenField {
         set {
             objectValue = newValue
             needsDisplay = true
+            invalidateIntrinsicContentSize()
         }
     }
 
@@ -113,6 +114,9 @@ extension TagsField {
     override func textDidChange(_ notification: Notification) {
         super.textDidChange(notification)
 
+        /// Scroll: Increase the scrollable area + follow with the cursor!
+        ///
+        invalidateIntrinsicContentSize()
         /// During edition, `Non Terminated Tokens` will show up in the `objectValue` array.
         /// We need the actual number of `Closed Tokens`, and we'll simply count how many TextAttachments we've got.
         /// Capisci?
@@ -137,6 +141,24 @@ extension TagsField {
 
 
 // MARK: - Private Methods
+// MARK: - Scroll / Autolayout Support
+//
+extension TagsField {
+
+    override var intrinsicContentSize: NSSize {
+        guard let scrollView = enclosingScrollView, let cellSize = cell?.cellSize else {
+            return super.intrinsicContentSize
+        }
+
+        // At the very least, always assume the container's full width
+        let newWidth = max(cellSize.width.rounded(.up), scrollView.bounds.width)
+        let newHeight = cellSize.height.rounded(.up)
+
+        return CGSize(width: newWidth, height: newHeight)
+    }
+}
+
+
 //
 private extension TagsField {
 
