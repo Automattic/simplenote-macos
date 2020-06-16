@@ -10,6 +10,10 @@ class BackgroundView: NSView {
     ///
     var borderColor: NSColor? = .simplenoteDividerColor {
         didSet {
+            guard borderColor != oldValue else {
+                return
+            }
+
             needsDisplay = true
         }
     }
@@ -17,16 +21,24 @@ class BackgroundView: NSView {
     /// Bottom Border: Width
     ///
     var borderWidth = NSScreen.main?.pointToPixelRatio {
-       didSet {
-           needsDisplay = true
-       }
-   }
+        didSet {
+            guard borderWidth != oldValue else {
+                return
+            }
+
+            needsDisplay = true
+        }
+    }
 
     /// Indicates if the top border should be rendered
     ///
     @IBInspectable
     var drawsTopBorder: Bool = false {
         didSet {
+            guard drawsTopBorder != oldValue else {
+                return
+            }
+
             needsDisplay = true
         }
     }
@@ -36,6 +48,10 @@ class BackgroundView: NSView {
     @IBInspectable
     var drawsBottomBorder: Bool = false {
         didSet {
+            guard drawsBottomBorder != oldValue else {
+                return
+            }
+
             needsDisplay = true
         }
     }
@@ -44,6 +60,10 @@ class BackgroundView: NSView {
     ///
     var fillColor: NSColor? {
         didSet {
+            guard fillColor != oldValue else {
+                return
+            }
+
             needsDisplay = true
         }
     }
