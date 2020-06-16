@@ -58,25 +58,24 @@ class TagAttachmentCell: NSTextAttachmentCell {
 //
 extension TagAttachmentCell {
 
-    /// Listen to Click Events:
-    /// - Note: Alternative involves overwriting `clickedOn` | `doubleClickedOn` in TagsField, but when doing so,
-    ///         the cursor shows up for a split second before the attachment is properly highlighted.
+    /// Mouse Events Override!
+    ///
+    /// The default behavior does end up calling `clickedOn` | `doubleClickedOn`, but when doing so, the cursor shows up at `location.x = 0`
+    /// during mouseDown (before mouseUp).
+    ///
+    /// In our own implementation, we hit directly the textView's delegate methods (if possible), and avoid such UI glitch.
     ///
     override func trackMouse(with theEvent: NSEvent, in cellFrame: NSRect, of controlView: NSView?, atCharacterIndex charIndex: Int, untilMouseUp flag: Bool) -> Bool {
         guard let textView = controlView as? NSTextView else {
             return false
         }
 
-        let newRange = NSRange(location: charIndex, length: 1)
-
-        // Click: Select
-        guard textView.isCharacterSelected(at: charIndex) else {
-            textView.setSelectedRange(newRange)
-            return true
+        if theEvent.clickCount == 1 {
+            textView.delegate?.textView?(textView, clickedOn: self, in: cellFrame, at: charIndex)
+        } else if theEvent.clickCount == 2 {
+            textView.delegate?.textView?(textView, doubleClickedOn: self, in: cellFrame, at: charIndex)
         }
 
-        // Double Click: Switch to edition
-        textView.replaceCharacters(in: newRange, with: stringValue)
         return true
     }
 }
