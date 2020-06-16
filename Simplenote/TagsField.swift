@@ -152,7 +152,7 @@ extension TagsField: NSTextViewDelegate {
 }
 
 
-// MARK: - Private Methods
+// MARK: - Placeholder Support
 //
 private extension TagsField {
 
