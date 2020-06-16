@@ -1,6 +1,7 @@
 1.12.0
 ------
 - Refreshed the Tags Editor Interface!
+- New Scroll Support in the Tags Editor area
 
 1.11.0
 ------
