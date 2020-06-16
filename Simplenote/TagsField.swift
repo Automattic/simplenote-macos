@@ -102,7 +102,7 @@ class TagsField: NSTokenField {
 }
 
 
-// MARK: - Overridden API(s)
+// MARK: - Text Edition Customized API
 //
 extension TagsField {
 
@@ -117,6 +117,8 @@ extension TagsField {
         /// Scroll: Increase the scrollable area + follow with the cursor!
         ///
         invalidateIntrinsicContentSize()
+        ensureCursorIsOnscreen()
+
         /// During edition, `Non Terminated Tokens` will show up in the `objectValue` array.
         /// We need the actual number of `Closed Tokens`, and we'll simply count how many TextAttachments we've got.
         /// Capisci?
@@ -140,7 +142,24 @@ extension TagsField {
 }
 
 
-// MARK: - Private Methods
+// MARK: - Text Edition Arrows Support
+//
+extension TagsField: NSTextViewDelegate, NSControlTextEditingDelegate {
+
+    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+
+        /// This API runs whenever the user hits any command [Arrows, Delete, *]
+        /// We don't really know *who* or exactly when will eventually handle this command. Eventually, let's make sure the horizontal scroll offset is accurate.
+        ///
+        DispatchQueue.main.async {
+            self.ensureCursorIsOnscreen()
+        }
+
+        return false
+    }
+}
+
+
 // MARK: - Scroll / Autolayout Support
 //
 extension TagsField {
@@ -159,6 +178,42 @@ extension TagsField {
 }
 
 
+// MARK: - Cursor Helpers
+//
+private extension TagsField {
+
+    func ensureCursorIsOnscreen() {
+        guard let newVisibleRect = proposedVisibleRectForEdition else {
+            return
+        }
+
+        scrollToVisible(newVisibleRect)
+    }
+
+    var proposedVisibleRectForEdition: NSRect? {
+        guard let textView = currentEditor() as? NSTextView,
+            let layoutManager = textView.layoutManager,
+            let textContainer = textView.textContainer,
+            let enclosingWidth = textView.enclosingScrollView?.frame.width
+            else {
+                return nil
+        }
+
+        /// Determine the Editor's cursor location
+        ///
+        var output = layoutManager.boundingRect(forGlyphRange: textView.selectedRange(), in: textContainer)
+
+        /// Adjust the output frame in relation to the container ScrollView's bounds (which are non dependant on our intrinsicContentSize).
+        ///
+        output.origin.x = max(output.origin.x - enclosingWidth * AutoscrollMetrics.requiredVisiblePercentLeft, .zero)
+        output.size.width = enclosingWidth * AutoscrollMetrics.requiredVisiblePercentRight
+
+        return output
+    }
+}
+
+
+// MARK: - Placeholder Support
 //
 private extension TagsField {
 
@@ -189,4 +244,9 @@ private extension TagsField {
 private enum TokenizationSettings {
     static let completionDelay  = TimeInterval(0.1)
     static let characterSet     = CharacterSet(charactersIn: ";, ").union(.whitespacesAndNewlines)
+}
+
+private enum AutoscrollMetrics {
+    static let requiredVisiblePercentLeft = CGFloat(0.10)
+    static let requiredVisiblePercentRight = CGFloat(0.35)
 }
