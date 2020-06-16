@@ -136,6 +136,22 @@ extension TagsField {
 }
 
 
+// MARK: - NSTextViewDelegate
+//
+extension TagsField: NSTextViewDelegate {
+
+    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        guard commandSelector == #selector(cancelOperation(_:)) else {
+            return false
+        }
+
+        /// keyPress `ESC`>> `resignFirstResponder`!
+        window?.makeFirstResponder(nil)
+        return true
+    }
+}
+
+
 // MARK: - Private Methods
 //
 private extension TagsField {
