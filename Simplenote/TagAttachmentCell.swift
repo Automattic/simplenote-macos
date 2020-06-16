@@ -22,7 +22,7 @@ class TagAttachmentCell: NSTextAttachmentCell {
     override func cellSize() -> NSSize {
         let textSize    = nsStringValue.size(withAttributes: attributes)
         let width       = textSize.width.rounded(.up) + Metrics.textInsets.left + Metrics.textInsets.right + Metrics.bgInsets.left + Metrics.bgInsets.right
-        let height      = textSize.height.rounded(.up) + Metrics.textInsets.top + Metrics.textInsets.bottom + Metrics.bgInsets.top
+        let height      = textSize.height.rounded(.up) + Metrics.textInsets.top + Metrics.textInsets.bottom + Metrics.bgInsets.top + Metrics.bgInsets.bottom
 
         return NSSize(width: width, height: height)
     }
@@ -37,16 +37,19 @@ class TagAttachmentCell: NSTextAttachmentCell {
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
+        // Note: This API runs whenever we're in display mode
         drawBackground(in: cellFrame)
         drawText(in: cellFrame)
     }
 
-    override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int, layoutManager: NSLayoutManager) {
+    override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int) {
+        // Note: This API is expected to run when we're editing Tags
         let textView = controlView as? NSTextView
         let selected = textView?.isCharacterSelected(at: charIndex) ?? false
 
         drawBackground(in: cellFrame, selected: selected)
         drawText(in: cellFrame)
+
     }
 }
 
