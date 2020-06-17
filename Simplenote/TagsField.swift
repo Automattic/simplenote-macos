@@ -155,16 +155,19 @@ extension TagsField {
             return super.intrinsicContentSize
         }
 
-        /// Notes:
-        ///     1.  Always assume the container's full width
-        ///     2.  Whenever we've got a Field Editor AND it's empty, always return the Placeholder String Height.
-        ///       **Why:**
-        ///         A.  We need this field to be vertically centered.
-        ///         B.  When in edition mode, the `cellSize` will always match the Attachment Height. Even if the new token wasn't committed
-        ///           (and isn't "Bubbled Up" in the editor
-        ///
-        let newWidth = max(cellSize.width.rounded(.up), scrollView.bounds.width)
-        let newHeight = isEditorActiveAndEmpty ? simplenotePlaceholderHeight : cellSize.height.rounded(.up)
+        // Notes:
+        //  1.  Always assume the container's full width
+        //  2.  Leave a bit of empty space on the right hand side, enough to fill a Placeholder!
+        //  3.  Whenever we've got a Field Editor AND it's empty, always return the Placeholder String Height.
+        //      **Why:**
+        //          A.  We need this field to be vertically centered.
+        //          B.  When in edition mode, the `cellSize` will always match the Attachment Height.
+        //              Even if the new token wasn't committed (and isn't "Bubbled Up" in the editor)
+        //
+        let placeholderSize = simplenotePlaceholderAttributedString.size()
+        let calculatedWidth = cellSize.width.rounded(.up) + placeholderSize.width
+        let newWidth        = max(calculatedWidth, scrollView.bounds.width)
+        let newHeight       = isEditorActiveAndEmpty ? placeholderSize.height : cellSize.height.rounded(.up)
 
         return CGSize(width: newWidth, height: newHeight)
     }
@@ -316,10 +319,6 @@ private extension TagsField {
             .font: placeholderFont,
             .foregroundColor: placeholderTextColor
         ])
-    }
-
-    var simplenotePlaceholderHeight: CGFloat {
-        simplenotePlaceholderAttributedString.size().height
     }
 
     func refreshPlaceholder() {
