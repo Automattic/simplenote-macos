@@ -151,11 +151,27 @@ extension TagsField {
             return super.intrinsicContentSize
         }
 
-        // At the very least, always assume the container's full width
+        /// Notes:
+        ///     1.  Always assume the container's full width
+        ///     2.  Whenever we've got a Field Editor AND it's empty, always return the Placeholder String Height.
+        ///       **Why:**
+        ///         A.  We need this field to be vertically centered.
+        ///         B.  When in edition mode, the `cellSize` will always match the Attachment Height. Even if the new token wasn't committed
+        ///           (and isn't "Bubbled Up" in the editor
+        ///
         let newWidth = max(cellSize.width.rounded(.up), scrollView.bounds.width)
-        let newHeight = cellSize.height.rounded(.up)
+        let newHeight = isEditorActiveAndEmpty ? placeholderHeight : cellSize.height.rounded(.up)
 
         return CGSize(width: newWidth, height: newHeight)
+    }
+
+    var isEditorActiveAndEmpty: Bool {
+        let textView = currentEditor() as? NSTextView
+        return textView?.attributedString().numberOfAttachments == .zero
+    }
+
+    var placeholderHeight: CGFloat {
+        simplenotePlaceholderAttributedString.size().height
     }
 }
 
