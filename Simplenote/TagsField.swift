@@ -234,22 +234,20 @@ private extension TagsField {
     }
 
     var proposedVisibleRectForEdition: NSRect? {
-        guard let textView = currentEditor() as? NSTextView,
-            let layoutManager = textView.layoutManager,
-            let textContainer = textView.textContainer,
-            let enclosingWidth = textView.enclosingScrollView?.frame.width
-            else {
-                return nil
+        guard let textView = currentEditor() as? NSTextView, let lm = textView.layoutManager, let container = textView.textContainer else {
+            return nil
         }
 
         /// Determine the Editor's cursor location
         ///
-        var output = layoutManager.boundingRect(forGlyphRange: textView.selectedRange(), in: textContainer)
+        var output = lm.boundingRect(forGlyphRange: textView.selectedRange(), in: container)
 
-        /// Adjust the output frame in relation to the container ScrollView's bounds (which are non dependant on our intrinsicContentSize).
+        let placeholderWidth = simplenotePlaceholderAttributedString.size().width
+
+        /// Adjust the Viewport: always accommodate to support `placeholder.width`'s on both sides
         ///
-        output.origin.x = max(output.origin.x - enclosingWidth * AutoscrollMetrics.requiredVisiblePercentLeft, .zero)
-        output.size.width = enclosingWidth * AutoscrollMetrics.requiredVisiblePercentRight
+        output.origin.x = max(output.origin.x - placeholderWidth, .zero)
+        output.size.width = simplenotePlaceholderAttributedString.size().width * 2
 
         return output
     }
@@ -337,9 +335,4 @@ private extension TagsField {
 private enum TokenizationSettings {
     static let completionDelay  = TimeInterval(0.1)
     static let characterSet     = CharacterSet(charactersIn: ";, ").union(.whitespacesAndNewlines)
-}
-
-private enum AutoscrollMetrics {
-    static let requiredVisiblePercentLeft = CGFloat(0.10)
-    static let requiredVisiblePercentRight = CGFloat(0.35)
 }
