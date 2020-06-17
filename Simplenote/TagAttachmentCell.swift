@@ -49,7 +49,6 @@ class TagAttachmentCell: NSTextAttachmentCell {
 
         drawBackground(in: cellFrame, selected: selected)
         drawText(in: cellFrame)
-
     }
 }
 
