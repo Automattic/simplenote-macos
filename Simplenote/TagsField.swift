@@ -135,6 +135,10 @@ extension TagsField {
     override func textDidEndEditing(_ notification: Notification) {
         super.textDidEndEditing(notification)
 
+        // Always recalculate intrinsicContentSize.
+        // There might be no tokens committed yet (and the height at this point **might** not fit the new attachments.
+        invalidateIntrinsicContentSize()
+
         // Tokens can get created when the control loses focus, but none of the expected events fire.
         // Fire one manually instead.
         tagsFieldDelegate?.tokenField(self, didChange: tokens)
