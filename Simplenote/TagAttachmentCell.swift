@@ -90,7 +90,7 @@ private extension TagAttachmentCell {
         updated.origin.x += Metrics.bgInsets.left
         updated.origin.y += Metrics.bgInsets.top
         updated.size.width -= Metrics.bgInsets.left + Metrics.bgInsets.right
-        updated.size.height -= Metrics.bgInsets.top
+        updated.size.height -= Metrics.bgInsets.top + Metrics.bgInsets.bottom
 
         let bgColor = backgroundColor(selected: selected)
         bgColor.setFill()
