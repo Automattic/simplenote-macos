@@ -265,8 +265,10 @@ private extension TagsField {
             return
         }
 
-        let newSelectedLocation = NSRange(location: range.location + stringValue.count, length: .zero)
         textView.replaceCharacters(in: range, with: stringValue)
+        invalidateIntrinsicContentSize()
+
+        let newSelectedLocation = NSRange(location: range.location + stringValue.count, length: .zero)
         textView.setSelectedRange(newSelectedLocation)
     }
 
