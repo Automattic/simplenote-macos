@@ -34,4 +34,24 @@ extension NSAttributedString {
 
         return count
     }
+
+    /// Returns the Range of the **first** NSTextAttachment whose stringValue matches the specified string.
+    /// - Note: Yes. We check for `attachmentCell.stringValue`!
+    ///
+    func rangeOfFirstAttachment(stringValue: String) -> NSRange? {
+        var output: NSRange?
+        enumerateAttribute(.attachment, in: fullRange, options: []) { (payload, range, stop) in
+            guard let attachment = payload as? NSTextAttachment,
+                let attachmentCell = attachment.attachmentCell as? NSTextAttachmentCell,
+                attachmentCell.stringValue == stringValue
+                else {
+                    return
+            }
+
+            output = range
+            stop.pointee = true
+        }
+
+        return output
+    }
 }

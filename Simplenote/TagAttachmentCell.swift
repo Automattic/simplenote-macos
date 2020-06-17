@@ -22,7 +22,7 @@ class TagAttachmentCell: NSTextAttachmentCell {
     override func cellSize() -> NSSize {
         let textSize    = nsStringValue.size(withAttributes: attributes)
         let width       = textSize.width.rounded(.up) + Metrics.textInsets.left + Metrics.textInsets.right + Metrics.bgInsets.left + Metrics.bgInsets.right
-        let height      = textSize.height.rounded(.up) + Metrics.textInsets.top + Metrics.textInsets.bottom + Metrics.bgInsets.top
+        let height      = textSize.height.rounded(.up) + Metrics.textInsets.top + Metrics.textInsets.bottom + Metrics.bgInsets.top + Metrics.bgInsets.bottom
 
         return NSSize(width: width, height: height)
     }
@@ -37,11 +37,13 @@ class TagAttachmentCell: NSTextAttachmentCell {
     }
 
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
+        // Note: This API runs whenever we're in display mode
         drawBackground(in: cellFrame)
         drawText(in: cellFrame)
     }
 
-    override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int, layoutManager: NSLayoutManager) {
+    override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int) {
+        // Note: This API is expected to run when we're editing Tags
         let textView = controlView as? NSTextView
         let selected = textView?.isCharacterSelected(at: charIndex) ?? false
 
@@ -55,25 +57,24 @@ class TagAttachmentCell: NSTextAttachmentCell {
 //
 extension TagAttachmentCell {
 
-    /// Listen to Click Events:
-    /// - Note: Alternative involves overwriting `clickedOn` | `doubleClickedOn` in TagsField, but when doing so,
-    ///         the cursor shows up for a split second before the attachment is properly highlighted.
+    /// Mouse Events Override!
+    ///
+    /// The default behavior does end up calling `clickedOn` | `doubleClickedOn`, but when doing so, the cursor shows up at `location.x = 0`
+    /// during mouseDown (before mouseUp).
+    ///
+    /// In our own implementation, we hit directly the textView's delegate methods (if possible), and avoid such UI glitch.
     ///
     override func trackMouse(with theEvent: NSEvent, in cellFrame: NSRect, of controlView: NSView?, atCharacterIndex charIndex: Int, untilMouseUp flag: Bool) -> Bool {
         guard let textView = controlView as? NSTextView else {
             return false
         }
 
-        let newRange = NSRange(location: charIndex, length: 1)
-
-        // Click: Select
-        guard textView.isCharacterSelected(at: charIndex) else {
-            textView.setSelectedRange(newRange)
-            return true
+        if theEvent.clickCount == 1 {
+            textView.delegate?.textView?(textView, clickedOn: self, in: cellFrame, at: charIndex)
+        } else if theEvent.clickCount == 2 {
+            textView.delegate?.textView?(textView, doubleClickedOn: self, in: cellFrame, at: charIndex)
         }
 
-        // Double Click: Switch to edition
-        textView.replaceCharacters(in: newRange, with: stringValue)
         return true
     }
 }
@@ -88,7 +89,7 @@ private extension TagAttachmentCell {
         updated.origin.x += Metrics.bgInsets.left
         updated.origin.y += Metrics.bgInsets.top
         updated.size.width -= Metrics.bgInsets.left + Metrics.bgInsets.right
-        updated.size.height -= Metrics.bgInsets.top
+        updated.size.height -= Metrics.bgInsets.top + Metrics.bgInsets.bottom
 
         let bgColor = backgroundColor(selected: selected)
         bgColor.setFill()
