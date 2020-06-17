@@ -302,7 +302,7 @@ private extension TagsField {
     /// - Note: As a failsafe measure, we're making sure the tokens are Unique!
     ///
     func reprocessTokens() {
-        let newTokens = tokens.unique
+        let newTokens = tokens.caseInsensitiveUnique
         tokens = newTokens
     }
 }
