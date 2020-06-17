@@ -1141,13 +1141,13 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="drawsTopBorder" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </customView>
-                                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-Px-nNZ">
+                                            <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-Px-nNZ">
                                                 <rect key="frame" x="23" y="13" width="462" height="25"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="L2Z-Qo-Zud">
                                                     <rect key="frame" x="0.0" y="0.0" width="462" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tokenField horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
+                                                        <tokenField horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="466" height="25"/>
                                                             <tokenFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" allowsEditingTextAttributes="YES" id="cU0-Np-WqS" customClass="TagsFieldCell" customModule="Simplenote" customModuleProvider="target">
                                                                 <font key="font" metaFont="label" size="12"/>
@@ -1157,14 +1157,11 @@
                                                         </tokenField>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="UWL-9x-FH2" secondAttribute="bottom" id="9gk-cw-CBI"/>
+                                                        <constraint firstItem="UWL-9x-FH2" firstAttribute="top" secondItem="L2Z-Qo-Zud" secondAttribute="top" id="YYX-b9-tUD"/>
                                                         <constraint firstItem="UWL-9x-FH2" firstAttribute="leading" secondItem="L2Z-Qo-Zud" secondAttribute="leading" id="q24-9e-tAd"/>
-                                                        <constraint firstItem="UWL-9x-FH2" firstAttribute="top" secondItem="L2Z-Qo-Zud" secondAttribute="top" id="tEs-Ai-PhA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="UWL-9x-FH2" secondAttribute="bottom" id="q3C-6O-EGa"/>
                                                     </constraints>
                                                 </clipView>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="7Wv-aK-p3k"/>
-                                                </constraints>
                                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="dmH-AZ-AuX">
                                                     <rect key="frame" x="-100" y="-100" width="462" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
