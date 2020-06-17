@@ -102,7 +102,7 @@ class TagsField: NSTokenField {
 }
 
 
-// MARK: - Text Edition Customized API
+// MARK: - Text Edition Overridden API
 //
 extension TagsField {
 
@@ -160,7 +160,7 @@ extension TagsField {
         ///           (and isn't "Bubbled Up" in the editor
         ///
         let newWidth = max(cellSize.width.rounded(.up), scrollView.bounds.width)
-        let newHeight = isEditorActiveAndEmpty ? placeholderHeight : cellSize.height.rounded(.up)
+        let newHeight = isEditorActiveAndEmpty ? simplenotePlaceholderHeight : cellSize.height.rounded(.up)
 
         return CGSize(width: newWidth, height: newHeight)
     }
@@ -168,10 +168,6 @@ extension TagsField {
     var isEditorActiveAndEmpty: Bool {
         let textView = currentEditor() as? NSTextView
         return textView?.attributedString().numberOfAttachments == .zero
-    }
-
-    var placeholderHeight: CGFloat {
-        simplenotePlaceholderAttributedString.size().height
     }
 }
 
@@ -316,6 +312,10 @@ private extension TagsField {
             .font: placeholderFont,
             .foregroundColor: placeholderTextColor
         ])
+    }
+
+    var simplenotePlaceholderHeight: CGFloat {
+        simplenotePlaceholderAttributedString.size().height
     }
 
     func refreshPlaceholder() {
