@@ -27,3 +27,4 @@
 #import "NSString+Condensing.h"
 #import "NSNotification+Simplenote.h"
 #import "NSMutableAttributedString+Styling.h"
+#import "NSView+Simplenote.h"

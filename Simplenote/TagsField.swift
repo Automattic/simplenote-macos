@@ -57,10 +57,10 @@ class TagsField: NSTokenField {
     /// Placeholder's Font
     ///
     var placeholderFont: NSFont = .simplenoteSecondaryTextFont {
-           didSet {
-               refreshPlaceholder()
-           }
-       }
+        didSet {
+            refreshPlaceholder()
+        }
+    }
 
     /// Placeholder Text:
     ///
@@ -72,7 +72,6 @@ class TagsField: NSTokenField {
             refreshPlaceholder()
         }
     }
-
 
     /// List of Tags to be rendered
     ///
@@ -137,7 +136,95 @@ extension TagsField {
 }
 
 
-// MARK: - Private Methods
+// MARK: - NSTextViewDelegate
+//
+extension TagsField: NSTextViewDelegate {
+
+    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        guard commandSelector == #selector(cancelOperation(_:)) else {
+            return false
+        }
+
+        /// keyPress `ESC`>> `resignFirstResponder`!
+        window?.makeFirstResponder(nil)
+        return true
+    }
+
+    func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
+        guard let tagCell = cell as? TagAttachmentCell else {
+            return
+        }
+
+        ensureTextIsFullyTokenized(editorString: textView.attributedString().string)
+        selectAttachment(in: textView, stringValue: tagCell.stringValue)
+    }
+
+    func textView(_ textView: NSTextView, doubleClickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
+        guard let tagCell = cell as? TagAttachmentCell else {
+            return
+        }
+
+        ensureTextIsFullyTokenized(editorString: textView.attributedString().string)
+        editAttachment(in: textView, stringValue: tagCell.stringValue)
+    }
+}
+
+
+// MARK: - Mouse Support
+//
+private extension TagsField {
+
+    /// Replaces the related NSTextAttachment with the specified `attachmentCell.stringValue`, and places the cursor at its beginning
+    ///
+    func editAttachment(in textView: NSTextView, stringValue: String) {
+        guard let range = textView.attributedString().rangeOfFirstAttachment(stringValue: stringValue) else {
+            return
+        }
+
+        let newSelectedLocation = NSRange(location: range.location + stringValue.count, length: .zero)
+        textView.replaceCharacters(in: range, with: stringValue)
+        textView.setSelectedRange(newSelectedLocation)
+    }
+
+    /// Selects the NSTextAttachment with the specified `attachmentCell.stringValue`
+    ///
+    func selectAttachment(in textView: NSTextView, stringValue: String) {
+        guard let range = textView.attributedString().rangeOfFirstAttachment(stringValue: stringValue) else {
+            return
+        }
+
+        textView.setSelectedRange(range)
+    }
+
+    /// This API ensures all the Editor Text is fully tokenized. Whenever there's untokenized text, we'll forcefully reprocess tokens
+    ///
+    func ensureTextIsFullyTokenized(editorString: String) {
+        guard mustTokenizeText(editorString: editorString) else {
+            return
+        }
+
+        reprocessTokens()
+    }
+
+    /// Indicates if we should reprocess Tokens.
+    /// - Note: returns true whenever the specified String contains text, other than TextAttachment characters
+    ///
+    func mustTokenizeText(editorString: String) -> Bool {
+        let attachmentsCharacterSet = CharacterSet(arrayLiteral: .textAttachment)
+        return editorString.trimmingCharacters(in: attachmentsCharacterSet).isEmpty == false
+    }
+
+    /// Forcess Re-Tokenization: Converts all of the strings into NSTextAttachments. This affects the active NSTextView instance.
+    /// - Note: As a failsafe measure, we're making sure the tokens are Unique!
+    ///
+    func reprocessTokens() {
+        let newTokens = tokens.unique
+        tokens = newTokens
+    }
+}
+
+
+// MARK: - Placeholder Support
 //
 private extension TagsField {
 

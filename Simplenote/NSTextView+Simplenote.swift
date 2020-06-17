@@ -41,6 +41,16 @@ extension NSTextView {
     func removeText(at range: NSRange) {
         insertText(String(), replacementRange: range)
     }
+
+    /// Indicates if the Character at the specified location is selected
+    ///
+    func isCharacterSelected(at charIndex: Int) -> Bool {
+        for wrappedRange in selectedRanges where NSLocationInRange(charIndex, wrappedRange.rangeValue) {
+            return true
+        }
+
+        return false
+    }
 }
 
 

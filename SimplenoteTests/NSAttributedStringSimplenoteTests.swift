@@ -47,4 +47,48 @@ class NSAttributedStringSimplenoteTests: XCTestCase {
 
         XCTAssertEqual(sample.numberOfAttachments, count)
     }
+
+    /// Verifies that `rangeOfFirstAttachment(stringValue:)` returns the range of the first NSTextAttachment whose NSCell has the specified stringValue.
+    ///
+    func testRangeOfFirstAttachmentReturnsTheRangeOfTheFirstAttachmentWhoseCellContainsTheSpecifiedStringValue() {
+        let attachmentCell = NSTextAttachmentCell()
+        attachmentCell.stringValue = "1234"
+
+        let attachment0 = NSTextAttachment()
+        attachment0.attachmentCell = attachmentCell
+
+        let attachment1 = NSTextAttachment()
+        attachment1.attachmentCell = attachmentCell
+
+        let text = "Something here "
+        let sample = NSMutableAttributedString()
+        sample.append(string: text)
+        sample.append(attachment: attachment0)
+        sample.append(attachment: attachment1)
+
+        let range = sample.rangeOfFirstAttachment(stringValue: "1234")
+        XCTAssertEqual(range!.location, text.count)
+        XCTAssertEqual(range!.length, 1)
+    }
+
+    /// Verifies that `rangeOfFirstAttachment(stringValue:)` returns nil whenever none of the attachments has the specified `attachmentCell.stringValue`
+    ///
+    func testRangeOfFirstAttachmentReturnsNilWheneverNoneOfTheAttachmentsContainsTheSpecifiedValue() {
+        let attachmentCell = NSTextAttachmentCell()
+        attachmentCell.stringValue = "1234"
+
+        let attachment0 = NSTextAttachment()
+        attachment0.attachmentCell = attachmentCell
+
+        let attachment1 = NSTextAttachment()
+        attachment1.attachmentCell = attachmentCell
+
+        let sample = NSMutableAttributedString()
+        sample.append(string: "Something here ")
+        sample.append(attachment: attachment0)
+        sample.append(attachment: attachment1)
+
+        let range = sample.rangeOfFirstAttachment(stringValue: "12345")
+        XCTAssertNil(range)
+    }
 }
