@@ -248,7 +248,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
             return []
         }
 
-        return note.filterUnassociatedTagNames(from: tags).unique
+        return note.filterUnassociatedTagNames(from: tags).caseInsensitiveUnique
     }
 
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
@@ -258,7 +258,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
         //
         // For that reason, we'll filtering out duplicates.
         //
-        updateTags(withTokens: tokens.unique)
+        updateTags(withTokens: tokens.caseInsensitiveUnique)
     }
 }
 

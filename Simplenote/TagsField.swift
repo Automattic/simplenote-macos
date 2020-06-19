@@ -83,6 +83,7 @@ class TagsField: NSTokenField {
         set {
             objectValue = newValue
             needsDisplay = true
+            invalidateIntrinsicContentSize()
         }
     }
 
@@ -101,7 +102,7 @@ class TagsField: NSTokenField {
 }
 
 
-// MARK: - Overridden API(s)
+// MARK: - Text Edition Overridden API
 //
 extension TagsField {
 
@@ -112,6 +113,11 @@ extension TagsField {
 
     override func textDidChange(_ notification: Notification) {
         super.textDidChange(notification)
+
+        /// Scroll: Increase the scrollable area + follow with the cursor!
+        ///
+        invalidateIntrinsicContentSize()
+        ensureCaretIsOnscreen()
 
         /// During edition, `Non Terminated Tokens` will show up in the `objectValue` array.
         /// We need the actual number of `Closed Tokens`, and we'll simply count how many TextAttachments we've got.
@@ -129,9 +135,46 @@ extension TagsField {
     override func textDidEndEditing(_ notification: Notification) {
         super.textDidEndEditing(notification)
 
+        // Always recalculate intrinsicContentSize.
+        // There might be no tokens committed yet (and the height at this point **might** not fit the new attachments.
+        invalidateIntrinsicContentSize()
+
         // Tokens can get created when the control loses focus, but none of the expected events fire.
         // Fire one manually instead.
         tagsFieldDelegate?.tokenField(self, didChange: tokens)
+    }
+}
+
+
+// MARK: - Scroll / Autolayout Support
+//
+extension TagsField {
+
+    override var intrinsicContentSize: NSSize {
+        guard let scrollView = enclosingScrollView, let cellSize = cell?.cellSize else {
+            return super.intrinsicContentSize
+        }
+
+        // Notes:
+        //  1.  Always assume the container's full width
+        //  2.  Leave a bit of empty space on the right hand side, enough to fill a Placeholder!
+        //  3.  Whenever we've got a Field Editor AND it's empty, always return the Placeholder String Height.
+        //      **Why:**
+        //          A.  We need this field to be vertically centered.
+        //          B.  When in edition mode, the `cellSize` will always match the Attachment Height.
+        //              Even if the new token wasn't committed (and isn't "Bubbled Up" in the editor)
+        //
+        let placeholderSize = simplenotePlaceholderAttributedString.size()
+        let calculatedWidth = cellSize.width.rounded(.up) + placeholderSize.width
+        let newWidth        = max(calculatedWidth, scrollView.bounds.width)
+        let newHeight       = isEditorActiveAndEmpty ? placeholderSize.height : cellSize.height.rounded(.up)
+
+        return CGSize(width: newWidth, height: newHeight)
+    }
+
+    var isEditorActiveAndEmpty: Bool {
+        let textView = currentEditor() as? NSTextView
+        return textView?.attributedString().numberOfAttachments == .zero
     }
 }
 
@@ -141,13 +184,21 @@ extension TagsField {
 extension TagsField: NSTextViewDelegate {
 
     func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-        guard commandSelector == #selector(cancelOperation(_:)) else {
-            return false
+        /// keyPress: `ESC`>> `resignFirstResponder`!
+        ///
+        if commandSelector == #selector(cancelOperation(_:)) {
+            window?.makeFirstResponder(nil)
+            return true
         }
 
-        /// keyPress `ESC`>> `resignFirstResponder`!
-        window?.makeFirstResponder(nil)
-        return true
+        /// keyPress: `Arrow(s)`, `Delete`,  `*`
+        /// We don't really know *who* or exactly when will eventually handle this command. Eventually, let's make sure the horizontal scroll offset is accurate.
+        ///
+        DispatchQueue.main.async {
+            self.ensureCaretIsOnscreen()
+        }
+
+        return false
     }
 
     func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
@@ -170,6 +221,39 @@ extension TagsField: NSTextViewDelegate {
 }
 
 
+// MARK: - Cursor Helpers
+//
+private extension TagsField {
+
+    func ensureCaretIsOnscreen() {
+        guard let newVisibleRect = proposedVisibleRectForEdition else {
+            return
+        }
+
+        scrollToVisible(newVisibleRect)
+    }
+
+    var proposedVisibleRectForEdition: NSRect? {
+        guard let textView = currentEditor() as? NSTextView, let lm = textView.layoutManager, let container = textView.textContainer else {
+            return nil
+        }
+
+        /// Determine the Editor's cursor location
+        ///
+        var output = lm.boundingRect(forGlyphRange: textView.selectedRange(), in: container)
+
+        let placeholderWidth = simplenotePlaceholderAttributedString.size().width
+
+        /// Adjust the Viewport: always accommodate to support `placeholder.width`'s on both sides
+        ///
+        output.origin.x = max(output.origin.x - placeholderWidth, .zero)
+        output.size.width = placeholderWidth * 2
+
+        return output
+    }
+}
+
+
 // MARK: - Mouse Support
 //
 private extension TagsField {
@@ -181,8 +265,10 @@ private extension TagsField {
             return
         }
 
-        let newSelectedLocation = NSRange(location: range.location + stringValue.count, length: .zero)
         textView.replaceCharacters(in: range, with: stringValue)
+        invalidateIntrinsicContentSize()
+
+        let newSelectedLocation = NSRange(location: range.location + stringValue.count, length: .zero)
         textView.setSelectedRange(newSelectedLocation)
     }
 
@@ -218,7 +304,7 @@ private extension TagsField {
     /// - Note: As a failsafe measure, we're making sure the tokens are Unique!
     ///
     func reprocessTokens() {
-        let newTokens = tokens.unique
+        let newTokens = tokens.caseInsensitiveUnique
         tokens = newTokens
     }
 }
@@ -228,19 +314,15 @@ private extension TagsField {
 //
 private extension TagsField {
 
-    var simplenotePlaceholderAttributedString: NSAttributedString? {
-        guard drawsPlaceholder else {
-            return nil
-        }
-
-        return NSAttributedString(string: placeholderText, attributes: [
+    var simplenotePlaceholderAttributedString: NSAttributedString {
+        NSAttributedString(string: placeholderText, attributes: [
             .font: placeholderFont,
             .foregroundColor: placeholderTextColor
         ])
     }
 
     func refreshPlaceholder() {
-        placeholderAttributedString = simplenotePlaceholderAttributedString
+        placeholderAttributedString = drawsPlaceholder ? simplenotePlaceholderAttributedString : nil
     }
 
     func setupTokenizationSettings() {
