@@ -1141,7 +1141,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="drawsTopBorder" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </customView>
-                                            <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-Px-nNZ" customClass="SPHorizontalScrollView">
+                                            <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-Px-nNZ" customClass="HorizontalScrollView" customModule="Simplenote" customModuleProvider="target">
                                                 <rect key="frame" x="23" y="13" width="462" height="25"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="L2Z-Qo-Zud">
                                                     <rect key="frame" x="0.0" y="0.0" width="462" height="25"/>

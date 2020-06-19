@@ -156,6 +156,8 @@
 		B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B529F7B724586DF800B168F1 /* MarkdownViewController.xib */; };
 		B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
 		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
+		B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
+		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */; };
 		B53FF5472476F9450014E928 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5462476F9450014E928 /* Constants.swift */; };
 		B542DAE824801BFF00FA6F99 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542DAE724801BFF00FA6F99 /* ClipView.swift */; };
@@ -180,8 +182,6 @@
 		B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */; };
 		B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
-		B5773779249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */; };
-		B577377A249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */; };
 		B57CB874244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
 		B57CB875244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
 		B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */; };
@@ -483,6 +483,7 @@
 		B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
 		B529F7B424586D8700B168F1 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
+		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringCondensingTests.swift; sourceTree = "<group>"; };
 		B53FF5462476F9450014E928 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B542DAE724801BFF00FA6F99 /* ClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipView.swift; sourceTree = "<group>"; };
@@ -498,8 +499,6 @@
 		B56FA7972437C79D002CB9FF /* SPUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUserInterface.swift; sourceTree = "<group>"; };
 		B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAppearance+Simplenote.swift"; sourceTree = "<group>"; };
 		B574CA72242D552100F8D02F /* TextViewInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputHandler.swift; sourceTree = "<group>"; };
-		B5773777249D29F1000BE6A8 /* SPHorizontalScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPHorizontalScrollView.h; sourceTree = "<group>"; };
-		B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPHorizontalScrollView.m; sourceTree = "<group>"; };
 		B57CB873244DEBC300BA7969 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Simplenote.swift"; sourceTree = "<group>"; };
 		B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationsHandler.swift; sourceTree = "<group>"; };
@@ -876,8 +875,7 @@
 				B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */,
 				B542DAE724801BFF00FA6F99 /* ClipView.swift */,
 				B5F50914247319360042FA1D /* SplitView.swift */,
-				B5773777249D29F1000BE6A8 /* SPHorizontalScrollView.h */,
-				B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */,
+				B535014A249D5908003837C8 /* HorizontalScrollView.swift */,
 				46F0E66117A32269005BB4D1 /* SPTableView.h */,
 				46F0E66217A32269005BB4D1 /* SPTableView.m */,
 				46EEA3C517B2FEA500914D1A /* SPTextView.h */,
@@ -1550,6 +1548,7 @@
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
+				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				B5EB3ADA2458E8430089858D /* NSApplication+Simplenote.swift in Sources */,
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
@@ -1577,7 +1576,6 @@
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
-				B5773779249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
@@ -1672,6 +1670,7 @@
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
+				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
@@ -1699,7 +1698,6 @@
 				B5E086332448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
-				B577377A249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
