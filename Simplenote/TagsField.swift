@@ -117,7 +117,7 @@ extension TagsField {
         /// Scroll: Increase the scrollable area + follow with the cursor!
         ///
         invalidateIntrinsicContentSize()
-        ensureCursorIsOnscreen()
+        ensureCaretIsOnscreen()
 
         /// During edition, `Non Terminated Tokens` will show up in the `objectValue` array.
         /// We need the actual number of `Closed Tokens`, and we'll simply count how many TextAttachments we've got.
@@ -195,7 +195,7 @@ extension TagsField: NSTextViewDelegate {
         /// We don't really know *who* or exactly when will eventually handle this command. Eventually, let's make sure the horizontal scroll offset is accurate.
         ///
         DispatchQueue.main.async {
-            self.ensureCursorIsOnscreen()
+            self.ensureCaretIsOnscreen()
         }
 
         return false
@@ -225,7 +225,7 @@ extension TagsField: NSTextViewDelegate {
 //
 private extension TagsField {
 
-    func ensureCursorIsOnscreen() {
+    func ensureCaretIsOnscreen() {
         guard let newVisibleRect = proposedVisibleRectForEdition else {
             return
         }
@@ -247,7 +247,7 @@ private extension TagsField {
         /// Adjust the Viewport: always accommodate to support `placeholder.width`'s on both sides
         ///
         output.origin.x = max(output.origin.x - placeholderWidth, .zero)
-        output.size.width = simplenotePlaceholderAttributedString.size().width * 2
+        output.size.width = placeholderWidth * 2
 
         return output
     }
