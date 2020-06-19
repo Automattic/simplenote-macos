@@ -180,6 +180,8 @@
 		B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */; };
 		B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
+		B5773779249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */; };
+		B577377A249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */; };
 		B57CB874244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
 		B57CB875244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
 		B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */; };
@@ -496,6 +498,8 @@
 		B56FA7972437C79D002CB9FF /* SPUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUserInterface.swift; sourceTree = "<group>"; };
 		B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAppearance+Simplenote.swift"; sourceTree = "<group>"; };
 		B574CA72242D552100F8D02F /* TextViewInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputHandler.swift; sourceTree = "<group>"; };
+		B5773777249D29F1000BE6A8 /* SPHorizontalScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPHorizontalScrollView.h; sourceTree = "<group>"; };
+		B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPHorizontalScrollView.m; sourceTree = "<group>"; };
 		B57CB873244DEBC300BA7969 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Simplenote.swift"; sourceTree = "<group>"; };
 		B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationsHandler.swift; sourceTree = "<group>"; };
@@ -872,6 +876,8 @@
 				B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */,
 				B542DAE724801BFF00FA6F99 /* ClipView.swift */,
 				B5F50914247319360042FA1D /* SplitView.swift */,
+				B5773777249D29F1000BE6A8 /* SPHorizontalScrollView.h */,
+				B5773778249D29F1000BE6A8 /* SPHorizontalScrollView.m */,
 				46F0E66117A32269005BB4D1 /* SPTableView.h */,
 				46F0E66217A32269005BB4D1 /* SPTableView.m */,
 				46EEA3C517B2FEA500914D1A /* SPTextView.h */,
@@ -1571,6 +1577,7 @@
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
+				B5773779249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
@@ -1692,6 +1699,7 @@
 				B5E086332448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
+				B577377A249D29F1000BE6A8 /* SPHorizontalScrollView.m in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,

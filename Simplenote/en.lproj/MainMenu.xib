@@ -1141,7 +1141,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="drawsTopBorder" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </customView>
-                                            <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-Px-nNZ">
+                                            <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="1cm-Px-nNZ" customClass="SPHorizontalScrollView">
                                                 <rect key="frame" x="23" y="13" width="462" height="25"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="L2Z-Qo-Zud">
                                                     <rect key="frame" x="0.0" y="0.0" width="462" height="25"/>
@@ -1162,8 +1162,8 @@
                                                         <constraint firstAttribute="bottom" secondItem="UWL-9x-FH2" secondAttribute="bottom" id="q3C-6O-EGa"/>
                                                     </constraints>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="dmH-AZ-AuX">
-                                                    <rect key="frame" x="-100" y="-100" width="462" height="16"/>
+                                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="dmH-AZ-AuX">
+                                                    <rect key="frame" x="0.0" y="9" width="462" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="URH-3c-D7D">
