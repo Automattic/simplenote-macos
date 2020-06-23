@@ -264,9 +264,9 @@
 - (NSInteger)numDeletedNotes
 {
     SPBucket *notesBucket = [self.simperium bucketForName:@"Note"];
-    NSInteger numDeletedNotes = [notesBucket numObjectsForPredicate:[NSPredicate predicateWithFormat:@"deleted == 1"]];
-    
-    return numDeletedNotes;
+    NSPredicate *predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
+
+    return [notesBucket numObjectsForPredicate:predicate];
 }
 
 - (BOOL)isMainWindowVisible
