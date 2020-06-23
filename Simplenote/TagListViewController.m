@@ -222,12 +222,10 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (NSArray *)notesWithTag:(Tag *)tag
 {
-    NSArray *predicateList = @[
-        [NSPredicate predicateWithFormat: @"deleted == %@", @(NO)],
-        [NSPredicate predicateWithFormat: @"tags CONTAINS[c] %@", tag.name]
-    ];
-    
-    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicateList];
+    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:@[
+        [NSPredicate predicateForNotesWithDeletedStatus:NO],
+        [NSPredicate predicateForNotesWithTag:tag.name]
+    ]];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     SPBucket *noteBucket = [appDelegate.simperium bucketForName:@"Note"];
@@ -434,8 +432,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:appDelegate.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"deleted == YES"]];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
     
     NSError *error;
     NSArray *items = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
