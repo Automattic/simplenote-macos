@@ -507,30 +507,15 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     NSString *searchText = [self.searchField stringValue];
     
     NSMutableArray *predicateList = [NSMutableArray new];
-    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", @(self.viewingTrash)]];
+    [predicateList addObject: [NSPredicate predicateForNotesWithDeletedStatus:self.viewingTrash]];
     
     NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
     if (selectedTag.length > 0) {
-        // Match against "tagName" (JSON formatted)
-        NSString *tagName = selectedTag;
-        
-        tagName = [tagName stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
-        tagName = [tagName stringByReplacingOccurrencesOfString:@"/" withString:@"\\/"];
-        
-        // individual tags are surrounded by quotes, thus adding quotes to the selected tag
-        // ensures only the correct notes are shown
-        NSString *match = [[NSString alloc] initWithFormat:@"\"%@\"", tagName];
-        [predicateList addObject: [NSPredicate predicateWithFormat: @"tags CONTAINS[c] %@",match]];
+        [predicateList addObject: [NSPredicate predicateForNotesWithTag:selectedTag]];
     }
     
     if (searchText.length > 0) {
-        NSArray *searchStrings = [searchText componentsSeparatedByString:@" "];
-        for (NSString *word in searchStrings) {
-            if (word.length == 0) {
-                continue;
-            }
-            [predicateList addObject: [NSPredicate predicateWithFormat:@"content CONTAINS[c] %@", word]];
-        }
+        [predicateList addObject:[NSPredicate predicateForSearchText:searchText]];
     }
     
     NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicateList];
