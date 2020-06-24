@@ -11,6 +11,8 @@
 
 @class ClipView;
 @class NoteListViewController;
+@class Tag;
+@class TagListState;
 
 @interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
@@ -19,6 +21,7 @@
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
 @property (nonatomic, strong,  readonly) NSMenu                         *tagDropdownMenu;
 @property (nonatomic, strong,  readonly) NSMenu                         *trashDropdownMenu;
+@property (nonatomic, strong, readwrite) TagListState                   *state;
 @property (nonatomic, strong,  readonly) NSArray<Tag *>                 *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
 
