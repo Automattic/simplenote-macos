@@ -45,7 +45,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
         case .tag(let tag):
             return tagTableViewCell(for: tag)
         case .untagged:
-            // TODO: Implement!
+            // TODO: Coming UP >> Soon!
             return nil
         }
     }

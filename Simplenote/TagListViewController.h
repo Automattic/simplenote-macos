@@ -10,11 +10,15 @@
 
 
 @class ClipView;
-@class NoteListViewController;
 @class Tag;
 @class TagListState;
 
 NS_ASSUME_NONNULL_BEGIN
+
+extern NSString * const TagListDidBeginViewingTagNotification;
+extern NSString * const TagListDidBeginViewingTrashNotification;
+extern NSString * const TagListDidUpdateTagNotification;
+extern NSString * const TagListDidEmptyTrashNotification;
 
 @interface TagListViewController : NSViewController <NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
@@ -27,11 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong,  readonly) NSArray<Tag *>                 *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
 
-extern NSString * const TagListDidBeginViewingTagNotification;
-extern NSString * const TagListDidBeginViewingTrashNotification;
-extern NSString * const TagListDidUpdateTagNotification;
-extern NSString * const TagListDidEmptyTrashNotification;
-
 - (void)loadTags;
 - (NSString *)selectedTagName;
 - (void)selectAllNotesTag;
@@ -42,6 +41,5 @@ extern NSString * const TagListDidEmptyTrashNotification;
 - (void)applyStyle;
 
 @end
-
 
 NS_ASSUME_NONNULL_END
