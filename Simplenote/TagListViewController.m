@@ -25,10 +25,10 @@
 
 NSString * const kTagUpdated = @"SPTagUpdated";
 NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
-NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 CGFloat const SPListEstimatedRowHeight = 30;
 NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
+NSString * const TagListWillFinishViewingTrashNotification  = @"TagListWillFinishViewingTrashNotification";
 NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
 
 @interface TagListViewController ()
