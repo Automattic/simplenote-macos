@@ -12,6 +12,19 @@ extension TagListViewController {
 }
 
 
+// MARK: - Interface Initialization
+//
+extension TagListViewController {
+
+    /// Regenerates the TableView's Rows
+    ///
+    @objc
+    func refreshState() {
+        state = TagListState(tags: tagArray)
+        tableView.reloadData()
+    }
+}
+
 
 // MARK: - NSTableViewDelegate Helpers
 //
@@ -239,8 +252,20 @@ enum TagListRow: Equatable {
 //
 @objc
 class TagListState: NSObject {
+
+    /// List Rows that should be rendered
+    ///
     let rows: [TagListRow]
 
+    /// Initial State Initializer: We don't really show tags here
+    ///
+    override init() {
+        rows = [ .allNotes, .trash ]
+        super.init()
+    }
+
+    /// Initializes the State so that the specified Tags collection is rendered
+    ///
     init(tags: [Tag]) {
         let tags: [TagListRow] = tags.map { .tag(tag: $0) }
         var rows: [TagListRow] = []
@@ -249,9 +274,9 @@ class TagListState: NSObject {
         rows.append(.trash)
         rows.append(.header)
         rows.append(contentsOf: tags)
-
 // TODO: Implement
 //        rows.append(.untagged)
+
         self.rows = rows
     }
 }

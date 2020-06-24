@@ -41,6 +41,16 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self stopListeningToNotifications];
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.state = [TagListState new];
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -138,8 +148,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     // Remember last selections
     NSInteger tagRow = [self.tableView selectedRow];
     NSInteger noteRow = [self.noteListViewController.tableView selectedRow];
-    
-    [self.tableView reloadData];
+
+    [self refreshState];
     
     // Restore last selections
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:tagRow] byExtendingSelection:NO];
@@ -150,8 +160,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)reset
 {
-    self.tagArray = [NSArray array];
-    [self.tableView reloadData];
+    self.tagArray = @[];
+    [self refreshState];
 }
 
 - (void)loadTags
