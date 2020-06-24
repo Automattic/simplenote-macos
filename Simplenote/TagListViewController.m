@@ -23,12 +23,12 @@
 #define kStartOfTagListRow 3
 
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
-CGFloat const SPListEstimatedRowHeight = 30;
 NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
 NSString * const TagListDidUpdateTagNotification            = @"TagListDidUpdateTagNotification";
 NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginViewingTrashNotification";
 NSString * const TagListWillFinishViewingTrashNotification  = @"TagListWillFinishViewingTrashNotification";
 NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
+CGFloat const TagListEstimatedRowHeight                     = 30;
 
 @interface TagListViewController ()
 
@@ -52,7 +52,7 @@ NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyT
 
     [self buildDropdownMenus];
 
-    self.tableView.rowHeight = SPListEstimatedRowHeight;
+    self.tableView.rowHeight = TagListEstimatedRowHeight;
     self.tableView.usesAutomaticRowHeights = YES;
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
