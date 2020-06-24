@@ -21,8 +21,8 @@
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
 
 extern NSString * const kTagUpdated;
-extern NSString * const kDidBeginViewingTrash;
 extern NSString * const TagListDidBeginViewingTagNotification;
+extern NSString * const TagListDidBeginViewingTrashNotification;
 extern NSString * const TagListWillFinishViewingTrashNotification;
 extern NSString * const TagListDidEmptyTrashNotification;
 

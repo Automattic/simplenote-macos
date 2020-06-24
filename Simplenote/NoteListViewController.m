@@ -54,7 +54,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didBeginViewingTrash:)
-                                                 name: kDidBeginViewingTrash
+                                                 name: TagListDidBeginViewingTrashNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(willFinishViewingTrash:)
