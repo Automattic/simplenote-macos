@@ -14,7 +14,9 @@
 @class Tag;
 @class TagListState;
 
-@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
+NS_ASSUME_NONNULL_BEGIN
+
+@interface TagListViewController : NSViewController <NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet ClipView              *clipView;
@@ -41,3 +43,6 @@ extern NSString * const TagListDidEmptyTrashNotification;
 - (void)applyStyle;
 
 @end
+
+
+NS_ASSUME_NONNULL_END
