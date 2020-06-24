@@ -12,6 +12,79 @@ extension TagListViewController {
 }
 
 
+
+
+// MARK: - Convienience API(s)
+//
+extension TagListViewController {
+
+    /// Returns the `TagListRow` entity at the specified Index
+    /// - Note: YES we perform Bounds Check, just in order to avoid guarding for `NSNotFound` all over the place.
+    ///
+    func rowAtIndex(_ index: Int) -> TagListRow? {
+        guard index >= .zero && index < state.rows.count else {
+            return nil
+        }
+
+        return state.rows[index]
+    }
+
+    /// Returns the location of the `All Notes` row.
+    /// - Note: This row is mandatory, it's expected to *always* be present.
+    ///
+    @objc
+    var indexOfAllNotes: IndexSet {
+        guard let index = state.rows.firstIndex(of: .allNotes) else {
+            fatalError()
+        }
+
+        return IndexSet(integer: index)
+    }
+
+    /// Returns the Index of the tag with the specified Name (If any!)
+    ///
+    @objc
+    func indexOfTag(name: String) -> IndexSet? {
+        for (index, row) in state.rows.enumerated() {
+            guard case let .tag(tag) = row, tag.name == name else {
+                continue
+            }
+
+            return IndexSet(integer: index)
+        }
+
+        return nil
+    }
+
+    /// Returns the location of the first Tag Row.
+    /// - Note: This API should return an optional. But because of ObjC bridging, we simply refuse to use NSNotFound as a sentinel.
+    ///
+    @objc
+    var numberOfFirstTagRow: Int {
+        for (index, row) in state.rows.enumerated() {
+            guard case .tag = row else {
+                continue
+            }
+
+            return index
+        }
+
+        return .zero
+    }
+
+    /// Returns the Tag Row at the specified location
+    ///
+    @objc
+    func tag(atIndex index: Int) -> Tag? {
+        guard case let .tag(tag) = rowAtIndex(index) else {
+            return nil
+        }
+
+        return tag
+    }
+}
+
+
 // MARK: - NSTableViewDelegate Helpers
 //
 extension TagListViewController {
