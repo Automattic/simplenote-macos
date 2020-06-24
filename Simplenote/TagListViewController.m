@@ -9,7 +9,6 @@
 #import "TagListViewController.h"
 #import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "SPTableView.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
 #import "SPTracker.h"
@@ -62,7 +61,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self refreshExtendedContentInsets];
     [self startListeningToNotifications];
 }
-
 
 - (void)viewWillAppear
 {
@@ -345,7 +343,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
 }
 
 
-
 #pragma mark - Helpers
 
 - (NSInteger)highlightedTagRowIndex
@@ -385,7 +382,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
 	NSInteger tagIndex = [self highlightedTagRowIndex] - kStartOfTagListRow;
 	return [self tagAtIndex:tagIndex];
 }
-
 
 
 #pragma mark - Actions
@@ -451,20 +447,6 @@ CGFloat const SPListEstimatedRowHeight = 30;
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     return kStartOfTagListRow + self.tagArray.count;
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    if (row == kAllNotesRow) {
-        return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
-    } else if(row == kTrashRow) {
-        return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if(row == kTagHeaderRow) {
-        return @"";
-    } else {
-        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
-        return tag.name;
-    }
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -557,6 +539,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 {
     self.menuShowing = NO;
 }
+
 
 #pragma mark - NSTextField delegate
 
@@ -708,6 +691,9 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self loadTags];
     return YES;
 }
+
+
+#pragma mark - Appearance
 
 - (void)applyStyle
 {
