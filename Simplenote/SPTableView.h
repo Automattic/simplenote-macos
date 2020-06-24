@@ -11,7 +11,7 @@
 
 @protocol SPTableViewDelegate <NSTableViewDelegate>
 
-- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row;
+- (nullable NSMenu *)tableView:(nonnull NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row;
 
 @end
 
