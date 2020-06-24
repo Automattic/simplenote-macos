@@ -22,11 +22,10 @@
 #define kTagHeaderRow 2
 #define kStartOfTagListRow 3
 
-
-NSString * const kTagUpdated = @"SPTagUpdated";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 CGFloat const SPListEstimatedRowHeight = 30;
 NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
+NSString * const TagListDidUpdateTagNotification            = @"TagListDidUpdateTagNotification";
 NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginViewingTrashNotification";
 NSString * const TagListWillFinishViewingTrashNotification  = @"TagListWillFinishViewingTrashNotification";
 NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
