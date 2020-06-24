@@ -23,12 +23,12 @@
 #define kStartOfTagListRow 3
 
 
-NSString * const kTagsDidLoad = @"SPTagsDidLoad";
 NSString * const kTagUpdated = @"SPTagUpdated";
 NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
 NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 CGFloat const SPListEstimatedRowHeight = 30;
+NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
 
 @interface TagListViewController ()
 

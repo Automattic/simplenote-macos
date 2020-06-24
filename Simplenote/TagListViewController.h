@@ -20,11 +20,11 @@
 @property (nonatomic, strong, readwrite) NSArray                        *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
 
-extern NSString * const kTagsDidLoad;
 extern NSString * const kTagUpdated;
 extern NSString * const kDidBeginViewingTrash;
 extern NSString * const kWillFinishViewingTrash;
 extern NSString * const kDidEmptyTrash;
+extern NSString * const TagListDidBeginViewingTagNotification;
 
 - (void)loadTags;
 - (NSString *)selectedTagName;

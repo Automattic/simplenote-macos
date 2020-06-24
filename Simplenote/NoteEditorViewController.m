@@ -139,8 +139,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
-    [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
+    [nc addObserver:self selector:@selector(tagsDidLoad:) name:TagListDidBeginViewingTagNotification object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
 
     [self startListeningToScrollNotifications];
