@@ -29,7 +29,7 @@ class TagListState: NSObject {
         rows.append(.header)
         rows.append(contentsOf: tags)
 // TODO: Implement
-        rows.append(.untagged)
+//        rows.append(.untagged)
 
         self.rows = rows
     }
