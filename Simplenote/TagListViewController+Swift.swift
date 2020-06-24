@@ -35,7 +35,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let row = rowAtIndex(row) else {
+        guard let row = state.rowAtIndex(row) else {
             return nil
         }
 
@@ -55,7 +55,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
-        guard let row = rowAtIndex(row) else {
+        guard let row = state.rowAtIndex(row) else {
             return nil
         }
 
@@ -77,11 +77,11 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        if rowAtIndex(row) == .header {
+        if state.rowAtIndex(row) == .header {
             return false
         }
 
-        if rowAtIndex(tableView.selectedRow) == .trash {
+        if state.rowAtIndex(tableView.selectedRow) == .trash {
             NotificationCenter.default.post(name: .TagListWillFinishViewingTrash, object: self)
         }
 
@@ -89,7 +89,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
-        let isViewingTrash = rowAtIndex(tableView.selectedRow) == .trash
+        let isViewingTrash = state.rowAtIndex(tableView.selectedRow) == .trash
         let notificationName: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
 
         NotificationCenter.default.post(name: notificationName, object: self)
@@ -97,77 +97,6 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
 // TODO: Fixme
 //    [self.noteListViewController filterNotes:nil];
 //    [self.noteListViewController selectRow:0];
-    }
-}
-
-
-// MARK: - Convienience API(s)
-//
-extension TagListViewController {
-
-    /// Returns the `TagListRow` entity at the specified Index
-    /// - Note: YES we perform Bounds Check, just in order to avoid guarding for `NSNotFound` all over the place.
-    ///
-    func rowAtIndex(_ index: Int) -> TagListRow? {
-        guard index >= .zero && index < state.rows.count else {
-            return nil
-        }
-
-        return state.rows[index]
-    }
-
-    /// Returns the location of the `All Notes` row.
-    /// - Note: This row is mandatory, it's expected to *always* be present.
-    ///
-    @objc
-    var indexOfAllNotes: IndexSet {
-        guard let index = state.rows.firstIndex(of: .allNotes) else {
-            fatalError()
-        }
-
-        return IndexSet(integer: index)
-    }
-
-    /// Returns the Index of the tag with the specified Name (If any!)
-    ///
-    @objc
-    func indexOfTag(name: String) -> IndexSet? {
-        for (index, row) in state.rows.enumerated() {
-            guard case let .tag(tag) = row, tag.name == name else {
-                continue
-            }
-
-            return IndexSet(integer: index)
-        }
-
-        return nil
-    }
-
-    /// Returns the location of the first Tag Row.
-    /// - Note: This API should return an optional. But because of ObjC bridging, we simply refuse to use NSNotFound as a sentinel.
-    ///
-    @objc
-    var numberOfFirstTagRow: Int {
-        for (index, row) in state.rows.enumerated() {
-            guard case .tag = row else {
-                continue
-            }
-
-            return index
-        }
-
-        return .zero
-    }
-
-    /// Returns the Tag Row at the specified location
-    ///
-    @objc
-    func tag(atIndex index: Int) -> Tag? {
-        guard case let .tag(tag) = rowAtIndex(index) else {
-            return nil
-        }
-
-        return tag
     }
 }
 
@@ -244,39 +173,4 @@ enum TagListRow: Equatable {
     case header
     case tag(tag: Tag)
     case untagged
-}
-
-
-// MARK: - List State: Allows us to wrap a native Swift type into an ObjC Property
-//         TODO: Let's remove this the second TagListController is Swift native!
-//
-@objc
-class TagListState: NSObject {
-
-    /// List Rows that should be rendered
-    ///
-    let rows: [TagListRow]
-
-    /// Initial State Initializer: We don't really show tags here
-    ///
-    override init() {
-        rows = [ .allNotes, .trash ]
-        super.init()
-    }
-
-    /// Initializes the State so that the specified Tags collection is rendered
-    ///
-    init(tags: [Tag]) {
-        let tags: [TagListRow] = tags.map { .tag(tag: $0) }
-        var rows: [TagListRow] = []
-
-        rows.append(.allNotes)
-        rows.append(.trash)
-        rows.append(.header)
-        rows.append(contentsOf: tags)
-// TODO: Implement
-//        rows.append(.untagged)
-
-        self.rows = rows
-    }
 }

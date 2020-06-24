@@ -59,7 +59,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     self.tableView.rowHeight = TagListEstimatedRowHeight;
     self.tableView.usesAutomaticRowHeights = YES;
-    [self.tableView selectRowIndexes:self.indexOfAllNotes byExtendingSelection:NO];
+    [self.tableView selectRowIndexes:self.state.indexSetForAllNotes byExtendingSelection:NO];
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
@@ -193,7 +193,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)selectAllNotesTag
 {
-    [self.tableView selectRowIndexes:self.indexOfAllNotes byExtendingSelection:NO];
+    [self.tableView selectRowIndexes:self.state.indexSetForAllNotes byExtendingSelection:NO];
 
     // Notes:
     //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
@@ -207,7 +207,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)selectTag:(Tag *)tagToSelect
 {
-    NSIndexSet *index = [self indexOfTagWithName:tagToSelect.name];
+    NSIndexSet *index = [self.state indexSetForTagWithName:tagToSelect.name];
     if (!index) {
         return;
     }
@@ -330,7 +330,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self loadTags];
     
 	if(tag == selectedTag) {
-        [self.tableView selectRowIndexes:self.indexOfAllNotes byExtendingSelection:NO];
+        [self.tableView selectRowIndexes:self.state.indexSetForAllNotes byExtendingSelection:NO];
 	} else {
         [self selectTag:selectedTag];
 	}
@@ -365,12 +365,12 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (Tag *)selectedTag
 {
-    return [self tagAtIndex:self.tableView.selectedRow];
+    return [self.state tagAtIndex:self.tableView.selectedRow];
 }
 
 - (Tag *)highlightedTag
 {
-    return [self tagAtIndex:self.highlightedTagRowIndex];
+    return [self.state tagAtIndex:self.highlightedTagRowIndex];
 }
 
 
@@ -510,7 +510,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
         return NO;
     }
 
-    Tag *tag = [self tagAtIndex:rowIndexes.firstIndex];
+    Tag *tag = [self.state tagAtIndex:rowIndexes.firstIndex];
     if (tag == nil) {
         return NO;
     }
@@ -530,11 +530,11 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
                  proposedRow:(NSInteger)row
        proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
-    Tag *tagAtDropLocation = [self tagAtIndex:row];
-    if (tagAtDropLocation == nil) {
+    // Disallow drop outside the Tags Range
+    if (row < self.state.numberOfFirstTagRow || (row > self.state.numberOfLastTagRow + 1)) {
         return NSDragOperationNone;
     }
-    
+
     if ([info draggingSource] == self.tableView) {
         if (dropOperation == NSTableViewDropOn){
             [self.tableView setDropRow:row dropOperation:NSTableViewDropAbove];
@@ -551,7 +551,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     dropOperation:(NSTableViewDropOperation)operation
 {
     // Account for row offset
-    row = row - self.numberOfFirstTagRow;
+    row = row - self.state.numberOfFirstTagRow;
 
     // Get object URIs from paste board
     NSData *data        = [info.draggingPasteboard dataForType:@"Tag"];
