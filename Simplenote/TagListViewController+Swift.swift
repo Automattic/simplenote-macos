@@ -163,14 +163,3 @@ extension TagListViewController: SPTextFieldDelegate {
 private enum Settings {
     static let extendedTopInset = CGFloat(48)
 }
-
-
-// MARK: - List Row
-//
-enum TagListRow: Equatable {
-    case allNotes
-    case trash
-    case header
-    case tag(tag: Tag)
-    case untagged
-}

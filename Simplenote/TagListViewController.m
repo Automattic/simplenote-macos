@@ -531,7 +531,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
        proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
     // Disallow drop outside the Tags Range
-    if (row < self.state.numberOfFirstTagRow || (row > self.state.numberOfLastTagRow + 1)) {
+    if (row < self.state.indexOfFirstTagRow || (row > self.state.indexOfLastTagRow + 1)) {
         return NSDragOperationNone;
     }
 
@@ -551,7 +551,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     dropOperation:(NSTableViewDropOperation)operation
 {
     // Account for row offset
-    row = row - self.state.numberOfFirstTagRow;
+    row = row - self.state.indexOfFirstTagRow;
 
     // Get object URIs from paste board
     NSData *data        = [info.draggingPasteboard dataForType:@"Tag"];

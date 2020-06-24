@@ -74,31 +74,24 @@ extension TagListState {
         return nil
     }
 
-    /// Returns the location of the first Tag Row.
+    /// Returns the location of the First Tag Row.
     /// - Note: This API should return an optional. But because of ObjC bridging, we simply refuse to use NSNotFound as a sentinel.
     ///
     @objc
-    var numberOfFirstTagRow: Int {
-        for (index, row) in rows.enumerated() {
-            guard case .tag = row else {
-                continue
-            }
-
+    var indexOfFirstTagRow: Int {
+        for (index, row) in rows.enumerated() where row.isTagRow {
             return index
         }
 
         return .zero
     }
 
-    ///
+    /// Returns the location of the Last Tag Row.
+    /// - Note: This API should return an optional. But because of ObjC bridging, we simply refuse to use NSNotFound as a sentinel.
     ///
     @objc
-    var numberOfLastTagRow: Int {
-        for (index, row) in rows.enumerated().reversed() {
-            guard case .tag = row else {
-                continue
-            }
-
+    var indexOfLastTagRow: Int {
+        for (index, row) in rows.enumerated().reversed() where row.isTagRow {
             return index
         }
 
