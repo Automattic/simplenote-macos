@@ -530,7 +530,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
                  proposedRow:(NSInteger)row
        proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
-    if (row < kStartOfTagListRow) {
+    Tag *tagAtDropLocation = [self tagAtIndex:row];
+    if (tagAtDropLocation == nil) {
         return NSDragOperationNone;
     }
     
