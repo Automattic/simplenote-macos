@@ -570,21 +570,21 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 // Much of this code is overly generalized for this use case, but it works
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-    BOOL isAlphaSort = Options.shared.alphabeticallySortTags;
-    if (isAlphaSort || [rowIndexes firstIndex] < kStartOfTagListRow) {
-        // Alphabetical tag sorting should not allow drag and drop
+    // Alphabetical tag sorting should not allow drag and drop
+    if (Options.shared.alphabeticallySortTags) {
         return NO;
     }
-    
+
+    Tag *tag = [self tagAtIndex:rowIndexes.firstIndex];
+    if (tag == nil) {
+        return NO;
+    }
+
+    NSArray *objectURIs = @[
+        tag.objectID.URIRepresentation
+    ];
+
     [pboard declareTypes:[NSArray arrayWithObject:@"Tag"] owner:self];
-    
-    // Collect URI representation of managed objects
-    NSMutableArray *objectURIs = [NSMutableArray array];
-    NSUInteger row = [rowIndexes firstIndex] - kStartOfTagListRow;
-    id objProxy = [self.tagArray objectAtIndex:row];
-    [objectURIs addObject: [[objProxy objectID] URIRepresentation]];
-    
-    // Set them to paste board
     [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:objectURIs] forType:@"Tag"];
     
     return YES;
