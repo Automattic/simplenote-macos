@@ -295,7 +295,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self.simperium save];
     
     NSDictionary *userInfo = @{@"tagName": newTagName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTagUpdated object:self userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:userInfo];
 }
 
 - (void)deleteTag:(Tag *)tag
@@ -332,7 +332,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 	}
 	
     NSDictionary *userInfo = @{@"tagName": tagName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTagUpdated object:self userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:userInfo];
 }
 
 
@@ -424,7 +424,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     }
     [appDelegate.simperium save];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDidEmptyTrash object:self];
 }
 
 
@@ -494,6 +493,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     [self.noteListViewController filterNotes:nil];
     [self.noteListViewController selectRow:0];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidEmptyTrashNotification object:self];
 }
 
 
