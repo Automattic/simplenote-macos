@@ -17,7 +17,9 @@
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet ClipView              *clipView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
-@property (nonatomic, strong, readwrite) NSArray                        *tagArray;
+@property (nonatomic, strong,  readonly) NSMenu                         *tagDropdownMenu;
+@property (nonatomic, strong,  readonly) NSMenu                         *trashDropdownMenu;
+@property (nonatomic, strong,  readonly) NSArray<Tag *>                 *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
 
 extern NSString * const TagListDidBeginViewingTagNotification;
