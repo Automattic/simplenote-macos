@@ -13,6 +13,80 @@ extension TagListViewController {
 
 
 
+// MARK: - NSTableViewDelegate Helpers
+//
+extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
+
+    public func numberOfRows(in tableView: NSTableView) -> Int {
+        state.rows.count
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let row = rowAtIndex(row) else {
+            return nil
+        }
+
+        switch row {
+        case .allNotes:
+            return allNotesTableViewCell()
+        case .trash:
+            return trashTableViewCell()
+        case .header:
+            return tagHeaderTableViewCell()
+        case .tag(let tag):
+            return tagTableViewCell(for: tag)
+        case .untagged:
+            // TODO: Implement!
+            return nil
+        }
+    }
+
+    public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
+        guard let row = rowAtIndex(row) else {
+            return nil
+        }
+
+        switch row {
+        case .trash:
+            return trashDropdownMenu
+        case .tag:
+            return tagDropdownMenu
+        default:
+            return nil
+        }
+    }
+
+
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let rowView = TableRowView()
+        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        return rowView
+    }
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        if rowAtIndex(row) == .header {
+            return false
+        }
+
+        if rowAtIndex(tableView.selectedRow) == .trash {
+            NotificationCenter.default.post(name: .TagListWillFinishViewingTrash, object: self)
+        }
+
+        return true
+    }
+
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        let isViewingTrash = rowAtIndex(tableView.selectedRow) == .trash
+        let notificationName: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
+
+        NotificationCenter.default.post(name: notificationName, object: self)
+
+// TODO: Fixme
+//    [self.noteListViewController filterNotes:nil];
+//    [self.noteListViewController selectRow:0];
+    }
+}
+
 
 // MARK: - Convienience API(s)
 //
@@ -91,7 +165,6 @@ extension TagListViewController {
 
     /// Returns a HeaderTableCellView instance, meant to be used as Tags List Header
     ///
-    @objc
     func tagHeaderTableViewCell() -> HeaderTableCellView {
         let headerView = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
         headerView.textField?.stringValue = NSLocalizedString("Tags", comment: "Tags Section Name").uppercased()
@@ -100,7 +173,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to be used as All Notes Row
     ///
-    @objc
     func allNotesTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.iconImageView.image = NSImage(named: .allNotes)
@@ -112,7 +184,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to be used as Trash Row
     ///
-    @objc
     func trashTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.iconImageView.image = NSImage(named: .trash)
@@ -124,7 +195,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to render a specified Tag
     ///
-    @objc(tagTableViewCellForTag:)
     func tagTableViewCell(for tag: Tag) -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.nameTextField.delegate = self
@@ -171,7 +241,17 @@ enum TagListRow: Equatable {
 class TagListState: NSObject {
     let rows: [TagListRow]
 
-    init(rows: [TagListRow]) {
+    init(tags: [Tag]) {
+        let tags: [TagListRow] = tags.map { .tag(tag: $0) }
+        var rows: [TagListRow] = []
+
+        rows.append(.allNotes)
+        rows.append(.trash)
+        rows.append(.header)
+        rows.append(contentsOf: tags)
+
+// TODO: Implement
+//        rows.append(.untagged)
         self.rows = rows
     }
 }
