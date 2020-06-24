@@ -21,7 +21,6 @@
 NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
 NSString * const TagListDidUpdateTagNotification            = @"TagListDidUpdateTagNotification";
 NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginViewingTrashNotification";
-NSString * const TagListWillFinishViewingTrashNotification  = @"TagListWillFinishViewingTrashNotification";
 NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
 CGFloat const TagListEstimatedRowHeight                     = 30;
 

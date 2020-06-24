@@ -81,10 +81,6 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
             return false
         }
 
-        if state.rowAtIndex(tableView.selectedRow) == .trash {
-            NotificationCenter.default.post(name: .TagListWillFinishViewingTrash, object: self)
-        }
-
         return true
     }
 
@@ -93,10 +89,6 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
         let notificationName: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
 
         NotificationCenter.default.post(name: notificationName, object: self)
-
-// TODO: Fixme
-//    [self.noteListViewController filterNotes:nil];
-//    [self.noteListViewController selectRow:0];
     }
 }
 

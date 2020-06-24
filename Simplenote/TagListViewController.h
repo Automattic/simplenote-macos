@@ -29,7 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const TagListDidBeginViewingTagNotification;
 extern NSString * const TagListDidBeginViewingTrashNotification;
-extern NSString * const TagListWillFinishViewingTrashNotification;
 extern NSString * const TagListDidUpdateTagNotification;
 extern NSString * const TagListDidEmptyTrashNotification;
 

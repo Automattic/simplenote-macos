@@ -53,12 +53,12 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: NoteListCondensedDidChangeNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(didBeginViewingTrash:)
-                                                 name: TagListDidBeginViewingTrashNotification
+                                             selector: @selector(didBeginViewingTag:)
+                                                 name: TagListDidBeginViewingTagNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(willFinishViewingTrash:)
-                                                 name: TagListWillFinishViewingTrashNotification
+                                             selector: @selector(didBeginViewingTrash:)
+                                                 name: TagListDidBeginViewingTrashNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didEmptyTrash:)
@@ -186,6 +186,11 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     if (row >= 0) {
         [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:row] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
     }
+}
+
+- (void)selectFirstRow
+{
+    [self selectRow:0];
 }
 
 - (void)selectRow:(NSInteger)row
@@ -355,17 +360,17 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     [self reloadRowForNoteKey:key];
 }
 
+- (void)didBeginViewingTag:(NSNotification *)notification
+{
+    self.viewingTrash = NO;
+    [self selectedTaglistRowWasUpdated];
+}
+
 - (void)didBeginViewingTrash:(NSNotification *)notification
 {
     [SPTracker trackListTrashPressed];
     self.viewingTrash = YES;
-    [self refreshEnabledActions];
-}
-
-- (void)willFinishViewingTrash:(NSNotification *)notification
-{
-    self.viewingTrash = NO;
-    [self refreshEnabledActions];
+    [self selectedTaglistRowWasUpdated];
 }
 
 - (void)didEmptyTrash:(NSNotification *)notification
@@ -384,6 +389,14 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     [[self.searchField.cell cancelButtonCell] performClick:self];
     [self.searchField resignFirstResponder];
 }
+
+- (void)selectedTaglistRowWasUpdated
+{
+    [self refreshEnabledActions];
+    [self refreshPredicate];
+    [self selectFirstRow];
+}
+
 
 #pragma mark - NSSearchFieldDelegate
 
@@ -503,6 +516,11 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 #pragma mark - IBActions
 
 - (IBAction)filterNotes:(id)sender
+{
+    [self refreshPredicate];
+}
+
+- (void)refreshPredicate
 {
     NSString *searchText = [self.searchField stringValue];
     
