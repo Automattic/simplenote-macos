@@ -61,7 +61,6 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
         }
     }
 
-
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
@@ -69,11 +68,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        if state.rowAtIndex(row) == .header {
-            return false
-        }
-
-        return true
+        state.rowAtIndex(row) != .header
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
