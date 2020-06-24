@@ -78,3 +78,27 @@ extension TagListViewController: SPTextFieldDelegate {
 private enum Settings {
     static let extendedTopInset = CGFloat(48)
 }
+
+
+// MARK: - List Row
+//
+enum TagListRow: Equatable {
+    case allNotes
+    case trash
+    case header
+    case tag(tag: Tag)
+    case untagged
+}
+
+
+// MARK: - List State: Allows us to wrap a native Swift type into an ObjC Property
+//         TODO: Let's remove this the second TagListController is Swift native!
+//
+@objc
+class TagListState: NSObject {
+    let rows: [TagListRow]
+
+    init(rows: [TagListRow]) {
+        self.rows = rows
+    }
+}
