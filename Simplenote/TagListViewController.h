@@ -23,8 +23,8 @@
 extern NSString * const kTagUpdated;
 extern NSString * const kDidBeginViewingTrash;
 extern NSString * const kWillFinishViewingTrash;
-extern NSString * const kDidEmptyTrash;
 extern NSString * const TagListDidBeginViewingTagNotification;
+extern NSString * const TagListDidEmptyTrashNotification;
 
 - (void)loadTags;
 - (NSString *)selectedTagName;
