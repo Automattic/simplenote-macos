@@ -17,10 +17,6 @@
 
 
 
-@interface SPTableView : NSTableView<SPTextViewDelegate, NSTextFieldDelegate> {
-    NSMutableArray *validFirstResponders;
-}
-
-- (void)addValidFirstResponder:(NSResponder *)responder;
+@interface SPTableView : NSTableView<SPTextViewDelegate, NSTextFieldDelegate>
 
 @end
