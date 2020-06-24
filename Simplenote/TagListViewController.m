@@ -178,13 +178,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (NSString *)selectedTagName
 {
-    NSInteger selectedRow = [self.tableView selectedRow];
-    if (selectedRow < kStartOfTagListRow) {
-        return @"";
-    }
-    
-    Tag *tag = [self.tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
-    return tag.name;
+    return self.selectedTag.name ?: @"";
 }
 
 - (void)selectAllNotesTag
