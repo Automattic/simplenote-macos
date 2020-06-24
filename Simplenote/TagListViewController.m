@@ -17,12 +17,7 @@
 @import Simperium_OSX;
 
 
-#define kAllNotesRow 0
-#define kTrashRow 1
-#define kTagHeaderRow 2
-#define kStartOfTagListRow 3
 
-NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
 NSString * const TagListDidUpdateTagNotification            = @"TagListDidUpdateTagNotification";
 NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginViewingTrashNotification";
@@ -54,7 +49,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     self.tableView.rowHeight = TagListEstimatedRowHeight;
     self.tableView.usesAutomaticRowHeights = YES;
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
+    [self.tableView selectRowIndexes:self.indexOfAllNotes byExtendingSelection:NO];
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
@@ -194,8 +189,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)selectAllNotesTag
 {
-    NSIndexSet *allNotesIndex = [NSIndexSet indexSetWithIndex:kAllNotesRow];
-    [self.tableView selectRowIndexes:allNotesIndex byExtendingSelection:NO];
+    [self.tableView selectRowIndexes:self.indexOfAllNotes byExtendingSelection:NO];
 
     // Notes:
     //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
@@ -209,13 +203,12 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)selectTag:(Tag *)tagToSelect
 {
-    int row=0;
-    for (Tag *tag in self.tagArray) {
-        if ([tag.name isEqualToString:tagToSelect.name])
-            break;
-        row++;
+    NSIndexSet *index = [self indexOfTagWithName:tagToSelect.name];
+    if (!index) {
+        return;
     }
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row+kStartOfTagListRow] byExtendingSelection:NO];
+
+    [self.tableView selectRowIndexes:index byExtendingSelection:NO];
 }
 
 - (NSArray *)notesWithTag:(Tag *)tag
@@ -333,9 +326,9 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self loadTags];
     
 	if(tag == selectedTag) {
-		[self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];
+        [self.tableView selectRowIndexes:self.indexOfAllNotes byExtendingSelection:NO];
 	} else {
-		[self selectTag:selectedTag];
+        [self selectTag:selectedTag];
 	}
 	
     NSDictionary *userInfo = @{@"tagName": tagName};
@@ -366,21 +359,14 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 	return tagIndex;
 }
 
-- (Tag *)tagAtIndex:(NSInteger)tagIndex
-{
-	return (tagIndex >= 0 && tagIndex < self.tagArray.count) ? self.tagArray[tagIndex] : nil;
-}
-
 - (Tag *)selectedTag
 {
-	NSInteger tagIndex = self.tableView.selectedRow - kStartOfTagListRow;
-	return [self tagAtIndex:tagIndex];
+    return [self tagAtIndex:self.tableView.selectedRow];
 }
 
 - (Tag *)highlightedTag
 {
-	NSInteger tagIndex = [self highlightedTagRowIndex] - kStartOfTagListRow;
-	return [self tagAtIndex:tagIndex];
+    return [self tagAtIndex:self.highlightedTagRowIndex];
 }
 
 
@@ -527,7 +513,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     }
     
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)
-    return [self.tableView selectedRow] >= kStartOfTagListRow && self.tagNameBeingEdited == nil;
+    BOOL isTagSelected = [self selectedTag] != nil;
+    return isTagSelected && self.tagNameBeingEdited == nil;
 }
 
 - (void)menuWillOpen:(NSMenu *)menu
@@ -628,8 +615,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     dropOperation:(NSTableViewDropOperation)operation
 {
     // Account for row offset
-    row = row - kStartOfTagListRow;
-        
+    row = row - self.numberOfFirstTagRow;
+
     // Get object URIs from paste board
     NSData *data        = [info.draggingPasteboard dataForType:@"Tag"];
     NSArray *objectURIs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
