@@ -41,10 +41,9 @@ class TagListState: NSObject {
 extension TagListState {
 
     /// Returns the `TagListRow` entity at the specified Index
-    /// - Note: YES we perform Bounds Check, just in order to avoid guarding for `NSNotFound` all over the place.
     ///
-    func rowAtIndex(_ index: Int) -> TagListRow? {
-        index >= .zero && index < rows.count ? rows[index] : nil
+    func rowAtIndex(_ index: Int) -> TagListRow {
+        rows[index]
     }
 
     /// Returns the location of the `All Notes` row.

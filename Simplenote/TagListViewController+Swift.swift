@@ -35,11 +35,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let row = state.rowAtIndex(row) else {
-            return nil
-        }
-
-        switch row {
+        switch state.rowAtIndex(row) {
         case .allNotes:
             return allNotesTableViewCell()
         case .trash:
@@ -55,11 +51,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
-        guard let row = state.rowAtIndex(row) else {
-            return nil
-        }
-
-        switch row {
+        switch state.rowAtIndex(row) {
         case .trash:
             return trashDropdownMenu
         case .tag:
@@ -85,10 +77,10 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
-        let isViewingTrash = state.rowAtIndex(tableView.selectedRow) == .trash
-        let notificationName: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
+        let isViewingTrash = tableView.selectedRow != NSNotFound && state.rowAtIndex(tableView.selectedRow) == .trash
+        let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
 
-        NotificationCenter.default.post(name: notificationName, object: self)
+        NotificationCenter.default.post(name: name, object: self)
     }
 }
 

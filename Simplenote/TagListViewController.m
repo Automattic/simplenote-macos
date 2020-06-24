@@ -364,12 +364,14 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (Tag *)selectedTag
 {
-    return [self.state tagAtIndex:self.tableView.selectedRow];
+    NSInteger index = self.tableView.selectedRow;
+    return index != NSNotFound ? [self.state tagAtIndex:index] : nil;
 }
 
 - (Tag *)highlightedTag
 {
-    return [self.state tagAtIndex:self.highlightedTagRowIndex];
+    NSInteger index = self.highlightedTagRowIndex;
+    return index != NSNotFound ? [self.state tagAtIndex:index] : nil;
 }
 
 
