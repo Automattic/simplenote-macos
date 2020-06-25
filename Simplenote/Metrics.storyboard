@@ -10,7 +10,7 @@
         <scene sceneID="9Ss-vR-uox">
             <objects>
                 <windowController id="8ea-zj-CNY" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="0i5-HD-S05" customClass="NSPanel">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="0i5-HD-S05" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="266" height="148"/>
@@ -42,33 +42,33 @@
                                 <rect key="frame" x="16" y="10" width="108" height="88"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUF-Q3-p3q">
-                                        <rect key="frame" x="-2" y="72" width="71" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Modified" id="Xvc-ub-tMR">
-                                            <font key="font" size="14" name="SFProText-Medium"/>
+                                        <rect key="frame" x="-2" y="72" width="69" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Modified" usesSingleLineMode="YES" id="Xvc-ub-tMR">
+                                            <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1G-QG-CAR">
-                                        <rect key="frame" x="-2" y="48" width="66" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Created" id="ux6-7s-2r0">
-                                            <font key="font" size="14" name="SFProText-Medium"/>
+                                        <rect key="frame" x="-2" y="48" width="64" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Created" usesSingleLineMode="YES" id="ux6-7s-2r0">
+                                            <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSv-i5-ZAY">
-                                        <rect key="frame" x="-2" y="24" width="55" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Words" id="51d-hO-vzA">
-                                            <font key="font" size="14" name="SFProText-Medium"/>
+                                        <rect key="frame" x="-2" y="24" width="54" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Words" usesSingleLineMode="YES" id="51d-hO-vzA">
+                                            <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sly-30-JZL">
-                                        <rect key="frame" x="-2" y="0.0" width="52" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Chars" id="bie-Uh-xAg">
-                                            <font key="font" size="14" name="SFProText-Medium"/>
+                                        <rect key="frame" x="-2" y="0.0" width="50" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Chars" usesSingleLineMode="YES" id="bie-Uh-xAg">
+                                            <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -95,7 +95,7 @@
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-gR-nD1">
                                         <rect key="frame" x="-2" y="72" width="40" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" id="Ogo-UQ-hiJ">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="Ogo-UQ-hiJ">
                                             <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -103,7 +103,7 @@
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSF-C8-VLo">
                                         <rect key="frame" x="-2" y="48" width="40" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" id="6l6-8t-eVJ">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="6l6-8t-eVJ">
                                             <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -111,7 +111,7 @@
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LY7-Eq-tUH">
                                         <rect key="frame" x="-2" y="24" width="40" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" id="ree-Cl-nO4">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="ree-Cl-nO4">
                                             <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -119,7 +119,7 @@
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWf-g2-kcG">
                                         <rect key="frame" x="-2" y="0.0" width="40" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" id="bkA-zW-iLj">
+                                        <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="bkA-zW-iLj">
                                             <font key="font" size="14" name="SFProText-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -158,6 +158,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundVisualEffectsView" destination="3KN-l2-5Qt" id="KQC-Ef-i3r"/>
                         <outlet property="charsDetailsLabel" destination="WWf-g2-kcG" id="acz-kq-CXU"/>
                         <outlet property="charsTextLabel" destination="sly-30-JZL" id="trr-NH-P9q"/>
                         <outlet property="createdDetailsLabel" destination="YSF-C8-VLo" id="vU4-Tn-N07"/>

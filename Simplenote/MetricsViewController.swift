@@ -6,6 +6,10 @@ import AppKit
 //
 class MetricsViewController: NSViewController {
 
+    /// Background Blur
+    ///
+    @IBOutlet private(set) var backgroundVisualEffectsView: NSVisualEffectView!
+
     /// Modified: Left Text Label
     ///
     @IBOutlet private(set) var modifiedTextLabel: NSTextField!
