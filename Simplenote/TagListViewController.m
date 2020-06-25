@@ -44,7 +44,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.state = [[TagListState alloc] init];
+        self.state = [TagListState new];
     }
 
     return self;
