@@ -17,6 +17,10 @@ extension NSImage.Name {
     ///
     static let history = NSImage.Name("button_history")
 
+    /// Toolbar: Ellipsis
+    ///
+    static let ellipsis = NSImage.Name("button_ellipsis")
+
     /// Toolbar: Info
     ///
     static let info = NSImage.Name("button_info")
