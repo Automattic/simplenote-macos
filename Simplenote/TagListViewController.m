@@ -58,7 +58,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     self.tableView.rowHeight = TagListEstimatedRowHeight;
     self.tableView.usesAutomaticRowHeights = YES;
-    [self.tableView selectRowIndexes:self.state.indexSetForAllNotes byExtendingSelection:NO];
+    [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
@@ -192,7 +192,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)selectAllNotesTag
 {
-    [self.tableView selectRowIndexes:self.state.indexSetForAllNotes byExtendingSelection:NO];
+    [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
 
     // Notes:
     //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
@@ -206,7 +206,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)selectTag:(Tag *)tagToSelect
 {
-    NSIndexSet *index = [self.state indexSetForTagWithName:tagToSelect.name];
+    NSIndexSet *index = [self.state indexSetForTagRowWithName:tagToSelect.name];
     if (!index) {
         return;
     }
@@ -329,7 +329,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self loadTags];
     
 	if(tag == selectedTag) {
-        [self.tableView selectRowIndexes:self.state.indexSetForAllNotes byExtendingSelection:NO];
+        [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
 	} else {
         [self selectTag:selectedTag];
 	}

@@ -4,7 +4,6 @@ import Foundation
 // MARK: - List State: Allows us to wrap a native Swift type into an ObjC Property
 //         TODO: Let's remove this the second TagListController is Swift native!
 //
-@objc
 class TagListState: NSObject {
 
     /// List Rows that should be rendered
@@ -50,7 +49,7 @@ extension TagListState {
     /// - Note: This row is mandatory, it's expected to *always* be present.
     ///
     @objc
-    var indexSetForAllNotes: IndexSet {
+    var indexSetForAllNotesRow: IndexSet {
         guard let index = rows.firstIndex(of: .allNotes) else {
             fatalError()
         }
@@ -58,10 +57,10 @@ extension TagListState {
         return IndexSet(integer: index)
     }
 
-    /// Returns the Index of the tag with the specified Name (If any!)
+    /// Returns the Index of the `Tag` Row with the specified Name (If any!)
     ///
     @objc
-    func indexSetForTag(name: String) -> IndexSet? {
+    func indexSetForTagRow(name: String) -> IndexSet? {
         for (index, row) in rows.enumerated() {
             guard case let .tag(tag) = row, tag.name == name else {
                 continue
