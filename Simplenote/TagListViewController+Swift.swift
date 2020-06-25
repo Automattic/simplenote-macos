@@ -31,7 +31,7 @@ extension TagListViewController {
 extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
 
     public func numberOfRows(in tableView: NSTableView) -> Int {
-        state.rows.count
+        state.numberOfRows
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {

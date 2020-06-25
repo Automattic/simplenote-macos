@@ -8,7 +8,7 @@ class TagListState: NSObject {
 
     /// List Rows that should be rendered
     ///
-    let rows: [TagListRow]
+    private let rows: [TagListRow]
 
     /// Initial State Initializer: We don't really show tags here
     ///
@@ -38,6 +38,12 @@ class TagListState: NSObject {
 // MARK: - Public API(s)
 //
 extension TagListState {
+
+    /// Returns the number of rows
+    ///
+    var numberOfRows: Int {
+        rows.count
+    }
 
     /// Returns the `TagListRow` entity at the specified Index
     ///
