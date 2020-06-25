@@ -54,6 +54,7 @@ extension TagListRow {
         // Untagged
         rows.append(.spacer)
         rows.append(.untagged)
+        rows.append(.spacer)
 
         return rows
     }
