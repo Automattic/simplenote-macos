@@ -9,12 +9,6 @@ extension TagListViewController {
     func refreshExtendedContentInsets() {
         clipView.extendedContentInsets.top = Settings.extendedTopInset
     }
-}
-
-
-// MARK: - Interface Initialization
-//
-extension TagListViewController {
 
     /// Regenerates the TableView's Rows
     ///
