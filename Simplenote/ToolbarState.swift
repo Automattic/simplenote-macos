@@ -35,19 +35,27 @@ struct ToolbarState {
 //
 extension ToolbarState {
 
-    var isActionButtonEnabled: Bool {
-        (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
-    }
-
-    var isActionButtonHidden: Bool {
-        isViewingTrash
-    }
-
     var isHistoryActionEnabled: Bool {
         isDisplayingNote && !isDisplayingMarkdown
     }
 
     var isHistoryActionHidden: Bool {
+        isViewingTrash
+    }
+
+    var isMetricsButtonEnabled: Bool {
+        (isDisplayingNote && !isSelectingMultipleNotes) && !isViewingTrash
+    }
+
+    var isMetricsButtonHidden: Bool {
+        isViewingTrash
+    }
+
+    var isMoreButtonEnabled: Bool {
+        (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
+    }
+
+    var isMoreButtonHidden: Bool {
         isViewingTrash
     }
 
