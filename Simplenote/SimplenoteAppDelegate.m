@@ -222,11 +222,6 @@
     [self.tagListViewController selectAllNotesTag];
 }
 
-- (NSString *)selectedTagName
-{
-    return [self.tagListViewController selectedTagName];
-}
-
 - (void)selectNoteWithKey:(NSString *)simperiumKey
 {
     [self.noteListViewController selectRowForNoteKey:simperiumKey];
