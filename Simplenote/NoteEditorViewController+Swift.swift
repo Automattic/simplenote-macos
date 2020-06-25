@@ -157,6 +157,7 @@ extension NoteEditorViewController {
 
     @IBAction func metricsWasPressed(sender: Any) {
         displayMetrics(from: toolbarView.metricsButton)
+    }
 }
 
 

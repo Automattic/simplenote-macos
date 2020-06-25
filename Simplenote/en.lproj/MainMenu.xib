@@ -15,12 +15,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="OtherViews" autoenablesItems="NO" id="nSc-s9-0oY" userLabel="Note More Menu">
             <items>
-                <menuItem title="0 Words" enabled="NO" id="oDJ-Mn-z2x"/>
-                <menuItem title="0 Characters" enabled="NO" id="PtU-L0-FKA"/>
-                <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="yPi-1u-OMn">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="Gjb-P8-RdZ"/>
                 <menuItem title="Pin to Top" state="on" id="Ryc-RD-9bh">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -1287,12 +1281,10 @@
             <connections>
                 <outlet property="backgroundView" destination="ktP-Hd-KgH" id="KFX-EY-NpR"/>
                 <outlet property="bottomDividerView" destination="xSv-Qg-Lo6" id="76h-Kc-UnK"/>
-                <outlet property="characterCountItem" destination="PtU-L0-FKA" id="m38-pg-CRX"/>
                 <outlet property="collaborateItem" destination="avN-8J-w5V" id="A6J-03-6wx"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="Ejc-Bj-rEL" id="XHb-Xg-A7k"/>
-                <outlet property="modifiedItem" destination="yPi-1u-OMn" id="kd5-5p-Oeo"/>
                 <outlet property="moreActionsMenu" destination="nSc-s9-0oY" id="RWb-MR-Re4"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
@@ -1307,7 +1299,6 @@
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
                 <outlet property="view" destination="559" id="vPQ-pl-pqe"/>
-                <outlet property="wordCountItem" destination="oDJ-Mn-z2x" id="gmB-Y8-oCY"/>
             </connections>
         </viewController>
         <customObject id="420" customClass="NSFontManager"/>
