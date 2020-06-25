@@ -45,14 +45,20 @@ class MetricsViewController: NSViewController {
 
     // MARK: - Overridden Methdods
 
+    deinit {
+        stopListeningToNotifications()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextLabels()
+        startListeningToNotifications()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        setupWindow()
+        setupWindowTitle()
+        refreshStyle()
     }
 }
 
@@ -68,7 +74,62 @@ private extension MetricsViewController {
         charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "")
     }
 
-    func setupWindow() {
+    func setupWindowTitle() {
         view.window?.title = NSLocalizedString("Information", comment: "")
+    }
+}
+
+
+// MARK: - Notifications
+//
+private extension MetricsViewController {
+
+    func startListeningToNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
+    }
+
+    func stopListeningToNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+
+// MARK: - Style
+//
+private extension MetricsViewController {
+
+    @objc
+    func refreshStyle() {
+        setupWindowStyle()
+        refreshBackgroundStyle()
+        refreshLabelStyles()
+    }
+
+    func setupWindowStyle() {
+        // Note: Overriding the Window's appearance cascades changes to the dynamic colors!
+        backgroundVisualEffectsView.window?.appearance = .simplenoteAppearance
+    }
+
+    func refreshBackgroundStyle() {
+        backgroundVisualEffectsView.appearance = .simplenoteAppearance
+        backgroundVisualEffectsView.material = .simplenoteTaglistMaterial
+    }
+
+    func refreshLabelStyles() {
+        let primaryLabels = [
+            modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel
+        ]
+
+        let secondaryLabels = [
+            modifiedDetailsLabel, createdDetailsLabel, wordsDetailsLabel, charsDetailsLabel
+        ]
+
+        for label in primaryLabels {
+            label?.textColor = .simplenoteTextColor
+        }
+
+        for label in secondaryLabels {
+            label?.textColor = .simplenoteSecondaryTextColor
+        }
     }
 }
