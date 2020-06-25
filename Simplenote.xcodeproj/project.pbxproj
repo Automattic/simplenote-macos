@@ -167,6 +167,8 @@
 		B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
 		B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
+		B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
+		B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
@@ -498,6 +500,7 @@
 		B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Theme.swift"; sourceTree = "<group>"; };
 		B54EB18E1A3F683D00D472B3 /* SPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPWindow.h; sourceTree = "<group>"; };
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
+		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1155,6 +1158,7 @@
 				B5E086272448B57200DEF476 /* HeaderTableCellView.swift */,
 				B5DD0F902476309000C8DD41 /* NoteTableCellView.swift */,
 				B5E086342448EA3C00DEF476 /* TagTableCellView.swift */,
+				B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -1602,6 +1606,7 @@
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
+				B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				B5E086352448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
@@ -1727,6 +1732,7 @@
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
+				B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				B51699852480B93100ACF2F4 /* TagsField.swift in Sources */,
