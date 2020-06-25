@@ -622,23 +622,9 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)applyStyle
 {
-    self.visualEffectsView.appearance = [NSAppearance appearanceNamed:self.appearanceNameForVisualEffectsView];
-    self.visualEffectsView.material = self.materialForVisualEffectsView;
+    self.visualEffectsView.appearance = [NSAppearance simplenoteAppearance];
+    self.visualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
     [self reloadDataAndPreserveSelection];
-}
-
-- (NSAppearanceName)appearanceNameForVisualEffectsView
-{
-    return SPUserInterface.isDark ? NSAppearanceNameVibrantDark: NSAppearanceNameVibrantLight;
-}
-
-- (NSVisualEffectMaterial)materialForVisualEffectsView
-{
-    if (@available(macOS 10.14, *)) {
-        return NSVisualEffectMaterialUnderWindowBackground;
-    }
-
-    return NSVisualEffectMaterialAppearanceBased;
 }
 
 @end
