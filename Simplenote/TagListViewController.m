@@ -531,19 +531,20 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
                  proposedRow:(NSInteger)row
        proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
+    if (info.draggingSource != self.tableView) {
+        return NSDragOperationNone;
+    }
+
     // Disallow drop outside the Tags Range
     if (row < self.state.indexOfFirstTagRow || (row > self.state.indexOfLastTagRow + 1)) {
         return NSDragOperationNone;
     }
 
-    if ([info draggingSource] == self.tableView) {
-        if (dropOperation == NSTableViewDropOn){
-            [self.tableView setDropRow:row dropOperation:NSTableViewDropAbove];
-        }
-        return NSDragOperationMove;
+    if (dropOperation == NSTableViewDropOn) {
+        [self.tableView setDropRow:row dropOperation:NSTableViewDropAbove];
     }
-    
-    return NSDragOperationNone;
+
+    return NSDragOperationMove;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView
