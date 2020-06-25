@@ -10,7 +10,7 @@ extension TagListViewController {
         clipView.extendedContentInsets.top = Settings.extendedTopInset
     }
 
-    /// Regenerates the TableView's Rows
+    /// Regenerates the Internal List State
     ///
     @objc
     func refreshState() {
