@@ -52,7 +52,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
-@property (nonatomic, strong) IBOutlet NSMenu                   *detailsMenu;
+@property (nonatomic, strong) IBOutlet NSMenu                   *moreActionsMenu;
 @property (nonatomic, strong) IBOutlet BackgroundView           *backgroundView;
 @property (nonatomic, strong) IBOutlet BackgroundView           *topDividerView;
 @property (nonatomic, strong) IBOutlet BackgroundView           *bottomDividerView;

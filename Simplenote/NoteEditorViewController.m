@@ -686,13 +686,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Actions
 
-- (IBAction)detailsAction:(id)sender
+- (IBAction)displayMoreActionsMenu:(id)sender
 {
     NSButton *infoButton = (NSButton *)sender;
     NSRect infoFrame = infoButton.frame;
     NSPoint origin = NSMakePoint(CGRectGetMidX(infoFrame), CGRectGetMinY(infoFrame));
 
-    [self.detailsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
+    [self.moreActionsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
 }
 
 - (IBAction)pinAction:(id)sender
