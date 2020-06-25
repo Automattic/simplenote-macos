@@ -120,7 +120,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     }
 }
 
-- (NSArray *)sortTags:(NSArray *)unsorted
+- (NSArray<Tag *> *)sortTags:(NSArray<Tag *> *)unsorted
 {
     NSSortDescriptor *sortDescriptor;
     if (Options.shared.alphabeticallySortTags) {
@@ -166,7 +166,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 - (void)loadTags
 {
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    NSArray *unsorted = [[appDelegate.simperium bucketForName: @"Tag"] allObjects];
+    NSArray<Tag *> *unsorted = [[appDelegate.simperium bucketForName: @"Tag"] allObjects];
     self.tagArray = [self sortTags:unsorted];
 
     [appDelegate.simperium save];
