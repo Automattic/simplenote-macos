@@ -169,6 +169,10 @@
 		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
+		B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
+		B55C312D24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
+		B55C312F24A5338C00B23B3F /* Metrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55C312E24A5338C00B23B3F /* Metrics.storyboard */; };
+		B55C313024A5338C00B23B3F /* Metrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55C312E24A5338C00B23B3F /* Metrics.storyboard */; };
 		B55C313324A552ED00B23B3F /* NSStoryboardName+Simplenote .swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313224A552ED00B23B3F /* NSStoryboardName+Simplenote .swift */; };
 		B55C313424A552ED00B23B3F /* NSStoryboardName+Simplenote .swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313224A552ED00B23B3F /* NSStoryboardName+Simplenote .swift */; };
 		B55C313624A5536700B23B3F /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313524A5536700B23B3F /* NSView+Simplenote.swift */; };
@@ -505,6 +509,8 @@
 		B54EB18E1A3F683D00D472B3 /* SPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPWindow.h; sourceTree = "<group>"; };
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
+		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
+		B55C312E24A5338C00B23B3F /* Metrics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Metrics.storyboard; sourceTree = "<group>"; };
 		B55C313224A552ED00B23B3F /* NSStoryboardName+Simplenote .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStoryboardName+Simplenote .swift"; sourceTree = "<group>"; };
 		B55C313524A5536700B23B3F /* NSView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Simplenote.swift"; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -991,6 +997,15 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		B55C313124A5339300B23B3F /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				B55C312B24A530A500B23B3F /* MetricsViewController.swift */,
+				B55C312E24A5338C00B23B3F /* Metrics.storyboard */,
+			);
+			name = Metrics;
+			sourceTree = "<group>";
+		};
 		B56FA78D2437C650002CB9FF /* Themes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1124,6 +1139,7 @@
 			isa = PBXGroup;
 			children = (
 				B5AF76C924A3F06D00B7D530 /* Tags */,
+				B55C313124A5339300B23B3F /* Metrics */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
@@ -1309,6 +1325,7 @@
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
+				B55C312F24A5338C00B23B3F /* Metrics.storyboard in Resources */,
 				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
@@ -1330,6 +1347,7 @@
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */,
+				B55C313024A5338C00B23B3F /* Metrics.storyboard in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
@@ -1623,6 +1641,7 @@
 				B51699842480B93100ACF2F4 /* TagsField.swift in Sources */,
 				B5AF76C224A2A4F100B7D530 /* NSPredicate+Simplenote.swift in Sources */,
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */,
 				B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
@@ -1751,6 +1770,7 @@
 				3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5AF76C324A2A4F100B7D530 /* NSPredicate+Simplenote.swift in Sources */,
 				B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
+				B55C312D24A530A500B23B3F /* MetricsViewController.swift in Sources */,
 				B56FA7932437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				375D293321E033D1007AB25A /* buffer.c in Sources */,
 				B5AF76CC24A3F27E00B7D530 /* TagListRow.swift in Sources */,
