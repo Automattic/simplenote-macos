@@ -25,4 +25,25 @@ extension TagListRow {
 
         return true
     }
+
+    /// Returns a collection of Rows that
+    ///
+    static func buildListRows(for tags: [Tag] = []) -> [TagListRow] {
+        var rows: [TagListRow] = [
+            .allNotes,
+            .trash
+        ]
+
+        guard !tags.isEmpty else {
+            return rows
+        }
+
+        let tags: [TagListRow] = tags.map { .tag(tag: $0) }
+        rows.append(.header)
+        rows.append(contentsOf: tags)
+// TODO: Implement
+//        rows.append(.untagged)
+
+        return rows
+    }
 }

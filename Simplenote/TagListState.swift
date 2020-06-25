@@ -13,24 +13,15 @@ class TagListState: NSObject {
     /// Initial State Initializer: We don't really show tags here
     ///
     override init() {
-        rows = [ .allNotes, .trash ]
+        self.rows = TagListRow.buildListRows()
         super.init()
     }
 
     /// Initializes the State so that the specified Tags collection is rendered
     ///
     init(tags: [Tag]) {
-        let tags: [TagListRow] = tags.map { .tag(tag: $0) }
-        var rows: [TagListRow] = []
-
-        rows.append(.allNotes)
-        rows.append(.trash)
-        rows.append(.header)
-        rows.append(contentsOf: tags)
-// TODO: Implement
-//        rows.append(.untagged)
-
-        self.rows = rows
+        self.rows = TagListRow.buildListRows(for: tags)
+        super.init()
     }
 }
 
