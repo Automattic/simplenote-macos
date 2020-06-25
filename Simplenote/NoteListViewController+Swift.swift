@@ -43,8 +43,7 @@ extension NoteListViewController {
             return
         }
 
-        let name: NSAppearance.Name = SPUserInterface.isDark ? .vibrantDark : .aqua
-        searchField.appearance = NSAppearance(named: name)
+        searchField.appearance = .simplenoteAppearance
     }
 }
 
