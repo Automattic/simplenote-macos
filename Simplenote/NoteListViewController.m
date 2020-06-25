@@ -534,24 +534,4 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     [self refreshPredicate];
 }
 
-- (void)refreshPredicate
-{
-    NSString *searchText = [self.searchField stringValue];
-    
-    NSMutableArray *predicateList = [NSMutableArray new];
-    [predicateList addObject: [NSPredicate predicateForNotesWithDeletedStatus:self.viewingTrash]];
-    
-    NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
-    if (selectedTag.length > 0) {
-        [predicateList addObject: [NSPredicate predicateForNotesWithTag:selectedTag]];
-    }
-    
-    if (searchText.length > 0) {
-        [predicateList addObject:[NSPredicate predicateForSearchText:searchText]];
-    }
-    
-    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicateList];
-    [self setNotesPredicate:compound];
-}
-
 @end

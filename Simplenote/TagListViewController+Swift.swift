@@ -26,6 +26,23 @@ extension TagListViewController {
 }
 
 
+// MARK: - Public API
+//
+extension TagListViewController {
+
+    /// Returns the Selected Row
+    ///
+    var selectedRow: TagListRow? {
+        let selectedIndex = tableView.selectedRow
+        guard selectedIndex != NSNotFound else {
+            return nil
+        }
+
+        return state.rowAtIndex(selectedIndex)
+    }
+}
+
+
 // MARK: - NSTableViewDelegate Helpers
 //
 extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
