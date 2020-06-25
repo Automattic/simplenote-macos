@@ -21,6 +21,20 @@
 
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
+@interface NoteListViewController ()
+@property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
+@property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
+@property (nonatomic, strong) IBOutlet BackgroundView       *topDividerView;
+@property (nonatomic, strong) IBOutlet NSTextField          *statusField;
+@property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (nonatomic, strong) IBOutlet SPTableView          *tableView;
+@property (nonatomic, strong) IBOutlet NSView               *searchView;
+@property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
+@property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, assign) BOOL                          searching;
+@property (nonatomic, assign) BOOL                          viewingTrash;
+@end
+
 @implementation NoteListViewController
 
 - (void)viewDidLoad
