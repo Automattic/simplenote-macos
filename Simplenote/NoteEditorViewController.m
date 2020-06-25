@@ -686,7 +686,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Actions
 
-- (IBAction)displayMoreActionsMenu:(id)sender
+- (IBAction)moreWasPressed:(id)sender
 {
     NSButton *infoButton = (NSButton *)sender;
     NSRect infoFrame = infoButton.frame;

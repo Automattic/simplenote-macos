@@ -1067,7 +1067,7 @@
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="displayMetricsWindowWithSender:" target="1107" id="pZV-V1-Upf"/>
+                                                            <action selector="metricsWasPressedWithSender:" target="1107" id="U1v-vN-rCF"/>
                                                         </connections>
                                                     </button>
                                                     <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jyK-U4-rcH" userLabel="More">
@@ -1077,7 +1077,7 @@
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="displayMoreActionsMenu:" target="1107" id="Ba4-Cv-sse"/>
+                                                            <action selector="moreWasPressed:" target="1107" id="wxL-gs-czt"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

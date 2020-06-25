@@ -151,6 +151,16 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Actions
+//
+extension NoteEditorViewController {
+
+    @IBAction func metricsWasPressed(sender: Any) {
+        displayMetrics(from: toolbarView.metricsButton)
+}
+
+
+// MARK: - Metrics
 // MARK: - Markdown Rendering
 //
 extension NoteEditorViewController {
