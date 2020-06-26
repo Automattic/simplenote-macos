@@ -8,20 +8,21 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MetricsViewController" customModule="Simplenote" customModuleProvider="target">
             <connections>
-                <outlet property="charsDetailsLabel" destination="gn3-44-UTu" id="noF-jH-sCy"/>
-                <outlet property="charsTextLabel" destination="K8z-ay-qcP" id="3lG-t5-fAL"/>
-                <outlet property="createdDetailsLabel" destination="TD2-YG-kpC" id="6BK-Hd-nT1"/>
-                <outlet property="createdTextLabel" destination="dZ0-tU-Bc5" id="u0P-15-ZTl"/>
-                <outlet property="modifiedDetailsLabel" destination="ZyH-GP-C2f" id="Cjg-nf-7mb"/>
-                <outlet property="modifiedTextLabel" destination="C9a-zL-iLu" id="WUT-lR-qvF"/>
-                <outlet property="wordsDetailsLabel" destination="GPX-iN-iZj" id="ODf-7O-l8G"/>
-                <outlet property="wordsTextLabel" destination="AQn-dM-7Jm" id="PUg-Xa-zSx"/>
+                <outlet property="charsDetailsLabel" destination="gn3-44-UTu" id="bMO-5f-X9j"/>
+                <outlet property="charsTextLabel" destination="K8z-ay-qcP" id="hEX-CG-zpu"/>
+                <outlet property="createdDetailsLabel" destination="dZ0-tU-Bc5" id="onE-fJ-GgN"/>
+                <outlet property="createdTextLabel" destination="TD2-YG-kpC" id="mXe-uL-Jyl"/>
+                <outlet property="modifiedDetailsLabel" destination="C9a-zL-iLu" id="VcY-tM-dzi"/>
+                <outlet property="modifiedTextLabel" destination="ZyH-GP-C2f" id="wbw-FY-Kvl"/>
+                <outlet property="view" destination="9uy-MA-rkc" id="vPg-k3-f7w"/>
+                <outlet property="wordsDetailsLabel" destination="AQn-dM-7Jm" id="rUb-Ur-mZ7"/>
+                <outlet property="wordsTextLabel" destination="GPX-iN-iZj" id="lqB-Qu-nzF"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <view id="9uy-MA-rkc">
-            <rect key="frame" x="0.0" y="0.0" width="266" height="133"/>
+        <view misplaced="YES" id="9uy-MA-rkc">
+            <rect key="frame" x="0.0" y="0.0" width="266" height="116"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bIO-uD-Uuz" userLabel="Left Stack">
@@ -133,7 +134,7 @@
                 <constraint firstItem="RDG-k9-sqx" firstAttribute="bottom" secondItem="bIO-uD-Uuz" secondAttribute="bottom" id="496-vd-iy1"/>
                 <constraint firstItem="RDG-k9-sqx" firstAttribute="leading" secondItem="bIO-uD-Uuz" secondAttribute="trailing" id="CoF-mi-Sc6"/>
                 <constraint firstAttribute="bottom" secondItem="bIO-uD-Uuz" secondAttribute="bottom" constant="10" id="Fvr-Wi-Xux"/>
-                <constraint firstItem="bIO-uD-Uuz" firstAttribute="top" secondItem="9uy-MA-rkc" secondAttribute="top" constant="35" id="HTT-kM-J5M"/>
+                <constraint firstItem="bIO-uD-Uuz" firstAttribute="top" secondItem="9uy-MA-rkc" secondAttribute="top" constant="16" id="HTT-kM-J5M"/>
                 <constraint firstItem="RDG-k9-sqx" firstAttribute="top" secondItem="bIO-uD-Uuz" secondAttribute="top" id="XdM-LH-pCb"/>
                 <constraint firstAttribute="trailing" secondItem="RDG-k9-sqx" secondAttribute="trailing" id="cWZ-yw-xln"/>
                 <constraint firstItem="bIO-uD-Uuz" firstAttribute="leading" secondItem="9uy-MA-rkc" secondAttribute="leading" constant="16" id="hik-25-Sdc"/>
