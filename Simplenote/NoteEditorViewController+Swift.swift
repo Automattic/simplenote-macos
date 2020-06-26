@@ -166,13 +166,8 @@ extension NoteEditorViewController {
 extension NoteEditorViewController {
 
     func displayMetrics(from sourceView: NSView) {
-        let windowController = metricsWindowController ?? .instantiate(fromStoryboardNamed: .metrics)
-        windowController.onClose = { [weak self] in
-            self?.metricsWindowController = nil
-        }
-
-        windowController.showWindow(by: sourceView.locationInScreen)
-        self.metricsWindowController = windowController
+        let viewController = metricsViewController ?? MetricsViewController()
+        metricsViewController = viewController
     }
 }
 
