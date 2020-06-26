@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="9Ss-vR-uox">
             <objects>
-                <windowController id="8ea-zj-CNY" sceneMemberID="viewController">
+                <windowController id="8ea-zj-CNY" customClass="MetricsWindowController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="0i5-HD-S05" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

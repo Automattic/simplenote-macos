@@ -14,6 +14,7 @@
 @class BackgroundView;
 @class NoteListViewController;
 @class MarkdownViewController;
+@class MetricsWindowController;
 @class TagsField;
 @class ToolbarView;
 
@@ -63,6 +64,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
 @property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                    viewingTrash;
+@property (nonatomic, strong) MetricsWindowController           *metricsWindowController;
 @property (nonatomic, strong) NSLayoutConstraint                *toolbarViewTopConstraint;
 @property (nonatomic,   weak) Note                              *note;
 
