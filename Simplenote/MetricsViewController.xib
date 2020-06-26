@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MetricsViewController" customModule="Simplenote" customModuleProvider="target">
+            <connections>
+                <outlet property="charsDetailsLabel" destination="gn3-44-UTu" id="noF-jH-sCy"/>
+                <outlet property="charsTextLabel" destination="K8z-ay-qcP" id="3lG-t5-fAL"/>
+                <outlet property="createdDetailsLabel" destination="TD2-YG-kpC" id="6BK-Hd-nT1"/>
+                <outlet property="createdTextLabel" destination="dZ0-tU-Bc5" id="u0P-15-ZTl"/>
+                <outlet property="modifiedDetailsLabel" destination="ZyH-GP-C2f" id="Cjg-nf-7mb"/>
+                <outlet property="modifiedTextLabel" destination="C9a-zL-iLu" id="WUT-lR-qvF"/>
+                <outlet property="wordsDetailsLabel" destination="GPX-iN-iZj" id="ODf-7O-l8G"/>
+                <outlet property="wordsTextLabel" destination="AQn-dM-7Jm" id="PUg-Xa-zSx"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view id="9uy-MA-rkc">
+            <rect key="frame" x="0.0" y="0.0" width="266" height="133"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <visualEffectView blendingMode="behindWindow" material="menu" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="eM9-Ac-ueo">
+                    <rect key="frame" x="0.0" y="0.0" width="266" height="133"/>
+                </visualEffectView>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bIO-uD-Uuz" userLabel="Left Stack">
+                    <rect key="frame" x="16" y="10" width="108" height="88"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyH-GP-C2f">
+                            <rect key="frame" x="-2" y="72" width="69" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Modified" usesSingleLineMode="YES" id="B2B-hL-UQ6">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD2-YG-kpC">
+                            <rect key="frame" x="-2" y="48" width="64" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Created" usesSingleLineMode="YES" id="run-fe-x9I">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPX-iN-iZj">
+                            <rect key="frame" x="-2" y="24" width="54" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Words" usesSingleLineMode="YES" id="hKD-Rp-G24">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8z-ay-qcP">
+                            <rect key="frame" x="-2" y="0.0" width="50" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="?Chars" usesSingleLineMode="YES" id="ziF-K0-mo2">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="108" id="AEs-IX-trN"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDG-k9-sqx" userLabel="Right Stack">
+                    <rect key="frame" x="124" y="10" width="142" height="88"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9a-zL-iLu">
+                            <rect key="frame" x="-2" y="72" width="40" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="l99-Ga-t3M">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ0-tU-Bc5">
+                            <rect key="frame" x="-2" y="48" width="40" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="VdM-gf-xxy">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQn-dM-7Jm">
+                            <rect key="frame" x="-2" y="24" width="40" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="EpE-je-YMD">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gn3-44-UTu">
+                            <rect key="frame" x="-2" y="0.0" width="40" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" title="Label" usesSingleLineMode="YES" id="4iz-Ck-Ld5">
+                                <font key="font" size="14" name="SFProText-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="142" id="JaH-t6-ej5"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="eM9-Ac-ueo" secondAttribute="trailing" id="3cQ-w6-5mb"/>
+                <constraint firstItem="RDG-k9-sqx" firstAttribute="bottom" secondItem="bIO-uD-Uuz" secondAttribute="bottom" id="496-vd-iy1"/>
+                <constraint firstItem="RDG-k9-sqx" firstAttribute="leading" secondItem="bIO-uD-Uuz" secondAttribute="trailing" id="CoF-mi-Sc6"/>
+                <constraint firstAttribute="bottom" secondItem="bIO-uD-Uuz" secondAttribute="bottom" constant="10" id="Fvr-Wi-Xux"/>
+                <constraint firstItem="bIO-uD-Uuz" firstAttribute="top" secondItem="9uy-MA-rkc" secondAttribute="top" constant="35" id="HTT-kM-J5M"/>
+                <constraint firstAttribute="bottom" secondItem="eM9-Ac-ueo" secondAttribute="bottom" id="S9m-qq-tI1"/>
+                <constraint firstItem="RDG-k9-sqx" firstAttribute="top" secondItem="bIO-uD-Uuz" secondAttribute="top" id="XdM-LH-pCb"/>
+                <constraint firstAttribute="trailing" secondItem="RDG-k9-sqx" secondAttribute="trailing" id="cWZ-yw-xln"/>
+                <constraint firstItem="bIO-uD-Uuz" firstAttribute="leading" secondItem="9uy-MA-rkc" secondAttribute="leading" constant="16" id="hik-25-Sdc"/>
+                <constraint firstItem="eM9-Ac-ueo" firstAttribute="leading" secondItem="9uy-MA-rkc" secondAttribute="leading" id="muO-8L-z80"/>
+                <constraint firstItem="eM9-Ac-ueo" firstAttribute="top" secondItem="9uy-MA-rkc" secondAttribute="top" id="uXu-GB-fkM"/>
+            </constraints>
+            <point key="canvasLocation" x="163" y="155"/>
+        </view>
+    </objects>
+</document>
