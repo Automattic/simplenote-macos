@@ -154,10 +154,10 @@ extension SplitItemKind {
 // MARK: - SplitView's Metrics
 //
 private enum Metrics {
-    static let tagsMinWidth: CGFloat = 200
+    static let tagsMinWidth: CGFloat = 150
     static let tagsMaxWidth: CGFloat = 300
 
-    static let listMinWidth: CGFloat = 250
+    static let listMinWidth: CGFloat = 200
     static let listMaxWidth: CGFloat = 500
 
     static let mainMinWidth: CGFloat = 300
