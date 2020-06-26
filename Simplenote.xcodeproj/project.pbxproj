@@ -171,16 +171,8 @@
 		B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
 		B55C312D24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
-		B55C312F24A5338C00B23B3F /* Metrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55C312E24A5338C00B23B3F /* Metrics.storyboard */; };
-		B55C313024A5338C00B23B3F /* Metrics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55C312E24A5338C00B23B3F /* Metrics.storyboard */; };
-		B55C313324A552ED00B23B3F /* NSStoryboardName+Simplenote .swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313224A552ED00B23B3F /* NSStoryboardName+Simplenote .swift */; };
-		B55C313424A552ED00B23B3F /* NSStoryboardName+Simplenote .swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313224A552ED00B23B3F /* NSStoryboardName+Simplenote .swift */; };
-		B55C313624A5536700B23B3F /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313524A5536700B23B3F /* NSView+Simplenote.swift */; };
-		B55C313724A5536700B23B3F /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313524A5536700B23B3F /* NSView+Simplenote.swift */; };
 		B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */; };
 		B55C313D24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */; };
-		B55C313F24A5823200B23B3F /* MetricsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313E24A5823200B23B3F /* MetricsWindowController.swift */; };
-		B55C314024A5823200B23B3F /* MetricsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313E24A5823200B23B3F /* MetricsWindowController.swift */; };
 		B55C314224A588CD00B23B3F /* NSWindowController+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C314124A588CD00B23B3F /* NSWindowController+Simplenote.swift */; };
 		B55C314324A588CD00B23B3F /* NSWindowController+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C314124A588CD00B23B3F /* NSWindowController+Simplenote.swift */; };
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
@@ -516,11 +508,7 @@
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
 		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
-		B55C312E24A5338C00B23B3F /* Metrics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Metrics.storyboard; sourceTree = "<group>"; };
-		B55C313224A552ED00B23B3F /* NSStoryboardName+Simplenote .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStoryboardName+Simplenote .swift"; sourceTree = "<group>"; };
-		B55C313524A5536700B23B3F /* NSView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Simplenote.swift"; sourceTree = "<group>"; };
 		B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSVisualEffectView+Simplenote.swift"; sourceTree = "<group>"; };
-		B55C313E24A5823200B23B3F /* MetricsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsWindowController.swift; sourceTree = "<group>"; };
 		B55C314124A588CD00B23B3F /* NSWindowController+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowController+Simplenote.swift"; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -974,13 +962,11 @@
 				B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */,
 				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
 				B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */,
-				B55C313224A552ED00B23B3F /* NSStoryboardName+Simplenote .swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
 				B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */,
 				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
-				B55C313524A5536700B23B3F /* NSView+Simplenote.swift */,
 				B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */,
 				B55C314124A588CD00B23B3F /* NSWindowController+Simplenote.swift */,
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
@@ -1012,8 +998,6 @@
 			isa = PBXGroup;
 			children = (
 				B55C312B24A530A500B23B3F /* MetricsViewController.swift */,
-				B55C313E24A5823200B23B3F /* MetricsWindowController.swift */,
-				B55C312E24A5338C00B23B3F /* Metrics.storyboard */,
 			);
 			name = Metrics;
 			sourceTree = "<group>";
@@ -1337,7 +1321,6 @@
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
-				B55C312F24A5338C00B23B3F /* Metrics.storyboard in Resources */,
 				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
@@ -1359,7 +1342,6 @@
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */,
-				B55C313024A5338C00B23B3F /* Metrics.storyboard in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
@@ -1611,7 +1593,6 @@
 				B586C062245CCD35009508EC /* SplitViewController.swift in Sources */,
 				2614F1E01405A0B10031AE94 /* Tag.m in Sources */,
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
-				B55C314224A588CD00B23B3F /* NSWindowController+Simplenote.swift in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
@@ -1632,7 +1613,6 @@
 				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
 				B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
-				B55C313F24A5823200B23B3F /* MetricsWindowController.swift in Sources */,
 				B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
@@ -1647,7 +1627,6 @@
 				B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
-				B55C313324A552ED00B23B3F /* NSStoryboardName+Simplenote .swift in Sources */,
 				B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
 				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
@@ -1670,7 +1649,6 @@
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
-				B55C313624A5536700B23B3F /* NSView+Simplenote.swift in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				375D294821E033D1007AB25A /* html_blocks.c in Sources */,
@@ -1764,7 +1742,6 @@
 				466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
-				B55C314024A5823200B23B3F /* MetricsWindowController.swift in Sources */,
 				466FFEB417CC10A800399652 /* DateTransformer.m in Sources */,
 				B5132FA923C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				375D293721E033D1007AB25A /* document.c in Sources */,
@@ -1779,7 +1756,6 @@
 				B55C313D24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
 				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
-				B55C313424A552ED00B23B3F /* NSStoryboardName+Simplenote .swift in Sources */,
 				B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
@@ -1802,7 +1778,6 @@
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */,
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
-				B55C313724A5536700B23B3F /* NSView+Simplenote.swift in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
