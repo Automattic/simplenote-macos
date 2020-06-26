@@ -44,7 +44,7 @@ extension ToolbarState {
     }
 
     var isMetricsButtonEnabled: Bool {
-        (isDisplayingNote && !isSelectingMultipleNotes) && !isViewingTrash
+        (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
     }
 
     var isMetricsButtonHidden: Bool {
