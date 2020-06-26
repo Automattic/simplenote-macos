@@ -14,7 +14,6 @@
 @class BackgroundView;
 @class NoteListViewController;
 @class MarkdownViewController;
-@class MetricsViewController;
 @class TagsField;
 @class ToolbarView;
 
@@ -64,7 +63,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
 @property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                    viewingTrash;
-@property (nonatomic, strong) MetricsViewController             *metricsViewController;
 @property (nonatomic, strong) NSLayoutConstraint                *toolbarViewTopConstraint;
 @property (nonatomic,   weak) Note                              *note;
 
@@ -90,4 +88,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (IBAction)toggleEditorWidth:(id)sender;
 - (IBAction)insertChecklistAction:(id)sender;
 
+- (void)showViewController:(NSViewController *)viewController
+            relativeToView:(NSView *)view
+             preferredEdge:(NSRectEdge)preferredEdge;
 @end

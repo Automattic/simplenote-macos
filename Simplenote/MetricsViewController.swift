@@ -63,10 +63,10 @@ class MetricsViewController: NSViewController {
 private extension MetricsViewController {
 
     func setupTextLabels() {
-        modifiedTextLabel.stringValue = NSLocalizedString("Modified", comment: "")
-        createdTextLabel.stringValue = NSLocalizedString("Created", comment: "")
-        wordsTextLabel.stringValue = NSLocalizedString("Words", comment: "")
-        charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "")
+        modifiedTextLabel.stringValue = NSLocalizedString("Modified", comment: "Note Modification Date")
+        createdTextLabel.stringValue = NSLocalizedString("Created", comment: "Note Creation Date")
+        wordsTextLabel.stringValue = NSLocalizedString("Words", comment: "Number of words in the note")
+        charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "Number of characters in the note")
     }
 }
 
