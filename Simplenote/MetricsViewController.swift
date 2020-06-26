@@ -6,10 +6,6 @@ import AppKit
 //
 class MetricsViewController: NSViewController {
 
-    /// Background Blur
-    ///
-    @IBOutlet private(set) var backgroundVisualEffectsView: NSVisualEffectView!
-
     /// Modified: Left Text Label
     ///
     @IBOutlet private(set) var modifiedTextLabel: NSTextField!
@@ -57,7 +53,6 @@ class MetricsViewController: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        setupWindowTitle()
         refreshStyle()
     }
 }
@@ -72,10 +67,6 @@ private extension MetricsViewController {
         createdTextLabel.stringValue = NSLocalizedString("Created", comment: "")
         wordsTextLabel.stringValue = NSLocalizedString("Words", comment: "")
         charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "")
-    }
-
-    func setupWindowTitle() {
-        view.window?.title = NSLocalizedString("Information", comment: "")
     }
 }
 
@@ -100,19 +91,7 @@ private extension MetricsViewController {
 
     @objc
     func refreshStyle() {
-        setupWindowStyle()
-        refreshBackgroundStyle()
         refreshLabelStyles()
-    }
-
-    func setupWindowStyle() {
-        // Note: Overriding the Window's appearance cascades changes to the dynamic colors!
-        backgroundVisualEffectsView.window?.appearance = .simplenoteAppearance
-    }
-
-    func refreshBackgroundStyle() {
-        backgroundVisualEffectsView.appearance = .simplenoteAppearance
-        backgroundVisualEffectsView.material = .simplenoteTaglistMaterial
     }
 
     func refreshLabelStyles() {

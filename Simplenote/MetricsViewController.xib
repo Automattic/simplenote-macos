@@ -24,9 +24,6 @@
             <rect key="frame" x="0.0" y="0.0" width="266" height="133"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <visualEffectView blendingMode="behindWindow" material="menu" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="eM9-Ac-ueo">
-                    <rect key="frame" x="0.0" y="0.0" width="266" height="133"/>
-                </visualEffectView>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bIO-uD-Uuz" userLabel="Left Stack">
                     <rect key="frame" x="16" y="10" width="108" height="88"/>
                     <subviews>
@@ -133,17 +130,13 @@
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="eM9-Ac-ueo" secondAttribute="trailing" id="3cQ-w6-5mb"/>
                 <constraint firstItem="RDG-k9-sqx" firstAttribute="bottom" secondItem="bIO-uD-Uuz" secondAttribute="bottom" id="496-vd-iy1"/>
                 <constraint firstItem="RDG-k9-sqx" firstAttribute="leading" secondItem="bIO-uD-Uuz" secondAttribute="trailing" id="CoF-mi-Sc6"/>
                 <constraint firstAttribute="bottom" secondItem="bIO-uD-Uuz" secondAttribute="bottom" constant="10" id="Fvr-Wi-Xux"/>
                 <constraint firstItem="bIO-uD-Uuz" firstAttribute="top" secondItem="9uy-MA-rkc" secondAttribute="top" constant="35" id="HTT-kM-J5M"/>
-                <constraint firstAttribute="bottom" secondItem="eM9-Ac-ueo" secondAttribute="bottom" id="S9m-qq-tI1"/>
                 <constraint firstItem="RDG-k9-sqx" firstAttribute="top" secondItem="bIO-uD-Uuz" secondAttribute="top" id="XdM-LH-pCb"/>
                 <constraint firstAttribute="trailing" secondItem="RDG-k9-sqx" secondAttribute="trailing" id="cWZ-yw-xln"/>
                 <constraint firstItem="bIO-uD-Uuz" firstAttribute="leading" secondItem="9uy-MA-rkc" secondAttribute="leading" constant="16" id="hik-25-Sdc"/>
-                <constraint firstItem="eM9-Ac-ueo" firstAttribute="leading" secondItem="9uy-MA-rkc" secondAttribute="leading" id="muO-8L-z80"/>
-                <constraint firstItem="eM9-Ac-ueo" firstAttribute="top" secondItem="9uy-MA-rkc" secondAttribute="top" id="uXu-GB-fkM"/>
             </constraints>
             <point key="canvasLocation" x="163" y="155"/>
         </view>
