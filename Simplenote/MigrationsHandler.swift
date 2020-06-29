@@ -50,7 +50,7 @@ private extension MigrationsHandler {
     ///
     func processPreferencesMigrations() {
         guard UserDefaults.standard.containsObject(forKey: .analyticsEnabled) == false,
-            let preferences = SimplenoteAppDelegate.shared()?.simperium?.preferencesObject()
+            let preferences = SimplenoteAppDelegate.shared().simperium.preferencesObject()
             else {
                 return
         }

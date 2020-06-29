@@ -65,7 +65,7 @@ extension NoteListViewController {
     /// Returns a collection of NSPredicate(s) that will filter the Notes associated with the Selected Tag
     ///
     private var selectedTagPredicates: [NSPredicate] {
-        guard let selectedTagRow = SimplenoteAppDelegate.shared()?.tagListViewController.selectedRow else {
+        guard let selectedTagRow = SimplenoteAppDelegate.shared().tagListViewController.selectedRow else {
             return []
         }
 

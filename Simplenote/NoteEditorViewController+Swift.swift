@@ -261,9 +261,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
         }
 
         // Search Tags starting with the new keyword
-        guard let suggestions = SimplenoteAppDelegate.shared()?.simperium?.searchTagNames(prefix: substring) else {
-            return []
-        }
+        let suggestions = SimplenoteAppDelegate.shared().simperium.searchTagNames(prefix: substring)
 
         // Return **Only** the Sorted Subset that's not already in the note.
         return note.filterUnassociatedTagNames(from: suggestions).sorted()

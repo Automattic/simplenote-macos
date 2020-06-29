@@ -7,10 +7,6 @@ extension SimplenoteAppDelegate {
 
     @objc
     func configureSplitView() {
-        precondition(tagListViewController != nil)
-        precondition(noteListViewController != nil)
-        precondition(noteEditorViewController != nil)
-
         // NOTE:
         // This initialization is in a midway stage. We're essentially "stealing" the ViewController(s) views,
         // which are already in the hierarchy defined by MainMenu.nib, and placing them in a fresh SplitViewController.
@@ -32,9 +28,6 @@ extension SimplenoteAppDelegate {
 
     @objc
     func configureWindow() {
-        precondition(window != nil)
-        precondition(splitViewController != nil)
-
         window.contentViewController = splitViewController
         window.initialFirstResponder = noteEditorViewController.noteEditor
     }
