@@ -72,6 +72,8 @@ class MetricsViewController: NSViewController {
     }
 
     func displayMetrics(for notes: [Note]) {
+        // Ensure the view is Loaded: we want the NSViewController.view to acquire its final size *synchronously*
+        loadViewIfNeeded()
         controller.startReportingMetrics(for: notes)
     }
 }
@@ -86,6 +88,14 @@ private extension MetricsViewController {
         createdTextLabel.stringValue = NSLocalizedString("Created", comment: "Note Creation Date")
         wordsTextLabel.stringValue = NSLocalizedString("Words", comment: "Number of words in the note")
         charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "Number of characters in the note")
+    }
+
+    func loadViewIfNeeded() {
+        guard !isViewLoaded else {
+            return
+        }
+
+        _ = view
     }
 }
 
