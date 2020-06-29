@@ -88,7 +88,4 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (IBAction)toggleEditorWidth:(id)sender;
 - (IBAction)insertChecklistAction:(id)sender;
 
-- (void)showViewController:(NSViewController *)viewController
-            relativeToView:(NSView *)view
-             preferredEdge:(NSRectEdge)preferredEdge;
 @end

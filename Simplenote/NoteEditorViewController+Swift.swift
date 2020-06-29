@@ -167,7 +167,7 @@ extension NoteEditorViewController {
 
     func displayMetrics(from sourceView: NSView) {
         let viewController = MetricsViewController()
-        show(viewController, relativeTo: toolbarView.metricsButton, preferredEdge: .maxY)
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .semitransient)
     }
 }
 
