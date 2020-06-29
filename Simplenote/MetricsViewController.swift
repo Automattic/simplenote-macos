@@ -38,6 +38,19 @@ class MetricsViewController: NSViewController {
     ///
     @IBOutlet private(set) var charsDetailsLabel: NSTextField!
 
+    /// Metrics Controller
+    ///
+    private let controller = MetricsController()
+
+    /// Date Formatter
+    ///
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+
 
     // MARK: - Overridden Methdods
 
@@ -49,11 +62,17 @@ class MetricsViewController: NSViewController {
         super.viewDidLoad()
         setupTextLabels()
         startListeningToNotifications()
+        startObservingMetricUpdates()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
         refreshStyle()
+        refreshMetrics()
+    }
+
+    func displayMetrics(for notes: [Note]) {
+        controller.startReportingMetrics(for: notes)
     }
 }
 
@@ -71,7 +90,7 @@ private extension MetricsViewController {
 }
 
 
-// MARK: - Notifications
+// MARK: - Theme Support
 //
 private extension MetricsViewController {
 
@@ -82,19 +101,9 @@ private extension MetricsViewController {
     func stopListeningToNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
-}
-
-
-// MARK: - Style
-//
-private extension MetricsViewController {
 
     @objc
     func refreshStyle() {
-        refreshLabelStyles()
-    }
-
-    func refreshLabelStyles() {
         let primaryLabels = [
             modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel
         ]
@@ -110,5 +119,32 @@ private extension MetricsViewController {
         for label in secondaryLabels {
             label?.textColor = .simplenoteSecondaryTextColor
         }
+    }
+}
+
+
+// MARK: - Rendering Metrics!
+//
+extension MetricsViewController {
+
+    func startObservingMetricUpdates() {
+        controller.onChange = { [weak self] in
+            self?.refreshMetrics()
+        }
+    }
+
+    func refreshMetrics() {
+        let created = controller.creationDate.map {
+            dateFormatter.string(from: $0)
+        }
+
+        let modified = controller.modifiedDate.map {
+            dateFormatter.string(from: $0)
+        }
+
+        modifiedDetailsLabel.stringValue = modified ?? "-"
+        createdDetailsLabel.stringValue = created ?? "-"
+        wordsDetailsLabel.stringValue = String(controller.numberOfWords)
+        charsDetailsLabel.stringValue = String(controller.numberOfChars)
     }
 }

@@ -156,7 +156,11 @@ extension NoteEditorViewController {
 extension NoteEditorViewController {
 
     @IBAction func metricsWasPressed(sender: Any) {
-        displayMetrics(from: toolbarView.metricsButton)
+        guard let notes = selectedNotes else {
+            return
+        }
+
+        displayMetrics(from: toolbarView.metricsButton, for: notes)
     }
 }
 
@@ -165,8 +169,9 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
-    func displayMetrics(from sourceView: NSView) {
+    func displayMetrics(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController()
+        viewController.displayMetrics(for: notes)
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 }

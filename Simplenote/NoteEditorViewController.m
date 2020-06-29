@@ -367,33 +367,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     return newCursorLocation;
 }
 
-- (NSUInteger)wordCount
-{
-    NSUInteger numWords = 0;
-    for (Note *selectedNote in self.selectedNotes) {
-        // countWordsInString returns -1 for a zero length string; handle that
-        if (selectedNote.content == nil || [selectedNote.content length] == 0)
-            continue;
-        
-        numWords += [[NSSpellChecker sharedSpellChecker] countWordsInString:selectedNote.content language:nil];
-    }
-    
-    return numWords;
-}
-
-- (NSUInteger)charCount
-{
-    NSUInteger numChars = 0;
-    for (Note *selectedNote in self.selectedNotes) {
-        if (selectedNote.content == nil)
-            continue;
-        
-        numChars += [selectedNote.content length];
-    }
-    
-    return numChars;
-}
-
 - (void)updateVersionLabel:(NSDate *)versionDate
 {
     NSString *text = [NSString stringWithFormat:@"  %@: %@",
