@@ -100,6 +100,20 @@ private extension MetricsViewController {
 }
 
 
+// MARK: - Enclosing Popover: Customize!
+//
+extension MetricsViewController: NSPopoverDelegate {
+
+    public func popoverWillShow(_ notification: Notification) {
+        guard let popover = notification.object as? NSPopover else {
+            return
+        }
+
+        popover.appearance = .simplenoteAppearance
+    }
+}
+
+
 // MARK: - Theme Support
 //
 private extension MetricsViewController {
