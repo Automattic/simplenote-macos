@@ -7,6 +7,8 @@ import Foundation
 protocol VersionsViewControllerDelegate {
     func versionsController(_ controller: VersionsViewController, updatedSlider newValue: Int)
     func versionsControllerDidClickRestore(_ controller: VersionsViewController)
+    func versionsControllerWillShow(_ controller: VersionsViewController)
+    func versionsControllerWillClose(_ controller: VersionsViewController)
 }
 
 
@@ -26,6 +28,14 @@ class VersionsViewController: NSViewController {
     /// Versions Text
     ///
     @IBOutlet private var versionTextField: NSTextField!
+
+    /// NSPopover instance that's presenting the current instance.
+    ///
+    private var presentingPopover: NSPopover? {
+        didSet {
+            refreshStyle()
+        }
+    }
 
     /// Old School delegate
     ///
@@ -69,7 +79,7 @@ class VersionsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startListeningToNotifications()
-        applyStyle()
+        refreshStyle()
     }
 
     /// Refreshes the Slider Settings with the specified Max / Min
@@ -88,12 +98,28 @@ class VersionsViewController: NSViewController {
 private extension VersionsViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
     }
 
     @objc
-    func applyStyle() {
-        versionTextField.textColor = .simplenoteSelectedTextColor
+    func refreshStyle() {
+        presentingPopover?.appearance = .simplenoteAppearance
+        versionTextField.textColor = .simplenoteTextColor
+    }
+}
+
+
+// MARK: - NSPopoverDelegate
+//
+extension VersionsViewController: NSPopoverDelegate {
+
+    public func popoverWillShow(_ notification: Notification) {
+        presentingPopover = notification.object as? NSPopover
+        delegate?.versionsControllerWillShow(self)
+    }
+
+    func popoverWillClose(_ notification: Notification) {
+        delegate?.versionsControllerWillClose(self)
     }
 }
 
