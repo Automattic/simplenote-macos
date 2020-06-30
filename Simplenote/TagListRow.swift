@@ -6,6 +6,7 @@ import Foundation
 enum TagListRow: Equatable {
     case allNotes
     case trash
+    case spacer
     case header
     case tag(_ tag: Tag)
     case untagged
@@ -26,6 +27,12 @@ extension TagListRow {
         return true
     }
 
+    /// Indicates if the receiver should allow selction
+    ///
+    var isSelectable: Bool {
+        self != .header && self != .spacer
+    }
+
     /// Returns a collection of Rows that
     ///
     static func buildListRows(for tags: [Tag] = []) -> [TagListRow] {
@@ -39,10 +46,15 @@ extension TagListRow {
         }
 
         let tags: [TagListRow] = tags.map { .tag($0) }
+
+        rows.append(.spacer)
         rows.append(.header)
         rows.append(contentsOf: tags)
-// TODO: Implement
-//        rows.append(.untagged)
+
+        // Untagged
+        rows.append(.spacer)
+        rows.append(.untagged)
+        rows.append(.spacer)
 
         return rows
     }

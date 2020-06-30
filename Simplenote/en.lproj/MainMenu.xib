@@ -622,13 +622,13 @@
                                     <visualEffectView blendingMode="behindWindow" material="menu" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="Re0-xq-32H">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="618"/>
                                     </visualEffectView>
-                                    <scrollView borderType="none" horizontalLineScroll="43" horizontalPageScroll="10" verticalLineScroll="43" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
+                                    <scrollView borderType="none" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1452">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="618"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="UOf-YZ-mq1" customClass="ClipView" customModule="Simplenote" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="618"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="43" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="618"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -646,8 +646,26 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
+                                                                <tableCellView identifier="SpacerTableViewCell" id="aaE-RD-DxQ" userLabel="Spacer" customClass="SpacerTableViewCell" customModule="Simplenote" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="RXU-oJ-8xI">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="16"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="16" id="RnH-j4-swH"/>
+                                                                            </constraints>
+                                                                        </customView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="RXU-oJ-8xI" secondAttribute="trailing" id="HPR-ny-WNC"/>
+                                                                        <constraint firstItem="RXU-oJ-8xI" firstAttribute="leading" secondItem="aaE-RD-DxQ" secondAttribute="leading" id="lz4-Dx-NNi"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="RXU-oJ-8xI" secondAttribute="bottom" id="p9l-W9-aHo"/>
+                                                                        <constraint firstItem="RXU-oJ-8xI" firstAttribute="top" secondItem="aaE-RD-DxQ" secondAttribute="top" id="yZb-BY-ydP"/>
+                                                                    </constraints>
+                                                                </tableCellView>
                                                                 <tableCellView identifier="HeaderTableCellView" id="o2b-qa-J8S" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="16" width="120" height="27"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Fr-VHA">
@@ -660,7 +678,7 @@
                                                                         </textField>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="top" secondItem="o2b-qa-J8S" secondAttribute="top" constant="22" id="1Sj-pQ-a14"/>
+                                                                        <constraint firstItem="wK9-Fr-VHA" firstAttribute="top" secondItem="o2b-qa-J8S" secondAttribute="top" constant="6" id="1Sj-pQ-a14"/>
                                                                         <constraint firstAttribute="trailing" secondItem="wK9-Fr-VHA" secondAttribute="trailing" constant="12" id="bF5-z7-8WW"/>
                                                                         <constraint firstItem="wK9-Fr-VHA" firstAttribute="leading" secondItem="o2b-qa-J8S" secondAttribute="leading" constant="16" id="nC5-Iq-Kwe"/>
                                                                         <constraint firstAttribute="bottom" secondItem="wK9-Fr-VHA" secondAttribute="bottom" constant="6" id="yWU-iN-Wkp"/>

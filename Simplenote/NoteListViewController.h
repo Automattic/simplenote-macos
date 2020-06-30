@@ -27,19 +27,19 @@
     BOOL preserveSelection;
 }
 
-@property (strong, nonatomic) IBOutlet NSArrayController    *arrayController;
-@property (strong, nonatomic) IBOutlet BackgroundView       *backgroundView;
-@property (strong, nonatomic) IBOutlet BackgroundView       *topDividerView;
-@property (strong, nonatomic) IBOutlet NSTextField          *statusField;
-@property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
-@property (strong, nonatomic) IBOutlet SPTableView          *tableView;
-@property (strong, nonatomic) IBOutlet NSView               *searchView;
-@property (strong, nonatomic) IBOutlet NSSearchField        *searchField;
-@property (strong, nonatomic) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
+@property (nonatomic, strong, readonly) IBOutlet BackgroundView         *backgroundView;
+@property (nonatomic, strong, readonly) IBOutlet BackgroundView         *topDividerView;
+@property (nonatomic, strong, readonly) IBOutlet NSTextField            *statusField;
+@property (nonatomic, strong, readonly) IBOutlet NSProgressIndicator    *progressIndicator;
+@property (nonatomic, strong, readonly) IBOutlet SPTableView            *tableView;
+@property (nonatomic, strong, readonly) IBOutlet NSView                 *searchView;
+@property (nonatomic, strong, readonly) IBOutlet NSSearchField          *searchField;
+@property (nonatomic, strong, readonly) IBOutlet NSButton               *addNoteButton;
 
-@property (strong, nonatomic) NSLayoutConstraint            *searchViewTopConstraint;
-@property (assign, nonatomic) BOOL                          searching;
-@property (assign, nonatomic) BOOL                          viewingTrash;
+@property (nonatomic, strong, readwrite) NSLayoutConstraint             *searchViewTopConstraint;
+@property (nonatomic, assign, readonly) BOOL                            searching;
+@property (nonatomic, assign, readonly) BOOL                            viewingTrash;
 
 - (void)loadNotes;
 - (void)reloadSynchronously;

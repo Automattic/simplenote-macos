@@ -41,6 +41,19 @@ extension SimplenoteAppDelegate {
 }
 
 
+// MARK: - Public API
+//
+extension SimplenoteAppDelegate {
+
+    /// Returns the Selected Tag Name. Empty string when none!
+    ///
+    @objc
+    var selectedTagName: String {
+        tagListViewController.selectedTagName()
+    }
+}
+
+
 // MARK: - Actions!
 //
 extension SimplenoteAppDelegate {

@@ -2,6 +2,7 @@
 ------
 - Refreshed the Tags Editor Interface!
 - New Scroll Support in the Tags Editor area
+- Implements Untagged Notes Filter
 
 1.11.0
 ------

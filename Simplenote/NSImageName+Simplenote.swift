@@ -69,6 +69,10 @@ extension NSImage.Name {
     ///
     static let trash = NSImage.Name("button_trash")
 
+    /// Tag List: Untagged
+    ///
+    static let untagged = NSImage.Name("button_untagged")
+
     /// Logo: WordPress
     ///
     static let wordPressLogo = NSImage.Name("icon_wp")

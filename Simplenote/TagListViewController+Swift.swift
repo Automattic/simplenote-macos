@@ -20,6 +20,23 @@ extension TagListViewController {
 }
 
 
+// MARK: - Public API
+//
+extension TagListViewController {
+
+    /// Returns the Selected Row
+    ///
+    var selectedRow: TagListRow? {
+        let selectedIndex = tableView.selectedRow
+        guard selectedIndex != NSNotFound else {
+            return nil
+        }
+
+        return state.rowAtIndex(selectedIndex)
+    }
+}
+
+
 // MARK: - NSTableViewDelegate Helpers
 //
 extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
@@ -36,11 +53,12 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
             return trashTableViewCell()
         case .header:
             return tagHeaderTableViewCell()
+        case .spacer:
+            return spacerTableViewCell()
         case .tag(let tag):
             return tagTableViewCell(for: tag)
         case .untagged:
-            // TODO: Coming UP >> Soon!
-            return nil
+            return untaggedTableViewCell()
         }
     }
 
@@ -62,7 +80,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        state.rowAtIndex(row) != .header
+        state.rowAtIndex(row).isSelectable
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
@@ -115,6 +133,23 @@ extension TagListViewController {
         tagView.nameTextField.delegate = self
         tagView.nameTextField.isEditable = true
         tagView.nameTextField.stringValue = tag.name
+
+        return tagView
+    }
+
+    /// Returns a SpacerTableView Instance.
+    ///
+    func spacerTableViewCell() -> SpacerTableViewCell {
+        return tableView.makeTableViewCell(ofType: SpacerTableViewCell.self)
+    }
+
+    /// Returns a TagTableCellView instance, initialized to be used as Trash Row
+    ///
+    func untaggedTableViewCell() -> TagTableCellView {
+        let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
+        tagView.iconImageView.image = NSImage(named: .untagged)
+        tagView.iconImageView.isHidden = false
+        tagView.nameTextField.stringValue = NSLocalizedString("Untagged Notes", comment: "Untagged Notes Filter")
 
         return tagView
     }

@@ -21,6 +21,20 @@
 
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
+@interface NoteListViewController ()
+@property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
+@property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
+@property (nonatomic, strong) IBOutlet BackgroundView       *topDividerView;
+@property (nonatomic, strong) IBOutlet NSTextField          *statusField;
+@property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (nonatomic, strong) IBOutlet SPTableView          *tableView;
+@property (nonatomic, strong) IBOutlet NSView               *searchView;
+@property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
+@property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, assign) BOOL                          searching;
+@property (nonatomic, assign) BOOL                          viewingTrash;
+@end
+
 @implementation NoteListViewController
 
 - (void)viewDidLoad
@@ -518,26 +532,6 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 - (IBAction)filterNotes:(id)sender
 {
     [self refreshPredicate];
-}
-
-- (void)refreshPredicate
-{
-    NSString *searchText = [self.searchField stringValue];
-    
-    NSMutableArray *predicateList = [NSMutableArray new];
-    [predicateList addObject: [NSPredicate predicateForNotesWithDeletedStatus:self.viewingTrash]];
-    
-    NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
-    if (selectedTag.length > 0) {
-        [predicateList addObject: [NSPredicate predicateForNotesWithTag:selectedTag]];
-    }
-    
-    if (searchText.length > 0) {
-        [predicateList addObject:[NSPredicate predicateForSearchText:searchText]];
-    }
-    
-    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicateList];
-    [self setNotesPredicate:compound];
 }
 
 @end
