@@ -26,6 +26,14 @@ class MetricsViewController: NSViewController {
     @IBOutlet private(set) var charsTextLabel: NSTextField!
     @IBOutlet private(set) var charsDetailsLabel: NSTextField!
 
+    /// NSPopover instance that's presenting the current instance.
+    ///
+    private var presentingPopover: NSPopover? {
+        didSet {
+            refreshStyle()
+        }
+    }
+
     /// Metrics Controller
     ///
     private let controller = MetricsController()
@@ -93,11 +101,7 @@ private extension MetricsViewController {
 extension MetricsViewController: NSPopoverDelegate {
 
     public func popoverWillShow(_ notification: Notification) {
-        guard let popover = notification.object as? NSPopover else {
-            return
-        }
-
-        popover.appearance = .simplenoteAppearance
+        presentingPopover = notification.object as? NSPopover
     }
 }
 
@@ -116,6 +120,8 @@ private extension MetricsViewController {
 
     @objc
     func refreshStyle() {
+        presentingPopover?.appearance = .simplenoteAppearance
+
         for label in [ modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel ] {
             label?.textColor = .simplenoteTextColor
         }
