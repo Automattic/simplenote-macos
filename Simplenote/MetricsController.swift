@@ -7,7 +7,7 @@ class MetricsController {
 
     /// Entity Observer reference
     ///
-    private var observer: EntityObserver<Note>? {
+    private var observer: EntityObserver? {
         didSet {
             observer?.delegate = self
         }
@@ -35,8 +35,9 @@ class MetricsController {
     ///
     func startReportingMetrics(for notes: [Note]) {
         let mainContext = SimplenoteAppDelegate.shared().managedObjectContext
+        let identifiers = notes.map { $0.objectID }
 
-        self.observer = EntityObserver(context: mainContext, entities: notes)
+        self.observer = EntityObserver(context: mainContext, identifiers: identifiers)
         self.notes = notes
     }
 }
@@ -46,7 +47,7 @@ class MetricsController {
 //
 extension MetricsController: EntityObserverDelegate {
 
-    func entityObserver<Note>(_ observer: EntityObserver<Note>, didObserveChanges objects: Set<Note>) {
+    func entityObserver(_ observer: EntityObserver, didObserveChanges for: Set<NSManagedObjectID>) {
         onChange?()
     }
 }
