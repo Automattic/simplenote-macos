@@ -26,6 +26,12 @@ class EntityObserver {
     weak var delegate: EntityObserverDelegate?
 
 
+    // MARK: - Lifecycle
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     /// Designed Initialier
     ///
     /// - Parameters:
