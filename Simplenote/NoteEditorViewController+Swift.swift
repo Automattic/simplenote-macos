@@ -168,6 +168,10 @@ extension NoteEditorViewController {
         displayShare(from: tagsField)
         tagsField.becomeFirstResponder()
     }
+
+    @IBAction func publishWasPressed(sender: Any) {
+        displayPublish(from: toolbarView.shareButton)
+    }
 }
 
 
@@ -178,6 +182,12 @@ extension NoteEditorViewController {
     func displayMetrics(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController()
         viewController.displayMetrics(for: notes)
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displayPublish(from sourceView: NSView) {
+        let viewController = PublishViewController()
+        viewController.delegate = self
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
@@ -297,6 +307,20 @@ extension NoteEditorViewController: TagsFieldDelegate {
     }
 }
 
+
+// MARK: - PublishViewControllerDelegate
+//
+extension NoteEditorViewController: PublishViewControllerDelegate {
+
+    func publishControllerDidClickPublish(_ controller: PublishViewController) {
+        switch controller.publishButtonState {
+        case .on:
+            publishNote()
+        default:
+            unpublishNote()
+        }
+    }
+}
 
 // MARK: - Settings
 //

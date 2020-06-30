@@ -35,6 +35,14 @@ class PublishViewController: NSViewController {
     ///
     @IBOutlet private var urlTextField: NSTextField!
 
+    /// NSPopover instance that's presenting the current instance.
+    ///
+    private var presentingPopover: NSPopover? {
+        didSet {
+            refreshStyle()
+        }
+    }
+
     /// Internal State
     ///
     private var state: PublishState = .unpublishing {
@@ -63,7 +71,7 @@ class PublishViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startListeningToNotifications()
-        applyStyle()
+        refreshStyle()
     }
 
     /// Refreshes the Internal State
@@ -88,15 +96,17 @@ class PublishViewController: NSViewController {
 private extension PublishViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
     }
 
     @objc
-    func applyStyle() {
+    func refreshStyle() {
+        presentingPopover?.appearance = .simplenoteAppearance
+
         // URL
         let urlPlaceholder = NSLocalizedString("Not Published", comment: "Placeholder displayed when a note hasn't been published.")
         let urlAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: NSColor.simplenoteSelectedTextColor,
+            .foregroundColor: NSColor.simplenoteTextColor,
             .font: NSFont.simplenoteSecondaryTextFont
         ]
 
@@ -111,7 +121,7 @@ private extension PublishViewController {
 
         let legendAttributes: [NSAttributedString.Key: Any] = [
             .font: NSFont.simplenoteSecondaryTextFont,
-            .foregroundColor: NSColor.simplenoteSelectedTextColor,
+            .foregroundColor: NSColor.simplenoteTextColor,
             .paragraphStyle: legendParagraph
         ]
 
@@ -159,6 +169,16 @@ private extension PublishViewController {
             publishButton.title = NSLocalizedString("Unpublish", comment: "Unpublish Note Action")
             publishButton.isEnabled = false
         }
+    }
+}
+
+
+// MARK: - NSPopoverDelegate
+//
+extension PublishViewController: NSPopoverDelegate {
+
+    public func popoverWillShow(_ notification: Notification) {
+        presentingPopover = notification.object as? NSPopover
     }
 }
 

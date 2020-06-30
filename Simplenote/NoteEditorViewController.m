@@ -51,12 +51,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                         NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
-                                        PublishViewControllerDelegate,
                                         SPBucketDelegate,
                                         VersionsViewControllerDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
-@property (nonatomic,   weak) PublishViewController     *publishViewController;
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
@@ -472,8 +470,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)updatePublishUI
 {
-    [self.publishViewController refreshStateWithPublished:self.note.published
-                                                      url:self.note.publishURL];
+//    [self.publishViewController refreshStateWithPublished:self.note.published
+//                                                      url:self.note.publishURL];
 }
 
 - (void)publishNote
@@ -560,11 +558,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
         // Request the version data from Simperium
         Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
-        [[simperium bucketForName:@"Note"] requestVersions:SPVersionSliderMaxVersions key:self.note.simperiumKey];
-        
-    } else if (self.activePopover.contentViewController == self.publishViewController) {
-        NSLog(@"popOverDidShow update publish ui");
-        [self updatePublishUI];
+        [[simperium bucketForName:@"Note"] requestVersions:SPVersionSliderMaxVersions key:self.note.simperiumKey];   
     }
 }
 
@@ -579,18 +573,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         
         // Refreshes the note content in the editor, in case the popover was canceled
         [self didReceiveNewContent];
-    }
-}
-
-#pragma mark - PublishViewController Delegate
-
-- (void)publishControllerDidClickPublish:(PublishViewController *)controller
-{
-    // The button state is toggled when user clicks on it
-    if (controller.publishButtonState == NSOnState) {
-        [self publishNote];
-    } else {
-        [self unpublishNote];
     }
 }
 
@@ -926,15 +908,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self dismissActivePopover];
 }
 
-- (void)showPublishPopover
-{
-    PublishViewController *viewController = [PublishViewController new];
-    viewController.delegate = self;
-
-    [self showViewController:viewController relativeToView:self.toolbarView.shareButton preferredEdge:NSMaxYEdge];
-    self.publishViewController = viewController;
-}
-
 // Reprocesses note checklists after switching themes, so they apply the correct color
 - (void)fixChecklistColoring
 {
@@ -1041,7 +1014,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         NSImage *image = [NSImage imageNamed:@"icon_simplenote"];
         NSString *title = NSLocalizedString(@"Publish to Web", @"Publish to Web Service");
         NSSharingService *customService = [[NSSharingService alloc] initWithTitle:title image:image alternateImage:nil handler:^{
-            [self showPublishPopover];
+            [self publishWasPressedWithSender:nil];
         }];
         
         services = [services arrayByAddingObject:customService];
