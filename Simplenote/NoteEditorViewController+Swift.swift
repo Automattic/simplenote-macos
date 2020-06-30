@@ -171,7 +171,7 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Metrics
+// MARK: - Popovers
 //
 extension NoteEditorViewController {
 
