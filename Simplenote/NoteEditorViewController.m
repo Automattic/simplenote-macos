@@ -47,14 +47,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark ====================================================================================
 
 @interface NoteEditorViewController() <NSMenuDelegate,
-                                        NSPopoverDelegate,
                                         NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
                                         SPBucketDelegate,
                                         VersionsViewControllerDelegate>
 
-@property (nonatomic,   weak) VersionsViewController    *versionsViewController;
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
@@ -62,7 +60,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
 @property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSArray                   *selectedNotes;
-@property (nonatomic, strong) NSPopover                 *activePopover;
 @property (nonatomic, strong) Storage                   *storage;
 @property (nonatomic, strong) TextViewInputHandler      *inputHandler;
 
@@ -874,8 +871,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.noteEditor.textColor           = [NSColor simplenoteTextColor];
     self.tagsField.textColor            = [NSColor simplenoteTextColor];
     self.tagsField.placeholderTextColor = [NSColor simplenoteSecondaryTextColor];
-
-    [self dismissActivePopover];
 }
 
 // Reprocesses note checklists after switching themes, so they apply the correct color
@@ -991,46 +986,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     return services;
-}
-
-#pragma mark - NSPopover Helpers
-
-- (void)showViewController:(NSViewController *)viewController
-            relativeToView:(NSView *)view
-             preferredEdge:(NSRectEdge)preferredEdge
-{
-    // If needed, dismiss any active popovers
-    [self dismissActivePopover];
-    
-    // New PopOver
-    NSPopover *popover = [self newPopoverWithContentViewController:viewController];;
-
-    // Note:
-    // NSPopover appears not to be applying it's NSAppearance to the `contentViewController` automatically.
-    // For that reason, we'll ensure the ViewController matches the Popover's Appearance.
-    //
-    viewController.view.appearance = popover.appearance;
-
-    // Finally display!
-    [popover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
-    self.activePopover = popover;
-}
-
-- (void)dismissActivePopover
-{
-    [self.activePopover close];
-    self.activePopover = nil;
-}
-
-- (NSPopover *)newPopoverWithContentViewController:(NSViewController *)viewController
-{
-    NSPopover *popover              = [NSPopover new];
-    popover.contentViewController   = viewController;
-    popover.delegate                = self;
-    popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-    popover.behavior                = NSPopoverBehaviorTransient;
-
-    return popover;
 }
 
 @end

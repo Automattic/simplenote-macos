@@ -177,6 +177,9 @@ extension NoteEditorViewController {
 
         displayPublishPopover(from: toolbarView.shareButton, for: note)
     }
+
+    @IBAction func versionsWasPressed(sender: Any) {
+    }
 }
 
 
