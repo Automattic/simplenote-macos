@@ -104,7 +104,7 @@ private extension MetricsController {
     ///
     @objc
     func mainContextWasUpdated(_ notification: Notification) {
-        guard let userInfo = notification.userInfo else {
+        guard let userInfo = notification.userInfo, let callback = onChange else {
             return
         }
 
@@ -116,9 +116,7 @@ private extension MetricsController {
             return
         }
 
-        DispatchQueue.main.async { [weak self] in
-            self?.onChange?()
-        }
+        DispatchQueue.main.async(execute: callback)
     }
 
     /// Given a Notification's Payload, this API will extract the collection of NSManagedObjectID(s) stored under the specified keys.
