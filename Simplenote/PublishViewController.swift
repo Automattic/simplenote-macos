@@ -10,10 +10,10 @@ enum PublishState {
     case unpublished
 }
 
+
 // MARK: - VersionsViewControllerDelegate
 //
-@objc
-protocol PublishViewControllerDelegate {
+protocol PublishViewControllerDelegate: class {
     func publishControllerDidClickPublish(_ controller: PublishViewController)
 }
 
@@ -35,6 +35,14 @@ class PublishViewController: NSViewController {
     ///
     @IBOutlet private var urlTextField: NSTextField!
 
+    /// Note whose publish state should be rendered
+    ///
+    private let note: Note
+
+    /// Entity Observer
+    ///
+    private let observer: EntityObserver
+
     /// NSPopover instance that's presenting the current instance.
     ///
     private var presentingPopover: NSPopover? {
@@ -43,18 +51,18 @@ class PublishViewController: NSViewController {
         }
     }
 
+    /// Returns the Publish Button's Internal State
+    ///
+    var publishButtonState: NSControl.StateValue {
+        publishButton.state
+    }
+
     /// Internal State
     ///
     private var state: PublishState = .unpublishing {
         didSet {
             refreshInterface(newState: state)
         }
-    }
-
-    /// Returns the Publish Button's Internal State
-    ///
-    var publishButtonState: NSControl.StateValue {
-        publishButton.state
     }
 
     /// Old School delegate
@@ -68,25 +76,45 @@ class PublishViewController: NSViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
+    init(note: Note) {
+        let mainContext = SimplenoteAppDelegate.shared().managedObjectContext
+        self.observer = EntityObserver(context: mainContext, object: note)
+        self.note = note
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         startListeningToNotifications()
+        setupEntityObserver()
         refreshStyle()
+        refreshState()
     }
+}
 
-    /// Refreshes the Internal State
-    ///
-    /// - Parameters:
-    ///     -   published: Indicates if the note we're dealing with is already published (or not)
-    ///     -   url: Published note URL (if any)
-    ///
-    @objc
-    func refreshState(published: Bool, url: String) {
-        state = stateForNote(published: published, url: url)
-    }
+
+// MARK: - Actions
+//
+extension PublishViewController {
 
     @IBAction func buttonWasPressed(sender: Any) {
         delegate?.publishControllerDidClickPublish(self)
+    }
+}
+
+
+// MARK: - Initialization
+//
+private extension PublishViewController {
+
+    func setupEntityObserver() {
+        observer.delegate = self
     }
 }
 
@@ -137,12 +165,13 @@ private extension PublishViewController {
 //
 private extension PublishViewController {
 
-    func stateForNote(published: Bool, url: String) -> PublishState {
-        if published {
-            return url.isEmpty ? .publishing : .published(url: url)
+    func refreshState() {
+        if note.published {
+            state = note.publishURL.isEmpty ? .publishing : .published(url: note.publishURL)
+            return
         }
 
-        return url.isEmpty ? .unpublished : .unpublishing
+        state = note.publishURL.isEmpty ? .unpublished : .unpublishing
     }
 
     func refreshInterface(newState: PublishState) {
@@ -179,6 +208,16 @@ extension PublishViewController: NSPopoverDelegate {
 
     public func popoverWillShow(_ notification: Notification) {
         presentingPopover = notification.object as? NSPopover
+    }
+}
+
+
+// MARK: - EntityObserverDelegate
+//
+extension PublishViewController: EntityObserverDelegate {
+
+    func entityObserver(_ observer: EntityObserver, didObserveChanges for: Set<NSManagedObjectID>) {
+        refreshState()
     }
 }
 

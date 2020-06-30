@@ -429,8 +429,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor displayNoteWithContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
     [self refreshTagsField];
-
-    [self updatePublishUI];
 }
 
 - (void)willReceiveNewContent
@@ -468,19 +466,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Publishing
 
-- (void)updatePublishUI
-{
-//    [self.publishViewController refreshStateWithPublished:self.note.published
-//                                                      url:self.note.publishURL];
-}
-
 - (void)publishNote
 {
     [SPTracker trackEditorNotePublished];
     
     self.note.published = YES;
     [self save];
-    [self updatePublishUI];
 }
 
 - (void)unpublishNote
@@ -489,7 +480,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     self.note.published = NO;
     [self save];
-    [self updatePublishUI];
 }
 
 
