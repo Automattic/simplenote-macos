@@ -169,6 +169,7 @@ extension NoteEditorViewController {
         tagsField.becomeFirstResponder()
     }
 
+    @objc
     func publishWasPressed() {
         guard let note = note else {
             return
