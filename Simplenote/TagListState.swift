@@ -74,11 +74,11 @@ extension TagListState {
     ///
     @objc
     var indexOfFirstTagRow: Int {
-        for (index, row) in rows.enumerated() where row.isTagRow {
-            return index
+        let index = rows.firstIndex {
+            $0.isTagRow
         }
 
-        return .zero
+        return index ?? .zero
     }
 
     /// Returns the location of the Last Tag Row.
@@ -86,11 +86,11 @@ extension TagListState {
     ///
     @objc
     var indexOfLastTagRow: Int {
-        for (index, row) in rows.enumerated().reversed() where row.isTagRow {
-            return index
+        let index = rows.lastIndex {
+            $0.isTagRow
         }
 
-        return .zero
+        return index ?? .zero
     }
 
     /// Returns the Tag Row at the specified location
