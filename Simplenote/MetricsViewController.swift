@@ -6,36 +6,24 @@ import AppKit
 //
 class MetricsViewController: NSViewController {
 
-    /// Modified: Left Text Label
+    /// Modified: Left Text / Right Details
     ///
     @IBOutlet private(set) var modifiedTextLabel: NSTextField!
-
-    /// Modified: Note Metrics!
-    ///
     @IBOutlet private(set) var modifiedDetailsLabel: NSTextField!
 
-    /// Created: Left Text Label
+    /// Created: Left Text / Right Details
     ///
     @IBOutlet private(set) var createdTextLabel: NSTextField!
-
-    /// Created: Note Metrics!
-    ///
     @IBOutlet private(set) var createdDetailsLabel: NSTextField!
 
-    /// Words: Left Text Label
+    /// Words: Left Text / Right Details
     ///
     @IBOutlet private(set) var wordsTextLabel: NSTextField!
-
-    /// Words: Note Metrics!
-    ///
     @IBOutlet private(set) var wordsDetailsLabel: NSTextField!
 
-    /// Characters: Left Text Label
+    /// Characters: Left Text / Right Details
     ///
     @IBOutlet private(set) var charsTextLabel: NSTextField!
-
-    /// Characters: Note Metrics!
-    ///
     @IBOutlet private(set) var charsDetailsLabel: NSTextField!
 
     /// Metrics Controller
@@ -52,7 +40,7 @@ class MetricsViewController: NSViewController {
     }()
 
 
-    // MARK: - Overridden Methdods
+    // MARK: - Lifecycle
 
     deinit {
         stopListeningToNotifications()
@@ -128,19 +116,11 @@ private extension MetricsViewController {
 
     @objc
     func refreshStyle() {
-        let primaryLabels = [
-            modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel
-        ]
-
-        let secondaryLabels = [
-            modifiedDetailsLabel, createdDetailsLabel, wordsDetailsLabel, charsDetailsLabel
-        ]
-
-        for label in primaryLabels {
+        for label in [ modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel ] {
             label?.textColor = .simplenoteTextColor
         }
 
-        for label in secondaryLabels {
+        for label in [ modifiedDetailsLabel, createdDetailsLabel, wordsDetailsLabel, charsDetailsLabel ] {
             label?.textColor = .simplenoteSecondaryTextColor
         }
     }
@@ -149,7 +129,7 @@ private extension MetricsViewController {
 
 // MARK: - Rendering Metrics!
 //
-extension MetricsViewController {
+private extension MetricsViewController {
 
     func startObservingMetricUpdates() {
         controller.onChange = { [weak self] in
