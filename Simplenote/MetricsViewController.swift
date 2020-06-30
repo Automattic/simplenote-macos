@@ -67,12 +67,12 @@ class MetricsViewController: NSViewController {
         setupTextLabels()
         setupEntityObserver()
         startListeningToNotifications()
+        refreshMetrics()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
         refreshStyle()
-        refreshMetrics()
     }
 }
 
