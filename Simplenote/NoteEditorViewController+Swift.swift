@@ -175,7 +175,7 @@ extension NoteEditorViewController {
             return
         }
 
-        displayPublish(from: toolbarView.shareButton, for: note)
+        displayPublishPopover(from: toolbarView.shareButton, for: note)
     }
 }
 
@@ -189,7 +189,7 @@ extension NoteEditorViewController {
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
-    func displayPublish(from sourceView: NSView, for note: Note) {
+    func displayPublishPopover(from sourceView: NSView, for note: Note) {
         let viewController = PublishViewController(note: note)
         viewController.delegate = self
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
