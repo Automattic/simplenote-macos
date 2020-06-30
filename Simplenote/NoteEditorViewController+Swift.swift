@@ -165,7 +165,7 @@ extension NoteEditorViewController {
 
     @IBAction func shareWasPressed(sender: Any) {
         SPTracker.trackEditorCollaboratorsAccessed()
-        displayShare(from: tagsField)
+        displaySharePopover(from: tagsField)
         tagsField.becomeFirstResponder()
     }
 }
@@ -180,7 +180,7 @@ extension NoteEditorViewController {
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
-    func displayShare(from sourceView: NSView) {
+    func displaySharePopover(from sourceView: NSView) {
         let viewController = ShareViewController()
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
