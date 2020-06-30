@@ -36,6 +36,16 @@ class EntityObserver {
         observedIdentifiers = identifiers
         startListeningForNotifications(in: context)
     }
+
+    /// Convenience Initializer
+    ///
+    /// - Parameters:
+    ///     - identifier: NSManagedObjectID of the observed entity
+    ///     - context: NSManagedObjectContext in which we should listen for changes
+    ///
+    convenience init(context: NSManagedObjectContext, identifier: NSManagedObjectID) {
+        self.init(context: context, identifiers: [identifier])
+    }
 }
 
 
