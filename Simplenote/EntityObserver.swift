@@ -29,6 +29,7 @@ class EntityObserver {
     ///
     weak var delegate: EntityObserverDelegate?
 
+
     /// Designed Initialier
     ///
     /// - Parameters:
