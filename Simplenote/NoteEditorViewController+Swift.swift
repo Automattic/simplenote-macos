@@ -179,6 +179,8 @@ extension NoteEditorViewController {
     }
 
     @IBAction func versionsWasPressed(sender: Any) {
+        SPTracker.trackEditorVersionsAccessed()
+        displayVersionsPopover(from: toolbarView.historyButton)
     }
 }
 
@@ -200,6 +202,11 @@ extension NoteEditorViewController {
 
     func displaySharePopover(from sourceView: NSView) {
         let viewController = ShareViewController()
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displayVersionsPopover(from sourceView: NSView) {
+        let viewController = VersionsViewController()
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 }

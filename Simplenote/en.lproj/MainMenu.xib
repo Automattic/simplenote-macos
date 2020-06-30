@@ -1021,7 +1021,7 @@
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="showVersionPopover:" target="1107" id="6bi-5c-YJd"/>
+                                                            <action selector="versionsWasPressedWithSender:" target="1107" id="K52-ey-bNC"/>
                                                         </connections>
                                                     </button>
                                                     <button toolTip="Share" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qmA-vO-wPh" userLabel="Share">
