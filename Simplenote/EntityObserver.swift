@@ -4,7 +4,7 @@ import Foundation
 // MARK: - EntityObserverDelegate
 //
 protocol EntityObserverDelegate: class {
-    func entityObserver(_ observer: EntityObserver, didObserveChanges for: Set<NSManagedObjectID>)
+    func entityObserver(_ observer: EntityObserver, didObserveChanges identifiers: Set<NSManagedObjectID>)
 }
 
 

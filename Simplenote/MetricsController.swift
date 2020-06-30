@@ -15,11 +15,7 @@ class MetricsController {
 
     /// Collection of Notes being observed
     ///
-    private(set) var notes = [Note]() {
-        didSet {
-            onChange?()
-        }
-    }
+    private(set) var notes: [Note] = []
 
     /// Returns the result of combining all of the observed note's contents
     ///
