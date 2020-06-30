@@ -26,6 +26,14 @@ class MetricsViewController: NSViewController {
     @IBOutlet private(set) var charsTextLabel: NSTextField!
     @IBOutlet private(set) var charsDetailsLabel: NSTextField!
 
+    /// Notes whose metrics should be rendered
+    ///
+    private let notes: [Note]
+
+    /// Entity Observer
+    ///
+    private let observer: EntityObserver
+
     /// NSPopover instance that's presenting the current instance.
     ///
     private var presentingPopover: NSPopover? {
@@ -34,19 +42,6 @@ class MetricsViewController: NSViewController {
         }
     }
 
-    /// Metrics Controller
-    ///
-    private let controller = MetricsController()
-
-    /// Date Formatter
-    ///
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
-    }()
-
 
     // MARK: - Lifecycle
 
@@ -54,23 +49,30 @@ class MetricsViewController: NSViewController {
         stopListeningToNotifications()
     }
 
+    init(notes: [Note]) {
+        let mainContext = SimplenoteAppDelegate.shared().managedObjectContext
+
+        self.observer = EntityObserver(context: mainContext, objects: notes)
+        self.notes = notes
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextLabels()
+        setupEntityObserver()
         startListeningToNotifications()
-        startObservingMetricUpdates()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
         refreshStyle()
         refreshMetrics()
-    }
-
-    func displayMetrics(for notes: [Note]) {
-        // Ensure the view is Loaded: we want the NSViewController.view to acquire its final size *synchronously*
-        loadViewIfNeeded()
-        controller.startReportingMetrics(for: notes)
     }
 }
 
@@ -86,12 +88,8 @@ private extension MetricsViewController {
         charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "Number of characters in the note")
     }
 
-    func loadViewIfNeeded() {
-        guard !isViewLoaded else {
-            return
-        }
-
-        _ = view
+    func setupEntityObserver() {
+        observer.delegate = self
     }
 }
 
@@ -133,28 +131,26 @@ private extension MetricsViewController {
 }
 
 
+// MARK: - EntityObserverDelegate
+//
+extension MetricsViewController: EntityObserverDelegate {
+
+    func entityObserver(_ observer: EntityObserver, didObserveChanges for: Set<NSManagedObjectID>) {
+        refreshMetrics()
+    }
+}
+
+
 // MARK: - Rendering Metrics!
 //
 private extension MetricsViewController {
 
-    func startObservingMetricUpdates() {
-        controller.onChange = { [weak self] in
-            self?.refreshMetrics()
-        }
-    }
-
     func refreshMetrics() {
-        let created = controller.creationDate.map {
-            dateFormatter.string(from: $0)
-        }
+        let metrics = NoteMetrics(notes: notes)
 
-        let modified = controller.modifiedDate.map {
-            dateFormatter.string(from: $0)
-        }
-
-        modifiedDetailsLabel.stringValue = modified ?? "-"
-        createdDetailsLabel.stringValue = created ?? "-"
-        wordsDetailsLabel.stringValue = String(controller.numberOfWords)
-        charsDetailsLabel.stringValue = String(controller.numberOfChars)
+        modifiedDetailsLabel.stringValue = metrics.modifiedDate ?? "-"
+        createdDetailsLabel.stringValue = metrics.creationDate ?? "-"
+        wordsDetailsLabel.stringValue = String(metrics.numberOfWords)
+        charsDetailsLabel.stringValue = String(metrics.numberOfChars)
     }
 }

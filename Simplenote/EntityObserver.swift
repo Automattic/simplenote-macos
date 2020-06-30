@@ -29,16 +29,26 @@ class EntityObserver {
     ///
     weak var delegate: EntityObserverDelegate?
 
-
     /// Designed Initialier
     ///
     /// - Parameters:
-    ///     - identifiers: NSManagedObjectID(s) of the entities that should be observed
     ///     - context: NSManagedObjectContext in which we should listen for changes
+    ///     - identifiers: NSManagedObjectID(s) of the entities that should be observed
     ///
     init(context: NSManagedObjectContext, identifiers: [NSManagedObjectID]) {
         observedIdentifiers = identifiers
         notificationsToken = startListeningForNotifications(in: context)
+    }
+
+    /// Convenience Initializer
+    ///
+    /// - Parameters:
+    ///     - context: NSManagedObjectContext in which we should listen for changes
+    ///     - objects: NSManagedObject(s) that should be observed
+    ///
+    convenience init(context: NSManagedObjectContext, objects: [NSManagedObject]) {
+        let identifiers = objects.map { $0.objectID }
+        self.init(context: context, identifiers: identifiers)
     }
 }
 
