@@ -13,6 +13,10 @@ protocol EntityObserverDelegate: class {
 //
 class EntityObserver {
 
+    /// NotificationCenter Observer Token.
+    ///
+    private var notificationsToken: Any!
+
     /// Identifiers of the objects being observed
     ///
     let observedIdentifiers: [NSManagedObjectID]
@@ -26,12 +30,6 @@ class EntityObserver {
     weak var delegate: EntityObserverDelegate?
 
 
-    // MARK: - Lifecycle
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     /// Designed Initialier
     ///
     /// - Parameters:
@@ -40,7 +38,7 @@ class EntityObserver {
     ///
     init(context: NSManagedObjectContext, identifiers: [NSManagedObjectID]) {
         observedIdentifiers = identifiers
-        startListeningForNotifications(in: context)
+        notificationsToken = startListeningForNotifications(in: context)
     }
 }
 
@@ -49,15 +47,15 @@ class EntityObserver {
 //
 private extension EntityObserver {
 
-    func startListeningForNotifications(in context: NSManagedObjectContext) {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(contextWasUpdated),
-                                               name: .NSManagedObjectContextObjectsDidChange,
-                                               object: context)
+    func startListeningForNotifications(in context: NSManagedObjectContext) -> Any {
+        NotificationCenter.default.addObserver(forName: .NSManagedObjectContextObjectsDidChange,
+                                               object: context,
+                                               queue: .main) { [weak self] note in
+            self?.contextDidChange(note)
+        }
     }
 
-    @objc
-    func contextWasUpdated(_ notification: Notification) {
+    func contextDidChange(_ notification: Notification) {
         guard let userInfo = notification.userInfo, let delegate = delegate else {
             return
         }
@@ -67,9 +65,7 @@ private extension EntityObserver {
             return
         }
 
-        DispatchQueue.main.async {
-            delegate.entityObserver(self, didObserveChanges: updatedIdentifiers)
-        }
+        delegate.entityObserver(self, didObserveChanges: updatedIdentifiers)
     }
 
     /// Given a Notification's Payload, this API will extract the collection of NSManagedObjectID(s) stored under the specified keys.
