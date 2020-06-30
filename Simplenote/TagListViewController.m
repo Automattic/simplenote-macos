@@ -9,25 +9,19 @@
 #import "TagListViewController.h"
 #import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "SPTagCellView.h"
-#import "SPTableRowView.h"
 #import "SPTableView.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
-#import "VSThemeManager.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
+
 @import Simperium_OSX;
 
-#define kTopRow 0
-#define kAllNotesRow 1
-#define kTrashRow 2
-#define kSeparatorRow 3
-#define kStartOfTagListRow 4
-#define kTagSortPreferencesKey @"kTagSortPreferencesKey"
 
-#define kRowHeight 30
-#define kSeparatorHeight 24
-#define kTopRowHeight 14
+#define kAllNotesRow 0
+#define kTrashRow 1
+#define kTagHeaderRow 2
+#define kStartOfTagListRow 3
 
 
 NSString * const kTagsDidLoad = @"SPTagsDidLoad";
@@ -35,58 +29,57 @@ NSString * const kTagUpdated = @"SPTagUpdated";
 NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
 NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
 NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
+CGFloat const SPListEstimatedRowHeight = 30;
 
-@interface TagListViewController () {
-    BOOL menuShowing;
-    NSString *tagNameBeingEdited;
-    BOOL awake;
-}
+@interface TagListViewController ()
+
+@property (nonatomic, strong) NSMenu    *tagDropdownMenu;
+@property (nonatomic, strong) NSMenu    *trashDropdownMenu;
+@property (nonatomic, strong) NSString  *tagNameBeingEdited;
+@property (nonatomic, assign) BOOL      menuShowing;
 
 @end
 
 @implementation TagListViewController
-@synthesize tableView;
-@synthesize tagArray;
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)deinit
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+    [self stopListeningToNotifications];
 }
 
-- (void)awakeFromNib
+- (void)viewDidLoad
 {
-    [super awakeFromNib];
-    
-    // awakeFromNib is called each time a cell is created; work around that (must be careful
-    // not to register for notifications multiple times)
-    // http://stackoverflow.com/a/7187492/1379066
-    if (awake)
-        return;
-    
+    [super viewDidLoad];
+
     [self buildDropdownMenus];
 
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];
-    
+    self.tableView.rowHeight = SPListEstimatedRowHeight;
+    self.tableView.usesAutomaticRowHeights = YES;
+    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
-    
-    BOOL alphaTagSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
-    [tagSortMenuItem setState:alphaTagSort ? NSOnState : NSOffState];
-    
-    awake = YES;
+
+    [self refreshExtendedContentInsets];
+    [self startListeningToNotifications];
 }
+
 
 - (void)viewWillAppear
 {
     [super viewWillAppear];
     [self applyStyle];
+}
+
+- (void)startListeningToNotifications
+{
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
+    [nc addObserver:self selector:@selector(sortModeWasUpdated:) name:TagSortModeDidChangeNotification object:nil];
+}
+
+- (void)stopListeningToNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (Simperium *)simperium
@@ -96,40 +89,39 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)buildDropdownMenus
 {
-    trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
-    trashDropdownMenu.delegate = self;
-    trashDropdownMenu.autoenablesItems = YES;
+    self.trashDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
+    self.trashDropdownMenu.delegate = self;
+    self.trashDropdownMenu.autoenablesItems = YES;
 
-    [trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
-                                 action:@selector(emptyTrashAction:)
-                          keyEquivalent:@""];
+    [self.trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
+                                      action:@selector(emptyTrashAction:)
+                               keyEquivalent:@""];
 
-    for (NSMenuItem *item in trashDropdownMenu.itemArray) {
+    for (NSMenuItem *item in self.trashDropdownMenu.itemArray) {
         [item setTarget:self];
     }
     
-    tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
-    tagDropdownMenu.delegate = self;
-    tagDropdownMenu.autoenablesItems = YES;
+    self.tagDropdownMenu = [[NSMenu alloc] initWithTitle:@""];
+    self.tagDropdownMenu.delegate = self;
+    self.tagDropdownMenu.autoenablesItems = YES;
 
-    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Rename Tag", @"Rename Tag Action")
-                               action:@selector(renameAction:)
-                        keyEquivalent:@""];
+    [self.tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Rename Tag", @"Rename Tag Action")
+                                    action:@selector(renameAction:)
+                             keyEquivalent:@""];
 
-    [tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Delete Tag", @"Delete Tag Action")
-                               action:@selector(deleteAction:)
-                        keyEquivalent:@""];
+    [self.tagDropdownMenu addItemWithTitle:NSLocalizedString(@"Delete Tag", @"Delete Tag Action")
+                                    action:@selector(deleteAction:)
+                             keyEquivalent:@""];
 
-    for (NSMenuItem *item in tagDropdownMenu.itemArray) {
+    for (NSMenuItem *item in self.tagDropdownMenu.itemArray) {
         [item setTarget:self];
     }
 }
 
 - (void)sortTags
 {
-    BOOL sortAlphabetically = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
     NSSortDescriptor *sortDescriptor;
-    if (sortAlphabetically) {
+    if (Options.shared.alphabeticallySortTags) {
         sortDescriptor = [[NSSortDescriptor alloc]
                           initWithKey:@"name"
                           ascending:YES
@@ -141,25 +133,32 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     self.tagArray = [self.tagArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 }
 
+// TODO: Work in Progress. Decouple with a delegate please
+//
+- (NoteListViewController *)noteListViewController
+{
+    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
+}
+
 - (void)reloadDataAndPreserveSelection
 {
     // Remember last selections
     NSInteger tagRow = [self.tableView selectedRow];
-    NSInteger noteRow = [noteListViewController.tableView selectedRow];
+    NSInteger noteRow = [self.noteListViewController.tableView selectedRow];
     
     [self.tableView reloadData];
     
     // Restore last selections
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:tagRow] byExtendingSelection:NO];
     
-    [noteListViewController.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:noteRow] byExtendingSelection:NO];
+    [self.noteListViewController.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:noteRow] byExtendingSelection:NO];
 
 }
 
 - (void)reset
 {
     self.tagArray = [NSArray array];
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)loadTags
@@ -191,7 +190,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         return @"";
     }
     
-    Tag *tag = [tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
+    Tag *tag = [self.tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
     return tag.name;
 }
 
@@ -199,9 +198,15 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 {
     NSIndexSet *allNotesIndex = [NSIndexSet indexSetWithIndex:kAllNotesRow];
     [self.tableView selectRowIndexes:allNotesIndex byExtendingSelection:NO];
-    
-    // Force Resync!
-    [notesArrayController fetchWithRequest:nil merge:NO error:nil];
+
+    // Notes:
+    //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
+    //  2.  Because of the above, NoteListController's predicate is already refreshed
+    //  3.  Standard mechanism will refresh the UI in the next runloop cycle
+    //
+    // Since this API is expected to be synchronous, we'll force a resync.
+    //
+    [self.noteListViewController reloadSynchronously];
 }
 
 - (void)selectTag:(Tag *)tagToSelect
@@ -275,6 +280,11 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     [self loadTags];
 }
 
+- (void)sortModeWasUpdated:(NSNotification *)notification
+{
+    [self loadTags];
+}
+
 - (void)changeTagName:(NSString *)oldTagName toName:(NSString *)newTagName
 {
     [SPTracker trackTagRowRenamed];
@@ -289,7 +299,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 	for (Note *note in notes) {
         [note stripTag:oldTagName];
         [note addTag:newTagName];
-        [note createPreviews:note.content];
+        [note createPreview];
 	}
     
     renamedTag.name = newTagName;
@@ -316,7 +326,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     // Strip this tag from all notes
 	for (Note *note in notes) {
 		[note stripTag: tag.name];
-		[note createPreviews:note.content];
+		[note createPreview];
 	}
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -349,9 +359,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 		 NSInteger columnIndex = -1;
 		 while(++columnIndex < rowView.numberOfColumns) {
 			 
-			 SPTagCellView* tagCellView = (SPTagCellView*)[rowView viewAtColumn:columnIndex];
+			 TagTableCellView* tagCellView = (TagTableCellView*)[rowView viewAtColumn:columnIndex];
 			 
-			 if([tagCellView isKindOfClass:[SPTagCellView class]] && tagCellView.mouseInside) {
+			 if([tagCellView isKindOfClass:[TagTableCellView class]] && tagCellView.mouseInside) {
 				 tagIndex = row;
 				 break;
 			 }
@@ -405,14 +415,14 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 	NSInteger row = NSNotFound;
 	
 	if(sender == self.tableView) {
-		row = [tableView selectedRow];
+		row = [self.tableView selectedRow];
 	} else {
 		row = [self highlightedTagRowIndex];
 	}
 	
 	if(row != NSNotFound) {
-		SPTagCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
-		[tagView.textField becomeFirstResponder];
+		TagTableCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
+		[tagView.nameTextField becomeFirstResponder];
 	}
 }
 
@@ -437,21 +447,12 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     [[NSNotificationCenter defaultCenter] postNotificationName:kDidEmptyTrash object:self];
 }
 
-- (IBAction)sortAction:(id)sender
-{
-    NSMenuItem *item = (NSMenuItem *)sender;
-    [item setState:item.state == NSOnState ? NSOffState : NSOnState];
-    [[NSUserDefaults standardUserDefaults] setBool:item.state == NSOnState forKey:kTagSortPreferencesKey];
-    
-    [self loadTags];
-}
-
 
 #pragma mark - NSTableView delegate
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-    return kStartOfTagListRow + [tagArray count];
+    return kStartOfTagListRow + self.tagArray.count;
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -460,82 +461,62 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
     } else if(row == kTrashRow) {
         return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if(row == kTopRow || row == kSeparatorRow) {
+    } else if(row == kTagHeaderRow) {
         return @"";
     } else {
-        Tag *tag = [tagArray objectAtIndex:row-kStartOfTagListRow];
+        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
         return tag.name;
     }
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if (row == kTopRow) {
-        // Just a spacer
-        return nil;
-    }
-    
-    NSString *cellId = @"TagCell";
-    
     if (row == kAllNotesRow) {
-        cellId = @"AllNotesCell";
-    } else if (row == kTrashRow) {
-        cellId = @"TrashCell";
-    } else if (row == kSeparatorRow) {
-        cellId = @"SeparatorCell";
+        return [self allNotesTableViewCell];
     }
-    
-    SPTagCellView *tagView = [self.tableView makeViewWithIdentifier:cellId owner:self];
-    [tagView.textField setDelegate:self];
-    [tagView setMouseInside:NO];
-    [tagView applyStyle];
-    
-    if (row == kAllNotesRow) {
-        tagView.textField.stringValue = NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
-    } else if (row == kTrashRow) {
-        tagView.textField.stringValue = NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if (row == kSeparatorRow) {
-        tagView.textField.stringValue = @"";
-    } else {
-        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
-        tagView.textField.stringValue = tag.name;
+
+    if (row == kTrashRow) {
+        return [self trashTableViewCell];
     }
-    
-    return tagView;
+
+    if (row == kTagHeaderRow) {
+        return [self tagHeaderTableViewCell];
+    }
+
+    Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
+    return [self tagTableViewCellForTag:tag];
 }
 
 - (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     switch (row) {
         case kAllNotesRow:
-        case kSeparatorRow:
+        case kTagHeaderRow:
             return nil;
         case kTrashRow:
-            return trashDropdownMenu;
+            return self.trashDropdownMenu;
         default:
-            return tagDropdownMenu;
+            return self.tagDropdownMenu;
     }
 }
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-    SPTableRowView *rowView = [[SPTableRowView alloc] initWithFrame:NSZeroRect];
-    rowView.drawBorder = NO;
-    rowView.grayBackground = YES;
-    
+    TableRowView *rowView = [TableRowView new];
+    rowView.selectedBackgroundColor = [NSColor simplenoteSelectedBackgroundColor];
     return rowView;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
-    if (row == kTopRow || row == kSeparatorRow) {
+    if (row == kTagHeaderRow) {
         return NO;
     }
     
     if ([self.tableView selectedRow] == kTrashRow) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kWillFinishViewingTrash object:self];
     }
-    
+
     return YES;
 }
 
@@ -544,22 +525,9 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
     BOOL isViewingTrash = [self.tableView selectedRow] == kTrashRow;
     NSString *notificationName = isViewingTrash ? kDidBeginViewingTrash : kTagsDidLoad;
     [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self];
-    
-    [noteListViewController filterNotes:nil];
-    [noteListViewController selectRow:0];
-}
 
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    if (row == kSeparatorRow) {
-        return kSeparatorHeight;
-    }
-    
-    if (row == kTopRow) {
-        return kTopRowHeight;
-    }
-    
-    return kRowHeight;
+    [self.noteListViewController filterNotes:nil];
+    [self.noteListViewController selectRow:0];
 }
 
 
@@ -568,50 +536,41 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
     // Tag dropdowns are always valid
-    if (menuItem.menu == tagDropdownMenu) {
+    if (menuItem.menu == self.tagDropdownMenu) {
         return YES;
     }
     
     // For trash dropdown, check if there are deleted notes
-    if (menuItem.menu == trashDropdownMenu) {
+    if (menuItem.menu == self.trashDropdownMenu) {
 		SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
         return [appDelegate numDeletedNotes] > 0;
     }
     
-    if (menuItem.menu == findMenu) {
-        return YES;
-    }
-    
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)
-    return [self.tableView selectedRow] >= kStartOfTagListRow && tagNameBeingEdited == nil;
+    return [self.tableView selectedRow] >= kStartOfTagListRow && self.tagNameBeingEdited == nil;
 }
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
-    menuShowing = YES;
+    self.menuShowing = YES;
 }
 
 - (void)menuDidClose:(NSMenu *)menu
 {
-    menuShowing = NO;
+    self.menuShowing = NO;
 }
 
 #pragma mark - NSTextField delegate
 
-- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
-{
-    return !menuShowing;
-}
-
 - (void)controlTextDidBeginEditing:(NSNotification *)notification
 {
     NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
-    tagNameBeingEdited = [textView.string copy];
+    self.tagNameBeingEdited = [textView.string copy];
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    if (tagNameBeingEdited) {
+    if (self.tagNameBeingEdited) {
         // This can get triggered before renaming has started; don't do anything in that case
 
         NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
@@ -624,10 +583,10 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
         NSString *newTagName = [textView.string copy];
         
         BOOL tagAlreadyExists = [self tagWithName:newTagName] != nil;
-        if ([newTagName length] > 0 && !tagAlreadyExists && ![tagNameBeingEdited isEqualToString:newTagName])
-            [self changeTagName:tagNameBeingEdited toName:newTagName];
+        if ([newTagName length] > 0 && !tagAlreadyExists && ![self.tagNameBeingEdited isEqualToString:newTagName])
+            [self changeTagName:self.tagNameBeingEdited toName:newTagName];
         
-        tagNameBeingEdited = nil;
+        self.tagNameBeingEdited = nil;
     }
 }
 
@@ -643,7 +602,7 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 // Much of this code is overly generalized for this use case, but it works
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-    BOOL isAlphaSort = [[NSUserDefaults standardUserDefaults] boolForKey:kTagSortPreferencesKey];
+    BOOL isAlphaSort = Options.shared.alphabeticallySortTags;
     if (isAlphaSort || [rowIndexes firstIndex] < kStartOfTagListRow) {
         // Alphabetical tag sorting should not allow drag and drop
         return NO;
@@ -754,9 +713,23 @@ NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
 
 - (void)applyStyle
 {
-    [tableView setBackgroundColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
-    [tagBox setFillColor:[[[VSThemeManager sharedManager] theme] colorForKey:@"tableViewBackgroundColor"]];
+    self.visualEffectsView.appearance = [NSAppearance appearanceNamed:self.appearanceNameForVisualEffectsView];
+    self.visualEffectsView.material = self.materialForVisualEffectsView;
     [self reloadDataAndPreserveSelection];
+}
+
+- (NSAppearanceName)appearanceNameForVisualEffectsView
+{
+    return SPUserInterface.isDark ? NSAppearanceNameVibrantDark: NSAppearanceNameVibrantLight;
+}
+
+- (NSVisualEffectMaterial)materialForVisualEffectsView
+{
+    if (@available(macOS 10.14, *)) {
+        return NSVisualEffectMaterialUnderWindowBackground;
+    }
+
+    return NSVisualEffectMaterialAppearanceBased;
 }
 
 @end

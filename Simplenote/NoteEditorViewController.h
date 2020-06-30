@@ -7,17 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WebKit.h>
 #import "Note.h"
 #import "SPTextView.h"
 @import Simperium_OSX;
 
+@class BackgroundView;
 @class NoteListViewController;
-@class NoteEditorBottomBar;
+@class MarkdownViewController;
+@class TagsField;
+@class ToolbarView;
 
 typedef NS_ENUM(NSInteger, NoteFontSize) {
     NoteFontSizeMinimum = 10,
-    NoteFontSizeNormal = 15,
+    NoteFontSizeNormal = 14,
     NoteFontSizeMaximum = 30
 };
 
@@ -26,8 +28,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 #pragma mark Notifications
 #pragma mark ====================================================================================
 
-extern NSString * const SPNoNoteLoadedNotificationName;
-extern NSString * const SPNoteLoadedNotificationName;
 extern NSString * const SPTagAddedFromEditorNotificationName;
 extern NSString * const SPWillAddNewNoteNotificationName;
 
@@ -36,21 +36,10 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 #pragma mark NoteEditorViewController
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController : NSViewController <NSSharingServicePickerDelegate, WKNavigationDelegate>
+@interface NoteEditorViewController : NSViewController
 {
     IBOutlet NSTableView *tableView;
-    IBOutlet NoteListViewController *noteListViewController;
     IBOutlet NSArrayController *notesArrayController;
-    IBOutlet NSTokenField *tagTokenField;
-    IBOutlet NSButton *restoreVersionButton;
-    IBOutlet NSSlider *versionSlider;
-    IBOutlet NSTextFieldCell *versionLabel;
-    IBOutlet NSTextFieldCell *publishLabel;
-    IBOutlet NSButton *previewButton;
-    IBOutlet NSButton *publishButton;
-    IBOutlet NSButton *historyButton;
-    IBOutlet NSButton *shareButton;
-    IBOutlet NSView *statusView;
     IBOutlet NSMenu *lineLengthMenu;
     IBOutlet NSMenuItem *wordCountItem;
     IBOutlet NSMenuItem *characterCountItem;
@@ -63,26 +52,33 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
-@property (nonatomic, assign) IBOutlet SPTextView           *noteEditor;
-@property (nonatomic, assign) IBOutlet NSScrollView         *scrollView;
-@property (nonatomic, assign) IBOutlet NoteEditorBottomBar  *bottomBar;
-@property (nonatomic, strong) IBOutlet NSViewController     *shareViewController;
-@property (nonatomic, strong) IBOutlet NSViewController     *publishViewController;
-@property (nonatomic, strong) IBOutlet NSViewController     *versionsViewController;
-@property (nonatomic, strong) IBOutlet NSScrollView         *editorScrollView;
-@property (nonatomic,   weak) Note                          *note;
-@property (nonatomic, strong) WKWebView                     *markdownView;
+@property (nonatomic, strong) IBOutlet NSMenu                   *detailsMenu;
+@property (nonatomic, strong) IBOutlet BackgroundView           *backgroundView;
+@property (nonatomic, strong) IBOutlet BackgroundView           *topDividerView;
+@property (nonatomic, strong) IBOutlet BackgroundView           *bottomDividerView;
+@property (nonatomic, strong) IBOutlet ToolbarView              *toolbarView;
+@property (nonatomic, strong) IBOutlet NSImageView              *statusImageView;
+@property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;
+@property (nonatomic,   weak) IBOutlet SPTextView               *noteEditor;
+@property (nonatomic,   weak) IBOutlet NSScrollView             *scrollView;
+@property (nonatomic,   weak) IBOutlet TagsField                *tagsField;
+
+@property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
+@property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
+@property (nonatomic, assign, readonly) BOOL                    viewingTrash;
+@property (nonatomic, strong) NSLayoutConstraint                *toolbarViewTopConstraint;
+@property (nonatomic,   weak) Note                              *note;
 
 - (void)save;
 - (void)displayNote:(Note *)selectedNote;
 - (void)displayNotes:(NSArray *)selectedNotes;
 - (void)didReceiveNewContent;
-- (void)updateTagField;
 - (void)willReceiveNewContent;
 - (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data;
 - (void)applyStyle;
 - (void)showPublishPopover;
 - (void)fixChecklistColoring;
+- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
 - (NSUInteger)wordCount;
 - (NSUInteger)charCount;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;

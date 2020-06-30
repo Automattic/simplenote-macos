@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,7 +10,7 @@
         <scene sceneID="o5x-cC-aBy">
             <objects>
                 <windowController storyboardIdentifier="AboutWindowController" showSeguePresentationStyle="single" id="WZ7-aT-eIa" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="2Om-mE-jCO">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="2Om-mE-jCO" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="314" width="480" height="270"/>
@@ -39,20 +39,20 @@
                             <box fixedFrame="YES" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="jR0-c5-hne">
                                 <rect key="frame" x="0.0" y="0.0" width="451" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" ambiguous="YES" id="BDM-Ov-qG6">
+                                <view key="contentView" id="BDM-Ov-qG6">
                                     <rect key="frame" x="0.0" y="0.0" width="451" height="504"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8W-lq-bJP">
                                             <rect key="frame" x="178" y="389" width="95" height="95"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="simplenote" id="eup-pb-NgT"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="eup-pb-NgT"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NgJ-g1-nEA">
                                             <rect key="frame" x="80" y="333" width="291" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Version 42" id="TD0-Zc-GKj">
-                                                <font key="font" metaFont="cellTitle"/>
+                                                <font key="font" metaFont="controlContent"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -69,7 +69,7 @@
                                         <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="6Nc-En-R6f">
                                             <rect key="frame" x="82" y="316" width="287" height="1"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="2Kn-8e-Uf4">
+                                            <view key="contentView" id="2Kn-8e-Uf4">
                                                 <rect key="frame" x="1" y="1" width="285" height="0.0"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
@@ -78,14 +78,14 @@
                                         <box fixedFrame="YES" boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UHw-ou-KCK">
                                             <rect key="frame" x="82" y="251" width="287" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="ksN-Qa-WYh">
+                                            <view key="contentView" id="ksN-Qa-WYh">
                                                 <rect key="frame" x="0.0" y="0.0" width="287" height="66"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-xe-XlS">
                                                         <rect key="frame" x="0.0" y="5" width="287" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView" ambiguous="YES" id="e2g-Su-oaa">
+                                                        <view key="contentView" id="e2g-Su-oaa">
                                                             <rect key="frame" x="1" y="1" width="285" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
@@ -113,6 +113,7 @@
                                                         <rect key="frame" x="265" y="24" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="01g-5a-NaX"/>
+                                                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                 </subviews>
                                             </view>
@@ -120,14 +121,14 @@
                                         <box fixedFrame="YES" boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="MW4-bm-l4h">
                                             <rect key="frame" x="82" y="191" width="287" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="cY1-J5-o9o">
+                                            <view key="contentView" id="cY1-J5-o9o">
                                                 <rect key="frame" x="0.0" y="0.0" width="287" height="66"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Y4h-DO-SfV">
                                                         <rect key="frame" x="0.0" y="5" width="287" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView" ambiguous="YES" id="Ar2-qC-jpb">
+                                                        <view key="contentView" id="Ar2-qC-jpb">
                                                             <rect key="frame" x="1" y="1" width="285" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
@@ -155,6 +156,7 @@
                                                         <rect key="frame" x="265" y="24" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="EDv-AP-7tN"/>
+                                                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                 </subviews>
                                             </view>
@@ -162,14 +164,14 @@
                                         <box fixedFrame="YES" boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="TxN-OB-oNO">
                                             <rect key="frame" x="82" y="131" width="287" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="1qh-au-AIg">
+                                            <view key="contentView" id="1qh-au-AIg">
                                                 <rect key="frame" x="0.0" y="0.0" width="287" height="66"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Ek6-df-bY5">
                                                         <rect key="frame" x="0.0" y="5" width="287" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView" ambiguous="YES" id="CR9-bF-17E">
+                                                        <view key="contentView" id="CR9-bF-17E">
                                                             <rect key="frame" x="1" y="1" width="285" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
@@ -197,6 +199,7 @@
                                                         <rect key="frame" x="265" y="24" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="Et4-JO-Wx0"/>
+                                                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                 </subviews>
                                             </view>
@@ -204,14 +207,14 @@
                                         <box fixedFrame="YES" boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="z3l-Ll-tYB">
                                             <rect key="frame" x="82" y="71" width="287" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" ambiguous="YES" id="K8E-BJ-rCp">
+                                            <view key="contentView" id="K8E-BJ-rCp">
                                                 <rect key="frame" x="0.0" y="0.0" width="287" height="66"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="fn5-LT-yPF">
                                                         <rect key="frame" x="0.0" y="5" width="287" height="1"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView" ambiguous="YES" id="Ibg-f7-cRy">
+                                                        <view key="contentView" id="Ibg-f7-cRy">
                                                             <rect key="frame" x="1" y="1" width="285" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
@@ -230,6 +233,7 @@
                                                         <rect key="frame" x="265" y="27" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="1JP-im-Ces"/>
+                                                        <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                 </subviews>
                                             </view>
@@ -238,7 +242,7 @@
                                             <rect key="frame" x="164" y="20" width="123" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="© 2017 Automattic" id="yfA-1y-gmq">
-                                                <font key="font" metaFont="cellTitle"/>
+                                                <font key="font" metaFont="controlContent"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -247,7 +251,7 @@
                                             <rect key="frame" x="214" y="40" width="21" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title=" • " id="qaH-P0-RWS">
-                                                <font key="font" metaFont="cellTitle"/>
+                                                <font key="font" metaFont="controlContent"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -256,7 +260,7 @@
                                             <rect key="frame" x="96" y="40" width="123" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Privacy Policy" id="mtR-4c-JA4">
-                                                <font key="font" metaFont="cellTitle"/>
+                                                <font key="font" metaFont="controlContent"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -265,7 +269,7 @@
                                             <rect key="frame" x="231" y="40" width="123" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Terms of Service" id="CPb-lj-ZNn">
-                                                <font key="font" metaFont="cellTitle"/>
+                                                <font key="font" metaFont="controlContent"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -277,10 +281,12 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="backgroundBox" destination="jR0-c5-hne" id="EZe-0S-a1H"/>
                         <outlet property="blogLabel" destination="eGT-Zs-dGY" id="8qK-hu-Twv"/>
                         <outlet property="copyrightLabel" destination="7QO-fG-liO" id="FLV-mx-gvF"/>
                         <outlet property="githubLabel" destination="eoo-VW-fOF" id="sT5-oi-gMy"/>
                         <outlet property="hiringLabel" destination="NvX-jo-5we" id="exi-aU-Qny"/>
+                        <outlet property="logoImageView" destination="O8W-lq-bJP" id="JSr-Cl-2Hq"/>
                         <outlet property="privacyLabel" destination="zLM-6J-YYw" id="8LB-Pe-71z"/>
                         <outlet property="tosLabel" destination="Mvl-zm-Us5" id="k1s-pJ-Uzf"/>
                         <outlet property="twitterLabel" destination="qq6-gc-pbW" id="qja-Z4-q7a"/>
@@ -292,7 +298,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_arrow_top_right" width="22" height="22"/>
-        <image name="simplenote" width="512" height="512"/>
+        <image name="icon_arrow_top_right" width="24" height="24"/>
     </resources>
 </document>

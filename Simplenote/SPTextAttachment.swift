@@ -1,9 +1,3 @@
-//
-//  SPTextAttachment.swift
-//  Simplenote
-//  Used in the note editor to distinguish if a checklist item is ticked or not.
-//
-
 import Foundation
 
 
@@ -11,13 +5,6 @@ import Foundation
 //
 @objcMembers
 class SPTextAttachment: NSTextAttachment {
-
-    /// Attachment State
-    ///
-    private enum State: String {
-        case checked = "icon_task_checked"
-        case unchecked = "icon_task_unchecked"
-    }
 
     /// Indicates if the Attachment is checked or not. We're keeping this one as Boolean (for now) for ObjC interop purposes
     ///
@@ -35,12 +22,12 @@ class SPTextAttachment: NSTextAttachment {
         }
     }
 
-    /// This class relies on TextKit to calculate proper sizing and metrics, so that its image matches characters onScreen. However: in some scenarios, such as "Usage within NSTextField" (Notes List),
-    /// the LayoutManager is not always initialized / nor accessible.
+    /// Sizing Font:
     ///
-    /// For this reason, we're providing an Override mechanism. Plus: Because of ObjC Interop, it must not be optional (otherwise it won't bridge).
+    /// -   Note: When non nil, the TextAttachment will calculate its sized based on the specified font. Otherwise, we'll attempt
+    ///    to determine the TextStorage font applied.
     ///
-    var overrideDynamicBounds: NSRect = .zero
+    var sizingFont: NSFont?
 
 
     /// Convenience Initializer
@@ -65,8 +52,9 @@ private extension SPTextAttachment {
             return
         }
 
-        let state = isChecked ? State.checked : State.unchecked
-        let image = NSImage(named: state.rawValue)?.colorized(with: tintColor)
+        let state: NSImage.Name = isChecked ? .taskChecked : .taskUnchecked
+        let image = NSImage(named: state)?.tinted(with: tintColor)
+
         attachmentCell = SPTextAttachmentCell(imageCell: image)
     }
 }
@@ -85,11 +73,9 @@ class SPTextAttachmentCell: NSTextAttachmentCell {
     // MARK: - Overridden Methods
 
     override func cellFrame(for textContainer: NSTextContainer, proposedLineFragment lineFrag: NSRect, glyphPosition position: NSPoint, characterIndex charIndex: Int) -> NSRect {
-        if let overriddenBounds = parentTextAttachment?.overrideDynamicBounds, overriddenBounds != .zero {
-            return overriddenBounds
-        }
+        let targetFont = parentTextAttachment?.sizingFont ?? textContainer.layoutManager?.textStorage?.font(at: charIndex)
 
-        guard let image = image, let font = textContainer.layoutManager?.textStorage?.font(at: charIndex) else {
+        guard let image = image, let font = targetFont else {
             return super.cellFrame(for: textContainer, proposedLineFragment: lineFrag, glyphPosition: position, characterIndex: charIndex)
         }
 

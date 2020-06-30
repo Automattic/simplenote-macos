@@ -7,60 +7,51 @@
 //
 
 #import "NoteListViewController.h"
-#import "SPTableRowView.h"
-#import "SPNoteCellView.h"
 #import "Note.h"
 #import "NoteEditorViewController.h"
 #import "SimplenoteAppDelegate.h"
 #import "NotesArrayController.h"
 #import "TagListViewController.h"
 #import "SPTableView.h"
-#import "VSThemeManager.h"
-#import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
+#import "Simplenote-Swift.h"
 
 @import Simperium_OSX;
 
-CGFloat const kNoteRowHeight = 64;
-CGFloat const kNoteListTopMargin = 12;
-CGFloat const kNoteRowHeightCompact = 24;
 
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
-NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 @implementation NoteListViewController
 
-- (void)awakeFromNib
+- (void)viewDidLoad
 {
-    [super awakeFromNib];
-    
-    // awakeFromNib is called each time a cell is created; work around that (must be careful
-    // not to register for notifications multiple times)
-    // http://stackoverflow.com/a/7187492/1379066
-    if (awake) {
-        return;
-    }
-    
+    [super viewDidLoad];
+
     oldTags = @"";
 
     // Set the active preferences in the menu
     int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
     [self updateSortMenuForPosition:sortPrefPosition];
-    int previewLinesPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kPreviewLinesPref] ? 1 : 0;
+
+    int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
-    [progressIndicator setWantsLayer:YES];
-    [progressIndicator setAlphaValue:0.5];
-    [progressIndicator setHidden:YES];
+    [self.progressIndicator setWantsLayer:YES];
+    [self.progressIndicator setAlphaValue:0.5];
+    [self.progressIndicator setHidden:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
                                                  name: kNotesArrayDidChangeNotification
-                                               object: arrayController];
+                                               object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArraySelectionDidChange:)
                                                  name: kNotesArraySelectionDidChangeNotification
-                                               object: arrayController];
+                                               object: self.arrayController];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(notesCondensedModeDidChange:)
+                                                 name: NoteListCondensedDidChangeNotification
+                                               object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didBeginViewingTrash:)
                                                  name: kDidBeginViewingTrash
@@ -78,11 +69,13 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
                                              selector: @selector(willAddNewNote:)
                                                  name: SPWillAddNewNoteNotificationName
                                                object: nil];
-    
-    awake = YES;
 
+    self.tableView.rowHeight = [NoteTableCellView rowHeight];
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
+
+    [self setupSearchBar];
+    [self setupTopDivider];
 }
 
 - (void)viewWillAppear
@@ -98,7 +91,19 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)loadNotes
 {
-    [arrayController fetch:self];
+    [self.arrayController fetch:self];
+}
+
+- (void)reloadSynchronously
+{
+    [self.arrayController fetchWithRequest:nil merge:NO error:nil];
+}
+
+// TODO: Work in Progress. Decouple with a delegate please
+//
+- (NoteEditorViewController *)noteEditorViewController
+{
+    return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
 }
 
 - (void)reset
@@ -108,9 +113,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)setNotesPredicate:(NSPredicate *)predicate
 {
-    [arrayController setFetchPredicate:predicate];
-    arrayController.sortDescriptors = [self sortDescriptors];
-    [arrayController rearrangeObjects];
+    [self.arrayController setFetchPredicate:predicate];
+    self.arrayController.sortDescriptors = [self sortDescriptors];
+    [self.arrayController rearrangeObjects];
     [self.tableView reloadData];
 
     // The re-fetch won't happen until next run loop
@@ -140,20 +145,22 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)predicateDidChange
 {
-    if ([[arrayController arrangedObjects] count] == 0) {
-        [noteEditorViewController displayNote:nil];
-        [statusField setHidden:NO];
+    if (self.allNotes.count != 0) {
+        return;
     }
+
+    [self.noteEditorViewController displayNote:nil];
+    [self.statusField setHidden:NO];
 }
 
 - (void)setWaitingForIndex:(BOOL)waiting
 {
     if (waiting) {
-        [progressIndicator setHidden:NO];
-        [progressIndicator startAnimation:nil];
+        [self.progressIndicator setHidden:NO];
+        [self.progressIndicator startAnimation:nil];
     } else {
-        [progressIndicator setHidden:YES];
-        [progressIndicator stopAnimation:nil];
+        [self.progressIndicator setHidden:YES];
+        [self.progressIndicator stopAnimation:nil];
     }
 }
 
@@ -163,7 +170,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (NSInteger)rowForNoteKey:(NSString *)key
 {
     NSInteger row = 0;
-    for (Note *note in [arrayController arrangedObjects]) {
+    for (Note *note in [self.arrayController arrangedObjects]) {
         if ([note.simperiumKey isEqualToString:key])
             return row;
         row += 1;
@@ -184,7 +191,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)selectRow:(NSInteger)row
 {
     if (row >= 0) {
-        [arrayController setSelectionIndex:row];
+        [self.arrayController setSelectionIndex:row];
     }
 }
 
@@ -204,32 +211,21 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-    SPTableRowView *rowView = [[SPTableRowView alloc]initWithFrame:NSZeroRect];
-    rowView.drawBorder = NO;
+    TableRowView *rowView = [TableRowView new];
+    rowView.selectedBackgroundColor = [NSColor simplenoteSecondarySelectedBackgroundColor];
     return rowView;
-}
-
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    return rowHeight;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    SPNoteCellView *view = [tableView makeViewWithIdentifier:@"CustomCell" owner:self];
-    Note *note = [[arrayController arrangedObjects] objectAtIndex:row];
-    view.note = note;
-    view.contentPreview.delegate = self.tableView;
-    view.accessoryImageView.image = note.published ? [NSImage imageNamed:@"icon_shared"] : nil;
-    view.accessoryImageView.hidden = !note.published;
-
-    return view;
+    Note *note = [self.arrayController.arrangedObjects objectAtIndex:row];
+    return [self noteTableViewCellForNote:note];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
     BOOL shouldSelect = YES;
-    if (preserveSelection && [self rowForNoteKey:noteEditorViewController.note.simperiumKey] != row) {
+    if (preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
         shouldSelect = NO;
     }
     
@@ -238,23 +234,28 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (NSArray *)selectedNotes
 {
-    return [[arrayController arrangedObjects] objectsAtIndexes:[self.tableView selectedRowIndexes]];
+    return [self.allNotes objectsAtIndexes:[self.tableView selectedRowIndexes]];
+}
+
+- (NSArray<Note *> *)allNotes
+{
+    return self.arrayController.arrangedObjects;
 }
 
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
-    NSUInteger numNotes = [[arrayController arrangedObjects] count];
+    NSUInteger numNotes = self.allNotes.count;
     
     // As soon as at least one note is added, select it
-    if (numNotes > 0 && noteEditorViewController.note == nil) {
+    if (numNotes > 0 && self.noteEditorViewController.note == nil) {
         [self selectRow:0];
     }
     
-    [statusField setHidden:numNotes > 0];
+    self.statusField.hidden = numNotes > 0;
     
-    if (numNotes == 0)
-        [noteEditorViewController displayNote:nil];
-    else if (self.searching) {
+    if (numNotes == 0) {
+        [self.noteEditorViewController displayNote:nil];
+    } else if (self.searching) {
         [self selectRow:0];
     }
 }
@@ -262,8 +263,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)notesArraySelectionDidChange:(NSNotification *)notification
 {
     // Check for empty list and clear editor contents if necessary
-    if ([[arrayController arrangedObjects] count] == 0) {
-        [noteEditorViewController displayNote:nil];
+    if (self.allNotes.count == 0) {
+        [self.noteEditorViewController displayNote:nil];
     }
     
     NSInteger selectedRow = [self.tableView selectedRow];
@@ -273,13 +274,13 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     }
 
     if ([self.tableView numberOfSelectedRows] == 1) {
-        Note *note = [[arrayController arrangedObjects] objectAtIndex:selectedRow];
-        if (![note.simperiumKey isEqualToString: noteEditorViewController.note.simperiumKey]) {
+        Note *note = [[self.arrayController arrangedObjects] objectAtIndex:selectedRow];
+        if (![note.simperiumKey isEqualToString: self.noteEditorViewController.note.simperiumKey]) {
             [SPTracker trackListNoteOpened];
-            [noteEditorViewController displayNote:note];
+            [self.noteEditorViewController displayNote:note];
         }
     } else {
-        [noteEditorViewController displayNotes:[self selectedNotes]];
+        [self.noteEditorViewController displayNotes:[self selectedNotes]];
     }
 }
 
@@ -287,8 +288,8 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 {
     preserveSelection = YES;
     // Reset the fetch predicate
-    [arrayController setFetchPredicate:[arrayController fetchPredicate]];
-    arrayController.sortDescriptors = [self sortDescriptors];
+    [self.arrayController setFetchPredicate:self.arrayController.fetchPredicate];
+    self.arrayController.sortDescriptors = [self sortDescriptors];
     [self.tableView reloadData];
     preserveSelection = NO;
     
@@ -299,6 +300,11 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 }
 
 #pragma mark - Notification handlers
+
+- (void)notesCondensedModeDidChange:(NSNotification *)note
+{
+    self.tableView.rowHeight = [NoteTableCellView rowHeight];
+}
 
 - (void)noteKeysWillChange:(NSSet *)keys
 {
@@ -315,7 +321,7 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 
 - (void)noteKeysAdded:(NSSet *)keys
 {
-    [arrayController setFetchPredicate:[arrayController fetchPredicate]];
+    [self.arrayController setFetchPredicate:[self.arrayController fetchPredicate]];
     [self.tableView reloadData];
 }
 
@@ -352,20 +358,24 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
 - (void)didBeginViewingTrash:(NSNotification *)notification
 {
     [SPTracker trackListTrashPressed];
-    viewingTrash = YES;
+    self.viewingTrash = YES;
+    [self refreshEnabledActions];
 }
 
 - (void)willFinishViewingTrash:(NSNotification *)notification
 {
-    viewingTrash = NO;
+    self.viewingTrash = NO;
+    [self refreshEnabledActions];
 }
 
 - (void)didEmptyTrash:(NSNotification *)notification
 {
-    if ([[arrayController arrangedObjects] count] == 0) {
-        [noteEditorViewController displayNote:nil];
-        [statusField setHidden:NO];
+    if (self.allNotes.count != 0) {
+        return;
     }
+
+    [self.noteEditorViewController displayNote:nil];
+    [self.statusField setHidden:NO];
 }
 
 - (void)willAddNewNote:(NSNotification *)notification
@@ -470,8 +480,9 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
         }
     }
 
-    rowHeight = (position == 1) ? kNoteRowHeightCompact : kNoteRowHeight;
-    [[NSUserDefaults standardUserDefaults] setBool:(position == 1) forKey:kPreviewLinesPref];
+    // NOTE: temporary snippet. On it's way out, as part of #458 revamp
+    BOOL isCondensedOn = (position == 1);
+    [[Options shared] setNotesListCondensed:isCondensedOn];
 }
 
 - (void)searchAction:(id)sender
@@ -479,31 +490,24 @@ NSString * const kPreviewLinesPref = @"kPreviewLinesPref";
     [self.view.window makeFirstResponder:self.searchField];
 }
 
+
 #pragma mark - NSMenuValidation delegate
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
     // Disable menu items when viewing trash
-    return !viewingTrash;
+    return !self.viewingTrash;
 }
 
 
+#pragma mark - IBActions
 
-#pragma mark - Theme
-
-- (void)applyStyle
+- (IBAction)filterNotes:(id)sender
 {
-    VSTheme *theme = [[VSThemeManager sharedManager] theme];
-    statusField.textColor = [theme colorForKey:@"emptyListViewFontColor"];
-    
-    [self reloadDataAndPreserveSelection];
-}
-
-- (IBAction)filterNotes:(id)sender {
     NSString *searchText = [self.searchField stringValue];
     
-    NSMutableArray *predicateList = [[NSMutableArray alloc] init];
-    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", [NSNumber numberWithBool:viewingTrash]]];
+    NSMutableArray *predicateList = [NSMutableArray new];
+    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", @(self.viewingTrash)]];
     
     NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
     if (selectedTag.length > 0) {

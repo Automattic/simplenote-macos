@@ -14,11 +14,14 @@
 
 static CGFloat const SPLoginAdditionalHeight        = 40.0f;
 static CGFloat const SPLoginWPButtonWidth           = 270.0f;
-static NSInteger const SPLoginPasswordLength        = 4;
-static NSInteger const SPSignupPasswordLength       = 6;
 static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 @implementation LoginWindowController
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
 
 - (instancetype)init {
     self = [super init];
@@ -27,7 +30,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     if (@available(macOS 10.14, *)) {
         self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
     }
-    
+
     // Sanity check for accessing the root view
     if (self.window.contentView.subviews.count < 1) {
         return self;
@@ -47,12 +50,13 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
         frame.origin.y += SPLoginAdditionalHeight;
         [view setFrame:frame];
     }
-    
+
+    NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
     NSButton *wpccButton = [[NSButton alloc] init];
     [wpccButton setTitle:NSLocalizedString(@"Sign in with WordPress.com", @"button title for wp.com sign in button")];
     [wpccButton setTarget:self];
     [wpccButton setAction:@selector(wpccSignInAction:)];
-    [wpccButton setImage:[NSImage imageNamed:@"icon_wp"]];
+    [wpccButton setImage:wpIcon];
     [wpccButton setImagePosition:NSImageLeft];
     [wpccButton setBordered:NO];
     [wpccButton setFont:[NSFont systemFontOfSize:16.0]];
@@ -75,7 +79,11 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 }
 
 - (IBAction)wpccSignInAction:(id)sender
-{    
+{
+    if (super.isAnimatingProgress) {
+        return;
+    }
+
     NSString *sessionState = [[NSUUID UUID] UUIDString];
     sessionState = [@"app-" stringByAppendingString:sessionState];
     [[NSUserDefaults standardUserDefaults] setObject:sessionState forKey:SPAuthSessionKey];
@@ -114,17 +122,6 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 {
     [super signInAction:sender];
     [SPTracker trackUserSignedIn];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
-}
-
-#pragma mark - Overridden Properties
-
-- (void)setSigningIn:(BOOL)signingIn {
-    [super setSigningIn:signingIn];
-    self.validator.minimumPasswordLength = signingIn ? SPLoginPasswordLength : SPSignupPasswordLength;
 }
 
 @end

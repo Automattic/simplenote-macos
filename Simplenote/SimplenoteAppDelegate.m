@@ -11,26 +11,21 @@
 #import "DateTransformer.h"
 #import "Note.h"
 #import "Tag.h"
+#import "NSNotification+Simplenote.h"
 #import "LoginWindowController.h"
 #import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
-#import "SPMarkdownParser.h"
 #import "SPWindow.h"
-#import "SPToolbarView.h"
-#import "NSImage+Colorize.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
-#import "VSThemeManager.h"
-#import "SPSplitView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
 #import "WPAuthHandler.h"
 
 @import Simperium_OSX;
 
-#if USE_HOCKEY
+#if SPARKLE_OTA
 #import <Sparkle/Sparkle.h>
-#import <HockeySDK/HockeySDK.h>
 #endif
 
 
@@ -40,36 +35,32 @@
 #pragma mark ====================================================================================
 
 #define kFirstLaunchKey					@"SPFirstLaunch"
-#define kMinimumNoteListSplit			240
-#define kMaximumNoteListSplit			384
-#define kDefaultThemeAppearanceTag      2
+
 
 
 #pragma mark ====================================================================================
 #pragma mark Private
 #pragma mark ====================================================================================
 
-#if USE_HOCKEY
-@interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate, BITHockeyManagerDelegate>
-#else
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
-#endif
+
+@property (strong, nonatomic) IBOutlet NSWindow                 *window;
 
 @property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
 @property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
 @property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
-@property (strong, nonatomic) IBOutlet NSView                   *textViewParent;
-@property (strong, nonatomic) IBOutlet NSScrollView             *textScrollView;
-@property (strong, nonatomic) IBOutlet SPSplitView              *splitView;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *exportItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *switchThemeItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *emptyTrashItem;
-@property (strong, nonatomic) IBOutlet NSMenuItem               *mainWindowItem;
+
+@property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
 
-#if USE_HOCKEY
+@property (strong, nonatomic) Simperium                         *simperium;
+@property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
+@property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
+@property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
+
+#if SPARKLE_OTA
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
 #endif
 
@@ -80,9 +71,7 @@
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@implementation SimplenoteAppDelegate {
-    BOOL tagListWasVisibleUponFocusMode;
-}
+@implementation SimplenoteAppDelegate
 
 #pragma mark - Startup
 // Can be used for bugs that don't show up while debugging from Xcode
@@ -103,6 +92,7 @@
                                                                            coordinator:self.persistentStoreCoordinator];
     simperium.delegate                              = self;
     simperium.verboseLoggingEnabled                 = NO;
+    simperium.presentsLoginByDefault                = YES;
     simperium.authenticationWindowControllerClass   = [LoginWindowController class];
     
     SPAuthenticator *authenticator                  = simperium.authenticator;
@@ -110,22 +100,14 @@
     
     SPAuthenticationConfiguration *config           = [SPAuthenticationConfiguration sharedInstance];
     config.logoImageName                            = SPSimplenoteLogoImageName;
+    config.controlColor                             = [NSColor simplenoteBrandColor];
     config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
+    config.resetPasswordURL                         = SPSimplenoteResetPasswordURL;
     
     return simperium;
 }
 
-#if USE_HOCKEY
-- (void)configureHockeyWithID:(NSString *)hockeyID
-{
-    NSLog(@"Initializing HockeyApp... ");
-    
-    BITHockeyManager *hockeyManager = [BITHockeyManager sharedHockeyManager];
-    
-    [hockeyManager configureWithIdentifier:hockeyID delegate:self];
-    [hockeyManager startManager];
-}
-
+#if SPARKLE_OTA
 - (void)configureSparkle
 {
     self.updaterController = [[SPUStandardUpdaterController alloc] initWithUpdaterDelegate:nil
@@ -138,11 +120,6 @@
 }
 #endif
 
-- (VSTheme *)theme
-{
-    return [[VSThemeManager sharedManager] theme];
-}
-
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
     [eventManager setEventHandler:self
@@ -154,16 +131,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [SPTracker trackApplicationLaunched];
-    
+
+    [self configureSplitView];
     [self configureWindow];
     [self hookWindowNotifications];
-
-    VSThemeManager *themeManager = [VSThemeManager sharedManager];
-    if ([themeManager isMojaveWithNoThemeSet]) {
-        [self updateThemeMenuForPosition:kDefaultThemeAppearanceTag];
-    } else {
-        [self updateThemeMenuForPosition:[[VSThemeManager sharedManager] isDarkMode] ? 1 : 0];
-    }
     [self applyStyle];
     
 	self.simperium = [self configureSimperium];
@@ -175,8 +146,7 @@
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
     [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
 
-#if USE_HOCKEY
-    [self configureHockeyWithID:SPCredentials.bitHockeyIdentifier];
+#if SPARKLE_OTA
     [self configureSparkle];
 #endif
 
@@ -189,79 +159,17 @@
 
 	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
 
+    [[MigrationsHandler new] ensureUpdateIsHandled];
+
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
-
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(applyStyle) name:VSThemeManagerThemeDidChangeNotification object:nil];
-}
-
-- (void)configureWindow
-{
-    // Restore collapsed state of tag list based on autosaved width
-    BOOL collapsed                              = self.tagListViewController.view.frame.size.width <= 1;
-    self.tagListViewController.view.hidden      = collapsed;
-    self.noteListViewController.view.hidden     = NO;
-    self.window.releasedWhenClosed              = NO;
-    
-    [self.splitView adjustSubviews];
-    [self notifySplitDidChange];
-    
-    // Add the markdown view (you can't add a WKWebView in a .xib until macOS 10.12)
-    WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
-    WKPreferences *prefs = [[WKPreferences alloc] init];
-    prefs.javaScriptEnabled = NO;
-    webConfig.preferences = prefs;
-    CGRect frame = CGRectMake(0, 43.0f, self.textViewParent.frame.size.width, self.textViewParent.frame.size.height - 43.0f);
-    WKWebView *markdownView = [[WKWebView alloc] initWithFrame:frame configuration:webConfig];
-    [markdownView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [markdownView setHidden:YES];
-    
-    // Preload CSS in webview, prevents 'flashing' when first loading the markdown view
-    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
-    [markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
-    
-    [self.textViewParent addSubview:markdownView];
-    self.noteEditorViewController.markdownView = markdownView;
-    [markdownView setNavigationDelegate:self.noteEditorViewController];
-    
-    // Add the System Appearance menu item to the 'Theme' menu on Mojave or later
-    if (@available(macOS 10.14, *)) {
-        NSMenuItem *separatorItem = [NSMenuItem separatorItem];
-        [themeMenu addItem:separatorItem];
-        
-        NSMenuItem *systemDefaultItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"System Appearance", @"Menu item for using default macOS theme appearance.") action:@selector(changeThemeAction:) keyEquivalent:@""];
-        systemDefaultItem.tag = kDefaultThemeAppearanceTag;
-        [themeMenu addItem:systemDefaultItem];
-    }
-
-    [self configureToolbar];
-}
-
-- (void)configureToolbar
-{
-    NSRect splitFrame                           = self.splitView.frame;
-    NSRect toolbarFrame                         = self.toolbar.frame;
-    
-    splitFrame.size.height                      -= toolbarFrame.size.height;
-    self.splitView.frame                        = splitFrame;
-    
-    toolbarFrame.origin.y                       = splitFrame.size.height;
-    toolbarFrame.size.width                     = splitFrame.size.width;
-    
-    self.toolbar.autoresizingMask               = NSViewWidthSizable | NSViewMinXMargin | NSViewMinYMargin;
-    self.toolbar.drawsSeparator                 = true;
-    self.toolbar.drawsBackground                = true;
-    self.toolbar.frame                          = toolbarFrame;
-    
-    [self.splitView.superview addSubview:self.toolbar];
+    [self startListeningForThemeNotifications];
 }
 
 - (void)hookWindowNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:)         name:NSApplicationDidResignActiveNotification   object:self.window];
-    [nc addObserver:self selector:@selector(handleWindowDidResizeNote:)             name:NSWindowDidResizeNotification              object:self.window];
+    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:) name:NSApplicationDidResignActiveNotification object:self.window];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -288,7 +196,7 @@
     }
 
     if ([SPExporter mustEnableExportAction:url]) {
-        [self.exportItem setHidden:NO];
+        self.exportUnlocked = YES;
     }
 }
 
@@ -379,7 +287,7 @@
     welcomeNote.modificationDate = [NSDate date];
     welcomeNote.creationDate = [NSDate date];
     welcomeNote.content = NSLocalizedString(@"welcomeNote-Mac", @"A welcome note for new Mac users");
-    [welcomeNote createPreviews:welcomeNote.content];
+    [welcomeNote createPreview];
 	
     [_simperium save];
 }
@@ -399,6 +307,7 @@
     
     NSStoryboard *aboutStoryboard = [NSStoryboard storyboardWithName:@"About" bundle:nil];
     self.aboutWindowController = [aboutStoryboard instantiateControllerWithIdentifier:@"AboutWindowController"];
+    [self.aboutWindowController.window center];
     [self.aboutWindowController showWindow:self];
 }
 
@@ -421,96 +330,11 @@
 
 #pragma mark - NSWindow Notification Handlers
 
-- (void)handleWindowDidResizeNote:(NSNotification *)notification
-{
-    [self.splitView adjustSubviews];
-    [self notifySplitDidChange];
-}
-
 - (void)handleWindowDidResignMainNote:(NSNotification *)notification
 {
     // Use this as an opportunity to re-sort by modify date when the user isn't looking
     // (otherwise it can be a little jarring)
     [self.noteListViewController reloadDataAndPreserveSelection];
-}
-
-
-#pragma mark - Split view Handling
-
-- (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex
-{
-    // Tag List: Don't draw separators
-    return (self.noteListViewController.view.isHidden || dividerIndex == SPSplitViewSectionTags);
-}
-
-- (NSRect)splitView:(NSSplitView *)splitView effectiveRect:(NSRect)proposedEffectiveRect forDrawnRect:(NSRect)drawnRect ofDividerAtIndex:(NSInteger)dividerIndex
-{
-    // Tag List: Don't draw separators
-    return (dividerIndex == SPSplitViewSectionTags) ? CGRectZero : proposedEffectiveRect;
-}
-
-- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview
-{
-    // When resizing the window, only resize the note editor
-    return (subview == self.textViewParent);
-}
- 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-    // Tag: Split should be fixed
-    CGFloat minTagListWidth = [self.tagListViewController.view isHidden] ? 0 : SPSplitViewDefaultWidth;
-    if (dividerIndex == SPSplitViewSectionTags) {
-        return minTagListWidth;
-    }
-	
-    // List: Split should be dynamic
-    return minTagListWidth + kMinimumNoteListSplit;
-}
-
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-    // Tag: Split should be fixed
-    if (dividerIndex == SPSplitViewSectionTags) {
-        return SPSplitViewDefaultWidth;
-	}
-
-    // List: Split should be dynamic
-    return [self tagListWidth] + kMaximumNoteListSplit;
-}
-
-- (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-    [self notifySplitDidChange];
-    
-    return proposedPosition;
-}
-
-
-#pragma mark - Split view Helpers
-
-- (void)splitViewDidResizeSubviews:(NSNotification *)notification
-{
-    [self notifySplitDidChange];
-}
-
-- (CGFloat)tagListWidth
-{
-    return [self.tagListViewController.view isHidden] ? 0 : self.tagListViewController.view.bounds.size.width;
-}
-
-- (CGFloat)editorSplitPosition
-{
-    return [self tagListWidth] + self.noteListViewController.view.bounds.size.width;
-}
-
-- (CGFloat)tagListSplitPosition
-{
-    return self.tagListViewController.view.bounds.size.width;
-}
-
-- (void)notifySplitDidChange
-{
-    [self.toolbar setSplitPositionLeft:[self tagListSplitPosition] right:[self editorSplitPosition]];
 }
 
 
@@ -549,7 +373,6 @@
             case SPBucketChangeTypeUpdate:
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
-                    [self.noteEditorViewController updateTagField];
                 }
                 [self.noteListViewController noteKeyDidChange:key memberNames:memberNames];
 
@@ -602,18 +425,6 @@
 }
 
 
-#pragma mark - Menu delegate
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    if (menuItem == self.emptyTrashItem) {
-        return [self numDeletedNotes] > 0;
-    }
-
-    return YES;
-}
-
-
 #pragma mark - Static Helpers
 
 + (SimplenoteAppDelegate *)sharedDelegate
@@ -663,6 +474,9 @@
     [self.noteListViewController setWaitingForIndex:YES];
     
     [_simperium signOutAndRemoveLocalData:YES completion:^{
+        // Nuke User Settings
+        [[Options shared] reset];
+
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self->_simperium authenticateIfNecessary];
@@ -681,52 +495,14 @@
     [self.noteListViewController searchAction:sender];
 }
 
-- (BOOL)isInFocusMode {
-    return [self.noteListViewController.view isHidden];
-}
-
 - (IBAction)toggleSidebarAction:(id)sender
 {
-    [SPTracker trackSidebarButtonPresed];
-    
-    // Stop focus mode when the sidebar button is pressed with focus mode active
-    if ([self isInFocusMode]) {
-        [self focusModeAction:nil];
-        return;
-    }
-
-    CGFloat tagListSplitPosition = MAX([self tagListSplitPosition], SPSplitViewDefaultWidth);
-    CGFloat editorSplitPosition = [self editorSplitPosition];
-    BOOL collapsed = ![self.tagListViewController.view isHidden];
-    [self.tagListViewController.view setHidden:collapsed];
-    tagListWasVisibleUponFocusMode = NO;
-    
-    [self.splitView setPosition:collapsed ? 0 : tagListSplitPosition ofDividerAtIndex:0];
-    [self.splitView setPosition:collapsed ? editorSplitPosition - tagListSplitPosition : editorSplitPosition + tagListSplitPosition ofDividerAtIndex:1];
-    [self.splitView adjustSubviews];
+    [self.splitViewController toggleSidebarActionWithSender:sender];
 }
 
-- (IBAction)focusModeAction:(id)sender {
-    // Check if the tags list is visible, if so close it
-    BOOL tagsVisible = ![self.tagListViewController.view isHidden];
-    if (tagsVisible) {
-        [self toggleSidebarAction:nil];
-        tagListWasVisibleUponFocusMode = YES;
-    }
-    
-    [self.noteListViewController.view setHidden:![self.noteListViewController.view isHidden]];
-    
-    BOOL isEnteringFocusMode = [self.noteListViewController.view isHidden];
-    // Enable/disable buttons and search bar in the toolbar
-    [self.toolbar configureForFocusMode: isEnteringFocusMode];
-    [focusModeMenuItem setState:isEnteringFocusMode ? NSOnState : NSOffState];
-    
-    if (!isEnteringFocusMode && tagListWasVisibleUponFocusMode) {
-        // If ending focus mode and the tag view was previously visible, show it agian
-        [self toggleSidebarAction:nil];
-    }
-    
-    [self.splitView adjustSubviews];
+- (IBAction)focusModeAction:(id)sender
+{
+    [self.splitViewController focusModeActionWithSender:sender];
 }
 
 - (IBAction)helpAction:(id)sender
@@ -736,61 +512,32 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: helpLinks[menuItem.tag]]];
 }
 
-- (IBAction)changeThemeAction:(id)sender
+- (void)startListeningForThemeNotifications
 {
-    NSMenuItem *item = (NSMenuItem *)sender;
-    if (item.state == NSOnState) {
-        return;
-    }
-    
-    if ([sender tag] == kDefaultThemeAppearanceTag) {
-        // Resetting to default macOS theme appearance
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:VSThemeManagerThemePrefKey];
-        if (@available(macOS 10.14, *)) {
-            SPWindow *window = (SPWindow *)self.window;
-            window.appearance = nil;
-            [window applyMojaveThemeOverrideIfNecessary];
-        }
-    } else {
-        NSString *newTheme = ([sender tag] == 0) ? @"default" : @"dark";
-        [SPTracker trackSettingsThemeUpdated:newTheme];
-        [[VSThemeManager sharedManager] swapTheme:newTheme];
-    }
-    
-    [self updateThemeMenuForPosition:[sender tag]];
+    // Note: This *definitely* has to go, the second backgroundView is relocated
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(applyStyle)
+                                                            name:AppleInterfaceThemeChangedNotification
+                                                          object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applyStyle)
+                                                 name:ThemeDidChangeNotification
+                                               object:nil];
 }
 
-- (void)updateThemeMenuForPosition:(NSInteger)position
+- (void)stopListeningForThemeNotifications
 {
-    for (NSMenuItem *menuItem in themeMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)applyStyle
 {
-    if (@available(macOS 10.14, *)) {
-        SPWindow *window = (SPWindow *)self.window;
-        [window applyMojaveThemeOverrideIfNecessary];
-        [self.noteEditorViewController applyStyle];
-        [self.noteEditorViewController fixChecklistColoring];
-        [self.noteListViewController applyStyle];
-        return;
-    }
-    
-    self.textScrollView.backgroundColor = [self.theme colorForKey:@"tableViewBackgroundColor"];
-    [backgroundView setNeedsDisplay:YES];
-
-    [self.splitView applyStyle];
-    [self.toolbar applyStyle];
-    [self.toolbar setNeedsDisplay:YES];
+    [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
     [self.noteEditorViewController applyStyle];
+    [self.noteEditorViewController fixChecklistColoring];
 }
 
 

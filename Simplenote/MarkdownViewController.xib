@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="16097"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MarkdownViewController" customModule="Simplenote" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="v1P-Qy-P3B" id="DYK-Yl-kii"/>
+                <outlet property="view" destination="5Wj-JG-oLW" id="Taf-nw-x5y"/>
+                <outlet property="webView" destination="9ne-G9-eFP" id="oyo-IC-f3v"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="5Wj-JG-oLW">
+            <rect key="frame" x="0.0" y="0.0" width="313" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="v1P-Qy-P3B" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="313" height="160"/>
+                </customView>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOf-vJ-wts">
+                    <rect key="frame" x="0.0" y="0.0" width="313" height="160"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Fj2-bX-MBi">
+                        <rect key="frame" x="0.0" y="0.0" width="313" height="160"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ne-G9-eFP">
+                                <rect key="frame" x="0.0" y="0.0" width="313" height="160"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <wkWebViewConfiguration key="configuration" suppressesIncrementalRendering="YES">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO" javaScriptEnabled="NO"/>
+                                </wkWebViewConfiguration>
+                                <connections>
+                                    <outlet property="navigationDelegate" destination="-2" id="10f-sM-Lrf"/>
+                                </connections>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="xSG-qU-U4i">
+                        <rect key="frame" x="-100" y="-100" width="313" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Hjw-bh-8H0">
+                        <rect key="frame" x="-100" y="-100" width="16" height="160"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="v1P-Qy-P3B" secondAttribute="bottom" id="BOo-c7-b9q"/>
+                <constraint firstItem="rOf-vJ-wts" firstAttribute="leading" secondItem="5Wj-JG-oLW" secondAttribute="leading" id="E0S-wh-xQl"/>
+                <constraint firstItem="v1P-Qy-P3B" firstAttribute="leading" secondItem="5Wj-JG-oLW" secondAttribute="leading" id="KbE-Pw-Tul"/>
+                <constraint firstItem="v1P-Qy-P3B" firstAttribute="top" secondItem="5Wj-JG-oLW" secondAttribute="top" id="QUW-Qe-E1N"/>
+                <constraint firstItem="rOf-vJ-wts" firstAttribute="top" secondItem="5Wj-JG-oLW" secondAttribute="top" id="Rwr-0d-T0f"/>
+                <constraint firstAttribute="trailing" secondItem="v1P-Qy-P3B" secondAttribute="trailing" id="Sf7-Re-ays"/>
+                <constraint firstAttribute="bottom" secondItem="rOf-vJ-wts" secondAttribute="bottom" id="bW2-KF-8Mu"/>
+                <constraint firstAttribute="trailing" secondItem="rOf-vJ-wts" secondAttribute="trailing" id="jdh-wv-A7E"/>
+            </constraints>
+            <point key="canvasLocation" x="-71.5" y="24"/>
+        </customView>
+    </objects>
+</document>

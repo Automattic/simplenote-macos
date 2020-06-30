@@ -16,11 +16,19 @@ class Theme {
 
     /// Default Font Size
     ///
-    private static let defaultFontSize = CGFloat(15)
+    private static let defaultFontSize = CGFloat(14)
+
+    /// Body Line Height Multiplier
+    ///
+    private static let bodyLineHeightMultiplier = CGFloat(1.43)
 
     /// Headline Font Multiplier
     ///
-    private static let firstLineFontMultiplier = CGFloat(1.25)
+    private static let headlingFontMultiplier = CGFloat(1.7)
+
+    /// Headling Spacing
+    ///
+    private static let headlineSpacing = CGFloat.zero
 
     /// The body style
     ///
@@ -55,7 +63,7 @@ private extension Theme {
 
     static var regularStyles: [Style] {
         return [
-            Style(element: .firstLine, attributes: firstLineAttributes)
+            Style(element: .firstLine, attributes: headlineAttributes)
         ]
     }
 
@@ -63,7 +71,7 @@ private extension Theme {
         return [
             Style(element: .h1, attributes: headingAttributes),
             Style(element: .h2, attributes: headingAttributes),
-            Style(element: .firstLine, attributes: firstLineAttributes),
+            Style(element: .firstLine, attributes: headlineAttributes),
             Style(element: .bold, attributes: boldAttributes),
             Style(element: .inlineCode, attributes: codeAttributes),
             Style(element: .italic, attributes: italicAttributes),
@@ -78,10 +86,6 @@ private extension Theme {
 // MARK: - Private Methods
 //
 private extension Theme {
-
-    private static var theme: VSTheme {
-        return VSThemeManager.shared().theme()
-    }
 
     private static var fontSize: CGFloat {
         var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
@@ -105,14 +109,16 @@ private extension Theme {
 
     static var bodyAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor: theme.color(forKey: "textColor"),
-            .font: NSFont.systemFont(ofSize: fontSize)
+            .foregroundColor:   NSColor.simplenoteTextColor,
+            .font:              NSFont.systemFont(ofSize: fontSize),
+            .paragraphStyle:    bodyParagraphStyle
         ]
     }
 
-    static var firstLineAttributes: [NSAttributedString.Key: AnyObject] {
+    static var headlineAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .font: NSFont.systemFont(ofSize: fontSize * firstLineFontMultiplier)
+            .font:              NSFont.boldSystemFont(ofSize: ceil(fontSize * headlingFontMultiplier)),
+            .paragraphStyle:    headlineParagraphStyle
         ]
     }
 
@@ -132,7 +138,7 @@ private extension Theme {
         let codeFont = NSFont(name: "Courier", size: fontSize) ?? NSFont.systemFont(ofSize: fontSize)
 
         return [
-            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
             .font: codeFont
         ]
     }
@@ -151,14 +157,41 @@ private extension Theme {
 
         return [
             .font: italicFont,
-            .foregroundColor: theme.color(forKey: "secondaryTextColor"),
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
             .paragraphStyle: paragraphStyle
         ]
     }
 
     static var urlAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor: theme.color(forKey: "tintColor")
+            .foregroundColor: NSColor.simplenoteLinkColor
         ]
+    }
+}
+
+
+// MARK: - Paragraph styles
+//
+private extension Theme {
+
+    static var bodyParagraphStyle: NSParagraphStyle {
+        let textHeight = fontSize
+        let multipliedLineHeight = floor(textHeight * bodyLineHeightMultiplier)
+        let spacing = floor((multipliedLineHeight - textHeight) * 0.5)
+
+        // We're aiming at rendering the text, in relation to the TextView's caret.
+        // For that reason, we'll adjust both, lineSpacing (bottom spacing) and lineHeight (top spacing).
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.minimumLineHeight = spacing + textHeight
+        paragraph.maximumLineHeight = spacing + textHeight
+        paragraph.lineSpacing = spacing
+
+        return paragraph
+    }
+
+    static var headlineParagraphStyle: NSParagraphStyle {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.paragraphSpacing = headlineSpacing
+        return paragraph
     }
 }

@@ -8,38 +8,41 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-#import "SPNoteCellView.h"
 #import "NoteListViewController.h"
-#import "SPTokenField.h"
-#import "SPGradientView.h"
+
+
 @import Simperium_OSX;
 
+@class BackgroundView;
 @class NoteEditorViewController;
 @class SPTableView;
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
 {
     IBOutlet NSScrollView *scrollView;
-    IBOutlet NSArrayController *arrayController;
-    IBOutlet NoteEditorViewController *noteEditorViewController;
-    IBOutlet NSTextView *noteEditor;
-    IBOutlet NSProgressIndicator *progressIndicator;
-    IBOutlet NSTextField *statusField;
     IBOutlet NSMenu *sortMenu;
     IBOutlet NSMenu *previewLinesMenu;
     IBOutlet NSMenuItem *previewLinesMenuItem;
     NSString *oldTags;
     BOOL preserveSelection;
-    BOOL viewingTrash;
-    BOOL awake;
-    CGFloat rowHeight;
 }
 
-@property (strong, nonatomic) IBOutlet SPTableView      *tableView;
-@property (strong, nonatomic) IBOutlet NSSearchField    *searchField;
-@property (assign, nonatomic) BOOL                      searching;
+@property (strong, nonatomic) IBOutlet NSArrayController    *arrayController;
+@property (strong, nonatomic) IBOutlet BackgroundView       *backgroundView;
+@property (strong, nonatomic) IBOutlet BackgroundView       *topDividerView;
+@property (strong, nonatomic) IBOutlet NSTextField          *statusField;
+@property (strong, nonatomic) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (strong, nonatomic) IBOutlet SPTableView          *tableView;
+@property (strong, nonatomic) IBOutlet NSView               *searchView;
+@property (strong, nonatomic) IBOutlet NSSearchField        *searchField;
+@property (strong, nonatomic) IBOutlet NSButton             *addNoteButton;
+
+@property (strong, nonatomic) NSLayoutConstraint            *searchViewTopConstraint;
+@property (assign, nonatomic) BOOL                          searching;
+@property (assign, nonatomic) BOOL                          viewingTrash;
 
 - (void)loadNotes;
+- (void)reloadSynchronously;
 - (void)reset;
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (void)setNotesPredicate:(NSPredicate *)predicate;
@@ -56,6 +59,5 @@
 - (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
-- (void)applyStyle;
 
 @end

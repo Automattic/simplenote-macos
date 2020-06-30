@@ -5,6 +5,10 @@ import Cocoa
 ///
 class PrivacyViewController: NSViewController {
 
+    /// Background Box
+    ///
+    @IBOutlet private var backgroundBox: NSBox!
+
     /// Title: TextField
     ///
     @IBOutlet private var titleTextField: NSTextField!
@@ -36,17 +40,7 @@ class PrivacyViewController: NSViewController {
     /// Indicates if Analytics are Enabled
     ///
     private var isAnalyticsEnabled: Bool {
-        guard let simperium = SimplenoteAppDelegate.shared()?.simperium, let preferences = simperium.preferencesObject() else {
-            return false
-        }
-
-        return preferences.analytics_enabled?.boolValue == true
-    }
-
-    /// Deinitializer!
-    ///
-    deinit {
-        stopListeningForNotifications()
+        Options.shared.analyticsEnabled
     }
 
 
@@ -54,9 +48,15 @@ class PrivacyViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBackgroundBox()
         configureTextFields()
         refreshInterface()
-        startListeningForNotifications()
+    }
+
+    /// Setup: Background
+    ///
+    private func configureBackgroundBox() {
+        backgroundBox.fillColor = .simplenoteBrandColor
     }
 
     /// Sets up all of the TextFields
@@ -83,13 +83,8 @@ extension PrivacyViewController {
     /// Toggles the Share Analytics setting
     ///
     @IBAction func checkboxWasPressed(sender: Any) {
-        guard let simperium = SimplenoteAppDelegate.shared()?.simperium, let preferences = simperium.preferencesObject() else {
-            return
-        }
-
         let isEnabled = shareEnabledButton.state == .on
-        preferences.analytics_enabled = NSNumber(booleanLiteral: isEnabled)
-        simperium.save()
+        Options.shared.analyticsEnabled = isEnabled
     }
 
     /// Opens the Cookie Policy URL
@@ -112,44 +107,5 @@ extension PrivacyViewController {
         }
 
         parentWindow.endSheet(privacyWindow)
-    }
-}
-
-
-// MARK: - Notification Helpers
-//
-extension PrivacyViewController {
-
-    /// Starts listening for Privacy Updates
-    ///
-    private func startListeningForNotifications() {
-        let moc = SimplenoteAppDelegate.shared()?.managedObjectContext
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(privacyWasUpdated),
-                                               name: .NSManagedObjectContextObjectsDidChange,
-                                               object: moc)
-    }
-
-    /// Stops listening for Privacy Updates
-    ///
-    private func stopListeningForNotifications() {
-        let moc = SimplenoteAppDelegate.shared()?.managedObjectContext
-        NotificationCenter.default.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: moc)
-    }
-
-    /// Whenever the Privacy object is updated in the main MOC, we'll refresh the Interface
-    ///
-    @objc func privacyWasUpdated(_ notification: Notification) {
-        let updated             = notification.userInfo?[NSUpdatedObjectsKey]   as? Set<NSManagedObject> ?? Set()
-        let refreshed           = notification.userInfo?[NSRefreshedObjectsKey] as? Set<NSManagedObject> ?? Set()
-        let updatedAndRefreshed = updated.union(refreshed)
-
-        guard updatedAndRefreshed.contains(where: { $0 is Preferences }) else {
-            return
-        }
-
-        DispatchQueue.main.async { [weak self] in
-            self?.refreshInterface()
-        }
     }
 }

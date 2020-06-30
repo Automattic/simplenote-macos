@@ -7,37 +7,40 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "VSTheme.h"
-#import "SPBackgroundView.h"
 @import Simperium_OSX;
 
 
-@class SPToolbarView;
+@class NoteListViewController;
+@class NoteEditorViewController;
+@class TagListViewController;
+@class SplitViewController;
 
 #pragma mark ====================================================================================
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSSplitViewDelegate, NSWindowDelegate> {
-    IBOutlet NSMenu *themeMenu;
-    IBOutlet NSMenuItem *focusModeMenuItem;
-    IBOutlet SPBackgroundView *backgroundView;
-}
+@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
-@property (strong, nonatomic) IBOutlet NSWindow                 *window;
-@property (strong, nonatomic) IBOutlet SPToolbarView            *toolbar;
+@property (strong, nonatomic, readonly) IBOutlet NSWindow                   *window;
+@property (strong, nonatomic, readonly) IBOutlet TagListViewController      *tagListViewController;
+@property (strong, nonatomic, readonly) IBOutlet NoteListViewController     *noteListViewController;
+@property (strong, nonatomic, readonly) IBOutlet NoteEditorViewController   *noteEditorViewController;
 
-@property (strong, nonatomic) Simperium                         *simperium;
-@property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
-@property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
-@property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
+@property (strong, nonatomic, readonly) Simperium                           *simperium;
+@property (strong, nonatomic, readonly) NSPersistentStoreCoordinator        *persistentStoreCoordinator;
+@property (strong, nonatomic, readonly) NSManagedObjectModel                *managedObjectModel;
+@property (strong, nonatomic, readonly) NSManagedObjectContext              *managedObjectContext;
+
+@property (assign, nonatomic, readonly) BOOL                                exportUnlocked;
+
+@property (strong, nonatomic) SplitViewController                           *splitViewController;
+
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 
 - (IBAction)signOutAction:(id)sender;
 - (IBAction)emptyTrashAction:(id)sender;
 - (IBAction)toggleSidebarAction:(id)sender;
-- (IBAction)changeThemeAction:(id)sender;
 - (IBAction)ensureMainWindowIsVisible:(id)sender;
 - (IBAction)aboutAction:(id)sender;
 - (IBAction)privacyAction:(id)sender;

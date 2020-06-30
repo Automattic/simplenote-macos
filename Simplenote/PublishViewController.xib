@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PublishViewController" customModule="Simplenote" customModuleProvider="target">
+            <connections>
+                <outlet property="legendTextField" destination="JS2-kB-Lc4" id="ebU-s8-mGz"/>
+                <outlet property="publishButton" destination="q1s-AL-TA6" id="U1t-dj-gVu"/>
+                <outlet property="urlTextField" destination="cw2-Rj-bIs" id="s37-St-Ljs"/>
+                <outlet property="view" destination="tEf-PG-cCd" id="VwZ-OJ-DMw"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView appearanceType="aqua" id="tEf-PG-cCd" userLabel="Publish View">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cw2-Rj-bIs">
+                    <rect key="frame" x="15" y="97" width="210" height="20"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" placeholderString="Not published" drawsBackground="YES" usesSingleLineMode="YES" id="wqo-sN-6sf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.31" colorSpace="calibratedWhite"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="Publishes this note to a public web page" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1s-AL-TA6">
+                    <rect key="frame" x="9" y="61" width="222" height="32"/>
+                    <buttonCell key="cell" type="push" title="Publish to Web Page" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="SXP-zW-GfR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <color key="contentTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="buttonWasPressedWithSender:" target="-2" id="N47-vM-FHI"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JS2-kB-Lc4">
+                    <rect key="frame" x="13" y="20" width="214" height="42"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Publish this note to a web page. The page will stay updated with the contents of your note." id="X6T-5m-caF">
+                        <font key="font" metaFont="label" size="11"/>
+                        <color key="textColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="JS2-kB-Lc4" firstAttribute="trailing" secondItem="q1s-AL-TA6" secondAttribute="trailing" id="6bc-5F-8z4"/>
+                <constraint firstItem="q1s-AL-TA6" firstAttribute="trailing" secondItem="cw2-Rj-bIs" secondAttribute="trailing" id="ATR-jZ-nEJ"/>
+                <constraint firstItem="JS2-kB-Lc4" firstAttribute="top" secondItem="q1s-AL-TA6" secondAttribute="bottom" constant="6" id="CFd-Kv-Io7"/>
+                <constraint firstItem="cw2-Rj-bIs" firstAttribute="top" secondItem="tEf-PG-cCd" secondAttribute="top" constant="13" id="Jb8-eI-huW"/>
+                <constraint firstItem="q1s-AL-TA6" firstAttribute="top" secondItem="cw2-Rj-bIs" secondAttribute="bottom" constant="8" id="L8c-Ii-FO6"/>
+                <constraint firstAttribute="bottom" secondItem="JS2-kB-Lc4" secondAttribute="bottom" constant="20" id="MWe-3R-X2y"/>
+                <constraint firstAttribute="trailing" secondItem="cw2-Rj-bIs" secondAttribute="trailing" constant="15" id="SLk-4P-u3T"/>
+                <constraint firstItem="JS2-kB-Lc4" firstAttribute="leading" secondItem="q1s-AL-TA6" secondAttribute="leading" id="TGg-18-dPv"/>
+                <constraint firstItem="cw2-Rj-bIs" firstAttribute="leading" secondItem="tEf-PG-cCd" secondAttribute="leading" constant="15" id="X5B-6V-UK1"/>
+                <constraint firstItem="q1s-AL-TA6" firstAttribute="leading" secondItem="cw2-Rj-bIs" secondAttribute="leading" id="fdr-v8-z4C"/>
+            </constraints>
+            <point key="canvasLocation" x="-191" y="597.5"/>
+        </customView>
+    </objects>
+</document>

@@ -8,21 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SPTableView;
+
+@class ClipView;
 @class NoteListViewController;
 
-@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination> {
-    IBOutlet NoteListViewController *noteListViewController;
-    IBOutlet NSBox *tagBox;
-    IBOutlet NSMenu *tagDropdownMenu;
-    IBOutlet NSMenu *trashDropdownMenu;
-    IBOutlet NSMenu *findMenu;
-    IBOutlet NSMenuItem *tagSortMenuItem;
-    IBOutlet NSArrayController *notesArrayController;
-}
+@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
-@property (strong) IBOutlet SPTableView *tableView;
-@property (strong) NSArray *tagArray;
+@property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
+@property (nonatomic, strong, readwrite) IBOutlet ClipView              *clipView;
+@property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
+@property (nonatomic, strong, readwrite) NSArray                        *tagArray;
+@property (nonatomic, assign,  readonly) BOOL                           menuShowing;
 
 extern NSString * const kTagsDidLoad;
 extern NSString * const kTagUpdated;
@@ -36,7 +32,6 @@ extern NSString * const kDidEmptyTrash;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)renameAction:(id)sender;
 - (IBAction)emptyTrashAction:(id)sender;
-- (IBAction)sortAction:(id)sender;
 - (void)reset;
 - (void)applyStyle;
 

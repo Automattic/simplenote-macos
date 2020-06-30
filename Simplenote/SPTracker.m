@@ -162,9 +162,12 @@
 
 + (void)trackSettingsThemeUpdated:(NSString *)themeName
 {
-    NSParameterAssert(themeName);
-    
-    [self trackAutomatticEventWithName:@"settings_theme_updated" properties:@{ @"name" : themeName }];
+    NSDictionary *properties = nil;
+    if (themeName != nil) {
+        properties = @{ @"name": themeName };
+    }
+
+    [self trackAutomatticEventWithName:@"settings_theme_updated" properties:properties];
 }
 
 + (void)trackSettingsListCondensedEnabled
@@ -258,10 +261,7 @@
 
 + (BOOL)isTrackingDisabled
 {
-    Preferences *preferences = [[[SimplenoteAppDelegate sharedDelegate] simperium] preferencesObject];
-    NSNumber *enabled = [preferences analytics_enabled];
-
-    return [enabled boolValue] == false;
+    return [[Options shared] analyticsEnabled] == false;
 }
 
 @end

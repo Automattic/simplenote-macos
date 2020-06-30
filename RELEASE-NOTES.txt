@@ -1,3 +1,12 @@
+1.11.0
+------
+- New Color Scheme for Light and Dark Modes!
+- Simplenote will now react dynamically to macOS Appearance updates when the System Theme is selected.
+- Sidebar and Notes List will now be presented with a super awesome animation.
+- Your Notes List will now fit more content onscreen.
+- Updated Password Strength requirements.
+- Updated Text Metrics, for improved readability.
+
 1.10.0
 ------
 - Simplenote now requires macOS 10.13 or higher

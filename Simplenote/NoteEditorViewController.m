@@ -12,14 +12,10 @@
 #import "Tag.h"
 #import "NoteListViewController.h"
 #import "TagListViewController.h"
-#import "NoteEditorBottomBar.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
-#import "SPToolbarView.h"
-#import "VSThemeManager.h"
-#import "VSTheme+Simplenote.h"
 #import "SPTracker.h"
 
 #import "Simplenote-Swift.h"
@@ -32,8 +28,6 @@
 #pragma mark Notifications
 #pragma mark ====================================================================================
 
-NSString * const SPNoNoteLoadedNotificationName         = @"SPNoNoteLoaded";
-NSString * const SPNoteLoadedNotificationName           = @"SPNoteLoaded";
 NSString * const SPTagAddedFromEditorNotificationName   = @"SPTagAddedFromEditor";
 NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 
@@ -52,21 +46,32 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface NoteEditorViewController() <NSTextDelegate, NSTextViewDelegate, NSPopoverDelegate,
-                                       NSTokenFieldDelegate, SPBucketDelegate, NSMenuDelegate>
+@interface NoteEditorViewController() <NSMenuDelegate,
+                                        NSPopoverDelegate,
+                                        NSSharingServicePickerDelegate,
+                                        NSTextDelegate,
+                                        NSTextViewDelegate,
+                                        PublishViewControllerDelegate,
+                                        SPBucketDelegate,
+                                        VersionsViewControllerDelegate>
 
-@property (nonatomic, strong) NSTimer               *saveTimer;
-@property (nonatomic, strong) NSMutableDictionary   *noteVersionData;
-@property (nonatomic, strong) NSMutableDictionary   *noteScrollPositions;
-@property (nonatomic,   copy) NSString              *noteContentBeforeRemoteUpdate;
-@property (nonatomic, strong) NSArray               *selectedNotes;
-@property (nonatomic, strong) NSPopover             *activePopover;
-@property (nonatomic, strong) Storage               *storage;
-@property (nonatomic, strong) TextViewInputHandler  *inputHandler;
+@property (nonatomic,   weak) VersionsViewController    *versionsViewController;
+@property (nonatomic,   weak) ShareViewController       *shareViewController;
+@property (nonatomic,   weak) PublishViewController     *publishViewController;
+@property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
-@property (nonatomic, assign) NSUInteger            cursorLocationBeforeRemoteUpdate;
-@property (nonatomic, assign) BOOL                  viewingVersions;
-@property (nonatomic, assign) BOOL                  viewingTrash;
+@property (nonatomic, strong) NSTimer                   *saveTimer;
+@property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
+@property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
+@property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
+@property (nonatomic, strong) NSArray                   *selectedNotes;
+@property (nonatomic, strong) NSPopover                 *activePopover;
+@property (nonatomic, strong) Storage                   *storage;
+@property (nonatomic, strong) TextViewInputHandler      *inputHandler;
+
+@property (nonatomic, assign) NSUInteger                cursorLocationBeforeRemoteUpdate;
+@property (nonatomic, assign) BOOL                      viewingVersions;
+@property (nonatomic, assign) BOOL                      viewingTrash;
 
 @end
 
@@ -76,11 +81,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark ====================================================================================
 
 @implementation NoteEditorViewController
-
-- (VSTheme *)theme {
-
-    return [[VSThemeManager sharedManager] theme];
-}
 
 - (void)dealloc
 {
@@ -99,6 +99,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage new];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
@@ -106,7 +108,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
-       NSForegroundColorAttributeName: [self.theme colorForKey:@"tintColor"],
+       NSForegroundColorAttributeName: [NSColor simplenoteLinkColor],
         NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle],
                 NSCursorAttributeName: [NSCursor pointingHandCursor]
      }];
@@ -117,14 +119,22 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 		[self.noteEditor setValue:preferences[key] forKey:key];
 	}
 
+    // Interface Initialization
+    [self setupScrollView];
+    [self setupTopDivider];
+    [self setupStatusImageView];
+    [self setupTagsField];
+
+    // Preload Markdown Preview
+    self.markdownViewController = [MarkdownViewController new];
+    [self.markdownViewController preloadView];
+
     // Realtime Markdown Support
     self.inputHandler = [TextViewInputHandler new];
     
     int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
     [self updateLineLengthMenuForPosition:lineLengthPosition];
-    
-    tagTokenField = [self.bottomBar addTagField];
-    tagTokenField.delegate = self;
+
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -132,8 +142,17 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
     [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
-    
+
+    [self startListeningToScrollNotifications];
+
     [self applyStyle];
+}
+
+// TODO: Work in Progress. Decouple with a delegate please
+//
+- (NoteListViewController *)noteListViewController
+{
+    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
 }
 
 - (void)save
@@ -149,7 +168,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     NSRange range = [self.noteEditor selectedRange];
 
     self.note.modificationDate = [NSDate date];
-    [self.note createPreviews:self.note.content];
+    [self.note createPreview];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     [appDelegate.simperium save];
@@ -171,43 +190,30 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self save];
 }
 
-- (void)updateTagField
-{
-    [tagTokenField setObjectValue: [self.note.tagsArray count] > 0 ? self.note.tagsArray : [NSArray array]];
-    [tagTokenField setNeedsDisplay:YES];
-}
-
 - (void)displayNote:(Note *)selectedNote
 {
     [self save];
     [self showStatusText:nil];
-    [statusView setHidden: selectedNote != nil];
+    [self.statusImageView setHidden: selectedNote != nil];
     
-    if (!self.markdownView.isHidden) {
+    if (self.isDisplayingMarkdown) {
         [self toggleMarkdownView:nil];
     }
 
     if (selectedNote == nil) {
-        [self.noteEditor setEditable:NO];
-        [self.noteEditor setSelectable:NO];
-        [self.noteEditor displayNoteWithContent:@""];
-        [tagTokenField setEditable:NO];
-        [self.bottomBar setEnabled:NO];
-        
         self.note = nil;
-        self.selectedNotes = [NSArray array];
-        
-        [tagTokenField setObjectValue:[NSArray array]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SPNoNoteLoadedNotificationName object:self];
-        
+        self.selectedNotes = @[];
+        [self refreshToolbarActions];
+        [self refreshEditorActions];
+        [self refreshTagsField];
+        [self.noteEditor displayNoteWithContent:@""];
+
         return;
     }
 
     if ([self.note.simperiumKey isEqualToString:selectedNote.simperiumKey]) {
         return;
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:SPNoteLoadedNotificationName object:self];
 
     // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
     NSString *simperiumKey = self.note.simperiumKey;
@@ -219,22 +225,16 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)
-    self.noteEditor.editable    = false;
-    self.noteEditor.editable    = !self.viewingTrash;
+    self.noteEditor.editable = false;
+    self.noteEditor.editable = !self.viewingTrash;
     
-    self.noteEditor.selectable  = !self.viewingTrash;
-    
-    tagTokenField.editable      = !self.viewingTrash;
-    tagTokenField.selectable    = !self.viewingTrash;
-    self.bottomBar.enabled      = !self.viewingTrash;
+    self.noteEditor.selectable = !self.viewingTrash;
 
-    self.note                   = selectedNote;
-    self.selectedNotes          = [NSArray arrayWithObject:self.note];
+    self.note = selectedNote;
+    self.selectedNotes = [NSArray arrayWithObject:self.note];
     
-    [self updateTagField];
-    [self updateShareButtonVisibility];
-    [previewButton setEnabled:YES];
-    [historyButton setEnabled:YES];
+    [self refreshToolbarActions];
+    [self refreshTagsField];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -244,8 +244,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     } else {
         [self.noteEditor displayNoteWithContent:@""];
     }
-    
-    [previewButton setHidden:!self.note.markdown || self.viewingTrash];
+
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
     
     if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
@@ -263,12 +262,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [self checkTextInDocument];
-    
-    if (selectedNote.markdown) {
-        // Reset markdown preview content
-        NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:@""];
-        [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
-    }
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -276,16 +269,11 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.note = nil;
     self.selectedNotes = notes;
     [self.noteEditor displayNoteWithContent:@""];
-    [self.noteEditor setEditable:NO];
-    [self.noteEditor setSelectable:NO];
-    [tagTokenField setEditable:NO];
-    [tagTokenField setSelectable:NO];
-    [tagTokenField setObjectValue:[NSArray array]];
-    [self.bottomBar setEnabled:NO];
-    [shareButton setEnabled:NO];
-    [previewButton setEnabled:NO];
-    [historyButton setEnabled:NO];
-    
+
+    [self refreshToolbarActions];
+    [self refreshEditorActions];
+    [self refreshTagsField];
+
     NSString *status = [NSString stringWithFormat:@"%ld notes selected", [self.selectedNotes count]];
     [self showStatusText:status];
 }
@@ -311,35 +299,31 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)showStatusText:(NSString *)text
 {
-    // Quick and dirty status text for now
-    NSTextField *statusField = [statusView viewWithTag:1];
+    BOOL shouldHideImage = text == nil || text.length == 0;
 
-    if (text == nil || [text length] == 0) {
-        [statusField setStringValue:@""];
-        [statusView setHidden:YES];
-        return;
-    }
-    
-    [statusView setHidden:NO];
-    [statusField setStringValue:text];
+    self.statusTextField.stringValue = text ?: @"";
+    self.statusImageView.hidden = shouldHideImage;
 }
 
 - (void)trashDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = YES;
-    [previewButton setHidden:YES];
-    [self.bottomBar setEnabled:NO];
+    [self refreshEditorActions];
+    [self refreshToolbarActions];
+    [self refreshTagsFieldActions];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
 {
     self.viewingTrash = NO;
-    [self.bottomBar setEnabled:YES];
+    [self refreshEditorActions];
+    [self refreshToolbarActions];
+    [self refreshTagsFieldActions];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
 {
-    [self updateTagField];
+    [self refreshTagsField];
 }
 
 - (void)simperiumWillSave:(NSNotification *)notification
@@ -433,12 +417,21 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [wordCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numWordsString, wordStr]];
 }
 
-- (void)updateVersionLabel:(NSDate *)versionDate {
-    NSString *versionStr = [@"  " stringByAppendingFormat:@"%@: %@",
-							NSLocalizedString(@"Version", @"Label for the current version of a note"),
-							[self.note getDateString:versionDate brief:NO]];
-    
-    versionLabel.stringValue = versionStr;
+- (void)updateVersionLabel:(NSDate *)versionDate
+{
+    NSString *text = [NSString stringWithFormat:@"  %@: %@",
+                      NSLocalizedString(@"Version", @"Label for the current version of a note"),
+                      [self.note getDateString:versionDate brief:NO]];
+
+    self.versionsViewController.versionText = text;
+}
+
+- (void)updateVersionSlider
+{
+    NSInteger maximum = [self.note.version integerValue];
+    NSInteger minimum = [self minimumNoteVersion];
+
+    [self.versionsViewController refreshSliderWithMax:maximum min:minimum];
 }
 
 
@@ -466,20 +459,17 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 - (void)textDidChange:(NSNotification *)notification
 {
     self.note.content = [self.noteEditor plainTextContent];
+    [self.note createPreview];
     
-    [self updateShareButtonVisibility];
+    [self refreshToolbarActions];
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
     // Update the note list preview
-    [noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
+    [self.noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
 }
 
--(void)updateShareButtonVisibility
-{
-    [shareButton setEnabled:self.note.content.length > 0];
-}
 
 #pragma mark - Simperium
 
@@ -491,6 +481,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
     [self.noteEditor displayNoteWithContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
+    [self refreshTagsField];
 
     [self updatePublishUI];
 }
@@ -532,25 +523,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)updatePublishUI
 {
-    if (self.note.published && self.note.publishURL.length == 0) {
-        publishLabel.stringValue = NSLocalizedString(@"Publishing...", @"Displayed during a Publish Operation");
-        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
-        publishButton.enabled = NO;
-    } else if (self.note.published && self.note.publishURL.length > 0) {
-        publishLabel.stringValue = [NSString stringWithFormat:@"%@%@", SPSimplenotePublishURL, self.note.publishURL];
-        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
-        publishButton.enabled = YES;
-        publishButton.state = NSOnState; // clicking the button will toggle the state
-    } else if (!self.note.published && self.note.publishURL.length == 0) {
-        publishLabel.stringValue = @"";
-        publishButton.title = NSLocalizedString(@"Publish to Web Page", @"Publish to WebPage Action");
-        publishButton.enabled = YES;
-        publishButton.state = NSOffState;// clicking the button will toggle the state
-    } else if (!self.note.published && self.note.publishURL.length > 0) {
-        publishLabel.stringValue = NSLocalizedString(@"Unpublishing...", @"Displayed during an Unpublish Operation");
-        publishButton.title = NSLocalizedString(@"Unpublish", @"Unpublish Note Action");
-        publishButton.enabled = NO;
-    }
+    [self.publishViewController refreshStateWithPublished:self.note.published
+                                                      url:self.note.publishURL];
 }
 
 - (void)publishNote
@@ -641,10 +615,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (self.activePopover.contentViewController == self.versionsViewController) {
         // Prepare the UI
         self.viewingVersions = YES;
-        versionSlider.maxValue = [self.note.version integerValue];
-        versionSlider.minValue = [self minimumNoteVersion];
-        versionSlider.numberOfTickMarks = versionSlider.maxValue - versionSlider.minValue + 1;
-        [versionSlider setObjectValue:[NSNumber numberWithInteger:versionSlider.maxValue]];
+        [self updateVersionSlider];
         [self updateVersionLabel:self.note.modificationDate];
         [self.noteEditor setEditable:NO];
 
@@ -672,15 +643,28 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
-#pragma mark - Actions
+#pragma mark - PublishViewController Delegate
 
-- (IBAction)versionSliderChanged:(id)sender
+- (void)publishControllerDidClickPublish:(PublishViewController *)controller
 {
-    NSInteger versionInt = [versionSlider integerValue]; // can be a float, so get the int
-	NSDictionary *versionData = [self.noteVersionData objectForKey:[NSNumber numberWithInteger:versionInt]];
-    NSLog(@"Loading version %ld", (long)versionInt);
-    
-    restoreVersionButton.enabled = [versionSlider integerValue] != versionSlider.maxValue && versionData != nil;
+    // The button state is toggled when user clicks on it
+    if (controller.publishButtonState == NSOnState) {
+        [self publishNote];
+    } else {
+        [self unpublishNote];
+    }
+}
+
+
+#pragma mark - VersionsViewController Delegate
+
+- (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
+{
+    NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
+    NSLog(@"Loading version %ld", (long)newValue);
+
+    self.versionsViewController.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
+
 	if (versionData != nil) {
         NSString *content = (NSString *)[versionData objectForKey:@"content"];
         [self.noteEditor displayNoteWithContent:content];
@@ -690,13 +674,25 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 	}
 }
 
-- (IBAction)restoreVersionAction:(id)sender
+- (void)versionsControllerDidClickRestore:(VersionsViewController *)sender
 {
     [SPTracker trackEditorNoteRestored];
     
     self.note.content = [self.noteEditor plainTextContent];
     [self save];
     [self dismissActivePopover];
+}
+
+
+#pragma mark - Actions
+
+- (IBAction)detailsAction:(id)sender
+{
+    NSButton *infoButton = (NSButton *)sender;
+    NSRect infoFrame = infoButton.frame;
+    NSPoint origin = NSMakePoint(CGRectGetMidX(infoFrame), CGRectGetMinY(infoFrame));
+
+    [self.detailsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
 }
 
 - (IBAction)pinAction:(id)sender
@@ -714,24 +710,24 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     
     // Update the list
     [notesArrayController rearrangeObjects];
-    [noteListViewController selectRowForNoteKey:self.note.simperiumKey];
+    [self.noteListViewController selectRowForNoteKey:self.note.simperiumKey];
 }
 
 - (IBAction)markdownAction:(id)sender
 {
     // Toggle the markdown state
     BOOL isEnabled = markdownItem.state == NSOffState;
-    [previewButton setHidden:!isEnabled];
-    
+
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.markdown = isEnabled;
     }
-    
+
     // Switch back to the editor if markdown is disabled
-    if (!isEnabled && ![self.markdownView isHidden]) {
+    if (!isEnabled && self.isDisplayingMarkdown) {
         [self toggleMarkdownView:nil];
     }
-    
+
+    [self refreshToolbarActions];
     [self save];
     
     // Update editor to apply markdown styles
@@ -739,16 +735,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self checkTextInDocument];
     
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
-}
-
-- (IBAction)publishAction:(id)sender
-{
-    // The button state is toggled when user clicks on it
-    if (publishButton.state == NSOnState) {
-        [self publishNote];
-    } else {
-        [self unpublishNote];
-    }
 }
 
 - (IBAction)addAction:(id)sender
@@ -788,7 +774,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (void)prepareForNewNote:(Note *)newNote
 {
-    [noteListViewController selectRowForNoteKey:newNote.simperiumKey];
+    [self.noteListViewController selectRowForNoteKey:newNote.simperiumKey];
     [tableView scrollRowToVisible:[tableView selectedRow]];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -803,7 +789,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         }
         
         [SPTracker trackEditorNoteDeleted];
-        [noteListViewController deleteNote:noteToDelete];
+        [self.noteListViewController deleteNote:noteToDelete];
     }
 }
 
@@ -839,26 +825,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 
-#pragma mark - Token delegate
+#pragma mark - TagsField Helpers
 
-- (void)parseTagTokens:(NSArray *)tokens
+- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens
 {
     SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket                 = [appDelegate.simperium bucketForName:@"Tag"];
+    Simperium *simperium                = appDelegate.simperium;
     Note *note                          = self.note;
     NSString *oldTags                   = note.tags;
-    NSArray *oldTagArray                = note.tagsArray;
-    
-    NSMutableSet *deletedTags           = [NSMutableSet setWithArray:oldTagArray];
-    [deletedTags minusSet:[NSSet setWithArray:tokens]];
-    
-    NSMutableSet *addedTags             = [NSMutableSet setWithArray:tokens];
-    [addedTags minusSet:[NSSet setWithArray:oldTagArray]];
-    
+
     // Create any new tags that don't already exist
     for (NSString *token in tokens) {
-        NSString *tagKey = [[token lowercaseString] sp_urlEncodeString];
-        Tag *tag = [tagBucket objectForKey:tagKey];
+        Tag *tag = [simperium searchTagWithName:token];
         if (!tag && ![token containsEmailAddress]) {
             NSDictionary *userInfo = @{@"tagName":token};
             [[NSNotificationCenter defaultCenter] postNotificationName:SPTagAddedFromEditorNotificationName
@@ -866,86 +844,25 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                                               userInfo:userInfo];
         }
     }
-    
-    // Note:
-    // If the currently selected tag was removed from the note, switch to 'All Notes', and preserve the current
-    // note selection
-    if ([deletedTags containsObject:appDelegate.selectedTagName]) {
+
+    // Update Tags: Internally they're JSON Encoded!
+    [note setTagsFromList:tokens];
+
+    // Ensure the right Tag remains selected
+    if ([note hasTag:appDelegate.selectedTagName] == false) {
         [appDelegate selectAllNotesTag];
         [appDelegate selectNoteWithKey:note.simperiumKey];
     }
-    
-    // Resolve tokens to tags
-    [note setTagsFromList:tokens];
     
     if ([self.note.tags isEqualToString:oldTags]) {
         return;
     }
     
     [self save];
-    
-    // Tracker
-    for (NSString *tag in deletedTags) {
-        [SPTracker trackEditorTagRemoved:tag.containsEmailAddress];
-    }
-    
-    for (NSString *tag in addedTags) {
-        [SPTracker trackEditorTagAdded:tag.containsEmailAddress];
-    }
-}
-
-- (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring
-           indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex
-{
-    // Don't show auto-complete in fullscreen mode
-    BOOL fullscreen = ([self.view.window styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen;
-    if (fullscreen)
-        return [NSArray array];
-    
-    // Supply an auto-complete list based on substrings
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
-    NSArray *tags = [tagBucket allObjects];
-    NSMutableArray *results = [NSMutableArray arrayWithCapacity:3];
-
-    for (Tag *tag in tags) {
-        BOOL tagFound = [tag.name rangeOfString:substring options:NSCaseInsensitiveSearch].location == 0;
-        BOOL tagAlreadyAdded = [self.note.tags rangeOfString:substring options:NSCaseInsensitiveSearch].location != NSNotFound;
-        if (tagFound && !tagAlreadyAdded) {
-            [results addObject:tag.name];
-        }
-    }
-    
-    return results;
-}
-
-- (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
-{
-    NSString *tagNameToAdd = [tokens objectAtIndex:0];
-    if (![self.note hasTag:tagNameToAdd]) {
-        [self parseTagTokens:[tokenField objectValue]];
-        return tokens;
-    }
-
-    return [NSArray array];
-}
-
-- (void)tokenFieldDidChange:(NSTokenField *)tokenField
-{
-    [self parseTagTokens:[tokenField objectValue]];
 }
 
 
 #pragma mark - Fonts
-- (NSColor *)noteBodyColor
-{
-    return [self.theme colorForKey:@"textColor"];
-}
-
-- (NSColor *)noteTitleColor
-{
-    return [self.theme colorForKey:@"noteHeadlineFontColor"];
-}
 
 - (NSInteger)getFontSize
 {
@@ -1056,25 +973,27 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     if (self.note != nil) {
         [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
-        if (!self.markdownView.hidden) {
-            [self loadMarkdownContent];
-        }
     }
 
-    [self.scrollView setBackgroundColor:[self.theme colorForKey:@"dividerColor"]];
-    [self.noteEditor setInsertionPointColor:[self.theme colorForKey:@"textColor"]];
-    [self.noteEditor setTextColor:[self.theme colorForKey:@"textColor"]];
-
-    [self.bottomBar applyStyle];
-    [self.bottomBar setNeedsDisplay:YES];
-    [self.bottomBar setEnabled:[self.bottomBar isEnabled]];
+    self.backgroundView.fillColor       = [NSColor simplenoteBackgroundColor];
+    self.topDividerView.borderColor     = [NSColor simplenoteDividerColor];
+    self.bottomDividerView.borderColor  = [NSColor simplenoteDividerColor];
+    self.statusTextField.textColor      = [NSColor simplenoteSecondaryTextColor];
+    self.noteEditor.insertionPointColor = [NSColor simplenoteTextColor];
+    self.noteEditor.textColor           = [NSColor simplenoteTextColor];
+    self.tagsField.textColor            = [NSColor simplenoteTextColor];
+    self.tagsField.placeholderTextColor = [NSColor simplenoteSecondaryTextColor];
 
     [self dismissActivePopover];
 }
 
 - (void)showPublishPopover
 {
-    [self showViewController:self.publishViewController relativeToView:shareButton preferredEdge:NSMaxYEdge];
+    PublishViewController *viewController = [PublishViewController new];
+    viewController.delegate = self;
+
+    [self showViewController:viewController relativeToView:self.toolbarView.shareButton preferredEdge:NSMaxYEdge];
+    self.publishViewController = viewController;
 }
 
 // Reprocesses note checklists after switching themes, so they apply the correct color
@@ -1084,13 +1003,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor displayNoteWithContent:content];
 }
 
+
 #pragma mark - NSButton Delegate Methods
 
 - (IBAction)showSharePopover:(id)sender
 {
     [SPTracker trackEditorCollaboratorsAccessed];
-    [self showViewController:self.shareViewController relativeToView:self.bottomBar preferredEdge:NSMaxYEdge];
-    [self.bottomBar.tokenField becomeFirstResponder];
+
+    ShareViewController *viewController = [ShareViewController new];
+    [self showViewController:viewController relativeToView:self.tagsField preferredEdge:NSMaxYEdge];
+
+    [self.tagsField becomeFirstResponder];
+    self.shareViewController = viewController;
 }
 
 - (IBAction)showVersionPopover:(id)sender
@@ -1103,7 +1027,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [SPTracker trackEditorVersionsAccessed];
-    [self showViewController:self.versionsViewController relativeToView:historyButton preferredEdge:NSMaxYEdge];
+
+    VersionsViewController *viewController = [VersionsViewController new];
+    viewController.delegate = self;
+
+    [self showViewController:viewController relativeToView:self.toolbarView.historyButton preferredEdge:NSMaxYEdge];
+    self.versionsViewController = viewController;
 }
 
 - (IBAction)shareNote:(id)sender
@@ -1111,35 +1040,29 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (!self.note.content) {
         return;
     }
+
+    NSButton *sourceButton = self.toolbarView.shareButton;
     NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
+
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
     sharingPicker.delegate = self;
-    [sharingPicker showRelativeToRect:shareButton.bounds ofView:shareButton preferredEdge:NSMinYEdge];
+    [sharingPicker showRelativeToRect:sourceButton.bounds ofView:sourceButton preferredEdge:NSMinYEdge];
 }
 
 - (IBAction)toggleMarkdownView:(id)sender
 {
-    if (self.markdownView == nil) {
-        return;
+    if (self.isDisplayingMarkdown) {
+        [self dismissMarkdownPreview];
+    } else {
+        [self displayMarkdownPreview:self.note.content];
     }
-    
-    BOOL markdownVisible = self.markdownView.hidden;
-    
-    [self.editorScrollView setHidden:markdownVisible];
-    [self.noteEditor setSelectable:!markdownVisible];
-    [self.noteEditor setEditable:!markdownVisible];
-    [self.noteEditor setHidden:markdownVisible];
-    [self.markdownView setHidden:!markdownVisible];
-    
-    [previewButton setImage:[NSImage imageNamed:markdownVisible ? @"icon_preview_stop" : @"icon_preview"]];
-    [historyButton setEnabled:!markdownVisible];
-    
-    if (markdownVisible) {
-        [self loadMarkdownContent];
-    }
+
+    [self refreshEditorActions];
+    [self refreshToolbarActions];
 }
 
-- (IBAction)toggleEditorWidth:(id)sender {
+- (IBAction)toggleEditorWidth:(id)sender
+{
     NSMenuItem *item = (NSMenuItem *)sender;
     if (item.state == NSOnState) {
         return;
@@ -1160,11 +1083,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     [[NSUserDefaults standardUserDefaults] setBool:position == 1 forKey:kEditorWidthPreferencesKey];
-}
-
-- (void)loadMarkdownContent {
-    NSString *html = [SPMarkdownParser renderHTMLFromMarkdownString:self.note.content];
-    [self.markdownView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 - (void)insertChecklistAction:(id)sender
@@ -1192,7 +1110,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
     
     if (firstString) {
-        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:@"Publish to Web" image:[NSImage imageNamed:@"share_icon"] alternateImage:nil handler:^{
+        NSImage *image = [NSImage imageNamed:@"icon_simplenote"];
+        NSString *title = NSLocalizedString(@"Publish to Web", @"Publish to Web Service");
+        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:title image:image alternateImage:nil handler:^{
             [self showPublishPopover];
         }];
         
@@ -1211,9 +1131,18 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     // If needed, dismiss any active popovers
     [self dismissActivePopover];
     
-    // Create a new Popover + Show it
-    self.activePopover = [self newPopoverWithContentViewController:viewController];
-    [self.activePopover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
+    // New PopOver
+    NSPopover *popover = [self newPopoverWithContentViewController:viewController];;
+
+    // Note:
+    // NSPopover appears not to be applying it's NSAppearance to the `contentViewController` automatically.
+    // For that reason, we'll ensure the ViewController matches the Popover's Appearance.
+    //
+    viewController.view.appearance = popover.appearance;
+
+    // Finally display!
+    [popover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
+    self.activePopover = popover;
 }
 
 - (void)dismissActivePopover
@@ -1229,30 +1158,8 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     popover.delegate                = self;
     popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     popover.behavior                = NSPopoverBehaviorTransient;
-    
+
     return popover;
-}
-
-- (BOOL)urlSchemeIsAllowed: (NSString *) scheme {
-    return [scheme isEqualToString:@"http"] ||
-        [scheme isEqualToString:@"https"] ||
-        [scheme isEqualToString:@"mailto"];
-}
-
-#pragma mark - WKNavigationDelegate
-
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        NSURL *linkUrl = navigationAction.request.URL;
-        if ([self urlSchemeIsAllowed:linkUrl.scheme]) {
-            [[NSWorkspace sharedWorkspace] openURL:linkUrl];
-        }
-        
-        decisionHandler(WKNavigationActionPolicyCancel);
-        return;
-    }
-    
-    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 @end
