@@ -1,3 +1,7 @@
+1.11.1
+------
+- New Privacy Notice for California Users
+
 1.11.0
 ------
 - New Color Scheme for Light and Dark Modes!
