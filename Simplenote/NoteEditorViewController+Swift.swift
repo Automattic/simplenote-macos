@@ -162,6 +162,12 @@ extension NoteEditorViewController {
 
         displayMetrics(from: toolbarView.metricsButton, for: notes)
     }
+
+    @IBAction func shareWasPressed(sender: Any) {
+        SPTracker.trackEditorCollaboratorsAccessed()
+        displayShare(from: tagsField)
+        tagsField.becomeFirstResponder()
+    }
 }
 
 
@@ -172,6 +178,11 @@ extension NoteEditorViewController {
     func displayMetrics(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController()
         viewController.displayMetrics(for: notes)
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displayShare(from sourceView: NSView) {
+        let viewController = ShareViewController()
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 }

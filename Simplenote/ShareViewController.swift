@@ -13,6 +13,14 @@ class ShareViewController: NSViewController {
         }
     }
 
+    /// NSPopover instance that's presenting the current instance.
+    ///
+    private var presentingPopover: NSPopover? {
+        didSet {
+            refreshStyle()
+        }
+    }
+
 
     // MARK - View Lifecycle
 
@@ -23,7 +31,7 @@ class ShareViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startListeningToNotifications()
-        applyStyle()
+        refreshStyle()
     }
 }
 
@@ -33,11 +41,22 @@ class ShareViewController: NSViewController {
 private extension ShareViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
     }
 
     @objc
-    func applyStyle() {
-        shareTextField.textColor = .simplenoteSelectedTextColor
+    func refreshStyle() {
+        presentingPopover?.appearance = .simplenoteAppearance
+        shareTextField.textColor = .simplenoteTextColor
+    }
+}
+
+
+// MARK: - NSPopoverDelegate
+//
+extension ShareViewController: NSPopoverDelegate {
+
+    public func popoverWillShow(_ notification: Notification) {
+        presentingPopover = notification.object as? NSPopover
     }
 }

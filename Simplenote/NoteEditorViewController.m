@@ -56,7 +56,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                         VersionsViewControllerDelegate>
 
 @property (nonatomic,   weak) VersionsViewController    *versionsViewController;
-@property (nonatomic,   weak) ShareViewController       *shareViewController;
 @property (nonatomic,   weak) PublishViewController     *publishViewController;
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
@@ -945,17 +944,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark - NSButton Delegate Methods
-
-- (IBAction)showSharePopover:(id)sender
-{
-    [SPTracker trackEditorCollaboratorsAccessed];
-
-    ShareViewController *viewController = [ShareViewController new];
-    [self showViewController:viewController relativeToView:self.tagsField preferredEdge:NSMaxYEdge];
-
-    [self.tagsField becomeFirstResponder];
-    self.shareViewController = viewController;
-}
 
 - (IBAction)showVersionPopover:(id)sender
 {
