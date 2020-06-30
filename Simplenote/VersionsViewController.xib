@@ -17,10 +17,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="hJI-v2-bbc" userLabel="Version View">
-            <rect key="frame" x="0.0" y="0.0" width="221" height="71"/>
+            <rect key="frame" x="0.0" y="0.0" width="280" height="71"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4bS-8X-b3c">
-                    <rect key="frame" x="6" y="48" width="209" height="16"/>
+                    <rect key="frame" x="6" y="48" width="268" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Version: Current" id="unE-MP-4gw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -28,7 +28,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x0L-3f-niF">
-                    <rect key="frame" x="130" y="3" width="87" height="32"/>
+                    <rect key="frame" x="189" y="3" width="87" height="32"/>
                     <buttonCell key="cell" type="push" title="Restore" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BJK-oO-R63">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -38,7 +38,7 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YmD-u4-Leg">
-                    <rect key="frame" x="8" y="7" width="118" height="24"/>
+                    <rect key="frame" x="8" y="7" width="177" height="24"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="10" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="QNH-mD-6Bz"/>
                     <connections>
                         <action selector="versionSliderChangedWithSender:" target="-2" id="zdb-9j-H47"/>
@@ -55,7 +55,7 @@
                 <constraint firstAttribute="trailing" secondItem="x0L-3f-niF" secondAttribute="trailing" constant="10" id="xep-jb-hCM"/>
                 <constraint firstItem="x0L-3f-niF" firstAttribute="leading" secondItem="YmD-u4-Leg" secondAttribute="trailing" constant="12" id="yO4-gn-fH8"/>
             </constraints>
-            <point key="canvasLocation" x="107" y="580"/>
+            <point key="canvasLocation" x="136" y="579.5"/>
         </customView>
     </objects>
 </document>
