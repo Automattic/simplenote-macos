@@ -33,8 +33,8 @@ class EntityObserver<T: NSManagedObject> {
     /// Designed Initialier
     ///
     /// - Parameters:
-    ///     - identifiers: NSManagedObjectID(s) of the entities that should be observed
     ///     - context: NSManagedObjectContext in which we should listen for changes
+    ///     - entities: NSManagedObject(s) that should be observed for changes
     ///
     init(context: NSManagedObjectContext, entities: [T]) {
         self.entities = entities
