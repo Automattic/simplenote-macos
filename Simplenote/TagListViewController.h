@@ -10,21 +10,26 @@
 
 
 @class ClipView;
-@class NoteListViewController;
+@class Tag;
+@class TagListState;
 
-@interface TagListViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
+NS_ASSUME_NONNULL_BEGIN
+
+extern NSString * const TagListDidBeginViewingTagNotification;
+extern NSString * const TagListDidBeginViewingTrashNotification;
+extern NSString * const TagListDidUpdateTagNotification;
+extern NSString * const TagListDidEmptyTrashNotification;
+
+@interface TagListViewController : NSViewController <NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet ClipView              *clipView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
-@property (nonatomic, strong, readwrite) NSArray                        *tagArray;
+@property (nonatomic, strong,  readonly) NSMenu                         *tagDropdownMenu;
+@property (nonatomic, strong,  readonly) NSMenu                         *trashDropdownMenu;
+@property (nonatomic, strong, readwrite) TagListState                   *state;
+@property (nonatomic, strong,  readonly) NSArray<Tag *>                 *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
-
-extern NSString * const kTagsDidLoad;
-extern NSString * const kTagUpdated;
-extern NSString * const kDidBeginViewingTrash;
-extern NSString * const kWillFinishViewingTrash;
-extern NSString * const kDidEmptyTrash;
 
 - (void)loadTags;
 - (NSString *)selectedTagName;
@@ -36,3 +41,5 @@ extern NSString * const kDidEmptyTrash;
 - (void)applyStyle;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -221,6 +221,10 @@
 		B5AF76C224A2A4F100B7D530 /* NSPredicate+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C124A2A4F100B7D530 /* NSPredicate+Simplenote.swift */; };
 		B5AF76C324A2A4F100B7D530 /* NSPredicate+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C124A2A4F100B7D530 /* NSPredicate+Simplenote.swift */; };
 		B5AF76C524A2B2EF00B7D530 /* NSPredicateSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C424A2B2EF00B7D530 /* NSPredicateSimplenoteTests.swift */; };
+		B5AF76C724A3F00600B7D530 /* TagListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C624A3F00600B7D530 /* TagListState.swift */; };
+		B5AF76C824A3F00600B7D530 /* TagListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C624A3F00600B7D530 /* TagListState.swift */; };
+		B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */; };
+		B5AF76CC24A3F27E00B7D530 /* TagListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */; };
 		B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */; };
 		B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F372425651700DD5B34 /* TestConstants.swift */; };
 		B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
@@ -531,6 +535,8 @@
 		B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		B5AF76C124A2A4F100B7D530 /* NSPredicate+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Simplenote.swift"; sourceTree = "<group>"; };
 		B5AF76C424A2B2EF00B7D530 /* NSPredicateSimplenoteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPredicateSimplenoteTests.swift; sourceTree = "<group>"; };
+		B5AF76C624A3F00600B7D530 /* TagListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListState.swift; sourceTree = "<group>"; };
+		B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListRow.swift; sourceTree = "<group>"; };
 		B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5B17F372425651700DD5B34 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
@@ -709,9 +715,6 @@
 				B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */,
 				B5D3FCCB201F906E00A813B7 /* StatusChecker.h */,
 				B5D3FCCA201F906E00A813B7 /* StatusChecker.m */,
-				46CF73051782C6B200FC2B5C /* TagListViewController.h */,
-				46CF73061782C6B200FC2B5C /* TagListViewController.m */,
-				B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */,
 				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
 				714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */,
 				B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */,
@@ -1078,6 +1081,18 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		B5AF76C924A3F06D00B7D530 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */,
+				B5AF76C624A3F00600B7D530 /* TagListState.swift */,
+				46CF73051782C6B200FC2B5C /* TagListViewController.h */,
+				46CF73061782C6B200FC2B5C /* TagListViewController.m */,
+				B5E086312448E83A00DEF476 /* TagListViewController+Swift.swift */,
+			);
+			name = Tags;
+			sourceTree = "<group>";
+		};
 		B5B5F33B243244D300F31720 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1112,7 @@
 		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
@@ -1534,6 +1550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5AF76C724A3F00600B7D530 /* TagListState.swift in Sources */,
 				B5E086282448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
 				375D294621E033D1007AB25A /* version.c in Sources */,
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
@@ -1594,6 +1611,7 @@
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
+				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
 				B542DAE824801BFF00FA6F99 /* ClipView.swift in Sources */,
@@ -1657,6 +1675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5AF76C824A3F00600B7D530 /* TagListState.swift in Sources */,
 				466FFEA817CC10A800399652 /* main.m in Sources */,
 				B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
 				375D294721E033D1007AB25A /* version.c in Sources */,
@@ -1717,6 +1736,7 @@
 				B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
 				B56FA7932437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				375D293321E033D1007AB25A /* buffer.c in Sources */,
+				B5AF76CC24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B542DAE924801BFF00FA6F99 /* ClipView.swift in Sources */,
 				375D294521E033D1007AB25A /* html.c in Sources */,
 				B5E8E41224575C990098892B /* ToolbarState.swift in Sources */,

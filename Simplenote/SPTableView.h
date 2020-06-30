@@ -11,16 +11,12 @@
 
 @protocol SPTableViewDelegate <NSTableViewDelegate>
 
-- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row;
+- (nullable NSMenu *)tableView:(nonnull NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row;
 
 @end
 
 
 
-@interface SPTableView : NSTableView<SPTextViewDelegate, NSTextFieldDelegate> {
-    NSMutableArray *validFirstResponders;
-}
-
-- (void)addValidFirstResponder:(NSResponder *)responder;
+@interface SPTableView : NSTableView<SPTextViewDelegate, NSTextFieldDelegate>
 
 @end

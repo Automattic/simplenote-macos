@@ -9,6 +9,68 @@ extension TagListViewController {
     func refreshExtendedContentInsets() {
         clipView.extendedContentInsets.top = Settings.extendedTopInset
     }
+
+    /// Regenerates the Internal List State
+    ///
+    @objc
+    func refreshState() {
+        state = TagListState(tags: tagArray)
+        tableView.reloadData()
+    }
+}
+
+
+// MARK: - NSTableViewDelegate Helpers
+//
+extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
+
+    public func numberOfRows(in tableView: NSTableView) -> Int {
+        state.numberOfRows
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        switch state.rowAtIndex(row) {
+        case .allNotes:
+            return allNotesTableViewCell()
+        case .trash:
+            return trashTableViewCell()
+        case .header:
+            return tagHeaderTableViewCell()
+        case .tag(let tag):
+            return tagTableViewCell(for: tag)
+        case .untagged:
+            // TODO: Coming UP >> Soon!
+            return nil
+        }
+    }
+
+    public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
+        switch state.rowAtIndex(row) {
+        case .trash:
+            return trashDropdownMenu
+        case .tag:
+            return tagDropdownMenu
+        default:
+            return nil
+        }
+    }
+
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let rowView = TableRowView()
+        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        return rowView
+    }
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        state.rowAtIndex(row) != .header
+    }
+
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        let isViewingTrash = tableView.selectedRow != NSNotFound && state.rowAtIndex(tableView.selectedRow) == .trash
+        let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
+
+        NotificationCenter.default.post(name: name, object: self)
+    }
 }
 
 
@@ -18,7 +80,6 @@ extension TagListViewController {
 
     /// Returns a HeaderTableCellView instance, meant to be used as Tags List Header
     ///
-    @objc
     func tagHeaderTableViewCell() -> HeaderTableCellView {
         let headerView = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
         headerView.textField?.stringValue = NSLocalizedString("Tags", comment: "Tags Section Name").uppercased()
@@ -27,7 +88,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to be used as All Notes Row
     ///
-    @objc
     func allNotesTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.iconImageView.image = NSImage(named: .allNotes)
@@ -39,7 +99,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to be used as Trash Row
     ///
-    @objc
     func trashTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.iconImageView.image = NSImage(named: .trash)
@@ -51,7 +110,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to render a specified Tag
     ///
-    @objc(tagTableViewCellForTag:)
     func tagTableViewCell(for tag: Tag) -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.nameTextField.delegate = self
