@@ -15,6 +15,7 @@ enum PublishState {
 //
 protocol PublishViewControllerDelegate: class {
     func publishControllerDidClickPublish(_ controller: PublishViewController)
+    func publishControllerDidClickUnpublish(_ controller: PublishViewController)
 }
 
 
@@ -51,11 +52,6 @@ class PublishViewController: NSViewController {
         }
     }
 
-    /// Returns the Publish Button's Internal State
-    ///
-    var publishButtonState: NSControl.StateValue {
-        publishButton.state
-    }
 
     /// Internal State
     ///
@@ -104,7 +100,16 @@ class PublishViewController: NSViewController {
 extension PublishViewController {
 
     @IBAction func buttonWasPressed(sender: Any) {
-        delegate?.publishControllerDidClickPublish(self)
+        guard let delegate = delegate else {
+            return
+        }
+
+        switch publishButton.state {
+        case .on:
+            delegate.publishControllerDidClickPublish(self)
+        default:
+            delegate.publishControllerDidClickUnpublish(self)
+        }
     }
 }
 

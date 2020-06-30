@@ -464,26 +464,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 }
 
 
-#pragma mark - Publishing
-
-- (void)publishNote
-{
-    [SPTracker trackEditorNotePublished];
-    
-    self.note.published = YES;
-    [self save];
-}
-
-- (void)unpublishNote
-{
-    [SPTracker trackEditorNoteUnpublished];
-    
-    self.note.published = NO;
-    [self save];
-}
-
-
-
 #pragma mark - Action Menu and Popovers
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
@@ -1004,7 +984,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         NSImage *image = [NSImage imageNamed:@"icon_simplenote"];
         NSString *title = NSLocalizedString(@"Publish to Web", @"Publish to Web Service");
         NSSharingService *customService = [[NSSharingService alloc] initWithTitle:title image:image alternateImage:nil handler:^{
-            [self publishWasPressedWithSender:nil];
+            [self publishWasPressed];
         }];
         
         services = [services arrayByAddingObject:customService];

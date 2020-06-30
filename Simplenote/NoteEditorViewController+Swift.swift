@@ -169,7 +169,7 @@ extension NoteEditorViewController {
         tagsField.becomeFirstResponder()
     }
 
-    @IBAction func publishWasPressed(sender: Any) {
+    func publishWasPressed() {
         guard let note = note else {
             return
         }
@@ -316,14 +316,18 @@ extension NoteEditorViewController: TagsFieldDelegate {
 extension NoteEditorViewController: PublishViewControllerDelegate {
 
     func publishControllerDidClickPublish(_ controller: PublishViewController) {
-        switch controller.publishButtonState {
-        case .on:
-            publishNote()
-        default:
-            unpublishNote()
-        }
+        SPTracker.trackEditorNotePublished()
+        note.published = true
+        save()
+    }
+
+    func publishControllerDidClickUnpublish(_ controller: PublishViewController) {
+        SPTracker.trackEditorNoteUnpublished()
+        note.published = false
+        save()
     }
 }
+
 
 // MARK: - Settings
 //
