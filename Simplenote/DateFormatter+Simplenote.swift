@@ -13,5 +13,8 @@ extension DateFormatter {
         formatter.timeStyle = .short
         return formatter
     }()
-}
 
+    /// Date Formatter for History
+    ///
+    static let historyFormatter: DateFormatter = metricsFormatter
+}
