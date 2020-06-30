@@ -56,10 +56,10 @@ class EntityObserver {
     ///
     /// - Parameters:
     ///     - context: NSManagedObjectContext in which we should listen for changes
-    ///     - entity: NSManagedObjec that should be observed for changes
+    ///     - object: NSManagedObjec that should be observed for changes
     ///
-    convenience init(context: NSManagedObjectContext, entity: T) {
-        self.init(context: context, entities: [entity])
+    convenience init(context: NSManagedObjectContext, object: NSManagedObject) {
+        self.init(context: context, identifiers: [object.objectID])
     }
 }
 
