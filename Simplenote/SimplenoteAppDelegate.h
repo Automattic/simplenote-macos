@@ -14,6 +14,7 @@
 @class NoteEditorViewController;
 @class TagListViewController;
 @class SplitViewController;
+@class VersionsController;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -35,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic, readonly) BOOL                                exportUnlocked;
 
+@property (strong, nonatomic) VersionsController                            *versionsController;
 @property (strong, nonatomic) SplitViewController                           *splitViewController;
 
 

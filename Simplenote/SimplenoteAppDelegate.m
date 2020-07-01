@@ -139,6 +139,8 @@
     
 	self.simperium = [self configureSimperium];
 
+    [self configureSimplenoteControllers];
+
     [self.tagListViewController loadTags];
     [self.noteListViewController loadNotes];
     
@@ -399,7 +401,7 @@
 - (void)bucket:(SPBucket *)bucket didReceiveObjectForKey:(NSString *)key version:(NSString *)version data:(NSDictionary *)data
 {
     if ([bucket.name isEqualToString:@"Note"]) {
-        [[VersionsController shared] didReceiveObjectForSimperiumKey:key version:version data:data];
+        [self.versionsController didReceiveObjectForSimperiumKey:key version:version data:data];
     }
 }
 

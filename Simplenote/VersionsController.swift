@@ -5,14 +5,21 @@ import Foundation
 //
 class VersionsController: NSObject {
 
-    /// Ladies and gentlemen, this is yet another singleton.
-    ///
-    @objc
-    static let shared = VersionsController()
-
     /// Map of event listeners.
     ///
     private let callbackMap = NSMapTable<NSString, ListenerWrapper>(keyOptions: .copyIn, valueOptions: .weakMemory)
+
+    /// Simperium!
+    ///
+    let simperium: Simperium
+
+
+    /// Designated Initializer
+    ///
+    init(simperium: Simperium) {
+        self.simperium = simperium
+        super.init()
+    }
 
 
     /// Requests the specified number of versions of Notes for a given SimperiumKey.
@@ -30,12 +37,11 @@ class VersionsController: NSObject {
         NSLog("<> Requesting \(numberOfVersions) versions for \(simperiumKey)")
 
         // Keep a reference to the closure
-        let wrapper = ListenerWrapper(onReceive: onResponse)
+        let wrapper = ListenerWrapper(block: onResponse)
         callbackMap.setObject(wrapper, forKey: simperiumKey as NSString)
 
         // Simperium! Yay!
-        let bucket = SimplenoteAppDelegate.shared().simperium.notesBucket
-        bucket.requestVersions(Int32(numberOfVersions), key: simperiumKey)
+        simperium.notesBucket.requestVersions(Int32(numberOfVersions), key: simperiumKey)
 
         // We'll return the wrapper as receipt
         return wrapper
@@ -62,12 +68,12 @@ extension VersionsController {
 }
 
 
-// MARK: - BlockWrapper
+// MARK: - ListenerWrapper
 //
 private class ListenerWrapper: NSObject {
     let block: (Version) -> Void
 
-    init(onReceive: @escaping (Version) -> Void) {
-        block = onReceive
+    init(block: @escaping (Version) -> Void) {
+        self.block = block
     }
 }

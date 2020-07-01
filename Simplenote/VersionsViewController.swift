@@ -179,8 +179,10 @@ private extension VersionsViewController {
 //
 private extension VersionsViewController {
 
-    func requestVersions() {
-        versionsToken = VersionsController.shared.requestVersions(for: note.simperiumKey, numberOfVersions: Settings.numberOfVersions) { [weak self] note in
+    func requestVersions(numberOfVersions: Int = Settings.numberOfVersions) {
+        let controller = SimplenoteAppDelegate.shared().versionsController
+
+        versionsToken = controller.requestVersions(for: note.simperiumKey, numberOfVersions: numberOfVersions) { [weak self] note in
              self?.versions[note.version] = note
         }
     }
