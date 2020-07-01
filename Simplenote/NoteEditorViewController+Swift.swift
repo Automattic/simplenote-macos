@@ -155,7 +155,8 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
-    @IBAction func metricsWasPressed(sender: Any) {
+    @IBAction
+    func metricsWasPressed(sender: Any) {
         guard let notes = selectedNotes else {
             return
         }
@@ -163,7 +164,8 @@ extension NoteEditorViewController {
         displayMetricsPopover(from: toolbarView.metricsButton, for: notes)
     }
 
-    @IBAction func shareWasPressed(sender: Any) {
+    @IBAction
+    func shareWasPressed(sender: Any) {
         SPTracker.trackEditorCollaboratorsAccessed()
         displaySharePopover(from: tagsField)
         tagsField.becomeFirstResponder()
@@ -178,7 +180,8 @@ extension NoteEditorViewController {
         displayPublishPopover(from: toolbarView.shareButton, for: note)
     }
 
-    @IBAction func versionsWasPressed(sender: Any) {
+    @IBAction
+    func versionsWasPressed(sender: Any) {
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.historyButton)
     }
