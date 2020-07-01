@@ -3,8 +3,7 @@ import Foundation
 
 // MARK: - VersionsViewControllerDelegate
 //
-@objc
-protocol VersionsViewControllerDelegate {
+protocol VersionsViewControllerDelegate: class {
     func versionsController(_ controller: VersionsViewController, updatedSlider newValue: Int)
     func versionsControllerDidClickRestore(_ controller: VersionsViewController)
     func versionsControllerWillShow(_ controller: VersionsViewController)
@@ -14,8 +13,12 @@ protocol VersionsViewControllerDelegate {
 
 // MARK: - VersionsViewController
 //
-@objcMembers
 class VersionsViewController: NSViewController {
+
+    ///
+    ///
+    @objc
+    static let maximumVersions = Int(30)
 
     /// Restore Clickable Button
     ///
@@ -58,17 +61,6 @@ class VersionsViewController: NSViewController {
         }
     }
 
-    /// Encapsulates the versionTextField's `stringValue` property
-    ///
-    var versionText: String {
-        get {
-            versionTextField.stringValue
-        }
-        set {
-            versionTextField.stringValue = newValue
-        }
-    }
-
 
     // MARK: - View Lifecycle
 
@@ -89,6 +81,15 @@ class VersionsViewController: NSViewController {
         versionSlider.minValue = Double(min)
         versionSlider.numberOfTickMarks = max - min + 1
         versionSlider.integerValue = max
+    }
+
+    ///
+    ///
+    func refreshVersion(date: Date) {
+        let label = NSLocalizedString("Version", comment: "Label for the current version of a note")
+        let date = DateFormatter.historyFormatter.string(from: date)
+
+        versionTextField.stringValue = "  \(label): \(date)"
     }
 }
 

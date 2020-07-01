@@ -50,8 +50,7 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
                                         NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
-                                        SPBucketDelegate,
-                                        VersionsViewControllerDelegate>
+                                        SPBucketDelegate>
 
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
@@ -361,24 +360,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     return newCursorLocation;
 }
 
-- (void)updateVersionLabel:(NSDate *)versionDate
-{
-    NSString *text = [NSString stringWithFormat:@"  %@: %@",
-                      NSLocalizedString(@"Version", @"Label for the current version of a note"),
-                      [self.note getDateString:versionDate brief:NO]];
-
-    self.versionsViewController.versionText = text;
-}
-
-- (void)updateVersionSlider
-{
-    NSInteger maximum = [self.note.version integerValue];
-    NSInteger minimum = [self minimumNoteVersion];
-
-    [self.versionsViewController refreshSliderWithMax:maximum min:minimum];
-}
-
-
 
 #pragma mark - Text Delegates
 
@@ -452,14 +433,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
-- (long)minimumNoteVersion
-{
-    NSInteger version = [[self.note version] integerValue];
-    NSInteger minVersion = MAX(version - SPVersionSliderMaxVersions, 1);
-    
-    return minVersion;
-}
-
 
 #pragma mark - Action Menu and Popovers
 
@@ -512,63 +485,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     pinnedItem.state = [self selectedNotesPinned] ? NSOnState : NSOffState;
     markdownItem.state = [self selectedNotesMarkdowned] ? NSOnState : NSOffState;
     [collaborateItem setEnabled:numSelectedNotes == 1];
-}
-
-- (void)popoverDidShow:(NSNotification *)notification
-{
-    if (self.activePopover.contentViewController == self.versionsViewController) {
-        // Prepare the UI
-        self.viewingVersions = YES;
-        [self updateVersionSlider];
-        [self updateVersionLabel:self.note.modificationDate];
-        [self.noteEditor setEditable:NO];
-
-        // Request the version data from Simperium
-        Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
-        [[simperium bucketForName:@"Note"] requestVersions:SPVersionSliderMaxVersions key:self.note.simperiumKey];   
-    }
-}
-
-- (void)popoverWillClose:(NSNotification *)notification
-{
-    if (self.activePopover.contentViewController == self.versionsViewController) {
-        self.viewingVersions = NO;
-        
-        // Unload versions and re-enable editor
-        [self.noteEditor setEditable:YES];
-        self.noteVersionData = nil;
-        
-        // Refreshes the note content in the editor, in case the popover was canceled
-        [self didReceiveNewContent];
-    }
-}
-
-
-#pragma mark - VersionsViewController Delegate
-
-- (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
-{
-    NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
-    NSLog(@"Loading version %ld", (long)newValue);
-
-    self.versionsViewController.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
-
-	if (versionData != nil) {
-        NSString *content = (NSString *)[versionData objectForKey:@"content"];
-        [self.noteEditor displayNoteWithContent:content];
-
-		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
-		[self updateVersionLabel:versionDate];
-	}
-}
-
-- (void)versionsControllerDidClickRestore:(VersionsViewController *)sender
-{
-    [SPTracker trackEditorNoteRestored];
-    
-    self.note.content = [self.noteEditor plainTextContent];
-    [self save];
-    [self dismissActivePopover];
 }
 
 
@@ -882,24 +798,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark - NSButton Delegate Methods
-
-- (IBAction)showVersionPopover:(id)sender
-{
-    // Dismiss the popover if user clicks revisions button when popover is showing already
-    if (self.activePopover != nil && [self.activePopover isShown] &&
-            self.activePopover.contentViewController == self.versionsViewController) {
-        [self dismissActivePopover];
-        return;
-    }
-    
-    [SPTracker trackEditorVersionsAccessed];
-
-    VersionsViewController *viewController = [VersionsViewController new];
-    viewController.delegate = self;
-
-    [self showViewController:viewController relativeToView:self.toolbarView.historyButton preferredEdge:NSMaxYEdge];
-    self.versionsViewController = viewController;
-}
 
 - (IBAction)shareNote:(id)sender
 {

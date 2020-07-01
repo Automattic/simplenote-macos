@@ -207,6 +207,7 @@ extension NoteEditorViewController {
 
     func displayVersionsPopover(from sourceView: NSView) {
         let viewController = VersionsViewController()
+        viewController.delegate = self
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 }
@@ -336,6 +337,63 @@ extension NoteEditorViewController: PublishViewControllerDelegate {
         SPTracker.trackEditorNoteUnpublished()
         note.published = false
         save()
+    }
+}
+
+
+// MARK: - VersionsViewControllerDelegate
+//
+extension NoteEditorViewController: VersionsViewControllerDelegate {
+
+    func versionsController(_ controller: VersionsViewController, updatedSlider newValue: Int) {
+//    NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
+//    NSLog(@"Loading version %ld", (long)newValue);
+//
+//    sender.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
+//
+//    if (versionData != nil) {
+//        NSString *content = (NSString *)[versionData objectForKey:@"content"];
+//        [self.noteEditor displayNoteWithContent:content];
+//
+//        NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
+//        [sender refreshVersionWithDate:versionDate];
+//    }
+    }
+
+    func versionsControllerDidClickRestore(_ controller: VersionsViewController) {
+        SPTracker.trackEditorNoteRestored()
+
+        note.content = noteEditor.plainTextContent()
+        save()
+        dismiss(controller)
+    }
+
+    func versionsControllerWillShow(_ controller: VersionsViewController) {
+        noteEditor.isEditable = false
+
+        //
+        let maximum = Int(note.version()) ?? .zero
+        let minimum = max(maximum - VersionsViewController.maximumVersions, 1)
+
+        controller.refreshSlider(max: maximum, min: minimum)
+        controller.refreshVersion(date: note.modificationDate)
+
+//    // Request the version data from Simperium
+//    Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
+//    [[simperium bucketForName:@"Note"] requestVersions:SPVersionSliderMaxVersions key:self.note.simperiumKey];
+//
+//    self.viewingVersions = YES;
+    }
+
+    func versionsControllerWillClose(_ controller: VersionsViewController) {
+        // Unload versions and re-enable editor
+        noteEditor.isEditable = true
+
+//    self.viewingVersions = NO;
+//    self.noteVersionData = nil;
+
+        // Refreshes the note content in the editor, in case the popover was canceled
+        didReceiveNewContent()
     }
 }
 
