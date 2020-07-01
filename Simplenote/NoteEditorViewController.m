@@ -367,56 +367,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     return newCursorLocation;
 }
 
-- (NSUInteger)wordCount
-{
-    NSUInteger numWords = 0;
-    for (Note *selectedNote in self.selectedNotes) {
-        // countWordsInString returns -1 for a zero length string; handle that
-        if (selectedNote.content == nil || [selectedNote.content length] == 0)
-            continue;
-        
-        numWords += [[NSSpellChecker sharedSpellChecker] countWordsInString:selectedNote.content language:nil];
-    }
-    
-    return numWords;
-}
-
-- (NSUInteger)charCount
-{
-    NSUInteger numChars = 0;
-    for (Note *selectedNote in self.selectedNotes) {
-        if (selectedNote.content == nil)
-            continue;
-        
-        numChars += [selectedNote.content length];
-    }
-    
-    return numChars;
-}
-
-- (void)updateCounts
-{
-    NSString *word = NSLocalizedString(@"Word", @"Text displayed when there is one word in a note (e.g. 1 Word)");
-    NSString *words = NSLocalizedString(@"Words", @"Text displayed when there is more than one word in a note (e.g. 5 Words)");
-    NSString *character = NSLocalizedString(@"Character", @"Text displayed when there is one character in a note (e.g. 1 Character)");
-    NSString *characters = NSLocalizedString(@"Characters", @"Text displayed when there is more than one character in a note (e.g. 130 Characters)");
-    NSNumber *numCharacters = @([self charCount]);
-    NSNumber *numWords = @([self wordCount]);
-    NSString *wordStr = [numWords isEqual: @1] ? word : words;
-    NSString *charStr = [numCharacters isEqual: @1] ? character : characters;
-    
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
-    numberFormatter.locale = [NSLocale currentLocale];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    numberFormatter.usesGroupingSeparator = YES;
-    
-    NSString *numCharactersString = [numberFormatter stringForObjectValue:numCharacters];
-    NSString *numWordsString = [numberFormatter stringForObjectValue:numWords];
-
-    [characterCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numCharactersString, charStr]];
-    [wordCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numWordsString, wordStr]];
-}
-
 - (void)updateVersionLabel:(NSDate *)versionDate
 {
     NSString *text = [NSString stringWithFormat:@"  %@: %@",
@@ -594,20 +544,10 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
         [menu cancelTrackingWithoutAnimation];
         return;
     }
-    
-    [self updateCounts];
+
     pinnedItem.state = [self selectedNotesPinned] ? NSOnState : NSOffState;
     markdownItem.state = [self selectedNotesMarkdowned] ? NSOnState : NSOffState;
     [collaborateItem setEnabled:numSelectedNotes == 1];
-
-    NSString *statusString;
-    
-    if (numSelectedNotes == 1)
-        statusString = [NSString stringWithFormat:@"Modified: %@", [self.note.modificationDate sp_stringBeforeNow]];
-    else
-        statusString = [NSString stringWithFormat:@"%ld Notes Selected", [self.selectedNotes count]];
-    
-    [modifiedItem setTitle:statusString];
 }
 
 - (void)popoverDidShow:(NSNotification *)notification
@@ -686,13 +626,13 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 #pragma mark - Actions
 
-- (IBAction)detailsAction:(id)sender
+- (IBAction)moreWasPressed:(id)sender
 {
     NSButton *infoButton = (NSButton *)sender;
     NSRect infoFrame = infoButton.frame;
     NSPoint origin = NSMakePoint(CGRectGetMidX(infoFrame), CGRectGetMinY(infoFrame));
 
-    [self.detailsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
+    [self.moreActionsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
 }
 
 - (IBAction)pinAction:(id)sender

@@ -13,14 +13,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <menu title="OtherViews" autoenablesItems="NO" id="nSc-s9-0oY" userLabel="Note Details Menu">
+        <menu title="OtherViews" autoenablesItems="NO" id="nSc-s9-0oY" userLabel="Note More Menu">
             <items>
-                <menuItem title="0 Words" enabled="NO" id="oDJ-Mn-z2x"/>
-                <menuItem title="0 Characters" enabled="NO" id="PtU-L0-FKA"/>
-                <menuItem title="Modified: 3 Seconds Ago" enabled="NO" id="yPi-1u-OMn">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="Gjb-P8-RdZ"/>
                 <menuItem title="Pin to Top" state="on" id="Ryc-RD-9bh">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -1004,7 +998,7 @@
                                         <rect key="frame" x="0.0" y="570" width="508" height="48"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-k3-T1Z">
-                                                <rect key="frame" x="247" y="0.0" width="245" height="48"/>
+                                                <rect key="frame" x="202" y="0.0" width="290" height="48"/>
                                                 <subviews>
                                                     <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-hx-wfj" userLabel="Markdown">
                                                         <rect key="frame" x="0.0" y="14" width="20" height="20"/>
@@ -1060,14 +1054,24 @@
                                                             <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
                                                         </connections>
                                                     </button>
-                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXM-Do-Iy7" userLabel="Info">
+                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXM-Do-Iy7" userLabel="Metrics">
                                                         <rect key="frame" x="225" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1oR-T8-cRe">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="detailsAction:" target="1107" id="11x-Zw-d7U"/>
+                                                            <action selector="metricsWasPressedWithSender:" target="1107" id="U1v-vN-rCF"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jyK-U4-rcH" userLabel="More">
+                                                        <rect key="frame" x="270" y="14" width="20" height="20"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="fbf-7I-0wJ">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="moreWasPressed:" target="1107" id="wxL-gs-czt"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1076,6 +1080,8 @@
                                                     <constraint firstItem="EXM-Do-Iy7" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="6ST-lY-Law"/>
                                                     <constraint firstItem="mXz-OM-6A3" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="78W-gy-0Mk"/>
                                                     <constraint firstItem="fA9-bG-luR" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="F8s-23-6zM"/>
+                                                    <constraint firstItem="jyK-U4-rcH" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="Nuo-l8-Qgs"/>
+                                                    <constraint firstItem="jyK-U4-rcH" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="S7e-rG-avT"/>
                                                     <constraint firstItem="EXM-Do-Iy7" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="SzX-6c-s3o"/>
                                                     <constraint firstItem="qmA-vO-wPh" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="T88-WW-K9W"/>
                                                     <constraint firstItem="7hm-UJ-0zw" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="YVA-ky-JFG"/>
@@ -1090,8 +1096,10 @@
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
+                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
@@ -1108,8 +1116,9 @@
                                             <constraint firstAttribute="trailing" secondItem="9kE-k3-T1Z" secondAttribute="trailing" constant="16" id="m9W-Sv-7fY"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="actionButton" destination="EXM-Do-Iy7" id="eyT-fQ-Tlf"/>
                                             <outlet property="historyButton" destination="7hm-UJ-0zw" id="2dg-q8-LW8"/>
+                                            <outlet property="metricsButton" destination="EXM-Do-Iy7" id="msh-O6-FFv"/>
+                                            <outlet property="moreButton" destination="jyK-U4-rcH" id="0zK-dJ-ADT"/>
                                             <outlet property="previewButton" destination="OMI-hx-wfj" id="CUq-cy-7jJ"/>
                                             <outlet property="restoreButton" destination="fA9-bG-luR" id="MWN-e9-omM"/>
                                             <outlet property="shareButton" destination="qmA-vO-wPh" id="YxO-si-thc"/>
@@ -1272,13 +1281,11 @@
             <connections>
                 <outlet property="backgroundView" destination="ktP-Hd-KgH" id="KFX-EY-NpR"/>
                 <outlet property="bottomDividerView" destination="xSv-Qg-Lo6" id="76h-Kc-UnK"/>
-                <outlet property="characterCountItem" destination="PtU-L0-FKA" id="m38-pg-CRX"/>
                 <outlet property="collaborateItem" destination="avN-8J-w5V" id="A6J-03-6wx"/>
                 <outlet property="deleteItem" destination="1655" id="1660"/>
-                <outlet property="detailsMenu" destination="nSc-s9-0oY" id="Lau-pG-De4"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="markdownItem" destination="Ejc-Bj-rEL" id="XHb-Xg-A7k"/>
-                <outlet property="modifiedItem" destination="yPi-1u-OMn" id="kd5-5p-Oeo"/>
+                <outlet property="moreActionsMenu" destination="nSc-s9-0oY" id="RWb-MR-Re4"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
@@ -1292,7 +1299,6 @@
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
                 <outlet property="view" destination="559" id="vPQ-pl-pqe"/>
-                <outlet property="wordCountItem" destination="oDJ-Mn-z2x" id="gmB-Y8-oCY"/>
             </connections>
         </viewController>
         <customObject id="420" customClass="NSFontManager"/>
@@ -1329,6 +1335,7 @@
         </viewController>
     </objects>
     <resources>
+        <image name="button_ellipsis" width="24" height="24"/>
         <image name="button_history" width="24" height="24"/>
         <image name="button_info" width="24" height="24"/>
         <image name="button_new_note" width="24" height="24"/>

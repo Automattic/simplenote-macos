@@ -41,9 +41,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSMenu *lineLengthMenu;
-    IBOutlet NSMenuItem *wordCountItem;
-    IBOutlet NSMenuItem *characterCountItem;
-    IBOutlet NSMenuItem *modifiedItem;
     IBOutlet NSMenuItem *pinnedItem;
     IBOutlet NSMenuItem *markdownItem;
     IBOutlet NSMenuItem *newItem;
@@ -52,7 +49,7 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
-@property (nonatomic, strong) IBOutlet NSMenu                   *detailsMenu;
+@property (nonatomic, strong) IBOutlet NSMenu                   *moreActionsMenu;
 @property (nonatomic, strong) IBOutlet BackgroundView           *backgroundView;
 @property (nonatomic, strong) IBOutlet BackgroundView           *topDividerView;
 @property (nonatomic, strong) IBOutlet BackgroundView           *bottomDividerView;
@@ -79,8 +76,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)showPublishPopover;
 - (void)fixChecklistColoring;
 - (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
-- (NSUInteger)wordCount;
-- (NSUInteger)charCount;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)adjustFontSizeAction:(id)sender;
