@@ -19,9 +19,12 @@ class VersionsController: NSObject {
     func requestVersions(simperiumKey: String, numberOfVersions: Int) {
         NSLog("<> Requesting \(numberOfVersions) versions for \(simperiumKey)")
 
+        // Nuke our cache
+        versions[simperiumKey] = [:]
+
+        // Simperium! Yay!
         let bucket = SimplenoteAppDelegate.shared().simperium.notesBucket
         bucket.requestVersions(Int32(numberOfVersions), key: simperiumKey)
-        versions[simperiumKey] = [:]
     }
 
     /// Stops accepting new version documents
@@ -32,7 +35,7 @@ class VersionsController: NSObject {
 
     /// Returns the NoteVersion for a given SimperiumKey / Version pair
     ///
-    func note(forSimperiumKey simperiumKey: String, version: Int) -> NoteVersion? {
+    func version(forSimperiumKey simperiumKey: String, version: Int) -> NoteVersion? {
         versions[simperiumKey]?[String(version)]
     }
 }

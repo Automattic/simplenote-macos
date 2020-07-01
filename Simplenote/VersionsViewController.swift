@@ -1,4 +1,5 @@
 import Foundation
+import AppKit
 
 
 // MARK: - VersionsViewControllerDelegate
@@ -15,11 +16,6 @@ protocol VersionsViewControllerDelegate: class {
 //
 class VersionsViewController: NSViewController {
 
-    ///
-    ///
-    @objc
-    static let maximumVersions = Int(30)
-
     /// Restore Clickable Button
     ///
     @IBOutlet private var restoreButton: NSButton!
@@ -31,6 +27,10 @@ class VersionsViewController: NSViewController {
     /// Versions Text
     ///
     @IBOutlet private var versionTextField: NSTextField!
+
+    /// Note for which we'll allow History Sliding
+    ///
+    private let note: Note
 
     /// NSPopover instance that's presenting the current instance.
     ///
@@ -44,52 +44,58 @@ class VersionsViewController: NSViewController {
     ///
     weak var delegate: VersionsViewControllerDelegate?
 
-    /// Returns the Maximum Slider Value
-    ///
-    var maxSliderValue: Int {
-        Int(versionSlider.maxValue)
-    }
 
-    /// Encapsulates the Restore Button's `isEnabled` property
-    ///
-    var restoreActionEnabled: Bool {
-        get {
-            restoreButton.isEnabled
-        }
-        set {
-            restoreButton.isEnabled = newValue
-        }
-    }
-
-
-    // MARK: - View Lifecycle
+    // MARK: - Lifecycle
 
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
+    init(note: Note) {
+        self.note = note
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSlider()
+        setupLabels()
         startListeningToNotifications()
-        refreshStyle()
     }
 
-    /// Refreshes the Slider Settings with the specified Max / Min
-    ///
-    func refreshSlider(max: Int, min: Int) {
-        versionSlider.maxValue = Double(max)
-        versionSlider.minValue = Double(min)
-        versionSlider.numberOfTickMarks = max - min + 1
-        versionSlider.integerValue = max
+    override func viewWillAppear() {
+        super.viewWillAppear()
+// TODO: Review VersionsController
+        VersionsController.shared.requestVersions(simperiumKey: note.simperiumKey, numberOfVersions: Settings.maximumVersions)
     }
 
-    ///
-    ///
-    func refreshVersion(date: Date) {
-        let label = NSLocalizedString("Version", comment: "Label for the current version of a note")
-        let date = DateFormatter.historyFormatter.string(from: date)
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        VersionsController.shared.dropAllRequests()
+    }
+}
 
-        versionTextField.stringValue = "  \(label): \(date)"
+
+// MARK: - Initialization
+//
+private extension VersionsViewController {
+
+    func setupSlider() {
+        let maximum = Int(note.version()) ?? .zero
+        let minimum = max(maximum - Settings.maximumVersions, 1)
+
+        versionSlider.maxValue = Double(maximum)
+        versionSlider.minValue = Double(minimum)
+        versionSlider.numberOfTickMarks = maximum - minimum + 1
+        versionSlider.integerValue = maximum
+    }
+
+    func setupLabels() {
+        refreshLabels(date: note.modificationDate)
     }
 }
 
@@ -114,7 +120,7 @@ private extension VersionsViewController {
 //
 extension VersionsViewController: NSPopoverDelegate {
 
-    public func popoverWillShow(_ notification: Notification) {
+    func popoverWillShow(_ notification: Notification) {
         presentingPopover = notification.object as? NSPopover
         delegate?.versionsControllerWillShow(self)
     }
@@ -125,7 +131,7 @@ extension VersionsViewController: NSPopoverDelegate {
 }
 
 
-// MARK: - Handlers
+// MARK: - Actions
 //
 extension VersionsViewController {
 
@@ -136,6 +142,43 @@ extension VersionsViewController {
 
     @IBAction
     func versionSliderChanged(sender: Any) {
-        delegate?.versionsController(self, updatedSlider: versionSlider.integerValue)
+        guard let version = VersionsController.shared.version(forSimperiumKey: note.simperiumKey, version: versionSlider.integerValue) else {
+            disableActions()
+            return
+        }
+
+        NSLog("<> Loading version \(versionSlider.integerValue)");
+        refreshLabels(date: version.modificationDate)
+        refreshActions()
+
+        delegate?.versionsController(self, selected: version)
     }
+}
+
+
+// MARK: - Helpers
+//
+private extension VersionsViewController {
+
+    func refreshLabels(date: Date) {
+        let text = NSLocalizedString("Version", comment: "Label for the current version of a note")
+        let date = DateFormatter.historyFormatter.string(from: date)
+
+        versionTextField.stringValue = "\(text): \(date)"
+    }
+
+    func refreshActions() {
+        restoreButton.isEnabled = versionSlider.integerValue != Int(versionSlider.maxValue)
+    }
+
+    func disableActions() {
+        restoreButton.isEnabled = false
+    }
+}
+
+
+// MARK: - Settings
+//
+private enum Settings {
+    static let maximumVersions = Int(30)
 }
