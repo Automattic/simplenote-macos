@@ -80,7 +80,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)adjustFontSizeAction:(id)sender;
 - (IBAction)markdownAction:(id)sender;
-- (IBAction)showSharePopover:(id)sender;
 - (IBAction)showVersionPopover:(id)sender;
 - (IBAction)toggleMarkdownView:(id)sender;
 - (IBAction)toggleEditorWidth:(id)sender;

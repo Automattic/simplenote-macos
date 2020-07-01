@@ -30,7 +30,7 @@
                 <menuItem title="Collaborate..." id="avN-8J-w5V" userLabel="Menu Item - Share...">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="showSharePopover:" target="1107" id="ohK-bL-W2O"/>
+                        <action selector="shareWasPressedWithSender:" target="1107" id="Rw4-Kn-bOb"/>
                     </connections>
                 </menuItem>
             </items>
