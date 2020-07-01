@@ -160,8 +160,8 @@
 		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
-		B53BF1A024AC1FB800938C34 /* NoteVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* NoteVersion.swift */; };
-		B53BF1A124AC1FB800938C34 /* NoteVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* NoteVersion.swift */; };
+		B53BF1A024AC1FB800938C34 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* Version.swift */; };
+		B53BF1A124AC1FB800938C34 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* Version.swift */; };
 		B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
 		B53BF1A524AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
 		B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */; };
@@ -510,7 +510,7 @@
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
-		B53BF19F24AC1FB800938C34 /* NoteVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteVersion.swift; sourceTree = "<group>"; };
+		B53BF19F24AC1FB800938C34 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
 		B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringCondensingTests.swift; sourceTree = "<group>"; };
 		B53FF5462476F9450014E928 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -1006,7 +1006,6 @@
 				71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */,
 				71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */,
 				B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */,
-				B53BF19F24AC1FB800938C34 /* NoteVersion.swift */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -1015,6 +1014,7 @@
 			isa = PBXGroup;
 			children = (
 				B53BF1A324AC38C100938C34 /* VersionsController.swift */,
+				B53BF19F24AC1FB800938C34 /* Version.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1172,13 +1172,12 @@
 				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B53BF19E24AC1F9500938C34 /* Editor */,
 				B55C313124A5339300B23B3F /* Metrics */,
+				B5D6833324ACFA79004AFF1B /* Versions */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
 				B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */,
 				B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */,
-				B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */,
-				B5C19D8A243D30690014086C /* VersionsViewController.xib */,
 				B5C7DD45243E51E200BEE354 /* PublishViewController.swift */,
 				B5C7DD48243E524000BEE354 /* PublishViewController.xib */,
 			);
@@ -1205,6 +1204,15 @@
 				B5B17F372425651700DD5B34 /* TestConstants.swift */,
 			);
 			path = SimplenoteTests;
+			sourceTree = "<group>";
+		};
+		B5D6833324ACFA79004AFF1B /* Versions */ = {
+			isa = PBXGroup;
+			children = (
+				B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */,
+				B5C19D8A243D30690014086C /* VersionsViewController.xib */,
+			);
+			name = Versions;
 			sourceTree = "<group>";
 		};
 		B5E0862A2448B58D00DEF476 /* TableViewCells */ = {
@@ -1720,7 +1728,7 @@
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
-				B53BF1A024AC1FB800938C34 /* NoteVersion.swift in Sources */,
+				B53BF1A024AC1FB800938C34 /* Version.swift in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */,
@@ -1853,7 +1861,7 @@
 				375D293921E033D1007AB25A /* escape.c in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
-				B53BF1A124AC1FB800938C34 /* NoteVersion.swift in Sources */,
+				B53BF1A124AC1FB800938C34 /* Version.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,

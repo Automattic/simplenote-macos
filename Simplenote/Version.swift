@@ -1,9 +1,9 @@
 import Foundation
 
 
-// MARK: - NoteVersion
+// MARK: - Version
 //
-class NoteVersion: NSObject {
+class Version: NSObject {
 
     /// Version
     ///
@@ -36,7 +36,7 @@ class NoteVersion: NSObject {
 
 // MARK: - Parsing Keys
 //
-extension NoteVersion {
+extension Version {
 
     private enum Keys: String {
         case modificationDate

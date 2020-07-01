@@ -5,7 +5,7 @@ import AppKit
 // MARK: - VersionsViewControllerDelegate
 //
 protocol VersionsViewControllerDelegate: class {
-    func versionsController(_ controller: VersionsViewController, selected version: NoteVersion)
+    func versionsController(_ controller: VersionsViewController, selected version: Version)
     func versionsControllerDidClickRestore(_ controller: VersionsViewController)
     func versionsControllerWillShow(_ controller: VersionsViewController)
     func versionsControllerWillClose(_ controller: VersionsViewController)
@@ -34,7 +34,7 @@ class VersionsViewController: NSViewController {
 
     /// Versions associated to the current Note
     ///
-    private var versions = [String: NoteVersion]()
+    private var versions = [String: Version]()
 
     /// VersionsController Observer Receipt
     ///
@@ -181,7 +181,7 @@ private extension VersionsViewController {
 
     func requestVersions() {
         versionsToken = VersionsController.shared.requestVersions(for: note.simperiumKey, numberOfVersions: Settings.numberOfVersions) { [weak self] note in
-            self?.versions[note.version] = note
+             self?.versions[note.version] = note
         }
     }
 }

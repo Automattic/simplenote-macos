@@ -352,7 +352,7 @@ extension NoteEditorViewController: PublishViewControllerDelegate {
 //
 extension NoteEditorViewController: VersionsViewControllerDelegate {
 
-    func versionsController(_ controller: VersionsViewController, selected version: NoteVersion) {
+    func versionsController(_ controller: VersionsViewController, selected version: Version) {
         noteEditor.displayNote(content: version.content)
     }
 
