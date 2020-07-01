@@ -3,7 +3,7 @@ import Foundation
 
 // MARK: - Version
 //
-class Version: NSObject {
+struct Version {
 
     /// Version
     ///
@@ -20,7 +20,7 @@ class Version: NSObject {
 
     /// Designed Initializer
     ///
-    init?(version: String, payload: NSDictionary) {
+    init?(version: String, payload: [AnyHashable: Any]) {
         guard let modification = payload[Keys.modificationDate.rawValue] as? Double,
             let content = payload[Keys.content.rawValue] as? String
             else {

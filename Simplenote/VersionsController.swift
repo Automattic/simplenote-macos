@@ -29,9 +29,10 @@ class VersionsController: NSObject {
     ///     - numberOfVersions: Number of documents to retrieve
     ///     - onResponse: Closure to be executed whenever a new version is received. This closure might be invoked `N` times.
     ///
-    /// - Returns: An opaque entity, which should be retained as long as events are expected. Whenever the returned entity is released, no further events will be relayed.
+    /// - Returns: An opaque entity, which should be retained by the callback handler.
     ///
-    /// - Note: By design, there can be only *one* listener for changes associated to a SimperiumKey.
+    /// - Note: Whenever the returned entity is released, no further events will be relayed to the `onResponse` closure.
+    /// - Warning: By design, there can be only *one* listener for changes associated to a SimperiumKey.
     ///
     func requestVersions(for simperiumKey: String, numberOfVersions: Int, onResponse: @escaping (Version) -> Void) -> Any {
         NSLog("<> Requesting \(numberOfVersions) versions for \(simperiumKey)")
@@ -53,13 +54,16 @@ class VersionsController: NSObject {
 //
 extension VersionsController {
 
+    /// Notifies all of the subscribers a new Version has been retrieved from Simperium.
+    /// - Note: This API should be (manually) invoked everytime SPBucket's delegate receives a new Version (!)
+    ///
     @objc(didReceiveObjectForSimperiumKey:version:data:)
     func didReceiveObject(for simperiumKey: String, version: String, data: NSDictionary) {
         guard let wrapper = callbackMap.object(forKey: simperiumKey as NSString) else {
             return
         }
 
-        guard let note = Version(version: version, payload: data) else {
+        guard let payload = data as? [AnyHashable: Any], let note = Version(version: version, payload: payload) else {
             return
         }
 
