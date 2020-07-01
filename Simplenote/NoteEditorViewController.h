@@ -71,7 +71,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (void)displayNotes:(NSArray *)selectedNotes;
 - (void)didReceiveNewContent;
 - (void)willReceiveNewContent;
-- (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data;
 - (void)applyStyle;
 - (void)fixChecklistColoring;
 - (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;

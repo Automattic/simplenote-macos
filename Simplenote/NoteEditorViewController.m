@@ -39,7 +39,6 @@ NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
-static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark ====================================================================================
@@ -55,7 +54,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
-@property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
 @property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
 @property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSArray                   *selectedNotes;
@@ -63,7 +61,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 @property (nonatomic, strong) TextViewInputHandler      *inputHandler;
 
 @property (nonatomic, assign) NSUInteger                cursorLocationBeforeRemoteUpdate;
-@property (nonatomic, assign) BOOL                      viewingVersions;
 @property (nonatomic, assign) BOOL                      viewingTrash;
 
 @end
@@ -419,17 +416,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     if (self.note != nil && ![self.noteEditor.string isEqualToString:@""]) {
         self.note.content = [self.noteEditor plainTextContent];
         [appDelegate.simperium saveWithoutSyncing];
-    }
-}
-
-- (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data
-{
-    if (self.viewingVersions) {
-        if (self.noteVersionData == nil) {
-            self.noteVersionData = [NSMutableDictionary dictionaryWithCapacity:SPVersionSliderMaxVersions];
-        }
-        
-        [self.noteVersionData setObject:data forKey:@(version.integerValue)];
     }
 }
 
