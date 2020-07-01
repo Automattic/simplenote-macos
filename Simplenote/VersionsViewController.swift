@@ -1,5 +1,6 @@
 import Foundation
 import AppKit
+import os.log
 
 
 // MARK: - VersionsViewControllerDelegate
@@ -145,7 +146,7 @@ extension VersionsViewController {
             return
         }
 
-        NSLog("<> Loading version \(versionSlider.integerValue)");
+        os_log("<> Loading version %d", versionSlider.integerValue)
         refreshLabels(date: version.modificationDate)
         refreshActions()
 

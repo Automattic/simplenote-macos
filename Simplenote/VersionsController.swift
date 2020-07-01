@@ -1,4 +1,5 @@
 import Foundation
+import os.log
 
 
 // MARK: - VersionsController
@@ -35,7 +36,7 @@ class VersionsController: NSObject {
     /// - Warning: By design, there can be only *one* listener for changes associated to a SimperiumKey.
     ///
     func requestVersions(for simperiumKey: String, numberOfVersions: Int, onResponse: @escaping (Version) -> Void) -> Any {
-        NSLog("<> Requesting \(numberOfVersions) versions for \(simperiumKey)")
+        os_log("<> Requesting %d versions for %@", numberOfVersions, simperiumKey)
 
         // Keep a reference to the closure
         let wrapper = ListenerWrapper(block: onResponse)
