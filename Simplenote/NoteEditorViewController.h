@@ -49,22 +49,22 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSMenuItem *collaborateItem;
 }
 
-@property (nonatomic, strong) IBOutlet NSMenu                   *moreActionsMenu;
-@property (nonatomic, strong) IBOutlet BackgroundView           *backgroundView;
-@property (nonatomic, strong) IBOutlet BackgroundView           *topDividerView;
-@property (nonatomic, strong) IBOutlet BackgroundView           *bottomDividerView;
-@property (nonatomic, strong) IBOutlet ToolbarView              *toolbarView;
-@property (nonatomic, strong) IBOutlet NSImageView              *statusImageView;
-@property (nonatomic, strong) IBOutlet NSTextField              *statusTextField;
-@property (nonatomic,   weak) IBOutlet SPTextView               *noteEditor;
-@property (nonatomic,   weak) IBOutlet NSScrollView             *scrollView;
-@property (nonatomic,   weak) IBOutlet TagsField                *tagsField;
+@property (nonatomic, strong) IBOutlet NSMenu                                   *moreActionsMenu;
+@property (nonatomic, strong) IBOutlet BackgroundView                           *backgroundView;
+@property (nonatomic, strong) IBOutlet BackgroundView                           *topDividerView;
+@property (nonatomic, strong) IBOutlet BackgroundView                           *bottomDividerView;
+@property (nonatomic, strong) IBOutlet ToolbarView                              *toolbarView;
+@property (nonatomic, strong) IBOutlet NSImageView                              *statusImageView;
+@property (nonatomic, strong) IBOutlet NSTextField                              *statusTextField;
+@property (nonatomic,   weak) IBOutlet SPTextView                               *noteEditor;
+@property (nonatomic,   weak) IBOutlet NSScrollView                             *scrollView;
+@property (nonatomic,   weak) IBOutlet TagsField                                *tagsField;
 
-@property (nonatomic, strong, readonly) MarkdownViewController  *markdownViewController;
-@property (nonatomic, strong, readonly) NSArray<Note *>         *selectedNotes;
-@property (nonatomic, assign, readonly) BOOL                    viewingTrash;
-@property (nonatomic, strong) NSLayoutConstraint                *toolbarViewTopConstraint;
-@property (nonatomic,   weak) Note                              *note;
+@property (nonatomic, strong, readonly) MarkdownViewController                  *markdownViewController;
+@property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
+@property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
+@property (nonatomic, strong) NSLayoutConstraint                                *toolbarViewTopConstraint;
+@property (nonatomic,   weak) Note                                              *note;
 
 - (void)save;
 - (void)displayNote:(Note *)selectedNote;
