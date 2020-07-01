@@ -118,6 +118,7 @@ private extension MetricsViewController {
 
     @objc
     func refreshStyle() {
+        // Note: Backwards compatibility *requires* this line (10.13 / 10.14)
         presentingPopover?.appearance = .simplenoteAppearance
 
         for label in [ modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel ] {

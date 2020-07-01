@@ -56,5 +56,7 @@
 	<string>https://rink.hockeyapp.net/api/2/apps/ede9c49346946c51a1db1db167b49892</string>
 	<key>SUScheduledCheckInterval</key>
 	<string>3600</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
