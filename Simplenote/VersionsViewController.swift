@@ -4,7 +4,7 @@ import Foundation
 // MARK: - VersionsViewControllerDelegate
 //
 protocol VersionsViewControllerDelegate: class {
-    func versionsController(_ controller: VersionsViewController, updatedSlider newValue: Int)
+    func versionsController(_ controller: VersionsViewController, selected version: NoteVersion)
     func versionsControllerDidClickRestore(_ controller: VersionsViewController)
     func versionsControllerWillShow(_ controller: VersionsViewController)
     func versionsControllerWillClose(_ controller: VersionsViewController)
