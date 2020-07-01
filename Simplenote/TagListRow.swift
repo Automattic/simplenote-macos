@@ -8,7 +8,7 @@ enum TagListRow: Equatable {
     case trash
     case spacer
     case header
-    case tag(tag: Tag)
+    case tag(_ tag: Tag)
     case untagged
 }
 
@@ -45,8 +45,8 @@ extension TagListRow {
             return rows
         }
 
-        // Tags Section
-        let tags: [TagListRow] = tags.map { .tag(tag: $0) }
+        let tags: [TagListRow] = tags.map { .tag($0) }
+
         rows.append(.spacer)
         rows.append(.header)
         rows.append(contentsOf: tags)

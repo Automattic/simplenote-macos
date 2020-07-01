@@ -46,6 +46,7 @@ private extension ShareViewController {
 
     @objc
     func refreshStyle() {
+        // Note: Backwards compatibility *requires* this line (10.13 / 10.14)
         presentingPopover?.appearance = .simplenoteAppearance
         shareTextField.textColor = .simplenoteTextColor
     }
