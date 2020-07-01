@@ -72,7 +72,7 @@ private extension EntityObserver {
         }
 
         let updatedIdentifiers = extractObjectIdentifiers(from: userInfo, keys: changeTypes).intersection(observedIdentifiers)
-        guard !updatedIdentifiers.isEmpty else {
+        if updatedIdentifiers.isEmpty {
             return
         }
 
