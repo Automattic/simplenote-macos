@@ -160,6 +160,10 @@
 		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
+		B53BF1A024AC1FB800938C34 /* NoteVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* NoteVersion.swift */; };
+		B53BF1A124AC1FB800938C34 /* NoteVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* NoteVersion.swift */; };
+		B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
+		B53BF1A524AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
 		B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */; };
 		B53FF5472476F9450014E928 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5462476F9450014E928 /* Constants.swift */; };
 		B542DAE824801BFF00FA6F99 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542DAE724801BFF00FA6F99 /* ClipView.swift */; };
@@ -506,6 +510,8 @@
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
+		B53BF19F24AC1FB800938C34 /* NoteVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteVersion.swift; sourceTree = "<group>"; };
+		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
 		B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringCondensingTests.swift; sourceTree = "<group>"; };
 		B53FF5462476F9450014E928 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B542DAE724801BFF00FA6F99 /* ClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipView.swift; sourceTree = "<group>"; };
@@ -715,6 +721,7 @@
 			children = (
 				463774DC171F114900E2E333 /* Categories */,
 				B501AAD22437E52D0084CDA3 /* Constants */,
+				B53BF1A224AC388F00938C34 /* Controllers */,
 				B5CBB05A241971240003C271 /* Converters */,
 				B52D0ECA230DCE22003F799D /* Credentials */,
 				B51E9FE322E64473004F16B4 /* Extensions */,
@@ -741,9 +748,6 @@
 				B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */,
 				26F592531408BF75003A5174 /* NotesArrayController.h */,
 				26F592541408BF75003A5174 /* NotesArrayController.m */,
-				71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */,
-				71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */,
-				B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */,
 				46EF5196177C4ECC00A139E0 /* SPApplication.h */,
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B51374F41AC0591900825FCC /* SPConstants.h */,
@@ -996,6 +1000,25 @@
 			path = Credentials;
 			sourceTree = "<group>";
 		};
+		B53BF19E24AC1F9500938C34 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */,
+				71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */,
+				B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */,
+				B53BF19F24AC1FB800938C34 /* NoteVersion.swift */,
+			);
+			name = Editor;
+			sourceTree = "<group>";
+		};
+		B53BF1A224AC388F00938C34 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B53BF1A324AC38C100938C34 /* VersionsController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		B53FF5482476F94B0014E928 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,6 +1170,7 @@
 			isa = PBXGroup;
 			children = (
 				B5AF76C924A3F06D00B7D530 /* Tags */,
+				B53BF19E24AC1F9500938C34 /* Editor */,
 				B55C313124A5339300B23B3F /* Metrics */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
@@ -1638,6 +1662,7 @@
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5F50915247319360042FA1D /* SplitView.swift in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
+				B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
 				B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
@@ -1695,6 +1720,7 @@
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
+				B53BF1A024AC1FB800938C34 /* NoteVersion.swift in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */,
@@ -1769,6 +1795,7 @@
 				B5F50916247319360042FA1D /* SplitView.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5E086332448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
+				B53BF1A524AC38C100938C34 /* VersionsController.swift in Sources */,
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B55C313D24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
@@ -1826,6 +1853,7 @@
 				375D293921E033D1007AB25A /* escape.c in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
+				B53BF1A124AC1FB800938C34 /* NoteVersion.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,
