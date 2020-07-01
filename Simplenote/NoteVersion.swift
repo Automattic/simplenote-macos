@@ -5,6 +5,10 @@ import Foundation
 //
 class NoteVersion: NSObject {
 
+    /// Version
+    ///
+    let version: String
+
     /// Note's Payload
     ///
     let content: String
@@ -16,13 +20,14 @@ class NoteVersion: NSObject {
 
     /// Designed Initializer
     ///
-    init?(payload: NSDictionary) {
+    init?(version: String, payload: NSDictionary) {
         guard let modification = payload[Keys.modificationDate.rawValue] as? Double,
             let content = payload[Keys.content.rawValue] as? String
             else {
                 return nil
         }
 
+        self.version = version
         self.modificationDate = Date(timeIntervalSince1970: TimeInterval(modification))
         self.content = content
     }

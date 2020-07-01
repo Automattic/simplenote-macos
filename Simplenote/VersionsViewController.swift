@@ -32,6 +32,14 @@ class VersionsViewController: NSViewController {
     ///
     private let note: Note
 
+    /// Versions associated to the current Note
+    ///
+    private var versions = [String: NoteVersion]()
+
+    /// VersionsController Observer Receipt
+    ///
+    private var versionsToken: Any!
+
     /// NSPopover instance that's presenting the current instance.
     ///
     private var presentingPopover: NSPopover? {
@@ -64,18 +72,8 @@ class VersionsViewController: NSViewController {
         super.viewDidLoad()
         setupSlider()
         setupLabels()
+        requestVersions()
         startListeningToNotifications()
-    }
-
-    override func viewWillAppear() {
-        super.viewWillAppear()
-// TODO: Review VersionsController
-        VersionsController.shared.requestVersions(simperiumKey: note.simperiumKey, numberOfVersions: Settings.maximumVersions)
-    }
-
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        VersionsController.shared.dropAllRequests()
     }
 }
 
@@ -86,7 +84,7 @@ private extension VersionsViewController {
 
     func setupSlider() {
         let maximum = Int(note.version()) ?? .zero
-        let minimum = max(maximum - Settings.maximumVersions, 1)
+        let minimum = max(maximum - Settings.numberOfVersions, 1)
 
         versionSlider.maxValue = Double(maximum)
         versionSlider.minValue = Double(minimum)
@@ -100,7 +98,7 @@ private extension VersionsViewController {
 }
 
 
-// MARK: - Private
+// MARK: - Notifications
 //
 private extension VersionsViewController {
 
@@ -142,7 +140,7 @@ extension VersionsViewController {
 
     @IBAction
     func versionSliderChanged(sender: Any) {
-        guard let version = VersionsController.shared.version(forSimperiumKey: note.simperiumKey, version: versionSlider.integerValue) else {
+        guard let version = versions[String(versionSlider.integerValue)] else {
             disableActions()
             return
         }
@@ -177,8 +175,20 @@ private extension VersionsViewController {
 }
 
 
+// MARK: - Simperium
+//
+private extension VersionsViewController {
+
+    func requestVersions() {
+        versionsToken = VersionsController.shared.requestVersions(for: note.simperiumKey, numberOfVersions: Settings.numberOfVersions) { [weak self] note in
+            self?.versions[note.version] = note
+        }
+    }
+}
+
+
 // MARK: - Settings
 //
 private enum Settings {
-    static let maximumVersions = Int(30)
+    static let numberOfVersions = Int(30)
 }

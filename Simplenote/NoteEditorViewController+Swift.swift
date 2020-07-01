@@ -357,10 +357,10 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
     }
 
     func versionsControllerDidClickRestore(_ controller: VersionsViewController) {
-        SPTracker.trackEditorNoteRestored()
-
         note.content = noteEditor.plainTextContent()
         save()
+
+        SPTracker.trackEditorNoteRestored()
         dismiss(controller)
     }
 

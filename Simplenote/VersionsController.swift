@@ -10,33 +10,35 @@ class VersionsController: NSObject {
     @objc
     static let shared = VersionsController()
 
-    /// NoteVersions cache: SimperiumKey > Version > NoteVersion
+    /// Map of event listeners.
     ///
-    private var versions = [String: [String: NoteVersion]]()
+    private let callbackMap = NSMapTable<NSString, BlockWrapper>(keyOptions: .copyIn, valueOptions: .weakMemory)
 
-    /// Requests the specified number of versions to the backend
+
+    /// Requests the specified number of versions of Notes for a given SimperiumKey.
     ///
-    func requestVersions(simperiumKey: String, numberOfVersions: Int) {
+    /// - Parameters:
+    ///     - simperiumKey: Identifier of the entity
+    ///     - numberOfVersions: Number of documents to retrieve
+    ///     - onResponse: Closure to be executed whenever a new version is received. This closure might be invoked `N` times.
+    ///
+    /// - Returns: An opaque entity, which should be retained as long as events are expected. Whenever the returned entity is released, no further events will be relayed.
+    ///
+    /// - Note: By design, there can be only *one* listener for changes associated to a SimperiumKey.
+    ///
+    func requestVersions(for simperiumKey: String, numberOfVersions: Int, onResponse: @escaping (NoteVersion) -> Void) -> Any {
         NSLog("<> Requesting \(numberOfVersions) versions for \(simperiumKey)")
 
-        // Nuke our cache
-        versions[simperiumKey] = [:]
+        // Keep a reference to the closure
+        let wrapper = BlockWrapper(onReceive: onResponse)
+        callbackMap.setObject(wrapper, forKey: simperiumKey as NSString)
 
         // Simperium! Yay!
         let bucket = SimplenoteAppDelegate.shared().simperium.notesBucket
         bucket.requestVersions(Int32(numberOfVersions), key: simperiumKey)
-    }
 
-    /// Stops accepting new version documents
-    ///
-    func dropAllRequests() {
-        versions = [:]
-    }
-
-    /// Returns the NoteVersion for a given SimperiumKey / Version pair
-    ///
-    func version(forSimperiumKey simperiumKey: String, version: Int) -> NoteVersion? {
-        versions[simperiumKey]?[String(version)]
+        // We'll return the wrapper as receipt
+        return wrapper
     }
 }
 
@@ -47,6 +49,23 @@ extension VersionsController {
 
     @objc(didReceiveObjectForSimperiumKey:version:data:)
     func didReceiveObject(for simperiumKey: String, version: String, data: NSDictionary) {
-        versions[simperiumKey]?[version] = NoteVersion(payload: data)
+        guard let wrapper = callbackMap.object(forKey: simperiumKey as NSString),
+            let note = NoteVersion(version: version, payload: data)
+            else {
+                return
+        }
+
+        wrapper.block(note)
+    }
+}
+
+
+// MARK: - BlockWrapper
+//
+private class BlockWrapper: NSObject {
+    let block: (NoteVersion) -> Void
+
+    init(onReceive: @escaping (NoteVersion) -> Void) {
+        block = onReceive
     }
 }
