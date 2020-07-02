@@ -35,14 +35,6 @@ struct ToolbarState {
 //
 extension ToolbarState {
 
-    var isHistoryActionEnabled: Bool {
-        isDisplayingNote && !isDisplayingMarkdown
-    }
-
-    var isHistoryActionHidden: Bool {
-        isViewingTrash
-    }
-
     var isMetricsButtonEnabled: Bool {
         (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
     }
@@ -69,22 +61,6 @@ extension ToolbarState {
 
     var isRestoreActionHidden: Bool {
         !isViewingTrash
-    }
-
-    var isShareActionEnabled: Bool {
-        isShareEnabled
-    }
-
-    var isShareActionHidden: Bool {
-        isViewingTrash
-    }
-
-    var isTrashActionEnabled: Bool {
-        isDisplayingNote || isSelectingMultipleNotes
-    }
-
-    var isTrashActionHidden: Bool {
-        isViewingTrash
     }
 
     var previewActionImage: NSImage? {

@@ -998,7 +998,7 @@
                                         <rect key="frame" x="0.0" y="570" width="508" height="48"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kE-k3-T1Z">
-                                                <rect key="frame" x="202" y="0.0" width="290" height="48"/>
+                                                <rect key="frame" x="337" y="0.0" width="155" height="48"/>
                                                 <subviews>
                                                     <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-hx-wfj" userLabel="Markdown">
                                                         <rect key="frame" x="0.0" y="14" width="20" height="20"/>
@@ -1014,28 +1014,8 @@
                                                             <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
                                                         </connections>
                                                     </button>
-                                                    <button toolTip="History" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-UJ-0zw" userLabel="History">
-                                                        <rect key="frame" x="45" y="14" width="20" height="20"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_history" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="KJV-0C-wVw">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="versionsWasPressedWithSender:" target="1107" id="K52-ey-bNC"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button toolTip="Share" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qmA-vO-wPh" userLabel="Share">
-                                                        <rect key="frame" x="90" y="14" width="20" height="20"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_share" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="L1E-HD-wfM">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="shareNote:" target="1107" id="W9o-Z7-kgJ"/>
-                                                        </connections>
-                                                    </button>
                                                     <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fA9-bG-luR" userLabel="Restore">
-                                                        <rect key="frame" x="135" y="14" width="20" height="20"/>
+                                                        <rect key="frame" x="45" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="X3f-rW-nRp">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1044,18 +1024,7 @@
                                                             <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
                                                         </connections>
                                                     </button>
-                                                    <button toolTip="Trash" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mXz-OM-6A3" userLabel="Trash">
-                                                        <rect key="frame" x="180" y="14" width="20" height="20"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_trash" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ZqN-rU-FdU">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="deleteAction:" target="1107" id="OgN-ZB-bHH"/>
-                                                        </connections>
-                                                    </button>
                                                     <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXM-Do-Iy7" userLabel="Metrics">
-                                                        <rect key="frame" x="225" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1oR-T8-cRe">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1065,7 +1034,7 @@
                                                         </connections>
                                                     </button>
                                                     <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jyK-U4-rcH" userLabel="More">
-                                                        <rect key="frame" x="270" y="14" width="20" height="20"/>
+                                                        <rect key="frame" x="135" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="fbf-7I-0wJ">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1076,32 +1045,20 @@
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="7hm-UJ-0zw" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="4dz-bP-NlX"/>
                                                     <constraint firstItem="EXM-Do-Iy7" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="6ST-lY-Law"/>
-                                                    <constraint firstItem="mXz-OM-6A3" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="78W-gy-0Mk"/>
                                                     <constraint firstItem="fA9-bG-luR" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="F8s-23-6zM"/>
                                                     <constraint firstItem="jyK-U4-rcH" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="Nuo-l8-Qgs"/>
                                                     <constraint firstItem="jyK-U4-rcH" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="S7e-rG-avT"/>
                                                     <constraint firstItem="EXM-Do-Iy7" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="SzX-6c-s3o"/>
-                                                    <constraint firstItem="qmA-vO-wPh" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="T88-WW-K9W"/>
-                                                    <constraint firstItem="7hm-UJ-0zw" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="YVA-ky-JFG"/>
                                                     <constraint firstItem="fA9-bG-luR" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="bqG-7k-aNw"/>
-                                                    <constraint firstItem="mXz-OM-6A3" firstAttribute="height" secondItem="OMI-hx-wfj" secondAttribute="height" id="jj1-ao-yfJ"/>
-                                                    <constraint firstItem="qmA-vO-wPh" firstAttribute="width" secondItem="OMI-hx-wfj" secondAttribute="width" id="kV9-RK-Fch"/>
                                                 </constraints>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
@@ -1116,14 +1073,11 @@
                                             <constraint firstAttribute="trailing" secondItem="9kE-k3-T1Z" secondAttribute="trailing" constant="16" id="m9W-Sv-7fY"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="historyButton" destination="7hm-UJ-0zw" id="2dg-q8-LW8"/>
                                             <outlet property="metricsButton" destination="EXM-Do-Iy7" id="msh-O6-FFv"/>
                                             <outlet property="moreButton" destination="jyK-U4-rcH" id="0zK-dJ-ADT"/>
                                             <outlet property="previewButton" destination="OMI-hx-wfj" id="CUq-cy-7jJ"/>
                                             <outlet property="restoreButton" destination="fA9-bG-luR" id="MWN-e9-omM"/>
-                                            <outlet property="shareButton" destination="qmA-vO-wPh" id="YxO-si-thc"/>
                                             <outlet property="stackView" destination="9kE-k3-T1Z" id="Wzq-cS-z25"/>
-                                            <outlet property="trashButton" destination="mXz-OM-6A3" id="Qhb-kM-MQx"/>
                                         </connections>
                                     </customView>
                                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="933">
@@ -1336,13 +1290,10 @@
     </objects>
     <resources>
         <image name="button_ellipsis" width="24" height="24"/>
-        <image name="button_history" width="24" height="24"/>
         <image name="button_info" width="24" height="24"/>
         <image name="button_new_note" width="24" height="24"/>
         <image name="button_preview_off" width="24" height="24"/>
         <image name="button_restore" width="24" height="24"/>
-        <image name="button_share" width="24" height="24"/>
-        <image name="button_trash" width="24" height="24"/>
         <image name="icon_pin" width="16" height="16"/>
         <image name="icon_shared" width="16" height="16"/>
     </resources>

@@ -10,10 +10,6 @@ class ToolbarView: NSView {
     ///
     @IBOutlet private(set) var stackView: NSStackView!
 
-    /// Note History
-    ///
-    @IBOutlet private(set) var historyButton: NSButton!
-
     /// Metrics Button
     ///
     @IBOutlet private(set) var metricsButton: NSButton!
@@ -29,14 +25,6 @@ class ToolbarView: NSView {
     /// Restore Trashed Note
     ///
     @IBOutlet private(set) var restoreButton: NSButton!
-
-    /// Share Contents
-    ///
-    @IBOutlet private(set) var shareButton: NSButton!
-
-    /// Move to Trash
-    ///
-    @IBOutlet private(set) var trashButton: NSButton!
 
     /// Represents the Toolbar's State
     ///
@@ -85,9 +73,6 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     func refreshInterface() {
-        historyButton.isEnabled = state.isHistoryActionEnabled
-        historyButton.isHidden = state.isHistoryActionHidden
-
         metricsButton.isEnabled = state.isMetricsButtonEnabled
         metricsButton.isHidden = state.isMetricsButtonHidden
 
@@ -100,12 +85,6 @@ private extension ToolbarView {
 
         restoreButton.isEnabled = state.isRestoreActionEnabled
         restoreButton.isHidden = state.isRestoreActionHidden
-
-        shareButton.isEnabled = state.isShareActionEnabled
-        shareButton.isHidden = state.isShareActionHidden
-
-        trashButton.isEnabled = state.isTrashActionEnabled
-        trashButton.isHidden = state.isTrashActionHidden
     }
 }
 
@@ -115,7 +94,7 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     var allButtons: [NSButton] {
-        [historyButton, metricsButton, moreButton, previewButton, restoreButton, shareButton, trashButton]
+        [metricsButton, moreButton, previewButton, restoreButton]
     }
 
     @objc
@@ -126,13 +105,10 @@ private extension ToolbarView {
     }
 
     func setupSubviews() {
-        historyButton.toolTip = NSLocalizedString("History", comment: "Tooltip: History Picker")
         metricsButton.toolTip = NSLocalizedString("Metrics", comment: "Tooltip: Note Metrics")
         moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
         restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
-        shareButton.toolTip = NSLocalizedString("Share", comment: "Tooltip: Share a note")
-        trashButton.toolTip = NSLocalizedString("Trash", comment: "Tooltip: Trash a Note")
 
         let cells = allButtons.compactMap { $0.cell as? NSButtonCell }
         for cell in cells {
