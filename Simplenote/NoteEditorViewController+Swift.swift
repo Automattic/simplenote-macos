@@ -122,7 +122,6 @@ extension NoteEditorViewController {
                                     isSelectingMultipleNotes: isSelectingMultipleNotes,
                                     isViewingTrash: viewingTrash)
         toolbarView.state = newState
-
     }
 
     /// Refreshes all of the TagsField properties: Tokens and allowed actions
