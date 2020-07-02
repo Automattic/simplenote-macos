@@ -421,22 +421,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - Action Menu and Popovers
 
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    BOOL isMainWindowVisible = [[SimplenoteAppDelegate sharedDelegate] isMainWindowVisible];
-
-    // Note menu
-    if (menuItem == newItem) {
-        return !self.viewingTrash;
-    }
-
-    if (menuItem == deleteItem || menuItem == printItem) {
-        return !self.viewingTrash && self.note != nil && isMainWindowVisible;
-    }
-    
-    return YES;
-}
-
 - (BOOL)selectedNotesPinned
 {
     for (Note *selectedNote in self.selectedNotes) {
@@ -455,21 +439,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     }
     
     return YES;
-}
-
-- (void)menuWillOpen:(NSMenu *)menu
-{
-    // Action menu
-    NSUInteger numSelectedNotes = [self.selectedNotes count];
-
-    if (self.viewingTrash || numSelectedNotes == 0) {
-        [menu cancelTrackingWithoutAnimation];
-        return;
-    }
-
-    pinnedItem.state = [self selectedNotesPinned] ? NSOnState : NSOffState;
-    markdownItem.state = [self selectedNotesMarkdowned] ? NSOnState : NSOffState;
-    [collaborateItem setEnabled:numSelectedNotes == 1];
 }
 
 

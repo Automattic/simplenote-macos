@@ -150,6 +150,19 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - NSMenuItemValidation
+//
+extension NoteEditorViewController: NSMenuItemValidation {
+
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
+        }
+        return true
+    }
+}
+
+
 // MARK: - Actions
 //
 extension NoteEditorViewController {

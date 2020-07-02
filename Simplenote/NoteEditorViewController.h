@@ -41,12 +41,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
     IBOutlet NSTableView *tableView;
     IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSMenu *lineLengthMenu;
-    IBOutlet NSMenuItem *pinnedItem;
-    IBOutlet NSMenuItem *markdownItem;
-    IBOutlet NSMenuItem *newItem;
-    IBOutlet NSMenuItem *deleteItem;
-    IBOutlet NSMenuItem *printItem;
-    IBOutlet NSMenuItem *collaborateItem;
 }
 
 @property (nonatomic, strong) IBOutlet NSMenu                                   *moreActionsMenu;
