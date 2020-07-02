@@ -51,6 +51,16 @@ class EntityObserver {
         let identifiers = objects.map { $0.objectID }
         self.init(context: context, identifiers: identifiers)
     }
+
+    /// Convenience Initializer
+    ///
+    /// - Parameters:
+    ///     - context: NSManagedObjectContext in which we should listen for changes
+    ///     - object: NSManagedObject that should be observed for changes
+    ///
+    convenience init(context: NSManagedObjectContext, object: NSManagedObject) {
+        self.init(context: context, identifiers: [object.objectID])
+    }
 }
 
 

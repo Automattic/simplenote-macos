@@ -168,6 +168,15 @@ extension NoteEditorViewController {
         displaySharePopover(from: tagsField)
         tagsField.becomeFirstResponder()
     }
+
+    @objc
+    func publishWasPressed() {
+        guard let note = note else {
+            return
+        }
+
+        displayPublishPopover(from: toolbarView.shareButton, for: note)
+    }
 }
 
 
@@ -177,6 +186,12 @@ extension NoteEditorViewController {
 
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displayPublishPopover(from sourceView: NSView, for note: Note) {
+        let viewController = PublishViewController(note: note)
+        viewController.delegate = self
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
@@ -293,6 +308,24 @@ extension NoteEditorViewController: TagsFieldDelegate {
         // For that reason, we'll filtering out duplicates.
         //
         updateTags(withTokens: tokens.caseInsensitiveUnique)
+    }
+}
+
+
+// MARK: - PublishViewControllerDelegate
+//
+extension NoteEditorViewController: PublishViewControllerDelegate {
+
+    func publishControllerDidClickPublish(_ controller: PublishViewController) {
+        SPTracker.trackEditorNotePublished()
+        note.published = true
+        save()
+    }
+
+    func publishControllerDidClickUnpublish(_ controller: PublishViewController) {
+        SPTracker.trackEditorNoteUnpublished()
+        note.published = false
+        save()
     }
 }
 
