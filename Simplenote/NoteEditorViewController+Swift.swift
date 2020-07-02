@@ -165,19 +165,19 @@ extension NoteEditorViewController {
     }
 
     @IBAction
-    func shareWasPressed(sender: Any) {
+    func collaborateWasPressed(sender: Any) {
         SPTracker.trackEditorCollaboratorsAccessed()
         displayCollaboratePopover(from: tagsField)
         tagsField.becomeFirstResponder()
     }
 
-    @objc
-    func publishWasPressed() {
+    @IBAction
+    func publishWasPressed(sender: Any) {
         guard let note = note else {
             return
         }
 
-        displayPublishPopover(from: toolbarView.shareButton, for: note)
+        displayPublishPopover(from: toolbarView.moreButton, for: note)
     }
 
     @IBAction
@@ -187,7 +187,7 @@ extension NoteEditorViewController {
         }
 
         SPTracker.trackEditorVersionsAccessed()
-        displayVersionsPopover(from: toolbarView.historyButton, for: note)
+        displayVersionsPopover(from: toolbarView.moreButton, for: note)
     }
 }
 

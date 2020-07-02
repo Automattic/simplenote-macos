@@ -21,16 +21,42 @@
                         <action selector="pinAction:" target="1107" id="ypv-Ec-ADu"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Markdown Formatted" state="on" id="Ejc-Bj-rEL">
+                <menuItem title="Markdown" state="on" id="Ejc-Bj-rEL">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="markdownAction:" target="1107" id="LKU-Zl-Thr"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Collaborate..." id="avN-8J-w5V" userLabel="Menu Item - Share...">
+                <menuItem title="Share" id="iBw-QS-kil">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="shareWasPressedWithSender:" target="1107" id="Rw4-Kn-bOb"/>
+                        <action selector="shareWasPressed:" target="1107" id="jVE-Kl-d2g"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="History" id="7Ox-IO-LLQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="versionsWasPressedWithSender:" target="1107" id="sjU-7F-7ZL"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Move to Trash" id="1z5-RU-iWI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="deleteAction:" target="1107" id="JWB-Ld-JWN"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="bqW-Zj-w17"/>
+                <menuItem title="Publish" id="Lhn-nd-qgk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="publishWasPressedWithSender:" target="1107" id="ayi-Lv-26H"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="INx-du-7dU"/>
+                <menuItem title="Collaborate" id="avN-8J-w5V" userLabel="Menu Item - Share...">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="collaborateWasPressedWithSender:" target="1107" id="Vov-V1-o59"/>
                     </connections>
                 </menuItem>
             </items>
@@ -1025,6 +1051,7 @@
                                                         </connections>
                                                     </button>
                                                     <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EXM-Do-Iy7" userLabel="Metrics">
+                                                        <rect key="frame" x="90" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1oR-T8-cRe">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>

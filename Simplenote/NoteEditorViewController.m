@@ -785,13 +785,13 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - NSButton Delegate Methods
 
-- (IBAction)shareNote:(id)sender
+- (IBAction)shareWasPressed:(id)sender
 {
     if (!self.note.content) {
         return;
     }
 
-    NSButton *sourceButton = self.toolbarView.shareButton;
+    NSButton *sourceButton = self.toolbarView.moreButton;
     NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
 
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
