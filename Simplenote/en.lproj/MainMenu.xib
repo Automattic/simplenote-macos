@@ -1262,16 +1262,11 @@
             <connections>
                 <outlet property="backgroundView" destination="ktP-Hd-KgH" id="KFX-EY-NpR"/>
                 <outlet property="bottomDividerView" destination="xSv-Qg-Lo6" id="76h-Kc-UnK"/>
-                <outlet property="collaborateItem" destination="avN-8J-w5V" id="A6J-03-6wx"/>
-                <outlet property="deleteItem" destination="1655" id="1660"/>
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
-                <outlet property="markdownItem" destination="Ejc-Bj-rEL" id="XHb-Xg-A7k"/>
                 <outlet property="moreActionsMenu" destination="nSc-s9-0oY" id="RWb-MR-Re4"/>
                 <outlet property="newItem" destination="1654" id="1658"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="notesArrayController" destination="573" id="1144"/>
-                <outlet property="pinnedItem" destination="Ryc-RD-9bh" id="6Rk-31-OHM"/>
-                <outlet property="printItem" destination="78" id="1659"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
