@@ -15,45 +15,45 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="OtherViews" autoenablesItems="NO" id="nSc-s9-0oY" userLabel="Note More Menu">
             <items>
-                <menuItem title="Pin to Top" state="on" id="Ryc-RD-9bh">
+                <menuItem title="Pin to Top" state="on" identifier="editorPinMenuItem" id="Ryc-RD-9bh">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="pinAction:" target="1107" id="ypv-Ec-ADu"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Markdown" state="on" id="Ejc-Bj-rEL">
+                <menuItem title="Markdown" state="on" identifier="editorMarkdownMenuItem" id="Ejc-Bj-rEL">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="markdownAction:" target="1107" id="LKU-Zl-Thr"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Share" id="iBw-QS-kil">
+                <menuItem title="Share" identifier="editorShareMenuItem" id="iBw-QS-kil">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="shareWasPressed:" target="1107" id="jVE-Kl-d2g"/>
                     </connections>
                 </menuItem>
-                <menuItem title="History" id="7Ox-IO-LLQ">
+                <menuItem title="History" identifier="editorHistoryMenuItem" id="7Ox-IO-LLQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="versionsWasPressedWithSender:" target="1107" id="sjU-7F-7ZL"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Move to Trash" id="1z5-RU-iWI">
+                <menuItem title="Move to Trash" identifier="editorTrashMenuItem" id="1z5-RU-iWI">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="deleteAction:" target="1107" id="JWB-Ld-JWN"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bqW-Zj-w17"/>
-                <menuItem title="Publish" id="Lhn-nd-qgk">
+                <menuItem title="Publish" identifier="editorPublishMenuItem" id="Lhn-nd-qgk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="publishWasPressedWithSender:" target="1107" id="ayi-Lv-26H"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="INx-du-7dU"/>
-                <menuItem title="Collaborate" id="avN-8J-w5V" userLabel="Menu Item - Share...">
+                <menuItem title="Collaborate" identifier="editorCollaborateMenuItem" id="avN-8J-w5V" userLabel="Menu Item - Share...">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="collaborateWasPressedWithSender:" target="1107" id="Vov-V1-o59"/>
@@ -162,18 +162,18 @@
                 <menuItem title="Note" id="83">
                     <menu key="submenu" title="Note" id="81">
                         <items>
-                            <menuItem title="New" keyEquivalent="n" id="1654">
+                            <menuItem title="New" keyEquivalent="n" identifier="systemNewNoteMenuItem" id="1654">
                                 <connections>
                                     <action selector="addAction:" target="1107" id="1667"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Move to Trash" id="1655">
+                            <menuItem title="Move to Trash" identifier="systemTrashMenuItem" id="1655">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="deleteAction:" target="1107" id="1657"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Print…" keyEquivalent="p" id="78">
+                            <menuItem title="Print…" keyEquivalent="p" identifier="systemPrintMenuItem" id="78">
                                 <connections>
                                     <action selector="printAction:" target="1107" id="1666"/>
                                 </connections>
