@@ -72,6 +72,12 @@ extension NoteEditorViewController {
         note != nil
     }
 
+    /// Indicates if the current document is not empty
+    ///
+    var isDisplayingContent: Bool {
+        note?.content?.isEmpty == false
+    }
+
     /// Indicates if the Markdown Preview UI is active
     ///
     @objc
@@ -85,20 +91,11 @@ extension NoteEditorViewController {
         note?.markdown == true
     }
 
-    /// Indicates if the current document can be shared
-    ///
-    var isShareEnabled: Bool {
-        note?.content?.isEmpty == false
-    }
-
     /// Indicates if there are multiple selected notes
     ///
     var isSelectingMultipleNotes: Bool {
-        guard let selection = selectedNotes else {
-            return false
-        }
-
-        return selection.count > 1
+        let numberOfSelectedNotes = selectedNotes?.count ?? .zero
+        return numberOfSelectedNotes > 1
     }
 }
 
@@ -171,25 +168,25 @@ extension NoteEditorViewController: NSMenuItemValidation {
             return validateMarkdownMenuItem(menuItem)
 
         case .editorShareMenuItem:
-            return isShareEnabled
+            return validateShareMenuItem(menuItem)
 
         case .editorHistoryMenuItem:
-            return isDisplayingNote && !isDisplayingMarkdown
+            return validateHistoryMenuItem(menuItem)
 
         case .editorTrashMenuItem:
-            return isDisplayingNote || isSelectingMultipleNotes
+            return validateTrashMenuItem(menuItem)
 
         case .editorPublishMenuItem:
-            return isShareEnabled
+            return validatePublishMenuItem(menuItem)
 
         case .editorCollaborateMenuItem:
-            return isDisplayingNote
+            return validateCollaborateMenuItem(menuItem)
 
         case .systemNewNoteMenuItem:
-            return !viewingTrash
+            return validateNewNoteMenuItem(menuItem)
 
         case .systemPrintMenuItem, .systemTrashMenuItem:
-            return !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+            return validatePrintMenuItem(menuItem)
 
         default:
             return true
@@ -197,17 +194,44 @@ extension NoteEditorViewController: NSMenuItemValidation {
     }
 
     func validatePinMenuItem(_ item: NSMenuItem) -> Bool {
-        let selectedNotesPinned = selectedNotes.allSatisfy { $0.pinned }
-        item.state = selectedNotesPinned ? .on : .off
+        let isPinnedOn = selectedNotes.allSatisfy { $0.pinned }
+        item.state = isPinnedOn ? .on : .off
         return true
     }
 
     func validateMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
-        let selectedNotesMarkdowned = selectedNotes.allSatisfy { $0.markdown }
-        item.state = selectedNotesMarkdowned ? .on : .off
+        let isMarkdownOn = selectedNotes.allSatisfy { $0.markdown }
+        item.state = isMarkdownOn ? .on : .off
         return true
     }
 
+    func validateShareMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingContent
+    }
+
+    func validateHistoryMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote && !isDisplayingMarkdown
+    }
+
+    func validateTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote || isSelectingMultipleNotes
+    }
+
+    func validatePublishMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingContent
+    }
+
+    func validateCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote
+    }
+
+    func validateNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash
+    }
+
+    func validatePrintMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+    }
 }
 
 
