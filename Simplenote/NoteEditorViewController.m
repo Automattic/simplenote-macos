@@ -46,7 +46,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 #pragma mark ====================================================================================
 
 @interface NoteEditorViewController() <NSMenuDelegate,
-                                        NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
                                         SPBucketDelegate>
@@ -795,7 +794,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
 
     NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
-    sharingPicker.delegate = self;
     [sharingPicker showRelativeToRect:sourceButton.bounds ofView:sourceButton preferredEdge:NSMinYEdge];
 }
 
@@ -839,37 +837,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [self.noteEditor toggleListMarkersAtSelectedRange];
     [SPTracker trackEditorChecklistInserted];
-}
-
-#pragma mark - NSSharingServicePicker delegate
-
-- (NSArray *)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker sharingServicesForItems:(NSArray *)items proposedSharingServices:(NSArray *)proposedServices
-{
-    // Add Simplenote publish to web option to the sharing services drop down
-    NSArray *services = proposedServices;
-    NSString *firstString;
-    for (id item in items) {
-        if ([item isKindOfClass:[NSString class]]) {
-            firstString = item;
-            break;
-        }
-        if ([item isKindOfClass:[NSAttributedString class]]) {
-            firstString = [(NSAttributedString *)item string];
-            break;
-        }
-    }
-    
-    if (firstString) {
-        NSImage *image = [NSImage imageNamed:@"icon_simplenote"];
-        NSString *title = NSLocalizedString(@"Publish to Web", @"Publish to Web Service");
-        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:title image:image alternateImage:nil handler:^{
-            [self publishWasPressed];
-        }];
-        
-        services = [services arrayByAddingObject:customService];
-    }
-    
-    return services;
 }
 
 @end
