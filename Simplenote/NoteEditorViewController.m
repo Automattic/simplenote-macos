@@ -740,19 +740,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - NSButton Delegate Methods
 
-- (IBAction)shareWasPressed:(id)sender
-{
-    if (!self.note.content) {
-        return;
-    }
-
-    NSButton *sourceButton = self.toolbarView.moreButton;
-    NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
-
-    NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
-    [sharingPicker showRelativeToRect:sourceButton.bounds ofView:sourceButton preferredEdge:NSMinYEdge];
-}
-
 - (IBAction)toggleMarkdownView:(id)sender
 {
     if (self.isDisplayingMarkdown) {

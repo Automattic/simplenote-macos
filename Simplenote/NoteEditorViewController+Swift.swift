@@ -265,6 +265,15 @@ extension NoteEditorViewController {
     }
 
     @IBAction
+    func shareWasPressed(sender: Any) {
+        guard let content = note?.content else {
+            return
+        }
+
+        displaySharingPicker(from: toolbarView.moreButton, content: content)
+    }
+
+    @IBAction
     func versionsWasPressed(sender: Any) {
         guard let note = note else {
             return
@@ -276,7 +285,7 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Popovers
+// MARK: - Popovers / Pickers
 //
 extension NoteEditorViewController {
 
@@ -294,6 +303,11 @@ extension NoteEditorViewController {
     func displayCollaboratePopover(from sourceView: NSView) {
         let viewController = CollaborateViewController()
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displaySharingPicker(from sourceView: NSView, content: String) {
+        let picker = NSSharingServicePicker(items: [content])
+        picker.show(relativeTo: sourceView.bounds, of: sourceView, preferredEdge: .minY)
     }
 
     func displayVersionsPopover(from sourceView: NSView, for note: Note) {

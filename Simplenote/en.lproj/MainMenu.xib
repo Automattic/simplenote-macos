@@ -30,7 +30,7 @@
                 <menuItem title="Share" identifier="editorShareMenuItem" id="iBw-QS-kil">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="shareWasPressed:" target="1107" id="jVE-Kl-d2g"/>
+                        <action selector="shareWasPressedWithSender:" target="1107" id="GhA-To-o26"/>
                     </connections>
                 </menuItem>
                 <menuItem title="History" identifier="editorHistoryMenuItem" id="7Ox-IO-LLQ">
