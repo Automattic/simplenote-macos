@@ -123,7 +123,6 @@ extension NoteEditorViewController {
         let newState = ToolbarState(isDisplayingNote: isDisplayingNote,
                                     isDisplayingMarkdown: isDisplayingMarkdown,
                                     isMarkdownEnabled: isMarkdownEnabled,
-                                    isShareEnabled: isShareEnabled,
                                     isSelectingMultipleNotes: isSelectingMultipleNotes,
                                     isViewingTrash: viewingTrash)
         toolbarView.state = newState

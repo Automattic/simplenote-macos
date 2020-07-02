@@ -17,10 +17,6 @@ struct ToolbarState {
     ///
     let isMarkdownEnabled: Bool
 
-    /// Indicates if the current document supports Sharing
-    ///
-    let isShareEnabled: Bool
-
     /// Indicates if there are multiple selected documents
     ///
     let isSelectingMultipleNotes: Bool
@@ -78,7 +74,6 @@ extension ToolbarState {
         ToolbarState(isDisplayingNote: false,
                      isDisplayingMarkdown: false,
                      isMarkdownEnabled: false,
-                     isShareEnabled: false,
                      isSelectingMultipleNotes: false,
                      isViewingTrash: false)
     }
