@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="ShareViewController" customModule="Simplenote" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="CollaborateViewController" customModule="Simplenote" customModuleProvider="target">
             <connections>
                 <outlet property="shareTextField" destination="07M-AN-65d" id="ofc-3H-Zci"/>
                 <outlet property="view" destination="3UL-37-8ha" id="1qo-2W-x9C"/>
