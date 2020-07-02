@@ -62,7 +62,7 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Private Helpers
+// MARK: - Internal State
 //
 extension NoteEditorViewController {
 
@@ -100,7 +100,12 @@ extension NoteEditorViewController {
 
         return selection.count > 1
     }
+}
 
+
+// MARK: - Refreshing Interface
+//
+extension NoteEditorViewController {
 
     /// Refreshes the Editor's Inner State
     ///
@@ -158,8 +163,52 @@ extension NoteEditorViewController: NSMenuItemValidation {
         guard let identifier = menuItem.identifier else {
             return true
         }
+
+        switch identifier {
+        case .editorPinMenuItem:
+            return validatePinMenuItem(menuItem)
+
+        case .editorMarkdownMenuItem:
+            return validateMarkdownMenuItem(menuItem)
+
+        case .editorShareMenuItem:
+            return isShareEnabled
+
+        case .editorHistoryMenuItem:
+            return isDisplayingNote && !isDisplayingMarkdown
+
+        case .editorTrashMenuItem:
+            return isDisplayingNote || isSelectingMultipleNotes
+
+        case .editorPublishMenuItem:
+            return isShareEnabled
+
+        case .editorCollaborateMenuItem:
+            return isDisplayingNote
+
+        case .systemNewNoteMenuItem:
+            return !viewingTrash
+
+        case .systemPrintMenuItem, .systemTrashMenuItem:
+            return !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+
+        default:
+            return true
+        }
+    }
+
+    func validatePinMenuItem(_ item: NSMenuItem) -> Bool {
+        let selectedNotesPinned = selectedNotes.allSatisfy { $0.pinned }
+        item.state = selectedNotesPinned ? .on : .off
         return true
     }
+
+    func validateMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
+        let selectedNotesMarkdowned = selectedNotes.allSatisfy { $0.markdown }
+        item.state = selectedNotesMarkdowned ? .on : .off
+        return true
+    }
+
 }
 
 

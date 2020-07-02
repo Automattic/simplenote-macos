@@ -419,29 +419,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 }
 
 
-#pragma mark - Action Menu and Popovers
-
-- (BOOL)selectedNotesPinned
-{
-    for (Note *selectedNote in self.selectedNotes) {
-        if (!selectedNote.pinned)
-            return NO;
-    }
-
-    return YES;
-}
-
-- (BOOL)selectedNotesMarkdowned
-{
-    for (Note *selectedNote in self.selectedNotes) {
-        if (!selectedNote.markdown)
-            return NO;
-    }
-    
-    return YES;
-}
-
-
 #pragma mark - Actions
 
 - (IBAction)moreWasPressed:(id)sender
