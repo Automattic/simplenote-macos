@@ -966,11 +966,12 @@
 				B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */,
 				B5EB3AD92458E8430089858D /* NSApplication+Simplenote.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
-				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
+				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
 				B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */,
+				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5AF76C124A2A4F100B7D530 /* NSPredicate+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
@@ -986,7 +987,6 @@
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
-				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
 			);
 			name = Extensions;
