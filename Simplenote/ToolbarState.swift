@@ -36,7 +36,7 @@ struct ToolbarState {
 extension ToolbarState {
 
     var isMetricsButtonEnabled: Bool {
-        (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
+        (isDisplayingNote || isSelectingMultipleNotes)
     }
 
     var isMetricsButtonHidden: Bool {
@@ -44,7 +44,7 @@ extension ToolbarState {
     }
 
     var isMoreButtonEnabled: Bool {
-        (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
+        (isDisplayingNote || isSelectingMultipleNotes)
     }
 
     var isMoreButtonHidden: Bool {
