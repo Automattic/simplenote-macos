@@ -486,9 +486,14 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)pinAction:(id)sender
 {
+    if (![sender isKindOfClass:[NSMenuItem class]]) {
+        return;
+    }
+
     [SPTracker trackEditorNotePinningToggled];
-    
+
     // Toggle the selected notes
+    NSMenuItem *pinnedItem = (NSMenuItem *)sender;
     BOOL isPinned = pinnedItem.state == NSOffState;
     
     for (Note *selectedNote in self.selectedNotes) {
@@ -504,7 +509,12 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)markdownAction:(id)sender
 {
+    if (![sender isKindOfClass:[NSMenuItem class]]) {
+        return;
+    }
+
     // Toggle the markdown state
+    NSMenuItem *markdownItem = (NSMenuItem *)sender;
     BOOL isEnabled = markdownItem.state == NSOffState;
 
     for (Note *selectedNote in self.selectedNotes) {
