@@ -14,6 +14,7 @@ class AboutViewController: NSViewController {
         static let hiringUrl =     "https://automattic.com/work-with-us"
         static let privacyUrl =    "https://simplenote.com/privacy/"
         static let termsUrl =      "https://simplenote.com/terms/"
+        static let californiaUrl = "https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa"
     }
 
     @IBOutlet var logoImageView:    NSImageView!
@@ -24,6 +25,7 @@ class AboutViewController: NSViewController {
     @IBOutlet var hiringLabel:      SPAboutTextField!
     @IBOutlet var privacyLabel:     SPAboutTextField!
     @IBOutlet var tosLabel:         SPAboutTextField!
+    @IBOutlet var californiaLabel:  SPAboutTextField!
     @IBOutlet var versionLabel:     NSTextField!
     @IBOutlet var copyrightLabel:   NSTextField!
     
@@ -50,6 +52,9 @@ class AboutViewController: NSViewController {
         
         let termsClick = NSClickGestureRecognizer(target: self, action: #selector(termsLabelClick))
         tosLabel.addGestureRecognizer(termsClick)
+
+        let californiaClick = NSClickGestureRecognizer(target: self, action: #selector(californiaLabelClick))
+        californiaLabel.addGestureRecognizer(californiaClick)
         
         // Display app version in the header
         let dictionary = Bundle.main.infoDictionary!
@@ -87,5 +92,9 @@ class AboutViewController: NSViewController {
     
     @objc func termsLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.termsUrl)!)
+    }
+
+    @objc func californiaLabelClick() {
+        NSWorkspace.shared.open(URL(string: Constants.californiaUrl)!)
     }
 }
