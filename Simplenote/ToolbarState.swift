@@ -88,7 +88,7 @@ extension ToolbarState {
     }
 
     var previewActionImage: NSImage? {
-        let name: NSImage.Name = isDisplayingMarkdown ? .previewOn : .previewOff
+        let name: NSImage.Name = isDisplayingMarkdown ? .previewOff : .previewOn
         return NSImage(named: name)
     }
 }
