@@ -102,7 +102,7 @@ private extension TagAttachmentCell {
         updated.origin.x += Metrics.textInsets.left + Metrics.bgInsets.left
         updated.origin.y += Metrics.textInsets.top + Metrics.bgInsets.top
 
-        updated.size.width -= Metrics.textInsets.left + Metrics.textInsets.right
+        updated.size.width -= Metrics.textInsets.left + Metrics.textInsets.right + Metrics.bgInsets.left + Metrics.bgInsets.right
         updated.size.height -= Metrics.textInsets.top + Metrics.textInsets.bottom
 
         nsStringValue.draw(in: updated, withAttributes: attributes)
