@@ -4,6 +4,9 @@
 - New Scroll Support in the Tags Editor area
 - Implements Untagged Notes Filter
 - New Note Metrics Interface
+1.11.1
+------
+- New Privacy Notice for California Users
 
 1.11.0
 ------
