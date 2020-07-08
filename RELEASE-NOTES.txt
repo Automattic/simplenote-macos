@@ -5,6 +5,7 @@
 - Implements Untagged Notes Filter
 - New Note Metrics Interface
 - Relocated Editor Actions into the new More Actions Menu
+
 1.11.1
 ------
 - New Privacy Notice for California Users
