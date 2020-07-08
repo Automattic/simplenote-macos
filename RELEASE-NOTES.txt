@@ -7,6 +7,10 @@
 - Relocated Editor Actions into the new More Actions Menu
 - Fixed Tags Editor RTL support
 
+1.11.1
+------
+- New Privacy Notice for California Users
+
 1.11.0
 ------
 - New Color Scheme for Light and Dark Modes!
