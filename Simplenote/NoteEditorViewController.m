@@ -46,7 +46,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 #pragma mark ====================================================================================
 
 @interface NoteEditorViewController() <NSMenuDelegate,
-                                        NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
                                         SPBucketDelegate>
@@ -420,60 +419,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 }
 
 
-#pragma mark - Action Menu and Popovers
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    BOOL isMainWindowVisible = [[SimplenoteAppDelegate sharedDelegate] isMainWindowVisible];
-
-    // Note menu
-    if (menuItem == newItem) {
-        return !self.viewingTrash;
-    }
-
-    if (menuItem == deleteItem || menuItem == printItem) {
-        return !self.viewingTrash && self.note != nil && isMainWindowVisible;
-    }
-    
-    return YES;
-}
-
-- (BOOL)selectedNotesPinned
-{
-    for (Note *selectedNote in self.selectedNotes) {
-        if (!selectedNote.pinned)
-            return NO;
-    }
-
-    return YES;
-}
-
-- (BOOL)selectedNotesMarkdowned
-{
-    for (Note *selectedNote in self.selectedNotes) {
-        if (!selectedNote.markdown)
-            return NO;
-    }
-    
-    return YES;
-}
-
-- (void)menuWillOpen:(NSMenu *)menu
-{
-    // Action menu
-    NSUInteger numSelectedNotes = [self.selectedNotes count];
-
-    if (self.viewingTrash || numSelectedNotes == 0) {
-        [menu cancelTrackingWithoutAnimation];
-        return;
-    }
-
-    pinnedItem.state = [self selectedNotesPinned] ? NSOnState : NSOffState;
-    markdownItem.state = [self selectedNotesMarkdowned] ? NSOnState : NSOffState;
-    [collaborateItem setEnabled:numSelectedNotes == 1];
-}
-
-
 #pragma mark - Actions
 
 - (IBAction)moreWasPressed:(id)sender
@@ -487,9 +432,14 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)pinAction:(id)sender
 {
+    if (![sender isKindOfClass:[NSMenuItem class]]) {
+        return;
+    }
+
     [SPTracker trackEditorNotePinningToggled];
-    
+
     // Toggle the selected notes
+    NSMenuItem *pinnedItem = (NSMenuItem *)sender;
     BOOL isPinned = pinnedItem.state == NSOffState;
     
     for (Note *selectedNote in self.selectedNotes) {
@@ -505,7 +455,12 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)markdownAction:(id)sender
 {
+    if (![sender isKindOfClass:[NSMenuItem class]]) {
+        return;
+    }
+
     // Toggle the markdown state
+    NSMenuItem *markdownItem = (NSMenuItem *)sender;
     BOOL isEnabled = markdownItem.state == NSOffState;
 
     for (Note *selectedNote in self.selectedNotes) {
@@ -785,20 +740,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - NSButton Delegate Methods
 
-- (IBAction)shareNote:(id)sender
-{
-    if (!self.note.content) {
-        return;
-    }
-
-    NSButton *sourceButton = self.toolbarView.shareButton;
-    NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
-
-    NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
-    sharingPicker.delegate = self;
-    [sharingPicker showRelativeToRect:sourceButton.bounds ofView:sourceButton preferredEdge:NSMinYEdge];
-}
-
 - (IBAction)toggleMarkdownView:(id)sender
 {
     if (self.isDisplayingMarkdown) {
@@ -839,37 +780,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [self.noteEditor toggleListMarkersAtSelectedRange];
     [SPTracker trackEditorChecklistInserted];
-}
-
-#pragma mark - NSSharingServicePicker delegate
-
-- (NSArray *)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker sharingServicesForItems:(NSArray *)items proposedSharingServices:(NSArray *)proposedServices
-{
-    // Add Simplenote publish to web option to the sharing services drop down
-    NSArray *services = proposedServices;
-    NSString *firstString;
-    for (id item in items) {
-        if ([item isKindOfClass:[NSString class]]) {
-            firstString = item;
-            break;
-        }
-        if ([item isKindOfClass:[NSAttributedString class]]) {
-            firstString = [(NSAttributedString *)item string];
-            break;
-        }
-    }
-    
-    if (firstString) {
-        NSImage *image = [NSImage imageNamed:@"icon_simplenote"];
-        NSString *title = NSLocalizedString(@"Publish to Web", @"Publish to Web Service");
-        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:title image:image alternateImage:nil handler:^{
-            [self publishWasPressed];
-        }];
-        
-        services = [services arrayByAddingObject:customService];
-    }
-    
-    return services;
 }
 
 @end

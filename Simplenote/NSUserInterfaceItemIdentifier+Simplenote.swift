@@ -7,29 +7,39 @@ extension NSUserInterfaceItemIdentifier {
 
     /// Identifier: EmptyTrash MenuItem
     ///
-    static let emptyTrashMenuItem = NSUserInterfaceItemIdentifier(rawValue: "emptyTrashMenuItem")
+    static let emptyTrashMenuItem           = NSUserInterfaceItemIdentifier(rawValue: "emptyTrashMenuItem")
 
     /// Identifier: Export MenuItem
     ///
-    static let exportMenuItem = NSUserInterfaceItemIdentifier(rawValue: "exportMenuItem")
+    static let exportMenuItem               = NSUserInterfaceItemIdentifier(rawValue: "exportMenuItem")
 
     /// Identifier: Focus MenuItem
     ///
-    static let focusMenuItem = NSUserInterfaceItemIdentifier(rawValue: "focusMenuItem")
+    static let focusMenuItem                = NSUserInterfaceItemIdentifier(rawValue: "focusMenuItem")
 
     /// Identifier: Tags Sort MenuItem
     ///
-    static let tagSortMenuItem = NSUserInterfaceItemIdentifier(rawValue: "tagSortMenuItem")
+    static let tagSortMenuItem              = NSUserInterfaceItemIdentifier(rawValue: "tagSortMenuItem")
 
-    /// Identifier: Dark Theme MenuItem
+    /// Identifiers: System Menu
     ///
-    static let themeDarkMenuItem = NSUserInterfaceItemIdentifier(rawValue: "themeDarkMenuItem")
+    static let systemNewNoteMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "systemNewNoteMenuItem")
+    static let systemTrashMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "systemTrashMenuItem")
+    static let systemPrintMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "systemPrintMenuItem")
 
-    /// Identifier: Light Theme MenuItem
+    /// Identifiers: Editor
     ///
-    static let themeLightMenuItem = NSUserInterfaceItemIdentifier(rawValue: "themeLightMenuItem")
+    static let editorPinMenuItem            = NSUserInterfaceItemIdentifier(rawValue: "editorPinMenuItem")
+    static let editorMarkdownMenuItem       = NSUserInterfaceItemIdentifier(rawValue: "editorMarkdownMenuItem")
+    static let editorShareMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorShareMenuItem")
+    static let editorHistoryMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "editorHistoryMenuItem")
+    static let editorTrashMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorTrashMenuItem")
+    static let editorPublishMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "editorPublishMenuItem")
+    static let editorCollaborateMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "editorCollaborateMenuItem")
 
-    /// Identifier: System Theme MenuItem
+    /// Identifiers: Theme Menu
     ///
-    static let themeSystemMenuItem = NSUserInterfaceItemIdentifier(rawValue: "themeSystemMenuItem")
+    static let themeDarkMenuItem            = NSUserInterfaceItemIdentifier(rawValue: "themeDarkMenuItem")
+    static let themeLightMenuItem           = NSUserInterfaceItemIdentifier(rawValue: "themeLightMenuItem")
+    static let themeSystemMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "themeSystemMenuItem")
 }

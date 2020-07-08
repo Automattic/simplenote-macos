@@ -63,7 +63,7 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Private Helpers
+// MARK: - Internal State
 //
 extension NoteEditorViewController {
 
@@ -71,6 +71,12 @@ extension NoteEditorViewController {
     ///
     var isDisplayingNote: Bool {
         note != nil
+    }
+
+    /// Indicates if the current document is not empty
+    ///
+    var isDisplayingContent: Bool {
+        note?.content?.isEmpty == false
     }
 
     /// Indicates if the Markdown Preview UI is active
@@ -86,22 +92,18 @@ extension NoteEditorViewController {
         note?.markdown == true
     }
 
-    /// Indicates if the current document can be shared
-    ///
-    var isShareEnabled: Bool {
-        note?.content?.isEmpty == false
-    }
-
     /// Indicates if there are multiple selected notes
     ///
     var isSelectingMultipleNotes: Bool {
-        guard let selection = selectedNotes else {
-            return false
-        }
-
-        return selection.count > 1
+        let numberOfSelectedNotes = selectedNotes?.count ?? .zero
+        return numberOfSelectedNotes > 1
     }
+}
 
+
+// MARK: - Refreshing Interface
+//
+extension NoteEditorViewController {
 
     /// Refreshes the Editor's Inner State
     ///
@@ -119,11 +121,9 @@ extension NoteEditorViewController {
         let newState = ToolbarState(isDisplayingNote: isDisplayingNote,
                                     isDisplayingMarkdown: isDisplayingMarkdown,
                                     isMarkdownEnabled: isMarkdownEnabled,
-                                    isShareEnabled: isShareEnabled,
                                     isSelectingMultipleNotes: isSelectingMultipleNotes,
                                     isViewingTrash: viewingTrash)
         toolbarView.state = newState
-
     }
 
     /// Refreshes all of the TagsField properties: Tokens and allowed actions
@@ -152,6 +152,90 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - NSMenuItemValidation
+//
+extension NoteEditorViewController: NSMenuItemValidation {
+
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
+        }
+
+        switch identifier {
+        case .editorPinMenuItem:
+            return validatePinMenuItem(menuItem)
+
+        case .editorMarkdownMenuItem:
+            return validateMarkdownMenuItem(menuItem)
+
+        case .editorShareMenuItem:
+            return validateShareMenuItem(menuItem)
+
+        case .editorHistoryMenuItem:
+            return validateHistoryMenuItem(menuItem)
+
+        case .editorTrashMenuItem:
+            return validateTrashMenuItem(menuItem)
+
+        case .editorPublishMenuItem:
+            return validatePublishMenuItem(menuItem)
+
+        case .editorCollaborateMenuItem:
+            return validateCollaborateMenuItem(menuItem)
+
+        case .systemNewNoteMenuItem:
+            return validateNewNoteMenuItem(menuItem)
+
+        case .systemPrintMenuItem, .systemTrashMenuItem:
+            return validatePrintMenuItem(menuItem)
+
+        default:
+            return true
+        }
+    }
+
+    func validatePinMenuItem(_ item: NSMenuItem) -> Bool {
+        let isPinnedOn = selectedNotes.allSatisfy { $0.pinned }
+        item.state = isPinnedOn ? .on : .off
+        return true
+    }
+
+    func validateMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
+        let isMarkdownOn = selectedNotes.allSatisfy { $0.markdown }
+        item.state = isMarkdownOn ? .on : .off
+        return true
+    }
+
+    func validateShareMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingContent
+    }
+
+    func validateHistoryMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote && !isDisplayingMarkdown
+    }
+
+    func validateTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote || isSelectingMultipleNotes
+    }
+
+    func validatePublishMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingContent
+    }
+
+    func validateCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote
+    }
+
+    func validateNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash
+    }
+
+    func validatePrintMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+    }
+}
+
+
 // MARK: - Actions
 //
 extension NoteEditorViewController {
@@ -166,19 +250,28 @@ extension NoteEditorViewController {
     }
 
     @IBAction
-    func shareWasPressed(sender: Any) {
+    func collaborateWasPressed(sender: Any) {
         SPTracker.trackEditorCollaboratorsAccessed()
-        displaySharePopover(from: tagsField)
+        displayCollaboratePopover(from: tagsField)
         tagsField.becomeFirstResponder()
     }
 
-    @objc
-    func publishWasPressed() {
+    @IBAction
+    func publishWasPressed(sender: Any) {
         guard let note = note else {
             return
         }
 
-        displayPublishPopover(from: toolbarView.shareButton, for: note)
+        displayPublishPopover(from: toolbarView.moreButton, for: note)
+    }
+
+    @IBAction
+    func shareWasPressed(sender: Any) {
+        guard let content = note?.content else {
+            return
+        }
+
+        displaySharingPicker(from: toolbarView.moreButton, content: content)
     }
 
     @IBAction
@@ -188,12 +281,12 @@ extension NoteEditorViewController {
         }
 
         SPTracker.trackEditorVersionsAccessed()
-        displayVersionsPopover(from: toolbarView.historyButton, for: note)
+        displayVersionsPopover(from: toolbarView.moreButton, for: note)
     }
 }
 
 
-// MARK: - Popovers
+// MARK: - Popovers / Pickers
 //
 extension NoteEditorViewController {
 
@@ -208,9 +301,14 @@ extension NoteEditorViewController {
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
-    func displaySharePopover(from sourceView: NSView) {
-        let viewController = ShareViewController()
+    func displayCollaboratePopover(from sourceView: NSView) {
+        let viewController = CollaborateViewController()
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displaySharingPicker(from sourceView: NSView, content: String) {
+        let picker = NSSharingServicePicker(items: [content])
+        picker.show(relativeTo: sourceView.bounds, of: sourceView, preferredEdge: .minY)
     }
 
     func displayVersionsPopover(from sourceView: NSView, for note: Note) {

@@ -1,9 +1,9 @@
 import Foundation
 
 
-// MARK: - ShareViewController
+// MARK: - CollaborateViewController
 //
-class ShareViewController: NSViewController {
+class CollaborateViewController: NSViewController {
 
     /// Share Text Legend
     ///
@@ -38,7 +38,7 @@ class ShareViewController: NSViewController {
 
 // MARK: - Private
 //
-private extension ShareViewController {
+private extension CollaborateViewController {
 
     func startListeningToNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
@@ -55,7 +55,7 @@ private extension ShareViewController {
 
 // MARK: - NSPopoverDelegate
 //
-extension ShareViewController: NSPopoverDelegate {
+extension CollaborateViewController: NSPopoverDelegate {
 
     public func popoverWillShow(_ notification: Notification) {
         presentingPopover = notification.object as? NSPopover

@@ -252,10 +252,10 @@
 		B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */; };
 		B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */; };
 		B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */; };
-		B5C7DD40243E4A7D00BEE354 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */; };
-		B5C7DD41243E4A7D00BEE354 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */; };
-		B5C7DD43243E4A8E00BEE354 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */; };
-		B5C7DD44243E4A8E00BEE354 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */; };
+		B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */; };
+		B5C7DD41243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */; };
+		B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */; };
+		B5C7DD44243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */; };
 		B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD45243E51E200BEE354 /* PublishViewController.swift */; };
 		B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD45243E51E200BEE354 /* PublishViewController.swift */; };
 		B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD48243E524000BEE354 /* PublishViewController.xib */; };
@@ -570,8 +570,8 @@
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
 		B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupTextView.swift; sourceTree = "<group>"; };
 		B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsViewController.swift; sourceTree = "<group>"; };
-		B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
+		B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaborateViewController.swift; sourceTree = "<group>"; };
+		B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaborateViewController.xib; sourceTree = "<group>"; };
 		B5C7DD45243E51E200BEE354 /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
 		B5C7DD48243E524000BEE354 /* PublishViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublishViewController.xib; sourceTree = "<group>"; };
 		B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Simplenote.h"; sourceTree = "<group>"; };
@@ -966,11 +966,12 @@
 				B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */,
 				B5EB3AD92458E8430089858D /* NSApplication+Simplenote.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
-				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
+				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
 				B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */,
+				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
 				B5AF76C124A2A4F100B7D530 /* NSPredicate+Simplenote.swift */,
 				B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */,
@@ -986,7 +987,6 @@
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
-				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
 			);
 			name = Extensions;
@@ -1176,8 +1176,8 @@
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
-				B5C7DD3F243E4A7D00BEE354 /* ShareViewController.swift */,
-				B5C7DD42243E4A8E00BEE354 /* ShareViewController.xib */,
+				B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */,
+				B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */,
 				B5C7DD45243E51E200BEE354 /* PublishViewController.swift */,
 				B5C7DD48243E524000BEE354 /* PublishViewController.xib */,
 			);
@@ -1370,7 +1370,7 @@
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
-				B5C7DD43243E4A8E00BEE354 /* ShareViewController.xib in Resources */,
+				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
@@ -1391,7 +1391,7 @@
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
-				B5C7DD44243E4A8E00BEE354 /* ShareViewController.xib in Resources */,
+				B5C7DD44243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */,
@@ -1704,7 +1704,7 @@
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,
 				B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
-				B5C7DD40243E4A7D00BEE354 /* ShareViewController.swift in Sources */,
+				B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
 				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
@@ -1835,7 +1835,7 @@
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
-				B5C7DD41243E4A7D00BEE354 /* ShareViewController.swift in Sources */,
+				B5C7DD41243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
 				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B586C063245CCD35009508EC /* SplitViewController.swift in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
