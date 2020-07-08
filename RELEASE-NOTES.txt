@@ -5,6 +5,7 @@
 - Implements Untagged Notes Filter
 - New Note Metrics Interface
 - Relocated Editor Actions into the new More Actions Menu
+- Fixed Tags Editor RTL support
 
 1.11.1
 ------
