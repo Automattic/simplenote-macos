@@ -31,6 +31,11 @@ extension SimplenoteAppDelegate {
         window.contentViewController = splitViewController
         window.initialFirstResponder = noteEditorViewController.noteEditor
     }
+
+    @objc
+    func configureSimplenoteControllers() {
+        versionsController = VersionsController(simperium: simperium)
+    }
 }
 
 

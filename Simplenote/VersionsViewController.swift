@@ -1,18 +1,20 @@
 import Foundation
+import AppKit
+import os.log
 
 
 // MARK: - VersionsViewControllerDelegate
 //
-@objc
-protocol VersionsViewControllerDelegate {
-    func versionsController(_ controller: VersionsViewController, updatedSlider newValue: Int)
+protocol VersionsViewControllerDelegate: class {
+    func versionsController(_ controller: VersionsViewController, selected version: Version)
     func versionsControllerDidClickRestore(_ controller: VersionsViewController)
+    func versionsControllerWillShow(_ controller: VersionsViewController)
+    func versionsControllerWillClose(_ controller: VersionsViewController)
 }
 
 
 // MARK: - VersionsViewController
 //
-@objcMembers
 class VersionsViewController: NSViewController {
 
     /// Restore Clickable Button
@@ -27,78 +29,108 @@ class VersionsViewController: NSViewController {
     ///
     @IBOutlet private var versionTextField: NSTextField!
 
+    /// Note for which we'll allow History Sliding
+    ///
+    private let note: Note
+
+    /// Versions associated to the current Note
+    ///
+    private var versions = [String: Version]()
+
+    /// VersionsController Observer Receipt
+    ///
+    private var versionsToken: Any!
+
+    /// NSPopover instance that's presenting the current instance.
+    ///
+    private var presentingPopover: NSPopover? {
+        didSet {
+            refreshStyle()
+        }
+    }
+
     /// Old School delegate
     ///
     weak var delegate: VersionsViewControllerDelegate?
 
-    /// Returns the Maximum Slider Value
-    ///
-    var maxSliderValue: Int {
-        Int(versionSlider.maxValue)
-    }
 
-    /// Encapsulates the Restore Button's `isEnabled` property
-    ///
-    var restoreActionEnabled: Bool {
-        get {
-            restoreButton.isEnabled
-        }
-        set {
-            restoreButton.isEnabled = newValue
-        }
-    }
-
-    /// Encapsulates the versionTextField's `stringValue` property
-    ///
-    var versionText: String {
-        get {
-            versionTextField.stringValue
-        }
-        set {
-            versionTextField.stringValue = newValue
-        }
-    }
-
-
-    // MARK: - View Lifecycle
+    // MARK: - Lifecycle
 
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        startListeningToNotifications()
-        applyStyle()
+    init(note: Note) {
+        self.note = note
+        super.init(nibName: nil, bundle: nil)
     }
 
-    /// Refreshes the Slider Settings with the specified Max / Min
-    ///
-    func refreshSlider(max: Int, min: Int) {
-        versionSlider.maxValue = Double(max)
-        versionSlider.minValue = Double(min)
-        versionSlider.numberOfTickMarks = max - min + 1
-        versionSlider.integerValue = max
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupSlider()
+        setupLabels()
+        requestVersions()
+        startListeningToNotifications()
     }
 }
 
 
-// MARK: - Private
+// MARK: - Initialization
+//
+private extension VersionsViewController {
+
+    func setupSlider() {
+        let maximum = Int(note.version()) ?? .zero
+        let minimum = max(maximum - Settings.numberOfVersions, 1)
+
+        versionSlider.maxValue = Double(maximum)
+        versionSlider.minValue = Double(minimum)
+        versionSlider.numberOfTickMarks = maximum - minimum + 1
+        versionSlider.integerValue = maximum
+    }
+
+    func setupLabels() {
+        refreshLabels(date: note.modificationDate)
+    }
+}
+
+
+// MARK: - Notifications
 //
 private extension VersionsViewController {
 
     func startListeningToNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applyStyle), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
     }
 
     @objc
-    func applyStyle() {
-        versionTextField.textColor = .simplenoteSelectedTextColor
+    func refreshStyle() {
+        presentingPopover?.appearance = .simplenoteAppearance
+        versionTextField.textColor = .simplenoteTextColor
     }
 }
 
 
-// MARK: - Handlers
+// MARK: - NSPopoverDelegate
+//
+extension VersionsViewController: NSPopoverDelegate {
+
+    func popoverWillShow(_ notification: Notification) {
+        presentingPopover = notification.object as? NSPopover
+        delegate?.versionsControllerWillShow(self)
+    }
+
+    func popoverWillClose(_ notification: Notification) {
+        delegate?.versionsControllerWillClose(self)
+    }
+}
+
+
+// MARK: - Actions
 //
 extension VersionsViewController {
 
@@ -109,6 +141,57 @@ extension VersionsViewController {
 
     @IBAction
     func versionSliderChanged(sender: Any) {
-        delegate?.versionsController(self, updatedSlider: versionSlider.integerValue)
+        guard let version = versions[String(versionSlider.integerValue)] else {
+            disableActions()
+            return
+        }
+
+        os_log("<> Loading version %d", versionSlider.integerValue)
+        refreshLabels(date: version.modificationDate)
+        refreshActions()
+
+        delegate?.versionsController(self, selected: version)
     }
+}
+
+
+// MARK: - Helpers
+//
+private extension VersionsViewController {
+
+    func refreshLabels(date: Date) {
+        let text = NSLocalizedString("Version", comment: "Label for the current version of a note")
+        let date = DateFormatter.historyFormatter.string(from: date)
+
+        versionTextField.stringValue = "\(text): \(date)"
+    }
+
+    func refreshActions() {
+        restoreButton.isEnabled = versionSlider.integerValue != Int(versionSlider.maxValue)
+    }
+
+    func disableActions() {
+        restoreButton.isEnabled = false
+    }
+}
+
+
+// MARK: - Simperium
+//
+private extension VersionsViewController {
+
+    func requestVersions(numberOfVersions: Int = Settings.numberOfVersions) {
+        let controller = SimplenoteAppDelegate.shared().versionsController
+
+        versionsToken = controller.requestVersions(for: note.simperiumKey, numberOfVersions: numberOfVersions) { [weak self] note in
+             self?.versions[note.version] = note
+        }
+    }
+}
+
+
+// MARK: - Settings
+//
+private enum Settings {
+    static let numberOfVersions = Int(30)
 }

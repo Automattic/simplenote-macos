@@ -156,7 +156,8 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
-    @IBAction func metricsWasPressed(sender: Any) {
+    @IBAction
+    func metricsWasPressed(sender: Any) {
         guard let notes = selectedNotes else {
             return
         }
@@ -164,7 +165,8 @@ extension NoteEditorViewController {
         displayMetricsPopover(from: toolbarView.metricsButton, for: notes)
     }
 
-    @IBAction func shareWasPressed(sender: Any) {
+    @IBAction
+    func shareWasPressed(sender: Any) {
         SPTracker.trackEditorCollaboratorsAccessed()
         displaySharePopover(from: tagsField)
         tagsField.becomeFirstResponder()
@@ -177,6 +179,16 @@ extension NoteEditorViewController {
         }
 
         displayPublishPopover(from: toolbarView.shareButton, for: note)
+    }
+
+    @IBAction
+    func versionsWasPressed(sender: Any) {
+        guard let note = note else {
+            return
+        }
+
+        SPTracker.trackEditorVersionsAccessed()
+        displayVersionsPopover(from: toolbarView.historyButton, for: note)
     }
 }
 
@@ -198,6 +210,12 @@ extension NoteEditorViewController {
 
     func displaySharePopover(from sourceView: NSView) {
         let viewController = ShareViewController()
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displayVersionsPopover(from sourceView: NSView, for note: Note) {
+        let viewController = VersionsViewController(note: note)
+        viewController.delegate = self
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 }
@@ -327,6 +345,36 @@ extension NoteEditorViewController: PublishViewControllerDelegate {
         SPTracker.trackEditorNoteUnpublished()
         note.published = false
         save()
+    }
+}
+
+
+// MARK: - VersionsViewControllerDelegate
+//
+extension NoteEditorViewController: VersionsViewControllerDelegate {
+
+    func versionsController(_ controller: VersionsViewController, selected version: Version) {
+        noteEditor.displayNote(content: version.content)
+    }
+
+    func versionsControllerDidClickRestore(_ controller: VersionsViewController) {
+        note.content = noteEditor.plainTextContent()
+        save()
+
+        SPTracker.trackEditorNoteRestored()
+        dismiss(controller)
+    }
+
+    func versionsControllerWillShow(_ controller: VersionsViewController) {
+        noteEditor.isEditable = false
+    }
+
+    func versionsControllerWillClose(_ controller: VersionsViewController) {
+        // Unload versions and re-enable editor
+        noteEditor.isEditable = true
+
+        // Refreshes the note content in the editor, in case the popover was canceled
+        didReceiveNewContent()
     }
 }
 
