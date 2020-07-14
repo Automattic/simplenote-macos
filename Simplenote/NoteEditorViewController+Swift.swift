@@ -242,7 +242,7 @@ extension NoteEditorViewController {
 
     @IBAction
     func metricsWasPressed(sender: Any) {
-        guard isPresentingMetricsPopover == false, let notes = selectedNotes else {
+        guard !dismissMetricsPopoverIfNeeded(), let notes = selectedNotes else {
             return
         }
 
@@ -317,12 +317,16 @@ extension NoteEditorViewController {
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
-    var isPresentingMetricsPopover: Bool {
-        guard let presentedViewControllers = presentedViewControllers else {
+    func dismissMetricsPopoverIfNeeded() -> Bool {
+        guard let metricsViewController = metricsViewController else {
             return false
         }
 
-        return presentedViewControllers.contains { $0 is MetricsViewController }
+        dismiss(metricsViewController)
+        return true
+    }
+    var metricsViewController: NSViewController? {
+        presentedViewControllers?.first { $0 is MetricsViewController }
     }
 }
 
