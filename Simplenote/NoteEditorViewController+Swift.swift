@@ -186,8 +186,11 @@ extension NoteEditorViewController: NSMenuItemValidation {
         case .systemNewNoteMenuItem:
             return validateNewNoteMenuItem(menuItem)
 
-        case .systemPrintMenuItem, .systemTrashMenuItem:
-            return validatePrintMenuItem(menuItem)
+        case .systemPrintMenuItem:
+            return validateSystemPrintMenuItem(menuItem)
+
+        case .systemTrashMenuItem:
+            return validateSystemTrashMenuItem(menuItem)
 
         default:
             return true
@@ -230,8 +233,16 @@ extension NoteEditorViewController: NSMenuItemValidation {
         !viewingTrash
     }
 
-    func validatePrintMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
         !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+    }
+
+    func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        guard !viewingTrash, SimplenoteAppDelegate.shared().isMainWindowVisible() else {
+            return false
+        }
+
+        return isDisplayingNote || isSelectingMultipleNotes
     }
 }
 
