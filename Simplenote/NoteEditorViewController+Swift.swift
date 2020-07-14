@@ -325,6 +325,7 @@ extension NoteEditorViewController {
         dismiss(metricsViewController)
         return true
     }
+
     var metricsViewController: NSViewController? {
         presentedViewControllers?.first { $0 is MetricsViewController }
     }
