@@ -242,7 +242,7 @@ extension NoteEditorViewController {
 
     @IBAction
     func metricsWasPressed(sender: Any) {
-        guard let notes = selectedNotes else {
+        guard isPresentingMetricsPopover == false, let notes = selectedNotes else {
             return
         }
 
@@ -315,6 +315,14 @@ extension NoteEditorViewController {
         let viewController = VersionsViewController(note: note)
         viewController.delegate = self
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    var isPresentingMetricsPopover: Bool {
+        guard let presentedViewControllers = presentedViewControllers else {
+            return false
+        }
+
+        return presentedViewControllers.contains { $0 is MetricsViewController }
     }
 }
 
