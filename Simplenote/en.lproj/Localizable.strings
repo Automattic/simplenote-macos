@@ -1,21 +1,135 @@
-/* 
-  Localizable.strings
-  Simplenote
+/* Text presented when sharing a Note */
+"Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Add an email address as a tag to share this note with someone. Then you can both make changes to it.";
 
-  Created by Michael Johnston on 7/26/13.
-  Copyright (c) 2013 Simperium. All rights reserved.
-*/
+/* Placeholder text in the Tags View */
+"Add tag..." = "Add tag...";
 
-"welcomeNote-Mac" = "Welcome to Simplenote Mac!
+/* Title of the view that displays all your notes */
+"All Notes" = "All Notes";
 
-To add a note, click the new note button with the plus symbol.
+/* Sign in error message */
+"An error was encountered while signing in." = "An error was encountered while signing in.";
 
-To remove a note, click the trash button.
+/* Cancel the action */
+"Cancel" = "Cancel";
 
-You can search all your notes by typing in the search field above the note list.
+/* Number of characters in the note */
+"Characters" = "Characters";
 
-Click the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.
+/* Analytics Toggle Text */
+"Collect Information" = "Collect Information";
 
-There are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.
+/* Alert dialog title displayed on sign in error */
+"Couldn't Sign In" = "Couldn't Sign In";
 
-Use Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
+/* Note Creation Date */
+"Created" = "Created";
+
+/* Delete notes and sign out of the app */
+"Delete Notes" = "Delete Notes";
+
+/* Delete Tag Action */
+"Delete Tag" = "Delete Tag";
+
+/* Empty Trash Action */
+"Empty Trash" = "Empty Trash";
+
+/* Export All Notes Action */
+"Export Everything" = "Export Everything";
+
+/* Tooltip: Markdown Preview */
+"Markdown Preview" = "Markdown Preview";
+
+/* Tooltip: Note Metrics */
+"Metrics" = "Metrics";
+
+/* Note Modification Date */
+"Modified" = "Modified";
+
+/* Tooltip: More Actions */
+"More" = "More";
+
+/* Empty Note Placeholder */
+"New note..." = "New note...";
+
+/* Placeholder displayed when a note hasn't been published. */
+"Not Published" = "Not Published";
+
+/* OK button in error alert dialog */
+"OK" = "OK";
+
+/* Error message displayed when user has not verified their WordPress.com account */
+"Please activate your WordPress.com account via email and try again." = "Please activate your WordPress.com account via email and try again.";
+
+/* Privacy Policy's Title */
+"Privacy Policy" = "Privacy Policy";
+
+/* Text presented when the note is about to be published */
+"Publish this note to a web page. The page will stay updated with the contents of your note." = "Publish this note to a web page. The page will stay updated with the contents of your note.";
+
+/* Publish to WebPage Action */
+"Publish to Web Page" = "Publish to Web Page";
+
+/* Displayed during a Publish Operation */
+"Publishing..." = "Publishing...";
+
+/* Rename Tag Action */
+"Rename Tag" = "Rename Tag";
+
+/* Tooltip: Restore a trashed note */
+"Restore" = "Restore";
+
+/* Search Field Placeholder */
+"Search" = "Search";
+
+/* Cookie Policy Legend */
+"Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Share information with our analytics tool about your use of services while logged into your Simplenote.com account.";
+
+/* button title for wp.com sign in button */
+"Sign in with WordPress.com" = "Sign in with WordPress.com";
+
+/* Alert message displayed when an account has unsynced notes */
+"Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App." = "Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.";
+
+/* Tags Section Name */
+"Tags" = "Tags";
+
+/* Privacy Policy */
+"This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy.";
+
+/* Displayed as a date in the case where a note was modified today, for example */
+"Today" = "Today";
+
+/* Title of the view that displays all your deleted notes */
+"Trash" = "Trash";
+
+/* Unpublish Note Action */
+"Unpublish" = "Unpublish";
+
+/* Displayed during an Unpublish Operation */
+"Unpublishing..." = "Unpublishing...";
+
+/* Alert title displayed in when an account has unsynced notes */
+"Unsynced Notes Detected" = "Unsynced Notes Detected";
+
+/* Untagged Notes Filter */
+"Untagged Notes" = "Untagged Notes";
+
+/* Label for the current version of a note */
+"Version" = "Version";
+
+/* Version displayed in the about screen */
+"Version %@" = "Version %@";
+
+/* Visit app.simplenote.com in the browser */
+"Visit Web App" = "Visit Web App";
+
+/* A welcome note for new Mac users */
+"welcomeNote-Mac" = "Welcome to Simplenote Mac!\n\nTo add a note, click the new note button with the plus symbol.\n\nTo remove a note, click the trash button.\n\nYou can search all your notes by typing in the search field above the note list.\n\nClick the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.\n\nThere are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.\n\nUse Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
+
+/* Number of words in the note */
+"Words" = "Words";
+
+/* Displayed as a date in the case where a note was modified yesterday, for example */
+"Yesterday" = "Yesterday";
+
