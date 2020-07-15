@@ -1941,7 +1941,7 @@
 		26F72AA114032D2A00A7935E /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				26F72AA214032D2A00A7935E /* en */,
+				B5E073B424BF8BD900139912 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
