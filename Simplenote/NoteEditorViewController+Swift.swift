@@ -163,75 +163,86 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
         switch identifier {
         case .editorPinMenuItem:
-            return validatePinMenuItem(menuItem)
+            return validateEditorPinMenuItem(menuItem)
 
         case .editorMarkdownMenuItem:
-            return validateMarkdownMenuItem(menuItem)
+            return validateEditorMarkdownMenuItem(menuItem)
 
         case .editorShareMenuItem:
-            return validateShareMenuItem(menuItem)
+            return validateEditorShareMenuItem(menuItem)
 
         case .editorHistoryMenuItem:
-            return validateHistoryMenuItem(menuItem)
+            return validateEditorHistoryMenuItem(menuItem)
 
         case .editorTrashMenuItem:
-            return validateTrashMenuItem(menuItem)
+            return validateSystemTrashMenuItem(menuItem)
 
         case .editorPublishMenuItem:
-            return validatePublishMenuItem(menuItem)
+            return validateEditorPublishMenuItem(menuItem)
 
         case .editorCollaborateMenuItem:
-            return validateCollaborateMenuItem(menuItem)
+            return validateEditorCollaborateMenuItem(menuItem)
 
         case .systemNewNoteMenuItem:
-            return validateNewNoteMenuItem(menuItem)
+            return validateSystemNewNoteMenuItem(menuItem)
 
-        case .systemPrintMenuItem, .systemTrashMenuItem:
-            return validatePrintMenuItem(menuItem)
+        case .systemPrintMenuItem:
+            return validateSystemPrintMenuItem(menuItem)
+
+        case .systemTrashMenuItem:
+            return validateSystemTrashMenuItem(menuItem)
 
         default:
             return true
         }
     }
 
-    func validatePinMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEditorPinMenuItem(_ item: NSMenuItem) -> Bool {
         let isPinnedOn = selectedNotes.allSatisfy { $0.pinned }
         item.state = isPinnedOn ? .on : .off
         return true
     }
 
-    func validateMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEditorMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
         let isMarkdownOn = selectedNotes.allSatisfy { $0.markdown }
         item.state = isMarkdownOn ? .on : .off
         return true
     }
 
-    func validateShareMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEditorShareMenuItem(_ item: NSMenuItem) -> Bool {
         isDisplayingContent
     }
 
-    func validateHistoryMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEditorHistoryMenuItem(_ item: NSMenuItem) -> Bool {
         isDisplayingNote && !isDisplayingMarkdown
     }
 
-    func validateTrashMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEditorTrashMenuItem(_ item: NSMenuItem) -> Bool {
         isDisplayingNote || isSelectingMultipleNotes
     }
 
-    func validatePublishMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEditorPublishMenuItem(_ item: NSMenuItem) -> Bool {
         isDisplayingContent
     }
 
-    func validateCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateEditorCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
         isDisplayingNote
     }
 
-    func validateNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
         !viewingTrash
     }
 
-    func validatePrintMenuItem(_ item: NSMenuItem) -> Bool {
+    func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
         !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+    }
+
+    func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        guard !viewingTrash, SimplenoteAppDelegate.shared().isMainWindowVisible() else {
+            return false
+        }
+
+        return isDisplayingNote || isSelectingMultipleNotes
     }
 }
 
