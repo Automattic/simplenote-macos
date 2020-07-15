@@ -1338,7 +1338,7 @@
 			};
 			buildConfigurationList = 26F72A8214032D2900A7935E /* Build configuration list for PBXProject "Simplenote" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
