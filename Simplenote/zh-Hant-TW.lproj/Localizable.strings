@@ -1,3 +1,8 @@
+/* Translation-Revision-Date: +0000 */
+/* Plural-Forms: nplurals=1; plural=0; */
+/* Generator: GlotPress/2.4.0-alpha */
+/* Language: zh_TW */
+
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Add an email address as a tag to share this note with someone. Then you can both make changes to it.";
 
@@ -124,12 +129,11 @@
 /* Visit app.simplenote.com in the browser */
 "Visit Web App" = "Visit Web App";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Welcome to Simplenote Mac!\n\nTo add a note, click the new note button with the plus symbol.\n\nTo remove a note, click the trash button.\n\nYou can search all your notes by typing in the search field above the note list.\n\nClick the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.\n\nThere are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.\n\nUse Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
-
 /* Number of words in the note */
 "Words" = "Words";
 
 /* Displayed as a date in the case where a note was modified yesterday, for example */
 "Yesterday" = "Yesterday";
+
+/* A welcome note for new Mac users */
 
