@@ -7,7 +7,8 @@ extension TagListViewController {
 
     @objc
     func refreshExtendedContentInsets() {
-        clipView.extendedContentInsets.top = Settings.extendedTopInset
+        let titlebarHeight = view.window?.titlebarHeight ?? Settings.titlebarHeight
+        clipView.contentInsets.top = titlebarHeight + Settings.searchBarHeight
     }
 
     /// Regenerates the Internal List State
@@ -169,5 +170,6 @@ extension TagListViewController: SPTextFieldDelegate {
 // MARK: - Settings!
 //
 private enum Settings {
-    static let extendedTopInset = CGFloat(48)
+    static let titlebarHeight = CGFloat(22)
+    static let searchBarHeight = CGFloat(48)
 }
