@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 
-@class ClipView;
 @class Tag;
 @class TagListState;
 
@@ -23,7 +22,7 @@ extern NSString * const TagListDidEmptyTrashNotification;
 @interface TagListViewController : NSViewController <NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
-@property (nonatomic, strong, readwrite) IBOutlet ClipView              *clipView;
+@property (nonatomic, strong, readwrite) IBOutlet NSClipView            *clipView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
 @property (nonatomic, strong,  readonly) NSMenu                         *tagDropdownMenu;
 @property (nonatomic, strong,  readonly) NSMenu                         *trashDropdownMenu;
