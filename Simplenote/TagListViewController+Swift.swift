@@ -5,10 +5,18 @@ import Foundation
 //
 extension TagListViewController {
 
+    /// Refreshes the Top Content Insets: We'll match the Notes List Insets
+    ///
     @objc
     func refreshExtendedContentInsets() {
-        let titlebarHeight = view.window?.titlebarHeight ?? Settings.titlebarHeight
-        clipView.contentInsets.top = titlebarHeight + Settings.searchBarHeight
+        let titlebarHeight = view.window?.simplenoteTitlebarHeight ?? Settings.titlebarHeight
+        let topContentInset = titlebarHeight + Settings.searchBarHeight
+
+        guard clipView.contentInsets.top != topContentInset else {
+            return
+        }
+
+        clipView.contentInsets.top = topContentInset
     }
 
     /// Regenerates the Internal List State

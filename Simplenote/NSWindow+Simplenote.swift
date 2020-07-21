@@ -6,8 +6,10 @@ import Foundation
 extension NSWindow {
 
     /// Returns the receiver's TitleBar Height
+    /// - Important: The SDK has a private API named `titlebarHeight`, and we `actually MUST` to namespace this..
     ///
-    var titlebarHeight: CGFloat {
+    @objc
+    var simplenoteTitlebarHeight: CGFloat {
         frame.height - contentLayoutRect.height
     }
 }
