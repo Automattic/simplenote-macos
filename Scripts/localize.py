@@ -32,8 +32,7 @@ ENGLISH_FOLDER = 'en.lproj'
 MAIN_NIB_FILE = 'MainMenu.xib'
 
 OUT_STRINGS_FILE = 'Localizable.strings'
-NIB_STRINGS_FILE = 'InterfaceBuilder.strings'
-SRC_STRINGS_FILE = 'Sources.strings'
+NIB_STRINGS_FILE = 'MainMenu.strings'
 TMP_STRINGS_FILE = "Temporary.strings"
 
 
@@ -44,11 +43,6 @@ class LocalizedString():
 
     def __unicode__(self):
         return u'%s%s\n' % (u''.join(self.comments), self.translation)
-
-    def overwriteKeyWithValue(self):
-        old_key, old_value = re_translation.match(self.translation).groups()
-        self.key = old_value
-        self.translation = '"%s" = "%s";\n' % (old_value, old_value)
 
 
 class LocalizedFile():
@@ -120,32 +114,6 @@ class LocalizedFile():
 
         return output
 
-    def merge_with(self, new):
-        output = LocalizedFile()
-        output.strings = self.strings
-        output.strings_d = self.strings_d
-
-        for string in new.strings:
-            if self.strings_d.has_key(string.key):
-                continue
-
-            output.strings.append(string)
-            output.strings_d[string.key] = string
-
-        return output
-
-    def overwrite_keys_with_values(self):
-        output = LocalizedFile()
-
-        for string in self.strings:
-            new_string = copy(string)
-            new_string.overwriteKeyWithValue()
-            output.strings_d[new_string.key] = new_string
-
-        output.strings = output.strings_d.values()
-
-        return output
-
 
 def update(out_fname, old_fname, new_fname):
     try:
@@ -153,29 +121,6 @@ def update(out_fname, old_fname, new_fname):
         new = LocalizedFile(new_fname, auto_read=True)
         output = old.update_with(new)
         output.save_to_file(out_fname)
-    except:
-        print 'Error: input files have invalid format.'
-
-
-def merge(out_fname, lhs_fname, rhs_fname):
-    try:
-        lhs = LocalizedFile(lhs_fname, auto_read=True)
-        rhs = LocalizedFile(rhs_fname, auto_read=True)
-        output = lhs.merge_with(rhs)
-        output.save_to_file(out_fname)
-    except:
-        print 'Error: input files have invalid format.'
-
-
-# Updates a Localized.string file, so that the `key = value`
-# We want to do this for a specific use case: NIB strings
-#
-# - Note: Result is guarranteed to contain unique entries! 
-def overwrite_keys_with_values(fname):
-    try:
-        not_normalized = LocalizedFile(fname, auto_read=True)
-        normalized = not_normalized.overwrite_keys_with_values()
-        normalized.save_to_file(fname)
     except:
         print 'Error: input files have invalid format.'
 
@@ -218,27 +163,11 @@ def localize_nibs(path):
 
     os.system(ibtool_cmd)
     os.system(utf_cmd)
-    overwrite_keys_with_values(output_path)
     os.remove(tmp_path)
-
-
-def merge_all_strings(path):
-    en_folder = os.path.join(path, ENGLISH_FOLDER)
-    nib_strings_path = os.path.join(en_folder, NIB_STRINGS_FILE)
-    src_strings_path = os.path.join(en_folder, SRC_STRINGS_FILE)
-    out_strings_path = os.path.join(en_folder, OUT_STRINGS_FILE)
-
-    os.rename(out_strings_path, src_strings_path)
-
-    merge(out_strings_path, nib_strings_path, src_strings_path)
-
-    os.remove(nib_strings_path)
-    os.remove(src_strings_path)
 
 
 if __name__ == '__main__':
     root_path = os.path.join(os.getcwd(), ROOT_FOLDER)
     localize_sources(root_path)
     localize_nibs(root_path)
-    merge_all_strings(root_path)
 
