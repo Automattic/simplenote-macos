@@ -24,6 +24,19 @@ re_comment_single = compile(r'^/\*.*\*/$')
 re_comment_start = compile(r'^/\*.*$')
 re_comment_end = compile(r'^.*\*/$')
 
+
+ROOT_FOLDER = 'Simplenote'
+BASE_FOLDER = 'Base.lproj'
+ENGLISH_FOLDER = 'en.lproj'
+
+MAIN_NIB_FILE = 'MainMenu.xib'
+
+OUT_STRINGS_FILE = 'Localizable.strings'
+NIB_STRINGS_FILE = 'InterfaceBuilder.strings'
+SRC_STRINGS_FILE = 'Sources.strings'
+TMP_STRINGS_FILE = "Temporary.strings"
+
+
 class LocalizedString():
     def __init__(self, comments, translation):
         self.comments, self.translation = comments, translation
@@ -31,6 +44,12 @@ class LocalizedString():
 
     def __unicode__(self):
         return u'%s%s\n' % (u''.join(self.comments), self.translation)
+
+    def overwriteKeyWithValue(self):
+        old_key, old_value = re_translation.match(self.translation).groups()
+        self.key = old_value
+        self.translation = '"%s" = "%s";\n' % (old_value, old_value)
+
 
 class LocalizedFile():
     def __init__(self, fname=None, auto_read=False):
@@ -87,8 +106,8 @@ class LocalizedFile():
 
         f.close()
 
-    def merge_with(self, new):
-        merged = LocalizedFile()
+    def update_with(self, new):
+        output = LocalizedFile()
 
         for string in new.strings:
             if self.strings_d.has_key(string.key):
@@ -96,27 +115,74 @@ class LocalizedFile():
                 new_string.comments = string.comments
                 string = new_string
 
-            merged.strings.append(string)
-            merged.strings_d[string.key] = string
+            output.strings.append(string)
+            output.strings_d[string.key] = string
 
-        return merged
+        return output
 
-def merge(merged_fname, old_fname, new_fname):
+    def merge_with(self, new):
+        output = LocalizedFile()
+        output.strings = self.strings
+        output.strings_d = self.strings_d
+
+        for string in new.strings:
+            if self.strings_d.has_key(string.key):
+                continue
+
+            output.strings.append(string)
+            output.strings_d[string.key] = string
+
+        return output
+
+    def overwrite_keys_with_values(self):
+        output = LocalizedFile()
+
+        for string in self.strings:
+            new_string = copy(string)
+            new_string.overwriteKeyWithValue()
+            output.strings_d[new_string.key] = new_string
+
+        output.strings = output.strings_d.values()
+
+        return output
+
+
+def update(out_fname, old_fname, new_fname):
     try:
         old = LocalizedFile(old_fname, auto_read=True)
         new = LocalizedFile(new_fname, auto_read=True)
-        merged = old.merge_with(new)
-        merged.save_to_file(merged_fname)
+        output = old.update_with(new)
+        output.save_to_file(out_fname)
     except:
         print 'Error: input files have invalid format.'
 
 
-STRINGS_FILE = 'Localizable.strings'
+def merge(out_fname, lhs_fname, rhs_fname):
+    try:
+        lhs = LocalizedFile(lhs_fname, auto_read=True)
+        rhs = LocalizedFile(rhs_fname, auto_read=True)
+        output = lhs.merge_with(rhs)
+        output.save_to_file(out_fname)
+    except:
+        print 'Error: input files have invalid format.'
 
-def localize(path):
 
-    language = os.path.join(path, "en.lproj")
-    original = merged = language + os.path.sep + STRINGS_FILE
+# Updates a Localized.string file, so that the `key = value`
+# We want to do this for a specific use case: NIB strings
+#
+# - Note: Result is guarranteed to contain unique entries! 
+def overwrite_keys_with_values(fname):
+    try:
+        not_normalized = LocalizedFile(fname, auto_read=True)
+        normalized = not_normalized.overwrite_keys_with_values()
+        normalized.save_to_file(fname)
+    except:
+        print 'Error: input files have invalid format.'
+
+
+def localize_sources(path):
+    language = os.path.join(path, ENGLISH_FOLDER)
+    original = merged = language + os.path.sep + OUT_STRINGS_FILE
 
     old = original + '.old'
     new = original + '.new'
@@ -127,7 +193,7 @@ def localize(path):
         os.rename(original, old)
         os.system(genstrings_cmd % language)
         os.system('iconv -f UTF-16 -t UTF-8 "%s" > "%s"' % (original, new))
-        merge(merged, old, new)
+        update(merged, old, new)
     else:
         os.system(genstrings_cmd % language)
         os.rename(original, old)
@@ -138,7 +204,41 @@ def localize(path):
     if os.path.isfile(new):
         os.remove(new)
 
+
+def localize_nibs(path):
+    base_folder = os.path.join(path, BASE_FOLDER)
+    en_folder   = os.path.join(path, ENGLISH_FOLDER)
+
+    input_path  = os.path.join(base_folder, MAIN_NIB_FILE)
+    tmp_path    = os.path.join(en_folder, TMP_STRINGS_FILE)
+    output_path = os.path.join(en_folder, NIB_STRINGS_FILE)
+
+    ibtool_cmd  = 'ibtool %s --generate-strings-file %s' % (input_path, tmp_path)
+    utf_cmd     = 'iconv -f UTF-16 -t UTF-8 "%s" > "%s"' % (tmp_path, output_path)
+
+    os.system(ibtool_cmd)
+    os.system(utf_cmd)
+    overwrite_keys_with_values(output_path)
+    os.remove(tmp_path)
+
+
+def merge_all_strings(path):
+    en_folder = os.path.join(path, ENGLISH_FOLDER)
+    nib_strings_path = os.path.join(en_folder, NIB_STRINGS_FILE)
+    src_strings_path = os.path.join(en_folder, SRC_STRINGS_FILE)
+    out_strings_path = os.path.join(en_folder, OUT_STRINGS_FILE)
+
+    os.rename(out_strings_path, src_strings_path)
+
+    merge(out_strings_path, nib_strings_path, src_strings_path)
+
+    os.remove(nib_strings_path)
+    os.remove(src_strings_path)
+
+
 if __name__ == '__main__':
-    basedir = os.getcwd()
-    path = os.path.join(basedir, 'Simplenote')
-    localize(path)
+    root_path = os.path.join(os.getcwd(), ROOT_FOLDER)
+    localize_sources(root_path)
+    localize_nibs(root_path)
+    merge_all_strings(root_path)
+
