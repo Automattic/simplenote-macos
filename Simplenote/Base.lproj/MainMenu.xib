@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,7 +13,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <menu title="OtherViews" id="nSc-s9-0oY" userLabel="Note More Menu">
+        <menu title="More Actions" id="nSc-s9-0oY" userLabel="Note More Menu">
             <items>
                 <menuItem title="Pin to Top" state="on" identifier="editorPinMenuItem" id="Ryc-RD-9bh">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -60,10 +60,13 @@
                     </connections>
                 </menuItem>
             </items>
+            <attributedString key="userComments">
+                <fragment content="More Actions Menu"/>
+            </attributedString>
             <connections>
                 <outlet property="delegate" destination="1107" id="bVF-oJ-0wy"/>
             </connections>
-            <point key="canvasLocation" x="481" y="-214"/>
+            <point key="canvasLocation" x="471" y="-199"/>
         </menu>
         <menu id="1504" userLabel="Note List Menu">
             <items>
@@ -79,13 +82,16 @@
             </connections>
             <point key="canvasLocation" x="268" y="-269"/>
         </menu>
-        <menu title="AMainMenu" systemMenu="main" id="29">
+        <menu title="Simplenote System Menu" systemMenu="main" id="29">
             <items>
                 <menuItem title="Simplenote" id="56">
                     <menu key="submenu" title="Simplenote" systemMenu="apple" id="57">
                         <items>
                             <menuItem title="About Simplenote" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the About UI"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="aboutAction:" target="494" id="Ptn-5S-Rce"/>
                                 </connections>
@@ -101,6 +107,9 @@
                             </menuItem>
                             <menuItem title="Privacy Settings" id="RZM-N8-VLN">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Privacy Settings"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="privacyAction:" target="-1" id="EgA-OE-fPn"/>
                                 </connections>
@@ -123,6 +132,9 @@
                                 </connections>
                             </menuItem>
                             <menuItem title="Close" keyEquivalent="w" id="1748">
+                                <attributedString key="userComments">
+                                    <fragment content="Closes the Main Window"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="performClose:" target="-1" id="1759"/>
                                 </connections>
@@ -132,18 +144,27 @@
                             </menuItem>
                             <menuItem title="Export Everything" hidden="YES" identifier="exportMenuItem" id="Pwd-hR-fBt">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Export UI"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="exportAcction:" target="494" id="0Ff-Xt-PdT"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Empty Trash" identifier="emptyTrashMenuItem" id="1256">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Empties the Trash Bin"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="emptyTrashAction:" target="494" id="1688"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Sign Out" id="1541" userLabel="Menu Item - Sign Out">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Signs out from the Account"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="signOutAction:" target="494" id="1689"/>
                                 </connections>
@@ -152,34 +173,55 @@
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Quit Simplenote" keyEquivalent="q" id="136">
+                                <attributedString key="userComments">
+                                    <fragment content="Exits the App"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="terminate:" target="-3" id="449"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
+                    <attributedString key="userComments">
+                        <fragment content="Opens the Simplenote Menu"/>
+                    </attributedString>
                 </menuItem>
                 <menuItem title="Note" id="83">
                     <menu key="submenu" title="Note" id="81">
                         <items>
                             <menuItem title="New" keyEquivalent="n" identifier="systemNewNoteMenuItem" id="1654">
+                                <attributedString key="userComments">
+                                    <fragment content="Adds a New Note"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="addAction:" target="1107" id="1667"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Move to Trash" identifier="systemTrashMenuItem" id="1655">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Moves the current note to Trash"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="deleteAction:" target="1107" id="1657"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Print…" keyEquivalent="p" identifier="systemPrintMenuItem" id="78">
+                                <attributedString key="userComments">
+                                    <fragment content="Prints the current note"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="printAction:" target="1107" id="1666"/>
                                 </connections>
                             </menuItem>
                         </items>
+                        <attributedString key="userComments">
+                            <fragment content="Note Actions Menu"/>
+                        </attributedString>
                     </menu>
+                    <attributedString key="userComments">
+                        <fragment content="Opens the Note Actions Menu"/>
+                    </attributedString>
                 </menuItem>
                 <menuItem title="Edit" id="217">
                     <menu key="submenu" title="Edit" id="205">
@@ -386,12 +428,18 @@
                                 </menu>
                             </menuItem>
                         </items>
+                        <attributedString key="userComments">
+                            <fragment content="Edit Menu"/>
+                        </attributedString>
                     </menu>
+                    <attributedString key="userComments">
+                        <fragment content="Opens the Edit Menu"/>
+                    </attributedString>
                 </menuItem>
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>
-                            <menuItem title="Note Editor" id="oYc-2J-WVc">
+                            <menuItem title="Note Editor" id="oYc-2J-WVc" userLabel="Opens the Note Editor Settings">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" id="o2X-H9-mTR">
                                     <items>
@@ -400,21 +448,33 @@
                                             <menu key="submenu" title="Font Size" systemMenu="font" id="SxH-2F-lin">
                                                 <items>
                                                     <menuItem title="Bigger" keyEquivalent="+" id="NAj-hV-Pza">
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Increases the Font Size"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="adjustFontSizeAction:" target="1107" id="JOY-pV-iLX"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Smaller" tag="1" keyEquivalent="-" id="w30-fb-a2C">
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Decreases the Font Size"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="adjustFontSizeAction:" target="1107" id="6sp-XJ-jIQ"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Reset" tag="2" keyEquivalent="0" id="oS8-Vc-yog">
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Resets the Font Size"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="adjustFontSizeAction:" target="1107" id="bbs-YW-9tp"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <attributedString key="userComments">
+                                                    <fragment content="Font Size Setting Menu"/>
+                                                </attributedString>
                                             </menu>
                                         </menuItem>
                                         <menuItem title="Line Length" id="P9P-ed-21W">
@@ -423,24 +483,39 @@
                                                 <items>
                                                     <menuItem title="Narrow" id="lMi-2X-rR9">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Toggles Narrow Line Length"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="toggleEditorWidth:" target="1107" id="1D7-pl-Fcz"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Full" tag="1" id="bBW-To-3v3">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Toggles Full Line Length"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="toggleEditorWidth:" target="1107" id="Wf5-Ne-3W8"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <attributedString key="userComments">
+                                                    <fragment content="Line Length Setting Menu"/>
+                                                </attributedString>
                                             </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="byP-HD-jjJ"/>
                                     </items>
+                                    <attributedString key="userComments">
+                                        <fragment content="Editor Settings Menu"/>
+                                    </attributedString>
                                 </menu>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Editor Settings"/>
+                                </attributedString>
                             </menuItem>
-                            <menuItem title="Notes List" id="lqT-82-IW9">
+                            <menuItem title="Notes List" id="lqT-82-IW9" userLabel="Opens the Note List Settings">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Notes List" id="L8Y-u8-nu8">
                                     <items>
@@ -450,17 +525,26 @@
                                                 <items>
                                                     <menuItem title="Comfy" id="Qaj-k2-NOz">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Toggles Comfy Note Display"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="previewLinesAction:" target="874" id="d4I-8r-5Lj"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Condensed" tag="1" id="tQC-gw-hdq">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Toggles Condensed Note Display"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="previewLinesAction:" target="874" id="X0J-e4-qfh"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <attributedString key="userComments">
+                                                    <fragment content="Note Display Settings"/>
+                                                </attributedString>
                                             </menu>
                                         </menuItem>
                                         <menuItem title="Sort Order" id="QGk-SS-2Jf">
@@ -469,21 +553,39 @@
                                                 <items>
                                                     <menuItem title="Date Updated" id="fep-x2-0FA">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Toggles Note Order by Date"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="sortPrefAction:" target="874" id="KsM-qb-OZu"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Alphabetical" tag="1" id="i8p-Xx-VpF">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Toggles Alphabetical Note Sort Order"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="sortPrefAction:" target="874" id="wYh-RZ-Guv"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <attributedString key="userComments">
+                                                    <fragment content="Note List Sort Mode Settings"/>
+                                                </attributedString>
                                             </menu>
+                                            <attributedString key="userComments">
+                                                <fragment content="Opens the Note List Sort Order Settings"/>
+                                            </attributedString>
                                         </menuItem>
                                     </items>
+                                    <attributedString key="userComments">
+                                        <fragment content="Note List Settings Menu"/>
+                                    </attributedString>
                                 </menu>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Note List Settings"/>
+                                </attributedString>
                             </menuItem>
                             <menuItem title="Tags List" id="4QQ-5e-Vxl">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -491,12 +593,21 @@
                                     <items>
                                         <menuItem title="Sort Alphabetically" identifier="tagSortMenuItem" id="axW-cz-MnF">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="Sorts the Tags List Alphabetically"/>
+                                            </attributedString>
                                             <connections>
                                                 <action selector="clickedTagsSortModeItem:" target="494" id="vnH-Zz-osc"/>
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <attributedString key="userComments">
+                                        <fragment content="Tag List Settings Menu"/>
+                                    </attributedString>
                                 </menu>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Tags List Settings"/>
+                                </attributedString>
                             </menuItem>
                             <menuItem title="Theme" id="Jtf-4C-imn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -504,12 +615,18 @@
                                     <items>
                                         <menuItem title="Light" identifier="themeLightMenuItem" id="Zhe-Bb-jvT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="Toggles Light Mode"/>
+                                            </attributedString>
                                             <connections>
                                                 <action selector="clickedThemeItem:" target="494" id="mgq-M0-lcf"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Dark" tag="1" identifier="themeDarkMenuItem" id="qcT-FY-eHe">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="Toggles Dark Mode"/>
+                                            </attributedString>
                                             <connections>
                                                 <action selector="clickedThemeItem:" target="494" id="wom-f8-fYq"/>
                                             </connections>
@@ -517,20 +634,35 @@
                                         <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
                                         <menuItem title="System Appearance" tag="2" enabled="NO" identifier="themeSystemMenuItem" id="x6g-cH-Wdm">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="Toggles System Appearance"/>
+                                            </attributedString>
                                             <connections>
                                                 <action selector="clickedThemeItem:" target="494" id="b76-s6-4Ql"/>
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <attributedString key="userComments">
+                                        <fragment content="Theme Settings Menu"/>
+                                    </attributedString>
                                 </menu>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Theme Settings"/>
+                                </attributedString>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
                             <menuItem title="Focus Mode" keyEquivalent="F" identifier="focusMenuItem" id="nrD-mL-W7Q">
+                                <attributedString key="userComments">
+                                    <fragment content="Toggles the Focus Mode"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="focusModeAction:" target="494" id="3q6-ha-uEK"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Toggle Sidebar" keyEquivalent="t" id="tkU-Gb-qGx">
+                                <attributedString key="userComments">
+                                    <fragment content="Toggles the Sidebar"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
                                 </connections>
@@ -538,35 +670,59 @@
                             <menuItem isSeparatorItem="YES" id="cCS-jM-ycR"/>
                             <menuItem title="Enter Full Screen" keyEquivalent="f" id="1324">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Toggles Fullscreen"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="toggleFullScreen:" target="-1" id="1325"/>
                                 </connections>
                             </menuItem>
                         </items>
+                        <attributedString key="userComments">
+                            <fragment content="View Main Menu"/>
+                        </attributedString>
                     </menu>
+                    <attributedString key="userComments">
+                        <fragment content="Opens the View Main Menu"/>
+                    </attributedString>
                 </menuItem>
                 <menuItem title="Format" id="THl-80-myZ">
                     <menu key="submenu" title="Format" id="5HH-LQ-Fk8">
                         <items>
                             <menuItem title="Insert Checklist" keyEquivalent="c" id="iNS-zx-oXr">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Inserts a new Checklist"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="insertChecklistAction:" target="1107" id="6xY-qa-P5R"/>
                                 </connections>
                             </menuItem>
                         </items>
+                        <attributedString key="userComments">
+                            <fragment content="Format Menu"/>
+                        </attributedString>
                     </menu>
+                    <attributedString key="userComments">
+                        <fragment content="Opens the Format Menu"/>
+                    </attributedString>
                 </menuItem>
                 <menuItem title="Window" id="19">
                     <menu key="submenu" title="Window" systemMenu="window" id="24">
                         <items>
                             <menuItem title="Minimize" keyEquivalent="m" id="23">
+                                <attributedString key="userComments">
+                                    <fragment content="Minimizes the Window"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="performMiniaturize:" target="-1" id="37"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Zoom" keyEquivalent="m" id="239">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" option="YES" command="YES"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Zooms the Window"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="performZoom:" target="-1" id="240"/>
                                 </connections>
@@ -575,6 +731,9 @@
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Bring All to Front" id="5">
+                                <attributedString key="userComments">
+                                    <fragment content="Brings Simplenote Windows to front"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="arrangeInFront:" target="-1" id="39"/>
                                 </connections>
@@ -582,12 +741,21 @@
                             <menuItem isSeparatorItem="YES" id="3kv-mj-TiH"/>
                             <menuItem title="Main Window" id="vor-dd-sYt">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Main Window"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="ensureMainWindowIsVisible:" target="494" id="91z-nv-pTJ"/>
                                 </connections>
                             </menuItem>
                         </items>
+                        <attributedString key="userComments">
+                            <fragment content="Window Menu"/>
+                        </attributedString>
                     </menu>
+                    <attributedString key="userComments">
+                        <fragment content="Opens the Window Menu"/>
+                    </attributedString>
                 </menuItem>
                 <menuItem title="Help" id="490">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -595,6 +763,9 @@
                         <items>
                             <menuItem title="Help Website" id="492">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Help Website"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="helpAction:" target="494" id="sKP-L1-cGC"/>
                                 </connections>
@@ -602,20 +773,35 @@
                             <menuItem isSeparatorItem="YES" id="XOB-px-ckD"/>
                             <menuItem title="Contact Us" tag="1" id="dkM-vi-cwv">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens the Contact Us Interface"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="helpAction:" target="494" id="T0P-1J-yFj"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Twitter" tag="2" id="E6O-ds-BEj">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <attributedString key="userComments">
+                                    <fragment content="Opens Simplenote's Twitter Profile"/>
+                                </attributedString>
                                 <connections>
                                     <action selector="helpAction:" target="494" id="SG8-GN-hdQ"/>
                                 </connections>
                             </menuItem>
                         </items>
+                        <attributedString key="userComments">
+                            <fragment content="Help Menu"/>
+                        </attributedString>
                     </menu>
+                    <attributedString key="userComments">
+                        <fragment content="Opens the Help Menu"/>
+                    </attributedString>
                 </menuItem>
             </items>
+            <attributedString key="userComments">
+                <fragment content="Simplenote's Main Menu"/>
+            </attributedString>
             <connections>
                 <outlet property="delegate" destination="494" id="ahP-nJ-8XG"/>
             </connections>
@@ -695,6 +881,9 @@
                                                                                 <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
+                                                                            <attributedString key="userComments">
+                                                                                <fragment content="Header Placeholder (Don't Translate)"/>
+                                                                            </attributedString>
                                                                         </textField>
                                                                     </subviews>
                                                                     <constraints>
@@ -732,6 +921,9 @@
                                                                                         <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
+                                                                                    <attributedString key="userComments">
+                                                                                        <fragment content="Tag Placeholder (Don't Translate)"/>
+                                                                                    </attributedString>
                                                                                 </textField>
                                                                             </subviews>
                                                                             <visibilityPriorities>
@@ -889,6 +1081,9 @@
                                                                                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
+                                                                                            <attributedString key="userComments">
+                                                                                                <fragment content="Note Title Placeholder (Don't Translate)"/>
+                                                                                            </attributedString>
                                                                                         </textField>
                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKZ-a7-XwI" userLabel="Shared Image View">
                                                                                             <rect key="frame" x="218" y="3" width="12" height="12"/>
@@ -915,6 +1110,9 @@
                                                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
+                                                                                    <attributedString key="userComments">
+                                                                                        <fragment content="Note Contents Placeholder (Don't Translate)"/>
+                                                                                    </attributedString>
                                                                                 </textField>
                                                                             </subviews>
                                                                             <constraints>
@@ -1056,6 +1254,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <attributedString key="userComments">
+                                                            <fragment content="Editor Info Button"/>
+                                                        </attributedString>
                                                         <connections>
                                                             <action selector="metricsWasPressedWithSender:" target="1107" id="U1v-vN-rCF"/>
                                                         </connections>
