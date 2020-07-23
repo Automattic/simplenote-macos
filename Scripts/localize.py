@@ -31,7 +31,7 @@ ENGLISH_FOLDER = 'en.lproj'
 
 MAIN_NIB_FILE = 'MainMenu.xib'
 
-OUT_STRINGS_FILE = 'Localizable.strings'
+SRC_STRINGS_FILE = 'Localizable.strings'
 NIB_STRINGS_FILE = 'MainMenu.strings'
 TMP_STRINGS_FILE = "Temporary.strings"
 
@@ -100,8 +100,8 @@ class LocalizedFile():
 
         f.close()
 
-    def update_with(self, new):
-        output = LocalizedFile()
+    def merge_with(self, new):
+        merged = LocalizedFile()
 
         for string in new.strings:
             if self.strings_d.has_key(string.key):
@@ -109,25 +109,25 @@ class LocalizedFile():
                 new_string.comments = string.comments
                 string = new_string
 
-            output.strings.append(string)
-            output.strings_d[string.key] = string
+            merged.strings.append(string)
+            merged.strings_d[string.key] = string
 
-        return output
+        return merged
 
 
-def update(out_fname, old_fname, new_fname):
+def merge(out_fname, old_fname, new_fname):
     try:
         old = LocalizedFile(old_fname, auto_read=True)
         new = LocalizedFile(new_fname, auto_read=True)
-        output = old.update_with(new)
-        output.save_to_file(out_fname)
+        merged = old.merge_with(new)
+        merged.save_to_file(out_fname)
     except:
         print 'Error: input files have invalid format.'
 
 
 def localize_sources(path):
     language = os.path.join(path, ENGLISH_FOLDER)
-    original = merged = language + os.path.sep + OUT_STRINGS_FILE
+    original = merged = language + os.path.sep + SRC_STRINGS_FILE
 
     old = original + '.old'
     new = original + '.new'
@@ -138,7 +138,7 @@ def localize_sources(path):
         os.rename(original, old)
         os.system(genstrings_cmd % language)
         os.system('iconv -f UTF-16 -t UTF-8 "%s" > "%s"' % (original, new))
-        update(merged, old, new)
+        merge(merged, old, new)
     else:
         os.system(genstrings_cmd % language)
         os.rename(original, old)
