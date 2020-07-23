@@ -19,7 +19,7 @@ class SPExporter: NSObject {
     @objc
     func presentExporter(from window: NSWindow, simperium: Simperium) {
         let panel = NSOpenPanel()
-        panel.prompt = NSLocalizedString("Export Everything", comment: "Export All Notes Action")
+        panel.prompt = NSLocalizedString("This String was changed in the Source Code", comment: "Export All Notes Action")
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.canCreateDirectories = true
