@@ -132,7 +132,7 @@ def localize_sources(path):
     old = original + '.old'
     new = original + '.new'
 
-    genstrings_cmd = 'genstrings -q -o "%s" `find ./Simplenote -name "*.m" -o -name "*.swift"`'
+    genstrings_cmd = 'genstrings -q -o "%s" `find ./Simplenote ./Pods/Simperium-OSX/*/SPAuthentication* -name "*.m" -o -name "*.swift"`'
 
     if os.path.isfile(original):
         os.rename(original, old)
