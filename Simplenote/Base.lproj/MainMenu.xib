@@ -87,7 +87,7 @@
                 <menuItem title="Simplenote" id="56">
                     <menu key="submenu" title="Simplenote" systemMenu="apple" id="57">
                         <items>
-                            <menuItem title="Updated" id="58">
+                            <menuItem title="About Simplenote" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <attributedString key="userComments">
                                     <fragment content="Opens the About UI"/>
@@ -832,10 +832,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="618"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="UOf-YZ-mq1" customClass="ClipView" customModule="Simplenote" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="618"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="1453" customClass="SPTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="618"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -1035,7 +1035,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="570"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="AdS-Q8-czF">
                                             <rect key="frame" x="0.0" y="0.0" width="270" height="570"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" selectionHighlightStyle="sourceList" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="72" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="561" customClass="SPTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="270" height="570"/>
@@ -1312,14 +1312,14 @@
                                         <rect key="frame" x="0.0" y="48" width="508" height="522"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LKV-y0-209">
                                             <rect key="frame" x="0.0" y="0.0" width="508" height="522"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="934" customClass="SPTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="70"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="493" height="522"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="493" height="-70"/>
+                                                    <size key="minSize" width="493" height="522"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -1334,7 +1334,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="936">
-                                            <rect key="frame" x="492" y="592" width="16" height="-70"/>
+                                            <rect key="frame" x="492" y="0.0" width="16" height="522"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -1354,7 +1354,7 @@
                                                 <rect key="frame" x="23" y="13" width="462" height="25"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="L2Z-Qo-Zud">
                                                     <rect key="frame" x="0.0" y="0.0" width="462" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tokenField horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" mirrorLayoutDirectionWhenInternationalizing="always" translatesAutoresizingMaskIntoConstraints="NO" id="UWL-9x-FH2" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="466" height="25"/>
