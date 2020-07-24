@@ -417,7 +417,7 @@ static NSCalendar *gregorian = nil;
 	
 	if (deltaComponents.minute <= 0) {
 		//[dateFormatter setDateFormat:@"h:mm a"];
-		NSString *todayStr = NSLocalizedString(@"Today", @"Displayed as a date in the case where a note was modified today, for example");
+		NSString *todayStr = NSLocalizedString(@"Also Updated", @"Displayed as a date in the case where a note was modified today, for example");
 		dateString = brief ? @"" : [todayStr stringByAppendingString:@", "];
 		dateString = [dateString stringByAppendingString: [dateFormatterTime stringFromDate:then]];
 	} else if (deltaComponents.minute < 60*24) {
