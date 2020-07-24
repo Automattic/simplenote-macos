@@ -28,9 +28,10 @@ struct NoteMetrics {
     init(notes: [Note]) {
         let contents = notes.compactMap({ $0.content }).reduce("", +)
         let dateProviderNote = notes.count == 1 ? notes.first : nil
+        let wordCount = NSSpellChecker.shared.countWords(in: contents, language: nil)
 
         numberOfChars = contents.count
-        numberOfWords = NSSpellChecker.shared.countWords(in: contents, language: nil)
+        numberOfWords = wordCount != -1 ? wordCount : .zero
 
         creationDate = dateProviderNote?.creationDate.map {
             DateFormatter.metricsFormatter.string(from: $0)

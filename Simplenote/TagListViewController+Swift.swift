@@ -5,9 +5,18 @@ import Foundation
 //
 extension TagListViewController {
 
+    /// Refreshes the Top Content Insets: We'll match the Notes List Insets
+    ///
     @objc
     func refreshExtendedContentInsets() {
-        clipView.extendedContentInsets.top = Settings.extendedTopInset
+        let titlebarHeight = view.window?.simplenoteTitlebarHeight ?? Settings.titlebarHeight
+        let topContentInset = titlebarHeight + Settings.searchBarHeight
+
+        guard clipView.contentInsets.top != topContentInset else {
+            return
+        }
+
+        clipView.contentInsets.top = topContentInset
     }
 
     /// Regenerates the Internal List State
@@ -169,5 +178,6 @@ extension TagListViewController: SPTextFieldDelegate {
 // MARK: - Settings!
 //
 private enum Settings {
-    static let extendedTopInset = CGFloat(48)
+    static let titlebarHeight = CGFloat(22)
+    static let searchBarHeight = CGFloat(48)
 }
