@@ -24,6 +24,18 @@ re_comment_single = compile(r'^/\*.*\*/$')
 re_comment_start = compile(r'^/\*.*$')
 re_comment_end = compile(r'^.*\*/$')
 
+
+ROOT_FOLDER = 'Simplenote'
+BASE_FOLDER = 'Base.lproj'
+ENGLISH_FOLDER = 'en.lproj'
+
+MAIN_NIB_FILE = 'MainMenu.xib'
+
+SRC_STRINGS_FILE = 'Localizable.strings'
+NIB_STRINGS_FILE = 'MainMenu.strings'
+TMP_STRINGS_FILE = "Temporary.strings"
+
+
 class LocalizedString():
     def __init__(self, comments, translation):
         self.comments, self.translation = comments, translation
@@ -31,6 +43,7 @@ class LocalizedString():
 
     def __unicode__(self):
         return u'%s%s\n' % (u''.join(self.comments), self.translation)
+
 
 class LocalizedFile():
     def __init__(self, fname=None, auto_read=False):
@@ -101,22 +114,20 @@ class LocalizedFile():
 
         return merged
 
-def merge(merged_fname, old_fname, new_fname):
+
+def merge(out_fname, old_fname, new_fname):
     try:
         old = LocalizedFile(old_fname, auto_read=True)
         new = LocalizedFile(new_fname, auto_read=True)
         merged = old.merge_with(new)
-        merged.save_to_file(merged_fname)
+        merged.save_to_file(out_fname)
     except:
         print 'Error: input files have invalid format.'
 
 
-STRINGS_FILE = 'Localizable.strings'
-
-def localize(path):
-
-    language = os.path.join(path, "en.lproj")
-    original = merged = language + os.path.sep + STRINGS_FILE
+def localize_sources(path):
+    language = os.path.join(path, ENGLISH_FOLDER)
+    original = merged = language + os.path.sep + SRC_STRINGS_FILE
 
     old = original + '.old'
     new = original + '.new'
@@ -138,7 +149,25 @@ def localize(path):
     if os.path.isfile(new):
         os.remove(new)
 
+
+def localize_nibs(path):
+    base_folder = os.path.join(path, BASE_FOLDER)
+    en_folder   = os.path.join(path, ENGLISH_FOLDER)
+
+    input_path  = os.path.join(base_folder, MAIN_NIB_FILE)
+    tmp_path    = os.path.join(en_folder, TMP_STRINGS_FILE)
+    output_path = os.path.join(en_folder, NIB_STRINGS_FILE)
+
+    ibtool_cmd  = 'ibtool %s --generate-strings-file %s' % (input_path, tmp_path)
+    utf_cmd     = 'iconv -f UTF-16 -t UTF-8 "%s" > "%s"' % (tmp_path, output_path)
+
+    os.system(ibtool_cmd)
+    os.system(utf_cmd)
+    os.remove(tmp_path)
+
+
 if __name__ == '__main__':
-    basedir = os.getcwd()
-    path = os.path.join(basedir, 'Simplenote')
-    localize(path)
+    root_path = os.path.join(os.getcwd(), ROOT_FOLDER)
+    localize_sources(root_path)
+    localize_nibs(root_path)
+

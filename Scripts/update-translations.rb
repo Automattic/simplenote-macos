@@ -51,6 +51,10 @@ ALL_LANGS={
   'zh-tw' => 'zh-Hant-TW', # Chinese (Taiwan)
 }
 
+# Whenever a translation is missing in any given language, we'll fall back to the English String
+FALLBACK_LANG = 'en'
+
+
 def copy_header(target_file, trans_strings)
   trans_strings.each_line do |line|
     if (!line.start_with?("/*"))
@@ -86,20 +90,35 @@ else
   langs = ALL_LANGS
 end
 
+fallback_lang_dir = File.join('Simplenote', "#{FALLBACK_LANG}.lproj")
+
 langs.each do |code,local|
   lang_dir = File.join('Simplenote', "#{local}.lproj")
   puts "Updating #{code}"
   system "mkdir -p #{lang_dir}"
   
-  # Backup the current file
+  # Backup the current file(s)
   system "if [ -e #{lang_dir}/Localizable.strings ]; then cp #{lang_dir}/Localizable.strings #{lang_dir}/Localizable.strings.bak; fi"
+  system "if [ -e #{lang_dir}/MainMenu.strings ]; then cp #{lang_dir}/MainMenu.strings #{lang_dir}/MainMenu.strings.bak; fi"
 
-  # Download translations in strings format in order to get the comments
+  # Download: Localizable.strings
   system "curl -fLso #{lang_dir}/Localizable.strings https://translate.wordpress.com/projects/simplenote%2Fmacos/#{code}/default/export-translations?format=strings" or begin
-    puts "Error downloading #{code}"
+    puts "Error downloading Localizable.strings - Language: [#{code}]"
   end
 
-  system "./Scripts/fix-translation #{lang_dir}/Localizable.strings"
+  # Download: MainMenu.strings
+  system "curl -fLso #{lang_dir}/MainMenu.strings https://translate.wordpress.com/projects/simplenote%2Fmacos/main-menu/#{code}/default/export-translations?format=strings" or begin
+    puts "Error downloading MainMenu.strings - Language: [#{code}]"
+  end
+  
+  # Failsafe: Handle empty values
+  system "./Scripts/fix-translation.swift #{lang_dir}/Localizable.strings #{fallback_lang_dir}/Localizable.strings"
+  system "./Scripts/fix-translation.swift #{lang_dir}/MainMenu.strings #{fallback_lang_dir}/MainMenu.strings"
+
+  # Make sure the new Strings are not corrupt!
   system "plutil -lint #{lang_dir}/Localizable.strings" and system "rm #{lang_dir}/Localizable.strings.bak"
+  system "plutil -lint #{lang_dir}/MainMenu.strings" and system "rm #{lang_dir}/MainMenu.strings.bak"
+
   system "grep -a '\\x00\\x20\\x00\\x22\\x00\\x22\\x00\\x3b$' #{lang_dir}/Localizable.strings"
+  system "grep -a '\\x00\\x20\\x00\\x22\\x00\\x22\\x00\\x3b$' #{lang_dir}/MainMenu.strings"
 end
