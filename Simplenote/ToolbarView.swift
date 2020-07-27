@@ -10,13 +10,13 @@ class ToolbarView: NSView {
     ///
     @IBOutlet private(set) var stackView: NSStackView!
 
-    /// Info Button
+    /// Metrics Button
     ///
-    @IBOutlet private(set) var actionButton: NSButton!
+    @IBOutlet private(set) var metricsButton: NSButton!
 
-    /// Note History
+    /// More Button
     ///
-    @IBOutlet private(set) var historyButton: NSButton!
+    @IBOutlet private(set) var moreButton: NSButton!
 
     /// Markdown Preview
     ///
@@ -25,14 +25,6 @@ class ToolbarView: NSView {
     /// Restore Trashed Note
     ///
     @IBOutlet private(set) var restoreButton: NSButton!
-
-    /// Share Contents
-    ///
-    @IBOutlet private(set) var shareButton: NSButton!
-
-    /// Move to Trash
-    ///
-    @IBOutlet private(set) var trashButton: NSButton!
 
     /// Represents the Toolbar's State
     ///
@@ -81,11 +73,11 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     func refreshInterface() {
-        actionButton.isEnabled = state.isActionButtonEnabled
-        actionButton.isHidden = state.isActionButtonHidden
+        metricsButton.isEnabled = state.isMetricsButtonEnabled
+        metricsButton.isHidden = state.isMetricsButtonHidden
 
-        historyButton.isEnabled = state.isHistoryActionEnabled
-        historyButton.isHidden = state.isHistoryActionHidden
+        moreButton.isEnabled = state.isMoreButtonEnabled
+        moreButton.isHidden = state.isMoreButtonHidden
 
         previewButton.isHidden = state.isPreviewActionHidden
         previewButton.image = state.previewActionImage
@@ -93,12 +85,6 @@ private extension ToolbarView {
 
         restoreButton.isEnabled = state.isRestoreActionEnabled
         restoreButton.isHidden = state.isRestoreActionHidden
-
-        shareButton.isEnabled = state.isShareActionEnabled
-        shareButton.isHidden = state.isShareActionHidden
-
-        trashButton.isEnabled = state.isTrashActionEnabled
-        trashButton.isHidden = state.isTrashActionHidden
     }
 }
 
@@ -108,36 +94,21 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     var allButtons: [NSButton] {
-        [actionButton, historyButton, previewButton, restoreButton, shareButton, trashButton]
+        [metricsButton, moreButton, previewButton, restoreButton]
     }
 
     @objc
     func refreshStyle() {
-        refreshButtonsStyle()
-        refreshActionMenuStyle()
-    }
-
-    func refreshButtonsStyle() {
         for button in allButtons {
             button.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
         }
     }
 
-    func refreshActionMenuStyle() {
-        guard let actionButtonItem = actionButton.menu?.items.first, let image = actionButtonItem.image else {
-            return
-        }
-
-        actionButtonItem.image = image.tinted(with: .simplenoteSecondaryActionButtonTintColor)
-    }
-
     func setupSubviews() {
-        actionButton.toolTip = NSLocalizedString("Details", comment: "Tooltip: Note Details")
-        historyButton.toolTip = NSLocalizedString("History", comment: "Tooltip: History Picker")
+        metricsButton.toolTip = NSLocalizedString("Metrics", comment: "Tooltip: Note Metrics")
+        moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
         restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
-        shareButton.toolTip = NSLocalizedString("Share", comment: "Tooltip: Share a note")
-        trashButton.toolTip = NSLocalizedString("Trash", comment: "Tooltip: Trash a Note")
 
         let cells = allButtons.compactMap { $0.cell as? NSButtonCell }
         for cell in cells {

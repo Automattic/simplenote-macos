@@ -1,4 +1,5 @@
-VERSION_SHORT=1.11.1
+VERSION_SHORT=1.12.0
 
-// Public long version example: VERSION_LONG=9.9.0.0
-VERSION_LONG=11111 // 1_11_1_1 where the last 1 means the first build for this version
+// Public long version example: 1_12_0_1. The last 1 means the first build for
+// this version
+VERSION_LONG=11202

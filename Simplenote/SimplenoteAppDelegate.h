@@ -14,6 +14,9 @@
 @class NoteEditorViewController;
 @class TagListViewController;
 @class SplitViewController;
+@class VersionsController;
+
+NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark ====================================================================================
 #pragma mark SimplenoteAppDelegate
@@ -33,23 +36,25 @@
 
 @property (assign, nonatomic, readonly) BOOL                                exportUnlocked;
 
+@property (strong, nonatomic) VersionsController                            *versionsController;
 @property (strong, nonatomic) SplitViewController                           *splitViewController;
 
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 
-- (IBAction)signOutAction:(id)sender;
-- (IBAction)emptyTrashAction:(id)sender;
-- (IBAction)toggleSidebarAction:(id)sender;
-- (IBAction)ensureMainWindowIsVisible:(id)sender;
-- (IBAction)aboutAction:(id)sender;
-- (IBAction)privacyAction:(id)sender;
-- (IBAction)helpAction:(id)sender;
+- (IBAction)signOutAction:(nullable id)sender;
+- (IBAction)emptyTrashAction:(nullable id)sender;
+- (IBAction)toggleSidebarAction:(nullable id)sender;
+- (IBAction)ensureMainWindowIsVisible:(nullable id)sender;
+- (IBAction)aboutAction:(nullable id)sender;
+- (IBAction)privacyAction:(nullable id)sender;
+- (IBAction)helpAction:(nullable id)sender;
 
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
-- (NSString *)selectedTagName;
 - (NSInteger)numDeletedNotes;
 - (BOOL)isMainWindowVisible;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -17,6 +17,10 @@ extension NSImage.Name {
     ///
     static let history = NSImage.Name("button_history")
 
+    /// Toolbar: Ellipsis
+    ///
+    static let ellipsis = NSImage.Name("button_ellipsis")
+
     /// Toolbar: Info
     ///
     static let info = NSImage.Name("button_info")
@@ -68,6 +72,10 @@ extension NSImage.Name {
     /// Tag List: Trash
     ///
     static let trash = NSImage.Name("button_trash")
+
+    /// Tag List: Untagged
+    ///
+    static let untagged = NSImage.Name("button_untagged")
 
     /// Logo: WordPress
     ///

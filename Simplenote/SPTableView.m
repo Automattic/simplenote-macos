@@ -10,27 +10,6 @@
 
 @implementation SPTableView
 
-- (void)awakeFromNib
-{
-    validFirstResponders = [NSMutableArray arrayWithCapacity:3];
-}
-
-- (void)addValidFirstResponder:(NSResponder *)responder
-{
-    [validFirstResponders addObject:responder];
-}
-
-- (BOOL)validateProposedFirstResponder:(NSResponder *)responder forEvent:(NSEvent *)event
-{
-    // By default you can't click through to first responders in a table view; allow
-    // this behavior to be overridden
-    if ([validFirstResponders containsObject:responder]) {
-        return YES;
-    }
-    
-    return [super validateProposedFirstResponder:responder forEvent:event];
-}
-
 - (void)keyDown:(NSEvent *)theEvent
 {
     // Intercept the delete key and make it delete the currently selected note

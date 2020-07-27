@@ -139,6 +139,8 @@
     
 	self.simperium = [self configureSimperium];
 
+    [self configureSimplenoteControllers];
+
     [self.tagListViewController loadTags];
     [self.noteListViewController loadNotes];
     
@@ -222,11 +224,6 @@
     [self.tagListViewController selectAllNotesTag];
 }
 
-- (NSString *)selectedTagName
-{
-    return [self.tagListViewController selectedTagName];
-}
-
 - (void)selectNoteWithKey:(NSString *)simperiumKey
 {
     [self.noteListViewController selectRowForNoteKey:simperiumKey];
@@ -264,9 +261,9 @@
 - (NSInteger)numDeletedNotes
 {
     SPBucket *notesBucket = [self.simperium bucketForName:@"Note"];
-    NSInteger numDeletedNotes = [notesBucket numObjectsForPredicate:[NSPredicate predicateWithFormat:@"deleted == 1"]];
-    
-    return numDeletedNotes;
+    NSPredicate *predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
+
+    return [notesBucket numObjectsForPredicate:predicate];
 }
 
 - (BOOL)isMainWindowVisible
@@ -404,9 +401,7 @@
 - (void)bucket:(SPBucket *)bucket didReceiveObjectForKey:(NSString *)key version:(NSString *)version data:(NSDictionary *)data
 {
     if ([bucket.name isEqualToString:@"Note"]) {
-        if ([key isEqualToString: self.noteEditorViewController.note.simperiumKey]) {
-            [self.noteEditorViewController didReceiveVersion:version data:data];
-        }
+        [self.versionsController didReceiveObjectForSimperiumKey:key version:version data:data];
     }
 }
 

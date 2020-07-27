@@ -1,3 +1,12 @@
+1.12.0
+------
+- Refreshed the Tags Editor Interface!
+- New Scroll Support in the Tags Editor area
+- Implements Untagged Notes Filter
+- New Note Metrics Interface
+- Relocated Editor Actions into the new More Actions Menu
+- Fixed a layout bug that affected the Tags List
+
 1.11.1
 ------
 - New Privacy Notice for California Users

@@ -17,10 +17,6 @@ struct ToolbarState {
     ///
     let isMarkdownEnabled: Bool
 
-    /// Indicates if the current document supports Sharing
-    ///
-    let isShareEnabled: Bool
-
     /// Indicates if there are multiple selected documents
     ///
     let isSelectingMultipleNotes: Bool
@@ -35,19 +31,19 @@ struct ToolbarState {
 //
 extension ToolbarState {
 
-    var isActionButtonEnabled: Bool {
-        (isDisplayingNote || isSelectingMultipleNotes) && !isViewingTrash
+    var isMetricsButtonEnabled: Bool {
+        (isDisplayingNote || isSelectingMultipleNotes)
     }
 
-    var isActionButtonHidden: Bool {
+    var isMetricsButtonHidden: Bool {
         isViewingTrash
     }
 
-    var isHistoryActionEnabled: Bool {
-        isDisplayingNote && !isDisplayingMarkdown
+    var isMoreButtonEnabled: Bool {
+        (isDisplayingNote || isSelectingMultipleNotes)
     }
 
-    var isHistoryActionHidden: Bool {
+    var isMoreButtonHidden: Bool {
         isViewingTrash
     }
 
@@ -61,22 +57,6 @@ extension ToolbarState {
 
     var isRestoreActionHidden: Bool {
         !isViewingTrash
-    }
-
-    var isShareActionEnabled: Bool {
-        isShareEnabled
-    }
-
-    var isShareActionHidden: Bool {
-        isViewingTrash
-    }
-
-    var isTrashActionEnabled: Bool {
-        isDisplayingNote || isSelectingMultipleNotes
-    }
-
-    var isTrashActionHidden: Bool {
-        isViewingTrash
     }
 
     var previewActionImage: NSImage? {
@@ -94,7 +74,6 @@ extension ToolbarState {
         ToolbarState(isDisplayingNote: false,
                      isDisplayingMarkdown: false,
                      isMarkdownEnabled: false,
-                     isShareEnabled: false,
                      isSelectingMultipleNotes: false,
                      isViewingTrash: false)
     }

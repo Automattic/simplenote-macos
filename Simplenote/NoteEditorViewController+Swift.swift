@@ -28,6 +28,7 @@ extension NoteEditorViewController {
         tagsField.focusRingType = .none
         tagsField.font = .simplenoteSecondaryTextFont
         tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
+        tagsField.nextKeyView = noteEditor
     }
 }
 
@@ -62,7 +63,7 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Private Helpers
+// MARK: - Internal State
 //
 extension NoteEditorViewController {
 
@@ -70,6 +71,12 @@ extension NoteEditorViewController {
     ///
     var isDisplayingNote: Bool {
         note != nil
+    }
+
+    /// Indicates if the current document is not empty
+    ///
+    var isDisplayingContent: Bool {
+        note?.content?.isEmpty == false
     }
 
     /// Indicates if the Markdown Preview UI is active
@@ -85,22 +92,18 @@ extension NoteEditorViewController {
         note?.markdown == true
     }
 
-    /// Indicates if the current document can be shared
-    ///
-    var isShareEnabled: Bool {
-        note?.content?.isEmpty == false
-    }
-
     /// Indicates if there are multiple selected notes
     ///
     var isSelectingMultipleNotes: Bool {
-        guard let selection = selectedNotes else {
-            return false
-        }
-
-        return selection.count > 1
+        let numberOfSelectedNotes = selectedNotes?.count ?? .zero
+        return numberOfSelectedNotes > 1
     }
+}
 
+
+// MARK: - Refreshing Interface
+//
+extension NoteEditorViewController {
 
     /// Refreshes the Editor's Inner State
     ///
@@ -118,11 +121,9 @@ extension NoteEditorViewController {
         let newState = ToolbarState(isDisplayingNote: isDisplayingNote,
                                     isDisplayingMarkdown: isDisplayingMarkdown,
                                     isMarkdownEnabled: isMarkdownEnabled,
-                                    isShareEnabled: isShareEnabled,
                                     isSelectingMultipleNotes: isSelectingMultipleNotes,
                                     isViewingTrash: viewingTrash)
         toolbarView.state = newState
-
     }
 
     /// Refreshes all of the TagsField properties: Tokens and allowed actions
@@ -147,6 +148,197 @@ extension NoteEditorViewController {
     ///
     private func refreshTagsFieldTokens() {
         tagsField.tokens = note?.tagsArray as? [String] ?? []
+    }
+}
+
+
+// MARK: - NSMenuItemValidation
+//
+extension NoteEditorViewController: NSMenuItemValidation {
+
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
+        }
+
+        switch identifier {
+        case .editorPinMenuItem:
+            return validateEditorPinMenuItem(menuItem)
+
+        case .editorMarkdownMenuItem:
+            return validateEditorMarkdownMenuItem(menuItem)
+
+        case .editorShareMenuItem:
+            return validateEditorShareMenuItem(menuItem)
+
+        case .editorHistoryMenuItem:
+            return validateEditorHistoryMenuItem(menuItem)
+
+        case .editorTrashMenuItem:
+            return validateSystemTrashMenuItem(menuItem)
+
+        case .editorPublishMenuItem:
+            return validateEditorPublishMenuItem(menuItem)
+
+        case .editorCollaborateMenuItem:
+            return validateEditorCollaborateMenuItem(menuItem)
+
+        case .systemNewNoteMenuItem:
+            return validateSystemNewNoteMenuItem(menuItem)
+
+        case .systemPrintMenuItem:
+            return validateSystemPrintMenuItem(menuItem)
+
+        case .systemTrashMenuItem:
+            return validateSystemTrashMenuItem(menuItem)
+
+        default:
+            return true
+        }
+    }
+
+    func validateEditorPinMenuItem(_ item: NSMenuItem) -> Bool {
+        let isPinnedOn = selectedNotes.allSatisfy { $0.pinned }
+        item.state = isPinnedOn ? .on : .off
+        return true
+    }
+
+    func validateEditorMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
+        let isMarkdownOn = selectedNotes.allSatisfy { $0.markdown }
+        item.state = isMarkdownOn ? .on : .off
+        return true
+    }
+
+    func validateEditorShareMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingContent
+    }
+
+    func validateEditorHistoryMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote && !isDisplayingMarkdown
+    }
+
+    func validateEditorTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote || isSelectingMultipleNotes
+    }
+
+    func validateEditorPublishMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingContent
+    }
+
+    func validateEditorCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
+        isDisplayingNote
+    }
+
+    func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash
+    }
+
+    func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+    }
+
+    func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        guard !viewingTrash, SimplenoteAppDelegate.shared().isMainWindowVisible() else {
+            return false
+        }
+
+        return isDisplayingNote || isSelectingMultipleNotes
+    }
+}
+
+
+// MARK: - Actions
+//
+extension NoteEditorViewController {
+
+    @IBAction
+    func metricsWasPressed(sender: Any) {
+        guard !dismissMetricsPopoverIfNeeded(), let notes = selectedNotes else {
+            return
+        }
+
+        displayMetricsPopover(from: toolbarView.metricsButton, for: notes)
+    }
+
+    @IBAction
+    func collaborateWasPressed(sender: Any) {
+        SPTracker.trackEditorCollaboratorsAccessed()
+        displayCollaboratePopover(from: tagsField)
+        tagsField.becomeFirstResponder()
+    }
+
+    @IBAction
+    func publishWasPressed(sender: Any) {
+        guard let note = note else {
+            return
+        }
+
+        displayPublishPopover(from: toolbarView.moreButton, for: note)
+    }
+
+    @IBAction
+    func shareWasPressed(sender: Any) {
+        guard let content = note?.content else {
+            return
+        }
+
+        displaySharingPicker(from: toolbarView.moreButton, content: content)
+    }
+
+    @IBAction
+    func versionsWasPressed(sender: Any) {
+        guard let note = note else {
+            return
+        }
+
+        SPTracker.trackEditorVersionsAccessed()
+        displayVersionsPopover(from: toolbarView.moreButton, for: note)
+    }
+}
+
+
+// MARK: - Popovers / Pickers
+//
+extension NoteEditorViewController {
+
+    func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
+        let viewController = MetricsViewController(notes: notes)
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displayPublishPopover(from sourceView: NSView, for note: Note) {
+        let viewController = PublishViewController(note: note)
+        viewController.delegate = self
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displayCollaboratePopover(from sourceView: NSView) {
+        let viewController = CollaborateViewController()
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func displaySharingPicker(from sourceView: NSView, content: String) {
+        let picker = NSSharingServicePicker(items: [content])
+        picker.show(relativeTo: sourceView.bounds, of: sourceView, preferredEdge: .minY)
+    }
+
+    func displayVersionsPopover(from sourceView: NSView, for note: Note) {
+        let viewController = VersionsViewController(note: note)
+        viewController.delegate = self
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+    }
+
+    func dismissMetricsPopoverIfNeeded() -> Bool {
+        guard let metricsViewController = metricsViewController else {
+            return false
+        }
+
+        dismiss(metricsViewController)
+        return true
+    }
+
+    var metricsViewController: NSViewController? {
+        presentedViewControllers?.first { $0 is MetricsViewController }
     }
 }
 
@@ -235,9 +427,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
         }
 
         // Search Tags starting with the new keyword
-        guard let suggestions = SimplenoteAppDelegate.shared()?.simperium?.searchTagNames(prefix: substring) else {
-            return []
-        }
+        let suggestions = SimplenoteAppDelegate.shared().simperium.searchTagNames(prefix: substring)
 
         // Return **Only** the Sorted Subset that's not already in the note.
         return note.filterUnassociatedTagNames(from: suggestions).sorted()
@@ -248,7 +438,7 @@ extension NoteEditorViewController: TagsFieldDelegate {
             return []
         }
 
-        return note.filterUnassociatedTagNames(from: tags).unique
+        return note.filterUnassociatedTagNames(from: tags).caseInsensitiveUnique
     }
 
     public func tokenField(_ tokenField: NSTokenField, didChange tokens: [String]) {
@@ -258,7 +448,55 @@ extension NoteEditorViewController: TagsFieldDelegate {
         //
         // For that reason, we'll filtering out duplicates.
         //
-        updateTags(withTokens: tokens.unique)
+        updateTags(withTokens: tokens.caseInsensitiveUnique)
+    }
+}
+
+
+// MARK: - PublishViewControllerDelegate
+//
+extension NoteEditorViewController: PublishViewControllerDelegate {
+
+    func publishControllerDidClickPublish(_ controller: PublishViewController) {
+        SPTracker.trackEditorNotePublished()
+        note.published = true
+        save()
+    }
+
+    func publishControllerDidClickUnpublish(_ controller: PublishViewController) {
+        SPTracker.trackEditorNoteUnpublished()
+        note.published = false
+        save()
+    }
+}
+
+
+// MARK: - VersionsViewControllerDelegate
+//
+extension NoteEditorViewController: VersionsViewControllerDelegate {
+
+    func versionsController(_ controller: VersionsViewController, selected version: Version) {
+        noteEditor.displayNote(content: version.content)
+    }
+
+    func versionsControllerDidClickRestore(_ controller: VersionsViewController) {
+        note.content = noteEditor.plainTextContent()
+        save()
+
+        SPTracker.trackEditorNoteRestored()
+        dismiss(controller)
+    }
+
+    func versionsControllerWillShow(_ controller: VersionsViewController) {
+        noteEditor.isEditable = false
+    }
+
+    func versionsControllerWillClose(_ controller: VersionsViewController) {
+        // Unload versions and re-enable editor
+        noteEditor.isEditable = true
+
+        // Refreshes the note content in the editor, in case the popover was canceled
+        didReceiveNewContent()
     }
 }
 

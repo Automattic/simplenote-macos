@@ -5,6 +5,10 @@ import Foundation
 //
 extension UnicodeScalar {
 
+    /// UnicodeScalar for NSTextAttachment Marker Characters
+    ///
+    static var textAttachment = UnicodeScalar(NSTextAttachment.character)!
+
     /// Indicates if the receiver is a Whitespace character (Spaces / Tabs alike)
     ///
     var isWhitespace: Bool {

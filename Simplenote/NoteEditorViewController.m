@@ -39,7 +39,6 @@ NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
-static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark ====================================================================================
@@ -47,30 +46,20 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 #pragma mark ====================================================================================
 
 @interface NoteEditorViewController() <NSMenuDelegate,
-                                        NSPopoverDelegate,
-                                        NSSharingServicePickerDelegate,
                                         NSTextDelegate,
                                         NSTextViewDelegate,
-                                        PublishViewControllerDelegate,
-                                        SPBucketDelegate,
-                                        VersionsViewControllerDelegate>
+                                        SPBucketDelegate>
 
-@property (nonatomic,   weak) VersionsViewController    *versionsViewController;
-@property (nonatomic,   weak) ShareViewController       *shareViewController;
-@property (nonatomic,   weak) PublishViewController     *publishViewController;
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
-@property (nonatomic, strong) NSMutableDictionary       *noteVersionData;
 @property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
 @property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSArray                   *selectedNotes;
-@property (nonatomic, strong) NSPopover                 *activePopover;
 @property (nonatomic, strong) Storage                   *storage;
 @property (nonatomic, strong) TextViewInputHandler      *inputHandler;
 
 @property (nonatomic, assign) NSUInteger                cursorLocationBeforeRemoteUpdate;
-@property (nonatomic, assign) BOOL                      viewingVersions;
 @property (nonatomic, assign) BOOL                      viewingTrash;
 
 @end
@@ -138,9 +127,9 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(trashDidLoad:) name:kDidBeginViewingTrash object:nil];
-    [nc addObserver:self selector:@selector(tagsDidLoad:) name:kTagsDidLoad object:nil];
-    [nc addObserver:self selector:@selector(tagUpdated:) name:kTagUpdated object:nil];
+    [nc addObserver:self selector:@selector(trashDidLoad:) name:TagListDidBeginViewingTrashNotification object:nil];
+    [nc addObserver:self selector:@selector(tagsDidLoad:) name:TagListDidBeginViewingTagNotification object:nil];
+    [nc addObserver:self selector:@selector(tagUpdated:) name:TagListDidUpdateTagNotification object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
 
     [self startListeningToScrollNotifications];
@@ -367,74 +356,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     return newCursorLocation;
 }
 
-- (NSUInteger)wordCount
-{
-    NSUInteger numWords = 0;
-    for (Note *selectedNote in self.selectedNotes) {
-        // countWordsInString returns -1 for a zero length string; handle that
-        if (selectedNote.content == nil || [selectedNote.content length] == 0)
-            continue;
-        
-        numWords += [[NSSpellChecker sharedSpellChecker] countWordsInString:selectedNote.content language:nil];
-    }
-    
-    return numWords;
-}
-
-- (NSUInteger)charCount
-{
-    NSUInteger numChars = 0;
-    for (Note *selectedNote in self.selectedNotes) {
-        if (selectedNote.content == nil)
-            continue;
-        
-        numChars += [selectedNote.content length];
-    }
-    
-    return numChars;
-}
-
-- (void)updateCounts
-{
-    NSString *word = NSLocalizedString(@"Word", @"Text displayed when there is one word in a note (e.g. 1 Word)");
-    NSString *words = NSLocalizedString(@"Words", @"Text displayed when there is more than one word in a note (e.g. 5 Words)");
-    NSString *character = NSLocalizedString(@"Character", @"Text displayed when there is one character in a note (e.g. 1 Character)");
-    NSString *characters = NSLocalizedString(@"Characters", @"Text displayed when there is more than one character in a note (e.g. 130 Characters)");
-    NSNumber *numCharacters = @([self charCount]);
-    NSNumber *numWords = @([self wordCount]);
-    NSString *wordStr = [numWords isEqual: @1] ? word : words;
-    NSString *charStr = [numCharacters isEqual: @1] ? character : characters;
-    
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
-    numberFormatter.locale = [NSLocale currentLocale];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    numberFormatter.usesGroupingSeparator = YES;
-    
-    NSString *numCharactersString = [numberFormatter stringForObjectValue:numCharacters];
-    NSString *numWordsString = [numberFormatter stringForObjectValue:numWords];
-
-    [characterCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numCharactersString, charStr]];
-    [wordCountItem setTitle:[NSString stringWithFormat:@"%@ %@", numWordsString, wordStr]];
-}
-
-- (void)updateVersionLabel:(NSDate *)versionDate
-{
-    NSString *text = [NSString stringWithFormat:@"  %@: %@",
-                      NSLocalizedString(@"Version", @"Label for the current version of a note"),
-                      [self.note getDateString:versionDate brief:NO]];
-
-    self.versionsViewController.versionText = text;
-}
-
-- (void)updateVersionSlider
-{
-    NSInteger maximum = [self.note.version integerValue];
-    NSInteger minimum = [self minimumNoteVersion];
-
-    [self.versionsViewController refreshSliderWithMax:maximum min:minimum];
-}
-
-
 
 #pragma mark - Text Delegates
 
@@ -482,8 +403,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     [self.noteEditor displayNoteWithContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
     [self refreshTagsField];
-
-    [self updatePublishUI];
 }
 
 - (void)willReceiveNewContent
@@ -499,207 +418,28 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     }
 }
 
-- (void)didReceiveVersion:(NSString *)version data:(NSDictionary *)data
-{
-    if (self.viewingVersions) {
-        if (self.noteVersionData == nil) {
-            self.noteVersionData = [NSMutableDictionary dictionaryWithCapacity:SPVersionSliderMaxVersions];
-        }
-        
-        [self.noteVersionData setObject:data forKey:@(version.integerValue)];
-    }
-}
-
-- (long)minimumNoteVersion
-{
-    NSInteger version = [[self.note version] integerValue];
-    NSInteger minVersion = MAX(version - SPVersionSliderMaxVersions, 1);
-    
-    return minVersion;
-}
-
-
-#pragma mark - Publishing
-
-- (void)updatePublishUI
-{
-    [self.publishViewController refreshStateWithPublished:self.note.published
-                                                      url:self.note.publishURL];
-}
-
-- (void)publishNote
-{
-    [SPTracker trackEditorNotePublished];
-    
-    self.note.published = YES;
-    [self save];
-    [self updatePublishUI];
-}
-
-- (void)unpublishNote
-{
-    [SPTracker trackEditorNoteUnpublished];
-    
-    self.note.published = NO;
-    [self save];
-    [self updatePublishUI];
-}
-
-
-
-#pragma mark - Action Menu and Popovers
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    BOOL isMainWindowVisible = [[SimplenoteAppDelegate sharedDelegate] isMainWindowVisible];
-
-    // Note menu
-    if (menuItem == newItem) {
-        return !self.viewingTrash;
-    }
-
-    if (menuItem == deleteItem || menuItem == printItem) {
-        return !self.viewingTrash && self.note != nil && isMainWindowVisible;
-    }
-    
-    return YES;
-}
-
-- (BOOL)selectedNotesPinned
-{
-    for (Note *selectedNote in self.selectedNotes) {
-        if (!selectedNote.pinned)
-            return NO;
-    }
-
-    return YES;
-}
-
-- (BOOL)selectedNotesMarkdowned
-{
-    for (Note *selectedNote in self.selectedNotes) {
-        if (!selectedNote.markdown)
-            return NO;
-    }
-    
-    return YES;
-}
-
-- (void)menuWillOpen:(NSMenu *)menu
-{
-    // Action menu
-    NSUInteger numSelectedNotes = [self.selectedNotes count];
-
-    if (self.viewingTrash || numSelectedNotes == 0) {
-        [menu cancelTrackingWithoutAnimation];
-        return;
-    }
-    
-    [self updateCounts];
-    pinnedItem.state = [self selectedNotesPinned] ? NSOnState : NSOffState;
-    markdownItem.state = [self selectedNotesMarkdowned] ? NSOnState : NSOffState;
-    [collaborateItem setEnabled:numSelectedNotes == 1];
-
-    NSString *statusString;
-    
-    if (numSelectedNotes == 1)
-        statusString = [NSString stringWithFormat:@"Modified: %@", [self.note.modificationDate sp_stringBeforeNow]];
-    else
-        statusString = [NSString stringWithFormat:@"%ld Notes Selected", [self.selectedNotes count]];
-    
-    [modifiedItem setTitle:statusString];
-}
-
-- (void)popoverDidShow:(NSNotification *)notification
-{
-    if (self.activePopover.contentViewController == self.versionsViewController) {
-        // Prepare the UI
-        self.viewingVersions = YES;
-        [self updateVersionSlider];
-        [self updateVersionLabel:self.note.modificationDate];
-        [self.noteEditor setEditable:NO];
-
-        // Request the version data from Simperium
-        Simperium *simperium = [[SimplenoteAppDelegate sharedDelegate] simperium];
-        [[simperium bucketForName:@"Note"] requestVersions:SPVersionSliderMaxVersions key:self.note.simperiumKey];
-        
-    } else if (self.activePopover.contentViewController == self.publishViewController) {
-        NSLog(@"popOverDidShow update publish ui");
-        [self updatePublishUI];
-    }
-}
-
-- (void)popoverWillClose:(NSNotification *)notification
-{
-    if (self.activePopover.contentViewController == self.versionsViewController) {
-        self.viewingVersions = NO;
-        
-        // Unload versions and re-enable editor
-        [self.noteEditor setEditable:YES];
-        self.noteVersionData = nil;
-        
-        // Refreshes the note content in the editor, in case the popover was canceled
-        [self didReceiveNewContent];
-    }
-}
-
-#pragma mark - PublishViewController Delegate
-
-- (void)publishControllerDidClickPublish:(PublishViewController *)controller
-{
-    // The button state is toggled when user clicks on it
-    if (controller.publishButtonState == NSOnState) {
-        [self publishNote];
-    } else {
-        [self unpublishNote];
-    }
-}
-
-
-#pragma mark - VersionsViewController Delegate
-
-- (void)versionsController:(VersionsViewController *)sender updatedSlider:(NSInteger)newValue
-{
-    NSDictionary *versionData = [self.noteVersionData objectForKey:@(newValue)];
-    NSLog(@"Loading version %ld", (long)newValue);
-
-    self.versionsViewController.restoreActionEnabled = newValue != sender.maxSliderValue && versionData != nil;
-
-	if (versionData != nil) {
-        NSString *content = (NSString *)[versionData objectForKey:@"content"];
-        [self.noteEditor displayNoteWithContent:content];
-
-		NSDate *versionDate = [NSDate dateWithTimeIntervalSince1970:[(NSString *)[versionData objectForKey:@"modificationDate"] doubleValue]];
-		[self updateVersionLabel:versionDate];
-	}
-}
-
-- (void)versionsControllerDidClickRestore:(VersionsViewController *)sender
-{
-    [SPTracker trackEditorNoteRestored];
-    
-    self.note.content = [self.noteEditor plainTextContent];
-    [self save];
-    [self dismissActivePopover];
-}
-
 
 #pragma mark - Actions
 
-- (IBAction)detailsAction:(id)sender
+- (IBAction)moreWasPressed:(id)sender
 {
     NSButton *infoButton = (NSButton *)sender;
     NSRect infoFrame = infoButton.frame;
     NSPoint origin = NSMakePoint(CGRectGetMidX(infoFrame), CGRectGetMinY(infoFrame));
 
-    [self.detailsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
+    [self.moreActionsMenu popUpMenuPositioningItem:nil atLocation:origin inView:infoButton.superview];
 }
 
 - (IBAction)pinAction:(id)sender
 {
+    if (![sender isKindOfClass:[NSMenuItem class]]) {
+        return;
+    }
+
     [SPTracker trackEditorNotePinningToggled];
-    
+
     // Toggle the selected notes
+    NSMenuItem *pinnedItem = (NSMenuItem *)sender;
     BOOL isPinned = pinnedItem.state == NSOffState;
     
     for (Note *selectedNote in self.selectedNotes) {
@@ -715,7 +455,12 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 - (IBAction)markdownAction:(id)sender
 {
+    if (![sender isKindOfClass:[NSMenuItem class]]) {
+        return;
+    }
+
     // Toggle the markdown state
+    NSMenuItem *markdownItem = (NSMenuItem *)sender;
     BOOL isEnabled = markdownItem.state == NSOffState;
 
     for (Note *selectedNote in self.selectedNotes) {
@@ -983,17 +728,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
     self.noteEditor.textColor           = [NSColor simplenoteTextColor];
     self.tagsField.textColor            = [NSColor simplenoteTextColor];
     self.tagsField.placeholderTextColor = [NSColor simplenoteSecondaryTextColor];
-
-    [self dismissActivePopover];
-}
-
-- (void)showPublishPopover
-{
-    PublishViewController *viewController = [PublishViewController new];
-    viewController.delegate = self;
-
-    [self showViewController:viewController relativeToView:self.toolbarView.shareButton preferredEdge:NSMaxYEdge];
-    self.publishViewController = viewController;
 }
 
 // Reprocesses note checklists after switching themes, so they apply the correct color
@@ -1005,49 +739,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 
 
 #pragma mark - NSButton Delegate Methods
-
-- (IBAction)showSharePopover:(id)sender
-{
-    [SPTracker trackEditorCollaboratorsAccessed];
-
-    ShareViewController *viewController = [ShareViewController new];
-    [self showViewController:viewController relativeToView:self.tagsField preferredEdge:NSMaxYEdge];
-
-    [self.tagsField becomeFirstResponder];
-    self.shareViewController = viewController;
-}
-
-- (IBAction)showVersionPopover:(id)sender
-{
-    // Dismiss the popover if user clicks revisions button when popover is showing already
-    if (self.activePopover != nil && [self.activePopover isShown] &&
-            self.activePopover.contentViewController == self.versionsViewController) {
-        [self dismissActivePopover];
-        return;
-    }
-    
-    [SPTracker trackEditorVersionsAccessed];
-
-    VersionsViewController *viewController = [VersionsViewController new];
-    viewController.delegate = self;
-
-    [self showViewController:viewController relativeToView:self.toolbarView.historyButton preferredEdge:NSMaxYEdge];
-    self.versionsViewController = viewController;
-}
-
-- (IBAction)shareNote:(id)sender
-{
-    if (!self.note.content) {
-        return;
-    }
-
-    NSButton *sourceButton = self.toolbarView.shareButton;
-    NSMutableArray *noteShareItem = [NSMutableArray arrayWithObject:self.note.content];
-
-    NSSharingServicePicker *sharingPicker = [[NSSharingServicePicker alloc] initWithItems:noteShareItem];
-    sharingPicker.delegate = self;
-    [sharingPicker showRelativeToRect:sourceButton.bounds ofView:sourceButton preferredEdge:NSMinYEdge];
-}
 
 - (IBAction)toggleMarkdownView:(id)sender
 {
@@ -1089,77 +780,6 @@ static NSInteger const SPVersionSliderMaxVersions       = 30;
 {
     [self.noteEditor toggleListMarkersAtSelectedRange];
     [SPTracker trackEditorChecklistInserted];
-}
-
-#pragma mark - NSSharingServicePicker delegate
-
-- (NSArray *)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker sharingServicesForItems:(NSArray *)items proposedSharingServices:(NSArray *)proposedServices
-{
-    // Add Simplenote publish to web option to the sharing services drop down
-    NSArray *services = proposedServices;
-    NSString *firstString;
-    for (id item in items) {
-        if ([item isKindOfClass:[NSString class]]) {
-            firstString = item;
-            break;
-        }
-        if ([item isKindOfClass:[NSAttributedString class]]) {
-            firstString = [(NSAttributedString *)item string];
-            break;
-        }
-    }
-    
-    if (firstString) {
-        NSImage *image = [NSImage imageNamed:@"icon_simplenote"];
-        NSString *title = NSLocalizedString(@"Publish to Web", @"Publish to Web Service");
-        NSSharingService *customService = [[NSSharingService alloc] initWithTitle:title image:image alternateImage:nil handler:^{
-            [self showPublishPopover];
-        }];
-        
-        services = [services arrayByAddingObject:customService];
-    }
-    
-    return services;
-}
-
-#pragma mark - NSPopover Helpers
-
-- (void)showViewController:(NSViewController *)viewController
-            relativeToView:(NSView *)view
-             preferredEdge:(NSRectEdge)preferredEdge
-{
-    // If needed, dismiss any active popovers
-    [self dismissActivePopover];
-    
-    // New PopOver
-    NSPopover *popover = [self newPopoverWithContentViewController:viewController];;
-
-    // Note:
-    // NSPopover appears not to be applying it's NSAppearance to the `contentViewController` automatically.
-    // For that reason, we'll ensure the ViewController matches the Popover's Appearance.
-    //
-    viewController.view.appearance = popover.appearance;
-
-    // Finally display!
-    [popover showRelativeToRect:view.bounds ofView:view preferredEdge:preferredEdge];
-    self.activePopover = popover;
-}
-
-- (void)dismissActivePopover
-{
-    [self.activePopover close];
-    self.activePopover = nil;
-}
-
-- (NSPopover *)newPopoverWithContentViewController:(NSViewController *)viewController
-{
-    NSPopover *popover              = [NSPopover new];
-    popover.contentViewController   = viewController;
-    popover.delegate                = self;
-    popover.appearance              = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-    popover.behavior                = NSPopoverBehaviorTransient;
-
-    return popover;
 }
 
 @end

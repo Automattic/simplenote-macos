@@ -43,8 +43,60 @@ extension NoteListViewController {
             return
         }
 
-        let name: NSAppearance.Name = SPUserInterface.isDark ? .vibrantDark : .aqua
-        searchField.appearance = NSAppearance(named: name)
+        searchField.appearance = .simplenoteAppearance
+    }
+}
+
+
+// MARK: - Filtering
+//
+extension NoteListViewController {
+
+    /// Refreshes the Filtering Predicate
+    ///
+    @objc
+    func refreshPredicate() {
+        let predicates = selectedTagPredicates + searchTextPredicates
+        let compound = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+
+        setNotesPredicate(compound)
+    }
+
+    /// Returns a collection of NSPredicate(s) that will filter the Notes associated with the Selected Tag
+    ///
+    private var selectedTagPredicates: [NSPredicate] {
+        guard let selectedTagRow = SimplenoteAppDelegate.shared().tagListViewController.selectedRow else {
+            return []
+        }
+
+        let isTrashOnscreen = selectedTagRow == .trash
+        var output = [
+            NSPredicate.predicateForNotes(deleted: isTrashOnscreen)
+        ]
+
+        switch selectedTagRow {
+        case .tag(let tag):
+            output.append( NSPredicate.predicateForNotes(tag: tag.name) )
+        case .untagged:
+            output.append( NSPredicate.predicateForUntaggedNotes() )
+        default:
+            break
+        }
+
+        return output
+    }
+
+    /// Returns a NSPredicate that will filter the current Search Text (if any)
+    ///
+    private var searchTextPredicates: [NSPredicate] {
+        let searchText = searchField.stringValue
+        guard !searchText.isEmpty else {
+            return []
+        }
+
+        return [
+            NSPredicate.predicateForNotes(searchText: searchText)
+        ]
     }
 }
 

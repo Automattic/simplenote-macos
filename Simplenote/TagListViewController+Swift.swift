@@ -5,9 +5,98 @@ import Foundation
 //
 extension TagListViewController {
 
+    /// Refreshes the Top Content Insets: We'll match the Notes List Insets
+    ///
     @objc
     func refreshExtendedContentInsets() {
-        clipView.extendedContentInsets.top = Settings.extendedTopInset
+        let titlebarHeight = view.window?.simplenoteTitlebarHeight ?? Settings.titlebarHeight
+        let topContentInset = titlebarHeight + Settings.searchBarHeight
+
+        guard clipView.contentInsets.top != topContentInset else {
+            return
+        }
+
+        clipView.contentInsets.top = topContentInset
+    }
+
+    /// Regenerates the Internal List State
+    ///
+    @objc
+    func refreshState() {
+        state = TagListState(tags: tagArray)
+        tableView.reloadData()
+    }
+}
+
+
+// MARK: - Public API
+//
+extension TagListViewController {
+
+    /// Returns the Selected Row
+    ///
+    var selectedRow: TagListRow? {
+        let selectedIndex = tableView.selectedRow
+        guard selectedIndex != NSNotFound else {
+            return nil
+        }
+
+        return state.rowAtIndex(selectedIndex)
+    }
+}
+
+
+// MARK: - NSTableViewDelegate Helpers
+//
+extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
+
+    public func numberOfRows(in tableView: NSTableView) -> Int {
+        state.numberOfRows
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        switch state.rowAtIndex(row) {
+        case .allNotes:
+            return allNotesTableViewCell()
+        case .trash:
+            return trashTableViewCell()
+        case .header:
+            return tagHeaderTableViewCell()
+        case .spacer:
+            return spacerTableViewCell()
+        case .tag(let tag):
+            return tagTableViewCell(for: tag)
+        case .untagged:
+            return untaggedTableViewCell()
+        }
+    }
+
+    public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
+        switch state.rowAtIndex(row) {
+        case .trash:
+            return trashDropdownMenu
+        case .tag:
+            return tagDropdownMenu
+        default:
+            return nil
+        }
+    }
+
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let rowView = TableRowView()
+        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        return rowView
+    }
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        state.rowAtIndex(row).isSelectable
+    }
+
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        let isViewingTrash = tableView.selectedRow != NSNotFound && state.rowAtIndex(tableView.selectedRow) == .trash
+        let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
+
+        NotificationCenter.default.post(name: name, object: self)
     }
 }
 
@@ -18,7 +107,6 @@ extension TagListViewController {
 
     /// Returns a HeaderTableCellView instance, meant to be used as Tags List Header
     ///
-    @objc
     func tagHeaderTableViewCell() -> HeaderTableCellView {
         let headerView = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
         headerView.textField?.stringValue = NSLocalizedString("Tags", comment: "Tags Section Name").uppercased()
@@ -27,7 +115,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to be used as All Notes Row
     ///
-    @objc
     func allNotesTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.iconImageView.image = NSImage(named: .allNotes)
@@ -39,7 +126,6 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to be used as Trash Row
     ///
-    @objc
     func trashTableViewCell() -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.iconImageView.image = NSImage(named: .trash)
@@ -51,12 +137,28 @@ extension TagListViewController {
 
     /// Returns a TagTableCellView instance, initialized to render a specified Tag
     ///
-    @objc(tagTableViewCellForTag:)
     func tagTableViewCell(for tag: Tag) -> TagTableCellView {
         let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
         tagView.nameTextField.delegate = self
         tagView.nameTextField.isEditable = true
         tagView.nameTextField.stringValue = tag.name
+
+        return tagView
+    }
+
+    /// Returns a SpacerTableView Instance.
+    ///
+    func spacerTableViewCell() -> SpacerTableViewCell {
+        return tableView.makeTableViewCell(ofType: SpacerTableViewCell.self)
+    }
+
+    /// Returns a TagTableCellView instance, initialized to be used as Trash Row
+    ///
+    func untaggedTableViewCell() -> TagTableCellView {
+        let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
+        tagView.iconImageView.image = NSImage(named: .untagged)
+        tagView.iconImageView.isHidden = false
+        tagView.nameTextField.stringValue = NSLocalizedString("Untagged Notes", comment: "Untagged Notes Filter")
 
         return tagView
     }
@@ -76,5 +178,6 @@ extension TagListViewController: SPTextFieldDelegate {
 // MARK: - Settings!
 //
 private enum Settings {
-    static let extendedTopInset = CGFloat(48)
+    static let titlebarHeight = CGFloat(22)
+    static let searchBarHeight = CGFloat(48)
 }

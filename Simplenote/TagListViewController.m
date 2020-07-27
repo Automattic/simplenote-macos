@@ -9,7 +9,6 @@
 #import "TagListViewController.h"
 #import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "SPTableView.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
 #import "SPTracker.h"
@@ -18,25 +17,19 @@
 @import Simperium_OSX;
 
 
-#define kAllNotesRow 0
-#define kTrashRow 1
-#define kTagHeaderRow 2
-#define kStartOfTagListRow 3
 
-
-NSString * const kTagsDidLoad = @"SPTagsDidLoad";
-NSString * const kTagUpdated = @"SPTagUpdated";
-NSString * const kDidBeginViewingTrash = @"SPDidBeginViewingTrash";
-NSString * const kWillFinishViewingTrash = @"SPWillFinishViewingTrash";
-NSString * const kDidEmptyTrash = @"SPDidEmptyTrash";
-CGFloat const SPListEstimatedRowHeight = 30;
+NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
+NSString * const TagListDidUpdateTagNotification            = @"TagListDidUpdateTagNotification";
+NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginViewingTrashNotification";
+NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
+CGFloat const TagListEstimatedRowHeight                     = 30;
 
 @interface TagListViewController ()
-
-@property (nonatomic, strong) NSMenu    *tagDropdownMenu;
-@property (nonatomic, strong) NSMenu    *trashDropdownMenu;
-@property (nonatomic, strong) NSString  *tagNameBeingEdited;
-@property (nonatomic, assign) BOOL      menuShowing;
+@property (nonatomic, strong) NSMenu            *tagDropdownMenu;
+@property (nonatomic, strong) NSMenu            *trashDropdownMenu;
+@property (nonatomic, strong) NSString          *tagNameBeingEdited;
+@property (nonatomic, strong) NSArray<Tag *>    *tagArray;
+@property (nonatomic, assign) BOOL              menuShowing;
 
 @end
 
@@ -47,27 +40,41 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self stopListeningToNotifications];
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.state = [TagListState new];
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     [self buildDropdownMenus];
 
-    self.tableView.rowHeight = SPListEstimatedRowHeight;
+    self.tableView.rowHeight = TagListEstimatedRowHeight;
     self.tableView.usesAutomaticRowHeights = YES;
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];    
+    [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
-    [self refreshExtendedContentInsets];
     [self startListeningToNotifications];
 }
-
 
 - (void)viewWillAppear
 {
     [super viewWillAppear];
     [self applyStyle];
+}
+
+- (void)viewWillLayout
+{
+    [super viewWillLayout];
+    [self refreshExtendedContentInsets];
 }
 
 - (void)startListeningToNotifications
@@ -118,7 +125,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
     }
 }
 
-- (void)sortTags
+- (NSArray<Tag *> *)sortTags:(NSArray<Tag *> *)unsorted
 {
     NSSortDescriptor *sortDescriptor;
     if (Options.shared.alphabeticallySortTags) {
@@ -130,7 +137,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
         sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
     }
 
-    self.tagArray = [self.tagArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    return [unsorted sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
 // TODO: Work in Progress. Decouple with a delegate please
@@ -145,8 +152,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
     // Remember last selections
     NSInteger tagRow = [self.tableView selectedRow];
     NSInteger noteRow = [self.noteListViewController.tableView selectedRow];
-    
-    [self.tableView reloadData];
+
+    [self refreshState];
     
     // Restore last selections
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:tagRow] byExtendingSelection:NO];
@@ -157,15 +164,15 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)reset
 {
-    self.tagArray = [NSArray array];
-    [self.tableView reloadData];
+    self.tagArray = @[];
+    [self refreshState];
 }
 
 - (void)loadTags
 {
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    self.tagArray = [[appDelegate.simperium bucketForName: @"Tag"] allObjects];
-    [self sortTags];
+    NSArray<Tag *> *unsorted = [[appDelegate.simperium bucketForName: @"Tag"] allObjects];
+    self.tagArray = [self sortTags:unsorted];
 
     [appDelegate.simperium save];
     
@@ -185,19 +192,12 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (NSString *)selectedTagName
 {
-    NSInteger selectedRow = [self.tableView selectedRow];
-    if (selectedRow < kStartOfTagListRow) {
-        return @"";
-    }
-    
-    Tag *tag = [self.tagArray objectAtIndex:selectedRow - kStartOfTagListRow];
-    return tag.name;
+    return self.selectedTag.name ?: @"";
 }
 
 - (void)selectAllNotesTag
 {
-    NSIndexSet *allNotesIndex = [NSIndexSet indexSetWithIndex:kAllNotesRow];
-    [self.tableView selectRowIndexes:allNotesIndex byExtendingSelection:NO];
+    [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
 
     // Notes:
     //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
@@ -211,23 +211,20 @@ CGFloat const SPListEstimatedRowHeight = 30;
 
 - (void)selectTag:(Tag *)tagToSelect
 {
-    int row=0;
-    for (Tag *tag in self.tagArray) {
-        if ([tag.name isEqualToString:tagToSelect.name])
-            break;
-        row++;
+    NSIndexSet *index = [self.state indexSetForTagRowWithName:tagToSelect.name];
+    if (!index) {
+        return;
     }
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row+kStartOfTagListRow] byExtendingSelection:NO];
+
+    [self.tableView selectRowIndexes:index byExtendingSelection:NO];
 }
 
 - (NSArray *)notesWithTag:(Tag *)tag
 {
-    NSArray *predicateList = @[
-        [NSPredicate predicateWithFormat: @"deleted == %@", @(NO)],
-        [NSPredicate predicateWithFormat: @"tags CONTAINS[c] %@", tag.name]
-    ];
-    
-    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicateList];
+    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:@[
+        [NSPredicate predicateForNotesWithDeletedStatus:NO],
+        [NSPredicate predicateForNotesWithTag:tag.name]
+    ]];
     
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     SPBucket *noteBucket = [appDelegate.simperium bucketForName:@"Note"];
@@ -306,7 +303,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self.simperium save];
     
     NSDictionary *userInfo = @{@"tagName": newTagName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTagUpdated object:self userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:userInfo];
 }
 
 - (void)deleteTag:(Tag *)tag
@@ -337,15 +334,14 @@ CGFloat const SPListEstimatedRowHeight = 30;
     [self loadTags];
     
 	if(tag == selectedTag) {
-		[self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:kAllNotesRow] byExtendingSelection:NO];
+        [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
 	} else {
-		[self selectTag:selectedTag];
+        [self selectTag:selectedTag];
 	}
 	
     NSDictionary *userInfo = @{@"tagName": tagName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTagUpdated object:self userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:userInfo];
 }
-
 
 
 #pragma mark - Helpers
@@ -371,23 +367,17 @@ CGFloat const SPListEstimatedRowHeight = 30;
 	return tagIndex;
 }
 
-- (Tag *)tagAtIndex:(NSInteger)tagIndex
-{
-	return (tagIndex >= 0 && tagIndex < self.tagArray.count) ? self.tagArray[tagIndex] : nil;
-}
-
 - (Tag *)selectedTag
 {
-	NSInteger tagIndex = self.tableView.selectedRow - kStartOfTagListRow;
-	return [self tagAtIndex:tagIndex];
+    NSInteger index = self.tableView.selectedRow;
+    return index != NSNotFound ? [self.state tagAtIndex:index] : nil;
 }
 
 - (Tag *)highlightedTag
 {
-	NSInteger tagIndex = [self highlightedTagRowIndex] - kStartOfTagListRow;
-	return [self tagAtIndex:tagIndex];
+    NSInteger index = self.highlightedTagRowIndex;
+    return index != NSNotFound ? [self.state tagAtIndex:index] : nil;
 }
-
 
 
 #pragma mark - Actions
@@ -434,8 +424,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:appDelegate.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"deleted == YES"]];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
     
     NSError *error;
     NSArray *items = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
@@ -444,90 +434,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
     }
     [appDelegate.simperium save];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDidEmptyTrash object:self];
-}
-
-
-#pragma mark - NSTableView delegate
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
-{
-    return kStartOfTagListRow + self.tagArray.count;
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    if (row == kAllNotesRow) {
-        return NSLocalizedString(@"All Notes", @"Title of the view that displays all your notes");
-    } else if(row == kTrashRow) {
-        return NSLocalizedString(@"Trash", @"Title of the view that displays all your deleted notes");
-    } else if(row == kTagHeaderRow) {
-        return @"";
-    } else {
-        Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
-        return tag.name;
-    }
-}
-
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    if (row == kAllNotesRow) {
-        return [self allNotesTableViewCell];
-    }
-
-    if (row == kTrashRow) {
-        return [self trashTableViewCell];
-    }
-
-    if (row == kTagHeaderRow) {
-        return [self tagHeaderTableViewCell];
-    }
-
-    Tag *tag = [self.tagArray objectAtIndex:row-kStartOfTagListRow];
-    return [self tagTableViewCellForTag:tag];
-}
-
-- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    switch (row) {
-        case kAllNotesRow:
-        case kTagHeaderRow:
-            return nil;
-        case kTrashRow:
-            return self.trashDropdownMenu;
-        default:
-            return self.tagDropdownMenu;
-    }
-}
-
-- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
-{
-    TableRowView *rowView = [TableRowView new];
-    rowView.selectedBackgroundColor = [NSColor simplenoteSelectedBackgroundColor];
-    return rowView;
-}
-
-- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
-{
-    if (row == kTagHeaderRow) {
-        return NO;
-    }
-    
-    if ([self.tableView selectedRow] == kTrashRow) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kWillFinishViewingTrash object:self];
-    }
-
-    return YES;
-}
-
-- (void)tableViewSelectionDidChange:(NSNotification *)notification
-{
-    BOOL isViewingTrash = [self.tableView selectedRow] == kTrashRow;
-    NSString *notificationName = isViewingTrash ? kDidBeginViewingTrash : kTagsDidLoad;
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self];
-
-    [self.noteListViewController filterNotes:nil];
-    [self.noteListViewController selectRow:0];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidEmptyTrashNotification object:self];
 }
 
 
@@ -547,7 +454,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
     }
     
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)
-    return [self.tableView selectedRow] >= kStartOfTagListRow && self.tagNameBeingEdited == nil;
+    BOOL isTagSelected = [self selectedTag] != nil;
+    return isTagSelected && self.tagNameBeingEdited == nil;
 }
 
 - (void)menuWillOpen:(NSMenu *)menu
@@ -559,6 +467,7 @@ CGFloat const SPListEstimatedRowHeight = 30;
 {
     self.menuShowing = NO;
 }
+
 
 #pragma mark - NSTextField delegate
 
@@ -602,21 +511,21 @@ CGFloat const SPListEstimatedRowHeight = 30;
 // Much of this code is overly generalized for this use case, but it works
 - (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
-    BOOL isAlphaSort = Options.shared.alphabeticallySortTags;
-    if (isAlphaSort || [rowIndexes firstIndex] < kStartOfTagListRow) {
-        // Alphabetical tag sorting should not allow drag and drop
+    // Alphabetical tag sorting should not allow drag and drop
+    if (Options.shared.alphabeticallySortTags) {
         return NO;
     }
-    
+
+    Tag *tag = [self.state tagAtIndex:rowIndexes.firstIndex];
+    if (tag == nil) {
+        return NO;
+    }
+
+    NSArray *objectURIs = @[
+        tag.objectID.URIRepresentation
+    ];
+
     [pboard declareTypes:[NSArray arrayWithObject:@"Tag"] owner:self];
-    
-    // Collect URI representation of managed objects
-    NSMutableArray *objectURIs = [NSMutableArray array];
-    NSUInteger row = [rowIndexes firstIndex] - kStartOfTagListRow;
-    id objProxy = [self.tagArray objectAtIndex:row];
-    [objectURIs addObject: [[objProxy objectID] URIRepresentation]];
-    
-    // Set them to paste board
     [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:objectURIs] forType:@"Tag"];
     
     return YES;
@@ -627,18 +536,20 @@ CGFloat const SPListEstimatedRowHeight = 30;
                  proposedRow:(NSInteger)row
        proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
-    if (row < kStartOfTagListRow) {
+    if (info.draggingSource != self.tableView) {
         return NSDragOperationNone;
     }
-    
-    if ([info draggingSource] == self.tableView) {
-        if (dropOperation == NSTableViewDropOn){
-            [self.tableView setDropRow:row dropOperation:NSTableViewDropAbove];
-        }
-        return NSDragOperationMove;
+
+    // Disallow drop outside the Tags Range
+    if (row < self.state.indexOfFirstTagRow || (row > self.state.indexOfLastTagRow + 1)) {
+        return NSDragOperationNone;
     }
-    
-    return NSDragOperationNone;
+
+    if (dropOperation == NSTableViewDropOn) {
+        [self.tableView setDropRow:row dropOperation:NSTableViewDropAbove];
+    }
+
+    return NSDragOperationMove;
 }
 
 - (BOOL)tableView:(NSTableView *)tableView
@@ -647,8 +558,8 @@ CGFloat const SPListEstimatedRowHeight = 30;
     dropOperation:(NSTableViewDropOperation)operation
 {
     // Account for row offset
-    row = row - kStartOfTagListRow;
-        
+    row = row - self.state.indexOfFirstTagRow;
+
     // Get object URIs from paste board
     NSData *data        = [info.draggingPasteboard dataForType:@"Tag"];
     NSArray *objectURIs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -711,25 +622,14 @@ CGFloat const SPListEstimatedRowHeight = 30;
     return YES;
 }
 
+
+#pragma mark - Appearance
+
 - (void)applyStyle
 {
-    self.visualEffectsView.appearance = [NSAppearance appearanceNamed:self.appearanceNameForVisualEffectsView];
-    self.visualEffectsView.material = self.materialForVisualEffectsView;
+    self.visualEffectsView.appearance = [NSAppearance simplenoteAppearance];
+    self.visualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
     [self reloadDataAndPreserveSelection];
-}
-
-- (NSAppearanceName)appearanceNameForVisualEffectsView
-{
-    return SPUserInterface.isDark ? NSAppearanceNameVibrantDark: NSAppearanceNameVibrantLight;
-}
-
-- (NSVisualEffectMaterial)materialForVisualEffectsView
-{
-    if (@available(macOS 10.14, *)) {
-        return NSVisualEffectMaterialUnderWindowBackground;
-    }
-
-    return NSVisualEffectMaterialAppearanceBased;
 }
 
 @end

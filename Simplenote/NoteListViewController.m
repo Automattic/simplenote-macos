@@ -21,6 +21,20 @@
 
 NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
+@interface NoteListViewController ()
+@property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
+@property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
+@property (nonatomic, strong) IBOutlet BackgroundView       *topDividerView;
+@property (nonatomic, strong) IBOutlet NSTextField          *statusField;
+@property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (nonatomic, strong) IBOutlet SPTableView          *tableView;
+@property (nonatomic, strong) IBOutlet NSView               *searchView;
+@property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
+@property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, assign) BOOL                          searching;
+@property (nonatomic, assign) BOOL                          viewingTrash;
+@end
+
 @implementation NoteListViewController
 
 - (void)viewDidLoad
@@ -53,16 +67,16 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: NoteListCondensedDidChangeNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(didBeginViewingTrash:)
-                                                 name: kDidBeginViewingTrash
+                                             selector: @selector(didBeginViewingTag:)
+                                                 name: TagListDidBeginViewingTagNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(willFinishViewingTrash:)
-                                                 name: kWillFinishViewingTrash
+                                             selector: @selector(didBeginViewingTrash:)
+                                                 name: TagListDidBeginViewingTrashNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didEmptyTrash:)
-                                                 name: kDidEmptyTrash
+                                                 name: TagListDidEmptyTrashNotification
                                                object: nil];
 
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -186,6 +200,11 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     if (row >= 0) {
         [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:row] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
     }
+}
+
+- (void)selectFirstRow
+{
+    [self selectRow:0];
 }
 
 - (void)selectRow:(NSInteger)row
@@ -355,17 +374,17 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     [self reloadRowForNoteKey:key];
 }
 
+- (void)didBeginViewingTag:(NSNotification *)notification
+{
+    self.viewingTrash = NO;
+    [self selectedTaglistRowWasUpdated];
+}
+
 - (void)didBeginViewingTrash:(NSNotification *)notification
 {
     [SPTracker trackListTrashPressed];
     self.viewingTrash = YES;
-    [self refreshEnabledActions];
-}
-
-- (void)willFinishViewingTrash:(NSNotification *)notification
-{
-    self.viewingTrash = NO;
-    [self refreshEnabledActions];
+    [self selectedTaglistRowWasUpdated];
 }
 
 - (void)didEmptyTrash:(NSNotification *)notification
@@ -384,6 +403,14 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     [[self.searchField.cell cancelButtonCell] performClick:self];
     [self.searchField resignFirstResponder];
 }
+
+- (void)selectedTaglistRowWasUpdated
+{
+    [self refreshEnabledActions];
+    [self refreshPredicate];
+    [self selectFirstRow];
+}
+
 
 #pragma mark - NSSearchFieldDelegate
 
@@ -504,37 +531,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
 - (IBAction)filterNotes:(id)sender
 {
-    NSString *searchText = [self.searchField stringValue];
-    
-    NSMutableArray *predicateList = [NSMutableArray new];
-    [predicateList addObject: [NSPredicate predicateWithFormat: @"deleted == %@", @(self.viewingTrash)]];
-    
-    NSString *selectedTag = [[SimplenoteAppDelegate sharedDelegate] selectedTagName];
-    if (selectedTag.length > 0) {
-        // Match against "tagName" (JSON formatted)
-        NSString *tagName = selectedTag;
-        
-        tagName = [tagName stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
-        tagName = [tagName stringByReplacingOccurrencesOfString:@"/" withString:@"\\/"];
-        
-        // individual tags are surrounded by quotes, thus adding quotes to the selected tag
-        // ensures only the correct notes are shown
-        NSString *match = [[NSString alloc] initWithFormat:@"\"%@\"", tagName];
-        [predicateList addObject: [NSPredicate predicateWithFormat: @"tags CONTAINS[c] %@",match]];
-    }
-    
-    if (searchText.length > 0) {
-        NSArray *searchStrings = [searchText componentsSeparatedByString:@" "];
-        for (NSString *word in searchStrings) {
-            if (word.length == 0) {
-                continue;
-            }
-            [predicateList addObject: [NSPredicate predicateWithFormat:@"content CONTAINS[c] %@", word]];
-        }
-    }
-    
-    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicateList];
-    [self setNotesPredicate:compound];
+    [self refreshPredicate];
 }
 
 @end

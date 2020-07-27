@@ -42,8 +42,13 @@ extension Simperium {
 
     /// Returns the Tags Bucket instance
     ///
-    @objc
     var tagsBucket: SPBucket {
         bucket(forName: Tag.classNameWithoutNamespaces)
+    }
+
+    /// Returns the Notes Bucket instance
+    ///
+    var notesBucket: SPBucket {
+        bucket(forName: Note.classNameWithoutNamespaces)
     }
 }
