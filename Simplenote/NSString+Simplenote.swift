@@ -12,6 +12,13 @@ extension NSString {
         addingPercentEncoding(withAllowedCharacters: .alphanumerics)
     }
 
+    /// Returns a Percent Encoded / lowercased and UTF normalized version of the receiver
+    ///
+    @objc
+    var byEncodingForTagSimperiumKey: String {
+        precomposedStringWithCanonicalMapping.lowercased().byEncodingNonAlphanumerics ?? self as String
+    }
+
     /// Returns the full range of the receiver
     ///
     @objc

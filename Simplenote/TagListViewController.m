@@ -259,14 +259,13 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     if ([self tagWithName:tagName]) {
         return nil;
     }
-    
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
-    NSString *tagKey = [[tagName lowercaseString] sp_urlEncodeString];
-    Tag *newTag = [tagBucket insertNewObjectForKey:tagKey];
+
+    SPBucket *tagBucket = [self.simperium bucketForName:@"Tag"];
+
+    Tag *newTag = [tagBucket insertNewObjectForKey:tagName.byEncodingForTagSimperiumKey];
     newTag.name = tagName;
-    newTag.index = index == nil ? @([tagBucket numObjects]) : index;
-    [appDelegate.simperium save];
+    newTag.index = index == nil ? @(tagBucket.numObjects) : index;
+    [self.simperium save];
     
     return newTag;
 }
