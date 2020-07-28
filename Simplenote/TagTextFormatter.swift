@@ -2,7 +2,9 @@ import Foundation
 
 
 // MARK: - TagTextFormatter
-//         Helps us limit the Tag Length in the TagListViewController
+//         Helps us limit the Tag Length in the TagListViewController.
+//         We'll always check against the *Simperium Encoded* String
+//         (since Tag Names are hashed, and used as Tag.simperiumKey).
 //
 class TagTextFormatter : Formatter {
 
@@ -27,10 +29,10 @@ class TagTextFormatter : Formatter {
     }
 
     override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
-        return partialString.count <= maximumLength
+        partialString.byEncodingForTagSimperiumKey.count <= maximumLength
     }
 
     override func attributedString(for obj: Any, withDefaultAttributes attrs: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString? {
-        return nil
+        nil
     }
 }
