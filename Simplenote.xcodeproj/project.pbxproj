@@ -175,6 +175,8 @@
 		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B54F4AA224A6588700D8FAB1 /* MetricsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */; };
 		B54F4AA324A6588700D8FAB1 /* MetricsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */; };
+		B54F9A6324D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */; };
+		B54F9A6424D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */; };
 		B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
@@ -539,6 +541,7 @@
 		B54EB18E1A3F683D00D472B3 /* SPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPWindow.h; sourceTree = "<group>"; };
 		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricsViewController.xib; sourceTree = "<group>"; };
+		B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplenoteConstants.swift; sourceTree = "<group>"; };
 		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
 		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
 		B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSVisualEffectView+Simplenote.swift"; sourceTree = "<group>"; };
@@ -789,8 +792,6 @@
 				26F592541408BF75003A5174 /* NotesArrayController.m */,
 				46EF5196177C4ECC00A139E0 /* SPApplication.h */,
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
-				B51374F41AC0591900825FCC /* SPConstants.h */,
-				B51374F51AC0591900825FCC /* SPConstants.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
@@ -988,9 +989,12 @@
 			isa = PBXGroup;
 			children = (
 				B501AAD12437E5250084CDA3 /* AppKitConstants.swift */,
+				B51374F51AC0591900825FCC /* SPConstants.m */,
 				B5EB3ACF2458B9940089858D /* NSNotification+Simplenote.h */,
 				B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */,
 				B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */,
+				B51374F41AC0591900825FCC /* SPConstants.h */,
+				B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -1802,6 +1806,7 @@
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				B5EB3AD42458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */,
 				B5EB3AD12458B9940089858D /* NSNotification+Simplenote.m in Sources */,
+				B54F9A6324D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
@@ -1935,6 +1940,7 @@
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				B5EB3AD52458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */,
 				B5EB3AD22458B9940089858D /* NSNotification+Simplenote.m in Sources */,
+				B54F9A6424D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
