@@ -5,6 +5,13 @@ import Foundation
 //
 extension NSString {
 
+    /// Percent Encodes all of the non alphanumeric characters in the receiver
+    ///
+    @objc
+    var byEncodingNonAlphanumerics: String? {
+        addingPercentEncoding(withAllowedCharacters: .alphanumerics)
+    }
+
     /// Returns the full range of the receiver
     ///
     @objc

@@ -6,6 +6,17 @@ import XCTest
 //
 class NSStringSimplenoteTests: XCTestCase {
 
+    /// Verifies that `byEncodingNonAlphanumerics` effectively escapes all of the non alphanumeric characters
+    ///
+    func testByEncodingNonAlphanumericsPercentEncodesAllOfTheNonAlphanumericCharactersInTheReceiver() {
+        let sample = "1234567890!@#$%^&*()-_+[]';./,qwertyuiopasdfghjkl;'zxcvbnm,./🔥😂😃🤪👍🦆🏴‍☠️☝️😯"
+        let escaped = sample.byEncodingNonAlphanumerics ?? ""
+        let escapedSet = CharacterSet(charactersIn: escaped)
+        let expectedSet = CharacterSet(charactersIn: "%").union(.alphanumerics)
+
+        XCTAssertTrue(expectedSet.isSuperset(of: escapedSet))
+    }
+
     /// Verifies that `fullRange` effectively returns a NSRange that wraps up the entire string
     ///
     func testFullRangeReturnsSomeRangeWrappingTheEntireString() {
