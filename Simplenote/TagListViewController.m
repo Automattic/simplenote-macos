@@ -472,8 +472,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)controlTextDidBeginEditing:(NSNotification *)notification
 {
-    NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
-    self.tagNameBeingEdited = [textView.string copy];
+    self.tagNameBeingEdited = [notification.fieldEditor.string copy];
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
@@ -481,8 +480,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     if (self.tagNameBeingEdited) {
         // This can get triggered before renaming has started; don't do anything in that case
 
-        NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
-        
+        NSTextView *textView = notification.fieldEditor;
         [textView setSelectedRange:NSMakeRange(0, 0)]; // force de-selection of text
         
         // Note:
