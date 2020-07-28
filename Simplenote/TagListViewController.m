@@ -182,7 +182,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 - (Tag *)tagWithName:(NSString *)tagName
 {
     for (Tag *tag in self.tagArray) {
-        if ([tag.name isEqualToString:tagName]) {
+        if ([tag.name compare:tagName options:NSCaseInsensitiveSearch] == NSOrderedSame) {
             return tag;
         }
     }
