@@ -125,5 +125,6 @@ private extension TagTableCellView {
         nameTextField.textRegularColor = .simplenoteTextColor
         nameTextField.textSelectionColor = .simplenoteSelectedTextColor
         nameTextField.textEditionColor = .simplenoteTextColor
+        nameTextField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
     }
 }
