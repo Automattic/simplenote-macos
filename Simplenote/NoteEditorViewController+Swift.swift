@@ -29,6 +29,7 @@ extension NoteEditorViewController {
         tagsField.font = .simplenoteSecondaryTextFont
         tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
+        tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
     }
 }
 
