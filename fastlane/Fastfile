@@ -82,7 +82,7 @@ end
       app_store_keywords: File.join(source_metadata_folder, "keywords.txt")
     }
 
-    ios_update_metadata_source(po_file_path: prj_folder + "/Simplenote/Resources/AppStoreStrings.pot",
+    ios_update_metadata_source(po_file_path: File.join(prj_folder, "/Simplenote/Resources/AppStoreStrings.pot"),
       source_files: files,
       release_version: options[:version])
   end
