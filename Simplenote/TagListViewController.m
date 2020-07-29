@@ -262,7 +262,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     SPBucket *tagBucket = [self.simperium bucketForName:@"Tag"];
 
-    Tag *newTag = [tagBucket insertNewObjectForKey:tagName.byEncodingForTagSimperiumKey];
+    Tag *newTag = [tagBucket insertNewObjectForKey:tagName.byEncodingAsTagHash];
     newTag.name = tagName;
     newTag.index = index == nil ? @(tagBucket.numObjects) : index;
     [self.simperium save];

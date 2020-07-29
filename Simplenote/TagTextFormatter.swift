@@ -29,7 +29,7 @@ class TagTextFormatter : Formatter {
     }
 
     override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
-        partialString.byEncodingForTagSimperiumKey.count <= maximumLength
+        partialString.byEncodingAsTagHash.count <= maximumLength
     }
 
     override func attributedString(for obj: Any, withDefaultAttributes attrs: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString? {

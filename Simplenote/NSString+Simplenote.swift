@@ -5,18 +5,13 @@ import Foundation
 //
 extension NSString {
 
-    /// Percent Encodes all of the non alphanumeric characters in the receiver
+    /// Encodes the receiver as a `Tag Hash`
     ///
     @objc
-    var byEncodingNonAlphanumerics: String? {
-        addingPercentEncoding(withAllowedCharacters: .alphanumerics)
-    }
-
-    /// Returns a Percent Encoded / lowercased and UTF normalized version of the receiver
-    ///
-    @objc
-    var byEncodingForTagSimperiumKey: String {
-        precomposedStringWithCanonicalMapping.lowercased().byEncodingNonAlphanumerics ?? self as String
+    var byEncodingAsTagHash: String {
+        precomposedStringWithCanonicalMapping
+            .lowercased()
+            .addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? self as String
     }
 
     /// Returns the full range of the receiver
