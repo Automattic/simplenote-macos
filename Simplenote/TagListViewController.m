@@ -486,23 +486,28 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    if (self.tagNameBeingEdited) {
-        // This can get triggered before renaming has started; don't do anything in that case
-
-        NSTextView *textView = notification.fieldEditor;
-        [textView setSelectedRange:NSMakeRange(0, 0)]; // force de-selection of text
-        
-        // Note:
-        // Send a *COPY* of the string. Otherwise the internal string will be exposed, and this may lead to
-        // weird side effects.
-        NSString *newTagName = [textView.string copy];
-        
-        BOOL tagAlreadyExists = [self tagWithName:newTagName] != nil;
-        if ([newTagName length] > 0 && !tagAlreadyExists && ![self.tagNameBeingEdited isEqualToString:newTagName])
-            [self changeTagName:self.tagNameBeingEdited toName:newTagName];
-        
-        self.tagNameBeingEdited = nil;
+    // This can get triggered before renaming has started; don't do anything in that case
+    if (!self.tagNameBeingEdited) {
+        return;
     }
+
+    // Force de-selection of text
+    NSTextView *textView = notification.fieldEditor;
+    [textView setSelectedRange:NSMakeRange(0, 0)];
+
+    // Send a *COPY* of the string. Otherwise the internal string will be exposed, and this may lead to
+    // weird side effects.
+    NSString *newTagName    = [textView.string copy];
+    BOOL newTagNotFound     = [self tagWithName:newTagName] == nil;
+    BOOL oldTagWasChanged   = [self.tagNameBeingEdited isEqualToString:newTagName] == false;
+
+    if (oldTagWasChanged && newTagNotFound && newTagName.length > 0) {
+        [self changeTagName:self.tagNameBeingEdited toName:newTagName];
+    } else {
+        [self.tableView reloadSelectedRow];
+    }
+
+    self.tagNameBeingEdited = nil;
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
