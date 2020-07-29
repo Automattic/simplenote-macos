@@ -179,10 +179,19 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self reloadDataAndPreserveSelection];
 }
 
+// Returns the Tag with the associated name.
+//
+// - Note: This API performs `Tag` comparison by checking the `encoded tag hash`,
+//         in order to normalize / isolate ourselves from potential mismatches.
+//
+// - Ref. https://github.com/Automattic/simplenote-macos/pull/617
+//
 - (Tag *)tagWithName:(NSString *)tagName
 {
+    NSString *targetTagHash = tagName.byEncodingAsTagHash;
+
     for (Tag *tag in self.tagArray) {
-        if ([tag.name compare:tagName options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        if ([tag.name.byEncodingAsTagHash isEqualToString:targetTagHash]) {
             return tag;
         }
     }
