@@ -498,10 +498,12 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     // Send a *COPY* of the string. Otherwise the internal string will be exposed, and this may lead to
     // weird side effects.
     NSString *newTagName    = [textView.string copy];
-    BOOL newTagNotFound     = [self tagWithName:newTagName] == nil;
+    Tag *oldTag             = [self tagWithName:self.tagNameBeingEdited];
+    Tag *newTag             = [self tagWithName:newTagName];
+    BOOL isProperRename     = newTag == nil || newTag == oldTag;
     BOOL oldTagWasChanged   = [self.tagNameBeingEdited isEqualToString:newTagName] == false;
 
-    if (oldTagWasChanged && newTagNotFound && newTagName.length > 0) {
+    if (oldTagWasChanged && isProperRename && newTagName.length > 0) {
         [self changeTagName:self.tagNameBeingEdited toName:newTagName];
     } else {
         [self.tableView reloadSelectedRow];
