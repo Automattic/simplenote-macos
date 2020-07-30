@@ -15,4 +15,16 @@ extension NSTableView {
 
         return target
     }
+
+    /// Reloads the selected row in (all) of the available columns
+    ///
+    @objc
+    func reloadSelectedRow() {
+        guard selectedRow != -1 else {
+            return
+        }
+
+        let allColumns = IndexSet(integersIn: .zero ..< numberOfColumns)
+        reloadData(forRowIndexes: selectedRowIndexes, columnIndexes: allColumns)
+    }
 }
