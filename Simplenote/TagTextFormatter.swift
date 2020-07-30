@@ -9,11 +9,18 @@ class TagTextFormatter : Formatter {
     ///
     let maximumLength: Int
 
-    /// Designated Initializer
-    /// - Parameter maximumLength: Maximum allowed (encoded) Tag Length
+    /// Indicates if spaces are entirely disallowed
     ///
-    init(maximumLength: Int) {
+    let disallowSpaces: Bool
+
+    /// Designated Initializer
+    /// - Parameters:
+    ///     - maximumLength: Maximum allowed (encoded) Tag Length
+    ///     - disallowSpaces: Indicates if the formatter should deny any kind of input that contains spaces
+    ///
+    init(maximumLength: Int, disallowSpaces: Bool = false) {
         self.maximumLength = maximumLength
+        self.disallowSpaces = disallowSpaces
         super.init()
     }
 
@@ -36,7 +43,7 @@ class TagTextFormatter : Formatter {
     ///              `Tag.simperiumKey` fields are actually derived from the Tag Name.
     ///
     override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
-        guard partialString != .space else {
+        if disallowSpaces, partialString.contains(String.space) {
             return false
         }
 
