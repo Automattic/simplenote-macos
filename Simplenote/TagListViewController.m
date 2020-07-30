@@ -495,8 +495,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     NSTextView *textView = notification.fieldEditor;
     [textView setSelectedRange:NSMakeRange(0, 0)];
 
-    // Send a *COPY* of the string. Otherwise the internal string will be exposed, and this may lead to
-    // weird side effects.
+    // Send a *COPY* of the string to avoid "NSLayoutManager: Loop / Crash"
     NSString *newTagName    = [textView.string copy];
     Tag *oldTag             = [self tagWithName:self.tagNameBeingEdited];
     Tag *newTag             = [self tagWithName:newTagName];
