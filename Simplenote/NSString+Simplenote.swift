@@ -5,6 +5,15 @@ import Foundation
 //
 extension NSString {
 
+    /// Encodes the receiver as a `Tag Hash`
+    ///
+    @objc
+    var byEncodingAsTagHash: String {
+        precomposedStringWithCanonicalMapping
+            .lowercased()
+            .addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? self as String
+    }
+
     /// Returns the full range of the receiver
     ///
     @objc

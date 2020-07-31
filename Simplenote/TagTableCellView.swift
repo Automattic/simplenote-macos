@@ -119,11 +119,13 @@ private extension TagTableCellView {
 
     func refreshStyle() {
         let tintColor: NSColor = selected ? .simplenoteSelectedTextColor : .simplenoteTextColor
+        let formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength, disallowSpaces: true)
 
         iconImageView.tintImage(color: tintColor)
         nameTextField.isSelected = selected
         nameTextField.textRegularColor = .simplenoteTextColor
         nameTextField.textSelectionColor = .simplenoteSelectedTextColor
         nameTextField.textEditionColor = .simplenoteTextColor
+        nameTextField.formatter = formatter
     }
 }

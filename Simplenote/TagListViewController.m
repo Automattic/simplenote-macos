@@ -179,10 +179,19 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self reloadDataAndPreserveSelection];
 }
 
+// Returns the Tag with the associated name.
+//
+// - Note: This API performs `Tag` comparison by checking the `encoded tag hash`,
+//         in order to normalize / isolate ourselves from potential mismatches.
+//
+// - Ref. https://github.com/Automattic/simplenote-macos/pull/617
+//
 - (Tag *)tagWithName:(NSString *)tagName
 {
+    NSString *targetTagHash = tagName.byEncodingAsTagHash;
+
     for (Tag *tag in self.tagArray) {
-        if ([tag.name isEqualToString:tagName]) {
+        if ([tag.name.byEncodingAsTagHash isEqualToString:targetTagHash]) {
             return tag;
         }
     }
@@ -259,14 +268,13 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     if ([self tagWithName:tagName]) {
         return nil;
     }
-    
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
-    NSString *tagKey = [[tagName lowercaseString] sp_urlEncodeString];
-    Tag *newTag = [tagBucket insertNewObjectForKey:tagKey];
+
+    SPBucket *tagBucket = [self.simperium bucketForName:@"Tag"];
+
+    Tag *newTag = [tagBucket insertNewObjectForKey:tagName.byEncodingAsTagHash];
     newTag.name = tagName;
-    newTag.index = index == nil ? @([tagBucket numObjects]) : index;
-    [appDelegate.simperium save];
+    newTag.index = index == nil ? @(tagBucket.numObjects) : index;
+    [self.simperium save];
     
     return newTag;
 }
@@ -473,30 +481,34 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)controlTextDidBeginEditing:(NSNotification *)notification
 {
-    NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
-    self.tagNameBeingEdited = [textView.string copy];
+    self.tagNameBeingEdited = [notification.fieldEditor.string copy];
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    if (self.tagNameBeingEdited) {
-        // This can get triggered before renaming has started; don't do anything in that case
-
-        NSTextView *textView = [notification.userInfo objectForKey:@"NSFieldEditor"];
-        
-        [textView setSelectedRange:NSMakeRange(0, 0)]; // force de-selection of text
-        
-        // Note:
-        // Send a *COPY* of the string. Otherwise the internal string will be exposed, and this may lead to
-        // weird side effects.
-        NSString *newTagName = [textView.string copy];
-        
-        BOOL tagAlreadyExists = [self tagWithName:newTagName] != nil;
-        if ([newTagName length] > 0 && !tagAlreadyExists && ![self.tagNameBeingEdited isEqualToString:newTagName])
-            [self changeTagName:self.tagNameBeingEdited toName:newTagName];
-        
-        self.tagNameBeingEdited = nil;
+    // This can get triggered before renaming has started; don't do anything in that case
+    if (!self.tagNameBeingEdited) {
+        return;
     }
+
+    // Force de-selection of text
+    NSTextView *textView = notification.fieldEditor;
+    [textView setSelectedRange:NSMakeRange(0, 0)];
+
+    // Send a *COPY* of the string to avoid "NSLayoutManager: Loop / Crash"
+    NSString *newTagName    = [textView.string copy];
+    Tag *oldTag             = [self tagWithName:self.tagNameBeingEdited];
+    Tag *newTag             = [self tagWithName:newTagName];
+    BOOL isProperRename     = newTag == nil || newTag == oldTag;
+    BOOL oldTagWasChanged   = [self.tagNameBeingEdited isEqualToString:newTagName] == false;
+
+    if (oldTagWasChanged && isProperRename && newTagName.length > 0) {
+        [self changeTagName:self.tagNameBeingEdited toName:newTagName];
+    } else {
+        [self.tableView reloadSelectedRow];
+    }
+
+    self.tagNameBeingEdited = nil;
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
