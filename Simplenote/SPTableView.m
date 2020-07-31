@@ -35,7 +35,10 @@
     NSPoint mousePoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     NSInteger row = [self rowAtPoint:mousePoint];
     NSInteger column = [self columnAtPoint:mousePoint];
-    [self selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+
+    if ([self.delegate tableView:self shouldSelectRow:row]) {
+        [self selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+    }
 
     if ([self.delegate respondsToSelector:@selector(tableView:menuForTableColumn:row:)] == false) {
         return [super menuForEvent:theEvent];
