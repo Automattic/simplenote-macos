@@ -28,7 +28,7 @@ NSString * const SPWPServiceName                    = @"simplenote-wpcom";
 NSString * const SPSignInErrorNotificationName      = @"SPSignInErrorNotificationName";
 NSString * const SPWPSignInAuthURL                  = @"https://public-api.wordpress.com/oauth2/authorize?response_type=code&scope=global&client_id=%@&redirect_uri=%@&state=%@";
 NSString * const SPHelpURL                          = @"https://simplenote.com/help";
-NSString * const SPContactUsURL                     = @"https://simplenote.com/contact-us";
+NSString * const SPContactUsURL                     = @"https://simplenote.com/contact";
 NSString * const SPTwitterURL                       = @"https://twitter.com/simplenoteapp";
 
 #if APP_STORE_BUILD
