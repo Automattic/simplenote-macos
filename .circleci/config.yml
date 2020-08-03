@@ -11,7 +11,6 @@ jobs:
       xcode-version: "11.2.1"
     steps:
       - checkout
-      - run: rm ~/.ssh/id_rsa
       - run:
           name: Copy Demo SPCredentials
           command: mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
