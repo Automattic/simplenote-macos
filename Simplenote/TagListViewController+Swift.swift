@@ -68,6 +68,8 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
             return tagTableViewCell(for: tag)
         case .untagged:
             return untaggedTableViewCell()
+        default:
+            return nil
         }
     }
 
@@ -89,7 +91,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        state.rowAtIndex(row).isSelectable
+        state.rowAtIndex(row)?.isSelectable ?? false
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
