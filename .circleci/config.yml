@@ -12,7 +12,6 @@ jobs:
     steps:
       - checkout
       - run: rm ~/.ssh/id_rsa
-      - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip
       - run:
           name: Copy Demo SPCredentials
           command: mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
