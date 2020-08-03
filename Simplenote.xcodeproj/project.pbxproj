@@ -212,9 +212,9 @@
 		B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B57CB881244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
 		B57CB882244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
-		B581370D24D8B9270088B91F /* SimplenoteFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B581370C24D8B9270088B91F /* SimplenoteFoundation */; };
 		B586C062245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
+		B588FF7624D8C0730052DD35 /* SimplenoteFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B588FF7524D8C0730052DD35 /* SimplenoteFoundation */; };
 		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -679,7 +679,7 @@
 				7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */,
 				2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */,
 				2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */,
-				B581370D24D8B9270088B91F /* SimplenoteFoundation in Frameworks */,
+				B588FF7624D8C0730052DD35 /* SimplenoteFoundation in Frameworks */,
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
 				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
@@ -1311,7 +1311,7 @@
 			);
 			name = Simplenote;
 			packageProductDependencies = (
-				B581370C24D8B9270088B91F /* SimplenoteFoundation */,
+				B588FF7524D8C0730052DD35 /* SimplenoteFoundation */,
 			);
 			productName = Simplenote;
 			productReference = 26F72A8814032D2A00A7935E /* Simplenote.app */;
@@ -1421,7 +1421,7 @@
 			);
 			mainGroup = 26F72A7D14032D2900A7935E;
 			packageReferences = (
-				B581370B24D8B9270088B91F /* XCRemoteSwiftPackageReference "SwiftPackage" */,
+				B588FF7424D8C0730052DD35 /* XCRemoteSwiftPackageReference "SwiftPackage" */,
 			);
 			productRefGroup = 26F72A8914032D2A00A7935E /* Products */;
 			projectDirPath = "";
@@ -2552,20 +2552,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B581370B24D8B9270088B91F /* XCRemoteSwiftPackageReference "SwiftPackage" */ = {
+		B588FF7424D8C0730052DD35 /* XCRemoteSwiftPackageReference "SwiftPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:jleandroperez/SwiftPackage.git";
+			repositoryURL = "https://github.com/jleandroperez/SwiftPackage.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B581370C24D8B9270088B91F /* SimplenoteFoundation */ = {
+		B588FF7524D8C0730052DD35 /* SimplenoteFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B581370B24D8B9270088B91F /* XCRemoteSwiftPackageReference "SwiftPackage" */;
+			package = B588FF7424D8C0730052DD35 /* XCRemoteSwiftPackageReference "SwiftPackage" */;
 			productName = SimplenoteFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */

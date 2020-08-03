@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "SimplenoteFoundation",
-        "repositoryURL": "git@github.com:jleandroperez/SwiftPackage.git",
+        "repositoryURL": "https://github.com/jleandroperez/SwiftPackage.git",
         "state": {
           "branch": null,
           "revision": "9b3e5dba309061a0d85fa21ebbee046439ee8631",
