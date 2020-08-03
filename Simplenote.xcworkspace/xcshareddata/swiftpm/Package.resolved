@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SimplenoteFoundation",
+        "repositoryURL": "git@github.com:jleandroperez/SwiftPackage.git",
+        "state": {
+          "branch": null,
+          "revision": "266d985be940cef85d9fba8beba2abe4c65c2891",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
