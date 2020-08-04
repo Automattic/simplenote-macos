@@ -22,12 +22,8 @@
 @property (nonatomic, retain) NSNumber *index;
 @property (nonatomic, retain) NSString *share;
 
-+ (Tag *)tagFromDictionary:(NSDictionary *)dict;
-- (void)updateFromDictionary:(NSDictionary *)dict;
 - (instancetype)initWithText:(NSString *)str;
 - (instancetype)initWithText:(NSString *)str recipients:(NSArray *)emailList;
-- (NSString *)textWithPrefix;
 - (void)addRecipient:(NSString *)emailAddress;
-- (NSDictionary *)tagDictionary;
 
 @end
