@@ -39,7 +39,7 @@ extension TagListState {
     /// Returns the `TagListRow` entity at the specified Index
     ///
     func rowAtIndex(_ index: Int) -> TagListRow? {
-        guard index > .zero && index < rows.count else {
+        guard index >= .zero && index < rows.count else {
             return nil
         }
 
