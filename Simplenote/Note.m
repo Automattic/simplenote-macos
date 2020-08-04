@@ -36,15 +36,6 @@
 @dynamic pinned;
 @dynamic markdown;
 
-static NSDateFormatter *dateFormatterTime = nil;
-static NSDateFormatter *dateFormatterMonthDay = nil;
-static NSDateFormatter *dateFormatterMonthYear = nil;
-static NSDateFormatter *dateFormatterMonthDayYear = nil;
-static NSDateFormatter *dateFormatterMonthDayTime = nil;
-static NSDateFormatter *dateFormatterNumbers = nil;
-static NSCalendar *gregorian = nil;
-
-
 - (void)awakeFromFetch
 {
     [super awakeFromFetch];
@@ -371,102 +362,6 @@ static NSCalendar *gregorian = nil;
     [self didChangeValueForKey:@"publishURL"];
 }
 
-- (NSString *)dateString:(NSDate *)date brief:(BOOL)brief
-{
-	if (!gregorian) {
-		gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-		dateFormatterTime = [NSDateFormatter new];
-		[dateFormatterTime setTimeStyle: NSDateFormatterShortStyle];
-		//[dateFormatterTime setDateFormat:@"h:mm a"];
-		dateFormatterMonthDay = [NSDateFormatter new];
-		[dateFormatterMonthDay setDateFormat:@"MMM d"];
-//		[dateFormatterMonthDay setTimeStyle: kCFDateFormatterNoStyle];
-//		[dateFormatterMonthDay setDateStyle: kCFDateFormatterMediumStyle];
-		dateFormatterMonthYear = [NSDateFormatter new];
-		[dateFormatterMonthYear setDateFormat:@"MMM yyyy"];
-		//[dateFormatterMonthYear setDateStyle: kCFDateFormatterLongStyle];
-		//[dateFormatterMonthYear setTimeStyle: kCFDateFormatterShortStyle];
-		dateFormatterMonthDayYear = [NSDateFormatter new];
-		[dateFormatterMonthDayYear setDateFormat:@"MMM d, yyyy"];
-		//[dateFormatterMonthDayYear setTimeStyle: kCFDateFormatterShortStyle];
-		dateFormatterMonthDayTime = [NSDateFormatter new];
-		[dateFormatterMonthDayTime setDateFormat:@"MMM d, h:mm a"];
-		//[dateFormatterMonthDayTime setTimeStyle: kCFDateFormatterShortStyle];
-		dateFormatterNumbers = [NSDateFormatter new];
-		[dateFormatterNumbers setDateStyle: NSDateFormatterShortStyle];
-		//[dateFormatterMonthDayTime setTimeStyle: kCFDateFormatterShortStyle];
-	}
-	
-	//NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	NSDate *now = [NSDate date];
-	NSDateComponents *nowComponents = [gregorian components:NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:now];
-	nowComponents.hour = 0;
-	NSDate *nowMidnight = [gregorian dateFromComponents: nowComponents];
-	
-	// NSDateFormatter will localize the date for us
-//	NSDate *then = [[NSDate alloc] initWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMTForDate:date] sinceDate:date];
-	NSDate *then = date;
-	NSDateComponents *deltaComponents = [gregorian components:NSCalendarUnitMinute | NSCalendarUnitYear fromDate:then toDate:nowMidnight options:NSCalendarWrapComponents];
-	
-	nowComponents.day = 31;
-	nowComponents.month = 12;
-	NSDate *nowNewYear = [gregorian dateFromComponents: nowComponents];
-	NSDateComponents *deltaComponentsYear = [gregorian components: NSCalendarUnitDay | NSCalendarUnitYear fromDate:then toDate:nowNewYear options:0];
-	//NSLog(@"Comparing %@ to %@: %d", [then description], [nowMidnight description], deltaComponentsYear.year);
-	NSString *dateString;
-	
-	if (deltaComponents.minute <= 0) {
-		//[dateFormatter setDateFormat:@"h:mm a"];
-		NSString *todayStr = NSLocalizedString(@"Today", @"Displayed as a date in the case where a note was modified today, for example");
-		dateString = brief ? @"" : [todayStr stringByAppendingString:@", "];
-		dateString = [dateString stringByAppendingString: [dateFormatterTime stringFromDate:then]];
-	} else if (deltaComponents.minute < 60*24) {
-		//[dateFormatter setDateFormat:@"h:mm a"];
-		NSString *yesterdayStr = NSLocalizedString(@"Yesterday",
-												   @"Displayed as a date in the case where a note was modified yesterday, for example");
-        if (brief) {
-			dateString = yesterdayStr;
-        } else {
-			dateString = [yesterdayStr stringByAppendingString:@", "];
-			dateString = [dateString stringByAppendingString: [dateFormatterTime stringFromDate:then]];	
-		}
-	} else {
-		if (deltaComponentsYear.year <= 0) {
-			// This year
-			if (!brief) {
-				dateString = [dateFormatterMonthDay stringFromDate:then];
-				dateString = [dateString stringByAppendingFormat:@", %@", [dateFormatterTime stringFromDate:then]];
-            } else {
-				dateString = [dateFormatterMonthDay stringFromDate: then];
-            }
-		} else {
-			// Previous years
-            if (brief) {
-				dateString = [dateFormatterNumbers stringFromDate: then];
-            } else {
-				dateString = [dateFormatterMonthDayYear stringFromDate: then];
-            }
-		}
-	}	
-	
-	return dateString;
-}
-
-- (NSString *)creationDateString:(BOOL)brief
-{
-	return [self dateString:creationDate brief:brief];
-}
-
-- (NSString *)modificationDateString:(BOOL)brief
-{
-	return [self dateString:modificationDate brief:brief];
-}
-
-- (NSString *)getDateString:(NSDate *)date brief:(BOOL)brief
-{
-	return [self dateString:date brief:brief];
-}
-
 - (void)setTagsFromList:(NSArray *)tagList
 {
     [self setTags: [tagList JSONString]];
@@ -475,15 +370,6 @@ static NSCalendar *gregorian = nil;
 - (void)updateTagsArray
 {
     tagsArray = tags.length > 0 ? [[tags objectFromJSONString] mutableCopy] : [NSMutableArray arrayWithCapacity:2];
-}
-
-- (BOOL)hasTags
-{
-    if (tags == nil || tags.length == 0) {
-        return NO;
-    }
-    
-    return [tagsArray count] > 0;
 }
 
 - (BOOL)hasTag:(NSString *)tag {
@@ -553,11 +439,6 @@ static NSCalendar *gregorian = nil;
 	self.tags = [tagsArray JSONString];
 }
 
-- (void)setSystemTagsFromList:(NSArray *)tagList
-{
-    [self setSystemTags: [tagList JSONString]];
-}
-
 - (void)stripSystemTag:(NSString *)tag
 {
     if (systemTags.length == 0) {
@@ -573,58 +454,6 @@ static NSCalendar *gregorian = nil;
     }
     
 	self.systemTags = [systemTagsArray JSONString];
-}
-
-- (NSDictionary *)noteDictionaryWithContent:(BOOL)include
-{
-	NSMutableDictionary *note = [[NSMutableDictionary alloc] init];
-
-    if (remoteId != nil && [remoteId length] > 1) {
-        [note setObject:remoteId forKey:@"key"];
-    }
-
-	[note setObject:deleted ? @"1" : @"0" forKey:@"deleted"];
-	[note setObject:[tags stringArray] forKey:@"tags"];
-	[note setObject:[systemTags stringArray] forKey:@"systemtags"];
-	[note setObject:[NSNumber numberWithDouble:[modificationDate timeIntervalSince1970]] forKey:@"modifydate"];
-	[note setObject:[NSNumber numberWithDouble:[creationDate timeIntervalSince1970]] forKey:@"createdate"];
-	
-	if (include) {
-		[note setObject:content forKey:@"content"];
-	}
-	return note;
-}
-
-- (BOOL)isList
-{
-	// Quick and dirty for now to avoid having to upgrade the database again with another flag
-	NSRange newlineRange = [content rangeOfString:@"\n"];
-	if (newlineRange.location == NSNotFound || newlineRange.location+newlineRange.length+2 > content.length)
-		return NO;
-	
-	return [content compare:@"- " options:0
-									range:NSMakeRange(newlineRange.location+newlineRange.length, 2)] == NSOrderedSame;
-}
-
-- (void)updateFromDictionary:(NSDictionary *)note fromServer:(BOOL)synced
-{
-	NSObject *value;
-	value = [note objectForKey:@"tags"];
-	if (value != nil) [self setTagsFromList:(NSArray *)value];
-	value = [note objectForKey:@"content"];
-	if (value != nil) [self setContent:(NSString *)value];
-	value = [note objectForKey:@"modifydate"];
-	if (value != nil) [self setModificationDate:[NSDate dateWithTimeIntervalSince1970:[(NSString *)value doubleValue]]];
-	value = [note objectForKey:@"createdate"];
-	if (value != nil) [self setCreationDate:[NSDate dateWithTimeIntervalSince1970:[(NSString *)value doubleValue]]];
-	value = [note objectForKey:@"deleted"];
-	if (value != nil) [self setDeleted:[(NSString *)value boolValue]];
-	value = [note objectForKey:@"sharekey"];
-	if (value != nil) [self setShareURL:(NSString *)value];
-	value = [note objectForKey:@"publishkey"];
-	if (value != nil) [self setPublishURL:(NSString *)value];
-	value = [note objectForKey:@"systemtags"];
-	if (value != nil) [self setSystemTagsFromList:(NSArray *)value];
 }
 
 @end

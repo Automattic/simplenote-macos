@@ -25,28 +25,6 @@
     [self updateRecipients];
 }
 
-- (instancetype)initWithText:(NSString *)str
-{
-	if ((self = [super init])) {
-		self.name = str;
-		self.recipients = [NSMutableArray arrayWithCapacity:2];
-		self.index = [NSNumber numberWithInt:-1];
-	}
-	return self;
-}
-
-
-- (instancetype)initWithText:(NSString *)str recipients:(NSArray *)emailList
-{
-	if ((self = [super init])) {
-		self.name = str;
-        NSMutableArray *newEmailList = [emailList mutableCopy];
-		self.recipients = newEmailList;
-		self.index = [NSNumber numberWithInt:-1];
-	}
-	return self;
-}
-
 - (void)updateRecipients
 {
     if (share.length > 0) {
@@ -67,15 +45,6 @@
 	return recipients;
 }
 
-+ (Tag *)tagFromDictionary:(NSDictionary *)dict
-{
-	if ([dict objectForKey:@"name"] == nil)
-        return nil;
-	Tag *tag = [[Tag alloc] initWithText:[dict objectForKey:@"name"]];
-	[tag updateFromDictionary:dict];
-	return tag;
-}
-
 - (NSComparisonResult)compareIndex:(Tag *)tag
 {
 	int i1 = [[self index] intValue];
@@ -87,49 +56,11 @@
 	}	
 }
 
-- (void)updateFromDictionary:(NSDictionary *)dict
-{
-	NSObject *value = dict[@"name"];
-    if (value) {
-        self.name = (NSString *)value;
-    }
-    
-	value = dict[@"share"];
-    if (value) {
-        self.recipients = (NSMutableArray *)value;
-    }
-    
-	value = [dict objectForKey:@"index"];
-    
-    if (value) {
-        self.index = (NSNumber *)value;
-    } else {
-        self.index = [NSNumber numberWithInt: -1];
-    }
-}
-
-- (NSString *)textWithPrefix
-{
-	return [@"#" stringByAppendingString: name];
-}
-
-
 - (void)addRecipient:(NSString *)emailAddress
 {
     NSString *newEmailAddress = [emailAddress copy];
 	[recipients addObject: newEmailAddress];
     self.share = [recipients JSONString];
-}
-
-- (NSDictionary *)tagDictionary
-{
-	NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-	[dict setObject:self.name forKey:@"name"];
-	if (self.recipients && [self.recipients count] > 0)
-		[dict setObject:self.recipients forKey:@"share"];
-	[dict setObject:index forKey:@"index"];
-
-	return dict;
 }
 
 @end
