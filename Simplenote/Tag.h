@@ -22,8 +22,6 @@
 @property (nonatomic, retain) NSNumber *index;
 @property (nonatomic, retain) NSString *share;
 
-- (instancetype)initWithText:(NSString *)str;
-- (instancetype)initWithText:(NSString *)str recipients:(NSArray *)emailList;
 - (void)addRecipient:(NSString *)emailAddress;
 
 @end

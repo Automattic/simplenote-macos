@@ -866,12 +866,12 @@
 			isa = PBXGroup;
 			children = (
 				F998F3EA22853C29008C2B59 /* CrashLogging.swift */,
+				B5DBA85024ABB31F00619127 /* EntityObserver.swift */,
 				B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */,
 				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
+				B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */,
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
-				B5DBA85024ABB31F00619127 /* EntityObserver.swift */,
-				B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";

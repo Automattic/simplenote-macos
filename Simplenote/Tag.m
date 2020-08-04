@@ -25,28 +25,6 @@
     [self updateRecipients];
 }
 
-- (instancetype)initWithText:(NSString *)str
-{
-	if ((self = [super init])) {
-		self.name = str;
-		self.recipients = [NSMutableArray arrayWithCapacity:2];
-		self.index = [NSNumber numberWithInt:-1];
-	}
-	return self;
-}
-
-
-- (instancetype)initWithText:(NSString *)str recipients:(NSArray *)emailList
-{
-	if ((self = [super init])) {
-		self.name = str;
-        NSMutableArray *newEmailList = [emailList mutableCopy];
-		self.recipients = newEmailList;
-		self.index = [NSNumber numberWithInt:-1];
-	}
-	return self;
-}
-
 - (void)updateRecipients
 {
     if (share.length > 0) {
