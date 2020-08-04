@@ -266,10 +266,6 @@
 		B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD45243E51E200BEE354 /* PublishViewController.swift */; };
 		B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD48243E524000BEE354 /* PublishViewController.xib */; };
 		B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD48243E524000BEE354 /* PublishViewController.xib */; };
-		B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
-		B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */; };
-		B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */; };
-		B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */; };
 		B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
 		B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
 		B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */; };
@@ -331,8 +327,6 @@
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
-		B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
-		B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FA82A31B977E8300082296 /* NSView+Simplenote.m */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
@@ -621,10 +615,6 @@
 		B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaborateViewController.xib; sourceTree = "<group>"; };
 		B5C7DD45243E51E200BEE354 /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
 		B5C7DD48243E524000BEE354 /* PublishViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublishViewController.xib; sourceTree = "<group>"; };
-		B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Simplenote.h"; sourceTree = "<group>"; };
-		B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Simplenote.m"; sourceTree = "<group>"; };
-		B5C92EC71B03D7DB00A4FFD0 /* NSString+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Simplenote.h"; sourceTree = "<group>"; };
-		B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Simplenote.m"; sourceTree = "<group>"; };
 		B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverter.swift; sourceTree = "<group>"; };
 		B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverterTests.swift; sourceTree = "<group>"; };
 		B5CBB069241976230003C271 /* SimplenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -665,8 +655,6 @@
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
-		B5FA82A21B977E8300082296 /* NSView+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Simplenote.h"; sourceTree = "<group>"; };
-		B5FA82A31B977E8300082296 /* NSView+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Simplenote.m"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -910,16 +898,10 @@
 				26DBB1F01405A6A800186392 /* NSString+Condensing.m */,
 				26DBB1F11405A6A800186392 /* NSString+Metadata.h */,
 				26DBB1F21405A6A800186392 /* NSString+Metadata.m */,
-				B5C92EC71B03D7DB00A4FFD0 /* NSString+Simplenote.h */,
-				B5C92EC81B03D7DB00A4FFD0 /* NSString+Simplenote.m */,
 				71DCEBE5152E2ED1002744C0 /* NSMutableAttributedString+Styling.h */,
 				71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */,
-				B5FA82A21B977E8300082296 /* NSView+Simplenote.h */,
-				B5FA82A31B977E8300082296 /* NSView+Simplenote.m */,
 				B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */,
 				B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */,
-				B5C92EBE1B03D5E400A4FFD0 /* NSObject+Simplenote.h */,
-				B5C92EBF1B03D5E400A4FFD0 /* NSObject+Simplenote.m */,
 				B5F04FCF21594B6D004B1AA0 /* Simperium+Simplenote.h */,
 				B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */,
 			);
@@ -996,11 +978,11 @@
 			isa = PBXGroup;
 			children = (
 				B501AAD12437E5250084CDA3 /* AppKitConstants.swift */,
+				B51374F41AC0591900825FCC /* SPConstants.h */,
 				B51374F51AC0591900825FCC /* SPConstants.m */,
 				B5EB3ACF2458B9940089858D /* NSNotification+Simplenote.h */,
 				B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */,
 				B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */,
-				B51374F41AC0591900825FCC /* SPConstants.h */,
 				B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */,
 			);
 			name = Constants;
@@ -1696,7 +1678,6 @@
 				B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */,
 				26F72A9914032D2A00A7935E /* main.m in Sources */,
 				B5985ACE24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
-				B5FA82A41B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
@@ -1749,7 +1730,6 @@
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
-				B5C92EC91B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				B5E086352448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
 				B51699842480B93100ACF2F4 /* TagsField.swift in Sources */,
@@ -1769,7 +1749,6 @@
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B54F9A6724D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
-				B5C92EC01B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				375D294821E033D1007AB25A /* html_blocks.c in Sources */,
@@ -1834,7 +1813,6 @@
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
-				B5FA82A51B977E8300082296 /* NSView+Simplenote.m in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
@@ -1881,7 +1859,6 @@
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B55C313D24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
-				B5C92ECA1B03D7DB00A4FFD0 /* NSString+Simplenote.m in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
 				B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
@@ -1899,7 +1876,6 @@
 				375D294521E033D1007AB25A /* html.c in Sources */,
 				B5E8E41224575C990098892B /* ToolbarState.swift in Sources */,
 				B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
-				B5C92EC11B03D5E400A4FFD0 /* NSObject+Simplenote.m in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
