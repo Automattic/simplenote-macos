@@ -12,6 +12,7 @@
 @import Simperium_OSX;
 
 @class BackgroundView;
+@class NoteEditorViewController;
 @class NoteListViewController;
 @class MarkdownViewController;
 @class TagsField;
@@ -30,8 +31,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 
 #pragma mark - NoteEditorControllerDelegate
 
-extern NSString * const SPTagAddedFromEditorNotificationName;
-extern NSString * const SPWillAddNewNoteNotificationName;
 @protocol NoteControllerEditorDelegate <NSObject>
 - (void)editorController:(NoteEditorViewController *)controller addedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller pinnedNoteWithSimperiumKey:(NSString *)simperiumKey;
@@ -49,8 +48,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 
 @interface NoteEditorViewController : NSViewController
 {
-    IBOutlet NSTableView *tableView;
-    IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSMenu *lineLengthMenu;
 }
 

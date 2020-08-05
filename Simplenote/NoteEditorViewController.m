@@ -129,13 +129,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self applyStyle];
 }
 
-// TODO: Work in Progress. Decouple with a delegate please
-//
-- (NoteListViewController *)noteListViewController
-{
-    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
-}
-
 - (void)save
 {
     if (![self.note hasChanges]) {
@@ -380,7 +373,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
     // Update the note list preview
-    [self.noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
+    [self.delegate editorController:self updatedNoteWithSimperiumKey:self.note.simperiumKey];
 }
 
 
@@ -441,8 +434,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 	[self save];
     
     // Update the list
-    [notesArrayController rearrangeObjects];
-    [self.noteListViewController selectRowForNoteKey:self.note.simperiumKey];
+    [self.delegate editorController:self pinnedNoteWithSimperiumKey:self.note.simperiumKey];
 }
 
 - (IBAction)markdownAction:(id)sender
@@ -478,14 +470,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [SPTracker trackEditorNoteCreated];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:SPWillAddNewNoteNotificationName object:self];
     
     // Save current note first
     self.note.content = [self.noteEditor plainTextContent];
     [self save];
-    
-    [notesArrayController setSelectsInsertedObjects:YES];
-    
+
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     [appDelegate ensureMainWindowIsVisible:nil];
     
@@ -502,20 +491,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self displayNote:newNote];
     [self save];
 
-    [notesArrayController rearrangeObjects];
-    [tableView reloadData];
+    [self.delegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
 
-    // Don't perform selection until the list has refreshed in the next run loop
-    [self performSelector:@selector(prepareForNewNote:) withObject:newNote afterDelay:0];
-}
-
-- (void)prepareForNewNote:(Note *)newNote
-{
-    [self.noteListViewController selectRowForNoteKey:newNote.simperiumKey];
-    [tableView scrollRowToVisible:[tableView selectedRow]];
-    
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    [appDelegate.window makeFirstResponder:self.noteEditor];
+    [self.view.window makeFirstResponder:self.noteEditor];
 }
 
 - (IBAction)deleteAction:(id)sender
@@ -526,16 +504,18 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         }
         
         [SPTracker trackEditorNoteDeleted];
-        [self.noteListViewController deleteNote:noteToDelete];
+        noteToDelete.deleted = YES;
+        [self.delegate editorController:self deletedNoteWithSimperiumKey:noteToDelete.simperiumKey];
     }
+
+    [self save];
 }
 
 - (IBAction)restoreAction:(id)sender
 {
     self.note.deleted = NO;
     [self save];
-    [notesArrayController rearrangeObjects];
-    [tableView reloadData];
+    [self.delegate editorController:self restoredNoteWithSimperiumKey:self.note.simperiumKey];
     [self displayNote:nil];
 }
 
@@ -575,10 +555,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     for (NSString *token in tokens) {
         Tag *tag = [simperium searchTagWithName:token];
         if (!tag && ![token containsEmailAddress]) {
-            NSDictionary *userInfo = @{@"tagName":token};
-            [[NSNotificationCenter defaultCenter] postNotificationName:SPTagAddedFromEditorNotificationName
-                                                                object:self
-                                                              userInfo:userInfo];
+            [self.tagsDelegate editorController:self didAddNewTag:token];
         }
     }
 
