@@ -175,18 +175,46 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-    }
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
 
-    public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
-    }
-
-    public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
-    }
-
-    public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
+        reloadSynchronously()
+        selectRow(forNoteKey: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
+        performPerservingSelectedIndex {
+            self.reloadSynchronously()
+        }
+    }
 
+    public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
+        arrayController.rearrangeObjects()
+        selectRow(forNoteKey: simperiumKey)
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
+        arrayController.rearrangeObjects()
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
+        reloadRow(forNoteKey: simperiumKey)
+    }
+}
+
+
+// MARK: - Helpers
+//
+extension NoteListViewController {
+
+    func performPerservingSelectedIndex(block: () -> Void) {
+        var previouslySelectedIndex = arrayController.selectionIndex
+        block()
+
+        if previouslySelectedIndex == tableView.numberOfRows {
+            previouslySelectedIndex -= 1
+        }
+
+        arrayController.setSelectionIndex(previouslySelectedIndex)
     }
 }
