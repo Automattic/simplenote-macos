@@ -23,7 +23,6 @@
 
 
 
-
 #pragma mark - Constants
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";

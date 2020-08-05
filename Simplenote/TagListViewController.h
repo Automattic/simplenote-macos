@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NoteEditorViewController.h"
 
 
 @class Tag;
@@ -23,7 +24,8 @@ extern NSString * const TagListDidEmptyTrashNotification;
                                                      NSTextDelegate,
                                                      NSTextFieldDelegate,
                                                      NSControlTextEditingDelegate,
-                                                     NSDraggingDestination>
+                                                     NSDraggingDestination,
+                                                     EditorControllerTagActionsDelegate>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet NSClipView            *clipView;

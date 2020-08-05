@@ -33,8 +33,14 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
-    func configureSimplenoteControllers() {
+    func configureVersionsController() {
         versionsController = VersionsController(simperium: simperium)
+    }
+
+    @objc
+    func configureEditorController() {
+        noteEditorViewController.tagActionsDelegate = tagListViewController
+        noteEditorViewController.noteActionsDelegate = noteListViewController
     }
 }
 

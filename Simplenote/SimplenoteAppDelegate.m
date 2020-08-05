@@ -120,7 +120,8 @@
 }
 #endif
 
-- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+- (void)applicationWillFinishLaunching:(NSNotification *)notification
+{
     NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
     [eventManager setEventHandler:self
                       andSelector:@selector(handleGetURLEvent:withReplyEvent:)
@@ -139,7 +140,8 @@
     
 	self.simperium = [self configureSimperium];
 
-    [self configureSimplenoteControllers];
+    [self configureEditorController];
+    [self configureVersionsController];
 
     [self.tagListViewController loadTags];
     [self.noteListViewController loadNotes];

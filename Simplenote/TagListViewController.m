@@ -25,7 +25,7 @@ NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyT
 CGFloat const TagListEstimatedRowHeight                     = 30;
 
 
-@interface TagListViewController () <EditorControllerTagActionsDelegate>
+@interface TagListViewController ()
 @property (nonatomic, strong) NSMenu            *tagDropdownMenu;
 @property (nonatomic, strong) NSMenu            *trashDropdownMenu;
 @property (nonatomic, strong) NSString          *tagNameBeingEdited;
