@@ -19,7 +19,12 @@ extern NSString * const TagListDidBeginViewingTrashNotification;
 extern NSString * const TagListDidUpdateTagNotification;
 extern NSString * const TagListDidEmptyTrashNotification;
 
-@interface TagListViewController : NSViewController <NSMenuDelegate, NSTextDelegate, NSTextFieldDelegate, NSControlTextEditingDelegate, NSDraggingDestination>
+@interface TagListViewController : NSViewController <NSMenuDelegate,
+                                                     NSTextDelegate,
+                                                     NSTextFieldDelegate,
+                                                     NSControlTextEditingDelegate,
+                                                     NSDraggingDestination,
+                                                     NoteControllerTagsDelegate>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet NSClipView            *clipView;

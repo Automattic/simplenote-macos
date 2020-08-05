@@ -80,7 +80,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 - (void)startListeningToNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
     [nc addObserver:self selector:@selector(sortModeWasUpdated:) name:TagSortModeDidChangeNotification object:nil];
 }
 
@@ -279,9 +278,9 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     return newTag;
 }
 
-- (void)tagAddedFromEditor:(NSNotification *)notification
+- (void)editorController:(NoteEditorViewController *)controller didAddNewTag:(NSString *)tag
 {
-    [self addTagWithName:[notification.userInfo objectForKey:@"tagName"]];
+    [self addTagWithName:tag];
     [self loadTags];
 }
 
