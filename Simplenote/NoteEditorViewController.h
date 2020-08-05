@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @end
 
 
+
 #pragma mark - NoteEditorViewController
 
 @interface NoteEditorViewController : NSViewController
