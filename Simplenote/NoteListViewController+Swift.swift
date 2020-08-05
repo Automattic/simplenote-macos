@@ -168,3 +168,25 @@ extension NoteListViewController {
         return noteView
     }
 }
+
+
+// MARK: - EditorControllerNoteActionsDelegate
+//
+extension NoteListViewController: EditorControllerNoteActionsDelegate {
+
+    public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
+
+    }
+}
