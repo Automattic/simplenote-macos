@@ -1467,11 +1467,9 @@
                 <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="moreActionsMenu" destination="nSc-s9-0oY" id="RWb-MR-Re4"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
-                <outlet property="notesArrayController" destination="573" id="1144"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
                 <outlet property="statusImageView" destination="1447" id="LVq-dS-TaS"/>
                 <outlet property="statusTextField" destination="faw-Qh-Cm9" id="gWO-rO-vyS"/>
-                <outlet property="tableView" destination="561" id="1282"/>
                 <outlet property="tagsField" destination="UWL-9x-FH2" id="8o3-nm-rjz"/>
                 <outlet property="toolbarView" destination="914" id="AVi-fa-Q7n"/>
                 <outlet property="topDividerView" destination="qdg-eJ-cRo" id="ERd-6j-k2c"/>
