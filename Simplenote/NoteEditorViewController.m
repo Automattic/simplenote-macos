@@ -10,7 +10,6 @@
 #import "SimplenoteAppDelegate.h"
 #import "Note.h"
 #import "Tag.h"
-#import "NoteListViewController.h"
 #import "TagListViewController.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
@@ -25,8 +24,6 @@
 
 
 
-NSString * const SPTagAddedFromEditorNotificationName   = @"SPTagAddedFromEditor";
-NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
 #pragma mark - Constants
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
