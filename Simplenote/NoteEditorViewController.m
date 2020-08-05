@@ -74,15 +74,16 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
-	// KVO Cleanup!
-	self.noteEditor = nil;
+    [self stopObservingEditorProperties:self.noteEditor];
 }
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.selectedNotes = @[];
+    }
+
     return self;
 }
 
@@ -186,7 +187,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self.statusImageView setHidden: selectedNote != nil];
     
     if (self.isDisplayingMarkdown) {
-        [self toggleMarkdownView:nil];
+        [self toggleMarkdownView:self];
     }
 
     if (selectedNote == nil) {
@@ -469,7 +470,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Switch back to the editor if markdown is disabled
     if (!isEnabled && self.isDisplayingMarkdown) {
-        [self toggleMarkdownView:nil];
+        [self toggleMarkdownView:self];
     }
 
     [self refreshToolbarActions];
@@ -648,9 +649,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - NoteEditor Preferences Helpers
 
-- (void)setNoteEditor:(SPTextView *)theNoteEditor
+- (NSArray<NSString *> *)observedEditorProperties
 {
-	NSArray *properties =  @[
+    return @[
 		// Spelling + Grammar
 		NSStringFromSelector(@selector(continuousSpellCheckingEnabled)),
 		NSStringFromSelector(@selector(grammarCheckingEnabled)),
@@ -662,16 +663,28 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 		NSStringFromSelector(@selector(automaticDashSubstitutionEnabled)),
 		NSStringFromSelector(@selector(automaticTextReplacementEnabled))
 	];
+}
 
-	for (NSString *property in properties) {
-		[self.noteEditor removeObserver:self forKeyPath:property];
-	}
-	
-	for (NSString *property in properties) {
-		[theNoteEditor addObserver:self forKeyPath:property options:NSKeyValueObservingOptionNew context:nil];
-	}
-	
-	_noteEditor = theNoteEditor;
+- (void)startObservingEditorProperties:(SPTextView *)editor
+{
+    for (NSString *property in self.self.observedEditorProperties) {
+        [editor addObserver:self forKeyPath:property options:NSKeyValueObservingOptionNew context:nil];
+    }
+}
+
+- (void)stopObservingEditorProperties:(SPTextView *)editor
+{
+    for (NSString *property in self.observedEditorProperties) {
+        [editor removeObserver:self forKeyPath:property];
+    }
+}
+
+- (void)setNoteEditor:(SPTextView *)editor
+{
+    [self stopObservingEditorProperties:self.noteEditor];
+    [self startObservingEditorProperties:editor];
+
+	_noteEditor = editor;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
