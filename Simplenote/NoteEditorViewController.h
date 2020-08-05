@@ -28,10 +28,21 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 
 
 
-#pragma mark - Notifications
+#pragma mark - NoteEditorControllerDelegate
 
 extern NSString * const SPTagAddedFromEditorNotificationName;
 extern NSString * const SPWillAddNewNoteNotificationName;
+@protocol NoteControllerEditorDelegate <NSObject>
+- (void)editorController:(NoteEditorViewController *)controller addedNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller pinnedNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller restoredNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller updatedNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller deletedNoteWithSimperiumKey:(NSString *)simperiumKey;
+@end
+
+@protocol NoteControllerTagsDelegate <NSObject>
+- (void)editorController:(NoteEditorViewController *)controller didAddNewTag:(NSString *)tag;
+@end
 
 
 #pragma mark - NoteEditorViewController
@@ -59,6 +70,8 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) NSLayoutConstraint                      *toolbarViewTopConstraint;
 @property (nonatomic,   weak) Note                                              *note;
+@property (nonatomic,   weak) id<NoteControllerEditorDelegate>                  delegate;
+@property (nonatomic,   weak) id<NoteControllerTagsDelegate>                    tagsDelegate;
 
 - (void)save;
 - (void)displayNote:(nullable Note *)selectedNote;
