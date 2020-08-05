@@ -79,11 +79,6 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: TagListDidEmptyTrashNotification
                                                object: nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(willAddNewNote:)
-                                                 name: SPWillAddNewNoteNotificationName
-                                               object: nil];
-
     self.tableView.rowHeight = [NoteTableCellView rowHeight];
     self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
     self.tableView.backgroundColor = [NSColor clearColor];
@@ -395,13 +390,6 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
     [self.noteEditorViewController displayNote:nil];
     [self.statusField setHidden:NO];
-}
-
-- (void)willAddNewNote:(NSNotification *)notification
-{
-    [self.searchField setStringValue:@""];
-    [[self.searchField.cell cancelButtonCell] performClick:self];
-    [self.searchField resignFirstResponder];
 }
 
 - (void)selectedTaglistRowWasUpdated
