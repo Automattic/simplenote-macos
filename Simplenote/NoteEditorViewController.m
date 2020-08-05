@@ -24,26 +24,18 @@
 
 
 
-#pragma mark ====================================================================================
-#pragma mark Notifications
-#pragma mark ====================================================================================
 
 NSString * const SPTagAddedFromEditorNotificationName   = @"SPTagAddedFromEditor";
 NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
-
-
-#pragma mark ====================================================================================
-#pragma mark Constants
-#pragma mark ====================================================================================
+#pragma mark - Constants
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
 
 
-#pragma mark ====================================================================================
-#pragma mark Private
-#pragma mark ====================================================================================
+
+#pragma mark - Private
 
 @interface NoteEditorViewController() <NSMenuDelegate,
                                         NSTextDelegate,
@@ -65,9 +57,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 @end
 
 
-#pragma mark ====================================================================================
-#pragma mark NoteEditorViewController
-#pragma mark ====================================================================================
+
+#pragma mark - NoteEditorViewController
 
 @implementation NoteEditorViewController
 
