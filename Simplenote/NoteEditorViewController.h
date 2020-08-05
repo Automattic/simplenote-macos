@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 
 #pragma mark - NoteEditorControllerDelegate
 
-@protocol NoteControllerEditorDelegate <NSObject>
+@protocol EditorControllerNoteActionsDelegate <NSObject>
 - (void)editorController:(NoteEditorViewController *)controller addedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller pinnedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller restoredNoteWithSimperiumKey:(NSString *)simperiumKey;
@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (void)editorController:(NoteEditorViewController *)controller deletedNoteWithSimperiumKey:(NSString *)simperiumKey;
 @end
 
-@protocol NoteControllerTagsDelegate <NSObject>
+@protocol EditorControllerTagActionsDelegate <NSObject>
 - (void)editorController:(NoteEditorViewController *)controller didAddNewTag:(NSString *)tag;
 @end
 
@@ -68,8 +68,8 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) NSLayoutConstraint                      *toolbarViewTopConstraint;
 @property (nonatomic,   weak) Note                                              *note;
-@property (nonatomic,   weak) id<NoteControllerEditorDelegate>                  delegate;
-@property (nonatomic,   weak) id<NoteControllerTagsDelegate>                    tagsDelegate;
+@property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
+@property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
 
 - (void)save;
 - (void)displayNote:(nullable Note *)selectedNote;

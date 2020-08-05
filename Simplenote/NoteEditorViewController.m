@@ -370,7 +370,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
     // Update the note list preview
-    [self.delegate editorController:self updatedNoteWithSimperiumKey:self.note.simperiumKey];
+    [self.noteActionsDelegate editorController:self updatedNoteWithSimperiumKey:self.note.simperiumKey];
 }
 
 
@@ -431,7 +431,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 	[self save];
     
     // Update the list
-    [self.delegate editorController:self pinnedNoteWithSimperiumKey:self.note.simperiumKey];
+    [self.noteActionsDelegate editorController:self pinnedNoteWithSimperiumKey:self.note.simperiumKey];
 }
 
 - (IBAction)markdownAction:(id)sender
@@ -488,7 +488,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self displayNote:newNote];
     [self save];
 
-    [self.delegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
+    [self.noteActionsDelegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
 
     [self.view.window makeFirstResponder:self.noteEditor];
 }
@@ -502,7 +502,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         
         [SPTracker trackEditorNoteDeleted];
         noteToDelete.deleted = YES;
-        [self.delegate editorController:self deletedNoteWithSimperiumKey:noteToDelete.simperiumKey];
+        [self.noteActionsDelegate editorController:self deletedNoteWithSimperiumKey:noteToDelete.simperiumKey];
     }
 
     [self save];
@@ -512,7 +512,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     self.note.deleted = NO;
     [self save];
-    [self.delegate editorController:self restoredNoteWithSimperiumKey:self.note.simperiumKey];
+    [self.noteActionsDelegate editorController:self restoredNoteWithSimperiumKey:self.note.simperiumKey];
     [self displayNote:nil];
 }
 
@@ -552,7 +552,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     for (NSString *token in tokens) {
         Tag *tag = [simperium searchTagWithName:token];
         if (!tag && ![token containsEmailAddress]) {
-            [self.tagsDelegate editorController:self didAddNewTag:token];
+            [self.tagActionsDelegate editorController:self didAddNewTag:token];
         }
     }
 

@@ -23,8 +23,7 @@ extern NSString * const TagListDidEmptyTrashNotification;
                                                      NSTextDelegate,
                                                      NSTextFieldDelegate,
                                                      NSControlTextEditingDelegate,
-                                                     NSDraggingDestination,
-                                                     NoteControllerTagsDelegate>
+                                                     NSDraggingDestination>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
 @property (nonatomic, strong, readwrite) IBOutlet NSClipView            *clipView;
