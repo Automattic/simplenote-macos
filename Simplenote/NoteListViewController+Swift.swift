@@ -205,6 +205,51 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 }
 
 
+// MARK: - MenuItem(s) Validation
+//
+extension NoteListViewController: NSMenuItemValidation {
+
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
+        }
+
+        switch identifier {
+        case .listDisplayCondensedMenuItem:
+            return validateDisplayCondensedMenuItem(menuItem)
+        case .listDisplayComfyMenuItem:
+            return validateDisplayComfyMenuItem(menuItem)
+        case .listSortAlphaMenuItem:
+            return validateSortAlphaMenuItem(menuItem)
+        case .listSortUpdatedMenuItem:
+            return validateSortUpdatedMenuItem(menuItem)
+        default:
+            return true
+        }
+    }
+
+    func validateDisplayCondensedMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.notesListCondensed ? .on : .off
+        return true
+    }
+
+    func validateDisplayComfyMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.notesListCondensed ? .off : .on
+        return true
+    }
+
+    func validateSortAlphaMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.alphabeticallySortNotes ? .on : .off
+        return true
+    }
+
+    func validateSortUpdatedMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.alphabeticallySortNotes ? .off : .on
+        return true
+    }
+}
+
+
 // MARK: - Helpers
 //
 extension NoteListViewController {

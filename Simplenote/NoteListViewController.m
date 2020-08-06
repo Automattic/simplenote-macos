@@ -48,13 +48,6 @@
 
     self.oldTags = @"";
 
-    // Set the active preferences in the menu
-    int sortPrefPosition = [[Options shared] alphabeticallySortNotes] ? 1 : 0;
-    [self updateSortMenuForPosition:sortPrefPosition];
-
-    int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
-    [self updatePreviewLinesMenuForPosition:previewLinesPosition];
-    
     [self.progressIndicator setWantsLayer:YES];
     [self.progressIndicator setAlphaValue:0.5];
     [self.progressIndicator setHidden:YES];
@@ -440,56 +433,23 @@
 - (IBAction)sortPrefAction:(id)sender
 {
     NSMenuItem *menuItem = (NSMenuItem*)sender;
-
     BOOL alphabeticalEnabled = menuItem.tag == 1;
     
     [SPTracker trackSettingsAlphabeticalSortEnabled:alphabeticalEnabled];
 
     [[Options shared] setAlphabeticallySortNotes:alphabeticalEnabled];
-    [self updateSortMenuForPosition:menuItem.tag];
     [self reloadDataAndPreserveSelection];
-}
-
-- (void)updateSortMenuForPosition:(NSInteger)position
-{
-    for (NSMenuItem *menuItem in sortMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
 }
 
 - (IBAction)previewLinesAction:(id)sender
 {
     NSMenuItem *item = (NSMenuItem *)sender;
-    if (item.state == NSOnState) {
-        return;
-    }
+    BOOL isCondensedOn = (item.tag == 1);
 
-    [self updatePreviewLinesMenuForPosition:item.tag];
-    [self reloadDataAndPreserveSelection];
+    [SPTracker trackSettingsListCondensedEnabled:isCondensedOn];
 
-    // Only track when condensed setting is enabled
-    if (item.tag == 1) {
-        [SPTracker trackSettingsListCondensedEnabled];
-    }
-}
-
-- (void)updatePreviewLinesMenuForPosition:(NSInteger)position
-{
-    for (NSMenuItem *menuItem in previewLinesMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
-
-    // NOTE: temporary snippet. On it's way out, as part of #458 revamp
-    BOOL isCondensedOn = (position == 1);
     [[Options shared] setNotesListCondensed:isCondensedOn];
+    [self reloadDataAndPreserveSelection];
 }
 
 - (void)searchAction:(id)sender

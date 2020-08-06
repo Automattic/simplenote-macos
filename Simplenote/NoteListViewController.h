@@ -17,11 +17,6 @@
 @class SPTableView;
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
-{
-    IBOutlet NSMenu *sortMenu;
-    IBOutlet NSMenu *previewLinesMenu;
-    IBOutlet NSMenuItem *previewLinesMenuItem;
-}
 
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *backgroundView;

@@ -523,7 +523,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
                                                 <items>
-                                                    <menuItem title="Comfy" id="Qaj-k2-NOz">
+                                                    <menuItem title="Comfy" identifier="listDisplayComfyMenuItem" id="Qaj-k2-NOz">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Comfy Note Display"/>
@@ -532,7 +532,7 @@
                                                             <action selector="previewLinesAction:" target="874" id="d4I-8r-5Lj"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="Condensed" tag="1" id="tQC-gw-hdq">
+                                                    <menuItem title="Condensed" tag="1" identifier="listDisplayCondensedMenuItem" id="tQC-gw-hdq">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Condensed Note Display"/>
@@ -551,7 +551,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Sort Order" systemMenu="font" id="YpJ-fs-p4p">
                                                 <items>
-                                                    <menuItem title="Date Updated" id="fep-x2-0FA">
+                                                    <menuItem title="Date Updated" identifier="listSortUpdatedMenuItem" id="fep-x2-0FA">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Note Order by Date"/>
@@ -560,7 +560,7 @@
                                                             <action selector="sortPrefAction:" target="874" id="KsM-qb-OZu"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="Alphabetical" tag="1" id="i8p-Xx-VpF">
+                                                    <menuItem title="Alphabetical" tag="1" identifier="listSortAlphaMenuItem" id="i8p-Xx-VpF">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Alphabetical Note Sort Order"/>
@@ -1482,12 +1482,9 @@
                 <outlet property="addNoteButton" destination="987" id="3H3-Zp-93V"/>
                 <outlet property="arrayController" destination="573" id="1143"/>
                 <outlet property="backgroundView" destination="3JQ-IY-iXS" id="CzV-R2-JPS"/>
-                <outlet property="previewLinesMenu" destination="fB2-X8-xNp" id="R2Z-BJ-E4B"/>
-                <outlet property="previewLinesMenuItem" destination="tl2-gz-YEA" id="0jB-Al-t3V"/>
                 <outlet property="progressIndicator" destination="1732" id="1773"/>
                 <outlet property="searchField" destination="zSa-wS-KTc" id="RrK-Bq-99o"/>
                 <outlet property="searchView" destination="R5E-ls-WXI" id="6fE-Dx-iG7"/>
-                <outlet property="sortMenu" destination="YpJ-fs-p4p" id="ncf-ZC-vxK"/>
                 <outlet property="statusField" destination="1766" id="1768"/>
                 <outlet property="tableView" destination="561" id="1342"/>
                 <outlet property="topDividerView" destination="YF7-at-XJm" id="Owc-m2-TC2"/>
