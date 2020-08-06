@@ -14,7 +14,6 @@
 @import Simperium_OSX;
 
 @class BackgroundView;
-@class NoteEditorViewController;
 @class SPTableView;
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
