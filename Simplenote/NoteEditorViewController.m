@@ -648,7 +648,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self stopObservingEditorProperties:self.noteEditor];
     [self startObservingEditorProperties:editor];
 
-	_noteEditor = editor;
+    _noteEditor = editor;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
