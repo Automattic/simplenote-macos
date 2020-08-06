@@ -23,7 +23,6 @@
     IBOutlet NSMenu *previewLinesMenu;
     IBOutlet NSMenuItem *previewLinesMenuItem;
     NSString *oldTags;
-    BOOL preserveSelection;
 }
 
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;

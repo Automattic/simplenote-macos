@@ -33,6 +33,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
 @property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
+@property (nonatomic, assign) BOOL                          preserveSelection;
 @end
 
 @implementation NoteListViewController
@@ -239,7 +240,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
     BOOL shouldSelect = YES;
-    if (preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
+    if (self.preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
         shouldSelect = NO;
     }
     
@@ -300,12 +301,12 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
 - (void)reloadDataAndPreserveSelection
 {
-    preserveSelection = YES;
+    self.preserveSelection = YES;
     // Reset the fetch predicate
     [self.arrayController setFetchPredicate:self.arrayController.fetchPredicate];
     self.arrayController.sortDescriptors = [self sortDescriptors];
     [self.tableView reloadData];
-    preserveSelection = NO;
+    self.preserveSelection = NO;
     
     // Force array change logic to run in the next run loop
     dispatch_async(dispatch_get_main_queue(), ^() {
