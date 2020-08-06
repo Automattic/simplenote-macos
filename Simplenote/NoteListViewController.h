@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-#import "NoteListViewController.h"
 
 
 @import Simperium_OSX;
