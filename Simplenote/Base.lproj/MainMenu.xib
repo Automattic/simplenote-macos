@@ -529,7 +529,7 @@
                                                             <fragment content="Toggles Comfy Note Display"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="previewLinesAction:" target="874" id="d4I-8r-5Lj"/>
+                                                            <action selector="displayModeWasPressed:" target="874" id="T5P-6u-pcA"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Condensed" tag="1" identifier="listDisplayCondensedMenuItem" id="tQC-gw-hdq">
@@ -538,7 +538,7 @@
                                                             <fragment content="Toggles Condensed Note Display"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="previewLinesAction:" target="874" id="X0J-e4-qfh"/>
+                                                            <action selector="displayModeWasPressed:" target="874" id="iQs-ju-FNf"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
@@ -557,7 +557,7 @@
                                                             <fragment content="Toggles Note Order by Date"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="sortPrefAction:" target="874" id="KsM-qb-OZu"/>
+                                                            <action selector="sortModeWasPressed:" target="874" id="tjN-fJ-lMs"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Alphabetical" tag="1" identifier="listSortAlphaMenuItem" id="i8p-Xx-VpF">
@@ -566,7 +566,7 @@
                                                             <fragment content="Toggles Alphabetical Note Sort Order"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="sortPrefAction:" target="874" id="wYh-RZ-Guv"/>
+                                                            <action selector="sortModeWasPressed:" target="874" id="Owo-eq-wG0"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>

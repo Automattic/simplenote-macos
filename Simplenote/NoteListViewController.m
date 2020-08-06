@@ -430,28 +430,6 @@
     }
 }
 
-- (IBAction)sortPrefAction:(id)sender
-{
-    NSMenuItem *menuItem = (NSMenuItem*)sender;
-    BOOL alphabeticalEnabled = menuItem.tag == 1;
-    
-    [SPTracker trackSettingsAlphabeticalSortEnabled:alphabeticalEnabled];
-
-    [[Options shared] setAlphabeticallySortNotes:alphabeticalEnabled];
-    [self reloadDataAndPreserveSelection];
-}
-
-- (IBAction)previewLinesAction:(id)sender
-{
-    NSMenuItem *item = (NSMenuItem *)sender;
-    BOOL isCondensedOn = (item.tag == 1);
-
-    [SPTracker trackSettingsListCondensedEnabled:isCondensedOn];
-
-    [[Options shared] setNotesListCondensed:isCondensedOn];
-    [self reloadDataAndPreserveSelection];
-}
-
 - (void)searchAction:(id)sender
 {
     [self.view.window makeFirstResponder:self.searchField];

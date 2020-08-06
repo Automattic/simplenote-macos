@@ -44,8 +44,6 @@
 - (void)reloadDataAndPreserveSelection;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
-- (IBAction)sortPrefAction:(id)sender;
-- (IBAction)previewLinesAction:(id)sender;
 - (IBAction)searchAction:(id)sender;
 - (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;

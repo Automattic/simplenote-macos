@@ -250,6 +250,38 @@ extension NoteListViewController: NSMenuItemValidation {
 }
 
 
+// MARK: - Actions
+//
+extension NoteListViewController {
+
+    @IBAction
+    func displayModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.listDisplayCondensedMenuItem
+        Options.shared.notesListCondensed = isCondensedOn
+        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
+
+        reloadDataAndPreserveSelection()
+    }
+
+    @IBAction
+    func sortModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.listSortAlphaMenuItem
+        Options.shared.alphabeticallySortNotes = isAlphaOn
+        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+
+        reloadDataAndPreserveSelection()
+    }
+}
+
+
 // MARK: - Helpers
 //
 extension NoteListViewController {
