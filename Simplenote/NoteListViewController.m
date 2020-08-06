@@ -31,6 +31,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 @property (nonatomic, strong) IBOutlet NSView               *searchView;
 @property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, strong) NSString                      *oldTags;
 @property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
 @property (nonatomic, assign) BOOL                          preserveSelection;
@@ -42,7 +43,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 {
     [super viewDidLoad];
 
-    oldTags = @"";
+    self.oldTags = @"";
 
     // Set the active preferences in the menu
     int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
@@ -329,7 +330,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     for (NSString *key in keys) {
         Note *note = [[[appDelegate simperium] bucketForName:@"Note"] objectForKey:key];
         if (note.tags) {
-            oldTags = note.tags;
+            self.oldTags = note.tags;
         }
     }
 }
@@ -352,7 +353,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
         // Update notes list if note has new tag that matches currently selected tag OR
         // if note had tag deleted from the currently selected tag
         if ([note.tags rangeOfString:tag].location != NSNotFound ||
-            [oldTags rangeOfString:tag].location != NSNotFound) {
+            [self.oldTags rangeOfString:tag].location != NSNotFound) {
             needsReloadData = YES;
         }
     }

@@ -22,7 +22,6 @@
     IBOutlet NSMenu *sortMenu;
     IBOutlet NSMenu *previewLinesMenu;
     IBOutlet NSMenuItem *previewLinesMenuItem;
-    NSString *oldTags;
 }
 
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
