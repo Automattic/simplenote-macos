@@ -424,18 +424,10 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 {
     [SPTracker trackListNoteDeleted];
     
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    NSInteger currentRow = [self rowForNoteKey:note.simperiumKey];
-    
-    note.deleted = YES;
-    [appDelegate.simperium save];
-    
-    // Select the next note, and handle deleting the last row
-    if (currentRow == [self.tableView numberOfRows]) {
-        currentRow -=1;
-    }
-	
-    [self selectRow:currentRow];
+    [self performPerservingSelectedIndexWithBlock:^{
+        note.deleted = YES;
+        [[[SimplenoteAppDelegate sharedDelegate] simperium] save];
+    }];
 }
 
 - (void)deleteAction:(id)sender
