@@ -436,15 +436,6 @@
 }
 
 
-#pragma mark - NSMenuValidation delegate
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    // Disable menu items when viewing trash
-    return !self.viewingTrash;
-}
-
-
 #pragma mark - IBActions
 
 - (IBAction)filterNotes:(id)sender
