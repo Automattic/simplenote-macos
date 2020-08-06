@@ -37,6 +37,11 @@
 
 @implementation NoteListViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -91,11 +96,6 @@
 {
     [super viewWillAppear];
     [self applyStyle];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadNotes
