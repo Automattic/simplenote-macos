@@ -19,8 +19,6 @@
 @import Simperium_OSX;
 
 
-NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
-
 @interface NoteListViewController ()
 @property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
 @property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
@@ -46,7 +44,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     self.oldTags = @"";
 
     // Set the active preferences in the menu
-    int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
+    int sortPrefPosition = [[Options shared] alphabeticallySortNotes] ? 1 : 0;
     [self updateSortMenuForPosition:sortPrefPosition];
 
     int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
@@ -139,7 +137,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     BOOL ascending = NO;
     SEL sortSelector = nil;
 
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref]) {
+    if ([[Options shared] alphabeticallySortNotes]) {
         sortKey = @"content";
         ascending = YES;
         sortSelector = @selector(caseInsensitiveCompare:);
@@ -446,8 +444,8 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     BOOL alphabeticalEnabled = menuItem.tag == 1;
     
     [SPTracker trackSettingsAlphabeticalSortEnabled:alphabeticalEnabled];
-    
-    [[NSUserDefaults standardUserDefaults] setBool:alphabeticalEnabled forKey:kAlphabeticalSortPref];
+
+    [[Options shared] setAlphabeticallySortNotes:alphabeticalEnabled];
     [self updateSortMenuForPosition:menuItem.tag];
     [self reloadDataAndPreserveSelection];
 }
