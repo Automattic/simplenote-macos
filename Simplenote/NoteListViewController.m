@@ -48,10 +48,6 @@
 
     self.oldTags = @"";
 
-    [self.progressIndicator setWantsLayer:YES];
-    [self.progressIndicator setAlphaValue:0.5];
-    [self.progressIndicator setHidden:YES];
-    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
                                                  name: kNotesArrayDidChangeNotification
@@ -81,11 +77,9 @@
                                                  name: TagListDidEmptyTrashNotification
                                                object: nil];
 
-    self.tableView.rowHeight = [NoteTableCellView rowHeight];
-    self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
-    self.tableView.backgroundColor = [NSColor clearColor];
-
+    [self setupProgressIndicator];
     [self setupSearchBar];
+    [self setupTableView];
     [self setupTopDivider];
 }
 
