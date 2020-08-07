@@ -263,8 +263,6 @@ extension NoteListViewController {
         let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.listDisplayCondensedMenuItem
         Options.shared.notesListCondensed = isCondensedOn
         SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
-
-        reloadDataAndPreserveSelection()
     }
 
     @IBAction
@@ -276,7 +274,24 @@ extension NoteListViewController {
         let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.listSortAlphaMenuItem
         Options.shared.alphabeticallySortNotes = isAlphaOn
         SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+    }
+}
 
+
+// MARK: - Notifications
+//
+extension NoteListViewController {
+
+    @objc
+    func displayModeDidChange(_ note: Notification) {
+        performPerservingSelectedIndex {
+            self.tableView.rowHeight = NoteTableCellView.rowHeight
+            self.tableView.reloadData()
+        }
+    }
+
+    @objc
+    func sortModeDidChange(_ note: Notification) {
         reloadDataAndPreserveSelection()
     }
 }

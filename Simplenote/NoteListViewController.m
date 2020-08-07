@@ -61,8 +61,12 @@
                                                  name: kNotesArraySelectionDidChangeNotification
                                                object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(notesCondensedModeDidChange:)
-                                                 name: NoteListCondensedDidChangeNotification
+                                             selector: @selector(displayModeDidChange:)
+                                                 name: NoteListDisplayModeDidChangeNotification
+                                               object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(sortModeDidChange:)
+                                                 name: NoteListSortModeDidChangeNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didBeginViewingTag:)
@@ -307,11 +311,6 @@
 }
 
 #pragma mark - Notification handlers
-
-- (void)notesCondensedModeDidChange:(NSNotification *)note
-{
-    self.tableView.rowHeight = [NoteTableCellView rowHeight];
-}
 
 - (void)noteKeysWillChange:(NSSet *)keys
 {
