@@ -144,7 +144,7 @@ extension NoteListViewController {
         }
 
         searchViewTopConstraint = searchView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
-        searchViewTopConstraint.isActive = true
+        searchViewTopConstraint?.isActive = true
     }
 }
 
