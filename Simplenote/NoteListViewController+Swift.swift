@@ -5,6 +5,24 @@ import Foundation
 //
 extension NoteListViewController {
 
+    /// Setup: TableView
+    ///
+    @objc
+    func setupTableView() {
+        tableView.rowHeight = NoteTableCellView.rowHeight
+        tableView.selectionHighlightStyle = .regular
+        tableView.backgroundColor = .clear
+    }
+
+    /// Setup: Progress Indicator
+    ///
+    @objc
+    func setupProgressIndicator() {
+        progressIndicator.wantsLayer = true
+        progressIndicator.alphaValue = AppKitConstants.alpha0_5
+        progressIndicator.isHidden = true
+    }
+
     /// Setup: SearchBar
     ///
     @objc
