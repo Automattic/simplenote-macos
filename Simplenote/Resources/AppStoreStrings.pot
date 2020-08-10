@@ -46,7 +46,7 @@ msgctxt "app_store_keywords"
 msgid "simplenote,note,notes,sync,syncing,list,todo,simple,markdown,ideas"
 msgstr ""
 
-msgctxt "v1.12-whats-new"
+msgctxt "v2.0-whats-new"
 msgid ""
 "- Refreshed the Tags Editor Interface!\n"
 "- New Scroll Support in the Tags Editor area\n"
