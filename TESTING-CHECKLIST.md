@@ -20,7 +20,6 @@
 - [ ] Markdown setting syncs to/from other device
 - [ ] Preview mode disappears/reappears when receiving remote changes to markdown setting
 - [ ] Note pinning syncs immediately to/from other device
-- [ ] Note pinning works regardless if selecting in list view or from note info
 - [ ] Restoring history immediately syncs note from both directions
 
 ### Note editor
