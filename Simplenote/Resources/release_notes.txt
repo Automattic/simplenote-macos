@@ -1,6 +1,2 @@
-- Refreshed the Tags Editor Interface!
-- New Scroll Support in the Tags Editor area
-- Implements Untagged Notes Filter
-- New Note Metrics Interface
-- Relocated Editor Actions into the new More Actions Menu
-- Fixed Tags Editor RTL support
+- Updated Tags limit to up to 256 characters
+- Fixed a crash while handling right clicks in the Tags List
