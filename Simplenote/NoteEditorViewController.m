@@ -722,7 +722,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     if (self.isDisplayingMarkdown) {
         [self dismissMarkdownPreview];
     } else {
-        [self displayMarkdownPreview:self.note.content];
+        [self displayMarkdownPreview:self.note];
     }
 
     [self refreshEditorActions];
