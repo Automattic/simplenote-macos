@@ -168,3 +168,56 @@ extension NoteListViewController {
         return noteView
     }
 }
+
+
+// MARK: - EditorControllerNoteActionsDelegate
+//
+extension NoteListViewController: EditorControllerNoteActionsDelegate {
+
+    public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
+
+        reloadSynchronously()
+        selectRow(forNoteKey: simperiumKey)
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
+        // The note was just deleted, but our tableView wasn't reload yet:
+        // We'll perform a synchronous reload, while keeping the same selected index!
+        performPerservingSelectedIndex {
+            self.reloadSynchronously()
+        }
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
+        arrayController.rearrangeObjects()
+        selectRow(forNoteKey: simperiumKey)
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
+        arrayController.rearrangeObjects()
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
+        reloadRow(forNoteKey: simperiumKey)
+    }
+}
+
+
+// MARK: - Helpers
+//
+extension NoteListViewController {
+
+    @objc
+    func performPerservingSelectedIndex(block: () -> Void) {
+        var previouslySelectedIndex = arrayController.selectionIndex
+        block()
+
+        if previouslySelectedIndex == tableView.numberOfRows {
+            previouslySelectedIndex -= 1
+        }
+
+        arrayController.setSelectionIndex(previouslySelectedIndex)
+    }
+}

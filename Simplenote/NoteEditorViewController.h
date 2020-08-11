@@ -12,6 +12,7 @@
 @import Simperium_OSX;
 
 @class BackgroundView;
+@class NoteEditorViewController;
 @class NoteListViewController;
 @class MarkdownViewController;
 @class TagsField;
@@ -28,18 +29,26 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 
 
 
-#pragma mark - Notifications
+#pragma mark - NoteEditorControllerDelegate
 
-extern NSString * const SPTagAddedFromEditorNotificationName;
-extern NSString * const SPWillAddNewNoteNotificationName;
+@protocol EditorControllerNoteActionsDelegate <NSObject>
+- (void)editorController:(NoteEditorViewController *)controller addedNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller pinnedNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller restoredNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller updatedNoteWithSimperiumKey:(NSString *)simperiumKey;
+- (void)editorController:(NoteEditorViewController *)controller deletedNoteWithSimperiumKey:(NSString *)simperiumKey;
+@end
+
+@protocol EditorControllerTagActionsDelegate <NSObject>
+- (void)editorController:(NoteEditorViewController *)controller didAddNewTag:(NSString *)tag;
+@end
+
 
 
 #pragma mark - NoteEditorViewController
 
 @interface NoteEditorViewController : NSViewController
 {
-    IBOutlet NSTableView *tableView;
-    IBOutlet NSArrayController *notesArrayController;
     IBOutlet NSMenu *lineLengthMenu;
 }
 
@@ -59,6 +68,8 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) NSLayoutConstraint                      *toolbarViewTopConstraint;
 @property (nonatomic,   weak) Note                                              *note;
+@property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
+@property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
 
 - (void)save;
 - (void)displayNote:(nullable Note *)selectedNote;
