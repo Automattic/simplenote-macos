@@ -1,3 +1,6 @@
+2.1
+-----
+ 
 2.0.0
 ------
 - Updated Tags limit to up to 256 characters
