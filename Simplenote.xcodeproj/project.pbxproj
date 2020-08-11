@@ -181,6 +181,8 @@
 		B54F9A6824D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */; };
 		B54F9A6A24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */; };
 		B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */; };
+		B551187224E33BC2007B11E3 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551187124E33BC2007B11E3 /* ClipView.swift */; };
+		B551187324E33BC2007B11E3 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551187124E33BC2007B11E3 /* ClipView.swift */; };
 		B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
@@ -544,6 +546,7 @@
 		B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplenoteConstants.swift; sourceTree = "<group>"; };
 		B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Simplenote.swift"; sourceTree = "<group>"; };
 		B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTextFormatter.swift; sourceTree = "<group>"; };
+		B551187124E33BC2007B11E3 /* ClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipView.swift; sourceTree = "<group>"; };
 		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
 		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
 		B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSVisualEffectView+Simplenote.swift"; sourceTree = "<group>"; };
@@ -939,6 +942,7 @@
 				B5946321247EF60500FC257E /* Tags */,
 				B5E8E41324575C9F0098892B /* Toolbar */,
 				B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */,
+				B551187124E33BC2007B11E3 /* ClipView.swift */,
 				B5F50914247319360042FA1D /* SplitView.swift */,
 				B535014A249D5908003837C8 /* HorizontalScrollView.swift */,
 				46F0E66117A32269005BB4D1 /* SPTableView.h */,
@@ -1688,6 +1692,7 @@
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
+				B551187224E33BC2007B11E3 /* ClipView.swift in Sources */,
 				B5E061772450AEDA0076111A /* ToolbarView.swift in Sources */,
 				F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
@@ -1822,6 +1827,7 @@
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993D24213B370037A431 /* String+Simplenote.swift in Sources */,
+				B551187324E33BC2007B11E3 /* ClipView.swift in Sources */,
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
