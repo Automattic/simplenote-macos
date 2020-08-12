@@ -24,7 +24,7 @@ IB_DESIGNABLE
 /// whenever the clicked row falls within the `contentInsets` area.
 ///
 /// Meaning that even when a given row is fully visible, NSTableView might perform a scroll anyways, leading to a jumpy UX.
-/// We're implementing a (opt-in) workaround to deal with this scenario!
+/// We're implementing a (opt-in) mechanism that disables Scrolling, during a mouseDown operation.
 ///
 @property (nonatomic, assign) IBInspectable BOOL disableAutoscrollOnMouseDown;
 

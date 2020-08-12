@@ -29,19 +29,6 @@
     [super keyDown:theEvent];
 }
 
-- (BOOL)isRowClipped:(NSInteger)row
-{
-    if (row < 0) {
-        return NO;
-    }
-
-    NSRect rectOfRow = [self rectOfRow:row];
-    NSPoint rowInWindow = [self convertPoint:rectOfRow.origin toView:nil];
-    CGFloat windowHeight = self.window.contentLayoutRect.size.height;
-
-    return rowInWindow.y >= windowHeight;
-}
-
 - (NSInteger)rowForEvent:(NSEvent *)event
 {
     NSPoint location = [self convertPoint:event.locationInWindow fromView:nil];
@@ -56,10 +43,7 @@
 
 - (void)mouseDown:(NSEvent *)event
 {
-    NSInteger row = [self rowForEvent:event];
-    BOOL isRowClipped = [self isRowClipped:row];
-
-    self.disablesScrollToRow = self.disableAutoscrollOnMouseDown && !isRowClipped;
+    self.disablesScrollToRow = self.disableAutoscrollOnMouseDown;
 
     [super mouseDown:event];
 
