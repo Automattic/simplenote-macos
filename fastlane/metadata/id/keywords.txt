@@ -1,0 +1,1 @@
+simplenote,catatan,sinkronisasi,menyinkronisasi,daftar,tugas,sederhana,markdown,ide

@@ -1,0 +1,17 @@
+Simplenote es una forma fácil de guardar notas, listas, ideas y mucho más. Tus notas se mantienen sincronizadas en todos tus dispositivos de forma gratuita.
+
+La experiencia con Simplenote se resume en dos palabras: velocidad y eficacia. Abre la aplicación, escribe algunas líneas y listo. A medida que vaya creciendo tu colección de notas, podrás buscarlas al instante y organizarlas con etiquetas y marcadores. Puedes añadir listas de comprobación a tus notas para hacer un seguimiento de tus tareas. También puedes compartir notas y publicarlas para otras personas.
+
+¿Te gusta Markdown? Puedes editar, previsualizar y publicar tus notas usando el formato de Markdown.
+
+La mejor forma de conocer la aplicación Simplenote es probándola. Se te pedirá que crees una cuenta. Así se creará una copia de seguridad en línea de tus notas y estas se sincronizarán automáticamente.
+
+Una vez que te hayas registrado, empieza a crear algunas notas. A continuación, ve a simplenote.com y descarga Simplenote en el resto de tus dispositivos.
+
+¡Disfruta escribiendo notas!
+
+---
+
+Política de privacidad: https://automattic.com/privacy/
+Condiciones del servicio: https://simplenote.com/terms/
+Aviso de privacidad para usuarios de California: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa

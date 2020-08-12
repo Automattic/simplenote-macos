@@ -1,0 +1,17 @@
+Simplenote är ett enkelt sätt att spara anteckningar, listor, idéer och annat. Dina anteckningar synkroniseras mellan alla dina enheter och det är gratis.
+
+Simplenote-upplevelsen handlar om snabbhet och effektivitet. Öppna appen, skriv ned några tankar och du är klar. När din samling av anteckningar växer kan du söka bland dessa i realtid och organisera anteckningarna med etiketter och nåla fast viktiga texter. Checklistor kan läggas till i dina anteckningar för att hålla koll på dina uppgifter. Du kan också dela anteckningar och publicera dem till andra personer.
+
+Tycker du om Markdown? Du kan redigera, förhandsvisa och publicera dina anteckningar med Markdown-formatering.
+
+Det bästa sättet att lära sig mer om Simplenote är helt enkelt att testa. Du kommer att bli tillfrågad om att skapa ett konto. Kontot gör att dina anteckningar kan säkerhetskopieras online och synkroniseras automatiskt.
+
+Efter att du har registrerat dig, testa att skapa några anteckningar! Därefter kan du gå till simplenote.com för att ladda ned appen till dina andra enheter.
+
+Lycka till med anteckningarna!
+
+---
+
+Sekretesspolicy: https://automattic.com/privacy/
+Användarvillkor: https://simplenote.com/terms/
+Sekretessmeddelande för användare i Kalifornien: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa
