@@ -1,135 +1,211 @@
+/* Translation-Revision-Date: 2020-08-06 18:54:04+0000 */
+/* Plural-Forms: nplurals=2; plural=(n > 1); */
+/* Generator: GlotPress/2.4.0-alpha */
+/* Language: tr */
+
+/* Password Requirement: Length */
+"- Minimum of 8 characters" = "En az 8 karakter";
+
+/* Password Requirement: Special Characters */
+"- Neither tabs nor newlines are allowed" = "Sekmelere veya satır başlarına izin verilmez";
+
+/* Password Requirement: Email Match */
+"- Password cannot match email" = "- Parola ile e-posta adresi aynı olamaz";
+
 /* Text presented when sharing a Note */
-"Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Add an email address as a tag to share this note with someone. Then you can both make changes to it.";
+"Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Bu notu birisiyle paylaşmak için etiket olarak bir e-posta adresi ekleyin. Bunun ardından her ikiniz de not üzerinde değişiklik yapabilirsiniz.";
 
 /* Placeholder text in the Tags View */
-"Add tag..." = "Add tag...";
+"Add tag..." = "Etiket ekle...";
 
 /* Title of the view that displays all your notes */
-"All Notes" = "All Notes";
+"All Notes" = "Tüm Notlar";
+
+/* Link to sign in to an account */
+"Already have an account?" = "Already have an account?";
 
 /* Sign in error message */
-"An error was encountered while signing in." = "An error was encountered while signing in.";
+"An error was encountered while signing in." = "Oturum açılırken bir hata oluştu.";
 
-/* Cancel the action */
-"Cancel" = "Cancel";
+/* Error for bad email or password */
+"Bad email or password" = "Bad email or password";
+
+/* Cancel the action
+   Password Reset: Cancel */
+"Cancel" = "İptal";
 
 /* Number of characters in the note */
-"Characters" = "Characters";
+"Characters" = "Karakter";
 
 /* Analytics Toggle Text */
-"Collect Information" = "Collect Information";
+"Collect Information" = "Bilgi topla";
+
+/* Placeholder text for confirmation field */
+"Confirm Password" = "Confirm Password";
 
 /* Alert dialog title displayed on sign in error */
-"Couldn't Sign In" = "Couldn't Sign In";
+"Couldn't Sign In" = "Oturum Açılamadı";
 
 /* Note Creation Date */
-"Created" = "Created";
+"Created" = "Oluşturuldu";
 
 /* Delete notes and sign out of the app */
-"Delete Notes" = "Delete Notes";
+"Delete Notes" = "Notları Sil";
 
 /* Delete Tag Action */
-"Delete Tag" = "Delete Tag";
+"Delete Tag" = "Etiket Sil";
+
+/* Placeholder text for login field */
+"Email" = "E-posta";
 
 /* Empty Trash Action */
-"Empty Trash" = "Empty Trash";
+"Empty Trash" = "Çöpü boşalt";
 
 /* Export All Notes Action */
-"Export Everything" = "Export Everything";
+"Export Everything" = "Her Şeyi Dışa Aktar";
+
+/* Forgot Password Button */
+"Forgot your Password?" = "Forgot your Password?";
+
+/* Title of button for logging in
+   Title of button for login */
+"Log In" = "Giriş yap";
+
+/* Displayed temporarily while logging in */
+"Logging In..." = "Logging In...";
 
 /* Tooltip: Markdown Preview */
-"Markdown Preview" = "Markdown Preview";
+"Markdown Preview" = "Markdown Önizlemesi";
 
 /* Tooltip: Note Metrics */
-"Metrics" = "Metrics";
+"Metrics" = "Ölçümler";
 
 /* Note Modification Date */
-"Modified" = "Modified";
+"Modified" = "Değiştirilmiş";
 
 /* Tooltip: More Actions */
-"More" = "More";
+"More" = "Daha fazla";
+
+/* Link to create an account */
+"Need an account?" = "Need an account?";
 
 /* Empty Note Placeholder */
-"New note..." = "New note...";
+"New note..." = "Yeni not...";
 
 /* Placeholder displayed when a note hasn't been published. */
-"Not Published" = "Not Published";
+"Not Published" = "Yayımlanmadı";
+
+/* Error when you enter a bad email address */
+"Not a valid email address" = "Not a valid email address";
 
 /* OK button in error alert dialog */
-"OK" = "OK";
+"OK" = "Tamam";
+
+/* Placeholder text for password field */
+"Password" = "Parola";
+
+/* Message displayed when password is invalid (Signup) */
+"Password cannot match email" = "Parola ile e-posta adresi aynı olamaz";
+
+/* Message displayed when password is too short. The %%d is a placeholder for a numeral. Please preserve it! */
+"Password must contain at least %d characters" = "Parola en az %d karakter içermelidir";
+
+/* Message displayed when a password contains a disallowed character */
+"Password must not contain tabs nor newlines" = "Parola sekme veya satır başı içermemelidir";
+
+/* Password Validation: Confirmation doesn't match */
+"Passwords do not match" = "Passwords do not match";
 
 /* Error message displayed when user has not verified their WordPress.com account */
-"Please activate your WordPress.com account via email and try again." = "Please activate your WordPress.com account via email and try again.";
+"Please activate your WordPress.com account via email and try again." = "Lütfen WordPress.com hesabınızı e-posta aracılığıyla etkinleştirin ve tekrar deneyin.";
 
 /* Privacy Policy's Title */
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Gizlilik politikası";
 
 /* Text presented when the note is about to be published */
-"Publish this note to a web page. The page will stay updated with the contents of your note." = "Publish this note to a web page. The page will stay updated with the contents of your note.";
+"Publish this note to a web page. The page will stay updated with the contents of your note." = "Bu notu web sayfası olarak yayımlayın.  Sayfa her zaman notunuzdaki içerikle güncellenecektir.";
 
 /* Publish to WebPage Action */
-"Publish to Web Page" = "Publish to Web Page";
+"Publish to Web Page" = "Web Sayfasına Yayımla";
 
 /* Displayed during a Publish Operation */
-"Publishing..." = "Publishing...";
+"Publishing..." = "Yayımlanıyor...";
 
 /* Rename Tag Action */
-"Rename Tag" = "Rename Tag";
+"Rename Tag" = "Etiketi Yeniden Adlandır";
+
+/* Password Reset: Proceed */
+"Reset" = "Sıfırla";
 
 /* Tooltip: Restore a trashed note */
-"Restore" = "Restore";
+"Restore" = "Geri yükle";
 
 /* Search Field Placeholder */
-"Search" = "Search";
+"Search" = "Arama";
 
 /* Cookie Policy Legend */
-"Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Share information with our analytics tool about your use of services while logged into your Simplenote.com account.";
+"Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com hesabınızda oturumunuz açıkken hizmetleri kullanımınızla ilgili bilgileri analiz aracımızla paylaşın.";
+
+/* Title of button for signing up */
+"Sign Up" = "Üye ol";
 
 /* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "Sign in with WordPress.com";
+"Sign in with WordPress.com" = "WordPress.com ile Giriş Yap";
+
+/* Displayed temoprarily while signing up */
+"Signing Up..." = "Signing Up...";
 
 /* Alert message displayed when an account has unsynced notes */
-"Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App." = "Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.";
+"Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App." = "Oturumu kapattığınızda, senkronize edilmemiş tüm notlar silinir. Web Uygulamasında oturum açarak bağlantınızı kontrol edin ve senkronize edilmiş notlarınızı doğrulayın.";
+
+/* Text to display on OSX cancel button */
+"Skip" = "Atla";
 
 /* Tags Section Name */
-"Tags" = "Tags";
+"Tags" = "Etiketler";
+
+/* Error when address is in use */
+"That email is already being used" = "That email is already being used";
 
 /* Privacy Policy */
-"This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy.";
-
-/* Displayed as a date in the case where a note was modified today, for example */
-"Today" = "Today";
+"This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Bu bilgiler, ürünlerimizi geliştirmemize, pazarlamayı size daha alakalı hale getirmemize, Simplenote.com deneyiminizi kişiselleştirmemize ve gizlilik politikamızda ayrıntılı olarak belirtilen diğer bir çok işlemi yapmamıza yardımcı olur.";
 
 /* Title of the view that displays all your deleted notes */
-"Trash" = "Trash";
+"Trash" = "Çöp kutusu";
 
 /* Unpublish Note Action */
-"Unpublish" = "Unpublish";
+"Unpublish" = "Yayından kaldır";
 
 /* Displayed during an Unpublish Operation */
-"Unpublishing..." = "Unpublishing...";
+"Unpublishing..." = "Yayından kaldırılıyor...";
 
 /* Alert title displayed in when an account has unsynced notes */
-"Unsynced Notes Detected" = "Unsynced Notes Detected";
+"Unsynced Notes Detected" = "Senkronize Edilmemiş Notlar Tespit Edildi";
 
 /* Untagged Notes Filter */
-"Untagged Notes" = "Untagged Notes";
+"Untagged Notes" = "Etiketsiz Notlar";
 
 /* Label for the current version of a note */
-"Version" = "Version";
+"Version" = "Sürüm";
 
 /* Version displayed in the about screen */
-"Version %@" = "Version %@";
+"Version %@" = "Sürüm %@";
 
 /* Visit app.simplenote.com in the browser */
-"Visit Web App" = "Visit Web App";
+"Visit Web App" = "Web Uygulamasını Ziyaret Et";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Welcome to Simplenote Mac!\n\nTo add a note, click the new note button with the plus symbol.\n\nTo remove a note, click the trash button.\n\nYou can search all your notes by typing in the search field above the note list.\n\nClick the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.\n\nThere are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.\n\nUse Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
+/* Generic error */
+"We're having problems. Please try again soon." = "Sorun yaşanıyor. Lütfen kısa bir süre sonra tekrar deneyin.";
 
 /* Number of words in the note */
-"Words" = "Words";
+"Words" = "Sözcük";
 
-/* Displayed as a date in the case where a note was modified yesterday, for example */
-"Yesterday" = "Yesterday";
+/* Error when you're not connected */
+"You're not connected to the internet" = "You're not connected to the internet";
+
+/* Password Requirements: Title */
+"Your password is insecure and must be reset. The password requirements are:" = "Parolanız güvenli değil ve sıfırlanması gerekiyor. Parola gereksinimleri:";
+
+/* A welcome note for new Mac users */
+"welcomeNote-Mac" = "Simplenote Mac'e hoş geldiniz.\n\nNot eklemek için artı simgeli yeni not düğmesini tıklayın.\n\nBir notu kaldırmak için çöp kutusu düğmesini tıklayın.\n\nNot listesinin üstündeki arama alanına yazarak tüm notlarınızı arayabilirsiniz.\n\nKenar çubuğunu açmak için sol üst taraftaki etiketler düğmesini tıklayın. Not düzenleyicinin alt kısmında bir nota etiket ekleyebilir, ardından kenar çubuğunu kullanarak notları düzenli şekilde saklayabilirsiniz.\n\nGerek duyduğunuzda diğer not seçeneklerini de kullanabilirsiniz. Kişilerle işbirliği yapmak için e-posta adreslerini etiket olarak ekleyebilir veya bir notu web sayfası olarak yayınlayabilirsiniz.\n\niPhone, iPad, Android cihazınızda veya https:\/\/simplenote.com adresindeki web tarayıcınızda Simplenote'u kullanın. Notlarınız her yerde otomatik olarak güncellenecek.";
 
