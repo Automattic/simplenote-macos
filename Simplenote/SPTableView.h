@@ -17,6 +17,15 @@
 
 
 
+IB_DESIGNABLE
 @interface SPTableView : NSTableView<SPTextViewDelegate, NSTextFieldDelegate>
+
+/// AppKit will always ensure that the clicked row is visble. However, the SDK considers a row as being "not visible"
+/// whenever the clicked row falls within the `contentInsets` area.
+///
+/// Meaning that even when a given row is fully visible, NSTableView might perform a scroll anyways, leading to a jumpy UX.
+/// We're implementing a (opt-in) workaround to deal with this scenario!
+///
+@property (nonatomic, assign) IBInspectable BOOL disableAutoscrollOnMouseDown;
 
 @end

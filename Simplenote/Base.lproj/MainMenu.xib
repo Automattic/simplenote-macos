@@ -950,6 +950,9 @@
                                                             </prototypeCellViews>
                                                         </tableColumn>
                                                     </tableColumns>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="disableAutoscrollOnMouseDown" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <outlet property="dataSource" destination="1461" id="1467"/>
                                                         <outlet property="delegate" destination="1461" id="1468"/>
