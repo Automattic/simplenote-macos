@@ -107,6 +107,8 @@ end
   desc "Updates a release branch for a new beta release"
   lane :new_beta_release do | options |
     ios_betabuild_prechecks(options)
+    ios_localize_project()
+    ios_update_metadata()
     ios_bump_version_beta()
     ios_tag_build()
   end
