@@ -36,7 +36,7 @@ class Options: NSObject {
 //
 extension Options {
 
-    /// Indicates if Tags must be sort Alphabetically
+    /// Indicates if Tags must be sorted Alphabetically
     ///
     var alphabeticallySortTags: Bool {
         get {
@@ -45,6 +45,19 @@ extension Options {
         set {
             defaults.set(newValue, forKey: .alphabeticallySortTags)
             NotificationCenter.default.post(name: .TagSortModeDidChange, object: nil)
+        }
+    }
+
+    /// Indicates if Notes must be sorted Alphabetically
+    ///
+    @objc
+    var alphabeticallySortNotes: Bool {
+        get {
+            defaults.bool(forKey: .alphabeticallySortNotes)
+        }
+        set {
+            defaults.set(newValue, forKey: .alphabeticallySortNotes)
+            NotificationCenter.default.post(name: .NoteSortModeDidChange, object: nil)
         }
     }
 

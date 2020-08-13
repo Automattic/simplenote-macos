@@ -6,6 +6,7 @@ import Foundation
 extension UserDefaults {
     enum Key: String {
         case alphabeticallySortTags = "kTagSortPreferencesKey"
+        case alphabeticallySortNotes = "kAlphabeticalSortPreferencesKey"
         case analyticsEnabled
         case lastKnownVersion
         case notesListCondensed = "kPreviewLinesPref"

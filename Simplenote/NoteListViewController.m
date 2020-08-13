@@ -19,8 +19,6 @@
 @import Simperium_OSX;
 
 
-NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
-
 @interface NoteListViewController ()
 @property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
 @property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
@@ -31,29 +29,33 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 @property (nonatomic, strong) IBOutlet NSView               *searchView;
 @property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, strong) NSString                      *oldTags;
 @property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
+@property (nonatomic, assign) BOOL                          preserveSelection;
 @end
 
 @implementation NoteListViewController
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    oldTags = @"";
+    self.oldTags = @"";
 
     // Set the active preferences in the menu
-    int sortPrefPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref] ? 1 : 0;
+    int sortPrefPosition = [[Options shared] alphabeticallySortNotes] ? 1 : 0;
     [self updateSortMenuForPosition:sortPrefPosition];
 
     int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
     [self updatePreviewLinesMenuForPosition:previewLinesPosition];
     
-    [self.progressIndicator setWantsLayer:YES];
-    [self.progressIndicator setAlphaValue:0.5];
-    [self.progressIndicator setHidden:YES];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
                                                  name: kNotesArrayDidChangeNotification
@@ -79,11 +81,9 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
                                                  name: TagListDidEmptyTrashNotification
                                                object: nil];
 
-    self.tableView.rowHeight = [NoteTableCellView rowHeight];
-    self.tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleRegular;
-    self.tableView.backgroundColor = [NSColor clearColor];
-
+    [self setupProgressIndicator];
     [self setupSearchBar];
+    [self setupTableView];
     [self setupTopDivider];
 }
 
@@ -91,11 +91,6 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 {
     [super viewWillAppear];
     [self applyStyle];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadNotes
@@ -137,7 +132,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     BOOL ascending = NO;
     SEL sortSelector = nil;
 
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kAlphabeticalSortPref]) {
+    if ([[Options shared] alphabeticallySortNotes]) {
         sortKey = @"content";
         ascending = YES;
         sortSelector = @selector(caseInsensitiveCompare:);
@@ -239,7 +234,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
     BOOL shouldSelect = YES;
-    if (preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
+    if (self.preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
         shouldSelect = NO;
     }
     
@@ -300,12 +295,12 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
 
 - (void)reloadDataAndPreserveSelection
 {
-    preserveSelection = YES;
+    self.preserveSelection = YES;
     // Reset the fetch predicate
     [self.arrayController setFetchPredicate:self.arrayController.fetchPredicate];
     self.arrayController.sortDescriptors = [self sortDescriptors];
     [self.tableView reloadData];
-    preserveSelection = NO;
+    self.preserveSelection = NO;
     
     // Force array change logic to run in the next run loop
     dispatch_async(dispatch_get_main_queue(), ^() {
@@ -328,7 +323,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     for (NSString *key in keys) {
         Note *note = [[[appDelegate simperium] bucketForName:@"Note"] objectForKey:key];
         if (note.tags) {
-            oldTags = note.tags;
+            self.oldTags = note.tags;
         }
     }
 }
@@ -351,7 +346,7 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
         // Update notes list if note has new tag that matches currently selected tag OR
         // if note had tag deleted from the currently selected tag
         if ([note.tags rangeOfString:tag].location != NSNotFound ||
-            [oldTags rangeOfString:tag].location != NSNotFound) {
+            [self.oldTags rangeOfString:tag].location != NSNotFound) {
             needsReloadData = YES;
         }
     }
@@ -444,8 +439,8 @@ NSString * const kAlphabeticalSortPref = @"kAlphabeticalSortPreferencesKey";
     BOOL alphabeticalEnabled = menuItem.tag == 1;
     
     [SPTracker trackSettingsAlphabeticalSortEnabled:alphabeticalEnabled];
-    
-    [[NSUserDefaults standardUserDefaults] setBool:alphabeticalEnabled forKey:kAlphabeticalSortPref];
+
+    [[Options shared] setAlphabeticallySortNotes:alphabeticalEnabled];
     [self updateSortMenuForPosition:menuItem.tag];
     [self reloadDataAndPreserveSelection];
 }
