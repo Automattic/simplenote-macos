@@ -8,6 +8,11 @@
 
 #import "SPTableView.h"
 
+
+@interface SPTableView ()
+@property (nonatomic, assign) BOOL disablesScrollToRow;
+@end
+
 @implementation SPTableView
 
 - (void)keyDown:(NSEvent *)theEvent
@@ -24,24 +29,62 @@
     [super keyDown:theEvent];
 }
 
+- (NSInteger)rowForEvent:(NSEvent *)event
+{
+    NSPoint location = [self convertPoint:event.locationInWindow fromView:nil];
+    return [self rowAtPoint:location];
+}
+
+- (NSInteger)columnForEvent:(NSEvent *)event
+{
+    NSPoint mousePoint = [self convertPoint:event.locationInWindow fromView:nil];
+    return [self columnAtPoint:mousePoint];
+}
+
+- (void)mouseDown:(NSEvent *)event
+{
+    self.disablesScrollToRow = self.disableAutoscrollOnMouseDown;
+
+    [super mouseDown:event];
+
+    self.disablesScrollToRow = NO;
+}
+
+- (BOOL)autoscroll:(NSEvent *)event
+{
+    if (self.disablesScrollToRow) {
+        return NO;
+    }
+
+    return [super autoscroll:event];
+}
+
+- (void)scrollRowToVisible:(NSInteger)row
+{
+    if (self.disablesScrollToRow) {
+        return;
+    }
+
+    [super scrollRowToVisible:row];
+}
+
 - (void)didClickTextView:(id)sender
 {
     // User clicked a text view. Select its underlying row.
     [self selectRowIndexes:[NSIndexSet indexSetWithIndex:[self rowForView:sender]] byExtendingSelection:NO];
 }
 
-- (NSMenu *)menuForEvent:(NSEvent*)theEvent
+- (NSMenu *)menuForEvent:(NSEvent*)event
 {
-    NSPoint mousePoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-    NSInteger row = [self rowAtPoint:mousePoint];
-    NSInteger column = [self columnAtPoint:mousePoint];
+    NSInteger row = [self rowForEvent:event];
+    NSInteger column = [self columnForEvent:event];
 
     if ([self.delegate tableView:self shouldSelectRow:row]) {
         [self selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     }
 
     if ([self.delegate respondsToSelector:@selector(tableView:menuForTableColumn:row:)] == false) {
-        return [super menuForEvent:theEvent];
+        return [super menuForEvent:event];
     }
 
     return [(id<SPTableViewDelegate>)self.delegate tableView:self menuForTableColumn:column row:row];
