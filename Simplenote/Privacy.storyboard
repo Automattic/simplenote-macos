@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -251,6 +251,7 @@
                         <outlet property="backgroundBox" destination="jR0-c5-hne" id="TWa-qh-TFT"/>
                         <outlet property="cookiePolicyImageView" destination="oLM-IY-yTd" id="Snn-6M-iAx"/>
                         <outlet property="cookiePolicyTextField" destination="NvX-jo-5we" id="0Ke-on-pZX"/>
+                        <outlet property="dismissButton" destination="hie-vG-TWU" id="Nwn-LY-ofP"/>
                         <outlet property="privacyImageView" destination="d2n-EK-hqK" id="mN9-c2-yHz"/>
                         <outlet property="privacyTextField" destination="VYn-51-BfO" id="EyT-Fa-ffY"/>
                         <outlet property="shareEnabledButton" destination="9ge-iF-MGg" id="Wma-dj-3qr"/>

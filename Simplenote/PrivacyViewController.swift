@@ -37,6 +37,10 @@ class PrivacyViewController: NSViewController {
     ///
     @IBOutlet private var privacyImageView: NSImageView!
 
+    /// Dismiss Action
+    ///
+    @IBOutlet private var dismissButton: NSButton!
+
     /// Indicates if Analytics are Enabled
     ///
     private var isAnalyticsEnabled: Bool {
@@ -50,6 +54,7 @@ class PrivacyViewController: NSViewController {
         super.viewDidLoad()
         configureBackgroundBox()
         configureTextFields()
+        configureButtons()
         refreshInterface()
     }
 
@@ -66,6 +71,12 @@ class PrivacyViewController: NSViewController {
         shareTextField.stringValue = NSLocalizedString("Collect Information", comment: "Analytics Toggle Text")
         cookiePolicyTextField.stringValue = NSLocalizedString("Share information with our analytics tool about your use of services while logged into your Simplenote.com account.", comment: "Cookie Policy Legend")
         privacyTextField.stringValue = NSLocalizedString("This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy.", comment: "Privacy Policy")
+    }
+
+    /// Setup: Buttons
+    ///
+    private func configureButtons() {
+        dismissButton.title = NSLocalizedString("Dismiss", comment: "Closes the Privacy View")
     }
 
     /// Updates the Share Button state
