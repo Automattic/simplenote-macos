@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-#import "NoteListViewController.h"
 @import Simperium_OSX;
 
 @class BackgroundView;
@@ -18,11 +17,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
-{
-    IBOutlet NSMenu *sortMenu;
-    IBOutlet NSMenu *previewLinesMenu;
-    IBOutlet NSMenuItem *previewLinesMenuItem;
-}
 
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *backgroundView;
@@ -50,8 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reloadDataAndPreserveSelection;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
-- (IBAction)sortPrefAction:(id)sender;
-- (IBAction)previewLinesAction:(id)sender;
 - (IBAction)searchAction:(id)sender;
 - (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;

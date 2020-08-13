@@ -48,14 +48,6 @@
 
     self.oldTags = @"";
 
-    // Set the active preferences in the menu
-    int sortPrefPosition = [[Options shared] alphabeticallySortNotes] ? 1 : 0;
-    [self updateSortMenuForPosition:sortPrefPosition];
-
-    int previewLinesPosition = [[Options shared] notesListCondensed] ? 1 : 0;
-    [self updatePreviewLinesMenuForPosition:previewLinesPosition];
-    
-
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
                                                  name: kNotesArrayDidChangeNotification
@@ -65,8 +57,12 @@
                                                  name: kNotesArraySelectionDidChangeNotification
                                                object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(notesCondensedModeDidChange:)
-                                                 name: NoteListCondensedDidChangeNotification
+                                             selector: @selector(displayModeDidChange:)
+                                                 name: NoteListDisplayModeDidChangeNotification
+                                               object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(sortModeDidChange:)
+                                                 name: NoteListSortModeDidChangeNotification
                                                object: nil];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(didBeginViewingTag:)
@@ -310,11 +306,6 @@
 
 #pragma mark - Notification handlers
 
-- (void)notesCondensedModeDidChange:(NSNotification *)note
-{
-    self.tableView.rowHeight = [NoteTableCellView rowHeight];
-}
-
 - (void)noteKeysWillChange:(NSSet *)keys
 {
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -432,73 +423,9 @@
     }
 }
 
-- (IBAction)sortPrefAction:(id)sender
-{
-    NSMenuItem *menuItem = (NSMenuItem*)sender;
-
-    BOOL alphabeticalEnabled = menuItem.tag == 1;
-    
-    [SPTracker trackSettingsAlphabeticalSortEnabled:alphabeticalEnabled];
-
-    [[Options shared] setAlphabeticallySortNotes:alphabeticalEnabled];
-    [self updateSortMenuForPosition:menuItem.tag];
-    [self reloadDataAndPreserveSelection];
-}
-
-- (void)updateSortMenuForPosition:(NSInteger)position
-{
-    for (NSMenuItem *menuItem in sortMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
-}
-
-- (IBAction)previewLinesAction:(id)sender
-{
-    NSMenuItem *item = (NSMenuItem *)sender;
-    if (item.state == NSOnState) {
-        return;
-    }
-
-    [self updatePreviewLinesMenuForPosition:item.tag];
-    [self reloadDataAndPreserveSelection];
-
-    // Only track when condensed setting is enabled
-    if (item.tag == 1) {
-        [SPTracker trackSettingsListCondensedEnabled];
-    }
-}
-
-- (void)updatePreviewLinesMenuForPosition:(NSInteger)position
-{
-    for (NSMenuItem *menuItem in previewLinesMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
-
-    // NOTE: temporary snippet. On it's way out, as part of #458 revamp
-    BOOL isCondensedOn = (position == 1);
-    [[Options shared] setNotesListCondensed:isCondensedOn];
-}
-
 - (void)searchAction:(id)sender
 {
     [self.view.window makeFirstResponder:self.searchField];
-}
-
-
-#pragma mark - NSMenuValidation delegate
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
-    // Disable menu items when viewing trash
-    return !self.viewingTrash;
 }
 
 

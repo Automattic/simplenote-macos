@@ -57,7 +57,7 @@ extension Options {
         }
         set {
             defaults.set(newValue, forKey: .alphabeticallySortNotes)
-            NotificationCenter.default.post(name: .NoteSortModeDidChange, object: nil)
+            NotificationCenter.default.post(name: .NoteListSortModeDidChange, object: nil)
         }
     }
 
@@ -81,7 +81,7 @@ extension Options {
         }
         set {
             defaults.set(newValue, forKey: .notesListCondensed)
-            NotificationCenter.default.post(name: .NoteListCondensedDidChange, object: nil)
+            NotificationCenter.default.post(name: .NoteListDisplayModeDidChange, object: nil)
         }
     }
 

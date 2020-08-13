@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackSettingsFontSizeUpdated;
 + (void)trackSettingsAlphabeticalSortEnabled:(BOOL)isOn;
 + (void)trackSettingsThemeUpdated:(nullable NSString *)themeName;
-+ (void)trackSettingsListCondensedEnabled;
++ (void)trackSettingsListCondensedEnabled:(BOOL)isOn;
 
 #pragma mark - Sidebar
 + (void)trackSidebarButtonPresed;
