@@ -1,6 +1,7 @@
 2.1.0
 -----
 - Fixed a bug in which the Tags List wouldn't accept mouse clicks
+- Fixed a bug that prevented the main Window from restoring its last location
 
 2.0.0
 -----
