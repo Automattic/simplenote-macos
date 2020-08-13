@@ -30,6 +30,7 @@ extension SimplenoteAppDelegate {
     func configureWindow() {
         window.contentViewController = splitViewController
         window.initialFirstResponder = noteEditorViewController.noteEditor
+        window.setFrameAutosaveName(.mainWindow)
     }
 
     @objc

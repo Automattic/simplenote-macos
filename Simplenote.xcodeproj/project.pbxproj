@@ -216,6 +216,8 @@
 		B57CB882244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
 		B586C062245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
+		B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
+		B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
 		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -565,6 +567,7 @@
 		B57CB880244E421400BA7969 /* SPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextField.swift; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
 		B58D398B24BF95DF008E4ABC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B58D398C24BF95E7008E4ABC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B58D398D24BF95F3008E4ABC /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1029,6 +1032,7 @@
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
+				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1789,6 +1793,7 @@
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
+				B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				B53BF1A024AC1FB800938C34 /* Version.swift in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
@@ -1924,6 +1929,7 @@
 				375D293921E033D1007AB25A /* escape.c in Sources */,
 				466FFED717CC10A800399652 /* SPTextView.m in Sources */,
 				B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
+				B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				B53BF1A124AC1FB800938C34 /* Version.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
