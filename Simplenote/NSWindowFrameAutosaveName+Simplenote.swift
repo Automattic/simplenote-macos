@@ -7,7 +7,5 @@ extension NSWindow.FrameAutosaveName {
 
     /// Main Window Autosave Name
     ///
-    static var mainWindow: NSWindow.FrameAutosaveName {
-        "SimplenoteMainWindow"
-    }
+    static var mainWindow: NSWindow.FrameAutosaveName = "SimplenoteMainWindow"
 }
