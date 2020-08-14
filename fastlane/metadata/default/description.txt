@@ -1,0 +1,17 @@
+Simplenote is an easy way to keep notes, lists, ideas and more. Your notes stay in sync with all your devices for free.
+
+The Simplenote experience is all about speed and efficiency. Open it, write some thoughts, and you're done. As your collection of notes grows, you can search them instantly and keep them organized with tags and pins. Checklists can be added to your notes to keep track of your tasks. You can also share notes and publish them for other people.
+
+Like Markdown? You can edit, preview and publish your notes using Markdown formatting.
+
+The best way to learn about Simplenote is to try it. You'll be asked to create an account. This allows your notes to be backed up online and synchronized automatically.
+
+After you sign up, try creating some notes! Then go to simplenote.com to download Simplenote for your other devices.
+
+Happy noting!
+
+---
+
+Privacy Policy: https://automattic.com/privacy/
+Terms of Service: https://simplenote.com/terms/
+California users privacy notice: https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa

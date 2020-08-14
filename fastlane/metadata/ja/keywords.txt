@@ -1,0 +1,1 @@
+simplenote,メモ,メモ,同期,同期,リスト,todo,シンプル,markdown,アイデア

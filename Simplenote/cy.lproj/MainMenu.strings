@@ -1,36 +1,13 @@
+/* Translation-Revision-Date: +0000 */
+/* Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3; */
+/* Generator: GlotPress/2.4.0-alpha */
+/* Language: cy_GB */
 
-/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
-"5.title" = "Bring All to Front";
+/* Class = "NSTextFieldCell"; title = "Note Title!"; ObjectID = "1104"; Note = "Note Title Placeholder (Don't Translate)"; */
+"1104.title" = "Note Title!";
 
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; Note = "Opens the Window Menu"; */
-"19.title" = "Window";
-
-/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; Note = "Minimizes the Window"; */
-"23.title" = "Minimize";
-
-/* Class = "NSMenu"; title = "Window"; ObjectID = "24"; Note = "Window Menu"; */
-"24.title" = "Window";
-
-/* Class = "NSMenu"; title = "Simplenote System Menu"; ObjectID = "29"; Note = "Simplenote's Main Menu"; */
-"29.title" = "Simplenote System Menu";
-
-/* Class = "NSMenuItem"; title = "Simplenote"; ObjectID = "56"; Note = "Opens the Simplenote Menu"; */
-"56.title" = "Simplenote";
-
-/* Class = "NSMenu"; title = "Simplenote"; ObjectID = "57"; */
-"57.title" = "Simplenote";
-
-/* Class = "NSMenuItem"; title = "About Simplenote"; ObjectID = "58"; Note = "Opens the About UI"; */
-"58.title" = "About Simplenote";
-
-/* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
-"78.title" = "Print…";
-
-/* Class = "NSMenu"; title = "Note"; ObjectID = "81"; Note = "Note Actions Menu"; */
-"81.title" = "Note";
-
-/* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
-"83.title" = "Note";
+/* Class = "NSMenuItem"; title = "Empty Trash"; ObjectID = "1256"; Note = "Empties the Trash Bin"; */
+"1256.title" = "Empty Trash";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
 "130.title" = "Services";
@@ -38,17 +15,50 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
 "131.title" = "Services";
 
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "1324"; Note = "Toggles Fullscreen"; */
+"1324.title" = "Enter Full Screen";
+
 /* Class = "NSMenuItem"; title = "Hide Simplenote"; ObjectID = "134"; */
 "134.title" = "Hide Simplenote";
 
 /* Class = "NSMenuItem"; title = "Quit Simplenote"; ObjectID = "136"; Note = "Exits the App"; */
 "136.title" = "Quit Simplenote";
 
+/* Class = "NSMenuItem"; ibShadowedToolTip = "Search all notes"; ObjectID = "1417"; */
+"1417.ibShadowedToolTip" = "Search all notes";
+
+/* Class = "NSMenuItem"; title = "Search..."; ObjectID = "1417"; */
+"1417.title" = "Search...";
+
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
 "145.title" = "Hide Others";
 
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "1460"; */
+"1460.title" = "Text Cell";
+
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
 "150.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Delete Note"; ObjectID = "1505"; */
+"1505.title" = "Delete Note";
+
+/* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
+"1541.title" = "Sign Out";
+
+/* Class = "NSMenuItem"; title = "New"; ObjectID = "1654"; Note = "Adds a New Note"; */
+"1654.title" = "New";
+
+/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1655"; Note = "Moves the current note to Trash"; */
+"1655.title" = "Move to Trash";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "1748"; Note = "Closes the Main Window"; */
+"1748.title" = "Close";
+
+/* Class = "NSTextFieldCell"; title = "No Notes"; ObjectID = "1767"; */
+"1767.title" = "No Notes";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; Note = "Opens the Window Menu"; */
+"19.title" = "Window";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
 "195.title" = "Stop Speaking";
@@ -64,6 +74,9 @@
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
 "199.title" = "Cut";
+
+/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1z5-RU-iWI"; */
+"1z5-RU-iWI.title" = "Move to Trash";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Spelling and Grammar";
@@ -125,8 +138,17 @@
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "221"; */
 "221.title" = "Use Selection for Find";
 
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; Note = "Minimizes the Window"; */
+"23.title" = "Minimize";
+
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; Note = "Zooms the Window"; */
 "239.title" = "Zoom";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "24"; Note = "Window Menu"; */
+"24.title" = "Window";
+
+/* Class = "NSMenu"; title = "Simplenote System Menu"; ObjectID = "29"; Note = "Simplenote's Main Menu"; */
+"29.title" = "Simplenote System Menu";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; Note = "Opens the View Main Menu"; */
 "295.title" = "View";
@@ -188,56 +210,26 @@
 /* Class = "NSMenuItem"; title = "Help Website"; ObjectID = "492"; Note = "Opens the Help Website"; */
 "492.title" = "Help Website";
 
+/* Class = "NSMenuItem"; title = "Tags List"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
+"4QQ-5e-Vxl.title" = "Tags List";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
+"5.title" = "Bring All to Front";
+
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "534"; */
 "534.title" = "Find and Replace…";
+
+/* Class = "NSMenuItem"; title = "Simplenote"; ObjectID = "56"; Note = "Opens the Simplenote Menu"; */
+"56.title" = "Simplenote";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "568"; */
 "568.title" = "Text Cell";
 
-/* Class = "NSButton"; ibShadowedToolTip = "Add Note"; ObjectID = "987"; */
-"987.ibShadowedToolTip" = "Add Note";
+/* Class = "NSMenu"; title = "Simplenote"; ObjectID = "57"; */
+"57.title" = "Simplenote";
 
-/* Class = "NSTextFieldCell"; title = "Note Title!"; ObjectID = "1104"; Note = "Note Title Placeholder (Don't Translate)"; */
-"1104.title" = "Note Title!";
-
-/* Class = "NSMenuItem"; title = "Empty Trash"; ObjectID = "1256"; Note = "Empties the Trash Bin"; */
-"1256.title" = "Empty Trash";
-
-/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "1324"; Note = "Toggles Fullscreen"; */
-"1324.title" = "Enter Full Screen";
-
-/* Class = "NSMenuItem"; ibShadowedToolTip = "Search all notes"; ObjectID = "1417"; */
-"1417.ibShadowedToolTip" = "Search all notes";
-
-/* Class = "NSMenuItem"; title = "Search..."; ObjectID = "1417"; */
-"1417.title" = "Search...";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "1460"; */
-"1460.title" = "Text Cell";
-
-/* Class = "NSMenuItem"; title = "Delete Note"; ObjectID = "1505"; */
-"1505.title" = "Delete Note";
-
-/* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
-"1541.title" = "Sign Out";
-
-/* Class = "NSMenuItem"; title = "New"; ObjectID = "1654"; Note = "Adds a New Note"; */
-"1654.title" = "New";
-
-/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1655"; Note = "Moves the current note to Trash"; */
-"1655.title" = "Move to Trash";
-
-/* Class = "NSMenuItem"; title = "Close"; ObjectID = "1748"; Note = "Closes the Main Window"; */
-"1748.title" = "Close";
-
-/* Class = "NSTextFieldCell"; title = "No Notes"; ObjectID = "1767"; */
-"1767.title" = "No Notes";
-
-/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1z5-RU-iWI"; */
-"1z5-RU-iWI.title" = "Move to Trash";
-
-/* Class = "NSMenuItem"; title = "Tags List"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
-"4QQ-5e-Vxl.title" = "Tags List";
+/* Class = "NSMenuItem"; title = "About Simplenote"; ObjectID = "58"; Note = "Opens the About UI"; */
+"58.title" = "About Simplenote";
 
 /* Class = "NSMenu"; title = "Format"; ObjectID = "5HH-LQ-Fk8"; Note = "Format Menu"; */
 "5HH-LQ-Fk8.title" = "Format";
@@ -245,8 +237,20 @@
 /* Class = "NSMenu"; title = "Tags List"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
 "76D-S0-1JD.title" = "Tags List";
 
+/* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
+"78.title" = "Print…";
+
 /* Class = "NSMenuItem"; title = "History"; ObjectID = "7Ox-IO-LLQ"; */
 "7Ox-IO-LLQ.title" = "History";
+
+/* Class = "NSMenu"; title = "Note"; ObjectID = "81"; Note = "Note Actions Menu"; */
+"81.title" = "Note";
+
+/* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
+"83.title" = "Note";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Add Note"; ObjectID = "987"; */
+"987.ibShadowedToolTip" = "Add Note";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
@@ -394,3 +398,4 @@
 
 /* Class = "NSMenuItem"; title = "System Appearance"; ObjectID = "x6g-cH-Wdm"; Note = "Toggles System Appearance"; */
 "x6g-cH-Wdm.title" = "System Appearance";
+

@@ -1,0 +1,17 @@
+Simplenote 可讓你輕鬆記錄筆記、清單和想法等事項。 你的筆記內容會免費同步至所有裝置。
+
+Simplenote 提供快速有效率的筆記體驗。 開啟程式、寫下想法，大功告成。 當你的筆記越來越多時，可以利用搜尋功能立即找出筆記，更可使用標籤和釘選功能妥善整理。 你可以將檢查清單新增至筆記中，藉此追蹤工作進度； 也可以分享和發表筆記，讓更多人參閱筆記內容。
+
+喜歡使用 Markdown 嗎？ 你可以使用 Markdown 格式編輯、預覽及發表筆記。
+
+要瞭解 Simplenote 的最好方式就是親身體驗。 系統會要求你建立帳號。 如此一來你便能線上備份和自動同步筆記內容。
+
+註冊完後，不妨開始建立一些筆記吧！ 接著前往 simplenote.com 將 Simplenote 下載至其他裝置。
+
+盡情記筆記！
+
+---
+
+隱私權政策：https://automattic.com/privacy/
+服務條款：https://simplenote.com/terms/
+加州使用者隱私權聲明：https://wp.me/Pe4R-d/#california-consumer-privacy-act-ccpa

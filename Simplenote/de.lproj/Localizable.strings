@@ -1,3 +1,17 @@
+/* Translation-Revision-Date: 2020-07-24 21:45:06+0000 */
+/* Plural-Forms: nplurals=2; plural=n != 1; */
+/* Generator: GlotPress/2.4.0-alpha */
+/* Language: de */
+
+/* Password Requirement: Length */
+"- Minimum of 8 characters" = "– Es muss mindestens 8 Zeichen lang sein.";
+
+/* Password Requirement: Special Characters */
+"- Neither tabs nor newlines are allowed" = "– Es darf keine Tabs oder Zeilenvorschübe enthalten.";
+
+/* Password Requirement: Email Match */
+"- Password cannot match email" = "– Das Passwort darf nicht der E-Mail entsprechen.";
+
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Add an email address as a tag to share this note with someone. Then you can both make changes to it.";
 
@@ -7,17 +21,27 @@
 /* Title of the view that displays all your notes */
 "All Notes" = "All Notes";
 
+/* Link to sign in to an account */
+"Already have an account?" = "Already have an account?";
+
 /* Sign in error message */
 "An error was encountered while signing in." = "An error was encountered while signing in.";
 
-/* Cancel the action */
-"Cancel" = "Cancel";
+/* Error for bad email or password */
+"Bad email or password" = "Bad email or password";
+
+/* Cancel the action
+   Password Reset: Cancel */
+"Cancel" = "Abbrechen";
 
 /* Number of characters in the note */
 "Characters" = "Characters";
 
 /* Analytics Toggle Text */
 "Collect Information" = "Collect Information";
+
+/* Placeholder text for confirmation field */
+"Confirm Password" = "Confirm Password";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Couldn't Sign In";
@@ -31,11 +55,24 @@
 /* Delete Tag Action */
 "Delete Tag" = "Delete Tag";
 
+/* Placeholder text for login field */
+"Email" = "E-Mail";
+
 /* Empty Trash Action */
 "Empty Trash" = "Empty Trash";
 
 /* Export All Notes Action */
 "Export Everything" = "Export Everything";
+
+/* Forgot Password Button */
+"Forgot your Password?" = "Forgot your Password?";
+
+/* Title of button for logging in
+   Title of button for login */
+"Log In" = "Anmelden";
+
+/* Displayed temporarily while logging in */
+"Logging In..." = "Logging In...";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Markdown Preview";
@@ -47,7 +84,10 @@
 "Modified" = "Modified";
 
 /* Tooltip: More Actions */
-"More" = "More";
+"More" = "Mehr";
+
+/* Link to create an account */
+"Need an account?" = "Need an account?";
 
 /* Empty Note Placeholder */
 "New note..." = "New note...";
@@ -55,14 +95,32 @@
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Not Published";
 
+/* Error when you enter a bad email address */
+"Not a valid email address" = "Not a valid email address";
+
 /* OK button in error alert dialog */
 "OK" = "OK";
+
+/* Placeholder text for password field */
+"Password" = "Passwort";
+
+/* Message displayed when password is invalid (Signup) */
+"Password cannot match email" = "Das Passwort darf nicht der E-Mail entsprechen.";
+
+/* Message displayed when password is too short. The %%d is a placeholder for a numeral. Please preserve it! */
+"Password must contain at least %d characters" = "Das Passwort muss mindestens %d Zeichen enthalten.";
+
+/* Message displayed when a password contains a disallowed character */
+"Password must not contain tabs nor newlines" = "Das Passwort darf keine Tabs oder Zeilenvorschübe enthalten.";
+
+/* Password Validation: Confirmation doesn't match */
+"Passwords do not match" = "Passwords do not match";
 
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Please activate your WordPress.com account via email and try again.";
 
 /* Privacy Policy's Title */
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Datenschutzerklärung";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Publish this note to a web page. The page will stay updated with the contents of your note.";
@@ -71,37 +129,49 @@
 "Publish to Web Page" = "Publish to Web Page";
 
 /* Displayed during a Publish Operation */
-"Publishing..." = "Publishing...";
+"Publishing..." = "Veröffentliche ...";
 
 /* Rename Tag Action */
 "Rename Tag" = "Rename Tag";
+
+/* Password Reset: Proceed */
+"Reset" = "Zurücksetzen";
 
 /* Tooltip: Restore a trashed note */
 "Restore" = "Restore";
 
 /* Search Field Placeholder */
-"Search" = "Search";
+"Search" = "Suche";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Share information with our analytics tool about your use of services while logged into your Simplenote.com account.";
 
+/* Title of button for signing up */
+"Sign Up" = "Registrieren";
+
 /* button title for wp.com sign in button */
 "Sign in with WordPress.com" = "Sign in with WordPress.com";
+
+/* Displayed temoprarily while signing up */
+"Signing Up..." = "Signing Up...";
 
 /* Alert message displayed when an account has unsynced notes */
 "Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App." = "Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.";
 
+/* Text to display on OSX cancel button */
+"Skip" = "Überspringen";
+
 /* Tags Section Name */
-"Tags" = "Tags";
+"Tags" = "Schlagwörter";
+
+/* Error when address is in use */
+"That email is already being used" = "That email is already being used";
 
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy.";
 
-/* Displayed as a date in the case where a note was modified today, for example */
-"Today" = "Today";
-
 /* Title of the view that displays all your deleted notes */
-"Trash" = "Trash";
+"Trash" = "Entfernen";
 
 /* Unpublish Note Action */
 "Unpublish" = "Unpublish";
@@ -124,12 +194,18 @@
 /* Visit app.simplenote.com in the browser */
 "Visit Web App" = "Visit Web App";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Welcome to Simplenote Mac!\n\nTo add a note, click the new note button with the plus symbol.\n\nTo remove a note, click the trash button.\n\nYou can search all your notes by typing in the search field above the note list.\n\nClick the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.\n\nThere are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.\n\nUse Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
+/* Generic error */
+"We're having problems. Please try again soon." = "Momentan gibt es ein paar Probleme. Bitte versuche es später erneut.";
 
 /* Number of words in the note */
 "Words" = "Words";
 
-/* Displayed as a date in the case where a note was modified yesterday, for example */
-"Yesterday" = "Yesterday";
+/* Error when you're not connected */
+"You're not connected to the internet" = "You're not connected to the internet";
+
+/* Password Requirements: Title */
+"Your password is insecure and must be reset. The password requirements are:" = "Dein Passwort ist nicht sicher und muss zurückgesetzt werden. Das Passwort muss folgende Anforderungen erfüllen:";
+
+/* A welcome note for new Mac users */
+"welcomeNote-Mac" = "Welcome to Simplenote Mac!\n\nTo add a note, click the new note button with the plus symbol.\n\nTo remove a note, click the trash button.\n\nYou can search all your notes by typing in the search field above the note list.\n\nClick the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.\n\nThere are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.\n\nUse Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
 
