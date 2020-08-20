@@ -64,6 +64,11 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func clickedEmptyTrashItem(_ sender: Any) {
+        tagListViewController.emptyTrashAction(sender: sender)
+    }
+
+    @IBAction
     func clickedTagsSortModeItem(_ sender: Any) {
         let options = Options.shared
         options.alphabeticallySortTags = !options.alphabeticallySortTags

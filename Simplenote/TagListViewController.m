@@ -101,7 +101,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     self.trashDropdownMenu.autoenablesItems = YES;
 
     [self.trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
-                                      action:@selector(emptyTrashAction:)
+                                      action:@selector(emptyTrashActionWithSender:)
                                keyEquivalent:@""];
 
     for (NSMenuItem *item in self.trashDropdownMenu.itemArray) {

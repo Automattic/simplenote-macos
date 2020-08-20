@@ -472,11 +472,6 @@
     }];
 }
 
-- (void)emptyTrashAction:(id)sender
-{
-    [self.tagListViewController emptyTrashActionWithSender:sender];
-}
-
 - (void)searchAction:(id)sender
 {
     // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
