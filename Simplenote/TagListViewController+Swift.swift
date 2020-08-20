@@ -167,6 +167,20 @@ extension TagListViewController {
 }
 
 
+// MARK: - Actions
+//
+extension TagListViewController {
+
+    @IBAction
+    func emptyTrashAction(sender: Any) {
+        SPTracker.trackListTrashEmptied()
+
+        simperium.deleteTrashedNotes()
+        NotificationCenter.default.post(name: .TagListDidEmptyTrash, object: self)
+    }
+}
+
+
 // MARK: - SPTextFieldDelegate
 //
 extension TagListViewController: SPTextFieldDelegate {

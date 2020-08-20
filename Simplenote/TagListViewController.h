@@ -35,13 +35,13 @@ extern NSString * const TagListDidEmptyTrashNotification;
 @property (nonatomic, strong, readwrite) TagListState                   *state;
 @property (nonatomic, strong,  readonly) NSArray<Tag *>                 *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
+@property (nonatomic, strong,  readonly) Simperium                      *simperium;
 
 - (void)loadTags;
 - (NSString *)selectedTagName;
 - (void)selectAllNotesTag;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)renameAction:(id)sender;
-- (IBAction)emptyTrashAction:(id)sender;
 - (void)reset;
 - (void)applyStyle;
 

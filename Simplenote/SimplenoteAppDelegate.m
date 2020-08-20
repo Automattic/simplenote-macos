@@ -474,7 +474,7 @@
 
 - (void)emptyTrashAction:(id)sender
 {
-    [self.tagListViewController emptyTrashAction:sender];
+    [self.tagListViewController emptyTrashActionWithSender:sender];
 }
 
 - (void)searchAction:(id)sender

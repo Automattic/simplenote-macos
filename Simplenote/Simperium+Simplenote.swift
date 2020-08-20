@@ -38,6 +38,43 @@ extension Simperium {
         }
     }
 
+    ///
+    ///
+    @objc
+    func searchNotesWithTag(_ tag: Tag) -> [Note] {
+        guard let name = tag.name else {
+            return []
+        }
+
+        let compound = NSCompoundPredicate.init(andPredicateWithSubpredicates: [
+            NSPredicate.predicateForNotes(tag: name),
+            NSPredicate.predicateForNotes(deleted: false)
+        ])
+
+        guard let notes = notesBucket.objects(for: compound) as? [Note] else {
+            return []
+        }
+
+        return notes
+    }
+
+    ///
+    ///
+    func deleteTrashedNotes() {
+        let predicate = NSPredicate.predicateForNotes(deleted: true)
+        let bucket = notesBucket
+
+        guard let trashed = bucket.objects(for: predicate) as? [Note] else {
+            return
+        }
+
+        for note in trashed {
+            bucket.delete(note)
+        }
+
+        save()
+    }
+
     /// Returns all of the available `Tags`
     ///
     var allTags: [Tag] {

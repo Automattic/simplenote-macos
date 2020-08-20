@@ -228,31 +228,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self.tableView selectRowIndexes:index byExtendingSelection:NO];
 }
 
-- (NSArray *)notesWithTag:(Tag *)tag
-{
-    return @[];
-//    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:@[
-//        [NSPredicate predicateForNotesWithDeletedStatus:NO],
-//        [NSPredicate predicateForNotesWithTag:tag.name]
-//    ]];
-//
-//    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-//    SPBucket *noteBucket = [appDelegate.simperium bucketForName:@"Note"];
-//
-//    // Note:
-//    // 'contains' predicate might return Tags that contains our search keyword as a substring.
-//    //
-//    NSArray *notes = [noteBucket objectsForPredicate:compound];
-//    NSMutableArray *exactMatches = [NSMutableArray array];
-//    for (Note *note in notes) {
-//        if ([note.tagsArray containsObject:tag.name]) {
-//            [exactMatches addObject:note];
-//        }
-//    }
-//
-//    return exactMatches;
-}
-
 - (Tag *)addTagWithName:(NSString *)tagName
 {
     return [self addTagWithName:tagName atIndex:nil];
@@ -301,7 +276,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     newTagName = [newTagName stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     // Brute force updating of all notes with this tag
-    NSArray *notes = [self notesWithTag:renamedTag];
+    NSArray *notes = [self.simperium searchNotesWithTag:renamedTag];
 	for (Note *note in notes) {
         [note stripTag:oldTagName];
         [note addTag:newTagName];
@@ -423,27 +398,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 		TagTableCellView *tagView = [self.tableView viewAtColumn:0 row:row makeIfNecessary:NO];
 		[tagView.nameTextField becomeFirstResponder];
 	}
-}
-
-- (IBAction)emptyTrashAction:(id)sender
-{
-    [SPTracker trackListTrashEmptied];
-    
-//    // Empty it
-//    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:appDelegate.managedObjectContext];
-//    fetchRequest.entity = entity;
-//    fetchRequest.predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
-//
-//    NSError *error;
-//    NSArray *items = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-//    for (Note *note in items) {
-//        [appDelegate.managedObjectContext deleteObject:note];
-//    }
-//    [appDelegate.simperium save];
-//
-//    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidEmptyTrashNotification object:self];
 }
 
 
