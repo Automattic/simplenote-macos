@@ -1,6 +1,6 @@
 # Simplenote for macOS
 
-![Screenshot](https://simplenoteblog.files.wordpress.com/2017/12/screen-shot-2017-12-22-at-9-05-33-am.png)
+![Screenshot](https://simplenoteblog.files.wordpress.com/2020/08/mark2-screenshot.png)
 
 A Simplenote client for macOS. Learn more about Simplenote at [Simplenote.com](https://simplenote.com).
 

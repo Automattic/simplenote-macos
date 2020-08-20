@@ -1,396 +1,401 @@
+/* Translation-Revision-Date: 2020-08-06 18:54:05+0000 */
+/* Plural-Forms: nplurals=1; plural=0; */
+/* Generator: GlotPress/2.4.0-alpha */
+/* Language: zh_TW */
 
-/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
-"5.title" = "Bring All to Front";
+/* Class = "NSTextFieldCell"; title = "Note Title!"; ObjectID = "1104"; Note = "Note Title Placeholder (Don't Translate)"; */
+"1104.title" = "筆記標題！";
+
+/* Class = "NSMenuItem"; title = "Empty Trash"; ObjectID = "1256"; Note = "Empties the Trash Bin"; */
+"1256.title" = "清空垃圾桶";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
+"130.title" = "服務";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
+"131.title" = "服務";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "1324"; Note = "Toggles Fullscreen"; */
+"1324.title" = "進入全螢幕";
+
+/* Class = "NSMenuItem"; title = "Hide Simplenote"; ObjectID = "134"; */
+"134.title" = "隱藏 Simplenote";
+
+/* Class = "NSMenuItem"; title = "Quit Simplenote"; ObjectID = "136"; Note = "Exits the App"; */
+"136.title" = "退出 Simplenote";
+
+/* Class = "NSMenuItem"; ibShadowedToolTip = "Search all notes"; ObjectID = "1417"; */
+"1417.ibShadowedToolTip" = "搜尋所有筆記";
+
+/* Class = "NSMenuItem"; title = "Search..."; ObjectID = "1417"; */
+"1417.title" = "搜尋...";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
+"145.title" = "隱藏其他";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "1460"; */
+"1460.title" = "文字儲存格";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
+"150.title" = "顯示全部";
+
+/* Class = "NSMenuItem"; title = "Delete Note"; ObjectID = "1505"; */
+"1505.title" = "刪除筆記";
+
+/* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
+"1541.title" = "登出";
+
+/* Class = "NSMenuItem"; title = "New"; ObjectID = "1654"; Note = "Adds a New Note"; */
+"1654.title" = "新增";
+
+/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1655"; Note = "Moves the current note to Trash"; */
+"1655.title" = "移至垃圾桶";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "1748"; Note = "Closes the Main Window"; */
+"1748.title" = "關閉";
+
+/* Class = "NSTextFieldCell"; title = "No Notes"; ObjectID = "1767"; */
+"1767.title" = "沒有筆記";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; Note = "Opens the Window Menu"; */
-"19.title" = "Window";
+"19.title" = "視窗";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
+"195.title" = "停止讀出";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "196"; */
+"196.title" = "開始讀出";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
+"197.title" = "複製";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
+"198.title" = "選擇全部";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
+"199.title" = "剪下";
+
+/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1z5-RU-iWI"; */
+"1z5-RU-iWI.title" = "移至垃圾桶";
+
+/* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
+"200.title" = "拼字與文法";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "201"; */
+"201.title" = "立即檢查文件";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
+"202.title" = "刪除";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
+"203.title" = "貼上";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "204"; */
+"204.title" = "顯示拼字與文法";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; Note = "Edit Menu"; */
+"205.title" = "編輯";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
+"207.title" = "復原";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "208"; */
+"208.title" = "尋找下一個";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "209"; */
+"209.title" = "尋找…";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "210"; */
+"210.title" = "跳至選取範圍";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "211"; */
+"211.title" = "語音";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "212"; */
+"212.title" = "語音";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "213"; */
+"213.title" = "尋找上一個";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
+"215.title" = "取消復原";
+
+/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "216"; */
+"216.title" = "拼字與文法";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; Note = "Opens the Edit Menu"; */
+"217.title" = "編輯";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "218"; */
+"218.title" = "尋找";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "219"; */
+"219.title" = "輸入時檢查拼字";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "220"; */
+"220.title" = "尋找";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "221"; */
+"221.title" = "使用選取範圍尋找";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; Note = "Minimizes the Window"; */
-"23.title" = "Minimize";
+"23.title" = "縮到最小";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; Note = "Zooms the Window"; */
+"239.title" = "縮放";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "24"; Note = "Window Menu"; */
-"24.title" = "Window";
+"24.title" = "視窗";
 
 /* Class = "NSMenu"; title = "Simplenote System Menu"; ObjectID = "29"; Note = "Simplenote's Main Menu"; */
-"29.title" = "Simplenote System Menu";
+"29.title" = "Simplenote 系統選單";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; Note = "Opens the View Main Menu"; */
+"295.title" = "檢視";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "296"; Note = "View Main Menu"; */
+"296.title" = "檢視";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "346"; */
+"346.title" = "檢查拼字文法";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "348"; */
+"348.title" = "替代項目";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "349"; */
+"349.title" = "替代項目";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "350"; */
+"350.title" = "智慧型複製\/貼上";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "351"; */
+"351.title" = "智慧型引號";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "354"; */
+"354.title" = "智慧型連結";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "450"; */
+"450.title" = "轉換";
+
+/* Class = "NSMenu"; title = "Transformations"; ObjectID = "451"; */
+"451.title" = "轉換";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "452"; */
+"452.title" = "改為大寫";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "454"; */
+"454.title" = "自動校正拼字";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "457"; */
+"457.title" = "顯示替代項目";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "460"; */
+"460.title" = "智慧型破折號";
+
+/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "462"; */
+"462.title" = "文字取代";
+
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "465"; */
+"465.title" = "改為小寫";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "466"; */
+"466.title" = "大寫";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; Note = "Opens the Help Menu"; */
+"490.title" = "說明";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "491"; Note = "Help Menu"; */
+"491.title" = "說明";
+
+/* Class = "NSMenuItem"; title = "Help Website"; ObjectID = "492"; Note = "Opens the Help Website"; */
+"492.title" = "說明網站";
+
+/* Class = "NSMenuItem"; title = "Tags List"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
+"4QQ-5e-Vxl.title" = "標籤清單";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
+"5.title" = "全部移到最上層";
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "534"; */
+"534.title" = "尋找並取代…";
 
 /* Class = "NSMenuItem"; title = "Simplenote"; ObjectID = "56"; Note = "Opens the Simplenote Menu"; */
 "56.title" = "Simplenote";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "568"; */
+"568.title" = "文字儲存格";
 
 /* Class = "NSMenu"; title = "Simplenote"; ObjectID = "57"; */
 "57.title" = "Simplenote";
 
 /* Class = "NSMenuItem"; title = "About Simplenote"; ObjectID = "58"; Note = "Opens the About UI"; */
-"58.title" = "About Simplenote";
-
-/* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
-"78.title" = "Print…";
-
-/* Class = "NSMenu"; title = "Note"; ObjectID = "81"; Note = "Note Actions Menu"; */
-"81.title" = "Note";
-
-/* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
-"83.title" = "Note";
-
-/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
-"130.title" = "Services";
-
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
-"131.title" = "Services";
-
-/* Class = "NSMenuItem"; title = "Hide Simplenote"; ObjectID = "134"; */
-"134.title" = "Hide Simplenote";
-
-/* Class = "NSMenuItem"; title = "Quit Simplenote"; ObjectID = "136"; Note = "Exits the App"; */
-"136.title" = "Quit Simplenote";
-
-/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
-"145.title" = "Hide Others";
-
-/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
-"150.title" = "Show All";
-
-/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
-"195.title" = "Stop Speaking";
-
-/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "196"; */
-"196.title" = "Start Speaking";
-
-/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
-"197.title" = "Copy";
-
-/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
-"198.title" = "Select All";
-
-/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
-"199.title" = "Cut";
-
-/* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
-"200.title" = "Spelling and Grammar";
-
-/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "201"; */
-"201.title" = "Check Document Now";
-
-/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
-"202.title" = "Delete";
-
-/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
-"203.title" = "Paste";
-
-/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "204"; */
-"204.title" = "Show Spelling and Grammar";
-
-/* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; Note = "Edit Menu"; */
-"205.title" = "Edit";
-
-/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
-"207.title" = "Undo";
-
-/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "208"; */
-"208.title" = "Find Next";
-
-/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "209"; */
-"209.title" = "Find…";
-
-/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "210"; */
-"210.title" = "Jump to Selection";
-
-/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "211"; */
-"211.title" = "Speech";
-
-/* Class = "NSMenu"; title = "Speech"; ObjectID = "212"; */
-"212.title" = "Speech";
-
-/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "213"; */
-"213.title" = "Find Previous";
-
-/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
-"215.title" = "Redo";
-
-/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "216"; */
-"216.title" = "Spelling and Grammar";
-
-/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; Note = "Opens the Edit Menu"; */
-"217.title" = "Edit";
-
-/* Class = "NSMenuItem"; title = "Find"; ObjectID = "218"; */
-"218.title" = "Find";
-
-/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "219"; */
-"219.title" = "Check Spelling While Typing";
-
-/* Class = "NSMenu"; title = "Find"; ObjectID = "220"; */
-"220.title" = "Find";
-
-/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "221"; */
-"221.title" = "Use Selection for Find";
-
-/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; Note = "Zooms the Window"; */
-"239.title" = "Zoom";
-
-/* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; Note = "Opens the View Main Menu"; */
-"295.title" = "View";
-
-/* Class = "NSMenu"; title = "View"; ObjectID = "296"; Note = "View Main Menu"; */
-"296.title" = "View";
-
-/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "346"; */
-"346.title" = "Check Grammar With Spelling";
-
-/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "348"; */
-"348.title" = "Substitutions";
-
-/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "349"; */
-"349.title" = "Substitutions";
-
-/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "350"; */
-"350.title" = "Smart Copy/Paste";
-
-/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "351"; */
-"351.title" = "Smart Quotes";
-
-/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "354"; */
-"354.title" = "Smart Links";
-
-/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "450"; */
-"450.title" = "Transformations";
-
-/* Class = "NSMenu"; title = "Transformations"; ObjectID = "451"; */
-"451.title" = "Transformations";
-
-/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "452"; */
-"452.title" = "Make Upper Case";
-
-/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "454"; */
-"454.title" = "Correct Spelling Automatically";
-
-/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "457"; */
-"457.title" = "Show Substitutions";
-
-/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "460"; */
-"460.title" = "Smart Dashes";
-
-/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "462"; */
-"462.title" = "Text Replacement";
-
-/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "465"; */
-"465.title" = "Make Lower Case";
-
-/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "466"; */
-"466.title" = "Capitalize";
-
-/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; Note = "Opens the Help Menu"; */
-"490.title" = "Help";
-
-/* Class = "NSMenu"; title = "Help"; ObjectID = "491"; Note = "Help Menu"; */
-"491.title" = "Help";
-
-/* Class = "NSMenuItem"; title = "Help Website"; ObjectID = "492"; Note = "Opens the Help Website"; */
-"492.title" = "Help Website";
-
-/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "534"; */
-"534.title" = "Find and Replace…";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "568"; */
-"568.title" = "Text Cell";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Add Note"; ObjectID = "987"; */
-"987.ibShadowedToolTip" = "Add Note";
-
-/* Class = "NSTextFieldCell"; title = "Note Title!"; ObjectID = "1104"; Note = "Note Title Placeholder (Don't Translate)"; */
-"1104.title" = "Note Title!";
-
-/* Class = "NSMenuItem"; title = "Empty Trash"; ObjectID = "1256"; Note = "Empties the Trash Bin"; */
-"1256.title" = "Empty Trash";
-
-/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "1324"; Note = "Toggles Fullscreen"; */
-"1324.title" = "Enter Full Screen";
-
-/* Class = "NSMenuItem"; ibShadowedToolTip = "Search all notes"; ObjectID = "1417"; */
-"1417.ibShadowedToolTip" = "Search all notes";
-
-/* Class = "NSMenuItem"; title = "Search..."; ObjectID = "1417"; */
-"1417.title" = "Search...";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "1460"; */
-"1460.title" = "Text Cell";
-
-/* Class = "NSMenuItem"; title = "Delete Note"; ObjectID = "1505"; */
-"1505.title" = "Delete Note";
-
-/* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
-"1541.title" = "Sign Out";
-
-/* Class = "NSMenuItem"; title = "New"; ObjectID = "1654"; Note = "Adds a New Note"; */
-"1654.title" = "New";
-
-/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1655"; Note = "Moves the current note to Trash"; */
-"1655.title" = "Move to Trash";
-
-/* Class = "NSMenuItem"; title = "Close"; ObjectID = "1748"; Note = "Closes the Main Window"; */
-"1748.title" = "Close";
-
-/* Class = "NSTextFieldCell"; title = "No Notes"; ObjectID = "1767"; */
-"1767.title" = "No Notes";
-
-/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1z5-RU-iWI"; */
-"1z5-RU-iWI.title" = "Move to Trash";
-
-/* Class = "NSMenuItem"; title = "Tags List"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
-"4QQ-5e-Vxl.title" = "Tags List";
+"58.title" = "關於 Simplenote";
 
 /* Class = "NSMenu"; title = "Format"; ObjectID = "5HH-LQ-Fk8"; Note = "Format Menu"; */
-"5HH-LQ-Fk8.title" = "Format";
+"5HH-LQ-Fk8.title" = "格式";
 
 /* Class = "NSMenu"; title = "Tags List"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
-"76D-S0-1JD.title" = "Tags List";
+"76D-S0-1JD.title" = "標籤清單";
+
+/* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
+"78.title" = "列印…";
 
 /* Class = "NSMenuItem"; title = "History"; ObjectID = "7Ox-IO-LLQ"; */
-"7Ox-IO-LLQ.title" = "History";
+"7Ox-IO-LLQ.title" = "記錄";
+
+/* Class = "NSMenu"; title = "Note"; ObjectID = "81"; Note = "Note Actions Menu"; */
+"81.title" = "備註";
+
+/* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
+"83.title" = "備註";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Add Note"; ObjectID = "987"; */
+"987.ibShadowedToolTip" = "新增筆記";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Info"; ObjectID = "EXM-Do-Iy7"; Note = "Editor Info Button"; */
-"EXM-Do-Iy7.ibShadowedToolTip" = "Info";
+"EXM-Do-Iy7.ibShadowedToolTip" = "資訊";
 
 /* Class = "NSMenuItem"; title = "Markdown"; ObjectID = "Ejc-Bj-rEL"; */
 "Ejc-Bj-rEL.title" = "Markdown";
 
 /* Class = "NSMenuItem"; title = "Font Size"; ObjectID = "FPg-7U-5Cl"; */
-"FPg-7U-5Cl.title" = "Font Size";
+"FPg-7U-5Cl.title" = "字體大小";
 
 /* Class = "NSMenu"; title = "Line Length"; ObjectID = "JgX-db-Pi6"; Note = "Line Length Setting Menu"; */
-"JgX-db-Pi6.title" = "Line Length";
+"JgX-db-Pi6.title" = "行的長度";
 
 /* Class = "NSMenuItem"; title = "Theme"; ObjectID = "Jtf-4C-imn"; Note = "Opens the Theme Settings"; */
-"Jtf-4C-imn.title" = "Theme";
+"Jtf-4C-imn.title" = "佈景主題";
 
 /* Class = "NSMenu"; title = "Notes List"; ObjectID = "L8Y-u8-nu8"; Note = "Note List Settings Menu"; */
-"L8Y-u8-nu8.title" = "Notes List";
+"L8Y-u8-nu8.title" = "筆記清單";
 
 /* Class = "NSMenuItem"; title = "Publish"; ObjectID = "Lhn-nd-qgk"; */
-"Lhn-nd-qgk.title" = "Publish";
+"Lhn-nd-qgk.title" = "發表";
 
 /* Class = "NSMenuItem"; title = "Bigger"; ObjectID = "NAj-hV-Pza"; Note = "Increases the Font Size"; */
-"NAj-hV-Pza.title" = "Bigger";
+"NAj-hV-Pza.title" = "較大";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Preview Markdown"; ObjectID = "OMI-hx-wfj"; */
-"OMI-hx-wfj.ibShadowedToolTip" = "Preview Markdown";
+"OMI-hx-wfj.ibShadowedToolTip" = "預覽 Markdown";
 
 /* Class = "NSMenuItem"; title = "Line Length"; ObjectID = "P9P-ed-21W"; */
-"P9P-ed-21W.title" = "Line Length";
+"P9P-ed-21W.title" = "行的長度";
 
 /* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
-"Pwd-hR-fBt.title" = "Export Everything";
+"Pwd-hR-fBt.title" = "全部匯出";
 
 /* Class = "NSMenuItem"; title = "Sort Order"; ObjectID = "QGk-SS-2Jf"; Note = "Opens the Note List Sort Order Settings"; */
-"QGk-SS-2Jf.title" = "Sort Order";
+"QGk-SS-2Jf.title" = "排序";
 
 /* Class = "NSMenuItem"; title = "Comfy"; ObjectID = "Qaj-k2-NOz"; Note = "Toggles Comfy Note Display"; */
-"Qaj-k2-NOz.title" = "Comfy";
+"Qaj-k2-NOz.title" = "舒適";
 
 /* Class = "NSMenuItem"; title = "Privacy Settings"; ObjectID = "RZM-N8-VLN"; Note = "Opens the Privacy Settings"; */
-"RZM-N8-VLN.title" = "Privacy Settings";
+"RZM-N8-VLN.title" = "隱私權設定";
 
 /* Class = "NSMenuItem"; title = "Pin to Top"; ObjectID = "Ryc-RD-9bh"; */
-"Ryc-RD-9bh.title" = "Pin to Top";
+"Ryc-RD-9bh.title" = "釘選至最上方";
 
 /* Class = "NSMenu"; title = "Theme"; ObjectID = "SIP-Tf-W7J"; Note = "Theme Settings Menu"; */
-"SIP-Tf-W7J.title" = "Theme";
+"SIP-Tf-W7J.title" = "佈景主題";
 
 /* Class = "NSMenu"; title = "Font Size"; ObjectID = "SxH-2F-lin"; Note = "Font Size Setting Menu"; */
-"SxH-2F-lin.title" = "Font Size";
+"SxH-2F-lin.title" = "字體大小";
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "THl-80-myZ"; Note = "Opens the Format Menu"; */
-"THl-80-myZ.title" = "Format";
+"THl-80-myZ.title" = "格式";
 
 /* Class = "NSTextFieldCell"; title = "Entered of cordial do on no hearted. Yet agreed whence and unable limit…"; ObjectID = "TM7-SJ-chj"; Note = "Note Contents Placeholder (Don't Translate)"; */
-"TM7-SJ-chj.title" = "Entered of cordial do on no hearted. Yet agreed whence and unable limit…";
+"TM7-SJ-chj.title" = "誠摯參與做事鐵石心腸。 但自此同意且無法限制…";
 
 /* Class = "NSMenu"; title = "Sort Order"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
-"YpJ-fs-p4p.title" = "Sort Order";
+"YpJ-fs-p4p.title" = "排序";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
-"Zhe-Bb-jvT.title" = "Light";
+"Zhe-Bb-jvT.title" = "淡色系";
 
 /* Class = "NSMenuItem"; title = "Collaborate"; ObjectID = "avN-8J-w5V"; */
-"avN-8J-w5V.title" = "Collaborate";
+"avN-8J-w5V.title" = "協作";
 
 /* Class = "NSMenuItem"; title = "Sort Alphabetically"; ObjectID = "axW-cz-MnF"; Note = "Sorts the Tags List Alphabetically"; */
-"axW-cz-MnF.title" = "Sort Alphabetically";
+"axW-cz-MnF.title" = "依字母排序";
 
 /* Class = "NSMenuItem"; title = "Full"; ObjectID = "bBW-To-3v3"; Note = "Toggles Full Line Length"; */
-"bBW-To-3v3.title" = "Full";
+"bBW-To-3v3.title" = "完整";
 
 /* Class = "NSSearchFieldCell"; placeholderString = "Search"; ObjectID = "dE8-oP-Vx2"; */
-"dE8-oP-Vx2.placeholderString" = "Search";
+"dE8-oP-Vx2.placeholderString" = "搜尋";
 
 /* Class = "NSMenuItem"; title = "Contact Us"; ObjectID = "dkM-vi-cwv"; Note = "Opens the Contact Us Interface"; */
-"dkM-vi-cwv.title" = "Contact Us";
+"dkM-vi-cwv.title" = "聯絡我們";
 
 /* Class = "NSTextFieldCell"; title = "Title"; ObjectID = "eVq-2Q-sAB"; Note = "Tag Placeholder (Don't Translate)"; */
-"eVq-2Q-sAB.title" = "Title";
+"eVq-2Q-sAB.title" = "標題";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Restore"; ObjectID = "fA9-bG-luR"; */
-"fA9-bG-luR.ibShadowedToolTip" = "Restore";
+"fA9-bG-luR.ibShadowedToolTip" = "還原";
 
 /* Class = "NSMenu"; title = "Note Display"; ObjectID = "fB2-X8-xNp"; Note = "Note Display Settings"; */
-"fB2-X8-xNp.title" = "Note Display";
+"fB2-X8-xNp.title" = "筆記顯示";
 
 /* Class = "NSMenuItem"; title = "Date Updated"; ObjectID = "fep-x2-0FA"; Note = "Toggles Note Order by Date"; */
-"fep-x2-0FA.title" = "Date Updated";
+"fep-x2-0FA.title" = "已更新日期";
 
 /* Class = "NSMenuItem"; title = "Alphabetical"; ObjectID = "i8p-Xx-VpF"; Note = "Toggles Alphabetical Note Sort Order"; */
-"i8p-Xx-VpF.title" = "Alphabetical";
+"i8p-Xx-VpF.title" = "字母順序";
 
 /* Class = "NSMenuItem"; title = "Share"; ObjectID = "iBw-QS-kil"; */
-"iBw-QS-kil.title" = "Share";
+"iBw-QS-kil.title" = "分享";
 
 /* Class = "NSMenuItem"; title = "Insert Checklist"; ObjectID = "iNS-zx-oXr"; Note = "Inserts a new Checklist"; */
-"iNS-zx-oXr.title" = "Insert Checklist";
+"iNS-zx-oXr.title" = "插入檢查清單";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Info"; ObjectID = "jyK-U4-rcH"; */
-"jyK-U4-rcH.ibShadowedToolTip" = "Info";
+"jyK-U4-rcH.ibShadowedToolTip" = "資訊";
 
 /* Class = "NSMenuItem"; title = "Narrow"; ObjectID = "lMi-2X-rR9"; Note = "Toggles Narrow Line Length"; */
-"lMi-2X-rR9.title" = "Narrow";
+"lMi-2X-rR9.title" = "縮窄";
 
 /* Class = "NSMenuItem"; title = "Notes List"; ObjectID = "lqT-82-IW9"; Note = "Opens the Note List Settings"; */
-"lqT-82-IW9.title" = "Notes List";
+"lqT-82-IW9.title" = "筆記清單";
 
 /* Class = "NSMenu"; title = "More Actions"; ObjectID = "nSc-s9-0oY"; Note = "More Actions Menu"; */
-"nSc-s9-0oY.title" = "More Actions";
+"nSc-s9-0oY.title" = "更多動作";
 
 /* Class = "NSMenuItem"; title = "Focus Mode"; ObjectID = "nrD-mL-W7Q"; Note = "Toggles the Focus Mode"; */
-"nrD-mL-W7Q.title" = "Focus Mode";
+"nrD-mL-W7Q.title" = "焦點模式";
 
 /* Class = "NSMenuItem"; title = "Reset"; ObjectID = "oS8-Vc-yog"; Note = "Resets the Font Size"; */
-"oS8-Vc-yog.title" = "Reset";
+"oS8-Vc-yog.title" = "重設";
 
 /* Class = "NSMenuItem"; title = "Note Editor"; ObjectID = "oYc-2J-WVc"; Note = "Opens the Editor Settings"; */
-"oYc-2J-WVc.title" = "Note Editor";
+"oYc-2J-WVc.title" = "筆記編輯器";
 
 /* Class = "NSTextFieldCell"; title = "Header"; ObjectID = "qGL-DU-S4n"; Note = "Header Placeholder (Don't Translate)"; */
-"qGL-DU-S4n.title" = "Header";
+"qGL-DU-S4n.title" = "首頁";
 
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
-"qcT-FY-eHe.title" = "Dark";
+"qcT-FY-eHe.title" = "深色系";
 
 /* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
-"tQC-gw-hdq.title" = "Condensed";
+"tQC-gw-hdq.title" = "精簡版";
 
 /* Class = "NSMenuItem"; title = "Toggle Sidebar"; ObjectID = "tkU-Gb-qGx"; Note = "Toggles the Sidebar"; */
-"tkU-Gb-qGx.title" = "Toggle Sidebar";
+"tkU-Gb-qGx.title" = "切換側選單";
 
 /* Class = "NSMenuItem"; title = "Note Display"; ObjectID = "tl2-gz-YEA"; */
-"tl2-gz-YEA.title" = "Note Display";
+"tl2-gz-YEA.title" = "筆記顯示";
 
 /* Class = "NSMenuItem"; title = "Main Window"; ObjectID = "vor-dd-sYt"; Note = "Opens the Main Window"; */
-"vor-dd-sYt.title" = "Main Window";
+"vor-dd-sYt.title" = "主視窗";
 
 /* Class = "NSMenuItem"; title = "Smaller"; ObjectID = "w30-fb-a2C"; Note = "Decreases the Font Size"; */
-"w30-fb-a2C.title" = "Smaller";
+"w30-fb-a2C.title" = "較小";
 
 /* Class = "NSMenuItem"; title = "System Appearance"; ObjectID = "x6g-cH-Wdm"; Note = "Toggles System Appearance"; */
-"x6g-cH-Wdm.title" = "System Appearance";
+"x6g-cH-Wdm.title" = "系統外觀";
+

@@ -1,0 +1,1 @@
+simplenote,Notiz,Notizen,synchronisieren,Synchronisierung,Liste,To-do,einfach,Markdown,Ideen
