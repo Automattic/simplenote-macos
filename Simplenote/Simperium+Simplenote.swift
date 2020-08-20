@@ -5,6 +5,14 @@ import Foundation
 //
 extension Simperium {
 
+    /// Returns the number of Deleted Notes
+    ///
+    @objc
+    func numberOfDeletedNotes() -> Int {
+        let predicate = NSPredicate.predicateForNotes(deleted: true)
+        return notesBucket.numObjects(for: predicate)
+    }
+
     /// Returns the subset of Tag Names that start with the specified string
     ///
     func searchTagNames(prefix: String) -> [String] {

@@ -52,7 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
-- (NSInteger)numDeletedNotes;
 - (BOOL)isMainWindowVisible;
 
 @end

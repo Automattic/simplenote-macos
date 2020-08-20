@@ -230,26 +230,27 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (NSArray *)notesWithTag:(Tag *)tag
 {
-    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:@[
-        [NSPredicate predicateForNotesWithDeletedStatus:NO],
-        [NSPredicate predicateForNotesWithTag:tag.name]
-    ]];
-    
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *noteBucket = [appDelegate.simperium bucketForName:@"Note"];
-    
-    // Note:
-    // 'contains' predicate might return Tags that contains our search keyword as a substring.
-    // 
-    NSArray *notes = [noteBucket objectsForPredicate:compound];
-    NSMutableArray *exactMatches = [NSMutableArray array];
-    for (Note *note in notes) {
-        if ([note.tagsArray containsObject:tag.name]) {
-            [exactMatches addObject:note];
-        }
-    }
-    
-    return exactMatches;
+    return @[];
+//    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:@[
+//        [NSPredicate predicateForNotesWithDeletedStatus:NO],
+//        [NSPredicate predicateForNotesWithTag:tag.name]
+//    ]];
+//
+//    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
+//    SPBucket *noteBucket = [appDelegate.simperium bucketForName:@"Note"];
+//
+//    // Note:
+//    // 'contains' predicate might return Tags that contains our search keyword as a substring.
+//    //
+//    NSArray *notes = [noteBucket objectsForPredicate:compound];
+//    NSMutableArray *exactMatches = [NSMutableArray array];
+//    for (Note *note in notes) {
+//        if ([note.tagsArray containsObject:tag.name]) {
+//            [exactMatches addObject:note];
+//        }
+//    }
+//
+//    return exactMatches;
 }
 
 - (Tag *)addTagWithName:(NSString *)tagName
@@ -428,21 +429,21 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 {
     [SPTracker trackListTrashEmptied];
     
-    // Empty it
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:appDelegate.managedObjectContext];
-    fetchRequest.entity = entity;
-    fetchRequest.predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
-    
-    NSError *error;
-    NSArray *items = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    for (Note *note in items) {
-        [appDelegate.managedObjectContext deleteObject:note];
-    }
-    [appDelegate.simperium save];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidEmptyTrashNotification object:self];
+//    // Empty it
+//    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:appDelegate.managedObjectContext];
+//    fetchRequest.entity = entity;
+//    fetchRequest.predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
+//
+//    NSError *error;
+//    NSArray *items = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+//    for (Note *note in items) {
+//        [appDelegate.managedObjectContext deleteObject:note];
+//    }
+//    [appDelegate.simperium save];
+//
+//    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidEmptyTrashNotification object:self];
 }
 
 
@@ -457,8 +458,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     
     // For trash dropdown, check if there are deleted notes
     if (menuItem.menu == self.trashDropdownMenu) {
-		SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-        return [appDelegate numDeletedNotes] > 0;
+        return self.simperium.numberOfDeletedNotes > 0;
     }
     
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)

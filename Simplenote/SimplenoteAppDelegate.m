@@ -260,14 +260,6 @@
     [self.noteListViewController setWaitingForIndex:YES];
 }
 
-- (NSInteger)numDeletedNotes
-{
-    SPBucket *notesBucket = [self.simperium bucketForName:@"Note"];
-    NSPredicate *predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
-
-    return [notesBucket numObjectsForPredicate:predicate];
-}
-
 - (BOOL)isMainWindowVisible
 {
     return self.window.isVisible;

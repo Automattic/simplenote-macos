@@ -1,4 +1,5 @@
 import Foundation
+import SimplenoteSearch
 
 
 // MARK: - Private Helpers

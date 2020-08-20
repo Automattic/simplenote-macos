@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SimplenoteSearch",
+        "repositoryURL": "git@github.com:Automattic/SimplenoteSearch-Swift.git",
+        "state": {
+          "branch": null,
+          "revision": "c594338829e8fb8954fad8743508b135da17b132",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
