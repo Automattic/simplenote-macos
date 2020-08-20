@@ -176,6 +176,7 @@ extension TagListViewController {
         SPTracker.trackListTrashEmptied()
 
         simperium.deleteTrashedNotes()
+        simperium.save()
         NotificationCenter.default.post(name: .TagListDidEmptyTrash, object: self)
     }
 }

@@ -110,7 +110,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        return simperium.numberOfDeletedNotes() > .zero
+        return simperium.numberOfDeletedNotes > .zero
     }
 
     func validateExportMenuItem(_ item: NSMenuItem) -> Bool {
