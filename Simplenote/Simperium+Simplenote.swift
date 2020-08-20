@@ -51,25 +51,17 @@ extension Simperium {
             NSPredicate.predicateForNotes(deleted: false)
         ])
 
-        guard let notes = notesBucket.objects(for: compound) as? [Note] else {
-            return []
-        }
-
-        return notes
+        return notesBucket.objects(ofType: Note.self, for: compound)
     }
 
     ///
     ///
     func deleteTrashedNotes() {
         let predicate = NSPredicate.predicateForNotes(deleted: true)
-        let bucket = notesBucket
-
-        guard let trashed = bucket.objects(for: predicate) as? [Note] else {
-            return
-        }
+        let trashed = notesBucket.objects(ofType: Note.self, for: predicate)
 
         for note in trashed {
-            bucket.delete(note)
+            notesBucket.delete(note)
         }
 
         save()
@@ -78,21 +70,19 @@ extension Simperium {
     /// Returns all of the available `Tags`
     ///
     var allTags: [Tag] {
-        guard let tags = tagsBucket.allObjects() as? [Tag] else {
-            return []
-        }
-
-        return tags
+        tagsBucket.allObjects(ofType: Tag.self)
     }
 
     /// Returns the Tags Bucket instance
     ///
+    @objc
     var tagsBucket: SPBucket {
         bucket(forName: Tag.classNameWithoutNamespaces)
     }
 
     /// Returns the Notes Bucket instance
     ///
+    @objc
     var notesBucket: SPBucket {
         bucket(forName: Note.classNameWithoutNamespaces)
     }

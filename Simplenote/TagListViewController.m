@@ -301,8 +301,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 	
 	Tag* selectedTag = [self selectedTag];
     NSString *tagName = [tag.name copy];
-    
-    NSArray *notes = [self notesWithTag:tag];
+
+    NSArray *notes = [self.simperium searchNotesWithTag:tag];
 	
     // Strip this tag from all notes
 	for (Note *note in notes) {
@@ -310,10 +310,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 		[note createPreview];
 	}
     
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
-    [tagBucket deleteObject:tag];
-    [appDelegate.simperium save];
+    [self.simperium.tagsBucket deleteObject:tag];
+    [self.simperium save];
     
     [self loadTags];
     

@@ -192,6 +192,8 @@
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
 		B5609AE824EEC9860097777A /* SimplenoteSearch in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE724EEC9860097777A /* SimplenoteSearch */; };
 		B5609AEA24EEC9910097777A /* SimplenoteSearch in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE924EEC9910097777A /* SimplenoteSearch */; };
+		B5609AEC24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */; };
+		B5609AED24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B56EA2AA244F4CC70061EAD8 /* NSImageView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */; };
@@ -534,6 +536,7 @@
 		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
 		B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSVisualEffectView+Simplenote.swift"; sourceTree = "<group>"; };
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPBucket+Simplenote.swift"; sourceTree = "<group>"; };
 		B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+Simplenote.swift"; sourceTree = "<group>"; };
 		B56FA78E2437C672002CB9FF /* ColorStudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorStudio.swift; sourceTree = "<group>"; };
@@ -1013,6 +1016,7 @@
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
 				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
+				B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1718,6 +1722,7 @@
 				B59EA98124AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
 				375D293621E033D1007AB25A /* document.c in Sources */,
 				B5A5AF79244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
+				B5609AEC24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5F50915247319360042FA1D /* SplitView.swift in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
@@ -1853,6 +1858,7 @@
 				B59EA98224AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
 				B5A5AF7A244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
 				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
+				B5609AED24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */,
 				B5F50916247319360042FA1D /* SplitView.swift in Sources */,
 				466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */,
 				B5E086332448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
