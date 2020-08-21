@@ -2,4 +2,4 @@ VERSION_SHORT=2.0
 
 // Public long version example: 2.0.0.1. The last 1 means the first build for
 // this version
-VERSION_LONG=2.0.0.1
+VERSION_LONG=2.0.0.2
