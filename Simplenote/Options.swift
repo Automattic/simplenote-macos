@@ -72,6 +72,18 @@ extension Options {
         }
     }
 
+    /// Indicates if the Editor should render in full width mode
+    ///
+    @objc
+    var editorFullWidth: Bool {
+        get {
+            defaults.bool(forKey: .editorFullWidth)
+        }
+        set {
+            defaults.set(newValue, forKey: .editorFullWidth)
+        }
+    }
+
     /// Indicates if the Notes List must render in condensed mode
     ///
     @objc
