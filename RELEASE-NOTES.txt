@@ -1,6 +1,7 @@
 2.1.0
 -----
 - Fixed a bug in which the Tags List wouldn't accept mouse clicks
+- Markdown Preview will now refresh, whenever the Note is updated
 - Fixed a bug that prevented the main Window from restoring its last location
 
 2.0.0
