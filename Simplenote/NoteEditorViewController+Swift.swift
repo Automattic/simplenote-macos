@@ -296,6 +296,10 @@ extension NoteEditorViewController {
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
     }
+
+    @IBAction
+    func toggleEditorWidth(sender: Any) {
+    }
 }
 
 

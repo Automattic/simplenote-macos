@@ -48,9 +48,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 #pragma mark - NoteEditorViewController
 
 @interface NoteEditorViewController : NSViewController
-{
-    IBOutlet NSMenu *lineLengthMenu;
-}
 
 @property (nonatomic, strong) IBOutlet NSMenu                                   *moreActionsMenu;
 @property (nonatomic, strong) IBOutlet BackgroundView                           *backgroundView;
@@ -84,7 +81,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (IBAction)adjustFontSizeAction:(id)sender;
 - (IBAction)markdownAction:(id)sender;
 - (IBAction)toggleMarkdownView:(id)sender;
-- (IBAction)toggleEditorWidth:(id)sender;
 - (IBAction)insertChecklistAction:(id)sender;
 
 @end

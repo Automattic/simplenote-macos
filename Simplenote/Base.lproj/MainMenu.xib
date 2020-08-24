@@ -481,22 +481,22 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Line Length" id="JgX-db-Pi6">
                                                 <items>
-                                                    <menuItem title="Narrow" id="lMi-2X-rR9">
+                                                    <menuItem title="Narrow" identifier="editorWidthNarrowMenuItem" id="lMi-2X-rR9">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Narrow Line Length"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="toggleEditorWidth:" target="1107" id="1D7-pl-Fcz"/>
+                                                            <action selector="toggleEditorWidthWithSender:" target="1107" id="w7D-Wl-2lu"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="Full" tag="1" id="bBW-To-3v3">
+                                                    <menuItem title="Full" tag="1" identifier="editorWidthFullMenuItem" id="bBW-To-3v3">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Full Line Length"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="toggleEditorWidth:" target="1107" id="Wf5-Ne-3W8"/>
+                                                            <action selector="toggleEditorWidthWithSender:" target="1107" id="mfH-xZ-10u"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
@@ -846,7 +846,7 @@
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
                                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="1460">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="label" size="13"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1001,7 +1001,7 @@
                                             <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-wS-KTc" userLabel="SearchField">
                                                 <rect key="frame" x="12" y="11" width="206" height="26"/>
                                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="dE8-oP-Vx2">
-                                                    <font key="font" metaFont="system"/>
+                                                    <font key="font" metaFont="label" size="13"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </searchFieldCell>
@@ -1018,7 +1018,7 @@
                                                 </constraints>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="988">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
+                                                    <font key="font" metaFont="label" size="13"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="addAction:" target="1107" id="1662"/>
@@ -1236,7 +1236,7 @@
                                                         </constraints>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_preview_off" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q9W-kz-F4v">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="toggleMarkdownView:" target="1107" id="Ch7-3f-k9E"/>
@@ -1246,7 +1246,7 @@
                                                         <rect key="frame" x="45" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="X3f-rW-nRp">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="restoreAction:" target="1107" id="Vpw-i1-WtF"/>
@@ -1256,7 +1256,7 @@
                                                         <rect key="frame" x="90" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1oR-T8-cRe">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                         </buttonCell>
                                                         <attributedString key="userComments">
                                                             <fragment content="Editor Info Button"/>
@@ -1269,7 +1269,7 @@
                                                         <rect key="frame" x="135" y="14" width="20" height="20"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="fbf-7I-0wJ">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="label" size="13"/>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="moreWasPressed:" target="1107" id="wxL-gs-czt"/>
@@ -1467,7 +1467,6 @@
             <connections>
                 <outlet property="backgroundView" destination="ktP-Hd-KgH" id="KFX-EY-NpR"/>
                 <outlet property="bottomDividerView" destination="xSv-Qg-Lo6" id="76h-Kc-UnK"/>
-                <outlet property="lineLengthMenu" destination="JgX-db-Pi6" id="eVA-hS-cdT"/>
                 <outlet property="moreActionsMenu" destination="nSc-s9-0oY" id="RWb-MR-Re4"/>
                 <outlet property="noteEditor" destination="934" id="1108"/>
                 <outlet property="scrollView" destination="933" id="eqf-0S-fBY"/>
