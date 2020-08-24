@@ -43,6 +43,8 @@ extension NSUserInterfaceItemIdentifier {
     static let editorTrashMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorTrashMenuItem")
     static let editorPublishMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "editorPublishMenuItem")
     static let editorCollaborateMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "editorCollaborateMenuItem")
+    static let editorWidthNarrowMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "editorWidthNarrowMenuItem")
+    static let editorWidthFullMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "editorWidthFullMenuItem")
 
     /// Identifiers: Theme Menu
     ///
