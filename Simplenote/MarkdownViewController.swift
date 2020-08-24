@@ -30,11 +30,16 @@ class MarkdownViewController: NSViewController {
 
     /// Markdown Text to be rendered
     ///
-    var markdown: String? {
+    private var note: Note? {
         didSet {
             refreshHTML()
         }
     }
+
+    /// Entity Observer: Helps us keep track of changes applied to a Note
+    ///
+    private var entityObserver: EntityObserver?
+
 
 
     // MARK: - Lifecycle
@@ -42,6 +47,7 @@ class MarkdownViewController: NSViewController {
     deinit {
         stopListeningToNotifications()
         stopListeningToSystemNotifications()
+        stopListeningToNoteUpdates()
     }
 
     override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
@@ -61,6 +67,11 @@ class MarkdownViewController: NSViewController {
         refreshStyle()
     }
 
+    override func removeFromParent() {
+        super.removeFromParent()
+        stopListeningToNoteUpdates()
+    }
+
     /// For performance purposes: We'll ensure the WebView is ready to refresh in a split second
     ///
     func preloadView() {
@@ -70,6 +81,13 @@ class MarkdownViewController: NSViewController {
 
         loadView()
         refreshHTML()
+    }
+
+    /// Starts displaying the contents of a Note. The UI will be automatically refreshed when such entity is updated anyhow.
+    ///
+    func startDisplayingContents(of note: Note) {
+        self.note = note
+        startListeningToUpdates(for: note)
     }
 }
 
@@ -89,6 +107,16 @@ extension MarkdownViewController: WKNavigationDelegate {
         }
 
         decisionHandler(.cancel)
+    }
+}
+
+
+// MARK: - EntityObserverDelegate
+//
+extension MarkdownViewController: EntityObserverDelegate {
+
+    func entityObserver(_ observer: EntityObserver, didObserveChanges identifiers: Set<NSManagedObjectID>) {
+        refreshHTML()
     }
 }
 
@@ -120,14 +148,24 @@ private extension MarkdownViewController {
         DistributedNotificationCenter.default().removeObserver(self)
     }
 
-    @objc
     func startListeningToSystemNotifications() {
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(refreshInterface), name: .AppleInterfaceThemeChanged, object: nil)
     }
 
-    @objc
     func stopListeningToSystemNotifications() {
         DistributedNotificationCenter.default().removeObserver(self)
+    }
+
+    func startListeningToUpdates(for note: Note) {
+        let mainContext = SimplenoteAppDelegate.shared().managedObjectContext
+
+        entityObserver = EntityObserver(context: mainContext, object: note)
+        entityObserver?.delegate = self
+    }
+
+    func stopListeningToNoteUpdates() {
+        entityObserver?.delegate = nil
+        entityObserver = nil
     }
 
     @objc
@@ -141,7 +179,7 @@ private extension MarkdownViewController {
     }
 
     func refreshHTML() {
-        let content = markdown ?? ""
+        let content = note?.content ?? ""
         let html = SPMarkdownParser.renderHTML(fromMarkdownString: content) ?? ""
 
         webView.loadHTMLString(html, baseURL: Bundle.main.bundleURL)

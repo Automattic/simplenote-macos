@@ -350,15 +350,14 @@ extension NoteEditorViewController {
 extension NoteEditorViewController {
 
     @objc(displayMarkdownPreview:)
-    func displayMarkdownPreview(_ markdown: String) {
-        markdownViewController.markdown = markdown
+    func displayMarkdownPreview(_ note: Note) {
+        markdownViewController.startDisplayingContents(of: note)
         attachMarkdownViewController()
         refreshTopDividerAlpha()
     }
 
     @objc
     func dismissMarkdownPreview() {
-        markdownViewController.markdown = nil
         detachMarkdownViewController()
         refreshTopDividerAlpha()
     }
