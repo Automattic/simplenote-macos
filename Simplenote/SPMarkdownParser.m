@@ -52,7 +52,7 @@
             "<style media=\"screen\" type=\"text/css\">\n";
     
     // Limit the editor width if the full width setting is not enabled
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey]) {
+    if (![[Options shared] editorFullWidth]) {
         headerStart = [headerStart stringByAppendingString:@".note-detail-markdown { max-width:750px;margin:0 auto; }"];
     }
 
