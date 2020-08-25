@@ -3,3 +3,7 @@ VERSION_SHORT=2.0
 // Public long version example: 2.0.0.1. The last 1 means the first build for
 // this version
 VERSION_LONG=2.0.0.2
+
+// This is the value for the CFBundleVersion it should be incremented on every
+// build that gets distributed
+BUILD_NUMBER=11203
