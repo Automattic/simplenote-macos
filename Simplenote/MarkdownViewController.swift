@@ -1,5 +1,6 @@
 import Foundation
 import WebKit
+import SimplenoteFoundation
 
 
 // MARK: - MarkdownViewController

@@ -1,9 +1,34 @@
 import Foundation
 
 
-// MARK: - Simperium Convenience API(s)
+// MARK: - Simperium + Buckets
 //
 extension Simperium {
+
+    /// Notes Bucket
+    ///
+    var notesBucket: SPBucket {
+        bucket(forName: Note.classNameWithoutNamespaces)
+    }
+
+    /// Tags Bucket
+    ///
+    @objc
+    var tagsBucket: SPBucket {
+        bucket(forName: Tag.classNameWithoutNamespaces)
+    }
+}
+
+
+// MARK: - Simperium + Tags
+//
+extension Simperium {
+
+    /// Returns all of the available `Tags`
+    ///
+    var allTags: [Tag] {
+        tagsBucket.allObjects(ofType: Tag.self)
+    }
 
     /// Returns the subset of Tag Names that start with the specified string
     ///
@@ -29,26 +54,44 @@ extension Simperium {
             tag.name.lowercased() == lowercasedName
         }
     }
+}
 
-    /// Returns all of the available `Tags`
+
+// MARK: - Simperium + Notes
+//
+extension Simperium {
+
+    /// Deletes all of the Note entities, from Core Data, whose `deleted` flag are set to `true`.
+    /// - Note: It's up to the caller to actually persist the change.
     ///
-    var allTags: [Tag] {
-        guard let tags = tagsBucket.allObjects() as? [Tag] else {
+    func deleteTrashedNotes() {
+        let predicate = NSPredicate.predicateForNotes(deleted: true)
+
+        for note in notesBucket.objects(ofType: Note.self, for: predicate) {
+            notesBucket.delete(note)
+        }
+    }
+
+    /// Returns the number of Deleted Notes
+    ///
+    @objc
+    var numberOfDeletedNotes: Int {
+        let predicate = NSPredicate.predicateForNotes(deleted: true)
+        return notesBucket.numObjects(for: predicate)
+    }
+
+    /// Returns the subset of Notes that contain the specified Tag
+    ///
+    @objc
+    func searchNotesWithTag(_ tag: Tag) -> [Note] {
+        guard let name = tag.name else {
             return []
         }
 
-        return tags
-    }
-
-    /// Returns the Tags Bucket instance
-    ///
-    var tagsBucket: SPBucket {
-        bucket(forName: Tag.classNameWithoutNamespaces)
-    }
-
-    /// Returns the Notes Bucket instance
-    ///
-    var notesBucket: SPBucket {
-        bucket(forName: Note.classNameWithoutNamespaces)
+        return notesBucket.objects(ofType: Note.self, for: NSCompoundPredicate(andPredicateWithSubpredicates: [
+            .predicateForNotes(tag: name),
+            .predicateForNotes(deleted: false)
+        ]))
     }
 }
+

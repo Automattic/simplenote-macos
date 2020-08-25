@@ -157,7 +157,7 @@
                                     <fragment content="Empties the Trash Bin"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="emptyTrashAction:" target="494" id="1688"/>
+                                    <action selector="clickedEmptyTrashItem:" target="494" id="9HE-zu-LSj"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Sign Out" id="1541" userLabel="Menu Item - Sign Out">

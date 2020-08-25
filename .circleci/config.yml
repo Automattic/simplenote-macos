@@ -8,7 +8,7 @@ jobs:
   Test:
     executor:
       name: ios/default
-      xcode-version: "11.2.1"
+      xcode-version: "11.6.0"
     steps:
       - checkout
       - run:
@@ -17,6 +17,11 @@ jobs:
       - ios/install-dependencies:
           bundle-install: true
           pod-install: true
+      # Start: Swift Package Manager Workaround
+      # Ref. https://support.circleci.com/hc/en-us/articles/360044709573-Swift-Package-Manager-fails-to-clone-from-private-Git-repositories
+      - run: rm ~/.ssh/id_rsa
+      - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
+      # END: Swift Package Manager Workaround
       - run:
           name: Build
           command: |

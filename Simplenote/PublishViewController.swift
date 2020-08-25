@@ -1,4 +1,5 @@
 import Foundation
+import SimplenoteFoundation
 
 
 // MARK: - Represents the PublishViewController's Internal State

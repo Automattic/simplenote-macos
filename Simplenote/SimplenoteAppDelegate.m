@@ -260,14 +260,6 @@
     [self.noteListViewController setWaitingForIndex:YES];
 }
 
-- (NSInteger)numDeletedNotes
-{
-    SPBucket *notesBucket = [self.simperium bucketForName:@"Note"];
-    NSPredicate *predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
-
-    return [notesBucket numObjectsForPredicate:predicate];
-}
-
 - (BOOL)isMainWindowVisible
 {
     return self.window.isVisible;
@@ -478,11 +470,6 @@
         [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self->_simperium authenticateIfNecessary];
     }];
-}
-
-- (void)emptyTrashAction:(id)sender
-{
-    [self.tagListViewController emptyTrashAction:sender];
 }
 
 - (void)searchAction:(id)sender
