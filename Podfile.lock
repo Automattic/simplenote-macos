@@ -11,21 +11,21 @@ PODS:
   - Sentry (4.4.3):
     - Sentry/Core (= 4.4.3)
   - Sentry/Core (4.4.3)
-  - Simperium-OSX (0.8.28):
-    - Simperium-OSX/DiffMatchPach (= 0.8.28)
-    - Simperium-OSX/JRSwizzle (= 0.8.28)
-    - Simperium-OSX/SocketRocket (= 0.8.28)
-    - Simperium-OSX/SPReachability (= 0.8.28)
-    - Simperium-OSX/SSKeychain (= 0.8.28)
-  - Simperium-OSX/DiffMatchPach (0.8.28)
-  - Simperium-OSX/JRSwizzle (0.8.28)
-  - Simperium-OSX/SocketRocket (0.8.28)
-  - Simperium-OSX/SPReachability (0.8.28)
-  - Simperium-OSX/SSKeychain (0.8.28)
+  - Simperium-OSX (0.8.29):
+    - Simperium-OSX/DiffMatchPach (= 0.8.29)
+    - Simperium-OSX/JRSwizzle (= 0.8.29)
+    - Simperium-OSX/SocketRocket (= 0.8.29)
+    - Simperium-OSX/SPReachability (= 0.8.29)
+    - Simperium-OSX/SSKeychain (= 0.8.29)
+  - Simperium-OSX/DiffMatchPach (0.8.29)
+  - Simperium-OSX/JRSwizzle (0.8.29)
+  - Simperium-OSX/SocketRocket (0.8.29)
+  - Simperium-OSX/SPReachability (0.8.29)
+  - Simperium-OSX/SSKeychain (0.8.29)
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (~> 0.4)
-  - Simperium-OSX (= 0.8.28)
+  - Simperium-OSX (= 0.8.29)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -40,8 +40,8 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Sentry: 14bdd673870e8cf64932b149fad5bbbf39a9b390
-  Simperium-OSX: aaa21852e3d5348e3d25bb25d6c1dfbec3b91429
+  Simperium-OSX: 80ef04a7790d32a88bf78b2f59090bfaee817d12
 
-PODFILE CHECKSUM: 78bf76028858af587c14629c496341ab7f2fb75f
+PODFILE CHECKSUM: adc4f5ea73a1848c02e90a59e2987b836a62152e
 
 COCOAPODS: 1.6.1
