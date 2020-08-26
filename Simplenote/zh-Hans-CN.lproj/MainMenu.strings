@@ -1,0 +1,401 @@
+/* Translation-Revision-Date: 2020-08-06 18:54:05+0000 */
+/* Plural-Forms: nplurals=1; plural=0; */
+/* Generator: GlotPress/2.4.0-alpha */
+/* Language: zh_CN */
+
+/* Class = "NSTextFieldCell"; title = "Note Title!"; ObjectID = "1104"; Note = "Note Title Placeholder (Don't Translate)"; */
+"1104.title" = "笔记标题！";
+
+/* Class = "NSMenuItem"; title = "Empty Trash"; ObjectID = "1256"; Note = "Empties the Trash Bin"; */
+"1256.title" = "清空回收站";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
+"130.title" = "服务";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
+"131.title" = "服务";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "1324"; Note = "Toggles Fullscreen"; */
+"1324.title" = "进入全屏";
+
+/* Class = "NSMenuItem"; title = "Hide Simplenote"; ObjectID = "134"; */
+"134.title" = "隐藏 Simplenote";
+
+/* Class = "NSMenuItem"; title = "Quit Simplenote"; ObjectID = "136"; Note = "Exits the App"; */
+"136.title" = "退出 Simplenote";
+
+/* Class = "NSMenuItem"; ibShadowedToolTip = "Search all notes"; ObjectID = "1417"; */
+"1417.ibShadowedToolTip" = "搜索全部笔记";
+
+/* Class = "NSMenuItem"; title = "Search..."; ObjectID = "1417"; */
+"1417.title" = "搜索...";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
+"145.title" = "隐藏其他";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "1460"; */
+"1460.title" = "文本单元格";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
+"150.title" = "全部显示";
+
+/* Class = "NSMenuItem"; title = "Delete Note"; ObjectID = "1505"; */
+"1505.title" = "删除笔记";
+
+/* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
+"1541.title" = "注销";
+
+/* Class = "NSMenuItem"; title = "New"; ObjectID = "1654"; Note = "Adds a New Note"; */
+"1654.title" = "新增";
+
+/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1655"; Note = "Moves the current note to Trash"; */
+"1655.title" = "移至回收站";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "1748"; Note = "Closes the Main Window"; */
+"1748.title" = "关闭";
+
+/* Class = "NSTextFieldCell"; title = "No Notes"; ObjectID = "1767"; */
+"1767.title" = "无笔记";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; Note = "Opens the Window Menu"; */
+"19.title" = "窗口";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
+"195.title" = "停止说话";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "196"; */
+"196.title" = "开始说话";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
+"197.title" = "复制";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
+"198.title" = "全选";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
+"199.title" = "剪切";
+
+/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1z5-RU-iWI"; */
+"1z5-RU-iWI.title" = "移至回收站";
+
+/* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
+"200.title" = "拼写和语法";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "201"; */
+"201.title" = "立即检查文档";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
+"202.title" = "删除";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
+"203.title" = "粘帖";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "204"; */
+"204.title" = "显示拼写和语法";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; Note = "Edit Menu"; */
+"205.title" = "编辑";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
+"207.title" = "撤消";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "208"; */
+"208.title" = "查找下一个";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "209"; */
+"209.title" = "查找…";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "210"; */
+"210.title" = "跳转到选定内容";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "211"; */
+"211.title" = "语音";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "212"; */
+"212.title" = "语音";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "213"; */
+"213.title" = "查找上一个";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
+"215.title" = "重做";
+
+/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "216"; */
+"216.title" = "拼写和语法";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; Note = "Opens the Edit Menu"; */
+"217.title" = "编辑";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "218"; */
+"218.title" = "查找";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "219"; */
+"219.title" = "输入时检查拼写";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "220"; */
+"220.title" = "查找";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "221"; */
+"221.title" = "使用选定内容查找";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; Note = "Minimizes the Window"; */
+"23.title" = "最小化";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; Note = "Zooms the Window"; */
+"239.title" = "缩放";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "24"; Note = "Window Menu"; */
+"24.title" = "窗口";
+
+/* Class = "NSMenu"; title = "Simplenote System Menu"; ObjectID = "29"; Note = "Simplenote's Main Menu"; */
+"29.title" = "Simplenote 系统菜单";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; Note = "Opens the View Main Menu"; */
+"295.title" = "查看";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "296"; Note = "View Main Menu"; */
+"296.title" = "查看";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "346"; */
+"346.title" = "检查语法及拼写";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "348"; */
+"348.title" = "替换";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "349"; */
+"349.title" = "替换";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "350"; */
+"350.title" = "智能复制\/粘贴";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "351"; */
+"351.title" = "智能引号";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "354"; */
+"354.title" = "智能链接";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "450"; */
+"450.title" = "转换";
+
+/* Class = "NSMenu"; title = "Transformations"; ObjectID = "451"; */
+"451.title" = "转换";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "452"; */
+"452.title" = "设为大写";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "454"; */
+"454.title" = "自动更正拼写";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "457"; */
+"457.title" = "显示替换";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "460"; */
+"460.title" = "智能破折号";
+
+/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "462"; */
+"462.title" = "文本替换";
+
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "465"; */
+"465.title" = "设为小写";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "466"; */
+"466.title" = "首字母大写";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; Note = "Opens the Help Menu"; */
+"490.title" = "帮助";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "491"; Note = "Help Menu"; */
+"491.title" = "帮助";
+
+/* Class = "NSMenuItem"; title = "Help Website"; ObjectID = "492"; Note = "Opens the Help Website"; */
+"492.title" = "帮助网站";
+
+/* Class = "NSMenuItem"; title = "Tags List"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
+"4QQ-5e-Vxl.title" = "标签列表";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
+"5.title" = "全部置顶";
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "534"; */
+"534.title" = "查找和替换…";
+
+/* Class = "NSMenuItem"; title = "Simplenote"; ObjectID = "56"; Note = "Opens the Simplenote Menu"; */
+"56.title" = "Simplenote";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "568"; */
+"568.title" = "文本单元格";
+
+/* Class = "NSMenu"; title = "Simplenote"; ObjectID = "57"; */
+"57.title" = "Simplenote";
+
+/* Class = "NSMenuItem"; title = "About Simplenote"; ObjectID = "58"; Note = "Opens the About UI"; */
+"58.title" = "关于 Simplenote";
+
+/* Class = "NSMenu"; title = "Format"; ObjectID = "5HH-LQ-Fk8"; Note = "Format Menu"; */
+"5HH-LQ-Fk8.title" = "形式";
+
+/* Class = "NSMenu"; title = "Tags List"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
+"76D-S0-1JD.title" = "标签列表";
+
+/* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
+"78.title" = "打印…";
+
+/* Class = "NSMenuItem"; title = "History"; ObjectID = "7Ox-IO-LLQ"; */
+"7Ox-IO-LLQ.title" = "历史记录";
+
+/* Class = "NSMenu"; title = "Note"; ObjectID = "81"; Note = "Note Actions Menu"; */
+"81.title" = "注意";
+
+/* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
+"83.title" = "注意";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Add Note"; ObjectID = "987"; */
+"987.ibShadowedToolTip" = "添加笔记";
+
+/* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
+"E6O-ds-BEj.title" = "Twitter";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Info"; ObjectID = "EXM-Do-Iy7"; Note = "Editor Info Button"; */
+"EXM-Do-Iy7.ibShadowedToolTip" = "信息";
+
+/* Class = "NSMenuItem"; title = "Markdown"; ObjectID = "Ejc-Bj-rEL"; */
+"Ejc-Bj-rEL.title" = "Markdown";
+
+/* Class = "NSMenuItem"; title = "Font Size"; ObjectID = "FPg-7U-5Cl"; */
+"FPg-7U-5Cl.title" = "字体大小";
+
+/* Class = "NSMenu"; title = "Line Length"; ObjectID = "JgX-db-Pi6"; Note = "Line Length Setting Menu"; */
+"JgX-db-Pi6.title" = "行长度";
+
+/* Class = "NSMenuItem"; title = "Theme"; ObjectID = "Jtf-4C-imn"; Note = "Opens the Theme Settings"; */
+"Jtf-4C-imn.title" = "主题";
+
+/* Class = "NSMenu"; title = "Notes List"; ObjectID = "L8Y-u8-nu8"; Note = "Note List Settings Menu"; */
+"L8Y-u8-nu8.title" = "笔记列表";
+
+/* Class = "NSMenuItem"; title = "Publish"; ObjectID = "Lhn-nd-qgk"; */
+"Lhn-nd-qgk.title" = "发布";
+
+/* Class = "NSMenuItem"; title = "Bigger"; ObjectID = "NAj-hV-Pza"; Note = "Increases the Font Size"; */
+"NAj-hV-Pza.title" = "放大";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Preview Markdown"; ObjectID = "OMI-hx-wfj"; */
+"OMI-hx-wfj.ibShadowedToolTip" = "预览 Markdown";
+
+/* Class = "NSMenuItem"; title = "Line Length"; ObjectID = "P9P-ed-21W"; */
+"P9P-ed-21W.title" = "行长度";
+
+/* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
+"Pwd-hR-fBt.title" = "导出所有内容";
+
+/* Class = "NSMenuItem"; title = "Sort Order"; ObjectID = "QGk-SS-2Jf"; Note = "Opens the Note List Sort Order Settings"; */
+"QGk-SS-2Jf.title" = "排序";
+
+/* Class = "NSMenuItem"; title = "Comfy"; ObjectID = "Qaj-k2-NOz"; Note = "Toggles Comfy Note Display"; */
+"Qaj-k2-NOz.title" = "舒适布局";
+
+/* Class = "NSMenuItem"; title = "Privacy Settings"; ObjectID = "RZM-N8-VLN"; Note = "Opens the Privacy Settings"; */
+"RZM-N8-VLN.title" = "隐私设置";
+
+/* Class = "NSMenuItem"; title = "Pin to Top"; ObjectID = "Ryc-RD-9bh"; */
+"Ryc-RD-9bh.title" = "固定至顶部";
+
+/* Class = "NSMenu"; title = "Theme"; ObjectID = "SIP-Tf-W7J"; Note = "Theme Settings Menu"; */
+"SIP-Tf-W7J.title" = "主题";
+
+/* Class = "NSMenu"; title = "Font Size"; ObjectID = "SxH-2F-lin"; Note = "Font Size Setting Menu"; */
+"SxH-2F-lin.title" = "字体大小";
+
+/* Class = "NSMenuItem"; title = "Format"; ObjectID = "THl-80-myZ"; Note = "Opens the Format Menu"; */
+"THl-80-myZ.title" = "形式";
+
+/* Class = "NSTextFieldCell"; title = "Entered of cordial do on no hearted. Yet agreed whence and unable limit…"; ObjectID = "TM7-SJ-chj"; Note = "Note Contents Placeholder (Don't Translate)"; */
+"TM7-SJ-chj.title" = "Entered of cordial do on no hearted. Yet agreed whence and unable limit…";
+
+/* Class = "NSMenu"; title = "Sort Order"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
+"YpJ-fs-p4p.title" = "排序";
+
+/* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
+"Zhe-Bb-jvT.title" = "浅色";
+
+/* Class = "NSMenuItem"; title = "Collaborate"; ObjectID = "avN-8J-w5V"; */
+"avN-8J-w5V.title" = "协作";
+
+/* Class = "NSMenuItem"; title = "Sort Alphabetically"; ObjectID = "axW-cz-MnF"; Note = "Sorts the Tags List Alphabetically"; */
+"axW-cz-MnF.title" = "按字母顺序排列";
+
+/* Class = "NSMenuItem"; title = "Full"; ObjectID = "bBW-To-3v3"; Note = "Toggles Full Line Length"; */
+"bBW-To-3v3.title" = "完整";
+
+/* Class = "NSSearchFieldCell"; placeholderString = "Search"; ObjectID = "dE8-oP-Vx2"; */
+"dE8-oP-Vx2.placeholderString" = "搜索";
+
+/* Class = "NSMenuItem"; title = "Contact Us"; ObjectID = "dkM-vi-cwv"; Note = "Opens the Contact Us Interface"; */
+"dkM-vi-cwv.title" = "联系我们";
+
+/* Class = "NSTextFieldCell"; title = "Title"; ObjectID = "eVq-2Q-sAB"; Note = "Tag Placeholder (Don't Translate)"; */
+"eVq-2Q-sAB.title" = "标题";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Restore"; ObjectID = "fA9-bG-luR"; */
+"fA9-bG-luR.ibShadowedToolTip" = "恢复";
+
+/* Class = "NSMenu"; title = "Note Display"; ObjectID = "fB2-X8-xNp"; Note = "Note Display Settings"; */
+"fB2-X8-xNp.title" = "笔记显示";
+
+/* Class = "NSMenuItem"; title = "Date Updated"; ObjectID = "fep-x2-0FA"; Note = "Toggles Note Order by Date"; */
+"fep-x2-0FA.title" = "更新日期";
+
+/* Class = "NSMenuItem"; title = "Alphabetical"; ObjectID = "i8p-Xx-VpF"; Note = "Toggles Alphabetical Note Sort Order"; */
+"i8p-Xx-VpF.title" = "按字母顺序";
+
+/* Class = "NSMenuItem"; title = "Share"; ObjectID = "iBw-QS-kil"; */
+"iBw-QS-kil.title" = "共享";
+
+/* Class = "NSMenuItem"; title = "Insert Checklist"; ObjectID = "iNS-zx-oXr"; Note = "Inserts a new Checklist"; */
+"iNS-zx-oXr.title" = "插入清单";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Info"; ObjectID = "jyK-U4-rcH"; */
+"jyK-U4-rcH.ibShadowedToolTip" = "信息";
+
+/* Class = "NSMenuItem"; title = "Narrow"; ObjectID = "lMi-2X-rR9"; Note = "Toggles Narrow Line Length"; */
+"lMi-2X-rR9.title" = "窄";
+
+/* Class = "NSMenuItem"; title = "Notes List"; ObjectID = "lqT-82-IW9"; Note = "Opens the Note List Settings"; */
+"lqT-82-IW9.title" = "笔记列表";
+
+/* Class = "NSMenu"; title = "More Actions"; ObjectID = "nSc-s9-0oY"; Note = "More Actions Menu"; */
+"nSc-s9-0oY.title" = "更多操作";
+
+/* Class = "NSMenuItem"; title = "Focus Mode"; ObjectID = "nrD-mL-W7Q"; Note = "Toggles the Focus Mode"; */
+"nrD-mL-W7Q.title" = "专注模式";
+
+/* Class = "NSMenuItem"; title = "Reset"; ObjectID = "oS8-Vc-yog"; Note = "Resets the Font Size"; */
+"oS8-Vc-yog.title" = "重置";
+
+/* Class = "NSMenuItem"; title = "Note Editor"; ObjectID = "oYc-2J-WVc"; Note = "Opens the Editor Settings"; */
+"oYc-2J-WVc.title" = "笔记编辑器";
+
+/* Class = "NSTextFieldCell"; title = "Header"; ObjectID = "qGL-DU-S4n"; Note = "Header Placeholder (Don't Translate)"; */
+"qGL-DU-S4n.title" = "标题";
+
+/* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
+"qcT-FY-eHe.title" = "深色";
+
+/* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
+"tQC-gw-hdq.title" = "紧凑布局";
+
+/* Class = "NSMenuItem"; title = "Toggle Sidebar"; ObjectID = "tkU-Gb-qGx"; Note = "Toggles the Sidebar"; */
+"tkU-Gb-qGx.title" = "切换边栏";
+
+/* Class = "NSMenuItem"; title = "Note Display"; ObjectID = "tl2-gz-YEA"; */
+"tl2-gz-YEA.title" = "笔记显示";
+
+/* Class = "NSMenuItem"; title = "Main Window"; ObjectID = "vor-dd-sYt"; Note = "Opens the Main Window"; */
+"vor-dd-sYt.title" = "主窗口";
+
+/* Class = "NSMenuItem"; title = "Smaller"; ObjectID = "w30-fb-a2C"; Note = "Decreases the Font Size"; */
+"w30-fb-a2C.title" = "缩小";
+
+/* Class = "NSMenuItem"; title = "System Appearance"; ObjectID = "x6g-cH-Wdm"; Note = "Toggles System Appearance"; */
+"x6g-cH-Wdm.title" = "系统外观";
+

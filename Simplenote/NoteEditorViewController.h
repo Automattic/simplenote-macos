@@ -17,6 +17,9 @@
 @class TagsField;
 @class ToolbarView;
 
+
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSInteger, NoteFontSize) {
     NoteFontSizeMinimum = 10,
     NoteFontSizeNormal = 14,
@@ -24,17 +27,14 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 };
 
 
-#pragma mark ====================================================================================
-#pragma mark Notifications
-#pragma mark ====================================================================================
+
+#pragma mark - Notifications
 
 extern NSString * const SPTagAddedFromEditorNotificationName;
 extern NSString * const SPWillAddNewNoteNotificationName;
 
 
-#pragma mark ====================================================================================
-#pragma mark NoteEditorViewController
-#pragma mark ====================================================================================
+#pragma mark - NoteEditorViewController
 
 @interface NoteEditorViewController : NSViewController
 {
@@ -50,19 +50,19 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 @property (nonatomic, strong) IBOutlet ToolbarView                              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView                              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField                              *statusTextField;
-@property (nonatomic,   weak) IBOutlet SPTextView                               *noteEditor;
-@property (nonatomic,   weak) IBOutlet NSScrollView                             *scrollView;
-@property (nonatomic,   weak) IBOutlet TagsField                                *tagsField;
+@property (nonatomic, strong) IBOutlet SPTextView                               *noteEditor;
+@property (nonatomic, strong) IBOutlet NSScrollView                             *scrollView;
+@property (nonatomic, strong) IBOutlet TagsField                                *tagsField;
 
 @property (nonatomic, strong, readonly) MarkdownViewController                  *markdownViewController;
 @property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
-@property (nonatomic, strong) NSLayoutConstraint                                *toolbarViewTopConstraint;
+@property (nonatomic, strong, nullable) NSLayoutConstraint                      *toolbarViewTopConstraint;
 @property (nonatomic,   weak) Note                                              *note;
 
 - (void)save;
-- (void)displayNote:(Note *)selectedNote;
-- (void)displayNotes:(NSArray *)selectedNotes;
+- (void)displayNote:(nullable Note *)selectedNote;
+- (void)displayNotes:(NSArray<Note *> *)selectedNotes;
 - (void)didReceiveNewContent;
 - (void)willReceiveNewContent;
 - (void)applyStyle;
@@ -77,3 +77,6 @@ extern NSString * const SPWillAddNewNoteNotificationName;
 - (IBAction)insertChecklistAction:(id)sender;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

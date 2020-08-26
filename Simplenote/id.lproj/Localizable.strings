@@ -1,0 +1,211 @@
+/* Translation-Revision-Date: 2020-08-06 18:54:05+0000 */
+/* Plural-Forms: nplurals=2; plural=n > 1; */
+/* Generator: GlotPress/2.4.0-alpha */
+/* Language: id */
+
+/* Password Requirement: Length */
+"- Minimum of 8 characters" = "- Minimum 8 karakter";
+
+/* Password Requirement: Special Characters */
+"- Neither tabs nor newlines are allowed" = "- Tidak boleh ada tab maupun baris baru";
+
+/* Password Requirement: Email Match */
+"- Password cannot match email" = "- Kata sandi tidak boleh sama dengan email";
+
+/* Text presented when sharing a Note */
+"Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Tambahkan alamat email sebagai tag untuk membagikan catatan ini kepada seseorang. Selanjutnya Anda dan pengguna yang diberi akses dapat membuat perubahan.";
+
+/* Placeholder text in the Tags View */
+"Add tag..." = "Tambahkan tag...";
+
+/* Title of the view that displays all your notes */
+"All Notes" = "Semua Catatan";
+
+/* Link to sign in to an account */
+"Already have an account?" = "Already have an account?";
+
+/* Sign in error message */
+"An error was encountered while signing in." = "Terjadi error saat mencoba masuk.";
+
+/* Error for bad email or password */
+"Bad email or password" = "Bad email or password";
+
+/* Cancel the action
+   Password Reset: Cancel */
+"Cancel" = "Batal";
+
+/* Number of characters in the note */
+"Characters" = "Karakter";
+
+/* Analytics Toggle Text */
+"Collect Information" = "Kumpulkan informasi";
+
+/* Placeholder text for confirmation field */
+"Confirm Password" = "Confirm Password";
+
+/* Alert dialog title displayed on sign in error */
+"Couldn't Sign In" = "Tidak Dapat Masuk";
+
+/* Note Creation Date */
+"Created" = "Dibuat";
+
+/* Delete notes and sign out of the app */
+"Delete Notes" = "Hapus Catatan";
+
+/* Delete Tag Action */
+"Delete Tag" = "Hapus Tag";
+
+/* Placeholder text for login field */
+"Email" = "Email";
+
+/* Empty Trash Action */
+"Empty Trash" = "Kosongkan Tong Sampah";
+
+/* Export All Notes Action */
+"Export Everything" = "Ekspor Semua";
+
+/* Forgot Password Button */
+"Forgot your Password?" = "Forgot your Password?";
+
+/* Title of button for logging in
+   Title of button for login */
+"Log In" = "Masuk";
+
+/* Displayed temporarily while logging in */
+"Logging In..." = "Logging In...";
+
+/* Tooltip: Markdown Preview */
+"Markdown Preview" = "Pratinjau Markdown";
+
+/* Tooltip: Note Metrics */
+"Metrics" = "Metrik";
+
+/* Note Modification Date */
+"Modified" = "Dimodifikasi";
+
+/* Tooltip: More Actions */
+"More" = "Lainnya";
+
+/* Link to create an account */
+"Need an account?" = "Need an account?";
+
+/* Empty Note Placeholder */
+"New note..." = "Catatan baru...";
+
+/* Placeholder displayed when a note hasn't been published. */
+"Not Published" = "Tidak Diterbitkan";
+
+/* Error when you enter a bad email address */
+"Not a valid email address" = "Not a valid email address";
+
+/* OK button in error alert dialog */
+"OK" = "OK";
+
+/* Placeholder text for password field */
+"Password" = "Kata sandi";
+
+/* Message displayed when password is invalid (Signup) */
+"Password cannot match email" = "Kata sandi tidak boleh sama dengan email";
+
+/* Message displayed when password is too short. The %%d is a placeholder for a numeral. Please preserve it! */
+"Password must contain at least %d characters" = "Kata sandi harus berisi setidaknya %d karakter";
+
+/* Message displayed when a password contains a disallowed character */
+"Password must not contain tabs nor newlines" = "Kata sandi tidak boleh berisi tab atau baris baru";
+
+/* Password Validation: Confirmation doesn't match */
+"Passwords do not match" = "Passwords do not match";
+
+/* Error message displayed when user has not verified their WordPress.com account */
+"Please activate your WordPress.com account via email and try again." = "Harap aktifkan akun WordPress.com Anda melalui email dan coba lagi.";
+
+/* Privacy Policy's Title */
+"Privacy Policy" = "Kebijakan Privasi";
+
+/* Text presented when the note is about to be published */
+"Publish this note to a web page. The page will stay updated with the contents of your note." = "Terbitkan catatan ini ke halaman web. Halaman ini akan tetap diperbarui dengan konten catatan Anda.";
+
+/* Publish to WebPage Action */
+"Publish to Web Page" = "Terbitkan ke Halaman Web";
+
+/* Displayed during a Publish Operation */
+"Publishing..." = "Mempublikasikan...";
+
+/* Rename Tag Action */
+"Rename Tag" = "Ubah Nama Tag";
+
+/* Password Reset: Proceed */
+"Reset" = "Reset";
+
+/* Tooltip: Restore a trashed note */
+"Restore" = "Pulihkan";
+
+/* Search Field Placeholder */
+"Search" = "Cari";
+
+/* Cookie Policy Legend */
+"Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Bagikan informasi tentang penggunaan layanan Anda dengan alat analisis kami saat login ke akun Simplenote.com Anda.";
+
+/* Title of button for signing up */
+"Sign Up" = "Mendaftar";
+
+/* button title for wp.com sign in button */
+"Sign in with WordPress.com" = "Masuk dengan WordPress.com";
+
+/* Displayed temoprarily while signing up */
+"Signing Up..." = "Signing Up...";
+
+/* Alert message displayed when an account has unsynced notes */
+"Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App." = "Catatan yang tidak disinkronkan akan dihapus saat Anda keluar. Periksa koneksi dan verifikasi catatan yang disinkronkan dengan masuk ke Aplikasi Web.";
+
+/* Text to display on OSX cancel button */
+"Skip" = "Lewati";
+
+/* Tags Section Name */
+"Tags" = "Tag";
+
+/* Error when address is in use */
+"That email is already being used" = "That email is already being used";
+
+/* Privacy Policy */
+"This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Informasi ini membantu kami menyempurnakan produk, menyusun konten pemasaran yang lebih relevan untuk Anda, mempersonalisasi pengalaman Simplenote.com Anda, dan lainnya seperti yang dijelaskan dalam kebijakan privasi kami.";
+
+/* Title of the view that displays all your deleted notes */
+"Trash" = "Buang";
+
+/* Unpublish Note Action */
+"Unpublish" = "Batalkan penerbitan";
+
+/* Displayed during an Unpublish Operation */
+"Unpublishing..." = "Membatalkan penerbitan...";
+
+/* Alert title displayed in when an account has unsynced notes */
+"Unsynced Notes Detected" = "Catatan yang Tidak Disinkronkan Terdeteksi";
+
+/* Untagged Notes Filter */
+"Untagged Notes" = "Catatan Tanpa Tag";
+
+/* Label for the current version of a note */
+"Version" = "Versi";
+
+/* Version displayed in the about screen */
+"Version %@" = "Versi %@";
+
+/* Visit app.simplenote.com in the browser */
+"Visit Web App" = "Kunjungi Aplikasi Web";
+
+/* Generic error */
+"We're having problems. Please try again soon." = "Kami mengalami masalah. Harap coba lagi nanti.";
+
+/* Number of words in the note */
+"Words" = "Kata";
+
+/* Error when you're not connected */
+"You're not connected to the internet" = "You're not connected to the internet";
+
+/* Password Requirements: Title */
+"Your password is insecure and must be reset. The password requirements are:" = "Kata sandi Anda tidak aman dan harus diatur ulang. Persyaratan kata sandi adalah:";
+
+/* A welcome note for new Mac users */
+"welcomeNote-Mac" = "Selamat datang di Simplenote Mac!\n\nUntuk menambahkan catatan, klik tombol catatan baru dengan simbol plus.\n\nUntuk menghapus catatan, klik tombol tempat sampah.\n\nAnda dapat mencari semua catatan dengan mengetik di kolom pencarian di atas daftar catatan.\n\nKlik tombol tag di kiri atas untuk membuka sidebar. Anda dapat menambahkan tag ke catatan di bagian bawah editor catatan, lalu gunakan sidebar untuk membantu Anda merapikannya.\n\nAda lebih banyak opsi catatan jika Anda membutuhkannya. Anda dapat menambahkan alamat email sebagai tag untuk berkolaborasi dengan orang lain, atau menerbitkan catatan sebagai halaman web.\n\nGunakan Simplenote di perangkat iPhone, iPad, Android, atau di perambah web Anda di https:\/\/simplenote.com. Catatan Anda akan tetap diperbarui di mana pun secara otomatis.";
+

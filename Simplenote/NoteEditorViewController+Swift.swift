@@ -29,6 +29,7 @@ extension NoteEditorViewController {
         tagsField.font = .simplenoteSecondaryTextFont
         tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
+        tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
     }
 }
 
@@ -57,8 +58,10 @@ extension NoteEditorViewController {
             return
         }
 
-        toolbarViewTopConstraint = toolbarView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
-        toolbarViewTopConstraint.isActive = true
+        let newTopConstraint = toolbarView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
+        newTopConstraint.isActive = true
+
+        toolbarViewTopConstraint = newTopConstraint
     }
 }
 
@@ -95,8 +98,7 @@ extension NoteEditorViewController {
     /// Indicates if there are multiple selected notes
     ///
     var isSelectingMultipleNotes: Bool {
-        let numberOfSelectedNotes = selectedNotes?.count ?? .zero
-        return numberOfSelectedNotes > 1
+        selectedNotes.count > 1
     }
 }
 
@@ -253,11 +255,11 @@ extension NoteEditorViewController {
 
     @IBAction
     func metricsWasPressed(sender: Any) {
-        guard !dismissMetricsPopoverIfNeeded(), let notes = selectedNotes else {
+        guard !dismissMetricsPopoverIfNeeded() else {
             return
         }
 
-        displayMetricsPopover(from: toolbarView.metricsButton, for: notes)
+        displayMetricsPopover(from: toolbarView.metricsButton, for: selectedNotes)
     }
 
     @IBAction
@@ -420,6 +422,10 @@ extension NoteEditorViewController {
 extension NoteEditorViewController: TagsFieldDelegate {
 
     public func tokenField(_ tokenField: NSTokenField, completionsForSubstring substring: String, indexOfToken tokenIndex: Int, indexOfSelectedItem selectedIndex: UnsafeMutablePointer<Int>?) -> [Any]? {
+        guard let note = note else {
+            return []
+        }
+
         // Disable Autocomplete:
         // We cannot control the direction of the suggestions layer. Fullscreen causes such element to be offscreen.
         guard tokenField.window?.styleMask.contains(.fullScreen) == false else {
@@ -458,12 +464,20 @@ extension NoteEditorViewController: TagsFieldDelegate {
 extension NoteEditorViewController: PublishViewControllerDelegate {
 
     func publishControllerDidClickPublish(_ controller: PublishViewController) {
+        guard let note = note else {
+            return
+        }
+
         SPTracker.trackEditorNotePublished()
         note.published = true
         save()
     }
 
     func publishControllerDidClickUnpublish(_ controller: PublishViewController) {
+        guard let note = note else {
+            return
+        }
+
         SPTracker.trackEditorNoteUnpublished()
         note.published = false
         save()
@@ -480,6 +494,10 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
     }
 
     func versionsControllerDidClickRestore(_ controller: VersionsViewController) {
+        guard let note = note else {
+            return
+        }
+
         note.content = noteEditor.plainTextContent()
         save()
 

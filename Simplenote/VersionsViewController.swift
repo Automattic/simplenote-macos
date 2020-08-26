@@ -141,16 +141,7 @@ extension VersionsViewController {
 
     @IBAction
     func versionSliderChanged(sender: Any) {
-        guard let version = versions[String(versionSlider.integerValue)] else {
-            disableActions()
-            return
-        }
-
-        os_log("<> Loading version %d", versionSlider.integerValue)
-        refreshLabels(date: version.modificationDate)
-        refreshActions()
-
-        delegate?.versionsController(self, selected: version)
+        update(withVersion: String(versionSlider.integerValue))
     }
 }
 
@@ -158,6 +149,19 @@ extension VersionsViewController {
 // MARK: - Helpers
 //
 private extension VersionsViewController {
+
+    func update(withVersion versionString: String) {
+        guard let version = versions[versionString] else {
+            disableActions()
+            return
+        }
+
+        os_log("<> Loading version %@", versionString)
+        refreshLabels(date: version.modificationDate)
+        refreshActions()
+
+        delegate?.versionsController(self, selected: version)
+    }
 
     func refreshLabels(date: Date) {
         let text = NSLocalizedString("Version", comment: "Label for the current version of a note")
@@ -184,7 +188,15 @@ private extension VersionsViewController {
         let controller = SimplenoteAppDelegate.shared().versionsController
 
         versionsToken = controller.requestVersions(for: note.simperiumKey, numberOfVersions: numberOfVersions) { [weak self] note in
-             self?.versions[note.version] = note
+            guard let self = self else {
+                return
+            }
+
+            self.versions[note.version] = note
+            
+            if String(self.versionSlider.integerValue) == note.version {
+                self.update(withVersion: note.version)
+            }
         }
     }
 }

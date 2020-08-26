@@ -1,0 +1,2 @@
+- Updated Tags limit to up to 256 characters
+- Fixed a crash while handling right clicks in the Tags List
