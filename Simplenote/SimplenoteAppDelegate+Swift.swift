@@ -64,6 +64,11 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func clickedEmptyTrashItem(_ sender: Any) {
+        tagListViewController.emptyTrashAction(sender: sender)
+    }
+
+    @IBAction
     func clickedTagsSortModeItem(_ sender: Any) {
         let options = Options.shared
         options.alphabeticallySortTags = !options.alphabeticallySortTags
@@ -110,7 +115,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        return numDeletedNotes() > .zero
+        return simperium.numberOfDeletedNotes > .zero
     }
 
     func validateExportMenuItem(_ item: NSMenuItem) -> Bool {

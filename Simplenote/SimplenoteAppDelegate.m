@@ -260,14 +260,6 @@
     [self.noteListViewController setWaitingForIndex:YES];
 }
 
-- (NSInteger)numDeletedNotes
-{
-    SPBucket *notesBucket = [self.simperium bucketForName:@"Note"];
-    NSPredicate *predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
-
-    return [notesBucket numObjectsForPredicate:predicate];
-}
-
 - (BOOL)isMainWindowVisible
 {
     return self.window.isVisible;
@@ -480,11 +472,6 @@
     }];
 }
 
-- (void)emptyTrashAction:(id)sender
-{
-    [self.tagListViewController emptyTrashAction:sender];
-}
-
 - (void)searchAction:(id)sender
 {
     // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
@@ -547,10 +534,17 @@
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)hasVisibleWindows
 {
-    if (!hasVisibleWindows) {
-        [self.window setIsVisible:YES];
-        [self.window makeKeyAndOrderFront:self];
+    if (hasVisibleWindows) {
+        return YES;
     }
+
+    if (!self.simperium.user.authenticated) {
+        [self.simperium authenticateIfNecessary];
+        return YES;
+    }
+
+    [self.window setIsVisible:YES];
+    [self.window makeKeyAndOrderFront:self];
     
     return YES;
 }
