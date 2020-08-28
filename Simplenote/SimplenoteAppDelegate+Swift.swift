@@ -7,23 +7,25 @@ extension SimplenoteAppDelegate {
 
     @objc
     func configureSplitView() {
-        // NOTE:
-        // This initialization is in a midway stage. We're essentially "stealing" the ViewController(s) views,
-        // which are already in the hierarchy defined by MainMenu.nib, and placing them in a fresh SplitViewController.
-        //
-        // Our endgame is to initialize the three viewController via code, and split / simplify the main nib.
-        //
-        //  >>> To be revisited >>> REALLY >>> SOON >>>
-        //
-        let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
-        let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
-        let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
+        let storyboard = NSStoryboard(name: .main, bundle: nil)
 
-        let splitViewController = SplitViewController()
+        let splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
+        let tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
+        let notesViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
+        let editorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+
+        let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
+        let listSplitItem = NSSplitViewItem(contentListWithViewController: notesViewController)
+        let editorSplitItem = NSSplitViewItem(viewController: editorViewController)
+
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
+
         self.splitViewController = splitViewController
+        self.tagListViewController = tagListViewController
+        self.noteListViewController = notesViewController
+        self.noteEditorViewController = editorViewController
     }
 
     @objc
