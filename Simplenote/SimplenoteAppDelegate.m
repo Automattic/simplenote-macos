@@ -534,10 +534,17 @@
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)hasVisibleWindows
 {
-    if (!hasVisibleWindows) {
-        [self.window setIsVisible:YES];
-        [self.window makeKeyAndOrderFront:self];
+    if (hasVisibleWindows) {
+        return YES;
     }
+
+    if (!self.simperium.user.authenticated) {
+        [self.simperium authenticateIfNecessary];
+        return YES;
+    }
+
+    [self.window setIsVisible:YES];
+    [self.window makeKeyAndOrderFront:self];
     
     return YES;
 }
