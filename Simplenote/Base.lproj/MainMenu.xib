@@ -88,7 +88,7 @@
                                     <fragment content="Empties the Trash Bin"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="clickedEmptyTrashItem:" target="494" id="9HE-zu-LSj"/>
+                                    <action selector="emptyTrashWasPressed:" target="494" id="hK4-FN-3lK"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Sign Out" id="1541" userLabel="Menu Item - Sign Out">
@@ -199,7 +199,7 @@
                                         <menuItem title="Search..." tag="1" keyEquivalent="f" toolTip="Search all notes" id="1417">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
-                                                <action selector="searchAction:" target="874" id="q5H-o6-Hft"/>
+                                                <action selector="searchWasPressed:" target="494" id="7Ex-5C-tXu"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Find…" tag="1" keyEquivalent="f" id="209">
@@ -377,7 +377,7 @@
                                                             <fragment content="Increases the Font Size"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="adjustFontSizeAction:" target="1107" id="JOY-pV-iLX"/>
+                                                            <action selector="adjustFontSizeAction:" target="-1" id="QUa-cy-iqz"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Smaller" tag="1" keyEquivalent="-" id="w30-fb-a2C">
@@ -385,7 +385,7 @@
                                                             <fragment content="Decreases the Font Size"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="adjustFontSizeAction:" target="1107" id="6sp-XJ-jIQ"/>
+                                                            <action selector="adjustFontSizeAction:" target="-1" id="eAP-Xe-3Rp"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Reset" tag="2" keyEquivalent="0" id="oS8-Vc-yog">
@@ -393,7 +393,7 @@
                                                             <fragment content="Resets the Font Size"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="adjustFontSizeAction:" target="1107" id="bbs-YW-9tp"/>
+                                                            <action selector="adjustFontSizeAction:" target="-1" id="0D1-RU-71P"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
@@ -448,22 +448,22 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
                                                 <items>
-                                                    <menuItem title="Comfy" identifier="listDisplayComfyMenuItem" id="Qaj-k2-NOz">
+                                                    <menuItem title="Comfy" state="on" identifier="notesDisplayComfyMenuItem" id="Qaj-k2-NOz">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Comfy Note Display"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="displayModeWasPressed:" target="874" id="T5P-6u-pcA"/>
+                                                            <action selector="notesDisplayModeWasPressed:" target="494" id="Z0T-Rh-FAn"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="Condensed" tag="1" identifier="listDisplayCondensedMenuItem" id="tQC-gw-hdq">
+                                                    <menuItem title="Condensed" tag="1" identifier="notesDisplayCondensedMenuItem" id="tQC-gw-hdq">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Condensed Note Display"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="displayModeWasPressed:" target="874" id="iQs-ju-FNf"/>
+                                                            <action selector="notesDisplayModeWasPressed:" target="494" id="HbB-Qg-TTp"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
@@ -476,22 +476,22 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Sort Order" systemMenu="font" id="YpJ-fs-p4p">
                                                 <items>
-                                                    <menuItem title="Date Updated" identifier="listSortUpdatedMenuItem" id="fep-x2-0FA">
+                                                    <menuItem title="Date Updated" identifier="notesSortUpdatedMenuItem" id="fep-x2-0FA">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Note Order by Date"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="sortModeWasPressed:" target="874" id="tjN-fJ-lMs"/>
+                                                            <action selector="notesSortModeWasPressed:" target="494" id="haG-9p-5iz"/>
                                                         </connections>
                                                     </menuItem>
-                                                    <menuItem title="Alphabetical" tag="1" identifier="listSortAlphaMenuItem" id="i8p-Xx-VpF">
+                                                    <menuItem title="Alphabetical" tag="1" identifier="notesSortAlphaMenuItem" id="i8p-Xx-VpF">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <attributedString key="userComments">
                                                             <fragment content="Toggles Alphabetical Note Sort Order"/>
                                                         </attributedString>
                                                         <connections>
-                                                            <action selector="sortModeWasPressed:" target="874" id="Owo-eq-wG0"/>
+                                                            <action selector="notesSortModeWasPressed:" target="494" id="6Fa-uq-lc4"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
@@ -522,7 +522,7 @@
                                                 <fragment content="Sorts the Tags List Alphabetically"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="clickedTagsSortModeItem:" target="494" id="vnH-Zz-osc"/>
+                                                <action selector="tagsSortModeWasPressed:" target="494" id="S8M-Sr-6JL"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -544,7 +544,7 @@
                                                 <fragment content="Toggles Light Mode"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="clickedThemeItem:" target="494" id="mgq-M0-lcf"/>
+                                                <action selector="themeWasPressed:" target="494" id="UMx-T4-Puj"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Dark" tag="1" identifier="themeDarkMenuItem" id="qcT-FY-eHe">
@@ -553,7 +553,7 @@
                                                 <fragment content="Toggles Dark Mode"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="clickedThemeItem:" target="494" id="wom-f8-fYq"/>
+                                                <action selector="themeWasPressed:" target="494" id="8MI-p5-9d3"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
@@ -563,7 +563,7 @@
                                                 <fragment content="Toggles System Appearance"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="clickedThemeItem:" target="494" id="b76-s6-4Ql"/>
+                                                <action selector="themeWasPressed:" target="494" id="Zl6-mY-CMx"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -620,7 +620,7 @@
                                     <fragment content="Inserts a new Checklist"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="insertChecklistAction:" target="1107" id="6xY-qa-P5R"/>
+                                    <action selector="insertChecklistAction:" target="-1" id="Ijg-qN-RVV"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -757,6 +757,5 @@
         </customObject>
         <viewController id="1107" userLabel="Note Editor Controller" customClass="NoteEditorViewController"/>
         <customObject id="420" customClass="NSFontManager"/>
-        <viewController id="874" customClass="NoteListViewController"/>
     </objects>
 </document>

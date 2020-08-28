@@ -29,10 +29,10 @@ extension NSUserInterfaceItemIdentifier {
 
     /// Identifiers: Notes List Menu
     ///
-    static let listDisplayComfyMenuItem     = NSUserInterfaceItemIdentifier(rawValue: "listDisplayComfyMenuItem")
-    static let listDisplayCondensedMenuItem = NSUserInterfaceItemIdentifier(rawValue: "listDisplayCondensedMenuItem")
-    static let listSortAlphaMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "listSortAlphaMenuItem")
-    static let listSortUpdatedMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "listSortUpdatedMenuItem")
+    static let notesDisplayComfyMenuItem     = NSUserInterfaceItemIdentifier(rawValue: "notesDisplayComfyMenuItem")
+    static let notesDisplayCondensedMenuItem = NSUserInterfaceItemIdentifier(rawValue: "notesDisplayCondensedMenuItem")
+    static let notesSortAlphaMenuItem       = NSUserInterfaceItemIdentifier(rawValue: "notesSortAlphaMenuItem")
+    static let notesSortUpdatedMenuItem     = NSUserInterfaceItemIdentifier(rawValue: "notesSortUpdatedMenuItem")
 
     /// Identifiers: Editor
     ///

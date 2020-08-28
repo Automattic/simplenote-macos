@@ -66,18 +66,46 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
-    func clickedEmptyTrashItem(_ sender: Any) {
+    func emptyTrashWasPressed(_ sender: Any) {
         tagListViewController.emptyTrashAction(sender: sender)
     }
 
     @IBAction
-    func clickedTagsSortModeItem(_ sender: Any) {
+    func notesDisplayModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.notesDisplayCondensedMenuItem
+        Options.shared.notesListCondensed = isCondensedOn
+        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
+    }
+
+    @IBAction
+    func notesSortModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.notesSortAlphaMenuItem
+        Options.shared.alphabeticallySortNotes = isAlphaOn
+        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+    }
+
+    @IBAction
+    func searchWasPressed(_ sender: Any) {
+
+    }
+
+
+    @IBAction
+    func tagsSortModeWasPressed(_ sender: Any) {
         let options = Options.shared
         options.alphabeticallySortTags = !options.alphabeticallySortTags
     }
 
     @IBAction
-    func clickedThemeItem(_ sender: Any) {
+    func themeWasPressed(_ sender: Any) {
         guard let item = sender as? NSMenuItem, item.state != .on else {
             return
         }
@@ -107,6 +135,14 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
             return validateExportMenuItem(menuItem)
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
+        case .notesDisplayCondensedMenuItem:
+            return validateNotesDisplayCondensedMenuItem(menuItem)
+        case .notesDisplayComfyMenuItem:
+            return validateNotesDisplayComfyMenuItem(menuItem)
+        case .notesSortAlphaMenuItem:
+            return validateNotesSortAlphaMenuItem(menuItem)
+        case .notesSortUpdatedMenuItem:
+            return validateNotesSortUpdatedMenuItem(menuItem)
         case .tagSortMenuItem:
             return validateTagSortMenuItem(menuItem)
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
@@ -130,6 +166,26 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.state = inFocusModeEnabled ? .on : .off
 
         return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
+    }
+
+    func validateNotesDisplayCondensedMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.notesListCondensed ? .on : .off
+        return true
+    }
+
+    func validateNotesDisplayComfyMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.notesListCondensed ? .off : .on
+        return true
+    }
+
+    func validateNotesSortAlphaMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.alphabeticallySortNotes ? .on : .off
+        return true
+    }
+
+    func validateNotesSortUpdatedMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.alphabeticallySortNotes ? .off : .on
+        return true
     }
 
     func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
