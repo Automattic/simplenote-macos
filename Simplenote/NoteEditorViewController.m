@@ -116,6 +116,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:TagListDidBeginViewingTagNotification object:nil];
     [nc addObserver:self selector:@selector(tagUpdated:) name:TagListDidUpdateTagNotification object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
+    [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
 
     [self startListeningToScrollNotifications];
 
@@ -296,6 +297,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (void)simperiumWillSave:(NSNotification *)notification
 {
 	[self save];
+}
+
+- (void)displayModeWasUpdated:(NSNotification *)notification
+{
+    self.noteEditor.needsDisplay = YES;
 }
 
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)location
