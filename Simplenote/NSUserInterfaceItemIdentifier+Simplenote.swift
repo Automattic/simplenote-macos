@@ -29,10 +29,10 @@ extension NSUserInterfaceItemIdentifier {
 
     /// Identifiers: Notes List Menu
     ///
-    static let notesDisplayComfyMenuItem     = NSUserInterfaceItemIdentifier(rawValue: "notesDisplayComfyMenuItem")
-    static let notesDisplayCondensedMenuItem = NSUserInterfaceItemIdentifier(rawValue: "notesDisplayCondensedMenuItem")
-    static let notesSortAlphaMenuItem       = NSUserInterfaceItemIdentifier(rawValue: "notesSortAlphaMenuItem")
-    static let notesSortUpdatedMenuItem     = NSUserInterfaceItemIdentifier(rawValue: "notesSortUpdatedMenuItem")
+    static let noteDisplayComfyMenuItem     = NSUserInterfaceItemIdentifier(rawValue: "noteDisplayComfyMenuItem")
+    static let noteDisplayCondensedMenuItem = NSUserInterfaceItemIdentifier(rawValue: "noteDisplayCondensedMenuItem")
+    static let noteSortAlphaMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "noteSortAlphaMenuItem")
+    static let noteSortUpdatedMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "noteSortUpdatedMenuItem")
 
     /// Identifiers: Editor
     ///
@@ -43,8 +43,11 @@ extension NSUserInterfaceItemIdentifier {
     static let editorTrashMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorTrashMenuItem")
     static let editorPublishMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "editorPublishMenuItem")
     static let editorCollaborateMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "editorCollaborateMenuItem")
-    static let editorWidthNarrowMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "editorWidthNarrowMenuItem")
-    static let editorWidthFullMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "editorWidthFullMenuItem")
+
+    /// Identifiers: Line Settings
+    ///
+    static let lineNarrowMenuItem           = NSUserInterfaceItemIdentifier(rawValue: "lineNarrowMenuItem")
+    static let lineFullMenuItem             = NSUserInterfaceItemIdentifier(rawValue: "lineFullMenuItem")
 
     /// Identifiers: Theme Menu
     ///

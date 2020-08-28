@@ -66,18 +66,18 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
-    func editorWidthWasPressed(_ sender: Any) {
+    func emptyTrashWasPressed(_ sender: Any) {
+        tagListViewController.emptyTrashAction(sender: sender)
+    }
+
+    @IBAction
+    func lineLengthWasPressed(_ sender: Any) {
         guard let item = sender as? NSMenuItem else {
             return
         }
 
-        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.editorWidthFullMenuItem
+        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.lineFullMenuItem
         Options.shared.editorFullWidth = isFullOn
-    }
-
-    @IBAction
-    func emptyTrashWasPressed(_ sender: Any) {
-        tagListViewController.emptyTrashAction(sender: sender)
     }
 
     @IBAction
@@ -86,7 +86,7 @@ extension SimplenoteAppDelegate {
             return
         }
 
-        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.notesDisplayCondensedMenuItem
+        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.noteDisplayCondensedMenuItem
         Options.shared.notesListCondensed = isCondensedOn
         SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
     }
@@ -97,7 +97,7 @@ extension SimplenoteAppDelegate {
             return
         }
 
-        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.notesSortAlphaMenuItem
+        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.noteSortAlphaMenuItem
         Options.shared.alphabeticallySortNotes = isAlphaOn
         SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
     }
@@ -138,9 +138,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .editorWidthFullMenuItem:
+        case .lineFullMenuItem:
             return validateEditorWidthFullMenuItem(menuItem)
-        case .editorWidthNarrowMenuItem:
+        case .lineNarrowMenuItem:
             return validateEditorWidthNarrowMenuItem(menuItem)
         case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
@@ -148,13 +148,13 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
             return validateExportMenuItem(menuItem)
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
-        case .notesDisplayCondensedMenuItem:
+        case .noteDisplayCondensedMenuItem:
             return validateNotesDisplayCondensedMenuItem(menuItem)
-        case .notesDisplayComfyMenuItem:
+        case .noteDisplayComfyMenuItem:
             return validateNotesDisplayComfyMenuItem(menuItem)
-        case .notesSortAlphaMenuItem:
+        case .noteSortAlphaMenuItem:
             return validateNotesSortAlphaMenuItem(menuItem)
-        case .notesSortUpdatedMenuItem:
+        case .noteSortUpdatedMenuItem:
             return validateNotesSortUpdatedMenuItem(menuItem)
         case .tagSortMenuItem:
             return validateTagSortMenuItem(menuItem)

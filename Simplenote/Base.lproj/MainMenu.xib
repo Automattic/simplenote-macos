@@ -374,22 +374,22 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Line Length" id="JgX-db-Pi6">
                                     <items>
-                                        <menuItem title="Narrow" identifier="editorWidthNarrowMenuItem" id="lMi-2X-rR9">
+                                        <menuItem title="Narrow" identifier="lineNarrowMenuItem" id="lMi-2X-rR9">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Narrow Line Length"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="editorWidthWasPressed:" target="494" id="mtn-Yx-og2"/>
+                                                <action selector="lineLengthWasPressed:" target="494" id="XEi-nX-2kv"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Full" tag="1" identifier="editorWidthFullMenuItem" id="bBW-To-3v3">
+                                        <menuItem title="Full" tag="1" identifier="lineFullMenuItem" id="bBW-To-3v3">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Full Line Length"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="editorWidthWasPressed:" target="494" id="86C-Pn-wDt"/>
+                                                <action selector="lineLengthWasPressed:" target="494" id="w7e-po-dAb"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -437,7 +437,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
                                     <items>
-                                        <menuItem title="Comfy" state="on" identifier="notesDisplayComfyMenuItem" id="Qaj-k2-NOz">
+                                        <menuItem title="Comfy" state="on" identifier="noteDisplayComfyMenuItem" id="Qaj-k2-NOz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Comfy Note Display"/>
@@ -446,7 +446,7 @@
                                                 <action selector="notesDisplayModeWasPressed:" target="494" id="Z0T-Rh-FAn"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Condensed" tag="1" identifier="notesDisplayCondensedMenuItem" id="tQC-gw-hdq">
+                                        <menuItem title="Condensed" tag="1" identifier="noteDisplayCondensedMenuItem" id="tQC-gw-hdq">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Condensed Note Display"/>
@@ -465,7 +465,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
                                     <items>
-                                        <menuItem title="Date Updated" identifier="notesSortUpdatedMenuItem" id="fep-x2-0FA">
+                                        <menuItem title="Date Updated" identifier="noteSortUpdatedMenuItem" id="fep-x2-0FA">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Note Order by Date"/>
@@ -474,7 +474,7 @@
                                                 <action selector="notesSortModeWasPressed:" target="494" id="haG-9p-5iz"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Alphabetical" tag="1" identifier="notesSortAlphaMenuItem" id="i8p-Xx-VpF">
+                                        <menuItem title="Alphabetical" tag="1" identifier="noteSortAlphaMenuItem" id="i8p-Xx-VpF">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Alphabetical Note Sort Order"/>
