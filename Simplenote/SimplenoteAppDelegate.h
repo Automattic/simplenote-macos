@@ -25,9 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow                   *window;
-@property (strong, nonatomic, readonly) IBOutlet TagListViewController      *tagListViewController;
-@property (strong, nonatomic, readonly) IBOutlet NoteListViewController     *noteListViewController;
-@property (strong, nonatomic, readonly) IBOutlet NoteEditorViewController   *noteEditorViewController;
 
 @property (strong, nonatomic, readonly) Simperium                           *simperium;
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator        *persistentStoreCoordinator;
@@ -36,8 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic, readonly) BOOL                                exportUnlocked;
 
-@property (strong, nonatomic) VersionsController                            *versionsController;
 @property (strong, nonatomic) SplitViewController                           *splitViewController;
+@property (strong, nonatomic) TagListViewController                         *tagListViewController;
+@property (strong, nonatomic) NoteListViewController                        *noteListViewController;
+@property (strong, nonatomic) NoteEditorViewController                      *noteEditorViewController;
+@property (strong, nonatomic) VersionsController                            *versionsController;
 
 
 + (SimplenoteAppDelegate *)sharedDelegate;
