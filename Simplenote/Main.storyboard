@@ -747,7 +747,7 @@
         <scene sceneID="ada-KS-Sgj">
             <objects>
                 <splitViewController storyboardIdentifier="SplitViewController" id="pbQ-Wy-u9S" customClass="SplitViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="YYi-Tg-xfR" customClass="SplitView" customModule="Simplenote" customModuleProvider="target">
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="YYi-Tg-xfR">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
