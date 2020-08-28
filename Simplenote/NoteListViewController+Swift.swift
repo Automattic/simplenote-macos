@@ -133,10 +133,7 @@ extension NoteListViewController {
     }
 
     var mustUpdateSearchViewConstraint: Bool {
-        // Why check `.isActive`?:
-        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
-        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
-        searchViewTopConstraint == nil || searchViewTopConstraint?.isActive == false
+        searchViewTopConstraint == nil
     }
 
     func updateSearchViewTopConstraint() {
