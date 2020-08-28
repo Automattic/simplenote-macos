@@ -66,6 +66,16 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func editorWidthWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.editorWidthFullMenuItem
+        Options.shared.editorFullWidth = isFullOn
+    }
+
+    @IBAction
     func emptyTrashWasPressed(_ sender: Any) {
         tagListViewController.emptyTrashAction(sender: sender)
     }
@@ -94,9 +104,8 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func searchWasPressed(_ sender: Any) {
-
+        noteListViewController.searchAction(sender)
     }
-
 
     @IBAction
     func tagsSortModeWasPressed(_ sender: Any) {
@@ -129,6 +138,10 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         switch identifier {
+        case .editorWidthFullMenuItem:
+            return validateEditorWidthFullMenuItem(menuItem)
+        case .editorWidthNarrowMenuItem:
+            return validateEditorWidthNarrowMenuItem(menuItem)
         case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
         case .exportMenuItem:
@@ -150,6 +163,16 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         default:
             return true
         }
+    }
+
+    func validateEditorWidthFullMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.editorFullWidth ? .on : .off
+        return true
+    }
+
+    func validateEditorWidthNarrowMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.editorFullWidth ? .off : .on
+        return true
     }
 
     func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
