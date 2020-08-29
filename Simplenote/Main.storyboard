@@ -223,6 +223,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addAction:" target="JtV-0Z-Zh8" id="Kde-ze-mBm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -608,7 +611,7 @@
                                                 <constraint firstItem="U3o-VN-U2S" firstAttribute="leading" secondItem="dTq-DR-Qae" secondAttribute="leading" id="x2F-hr-KGE"/>
                                             </constraints>
                                         </clipView>
-                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="z3o-4M-GrW">
+                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.125" horizontal="YES" id="z3o-4M-GrW">
                                             <rect key="frame" x="0.0" y="9" width="462" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -760,7 +763,7 @@
                 </splitViewController>
                 <customObject id="ddL-k7-ABw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="-626"/>
+            <point key="canvasLocation" x="532" y="-696"/>
         </scene>
     </scenes>
     <resources>

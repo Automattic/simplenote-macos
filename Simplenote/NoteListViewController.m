@@ -429,6 +429,12 @@
     }
 }
 
+- (IBAction)addAction:(id)sender
+{
+    // TODO: Move the New Note Handler to a (New) NoteController!
+    [self.noteEditorViewController addAction:sender];
+}
+
 - (void)searchAction:(id)sender
 {
     [self.view.window makeFirstResponder:self.searchField];
