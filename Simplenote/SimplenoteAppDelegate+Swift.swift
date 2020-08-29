@@ -140,26 +140,31 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         switch identifier {
         case .lineFullMenuItem:
             return validateEditorWidthFullMenuItem(menuItem)
+
         case .lineNarrowMenuItem:
             return validateEditorWidthNarrowMenuItem(menuItem)
+
         case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
+
         case .exportMenuItem:
             return validateExportMenuItem(menuItem)
+
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
-        case .noteDisplayCondensedMenuItem:
-            return validateNotesDisplayCondensedMenuItem(menuItem)
-        case .noteDisplayComfyMenuItem:
-            return validateNotesDisplayComfyMenuItem(menuItem)
-        case .noteSortAlphaMenuItem:
-            return validateNotesSortAlphaMenuItem(menuItem)
-        case .noteSortUpdatedMenuItem:
-            return validateNotesSortUpdatedMenuItem(menuItem)
+
+        case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
+            return validateNotesDisplayMenuItem(menuItem)
+
+        case .noteSortAlphaMenuItem, .noteSortUpdatedMenuItem:
+            return validateNotesSortMenuItem(menuItem)
+
         case .tagSortMenuItem:
             return validateTagSortMenuItem(menuItem)
+
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
+
         default:
             return true
         }
@@ -191,23 +196,22 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
     }
 
-    func validateNotesDisplayCondensedMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.notesListCondensed ? .on : .off
+    func validateNotesDisplayMenuItem(_ item: NSMenuItem) -> Bool {
+        let isCondensedItem = item.identifier == .noteDisplayCondensedMenuItem
+        let isCondensedEnabled = Options.shared.notesListCondensed
+        let isItemOn = isCondensedItem == isCondensedEnabled
+
+        item.state = isItemOn ? .on : .off
+
         return true
     }
 
-    func validateNotesDisplayComfyMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.notesListCondensed ? .off : .on
-        return true
-    }
+    func validateNotesSortMenuItem(_ item: NSMenuItem) -> Bool {
+        let isAlphaItem = item.identifier == .noteSortAlphaMenuItem
+        let isAlphaEnabled = Options.shared.alphabeticallySortNotes
+        let isItemOn = isAlphaItem == isAlphaEnabled
 
-    func validateNotesSortAlphaMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortNotes ? .on : .off
-        return true
-    }
-
-    func validateNotesSortUpdatedMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortNotes ? .off : .on
+        item.state = isItemOn ? .on : .off
         return true
     }
 
