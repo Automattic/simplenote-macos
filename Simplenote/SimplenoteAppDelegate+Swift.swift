@@ -66,8 +66,8 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
-    func addWasPressed(_ sender: Any) {
-        noteEditorViewController.addAction(sender)
+    func newNoteWasPressed(_ sender: Any) {
+        noteEditorViewController.newNoteWasPressed(sender)
     }
 
     @IBAction
@@ -210,10 +210,10 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        let inFocusModeEnabled = splitViewController.isFocusModeEnabled
-        item.state = inFocusModeEnabled ? .on : .off
+        let isFocusModeEnabled = splitViewController.isFocusModeEnabled
+        item.state = isFocusModeEnabled ? .on : .off
 
-        return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
+        return isFocusModeEnabled || noteEditorViewController.isDisplayingNote
     }
 
     func validateNotesDisplayMenuItem(_ item: NSMenuItem) -> Bool {
@@ -255,10 +255,10 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
-        noteEditorViewController.validateSystemPrintMenuItem(item) && isMainWindowVisible()
+        noteEditorViewController.validateSystemPrintMenuItem(item)
     }
 
     func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        noteEditorViewController.validateSystemTrashMenuItem(item) && isMainWindowVisible()
+        noteEditorViewController.validateSystemTrashMenuItem(item)
     }
 }

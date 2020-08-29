@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
 
-- (IBAction)addAction:(id)sender;
+- (IBAction)newNoteWasPressed:(id)sender;
 - (void)save;
 - (void)displayNote:(nullable Note *)selectedNote;
 - (void)displayNotes:(NSArray<Note *> *)selectedNotes;

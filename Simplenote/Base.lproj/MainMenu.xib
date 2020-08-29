@@ -125,7 +125,7 @@
                                     <fragment content="Adds a New Note"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="addWasPressed:" target="494" id="zpR-Ab-dbb"/>
+                                    <action selector="newNoteWasPressed:" target="494" id="Dqn-qR-Zuq"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Move to Trash" identifier="systemTrashMenuItem" id="1655">

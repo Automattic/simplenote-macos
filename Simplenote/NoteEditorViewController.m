@@ -465,7 +465,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
 }
 
-- (IBAction)addAction:(id)sender
+- (IBAction)newNoteWasPressed:(id)sender
 {
     [SPTracker trackEditorNoteCreated];
 

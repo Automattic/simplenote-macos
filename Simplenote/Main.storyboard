@@ -224,7 +224,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="addAction:" target="JtV-0Z-Zh8" id="Kde-ze-mBm"/>
+                                            <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -611,7 +611,7 @@
                                                 <constraint firstItem="U3o-VN-U2S" firstAttribute="leading" secondItem="dTq-DR-Qae" secondAttribute="leading" id="x2F-hr-KGE"/>
                                             </constraints>
                                         </clipView>
-                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.125" horizontal="YES" id="z3o-4M-GrW">
+                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="z3o-4M-GrW">
                                             <rect key="frame" x="0.0" y="9" width="462" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>

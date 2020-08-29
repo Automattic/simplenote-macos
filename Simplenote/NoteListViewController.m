@@ -429,10 +429,10 @@
     }
 }
 
-- (IBAction)addAction:(id)sender
+- (IBAction)newNoteWasPressed:(id)sender
 {
     // TODO: Move the New Note Handler to a (New) NoteController!
-    [self.noteEditorViewController addAction:sender];
+    [self.noteEditorViewController newNoteWasPressed:sender];
 }
 
 - (void)searchAction:(id)sender
