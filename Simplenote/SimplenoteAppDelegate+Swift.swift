@@ -138,11 +138,8 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .lineFullMenuItem:
-            return validateEditorWidthFullMenuItem(menuItem)
-
-        case .lineNarrowMenuItem:
-            return validateEditorWidthNarrowMenuItem(menuItem)
+        case .lineFullMenuItem, .lineNarrowMenuItem:
+            return validateLineLengthMenuItem(menuItem)
 
         case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
@@ -170,13 +167,12 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
     }
 
-    func validateEditorWidthFullMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.editorFullWidth ? .on : .off
-        return true
-    }
+    func validateLineLengthMenuItem(_ item: NSMenuItem) -> Bool {
+        let isFullItem = item.identifier == .lineFullMenuItem
+        let isFullEnabled = Options.shared.editorFullWidth
 
-    func validateEditorWidthNarrowMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.editorFullWidth ? .off : .on
+        item.state = isFullItem == isFullEnabled ? .on : .off
+
         return true
     }
 
@@ -199,9 +195,8 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     func validateNotesDisplayMenuItem(_ item: NSMenuItem) -> Bool {
         let isCondensedItem = item.identifier == .noteDisplayCondensedMenuItem
         let isCondensedEnabled = Options.shared.notesListCondensed
-        let isItemOn = isCondensedItem == isCondensedEnabled
 
-        item.state = isItemOn ? .on : .off
+        item.state = isCondensedItem == isCondensedEnabled ? .on : .off
 
         return true
     }
@@ -209,9 +204,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     func validateNotesSortMenuItem(_ item: NSMenuItem) -> Bool {
         let isAlphaItem = item.identifier == .noteSortAlphaMenuItem
         let isAlphaEnabled = Options.shared.alphabeticallySortNotes
-        let isItemOn = isAlphaItem == isAlphaEnabled
 
-        item.state = isItemOn ? .on : .off
+        item.state = isAlphaItem == isAlphaEnabled ? .on : .off
+
         return true
     }
 
