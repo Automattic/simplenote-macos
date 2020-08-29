@@ -172,7 +172,7 @@ extension TagListViewController {
 extension TagListViewController {
 
     @IBAction
-    func emptyTrashAction(sender: Any) {
+    func emptyTrashWasPressed(_ sender: Any) {
         SPTracker.trackListTrashEmptied()
 
         simperium.deleteTrashedNotes()

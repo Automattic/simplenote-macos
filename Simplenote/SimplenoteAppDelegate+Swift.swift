@@ -66,8 +66,23 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func addWasPressed(_ sender: Any) {
+        noteEditorViewController.addAction(sender)
+    }
+
+    @IBAction
+    func printWasPressed(_ sender: Any) {
+        noteEditorViewController.printAction(sender)
+    }
+
+    @IBAction
+    func deleteWasPressed(_ sender: Any) {
+        noteEditorViewController.deleteAction(sender)
+    }
+
+    @IBAction
     func emptyTrashWasPressed(_ sender: Any) {
-        tagListViewController.emptyTrashAction(sender: sender)
+        tagListViewController.emptyTrashWasPressed(sender)
     }
 
     @IBAction
@@ -156,6 +171,15 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .noteSortAlphaMenuItem, .noteSortUpdatedMenuItem:
             return validateNotesSortMenuItem(menuItem)
 
+        case .systemNewNoteMenuItem:
+            return validateSystemNewNoteMenuItem(menuItem)
+
+        case .systemPrintMenuItem:
+            return validateSystemPrintMenuItem(menuItem)
+
+        case .systemTrashMenuItem:
+            return validateSystemTrashMenuItem(menuItem)
+
         case .tagSortMenuItem:
             return validateTagSortMenuItem(menuItem)
 
@@ -224,5 +248,17 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
 
         // System Appearance must only be available in Mojave
         return option != .system ? true : NSApplication.runningOnMojaveOrLater
+    }
+
+    func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateSystemNewNoteMenuItem(item)
+    }
+
+    func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateSystemPrintMenuItem(item) && isMainWindowVisible()
+    }
+
+    func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateSystemTrashMenuItem(item) && isMainWindowVisible()
     }
 }

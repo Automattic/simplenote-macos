@@ -125,7 +125,7 @@
                                     <fragment content="Adds a New Note"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="addAction:" target="-1" id="Rm5-Ye-CbP"/>
+                                    <action selector="addWasPressed:" target="494" id="zpR-Ab-dbb"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Move to Trash" identifier="systemTrashMenuItem" id="1655">
@@ -134,7 +134,7 @@
                                     <fragment content="Moves the current note to Trash"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="deleteAction:" target="-1" id="zal-mg-Utu"/>
+                                    <action selector="deleteWasPressed:" target="494" id="JUf-Q1-TkC"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Print…" keyEquivalent="p" identifier="systemPrintMenuItem" id="78">
@@ -142,7 +142,7 @@
                                     <fragment content="Prints the current note"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="printAction:" target="-1" id="qz3-IH-zfN"/>
+                                    <action selector="printWasPressed:" target="494" id="huv-13-ink"/>
                                 </connections>
                             </menuItem>
                         </items>

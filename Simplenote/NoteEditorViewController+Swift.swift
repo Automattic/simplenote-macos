@@ -233,11 +233,11 @@ extension NoteEditorViewController: NSMenuItemValidation {
     }
 
     func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+        !viewingTrash && note != nil
     }
 
     func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        guard !viewingTrash, SimplenoteAppDelegate.shared().isMainWindowVisible() else {
+        if viewingTrash {
             return false
         }
 
