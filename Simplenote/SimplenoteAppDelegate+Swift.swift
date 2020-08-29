@@ -213,7 +213,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
 
     func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
         item.state = Options.shared.alphabeticallySortTags ? .on : .off
-
         return true
     }
 
