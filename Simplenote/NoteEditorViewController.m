@@ -108,9 +108,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Realtime Markdown Support
     self.inputHandler = [TextViewInputHandler new];
-    
-    int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
-    [self updateLineLengthMenuForPosition:lineLengthPosition];
 
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
@@ -727,30 +724,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     [self refreshEditorActions];
     [self refreshToolbarActions];
-}
-
-- (IBAction)toggleEditorWidth:(id)sender
-{
-    NSMenuItem *item = (NSMenuItem *)sender;
-    if (item.state == NSOnState) {
-        return;
-    }
-    
-    [self updateLineLengthMenuForPosition:item.tag];
-    [self.noteEditor setNeedsDisplay:YES];
-}
-
-- (void)updateLineLengthMenuForPosition:(NSInteger)position
-{
-    for (NSMenuItem *menuItem in lineLengthMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setBool:position == 1 forKey:kEditorWidthPreferencesKey];
 }
 
 - (void)insertChecklistAction:(id)sender

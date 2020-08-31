@@ -185,6 +185,12 @@ extension NoteEditorViewController: NSMenuItemValidation {
         case .editorCollaborateMenuItem:
             return validateEditorCollaborateMenuItem(menuItem)
 
+        case .editorWidthFullMenuItem:
+            return validateEditorWidthFullMenuItem(menuItem)
+
+        case .editorWidthNarrowMenuItem:
+            return validateEditorWidthNarrowMenuItem(menuItem)
+
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
 
@@ -229,6 +235,16 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
     func validateEditorCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
         isDisplayingNote
+    }
+
+    func validateEditorWidthFullMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.editorFullWidth ? .on : .off
+        return true
+    }
+
+    func validateEditorWidthNarrowMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.editorFullWidth ? .off : .on
+        return true
     }
 
     func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
@@ -295,6 +311,17 @@ extension NoteEditorViewController {
 
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
+    }
+
+    @IBAction
+    func toggleEditorWidth(sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.editorWidthFullMenuItem
+        Options.shared.editorFullWidth = isFullOn
+        noteEditor.needsDisplay = true
     }
 }
 
