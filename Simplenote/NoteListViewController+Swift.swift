@@ -221,6 +221,29 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 }
 
 
+// MARK: - MenuItem(s) Validation
+//
+extension NoteListViewController: NSMenuItemValidation {
+
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
+        }
+
+        switch identifier {
+        case .listDeleteNoteMenuItem:
+            return validateListDeleteMenuItem(menuItem)
+        default:
+            return true
+        }
+    }
+
+    func validateListDeleteMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash
+     }
+}
+
+
 // MARK: - Notifications
 //
 extension NoteListViewController {

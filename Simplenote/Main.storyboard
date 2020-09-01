@@ -428,7 +428,7 @@
                 </viewController>
                 <menu id="JPb-EX-UT9" userLabel="Note List Menu">
                     <items>
-                        <menuItem title="Delete Note" id="sEB-rr-DQo" userLabel="Delete Note">
+                        <menuItem title="Delete Note" identifier="listDeleteNoteMenuItem" id="sEB-rr-DQo" userLabel="Delete Note">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="deleteAction:" target="JtV-0Z-Zh8" id="6di-Ws-hmv"/>
