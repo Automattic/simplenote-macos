@@ -46,9 +46,10 @@ msgctxt "app_store_keywords"
 msgid "simplenote,note,notes,sync,syncing,list,todo,simple,markdown,ideas"
 msgstr ""
 
-msgctxt "v2.0-whats-new"
+msgctxt "v2.1-whats-new"
 msgid ""
-"- Updated Tags limit to up to 256 characters\n"
-"- Fixed a crash while handling right clicks in the Tags List\n"
+"- Fixed a bug in which the Tags List wouldn't accept mouse clicks\n"
+"- Markdown Preview will now refresh, whenever the Note is updated\n"
+"- Fixed a bug that prevented the main Window from restoring its last location\n"
 msgstr ""
 
