@@ -134,6 +134,8 @@
 		B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4724848D0B00066059 /* TagAttachmentCell.swift */; };
 		B5070E16245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
+		B50F999224F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
+		B50F999324F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */; };
@@ -190,12 +192,12 @@
 		B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */; };
 		B55C313D24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */; };
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
-		B5609AE824EEC9860097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE724EEC9860097777A /* SwiftPackageProductDependency */; };
-		B5609AEA24EEC9910097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE924EEC9910097777A /* SwiftPackageProductDependency */; };
+		B5609AE824EEC9860097777A /* SimplenoteSearch in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE724EEC9860097777A /* SimplenoteSearch */; };
+		B5609AEA24EEC9910097777A /* SimplenoteSearch in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE924EEC9910097777A /* SimplenoteSearch */; };
 		B5609AEC24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */; };
 		B5609AED24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */; };
-		B5609AF024EF171D0097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AEF24EF171D0097777A /* SwiftPackageProductDependency */; };
-		B5609AF224EF17270097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AF124EF17270097777A /* SwiftPackageProductDependency */; };
+		B5609AF024EF171D0097777A /* SimplenoteFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AEF24EF171D0097777A /* SimplenoteFoundation */; };
+		B5609AF224EF17270097777A /* SimplenoteFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AF124EF17270097777A /* SimplenoteFoundation */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B56EA2AA244F4CC70061EAD8 /* NSImageView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */; };
@@ -224,6 +226,8 @@
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
 		B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
+		B58CE26524F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
+		B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
 		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
@@ -485,6 +489,7 @@
 		B503FF4424848B6700066059 /* TagsFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFieldCell.swift; sourceTree = "<group>"; };
 		B503FF4724848D0B00066059 /* TagAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentCell.swift; sourceTree = "<group>"; };
 		B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserInterfaceItemIdentifier+Simplenote.swift"; sourceTree = "<group>"; };
+		B50F999124F98FFD00A1058D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B5117997242036B0005F8936 /* NSString+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Simplenote.swift"; sourceTree = "<group>"; };
 		B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Simplenote.swift"; sourceTree = "<group>"; };
@@ -493,7 +498,6 @@
 		B51699832480B93100ACF2F4 /* TagsField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsField.swift; sourceTree = "<group>"; };
 		B51E9FE022E615FA004F16B4 /* SPExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPExporter.swift; sourceTree = "<group>"; };
 		B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helpers.swift"; sourceTree = "<group>"; };
-		B5242DE924C9237F00437E40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5242DEB24C9238700437E40 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5242DED24C9238C00437E40 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		B5242DEF24C9238E00437E40 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -552,6 +556,8 @@
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
+		B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStoryboard+Simplenote.swift"; sourceTree = "<group>"; };
+		B58CE28724F9C3420079C04B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B58D398B24BF95DF008E4ABC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B58D398C24BF95E7008E4ABC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B58D398D24BF95F3008E4ABC /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -659,8 +665,8 @@
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
 				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
-				B5609AEA24EEC9910097777A /* BuildFile in Frameworks */,
-				B5609AF224EF17270097777A /* BuildFile in Frameworks */,
+				B5609AEA24EEC9910097777A /* SimplenoteSearch in Frameworks */,
+				B5609AF224EF17270097777A /* SimplenoteFoundation in Frameworks */,
 				D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,8 +681,8 @@
 				466FFEE017CC10A800399652 /* CoreServices.framework in Frameworks */,
 				466FFEE117CC10A800399652 /* Cocoa.framework in Frameworks */,
 				B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */,
-				B5609AE824EEC9860097777A /* BuildFile in Frameworks */,
-				B5609AF024EF171D0097777A /* BuildFile in Frameworks */,
+				B5609AE824EEC9860097777A /* SimplenoteSearch in Frameworks */,
+				B5609AF024EF171D0097777A /* SimplenoteFoundation in Frameworks */,
 				1E077730C2108B885911E3B5 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -782,6 +788,7 @@
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
+				B50F999124F98FFD00A1058D /* Main.storyboard */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
 			);
 			path = Simplenote;
@@ -1004,6 +1011,7 @@
 				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
 				B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */,
 				B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */,
+				B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
 				B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */,
 				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
@@ -1286,8 +1294,8 @@
 			);
 			name = Simplenote;
 			packageProductDependencies = (
-				B5609AE924EEC9910097777A /* SwiftPackageProductDependency */,
-				B5609AF124EF17270097777A /* SwiftPackageProductDependency */,
+				B5609AE924EEC9910097777A /* SimplenoteSearch */,
+				B5609AF124EF17270097777A /* SimplenoteFoundation */,
 			);
 			productName = Simplenote;
 			productReference = 26F72A8814032D2A00A7935E /* Simplenote.app */;
@@ -1311,8 +1319,8 @@
 			);
 			name = "Simplenote-AppStore";
 			packageProductDependencies = (
-				B5609AE724EEC9860097777A /* SwiftPackageProductDependency */,
-				B5609AEF24EF171D0097777A /* SwiftPackageProductDependency */,
+				B5609AE724EEC9860097777A /* SimplenoteSearch */,
+				B5609AEF24EF171D0097777A /* SimplenoteFoundation */,
 			);
 			productName = Simplenote;
 			productReference = 466FFF2F17CC10A800399652 /* Simplenote.app */;
@@ -1399,8 +1407,8 @@
 			);
 			mainGroup = 26F72A7D14032D2900A7935E;
 			packageReferences = (
-				B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */,
-				B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */,
+				B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */,
+				B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */,
 			);
 			productRefGroup = 26F72A8914032D2A00A7935E /* Products */;
 			projectDirPath = "";
@@ -1430,6 +1438,7 @@
 				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
+				B50F999224F98FFD00A1058D /* Main.storyboard in Resources */,
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
@@ -1452,6 +1461,7 @@
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */,
+				B50F999324F98FFD00A1058D /* Main.storyboard in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 				B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */,
@@ -1757,6 +1767,7 @@
 				B5070E16245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
 				B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */,
 				B57CB874244DEBC300BA7969 /* Options.swift in Sources */,
+				B58CE26524F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */,
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B54F9A6724D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
@@ -1892,6 +1903,7 @@
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
+				B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */,
 				B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */,
 				B54F9A6824D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
@@ -2008,7 +2020,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B5E073B424BF8BD900139912 /* Base */,
-				B5242DE924C9237F00437E40 /* en */,
 				B5242DEB24C9238700437E40 /* ar */,
 				B5242DED24C9238C00437E40 /* zh-Hans-CN */,
 				B5242DEF24C9238E00437E40 /* zh-Hant-TW */,
@@ -2028,6 +2039,7 @@
 				B5242E0B24C923B300437E40 /* sv */,
 				B5242E0D24C923B400437E40 /* tr */,
 				B5242E0F24C923B600437E40 /* cy */,
+				B58CE28724F9C3420079C04B /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -2534,7 +2546,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */ = {
+		B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteSearch-Swift.git";
 			requirement = {
@@ -2542,7 +2554,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */ = {
+		B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteFoundation-Swift.git";
 			requirement = {
@@ -2553,24 +2565,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B5609AE724EEC9860097777A /* SwiftPackageProductDependency */ = {
+		B5609AE724EEC9860097777A /* SimplenoteSearch */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */;
+			package = B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */;
 			productName = SimplenoteSearch;
 		};
-		B5609AE924EEC9910097777A /* SwiftPackageProductDependency */ = {
+		B5609AE924EEC9910097777A /* SimplenoteSearch */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */;
+			package = B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */;
 			productName = SimplenoteSearch;
 		};
-		B5609AEF24EF171D0097777A /* SwiftPackageProductDependency */ = {
+		B5609AEF24EF171D0097777A /* SimplenoteFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */;
+			package = B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */;
 			productName = SimplenoteFoundation;
 		};
-		B5609AF124EF17270097777A /* SwiftPackageProductDependency */ = {
+		B5609AF124EF17270097777A /* SimplenoteFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */;
+			package = B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */;
 			productName = SimplenoteFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */

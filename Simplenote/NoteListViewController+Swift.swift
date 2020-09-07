@@ -133,10 +133,7 @@ extension NoteListViewController {
     }
 
     var mustUpdateSearchViewConstraint: Bool {
-        // Why check `.isActive`?:
-        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
-        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
-        searchViewTopConstraint == nil || searchViewTopConstraint?.isActive == false
+        searchViewTopConstraint == nil
     }
 
     func updateSearchViewTopConstraint() {
@@ -234,66 +231,16 @@ extension NoteListViewController: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .listDisplayCondensedMenuItem:
-            return validateDisplayCondensedMenuItem(menuItem)
-        case .listDisplayComfyMenuItem:
-            return validateDisplayComfyMenuItem(menuItem)
-        case .listSortAlphaMenuItem:
-            return validateSortAlphaMenuItem(menuItem)
-        case .listSortUpdatedMenuItem:
-            return validateSortUpdatedMenuItem(menuItem)
+        case .listDeleteNoteMenuItem:
+            return validateListDeleteMenuItem(menuItem)
         default:
             return true
         }
     }
 
-    func validateDisplayCondensedMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.notesListCondensed ? .on : .off
-        return true
-    }
-
-    func validateDisplayComfyMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.notesListCondensed ? .off : .on
-        return true
-    }
-
-    func validateSortAlphaMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortNotes ? .on : .off
-        return true
-    }
-
-    func validateSortUpdatedMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortNotes ? .off : .on
-        return true
-    }
-}
-
-
-// MARK: - Actions
-//
-extension NoteListViewController {
-
-    @IBAction
-    func displayModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.listDisplayCondensedMenuItem
-        Options.shared.notesListCondensed = isCondensedOn
-        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
-    }
-
-    @IBAction
-    func sortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.listSortAlphaMenuItem
-        Options.shared.alphabeticallySortNotes = isAlphaOn
-        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
-    }
+    func validateListDeleteMenuItem(_ item: NSMenuItem) -> Bool {
+        !viewingTrash
+     }
 }
 
 

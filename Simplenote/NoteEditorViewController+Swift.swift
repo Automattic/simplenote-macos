@@ -47,10 +47,7 @@ extension NoteEditorViewController {
     }
 
     var mustUpdateToolbarConstraint: Bool {
-        // Why check `.isActive`?:
-        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
-        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
-        toolbarViewTopConstraint == nil || toolbarViewTopConstraint?.isActive == false
+        toolbarViewTopConstraint == nil
     }
 
     func updateToolbarTopConstraint() {
@@ -185,12 +182,6 @@ extension NoteEditorViewController: NSMenuItemValidation {
         case .editorCollaborateMenuItem:
             return validateEditorCollaborateMenuItem(menuItem)
 
-        case .editorWidthFullMenuItem:
-            return validateEditorWidthFullMenuItem(menuItem)
-
-        case .editorWidthNarrowMenuItem:
-            return validateEditorWidthNarrowMenuItem(menuItem)
-
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
 
@@ -237,26 +228,16 @@ extension NoteEditorViewController: NSMenuItemValidation {
         isDisplayingNote
     }
 
-    func validateEditorWidthFullMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.editorFullWidth ? .on : .off
-        return true
-    }
-
-    func validateEditorWidthNarrowMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.editorFullWidth ? .off : .on
-        return true
-    }
-
     func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
         !viewingTrash
     }
 
     func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+        !viewingTrash && note != nil && view.window?.isVisible == true
     }
 
     func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        guard !viewingTrash, SimplenoteAppDelegate.shared().isMainWindowVisible() else {
+        guard viewingTrash == false, view.window?.isVisible == true else {
             return false
         }
 
@@ -311,17 +292,6 @@ extension NoteEditorViewController {
 
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
-    }
-
-    @IBAction
-    func toggleEditorWidth(sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.editorWidthFullMenuItem
-        Options.shared.editorFullWidth = isFullOn
-        noteEditor.needsDisplay = true
     }
 }
 

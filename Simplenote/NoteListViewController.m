@@ -47,6 +47,7 @@
     [super viewDidLoad];
 
     self.oldTags = @"";
+    self.arrayController.managedObjectContext = self.mainContext;
 
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
@@ -104,6 +105,11 @@
 - (NoteEditorViewController *)noteEditorViewController
 {
     return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
+}
+
+- (NSManagedObjectContext*)mainContext
+{
+    return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
 }
 
 - (void)reset
@@ -421,6 +427,12 @@
     for (Note *selectedNote in [self selectedNotes]) {
         [self deleteNote:selectedNote];
     }
+}
+
+- (IBAction)newNoteWasPressed:(id)sender
+{
+    // TODO: Move the New Note Handler to a (New) NoteController!
+    [self.noteEditorViewController newNoteWasPressed:sender];
 }
 
 - (void)searchAction:(id)sender

@@ -74,9 +74,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     return self;
 }
 
-- (void)awakeFromNib
+- (void)viewDidLoad
 {
-    [super awakeFromNib];
+    [super viewDidLoad];
 
     [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage new];
@@ -116,6 +116,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:TagListDidBeginViewingTagNotification object:nil];
     [nc addObserver:self selector:@selector(tagUpdated:) name:TagListDidUpdateTagNotification object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
+    [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
 
     [self startListeningToScrollNotifications];
 
@@ -298,6 +299,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 	[self save];
 }
 
+- (void)displayModeWasUpdated:(NSNotification *)notification
+{
+    self.noteEditor.needsDisplay = YES;
+}
+
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)location
 {
 	NSUInteger newCursorLocation = location;
@@ -459,7 +465,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
 }
 
-- (IBAction)addAction:(id)sender
+- (IBAction)newNoteWasPressed:(id)sender
 {
     [SPTracker trackEditorNoteCreated];
 
