@@ -50,6 +50,12 @@
 
 
 #pragma mark - Note Editor
+
++ (void)trackEditorCopiedInternalLink
+{
+    [self trackAutomatticEventWithName:@"editor_copied_internal_link" properties:nil];
+}
+
 + (void)trackEditorChecklistInserted
 {
     [self trackAutomatticEventWithName:@"editor_checklist_inserted" properties:nil];

@@ -282,6 +282,16 @@ extension NoteEditorViewController {
     }
 
     @IBAction
+    func copyInterlinkWasPressed(sender: Any) {
+        guard let note = note else {
+            return
+        }
+
+        SPTracker.trackEditorCopiedInternalLink()
+        NSPasteboard.general.copyInterlink(to: note)
+    }
+
+    @IBAction
     func publishWasPressed(sender: Any) {
         guard let note = note else {
             return
@@ -307,15 +317,6 @@ extension NoteEditorViewController {
 
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
-    }
-
-    @IBAction
-    func copyInterlinkWasPressed(sender: Any) {
-        guard let note = note else {
-            return
-        }
-
-        NSPasteboard.general.copyInterlink(to: note)
     }
 }
 
