@@ -161,6 +161,9 @@ extension NoteEditorViewController: NSMenuItemValidation {
         }
 
         switch identifier {
+        case .editorCopyInterlinkMenuItem:
+            return validateEditorCopyInterlinkMenuItem(menuItem)
+
         case .editorPinMenuItem:
             return validateEditorPinMenuItem(menuItem)
 
@@ -196,44 +199,56 @@ extension NoteEditorViewController: NSMenuItemValidation {
         }
     }
 
+    func validateEditorCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
+        return true
+    }
+
     func validateEditorPinMenuItem(_ item: NSMenuItem) -> Bool {
         let isPinnedOn = selectedNotes.allSatisfy { $0.pinned }
         item.state = isPinnedOn ? .on : .off
+        item.title = NSLocalizedString("Pin to Top", comment: "Pin to Top Menu Action")
         return true
     }
 
     func validateEditorMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
         let isMarkdownOn = selectedNotes.allSatisfy { $0.markdown }
         item.state = isMarkdownOn ? .on : .off
+        item.title = NSLocalizedString("Markdown", comment: "Markdown Menu Action")
         return true
     }
 
     func validateEditorShareMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingContent
+        item.title = NSLocalizedString("Share", comment: "Share Menu Action")
+        return isDisplayingContent
     }
 
     func validateEditorHistoryMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingNote && !isDisplayingMarkdown
+        item.title = NSLocalizedString("History", comment: "History Menu Action")
+        return isDisplayingNote && !isDisplayingMarkdown
     }
 
     func validateEditorTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingNote || isSelectingMultipleNotes
+        item.title = NSLocalizedString("Move to Trash", comment: "Trash Menu Action")
+        return isDisplayingNote || isSelectingMultipleNotes
     }
 
     func validateEditorPublishMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingContent
+        item.title = NSLocalizedString("Publish", comment: "Publish Menu Action")
+        return isDisplayingContent
     }
 
     func validateEditorCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingNote
+        item.title = NSLocalizedString("Collaborate", comment: "Collaborate Menu Action")
+        return isDisplayingNote
     }
 
     func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash
+        return !viewingTrash
     }
 
     func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash && note != nil && view.window?.isVisible == true
+        return !viewingTrash && note != nil && view.window?.isVisible == true
     }
 
     func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
