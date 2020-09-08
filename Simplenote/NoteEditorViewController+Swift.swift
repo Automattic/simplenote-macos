@@ -201,7 +201,7 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
     func validateEditorCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
-        return true
+        return isDisplayingNote
     }
 
     func validateEditorPinMenuItem(_ item: NSMenuItem) -> Bool {
