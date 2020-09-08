@@ -331,9 +331,9 @@ extension NoteListViewController {
 
         performPerservingSelectedIndex {
             simperium.notesBucket.delete(note)
+            simperium.save()
         }
 
-        simperium.save()
         SPTracker.trackListNoteDeletedForever()
     }
 
@@ -345,7 +345,6 @@ extension NoteListViewController {
 
         note.pinned = pinnedItem.state == .off
         simperium.save()
-
         reloadDataAndPreserveSelection()
 
         SPTracker.trackListNotePinningToggled()
@@ -359,10 +358,10 @@ extension NoteListViewController {
 
         performPerservingSelectedIndex {
             note.deleted = false
+            simperium.save()
         }
 
         SPTracker.trackListNoteRestored()
-        simperium.save()
     }
 }
 
