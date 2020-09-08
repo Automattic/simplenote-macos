@@ -167,6 +167,10 @@ private extension NoteListViewController {
 
         return NSAttributedString(string: text, attributes: attributes)
     }
+
+    var simperium: Simperium {
+        SimplenoteAppDelegate.shared().simperium
+    }
 }
 
 
@@ -238,16 +242,38 @@ extension NoteListViewController: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .listDeleteNoteMenuItem:
-            return validateListDeleteMenuItem(menuItem)
+        case .listCopyInterlinkMenuItem:
+            return validateListCopyInterlinkMenuItem(menuItem)
+        case .listTrashNoteMenuItem:
+            return validateListTrashMenuItem(menuItem)
+        case .listDeleteForeverMenuItem:
+            return validateListDeleteForeverMenuItem(menuItem)
+        case .listRestoreNoteMenuItem:
+            return validateListRestoreMenuItem(menuItem)
         default:
             return true
         }
     }
 
-    func validateListDeleteMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash
-     }
+    func validateListCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
+        return !selectedNotes().isEmpty
+    }
+
+    func validateListTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Move to Trash", comment: "Move to Trash List Action")
+        return !selectedNotes().isEmpty
+    }
+
+    func validateListDeleteForeverMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Delete Forever", comment: "Delete Forever List Action")
+        return !selectedNotes().isEmpty
+    }
+
+    func validateListRestoreMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Restore", comment: "Restore List Action")
+        return viewingTrash
+    }
 }
 
 
@@ -266,6 +292,50 @@ extension NoteListViewController {
     @objc
     func sortModeDidChange(_ note: Notification) {
         reloadDataAndPreserveSelection()
+    }
+}
+
+
+// MARK: - Actions
+//
+extension NoteListViewController {
+
+    @IBAction
+    func copyInterlinkWasPressed(sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        SPTracker.trackListCopiedInternalLink()
+        NSPasteboard.general.copyInterlink(to: note)
+    }
+
+    @IBAction
+    func restoreWasPressed(sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        performPerservingSelectedIndex {
+            note.deleted = false
+        }
+
+        SPTracker.trackListNoteRestored()
+        simperium.save()
+    }
+
+    @IBAction
+    func deleteFromTrashWasPressed(sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        performPerservingSelectedIndex {
+            simperium.notesBucket.delete(note)
+        }
+
+        SPTracker.trackListNoteDeletedForever()
+        simperium.save()
     }
 }
 
