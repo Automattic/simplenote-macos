@@ -418,17 +418,25 @@
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="arrayController" destination="QdT-mP-kT8" id="7HE-P5-XlT"/>
                         <outlet property="backgroundView" destination="Dfi-py-m83" id="OsW-dl-qhP"/>
+                        <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="searchField" destination="cvh-C8-b0b" id="R6h-sR-ND1"/>
                         <outlet property="searchView" destination="weN-h2-sJL" id="Pbw-Ih-6lA"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
                         <outlet property="topDividerView" destination="s2j-Xp-jGd" id="7D1-cA-1N9"/>
+                        <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
                 </viewController>
                 <menu id="JPb-EX-UT9" userLabel="Note List Menu">
                     <items>
-                        <menuItem title="Delete Note" identifier="listDeleteNoteMenuItem" id="sEB-rr-DQo" userLabel="Delete Note">
+                        <menuItem title="Copy Internal Link" identifier="listCopyInterlinkMenuItem" id="n5C-YM-CGx">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="copyInterlinkWasPressedWithSender:" target="JtV-0Z-Zh8" id="phW-OA-1H1"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Move to Trash" identifier="listTrashNoteMenuItem" id="sEB-rr-DQo" userLabel="Delete Note">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="deleteAction:" target="JtV-0Z-Zh8" id="6di-Ws-hmv"/>
@@ -438,6 +446,22 @@
                     <connections>
                         <outlet property="delegate" destination="JtV-0Z-Zh8" id="W7P-Gb-i6g"/>
                     </connections>
+                </menu>
+                <menu id="cOD-m3-0ET" userLabel="Trash List Menu">
+                    <items>
+                        <menuItem title="Restore" identifier="listRestoreNoteMenuItem" id="O9Z-zU-i3L">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="restoreWasPressedWithSender:" target="JtV-0Z-Zh8" id="Dpt-MY-KdY"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Delete Forever" identifier="listDeleteForeverMenuItem" id="lN9-EY-5A1">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="deleteFromTrashWasPressedWithSender:" target="JtV-0Z-Zh8" id="hmk-p4-1id"/>
+                            </connections>
+                        </menuItem>
+                    </items>
                 </menu>
                 <arrayController mode="entity" entityName="Note" fetchPredicateFormat="deleted == 0" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="QdT-mP-kT8" customClass="NotesArrayController"/>
                 <customObject id="41I-un-qkw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
