@@ -142,6 +142,11 @@
     [self trackAutomatticEventWithName:@"list_note_deleted_forever" properties:nil];
 }
 
++ (void)trackListNotePinningToggled
+{
+    [self trackAutomatticEventWithName:@"list_note_pinning_toggled" properties:nil];
+}
+
 + (void)trackListNoteRestored
 {
     [self trackAutomatticEventWithName:@"list_note_restored" properties:nil];

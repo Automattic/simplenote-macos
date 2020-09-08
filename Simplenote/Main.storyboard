@@ -430,16 +430,22 @@
                 </viewController>
                 <menu id="JPb-EX-UT9" userLabel="Note List Menu">
                     <items>
+                        <menuItem title="Pin to Top" identifier="listPinMenuItem" id="PE0-42-5TG">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="pinWasPressed:" target="JtV-0Z-Zh8" id="LR0-Q4-spr"/>
+                            </connections>
+                        </menuItem>
                         <menuItem title="Copy Internal Link" identifier="listCopyInterlinkMenuItem" id="n5C-YM-CGx">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="copyInterlinkWasPressedWithSender:" target="JtV-0Z-Zh8" id="phW-OA-1H1"/>
+                                <action selector="copyInterlinkWasPressed:" target="JtV-0Z-Zh8" id="mP7-0c-YCD"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Move to Trash" identifier="listTrashNoteMenuItem" id="sEB-rr-DQo" userLabel="Delete Note">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="deleteAction:" target="JtV-0Z-Zh8" id="6di-Ws-hmv"/>
+                                <action selector="deleteAction:" target="JtV-0Z-Zh8" id="C8N-3T-A1n"/>
                             </connections>
                         </menuItem>
                     </items>
@@ -452,13 +458,13 @@
                         <menuItem title="Restore" identifier="listRestoreNoteMenuItem" id="O9Z-zU-i3L">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="restoreWasPressedWithSender:" target="JtV-0Z-Zh8" id="Dpt-MY-KdY"/>
+                                <action selector="restoreWasPressed:" target="JtV-0Z-Zh8" id="272-Hb-IeN"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Delete Forever" identifier="listDeleteForeverMenuItem" id="lN9-EY-5A1">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="deleteFromTrashWasPressedWithSender:" target="JtV-0Z-Zh8" id="hmk-p4-1id"/>
+                                <action selector="deleteFromTrashWasPressed:" target="JtV-0Z-Zh8" id="YQM-M8-UW4"/>
                             </connections>
                         </menuItem>
                     </items>

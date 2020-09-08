@@ -46,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackListCopiedInternalLink;
 + (void)trackListNoteDeleted;
 + (void)trackListNoteDeletedForever;
++ (void)trackListNotePinningToggled;
 + (void)trackListNoteRestored;
 + (void)trackListNoteOpened;
 + (void)trackListTrashEmptied;
