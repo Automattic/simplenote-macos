@@ -293,6 +293,15 @@ extension NoteEditorViewController {
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
     }
+
+    @IBAction
+    func copyInterlinkWasPressed(sender: Any) {
+        guard let note = note else {
+            return
+        }
+
+        NSPasteboard.general.copyInterlink(to: note)
+    }
 }
 
 
