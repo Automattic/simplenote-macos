@@ -143,6 +143,36 @@ extension SimplenoteAppDelegate {
 }
 
 
+// MARK: - URL Handlers
+//
+extension SimplenoteAppDelegate {
+
+    /// Ensures that the Note with the specified Key is displayed by the Notes List
+    ///
+    func ensureSelectedTagDisplaysNote(key: String) {
+        if noteListViewController.displaysNote(forKey: key) {
+            return
+        }
+
+        selectAllNotesTag()
+    }
+
+    /// Opens the Note associated with a given URL instance, when possible
+    ///
+    @objc
+    func handleOpenNote(url: URL) -> Bool {
+        guard let simperiumKey = url.interlinkSimperiumKey else {
+            return false
+        }
+
+        ensureSelectedTagDisplaysNote(key: simperiumKey)
+        selectNote(withKey: simperiumKey)
+
+        return true
+    }
+}
+
+
 // MARK: - MenuItem(s) Validation
 //
 extension SimplenoteAppDelegate: NSMenuItemValidation {

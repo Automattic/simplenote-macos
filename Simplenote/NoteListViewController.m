@@ -175,6 +175,11 @@
 
 #pragma mark - Table view
 
+- (BOOL)displaysNoteForKey:(NSString *)key
+{
+    return [self rowForNoteKey:key] != -1;
+}
+
 - (NSInteger)rowForNoteKey:(NSString *)key
 {
     NSInteger row = 0;
