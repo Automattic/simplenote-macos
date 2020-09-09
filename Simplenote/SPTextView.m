@@ -14,14 +14,8 @@
 
 @implementation SPTextView
 
-// Workaround NSTextView not allowing clicks
-// http://stackoverflow.com/a/10308359/1379066
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    // Notify delegate that this text view was clicked and then
-    // handled the click natively as well.
-    [[self textViewDelegate] didClickTextView:self];
-    
     if ([self checkForChecklistClick:theEvent]) {
         return;
     }
