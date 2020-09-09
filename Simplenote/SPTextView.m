@@ -29,9 +29,9 @@
     [super mouseDown:theEvent];
 }
 
-- (id<SPTextViewDelegate>)textViewDelegate
+- (void)paste:(id)sender
 {
-    return [self.delegate conformsToProtocol:@protocol(SPTextViewDelegate)] ? (id<SPTextViewDelegate>)self.delegate : nil;
+    [super paste:sender];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
