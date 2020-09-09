@@ -250,6 +250,11 @@
     return shouldSelect;
 }
 
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row
+{
+    return self.viewingTrash ? self.trashListMenu : self.noteListMenu;
+}
+
 - (NSArray *)selectedNotes
 {
     return [self.allNotes objectsAtIndexes:[self.tableView selectedRowIndexes]];
@@ -393,7 +398,6 @@
 
 - (void)selectedTaglistRowWasUpdated
 {
-    [self refreshTableViewMenu];
     [self refreshEnabledActions];
     [self refreshPredicate];
     [self selectFirstRow];
