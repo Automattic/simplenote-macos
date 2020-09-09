@@ -26,6 +26,7 @@
 - (void)paste:(id)sender
 {
     [super paste:sender];
+    [self processLinksInDocumentAsynchronously];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
