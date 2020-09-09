@@ -128,6 +128,39 @@ extension NSTextView {
 }
 
 
+// MARK: - Linkification
+//
+extension NSTextView {
+
+    /// Asynchronously Processess Links in the Document
+    ///
+    @objc
+    func processLinksInDocumentAsynchronously() {
+        DispatchQueue.main.async(execute: processLinksInDocument)
+    }
+
+    /// Processess Links in the document
+    ///
+    /// - Important: This API temporarily disables the `delegate`.
+    /// - Note: Invoking `checkTextInDocument` results in a call to`delegate.textDidChange`.
+    ///         This causes the Editor to update the Note's Modification Date, and may affect the List Sort Order (!)
+    ///
+    func processLinksInDocument() {
+        /// Disable the Delegate:
+        let theDelegate = delegate
+        delegate = nil
+
+        /// Issue #472: Linkification should not be undoable
+        undoManager?.disableUndoRegistration()
+        checkTextInDocument(nil)
+        undoManager?.enableUndoRegistration()
+
+        /// Restore the Delegate
+        delegate = theDelegate
+    }
+}
+
+
 // MARK: - Processing Special Characters
 //
 extension NSTextView {
