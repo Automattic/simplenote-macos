@@ -244,25 +244,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self showStatusText:status];
 }
 
-// Linkifies text in the editor
-- (void)checkTextInDocument
-{
-    dispatch_async(dispatch_get_main_queue(), ^() {
-        // Temporarily remove the editor delegate because `checkTextInDocument`
-        // fires `textDidChange` which will erroneously modify the note's modification
-        // date and unintentionally change the sort order of the note in the list as a result
-        [self.noteEditor setDelegate:nil];
-
-        // Issue #472: Linkification should not be undoable
-        [self.noteEditor.undoManager disableUndoRegistration];
-        [self.noteEditor checkTextInDocument:nil];
-        [self.noteEditor.undoManager enableUndoRegistration];
-
-        [self.noteEditor setNeedsDisplay:YES];
-        [self.noteEditor setDelegate:self];
-    });
-}
-
 - (void)showStatusText:(NSString *)text
 {
     BOOL shouldHideImage = text == nil || text.length == 0;
