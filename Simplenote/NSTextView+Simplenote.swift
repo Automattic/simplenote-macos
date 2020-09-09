@@ -111,12 +111,14 @@ extension NSTextView {
     ///     -   List Markers will be replaced by Text Attachments
     ///     -   Our UndoManager will be reset right after processing the Lists. Otherwise CTRL + Z would
     ///         result in Attachments replacee by `-[]`!
+    ///     -   Links will be processed asynchronously
     ///
     @objc
     func displayNote(content: String) {
         string = content
         textStorage?.processChecklists(with: .simplenoteTextColor)
         undoManager?.removeAllActions()
+        processLinksInDocumentAsynchronously()
     }
 
     /// Returns the content represented as Plain Text
