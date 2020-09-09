@@ -228,8 +228,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         // Otherwise we'll scroll to the top!
         [[self.scrollView documentView] scrollPoint:NSMakePoint(0, 0)];
     }
-    
-    [self checkTextInDocument];
 }
 
 - (void)displayNotes:(NSArray *)notes
@@ -460,8 +458,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     
     // Update editor to apply markdown styles
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
-    [self checkTextInDocument];
-    
+
     [[NSUserDefaults standardUserDefaults] setBool:(BOOL)isEnabled forKey:SPMarkdownPreferencesKey];
 }
 
@@ -611,7 +608,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     // Update font size preference and reset fonts
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
     [self applyStyle];
-    [self checkTextInDocument];
 }
 
 #pragma mark - NoteEditor Preferences Helpers
