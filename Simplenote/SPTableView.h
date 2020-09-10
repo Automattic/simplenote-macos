@@ -18,7 +18,7 @@
 
 
 IB_DESIGNABLE
-@interface SPTableView : NSTableView<SPTextViewDelegate, NSTextFieldDelegate>
+@interface SPTableView : NSTableView<NSTextFieldDelegate>
 
 /// AppKit will always ensure that the clicked row is visble. However, the SDK considers a row as being "not visible"
 /// whenever the clicked row falls within the `contentInsets` area.
