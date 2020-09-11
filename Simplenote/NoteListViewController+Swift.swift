@@ -45,6 +45,13 @@ extension NoteListViewController {
         addNoteButton.isEnabled = !viewingTrash
     }
 
+    /// Sets the relevant NSMenu instance, depending to what's being filtered
+    ///
+    @objc
+    func refreshTableViewMenu() {
+        tableView.enclosingScrollView?.menu = viewingTrash ? trashListMenu : noteListMenu
+    }
+
     /// Refreshes the receiver's style
     ///
     @objc
@@ -160,6 +167,14 @@ private extension NoteListViewController {
 
         return NSAttributedString(string: text, attributes: attributes)
     }
+
+    var simperium: Simperium {
+        SimplenoteAppDelegate.shared().simperium
+    }
+
+    var isSelectionNotEmpty: Bool {
+        selectedNotes().isEmpty == false
+    }
 }
 
 
@@ -231,16 +246,47 @@ extension NoteListViewController: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .listDeleteNoteMenuItem:
-            return validateListDeleteMenuItem(menuItem)
+        case .listCopyInterlinkMenuItem:
+            return validateListCopyInterlinkMenuItem(menuItem)
+        case .listDeleteForeverMenuItem:
+            return validateListDeleteForeverMenuItem(menuItem)
+        case .listPinMenuItem:
+            return validateListPinMenuItem(menuItem)
+        case .listRestoreNoteMenuItem:
+            return validateListRestoreMenuItem(menuItem)
+        case .listTrashNoteMenuItem:
+            return validateListTrashMenuItem(menuItem)
         default:
             return true
         }
     }
 
-    func validateListDeleteMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash
-     }
+    func validateListCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
+        return isSelectionNotEmpty
+    }
+
+    func validateListDeleteForeverMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Delete Forever", comment: "Delete Forever List Action")
+        return isSelectionNotEmpty
+    }
+
+    func validateListPinMenuItem(_ item: NSMenuItem) -> Bool {
+        let isPinnedOff = selectedNotes().allSatisfy { $0.pinned == false }
+        item.state = isPinnedOff ? .off : .on
+        item.title = NSLocalizedString("Pin to Top", comment: "List Pin Action")
+        return isSelectionNotEmpty
+    }
+
+    func validateListRestoreMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Restore", comment: "Restore List Action")
+        return isSelectionNotEmpty
+    }
+
+    func validateListTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Move to Trash", comment: "Move to Trash List Action")
+        return isSelectionNotEmpty
+    }
 }
 
 
@@ -259,6 +305,63 @@ extension NoteListViewController {
     @objc
     func sortModeDidChange(_ note: Notification) {
         reloadDataAndPreserveSelection()
+    }
+}
+
+
+// MARK: - Actions
+//
+extension NoteListViewController {
+
+    @IBAction
+    func copyInterlinkWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        NSPasteboard.general.copyInterlink(to: note)
+        SPTracker.trackListCopiedInternalLink()
+    }
+
+    @IBAction
+    func deleteFromTrashWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        performPerservingSelectedIndex {
+            simperium.notesBucket.delete(note)
+            simperium.save()
+        }
+
+        SPTracker.trackListNoteDeletedForever()
+    }
+
+    @IBAction
+    func pinWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first, let pinnedItem = sender as? NSMenuItem else {
+            return
+        }
+
+        note.pinned = pinnedItem.state == .off
+        simperium.save()
+        reloadDataAndPreserveSelection()
+
+        SPTracker.trackListNotePinningToggled()
+    }
+
+    @IBAction
+    func restoreWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        performPerservingSelectedIndex {
+            note.deleted = false
+            simperium.save()
+        }
+
+        SPTracker.trackListNoteRestored()
     }
 }
 

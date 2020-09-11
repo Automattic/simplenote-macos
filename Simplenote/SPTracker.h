@@ -43,7 +43,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackEditorCollaboratorsAccessed;
 
 #pragma mark - Note List
++ (void)trackListCopiedInternalLink;
 + (void)trackListNoteDeleted;
++ (void)trackListNoteDeletedForever;
++ (void)trackListNotePinningToggled;
++ (void)trackListNoteRestored;
 + (void)trackListNoteOpened;
 + (void)trackListTrashEmptied;
 + (void)trackListNotesSearched;

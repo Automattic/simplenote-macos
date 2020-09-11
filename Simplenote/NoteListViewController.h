@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSSearchField          *searchField;
 @property (nonatomic, strong, readonly) IBOutlet NSButton               *addNoteButton;
 
+@property (nonatomic, strong, readonly) IBOutlet NSMenu                 *noteListMenu;
+@property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
+
 @property (nonatomic, strong, nullable) NSLayoutConstraint              *searchViewTopConstraint;
 @property (nonatomic, assign, readonly) BOOL                            searching;
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
@@ -36,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reloadSynchronously;
 - (void)reset;
 - (void)setWaitingForIndex:(BOOL)waiting;
+- (NSArray<Note *> *)selectedNotes;
 - (void)setNotesPredicate:(NSPredicate *)predicate;
 - (NSInteger)rowForNoteKey:(NSString *)key;
 - (void)selectRow:(NSInteger)row;

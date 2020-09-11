@@ -29,6 +29,8 @@
 @property (nonatomic, strong) IBOutlet NSView               *searchView;
 @property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
+@property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
 @property (nonatomic, strong) NSString                      *oldTags;
 @property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
@@ -386,6 +388,7 @@
 
 - (void)selectedTaglistRowWasUpdated
 {
+    [self refreshTableViewMenu];
     [self refreshEnabledActions];
     [self refreshPredicate];
     [self selectFirstRow];

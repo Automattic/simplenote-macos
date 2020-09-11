@@ -1,6 +1,7 @@
 2.2.0
 -----
 - Editor's Actions now lets you copy a Note's Internal Link
+- Added support to the Notes List for pinning, unpinning, deleting and restoring with a right click
 - Fixed Markdown Preview's Highlight Color, when in Dark Mode #673
 
 2.1.0
