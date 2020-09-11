@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackApplicationTerminated;
 
 #pragma mark - Note Editor
++ (void)trackEditorCopiedInternalLink;
 + (void)trackEditorChecklistInserted;
 + (void)trackEditorNoteCreated;
 + (void)trackEditorNoteDeleted;
