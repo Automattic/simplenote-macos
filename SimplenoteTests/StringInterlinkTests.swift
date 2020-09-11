@@ -6,6 +6,8 @@ import XCTest
 //
 class StringInterlinkTests: XCTestCase {
 
+    ///
+    ///
     func testInterlinkKeywordReturnsNilWheneverTheSpecifiedLocationDoesNotContainTrailingOpeningBrackets() {
         let keyword = "Some long keyword should be here"
         let text = "irrelevant prefix string here [" + keyword
@@ -18,6 +20,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
+    ///
+    ///
     func testInterlinkKeywordReturnsTheTextOnTheLeftHandSideOfTheSpecifiedLocation() {
         let keyword = "Some long keyword should be here"
         let lhs = "irrelevant prefix string here"
@@ -35,6 +39,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
+    ///
+    ///
     func testInterlinkKeywordReturnsTheTextOnTheLeftHandSideOfTheSpecifiedLocationAndPerformsSuper() {
         let keyword = "Some long keyword should be here"
         let lhs = String(repeating: "an extremely long text should probably go here ", count: 2048)
@@ -52,11 +58,15 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
+    ///
+    ///
     func testInterlinkKeywordReturnsNilWheneverThereIsNoTextAfterOpeningBracket() {
         let text = "["
         XCTAssertNil(text.interlinkKeyword(at: .zero))
     }
 
+    ///
+    ///
     func testInterlinkKeywordReturnsNilWheneverTheBracketsAreClosed() {
         let text = "irrelevant prefix string here [Some text should also go here maybe!]"
 
@@ -65,7 +75,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-
+    ///
+    ///
     func testInterlinkKeywordReturnsTheProperSubstringWhenEditingSomeNewLinkInBetweenTwoProperlyFormedLinks() {
         let keyword = "new keyword"
         let text = "Hexadecimal is made up of [numbers](simplenote://note/123456) and [" + keyword + " [letters](simplenote://note/abcdef)."
@@ -84,10 +95,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-
-
-
-
+    ///
+    ///
     func testTrailingLookupKeywordReturnsNilWhenThereAreNoLookupKeywords() {
         let text = "qwertyuiop"
         let result = text.trailingLookupKeyword(opening: "[", closing: "]")
@@ -95,6 +104,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertNil(result)
     }
 
+    ///
+    ///
     func testTrailingLookupKeywordReturnsNilWhenTheLookupKeywordIsClosedYetEmpty() {
         let text = "[]"
         let result = text.trailingLookupKeyword(opening: "[", closing: "]")
@@ -102,6 +113,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertNil(result)
     }
 
+    ///
+    ///
     func testTrailingLookupKeywordReturnsNilWhenThereAreNoUnclosedLookupKeywords() {
         let text = "[keyword 1] lalalala [keyword 2] lalalalaa [keyword 3]"
         let result = text.trailingLookupKeyword(opening: "[", closing: "]")
@@ -109,6 +122,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertNil(result)
     }
 
+    ///
+    ///
     func testTrailingLookupKeywordReturnsTheKeywordAfterTheOpeningCharacter() {
         let keyword = "some keyword here"
         let text = "qwertyuiop [" + keyword
@@ -117,6 +132,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(result, keyword)
     }
 
+    ///
+    ///
     func testTrailingLookupKeywordReturnsTheLastKeywordWhenThereAreManyKeywords() {
         let keyword1 = "some keyword here"
         let keyword2 = "the real keyword"
@@ -127,6 +144,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(result, keyword2)
     }
 
+    ///
+    ///
     func testTrailingLookupKeywordWorksAsExpectedWheneverTheInputStringStartsWithTheOpeningCharacter() {
         let keyword = "some keyword here"
         let text = "[" + keyword
@@ -135,10 +154,17 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(result, keyword)
     }
 
+    ///
+    ///
+    func testTrailingLookupKeywordReturnsNilWhenTheActualKeywordIsEmpty() {
+        let text = "["
+        let result = text.trailingLookupKeyword(opening: "[", closing: "]")
 
+        XCTAssertNil(result)
+    }
 
-
-
+    ///
+    ///
     func testSplitAtLocationReturnsTheExpectedSubstrings() {
         let lhs = "some random text on the left hand side"
         let rhs = "and some more random text on the right hand side"
@@ -149,6 +175,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(rhs, splitRHS)
     }
 
+    ///
+    ///
     func testSplitAtLocationReturnsEmptyStringsWhenTheReceiverIsEmpty() {
         let (lhs, rhs) = "".split(at: .zero)
 
@@ -156,6 +184,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertTrue(rhs.isEmpty)
     }
 
+    ///
+    ///
     func testSplitAtLocationProperlyHandlesLocationsAtTheEndOfTheString() {
         let text = "this is supposed to be a single but relatively long line of text"
         let (lhs, rhs) = text.split(at: text.count)
@@ -164,6 +194,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(rhs, "")
     }
 
+    ///
+    ///
     func testRelativeLocationForLocationReturnsTheUnmodifiedLocationWhenTheRangeEnclosesTheFullString() {
         let text = "this is supposed to be a single but relatively long line of text"
 
@@ -176,6 +208,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
+    ///
+    ///
     func testRelativeLocationForLocationReturnsTheExpectedLocationWhenTheRangeIsNotTheFullString() {
         let text = "this is supposed to be a single but relatively long line of text"
 
@@ -188,6 +222,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
+    ///
+    ///
     func testLineAtLocationReturnsTheExpectedLineForTheSpecifiedLocation() {
         let lines = [
             "alala lala long long le long long long!\n",
@@ -209,6 +245,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
+    ///
+    ///
     func testLineAtLocationReturnsNilWheneverTheLocationExceedsTheValidBounds() {
         let text = "text and some more text yes!"
         let locationStart = text.count + 1
@@ -219,5 +257,4 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 }
-
 

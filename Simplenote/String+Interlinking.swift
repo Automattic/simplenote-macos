@@ -7,13 +7,7 @@ extension String {
 
     ///
     ///
-    func interlinkKeyword(at location: Int, opening: String = "[", closing: String = "]") -> String? {
-        interlinkKeyword(at: location, opening: Character(opening), closing: Character(closing))
-    }
-
-    ///
-    ///
-    func interlinkKeyword(at location: Int, opening: Character, closing: Character) -> String? {
+    func interlinkKeyword(at location: Int, opening: Character = Character("["), closing: Character = Character("]")) -> String? {
         guard let (lineRange, lineText) = line(at: location) else {
             return nil
         }
@@ -61,7 +55,7 @@ extension String {
 
         let tailStart = index(lastOpeningCharacterIndex, offsetBy: 1)
         let tailString = self[tailStart..<endIndex]
-        if tailString.contains(closing) {
+        if tailString.contains(closing) || tailString.isEmpty {
             return nil
         }
 
