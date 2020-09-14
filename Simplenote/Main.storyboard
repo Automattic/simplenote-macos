@@ -375,9 +375,6 @@
                                     <rect key="frame" x="254" y="0.0" width="16" height="570"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <connections>
-                                    <outlet property="menu" destination="JPb-EX-UT9" id="NVd-l6-mBN"/>
-                                </connections>
                             </scrollView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
                                 <rect key="frame" x="10" y="327" width="250" height="23"/>
@@ -468,6 +465,9 @@
                             </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="delegate" destination="JtV-0Z-Zh8" id="eTf-Hn-ETC"/>
+                    </connections>
                 </menu>
                 <arrayController mode="entity" entityName="Note" fetchPredicateFormat="deleted == 0" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="QdT-mP-kT8" customClass="NotesArrayController"/>
                 <customObject id="41I-un-qkw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

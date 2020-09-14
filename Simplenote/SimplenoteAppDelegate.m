@@ -176,6 +176,11 @@
     NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
     NSURL *url = [NSURL URLWithString:urlString];
 
+    // URL: Open a Note!
+    if ([self handleOpenNoteWithUrl:url]) {
+        return;
+    }
+
     if ([WPAuthHandler isWPAuthenticationUrl:url]) {
         if (self.simperium.user.authenticated) {
             // We're already signed in

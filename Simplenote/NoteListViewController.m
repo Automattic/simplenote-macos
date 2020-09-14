@@ -175,6 +175,11 @@
 
 #pragma mark - Table view
 
+- (BOOL)displaysNoteForKey:(NSString *)key
+{
+    return [self rowForNoteKey:key] != -1;
+}
+
 - (NSInteger)rowForNoteKey:(NSString *)key
 {
     NSInteger row = 0;
@@ -243,6 +248,11 @@
     }
     
     return shouldSelect;
+}
+
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row
+{
+    return self.viewingTrash ? self.trashListMenu : self.noteListMenu;
 }
 
 - (NSArray *)selectedNotes
@@ -388,7 +398,6 @@
 
 - (void)selectedTaglistRowWasUpdated
 {
-    [self refreshTableViewMenu];
     [self refreshEnabledActions];
     [self refreshPredicate];
     [self selectFirstRow];

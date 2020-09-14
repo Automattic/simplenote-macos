@@ -51,11 +51,7 @@ extension TagListState {
     ///
     @objc
     var indexSetForAllNotesRow: IndexSet {
-        guard let index = rows.firstIndex(of: .allNotes) else {
-            fatalError()
-        }
-
-        return IndexSet(integer: index)
+        IndexSet(integer: indexOfAllNotesTagRow)
     }
 
     /// Returns the Index of the `Tag` Row with the specified Name (If any!)
@@ -71,6 +67,17 @@ extension TagListState {
         }
 
         return nil
+    }
+
+    /// Returns the Index of the `All Notes` Row
+    ///
+    @objc
+    var indexOfAllNotesTagRow: Int {
+        guard let index = rows.firstIndex(of: .allNotes) else {
+            fatalError()
+        }
+
+        return index
     }
 
     /// Returns the location of the First Tag Row.

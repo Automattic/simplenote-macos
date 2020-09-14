@@ -45,13 +45,6 @@ extension NoteListViewController {
         addNoteButton.isEnabled = !viewingTrash
     }
 
-    /// Sets the relevant NSMenu instance, depending to what's being filtered
-    ///
-    @objc
-    func refreshTableViewMenu() {
-        tableView.enclosingScrollView?.menu = viewingTrash ? trashListMenu : noteListMenu
-    }
-
     /// Refreshes the receiver's style
     ///
     @objc

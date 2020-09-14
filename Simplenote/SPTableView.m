@@ -68,12 +68,6 @@
     [super scrollRowToVisible:row];
 }
 
-- (void)didClickTextView:(id)sender
-{
-    // User clicked a text view. Select its underlying row.
-    [self selectRowIndexes:[NSIndexSet indexSetWithIndex:[self rowForView:sender]] byExtendingSelection:NO];
-}
-
 - (NSMenu *)menuForEvent:(NSEvent*)event
 {
     NSInteger row = [self rowForEvent:event];

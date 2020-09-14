@@ -207,6 +207,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 - (void)selectAllNotesTag
 {
     [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
+    [self.tableView scrollRowToVisible:self.state.indexOfAllNotesTagRow];
 
     // Notes:
     //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
