@@ -3,9 +3,6 @@
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
 
-/* Class = "NSTextFieldCell"; title = "Note Title!"; ObjectID = "1104"; Note = "Note Title Placeholder (Don't Translate)"; */
-"1104.title" = "Not Başlığı";
-
 /* Class = "NSMenuItem"; title = "Empty Trash"; ObjectID = "1256"; Note = "Empties the Trash Bin"; */
 "1256.title" = "Çöpü boşalt";
 
@@ -33,14 +30,8 @@
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
 "145.title" = "Diğerlerini Gizle";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "1460"; */
-"1460.title" = "Metin Hücresi";
-
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
 "150.title" = "Tümünü Göster";
-
-/* Class = "NSMenuItem"; title = "Delete Note"; ObjectID = "1505"; */
-"1505.title" = "Not Sil";
 
 /* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
 "1541.title" = "Çıkış Yap";
@@ -53,9 +44,6 @@
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "1748"; Note = "Closes the Main Window"; */
 "1748.title" = "Kapat";
-
-/* Class = "NSTextFieldCell"; title = "No Notes"; ObjectID = "1767"; */
-"1767.title" = "Not Yok";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; Note = "Opens the Window Menu"; */
 "19.title" = "Pencere";
@@ -74,9 +62,6 @@
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
 "199.title" = "Kes";
-
-/* Class = "NSMenuItem"; title = "Move to Trash"; ObjectID = "1z5-RU-iWI"; */
-"1z5-RU-iWI.title" = "Çöpe taşı";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "İmla ve Dil Bilgisi";
@@ -210,8 +195,8 @@
 /* Class = "NSMenuItem"; title = "Help Website"; ObjectID = "492"; Note = "Opens the Help Website"; */
 "492.title" = "Yardım Web Sitesi";
 
-/* Class = "NSMenuItem"; title = "Tags List"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
-"4QQ-5e-Vxl.title" = "Etiket Listesi";
+/* Class = "NSMenuItem"; title = "Tags Sorting"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
+"4QQ-5e-Vxl.title" = "Tags List";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
 "5.title" = "Tümünü Öne Getir";
@@ -222,9 +207,6 @@
 /* Class = "NSMenuItem"; title = "Simplenote"; ObjectID = "56"; Note = "Opens the Simplenote Menu"; */
 "56.title" = "Simplenote";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "568"; */
-"568.title" = "Metin Hücresi";
-
 /* Class = "NSMenu"; title = "Simplenote"; ObjectID = "57"; */
 "57.title" = "Simplenote";
 
@@ -234,14 +216,11 @@
 /* Class = "NSMenu"; title = "Format"; ObjectID = "5HH-LQ-Fk8"; Note = "Format Menu"; */
 "5HH-LQ-Fk8.title" = "Biçim";
 
-/* Class = "NSMenu"; title = "Tags List"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
-"76D-S0-1JD.title" = "Etiket Listesi";
+/* Class = "NSMenu"; title = "Tags Sorting"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
+"76D-S0-1JD.title" = "Tags List";
 
 /* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
 "78.title" = "Yazdır...";
-
-/* Class = "NSMenuItem"; title = "History"; ObjectID = "7Ox-IO-LLQ"; */
-"7Ox-IO-LLQ.title" = "Geçmiş";
 
 /* Class = "NSMenu"; title = "Note"; ObjectID = "81"; Note = "Note Actions Menu"; */
 "81.title" = "Not";
@@ -249,17 +228,8 @@
 /* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
 "83.title" = "Not";
 
-/* Class = "NSButton"; ibShadowedToolTip = "Add Note"; ObjectID = "987"; */
-"987.ibShadowedToolTip" = "Not Ekle";
-
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Info"; ObjectID = "EXM-Do-Iy7"; Note = "Editor Info Button"; */
-"EXM-Do-Iy7.ibShadowedToolTip" = "Bilgi";
-
-/* Class = "NSMenuItem"; title = "Markdown"; ObjectID = "Ejc-Bj-rEL"; */
-"Ejc-Bj-rEL.title" = "Markdown";
 
 /* Class = "NSMenuItem"; title = "Font Size"; ObjectID = "FPg-7U-5Cl"; */
 "FPg-7U-5Cl.title" = "Font Boyutu";
@@ -270,17 +240,8 @@
 /* Class = "NSMenuItem"; title = "Theme"; ObjectID = "Jtf-4C-imn"; Note = "Opens the Theme Settings"; */
 "Jtf-4C-imn.title" = "Tema";
 
-/* Class = "NSMenu"; title = "Notes List"; ObjectID = "L8Y-u8-nu8"; Note = "Note List Settings Menu"; */
-"L8Y-u8-nu8.title" = "Not Listesi";
-
-/* Class = "NSMenuItem"; title = "Publish"; ObjectID = "Lhn-nd-qgk"; */
-"Lhn-nd-qgk.title" = "Yayımla";
-
 /* Class = "NSMenuItem"; title = "Bigger"; ObjectID = "NAj-hV-Pza"; Note = "Increases the Font Size"; */
 "NAj-hV-Pza.title" = "Daha Büyük";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Preview Markdown"; ObjectID = "OMI-hx-wfj"; */
-"OMI-hx-wfj.ibShadowedToolTip" = "Markdown Önizlemesi";
 
 /* Class = "NSMenuItem"; title = "Line Length"; ObjectID = "P9P-ed-21W"; */
 "P9P-ed-21W.title" = "Satır Uzunluğu";
@@ -288,17 +249,14 @@
 /* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
 "Pwd-hR-fBt.title" = "Her Şeyi Dışa Aktar";
 
-/* Class = "NSMenuItem"; title = "Sort Order"; ObjectID = "QGk-SS-2Jf"; Note = "Opens the Note List Sort Order Settings"; */
-"QGk-SS-2Jf.title" = "Sıralama Düzeni";
+/* Class = "NSMenuItem"; title = "Note Sorting"; ObjectID = "QGk-SS-2Jf"; Note = "Opens the Note List Sort Order Settings"; */
+"QGk-SS-2Jf.title" = "Sort Order";
 
 /* Class = "NSMenuItem"; title = "Comfy"; ObjectID = "Qaj-k2-NOz"; Note = "Toggles Comfy Note Display"; */
 "Qaj-k2-NOz.title" = "Rahat";
 
 /* Class = "NSMenuItem"; title = "Privacy Settings"; ObjectID = "RZM-N8-VLN"; Note = "Opens the Privacy Settings"; */
 "RZM-N8-VLN.title" = "Gizlilik Ayarları";
-
-/* Class = "NSMenuItem"; title = "Pin to Top"; ObjectID = "Ryc-RD-9bh"; */
-"Ryc-RD-9bh.title" = "Üste İğnele";
 
 /* Class = "NSMenu"; title = "Theme"; ObjectID = "SIP-Tf-W7J"; Note = "Theme Settings Menu"; */
 "SIP-Tf-W7J.title" = "Tema";
@@ -309,17 +267,11 @@
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "THl-80-myZ"; Note = "Opens the Format Menu"; */
 "THl-80-myZ.title" = "Biçim";
 
-/* Class = "NSTextFieldCell"; title = "Entered of cordial do on no hearted. Yet agreed whence and unable limit…"; ObjectID = "TM7-SJ-chj"; Note = "Note Contents Placeholder (Don't Translate)"; */
-"TM7-SJ-chj.title" = "Entered of cordial do on no hearted. Yet agreed whence and unable limit…";
-
-/* Class = "NSMenu"; title = "Sort Order"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
-"YpJ-fs-p4p.title" = "Sıralama Düzeni";
+/* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
+"YpJ-fs-p4p.title" = "Sort Order";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
 "Zhe-Bb-jvT.title" = "Açık";
-
-/* Class = "NSMenuItem"; title = "Collaborate"; ObjectID = "avN-8J-w5V"; */
-"avN-8J-w5V.title" = "İşbirliği Yap";
 
 /* Class = "NSMenuItem"; title = "Sort Alphabetically"; ObjectID = "axW-cz-MnF"; Note = "Sorts the Tags List Alphabetically"; */
 "axW-cz-MnF.title" = "Alfabetik Olarak Sırala";
@@ -327,17 +279,8 @@
 /* Class = "NSMenuItem"; title = "Full"; ObjectID = "bBW-To-3v3"; Note = "Toggles Full Line Length"; */
 "bBW-To-3v3.title" = "Tam";
 
-/* Class = "NSSearchFieldCell"; placeholderString = "Search"; ObjectID = "dE8-oP-Vx2"; */
-"dE8-oP-Vx2.placeholderString" = "Ara";
-
 /* Class = "NSMenuItem"; title = "Contact Us"; ObjectID = "dkM-vi-cwv"; Note = "Opens the Contact Us Interface"; */
 "dkM-vi-cwv.title" = "Bize ulaşın";
-
-/* Class = "NSTextFieldCell"; title = "Title"; ObjectID = "eVq-2Q-sAB"; Note = "Tag Placeholder (Don't Translate)"; */
-"eVq-2Q-sAB.title" = "Başlık";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Restore"; ObjectID = "fA9-bG-luR"; */
-"fA9-bG-luR.ibShadowedToolTip" = "Geri yükle";
 
 /* Class = "NSMenu"; title = "Note Display"; ObjectID = "fB2-X8-xNp"; Note = "Note Display Settings"; */
 "fB2-X8-xNp.title" = "Not Görüntüsü";
@@ -348,35 +291,17 @@
 /* Class = "NSMenuItem"; title = "Alphabetical"; ObjectID = "i8p-Xx-VpF"; Note = "Toggles Alphabetical Note Sort Order"; */
 "i8p-Xx-VpF.title" = "Alfabetik";
 
-/* Class = "NSMenuItem"; title = "Share"; ObjectID = "iBw-QS-kil"; */
-"iBw-QS-kil.title" = "Paylaş";
-
 /* Class = "NSMenuItem"; title = "Insert Checklist"; ObjectID = "iNS-zx-oXr"; Note = "Inserts a new Checklist"; */
 "iNS-zx-oXr.title" = "Kontrol Listesi Ekle";
 
-/* Class = "NSButton"; ibShadowedToolTip = "Info"; ObjectID = "jyK-U4-rcH"; */
-"jyK-U4-rcH.ibShadowedToolTip" = "Bilgi";
-
 /* Class = "NSMenuItem"; title = "Narrow"; ObjectID = "lMi-2X-rR9"; Note = "Toggles Narrow Line Length"; */
 "lMi-2X-rR9.title" = "Dar";
-
-/* Class = "NSMenuItem"; title = "Notes List"; ObjectID = "lqT-82-IW9"; Note = "Opens the Note List Settings"; */
-"lqT-82-IW9.title" = "Not Listesi";
-
-/* Class = "NSMenu"; title = "More Actions"; ObjectID = "nSc-s9-0oY"; Note = "More Actions Menu"; */
-"nSc-s9-0oY.title" = "Daha fazla eylem";
 
 /* Class = "NSMenuItem"; title = "Focus Mode"; ObjectID = "nrD-mL-W7Q"; Note = "Toggles the Focus Mode"; */
 "nrD-mL-W7Q.title" = "Odak Modu";
 
 /* Class = "NSMenuItem"; title = "Reset"; ObjectID = "oS8-Vc-yog"; Note = "Resets the Font Size"; */
 "oS8-Vc-yog.title" = "Sıfırla";
-
-/* Class = "NSMenuItem"; title = "Note Editor"; ObjectID = "oYc-2J-WVc"; Note = "Opens the Editor Settings"; */
-"oYc-2J-WVc.title" = "Not Düzenleyicisi";
-
-/* Class = "NSTextFieldCell"; title = "Header"; ObjectID = "qGL-DU-S4n"; Note = "Header Placeholder (Don't Translate)"; */
-"qGL-DU-S4n.title" = "Üst Bilgi";
 
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
 "qcT-FY-eHe.title" = "Koyu";
