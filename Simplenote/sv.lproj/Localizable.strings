@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-07 18:54:03+0000 */
+/* Translation-Revision-Date: 2020-08-19 11:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -153,7 +153,7 @@
 "Sign in with WordPress.com" = "Logga in med WordPress.com";
 
 /* Displayed temoprarily while signing up */
-"Signing Up..." = "Signing Up...";
+"Signing Up..." = "Skapar konto...";
 
 /* Alert message displayed when an account has unsynced notes */
 "Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App." = "Vid utloggning kommer alla osynkroniserade anteckningar att tas bort. Kontrollera din anslutning och verifiera dina synkroniserade anteckningar genom att logga in på webbappen.";
