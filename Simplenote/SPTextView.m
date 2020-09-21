@@ -43,7 +43,7 @@
 }
 
 - (BOOL)shouldCalculateInset: (CGFloat)viewWidth {
-    return viewWidth > kMaxEditorWidth && ![[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey];
+    return viewWidth > kMaxEditorWidth && ![[Options shared] editorFullWidth];
 }
 
 - (CGFloat)getAdjustedInsetX: (CGFloat)viewWidth {

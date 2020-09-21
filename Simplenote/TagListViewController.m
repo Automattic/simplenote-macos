@@ -24,14 +24,15 @@ NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginV
 NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
 CGFloat const TagListEstimatedRowHeight                     = 30;
 
+
 @interface TagListViewController ()
 @property (nonatomic, strong) NSMenu            *tagDropdownMenu;
 @property (nonatomic, strong) NSMenu            *trashDropdownMenu;
 @property (nonatomic, strong) NSString          *tagNameBeingEdited;
 @property (nonatomic, strong) NSArray<Tag *>    *tagArray;
 @property (nonatomic, assign) BOOL              menuShowing;
-
 @end
+
 
 @implementation TagListViewController
 
@@ -80,7 +81,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 - (void)startListeningToNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(tagAddedFromEditor:) name:SPTagAddedFromEditorNotificationName object:nil];
     [nc addObserver:self selector:@selector(sortModeWasUpdated:) name:TagSortModeDidChangeNotification object:nil];
 }
 
@@ -101,7 +101,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     self.trashDropdownMenu.autoenablesItems = YES;
 
     [self.trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
-                                      action:@selector(emptyTrashAction:)
+                                      action:@selector(emptyTrashActionWithSender:)
                                keyEquivalent:@""];
 
     for (NSMenuItem *item in self.trashDropdownMenu.itemArray) {
@@ -228,30 +228,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self.tableView selectRowIndexes:index byExtendingSelection:NO];
 }
 
-- (NSArray *)notesWithTag:(Tag *)tag
-{
-    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:@[
-        [NSPredicate predicateForNotesWithDeletedStatus:NO],
-        [NSPredicate predicateForNotesWithTag:tag.name]
-    ]];
-    
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *noteBucket = [appDelegate.simperium bucketForName:@"Note"];
-    
-    // Note:
-    // 'contains' predicate might return Tags that contains our search keyword as a substring.
-    // 
-    NSArray *notes = [noteBucket objectsForPredicate:compound];
-    NSMutableArray *exactMatches = [NSMutableArray array];
-    for (Note *note in notes) {
-        if ([note.tagsArray containsObject:tag.name]) {
-            [exactMatches addObject:note];
-        }
-    }
-    
-    return exactMatches;
-}
-
 - (Tag *)addTagWithName:(NSString *)tagName
 {
     return [self addTagWithName:tagName atIndex:nil];
@@ -279,9 +255,9 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     return newTag;
 }
 
-- (void)tagAddedFromEditor:(NSNotification *)notification
+- (void)editorController:(NoteEditorViewController *)controller didAddNewTag:(NSString *)tag
 {
-    [self addTagWithName:[notification.userInfo objectForKey:@"tagName"]];
+    [self addTagWithName:tag];
     [self loadTags];
 }
 
@@ -300,7 +276,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     newTagName = [newTagName stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     // Brute force updating of all notes with this tag
-    NSArray *notes = [self notesWithTag:renamedTag];
+    NSArray *notes = [self.simperium searchNotesWithTag:renamedTag];
 	for (Note *note in notes) {
         [note stripTag:oldTagName];
         [note addTag:newTagName];
@@ -325,8 +301,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 	
 	Tag* selectedTag = [self selectedTag];
     NSString *tagName = [tag.name copy];
-    
-    NSArray *notes = [self notesWithTag:tag];
+
+    NSArray *notes = [self.simperium searchNotesWithTag:tag];
 	
     // Strip this tag from all notes
 	for (Note *note in notes) {
@@ -334,10 +310,8 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 		[note createPreview];
 	}
     
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    SPBucket *tagBucket = [appDelegate.simperium bucketForName:@"Tag"];
-    [tagBucket deleteObject:tag];
-    [appDelegate.simperium save];
+    [self.simperium.tagsBucket deleteObject:tag];
+    [self.simperium save];
     
     [self loadTags];
     
@@ -424,27 +398,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 	}
 }
 
-- (IBAction)emptyTrashAction:(id)sender
-{
-    [SPTracker trackListTrashEmptied];
-    
-    // Empty it
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:appDelegate.managedObjectContext];
-    fetchRequest.entity = entity;
-    fetchRequest.predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
-    
-    NSError *error;
-    NSArray *items = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    for (Note *note in items) {
-        [appDelegate.managedObjectContext deleteObject:note];
-    }
-    [appDelegate.simperium save];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidEmptyTrashNotification object:self];
-}
-
 
 #pragma mark - NSMenuValidation delegate
 
@@ -457,8 +410,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     
     // For trash dropdown, check if there are deleted notes
     if (menuItem.menu == self.trashDropdownMenu) {
-		SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-        return [appDelegate numDeletedNotes] > 0;
+        return self.simperium.numberOfDeletedNotes > 0;
     }
     
     // Disable menu items for All Notes, Trash, or if you're editing a tag (uses the NSMenuValidation informal protocol)

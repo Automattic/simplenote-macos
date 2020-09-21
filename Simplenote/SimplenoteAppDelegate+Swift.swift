@@ -30,11 +30,18 @@ extension SimplenoteAppDelegate {
     func configureWindow() {
         window.contentViewController = splitViewController
         window.initialFirstResponder = noteEditorViewController.noteEditor
+        window.setFrameAutosaveName(.mainWindow)
     }
 
     @objc
-    func configureSimplenoteControllers() {
+    func configureVersionsController() {
         versionsController = VersionsController(simperium: simperium)
+    }
+
+    @objc
+    func configureEditorController() {
+        noteEditorViewController.tagActionsDelegate = tagListViewController
+        noteEditorViewController.noteActionsDelegate = noteListViewController
     }
 }
 
@@ -55,6 +62,11 @@ extension SimplenoteAppDelegate {
 // MARK: - Actions!
 //
 extension SimplenoteAppDelegate {
+
+    @IBAction
+    func clickedEmptyTrashItem(_ sender: Any) {
+        tagListViewController.emptyTrashAction(sender: sender)
+    }
 
     @IBAction
     func clickedTagsSortModeItem(_ sender: Any) {
@@ -103,7 +115,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        return numDeletedNotes() > .zero
+        return simperium.numberOfDeletedNotes > .zero
     }
 
     func validateExportMenuItem(_ item: NSMenuItem) -> Bool {

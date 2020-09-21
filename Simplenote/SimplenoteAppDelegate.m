@@ -120,7 +120,8 @@
 }
 #endif
 
-- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+- (void)applicationWillFinishLaunching:(NSNotification *)notification
+{
     NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
     [eventManager setEventHandler:self
                       andSelector:@selector(handleGetURLEvent:withReplyEvent:)
@@ -139,7 +140,8 @@
     
 	self.simperium = [self configureSimperium];
 
-    [self configureSimplenoteControllers];
+    [self configureEditorController];
+    [self configureVersionsController];
 
     [self.tagListViewController loadTags];
     [self.noteListViewController loadNotes];
@@ -256,14 +258,6 @@
     [userDefaults synchronize];
     
     [self.noteListViewController setWaitingForIndex:YES];
-}
-
-- (NSInteger)numDeletedNotes
-{
-    SPBucket *notesBucket = [self.simperium bucketForName:@"Note"];
-    NSPredicate *predicate = [NSPredicate predicateForNotesWithDeletedStatus:YES];
-
-    return [notesBucket numObjectsForPredicate:predicate];
 }
 
 - (BOOL)isMainWindowVisible
@@ -478,11 +472,6 @@
     }];
 }
 
-- (void)emptyTrashAction:(id)sender
-{
-    [self.tagListViewController emptyTrashAction:sender];
-}
-
 - (void)searchAction:(id)sender
 {
     // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
@@ -545,10 +534,17 @@
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)hasVisibleWindows
 {
-    if (!hasVisibleWindows) {
-        [self.window setIsVisible:YES];
-        [self.window makeKeyAndOrderFront:self];
+    if (hasVisibleWindows) {
+        return YES;
     }
+
+    if (!self.simperium.user.authenticated) {
+        [self.simperium authenticateIfNecessary];
+        return YES;
+    }
+
+    [self.window setIsVisible:YES];
+    [self.window makeKeyAndOrderFront:self];
     
     return YES;
 }

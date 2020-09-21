@@ -1,9 +1,28 @@
 import Foundation
+import SimplenoteSearch
 
 
 // MARK: - Private Helpers
 //
 extension NoteListViewController {
+
+    /// Setup: TableView
+    ///
+    @objc
+    func setupTableView() {
+        tableView.rowHeight = NoteTableCellView.rowHeight
+        tableView.selectionHighlightStyle = .regular
+        tableView.backgroundColor = .clear
+    }
+
+    /// Setup: Progress Indicator
+    ///
+    @objc
+    func setupProgressIndicator() {
+        progressIndicator.wantsLayer = true
+        progressIndicator.alphaValue = AppKitConstants.alpha0_5
+        progressIndicator.isHidden = true
+    }
 
     /// Setup: SearchBar
     ///
@@ -126,7 +145,7 @@ extension NoteListViewController {
         }
 
         searchViewTopConstraint = searchView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
-        searchViewTopConstraint.isActive = true
+        searchViewTopConstraint?.isActive = true
     }
 }
 
@@ -166,5 +185,150 @@ extension NoteListViewController {
         noteView.refreshAttributedStrings()
 
         return noteView
+    }
+}
+
+
+// MARK: - EditorControllerNoteActionsDelegate
+//
+extension NoteListViewController: EditorControllerNoteActionsDelegate {
+
+    public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
+
+        reloadSynchronously()
+        selectRow(forNoteKey: simperiumKey)
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
+        // The note was just deleted, but our tableView wasn't reload yet:
+        // We'll perform a synchronous reload, while keeping the same selected index!
+        performPerservingSelectedIndex {
+            self.reloadSynchronously()
+        }
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
+        arrayController.rearrangeObjects()
+        selectRow(forNoteKey: simperiumKey)
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
+        arrayController.rearrangeObjects()
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
+        reloadRow(forNoteKey: simperiumKey)
+    }
+}
+
+
+// MARK: - MenuItem(s) Validation
+//
+extension NoteListViewController: NSMenuItemValidation {
+
+    public func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let identifier = menuItem.identifier else {
+            return true
+        }
+
+        switch identifier {
+        case .listDisplayCondensedMenuItem:
+            return validateDisplayCondensedMenuItem(menuItem)
+        case .listDisplayComfyMenuItem:
+            return validateDisplayComfyMenuItem(menuItem)
+        case .listSortAlphaMenuItem:
+            return validateSortAlphaMenuItem(menuItem)
+        case .listSortUpdatedMenuItem:
+            return validateSortUpdatedMenuItem(menuItem)
+        default:
+            return true
+        }
+    }
+
+    func validateDisplayCondensedMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.notesListCondensed ? .on : .off
+        return true
+    }
+
+    func validateDisplayComfyMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.notesListCondensed ? .off : .on
+        return true
+    }
+
+    func validateSortAlphaMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.alphabeticallySortNotes ? .on : .off
+        return true
+    }
+
+    func validateSortUpdatedMenuItem(_ item: NSMenuItem) -> Bool {
+        item.state = Options.shared.alphabeticallySortNotes ? .off : .on
+        return true
+    }
+}
+
+
+// MARK: - Actions
+//
+extension NoteListViewController {
+
+    @IBAction
+    func displayModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.listDisplayCondensedMenuItem
+        Options.shared.notesListCondensed = isCondensedOn
+        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
+    }
+
+    @IBAction
+    func sortModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.listSortAlphaMenuItem
+        Options.shared.alphabeticallySortNotes = isAlphaOn
+        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+    }
+}
+
+
+// MARK: - Notifications
+//
+extension NoteListViewController {
+
+    @objc
+    func displayModeDidChange(_ note: Notification) {
+        performPerservingSelectedIndex {
+            self.tableView.rowHeight = NoteTableCellView.rowHeight
+            self.tableView.reloadData()
+        }
+    }
+
+    @objc
+    func sortModeDidChange(_ note: Notification) {
+        reloadDataAndPreserveSelection()
+    }
+}
+
+
+// MARK: - Helpers
+//
+extension NoteListViewController {
+
+    @objc
+    func performPerservingSelectedIndex(block: () -> Void) {
+        var previouslySelectedIndex = arrayController.selectionIndex
+        block()
+
+        if previouslySelectedIndex == tableView.numberOfRows {
+            previouslySelectedIndex -= 1
+        }
+
+        arrayController.setSelectionIndex(previouslySelectedIndex)
     }
 }

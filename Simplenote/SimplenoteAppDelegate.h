@@ -43,7 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (SimplenoteAppDelegate *)sharedDelegate;
 
 - (IBAction)signOutAction:(nullable id)sender;
-- (IBAction)emptyTrashAction:(nullable id)sender;
 - (IBAction)toggleSidebarAction:(nullable id)sender;
 - (IBAction)ensureMainWindowIsVisible:(nullable id)sender;
 - (IBAction)aboutAction:(nullable id)sender;
@@ -52,7 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
-- (NSInteger)numDeletedNotes;
 - (BOOL)isMainWindowVisible;
 
 @end

@@ -170,9 +170,9 @@
     [self trackAutomatticEventWithName:@"settings_theme_updated" properties:properties];
 }
 
-+ (void)trackSettingsListCondensedEnabled
++ (void)trackSettingsListCondensedEnabled:(BOOL)isOn
 {
-    [self trackAutomatticEventWithName:@"settings_list_condensed_enabled" properties:nil];
+    [self trackAutomatticEventWithName:@"settings_list_condensed_enabled" properties:@{ @"enabled" : @(isOn) }];
 }
 
 

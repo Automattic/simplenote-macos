@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 #define kMinEditorPadding 20
-#define kEditorWidthPreferencesKey @"kEditorWidthPreferencesKey"
 
 
 @protocol SPTextViewDelegate <NSTextViewDelegate>

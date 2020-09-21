@@ -36,7 +36,7 @@ class Options: NSObject {
 //
 extension Options {
 
-    /// Indicates if Tags must be sort Alphabetically
+    /// Indicates if Tags must be sorted Alphabetically
     ///
     var alphabeticallySortTags: Bool {
         get {
@@ -45,6 +45,19 @@ extension Options {
         set {
             defaults.set(newValue, forKey: .alphabeticallySortTags)
             NotificationCenter.default.post(name: .TagSortModeDidChange, object: nil)
+        }
+    }
+
+    /// Indicates if Notes must be sorted Alphabetically
+    ///
+    @objc
+    var alphabeticallySortNotes: Bool {
+        get {
+            defaults.bool(forKey: .alphabeticallySortNotes)
+        }
+        set {
+            defaults.set(newValue, forKey: .alphabeticallySortNotes)
+            NotificationCenter.default.post(name: .NoteListSortModeDidChange, object: nil)
         }
     }
 
@@ -59,6 +72,18 @@ extension Options {
         }
     }
 
+    /// Indicates if the Editor should render in full width mode
+    ///
+    @objc
+    var editorFullWidth: Bool {
+        get {
+            defaults.bool(forKey: .editorFullWidth)
+        }
+        set {
+            defaults.set(newValue, forKey: .editorFullWidth)
+        }
+    }
+
     /// Indicates if the Notes List must render in condensed mode
     ///
     @objc
@@ -68,7 +93,7 @@ extension Options {
         }
         set {
             defaults.set(newValue, forKey: .notesListCondensed)
-            NotificationCenter.default.post(name: .NoteListCondensedDidChange, object: nil)
+            NotificationCenter.default.post(name: .NoteListDisplayModeDidChange, object: nil)
         }
     }
 

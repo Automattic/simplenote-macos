@@ -10,7 +10,6 @@
 #import "SimplenoteAppDelegate.h"
 #import "Note.h"
 #import "Tag.h"
-#import "NoteListViewController.h"
 #import "TagListViewController.h"
 #import "JSONKit+Simplenote.h"
 #import "NSString+Metadata.h"
@@ -24,26 +23,15 @@
 
 
 
-#pragma mark ====================================================================================
-#pragma mark Notifications
-#pragma mark ====================================================================================
-
-NSString * const SPTagAddedFromEditorNotificationName   = @"SPTagAddedFromEditor";
-NSString * const SPWillAddNewNoteNotificationName       = @"SPWillAddNewNote";
-
-
-#pragma mark ====================================================================================
-#pragma mark Constants
-#pragma mark ====================================================================================
+#pragma mark - Constants
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
 static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
 
 
-#pragma mark ====================================================================================
-#pragma mark Private
-#pragma mark ====================================================================================
+
+#pragma mark - Private
 
 @interface NoteEditorViewController() <NSMenuDelegate,
                                         NSTextDelegate,
@@ -65,9 +53,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 @end
 
 
-#pragma mark ====================================================================================
-#pragma mark NoteEditorViewController
-#pragma mark ====================================================================================
+
+#pragma mark - NoteEditorViewController
 
 @implementation NoteEditorViewController
 
@@ -121,9 +108,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Realtime Markdown Support
     self.inputHandler = [TextViewInputHandler new];
-    
-    int lineLengthPosition = [[NSUserDefaults standardUserDefaults] boolForKey:kEditorWidthPreferencesKey] ? 1 : 0;
-    [self updateLineLengthMenuForPosition:lineLengthPosition];
 
     self.noteScrollPositions = [[NSMutableDictionary alloc] init];
     
@@ -136,13 +120,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self startListeningToScrollNotifications];
 
     [self applyStyle];
-}
-
-// TODO: Work in Progress. Decouple with a delegate please
-//
-- (NoteListViewController *)noteListViewController
-{
-    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
 }
 
 - (void)save
@@ -389,7 +366,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
     // Update the note list preview
-    [self.noteListViewController reloadRowForNoteKey:self.note.simperiumKey];
+    [self.noteActionsDelegate editorController:self updatedNoteWithSimperiumKey:self.note.simperiumKey];
 }
 
 
@@ -450,8 +427,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 	[self save];
     
     // Update the list
-    [notesArrayController rearrangeObjects];
-    [self.noteListViewController selectRowForNoteKey:self.note.simperiumKey];
+    [self.noteActionsDelegate editorController:self pinnedNoteWithSimperiumKey:self.note.simperiumKey];
 }
 
 - (IBAction)markdownAction:(id)sender
@@ -487,14 +463,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [SPTracker trackEditorNoteCreated];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:SPWillAddNewNoteNotificationName object:self];
     
     // Save current note first
     self.note.content = [self.noteEditor plainTextContent];
     [self save];
-    
-    [notesArrayController setSelectsInsertedObjects:YES];
-    
+
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     [appDelegate ensureMainWindowIsVisible:nil];
     
@@ -511,20 +484,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self displayNote:newNote];
     [self save];
 
-    [notesArrayController rearrangeObjects];
-    [tableView reloadData];
+    [self.noteActionsDelegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
 
-    // Don't perform selection until the list has refreshed in the next run loop
-    [self performSelector:@selector(prepareForNewNote:) withObject:newNote afterDelay:0];
-}
-
-- (void)prepareForNewNote:(Note *)newNote
-{
-    [self.noteListViewController selectRowForNoteKey:newNote.simperiumKey];
-    [tableView scrollRowToVisible:[tableView selectedRow]];
-    
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    [appDelegate.window makeFirstResponder:self.noteEditor];
+    [self.view.window makeFirstResponder:self.noteEditor];
 }
 
 - (IBAction)deleteAction:(id)sender
@@ -535,16 +497,18 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         }
         
         [SPTracker trackEditorNoteDeleted];
-        [self.noteListViewController deleteNote:noteToDelete];
+        noteToDelete.deleted = YES;
+        [self.noteActionsDelegate editorController:self deletedNoteWithSimperiumKey:noteToDelete.simperiumKey];
     }
+
+    [self save];
 }
 
 - (IBAction)restoreAction:(id)sender
 {
     self.note.deleted = NO;
     [self save];
-    [notesArrayController rearrangeObjects];
-    [tableView reloadData];
+    [self.noteActionsDelegate editorController:self restoredNoteWithSimperiumKey:self.note.simperiumKey];
     [self displayNote:nil];
 }
 
@@ -584,10 +548,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     for (NSString *token in tokens) {
         Tag *tag = [simperium searchTagWithName:token];
         if (!tag && ![token containsEmailAddress]) {
-            NSDictionary *userInfo = @{@"tagName":token};
-            [[NSNotificationCenter defaultCenter] postNotificationName:SPTagAddedFromEditorNotificationName
-                                                                object:self
-                                                              userInfo:userInfo];
+            [self.tagActionsDelegate editorController:self didAddNewTag:token];
         }
     }
 
@@ -758,35 +719,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     if (self.isDisplayingMarkdown) {
         [self dismissMarkdownPreview];
     } else {
-        [self displayMarkdownPreview:self.note.content];
+        [self displayMarkdownPreview:self.note];
     }
 
     [self refreshEditorActions];
     [self refreshToolbarActions];
-}
-
-- (IBAction)toggleEditorWidth:(id)sender
-{
-    NSMenuItem *item = (NSMenuItem *)sender;
-    if (item.state == NSOnState) {
-        return;
-    }
-    
-    [self updateLineLengthMenuForPosition:item.tag];
-    [self.noteEditor setNeedsDisplay:YES];
-}
-
-- (void)updateLineLengthMenuForPosition:(NSInteger)position
-{
-    for (NSMenuItem *menuItem in lineLengthMenu.itemArray) {
-        if (menuItem.tag == position) {
-            [menuItem setState:NSOnState];
-        } else {
-            [menuItem setState:NSOffState];
-        }
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setBool:position == 1 forKey:kEditorWidthPreferencesKey];
 }
 
 - (void)insertChecklistAction:(id)sender
