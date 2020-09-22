@@ -6,7 +6,7 @@ import XCTest
 //
 class StringInterlinkTests: XCTestCase {
 
-    ///
+    /// Verifies that `interlinkKeyword(at:)` returns nil whenever the `[keyword` is not located at the left hand side of the specified location
     ///
     func testInterlinkKeywordReturnsNilWheneverTheSpecifiedLocationDoesNotContainTrailingOpeningBrackets() {
         let keyword = "Some long keyword should be here"
@@ -20,26 +20,8 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-    ///
-    ///
-    func testInterlinkKeywordReturnsTheTextOnTheLeftHandSideOfTheSpecifiedLocation() {
-        let keyword = "Some long keyword should be here"
-        let lhs = "irrelevant prefix string here"
-        let text = lhs + "[" + keyword
-
-        let rangeOfKeyword = text.range(of: keyword)!
-        let locationOfKeyword = text.location(for: rangeOfKeyword.lowerBound)
-
-        for location in locationOfKeyword...text.count {
-            let currentIndex = text.index(for: location)
-            let expectedKeywordSlice = String(text[rangeOfKeyword.lowerBound ..< currentIndex])
-            let resultingKeywordSlice = text.interlinkKeyword(at: location) ?? ""
-
-            XCTAssertEqual(resultingKeywordSlice, expectedKeywordSlice)
-        }
-    }
-
-    ///
+    /// Verifies that `interlinkKeyword(at:)` returns the `[keyword substring` at the specified location
+    /// We use a `sample text containing [a simplenote innerlink`, and verify the keyword on the left hand side is always returned
     ///
     func testInterlinkKeywordReturnsTheTextOnTheLeftHandSideOfTheSpecifiedLocationAndPerformsSuper() {
         let keyword = "Some long keyword should be here"
@@ -58,14 +40,14 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-    ///
+    /// Verifies that `interlinkKeyword(at:)` returns nil whenever the receiver contains an Opening Bracket, but no text
     ///
     func testInterlinkKeywordReturnsNilWheneverThereIsNoTextAfterOpeningBracket() {
         let text = "["
         XCTAssertNil(text.interlinkKeyword(at: .zero))
     }
 
-    ///
+    /// Verifies that `interlinkKeyword(at:)` returns nil whenever the receiver contains a properly closed Interlink
     ///
     func testInterlinkKeywordReturnsNilWheneverTheBracketsAreClosed() {
         let text = "irrelevant prefix string here [Some text should also go here maybe!]"
@@ -75,7 +57,7 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-    ///
+    /// Verifies that `interlinkKeyword(at:)` can extract a new keyword being edited, located in between two closed keywords
     ///
     func testInterlinkKeywordReturnsTheProperSubstringWhenEditingSomeNewLinkInBetweenTwoProperlyFormedLinks() {
         let keyword = "new keyword"
@@ -133,7 +115,7 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertNil(result)
     }
 
-    ///
+    /// Verifies that `trailingLookupKeyword(opening: closing)` returns nil whenever the receiver contains a closed keyword
     ///
     func testTrailingLookupKeywordReturnsNilWhenTheLookupKeywordIsClosedYetEmpty() {
         let text = "[]"
@@ -142,7 +124,7 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertNil(result)
     }
 
-    ///
+    /// Verifies that `trailingLookupKeyword(opening: closing)` returns nil whenever the receiver contains multiple closed keywords
     ///
     func testTrailingLookupKeywordReturnsNilWhenThereAreNoUnclosedLookupKeywords() {
         let text = "[keyword 1] lalalala [keyword 2] lalalalaa [keyword 3]"
@@ -151,7 +133,8 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertNil(result)
     }
 
-    ///
+    /// Verifies that `trailingLookupKeyword(opening: closing)` returns any trailing `[lookup keyword`
+    /// - Note: It must not contain a closing `]`!
     ///
     func testTrailingLookupKeywordReturnsTheKeywordAfterTheOpeningCharacter() {
         let keyword = "some keyword here"
@@ -161,7 +144,7 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(result, keyword)
     }
 
-    ///
+    /// Verifies that `trailingLookupKeyword(opening: closing)` returns the trailing `[lookup keyword`, whenever there's more than one keyword
     ///
     func testTrailingLookupKeywordReturnsTheLastKeywordWhenThereAreManyKeywords() {
         let keyword1 = "some keyword here"
@@ -173,7 +156,7 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(result, keyword2)
     }
 
-    ///
+    /// Verifies that `trailingLookupKeyword(opening: closing)` works as expected, when the receiver actually starts with the `[lookup keyword`
     ///
     func testTrailingLookupKeywordWorksAsExpectedWheneverTheInputStringStartsWithTheOpeningCharacter() {
         let keyword = "some keyword here"
@@ -183,7 +166,7 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(result, keyword)
     }
 
-    ///
+    /// Verifies that `trailingLookupKeyword(opening: closing)` returns nil whenever the receiver only contains an  opening character `[`
     ///
     func testTrailingLookupKeywordReturnsNilWhenTheActualKeywordIsEmpty() {
         let text = "["
@@ -192,7 +175,9 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertNil(result)
     }
 
-    ///
+
+
+    /// Verifies that `split(at:)` properly cuts the receiver at the specified location
     ///
     func testSplitAtLocationReturnsTheExpectedSubstrings() {
         let lhs = "some random text on the left hand side"
@@ -204,7 +189,7 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(rhs, splitRHS)
     }
 
-    ///
+    /// Verifies that `split(at:)` properly handles Empty Strings
     ///
     func testSplitAtLocationReturnsEmptyStringsWhenTheReceiverIsEmpty() {
         let (lhs, rhs) = "".split(at: .zero)
@@ -213,7 +198,7 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertTrue(rhs.isEmpty)
     }
 
-    ///
+    /// Verifies that `split(at:)` returns an empty `RHS` string, whenever the cut location matches the end of the receiver
     ///
     func testSplitAtLocationProperlyHandlesLocationsAtTheEndOfTheString() {
         let text = "this is supposed to be a single but relatively long line of text"
@@ -223,7 +208,9 @@ class StringInterlinkTests: XCTestCase {
         XCTAssertEqual(rhs, "")
     }
 
-    ///
+
+
+    /// Verifies that `relativeLocation(for: in:)` does not alter the Location, whenever the specified Range covers the full string
     ///
     func testRelativeLocationForLocationReturnsTheUnmodifiedLocationWhenTheRangeEnclosesTheFullString() {
         let text = "this is supposed to be a single but relatively long line of text"
@@ -237,7 +224,7 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-    ///
+    /// Verifies that `relativeLocation(for: in:)` converts the specified Absolute Location into a Relative Location, with regards of a specified range
     ///
     func testRelativeLocationForLocationReturnsTheExpectedLocationWhenTheRangeIsNotTheFullString() {
         let text = "this is supposed to be a single but relatively long line of text"
@@ -251,7 +238,9 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-    ///
+
+
+    /// Verifies that `line(at:)` returns a touple with Range + Text for the Line at the specified Location
     ///
     func testLineAtLocationReturnsTheExpectedLineForTheSpecifiedLocation() {
         let lines = [
@@ -274,7 +263,9 @@ class StringInterlinkTests: XCTestCase {
         }
     }
 
-    ///
+
+
+    /// Verifies that `rangeOfLine(at:)` returns `nil` whenever the specified location exceeds the receiver's length.
     ///
     func testLineAtLocationReturnsNilWheneverTheLocationExceedsTheValidBounds() {
         let text = "text and some more text yes!"
