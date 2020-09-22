@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -375,9 +375,6 @@
                                     <rect key="frame" x="254" y="0.0" width="16" height="570"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <connections>
-                                    <outlet property="menu" destination="JPb-EX-UT9" id="NVd-l6-mBN"/>
-                                </connections>
                             </scrollView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
                                 <rect key="frame" x="10" y="327" width="250" height="23"/>
@@ -418,25 +415,58 @@
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="arrayController" destination="QdT-mP-kT8" id="7HE-P5-XlT"/>
                         <outlet property="backgroundView" destination="Dfi-py-m83" id="OsW-dl-qhP"/>
+                        <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="searchField" destination="cvh-C8-b0b" id="R6h-sR-ND1"/>
                         <outlet property="searchView" destination="weN-h2-sJL" id="Pbw-Ih-6lA"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
                         <outlet property="topDividerView" destination="s2j-Xp-jGd" id="7D1-cA-1N9"/>
+                        <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
                 </viewController>
                 <menu id="JPb-EX-UT9" userLabel="Note List Menu">
                     <items>
-                        <menuItem title="Delete Note" identifier="listDeleteNoteMenuItem" id="sEB-rr-DQo" userLabel="Delete Note">
+                        <menuItem title="Pin to Top" identifier="listPinMenuItem" id="PE0-42-5TG">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="deleteAction:" target="JtV-0Z-Zh8" id="6di-Ws-hmv"/>
+                                <action selector="pinWasPressed:" target="JtV-0Z-Zh8" id="LR0-Q4-spr"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Copy Internal Link" identifier="listCopyInterlinkMenuItem" id="n5C-YM-CGx">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="copyInterlinkWasPressed:" target="JtV-0Z-Zh8" id="mP7-0c-YCD"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Move to Trash" identifier="listTrashNoteMenuItem" id="sEB-rr-DQo" userLabel="Delete Note">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="deleteAction:" target="JtV-0Z-Zh8" id="C8N-3T-A1n"/>
                             </connections>
                         </menuItem>
                     </items>
                     <connections>
                         <outlet property="delegate" destination="JtV-0Z-Zh8" id="W7P-Gb-i6g"/>
+                    </connections>
+                </menu>
+                <menu id="cOD-m3-0ET" userLabel="Trash List Menu">
+                    <items>
+                        <menuItem title="Restore" identifier="listRestoreNoteMenuItem" id="O9Z-zU-i3L">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="restoreWasPressed:" target="JtV-0Z-Zh8" id="272-Hb-IeN"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Delete Forever" identifier="listDeleteForeverMenuItem" id="lN9-EY-5A1">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="deleteFromTrashWasPressed:" target="JtV-0Z-Zh8" id="YQM-M8-UW4"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="JtV-0Z-Zh8" id="eTf-Hn-ETC"/>
                     </connections>
                 </menu>
                 <arrayController mode="entity" entityName="Note" fetchPredicateFormat="deleted == 0" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="QdT-mP-kT8" customClass="NotesArrayController"/>
@@ -701,6 +731,12 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="markdownAction:" target="owM-kh-Bm6" id="eT1-AW-AZV"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Copy Internal Link" identifier="editorCopyInterlinkMenuItem" id="6b8-Xr-2VS">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="copyInterlinkWasPressedWithSender:" target="owM-kh-Bm6" id="Qda-6t-kVe"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Share" identifier="editorShareMenuItem" id="AAE-bz-XTn">

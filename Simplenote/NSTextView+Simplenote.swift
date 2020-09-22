@@ -111,12 +111,14 @@ extension NSTextView {
     ///     -   List Markers will be replaced by Text Attachments
     ///     -   Our UndoManager will be reset right after processing the Lists. Otherwise CTRL + Z would
     ///         result in Attachments replacee by `-[]`!
+    ///     -   Links will be processed asynchronously
     ///
     @objc
     func displayNote(content: String) {
         string = content
         textStorage?.processChecklists(with: .simplenoteTextColor)
         undoManager?.removeAllActions()
+        processLinksInDocumentAsynchronously()
     }
 
     /// Returns the content represented as Plain Text
@@ -124,6 +126,39 @@ extension NSTextView {
     @objc
     func plainTextContent() -> String {
         return NSAttributedStringToMarkdownConverter.convert(string: attributedString())
+    }
+}
+
+
+// MARK: - Linkification
+//
+extension NSTextView {
+
+    /// Asynchronously Processess Links in the Document
+    ///
+    @objc
+    func processLinksInDocumentAsynchronously() {
+        DispatchQueue.main.async(execute: processLinksInDocument)
+    }
+
+    /// Processess Links in the document
+    ///
+    /// - Important: This API temporarily disables the `delegate`.
+    /// - Note: Invoking `checkTextInDocument` results in a call to`delegate.textDidChange`.
+    ///         This causes the Editor to update the Note's Modification Date, and may affect the List Sort Order (!)
+    ///
+    func processLinksInDocument() {
+        /// Disable the Delegate:
+        let theDelegate = delegate
+        delegate = nil
+
+        /// Issue #472: Linkification should not be undoable
+        undoManager?.disableUndoRegistration()
+        checkTextInDocument(nil)
+        undoManager?.enableUndoRegistration()
+
+        /// Restore the Delegate
+        delegate = theDelegate
     }
 }
 

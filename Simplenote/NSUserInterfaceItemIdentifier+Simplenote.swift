@@ -32,12 +32,17 @@ extension NSUserInterfaceItemIdentifier {
 
     /// Identifiers: Notes List
     ///
-    static let listDeleteNoteMenuItem       = NSUserInterfaceItemIdentifier(rawValue: "listDeleteNoteMenuItem")
+    static let listCopyInterlinkMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "listCopyInterlinkMenuItem")
+    static let listDeleteForeverMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "listDeleteForeverMenuItem")
+    static let listPinMenuItem              = NSUserInterfaceItemIdentifier(rawValue: "listPinMenuItem")
+    static let listRestoreNoteMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "listRestoreNoteMenuItem")
+    static let listTrashNoteMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "listTrashNoteMenuItem")
 
     /// Identifiers: Editor
     ///
     static let editorPinMenuItem            = NSUserInterfaceItemIdentifier(rawValue: "editorPinMenuItem")
     static let editorMarkdownMenuItem       = NSUserInterfaceItemIdentifier(rawValue: "editorMarkdownMenuItem")
+    static let editorCopyInterlinkMenuItem  = NSUserInterfaceItemIdentifier(rawValue: "editorCopyInterlinkMenuItem")
     static let editorShareMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorShareMenuItem")
     static let editorHistoryMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "editorHistoryMenuItem")
     static let editorTrashMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorTrashMenuItem")

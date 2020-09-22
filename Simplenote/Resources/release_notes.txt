@@ -1,3 +1,4 @@
-- Fixed a bug in which the Tags List wouldn't accept mouse clicks
-- Markdown Preview will now refresh, whenever the Note is updated
-- Fixed a bug that prevented the main Window from restoring its last location
+- Editor's Actions now lets you copy a Note's Internal Link
+- Added support to the Notes List for pinning, unpinning, deleting and restoring with a right click
+- Clicking over a Note Link now causes the editor to display the referenced note
+- Fixed Markdown Preview's Highlight Color, when in Dark Mode

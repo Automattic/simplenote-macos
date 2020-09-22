@@ -1,10 +1,12 @@
 {
-  "branch": "main",
-  "pinned_hash": "ded7d2f405d3e4cc012f7e1d780c463bac39b2ee",
+  "project_name": "simplenote-macos",
+  "branch": "trunk",
+  "pinned_hash": "bd7b5b47ee8236cc9fbc7b95dae537e4bde07a0b",
   "files_to_copy": [
     {
       "file": "macOS/simplenote/config.plist",
-      "destination": "Simplenote/config.plist"
+      "destination": "Simplenote/config.plist",
+      "encrypt": false
     }
   ],
   "file_dependencies": [

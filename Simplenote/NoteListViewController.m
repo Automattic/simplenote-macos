@@ -29,6 +29,8 @@
 @property (nonatomic, strong) IBOutlet NSView               *searchView;
 @property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
+@property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
 @property (nonatomic, strong) NSString                      *oldTags;
 @property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
@@ -173,6 +175,11 @@
 
 #pragma mark - Table view
 
+- (BOOL)displaysNoteForKey:(NSString *)key
+{
+    return [self rowForNoteKey:key] != -1;
+}
+
 - (NSInteger)rowForNoteKey:(NSString *)key
 {
     NSInteger row = 0;
@@ -241,6 +248,11 @@
     }
     
     return shouldSelect;
+}
+
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row
+{
+    return self.viewingTrash ? self.trashListMenu : self.noteListMenu;
 }
 
 - (NSArray *)selectedNotes

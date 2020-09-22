@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackApplicationTerminated;
 
 #pragma mark - Note Editor
++ (void)trackEditorCopiedInternalLink;
 + (void)trackEditorChecklistInserted;
 + (void)trackEditorNoteCreated;
 + (void)trackEditorNoteDeleted;
@@ -42,7 +43,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackEditorCollaboratorsAccessed;
 
 #pragma mark - Note List
++ (void)trackListCopiedInternalLink;
 + (void)trackListNoteDeleted;
++ (void)trackListNoteDeletedForever;
++ (void)trackListNotePinningToggled;
++ (void)trackListNoteRestored;
 + (void)trackListNoteOpened;
 + (void)trackListTrashEmptied;
 + (void)trackListNotesSearched;

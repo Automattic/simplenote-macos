@@ -27,7 +27,7 @@ class MarkdownViewController: NSViewController {
 
     /// Allowed Outgoing link Schemes
     ///
-    private let allowedOutboundSchemes = ["http", "https", "mailto"]
+    private let allowedOutboundSchemes = ["http", "https", "mailto", SimplenoteConstants.simplenoteScheme]
 
     /// Markdown Text to be rendered
     ///
