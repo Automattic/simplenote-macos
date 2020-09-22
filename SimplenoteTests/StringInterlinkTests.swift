@@ -90,12 +90,41 @@ class StringInterlinkTests: XCTestCase {
             let expectedKeywordSlice = String(text[rangeOfKeyword.lowerBound ..< currentIndex])
             let resultingKeywordSlice = text.interlinkKeyword(at: location) ?? ""
 
-            NSLog("# Expected: \(expectedKeywordSlice) Resulting: \(resultingKeywordSlice)")
             XCTAssertEqual(resultingKeywordSlice, expectedKeywordSlice)
         }
     }
 
+    /// Verifies that `containsUnbalancedClosingCharacter` returns true whenever the receiver contains unbalanced balanced `[]` pairs
     ///
+    func testContainsUnbalancedClosingCharacterReturnsTrueWhenTheReceiverContainsUnbalancedClosingCharacters() {
+        let samples = [
+            "[][",
+            "][]",
+            "[[]][",
+            "[[]]["
+        ]
+
+        for sample in samples {
+            XCTAssertTrue(sample.containsUnbalancedClosingCharacter(opening: Character("["), closing: Character("]")))
+        }
+    }
+
+    /// Verifies that `containsUnbalancedClosingCharacter` returns false whenever the receiver contains properly balanced `[]` pairs
+    ///
+    func testContainsUnbalancedClosingCharacterReturnsFalseWhenTheReceiverDoesNotContainUnbalancedClosingCharacters() {
+        let samples = [
+            "[]",
+            "[[]]",
+            "[[[]]]",
+            "[][][]"
+        ]
+
+        for sample in samples {
+            XCTAssertFalse(sample.containsUnbalancedClosingCharacter(opening: Character("["), closing: Character("]")))
+        }
+    }
+
+    /// Verifies that `trailingLookupKeyword(opening: closing)` returns nil whenever the receiver does not contain any lookup keywords
     ///
     func testTrailingLookupKeywordReturnsNilWhenThereAreNoLookupKeywords() {
         let text = "qwertyuiop"
