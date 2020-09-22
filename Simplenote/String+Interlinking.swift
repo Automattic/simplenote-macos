@@ -21,7 +21,7 @@ extension String {
         return lhs.trailingLookupKeyword(opening: opening, closing: closing)
     }
 
-    ///
+    /// Returns **true** whenever the receiver contains an unbalanced Closing Character
     ///
     func containsUnbalancedClosingCharacter(opening: Character, closing: Character) -> Bool {
         var stack = [Character]()
@@ -45,7 +45,11 @@ extension String {
         return stack.isEmpty == false
     }
 
+    /// Looks up for the first `Opening Character` occurrence, starting from the tail of the receiver.
+    /// If located, this API will return the substring succeeding such character, only if such does not contain the Closing Character.
     ///
+    /// - Example: `Text [keyword`
+    /// - Result: `keyword`
     ///
     func trailingLookupKeyword(opening: Character, closing: Character) -> String? {
         guard let lastOpeningCharacterIndex = lastIndex(of: opening) else {
@@ -62,7 +66,7 @@ extension String {
         return String(tailString)
     }
 
-    ///
+    /// Splits the receiver at the specified location
     ///
     func split(at location: Int) -> (String, String) {
         let locationAsIndex = index(for: location)
@@ -72,25 +76,29 @@ extension String {
         return (lhs, rhs)
     }
 
-    ///
+    /// Converts a Location (expressed as Integer) into a String.Index
     ///
     func index(for location: Int) -> String.Index {
         return index(startIndex, offsetBy: location)
     }
 
-    ///
+    /// Converts a String.Index into a Location (expressed as integer)
     ///
     func location(for index: String.Index) -> Int {
         return distance(from: startIndex, to: index)
     }
 
-    ///
+    /// Returns the Relative Location of a given Location, within the specified range.
+    /// For instance:
+    /// - Location: 10
+    /// - Range: (Location = 10, Length = 10)
+    /// - Relative Location: Zero!
     ///
     func relativeLocation(for location: Int, in range: Range<String.Index>) -> Int {
         return location - self.location(for: range.lowerBound)
     }
 
-    /// Returns the Line at the specified location
+    /// Returns a touple with (Range, Text) of the Line at the specified location
     ///
     func line(at location: Int) -> (Range<String.Index>, String)? {
         guard let range = rangeOfLine(at: location) else {
