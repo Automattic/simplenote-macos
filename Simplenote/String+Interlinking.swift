@@ -5,7 +5,16 @@ import Foundation
 //
 extension String {
 
+    /// Returns the Interlink Keyword at the receiver's location, if any.
     ///
+    /// - Parameters:
+    ///     - location: Location to analyze
+    ///     - opening: Opening Keyword Character
+    ///     - closing: Closing Keyword Character
+    ///
+    /// - Returns: Keyword, if any.
+    /// - Note: This API extracts the keyword at a given location, with this shape: `[keyword`.
+    /// - Important: If a closing character is found on the right hand side, this API returns nil
     ///
     func interlinkKeyword(at location: Int, opening: Character = Character("["), closing: Character = Character("]")) -> String? {
         guard let (lineRange, lineText) = line(at: location) else {
