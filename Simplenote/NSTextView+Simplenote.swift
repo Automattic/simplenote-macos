@@ -259,3 +259,31 @@ extension NSTextView {
         setSelectedRange(newSelectedRange)
     }
 }
+
+
+// MARK: - Geometry
+//
+extension NSTextView {
+
+    /// Returns the NSRect enclosing the cursor
+    ///
+    var cursorRect: NSRect {
+        var caretRange = selectedRange()
+        caretRange.length = .zero
+
+        return boundingRect(for: caretRange)
+    }
+
+    /// Returns the Bounding Rect for the specified NSRange
+    ///
+    func boundingRect(for range: NSRange) -> NSRect {
+        guard let layoutManager = layoutManager, let textContainer = textContainer else {
+            return .zero
+        }
+
+        let range = layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
+        let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
+
+        return NSOffsetRect(rect, textContainerOrigin.x, textContainerOrigin.y)
+    }
+}
