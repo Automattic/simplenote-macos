@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "SimplenoteInterlinks",
+        "repositoryURL": "git@github.com:Automattic/SimplenoteInterlinks-Swift.git",
+        "state": {
+          "branch": "issue/string-interlink-extensions",
+          "revision": "b37194b796b001f90668ec4b7fef74f85f3b696b",
+          "version": null
+        }
+      },
+      {
         "package": "SimplenoteSearch",
         "repositoryURL": "git@github.com:Automattic/SimplenoteSearch-Swift.git",
         "state": {

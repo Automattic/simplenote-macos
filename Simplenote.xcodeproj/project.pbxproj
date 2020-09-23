@@ -142,6 +142,7 @@
 		B50FB224251BB6110028DE25 /* Suggestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Suggestions.storyboard */; };
 		B50FB239251BF9F90028DE25 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB238251BF9F90028DE25 /* NSView+Simplenote.swift */; };
 		B50FB23A251BF9F90028DE25 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB238251BF9F90028DE25 /* NSView+Simplenote.swift */; };
+		B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = B50FB24B251C08910028DE25 /* SimplenoteInterlinks */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */; };
@@ -196,9 +197,6 @@
 		B54F9A6824D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */; };
 		B54F9A6A24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */; };
 		B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */; };
-		B55011B8250C107E00A95EF5 /* String+Interlinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55011B7250C107E00A95EF5 /* String+Interlinking.swift */; };
-		B55011B9250C107E00A95EF5 /* String+Interlinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55011B7250C107E00A95EF5 /* String+Interlinking.swift */; };
-		B55011BB250C10C700A95EF5 /* StringInterlinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55011BA250C10C700A95EF5 /* StringInterlinkTests.swift */; };
 		B551187224E33BC2007B11E3 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551187124E33BC2007B11E3 /* ClipView.swift */; };
 		B551187324E33BC2007B11E3 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551187124E33BC2007B11E3 /* ClipView.swift */; };
 		B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
@@ -558,8 +556,6 @@
 		B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplenoteConstants.swift; sourceTree = "<group>"; };
 		B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Simplenote.swift"; sourceTree = "<group>"; };
 		B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTextFormatter.swift; sourceTree = "<group>"; };
-		B55011B7250C107E00A95EF5 /* String+Interlinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Interlinking.swift"; sourceTree = "<group>"; };
-		B55011BA250C10C700A95EF5 /* StringInterlinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInterlinkTests.swift; sourceTree = "<group>"; };
 		B551187124E33BC2007B11E3 /* ClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipView.swift; sourceTree = "<group>"; };
 		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
 		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
@@ -685,6 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */,
+				B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */,
 				2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */,
 				2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */,
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
@@ -1061,7 +1058,6 @@
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
 				B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
-				B55011B7250C107E00A95EF5 /* String+Interlinking.swift */,
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
@@ -1173,7 +1169,6 @@
 				B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */,
 				B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */,
 				B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */,
-				B55011BA250C10C700A95EF5 /* StringInterlinkTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1338,6 +1333,7 @@
 			packageProductDependencies = (
 				B5609AE924EEC9910097777A /* SimplenoteSearch */,
 				B5609AF124EF17270097777A /* SimplenoteFoundation */,
+				B50FB24B251C08910028DE25 /* SimplenoteInterlinks */,
 			);
 			productName = Simplenote;
 			productReference = 26F72A8814032D2A00A7935E /* Simplenote.app */;
@@ -1451,6 +1447,7 @@
 			packageReferences = (
 				B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */,
 				B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */,
+				B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */,
 			);
 			productRefGroup = 26F72A8914032D2A00A7935E /* Products */;
 			projectDirPath = "";
@@ -1840,7 +1837,6 @@
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
-				B55011B8250C107E00A95EF5 /* String+Interlinking.swift in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
 				46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */,
 				B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
@@ -1982,7 +1978,6 @@
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
-				B55011B9250C107E00A95EF5 /* String+Interlinking.swift in Sources */,
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
@@ -2033,7 +2028,6 @@
 				B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */,
 				B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */,
 				B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */,
-				B55011BB250C10C700A95EF5 /* StringInterlinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2604,6 +2598,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Automattic/SimplenoteInterlinks-Swift.git";
+			requirement = {
+				branch = "issue/string-interlink-extensions";
+				kind = branch;
+			};
+		};
 		B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteSearch-Swift.git";
@@ -2623,6 +2625,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B50FB24B251C08910028DE25 /* SimplenoteInterlinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */;
+			productName = SimplenoteInterlinks;
+		};
 		B5609AE724EEC9860097777A /* SimplenoteSearch */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */;
