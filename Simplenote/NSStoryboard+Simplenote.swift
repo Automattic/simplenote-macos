@@ -12,6 +12,14 @@ extension NSStoryboard {
 
         return target
     }
+
+    func instantiateWindowController<T: NSWindowController>(ofType type: T.Type) -> T {
+        guard let target = instantiateController(withIdentifier: T.sceneIdentifier) as? T else {
+            fatalError()
+        }
+
+        return target
+    }
 }
 
 
@@ -19,6 +27,7 @@ extension NSStoryboard {
 //
 extension NSStoryboard.Name {
     static let main = "Main"
+    static let suggestions = "Suggestions"
 }
 
 
@@ -30,3 +39,14 @@ extension NSViewController {
         classNameWithoutNamespaces
     }
 }
+
+
+// MARK: - NSStoryboard.SceneIdentifier + NSWindowController
+//
+extension NSWindowController {
+
+    static var sceneIdentifier: NSStoryboard.SceneIdentifier {
+        classNameWithoutNamespaces
+    }
+}
+
