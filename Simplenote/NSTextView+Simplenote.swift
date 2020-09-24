@@ -265,15 +265,6 @@ extension NSTextView {
 //
 extension NSTextView {
 
-    /// Returns the NSRect enclosing the cursor
-    ///
-    var cursorRect: NSRect {
-        var caretRange = selectedRange()
-        caretRange.length = .zero
-
-        return boundingRect(for: caretRange)
-    }
-
     /// Returns the Bounding Rect for the specified NSRange
     ///
     func boundingRect(for range: NSRange) -> NSRect {
@@ -281,9 +272,10 @@ extension NSTextView {
             return .zero
         }
 
-        let range = layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
-        let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
+        let glyphRange = layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
+        let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
 
         return NSOffsetRect(rect, textContainerOrigin.x, textContainerOrigin.y)
     }
 }
+
