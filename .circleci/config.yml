@@ -2,13 +2,13 @@ version: 2.1
 
 orbs:
   # This uses the Orbs located at https://github.com/wordpress-mobile/circleci-orbs
-  ios: wordpress-mobile/ios@0.0.27
+  ios: wordpress-mobile/ios@1.0
 
 jobs:
   Test:
     executor:
       name: ios/default
-      xcode-version: "11.6.0"
+      xcode-version: "12.0"
     steps:
       - checkout
       - run:
