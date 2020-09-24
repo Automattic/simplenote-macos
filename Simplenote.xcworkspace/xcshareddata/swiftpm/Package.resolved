@@ -5,9 +5,9 @@
         "package": "SimplenoteFoundation",
         "repositoryURL": "git@github.com:Automattic/SimplenoteFoundation-Swift.git",
         "state": {
-          "branch": null,
-          "revision": "c5938f97ba6c041ae4c0f4030493f628f2263a41",
-          "version": "1.0.0"
+          "branch": "issue/range-extensions",
+          "revision": "9da4363a4a3f1770b7e5573d4ace684945916d0e",
+          "version": null
         }
       },
       {
@@ -15,7 +15,7 @@
         "repositoryURL": "git@github.com:Automattic/SimplenoteInterlinks-Swift.git",
         "state": {
           "branch": "issue/string-interlink-extensions",
-          "revision": "b37194b796b001f90668ec4b7fef74f85f3b696b",
+          "revision": "b75464381f2aa5d322c6b962e860e08e5d0773f6",
           "version": null
         }
       },
