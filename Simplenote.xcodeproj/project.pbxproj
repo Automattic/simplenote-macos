@@ -285,6 +285,8 @@
 		B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */; };
 		B5C63337251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
 		B5C63338251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
+		B5C63349251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */; };
+		B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */; };
 		B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */; };
 		B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */; };
 		B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */; };
@@ -631,6 +633,7 @@
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
 		B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupTextView.swift; sourceTree = "<group>"; };
 		B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkViewController.swift; sourceTree = "<group>"; };
+		B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableCellView.swift; sourceTree = "<group>"; };
 		B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsViewController.swift; sourceTree = "<group>"; };
 		B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaborateViewController.swift; sourceTree = "<group>"; };
 		B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaborateViewController.xib; sourceTree = "<group>"; };
@@ -959,8 +962,8 @@
 		714BA65514D3260000A6CCC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B5E0862A2448B58D00DEF476 /* TableViewCells */,
 				B5946321247EF60500FC257E /* Tags */,
+				B5E0862A2448B58D00DEF476 /* TableViewCells */,
 				B5E8E41324575C9F0098892B /* Toolbar */,
 				B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */,
 				B551187124E33BC2007B11E3 /* ClipView.swift */,
@@ -1297,6 +1300,7 @@
 			children = (
 				B5F3150824496A970036872D /* TableRowView.swift */,
 				B5E086272448B57200DEF476 /* HeaderTableCellView.swift */,
+				B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */,
 				B5DD0F902476309000C8DD41 /* NoteTableCellView.swift */,
 				B5E086342448EA3C00DEF476 /* TagTableCellView.swift */,
 				B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */,
@@ -1813,6 +1817,7 @@
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
 				B5E8E41124575C990098892B /* ToolbarState.swift in Sources */,
+				B5C63349251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
 				B5070E16245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
 				B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */,
 				B57CB874244DEBC300BA7969 /* Options.swift in Sources */,
@@ -1955,6 +1960,7 @@
 				375D294521E033D1007AB25A /* html.c in Sources */,
 				B5E8E41224575C990098892B /* ToolbarState.swift in Sources */,
 				B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
+				B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
