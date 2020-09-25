@@ -792,13 +792,14 @@
 				B574CA71242D539400F8D02F /* Handlers */,
 				463774DB171F111600E2E333 /* Models */,
 				B57CB879244DEBD500BA7969 /* Settings */,
+				B5C63355251E734100C8BF46 /* Storyboards */,
 				B56FA78D2437C650002CB9FF /* Themes */,
 				37E10E7A20B356E800864E43 /* Tools */,
 				B59848891BCDB961005EFBBE /* Trackers */,
 				71233DD814DC500C00139E61 /* Transformers */,
 				714BA65514D3260000A6CCC1 /* Views */,
 				B5C7DD4B243E697F00BEE354 /* ViewControllers */,
-				B50FB212251BB2B40028DE25 /* WindowControllers */,
+				B5C63353251E732600C8BF46 /* WindowControllers */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
 				714BA64814D2333C00A6CCC1 /* Resources */,
 				37F742EA202A382400A47D3A /* AboutViewController.swift */,
@@ -817,7 +818,6 @@
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
-				B50F999124F98FFD00A1058D /* Main.storyboard */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
 			);
 			path = Simplenote;
@@ -826,8 +826,6 @@
 		26F72A9314032D2A00A7935E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				375581C120292AA800529D79 /* About.storyboard */,
-				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
 				37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */,
 				46A0BEB8175BFD540050E864 /* Simplenote.entitlements */,
 				26F72A9414032D2A00A7935E /* Simplenote-Info.plist */,
@@ -1017,16 +1015,6 @@
 				B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */,
 			);
 			name = Constants;
-			sourceTree = "<group>";
-		};
-		B50FB212251BB2B40028DE25 /* WindowControllers */ = {
-			isa = PBXGroup;
-			children = (
-				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
-				B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */,
-				B50FB222251BB6110028DE25 /* Interlink.storyboard */,
-			);
-			name = WindowControllers;
 			sourceTree = "<group>";
 		};
 		B51E9FE322E64473004F16B4 /* Extensions */ = {
@@ -1246,12 +1234,48 @@
 			name = Mockups;
 			sourceTree = "<group>";
 		};
+		B5C63352251E727300C8BF46 /* Interlinks */ = {
+			isa = PBXGroup;
+			children = (
+				B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */,
+			);
+			name = Interlinks;
+			sourceTree = "<group>";
+		};
+		B5C63353251E732600C8BF46 /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5C63354251E733700C8BF46 /* Interlinks */,
+			);
+			name = WindowControllers;
+			sourceTree = "<group>";
+		};
+		B5C63354251E733700C8BF46 /* Interlinks */ = {
+			isa = PBXGroup;
+			children = (
+				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
+			);
+			name = Interlinks;
+			sourceTree = "<group>";
+		};
+		B5C63355251E734100C8BF46 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B50F999124F98FFD00A1058D /* Main.storyboard */,
+				B50FB222251BB6110028DE25 /* Interlink.storyboard */,
+				375581C120292AA800529D79 /* About.storyboard */,
+				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B53BF19E24AC1F9500938C34 /* Editor */,
+				B5C63352251E727300C8BF46 /* Interlinks */,
 				B55C313124A5339300B23B3F /* Metrics */,
+				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B5D6833324ACFA79004AFF1B /* Versions */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
