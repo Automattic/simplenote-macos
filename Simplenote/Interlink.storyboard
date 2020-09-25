@@ -10,7 +10,7 @@
         <scene sceneID="AQY-Tt-c0S">
             <objects>
                 <windowController storyboardIdentifier="InterlinkWindowController" id="pHA-LH-fQC" customClass="InterlinkWindowController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="qae-T5-zlV" customClass="NSPanel">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="qae-T5-zlV" customClass="SPWindow">
                         <rect key="contentRect" x="245" y="410" width="230" height="65"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="230" height="65"/>
@@ -39,18 +39,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="230" height="65"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="18" horizontalPageScroll="10" verticalLineScroll="18" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-Ia-EMa">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Nps-aH-w8O" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="230" height="65"/>
+                            </customView>
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-Ia-EMa">
+                                <rect key="frame" x="0.0" y="4" width="230" height="57"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="CiN-rC-aGZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="230" height="65"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="230" height="57"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="16" rowSizeStyle="automatic" viewBased="YES" id="3Me-kR-MCE">
-                                            <rect key="frame" x="0.0" y="0.0" width="230" height="65"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="19" viewBased="YES" id="3Me-kR-MCE">
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="57"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color key="gridColor" white="0.66666666669999997" alpha="0.43099850169999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <tableColumns>
                                                 <tableColumn width="227" minWidth="40" maxWidth="1000" id="ivd-SA-hql">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
@@ -65,11 +67,14 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="LinkTableCellView" id="KP4-e4-qxa" customClass="LinkTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="227" height="16"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="227" height="19"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="u5F-fu-MZD">
-                                                                    <rect key="frame" x="15" y="0.0" width="191" height="16"/>
+                                                                    <rect key="frame" x="15" y="0.0" width="191" height="19"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="19" id="9eM-IF-f1X"/>
+                                                                    </constraints>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Interlink Placeholder!" id="LIj-hM-6XO">
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -98,8 +103,12 @@
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="8Oe-Z7-wWL"/>
+                                    <constraint firstAttribute="height" constant="57" id="qAF-jE-TOi"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Fmz-WJ-qBH">
-                                    <rect key="frame" x="1" y="48" width="228" height="16"/>
+                                    <rect key="frame" x="0.0" y="41" width="230" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="cKn-2U-eOY">
@@ -110,11 +119,19 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="bpc-Ia-EMa" firstAttribute="leading" secondItem="v0w-bc-McQ" secondAttribute="leading" id="0Si-6R-t6c"/>
-                            <constraint firstAttribute="bottom" secondItem="bpc-Ia-EMa" secondAttribute="bottom" id="d2c-MR-3zN"/>
-                            <constraint firstItem="bpc-Ia-EMa" firstAttribute="top" secondItem="v0w-bc-McQ" secondAttribute="top" id="e7A-jq-P4Z"/>
+                            <constraint firstAttribute="bottom" secondItem="Nps-aH-w8O" secondAttribute="bottom" id="P6f-Tf-o4g"/>
+                            <constraint firstAttribute="trailing" secondItem="Nps-aH-w8O" secondAttribute="trailing" id="SFY-1t-BSG"/>
+                            <constraint firstAttribute="bottom" secondItem="bpc-Ia-EMa" secondAttribute="bottom" constant="4" id="d2c-MR-3zN"/>
+                            <constraint firstItem="bpc-Ia-EMa" firstAttribute="top" secondItem="v0w-bc-McQ" secondAttribute="top" constant="4" id="e7A-jq-P4Z"/>
                             <constraint firstAttribute="trailing" secondItem="bpc-Ia-EMa" secondAttribute="trailing" id="etI-uc-aKB"/>
+                            <constraint firstItem="Nps-aH-w8O" firstAttribute="top" secondItem="v0w-bc-McQ" secondAttribute="top" id="ffe-8a-Wlx"/>
+                            <constraint firstItem="Nps-aH-w8O" firstAttribute="leading" secondItem="v0w-bc-McQ" secondAttribute="leading" id="ucw-fT-VKY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="Nps-aH-w8O" id="MNx-wJ-e3G"/>
+                        <outlet property="tableView" destination="3Me-kR-MCE" id="XwJ-fs-nDn"/>
+                    </connections>
                 </viewController>
                 <customObject id="NKz-GG-Chg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
