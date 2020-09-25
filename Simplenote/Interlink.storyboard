@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="AQY-Tt-c0S">
             <objects>
-                <windowController storyboardIdentifier="SuggestionsWindowController" id="pHA-LH-fQC" customClass="SuggestionsWindowController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="SuggestionsWindowController" id="pHA-LH-fQC" customClass="InterlinkWindowController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="qae-T5-zlV" customClass="NSPanel">
                         <rect key="contentRect" x="245" y="410" width="230" height="65"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -31,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="-220" y="65"/>
         </scene>
-        <!--View Controller-->
+        <!--Interlink View Controller-->
         <scene sceneID="BR4-nE-559">
             <objects>
-                <viewController id="jXe-Jm-l22" sceneMemberID="viewController">
+                <viewController id="jXe-Jm-l22" customClass="InterlinkViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="v0w-bc-McQ">
                         <rect key="frame" x="0.0" y="0.0" width="230" height="65"/>
                         <autoresizingMask key="autoresizingMask"/>

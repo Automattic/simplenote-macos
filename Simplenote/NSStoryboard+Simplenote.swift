@@ -27,7 +27,7 @@ extension NSStoryboard {
 //
 extension NSStoryboard.Name {
     static let main = "Main"
-    static let suggestions = "Suggestions"
+    static let interlink = "Interlink"
 }
 
 
