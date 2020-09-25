@@ -265,6 +265,13 @@ extension NSTextView {
 //
 extension NSTextView {
 
+    /// Returns the Bounding Rect for the specified `Range<String.Index>`
+    ///
+    func boundingRect(for range: Range<String.Index>) -> NSRect {
+        let nsRange = string.utf16NSRange(from: range)
+        return boundingRect(for: nsRange)
+    }
+
     /// Returns the Bounding Rect for the specified NSRange
     ///
     func boundingRect(for range: NSRange) -> NSRect {
