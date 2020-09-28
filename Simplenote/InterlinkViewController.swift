@@ -50,4 +50,21 @@ private extension InterlinkViewController {
 
 
 }
+
+
+// MARK: - NSTableViewDelegate
+//
+extension InterlinkViewController: NSTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let rowView = TableRowView()
+        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        return rowView
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
+        tableViewCell.title = "Placeholder!"
+        return tableViewCell
+    }
 }
