@@ -25,6 +25,7 @@ class InterlinkViewController: NSViewController {
         super.viewDidLoad()
         setupBackground()
         setupMouseCursor()
+        setupRoundedBorder()
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -42,6 +43,15 @@ class InterlinkViewController: NSViewController {
 // MARK: - Setup!
 //
 private extension InterlinkViewController {
+
+    func setupRoundedBorder() {
+        guard #available(macOS 10.15, *) else {
+            return
+        }
+
+        backgroundView.wantsLayer = true
+        backgroundView.layer?.cornerRadius = Metrics.cornerRadius
+    }
 
     func setupBackground() {
         backgroundView.fillColor = .simplenoteBackgroundColor
@@ -82,4 +92,11 @@ extension InterlinkViewController: NSTableViewDelegate {
         tableViewCell.title = "Placeholder!"
         return tableViewCell
     }
+}
+
+
+// MARK: - Metrics!
+//
+private enum Metrics {
+    static let cornerRadius = CGFloat(6)
 }

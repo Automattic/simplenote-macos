@@ -9,6 +9,11 @@ class InterlinkWindowController: NSWindowController {
     private var interlinkViewController: InterlinkViewController? {
         contentViewController as? InterlinkViewController
     }
+
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        setupRoundedCorners()
+    }
 }
 
 
@@ -47,12 +52,19 @@ extension InterlinkWindowController {
 }
 
 
-// MARK: - Display API(s)
+// MARK: - Private API(s)
 //
 private extension InterlinkWindowController {
 
-    /// Adjusts the Window Origin location, so that the Window doesn't get cut offscreen
-    ///
+    func setupRoundedCorners() {
+        guard #available(macOS 10.15, *) else {
+            return
+        }
+
+        window?.backgroundColor = .clear
+        window?.isOpaque = false
+    }
+
     func calculateWindowOrigin(windowSize: CGSize, positioningRect: CGRect) -> CGPoint {
         let screenWidth = NSScreen.main?.visibleFrame.width ?? .infinity
         var output = positioningRect.origin
