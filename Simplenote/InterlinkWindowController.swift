@@ -12,45 +12,56 @@ class InterlinkWindowController: NSWindowController {
 }
 
 
-// MARK: - Lookup API
+// MARK: - Public API
 //
 extension InterlinkWindowController {
 
-    func displaySuggestions(for keyword: String, around sourceRect: NSRect, from parentWindow: NSWindow?) {
+    ///
+    ///
+    func attach(to parentWindow: NSWindow?) {
+        guard let window = window else {
+            assertionFailure()
+            return
+        }
+
+        parentWindow?.addChildWindow(window, ordered: .above)
+    }
+
+    /// Adjusts the receiver's Window Location relative to the specified frame. We'll make sure it doesn't get clipped horizontally or vertically
+    ///
+    func locateWindow(relativeTo positioningRect: NSRect) {
+        guard let window = window else {
+            assertionFailure()
+            return
+        }
+
+        let frameOrigin = calculateWindowOrigin(windowSize: window.frame.size, positioningRect: positioningRect)
+        window.setFrameOrigin(frameOrigin)
+    }
+
+    /// Refreshes the Autocomplete Interlinks
+    ///
+    func refreshInterlinks(for keyword: String) {
         interlinkViewController?.displayInterlinks(for: keyword)
-        display(around: sourceRect, from: parentWindow)
     }
 }
 
 
 // MARK: - Display API(s)
 //
-extension InterlinkWindowController {
-
-    /// Displays the receiver [below or above] the SourceRect, if space allows. We're also compensating to prevent horizontal clipping.
-    /// - Note: Parent Window required to prevent Expose from treating this window as a standalone component
-    ///
-    func display(around sourceRect: NSRect, from parentWindow: NSWindow?) {
-        guard let window = window else {
-            return
-        }
-
-        let frameOrigin = calculateWindowOrigin(windowSize: window.frame.size, sourceRect: sourceRect)
-        window.setFrameOrigin(frameOrigin)
-        parentWindow?.addChildWindow(window, ordered: .above)
-    }
+private extension InterlinkWindowController {
 
     /// Adjusts the Window Origin location, so that the Window doesn't get cut offscreen
     ///
-    private func calculateWindowOrigin(windowSize: CGSize, sourceRect: CGRect) -> CGPoint {
+    func calculateWindowOrigin(windowSize: CGSize, positioningRect: CGRect) -> CGPoint {
         let screenWidth = NSScreen.main?.visibleFrame.width ?? .infinity
-        var output = sourceRect.origin
+        var output = positioningRect.origin
 
         // Adjust Origin.Y: Avoid falling below the screen
-        let belowY = output.y - windowSize.height - Metrics.windowInsets.top
-        let aboveY = output.y + sourceRect.height + Metrics.windowInsets.top
+        let positionBelowY = output.y - windowSize.height - Metrics.windowInsets.top
+        let positionAboveY = output.y + positioningRect.height + Metrics.windowInsets.top
 
-        output.y = belowY > .zero ? belowY : aboveY
+        output.y = positionBelowY > .zero ? positionBelowY : positionAboveY
 
         // Adjust Origin.X: Compensate for horizontal overflow
         let overflowX = screenWidth - output.x - windowSize.width

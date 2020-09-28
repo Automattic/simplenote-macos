@@ -566,11 +566,15 @@ extension NoteEditorViewController {
     }
 
     func displayInterlinkAutocomplete(keyword: String, at range: Range<String.Index>) {
-        let keywordFrame = noteEditor.boundingRect(for: range)
-        let screenOrigin = noteEditor.convertToScreen(keywordFrame)
-        let parentWindow = view.window
+        let sourceInEditor = noteEditor.boundingRect(for: range)
+        let sourceInWindow = noteEditor.convert(sourceInEditor, to: nil)
+        let sourceInScreen = view.window?.convertToScreen(sourceInWindow) ?? sourceInWindow
 
-        reusableInterlinkWindowController().displaySuggestions(for: keyword, around: screenOrigin, from: parentWindow)
+        let interlinkWindowController = reusableInterlinkWindowController()
+
+        interlinkWindowController.attach(to: view.window)
+        interlinkWindowController.locateWindow(relativeTo: sourceInScreen)
+        interlinkWindowController.refreshInterlinks(for: keyword)
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {
@@ -578,7 +582,6 @@ extension NoteEditorViewController {
             return interlinkWindowController
         }
 
-        // TODO: Move this to a lazy var when this class is 100% Swift!
         let storyboard = NSStoryboard(name: .interlink, bundle: nil)
         let interlinkWindowController = storyboard.instantiateWindowController(ofType: InterlinkWindowController.self)
         self.interlinkWindowController = interlinkWindowController

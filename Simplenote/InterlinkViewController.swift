@@ -43,8 +43,13 @@ class InterlinkViewController: NSViewController {
     }
 
     override func mouseEntered(with event: NSEvent) {
-        super.mouseExited(with: event)
+        super.mouseEntered(with: event)
         NSCursor.pointingHand.set()
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        super.mouseExited(with: event)
+        NSCursor.arrow.set()
     }
 }
 
@@ -71,7 +76,7 @@ private extension InterlinkViewController {
     }
 
     func setupMouseCursor() {
-        tableView.addCursorRect(tableView.bounds, cursor: .pointingHand)
+        view.addTrackingArea(trackingArea)
     }
 
     func setupResultsController() {
