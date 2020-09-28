@@ -1,5 +1,6 @@
 import Foundation
 import AppKit
+import SimplenoteFoundation
 
 
 // MARK: - InterlinkViewController
@@ -18,13 +19,18 @@ class InterlinkViewController: NSViewController {
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
-    /// Notes to be rendered
+    /// Main Context
     ///
-    var notes: [Note] = [] {
-        didSet {
-            refreshInterface()
-        }
+    private var mainContext: NSManagedObjectContext {
+        SimplenoteAppDelegate.shared().managedObjectContext
     }
+
+    /// ResultsController: In charge of CoreData Queries!
+    ///
+    private lazy var resultsController: ResultsController<Note> = {
+        let sortDescriptor = NSSortDescriptor(keyPath: \Note.content, ascending: true)
+        return ResultsController(viewContext: mainContext, sortedBy: [sortDescriptor])
+    }()
 
 
     // MARK: - Overridden Methdos
@@ -33,11 +39,24 @@ class InterlinkViewController: NSViewController {
         super.viewDidLoad()
         setupBackground()
         setupMouseCursor()
+        setupResultsController()
     }
 
     override func mouseEntered(with event: NSEvent) {
         super.mouseExited(with: event)
         NSCursor.pointingHand.set()
+    }
+}
+
+
+// MARK: - Public API(s)
+//
+extension InterlinkViewController {
+
+    /// Refreshes the UI so that Interlinks for the specified Keyword are rendered
+    ///
+    func displayInterlinks(for keyword: String) {
+        refreshResultsPredicate(for: keyword)
     }
 }
 
@@ -55,12 +74,19 @@ private extension InterlinkViewController {
         tableView.addCursorRect(tableView.bounds, cursor: .pointingHand)
     }
 
-    func refreshInterface() {
-        tableView.reloadData()
+    func setupResultsController() {
+        resultsController.onDidChangeContent = { [weak self] _, _ in
+            self?.tableView.reloadData()
+        }
     }
 
-    func note(at row: Int) -> Note {
-        notes[row]
+    func refreshResultsPredicate(for keyword: String) {
+        resultsController.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate.predicateForNotes(searchText: keyword),
+            NSPredicate.predicateForNotes(deleted: false)
+        ])
+
+        try? resultsController.performFetch()
     }
 }
 
@@ -70,7 +96,7 @@ private extension InterlinkViewController {
 extension InterlinkViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        notes.count
+        resultsController.numberOfObjects
     }
 }
 
@@ -86,8 +112,7 @@ extension InterlinkViewController: NSTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let note = self.note(at: row)
-        note.ensurePreviewStringsAreAvailable()
+        let note = resultsController.fetchedObjects[row]
 
         let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
         tableViewCell.title = note.titlePreview

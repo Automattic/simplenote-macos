@@ -570,9 +570,7 @@ extension NoteEditorViewController {
         let screenOrigin = noteEditor.convertToScreen(keywordFrame)
         let parentWindow = view.window
 
-        reusableInterlinkWindowController().refreshSuggestions(for: keyword) {
-            $0.display(around: screenOrigin, from: parentWindow)
-        }
+        reusableInterlinkWindowController().displaySuggestions(for: keyword, around: screenOrigin, from: parentWindow)
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {

@@ -12,6 +12,17 @@ class InterlinkWindowController: NSWindowController {
 }
 
 
+// MARK: - Lookup API
+//
+extension InterlinkWindowController {
+
+    func displaySuggestions(for keyword: String, around sourceRect: NSRect, from parentWindow: NSWindow?) {
+        interlinkViewController?.displayInterlinks(for: keyword)
+        display(around: sourceRect, from: parentWindow)
+    }
+}
+
+
 // MARK: - Display API(s)
 //
 extension InterlinkWindowController {
@@ -48,20 +59,6 @@ extension InterlinkWindowController {
         }
 
         return output
-    }
-}
-
-
-// MARK: - Lookup API
-//
-extension InterlinkWindowController {
-
-    func refreshSuggestions(for keyword: String, completion: @escaping (InterlinkWindowController) -> Void) {
-        // TODO: Implement Me!
-
-        DispatchQueue.main.async {
-            completion(self)
-        }
     }
 }
 
