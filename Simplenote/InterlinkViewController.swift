@@ -33,13 +33,19 @@ class InterlinkViewController: NSViewController {
     }()
 
 
-    // MARK: - Overridden Methdos
+    // MARK: - Overridden Methods
+
+    deinit {
+        stopListeningToNotifications()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBackground()
+        startListeningToNotifications()
+        refreshStyle()
         setupMouseCursor()
         setupResultsController()
+        setupRoundedBorder()
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -70,9 +76,13 @@ extension InterlinkViewController {
 //
 private extension InterlinkViewController {
 
-    func setupBackground() {
-        backgroundView.fillColor = .simplenoteBackgroundColor
-        tableView.backgroundColor = .clear
+    func setupRoundedBorder() {
+        guard #available(macOS 10.15, *) else {
+            return
+        }
+
+        backgroundView.wantsLayer = true
+        backgroundView.layer?.cornerRadius = Metrics.cornerRadius
     }
 
     func setupMouseCursor() {
@@ -92,6 +102,37 @@ private extension InterlinkViewController {
         ])
 
         try? resultsController.performFetch()
+    }
+}
+
+
+// MARK: - Notifications
+//
+private extension InterlinkViewController {
+
+    func startListeningToNotifications() {
+        if #available(macOS 10.15, *) {
+            return
+        }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
+    }
+
+    func stopListeningToNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+
+// MARK: - Interface
+//
+private extension InterlinkViewController {
+
+    @objc
+    func refreshStyle() {
+        backgroundView.fillColor = .simplenoteBackgroundColor
+        tableView.backgroundColor = .clear
+        tableView.reloadData()
     }
 }
 
@@ -123,4 +164,11 @@ extension InterlinkViewController: NSTableViewDelegate {
         tableViewCell.title = note.titlePreview
         return tableViewCell
     }
+}
+
+
+// MARK: - Metrics!
+//
+private enum Metrics {
+    static let cornerRadius = CGFloat(6)
 }
