@@ -34,7 +34,7 @@ extension InterlinkWindowController {
 
     /// Adjusts the receiver's Window Location relative to the specified frame. We'll make sure it doesn't get clipped horizontally or vertically
     ///
-    func locateWindow(relativeTo positioningRect: NSRect) {
+    func positionWindow(relativeTo positioningRect: NSRect) {
         guard let window = window else {
             assertionFailure()
             return
@@ -42,12 +42,6 @@ extension InterlinkWindowController {
 
         let frameOrigin = calculateWindowOrigin(windowSize: window.frame.size, positioningRect: positioningRect)
         window.setFrameOrigin(frameOrigin)
-    }
-
-    /// Refreshes the Autocomplete Interlinks
-    ///
-    func refreshInterlinks(for keyword: String) {
-        // TODO: Wire Me!
     }
 }
 
@@ -69,17 +63,17 @@ private extension InterlinkWindowController {
         let screenWidth = NSScreen.main?.visibleFrame.width ?? .infinity
         var output = positioningRect.origin
 
-        // Adjust Origin.Y: Avoid falling below the screen
-        let positionBelowY = output.y - windowSize.height - Metrics.windowInsets.top
-        let positionAboveY = output.y + positioningRect.height + Metrics.windowInsets.top
-
-        output.y = positionBelowY > .zero ? positionBelowY : positionAboveY
-
         // Adjust Origin.X: Compensate for horizontal overflow
         let overflowX = screenWidth - output.x - windowSize.width
         if overflowX < .zero {
             output.x += overflowX - Metrics.windowInsets.right
         }
+
+        // Adjust Origin.Y: Avoid falling below the screen
+        let positionBelowY = output.y - windowSize.height - Metrics.windowInsets.top
+        let positionAboveY = output.y + positioningRect.height + Metrics.windowInsets.top
+
+        output.y = positionBelowY > .zero ? positionBelowY : positionAboveY
 
         return output
     }

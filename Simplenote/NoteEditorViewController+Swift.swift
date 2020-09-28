@@ -570,13 +570,10 @@ extension NoteEditorViewController {
         let sourceInWindow = noteEditor.convert(sourceInEditor, to: nil)
         let sourceInScreen = view.window?.convertToScreen(sourceInWindow) ?? sourceInWindow
 
-        NSLog("Keyword: \(keyword)")
-
         let interlinkWindowController = reusableInterlinkWindowController()
 
         interlinkWindowController.attach(to: view.window)
-        interlinkWindowController.locateWindow(relativeTo: sourceInScreen)
-        interlinkWindowController.refreshInterlinks(for: keyword)
+        interlinkWindowController.positionWindow(relativeTo: sourceInScreen)
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {
