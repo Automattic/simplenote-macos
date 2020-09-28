@@ -18,6 +18,14 @@ class InterlinkViewController: NSViewController {
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
+    /// Notes to be rendered
+    ///
+    var notes: [Note] = [] {
+        didSet {
+            refreshInterface()
+        }
+    }
+
 
     // MARK: - Overridden Methdos
 
@@ -46,6 +54,14 @@ private extension InterlinkViewController {
     func setupMouseCursor() {
         tableView.addCursorRect(tableView.bounds, cursor: .pointingHand)
     }
+
+    func refreshInterface() {
+        tableView.reloadData()
+    }
+
+    func note(at row: Int) -> Note {
+        notes[row]
+    }
 }
 
 
@@ -54,8 +70,7 @@ private extension InterlinkViewController {
 extension InterlinkViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        // TODO: Drop this placeholder!
-        return 5
+        notes.count
     }
 }
 
@@ -71,10 +86,11 @@ extension InterlinkViewController: NSTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
+        let note = self.note(at: row)
+        note.ensurePreviewStringsAreAvailable()
 
-        // TODO: Drop this placeholder!
-        tableViewCell.title = "Placeholder!"
+        let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
+        tableViewCell.title = note.titlePreview
         return tableViewCell
     }
 }
