@@ -19,11 +19,16 @@ class InterlinkViewController: NSViewController {
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
 
-    // MARK: - Overridden Methdos
+    // MARK: - Overridden Methods
+
+    deinit {
+        stopListeningToNotifications()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBackground()
+        startListeningToNotifications()
+        refreshStyle()
         setupMouseCursor()
         setupRoundedBorder()
     }
@@ -53,13 +58,39 @@ private extension InterlinkViewController {
         backgroundView.layer?.cornerRadius = Metrics.cornerRadius
     }
 
-    func setupBackground() {
-        backgroundView.fillColor = .simplenoteBackgroundColor
-        tableView.backgroundColor = .clear
-    }
-
     func setupMouseCursor() {
         view.addTrackingArea(trackingArea)
+    }
+}
+
+
+// MARK: - Notifications
+//
+private extension InterlinkViewController {
+
+    func startListeningToNotifications() {
+        if #available(macOS 10.15, *) {
+            return
+        }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
+    }
+
+    func stopListeningToNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+
+// MARK: - Interface
+//
+private extension InterlinkViewController {
+
+    @objc
+    func refreshStyle() {
+        backgroundView.fillColor = .simplenoteBackgroundColor
+        tableView.backgroundColor = .clear
+        tableView.reloadData()
     }
 }
 
