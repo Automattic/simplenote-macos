@@ -570,6 +570,7 @@ extension NoteEditorViewController {
         let screenOrigin = noteEditor.convertToScreen(keywordFrame)
         let parentWindow = view.window
 
+        NSLog("Keyword: \(keyword)")
         reusableInterlinkWindowController().refreshSuggestions(for: keyword) {
             $0.display(around: screenOrigin, from: parentWindow)
         }
