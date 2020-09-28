@@ -16,7 +16,7 @@ class InterlinkViewController: NSViewController {
 
     /// Mouse Tracking
     ///
-    private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
+    private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited, .mouseMoved], owner: self, userInfo: nil)
 
 
     // MARK: - Overridden Methdos
@@ -44,7 +44,7 @@ private extension InterlinkViewController {
     }
 
     func setupMouseCursor() {
-        tableView.addCursorRect(tableView.bounds, cursor: .pointingHand)
+        view.addTrackingArea(trackingArea)
     }
 }
 
