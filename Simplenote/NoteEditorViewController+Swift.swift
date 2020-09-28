@@ -1,4 +1,6 @@
 import Foundation
+import SimplenoteFoundation
+import SimplenoteInterlinks
 
 
 // MARK: - Interface Initialization
@@ -536,6 +538,54 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
 
         // Refreshes the note content in the editor, in case the popover was canceled
         didReceiveNewContent()
+    }
+}
+
+
+// MARK: - Interlinking Autocomplete
+//
+extension NoteEditorViewController {
+
+    @objc
+    func processInterlinkAutocomplete() {
+        guard let (range, keyword) = interlinkKeywordAtSelectedLocation else {
+            interlinkWindowController?.close()
+            return
+        }
+
+        displayInterlinkAutocomplete(keyword: keyword, at: range)
+    }
+
+    var interlinkKeywordAtSelectedLocation: (Range<String.Index>, String)? {
+        let text = noteEditor.string
+        let selectedLocation = noteEditor.selectedRange().location
+
+        return text.indexFromLocation(selectedLocation).flatMap { index in
+            text.interlinkKeyword(at: index)
+        }
+    }
+
+    func displayInterlinkAutocomplete(keyword: String, at range: Range<String.Index>) {
+        let keywordFrame = noteEditor.boundingRect(for: range)
+        let screenOrigin = noteEditor.convertToScreen(keywordFrame)
+        let parentWindow = view.window
+
+        reusableInterlinkWindowController().refreshSuggestions(for: keyword) {
+            $0.display(around: screenOrigin, from: parentWindow)
+        }
+    }
+
+    func reusableInterlinkWindowController() -> InterlinkWindowController {
+        if let interlinkWindowController = interlinkWindowController {
+            return interlinkWindowController
+        }
+
+        // TODO: Move this to a lazy var when this class is 100% Swift!
+        let storyboard = NSStoryboard(name: .interlink, bundle: nil)
+        let interlinkWindowController = storyboard.instantiateWindowController(ofType: InterlinkWindowController.self)
+        self.interlinkWindowController = interlinkWindowController
+
+        return interlinkWindowController
     }
 }
 

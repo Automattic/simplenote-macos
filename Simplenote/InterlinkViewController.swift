@@ -49,6 +49,14 @@ private extension InterlinkViewController {
 }
 
 
+// MARK: - NSTableViewDataSource
+//
+extension InterlinkViewController: NSTableViewDataSource {
+
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        // TODO: Drop this placeholder!
+        return 5
+    }
 }
 
 
@@ -64,6 +72,8 @@ extension InterlinkViewController: NSTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
+
+        // TODO: Drop this placeholder!
         tableViewCell.title = "Placeholder!"
         return tableViewCell
     }
