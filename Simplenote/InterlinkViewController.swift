@@ -16,7 +16,7 @@ class InterlinkViewController: NSViewController {
 
     /// Mouse Tracking
     ///
-    private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited, .mouseMoved], owner: self, userInfo: nil)
+    private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
 
     // MARK: - Overridden Methdos
@@ -28,8 +28,13 @@ class InterlinkViewController: NSViewController {
     }
 
     override func mouseEntered(with event: NSEvent) {
-        super.mouseExited(with: event)
+        super.mouseEntered(with: event)
         NSCursor.pointingHand.set()
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        super.mouseExited(with: event)
+        NSCursor.arrow.set()
     }
 }
 
