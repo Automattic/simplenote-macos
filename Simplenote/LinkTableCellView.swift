@@ -17,4 +17,21 @@ class LinkTableCellView: NSTableCellView {
             textField?.stringValue = newValue ?? ""
         }
     }
+
+    // MARK: - Overridden Methods
+
+    override func viewWillDraw() {
+        super.viewWillDraw()
+        refreshStyle()
+    }
+}
+
+
+// MARK: - Private API(s)
+//
+private extension LinkTableCellView {
+
+    func refreshStyle() {
+        textField?.textColor = .simplenoteTextColor
+    }
 }
