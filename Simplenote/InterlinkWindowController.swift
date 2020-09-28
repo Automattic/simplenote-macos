@@ -16,7 +16,7 @@ class InterlinkWindowController: NSWindowController {
 //
 extension InterlinkWindowController {
 
-    /// Displays the receiver either below or above the Source Rect.
+    /// Displays the receiver [below or above] the SourceRect, if space allows. We're also compensating to prevent horizontal clipping.
     /// - Note: Parent Window required to prevent Expose from treating this window as a standalone component
     ///
     func display(around sourceRect: NSRect, from parentWindow: NSWindow?) {
@@ -52,7 +52,7 @@ extension InterlinkWindowController {
 }
 
 
-// MARK: -
+// MARK: - Lookup API
 //
 extension InterlinkWindowController {
 
@@ -64,7 +64,6 @@ extension InterlinkWindowController {
         }
     }
 }
-
 
 
 // MARK: - Metrics
