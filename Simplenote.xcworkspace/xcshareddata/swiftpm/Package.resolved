@@ -14,9 +14,9 @@
         "package": "SimplenoteInterlinks",
         "repositoryURL": "git@github.com:Automattic/SimplenoteInterlinks-Swift.git",
         "state": {
-          "branch": "issue/string-interlink-extensions",
-          "revision": "ec288878737f30406c84ab80be598e15ebd03161",
-          "version": null
+          "branch": null,
+          "revision": "d49f8ccece40d16f4baae1577cce1452e28b2463",
+          "version": "1.0.0"
         }
       },
       {

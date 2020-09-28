@@ -2638,8 +2638,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteInterlinks-Swift.git";
 			requirement = {
-				branch = "issue/string-interlink-extensions";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */ = {
