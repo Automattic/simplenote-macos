@@ -13,6 +13,7 @@ class InterlinkWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         setupRoundedCorners()
+        setupWindowAnimation()
     }
 }
 
@@ -65,6 +66,10 @@ private extension InterlinkWindowController {
         window?.isOpaque = false
     }
 
+    func setupWindowAnimation() {
+        window?.animationBehavior = .utilityWindow
+    }
+
     func calculateWindowOrigin(windowSize: CGSize, positioningRect: CGRect) -> CGPoint {
         let screenWidth = NSScreen.main?.visibleFrame.width ?? .infinity
         var output = positioningRect.origin
@@ -79,7 +84,10 @@ private extension InterlinkWindowController {
         let positionBelowY = output.y - windowSize.height - Metrics.windowInsets.top
         let positionAboveY = output.y + positioningRect.height + Metrics.windowInsets.top
 
-        output.y = positionBelowY > .zero ? positionBelowY : positionAboveY
+        output.y = round(positionBelowY > .zero ? positionBelowY : positionAboveY)
+
+        output.y = round(output.y)
+        output.x = round(output.x)
 
         return output
     }
