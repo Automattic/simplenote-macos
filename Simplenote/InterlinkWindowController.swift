@@ -129,9 +129,6 @@ private extension InterlinkWindowController {
 
             return event
         }
-
-            self?.close()
-        }
     }
 
     /// Drops the Dismissal Event Listeners
