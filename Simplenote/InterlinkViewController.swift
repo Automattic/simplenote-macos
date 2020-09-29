@@ -30,7 +30,7 @@ class InterlinkViewController: NSViewController {
         startListeningToNotifications()
         refreshStyle()
         setupMouseCursor()
-        setupRoundedBorder()
+        setupRoundedCorners()
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -49,7 +49,7 @@ class InterlinkViewController: NSViewController {
 //
 private extension InterlinkViewController {
 
-    func setupRoundedBorder() {
+    func setupRoundedCorners() {
         guard #available(macOS 10.15, *) else {
             return
         }
