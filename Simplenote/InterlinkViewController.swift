@@ -91,7 +91,7 @@ private extension InterlinkViewController {
 
     func setupResultsController() {
         resultsController.onDidChangeContent = { [weak self] _, _ in
-            self?.tableView.reloadData()
+            self?.tableView.reloadAndPreserveSelection()
         }
     }
 
@@ -133,7 +133,7 @@ private extension InterlinkViewController {
     func refreshStyle() {
         backgroundView.fillColor = .simplenoteBackgroundColor
         tableView.backgroundColor = .clear
-        tableView.reloadData()
+        tableView.reloadAndPreserveSelection()
     }
 
     func noteAtRow(_ row: Int) -> Note? {
@@ -160,6 +160,10 @@ extension InterlinkViewController: NSTableViewDataSource {
 // MARK: - NSTableViewDelegate
 //
 extension InterlinkViewController: NSTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        true
+    }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
