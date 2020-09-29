@@ -102,6 +102,7 @@ private extension InterlinkViewController {
         ])
 
         try? resultsController.performFetch()
+        tableView.reloadData()
     }
 }
 
@@ -170,6 +171,8 @@ extension InterlinkViewController: NSTableViewDelegate {
         guard let note = noteAtRow(row) else {
             return nil
         }
+
+        note.ensurePreviewStringsAreAvailable()
 
         let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
         tableViewCell.title = note.titlePreview
