@@ -10,10 +10,6 @@ class InterlinkWindowController: NSWindowController {
     ///
     private var eventListenerToken: Any?
 
-    /// Token required for `Main Window Resinged` Notification Listening Purposes
-    ///
-    private var keyResignedToken: Any?
-
     /// Returns the InterlinkViewController Instance
     ///
     private var interlinkViewController: InterlinkViewController? {
@@ -134,7 +130,6 @@ private extension InterlinkWindowController {
             return event
         }
 
-        keyResignedToken = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window.parent, queue: nil) { [weak self] _ in
             self?.close()
         }
     }
@@ -146,12 +141,7 @@ private extension InterlinkWindowController {
             NSEvent.removeMonitor(token)
         }
 
-        if let token = keyResignedToken {
-            NotificationCenter.default.removeObserver(token)
-        }
-
         eventListenerToken = nil
-        keyResignedToken = nil
     }
 }
 
