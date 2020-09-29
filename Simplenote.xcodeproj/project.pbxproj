@@ -795,6 +795,7 @@
 				71233DD814DC500C00139E61 /* Transformers */,
 				714BA65514D3260000A6CCC1 /* Views */,
 				B5C7DD4B243E697F00BEE354 /* ViewControllers */,
+				B58BBD352523D7B20025135F /* Windows */,
 				B5C63353251E732600C8BF46 /* WindowControllers */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
 				714BA64814D2333C00A6CCC1 /* Resources */,
@@ -970,7 +971,6 @@
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 				B57CB880244E421400BA7969 /* SPTextField.swift */,
-				B58BBD292523D4CA0025135F /* SPWindow.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1125,6 +1125,14 @@
 				B57CB873244DEBC300BA7969 /* Options.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		B58BBD352523D7B20025135F /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				B58BBD292523D4CA0025135F /* SPWindow.swift */,
+			);
+			name = Windows;
 			sourceTree = "<group>";
 		};
 		B5946321247EF60500FC257E /* Tags */ = {
