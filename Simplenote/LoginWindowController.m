@@ -42,6 +42,10 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     CGRect frame = self.window.frame;
     frame.size.height += SPLoginAdditionalHeight;
     [self.window setFrame:frame display:YES animate:NO];
+
+    // Make sure the rootView's origin is always zero.
+    // Ref. https://github.com/Automattic/simplenote-macos/issues/664
+    frame.origin = CGPointZero;
     [rootView setFrame:frame];
     
     // Move up all subviews (Frame origin.y is at the bottom on macOS?)
