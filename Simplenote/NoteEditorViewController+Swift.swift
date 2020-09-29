@@ -566,15 +566,19 @@ extension NoteEditorViewController {
     }
 
     func displayInterlinkAutocomplete(keyword: String, at range: Range<String.Index>) {
-        let positionInEditor = noteEditor.boundingRect(for: range)
-        let positionInWindow = noteEditor.convert(positionInEditor, to: nil)
-        let positionInScreen = view.window?.convertToScreen(positionInWindow) ?? positionInWindow
-
+        let locationOnScreen = locationOnScreenForText(at: range)
         let interlinkWindowController = reusableInterlinkWindowController()
 
         interlinkWindowController.attach(to: view.window)
-        interlinkWindowController.positionWindow(relativeTo: positionInScreen)
+        interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
         interlinkWindowController.refreshInterlinks(for: keyword)
+    }
+
+    func locationOnScreenForText(at range: Range<String.Index>) -> CGRect {
+        let rectInEditor = noteEditor.boundingRect(for: range)
+        let rectInWindow = noteEditor.convert(rectInEditor, to: nil)
+
+        return view.window?.convertToScreen(rectInWindow) ?? rectInWindow
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {
