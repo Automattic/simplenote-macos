@@ -10,7 +10,7 @@
         <scene sceneID="AQY-Tt-c0S">
             <objects>
                 <windowController storyboardIdentifier="InterlinkWindowController" id="pHA-LH-fQC" customClass="InterlinkWindowController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="qae-T5-zlV" customClass="SPWindow" customModule="Simplenote" customModuleProvider="target">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="qae-T5-zlV" customClass="Window" customModule="Simplenote" customModuleProvider="target">
                         <rect key="contentRect" x="245" y="410" width="230" height="57"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="230" height="57"/>
