@@ -70,7 +70,7 @@ extension InterlinkWindowController {
 
     /// Refreshes the Autocomplete Interlinks
     ///
-    func refreshInterlinks(for keyword: String) {
+    func displayInterlinks(for keyword: String) {
         interlinkViewController?.displayInterlinks(for: keyword)
     }
 }
