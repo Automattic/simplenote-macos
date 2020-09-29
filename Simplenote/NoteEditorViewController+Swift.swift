@@ -574,6 +574,7 @@ extension NoteEditorViewController {
 
         interlinkWindowController.attach(to: view.window)
         interlinkWindowController.positionWindow(relativeTo: sourceInScreen)
+        interlinkWindowController.refreshInterlinks(for: keyword)
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {
