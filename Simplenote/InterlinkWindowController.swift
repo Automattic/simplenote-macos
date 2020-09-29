@@ -6,14 +6,32 @@ import AppKit
 //
 class InterlinkWindowController: NSWindowController {
 
+    /// Token required for `Mouse Event` Listening purposes
+    ///
+    private var eventListenerToken: Any?
+
+    /// Token required for `Main Window Resinged` Notification Listening Purposes
+    ///
+    private var keyResignedToken: Any?
+
+    /// Returns the InterlinkViewController Instance
+    ///
     private var interlinkViewController: InterlinkViewController? {
         contentViewController as? InterlinkViewController
     }
+
+
+    // MARK: - Overridden Methods
 
     override func windowDidLoad() {
         super.windowDidLoad()
         setupRoundedCorners()
         setupWindowAnimation()
+    }
+
+    override func close() {
+        super.close()
+        stopListeningToDismissEvents()
     }
 }
 
@@ -25,12 +43,17 @@ extension InterlinkWindowController {
     ///
     ///
     func attach(to parentWindow: NSWindow?) {
-        guard let window = window else {
+        guard let parentWindow = parentWindow, let interlinkWindow = window else {
             assertionFailure()
             return
         }
 
-        parentWindow?.addChildWindow(window, ordered: .above)
+        guard interlinkWindow.parent == nil else {
+            return
+        }
+
+        parentWindow.addChildWindow(interlinkWindow, ordered: .above)
+        startListeningToDismissEvents(for: interlinkWindow)
     }
 
     /// Adjusts the receiver's Window Location relative to the specified frame. We'll make sure it doesn't get clipped horizontally or vertically
@@ -90,6 +113,45 @@ private extension InterlinkWindowController {
         output.x = round(output.x)
 
         return output
+    }
+}
+
+
+// MARK: - Dismissal Events
+//
+private extension InterlinkWindowController {
+
+    /// Let's automatically dismiss whenever:
+    /// - The user clicks / scrolls in another window that's not the Interlinking Window
+    /// - The Main Window looses its key status
+    ///
+    func startListeningToDismissEvents(for window: NSWindow) {
+        eventListenerToken = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown, .scrollWheel]) { [weak self] event in
+            if event.window != window {
+                self?.close()
+            }
+
+            return event
+        }
+
+        keyResignedToken = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window.parent, queue: nil) { [weak self] _ in
+            self?.close()
+        }
+    }
+
+    /// Drops the Dismissal Event Listeners
+    ///
+    func stopListeningToDismissEvents() {
+        if let token = eventListenerToken {
+            NSEvent.removeMonitor(token)
+        }
+
+        if let token = keyResignedToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+
+        eventListenerToken = nil
+        keyResignedToken = nil
     }
 }
 
