@@ -134,6 +134,15 @@ private extension InterlinkViewController {
         tableView.backgroundColor = .clear
         tableView.reloadData()
     }
+
+    func noteAtRow(_ row: Int) -> Note? {
+        let objects = resultsController.fetchedObjects
+        guard row < objects.count else {
+            return nil
+        }
+
+        return objects[row]
+    }
 }
 
 
@@ -158,7 +167,9 @@ extension InterlinkViewController: NSTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let note = resultsController.fetchedObjects[row]
+        guard let note = noteAtRow(row) else {
+            return nil
+        }
 
         let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
         tableViewCell.title = note.titlePreview
