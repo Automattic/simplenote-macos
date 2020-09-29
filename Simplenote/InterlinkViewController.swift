@@ -68,6 +68,7 @@ extension InterlinkViewController {
     ///
     func displayInterlinks(for keyword: String) {
         refreshResultsPredicate(for: keyword)
+        tableView.reloadDataAndResetSelection()
     }
 }
 
@@ -102,7 +103,6 @@ private extension InterlinkViewController {
         ])
 
         try? resultsController.performFetch()
-        tableView.reloadData()
     }
 }
 

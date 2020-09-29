@@ -41,4 +41,12 @@ extension NSTableView {
 
         selectRowIndexes(IndexSet(integer: previouslySelectedRow), byExtendingSelection: false)
     }
+
+    /// Reloads the receiver's data and resets the selected row
+    ///
+    func reloadDataAndResetSelection() {
+        deselectAll(nil)
+        scrollRowToVisible(.zero)
+        reloadData()
+    }
 }
