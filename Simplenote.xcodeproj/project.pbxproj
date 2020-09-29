@@ -185,8 +185,6 @@
 		B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
-		B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
-		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B54F4AA224A6588700D8FAB1 /* MetricsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */; };
 		B54F4AA324A6588700D8FAB1 /* MetricsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */; };
 		B54F9A6324D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */; };
@@ -238,6 +236,8 @@
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
 		B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
+		B58BBD2A2523D4CA0025135F /* SPWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* SPWindow.swift */; };
+		B58BBD2B2523D4CA0025135F /* SPWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* SPWindow.swift */; };
 		B58CE26524F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
 		B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
 		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
@@ -551,8 +551,6 @@
 		B543800F246355FA00F34B1C /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		B547285B250920CA00D823BA /* URL+Interlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Interlink.swift"; sourceTree = "<group>"; };
 		B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Theme.swift"; sourceTree = "<group>"; };
-		B54EB18E1A3F683D00D472B3 /* SPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPWindow.h; sourceTree = "<group>"; };
-		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricsViewController.xib; sourceTree = "<group>"; };
 		B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplenoteConstants.swift; sourceTree = "<group>"; };
 		B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Simplenote.swift"; sourceTree = "<group>"; };
@@ -578,6 +576,7 @@
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
+		B58BBD292523D4CA0025135F /* SPWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPWindow.swift; sourceTree = "<group>"; };
 		B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStoryboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B58CE28724F9C3420079C04B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B58D398B24BF95DF008E4ABC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -968,11 +967,10 @@
 				46F0E66217A32269005BB4D1 /* SPTableView.m */,
 				46EEA3C517B2FEA500914D1A /* SPTextView.h */,
 				46EEA3C617B2FEA500914D1A /* SPTextView.m */,
-				B54EB18E1A3F683D00D472B3 /* SPWindow.h */,
-				B54EB18F1A3F683D00D472B3 /* SPWindow.m */,
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 				B57CB880244E421400BA7969 /* SPTextField.swift */,
+				B58BBD292523D4CA0025135F /* SPWindow.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1774,6 +1772,7 @@
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
 				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B58BBD2A2523D4CA0025135F /* SPWindow.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
 				B551187224E33BC2007B11E3 /* ClipView.swift in Sources */,
@@ -1852,7 +1851,6 @@
 				B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
-				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
 				B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */,
@@ -1916,6 +1914,7 @@
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B58BBD2B2523D4CA0025135F /* SPWindow.swift in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993D24213B370037A431 /* String+Simplenote.swift in Sources */,
 				B551187324E33BC2007B11E3 /* ClipView.swift in Sources */,
@@ -1992,7 +1991,6 @@
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5C7DD41243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
-				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B586C063245CCD35009508EC /* SplitViewController.swift in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
@@ -2522,7 +2520,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
@@ -2566,7 +2564,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
