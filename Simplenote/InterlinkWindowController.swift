@@ -40,7 +40,7 @@ class InterlinkWindowController: NSWindowController {
 //
 extension InterlinkWindowController {
 
-    ///
+    /// Attaches the receiver's window to a given Parent Window
     ///
     func attach(to parentWindow: NSWindow?) {
         guard let parentWindow = parentWindow, let interlinkWindow = window else {
