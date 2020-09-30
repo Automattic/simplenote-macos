@@ -548,22 +548,13 @@ extension NoteEditorViewController {
 
     @objc
     func processInterlinkAutocomplete() {
-        guard let (range, keyword) = interlinkKeywordAtSelectedLocation else {
-            interlinkWindowController?.close()
+        guard let (range, keyword) = noteEditor.interlinkKeywordAtSelectedLocation else {
+            dismissInterlinkWindow()
             return
         }
 
         displayInterlinkWindow(around: range)
         refreshInterlinkAutocomplete(for: keyword)
-    }
-
-    var interlinkKeywordAtSelectedLocation: (Range<String.Index>, String)? {
-        let text = noteEditor.string
-        let selectedLocation = noteEditor.selectedRange().location
-
-        return text.indexFromLocation(selectedLocation).flatMap { index in
-            text.interlinkKeyword(at: index)
-        }
     }
 
     func displayInterlinkWindow(around range: Range<String.Index>) {
@@ -574,14 +565,14 @@ extension NoteEditorViewController {
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
     }
 
-    func dismissInterlinkWindow() {
-        interlinkWindowController?.close()
-    }
-
     func refreshInterlinkAutocomplete(for keyword: String) {
         let interlinkViewController = reusableInterlinkWindowController().interlinkViewController
 
         interlinkViewController?.refreshInterlinks(for: keyword)
+    }
+
+    func dismissInterlinkWindow() {
+        interlinkWindowController?.close()
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {
