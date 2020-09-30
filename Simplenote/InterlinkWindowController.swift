@@ -24,11 +24,6 @@ class InterlinkWindowController: NSWindowController {
         setupRoundedCorners()
         setupWindowAnimation()
     }
-
-    override func close() {
-        super.close()
-        stopListeningToDismissEvents()
-    }
 }
 
 
@@ -49,7 +44,6 @@ extension InterlinkWindowController {
         }
 
         parentWindow.addChildWindow(interlinkWindow, ordered: .above)
-        startListeningToDismissEvents(for: interlinkWindow)
     }
 
     /// Adjusts the receiver's Window Location relative to the specified frame. We'll make sure it doesn't get clipped horizontally or vertically
@@ -109,36 +103,6 @@ private extension InterlinkWindowController {
         output.x = round(output.x)
 
         return output
-    }
-}
-
-
-// MARK: - Dismissal Events
-//
-private extension InterlinkWindowController {
-
-    /// Let's automatically dismiss whenever:
-    /// - The user clicks / scrolls in another window that's not the Interlinking Window
-    /// - The Main Window looses its key status
-    ///
-    func startListeningToDismissEvents(for window: NSWindow) {
-        eventListenerToken = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown, .scrollWheel]) { [weak self] event in
-            if event.window != window {
-                self?.close()
-            }
-
-            return event
-        }
-    }
-
-    /// Drops the Dismissal Event Listeners
-    ///
-    func stopListeningToDismissEvents() {
-        if let token = eventListenerToken {
-            NSEvent.removeMonitor(token)
-        }
-
-        eventListenerToken = nil
     }
 }
 
