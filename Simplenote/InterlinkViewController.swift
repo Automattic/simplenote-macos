@@ -83,7 +83,7 @@ private extension InterlinkViewController {
         }
 
         backgroundView.wantsLayer = true
-        backgroundView.layer?.cornerRadius = Metrics.cornerRadius
+        backgroundView.layer?.cornerRadius = Settings.cornerRadius
     }
 
     func setupMouseCursor() {
@@ -91,6 +91,7 @@ private extension InterlinkViewController {
     }
 
     func setupResultsController() {
+        resultsController.limit = Settings.maximumNumberOfResults
         resultsController.onDidChangeContent = { [weak self] _, _ in
             self?.tableView.reloadAndPreserveSelection()
         }
@@ -185,8 +186,9 @@ extension InterlinkViewController: NSTableViewDelegate {
 }
 
 
-// MARK: - Metrics!
+// MARK: - Settings!
 //
-private enum Metrics {
+private enum Settings {
     static let cornerRadius = CGFloat(6)
+    static let maximumNumberOfResults = 15
 }
