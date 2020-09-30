@@ -572,6 +572,9 @@ extension NoteEditorViewController {
         interlinkWindowController.attach(to: view.window)
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
         interlinkWindowController.displayInterlinks(for: keyword)
+
+        let interlinkViewController = interlinkWindowController.interlinkViewController
+        interlinkViewController?.displayInterlinks(for: keyword)
     }
 
     func locationOnScreenForText(at range: Range<String.Index>) -> CGRect {

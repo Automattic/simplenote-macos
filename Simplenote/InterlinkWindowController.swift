@@ -6,23 +6,17 @@ import AppKit
 //
 class InterlinkWindowController: NSWindowController {
 
-    /// Token required for `Mouse Event` Listening purposes
-    ///
-    private var eventListenerToken: Any?
-
     /// Returns the InterlinkViewController Instance
     ///
-    private var interlinkViewController: InterlinkViewController? {
+    var interlinkViewController: InterlinkViewController? {
         contentViewController as? InterlinkViewController
     }
-
 
     // MARK: - Overridden Methods
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        setupRoundedCorners()
-        setupWindowAnimation()
+        setupWindowStyle()
     }
 }
 
@@ -57,12 +51,6 @@ extension InterlinkWindowController {
         let frameOrigin = calculateWindowOrigin(windowSize: window.frame.size, positioningRect: positioningRect)
         window.setFrameOrigin(frameOrigin)
     }
-
-    /// Refreshes the Autocomplete Interlinks
-    ///
-    func displayInterlinks(for keyword: String) {
-        interlinkViewController?.displayInterlinks(for: keyword)
-    }
 }
 
 
@@ -70,17 +58,14 @@ extension InterlinkWindowController {
 //
 private extension InterlinkWindowController {
 
-    func setupRoundedCorners() {
-        guard #available(macOS 10.15, *) else {
-            return
-        }
-
-        window?.backgroundColor = .clear
-        window?.isOpaque = false
-    }
-
-    func setupWindowAnimation() {
+    func setupWindowStyle() {
         window?.animationBehavior = .utilityWindow
+
+        // In macOS +10.15 the main ViewController will display rounded corners!
+        if #available(macOS 10.15, *) {
+            window?.backgroundColor = .clear
+            window?.isOpaque = false
+        }
     }
 
     func calculateWindowOrigin(windowSize: CGSize, positioningRect: CGRect) -> CGPoint {
