@@ -284,5 +284,14 @@ extension NSTextView {
 
         return NSOffsetRect(rect, textContainerOrigin.x, textContainerOrigin.y)
     }
+
+    /// Returns the Screen Location for the text at the specified range
+    ///
+    func locationOnScreenForText(in range: Range<String.Index>) -> CGRect {
+        let rectInEditor = boundingRect(for: range)
+        let rectInWindow = convert(rectInEditor, to: nil)
+
+        return window?.convertToScreen(rectInWindow) ?? rectInWindow
+    }
 }
 
