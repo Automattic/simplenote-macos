@@ -2,9 +2,22 @@ import Foundation
 import AppKit
 
 
+// MARK: - ParentWindowDelegate Protocol
+//
+protocol ParentWindowDelegate {
+
+    /// Invoked for every Child Window, whenever we're about to send an event.
+    /// - Note: Whenever this method returns `true`, the parent window will stop processing the associated event!
+    ///
+    func processParentWindowEvent(_ event: NSEvent) -> Bool
+}
+
+
 // MARK: - Simplenote Window
 //
 class Window: NSWindow {
+
+    // MARK: - Lifecycle
 
     deinit {
         stopListeningToNotifications()
@@ -14,6 +27,17 @@ class Window: NSWindow {
         super.init(contentRect: contentRect, styleMask: style, backing: backingStoreType, defer: flag)
         startListeningToNotifications()
         refreshStyle()
+    }
+
+    // MARK: - Overridden API(s)
+
+    override func sendEvent(_ event: NSEvent) {
+        let children = childWindows ?? []
+        for case let child as ParentWindowDelegate in children where child.processParentWindowEvent(event) {
+            return
+        }
+
+        super.sendEvent(event)
     }
 }
 
