@@ -32,6 +32,10 @@ class InterlinkViewController: NSViewController {
         return ResultsController(viewContext: mainContext, sortedBy: [sortDescriptor])
     }()
 
+    /// Closure to be executed whenever a Note is selected
+    ///
+    var onInsertInterlink: ((Note) -> Void)?
+
 
     // MARK: - Overridden Methods
 
@@ -91,7 +95,7 @@ private extension InterlinkViewController {
     func setupTableView() {
         tableView.becomeFirstResponder()
         tableView.target = self
-        tableView.doubleAction = #selector(noteWasSelected)
+        tableView.doubleAction = #selector(performInterlinkInsert)
     }
 
     func setupTrackingAreas() {
@@ -121,9 +125,13 @@ private extension InterlinkViewController {
 extension InterlinkViewController {
 
     @objc
-    func noteWasSelected() {
-        // TODO: Perform Interlink Insertion!!
-        NSLog("Here")
+    func performInterlinkInsert() {
+        guard let note = noteAtRow(tableView.selectedRow) else {
+            return
+        }
+
+        onInsertInterlink?(note)
+        onInsertInterlink = nil
     }
 }
 
@@ -187,7 +195,7 @@ extension InterlinkViewController: SPTableViewDelegate {
             return false
         }
 
-        noteWasSelected()
+        performInterlinkInsert()
         return true
     }
 
