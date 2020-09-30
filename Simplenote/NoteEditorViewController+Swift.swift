@@ -573,7 +573,7 @@ extension NoteEditorViewController {
     }
 
     func displayInterlinkWindow(around range: Range<String.Index>) {
-        let locationOnScreen = locationOnScreenForText(at: range)
+        let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
         let interlinkWindowController = reusableInterlinkWindowController()
 
         interlinkWindowController.attach(to: view.window)
@@ -601,13 +601,6 @@ extension NoteEditorViewController {
 
         let range = noteEditor.string.utf16NSRange(from: range)
         noteEditor.replaceCharacters(in: range, with: linkText)
-    }
-
-    func locationOnScreenForText(at range: Range<String.Index>) -> CGRect {
-        let rectInEditor = noteEditor.boundingRect(for: range)
-        let rectInWindow = noteEditor.convert(rectInEditor, to: nil)
-
-        return view.window?.convertToScreen(rectInWindow) ?? rectInWindow
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {
