@@ -72,7 +72,7 @@ extension InterlinkViewController {
 
     /// Refreshes the UI so that Interlinks for the specified Keyword are rendered
     ///
-    func displayInterlinks(for keyword: String) {
+    func refreshInterlinks(for keyword: String) {
         refreshResultsPredicate(for: keyword)
         tableView.reloadDataAndResetSelection()
     }
