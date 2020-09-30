@@ -45,7 +45,9 @@ class InterlinkViewController: NSViewController {
         refreshStyle()
         setupResultsController()
         setupRoundedCorners()
+        setupTableView()
         setupTrackingAreas()
+
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -86,6 +88,12 @@ private extension InterlinkViewController {
         backgroundView.layer?.cornerRadius = Settings.cornerRadius
     }
 
+    func setupTableView() {
+        tableView.becomeFirstResponder()
+        tableView.target = self
+        tableView.doubleAction = #selector(noteWasSelected)
+    }
+
     func setupTrackingAreas() {
         view.addTrackingArea(trackingArea)
     }
@@ -104,6 +112,18 @@ private extension InterlinkViewController {
         ])
 
         try? resultsController.performFetch()
+    }
+}
+
+
+// MARK: - Action Handlers
+//
+extension InterlinkViewController {
+
+    @objc
+    func noteWasSelected() {
+        // TODO: Perform Interlink Insertion!!
+        NSLog("Here")
     }
 }
 
@@ -160,7 +180,16 @@ extension InterlinkViewController: NSTableViewDataSource {
 
 // MARK: - NSTableViewDelegate
 //
-extension InterlinkViewController: NSTableViewDelegate {
+extension InterlinkViewController: SPTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, didReceiveKeyDownEvent event: NSEvent) -> Bool {
+        guard case NSEvent.SpecialKey.carriageReturn = event.specialKey else {
+            return false
+        }
+
+        noteWasSelected()
+        return true
+    }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         true
