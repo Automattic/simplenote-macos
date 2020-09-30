@@ -1029,6 +1029,7 @@
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
+				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
 				B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */,
@@ -1056,7 +1057,6 @@
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
-				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
