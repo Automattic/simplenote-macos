@@ -548,7 +548,7 @@ extension NoteEditorViewController {
 
     @objc
     func processInterlinkAutocomplete() {
-        guard let (markdownRange, keywordRange, keywordText) = interlinkKeywordAtSelectedLocation else {
+        guard let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation else {
             dismissInterlinkWindow()
             return
         }
@@ -563,15 +563,6 @@ extension NoteEditorViewController {
         refreshInterlinkAutocomplete(for: keywordText, in: markdownRange)
     }
 
-    var interlinkKeywordAtSelectedLocation: (Range<String.Index>, Range<String.Index>, String)? {
-        let text = noteEditor.string
-        let selectedLocation = noteEditor.selectedRange().location
-
-        return text.indexFromLocation(selectedLocation).flatMap { index in
-            text.interlinkKeyword(at: index)
-        }
-    }
-
     func displayInterlinkWindow(around range: Range<String.Index>) {
         let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
         let interlinkWindowController = reusableInterlinkWindowController()
@@ -580,27 +571,23 @@ extension NoteEditorViewController {
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
     }
 
-    func dismissInterlinkWindow() {
-        interlinkWindowController?.close()
-    }
-
     func refreshInterlinkAutocomplete(for keywordText: String, in markdownRange: Range<String.Index>) {
         let interlinkViewController = reusableInterlinkWindowController().interlinkViewController
 
         interlinkViewController?.refreshInterlinks(for: keywordText)
-        interlinkViewController?.onInsertInterlink = { [weak self] note in
-            self?.insertInterlink(for: note, in: markdownRange)
+        interlinkViewController?.onInsertInterlink = { [weak self] linkText in
+            self?.insertInterlink(linkText, in: markdownRange)
             self?.dismissInterlinkWindow()
         }
     }
 
-    func insertInterlink(for note: Note, in range: Range<String.Index>) {
-        guard let linkText = note.markdownInternalLink else {
-            return
-        }
-
+    func insertInterlink(_ linkText: String, in range: Range<String.Index>) {
         let range = noteEditor.string.utf16NSRange(from: range)
         noteEditor.replaceCharacters(in: range, with: linkText)
+    }
+
+    func dismissInterlinkWindow() {
+        interlinkWindowController?.close()
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {

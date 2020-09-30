@@ -261,6 +261,22 @@ extension NSTextView {
 }
 
 
+// MARK: - Interlinks
+//
+extension NSTextView {
+
+    /// Returns the Interlinking Keyword at the current Location (if any)
+    ///
+    var interlinkKeywordAtSelectedLocation: (Range<String.Index>, Range<String.Index>, String)? {
+        let text = string
+
+        return text.indexFromLocation(selectedRange().location).flatMap { index in
+            text.interlinkKeyword(at: index)
+        }
+    }
+}
+
+
 // MARK: - Geometry
 //
 extension NSTextView {

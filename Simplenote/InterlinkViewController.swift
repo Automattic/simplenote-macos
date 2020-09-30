@@ -32,9 +32,9 @@ class InterlinkViewController: NSViewController {
         return ResultsController(viewContext: mainContext, sortedBy: [sortDescriptor])
     }()
 
-    /// Closure to be executed whenever a Note is selected
+    /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
     ///
-    var onInsertInterlink: ((Note) -> Void)?
+    var onInsertInterlink: ((String) -> Void)?
 
 
     // MARK: - Overridden Methods
@@ -126,11 +126,11 @@ extension InterlinkViewController {
 
     @objc
     func performInterlinkInsert() {
-        guard let note = noteAtRow(tableView.selectedRow) else {
+        guard let interlinkText = noteAtRow(tableView.selectedRow)?.markdownInternalLink else {
             return
         }
 
-        onInsertInterlink?(note)
+        onInsertInterlink?(interlinkText)
         onInsertInterlink = nil
     }
 }
