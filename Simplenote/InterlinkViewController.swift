@@ -43,9 +43,9 @@ class InterlinkViewController: NSViewController {
         super.viewDidLoad()
         startListeningToNotifications()
         refreshStyle()
-        setupRoundedCorners()
-        setupMouseCursor()
         setupResultsController()
+        setupRoundedCorners()
+        setupTrackingAreas()
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -86,7 +86,7 @@ private extension InterlinkViewController {
         backgroundView.layer?.cornerRadius = Settings.cornerRadius
     }
 
-    func setupMouseCursor() {
+    func setupTrackingAreas() {
         view.addTrackingArea(trackingArea)
     }
 
