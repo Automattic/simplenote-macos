@@ -259,3 +259,46 @@ extension NSTextView {
         setSelectedRange(newSelectedRange)
     }
 }
+
+
+// MARK: - Interlinks
+//
+extension NSTextView {
+
+    /// Returns the Interlinking Keyword at the current Location (if any)
+    ///
+    var interlinkKeywordAtSelectedLocation: (Range<String.Index>, String)? {
+        let text = string
+
+        return text.indexFromLocation(selectedRange().location).flatMap { index in
+            text.interlinkKeyword(at: index)
+        }
+    }
+}
+
+
+// MARK: - Geometry
+//
+extension NSTextView {
+
+    /// Returns the Bounding Rect for the specified `Range<String.Index>`
+    ///
+    func boundingRect(for range: Range<String.Index>) -> NSRect {
+        let nsRange = string.utf16NSRange(from: range)
+        return boundingRect(for: nsRange)
+    }
+
+    /// Returns the Bounding Rect for the specified NSRange
+    ///
+    func boundingRect(for range: NSRange) -> NSRect {
+        guard let layoutManager = layoutManager, let textContainer = textContainer else {
+            return .zero
+        }
+
+        let glyphRange = layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
+        let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
+
+        return NSOffsetRect(rect, textContainerOrigin.x, textContainerOrigin.y)
+    }
+}
+

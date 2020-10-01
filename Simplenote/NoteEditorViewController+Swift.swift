@@ -1,4 +1,6 @@
 import Foundation
+import SimplenoteFoundation
+import SimplenoteInterlinks
 
 
 // MARK: - Interface Initialization
@@ -536,6 +538,45 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
 
         // Refreshes the note content in the editor, in case the popover was canceled
         didReceiveNewContent()
+    }
+}
+
+
+// MARK: - Interlinking Autocomplete
+//
+extension NoteEditorViewController {
+
+    @objc
+    func processInterlinkAutocomplete() {
+        guard let (range, keyword) = noteEditor.interlinkKeywordAtSelectedLocation else {
+            interlinkWindowController?.close()
+            return
+        }
+
+        displayInterlinkAutocomplete(keyword: keyword, at: range)
+    }
+
+    func displayInterlinkAutocomplete(keyword: String, at range: Range<String.Index>) {
+        let sourceInEditor = noteEditor.boundingRect(for: range)
+        let sourceInWindow = noteEditor.convert(sourceInEditor, to: nil)
+        let sourceInScreen = view.window?.convertToScreen(sourceInWindow) ?? sourceInWindow
+
+        let interlinkWindowController = reusableInterlinkWindowController()
+
+        interlinkWindowController.attach(to: view.window)
+        interlinkWindowController.positionWindow(relativeTo: sourceInScreen)
+    }
+
+    func reusableInterlinkWindowController() -> InterlinkWindowController {
+        if let interlinkWindowController = interlinkWindowController {
+            return interlinkWindowController
+        }
+
+        let storyboard = NSStoryboard(name: .interlink, bundle: nil)
+        let interlinkWindowController = storyboard.instantiateWindowController(ofType: InterlinkWindowController.self)
+        self.interlinkWindowController = interlinkWindowController
+
+        return interlinkWindowController
     }
 }
 

@@ -344,8 +344,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     self.note.content = [self.noteEditor plainTextContent];
     [self.note createPreview];
-    
+
     [self refreshToolbarActions];
+
+    [self processInterlinkAutocomplete];
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
