@@ -6,7 +6,16 @@
         "repositoryURL": "git@github.com:Automattic/SimplenoteFoundation-Swift.git",
         "state": {
           "branch": null,
-          "revision": "c5938f97ba6c041ae4c0f4030493f628f2263a41",
+          "revision": "150e363b46f7c0d479a474c2c0a8d00648bbab97",
+          "version": "1.1.0"
+        }
+      },
+      {
+        "package": "SimplenoteInterlinks",
+        "repositoryURL": "git@github.com:Automattic/SimplenoteInterlinks-Swift.git",
+        "state": {
+          "branch": null,
+          "revision": "d49f8ccece40d16f4baae1577cce1452e28b2463",
           "version": "1.0.0"
         }
       },
