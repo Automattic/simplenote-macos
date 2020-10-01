@@ -15,7 +15,7 @@ abstract_target 'Automattic' do
 
   # Automattic Shared
   #
-  pod 'Automattic-Tracks-iOS', '~> 0.4'
+  pod 'Automattic-Tracks-iOS', git: 'https://github.com/Automattic/Automattic-Tracks-iOS', branch: 'store-data-in-application-support'
   pod 'Simperium-OSX', '0.8.30'
 
   # Main Target

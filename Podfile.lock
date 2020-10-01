@@ -26,26 +26,35 @@ PODS:
   - Sodium (0.8.0)
 
 DEPENDENCIES:
-  - Automattic-Tracks-iOS (~> 0.4)
+  - Automattic-Tracks-iOS (from `https://github.com/Automattic/Automattic-Tracks-iOS`, branch `store-data-in-application-support`)
   - Simperium-OSX (= 0.8.30)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Automattic-Tracks-iOS
     - CocoaLumberjack
     - Reachability
     - Sentry
     - Simperium-OSX
     - Sodium
 
+EXTERNAL SOURCES:
+  Automattic-Tracks-iOS:
+    :branch: store-data-in-application-support
+    :git: https://github.com/Automattic/Automattic-Tracks-iOS
+
+CHECKOUT OPTIONS:
+  Automattic-Tracks-iOS:
+    :commit: 90cc2ab6f9038a2f79e4bd89cae882abaffc5bd9
+    :git: https://github.com/Automattic/Automattic-Tracks-iOS
+
 SPEC CHECKSUMS:
-  Automattic-Tracks-iOS: ac2cf9d8332fef72cf3e6de7b14012e7a0672676
+  Automattic-Tracks-iOS: b0f5d0cde00e4a0ff423d0139d84e2819af91c6a
   CocoaLumberjack: bd155f2dd06c0e0b03f876f7a3ee55693122ec94
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Sentry: ab6c209f23700d1460691dbc90e19ed0a05d496b
   Simperium-OSX: 677949c579f96c4fd194b532bdffda86b00b3db8
   Sodium: 63c0ca312a932e6da481689537d4b35568841bdc
 
-PODFILE CHECKSUM: 3e9e3836b359a135afd5e690bc752feda9e53e96
+PODFILE CHECKSUM: b6ce3bf0aa9a39ad9dfd426878722575e7ac1f1e
 
 COCOAPODS: 1.6.1
