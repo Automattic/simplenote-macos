@@ -78,14 +78,13 @@ private extension InterlinkWindowController {
             output.x += overflowX - Metrics.windowInsets.right
         }
 
+        output.x = round(output.x)
+
         // Adjust Origin.Y: Avoid falling below the screen
         let positionBelowY = output.y - windowSize.height - Metrics.windowInsets.top
         let positionAboveY = output.y + positioningRect.height + Metrics.windowInsets.top
 
         output.y = round(positionBelowY > .zero ? positionBelowY : positionAboveY)
-
-        output.y = round(output.y)
-        output.x = round(output.x)
 
         return output
     }
