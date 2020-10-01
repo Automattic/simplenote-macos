@@ -68,6 +68,10 @@ class BackgroundView: NSView {
         }
     }
 
+    /// Mouse Cursor that should be applied when the mouse hovers over
+    ///
+    var cursor: NSCursor?
+
 
     // MARK: - Overridden Methods
 
@@ -87,6 +91,14 @@ class BackgroundView: NSView {
             let bottomRect = NSRect(x: .zero, y: dirtyRect.height - borderWidth, width: dirtyRect.width, height: borderWidth)
             borderColor.set()
             NSBezierPath(rect: bottomRect).fill()
+        }
+    }
+
+    override func resetCursorRects() {
+        super.resetCursorRects()
+
+        if let cursor = cursor {
+            addCursorRect(bounds, cursor: cursor)
         }
     }
 }
