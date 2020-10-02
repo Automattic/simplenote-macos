@@ -549,22 +549,30 @@ extension NoteEditorViewController {
     @objc
     func processInterlinkAutocomplete() {
         guard let (range, keyword) = noteEditor.interlinkKeywordAtSelectedLocation else {
-            interlinkWindowController?.close()
+            dismissInterlinkWindow()
             return
         }
 
-        displayInterlinkAutocomplete(keyword: keyword, at: range)
+        displayInterlinkWindow(around: range)
+        refreshInterlinkAutocomplete(for: keyword)
     }
 
-    func displayInterlinkAutocomplete(keyword: String, at range: Range<String.Index>) {
-        let sourceInEditor = noteEditor.boundingRect(for: range)
-        let sourceInWindow = noteEditor.convert(sourceInEditor, to: nil)
-        let sourceInScreen = view.window?.convertToScreen(sourceInWindow) ?? sourceInWindow
-
+    func displayInterlinkWindow(around range: Range<String.Index>) {
+        let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
         let interlinkWindowController = reusableInterlinkWindowController()
 
         interlinkWindowController.attach(to: view.window)
-        interlinkWindowController.positionWindow(relativeTo: sourceInScreen)
+        interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
+    }
+
+    func refreshInterlinkAutocomplete(for keyword: String) {
+        let interlinkViewController = reusableInterlinkWindowController().interlinkViewController
+
+        interlinkViewController?.refreshInterlinks(for: keyword)
+    }
+
+    func dismissInterlinkWindow() {
+        interlinkWindowController?.close()
     }
 
     func reusableInterlinkWindowController() -> InterlinkWindowController {

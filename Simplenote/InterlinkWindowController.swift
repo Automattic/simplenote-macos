@@ -6,30 +6,38 @@ import AppKit
 //
 class InterlinkWindowController: NSWindowController {
 
-    private var interlinkViewController: InterlinkViewController? {
+    /// Returns the InterlinkViewController Instance
+    ///
+    var interlinkViewController: InterlinkViewController? {
         contentViewController as? InterlinkViewController
     }
 
+    // MARK: - Overridden Methods
+
     override func windowDidLoad() {
         super.windowDidLoad()
-        setupRoundedCorners()
+        setupWindowStyle()
     }
 }
 
 
-// MARK: - Lookup API
+// MARK: - Public API
 //
 extension InterlinkWindowController {
 
     /// Attaches the receiver's window to a given Parent Window
     ///
     func attach(to parentWindow: NSWindow?) {
-        guard let window = window else {
+        guard let parentWindow = parentWindow, let interlinkWindow = window else {
             assertionFailure()
             return
         }
 
-        parentWindow?.addChildWindow(window, ordered: .above)
+        guard interlinkWindow.parent == nil else {
+            return
+        }
+
+        parentWindow.addChildWindow(interlinkWindow, ordered: .above)
     }
 
     /// Adjusts the receiver's Window Location relative to the specified frame. We'll make sure it doesn't get clipped horizontally or vertically
@@ -50,13 +58,14 @@ extension InterlinkWindowController {
 //
 private extension InterlinkWindowController {
 
-    func setupRoundedCorners() {
-        guard #available(macOS 10.15, *) else {
-            return
-        }
+    func setupWindowStyle() {
+        window?.animationBehavior = .utilityWindow
 
-        window?.backgroundColor = .clear
-        window?.isOpaque = false
+        // In macOS +10.15 the main ViewController will display rounded corners!
+        if #available(macOS 10.15, *) {
+            window?.backgroundColor = .clear
+            window?.isOpaque = false
+        }
     }
 
     func calculateWindowOrigin(windowSize: CGSize, positioningRect: CGRect) -> CGPoint {
@@ -68,11 +77,13 @@ private extension InterlinkWindowController {
             output.x += overflowX - Metrics.windowInsets.right
         }
 
+        output.x = round(output.x)
+
         // Adjust Origin.Y: Avoid falling below the screen
         let positionBelowY = output.y - windowSize.height - Metrics.windowInsets.top
         let positionAboveY = output.y + positioningRect.height + Metrics.windowInsets.top
 
-        output.y = positionBelowY > .zero ? positionBelowY : positionAboveY
+        output.y = round(positionBelowY > .zero ? positionBelowY : positionAboveY)
 
         return output
     }

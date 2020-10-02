@@ -1,5 +1,6 @@
 import Foundation
 import AppKit
+import SimplenoteFoundation
 
 
 // MARK: - InterlinkViewController
@@ -18,6 +19,19 @@ class InterlinkViewController: NSViewController {
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
+    /// Main Context
+    ///
+    private var mainContext: NSManagedObjectContext {
+        SimplenoteAppDelegate.shared().managedObjectContext
+    }
+
+    /// ResultsController: In charge of CoreData Queries!
+    ///
+    private lazy var resultsController: ResultsController<Note> = {
+        let sortDescriptor = NSSortDescriptor(keyPath: \Note.content, ascending: true)
+        return ResultsController(viewContext: mainContext, sortedBy: [sortDescriptor])
+    }()
+
 
     // MARK: - Overridden Methods
 
@@ -29,8 +43,9 @@ class InterlinkViewController: NSViewController {
         super.viewDidLoad()
         startListeningToNotifications()
         refreshStyle()
-        setupMouseCursor()
+        setupResultsController()
         setupRoundedCorners()
+        setupTrackingAreas()
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -45,6 +60,19 @@ class InterlinkViewController: NSViewController {
 }
 
 
+// MARK: - Public API(s)
+//
+extension InterlinkViewController {
+
+    /// Refreshes the UI so that Interlinks for the specified Keyword are rendered
+    ///
+    func refreshInterlinks(for keyword: String) {
+        refreshResultsPredicate(for: keyword)
+        tableView.reloadDataAndResetSelection()
+    }
+}
+
+
 // MARK: - Setup!
 //
 private extension InterlinkViewController {
@@ -55,11 +83,27 @@ private extension InterlinkViewController {
         }
 
         backgroundView.wantsLayer = true
-        backgroundView.layer?.cornerRadius = Metrics.cornerRadius
+        backgroundView.layer?.cornerRadius = Settings.cornerRadius
     }
 
-    func setupMouseCursor() {
+    func setupTrackingAreas() {
         view.addTrackingArea(trackingArea)
+    }
+
+    func setupResultsController() {
+        resultsController.limit = Settings.maximumNumberOfResults
+        resultsController.onDidChangeContent = { [weak self] _, _ in
+            self?.tableView.reloadAndPreserveSelection()
+        }
+    }
+
+    func refreshResultsPredicate(for keyword: String) {
+        resultsController.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate.predicateForNotes(searchText: keyword),
+            NSPredicate.predicateForNotes(deleted: false)
+        ])
+
+        try? resultsController.performFetch()
     }
 }
 
@@ -90,7 +134,16 @@ private extension InterlinkViewController {
     func refreshStyle() {
         backgroundView.fillColor = .simplenoteBackgroundColor
         tableView.backgroundColor = .clear
-        tableView.reloadData()
+        tableView.reloadAndPreserveSelection()
+    }
+
+    func noteAtRow(_ row: Int) -> Note? {
+        let objects = resultsController.fetchedObjects
+        guard row < objects.count else {
+            return nil
+        }
+
+        return objects[row]
     }
 }
 
@@ -100,8 +153,7 @@ private extension InterlinkViewController {
 extension InterlinkViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        // TODO: Drop this placeholder!
-        return 5
+        resultsController.numberOfObjects
     }
 }
 
@@ -110,6 +162,10 @@ extension InterlinkViewController: NSTableViewDataSource {
 //
 extension InterlinkViewController: NSTableViewDelegate {
 
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        true
+    }
+
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
@@ -117,17 +173,22 @@ extension InterlinkViewController: NSTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
+        guard let note = noteAtRow(row) else {
+            return nil
+        }
 
-        // TODO: Drop this placeholder!
-        tableViewCell.title = "Placeholder!"
+        note.ensurePreviewStringsAreAvailable()
+
+        let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
+        tableViewCell.title = note.titlePreview
         return tableViewCell
     }
 }
 
 
-// MARK: - Metrics!
+// MARK: - Settings!
 //
-private enum Metrics {
+private enum Settings {
     static let cornerRadius = CGFloat(6)
+    static let maximumNumberOfResults = 15
 }
