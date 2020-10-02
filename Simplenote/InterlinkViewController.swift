@@ -32,10 +32,6 @@ class InterlinkViewController: NSViewController {
         return ResultsController(viewContext: mainContext, sortedBy: [sortDescriptor])
     }()
 
-    /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
-    ///
-    var onInsertInterlink: ((String) -> Void)?
-
 
     // MARK: - Overridden Methods
 
@@ -49,9 +45,7 @@ class InterlinkViewController: NSViewController {
         refreshStyle()
         setupResultsController()
         setupRoundedCorners()
-        setupTableView()
         setupTrackingAreas()
-
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -92,12 +86,6 @@ private extension InterlinkViewController {
         backgroundView.layer?.cornerRadius = Settings.cornerRadius
     }
 
-    func setupTableView() {
-        tableView.becomeFirstResponder()
-        tableView.target = self
-        tableView.doubleAction = #selector(performInterlinkInsert)
-    }
-
     func setupTrackingAreas() {
         view.addTrackingArea(trackingArea)
     }
@@ -116,22 +104,6 @@ private extension InterlinkViewController {
         ])
 
         try? resultsController.performFetch()
-    }
-}
-
-
-// MARK: - Action Handlers
-//
-extension InterlinkViewController {
-
-    @objc
-    func performInterlinkInsert() {
-        guard let interlinkText = noteAtRow(tableView.selectedRow)?.markdownInternalLink else {
-            return
-        }
-
-        onInsertInterlink?(interlinkText)
-        onInsertInterlink = nil
     }
 }
 
@@ -188,16 +160,7 @@ extension InterlinkViewController: NSTableViewDataSource {
 
 // MARK: - NSTableViewDelegate
 //
-extension InterlinkViewController: SPTableViewDelegate {
-
-    public func tableView(_ tableView: NSTableView, didReceiveKeyDownEvent event: NSEvent) -> Bool {
-        guard case NSEvent.SpecialKey.carriageReturn = event.specialKey else {
-            return false
-        }
-
-        performInterlinkInsert()
-        return true
-    }
+extension InterlinkViewController: NSTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         true

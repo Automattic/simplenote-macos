@@ -267,7 +267,7 @@ extension NSTextView {
 
     /// Returns the Interlinking Keyword at the current Location (if any)
     ///
-    var interlinkKeywordAtSelectedLocation: (Range<String.Index>, Range<String.Index>, String)? {
+    var interlinkKeywordAtSelectedLocation: (Range<String.Index>, String)? {
         let text = string
 
         return text.indexFromLocation(selectedRange().location).flatMap { index in
