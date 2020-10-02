@@ -29,8 +29,12 @@ class InterlinkViewController: NSViewController {
     /// ResultsController: In charge of CoreData Queries!
     ///
     private lazy var resultsController: ResultsController<Note> = {
-        let sortDescriptor = NSSortDescriptor(keyPath: \Note.content, ascending: true)
-        return ResultsController(viewContext: mainContext, sortedBy: [sortDescriptor])
+        let resultsController = ResultsController<Note>(viewContext: mainContext, sortedBy: [
+            NSSortDescriptor(keyPath: \Note.content, ascending: true)
+        ])
+
+        resultsController.limit = Settings.maximumNumberOfResults
+        return resultsController
     }()
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
@@ -52,7 +56,6 @@ class InterlinkViewController: NSViewController {
         setupRoundedCorners()
         setupTableView()
         setupTrackingAreas()
-
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -104,7 +107,6 @@ private extension InterlinkViewController {
     }
 
     func setupResultsController() {
-        resultsController.limit = Settings.maximumNumberOfResults
         resultsController.onDidChangeContent = { [weak self] _, _ in
             self?.tableView.reloadAndPreserveSelection()
         }
@@ -165,6 +167,12 @@ private extension InterlinkViewController {
         tableView.backgroundColor = .clear
         tableView.reloadAndPreserveSelection()
     }
+}
+
+
+// MARK: - Wrappers
+//
+private extension InterlinkViewController {
 
     func noteAtRow(_ row: Int) -> Note? {
         let objects = resultsController.fetchedObjects
