@@ -25,6 +25,14 @@
             return;
         }
     }
+
+    // Nü Event Handling Mechanism
+    id<SPTableViewDelegate> extendedDelegate = (id<SPTableViewDelegate>)self.delegate;
+    if ([extendedDelegate respondsToSelector:@selector(tableView:didReceiveKeyDownEvent:)]) {
+        if ([extendedDelegate tableView:self didReceiveKeyDownEvent:theEvent]) {
+            return;
+        }
+    }
     
     [super keyDown:theEvent];
 }
