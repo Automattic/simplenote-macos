@@ -115,12 +115,12 @@ private extension InterlinkViewController {
 
     func setupResultsController() {
         resultsController.onDidChangeContent = { [weak self] _, _ in
-            self?.dismissIfNeeded()
+            self?.dismissIfEmpty()
             self?.refreshTableView()
         }
     }
 
-    func dismissIfNeeded() {
+    func dismissIfEmpty() {
         if resultsController.numberOfObjects != .zero {
             return
         }
