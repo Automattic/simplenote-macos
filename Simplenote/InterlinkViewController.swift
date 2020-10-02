@@ -39,7 +39,11 @@ class InterlinkViewController: NSViewController {
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
     ///
-    var onInsertInterlink: ((String) -> Void)?
+    var onInsert: ((String) -> Void)?
+
+    ///
+    ///
+    var onRefresh: ((Bool) -> Void)?
 
 
     // MARK: - Overridden Methods
@@ -74,11 +78,18 @@ class InterlinkViewController: NSViewController {
 //
 extension InterlinkViewController {
 
-    /// Refreshes the UI so that Interlinks for the specified Keyword are rendered
+    /// Refreshes the Autocomplete Results. Returns `true` when there are visible rows.
+    /// - Important:
+    ///     By design, whenever there are no results we won't be refreshing the TableView. Instead, we'll stick to the "old results".
+    ///     This way we get to avoid the awkward visual effect of "empty autocomplete window"
     ///
-    func refreshInterlinks(for keyword: String) {
-        refreshResultsPredicate(for: keyword)
-        refreshInterfaceOrDismissIfNeeded()
+    func refreshInterlinks(for keyword: String) -> Bool {
+        guard refreshResultsController(for: keyword) else {
+            return false
+        }
+
+        refreshTableView()
+        return true
     }
 }
 
@@ -108,43 +119,22 @@ private extension InterlinkViewController {
 
     func setupResultsController() {
         resultsController.onDidChangeContent = { [weak self] _, _ in
-            self?.refreshInterfaceOrDismissIfNeeded()
+            self?.refreshTableView()
         }
     }
 
-    func refreshResultsPredicate(for keyword: String) {
+    func refreshResultsController(for keyword: String) -> Bool {
         resultsController.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             NSPredicate.predicateForNotes(titleText: keyword),
             NSPredicate.predicateForNotes(deleted: false)
         ])
 
         try? resultsController.performFetch()
+        return resultsController.numberOfObjects != .zero
     }
 
-    func refreshInterfaceOrDismissIfNeeded() {
-        guard resultsController.numberOfObjects > .zero else {
-            dismissWindow()
-            return
-        }
-
-        ensureWindowIsVisible()
+    func refreshTableView() {
         tableView.reloadAndPreserveSelection()
-    }
-
-    func ensureWindowIsVisible() {
-        guard let window = view.window, window.isVisible, window.alphaValue != AppKitConstants.alpha1_0 else {
-            return
-        }
-
-        window.alphaValue = AppKitConstants.alpha1_0
-    }
-
-    func dismissWindow() {
-        guard let window = view.window, window.isVisible else {
-            return
-        }
-
-        window.close()
     }
 }
 
@@ -159,8 +149,8 @@ extension InterlinkViewController {
             return
         }
 
-        onInsertInterlink?(interlinkText)
-        onInsertInterlink = nil
+        onInsert?(interlinkText)
+        onInsert = nil
     }
 }
 

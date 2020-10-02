@@ -27,7 +27,7 @@ extension InterlinkWindowController {
 
     /// Attaches the receiver's window to a given Parent Window
     ///
-    func attach(to parentWindow: NSWindow?, hiddenByDefault: Bool = true) {
+    func attach(to parentWindow: NSWindow?) {
         guard let parentWindow = parentWindow, let interlinkWindow = window else {
             assertionFailure()
             return
@@ -37,7 +37,6 @@ extension InterlinkWindowController {
             return
         }
 
-        interlinkWindow.alphaValue = hiddenByDefault ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
         parentWindow.addChildWindow(interlinkWindow, ordered: .above)
     }
 
