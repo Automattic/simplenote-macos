@@ -548,13 +548,19 @@ extension NoteEditorViewController {
 
     @objc
     func processInterlinkAutocomplete() {
-        guard let (range, keyword) = noteEditor.interlinkKeywordAtSelectedLocation else {
+        guard let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation else {
             dismissInterlinkWindow()
             return
         }
 
-        displayInterlinkWindow(around: range)
-        refreshInterlinkAutocomplete(for: keyword)
+        /// Position the window below the first keyword character (Keyword Range)
+        ///
+        displayInterlinkWindow(around: keywordRange)
+
+        /// Refresh the Autocomplete Table, and pass along the actual `Markdown Range` (which maps to the `[keyword`,
+        /// including the opening character.
+        ///
+        refreshInterlinkAutocomplete(for: keywordText, in: markdownRange)
     }
 
     func displayInterlinkWindow(around range: Range<String.Index>) {
@@ -565,10 +571,19 @@ extension NoteEditorViewController {
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
     }
 
-    func refreshInterlinkAutocomplete(for keyword: String) {
+    func refreshInterlinkAutocomplete(for keywordText: String, in markdownRange: Range<String.Index>) {
         let interlinkViewController = reusableInterlinkWindowController().interlinkViewController
 
-        interlinkViewController?.refreshInterlinks(for: keyword)
+        interlinkViewController?.refreshInterlinks(for: keywordText)
+        interlinkViewController?.onInsertInterlink = { [weak self] linkText in
+            self?.insertInterlink(linkText, in: markdownRange)
+            self?.dismissInterlinkWindow()
+        }
+    }
+
+    func insertInterlink(_ text: String, in range: Range<String.Index>) {
+        let range = noteEditor.string.utf16NSRange(from: range)
+        noteEditor.replaceCharacters(in: range, with: text)
     }
 
     func dismissInterlinkWindow() {
