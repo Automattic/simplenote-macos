@@ -1,6 +1,7 @@
 import Foundation
 import AppKit
 import SimplenoteFoundation
+import SimplenoteSearch
 
 
 // MARK: - InterlinkViewController
@@ -111,7 +112,7 @@ private extension InterlinkViewController {
 
     func refreshResultsPredicate(for keyword: String) {
         resultsController.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate.predicateForNotes(searchText: keyword),
+            NSPredicate.predicateForNotes(titleText: keyword),
             NSPredicate.predicateForNotes(deleted: false)
         ])
 
