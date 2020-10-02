@@ -41,10 +41,6 @@ class InterlinkViewController: NSViewController {
     ///
     var onInsert: ((String) -> Void)?
 
-    ///
-    ///
-    var onRefresh: ((Bool) -> Void)?
-
 
     // MARK: - Overridden Methods
 
@@ -119,8 +115,17 @@ private extension InterlinkViewController {
 
     func setupResultsController() {
         resultsController.onDidChangeContent = { [weak self] _, _ in
+            self?.dismissIfNeeded()
             self?.refreshTableView()
         }
+    }
+
+    func dismissIfNeeded() {
+        if resultsController.numberOfObjects != .zero {
+            return
+        }
+
+        view.window?.close()
     }
 
     func refreshResultsController(for keyword: String) -> Bool {
