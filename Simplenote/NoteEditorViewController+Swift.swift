@@ -584,6 +584,7 @@ extension NoteEditorViewController {
     func insertInterlink(_ text: String, in range: Range<String.Index>) {
         let range = noteEditor.string.utf16NSRange(from: range)
         noteEditor.replaceCharacters(in: range, with: text)
+        noteEditor.processLinksInDocumentAsynchronously()
     }
 
     func dismissInterlinkWindow() {
