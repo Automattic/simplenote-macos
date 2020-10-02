@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-20 10:54:04+0000 */
+/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "문자";
 
+/* Collaborate Menu Action */
+"Collaborate" = "협업";
+
 /* Analytics Toggle Text */
 "Collect Information" = "정보 수집";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "비밀번호 확인";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copy Internal Link";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "로그인할 수 없음";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "생성됨";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Delete Forever";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "메모 삭제";
 
 /* Delete Tag Action */
 "Delete Tag" = "태그 삭제";
+
+/* Closes the Privacy View */
+"Dismiss" = "무시";
 
 /* Placeholder text for login field */
 "Email" = "이메일";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "비밀번호를 잊으셨나요?";
 
+/* History Menu Action */
+"History" = "내역";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "로그인";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "로그인 중...";
+
+/* Markdown Menu Action */
+"Markdown" = "마크다운";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "마크다운 미리보기";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "더";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "휴지통으로 이동";
 
 /* Link to create an account */
 "Need an account?" = "계정이 필요하세요?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "비밀번호가 일치하지 않습니다.";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "상단에 고정";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "이메일을 통해 워드프레스닷컴 계정을 활성화하고 다시 시도하세요.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "개인 정보 보호 정책";
+
+/* Publish Menu Action */
+"Publish" = "발행하기";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "이 메모를 웹 페이지에 공개합니다. 페이지가 메모 콘텐츠로 항상 업데이트됩니다.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "재설정";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "복원";
 
 /* Search Field Placeholder */
 "Search" = "검색";
+
+/* Share Menu Action */
+"Share" = "공유";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com 계정에 로그인되어 있는 동안 이용하는 서비스에 대한 정보를 분석 도구와 공유합니다.";

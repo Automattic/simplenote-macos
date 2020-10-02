@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-07-24 21:45:06+0000 */
+/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: fa */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "Characters";
 
+/* Collaborate Menu Action */
+"Collaborate" = "Collaborate";
+
 /* Analytics Toggle Text */
 "Collect Information" = "Collect Information";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Confirm Password";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copy Internal Link";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Couldn't Sign In";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "Created";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Delete Forever";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Delete Notes";
 
 /* Delete Tag Action */
 "Delete Tag" = "Delete Tag";
+
+/* Closes the Privacy View */
+"Dismiss" = "Dismiss";
 
 /* Placeholder text for login field */
 "Email" = "ایمیل";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Forgot your Password?";
 
+/* History Menu Action */
+"History" = "History";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "ثبتِ ورود";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Logging In...";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Markdown Preview";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "More";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "Move to Trash";
 
 /* Link to create an account */
 "Need an account?" = "Need an account?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "Passwords do not match";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "سنجاق به بالا";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Please activate your WordPress.com account via email and try again.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "Privacy Policy";
+
+/* Publish Menu Action */
+"Publish" = "Publish";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Publish this note to a web page. The page will stay updated with the contents of your note.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "بازنشانی";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "Restore";
 
 /* Search Field Placeholder */
 "Search" = "Search";
+
+/* Share Menu Action */
+"Share" = "Share";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Share information with our analytics tool about your use of services while logged into your Simplenote.com account.";
