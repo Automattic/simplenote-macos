@@ -78,7 +78,7 @@ extension InterlinkViewController {
     ///
     func refreshInterlinks(for keyword: String) {
         refreshResultsPredicate(for: keyword)
-        tableView.reloadDataAndResetSelection()
+        refreshInterfaceOrDismissIfNeeded()
     }
 }
 
@@ -108,7 +108,7 @@ private extension InterlinkViewController {
 
     func setupResultsController() {
         resultsController.onDidChangeContent = { [weak self] _, _ in
-            self?.tableView.reloadAndPreserveSelection()
+            self?.refreshInterfaceOrDismissIfNeeded()
         }
     }
 
@@ -119,6 +119,32 @@ private extension InterlinkViewController {
         ])
 
         try? resultsController.performFetch()
+    }
+
+    func refreshInterfaceOrDismissIfNeeded() {
+        guard resultsController.numberOfObjects > .zero else {
+            dismissWindow()
+            return
+        }
+
+        ensureWindowIsVisible()
+        tableView.reloadAndPreserveSelection()
+    }
+
+    func ensureWindowIsVisible() {
+        guard let window = view.window, window.isVisible, window.alphaValue != AppKitConstants.alpha1_0 else {
+            return
+        }
+
+        window.alphaValue = AppKitConstants.alpha1_0
+    }
+
+    func dismissWindow() {
+        guard let window = view.window, window.isVisible else {
+            return
+        }
+
+        window.close()
     }
 }
 

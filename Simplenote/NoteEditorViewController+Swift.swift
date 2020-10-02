@@ -567,7 +567,7 @@ extension NoteEditorViewController {
         let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
         let interlinkWindowController = reusableInterlinkWindowController()
 
-        interlinkWindowController.attach(to: view.window)
+        interlinkWindowController.attach(to: view.window, hiddenByDefault: true)
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
     }
 
