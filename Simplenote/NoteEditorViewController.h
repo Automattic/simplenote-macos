@@ -68,6 +68,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
 
+- (IBAction)newNoteWasPressed:(id)sender;
 - (void)save;
 - (void)displayNote:(nullable Note *)selectedNote;
 - (void)displayNotes:(NSArray<Note *> *)selectedNotes;
@@ -78,6 +79,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
+- (IBAction)printAction:(id)sender;
 - (IBAction)adjustFontSizeAction:(id)sender;
 - (IBAction)markdownAction:(id)sender;
 - (IBAction)toggleMarkdownView:(id)sender;

@@ -14,14 +14,8 @@
 
 @implementation SPTextView
 
-// Workaround NSTextView not allowing clicks
-// http://stackoverflow.com/a/10308359/1379066
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    // Notify delegate that this text view was clicked and then
-    // handled the click natively as well.
-    [[self textViewDelegate] didClickTextView:self];
-    
     if ([self checkForChecklistClick:theEvent]) {
         return;
     }
@@ -29,9 +23,10 @@
     [super mouseDown:theEvent];
 }
 
-- (id<SPTextViewDelegate>)textViewDelegate
+- (void)paste:(id)sender
 {
-    return [self.delegate conformsToProtocol:@protocol(SPTextViewDelegate)] ? (id<SPTextViewDelegate>)self.delegate : nil;
+    [super paste:sender];
+    [self processLinksInDocumentAsynchronously];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

@@ -50,6 +50,12 @@
 
 
 #pragma mark - Note Editor
+
++ (void)trackEditorCopiedInternalLink
+{
+    [self trackAutomatticEventWithName:@"editor_copied_internal_link" properties:nil];
+}
+
 + (void)trackEditorChecklistInserted
 {
     [self trackAutomatticEventWithName:@"editor_checklist_inserted" properties:nil];
@@ -121,9 +127,29 @@
 
 #pragma mark - Note List
 
++ (void)trackListCopiedInternalLink
+{
+    [self trackAutomatticEventWithName:@"list_copied_internal_link" properties:nil];
+}
+
 + (void)trackListNoteDeleted
 {
     [self trackAutomatticEventWithName:@"list_note_deleted" properties:nil];
+}
+
++ (void)trackListNoteDeletedForever
+{
+    [self trackAutomatticEventWithName:@"list_note_deleted_forever" properties:nil];
+}
+
++ (void)trackListNotePinningToggled
+{
+    [self trackAutomatticEventWithName:@"list_note_pinning_toggled" properties:nil];
+}
+
++ (void)trackListNoteRestored
+{
+    [self trackAutomatticEventWithName:@"list_note_restored" properties:nil];
 }
 
 + (void)trackListNoteOpened

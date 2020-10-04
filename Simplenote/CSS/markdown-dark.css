@@ -22,6 +22,10 @@ html {
     text-rendering: optimizeLegibility;
 }
 
+::selection {
+    background-color: rgba(70, 70, 70, 0.75);
+}
+
 ::-webkit-scrollbar {
     width: 6px;
 }

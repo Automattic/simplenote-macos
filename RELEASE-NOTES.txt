@@ -1,3 +1,13 @@
+2.3
+-----
+ 
+2.2.0
+-----
+- Editor's Actions now lets you copy a Note's Internal Link #667
+- Added support to the Notes List for pinning, unpinning, deleting and restoring with a right click #668
+- Clicking over a Note Link now causes the editor to display the referenced note #670
+- Fixed Markdown Preview's Highlight Color, when in Dark Mode #673
+
 2.1.0
 -----
 - Fixed a bug in which the Tags List wouldn't accept mouse clicks

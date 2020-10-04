@@ -45,11 +45,6 @@
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 
 @property (strong, nonatomic) IBOutlet NSWindow                 *window;
-
-@property (strong, nonatomic) IBOutlet TagListViewController    *tagListViewController;
-@property (strong, nonatomic) IBOutlet NoteListViewController   *noteListViewController;
-@property (strong, nonatomic) IBOutlet NoteEditorViewController *noteEditorViewController;
-
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
@@ -180,6 +175,11 @@
 {
     NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
     NSURL *url = [NSURL URLWithString:urlString];
+
+    // URL: Open a Note!
+    if ([self handleOpenNoteWithUrl:url]) {
+        return;
+    }
 
     if ([WPAuthHandler isWPAuthenticationUrl:url]) {
         if (self.simperium.user.authenticated) {

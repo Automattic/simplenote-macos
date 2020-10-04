@@ -10,11 +10,6 @@
 
 #define kMinEditorPadding 20
 
-
-@protocol SPTextViewDelegate <NSTextViewDelegate>
-- (void)didClickTextView:(id)sender;
-@end
-
 @interface SPTextView : NSTextView
 
 @end

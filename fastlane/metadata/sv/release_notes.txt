@@ -1,0 +1,4 @@
+- Åtgärder i redigeraren gör det nu möjligt att kopiera en intern länk i en anteckning
+- Stöd för att fästa, plocka bort, radera och återställa med ett högerklick har lagts till för anteckningslistan
+- Om man klickar på en anteckningslänk visar redigeraren nu den refererade anteckningen
+- Markdown-förhandsgranskningens markeringsfärg i mörkt läge har korrigerats

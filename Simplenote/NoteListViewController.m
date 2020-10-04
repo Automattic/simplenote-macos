@@ -29,6 +29,8 @@
 @property (nonatomic, strong) IBOutlet NSView               *searchView;
 @property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
+@property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
+@property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
 @property (nonatomic, strong) NSString                      *oldTags;
 @property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
@@ -47,6 +49,7 @@
     [super viewDidLoad];
 
     self.oldTags = @"";
+    self.arrayController.managedObjectContext = self.mainContext;
 
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
@@ -104,6 +107,11 @@
 - (NoteEditorViewController *)noteEditorViewController
 {
     return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
+}
+
+- (NSManagedObjectContext*)mainContext
+{
+    return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
 }
 
 - (void)reset
@@ -166,6 +174,11 @@
 
 
 #pragma mark - Table view
+
+- (BOOL)displaysNoteForKey:(NSString *)key
+{
+    return [self rowForNoteKey:key] != -1;
+}
 
 - (NSInteger)rowForNoteKey:(NSString *)key
 {
@@ -235,6 +248,11 @@
     }
     
     return shouldSelect;
+}
+
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row
+{
+    return self.viewingTrash ? self.trashListMenu : self.noteListMenu;
 }
 
 - (NSArray *)selectedNotes
@@ -421,6 +439,12 @@
     for (Note *selectedNote in [self selectedNotes]) {
         [self deleteNote:selectedNote];
     }
+}
+
+- (IBAction)newNoteWasPressed:(id)sender
+{
+    // TODO: Move the New Note Handler to a (New) NoteController!
+    [self.noteEditorViewController newNoteWasPressed:sender];
 }
 
 - (void)searchAction:(id)sender

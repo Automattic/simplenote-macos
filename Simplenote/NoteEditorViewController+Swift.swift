@@ -47,10 +47,7 @@ extension NoteEditorViewController {
     }
 
     var mustUpdateToolbarConstraint: Bool {
-        // Why check `.isActive`?:
-        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
-        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
-        toolbarViewTopConstraint == nil || toolbarViewTopConstraint?.isActive == false
+        toolbarViewTopConstraint == nil
     }
 
     func updateToolbarTopConstraint() {
@@ -164,6 +161,9 @@ extension NoteEditorViewController: NSMenuItemValidation {
         }
 
         switch identifier {
+        case .editorCopyInterlinkMenuItem:
+            return validateEditorCopyInterlinkMenuItem(menuItem)
+
         case .editorPinMenuItem:
             return validateEditorPinMenuItem(menuItem)
 
@@ -185,12 +185,6 @@ extension NoteEditorViewController: NSMenuItemValidation {
         case .editorCollaborateMenuItem:
             return validateEditorCollaborateMenuItem(menuItem)
 
-        case .editorWidthFullMenuItem:
-            return validateEditorWidthFullMenuItem(menuItem)
-
-        case .editorWidthNarrowMenuItem:
-            return validateEditorWidthNarrowMenuItem(menuItem)
-
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
 
@@ -205,58 +199,60 @@ extension NoteEditorViewController: NSMenuItemValidation {
         }
     }
 
+    func validateEditorCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
+        return isDisplayingNote
+    }
+
     func validateEditorPinMenuItem(_ item: NSMenuItem) -> Bool {
         let isPinnedOn = selectedNotes.allSatisfy { $0.pinned }
         item.state = isPinnedOn ? .on : .off
+        item.title = NSLocalizedString("Pin to Top", comment: "Pin to Top Menu Action")
         return true
     }
 
     func validateEditorMarkdownMenuItem(_ item: NSMenuItem) -> Bool {
         let isMarkdownOn = selectedNotes.allSatisfy { $0.markdown }
         item.state = isMarkdownOn ? .on : .off
+        item.title = NSLocalizedString("Markdown", comment: "Markdown Menu Action")
         return true
     }
 
     func validateEditorShareMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingContent
+        item.title = NSLocalizedString("Share", comment: "Share Menu Action")
+        return isDisplayingContent
     }
 
     func validateEditorHistoryMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingNote && !isDisplayingMarkdown
+        item.title = NSLocalizedString("History", comment: "History Menu Action")
+        return isDisplayingNote && !isDisplayingMarkdown
     }
 
     func validateEditorTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingNote || isSelectingMultipleNotes
+        item.title = NSLocalizedString("Move to Trash", comment: "Trash Menu Action")
+        return isDisplayingNote || isSelectingMultipleNotes
     }
 
     func validateEditorPublishMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingContent
+        item.title = NSLocalizedString("Publish", comment: "Publish Menu Action")
+        return isDisplayingContent
     }
 
     func validateEditorCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
-        isDisplayingNote
-    }
-
-    func validateEditorWidthFullMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.editorFullWidth ? .on : .off
-        return true
-    }
-
-    func validateEditorWidthNarrowMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.editorFullWidth ? .off : .on
-        return true
+        item.title = NSLocalizedString("Collaborate", comment: "Collaborate Menu Action")
+        return isDisplayingNote
     }
 
     func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash
+        return !viewingTrash
     }
 
     func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
-        !viewingTrash && note != nil && SimplenoteAppDelegate.shared().isMainWindowVisible()
+        return !viewingTrash && note != nil && view.window?.isVisible == true
     }
 
     func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
-        guard !viewingTrash, SimplenoteAppDelegate.shared().isMainWindowVisible() else {
+        guard viewingTrash == false, view.window?.isVisible == true else {
             return false
         }
 
@@ -286,6 +282,16 @@ extension NoteEditorViewController {
     }
 
     @IBAction
+    func copyInterlinkWasPressed(sender: Any) {
+        guard let note = note else {
+            return
+        }
+
+        SPTracker.trackEditorCopiedInternalLink()
+        NSPasteboard.general.copyInterlink(to: note)
+    }
+
+    @IBAction
     func publishWasPressed(sender: Any) {
         guard let note = note else {
             return
@@ -311,17 +317,6 @@ extension NoteEditorViewController {
 
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
-    }
-
-    @IBAction
-    func toggleEditorWidth(sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.editorWidthFullMenuItem
-        Options.shared.editorFullWidth = isFullOn
-        noteEditor.needsDisplay = true
     }
 }
 

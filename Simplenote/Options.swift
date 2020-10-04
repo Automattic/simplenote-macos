@@ -81,6 +81,7 @@ extension Options {
         }
         set {
             defaults.set(newValue, forKey: .editorFullWidth)
+            NotificationCenter.default.post(name: .EditorDisplayModeDidChange, object: nil)
         }
     }
 

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-20 10:54:04+0000 */
+/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "Karakter";
 
+/* Collaborate Menu Action */
+"Collaborate" = "Kolaborasi";
+
 /* Analytics Toggle Text */
 "Collect Information" = "Kumpulkan informasi";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Tegaskan (ulangi) Kata Sandi";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copy Internal Link";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Tidak Dapat Masuk";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "Dibuat";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Delete Forever";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Hapus Catatan";
 
 /* Delete Tag Action */
 "Delete Tag" = "Hapus Tag";
+
+/* Closes the Privacy View */
+"Dismiss" = "Hentikan";
 
 /* Placeholder text for login field */
 "Email" = "Email";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Lupa kata sandi?";
 
+/* History Menu Action */
+"History" = "Riwayat";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Masuk";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Login...";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Pratinjau Markdown";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "Lainnya";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "Pindahkan ke Sampah";
 
 /* Link to create an account */
 "Need an account?" = "Memerlukan akun?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "Kata sandi tidak cocok";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "Sematkan ke Atas";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Harap aktifkan akun WordPress.com Anda melalui email dan coba lagi.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "Kebijakan Privasi";
+
+/* Publish Menu Action */
+"Publish" = "Terbitkan";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Terbitkan catatan ini ke halaman web. Halaman ini akan tetap diperbarui dengan konten catatan Anda.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "Reset";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "Pulihkan";
 
 /* Search Field Placeholder */
 "Search" = "Cari";
+
+/* Share Menu Action */
+"Share" = "Sebarkan";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Bagikan informasi tentang penggunaan layanan Anda dengan alat analisis kami saat login ke akun Simplenote.com Anda.";

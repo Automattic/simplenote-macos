@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-19 11:54:04+0000 */
+/* Translation-Revision-Date: 2020-09-24 13:00:11+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "Tecken";
 
+/* Collaborate Menu Action */
+"Collaborate" = "Samarbeta";
+
 /* Analytics Toggle Text */
 "Collect Information" = "Samla information";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Bekräfta lösenord";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Kopiera intern länk";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Kunde inte logga in";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "Skapad";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Ta bort för alltid";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Ta bort anteckningar";
 
 /* Delete Tag Action */
 "Delete Tag" = "Ta bort etikett";
+
+/* Closes the Privacy View */
+"Dismiss" = "Stäng";
 
 /* Placeholder text for login field */
 "Email" = "E-post";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Glömt ditt lösenord?";
 
+/* History Menu Action */
+"History" = "Historik";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Logga in";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Loggar in…";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Förhandsgranskning av markdown";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "Mer";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "Flytta till papperskorgen";
 
 /* Link to create an account */
 "Need an account?" = "Behöver du ett konto?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "Lösenorden matchar inte";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "Nåla fast högst upp";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Aktivera ditt WordPress.com-konto via e-post och försök igen.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "Integritetspolicy";
+
+/* Publish Menu Action */
+"Publish" = "Publicera";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Publicera den här anteckningen på en webbsida. Sidan kommer att förbli uppdaterad med innehållet i din anteckning";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "Återställ";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "Återställ";
 
 /* Search Field Placeholder */
 "Search" = "Sök";
+
+/* Share Menu Action */
+"Share" = "Dela";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Dela information med vårt analysverktyg om din användning av tjänster när du är inloggad på ditt Simplenote.com-konto.";

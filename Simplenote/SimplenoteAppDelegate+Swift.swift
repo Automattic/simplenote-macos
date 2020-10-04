@@ -7,23 +7,25 @@ extension SimplenoteAppDelegate {
 
     @objc
     func configureSplitView() {
-        // NOTE:
-        // This initialization is in a midway stage. We're essentially "stealing" the ViewController(s) views,
-        // which are already in the hierarchy defined by MainMenu.nib, and placing them in a fresh SplitViewController.
-        //
-        // Our endgame is to initialize the three viewController via code, and split / simplify the main nib.
-        //
-        //  >>> To be revisited >>> REALLY >>> SOON >>>
-        //
-        let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
-        let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
-        let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
+        let storyboard = NSStoryboard(name: .main, bundle: nil)
 
-        let splitViewController = SplitViewController()
+        let splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
+        let tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
+        let notesViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
+        let editorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+
+        let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
+        let listSplitItem = NSSplitViewItem(contentListWithViewController: notesViewController)
+        let editorSplitItem = NSSplitViewItem(viewController: editorViewController)
+
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
+
         self.splitViewController = splitViewController
+        self.tagListViewController = tagListViewController
+        self.noteListViewController = notesViewController
+        self.noteEditorViewController = editorViewController
     }
 
     @objc
@@ -64,18 +66,70 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
-    func clickedEmptyTrashItem(_ sender: Any) {
-        tagListViewController.emptyTrashAction(sender: sender)
+    func newNoteWasPressed(_ sender: Any) {
+        noteEditorViewController.newNoteWasPressed(sender)
     }
 
     @IBAction
-    func clickedTagsSortModeItem(_ sender: Any) {
+    func printWasPressed(_ sender: Any) {
+        noteEditorViewController.printAction(sender)
+    }
+
+    @IBAction
+    func deleteWasPressed(_ sender: Any) {
+        noteEditorViewController.deleteAction(sender)
+    }
+
+    @IBAction
+    func emptyTrashWasPressed(_ sender: Any) {
+        tagListViewController.emptyTrashWasPressed(sender)
+    }
+
+    @IBAction
+    func lineLengthWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.lineFullMenuItem
+        Options.shared.editorFullWidth = isFullOn
+    }
+
+    @IBAction
+    func notesDisplayModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.noteDisplayCondensedMenuItem
+        Options.shared.notesListCondensed = isCondensedOn
+        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
+    }
+
+    @IBAction
+    func notesSortModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem else {
+            return
+        }
+
+        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.noteSortAlphaMenuItem
+        Options.shared.alphabeticallySortNotes = isAlphaOn
+        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+    }
+
+    @IBAction
+    func searchWasPressed(_ sender: Any) {
+        noteListViewController.searchAction(sender)
+    }
+
+    @IBAction
+    func tagsSortModeWasPressed(_ sender: Any) {
         let options = Options.shared
         options.alphabeticallySortTags = !options.alphabeticallySortTags
     }
 
     @IBAction
-    func clickedThemeItem(_ sender: Any) {
+    func themeWasPressed(_ sender: Any) {
         guard let item = sender as? NSMenuItem, item.state != .on else {
             return
         }
@@ -85,6 +139,36 @@ extension SimplenoteAppDelegate {
         }
 
         Options.shared.themeName = option.themeName
+    }
+}
+
+
+// MARK: - URL Handlers
+//
+extension SimplenoteAppDelegate {
+
+    /// Ensures that the Note with the specified Key is displayed by the Notes List
+    ///
+    func ensureSelectedTagDisplaysNote(key: String) {
+        if noteListViewController.displaysNote(forKey: key) {
+            return
+        }
+
+        selectAllNotesTag()
+    }
+
+    /// Opens the Note associated with a given URL instance, when possible
+    ///
+    @objc
+    func handleOpenNote(url: URL) -> Bool {
+        guard let simperiumKey = url.interlinkSimperiumKey else {
+            return false
+        }
+
+        ensureSelectedTagDisplaysNote(key: simperiumKey)
+        selectNote(withKey: simperiumKey)
+
+        return true
     }
 }
 
@@ -99,19 +183,51 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         switch identifier {
+        case .lineFullMenuItem, .lineNarrowMenuItem:
+            return validateLineLengthMenuItem(menuItem)
+
         case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
+
         case .exportMenuItem:
             return validateExportMenuItem(menuItem)
+
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
+
+        case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
+            return validateNotesDisplayMenuItem(menuItem)
+
+        case .noteSortAlphaMenuItem, .noteSortUpdatedMenuItem:
+            return validateNotesSortMenuItem(menuItem)
+
+        case .systemNewNoteMenuItem:
+            return validateSystemNewNoteMenuItem(menuItem)
+
+        case .systemPrintMenuItem:
+            return validateSystemPrintMenuItem(menuItem)
+
+        case .systemTrashMenuItem:
+            return validateSystemTrashMenuItem(menuItem)
+
         case .tagSortMenuItem:
             return validateTagSortMenuItem(menuItem)
+
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
+
         default:
             return true
         }
+    }
+
+    func validateLineLengthMenuItem(_ item: NSMenuItem) -> Bool {
+        let isFullItem = item.identifier == .lineFullMenuItem
+        let isFullEnabled = Options.shared.editorFullWidth
+
+        item.state = isFullItem == isFullEnabled ? .on : .off
+
+        return true
     }
 
     func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
@@ -124,15 +240,32 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateFocusMenuItem(_ item: NSMenuItem) -> Bool {
-        let inFocusModeEnabled = splitViewController.isFocusModeEnabled
-        item.state = inFocusModeEnabled ? .on : .off
+        let isFocusModeEnabled = splitViewController.isFocusModeEnabled
+        item.state = isFocusModeEnabled ? .on : .off
 
-        return inFocusModeEnabled || noteEditorViewController.isDisplayingNote
+        return isFocusModeEnabled || noteEditorViewController.isDisplayingNote
+    }
+
+    func validateNotesDisplayMenuItem(_ item: NSMenuItem) -> Bool {
+        let isCondensedItem = item.identifier == .noteDisplayCondensedMenuItem
+        let isCondensedEnabled = Options.shared.notesListCondensed
+
+        item.state = isCondensedItem == isCondensedEnabled ? .on : .off
+
+        return true
+    }
+
+    func validateNotesSortMenuItem(_ item: NSMenuItem) -> Bool {
+        let isAlphaItem = item.identifier == .noteSortAlphaMenuItem
+        let isAlphaEnabled = Options.shared.alphabeticallySortNotes
+
+        item.state = isAlphaItem == isAlphaEnabled ? .on : .off
+
+        return true
     }
 
     func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
         item.state = Options.shared.alphabeticallySortTags ? .on : .off
-
         return true
     }
 
@@ -145,5 +278,17 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
 
         // System Appearance must only be available in Mojave
         return option != .system ? true : NSApplication.runningOnMojaveOrLater
+    }
+
+    func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateSystemNewNoteMenuItem(item)
+    }
+
+    func validateSystemPrintMenuItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateSystemPrintMenuItem(item)
+    }
+
+    func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateSystemTrashMenuItem(item)
     }
 }

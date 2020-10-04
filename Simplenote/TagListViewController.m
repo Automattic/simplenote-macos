@@ -101,7 +101,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     self.trashDropdownMenu.autoenablesItems = YES;
 
     [self.trashDropdownMenu addItemWithTitle:NSLocalizedString(@"Empty Trash", @"Empty Trash Action")
-                                      action:@selector(emptyTrashActionWithSender:)
+                                      action:@selector(emptyTrashWasPressed:)
                                keyEquivalent:@""];
 
     for (NSMenuItem *item in self.trashDropdownMenu.itemArray) {
@@ -207,6 +207,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 - (void)selectAllNotesTag
 {
     [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
+    [self.tableView scrollRowToVisible:self.state.indexOfAllNotesTagRow];
 
     // Notes:
     //  1.  Programatically selecting the Row Indexes trigger the regular callback chain

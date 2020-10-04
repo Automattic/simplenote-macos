@@ -133,10 +133,7 @@ extension NoteListViewController {
     }
 
     var mustUpdateSearchViewConstraint: Bool {
-        // Why check `.isActive`?:
-        // Because we're in a midway refactor. The NoteList.view is, initially, embedded elsewhere.
-        // TODO: Simplify this check, the second MainMenu.xib is cleaned up!
-        searchViewTopConstraint == nil || searchViewTopConstraint?.isActive == false
+        searchViewTopConstraint == nil
     }
 
     func updateSearchViewTopConstraint() {
@@ -162,6 +159,14 @@ private extension NoteListViewController {
         ]
 
         return NSAttributedString(string: text, attributes: attributes)
+    }
+
+    var simperium: Simperium {
+        SimplenoteAppDelegate.shared().simperium
+    }
+
+    var isSelectionNotEmpty: Bool {
+        selectedNotes().isEmpty == false
     }
 }
 
@@ -234,65 +239,46 @@ extension NoteListViewController: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .listDisplayCondensedMenuItem:
-            return validateDisplayCondensedMenuItem(menuItem)
-        case .listDisplayComfyMenuItem:
-            return validateDisplayComfyMenuItem(menuItem)
-        case .listSortAlphaMenuItem:
-            return validateSortAlphaMenuItem(menuItem)
-        case .listSortUpdatedMenuItem:
-            return validateSortUpdatedMenuItem(menuItem)
+        case .listCopyInterlinkMenuItem:
+            return validateListCopyInterlinkMenuItem(menuItem)
+        case .listDeleteForeverMenuItem:
+            return validateListDeleteForeverMenuItem(menuItem)
+        case .listPinMenuItem:
+            return validateListPinMenuItem(menuItem)
+        case .listRestoreNoteMenuItem:
+            return validateListRestoreMenuItem(menuItem)
+        case .listTrashNoteMenuItem:
+            return validateListTrashMenuItem(menuItem)
         default:
             return true
         }
     }
 
-    func validateDisplayCondensedMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.notesListCondensed ? .on : .off
-        return true
+    func validateListCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
+        return isSelectionNotEmpty
     }
 
-    func validateDisplayComfyMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.notesListCondensed ? .off : .on
-        return true
+    func validateListDeleteForeverMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Delete Forever", comment: "Delete Forever List Action")
+        return isSelectionNotEmpty
     }
 
-    func validateSortAlphaMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortNotes ? .on : .off
-        return true
+    func validateListPinMenuItem(_ item: NSMenuItem) -> Bool {
+        let isPinnedOff = selectedNotes().allSatisfy { $0.pinned == false }
+        item.state = isPinnedOff ? .off : .on
+        item.title = NSLocalizedString("Pin to Top", comment: "List Pin Action")
+        return isSelectionNotEmpty
     }
 
-    func validateSortUpdatedMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortNotes ? .off : .on
-        return true
-    }
-}
-
-
-// MARK: - Actions
-//
-extension NoteListViewController {
-
-    @IBAction
-    func displayModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.listDisplayCondensedMenuItem
-        Options.shared.notesListCondensed = isCondensedOn
-        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
+    func validateListRestoreMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Restore", comment: "Restore List Action")
+        return isSelectionNotEmpty
     }
 
-    @IBAction
-    func sortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.listSortAlphaMenuItem
-        Options.shared.alphabeticallySortNotes = isAlphaOn
-        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+    func validateListTrashMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Move to Trash", comment: "Move to Trash List Action")
+        return isSelectionNotEmpty
     }
 }
 
@@ -312,6 +298,63 @@ extension NoteListViewController {
     @objc
     func sortModeDidChange(_ note: Notification) {
         reloadDataAndPreserveSelection()
+    }
+}
+
+
+// MARK: - Actions
+//
+extension NoteListViewController {
+
+    @IBAction
+    func copyInterlinkWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        NSPasteboard.general.copyInterlink(to: note)
+        SPTracker.trackListCopiedInternalLink()
+    }
+
+    @IBAction
+    func deleteFromTrashWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        performPerservingSelectedIndex {
+            simperium.notesBucket.delete(note)
+            simperium.save()
+        }
+
+        SPTracker.trackListNoteDeletedForever()
+    }
+
+    @IBAction
+    func pinWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first, let pinnedItem = sender as? NSMenuItem else {
+            return
+        }
+
+        note.pinned = pinnedItem.state == .off
+        simperium.save()
+        reloadDataAndPreserveSelection()
+
+        SPTracker.trackListNotePinningToggled()
+    }
+
+    @IBAction
+    func restoreWasPressed(_ sender: Any) {
+        guard let note = selectedNotes().first else {
+            return
+        }
+
+        performPerservingSelectedIndex {
+            note.deleted = false
+            simperium.save()
+        }
+
+        SPTracker.trackListNoteRestored()
     }
 }
 
