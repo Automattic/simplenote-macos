@@ -1,0 +1,4 @@
+- Agora as Ações do Editor permitem copiar o link interno de uma anotação
+- Incluído suporte à lista de anotações para fixar, desafixar, excluir e restaurar anotações clicando com o botão direito
+- Agora clicar no link de uma anotação a exibe no editor
+- Cor de destaque da visualização de markdown fixada quando estiver no modo escuro

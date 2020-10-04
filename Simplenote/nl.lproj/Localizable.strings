@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-20 10:54:04+0000 */
+/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "Tekens";
 
+/* Collaborate Menu Action */
+"Collaborate" = "Samenwerken";
+
 /* Analytics Toggle Text */
 "Collect Information" = "Verzamel informatie";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Wachtwoord bevestigen";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copy Internal Link";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Aanmelden mislukt";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "Aangemaakt";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Delete Forever";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Notities verwijderen";
 
 /* Delete Tag Action */
 "Delete Tag" = "Tag verwijderen";
+
+/* Closes the Privacy View */
+"Dismiss" = "Afbreken";
 
 /* Placeholder text for login field */
 "Email" = "E-mailen";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Wachtwoord vergeten?";
 
+/* History Menu Action */
+"History" = "Geschiedenis";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Inloggen";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Bezig met inloggen ...";
+
+/* Markdown Menu Action */
+"Markdown" = "Snelle stijl";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Markdown-voorbeeldweergave";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "Meer";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "Verplaatsen naar prullenbak";
 
 /* Link to create an account */
 "Need an account?" = "Een account nodig?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "Wachtwoorden komen niet overeen";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "Vastmaken aan bovenzijde";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Activeer je WordPress.com-account via e-mail en probeer het nogmaals.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "Privacybeleid";
+
+/* Publish Menu Action */
+"Publish" = "Publiceren";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Publiceer deze notitie op een webpagina. De pagina blijft bijgewerkt met de inhoud van de notitie.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "Opnieuw instellen";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "Herstellen";
 
 /* Search Field Placeholder */
 "Search" = "Zoeken";
+
+/* Share Menu Action */
+"Share" = "Delen";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Deel informatie met onze analysetool over hoe je services gebruikt terwijl je bent ingelogd op je Simplenote.com-account.";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-06 17:54:49+0000 */
+/* Translation-Revision-Date: 2020-09-18 12:54:04+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -196,7 +196,7 @@
 "492.title" = "موقع ويب المساعدة";
 
 /* Class = "NSMenuItem"; title = "Tags Sorting"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
-"4QQ-5e-Vxl.title" = "Tags List";
+"4QQ-5e-Vxl.title" = "فرز الوسوم";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
 "5.title" = "إحضار الكل إلى الأمام";
@@ -217,7 +217,7 @@
 "5HH-LQ-Fk8.title" = "بنية المقالة";
 
 /* Class = "NSMenu"; title = "Tags Sorting"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
-"76D-S0-1JD.title" = "Tags List";
+"76D-S0-1JD.title" = "فرز الوسوم";
 
 /* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
 "78.title" = "طباعة...";
@@ -250,7 +250,7 @@
 "Pwd-hR-fBt.title" = "تصدير كل شيء";
 
 /* Class = "NSMenuItem"; title = "Note Sorting"; ObjectID = "QGk-SS-2Jf"; Note = "Opens the Note List Sort Order Settings"; */
-"QGk-SS-2Jf.title" = "Sort Order";
+"QGk-SS-2Jf.title" = "فرز الملحوظة";
 
 /* Class = "NSMenuItem"; title = "Comfy"; ObjectID = "Qaj-k2-NOz"; Note = "Toggles Comfy Note Display"; */
 "Qaj-k2-NOz.title" = "مريح";
@@ -268,7 +268,7 @@
 "THl-80-myZ.title" = "بنية المقالة";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
-"YpJ-fs-p4p.title" = "Sort Order";
+"YpJ-fs-p4p.title" = "فرز الملحوظة";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
 "Zhe-Bb-jvT.title" = "فاتح";

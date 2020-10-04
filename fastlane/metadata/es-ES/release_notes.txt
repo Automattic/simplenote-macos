@@ -1,0 +1,4 @@
+- Acciones del editor ahora te permite copiar el enlace interno de una nota
+- Se han añadido funciones a la lista de notas para anclar, desanclar, eliminar y restaurar con un clic derecho
+- Ahora, al hacer clic sobre el enlace de una nota, el editor muestra la nota de referencia
+- Se ha corregido el color de resalte de Vista previa de Markdown cuando está en el modo oscuro
