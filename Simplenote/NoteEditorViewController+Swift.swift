@@ -105,6 +105,12 @@ extension NoteEditorViewController {
     var isUndoingEditOP: Bool {
         noteEditor.undoManager?.isUndoing == true
     }
+
+    /// Indicates if the Selected Range's Length is non zero: at least one character is highlighted
+    ///
+    var isSelectingText: Bool {
+        noteEditor.selectedRange().length != .zero
+    }
 }
 
 
@@ -561,8 +567,21 @@ extension NoteEditorViewController {
         processInterlinkLookup()
     }
 
+    @objc
+    func dismissInterlinkLookupIfNeeded() {
+        guard mustDismissInterlinkLookup else {
+            return
+        }
+
+        dismissInterlinkWindow()
+    }
+
     var mustProcessInterlinkLookup: Bool {
-        isUndoingEditOP == false && noteEditor.selectedRange().length == .zero
+        isUndoingEditOP == false && isSelectingText == false
+    }
+
+    var mustDismissInterlinkLookup: Bool {
+        isSelectingText || isInterlinkWindowOnScreen && noteEditor.interlinkKeywordAtSelectedLocation == nil
     }
 
     func processInterlinkLookup() {
@@ -586,6 +605,10 @@ extension NoteEditorViewController {
 
     func dismissInterlinkWindow() {
         interlinkWindowController?.close()
+    }
+
+    var isInterlinkWindowOnScreen: Bool {
+        interlinkWindowController?.window?.parent != nil
     }
 
     func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>) -> Bool {

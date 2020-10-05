@@ -356,6 +356,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self.noteActionsDelegate editorController:self updatedNoteWithSimperiumKey:self.note.simperiumKey];
 }
 
+- (void)textViewDidChangeSelection:(NSNotification *)notification
+{
+    [self dismissInterlinkLookupIfNeeded];
+}
+
 
 #pragma mark - Simperium
 
