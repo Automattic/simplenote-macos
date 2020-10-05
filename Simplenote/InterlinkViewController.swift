@@ -29,12 +29,9 @@ class InterlinkViewController: NSViewController {
     /// ResultsController: In charge of CoreData Queries!
     ///
     private lazy var resultsController: ResultsController<Note> = {
-        let resultsController = ResultsController<Note>(viewContext: mainContext, sortedBy: [
+        return ResultsController<Note>(viewContext: mainContext, sortedBy: [
             NSSortDescriptor(keyPath: \Note.content, ascending: true)
-        ])
-
-        resultsController.limit = Settings.maximumNumberOfResults
-        return resultsController
+        ], limit: Settings.maximumNumberOfResults)
     }()
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
