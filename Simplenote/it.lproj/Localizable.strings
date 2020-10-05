@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-20 11:54:03+0000 */
+/* Translation-Revision-Date: 2020-10-01 11:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: it */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "Caratteri";
 
+/* Collaborate Menu Action */
+"Collaborate" = "Collabora";
+
 /* Analytics Toggle Text */
 "Collect Information" = "Raccogli informazioni";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Conferma la Password";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copia link interno";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Impossibile accedere";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "Creata";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Elimina per sempre";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Cancella note";
 
 /* Delete Tag Action */
 "Delete Tag" = "Elimina tag";
+
+/* Closes the Privacy View */
+"Dismiss" = "Respinto";
 
 /* Placeholder text for login field */
 "Email" = "Email";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Hai dimenticato la password?";
 
+/* History Menu Action */
+"History" = "Storia";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Accedi";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Accesso in corso...";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Anteprima Markdown";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "Altro";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "Sposta nel cestino";
 
 /* Link to create an account */
 "Need an account?" = "Bisogno di un conto?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "Le password non corrispondono";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "Aggancia";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Attiva l'account WordPress.com tramite e-mail e riprova.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "Privacy Policy";
+
+/* Publish Menu Action */
+"Publish" = "Pubblica";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Pubblica questa nota su una pagina web. La pagina rimarrà aggiornata con i contenuti della tua nota.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "Azzera";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "Ripristina";
 
 /* Search Field Placeholder */
 "Search" = "Cerca";
+
+/* Share Menu Action */
+"Share" = "Condividi";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Condividi informazioni relative all'uso dei servizi con lo strumento di analisi mentre sei connesso al tuo account Simplenote.com.";

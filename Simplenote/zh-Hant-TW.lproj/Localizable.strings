@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-18 12:54:03+0000 */
+/* Translation-Revision-Date: 2020-10-01 08:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "字元數";
 
+/* Collaborate Menu Action */
+"Collaborate" = "協作";
+
 /* Analytics Toggle Text */
 "Collect Information" = "收集資訊";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "確認密碼";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "複製內部連結";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "無法登入";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "建立時間";
 
+/* Delete Forever List Action */
+"Delete Forever" = "永久刪除";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "刪除筆記";
 
 /* Delete Tag Action */
 "Delete Tag" = "刪除標籤";
+
+/* Closes the Privacy View */
+"Dismiss" = "關閉";
 
 /* Placeholder text for login field */
 "Email" = "電子郵件";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "忘記密碼？";
 
+/* History Menu Action */
+"History" = "記錄";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "登入";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "正在登入…";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Markdown 預覽";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "更多";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "移至垃圾桶";
 
 /* Link to create an account */
 "Need an account?" = "需要帳號？";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "密碼不符";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "釘選至最上方";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "請透過電子郵件啟用你的 WordPress.com 帳號，並再試一次。";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "隱私權政策";
+
+/* Publish Menu Action */
+"Publish" = "發佈";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "將此筆記發表至網頁。 頁面會持續更新你的筆記內容。";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "重設";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "還原";
 
 /* Search Field Placeholder */
 "Search" = "搜尋";
+
+/* Share Menu Action */
+"Share" = "分享";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "在你登入 Simplenote.com 帳號後，將你的服務使用相關資訊傳送到我們的分析工具。";
