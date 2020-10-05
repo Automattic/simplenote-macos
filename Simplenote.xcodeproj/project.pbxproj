@@ -2650,8 +2650,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteInterlinks-Swift.git";
 			requirement = {
-				kind = revision;
-				revision = af8a85e149da029e114158cd930cfc8ea0f4e814;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
 			};
 		};
 		B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */ = {

@@ -15,8 +15,8 @@
         "repositoryURL": "git@github.com:Automattic/SimplenoteInterlinks-Swift.git",
         "state": {
           "branch": null,
-          "revision": "af8a85e149da029e114158cd930cfc8ea0f4e814",
-          "version": null
+          "revision": "be3827a5bf05c5349ed62126c3e1dc60a2a6cee6",
+          "version": "1.1.0"
         }
       },
       {
