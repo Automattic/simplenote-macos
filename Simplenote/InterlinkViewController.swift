@@ -39,7 +39,7 @@ class InterlinkViewController: NSViewController {
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
     ///
-    var onInsert: ((String) -> Void)?
+    var onInsertInterlink: ((String) -> Void)?
 
 
     // MARK: - Overridden Methods
@@ -154,8 +154,8 @@ extension InterlinkViewController {
             return
         }
 
-        onInsert?(interlinkText)
-        onInsert = nil
+        onInsertInterlink?(interlinkText)
+        onInsertInterlink = nil
     }
 }
 

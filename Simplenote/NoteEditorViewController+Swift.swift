@@ -578,7 +578,7 @@ extension NoteEditorViewController {
             fatalError()
         }
 
-        interlinkViewController.onInsert = { [weak self] linkText in
+        interlinkViewController.onInsertInterlink = { [weak self] linkText in
             self?.insertInterlink(linkText, in: replacementRange)
             self?.dismissInterlinkWindow()
         }
