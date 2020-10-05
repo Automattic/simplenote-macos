@@ -21,7 +21,14 @@ struct LookupNote {
 
     /// Diacritic and Case Insensitive Title, for matching purposes
     ///
-    var normalizedTitle: String {
-        title.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
+    let normalizedTitle: String
+
+
+    /// Designated Initializer
+    ///
+    init(simperiumKey: String, title: String) {
+        self.simperiumKey = simperiumKey
+        self.title = title
+        self.normalizedTitle = title.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
     }
 }
