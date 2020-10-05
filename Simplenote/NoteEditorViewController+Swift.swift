@@ -548,12 +548,9 @@ extension NoteEditorViewController {
 
     @objc
     func processInterlinkAutocomplete() {
-        guard let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation else {
-            dismissInterlinkWindow()
-            return
-        }
-
-        guard refreshInterlinks(for: keywordText, in: markdownRange) else {
+        guard let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation,
+              refreshInterlinks(for: keywordText, in: markdownRange)
+        else {
             dismissInterlinkWindow()
             return
         }
