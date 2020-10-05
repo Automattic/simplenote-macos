@@ -12,10 +12,18 @@ extension Note {
             return nil
         }
 
-        return Note.interlinkForNote(title: title, simperiumKey: simperiumKey)
+        return String.buildInterlink(title: title, simperiumKey: simperiumKey)
     }
+}
 
-    static func interlinkForNote(title: String, simperiumKey: String) -> String {
+
+// MARK: - String + Interlink
+//
+extension String {
+
+    /// Returns an Interlink for a Note with the specified Title / Key
+    ///
+    static func buildInterlink(title: String, simperiumKey: String) -> String {
         let shortened = title.truncateWords(upTo: SimplenoteConstants.simplenoteInterlinkMaxTitleLength)
         let url = SimplenoteConstants.simplenoteScheme + "://" + SimplenoteConstants.simplenoteInterlinkHost + "/" + simperiumKey
 

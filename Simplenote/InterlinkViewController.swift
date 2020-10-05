@@ -71,11 +71,12 @@ extension InterlinkViewController {
     ///     This way we get to avoid the awkward visual effect of "empty autocomplete window"
     ///
     func refreshInterlinks(for keyword: String) -> Bool {
-        guard refreshResultsController(for: keyword) else {
+        notes = lookupController.search(titleText: keyword, limit: Settings.maximumNumberOfResults)
+        if notes.isEmpty {
             return false
         }
 
-        refreshTableView()
+        tableView.reloadAndPreserveSelection()
         return true
     }
 }
@@ -110,28 +111,6 @@ private extension InterlinkViewController {
         let allNotes = notesBucket.objects(ofType: Note.self, for: predicate)
 
         lookupController.preloadLookupTable(for: allNotes)
-
-//        resultsController.onDidChangeContent = { [weak self] _, _ in
-//            self?.dismissIfEmpty()
-//            self?.refreshTableView()
-//        }
-    }
-
-    func dismissIfEmpty() {
-        if notes.count != .zero {
-            return
-        }
-
-        view.window?.close()
-    }
-
-    func refreshResultsController(for keyword: String) -> Bool {
-        notes = lookupController.search(titleText: keyword, limit: Settings.maximumNumberOfResults)
-        return notes.count != .zero
-    }
-
-    func refreshTableView() {
-        tableView.reloadAndPreserveSelection()
     }
 }
 
@@ -142,11 +121,11 @@ extension InterlinkViewController {
 
     @objc
     func performInterlinkInsert() {
-        guard let searchNote = noteAtRow(tableView.selectedRow) else {
+        guard let searchNote = searchNoteAtRow(tableView.selectedRow) else {
             return
         }
 
-        let interlinkText = Note.interlinkForNote(title: searchNote.title, simperiumKey: searchNote.simperiumKey)
+        let interlinkText = String.buildInterlink(title: searchNote.title, simperiumKey: searchNote.simperiumKey)
         onInsertInterlink?(interlinkText)
     }
 }
@@ -187,7 +166,7 @@ private extension InterlinkViewController {
 //
 private extension InterlinkViewController {
 
-    func noteAtRow(_ row: Int) -> LookupNote? {
+    func searchNoteAtRow(_ row: Int) -> LookupNote? {
         return row < notes.count ? notes[row] : nil
     }
 }
@@ -227,7 +206,7 @@ extension InterlinkViewController: SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let note = noteAtRow(row) else {
+        guard let note = searchNoteAtRow(row) else {
             return nil
         }
 
