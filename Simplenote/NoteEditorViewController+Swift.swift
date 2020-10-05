@@ -554,11 +554,15 @@ extension NoteEditorViewController {
 
     @objc
     func processInterlinkLookupIfNeeded() {
-        if isUndoingEditOP {
+        guard mustProcessInterlinkLookup else {
             return
         }
 
         processInterlinkLookup()
+    }
+
+    var mustProcessInterlinkLookup: Bool {
+        isUndoingEditOP == false && noteEditor.selectedRange().length == .zero
     }
 
     func processInterlinkLookup() {
