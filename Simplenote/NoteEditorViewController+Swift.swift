@@ -99,6 +99,12 @@ extension NoteEditorViewController {
     var isSelectingMultipleNotes: Bool {
         selectedNotes.count > 1
     }
+
+    /// Indicates if there's an ongoing Undo Operation in the Text Editor
+    ///
+    var isUndoingEditOP: Bool {
+        noteEditor.undoManager?.isUndoing == true
+    }
 }
 
 
@@ -547,7 +553,15 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
 extension NoteEditorViewController {
 
     @objc
-    func processInterlinkAutocomplete() {
+    func processInterlinkLookupIfNeeded() {
+        if isUndoingEditOP {
+            return
+        }
+
+        processInterlinkLookup()
+    }
+
+    func processInterlinkLookup() {
         guard let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation,
               refreshInterlinks(for: keywordText, in: markdownRange)
         else {
