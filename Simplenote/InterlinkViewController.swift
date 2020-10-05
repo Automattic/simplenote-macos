@@ -20,19 +20,13 @@ class InterlinkViewController: NSViewController {
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
-    /// Main Context
     ///
-    private var mainContext: NSManagedObjectContext {
-        SimplenoteAppDelegate.shared().managedObjectContext
-    }
+    ///
+    private let lookupController = LookupController()
 
-    /// ResultsController: In charge of CoreData Queries!
     ///
-    private lazy var resultsController: ResultsController<Note> = {
-        return ResultsController<Note>(viewContext: mainContext, sortedBy: [
-            NSSortDescriptor(keyPath: \Note.content, ascending: true)
-        ], limit: Settings.maximumNumberOfResults)
-    }()
+    ///
+    private var notes = [LookupNote]()
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
     ///
@@ -47,9 +41,9 @@ class InterlinkViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        startListeningToNotifications()
         refreshStyle()
-        setupResultsController()
+        startListeningToNotifications()
+        setupLookupController()
         setupRoundedCorners()
         setupTableView()
         setupTrackingAreas()
@@ -110,15 +104,21 @@ private extension InterlinkViewController {
         view.addTrackingArea(trackingArea)
     }
 
-    func setupResultsController() {
-        resultsController.onDidChangeContent = { [weak self] _, _ in
-            self?.dismissIfEmpty()
-            self?.refreshTableView()
-        }
+    func setupLookupController() {
+        let predicate = NSPredicate.predicateForNotes(deleted: false)
+        let notesBucket = SimplenoteAppDelegate.shared().simperium.notesBucket
+        let allNotes = notesBucket.objects(ofType: Note.self, for: predicate)
+
+        lookupController.preloadLookupTable(for: allNotes)
+
+//        resultsController.onDidChangeContent = { [weak self] _, _ in
+//            self?.dismissIfEmpty()
+//            self?.refreshTableView()
+//        }
     }
 
     func dismissIfEmpty() {
-        if resultsController.numberOfObjects != .zero {
+        if notes.count != .zero {
             return
         }
 
@@ -126,13 +126,8 @@ private extension InterlinkViewController {
     }
 
     func refreshResultsController(for keyword: String) -> Bool {
-        resultsController.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate.predicateForNotes(titleText: keyword),
-            NSPredicate.predicateForNotes(deleted: false)
-        ])
-
-        try? resultsController.performFetch()
-        return resultsController.numberOfObjects != .zero
+        notes = lookupController.search(titleText: keyword, limit: Settings.maximumNumberOfResults)
+        return notes.count != .zero
     }
 
     func refreshTableView() {
@@ -147,10 +142,11 @@ extension InterlinkViewController {
 
     @objc
     func performInterlinkInsert() {
-        guard let interlinkText = noteAtRow(tableView.selectedRow)?.markdownInternalLink else {
+        guard let searchNote = noteAtRow(tableView.selectedRow) else {
             return
         }
 
+        let interlinkText = Note.interlinkForNote(title: searchNote.title, simperiumKey: searchNote.simperiumKey)
         onInsertInterlink?(interlinkText)
     }
 }
@@ -191,13 +187,12 @@ private extension InterlinkViewController {
 //
 private extension InterlinkViewController {
 
-    func noteAtRow(_ row: Int) -> Note? {
-        let objects = resultsController.fetchedObjects
-        guard row < objects.count else {
+    func noteAtRow(_ row: Int) -> LookupNote? {
+        guard row < notes.count else {
             return nil
         }
 
-        return objects[row]
+        return notes[row]
     }
 }
 
@@ -207,7 +202,7 @@ private extension InterlinkViewController {
 extension InterlinkViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        resultsController.numberOfObjects
+        notes.count
     }
 }
 
@@ -240,10 +235,8 @@ extension InterlinkViewController: SPTableViewDelegate {
             return nil
         }
 
-        note.ensurePreviewStringsAreAvailable()
-
         let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
-        tableViewCell.title = note.titlePreview
+        tableViewCell.title = note.title
         return tableViewCell
     }
 }

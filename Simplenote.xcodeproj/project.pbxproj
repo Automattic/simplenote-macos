@@ -358,6 +358,10 @@
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
+		B5FF08B4252BBE1600399D8B /* LookupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF08B3252BBE1600399D8B /* LookupController.swift */; };
+		B5FF08B5252BBE1600399D8B /* LookupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF08B3252BBE1600399D8B /* LookupController.swift */; };
+		B5FF08BD252BBE4D00399D8B /* LookupNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF08BC252BBE4D00399D8B /* LookupNote.swift */; };
+		B5FF08BE252BBE4D00399D8B /* LookupNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF08BC252BBE4D00399D8B /* LookupNote.swift */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
@@ -680,6 +684,8 @@
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
+		B5FF08B3252BBE1600399D8B /* LookupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupController.swift; sourceTree = "<group>"; };
+		B5FF08BC252BBE4D00399D8B /* LookupNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupNote.swift; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1082,6 +1088,8 @@
 		B53BF1A224AC388F00938C34 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5FF08B3252BBE1600399D8B /* LookupController.swift */,
+				B5FF08BC252BBE4D00399D8B /* LookupNote.swift */,
 				B53BF1A324AC38C100938C34 /* VersionsController.swift */,
 				B53BF19F24AC1FB800938C34 /* Version.swift */,
 			);
@@ -1824,6 +1832,7 @@
 				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
+				B5FF08B4252BBE1600399D8B /* LookupController.swift in Sources */,
 				B59EA98124AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
 				375D293621E033D1007AB25A /* document.c in Sources */,
 				B5A5AF79244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
@@ -1880,6 +1889,7 @@
 				B56FA7982437C79D002CB9FF /* SPUserInterface.swift in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */,
+				B5FF08BD252BBE4D00399D8B /* LookupNote.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
@@ -1968,6 +1978,7 @@
 				B5132FA923C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				375D293721E033D1007AB25A /* document.c in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
+				B5FF08B5252BBE1600399D8B /* LookupController.swift in Sources */,
 				B59EA98224AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
 				B5A5AF7A244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
 				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
@@ -2024,6 +2035,7 @@
 				373B50E020179DFE000568A6 /* Extensions.swift in Sources */,
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
 				B58BBD47252411530025135F /* NSEvent+Simplenote.swift in Sources */,
+				B5FF08BE252BBE4D00399D8B /* LookupNote.swift in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
