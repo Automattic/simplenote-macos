@@ -7,17 +7,27 @@ class LookupController {
 
     /// In-Memory Map of Simperium Key > Lookup Note entities. `Superfast search™`
     ///
-    private var noteMap = [String: LookupNote]()
+    private var lookupMap: [String: LookupNote]
+
+    /// Designated Initializer
+    /// - Important: We're taking the LookupMap via parameter for **unit testing purposes**
+    ///
+    init(lookupMap: [String: LookupNote] = [:]) {
+        self.lookupMap = lookupMap
+    }
+
 
     /// Builds the LookupNote Map for a given collection of Notes
     ///
     func preloadLookupTable(for notes: [Note]) {
         for note in notes where note.isDeleted == false {
+            note.ensurePreviewStringsAreAvailable()
+
             guard let title = note.titlePreview, title.isEmpty == false else {
                 continue
             }
 
-            noteMap[note.simperiumKey] = LookupNote(simperiumKey: note.simperiumKey, title: title)
+            lookupMap[note.simperiumKey] = LookupNote(simperiumKey: note.simperiumKey, title: title)
         }
     }
 
@@ -28,7 +38,7 @@ class LookupController {
         let normalizedKeyword = titleText.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil).trimmingCharacters(in: .whitespaces)
         var output = [LookupNote]()
 
-        for note in noteMap.values where note.normalizedTitle.contains(normalizedKeyword) {
+        for note in lookupMap.values where note.normalizedTitle.contains(normalizedKeyword) {
             output.append(note)
         }
 
