@@ -24,8 +24,8 @@
         "repositoryURL": "git@github.com:Automattic/SimplenoteSearch-Swift.git",
         "state": {
           "branch": null,
-          "revision": "8d767a6e467c7c4cd5128a33897f7ce67de1892d",
-          "version": null
+          "revision": "c594338829e8fb8954fad8743508b135da17b132",
+          "version": "1.0.0"
         }
       }
     ]
