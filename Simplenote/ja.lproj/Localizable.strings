@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-19 08:54:09+0000 */
+/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ja_JP */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "文字";
 
+/* Collaborate Menu Action */
+"Collaborate" = "共同編集";
+
 /* Analytics Toggle Text */
 "Collect Information" = "情報を収集";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "パスワード確認";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copy Internal Link";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "ログインできません";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "作成日";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Delete Forever";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "メモを削除";
 
 /* Delete Tag Action */
 "Delete Tag" = "タグを削除";
+
+/* Closes the Privacy View */
+"Dismiss" = "非表示にする";
 
 /* Placeholder text for login field */
 "Email" = "メールアドレス";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "パスワードをお忘れですか ?";
 
+/* History Menu Action */
+"History" = "履歴";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "ログイン";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "ログイン中…";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Markdown プレビュー";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "続き";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "ゴミ箱へ移動";
 
 /* Link to create an account */
 "Need an account?" = "アカウントが必要ですか ?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "パスワードが一致しません";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "上部に固定";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "メールから WordPress.com アカウントを有効にして、もう一度試してください。";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "プライバシーポリシー";
+
+/* Publish Menu Action */
+"Publish" = "公開";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "このメモを Web ページに公開 ページには、常にメモの最新の内容が表示されます。";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "リセット";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "復元";
 
 /* Search Field Placeholder */
 "Search" = "検索";
+
+/* Share Menu Action */
+"Share" = "共有";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com アカウントへのログイン中のサービス利用の情報を分析ツールと共有してください。";

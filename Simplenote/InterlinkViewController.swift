@@ -152,7 +152,6 @@ extension InterlinkViewController {
         }
 
         onInsertInterlink?(interlinkText)
-        onInsertInterlink = nil
     }
 }
 

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-20 10:54:04+0000 */
+/* Translation-Revision-Date: 2020-09-30 14:54:59+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "תווים";
 
+/* Collaborate Menu Action */
+"Collaborate" = "שיתוף פעולה בעריכה";
+
 /* Analytics Toggle Text */
 "Collect Information" = "לאסוף מידע";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "לאשר סיסמה";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "להעתיק קישור פנימי";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "לא הייתה אפשרות להתחבר";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "נוצר";
 
+/* Delete Forever List Action */
+"Delete Forever" = "למחוק לצמיתות";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "למחוק את הפתקים";
 
 /* Delete Tag Action */
 "Delete Tag" = "למחוק את התגית";
+
+/* Closes the Privacy View */
+"Dismiss" = "בטל";
 
 /* Placeholder text for login field */
 "Email" = "לשלוח מייל";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "שכחת את הסיסמה שלך?";
 
+/* History Menu Action */
+"History" = "היסטוריה";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "התחבר";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "נכנס...";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "תצוגה מקדימה של Markdown";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "עוד";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "העברה לפח";
 
 /* Link to create an account */
 "Need an account?" = "נדרש לך חשבון?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "הסיסמאות לא תואמות";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "הצמדה לראש העמוד";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "יש להפעיל את החשבון שלך ב-WordPress.com באמצעות האימייל ולנסות שוב.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "מדיניות פרטיות";
+
+/* Publish Menu Action */
+"Publish" = "פרסם";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "לפרסם את הפתק לעמוד באינטרנט. העמוד יתעדכן בהתאם לתוכן של הפתק שלך.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "אתחול";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "לשחזר";
 
 /* Search Field Placeholder */
 "Search" = "חיפוש";
+
+/* Share Menu Action */
+"Share" = "שיתוף";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "ניתן לשתף בכלי הניתוח שלנו את פרטי השימוש שלך בשירותים השונים לאחר ההתחברות לחשבון שלך ב-Simplenote.com.";

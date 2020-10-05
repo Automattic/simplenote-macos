@@ -1,0 +1,4 @@
+- Editor’s Actions vous permet désormais de copier le lien interne d’une note 
+- Ajout de la prise en charge de la liste de notes pour épingler, désépingler, supprimer et restaurer avec un clic droit
+- ﻿Désormais, lorsque vous cliquez sur un lien de note, l’éditeur affiche la note référencée
+- Correction de la couleur accentuée de l’Aperçu Markdown, en mode sombre
