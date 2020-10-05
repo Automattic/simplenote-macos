@@ -20,11 +20,11 @@ class InterlinkViewController: NSViewController {
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
-    ///
+    /// LookupController: Performs In-Memory Search!
     ///
     private let lookupController = LookupController()
 
-    ///
+    /// Lookup Notes to be presented onScreen
     ///
     private var notes = [LookupNote]()
 
@@ -188,11 +188,7 @@ private extension InterlinkViewController {
 private extension InterlinkViewController {
 
     func noteAtRow(_ row: Int) -> LookupNote? {
-        guard row < notes.count else {
-            return nil
-        }
-
-        return notes[row]
+        return row < notes.count ? notes[row] : nil
     }
 }
 
