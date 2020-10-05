@@ -76,7 +76,7 @@ extension InterlinkViewController {
             return false
         }
 
-        tableView.reloadAndPreserveSelection()
+        tableView.reloadDataAndResetSelection()
         return true
     }
 }
@@ -125,8 +125,7 @@ extension InterlinkViewController {
             return
         }
 
-        let interlinkText = String.buildInterlink(title: searchNote.title, simperiumKey: searchNote.simperiumKey)
-        onInsertInterlink?(interlinkText)
+        onInsertInterlink?(searchNote.markdownInternalLink)
     }
 }
 

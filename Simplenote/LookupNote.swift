@@ -13,6 +13,12 @@ struct LookupNote {
     ///
     let title: String
 
+    /// Returns the receiver's Markdown Internal Reference
+    ///
+    var markdownInternalLink: String {
+        String.buildInterlink(title: title, simperiumKey: simperiumKey)
+    }
+
     /// Diacritic and Case Insensitive Title, for matching purposes
     ///
     var normalizedTitle: String {
