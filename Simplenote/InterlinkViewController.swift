@@ -121,11 +121,11 @@ extension InterlinkViewController {
 
     @objc
     func performInterlinkInsert() {
-        guard let searchNote = searchNoteAtRow(tableView.selectedRow) else {
+        guard let link = searchNoteAtRow(tableView.selectedRow)?.markdownInternalLink else {
             return
         }
 
-        onInsertInterlink?(searchNote.markdownInternalLink)
+        onInsertInterlink?(link)
     }
 }
 

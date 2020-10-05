@@ -25,7 +25,7 @@ class LookupController {
     /// - Note: The resulting collection is ordered by Title
     ///
     func search(titleText: String, limit: Int? = nil) -> [LookupNote] {
-        let normalizedKeyword = titleText.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
+        let normalizedKeyword = titleText.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil).trimmingCharacters(in: .whitespaces)
         var output = [LookupNote]()
 
         for note in noteMap.values where note.normalizedTitle.contains(normalizedKeyword) {

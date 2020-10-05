@@ -554,38 +554,23 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
 }
 
 
-// MARK: - Interlinking Autocomplete
+// MARK: - Interlinking Autocomplete: Public API(s)
 //
 extension NoteEditorViewController {
 
+    /// Displays the Interlink Lookup Window at the cursor's location when all of the following are **true**:
+    ///
+    ///     1. We're not performing an Undo OP
+    ///     2. There is no Highlighted Text in the editor
+    ///     3. There is an interlink `[keyword` at the cursor's location
+    ///     4. There are Notes with `keyword` in their title
+    ///
+    ///  Otherwise we'll simply dismiss the Autocomplete Window, if any.
+    ///
     @objc
-    func processInterlinkLookupIfNeeded() {
-        guard mustProcessInterlinkLookup else {
-            return
-        }
-
-        processInterlinkLookup()
-    }
-
-    @objc
-    func dismissInterlinkLookupIfNeeded() {
-        guard mustDismissInterlinkLookup else {
-            return
-        }
-
-        dismissInterlinkWindow()
-    }
-
-    var mustProcessInterlinkLookup: Bool {
-        isUndoingEditOP == false && isSelectingText == false
-    }
-
-    var mustDismissInterlinkLookup: Bool {
-        isSelectingText || isInterlinkWindowOnScreen && noteEditor.interlinkKeywordAtSelectedLocation == nil
-    }
-
     func processInterlinkLookup() {
-        guard let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation,
+        guard mustProcessInterlinkLookup,
+              let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation,
               refreshInterlinks(for: keywordText, in: markdownRange)
         else {
             dismissInterlinkWindow()
@@ -595,6 +580,40 @@ extension NoteEditorViewController {
         displayInterlinkWindow(around: keywordRange)
     }
 
+    /// Dismisses the Interlink Window when ANY of the following evaluates **true**:
+    ///
+    ///     1.  There is Highlighted Text in the editor (or)
+    ///     2.  There is no Interlink `[keyword` at the selected location
+    ///
+    @objc
+    func dismissInterlinkLookupIfNeeded() {
+        guard mustDismissInterlinkLookup else {
+            return
+        }
+
+        dismissInterlinkWindow()
+    }
+}
+
+
+// MARK: - Interlinking Autocomplete: Private API(s)
+//
+private extension NoteEditorViewController {
+
+    /// Indicates if we should process Interlink Lookup
+    ///
+    var mustProcessInterlinkLookup: Bool {
+        isUndoingEditOP == false && isSelectingText == false
+    }
+
+    /// Indicates if we should dismiss the Interlink Window
+    ///
+    var mustDismissInterlinkLookup: Bool {
+        isSelectingText || isInterlinkWindowOnScreen && noteEditor.interlinkKeywordAtSelectedLocation == nil
+    }
+
+    /// Presents the Interlink Window at a given Editor Range (Below / Above!)
+    ///
     func displayInterlinkWindow(around range: Range<String.Index>) {
         let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
         let interlinkWindowController = reusableInterlinkWindowController()
@@ -603,33 +622,44 @@ extension NoteEditorViewController {
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
     }
 
+    /// DIsmisses the Interlink Window (if any!)
+    ///
     func dismissInterlinkWindow() {
         interlinkWindowController?.close()
     }
 
+    /// Indicates if the Interlink Window is visible
+    ///
     var isInterlinkWindowOnScreen: Bool {
         interlinkWindowController?.window?.parent != nil
     }
 
+    /// Refreshes the Interlinks for a given Keyword at the specified Replacement Range (including Markdown `[` opening character).
+    /// - Returns: `true` whenever there *are* interlinks to be presented
+    ///
     func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>) -> Bool {
         guard let interlinkViewController = reusableInterlinkWindowController().interlinkViewController else {
             fatalError()
         }
 
         interlinkViewController.onInsertInterlink = { [weak self] linkText in
-            self?.insertInterlink(linkText, in: replacementRange)
+            self?.insertText(linkText, in: replacementRange)
             self?.dismissInterlinkWindow()
         }
 
         return interlinkViewController.refreshInterlinks(for: keywordText)
     }
 
-    func insertInterlink(_ text: String, in range: Range<String.Index>) {
+    /// Inserts the specified Text at a given range, and ensures the document is linkified
+    ///
+    func insertText(_ text: String, in range: Range<String.Index>) {
         let range = noteEditor.string.utf16NSRange(from: range)
         noteEditor.replaceCharacters(in: range, with: text)
         noteEditor.processLinksInDocumentAsynchronously()
     }
 
+    /// Returns a reusable InterlinkWindowController instance
+    ///
     func reusableInterlinkWindowController() -> InterlinkWindowController {
         if let interlinkWindowController = interlinkWindowController {
             return interlinkWindowController
