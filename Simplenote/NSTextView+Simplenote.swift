@@ -36,6 +36,14 @@ extension NSTextView {
         return (trimmedRange, trimmedLine)
     }
 
+    /// Inserts the specified Text at a given range, and ensures the document is linkified
+    ///
+    func insertTextAndLinkify(text: String, in range: Range<String.Index>) {
+        let range = string.utf16NSRange(from: range)
+        replaceCharacters(in: range, with: text)
+        processLinksInDocumentAsynchronously()
+    }
+
     /// Removes the text at the specified range, and notifies the delegate.
     ///
     func removeText(at range: NSRange) {
@@ -269,7 +277,6 @@ extension NSTextView {
     ///
     var interlinkKeywordAtSelectedLocation: (Range<String.Index>, Range<String.Index>, String)? {
         let text = string
-
         return text.indexFromLocation(selectedRange().location).flatMap { index in
             text.interlinkKeyword(at: index)
         }
