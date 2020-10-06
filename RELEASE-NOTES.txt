@@ -2,6 +2,7 @@
 -----
 - Fixed a bug that randomly caused the login screen to cut off #664
 - Typing `[` will now allow you to pick Interlinking Notes right from the editor #682
+- New `Get Help` action in Simplenote's About window #684
 
 2.2.0
 -----
