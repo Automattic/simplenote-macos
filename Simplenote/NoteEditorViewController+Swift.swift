@@ -562,7 +562,7 @@ extension NoteEditorViewController {
     ///
     ///     1. We're not performing an Undo OP
     ///     2. There is no Highlighted Text in the editor
-    ///     3. There is an interlink `[keyword` at the cursor's location
+    ///     3. There is an interlink `[keyword` at the current location
     ///     4. There are Notes with `keyword` in their title
     ///
     ///  Otherwise we'll simply dismiss the Autocomplete Window, if any.
@@ -612,6 +612,12 @@ private extension NoteEditorViewController {
         isSelectingText || isInterlinkWindowOnScreen && noteEditor.interlinkKeywordAtSelectedLocation == nil
     }
 
+    /// Indicates if the Interlink Window is visible
+    ///
+    var isInterlinkWindowOnScreen: Bool {
+        interlinkWindowController?.window?.parent != nil
+    }
+
     /// Presents the Interlink Window at a given Editor Range (Below / Above!)
     ///
     func displayInterlinkWindow(around range: Range<String.Index>) {
@@ -628,12 +634,6 @@ private extension NoteEditorViewController {
         interlinkWindowController?.close()
     }
 
-    /// Indicates if the Interlink Window is visible
-    ///
-    var isInterlinkWindowOnScreen: Bool {
-        interlinkWindowController?.window?.parent != nil
-    }
-
     /// Refreshes the Interlinks for a given Keyword at the specified Replacement Range (including Markdown `[` opening character).
     /// - Returns: `true` whenever there *are* interlinks to be presented
     ///
@@ -642,20 +642,12 @@ private extension NoteEditorViewController {
             fatalError()
         }
 
-        interlinkViewController.onInsertInterlink = { [weak self] linkText in
-            self?.insertText(linkText, in: replacementRange)
+        interlinkViewController.onInsertInterlink = { [weak self] text in
+            self?.noteEditor.insertTextAndLinkify(text: text, in: replacementRange)
             self?.dismissInterlinkWindow()
         }
 
         return interlinkViewController.refreshInterlinks(for: keywordText)
-    }
-
-    /// Inserts the specified Text at a given range, and ensures the document is linkified
-    ///
-    func insertText(_ text: String, in range: Range<String.Index>) {
-        let range = noteEditor.string.utf16NSRange(from: range)
-        noteEditor.replaceCharacters(in: range, with: text)
-        noteEditor.processLinksInDocumentAsynchronously()
     }
 
     /// Returns a reusable InterlinkWindowController instance
