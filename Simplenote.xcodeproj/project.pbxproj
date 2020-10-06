@@ -358,7 +358,6 @@
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
-		B5FF08CD252BCE4400399D8B /* LookupControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF08CC252BCE4400399D8B /* LookupControllerTests.swift */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
@@ -681,7 +680,6 @@
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
-		B5FF08CC252BCE4400399D8B /* LookupControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupControllerTests.swift; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1313,7 +1311,6 @@
 			children = (
 				B53FF5482476F94B0014E928 /* Helpers */,
 				B5985AD3242949C30044EDE9 /* Converters */,
-				B5FF08CB252BCE2E00399D8B /* Controllers */,
 				B5985AD2242949B00044EDE9 /* Extensions */,
 				B5B5F33B243244D300F31720 /* Handlers */,
 				B5C1F0AD242E9AAA00A627E3 /* Mockups */,
@@ -1352,14 +1349,6 @@
 				B5E8E41024575C990098892B /* ToolbarState.swift */,
 			);
 			name = Toolbar;
-			sourceTree = "<group>";
-		};
-		B5FF08CB252BCE2E00399D8B /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				B5FF08CC252BCE4400399D8B /* LookupControllerTests.swift */,
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2085,7 +2074,6 @@
 				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 				B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */,
 				B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */,
-				B5FF08CD252BCE4400399D8B /* LookupControllerTests.swift in Sources */,
 				B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */,
 				B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */,
 			);
