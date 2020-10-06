@@ -105,7 +105,7 @@ private extension InterlinkViewController {
         }
 
         backgroundView.wantsLayer = true
-        backgroundView.layer?.cornerRadius = Metrics.cornerRadius
+        backgroundView.layer?.cornerRadius = Settings.cornerRadius
     }
 
     func setupTableView() {
@@ -129,7 +129,7 @@ private extension InterlinkViewController {
 //
 private extension InterlinkViewController {
 
-    func filterNotes(_ notes: [Note], byTitleKeyword keyword: String) -> [Note] {
+    func filterNotes(_ notes: [Note], byTitleKeyword keyword: String, limit: Int = Settings.maximumNumberOfResults) -> [Note] {
         var output = [Note]()
         let normalizedKeyword = keyword.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
 
@@ -142,6 +142,10 @@ private extension InterlinkViewController {
             }
 
             output.append(note)
+
+            if output.count >= limit {
+                break
+            }
         }
 
         return output
@@ -260,8 +264,9 @@ extension InterlinkViewController: SPTableViewDelegate {
 }
 
 
-// MARK: - Metrics!
+// MARK: - Settings!
 //
-private enum Metrics {
+private enum Settings {
     static let cornerRadius = CGFloat(6)
+    static let maximumNumberOfResults = 15
 }
