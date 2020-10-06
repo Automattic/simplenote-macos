@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 import SimplenoteFoundation
-import SimplenoteSearch
 
 
 // MARK: - InterlinkViewController
@@ -20,13 +19,23 @@ class InterlinkViewController: NSViewController {
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
-    /// LookupController: Performs In-Memory Search!
+    /// Main Context
     ///
-    private let lookupController = LookupController()
+    private var mainContext: NSManagedObjectContext {
+        SimplenoteAppDelegate.shared().managedObjectContext
+    }
 
-    /// Lookup Notes to be presented onScreen
+    /// ResultsController: In charge of CoreData Queries!
     ///
-    private var notes = [LookupNote]()
+    private lazy var resultsController: ResultsController<Note> = {
+        return ResultsController<Note>(viewContext: mainContext, sortedBy: [
+            NSSortDescriptor(keyPath: \Note.content, ascending: true)
+        ], limit: Settings.maximumNumberOfResults)
+    }()
+
+    /// 
+    ///
+    private var filteredNotes = [Note]()
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
     ///
@@ -41,9 +50,9 @@ class InterlinkViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshStyle()
         startListeningToNotifications()
-        setupLookupController()
+        refreshStyle()
+        setupResultsController()
         setupRoundedCorners()
         setupTableView()
         setupTrackingAreas()
@@ -71,13 +80,14 @@ extension InterlinkViewController {
     ///     This way we get to avoid the awkward visual effect of "empty autocomplete window"
     ///
     func refreshInterlinks(for keyword: String) -> Bool {
-        notes = lookupController.search(titleText: keyword, limit: Settings.maximumNumberOfResults)
-        if notes.isEmpty {
-            return false
+        filteredNotes = filterNotes(resultsController.fetchedObjects, byTitleKeyword: keyword)
+        let displaysRows = filteredNotes.count > .zero
+
+        if displaysRows {
+            refreshTableView()
         }
 
-        tableView.reloadDataAndResetSelection()
-        return true
+        return displaysRows
     }
 }
 
@@ -105,12 +115,37 @@ private extension InterlinkViewController {
         view.addTrackingArea(trackingArea)
     }
 
-    func setupLookupController() {
-        let predicate = NSPredicate.predicateForNotes(deleted: false)
-        let notesBucket = SimplenoteAppDelegate.shared().simperium.notesBucket
-        let allNotes = notesBucket.objects(ofType: Note.self, for: predicate)
+    func setupResultsController() {
+        resultsController.predicate = NSPredicate.predicateForNotes(deleted: false)
+        try? resultsController.performFetch()
+    }
+}
 
-        lookupController.preloadLookupTable(for: allNotes)
+
+// MARK: - Filtering
+//
+private extension InterlinkViewController {
+
+    func filterNotes(_ notes: [Note], byTitleKeyword keyword: String) -> [Note] {
+        var output = [Note]()
+        let normalizedKeyword = keyword.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
+
+        for note in notes {
+            note.ensurePreviewStringsAreAvailable()
+            guard let normalizedTitle = note.titlePreview?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil),
+                  normalizedTitle.contains(normalizedKeyword)
+            else {
+                continue
+            }
+
+            output.append(note)
+        }
+
+        return output
+    }
+
+    func refreshTableView() {
+        tableView.reloadDataAndResetSelection()
     }
 }
 
@@ -121,11 +156,11 @@ extension InterlinkViewController {
 
     @objc
     func performInterlinkInsert() {
-        guard let link = searchNoteAtRow(tableView.selectedRow)?.markdownInternalLink else {
+        guard let interlinkText = noteAtRow(tableView.selectedRow)?.markdownInternalLink else {
             return
         }
 
-        onInsertInterlink?(link)
+        onInsertInterlink?(interlinkText)
     }
 }
 
@@ -165,8 +200,12 @@ private extension InterlinkViewController {
 //
 private extension InterlinkViewController {
 
-    func searchNoteAtRow(_ row: Int) -> LookupNote? {
-        return row < notes.count ? notes[row] : nil
+    func noteAtRow(_ row: Int) -> Note? {
+        guard row < filteredNotes.count else {
+            return nil
+        }
+
+        return filteredNotes[row]
     }
 }
 
@@ -176,7 +215,7 @@ private extension InterlinkViewController {
 extension InterlinkViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        notes.count
+        filteredNotes.count
     }
 }
 
@@ -205,12 +244,14 @@ extension InterlinkViewController: SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let note = searchNoteAtRow(row) else {
+        guard let note = noteAtRow(row) else {
             return nil
         }
 
+        note.ensurePreviewStringsAreAvailable()
+
         let tableViewCell = tableView.makeTableViewCell(ofType: LinkTableCellView.self)
-        tableViewCell.title = note.title
+        tableViewCell.title = note.titlePreview
         return tableViewCell
     }
 }
