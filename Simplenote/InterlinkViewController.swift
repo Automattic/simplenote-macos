@@ -30,7 +30,7 @@ class InterlinkViewController: NSViewController {
     private lazy var resultsController: ResultsController<Note> = {
         return ResultsController<Note>(viewContext: mainContext, sortedBy: [
             NSSortDescriptor(keyPath: \Note.content, ascending: true)
-        ], limit: Settings.maximumNumberOfResults)
+        ])
     }()
 
     /// In-Memory Filtered Notes
@@ -105,7 +105,7 @@ private extension InterlinkViewController {
         }
 
         backgroundView.wantsLayer = true
-        backgroundView.layer?.cornerRadius = Settings.cornerRadius
+        backgroundView.layer?.cornerRadius = Metrics.cornerRadius
     }
 
     func setupTableView() {
@@ -260,9 +260,8 @@ extension InterlinkViewController: SPTableViewDelegate {
 }
 
 
-// MARK: - Settings!
+// MARK: - Metrics!
 //
-private enum Settings {
+private enum Metrics {
     static let cornerRadius = CGFloat(6)
-    static let maximumNumberOfResults = 15
 }
