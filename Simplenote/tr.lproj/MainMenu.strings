@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-06 18:54:51+0000 */
+/* Translation-Revision-Date: 2020-09-18 14:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -196,7 +196,7 @@
 "492.title" = "Yardım Web Sitesi";
 
 /* Class = "NSMenuItem"; title = "Tags Sorting"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
-"4QQ-5e-Vxl.title" = "Tags List";
+"4QQ-5e-Vxl.title" = "Etiket Sıralama";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
 "5.title" = "Tümünü Öne Getir";
@@ -217,7 +217,7 @@
 "5HH-LQ-Fk8.title" = "Biçim";
 
 /* Class = "NSMenu"; title = "Tags Sorting"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
-"76D-S0-1JD.title" = "Tags List";
+"76D-S0-1JD.title" = "Etiket Sıralama";
 
 /* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
 "78.title" = "Yazdır...";
@@ -250,7 +250,7 @@
 "Pwd-hR-fBt.title" = "Her Şeyi Dışa Aktar";
 
 /* Class = "NSMenuItem"; title = "Note Sorting"; ObjectID = "QGk-SS-2Jf"; Note = "Opens the Note List Sort Order Settings"; */
-"QGk-SS-2Jf.title" = "Sort Order";
+"QGk-SS-2Jf.title" = "Not Sıralama";
 
 /* Class = "NSMenuItem"; title = "Comfy"; ObjectID = "Qaj-k2-NOz"; Note = "Toggles Comfy Note Display"; */
 "Qaj-k2-NOz.title" = "Rahat";
@@ -268,7 +268,7 @@
 "THl-80-myZ.title" = "Biçim";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
-"YpJ-fs-p4p.title" = "Sort Order";
+"YpJ-fs-p4p.title" = "Not Sıralama";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
 "Zhe-Bb-jvT.title" = "Açık";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-20 10:54:04+0000 */
+/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "Karakter";
 
+/* Collaborate Menu Action */
+"Collaborate" = "İşbirliği Yap";
+
 /* Analytics Toggle Text */
 "Collect Information" = "Bilgi topla";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Şifreyi Doğrula";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copy Internal Link";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Oturum Açılamadı";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "Oluşturuldu";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Delete Forever";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Notları Sil";
 
 /* Delete Tag Action */
 "Delete Tag" = "Etiket Sil";
+
+/* Closes the Privacy View */
+"Dismiss" = "Kapat";
 
 /* Placeholder text for login field */
 "Email" = "E-posta";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Parolanızı mı unuttunuz?";
 
+/* History Menu Action */
+"History" = "Geçmiş";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Giriş yap";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Oturum açılıyor...";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Markdown Önizlemesi";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "Daha fazla";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "Çöpe taşı";
 
 /* Link to create an account */
 "Need an account?" = "Hesap mı istiyorsunuz?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "Parolalar eşleşmiyor";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "Üste İğnele";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Lütfen WordPress.com hesabınızı e-posta aracılığıyla etkinleştirin ve tekrar deneyin.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "Gizlilik politikası";
+
+/* Publish Menu Action */
+"Publish" = "Yayımla";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Bu notu web sayfası olarak yayımlayın.  Sayfa her zaman notunuzdaki içerikle güncellenecektir.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "Sıfırla";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "Geri yükle";
 
 /* Search Field Placeholder */
 "Search" = "Arama";
+
+/* Share Menu Action */
+"Share" = "Paylaş";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com hesabınızda oturumunuz açıkken hizmetleri kullanımınızla ilgili bilgileri analiz aracımızla paylaşın.";

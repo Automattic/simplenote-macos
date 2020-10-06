@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-19 14:54:04+0000 */
+/* Translation-Revision-Date: 2020-10-01 10:54:48+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "Символы";
 
+/* Collaborate Menu Action */
+"Collaborate" = "Партнер";
+
 /* Analytics Toggle Text */
 "Collect Information" = "Сбор информации";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Подтвердите пароль";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Скопировать внутреннюю ссылку";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Не удалось войти";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "Создано";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Удалить навсегда";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Удалить заметки";
 
 /* Delete Tag Action */
 "Delete Tag" = "Удалить метку";
+
+/* Closes the Privacy View */
+"Dismiss" = "Игнорировать";
 
 /* Placeholder text for login field */
 "Email" = "Отправить email";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Забыли пароль?";
 
+/* History Menu Action */
+"History" = "История";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Войти";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Вход...";
+
+/* Markdown Menu Action */
+"Markdown" = "Markdown";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "Предварительный просмотр Markdown";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "Еще";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "Удалить";
 
 /* Link to create an account */
 "Need an account?" = "Нужна учетная запись?";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "Пароли не совпадают";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "В топ";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Активируйте учетную запись WordPress.com через эл. почту или повторите попытку.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "Конфиденциальность";
+
+/* Publish Menu Action */
+"Publish" = "Опубликовать";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "Публикация этой заметки на веб-странице. На веб-странице будут отображаться все изменения заметки.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "Сбросить";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "Восстановить";
 
 /* Search Field Placeholder */
 "Search" = "Поиск";
+
+/* Share Menu Action */
+"Share" = "Поделиться";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Позвольте нашему средству аналитики собирать информацию о том, как вы используете наши услуги после входа в учетную запись Simplenote.com.";

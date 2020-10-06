@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-08-19 08:54:04+0000 */
+/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -37,11 +37,17 @@
 /* Number of characters in the note */
 "Characters" = "أحرف";
 
+/* Collaborate Menu Action */
+"Collaborate" = "تشارك";
+
 /* Analytics Toggle Text */
 "Collect Information" = "جمع المعلومات";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "تأكيد كلمة المرور";
+
+/* Copy Link Menu Action */
+"Copy Internal Link" = "Copy Internal Link";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "تعذر تسجيل الدخول";
@@ -49,11 +55,17 @@
 /* Note Creation Date */
 "Created" = "تاريخ الإنشاء";
 
+/* Delete Forever List Action */
+"Delete Forever" = "Delete Forever";
+
 /* Delete notes and sign out of the app */
 "Delete Notes" = "حذف الملاحظات";
 
 /* Delete Tag Action */
 "Delete Tag" = "حذف وسم";
+
+/* Closes the Privacy View */
+"Dismiss" = "تجاهل";
 
 /* Placeholder text for login field */
 "Email" = "البريد الإلكتروني";
@@ -67,12 +79,18 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "هل نسيتَ كلمة المرور الخاصة بك؟";
 
+/* History Menu Action */
+"History" = "المحفوظات";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "تسجيل الدخول";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "جارٍ تسجيل الدخول...";
+
+/* Markdown Menu Action */
+"Markdown" = "الضبط";
 
 /* Tooltip: Markdown Preview */
 "Markdown Preview" = "ضبط المعاينة";
@@ -85,6 +103,10 @@
 
 /* Tooltip: More Actions */
 "More" = "المزيد";
+
+/* Move to Trash List Action
+   Trash Menu Action */
+"Move to Trash" = "نقل إلى سلة المهملات";
 
 /* Link to create an account */
 "Need an account?" = "هل أنت بحاجة إلى حساب؟";
@@ -116,11 +138,18 @@
 /* Password Validation: Confirmation doesn't match */
 "Passwords do not match" = "كلمات المرور غير متطابقة";
 
+/* List Pin Action
+   Pin to Top Menu Action */
+"Pin to Top" = "تثبيت في المقدمة";
+
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "يرجى تنشيط حساب ووردبريس.كوم الخاص بك عبر البريد الإلكتروني والمحاولة مجددًا.";
 
 /* Privacy Policy's Title */
 "Privacy Policy" = "سياسة الخصوصية";
+
+/* Publish Menu Action */
+"Publish" = "نشر";
 
 /* Text presented when the note is about to be published */
 "Publish this note to a web page. The page will stay updated with the contents of your note." = "انشر هذه الملحوظة في صفحة ويب. ستبقى الصفحة محدَّثة بمحتويات ملحوظتك.";
@@ -137,11 +166,15 @@
 /* Password Reset: Proceed */
 "Reset" = "استعادة";
 
-/* Tooltip: Restore a trashed note */
+/* Restore List Action
+   Tooltip: Restore a trashed note */
 "Restore" = "استعادة";
 
 /* Search Field Placeholder */
 "Search" = "بحث";
+
+/* Share Menu Action */
+"Share" = "شارك";
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "شارك المعلومات مع أداة التحليلات الخاصة بنا حول استخدامك للخدمات في أثناء تسجيل الدخول إلى حسابك على Simplenote.com.";

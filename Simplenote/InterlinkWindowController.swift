@@ -69,12 +69,11 @@ private extension InterlinkWindowController {
     }
 
     func calculateWindowOrigin(windowSize: CGSize, positioningRect: CGRect) -> CGPoint {
-        let screenWidth = NSScreen.main?.visibleFrame.width ?? .infinity
         var output = positioningRect.origin
 
         // Adjust Origin.X: Compensate for horizontal overflow
-        let overflowX = screenWidth - output.x - windowSize.width
-        if overflowX < .zero {
+        if let screenWidth = NSScreen.main?.visibleFrame.width, screenWidth < output.x + windowSize.width {
+            let overflowX = screenWidth - output.x - windowSize.width
             output.x += overflowX - Metrics.windowInsets.right
         }
 
