@@ -33,7 +33,10 @@ class InterlinkViewController: NSViewController {
         ], limit: Settings.maximumNumberOfResults)
     }()
 
-    /// 
+    /// In-Memory Filtered Notes
+    /// -   Our Storage does not split `Title / Body`. Filtering by keywords in the title require a NSPredicate + Block
+    /// -   The above is awfully underperformant.
+    /// -   Most efficient approach code wise / speed involves simply keeping a FRC instance, and filtering it as needed
     ///
     private var filteredNotes = [Note]()
 
