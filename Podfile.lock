@@ -3,11 +3,11 @@ PODS:
     - CocoaLumberjack (~> 3)
     - Reachability (~> 3)
     - Sentry (~> 4)
-    - Sodium (~> 0.8.0)
+    - Sodium-Fork (= 0.8.2)
     - UIDeviceIdentifier (~> 1)
-  - CocoaLumberjack (3.6.2):
-    - CocoaLumberjack/Core (= 3.6.2)
-  - CocoaLumberjack/Core (3.6.2)
+  - CocoaLumberjack (3.7.0):
+    - CocoaLumberjack/Core (= 3.7.0)
+  - CocoaLumberjack/Core (3.7.0)
   - Reachability (3.2)
   - Sentry (4.5.0):
     - Sentry/Core (= 4.5.0)
@@ -23,7 +23,7 @@ PODS:
   - Simperium-OSX/SocketRocket (0.8.30)
   - Simperium-OSX/SPReachability (0.8.30)
   - Simperium-OSX/SSKeychain (0.8.30)
-  - Sodium (0.8.0)
+  - Sodium-Fork (0.8.2)
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (from `https://github.com/Automattic/Automattic-Tracks-iOS`, branch `store-data-in-application-support`)
@@ -35,7 +35,7 @@ SPEC REPOS:
     - Reachability
     - Sentry
     - Simperium-OSX
-    - Sodium
+    - Sodium-Fork
 
 EXTERNAL SOURCES:
   Automattic-Tracks-iOS:
@@ -44,16 +44,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Automattic-Tracks-iOS:
-    :commit: 90cc2ab6f9038a2f79e4bd89cae882abaffc5bd9
+    :commit: 61a05f6229b334b317b20dc2392c120d2f4a25cc
     :git: https://github.com/Automattic/Automattic-Tracks-iOS
 
 SPEC CHECKSUMS:
-  Automattic-Tracks-iOS: b0f5d0cde00e4a0ff423d0139d84e2819af91c6a
-  CocoaLumberjack: bd155f2dd06c0e0b03f876f7a3ee55693122ec94
+  Automattic-Tracks-iOS: c0f2377e508400e8bba8b6772cf6356e44a9bf2e
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Sentry: ab6c209f23700d1460691dbc90e19ed0a05d496b
   Simperium-OSX: 677949c579f96c4fd194b532bdffda86b00b3db8
-  Sodium: 63c0ca312a932e6da481689537d4b35568841bdc
+  Sodium-Fork: 45fe3a7c675898ca0635af4eadcb34985477e868
 
 PODFILE CHECKSUM: b6ce3bf0aa9a39ad9dfd426878722575e7ac1f1e
 
