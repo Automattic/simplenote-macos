@@ -39,9 +39,11 @@ extension NSTextView {
     /// Inserts the specified Text at a given range, and ensures the document is linkified
     ///
     func insertTextAndLinkify(text: String, in range: Range<String.Index>) {
-        let range = string.utf16NSRange(from: range)
-        replaceCharacters(in: range, with: text)
-        processLinksInDocumentAsynchronously()
+        registerUndoCheckpointAndPerform { storage in
+            let range = string.utf16NSRange(from: range)
+            storage.replaceCharacters(in: range, with: text)
+            processLinksInDocumentAsynchronously()
+        }
     }
 
     /// Removes the text at the specified range, and notifies the delegate.
@@ -72,6 +74,7 @@ private extension NSTextView {
     ///     2.  Wraps up a given `Block` within an Undo Group
     ///     3.  Post a TextDidChange Notification
     ///
+    @discardableResult
     func registerUndoCheckpointAndPerform(block: (NSTextStorage) -> Void) -> Bool {
         guard let storage = textStorage, let undoManager = undoManager else {
             return false
