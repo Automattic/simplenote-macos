@@ -47,6 +47,11 @@ private extension AutocompleteWindow {
     /// Capture Up / Down / Return / Escape!!
     ///
     func processKeyDownInParent(_ event: NSEvent) -> Bool {
+        let excludedFlags: NSEvent.ModifierFlags = [.shift, .command, .control]
+        guard event.modifierFlags.intersection(excludedFlags).isEmpty else {
+            return false
+        }
+
         guard let key = event.simplenoteSpecialKey else {
             return false
         }
