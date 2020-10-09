@@ -82,8 +82,8 @@ extension InterlinkViewController {
     ///     By design, whenever there are no results we won't be refreshing the TableView. Instead, we'll stick to the "old results".
     ///     This way we get to avoid the awkward visual effect of "empty autocomplete window"
     ///
-    func refreshInterlinks(for keyword: String) -> Bool {
-        filteredNotes = filterNotes(resultsController.fetchedObjects, byTitleKeyword: keyword)
+    func refreshInterlinks(for keyword: String, excluding excludedID: NSManagedObjectID?) -> Bool {
+        filteredNotes = filterNotes(resultsController.fetchedObjects, byTitleKeyword: keyword, excluding: excludedID)
         let displaysRows = filteredNotes.count > .zero
 
         if displaysRows {
@@ -129,11 +129,11 @@ private extension InterlinkViewController {
 //
 private extension InterlinkViewController {
 
-    func filterNotes(_ notes: [Note], byTitleKeyword keyword: String, limit: Int = Settings.maximumNumberOfResults) -> [Note] {
+    func filterNotes(_ notes: [Note], byTitleKeyword keyword: String, excluding excludedID: NSManagedObjectID?, limit: Int = Settings.maximumNumberOfResults) -> [Note] {
         var output = [Note]()
         let normalizedKeyword = keyword.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
 
-        for note in notes {
+        for note in notes where note.objectID != excludedID {
             note.ensurePreviewStringsAreAvailable()
             guard let normalizedTitle = note.titlePreview?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil),
                   normalizedTitle.contains(normalizedKeyword)

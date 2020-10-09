@@ -571,7 +571,7 @@ extension NoteEditorViewController {
     func processInterlinkLookup() {
         guard mustProcessInterlinkLookup,
               let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation,
-              refreshInterlinks(for: keywordText, in: markdownRange)
+              refreshInterlinks(for: keywordText, in: markdownRange, excluding: note?.objectID)
         else {
             dismissInterlinkWindow()
             return
@@ -637,7 +637,7 @@ private extension NoteEditorViewController {
     /// Refreshes the Interlinks for a given Keyword at the specified Replacement Range (including Markdown `[` opening character).
     /// - Returns: `true` whenever there *are* interlinks to be presented
     ///
-    func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>) -> Bool {
+    func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>, excluding excludedID: NSManagedObjectID?) -> Bool {
         guard let interlinkViewController = reusableInterlinkWindowController().interlinkViewController else {
             fatalError()
         }
@@ -647,7 +647,7 @@ private extension NoteEditorViewController {
             self?.dismissInterlinkWindow()
         }
 
-        return interlinkViewController.refreshInterlinks(for: keywordText)
+        return interlinkViewController.refreshInterlinks(for: keywordText, excluding: excludedID)
     }
 
     /// Returns a reusable InterlinkWindowController instance
