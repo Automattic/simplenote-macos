@@ -28,9 +28,17 @@ class InterlinkViewController: NSViewController {
     /// ResultsController: In charge of CoreData Queries!
     ///
     private lazy var resultsController: ResultsController<Note> = {
-        let sortDescriptor = NSSortDescriptor(keyPath: \Note.content, ascending: true)
-        return ResultsController(viewContext: mainContext, sortedBy: [sortDescriptor])
+        return ResultsController<Note>(viewContext: mainContext, sortedBy: [
+            NSSortDescriptor(keyPath: \Note.content, ascending: true)
+        ])
     }()
+
+    /// In-Memory Filtered Notes
+    /// -   Our Storage does not split `Title / Body`. Filtering by keywords in the title require a NSPredicate + Block
+    /// -   The above is awfully underperformant.
+    /// -   Most efficient approach code wise / speed involves simply keeping a FRC instance, and filtering it as needed
+    ///
+    private var filteredNotes = [Note]()
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
     ///
@@ -51,7 +59,6 @@ class InterlinkViewController: NSViewController {
         setupRoundedCorners()
         setupTableView()
         setupTrackingAreas()
-
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -70,11 +77,20 @@ class InterlinkViewController: NSViewController {
 //
 extension InterlinkViewController {
 
-    /// Refreshes the UI so that Interlinks for the specified Keyword are rendered
+    /// Refreshes the Autocomplete Results. Returns `true` when there are visible rows.
+    /// - Important:
+    ///     By design, whenever there are no results we won't be refreshing the TableView. Instead, we'll stick to the "old results".
+    ///     This way we get to avoid the awkward visual effect of "empty autocomplete window"
     ///
-    func refreshInterlinks(for keyword: String) {
-        refreshResultsPredicate(for: keyword)
-        tableView.reloadDataAndResetSelection()
+    func refreshInterlinks(for keyword: String, excluding excludedID: NSManagedObjectID?) -> Bool {
+        filteredNotes = filterNotes(resultsController.fetchedObjects, byTitleKeyword: keyword, excluding: excludedID)
+        let displaysRows = filteredNotes.count > .zero
+
+        if displaysRows {
+            refreshTableView()
+        }
+
+        return displaysRows
     }
 }
 
@@ -103,19 +119,40 @@ private extension InterlinkViewController {
     }
 
     func setupResultsController() {
-        resultsController.limit = Settings.maximumNumberOfResults
-        resultsController.onDidChangeContent = { [weak self] _, _ in
-            self?.tableView.reloadAndPreserveSelection()
+        resultsController.predicate = NSPredicate.predicateForNotes(deleted: false)
+        try? resultsController.performFetch()
+    }
+}
+
+
+// MARK: - Filtering
+//
+private extension InterlinkViewController {
+
+    func filterNotes(_ notes: [Note], byTitleKeyword keyword: String, excluding excludedID: NSManagedObjectID?, limit: Int = Settings.maximumNumberOfResults) -> [Note] {
+        var output = [Note]()
+        let normalizedKeyword = keyword.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
+
+        for note in notes where note.objectID != excludedID {
+            note.ensurePreviewStringsAreAvailable()
+            guard let normalizedTitle = note.titlePreview?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil),
+                  normalizedTitle.contains(normalizedKeyword)
+            else {
+                continue
+            }
+
+            output.append(note)
+
+            if output.count >= limit {
+                break
+            }
         }
+
+        return output
     }
 
-    func refreshResultsPredicate(for keyword: String) {
-        resultsController.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate.predicateForNotes(searchText: keyword),
-            NSPredicate.predicateForNotes(deleted: false)
-        ])
-
-        try? resultsController.performFetch()
+    func refreshTableView() {
+        tableView.reloadDataAndResetSelection()
     }
 }
 
@@ -163,14 +200,19 @@ private extension InterlinkViewController {
         tableView.backgroundColor = .clear
         tableView.reloadAndPreserveSelection()
     }
+}
+
+
+// MARK: - Wrappers
+//
+private extension InterlinkViewController {
 
     func noteAtRow(_ row: Int) -> Note? {
-        let objects = resultsController.fetchedObjects
-        guard row < objects.count else {
+        guard row < filteredNotes.count else {
             return nil
         }
 
-        return objects[row]
+        return filteredNotes[row]
     }
 }
 
@@ -180,7 +222,7 @@ private extension InterlinkViewController {
 extension InterlinkViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        resultsController.numberOfObjects
+        filteredNotes.count
     }
 }
 
