@@ -7,6 +7,11 @@ import SimplenoteFoundation
 //
 class MetricsViewController: NSViewController {
 
+    /// Section Headers
+    ///
+    @IBOutlet private(set) var informationTextLabel: NSTextField!
+    @IBOutlet private(set) var referencesTextLabel: NSTextField!
+
     /// Modified: Left Text / Right Details
     ///
     @IBOutlet private(set) var modifiedTextLabel: NSTextField!
