@@ -31,9 +31,23 @@ class MetricsViewController: NSViewController {
     ///
     private let notes: [Note]
 
+    /// Main Context
+    ///
+    private var mainContext: NSManagedObjectContext {
+        SimplenoteAppDelegate.shared().managedObjectContext
+    }
+
     /// Entity Observer
     ///
     private let observer: EntityObserver
+
+    /// ResultsController: In charge of CoreData Queries!
+    ///
+    private lazy var resultsController: ResultsController<Note> = {
+        return ResultsController<Note>(viewContext: mainContext, sortedBy: [
+            NSSortDescriptor(keyPath: \Note.content, ascending: true)
+        ])
+    }()
 
     /// NSPopover instance that's presenting the current instance.
     ///
@@ -67,6 +81,7 @@ class MetricsViewController: NSViewController {
         super.viewDidLoad()
         setupTextLabels()
         setupEntityObserver()
+        setupResultsControllerIfNeeded()
         startListeningToNotifications()
         refreshMetrics()
     }
@@ -83,6 +98,8 @@ class MetricsViewController: NSViewController {
 private extension MetricsViewController {
 
     func setupTextLabels() {
+        informationTextLabel.stringValue = NSLocalizedString("Information", comment: "Note Metrics Title")
+        referencesTextLabel.stringValue = NSLocalizedString("References", comment: "Note References Title")
         modifiedTextLabel.stringValue = NSLocalizedString("Modified", comment: "Note Modification Date")
         createdTextLabel.stringValue = NSLocalizedString("Created", comment: "Note Creation Date")
         wordsTextLabel.stringValue = NSLocalizedString("Words", comment: "Number of words in the note")
@@ -91,6 +108,19 @@ private extension MetricsViewController {
 
     func setupEntityObserver() {
         observer.delegate = self
+    }
+
+    func setupResultsControllerIfNeeded() {
+        guard mustSetupResultsController, let plainInterlink = notes.first?.plainInterlink else {
+            return
+        }
+
+        resultsController.predicate = NSPredicate.predicateForNotes(exactMatch: plainInterlink)
+        try? resultsController.performFetch()
+    }
+
+    var mustSetupResultsController: Bool {
+        notes.count == 1
     }
 }
 
@@ -154,5 +184,53 @@ private extension MetricsViewController {
         createdDetailsLabel.stringValue = metrics.creationDate ?? "-"
         wordsDetailsLabel.stringValue = String(metrics.numberOfWords)
         charsDetailsLabel.stringValue = String(metrics.numberOfChars)
+    }
+}
+
+
+// MARK: - Wrappers
+//
+private extension MetricsViewController {
+
+    func noteAtRow(_ row: Int) -> Note? {
+        guard row < resultsController.numberOfObjects else {
+            return nil
+        }
+
+        return resultsController.fetchedObjects[row]
+    }
+}
+
+
+// MARK: - NSTableViewDataSource
+//
+extension MetricsViewController: NSTableViewDataSource {
+
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return resultsController.numberOfObjects
+    }
+}
+
+
+// MARK: - NSTableViewDelegate
+//
+extension MetricsViewController: NSTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let rowView = TableRowView()
+        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        return rowView
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let note = noteAtRow(row) else {
+            return nil
+        }
+
+        note.ensurePreviewStringsAreAvailable()
+
+        let tableViewCell = tableView.makeTableViewCell(ofType: ReferenceTableViewCell.self)
+        tableViewCell.title = note.titlePreview
+        return tableViewCell
     }
 }
