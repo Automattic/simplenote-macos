@@ -111,7 +111,8 @@ extension TagListViewController {
     ///
     func tagHeaderTableViewCell() -> HeaderTableCellView {
         let headerView = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
-        headerView.textField?.stringValue = NSLocalizedString("Tags", comment: "Tags Section Name").uppercased()
+        headerView.title = NSLocalizedString("Tags", comment: "Tags Section Name").uppercased()
+        headerView.titleColor = .simplenoteSecondaryTextColor
         return headerView
     }
 
