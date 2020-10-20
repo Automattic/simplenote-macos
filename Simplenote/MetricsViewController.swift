@@ -7,30 +7,21 @@ import SimplenoteFoundation
 //
 class MetricsViewController: NSViewController {
 
-    /// Section Headers
+    /// Enclosing ClipView
     ///
-    @IBOutlet private(set) var informationTextLabel: NSTextField!
-    @IBOutlet private(set) var referencesTextLabel: NSTextField!
+    @IBOutlet private weak var clipView: NSClipView!
 
-    /// Modified: Left Text / Right Details
+    /// Our main TableView
     ///
-    @IBOutlet private(set) var modifiedTextLabel: NSTextField!
-    @IBOutlet private(set) var modifiedDetailsLabel: NSTextField!
+    @IBOutlet private weak var tableView: NSTableView!
 
-    /// Created: Left Text / Right Details
+    /// NSPopover instance that's presenting the current instance.
     ///
-    @IBOutlet private(set) var createdTextLabel: NSTextField!
-    @IBOutlet private(set) var createdDetailsLabel: NSTextField!
-
-    /// Words: Left Text / Right Details
-    ///
-    @IBOutlet private(set) var wordsTextLabel: NSTextField!
-    @IBOutlet private(set) var wordsDetailsLabel: NSTextField!
-
-    /// Characters: Left Text / Right Details
-    ///
-    @IBOutlet private(set) var charsTextLabel: NSTextField!
-    @IBOutlet private(set) var charsDetailsLabel: NSTextField!
+    private var presentingPopover: NSPopover? {
+        didSet {
+            refreshStyle()
+        }
+    }
 
     /// Notes whose metrics should be rendered
     ///
@@ -44,23 +35,17 @@ class MetricsViewController: NSViewController {
 
     /// Entity Observer
     ///
-    private let observer: EntityObserver
+    private lazy var observer = EntityObserver(context: mainContext, objects: notes)
 
     /// ResultsController: In charge of CoreData Queries!
     ///
-    private lazy var resultsController: ResultsController<Note> = {
-        return ResultsController<Note>(viewContext: mainContext, sortedBy: [
-            NSSortDescriptor(keyPath: \Note.content, ascending: true)
-        ])
-    }()
+    private lazy var resultsController = ResultsController<Note>(viewContext: mainContext, sortedBy: [
+        NSSortDescriptor(keyPath: \Note.content, ascending: true)
+    ])
 
-    /// NSPopover instance that's presenting the current instance.
+    /// Rows to be rendered
     ///
-    private var presentingPopover: NSPopover? {
-        didSet {
-            refreshStyle()
-        }
-    }
+    private var rows = [Row]()
 
 
     // MARK: - Lifecycle
@@ -70,11 +55,7 @@ class MetricsViewController: NSViewController {
     }
 
     init(notes: [Note]) {
-        let mainContext = SimplenoteAppDelegate.shared().managedObjectContext
-
-        self.observer = EntityObserver(context: mainContext, objects: notes)
         self.notes = notes
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -84,11 +65,10 @@ class MetricsViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTextLabels()
         setupEntityObserver()
         setupResultsControllerIfNeeded()
         startListeningToNotifications()
-        refreshMetrics()
+        refreshInterface()
     }
 
     override func viewWillAppear() {
@@ -101,15 +81,6 @@ class MetricsViewController: NSViewController {
 // MARK: - Private
 //
 private extension MetricsViewController {
-
-    func setupTextLabels() {
-        informationTextLabel.stringValue = NSLocalizedString("Information", comment: "Note Metrics Title")
-        referencesTextLabel.stringValue = NSLocalizedString("References", comment: "Note References Title")
-        modifiedTextLabel.stringValue = NSLocalizedString("Modified", comment: "Note Modification Date")
-        createdTextLabel.stringValue = NSLocalizedString("Created", comment: "Note Creation Date")
-        wordsTextLabel.stringValue = NSLocalizedString("Words", comment: "Number of words in the note")
-        charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "Number of characters in the note")
-    }
 
     func setupEntityObserver() {
         observer.delegate = self
@@ -156,14 +127,6 @@ private extension MetricsViewController {
     func refreshStyle() {
         // Note: Backwards compatibility *requires* this line (10.13 / 10.14)
         presentingPopover?.appearance = .simplenoteAppearance
-
-        for label in [ modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel ] {
-            label?.textColor = .simplenoteTextColor
-        }
-
-        for label in [ modifiedDetailsLabel, createdDetailsLabel, wordsDetailsLabel, charsDetailsLabel ] {
-            label?.textColor = .simplenoteSecondaryTextColor
-        }
     }
 }
 
@@ -173,36 +136,50 @@ private extension MetricsViewController {
 extension MetricsViewController: EntityObserverDelegate {
 
     func entityObserver(_ observer: EntityObserver, didObserveChanges for: Set<NSManagedObjectID>) {
-        refreshMetrics()
+        refreshInterface()
     }
 }
 
 
-// MARK: - Rendering Metrics!
+// MARK: - Refreshing!
 //
 private extension MetricsViewController {
 
-    func refreshMetrics() {
+    func refreshInterface() {
+        rows = metricRows(for: notes) + referenceRows(from: resultsController.fetchedObjects)
+        tableView.reloadData()
+
+    }
+
+    func metricRows(for notes: [Note]) -> [Row] {
         let metrics = NoteMetrics(notes: notes)
+        return [
+            .header(text: NSLocalizedString("Information", comment: "Note Metrics Title")),
+            .metric(title: NSLocalizedString("Modified", comment: "Note Modification Date"),
+                    value: metrics.modifiedDate),
 
-        modifiedDetailsLabel.stringValue = metrics.modifiedDate ?? "-"
-        createdDetailsLabel.stringValue = metrics.creationDate ?? "-"
-        wordsDetailsLabel.stringValue = String(metrics.numberOfWords)
-        charsDetailsLabel.stringValue = String(metrics.numberOfChars)
+            .metric(title: NSLocalizedString("Created", comment: "Note Creation Date"),
+                    value: metrics.creationDate),
+
+            .metric(title: NSLocalizedString("Words", comment: "Number of words in the note"),
+                    value: String(metrics.numberOfWords)),
+
+            .metric(title: NSLocalizedString("Characters", comment: "Number of characters in the note"),
+                    value: String(metrics.numberOfChars))
+        ]
     }
-}
 
-
-// MARK: - Wrappers
-//
-private extension MetricsViewController {
-
-    func noteAtRow(_ row: Int) -> Note? {
-        guard row < resultsController.numberOfObjects else {
-            return nil
+    func referenceRows(from notes: [Note]) -> [Row] {
+        if notes.isEmpty {
+            return []
         }
 
-        return resultsController.fetchedObjects[row]
+        var rows: [Row] = [ .header(text: NSLocalizedString("References", comment: "References Title")) ]
+        for note in notes {
+            rows += .reference(note: note)
+        }
+
+        return rows
     }
 }
 
@@ -212,7 +189,7 @@ private extension MetricsViewController {
 extension MetricsViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return resultsController.numberOfObjects
+        rows.count
     }
 }
 
@@ -222,20 +199,65 @@ extension MetricsViewController: NSTableViewDataSource {
 extension MetricsViewController: NSTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        let rowView = TableRowView()
-        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
-        return rowView
+        return TableRowView()
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let note = noteAtRow(row) else {
-            return nil
-        }
+        return dequeueAndConfigureCell(at: row, in: tableView)
+    }
+}
 
+
+// MARK: - Cell Initialization
+//
+private extension MetricsViewController {
+
+    func dequeueAndConfigureCell(at index: Int, in tableView: NSTableView) -> NSView {
+NSLog("# SETUP \(index)")
+        switch rows[index] {
+        case .header(let text):
+            return dequeueHeaderCell(from: tableView, text: text)
+
+        case .metric(let title, let value):
+            return dequeueMetricCell(from: tableView, title: title, value: value)
+
+        case .reference(let note):
+            return dequeueReferenceCell(from: tableView, note: note)
+        }
+    }
+
+    func dequeueHeaderCell(from tableView: NSTableView, text: String) -> NSView {
+        let headerCell = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
+        headerCell.title = text
+        return headerCell
+    }
+
+    func dequeueMetricCell(from tableView: NSTableView, title: String, value: String?) -> NSView {
+        let metricCell = tableView.makeTableViewCell(ofType: MetricTableViewCell.self)
+        metricCell.title = title
+        metricCell.value = value ?? "-"
+        return metricCell
+    }
+
+    func dequeueReferenceCell(from tableView: NSTableView, note: Note) -> NSView {
         note.ensurePreviewStringsAreAvailable()
 
-        let tableViewCell = tableView.makeTableViewCell(ofType: ReferenceTableViewCell.self)
-        tableViewCell.title = note.titlePreview
-        return tableViewCell
+        let referenceCell = tableView.makeTableViewCell(ofType: ReferenceTableViewCell.self)
+        referenceCell.title = note.titlePreview
+        referenceCell.details = "Hello"
+        return referenceCell
     }
+}
+
+
+// MARK: - Private Types
+//
+private enum Row {
+    case header(text: String)
+    case metric(title: String, value: String?)
+    case reference(note: Note)
+}
+
+private func +=(lhs: inout [Row], rhs: Row) {
+    lhs.append(rhs)
 }
