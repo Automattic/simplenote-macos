@@ -47,5 +47,6 @@ private extension ReferenceTableViewCell {
 
     func refreshStyle() {
         textField?.textColor = .simplenoteTextColor
+        detailsTextField?.textColor = .simplenoteSecondaryTextColor
     }
 }

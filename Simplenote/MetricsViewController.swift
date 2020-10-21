@@ -213,7 +213,6 @@ extension MetricsViewController: NSTableViewDelegate {
 private extension MetricsViewController {
 
     func dequeueAndConfigureCell(at index: Int, in tableView: NSTableView) -> NSView {
-NSLog("# SETUP \(index)")
         switch rows[index] {
         case .header(let text):
             return dequeueHeaderCell(from: tableView, text: text)
@@ -244,7 +243,10 @@ NSLog("# SETUP \(index)")
 
         let referenceCell = tableView.makeTableViewCell(ofType: ReferenceTableViewCell.self)
         referenceCell.title = note.titlePreview
-        referenceCell.details = "Hello"
+        referenceCell.details = NSLocalizedString("Last modified", comment: "Reference Last Modification Date")
+                                    + .space
+                                    + DateFormatter.referenceFormatter.string(from: note.modificationDate)
+
         return referenceCell
     }
 }
