@@ -279,6 +279,7 @@ private extension MetricsViewController {
     func dequeueHeaderCell(from tableView: NSTableView, text: String) -> NSView {
         let headerCell = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
         headerCell.title = text
+        headerCell.titleColor = .simplenoteTextColor
         return headerCell
     }
 
