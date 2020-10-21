@@ -23,6 +23,13 @@ class MetricsViewController: NSViewController {
         }
     }
 
+    /// Sizing Cells: Allows us to perform container height calculations
+    ///
+    private lazy var sizingHeaderCell = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
+    private lazy var sizingMetricCell = tableView.makeTableViewCell(ofType: MetricTableViewCell.self)
+    private lazy var sizingSeparatorCell = tableView.makeTableViewCell(ofType: SeparatorTableViewCell.self)
+    private lazy var sizingReferenceCell = tableView.makeTableViewCell(ofType: ReferenceTableViewCell.self)
+
     /// Notes whose metrics should be rendered
     ///
     private let notes: [Note]
@@ -147,10 +154,16 @@ private extension MetricsViewController {
 
     func refreshInterface() {
         rows = metricRows(for: notes) + referenceRows(from: resultsController.fetchedObjects)
+        adjustRootViewSize()
         tableView.reloadData()
-
     }
 
+    func adjustRootViewSize() {
+        view.frame.size = calculatePreferredSize(for: rows)
+    }
+
+    /// Returns Metric Rows for a collection of notes
+    ///
     func metricRows(for notes: [Note]) -> [Row] {
         let metrics = NoteMetrics(notes: notes)
         return [
@@ -169,17 +182,52 @@ private extension MetricsViewController {
         ]
     }
 
+    /// Returns Reference Rows **from** a collection of notes.
+    /// - Note: Expects a collection of entities referencing to `self.note`!
+    ///
     func referenceRows(from notes: [Note]) -> [Row] {
         if notes.isEmpty {
             return []
         }
 
-        var rows: [Row] = [ .header(text: NSLocalizedString("References", comment: "References Title")) ]
+        var rows: [Row] = [
+            .separator,
+            .header(text: NSLocalizedString("References", comment: "References Title"))
+        ]
+
         for note in notes {
             rows += .reference(note: note)
         }
 
         return rows
+    }
+
+    /// Returns the preferred size:
+    /// - Note: We rely on Sizing Cells because `tableView.fittingSize` isn't properly calculating the height of rows that haven't been rendered yet
+    /// - Important: We're also capping the number of Visible References to 2.5 (bottom one expected to get clipped!)
+    ///
+    func calculatePreferredSize(for rows: [Row]) -> CGSize {
+        let insets = clipView.contentInsets
+        var height = insets.top + insets.bottom + CGFloat(rows.count) * tableView.intercellSpacing.height
+        var numberOfReferences = CGFloat.zero
+
+        for row in rows {
+            switch row {
+            case .header:
+                height += sizingHeaderCell.fittingSize.height
+            case .metric:
+                height += sizingMetricCell.fittingSize.height
+            case .separator:
+                height += sizingSeparatorCell.fittingSize.height
+            case .reference:
+                numberOfReferences += 1
+            }
+        }
+
+        height += sizingReferenceCell.fittingSize.height * min(Metrics.maximumVisibleReferences, numberOfReferences)
+
+        let width = numberOfReferences > .zero ? Metrics.widthForNonEmptyReferences : Metrics.widthForZeroReferences
+        return CGSize(width: width, height: height)
     }
 }
 
@@ -220,6 +268,9 @@ private extension MetricsViewController {
         case .metric(let title, let value):
             return dequeueMetricCell(from: tableView, title: title, value: value)
 
+        case .separator:
+            return dequeueSeparatorCell(from: tableView)
+
         case .reference(let note):
             return dequeueReferenceCell(from: tableView, note: note)
         }
@@ -238,6 +289,10 @@ private extension MetricsViewController {
         return metricCell
     }
 
+    func dequeueSeparatorCell(from tableView: NSTableView) -> NSView {
+        return tableView.makeTableViewCell(ofType: SeparatorTableViewCell.self)
+    }
+
     func dequeueReferenceCell(from tableView: NSTableView, note: Note) -> NSView {
         note.ensurePreviewStringsAreAvailable()
 
@@ -254,10 +309,17 @@ private extension MetricsViewController {
 
 // MARK: - Private Types
 //
+private enum Metrics {
+    static let widthForZeroReferences = CGFloat(260)
+    static let widthForNonEmptyReferences = CGFloat(360)
+    static let maximumVisibleReferences = CGFloat(2.5)
+}
+
 private enum Row {
     case header(text: String)
     case metric(title: String, value: String?)
     case reference(note: Note)
+    case separator
 }
 
 private func +=(lhs: inout [Row], rhs: Row) {
