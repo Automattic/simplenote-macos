@@ -3,6 +3,13 @@ import AppKit
 import SimplenoteFoundation
 
 
+// MARK: - MetricsControllerDelegate
+//
+protocol MetricsControllerDelegate: class {
+    func metricsController(_ controller: MetricsViewController, selected note: Note)
+}
+
+
 // MARK: - MetricsViewController
 //
 class MetricsViewController: NSViewController {
@@ -53,6 +60,10 @@ class MetricsViewController: NSViewController {
     /// Rows to be rendered
     ///
     private var rows = [Row]()
+
+    /// Old school delegate!
+    ///
+    weak var delegate: MetricsControllerDelegate?
 
 
     // MARK: - Lifecycle
@@ -259,10 +270,11 @@ extension MetricsViewController: NSTableViewDelegate {
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
-        guard case .reference(let note) = rows[tableView.selectedRow], let simperiumKey = note.simperiumKey else {
+        guard case .reference(let note) = rows[tableView.selectedRow] else {
             return
         }
 
+        delegate?.metricsController(self, selected: note)
     }
 }
 
