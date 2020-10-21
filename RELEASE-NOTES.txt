@@ -1,3 +1,6 @@
+2.4
+-----
+
 2.3
 -----
 - Fixed a bug that randomly caused the login screen to cut off #664
