@@ -253,6 +253,17 @@ extension MetricsViewController: NSTableViewDelegate {
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         return dequeueAndConfigureCell(at: row, in: tableView)
     }
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        rows[row].isSelectable
+    }
+
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        guard case .reference(let note) = rows[tableView.selectedRow], let simperiumKey = note.simperiumKey else {
+            return
+        }
+
+    }
 }
 
 
@@ -322,6 +333,20 @@ private enum Row {
     case reference(note: Note)
     case separator
 }
+
+extension Row {
+
+    /// Indicates if the receiver should allow selection
+    ///
+    var isSelectable: Bool {
+        guard case .reference = self else {
+            return false
+        }
+
+        return true
+    }
+}
+
 
 private func +=(lhs: inout [Row], rhs: Row) {
     lhs.append(rhs)
