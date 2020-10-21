@@ -38,6 +38,10 @@ class ReferenceTableViewCell: NSTableCellView {
         super.viewWillDraw()
         refreshStyle()
     }
+
+    override func resetCursorRects() {
+        addCursorRect(bounds, cursor: .pointingHand)
+    }
 }
 
 
