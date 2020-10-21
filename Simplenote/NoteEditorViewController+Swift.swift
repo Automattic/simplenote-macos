@@ -560,6 +560,7 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
 extension NoteEditorViewController: MetricsControllerDelegate {
 
     func metricsController(_ controller: MetricsViewController, selected note: Note) {
+        SimplenoteAppDelegate.shared().displayNote(simperiumKey: note.simperiumKey)
         dismiss(controller)
     }
 }
