@@ -99,6 +99,10 @@ private extension MetricsViewController {
         }
 
         resultsController.predicate = NSPredicate.predicateForNotes(exactMatch: plainInterlink)
+        resultsController.onDidChangeContent = { [weak self] _, _ in
+            self?.refreshInterface()
+        }
+
         try? resultsController.performFetch()
     }
 
@@ -159,7 +163,9 @@ private extension MetricsViewController {
     }
 
     func adjustRootViewSize() {
-        view.frame.size = calculatePreferredSize(for: rows)
+        let preferredSize = calculatePreferredSize(for: rows)
+        view.frame.size = preferredSize
+        presentingPopover?.contentSize = preferredSize
     }
 
     /// Returns Metric Rows for a collection of notes
