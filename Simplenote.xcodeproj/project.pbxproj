@@ -160,6 +160,8 @@
 		B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
 		B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */; };
 		B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */; };
+		B52197862541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */; };
+		B52197872541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */; };
 		B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
 		B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
 		B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529F7B424586D8700B168F1 /* MarkdownViewController.swift */; };
@@ -172,6 +174,8 @@
 		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
+		B5395E1D253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
+		B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF1A024AC1FB800938C34 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* Version.swift */; };
@@ -195,6 +199,8 @@
 		B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */; };
 		B551187224E33BC2007B11E3 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551187124E33BC2007B11E3 /* ClipView.swift */; };
 		B551187324E33BC2007B11E3 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551187124E33BC2007B11E3 /* ClipView.swift */; };
+		B5562435253E328400836E20 /* ReferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5562434253E328400836E20 /* ReferenceTableViewCell.swift */; };
+		B5562436253E328400836E20 /* ReferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5562434253E328400836E20 /* ReferenceTableViewCell.swift */; };
 		B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
@@ -299,6 +305,8 @@
 		B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD45243E51E200BEE354 /* PublishViewController.swift */; };
 		B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD48243E524000BEE354 /* PublishViewController.xib */; };
 		B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C7DD48243E524000BEE354 /* PublishViewController.xib */; };
+		B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9776B25408BD200702C10 /* SeparatorTableViewCell.swift */; };
+		B5C9776D25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9776B25408BD200702C10 /* SeparatorTableViewCell.swift */; };
 		B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
 		B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */; };
 		B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */; };
@@ -523,6 +531,7 @@
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B51E9FE022E615FA004F16B4 /* SPExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPExporter.swift; sourceTree = "<group>"; };
 		B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helpers.swift"; sourceTree = "<group>"; };
+		B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B5242DEB24C9238700437E40 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5242DED24C9238C00437E40 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		B5242DEF24C9238E00437E40 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -547,6 +556,7 @@
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
 		B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWindow+Simplenote.swift"; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
+		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B53BF19F24AC1FB800938C34 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
@@ -560,6 +570,7 @@
 		B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Simplenote.swift"; sourceTree = "<group>"; };
 		B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTextFormatter.swift; sourceTree = "<group>"; };
 		B551187124E33BC2007B11E3 /* ClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipView.swift; sourceTree = "<group>"; };
+		B5562434253E328400836E20 /* ReferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceTableViewCell.swift; sourceTree = "<group>"; };
 		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
 		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
 		B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSVisualEffectView+Simplenote.swift"; sourceTree = "<group>"; };
@@ -641,6 +652,7 @@
 		B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaborateViewController.xib; sourceTree = "<group>"; };
 		B5C7DD45243E51E200BEE354 /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
 		B5C7DD48243E524000BEE354 /* PublishViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublishViewController.xib; sourceTree = "<group>"; };
+		B5C9776B25408BD200702C10 /* SeparatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorTableViewCell.swift; sourceTree = "<group>"; };
 		B5CBB05B2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverter.swift; sourceTree = "<group>"; };
 		B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringToMarkdownConverterTests.swift; sourceTree = "<group>"; };
 		B5CBB069241976230003C271 /* SimplenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1051,6 +1063,7 @@
 				B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */,
 				B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */,
 				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
+				B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */,
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
 				B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
@@ -1337,6 +1350,9 @@
 				B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */,
 				B5DD0F902476309000C8DD41 /* NoteTableCellView.swift */,
 				B5E086342448EA3C00DEF476 /* TagTableCellView.swift */,
+				B5562434253E328400836E20 /* ReferenceTableViewCell.swift */,
+				B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */,
+				B5C9776B25408BD200702C10 /* SeparatorTableViewCell.swift */,
 				B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */,
 			);
 			name = TableViewCells;
@@ -1787,11 +1803,13 @@
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
+				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
 				B58BBD2A2523D4CA0025135F /* Window.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
 				B551187224E33BC2007B11E3 /* ClipView.swift in Sources */,
+				B5395E1D253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */,
 				B5E061772450AEDA0076111A /* ToolbarView.swift in Sources */,
 				F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
@@ -1870,6 +1888,7 @@
 				B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
+				B52197862541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */,
 				B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */,
 				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
@@ -1881,6 +1900,7 @@
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
+				B5562435253E328400836E20 /* ReferenceTableViewCell.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
 				46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */,
@@ -1931,11 +1951,13 @@
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
+				B5C9776D25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
 				B58BBD2B2523D4CA0025135F /* Window.swift in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993D24213B370037A431 /* String+Simplenote.swift in Sources */,
 				B551187324E33BC2007B11E3 /* ClipView.swift in Sources */,
+				B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */,
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
@@ -2014,6 +2036,7 @@
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */,
+				B52197872541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */,
 				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
@@ -2025,6 +2048,7 @@
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
 				B58BBD47252411530025135F /* NSEvent+Simplenote.swift in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,
+				B5562436253E328400836E20 /* ReferenceTableViewCell.swift in Sources */,
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
@@ -2662,7 +2686,7 @@
 			repositoryURL = "git@github.com:Automattic/SimplenoteSearch-Swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.1.0;
 			};
 		};
 		B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */ = {

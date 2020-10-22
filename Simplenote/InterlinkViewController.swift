@@ -163,11 +163,11 @@ extension InterlinkViewController {
 
     @objc
     func performInterlinkInsert() {
-        guard let interlinkText = noteAtRow(tableView.selectedRow)?.markdownInternalLink else {
+        guard let markdownInterlink = noteAtRow(tableView.selectedRow)?.markdownInterlink else {
             return
         }
 
-        onInsertInterlink?(interlinkText)
+        onInsertInterlink?(markdownInterlink)
     }
 }
 

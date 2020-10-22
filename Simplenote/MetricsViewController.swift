@@ -7,33 +7,13 @@ import SimplenoteFoundation
 //
 class MetricsViewController: NSViewController {
 
-    /// Modified: Left Text / Right Details
+    /// Enclosing ClipView
     ///
-    @IBOutlet private(set) var modifiedTextLabel: NSTextField!
-    @IBOutlet private(set) var modifiedDetailsLabel: NSTextField!
+    @IBOutlet private weak var clipView: NSClipView!
 
-    /// Created: Left Text / Right Details
+    /// Our main TableView
     ///
-    @IBOutlet private(set) var createdTextLabel: NSTextField!
-    @IBOutlet private(set) var createdDetailsLabel: NSTextField!
-
-    /// Words: Left Text / Right Details
-    ///
-    @IBOutlet private(set) var wordsTextLabel: NSTextField!
-    @IBOutlet private(set) var wordsDetailsLabel: NSTextField!
-
-    /// Characters: Left Text / Right Details
-    ///
-    @IBOutlet private(set) var charsTextLabel: NSTextField!
-    @IBOutlet private(set) var charsDetailsLabel: NSTextField!
-
-    /// Notes whose metrics should be rendered
-    ///
-    private let notes: [Note]
-
-    /// Entity Observer
-    ///
-    private let observer: EntityObserver
+    @IBOutlet private weak var tableView: NSTableView!
 
     /// NSPopover instance that's presenting the current instance.
     ///
@@ -43,6 +23,37 @@ class MetricsViewController: NSViewController {
         }
     }
 
+    /// Sizing Cells: Allows us to perform container height calculations
+    ///
+    private lazy var sizingHeaderCell = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
+    private lazy var sizingMetricCell = tableView.makeTableViewCell(ofType: MetricTableViewCell.self)
+    private lazy var sizingSeparatorCell = tableView.makeTableViewCell(ofType: SeparatorTableViewCell.self)
+    private lazy var sizingReferenceCell = tableView.makeTableViewCell(ofType: ReferenceTableViewCell.self)
+
+    /// Notes whose metrics should be rendered
+    ///
+    private let notes: [Note]
+
+    /// Main Context
+    ///
+    private var mainContext: NSManagedObjectContext {
+        SimplenoteAppDelegate.shared().managedObjectContext
+    }
+
+    /// Entity Observer
+    ///
+    private lazy var observer = EntityObserver(context: mainContext, objects: notes)
+
+    /// ResultsController: In charge of CoreData Queries!
+    ///
+    private lazy var resultsController = ResultsController<Note>(viewContext: mainContext, sortedBy: [
+        NSSortDescriptor(keyPath: \Note.content, ascending: true)
+    ])
+
+    /// Rows to be rendered
+    ///
+    private var rows = [Row]()
+
 
     // MARK: - Lifecycle
 
@@ -51,11 +62,7 @@ class MetricsViewController: NSViewController {
     }
 
     init(notes: [Note]) {
-        let mainContext = SimplenoteAppDelegate.shared().managedObjectContext
-
-        self.observer = EntityObserver(context: mainContext, objects: notes)
         self.notes = notes
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -65,10 +72,10 @@ class MetricsViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTextLabels()
         setupEntityObserver()
+        setupResultsControllerIfNeeded()
         startListeningToNotifications()
-        refreshMetrics()
+        refreshInterface()
     }
 
     override func viewWillAppear() {
@@ -82,15 +89,25 @@ class MetricsViewController: NSViewController {
 //
 private extension MetricsViewController {
 
-    func setupTextLabels() {
-        modifiedTextLabel.stringValue = NSLocalizedString("Modified", comment: "Note Modification Date")
-        createdTextLabel.stringValue = NSLocalizedString("Created", comment: "Note Creation Date")
-        wordsTextLabel.stringValue = NSLocalizedString("Words", comment: "Number of words in the note")
-        charsTextLabel.stringValue = NSLocalizedString("Characters", comment: "Number of characters in the note")
-    }
-
     func setupEntityObserver() {
         observer.delegate = self
+    }
+
+    func setupResultsControllerIfNeeded() {
+        guard mustSetupResultsController, let plainInterlink = notes.first?.plainInterlink else {
+            return
+        }
+
+        resultsController.predicate = NSPredicate.predicateForNotes(exactMatch: plainInterlink)
+        resultsController.onDidChangeContent = { [weak self] _, _ in
+            self?.refreshInterface()
+        }
+
+        try? resultsController.performFetch()
+    }
+
+    var mustSetupResultsController: Bool {
+        notes.count == 1
     }
 }
 
@@ -121,14 +138,6 @@ private extension MetricsViewController {
     func refreshStyle() {
         // Note: Backwards compatibility *requires* this line (10.13 / 10.14)
         presentingPopover?.appearance = .simplenoteAppearance
-
-        for label in [ modifiedTextLabel, createdTextLabel, wordsTextLabel, charsTextLabel ] {
-            label?.textColor = .simplenoteTextColor
-        }
-
-        for label in [ modifiedDetailsLabel, createdDetailsLabel, wordsDetailsLabel, charsDetailsLabel ] {
-            label?.textColor = .simplenoteSecondaryTextColor
-        }
     }
 }
 
@@ -138,21 +147,188 @@ private extension MetricsViewController {
 extension MetricsViewController: EntityObserverDelegate {
 
     func entityObserver(_ observer: EntityObserver, didObserveChanges for: Set<NSManagedObjectID>) {
-        refreshMetrics()
+        refreshInterface()
     }
 }
 
 
-// MARK: - Rendering Metrics!
+// MARK: - Refreshing!
 //
 private extension MetricsViewController {
 
-    func refreshMetrics() {
-        let metrics = NoteMetrics(notes: notes)
-
-        modifiedDetailsLabel.stringValue = metrics.modifiedDate ?? "-"
-        createdDetailsLabel.stringValue = metrics.creationDate ?? "-"
-        wordsDetailsLabel.stringValue = String(metrics.numberOfWords)
-        charsDetailsLabel.stringValue = String(metrics.numberOfChars)
+    func refreshInterface() {
+        rows = metricRows(for: notes) + referenceRows(from: resultsController.fetchedObjects)
+        adjustRootViewSize()
+        tableView.reloadData()
     }
+
+    func adjustRootViewSize() {
+        let preferredSize = calculatePreferredSize(for: rows)
+        view.frame.size = preferredSize
+        presentingPopover?.contentSize = preferredSize
+    }
+
+    /// Returns Metric Rows for a collection of notes
+    ///
+    func metricRows(for notes: [Note]) -> [Row] {
+        let metrics = NoteMetrics(notes: notes)
+        return [
+            .header(text: NSLocalizedString("Information", comment: "Note Metrics Title")),
+            .metric(title: NSLocalizedString("Modified", comment: "Note Modification Date"),
+                    value: metrics.modifiedDate),
+
+            .metric(title: NSLocalizedString("Created", comment: "Note Creation Date"),
+                    value: metrics.creationDate),
+
+            .metric(title: NSLocalizedString("Words", comment: "Number of words in the note"),
+                    value: metrics.numberOfWords),
+
+            .metric(title: NSLocalizedString("Characters", comment: "Number of characters in the note"),
+                    value: metrics.numberOfChars)
+        ]
+    }
+
+    /// Returns Reference Rows **from** a collection of notes.
+    /// - Note: Expects a collection of entities referencing to `self.note`!
+    ///
+    func referenceRows(from notes: [Note]) -> [Row] {
+        if notes.isEmpty {
+            return []
+        }
+
+        var rows: [Row] = [
+            .separator,
+            .header(text: NSLocalizedString("References", comment: "References Title"))
+        ]
+
+        for note in notes {
+            rows += .reference(note: note)
+        }
+
+        return rows
+    }
+
+    /// Returns the preferred size:
+    /// - Note: We rely on Sizing Cells because `tableView.fittingSize` isn't properly calculating the height of rows that haven't been rendered yet
+    /// - Important: We're also capping the number of Visible References to 2.5 (bottom one expected to get clipped!)
+    ///
+    func calculatePreferredSize(for rows: [Row]) -> CGSize {
+        let insets = clipView.contentInsets
+        var height = insets.top + insets.bottom + CGFloat(rows.count) * tableView.intercellSpacing.height
+        var numberOfReferences = CGFloat.zero
+
+        for row in rows {
+            switch row {
+            case .header:
+                height += sizingHeaderCell.fittingSize.height
+            case .metric:
+                height += sizingMetricCell.fittingSize.height
+            case .separator:
+                height += sizingSeparatorCell.fittingSize.height
+            case .reference:
+                numberOfReferences += 1
+            }
+        }
+
+        height += sizingReferenceCell.fittingSize.height * min(Metrics.maximumVisibleReferences, numberOfReferences)
+
+        let width = numberOfReferences > .zero ? Metrics.widthForNonEmptyReferences : Metrics.widthForZeroReferences
+        return CGSize(width: width, height: height)
+    }
+}
+
+
+// MARK: - NSTableViewDataSource
+//
+extension MetricsViewController: NSTableViewDataSource {
+
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        rows.count
+    }
+}
+
+
+// MARK: - NSTableViewDelegate
+//
+extension MetricsViewController: NSTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        return TableRowView()
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        return dequeueAndConfigureCell(at: row, in: tableView)
+    }
+}
+
+
+// MARK: - Cell Initialization
+//
+private extension MetricsViewController {
+
+    func dequeueAndConfigureCell(at index: Int, in tableView: NSTableView) -> NSView {
+        switch rows[index] {
+        case .header(let text):
+            return dequeueHeaderCell(from: tableView, text: text)
+
+        case .metric(let title, let value):
+            return dequeueMetricCell(from: tableView, title: title, value: value)
+
+        case .separator:
+            return dequeueSeparatorCell(from: tableView)
+
+        case .reference(let note):
+            return dequeueReferenceCell(from: tableView, note: note)
+        }
+    }
+
+    func dequeueHeaderCell(from tableView: NSTableView, text: String) -> NSView {
+        let headerCell = tableView.makeTableViewCell(ofType: HeaderTableCellView.self)
+        headerCell.title = text
+        headerCell.titleColor = .simplenoteTextColor
+        return headerCell
+    }
+
+    func dequeueMetricCell(from tableView: NSTableView, title: String, value: String?) -> NSView {
+        let metricCell = tableView.makeTableViewCell(ofType: MetricTableViewCell.self)
+        metricCell.title = title
+        metricCell.value = value ?? "-"
+        return metricCell
+    }
+
+    func dequeueSeparatorCell(from tableView: NSTableView) -> NSView {
+        return tableView.makeTableViewCell(ofType: SeparatorTableViewCell.self)
+    }
+
+    func dequeueReferenceCell(from tableView: NSTableView, note: Note) -> NSView {
+        note.ensurePreviewStringsAreAvailable()
+
+        let referenceCell = tableView.makeTableViewCell(ofType: ReferenceTableViewCell.self)
+        referenceCell.title = note.titlePreview
+        referenceCell.details = NSLocalizedString("Last modified", comment: "Reference Last Modification Date")
+                                    + .space
+                                    + DateFormatter.metricsFormatter.string(from: note.modificationDate)
+
+        return referenceCell
+    }
+}
+
+
+// MARK: - Private Types
+//
+private enum Metrics {
+    static let widthForZeroReferences = CGFloat(260)
+    static let widthForNonEmptyReferences = CGFloat(360)
+    static let maximumVisibleReferences = CGFloat(2.5)
+}
+
+private enum Row {
+    case header(text: String)
+    case metric(title: String, value: String?)
+    case reference(note: Note)
+    case separator
+}
+
+private func +=(lhs: inout [Row], rhs: Row) {
+    lhs.append(rhs)
 }
