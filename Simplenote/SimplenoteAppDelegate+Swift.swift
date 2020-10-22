@@ -58,6 +58,13 @@ extension SimplenoteAppDelegate {
     var selectedTagName: String {
         tagListViewController.selectedTagName()
     }
+
+    /// Displays the Note with the specified SimperiumKey
+    ///
+    func displayNote(simperiumKey: String) {
+        ensureSelectedTagDisplaysNote(key: simperiumKey)
+        selectNote(withKey: simperiumKey)
+    }
 }
 
 
@@ -165,9 +172,7 @@ extension SimplenoteAppDelegate {
             return false
         }
 
-        ensureSelectedTagDisplaysNote(key: simperiumKey)
-        selectNote(withKey: simperiumKey)
-
+        displayNote(simperiumKey: simperiumKey)
         return true
     }
 }

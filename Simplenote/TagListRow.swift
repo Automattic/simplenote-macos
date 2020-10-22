@@ -27,7 +27,7 @@ extension TagListRow {
         return true
     }
 
-    /// Indicates if the receiver should allow selction
+    /// Indicates if the receiver should allow selection
     ///
     var isSelectable: Bool {
         self != .header && self != .spacer

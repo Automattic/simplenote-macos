@@ -3,6 +3,13 @@ import AppKit
 import SimplenoteFoundation
 
 
+// MARK: - MetricsControllerDelegate
+//
+protocol MetricsControllerDelegate: class {
+    func metricsController(_ controller: MetricsViewController, selected note: Note)
+}
+
+
 // MARK: - MetricsViewController
 //
 class MetricsViewController: NSViewController {
@@ -53,6 +60,10 @@ class MetricsViewController: NSViewController {
     /// Rows to be rendered
     ///
     private var rows = [Row]()
+
+    /// Old school delegate!
+    ///
+    weak var delegate: MetricsControllerDelegate?
 
 
     // MARK: - Lifecycle
@@ -259,6 +270,18 @@ extension MetricsViewController: NSTableViewDelegate {
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         return dequeueAndConfigureCell(at: row, in: tableView)
     }
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        rows[row].isSelectable
+    }
+
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        guard case .reference(let note) = rows[tableView.selectedRow] else {
+            return
+        }
+
+        delegate?.metricsController(self, selected: note)
+    }
 }
 
 
@@ -328,6 +351,20 @@ private enum Row {
     case reference(note: Note)
     case separator
 }
+
+extension Row {
+
+    /// Indicates if the receiver should allow selection
+    ///
+    var isSelectable: Bool {
+        guard case .reference = self else {
+            return false
+        }
+
+        return true
+    }
+}
+
 
 private func +=(lhs: inout [Row], rhs: Row) {
     lhs.append(rhs)
