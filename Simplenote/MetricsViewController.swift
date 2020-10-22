@@ -181,10 +181,10 @@ private extension MetricsViewController {
                     value: metrics.creationDate),
 
             .metric(title: NSLocalizedString("Words", comment: "Number of words in the note"),
-                    value: String(metrics.numberOfWords)),
+                    value: metrics.numberOfWords),
 
             .metric(title: NSLocalizedString("Characters", comment: "Number of characters in the note"),
-                    value: String(metrics.numberOfChars))
+                    value: metrics.numberOfChars)
         ]
     }
 

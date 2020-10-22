@@ -160,6 +160,8 @@
 		B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
 		B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */; };
 		B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */; };
+		B52197862541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */; };
+		B52197872541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */; };
 		B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
 		B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
 		B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529F7B424586D8700B168F1 /* MarkdownViewController.swift */; };
@@ -529,6 +531,7 @@
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B51E9FE022E615FA004F16B4 /* SPExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPExporter.swift; sourceTree = "<group>"; };
 		B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helpers.swift"; sourceTree = "<group>"; };
+		B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B5242DEB24C9238700437E40 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5242DED24C9238C00437E40 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		B5242DEF24C9238E00437E40 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -1060,6 +1063,7 @@
 				B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */,
 				B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */,
 				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
+				B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */,
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
 				B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */,
 				B500993B24213B370037A431 /* String+Simplenote.swift */,
@@ -1884,6 +1888,7 @@
 				B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
+				B52197862541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */,
 				B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */,
 				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
@@ -2031,6 +2036,7 @@
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
 				B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */,
+				B52197872541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */,
 				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
