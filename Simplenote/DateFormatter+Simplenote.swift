@@ -14,15 +14,6 @@ extension DateFormatter {
         return formatter
     }()
 
-    /// Date Formatter for Interlinking References
-    ///
-    static let referenceFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        return formatter
-    }()
-
     /// Date Formatter for History
     ///
     static let historyFormatter: DateFormatter = metricsFormatter

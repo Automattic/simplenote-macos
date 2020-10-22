@@ -307,7 +307,7 @@ private extension MetricsViewController {
         referenceCell.title = note.titlePreview
         referenceCell.details = NSLocalizedString("Last modified", comment: "Reference Last Modification Date")
                                     + .space
-                                    + DateFormatter.referenceFormatter.string(from: note.modificationDate)
+                                    + DateFormatter.metricsFormatter.string(from: note.modificationDate)
 
         return referenceCell
     }
