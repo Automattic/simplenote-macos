@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-30 11:54:03+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: es */
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "Exportar Todo";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "Consulta las preguntas frecuentes o contacta con nosotros";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "Olvidó su contraseña?";
+
+/* FAQ or contact us */
+"Get Help" = "Obtener ayuda";
 
 /* History Menu Action */
 "History" = "Historial";
