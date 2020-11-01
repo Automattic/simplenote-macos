@@ -1,4 +1,3 @@
-- Le azioni dell'editor ora ti consentono di copiare il link interno di una nota
-- Aggiunto il supporto all'elenco delle note per bloccare, sbloccare, eliminare e ripristinare con un clic del tasto destro
-- Facendo clic su un link della nota ora l'editor mostra la nota di riferimento
-- Risolto il problema con il colore dell'evidenziazione dell'anteprima di Markdown, con la Dark Mode attiva
+- Risolto un bug che causava l'interruzione casuale della schermata di accesso
+- Digitando "[" ora potrai scegliere Note di interlink direttamente dall'editor
+- Nuova azione per ottenere assistenza nella finestra Informazioni di Simplenote

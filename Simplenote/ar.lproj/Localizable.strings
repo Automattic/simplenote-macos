@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -47,7 +47,7 @@
 "Confirm Password" = "تأكيد كلمة المرور";
 
 /* Copy Link Menu Action */
-"Copy Internal Link" = "Copy Internal Link";
+"Copy Internal Link" = "نسخ الرابط الداخلي";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "تعذر تسجيل الدخول";
@@ -56,7 +56,7 @@
 "Created" = "تاريخ الإنشاء";
 
 /* Delete Forever List Action */
-"Delete Forever" = "Delete Forever";
+"Delete Forever" = "حذف بشكل نهائي";
 
 /* Delete notes and sign out of the app */
 "Delete Notes" = "حذف الملاحظات";
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "تصدير كل شيء";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "الأسئلة المتداولة أو اتصل بنا";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "هل نسيتَ كلمة المرور الخاصة بك؟";
+
+/* FAQ or contact us */
+"Get Help" = "إحصل على المساعدة";
 
 /* History Menu Action */
 "History" = "المحفوظات";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -47,7 +47,7 @@
 "Confirm Password" = "Şifreyi Doğrula";
 
 /* Copy Link Menu Action */
-"Copy Internal Link" = "Copy Internal Link";
+"Copy Internal Link" = "Dahili Bağlantıyı Kopyala";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Oturum Açılamadı";
@@ -56,7 +56,7 @@
 "Created" = "Oluşturuldu";
 
 /* Delete Forever List Action */
-"Delete Forever" = "Delete Forever";
+"Delete Forever" = "Kalıcı Olarak Sil";
 
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Notları Sil";
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "Her Şeyi Dışa Aktar";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "SSS veya bize ulaşın";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "Parolanızı mı unuttunuz?";
+
+/* FAQ or contact us */
+"Get Help" = "Yardım Alın";
 
 /* History Menu Action */
 "History" = "Geçmiş";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ja_JP */
@@ -47,7 +47,7 @@
 "Confirm Password" = "パスワード確認";
 
 /* Copy Link Menu Action */
-"Copy Internal Link" = "Copy Internal Link";
+"Copy Internal Link" = "内部リンクをコピー";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "ログインできません";
@@ -56,7 +56,7 @@
 "Created" = "作成日";
 
 /* Delete Forever List Action */
-"Delete Forever" = "Delete Forever";
+"Delete Forever" = "完全に削除";
 
 /* Delete notes and sign out of the app */
 "Delete Notes" = "メモを削除";
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "すべてをエクスポート";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "FAQ またはお問い合わせ";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "パスワードをお忘れですか ?";
+
+/* FAQ or contact us */
+"Get Help" = "ヘルプ";
 
 /* History Menu Action */
 "History" = "履歴";
