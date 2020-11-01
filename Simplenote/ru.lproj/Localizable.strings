@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-10-01 10:54:48+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "Экспорт всего содержимого";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "«Часто задаваемые вопросы» или «Свяжитесь с нами»";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "Забыли пароль?";
+
+/* FAQ or contact us */
+"Get Help" = "Справка";
 
 /* History Menu Action */
 "History" = "История";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-10-01 08:54:03+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "全部匯出";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "常見問題集或與我們聯絡";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "忘記密碼？";
+
+/* FAQ or contact us */
+"Get Help" = "取得協助";
 
 /* History Menu Action */
 "History" = "記錄";

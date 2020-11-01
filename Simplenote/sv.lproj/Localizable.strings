@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-24 13:00:11+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "Importera allt";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "Vanliga frågor eller kontakta oss";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "Glömt ditt lösenord?";
+
+/* FAQ or contact us */
+"Get Help" = "Skaffa hjälp";
 
 /* History Menu Action */
 "History" = "Historik";

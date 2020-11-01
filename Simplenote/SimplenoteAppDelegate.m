@@ -15,7 +15,6 @@
 #import "LoginWindowController.h"
 #import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
-#import "SPWindow.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
 #import "SPTracker.h"

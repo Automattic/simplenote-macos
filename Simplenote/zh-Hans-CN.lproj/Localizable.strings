@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -47,7 +47,7 @@
 "Confirm Password" = "确认密码";
 
 /* Copy Link Menu Action */
-"Copy Internal Link" = "Copy Internal Link";
+"Copy Internal Link" = "复制内部链接";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "无法登录";
@@ -56,7 +56,7 @@
 "Created" = "已创建";
 
 /* Delete Forever List Action */
-"Delete Forever" = "Delete Forever";
+"Delete Forever" = "永久删除";
 
 /* Delete notes and sign out of the app */
 "Delete Notes" = "删除笔记";
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "导出所有内容";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "常见问题解答或与我们联系";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "忘记了密码？";
+
+/* FAQ or contact us */
+"Get Help" = "获取帮助";
 
 /* History Menu Action */
 "History" = "历史记录";

@@ -344,14 +344,21 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     self.note.content = [self.noteEditor plainTextContent];
     [self.note createPreview];
-    
+
     [self refreshToolbarActions];
+
+    [self processInterlinkLookup];
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
     
     // Update the note list preview
     [self.noteActionsDelegate editorController:self updatedNoteWithSimperiumKey:self.note.simperiumKey];
+}
+
+- (void)textViewDidChangeSelection:(NSNotification *)notification
+{
+    [self dismissInterlinkLookupIfNeeded];
 }
 
 

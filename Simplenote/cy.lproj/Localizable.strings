@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "Export Everything";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "FAQ or contact us";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "Forgot your Password?";
+
+/* FAQ or contact us */
+"Get Help" = "Get Help";
 
 /* History Menu Action */
 "History" = "Hanes";

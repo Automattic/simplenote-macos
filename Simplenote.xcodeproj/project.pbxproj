@@ -84,6 +84,7 @@
 		37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
+		3FAC7B25254BBCA600B47276 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = 3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */; };
 		466FFEA817CC10A800399652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		466FFEAA17CC10A800399652 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
@@ -136,6 +137,11 @@
 		B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B50F999224F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
 		B50F999324F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
+		B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
+		B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
+		B50FB223251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
+		B50FB224251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
+		B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = B50FB24B251C08910028DE25 /* SimplenoteInterlinks */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */; };
@@ -180,8 +186,6 @@
 		B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
-		B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
-		B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B54EB18F1A3F683D00D472B3 /* SPWindow.m */; };
 		B54F4AA224A6588700D8FAB1 /* MetricsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */; };
 		B54F4AA324A6588700D8FAB1 /* MetricsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */; };
 		B54F9A6324D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */; };
@@ -233,6 +237,12 @@
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
 		B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
+		B58BBD2A2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
+		B58BBD2B2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
+		B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */; };
+		B58BBD3E2523FF160025135F /* AutocompleteWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */; };
+		B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD45252411530025135F /* NSEvent+Simplenote.swift */; };
+		B58BBD47252411530025135F /* NSEvent+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD45252411530025135F /* NSEvent+Simplenote.swift */; };
 		B58CE26524F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
 		B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
 		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
@@ -276,6 +286,10 @@
 		B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */; };
+		B5C63337251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
+		B5C63338251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
+		B5C63349251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */; };
+		B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */; };
 		B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */; };
 		B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */; };
 		B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */; };
@@ -497,6 +511,8 @@
 		B503FF4724848D0B00066059 /* TagAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentCell.swift; sourceTree = "<group>"; };
 		B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserInterfaceItemIdentifier+Simplenote.swift"; sourceTree = "<group>"; };
 		B50F999124F98FFD00A1058D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkWindowController.swift; sourceTree = "<group>"; };
+		B50FB222251BB6110028DE25 /* Interlink.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interlink.storyboard; sourceTree = "<group>"; };
 		B5117997242036B0005F8936 /* NSString+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Simplenote.swift"; sourceTree = "<group>"; };
 		B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Simplenote.swift"; sourceTree = "<group>"; };
@@ -540,8 +556,6 @@
 		B543800F246355FA00F34B1C /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		B547285B250920CA00D823BA /* URL+Interlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Interlink.swift"; sourceTree = "<group>"; };
 		B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Theme.swift"; sourceTree = "<group>"; };
-		B54EB18E1A3F683D00D472B3 /* SPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPWindow.h; sourceTree = "<group>"; };
-		B54EB18F1A3F683D00D472B3 /* SPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPWindow.m; sourceTree = "<group>"; };
 		B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricsViewController.xib; sourceTree = "<group>"; };
 		B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplenoteConstants.swift; sourceTree = "<group>"; };
 		B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Simplenote.swift"; sourceTree = "<group>"; };
@@ -567,6 +581,9 @@
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
+		B58BBD292523D4CA0025135F /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteWindow.swift; sourceTree = "<group>"; };
+		B58BBD45252411530025135F /* NSEvent+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Simplenote.swift"; sourceTree = "<group>"; };
 		B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStoryboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B58CE28724F9C3420079C04B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B58D398B24BF95DF008E4ABC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -618,6 +635,8 @@
 		B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSearchField+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
 		B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupTextView.swift; sourceTree = "<group>"; };
+		B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkViewController.swift; sourceTree = "<group>"; };
+		B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableCellView.swift; sourceTree = "<group>"; };
 		B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsViewController.swift; sourceTree = "<group>"; };
 		B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaborateViewController.swift; sourceTree = "<group>"; };
 		B5C7DD42243E4A8E00BEE354 /* CollaborateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollaborateViewController.xib; sourceTree = "<group>"; };
@@ -671,6 +690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */,
+				B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */,
 				2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */,
 				2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */,
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
@@ -687,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				466FFEDD17CC10A800399652 /* WebKit.framework in Frameworks */,
+				3FAC7B25254BBCA600B47276 /* SimplenoteInterlinks in Frameworks */,
 				466FFEDE17CC10A800399652 /* libz.dylib in Frameworks */,
 				466FFEDF17CC10A800399652 /* SystemConfiguration.framework in Frameworks */,
 				466FFEE017CC10A800399652 /* CoreServices.framework in Frameworks */,
@@ -775,12 +796,15 @@
 				B574CA71242D539400F8D02F /* Handlers */,
 				463774DB171F111600E2E333 /* Models */,
 				B57CB879244DEBD500BA7969 /* Settings */,
+				B5C63355251E734100C8BF46 /* Storyboards */,
 				B56FA78D2437C650002CB9FF /* Themes */,
 				37E10E7A20B356E800864E43 /* Tools */,
 				B59848891BCDB961005EFBBE /* Trackers */,
 				71233DD814DC500C00139E61 /* Transformers */,
 				714BA65514D3260000A6CCC1 /* Views */,
 				B5C7DD4B243E697F00BEE354 /* ViewControllers */,
+				B58BBD352523D7B20025135F /* Windows */,
+				B5C63353251E732600C8BF46 /* WindowControllers */,
 				26F72A9314032D2A00A7935E /* Supporting Files */,
 				714BA64814D2333C00A6CCC1 /* Resources */,
 				37F742EA202A382400A47D3A /* AboutViewController.swift */,
@@ -799,7 +823,6 @@
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
 				B5E96B651BDE732500D707F5 /* LoginWindowController.m */,
-				B50F999124F98FFD00A1058D /* Main.storyboard */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
 			);
 			path = Simplenote;
@@ -808,8 +831,6 @@
 		26F72A9314032D2A00A7935E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				375581C120292AA800529D79 /* About.storyboard */,
-				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
 				37647D71202A500E00B78C74 /* Simplenote-Bridging-Header.h */,
 				46A0BEB8175BFD540050E864 /* Simplenote.entitlements */,
 				26F72A9414032D2A00A7935E /* Simplenote-Info.plist */,
@@ -944,8 +965,8 @@
 		714BA65514D3260000A6CCC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B5E0862A2448B58D00DEF476 /* TableViewCells */,
 				B5946321247EF60500FC257E /* Tags */,
+				B5E0862A2448B58D00DEF476 /* TableViewCells */,
 				B5E8E41324575C9F0098892B /* Toolbar */,
 				B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */,
 				B551187124E33BC2007B11E3 /* ClipView.swift */,
@@ -955,8 +976,6 @@
 				46F0E66217A32269005BB4D1 /* SPTableView.m */,
 				46EEA3C517B2FEA500914D1A /* SPTextView.h */,
 				46EEA3C617B2FEA500914D1A /* SPTextView.m */,
-				B54EB18E1A3F683D00D472B3 /* SPWindow.h */,
-				B54EB18F1A3F683D00D472B3 /* SPWindow.m */,
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 				B57CB880244E421400BA7969 /* SPTextField.swift */,
@@ -1012,6 +1031,7 @@
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
 				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
+				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
 				B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */,
@@ -1116,6 +1136,15 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		B58BBD352523D7B20025135F /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				B58BBD292523D4CA0025135F /* Window.swift */,
+				B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
 		B5946321247EF60500FC257E /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -1217,12 +1246,48 @@
 			name = Mockups;
 			sourceTree = "<group>";
 		};
+		B5C63352251E727300C8BF46 /* Interlinks */ = {
+			isa = PBXGroup;
+			children = (
+				B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */,
+			);
+			name = Interlinks;
+			sourceTree = "<group>";
+		};
+		B5C63353251E732600C8BF46 /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5C63354251E733700C8BF46 /* Interlinks */,
+			);
+			name = WindowControllers;
+			sourceTree = "<group>";
+		};
+		B5C63354251E733700C8BF46 /* Interlinks */ = {
+			isa = PBXGroup;
+			children = (
+				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
+			);
+			name = Interlinks;
+			sourceTree = "<group>";
+		};
+		B5C63355251E734100C8BF46 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B50F999124F98FFD00A1058D /* Main.storyboard */,
+				B50FB222251BB6110028DE25 /* Interlink.storyboard */,
+				375581C120292AA800529D79 /* About.storyboard */,
+				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B53BF19E24AC1F9500938C34 /* Editor */,
+				B5C63352251E727300C8BF46 /* Interlinks */,
 				B55C313124A5339300B23B3F /* Metrics */,
+				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B5D6833324ACFA79004AFF1B /* Versions */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
@@ -1271,6 +1336,7 @@
 			children = (
 				B5F3150824496A970036872D /* TableRowView.swift */,
 				B5E086272448B57200DEF476 /* HeaderTableCellView.swift */,
+				B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */,
 				B5DD0F902476309000C8DD41 /* NoteTableCellView.swift */,
 				B5E086342448EA3C00DEF476 /* TagTableCellView.swift */,
 				B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */,
@@ -1311,6 +1377,7 @@
 			packageProductDependencies = (
 				B5609AE924EEC9910097777A /* SimplenoteSearch */,
 				B5609AF124EF17270097777A /* SimplenoteFoundation */,
+				B50FB24B251C08910028DE25 /* SimplenoteInterlinks */,
 			);
 			productName = Simplenote;
 			productReference = 26F72A8814032D2A00A7935E /* Simplenote.app */;
@@ -1336,6 +1403,7 @@
 			packageProductDependencies = (
 				B5609AE724EEC9860097777A /* SimplenoteSearch */,
 				B5609AEF24EF171D0097777A /* SimplenoteFoundation */,
+				3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */,
 			);
 			productName = Simplenote;
 			productReference = 466FFF2F17CC10A800399652 /* Simplenote.app */;
@@ -1368,7 +1436,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Simperium;
 				TargetAttributes = {
 					26F72A8714032D2A00A7935E = {
@@ -1424,6 +1492,7 @@
 			packageReferences = (
 				B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */,
 				B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */,
+				B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */,
 			);
 			productRefGroup = 26F72A8914032D2A00A7935E /* Products */;
 			projectDirPath = "";
@@ -1442,6 +1511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50FB223251BB6110028DE25 /* Interlink.storyboard in Resources */,
 				B54F4AA224A6588700D8FAB1 /* MetricsViewController.xib in Resources */,
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
@@ -1465,6 +1535,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50FB224251BB6110028DE25 /* Interlink.storyboard in Resources */,
 				B54F4AA324A6588700D8FAB1 /* MetricsViewController.xib in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
@@ -1719,6 +1790,8 @@
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
+				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B58BBD2A2523D4CA0025135F /* Window.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
 				B551187224E33BC2007B11E3 /* ClipView.swift in Sources */,
@@ -1730,6 +1803,7 @@
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
+				B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */,
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
@@ -1774,12 +1848,14 @@
 				37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */,
 				B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
+				B5C63337251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */,
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
 				B5E8E41124575C990098892B /* ToolbarState.swift in Sources */,
+				B5C63349251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
 				B5070E16245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
 				B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */,
 				B57CB874244DEBC300BA7969 /* Options.swift in Sources */,
@@ -1795,7 +1871,6 @@
 				B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
-				B54EB1901A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
 				B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */,
@@ -1807,6 +1882,7 @@
 				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				B56FA7982437C79D002CB9FF /* SPUserInterface.swift in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
+				B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
@@ -1858,6 +1934,8 @@
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
+				B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B58BBD2B2523D4CA0025135F /* Window.swift in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993D24213B370037A431 /* String+Simplenote.swift in Sources */,
 				B551187324E33BC2007B11E3 /* ClipView.swift in Sources */,
@@ -1869,6 +1947,7 @@
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
+				B58BBD3E2523FF160025135F /* AutocompleteWindow.swift in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
@@ -1913,12 +1992,14 @@
 				B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
 				B55C312D24A530A500B23B3F /* MetricsViewController.swift in Sources */,
 				B56FA7932437C672002CB9FF /* NSColor+Theme.swift in Sources */,
+				B5C63338251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */,
 				375D293321E033D1007AB25A /* buffer.c in Sources */,
 				B5AF76CC24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203A24C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
 				375D294521E033D1007AB25A /* html.c in Sources */,
 				B5E8E41224575C990098892B /* ToolbarState.swift in Sources */,
 				B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
+				B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
@@ -1932,7 +2013,6 @@
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5C7DD41243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
-				B54EB1911A3F683D00D472B3 /* SPWindow.m in Sources */,
 				B586C063245CCD35009508EC /* SplitViewController.swift in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
@@ -1946,6 +2026,7 @@
 				B56FA7992437C79D002CB9FF /* SPUserInterface.swift in Sources */,
 				373B50E020179DFE000568A6 /* Extensions.swift in Sources */,
 				466FFECE17CC10A800399652 /* SPApplication.m in Sources */,
+				B58BBD47252411530025135F /* NSEvent+Simplenote.swift in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
@@ -2115,6 +2196,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2171,6 +2253,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2216,7 +2299,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
@@ -2325,6 +2408,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"/**",
@@ -2568,6 +2652,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Automattic/SimplenoteInterlinks-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteSearch-Swift.git";
@@ -2581,12 +2673,22 @@
 			repositoryURL = "git@github.com:Automattic/SimplenoteFoundation-Swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */;
+			productName = SimplenoteInterlinks;
+		};
+		B50FB24B251C08910028DE25 /* SimplenoteInterlinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */;
+			productName = SimplenoteInterlinks;
+		};
 		B5609AE724EEC9860097777A /* SimplenoteSearch */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */;

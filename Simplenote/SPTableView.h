@@ -11,7 +11,13 @@
 
 @protocol SPTableViewDelegate <NSTableViewDelegate>
 
+@optional
 - (nullable NSMenu *)tableView:(nonnull NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row;
+
+/// Invoked whenever the TableView received a KeyDown event.
+/// - Note: When this API returns `true`, further Event forwarding will be halted
+///
+- (BOOL)tableView:(nonnull NSTableView *)tableView didReceiveKeyDownEvent:(nonnull NSEvent *)event;
 
 @end
 
@@ -26,6 +32,7 @@ IB_DESIGNABLE
 /// Meaning that even when a given row is fully visible, NSTableView might perform a scroll anyways, leading to a jumpy UX.
 /// We're implementing a (opt-in) mechanism that disables Scrolling, during a mouseDown operation.
 ///
-@property (nonatomic, assign) IBInspectable BOOL disableAutoscrollOnMouseDown;
+@property (nonatomic, assign, readwrite) IBInspectable BOOL disableAutoscrollOnMouseDown;
+@property (nonatomic, assign, nullable) SEL returnAction;
 
 @end

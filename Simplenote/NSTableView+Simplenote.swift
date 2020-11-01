@@ -27,4 +27,26 @@ extension NSTableView {
         let allColumns = IndexSet(integersIn: .zero ..< numberOfColumns)
         reloadData(forRowIndexes: selectedRowIndexes, columnIndexes: allColumns)
     }
+
+    /// Reloads the receiver's data and preserves the selected row
+    ///
+    func reloadAndPreserveSelection() {
+        let previouslySelectedRow = self.selectedRow
+        reloadData()
+
+        // Out of Bounds failsafe. Always!
+        guard previouslySelectedRow < numberOfRows else {
+            return
+        }
+
+        selectRowIndexes(IndexSet(integer: previouslySelectedRow), byExtendingSelection: false)
+    }
+
+    /// Reloads the receiver's data and resets the selected row
+    ///
+    func reloadDataAndResetSelection() {
+        deselectAll(nil)
+        scrollRowToVisible(.zero)
+        reloadData()
+    }
 }

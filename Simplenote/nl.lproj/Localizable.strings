@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -47,7 +47,7 @@
 "Confirm Password" = "Wachtwoord bevestigen";
 
 /* Copy Link Menu Action */
-"Copy Internal Link" = "Copy Internal Link";
+"Copy Internal Link" = "Interne link kopiëren";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "Aanmelden mislukt";
@@ -56,7 +56,7 @@
 "Created" = "Aangemaakt";
 
 /* Delete Forever List Action */
-"Delete Forever" = "Delete Forever";
+"Delete Forever" = "Voor altijd verwijderen";
 
 /* Delete notes and sign out of the app */
 "Delete Notes" = "Notities verwijderen";
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "Alles exporteren";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "Veelgestelde vragen of neem contact met ons op";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "Wachtwoord vergeten?";
+
+/* FAQ or contact us */
+"Get Help" = "Ontvang hulp";
 
 /* History Menu Action */
 "History" = "Geschiedenis";

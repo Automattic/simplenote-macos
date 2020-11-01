@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
+/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -47,7 +47,7 @@
 "Confirm Password" = "비밀번호 확인";
 
 /* Copy Link Menu Action */
-"Copy Internal Link" = "Copy Internal Link";
+"Copy Internal Link" = "내부 링크 복사";
 
 /* Alert dialog title displayed on sign in error */
 "Couldn't Sign In" = "로그인할 수 없음";
@@ -56,7 +56,7 @@
 "Created" = "생성됨";
 
 /* Delete Forever List Action */
-"Delete Forever" = "Delete Forever";
+"Delete Forever" = "영구 삭제";
 
 /* Delete notes and sign out of the app */
 "Delete Notes" = "메모 삭제";
@@ -76,8 +76,14 @@
 /* Export All Notes Action */
 "Export Everything" = "모두 내보내기";
 
+/* Get Help Description Label */
+"FAQ or contact us" = "FAQ 또는 문의";
+
 /* Forgot Password Button */
 "Forgot your Password?" = "비밀번호를 잊으셨나요?";
+
+/* FAQ or contact us */
+"Get Help" = "도움말";
 
 /* History Menu Action */
 "History" = "내역";
