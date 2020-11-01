@@ -1,3 +1,6 @@
+2.5
+-----
+ 
 2.4
 ---
 - Note Details now also display inbound references #836
