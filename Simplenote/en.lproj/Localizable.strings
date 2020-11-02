@@ -83,6 +83,12 @@
 /* History Menu Action */
 "History" = "History";
 
+/* Note Metrics Title */
+"Information" = "Information";
+
+/* Reference Last Modification Date */
+"Last modified" = "Last modified";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Log In";
@@ -160,6 +166,9 @@
 
 /* Displayed during a Publish Operation */
 "Publishing..." = "Publishing...";
+
+/* References Title */
+"References" = "References";
 
 /* Rename Tag Action */
 "Rename Tag" = "Rename Tag";
