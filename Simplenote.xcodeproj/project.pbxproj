@@ -1405,6 +1405,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26F72AA914032D2A00A7935E /* Build configuration list for PBXNativeTarget "Simplenote" */;
 			buildPhases = (
+				3F8BDA2F255275F100C7A935 /* Verify No Build Settings */,
 				38E241AE28F50F41EF5E8346 /* [CP] Check Pods Manifest.lock */,
 				26F72A8414032D2A00A7935E /* Sources */,
 				26F72A8514032D2A00A7935E /* Frameworks */,
@@ -1685,6 +1686,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3F8BDA2F255275F100C7A935 /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcrun -sdk macosx swift ${PROJECT_DIR}/Scripts/VerifyNoBuildSettings.swift  --xcode  ${PROJECT_DIR}/${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
 		};
 		4E51756AEE6CFE89EAD49829 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
