@@ -21,3 +21,5 @@ COPY_PHASE_STRIP = NO
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
 
 GCC_PREPROCESSOR_DEFINITIONS = SPARKLE_OTA=1 VERBOSE_LOGGING=1 ${inherited} PUBLIC_BUILD=1
+
+#include "../Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"

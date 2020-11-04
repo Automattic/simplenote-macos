@@ -21,3 +21,5 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 // * Whole Module Optimization: [-O -whole-module-optimization]
 
 SWIFT_OPTIMIZATION_LEVEL = -Onone
+
+#include "../Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"

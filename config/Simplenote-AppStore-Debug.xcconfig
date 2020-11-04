@@ -69,3 +69,5 @@ PROVISIONING_PROFILE_SPECIFIER =
 // * Whole Module Optimization: [-O -whole-module-optimization]
 
 SWIFT_OPTIMIZATION_LEVEL = -Onone
+
+#include "../Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.debug.xcconfig"

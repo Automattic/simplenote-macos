@@ -36,3 +36,5 @@ SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
 // * Whole Module Optimization: [-O -whole-module-optimization]
 
 SWIFT_OPTIMIZATION_LEVEL = -Onone
+
+#include "../Pods/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.debug.xcconfig"

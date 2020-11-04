@@ -25,3 +25,5 @@ COPY_PHASE_STRIP = NO
 ENABLE_NS_ASSERTIONS = NO
 
 MTL_ENABLE_DEBUG_INFO = NO
+
+#include "../Pods/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.release.xcconfig"

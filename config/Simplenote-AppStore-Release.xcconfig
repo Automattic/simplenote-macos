@@ -38,3 +38,5 @@ PROVISIONING_PROFILE[sdk=macosx*] =
 // profile.
 
 PROVISIONING_PROFILE_SPECIFIER = Simplenote Mac Production Profile
+
+#include "../Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"
