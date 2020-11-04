@@ -483,9 +483,7 @@
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
-		3FAA553625526BBE001534D4 /* Simplenote.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Simplenote.debug.xcconfig; sourceTree = "<group>"; };
 		3FAA553925526BBE001534D4 /* Version.public.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.public.xcconfig; sourceTree = "<group>"; };
-		3FAA553C25526BBE001534D4 /* Simplenote.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Simplenote.release.xcconfig; sourceTree = "<group>"; };
 		3FAA554E25526C5C001534D4 /* SimplenoteSecrets-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteSecrets-Release.xcconfig"; sourceTree = "<group>"; };
 		3FAA554F25526C5C001534D4 /* Simplenote-AppStore-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-AppStore-Release.xcconfig"; sourceTree = "<group>"; };
 		3FAA555025526C5C001534D4 /* Simplenote-AppStore-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-AppStore-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -949,8 +947,6 @@
 				3FAA555625526C5C001534D4 /* Simplenote-Debug.xcconfig */,
 				3FAA555B25526C5C001534D4 /* Simplenote-Release.xcconfig */,
 				3FAA555325526C5C001534D4 /* Simplenote-Shared.xcconfig */,
-				3FAA553625526BBE001534D4 /* Simplenote.debug.xcconfig */,
-				3FAA553C25526BBE001534D4 /* Simplenote.release.xcconfig */,
 				3FAA555425526C5C001534D4 /* SimplenoteSecrets-Debug.xcconfig */,
 				3FAA554E25526C5C001534D4 /* SimplenoteSecrets-Release.xcconfig */,
 				3FAA555C25526C5D001534D4 /* SimplenoteSecrets-Shared.xcconfig */,
@@ -2237,7 +2233,7 @@
 /* Begin XCBuildConfiguration section */
 		26F72AA714032D2A00A7935E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FAA553625526BBE001534D4 /* Simplenote.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555A25526C5C001534D4 /* Project-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -2294,7 +2290,7 @@
 		};
 		26F72AA814032D2A00A7935E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FAA553C25526BBE001534D4 /* Simplenote.release.xcconfig */;
+			baseConfigurationReference = 3FAA555825526C5C001534D4 /* Project-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -2346,7 +2342,7 @@
 		};
 		26F72AAA14032D2A00A7935E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07BC80F83FE6EE9EED13F79B /* Pods-Automattic-Simplenote.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555625526C5C001534D4 /* Simplenote-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
@@ -2399,7 +2395,7 @@
 		};
 		26F72AAB14032D2A00A7935E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */;
+			baseConfigurationReference = 3FAA555B25526C5C001534D4 /* Simplenote-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
@@ -2454,7 +2450,7 @@
 		};
 		466FFF2D17CC10A800399652 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12DA3C73E1DAA3D88413DAC5 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555025526C5C001534D4 /* Simplenote-AppStore-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2508,7 +2504,7 @@
 		};
 		466FFF2E17CC10A800399652 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */;
+			baseConfigurationReference = 3FAA554F25526C5C001534D4 /* Simplenote-AppStore-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2560,6 +2556,7 @@
 		};
 		B52D0EC6230DCAD7003F799D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FAA555425526C5C001534D4 /* SimplenoteSecrets-Debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2568,6 +2565,7 @@
 		};
 		B52D0EC7230DCAD7003F799D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FAA554E25526C5C001534D4 /* SimplenoteSecrets-Release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2576,7 +2574,7 @@
 		};
 		B5CBB071241976230003C271 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22FCC18D2EF8FB85B32F04DD /* Pods-Automattic-SimplenoteTests.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555925526C5C001534D4 /* SimplenoteTests-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2619,7 +2617,7 @@
 		};
 		B5CBB072241976230003C271 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */;
+			baseConfigurationReference = 3FAA555525526C5C001534D4 /* SimplenoteTests-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
