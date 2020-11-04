@@ -8,7 +8,7 @@
 #include "SimplenoteTests-Shared.xcconfig"
 
 // Strip Debug Symbols During Copy
-// 
+//
 // Specifies whether binary files that are copied during the build, such as in a Copy
 // Bundle Resources or Copy Files build phase, should be stripped of debugging symbols.
 // It does not cause the linked product of a target to be stripped—use
@@ -17,7 +17,7 @@
 COPY_PHASE_STRIP = NO
 
 // Enable Foundation Assertions
-// 
+//
 // Controls whether assertion logic provided by `NSAssert` is included in the
 // preprocessed source code or is elided during preprocessing. Disabling assertions can
 // improve code performance.

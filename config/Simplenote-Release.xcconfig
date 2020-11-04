@@ -8,7 +8,7 @@
 #include "Simplenote-Shared.xcconfig"
 
 // Strip Debug Symbols During Copy
-// 
+//
 // Specifies whether binary files that are copied during the build, such as in a Copy
 // Bundle Resources or Copy Files build phase, should be stripped of debugging symbols.
 // It does not cause the linked product of a target to be stripped—use
@@ -17,7 +17,7 @@
 COPY_PHASE_STRIP = NO
 
 // Preprocessor Macros
-// 
+//
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
 
 GCC_PREPROCESSOR_DEFINITIONS = SPARKLE_OTA=1 VERBOSE_LOGGING=1 ${inherited} PUBLIC_BUILD=1

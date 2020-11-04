@@ -8,7 +8,7 @@
 #include "Project-Shared.xcconfig"
 
 // Strip Debug Symbols During Copy
-// 
+//
 // Specifies whether binary files that are copied during the build, such as in a Copy
 // Bundle Resources or Copy Files build phase, should be stripped of debugging symbols.
 // It does not cause the linked product of a target to be stripped—use
@@ -17,7 +17,7 @@
 COPY_PHASE_STRIP = NO
 
 // Enable Testability
-// 
+//
 // When this setting is activated, the product will be built with options appropriate for
 // running automated tests, such as making private interfaces accessible to the tests.
 // This may result in tests running slower than they would without testability enabled.
@@ -25,17 +25,17 @@ COPY_PHASE_STRIP = NO
 ENABLE_TESTABILITY = YES
 
 // Generate Position-Dependent Code
-// 
+//
 // Faster function calls for applications. Not appropriate for shared libraries, which
 // need to be position-independent.
 
 GCC_DYNAMIC_NO_PIC = NO
 
 // Optimization Level
-// 
+//
 // Specifies the degree to which the generated code is optimized for speed and binary
 // size.
-// 
+//
 // * None: Do not optimize. [-O0]
 // With this setting, the compiler's goal is to reduce the cost of compilation and to
 // make debugging produce the expected results. Statements are independent—if you stop
@@ -69,13 +69,13 @@ GCC_DYNAMIC_NO_PIC = NO
 GCC_OPTIMIZATION_LEVEL = 0
 
 // Preprocessor Macros
-// 
+//
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
 
 GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 
 // Symbols Hidden by Default
-// 
+//
 // When enabled, all symbols are declared `private extern` unless explicitly marked to be
 // exported using `\_\_attribute\_\_((visibility("default")))` in code. If not enabled,
 // all symbols are exported unless explicitly marked as `private extern`. See
@@ -87,7 +87,7 @@ GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 GCC_SYMBOLS_PRIVATE_EXTERN = NO
 
 // Build Active Architecture Only
-// 
+//
 // If enabled, only the active architecture is built. This setting will be ignored when
 // building with a run destination which does not define a specific architecture, such as
 // a 'Generic Device' run destination.

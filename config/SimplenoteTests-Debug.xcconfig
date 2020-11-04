@@ -8,9 +8,9 @@
 #include "SimplenoteTests-Shared.xcconfig"
 
 // Debug Information Format
-// 
+//
 // The type of debug information to produce.
-// 
+//
 // * DWARF: Object files and linked products will use DWARF as the debug information
 // format. [dwarf]
 // * DWARF with dSYM File: Object files and linked products will use DWARF as the debug
@@ -23,13 +23,13 @@ DEBUG_INFORMATION_FORMAT = dwarf
 MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE
 
 // Active Compilation Conditions
-// 
+//
 // A list of compilation conditions to enable for conditional compilation expressions.
 
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
 
 // Swift Optimization Level
-// 
+//
 // * None: Compile without any optimization. [-Onone]
 // * Optimize for Speed: [-O]
 // * Optimize for Size: [-Osize]

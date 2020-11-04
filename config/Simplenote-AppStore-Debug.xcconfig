@@ -8,7 +8,7 @@
 #include "Simplenote-AppStore-Shared.xcconfig"
 
 // Code Signing Identity
-// 
+//
 // The name, also known as the *common name*, of a valid code-signing certificate in a
 // keychain within your keychain path. A missing or invalid certificate will cause a
 // build error.
@@ -16,7 +16,7 @@
 CODE_SIGN_IDENTITY = Mac Developer
 
 // Code Signing Identity
-// 
+//
 // The name, also known as the *common name*, of a valid code-signing certificate in a
 // keychain within your keychain path. A missing or invalid certificate will cause a
 // build error.
@@ -24,9 +24,9 @@ CODE_SIGN_IDENTITY = Mac Developer
 CODE_SIGN_IDENTITY[sdk=macosx*] = Mac Developer
 
 // Debug Information Format
-// 
+//
 // The type of debug information to produce.
-// 
+//
 // * DWARF: Object files and linked products will use DWARF as the debug information
 // format. [dwarf]
 // * DWARF with dSYM File: Object files and linked products will use DWARF as the debug
@@ -37,7 +37,7 @@ CODE_SIGN_IDENTITY[sdk=macosx*] = Mac Developer
 DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 
 // Enable Hardened Runtime
-// 
+//
 // Hardened Runtime defends your application by preventing modifications to its code and
 // provides fine-grained controls over what can run in your process. Hardening the
 // runtime also prevents access to sensitive resources unless your application
@@ -48,21 +48,21 @@ DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
 ENABLE_HARDENED_RUNTIME = YES
 
 // Preprocessor Macros
-// 
+//
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
 
 GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 
 // Provisioning Profile
-// 
+//
 // Must contain a profile name (or UUID). A missing or invalid profile will cause a build
 // error. Use in conjunction with [DEVELOPMENT_TEAM] to fully specify provisioning
 // profile.
 
-PROVISIONING_PROFILE_SPECIFIER = 
+PROVISIONING_PROFILE_SPECIFIER =
 
 // Swift Optimization Level
-// 
+//
 // * None: Compile without any optimization. [-Onone]
 // * Optimize for Speed: [-O]
 // * Optimize for Size: [-Osize]
