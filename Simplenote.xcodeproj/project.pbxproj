@@ -499,6 +499,7 @@
 		3FAA555A25526C5C001534D4 /* Project-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Project-Debug.xcconfig"; sourceTree = "<group>"; };
 		3FAA555B25526C5C001534D4 /* Simplenote-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-Release.xcconfig"; sourceTree = "<group>"; };
 		3FAA555C25526C5D001534D4 /* SimplenoteSecrets-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteSecrets-Shared.xcconfig"; sourceTree = "<group>"; };
+		3FE8E6C825538BAA00EFBD29 /* Swift-Optimization-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Swift-Optimization-Debug.xcconfig"; sourceTree = "<group>"; };
 		466FFF2F17CC10A800399652 /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469512CB17CD23100014A2BF /* Simplenote-Info-Hockey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-Info-Hockey.plist"; sourceTree = "<group>"; };
 		46A0BEB8175BFD540050E864 /* Simplenote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Simplenote.entitlements; sourceTree = SOURCE_ROOT; };
@@ -953,6 +954,7 @@
 				3FAA555925526C5C001534D4 /* SimplenoteTests-Debug.xcconfig */,
 				3FAA555525526C5C001534D4 /* SimplenoteTests-Release.xcconfig */,
 				3FAA555225526C5C001534D4 /* SimplenoteTests-Shared.xcconfig */,
+				3FE8E6C825538BAA00EFBD29 /* Swift-Optimization-Debug.xcconfig */,
 				3FAA553925526BBE001534D4 /* Version.public.xcconfig */,
 			);
 			path = config;

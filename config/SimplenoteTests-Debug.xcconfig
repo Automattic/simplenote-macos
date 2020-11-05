@@ -6,6 +6,7 @@
 //
 
 #include "SimplenoteTests-Shared.xcconfig"
+#include "Swift-Optimization-Debug.xcconfig"
 
 // Debug Information Format
 //
@@ -27,14 +28,5 @@ MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE
 // A list of compilation conditions to enable for conditional compilation expressions.
 
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
-
-// Swift Optimization Level
-//
-// * None: Compile without any optimization. [-Onone]
-// * Optimize for Speed: [-O]
-// * Optimize for Size: [-Osize]
-// * Whole Module Optimization: [-O -whole-module-optimization]
-
-SWIFT_OPTIMIZATION_LEVEL = -Onone
 
 #include "../Pods/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.debug.xcconfig"

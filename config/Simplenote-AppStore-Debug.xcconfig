@@ -6,6 +6,7 @@
 //
 
 #include "Simplenote-AppStore-Shared.xcconfig"
+#include "Swift-Optimization-Debug.xcconfig"
 
 // Code Signing Identity
 //
@@ -60,14 +61,5 @@ GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 // profile.
 
 PROVISIONING_PROFILE_SPECIFIER =
-
-// Swift Optimization Level
-//
-// * None: Compile without any optimization. [-Onone]
-// * Optimize for Speed: [-O]
-// * Optimize for Size: [-Osize]
-// * Whole Module Optimization: [-O -whole-module-optimization]
-
-SWIFT_OPTIMIZATION_LEVEL = -Onone
 
 #include "../Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.debug.xcconfig"

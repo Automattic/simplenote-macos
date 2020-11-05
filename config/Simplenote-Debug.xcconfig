@@ -6,20 +6,12 @@
 //
 
 #include "Simplenote-Shared.xcconfig"
+#include "Swift-Optimization-Debug.xcconfig"
 
 // Preprocessor Macros
 //
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-
-// Swift Optimization Level
-//
-// * None: Compile without any optimization. [-Onone]
-// * Optimize for Speed: [-O]
-// * Optimize for Size: [-Osize]
-// * Whole Module Optimization: [-O -whole-module-optimization]
-
-SWIFT_OPTIMIZATION_LEVEL = -Onone
 
 #include "../Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"
