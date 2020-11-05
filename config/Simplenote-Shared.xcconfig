@@ -168,13 +168,6 @@ PRODUCT_NAME = Simplenote
 
 PROVISIONING_PROFILE =
 
-// Provisioning Profile
-//
-// Must contain a profile name (or UUID). A missing or invalid profile will cause a build
-// error. Use in conjunction with [DEVELOPMENT_TEAM] to fully specify provisioning
-// profile.
-PROVISIONING_PROFILE_SPECIFIER =
-
 // Base SDK
 //
 // The name or path of the base SDK being used during the build. The product will be

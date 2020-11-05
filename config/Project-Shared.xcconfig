@@ -294,3 +294,11 @@ SWIFT_VERSION = 5.0
 // paths defined in `HEADER_SEARCH_PATHS`.
 USER_HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/**
 
+// Provisioning Profile
+//
+// Must contain a profile name (or UUID). A missing or invalid profile will cause a build
+// error. Use in conjunction with [DEVELOPMENT_TEAM] to fully specify provisioning
+// profile.
+//
+// By default, don't specify a value here. Let the release/production targets explicitly set one.
+PROVISIONING_PROFILE_SPECIFIER =

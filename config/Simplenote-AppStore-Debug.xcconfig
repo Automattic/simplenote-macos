@@ -38,10 +38,3 @@ ENABLE_HARDENED_RUNTIME = YES
 //
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
 GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
-
-// Provisioning Profile
-//
-// Must contain a profile name (or UUID). A missing or invalid profile will cause a build
-// error. Use in conjunction with [DEVELOPMENT_TEAM] to fully specify provisioning
-// profile.
-PROVISIONING_PROFILE_SPECIFIER =
