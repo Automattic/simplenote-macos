@@ -13,7 +13,6 @@
 // Bundle Resources or Copy Files build phase, should be stripped of debugging symbols.
 // It does not cause the linked product of a target to be stripped—use
 // `STRIP_INSTALLED_PRODUCT` for that.
-
 COPY_PHASE_STRIP = NO
 
 // Enable Testability
@@ -21,14 +20,12 @@ COPY_PHASE_STRIP = NO
 // When this setting is activated, the product will be built with options appropriate for
 // running automated tests, such as making private interfaces accessible to the tests.
 // This may result in tests running slower than they would without testability enabled.
-
 ENABLE_TESTABILITY = YES
 
 // Generate Position-Dependent Code
 //
 // Faster function calls for applications. Not appropriate for shared libraries, which
 // need to be position-independent.
-
 GCC_DYNAMIC_NO_PIC = NO
 
 // Optimization Level
@@ -65,13 +62,11 @@ GCC_DYNAMIC_NO_PIC = NO
 // * Smallest, Aggressive Size Optimizations: This setting enables additional size
 // savings by isolating repetitive code patterns into a compiler generated function.
 // [-Oz]
-
 GCC_OPTIMIZATION_LEVEL = 0
 
 // Preprocessor Macros
 //
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
-
 GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 
 // Symbols Hidden by Default
@@ -83,7 +78,6 @@ GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 // Visibility](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/CppRuntimeEnv/Articles/SymbolVisibility.html#//apple_ref/doc/uid/TP40001670-CJBGBHEJ)
 // in [C++ Runtime Environment Programming
 // Guide](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/CppRuntimeEnv/CPPRuntimeEnv.html).
-
 GCC_SYMBOLS_PRIVATE_EXTERN = NO
 
 // Build Active Architecture Only
@@ -91,5 +85,4 @@ GCC_SYMBOLS_PRIVATE_EXTERN = NO
 // If enabled, only the active architecture is built. This setting will be ignored when
 // building with a run destination which does not define a specific architecture, such as
 // a 'Generic Device' run destination.
-
 ONLY_ACTIVE_ARCH = YES

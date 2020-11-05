@@ -20,27 +20,23 @@
 //
 // For backwards compatibility reasons, this setting is enabled by default. Disabling it
 // is strongly recommended.
-
 ALWAYS_SEARCH_USER_PATHS = NO
 
 // Asset Catalog App Icon Set Name
 //
 // Name of an asset catalog app icon set whose contents will be merged into the
 // `Info.plist`.
-
 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
 
 // Enable Modules (C and Objective-C)
 //
 // Enables the use of modules for system APIs. System headers are imported as semantic
 // modules instead of raw headers. This can result in faster builds and project indexing.
-
 CLANG_ENABLE_MODULES = YES
 
 // Code Signing Entitlements
 //
 // The path to a file specifying code-signing entitlements.
-
 CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements
 
 // Code Signing Style
@@ -49,7 +45,6 @@ CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements
 // `Automatic` to let Xcode automatically create and update profiles, app IDs, and
 // certificates. Choose `Manual` to create and update these yourself on the developer
 // website.
-
 CODE_SIGN_STYLE = Manual
 
 // Combine HiDPI Images
@@ -58,14 +53,12 @@ CODE_SIGN_STYLE = Manual
 // HiDPI compliant for macOS 10.7 and later. Only image files in the same directory and
 // with the same base name and extension are combined. The file names must conform to the
 // naming convention used in HiDPI.
-
 COMBINE_HIDPI_IMAGES = YES
 
 // Development Team
 //
 // The team ID of a development team to use for signing certificates and provisioning
 // profiles.
-
 DEVELOPMENT_TEAM = PZYM8XX95Q
 
 // Framework Search Paths
@@ -74,7 +67,6 @@ DEVELOPMENT_TEAM = PZYM8XX95Q
 // compiler for both included or imported header files when compiling C, Objective-C,
 // C++, or Objective-C++, and by the linker for frameworks used by the product. Paths are
 // delimited by whitespace, so any paths with spaces in them must be properly quoted.
-
 FRAMEWORK_SEARCH_PATHS = $(inherited) "$(SRCROOT)/External"/** $(PROJECT_DIR)
 
 // Precompile Prefix Header
@@ -86,14 +78,12 @@ FRAMEWORK_SEARCH_PATHS = $(inherited) "$(SRCROOT)/External"/** $(PROJECT_DIR)
 // header or any file it includes change rarely. If the contents of the prefix header or
 // any file it includes change frequently, there may be a negative impact to overall
 // build time.
-
 GCC_PRECOMPILE_PREFIX_HEADER = YES
 
 // Prefix Header
 //
 // Implicitly include the named header. The path given should either be a project
 // relative path or an absolute path.
-
 GCC_PREFIX_HEADER = Simplenote/Simplenote-Prefix.pch
 
 // Undeclared Selector
@@ -106,7 +96,6 @@ GCC_PREFIX_HEADER = Simplenote/Simplenote-Prefix.pch
 // `-Wselector` only performs its checks in the final stage of compilation. This also
 // enforces the coding style convention that methods and selectors must be declared
 // before being used.
-
 GCC_WARN_UNDECLARED_SELECTOR = NO
 
 // Info.plist File
@@ -117,7 +106,6 @@ GCC_WARN_UNDECLARED_SELECTOR = NO
 // Files](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/ConfigFiles.html#//apple_ref/doc/uid/20002091-CJBJIEDH)
 // in [Runtime Configuration
 // Guidelines](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPRuntimeConfig/000-Introduction/introduction.html).
-
 INFOPLIST_FILE = $(SRCROOT)/Simplenote/Simplenote-Info.plist
 
 // Runpath Search Paths
@@ -126,7 +114,6 @@ INFOPLIST_FILE = $(SRCROOT)/Simplenote/Simplenote-Info.plist
 // being created. At runtime, `dyld` uses the `runpath` when searching for dylibs whose
 // load path begins with `@rpath/`. See [Dynamic Library Programming
 // Topics](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/DynamicLibraries/000-Introduction/Introduction.html).
-
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @loader_path/../Frameworks
 
 // Library Search Paths
@@ -134,7 +121,6 @@ LD_RUNPATH_SEARCH_PATHS = $(inherited) @loader_path/../Frameworks
 // This is a list of paths to folders to be searched by the linker for libraries used by
 // the product. Paths are delimited by whitespace, so any paths with spaces in them need
 // to be properly quoted.
-
 LIBRARY_SEARCH_PATHS = $(inherited)
 
 // Other C Flags
@@ -143,19 +129,16 @@ LIBRARY_SEARCH_PATHS = $(inherited)
 // files. Be sure to backslash-escape any arguments that contain spaces or special
 // characters, such as path names that may contain spaces. Use this setting if Xcode does
 // not already provide UI for a particular C or Objective-C compiler flag.
-
 OTHER_CFLAGS = ${inherited}
 
 // Other Code Signing Flags
 //
 // A list of additional options to pass to `codesign(1)`.
-
 OTHER_CODE_SIGN_FLAGS = --deep
 
 // Other Linker Flags
 //
 // Options defined in this setting are passed to invocations of the linker.
-
 OTHER_LDFLAGS = -ObjC -all_load ${inherited} -lc++
 
 // Product Bundle Identifier
@@ -164,13 +147,11 @@ OTHER_LDFLAGS = -ObjC -all_load ${inherited} -lc++
 // format using only alphanumeric characters (`A-Z`, `a-z`, `0-9`), the dot (`.`), and
 // the hyphen (`-`). This value is used as the `CFBundleIdentifier` in the `Info.plist`
 // of the built bundle.
-
 PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac
 
 // Product Name
 //
 // This is the basename of the product generated by the target.
-
 PRODUCT_NAME = Simplenote
 
 PROVISIONING_PROFILE =
@@ -182,7 +163,6 @@ PROVISIONING_PROFILE =
 // will be prepended to all search paths, and will be passed through the environment to
 // the compiler and linker. Additional SDKs can be specified in the `ADDITIONAL_SDKS`
 // setting.
-
 SDKROOT = macosx
 
 VALID_ARCHS = x86_64
@@ -191,5 +171,4 @@ VALID_ARCHS = x86_64
 //
 // The extension used for product wrappers, which has a default value based on the
 // product type.
-
 WRAPPER_EXTENSION = app

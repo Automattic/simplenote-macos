@@ -16,7 +16,6 @@
 // Bundle Resources or Copy Files build phase, should be stripped of debugging symbols.
 // It does not cause the linked product of a target to be stripped—use
 // `STRIP_INSTALLED_PRODUCT` for that.
-
 COPY_PHASE_STRIP = NO
 
 // Enable Foundation Assertions
@@ -24,7 +23,6 @@ COPY_PHASE_STRIP = NO
 // Controls whether assertion logic provided by `NSAssert` is included in the
 // preprocessed source code or is elided during preprocessing. Disabling assertions can
 // improve code performance.
-
 ENABLE_NS_ASSERTIONS = NO
 
 MTL_ENABLE_DEBUG_INFO = NO

@@ -3,6 +3,5 @@
 // The name, also known as the *common name*, of a valid code-signing certificate in a
 // keychain within your keychain path. A missing or invalid certificate will cause a
 // build error.
-
 CODE_SIGN_IDENTITY = Mac Developer
 CODE_SIGN_IDENTITY[sdk=macosx*] = Mac Developer

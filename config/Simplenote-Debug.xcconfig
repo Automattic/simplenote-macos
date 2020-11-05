@@ -14,5 +14,4 @@
 // Preprocessor Macros
 //
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
-
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1

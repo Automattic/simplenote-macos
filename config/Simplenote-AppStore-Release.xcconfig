@@ -15,7 +15,6 @@
 // The name, also known as the *common name*, of a valid code-signing certificate in a
 // keychain within your keychain path. A missing or invalid certificate will cause a
 // build error.
-
 CODE_SIGN_IDENTITY = 3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)
 
 // Code Signing Identity
@@ -23,13 +22,11 @@ CODE_SIGN_IDENTITY = 3rd Party Mac Developer Application: Automattic, Inc. (PZYM
 // The name, also known as the *common name*, of a valid code-signing certificate in a
 // keychain within your keychain path. A missing or invalid certificate will cause a
 // build error.
-
 CODE_SIGN_IDENTITY[sdk=macosx*] = 3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)
 
 // Preprocessor Macros
 //
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
-
 GCC_PREPROCESSOR_DEFINITIONS = ${inherited} APP_STORE_BUILD=1
 
 PROVISIONING_PROFILE[sdk=macosx*] =
@@ -39,5 +36,4 @@ PROVISIONING_PROFILE[sdk=macosx*] =
 // Must contain a profile name (or UUID). A missing or invalid profile will cause a build
 // error. Use in conjunction with [DEVELOPMENT_TEAM] to fully specify provisioning
 // profile.
-
 PROVISIONING_PROFILE_SPECIFIER = Simplenote Mac Production Profile
