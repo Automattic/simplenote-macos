@@ -49,8 +49,3 @@ SWIFT_COMPILATION_MODE = wholemodule
 
 SWIFT_OPTIMIZATION_LEVEL = -O
 
-// Swift Language Version
-//
-//
-
-SWIFT_VERSION = 5.0

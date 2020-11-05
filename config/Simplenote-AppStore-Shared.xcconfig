@@ -185,12 +185,6 @@ PROVISIONING_PROFILE =
 
 SDKROOT = macosx
 
-// Swift Language Version
-//
-//
-
-SWIFT_VERSION = 5.0
-
 VALID_ARCHS = x86_64
 
 // Wrapper Extension

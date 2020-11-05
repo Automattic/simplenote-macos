@@ -243,12 +243,6 @@ PRODUCT_NAME = $(TARGET_NAME)
 
 PROVISIONING_PROFILE_SPECIFIER =
 
-// Swift Language Version
-//
-//
-
-SWIFT_VERSION = 5.0
-
 // Test Host
 //
 // Path to the executable into which a bundle of tests is injected. Only specify this

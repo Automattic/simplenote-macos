@@ -320,6 +320,8 @@ SWIFT_OBJC_BRIDGING_HEADER = Simplenote/Simplenote-Bridging-Header.h
 
 SWIFT_OBJC_INTERFACE_HEADER_NAME = Simplenote-Swift.h
 
+SWIFT_VERSION = 5.0
+
 // User Header Search Paths
 //
 // This is a list of paths to folders to be searched by the compiler for included or
@@ -331,3 +333,4 @@ SWIFT_OBJC_INTERFACE_HEADER_NAME = Simplenote-Swift.h
 // paths defined in `HEADER_SEARCH_PATHS`.
 
 USER_HEADER_SEARCH_PATHS = $(BUILT_PRODUCTS_DIR)/**
+
