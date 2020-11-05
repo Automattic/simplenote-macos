@@ -5,6 +5,9 @@
 // https://github.com/dempseyatgithub/BuildSettingExtractor
 //
 
+// Import the CocoaPods xcconfig first, so we can override what's needed
+#include "../Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"
+
 #include "Simplenote-Shared.xcconfig"
 #include "Swift-Optimization-Debug.xcconfig"
 
@@ -13,5 +16,3 @@
 // Space-separated list of preprocessor macros of the form `foo` or `foo=bar`.
 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-
-#include "../Pods/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.debug.xcconfig"

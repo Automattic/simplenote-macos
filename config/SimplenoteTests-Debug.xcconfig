@@ -5,6 +5,9 @@
 // https://github.com/dempseyatgithub/BuildSettingExtractor
 //
 
+// Import the CocoaPods xcconfig first, so we can override what's needed
+#include "../Pods/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.debug.xcconfig"
+
 #include "SimplenoteTests-Shared.xcconfig"
 #include "Swift-Optimization-Debug.xcconfig"
 
@@ -28,5 +31,3 @@ MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE
 // A list of compilation conditions to enable for conditional compilation expressions.
 
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
-
-#include "../Pods/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.debug.xcconfig"

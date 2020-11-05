@@ -5,6 +5,9 @@
 // https://github.com/dempseyatgithub/BuildSettingExtractor
 //
 
+// Import the CocoaPods xcconfig first, so we can override what's needed
+#include "../Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.debug.xcconfig"
+
 #include "Simplenote-AppStore-Shared.xcconfig"
 #include "Swift-Optimization-Debug.xcconfig"
 
@@ -61,5 +64,3 @@ GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
 // profile.
 
 PROVISIONING_PROFILE_SPECIFIER =
-
-#include "../Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.debug.xcconfig"

@@ -5,6 +5,9 @@
 // https://github.com/dempseyatgithub/BuildSettingExtractor
 //
 
+// Import the CocoaPods xcconfig first, so we can override what's needed
+#include "../Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"
+
 #include "Simplenote-AppStore-Shared.xcconfig"
 
 // Code Signing Identity
@@ -38,5 +41,3 @@ PROVISIONING_PROFILE[sdk=macosx*] =
 // profile.
 
 PROVISIONING_PROFILE_SPECIFIER = Simplenote Mac Production Profile
-
-#include "../Pods/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"
