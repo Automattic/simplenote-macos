@@ -218,14 +218,6 @@ INFOPLIST_FILE = SimplenoteTests/Info.plist
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/../Frameworks @loader_path/../Frameworks
 
-// macOS Deployment Target
-//
-// Code will load on this and later versions of macOS. Framework APIs that are
-// unavailable in earlier versions will be weak-linked; your code should check for `null`
-// function pointers or specific system versions before calling newer APIs.
-
-MACOSX_DEPLOYMENT_TARGET = 10.13
-
 MTL_FAST_MATH = YES
 
 // Product Bundle Identifier

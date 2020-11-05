@@ -164,14 +164,6 @@ LD_RUNPATH_SEARCH_PATHS = $(inherited) @loader_path/../Frameworks
 
 LIBRARY_SEARCH_PATHS = $(inherited)
 
-// macOS Deployment Target
-//
-// Code will load on this and later versions of macOS. Framework APIs that are
-// unavailable in earlier versions will be weak-linked; your code should check for `null`
-// function pointers or specific system versions before calling newer APIs.
-
-MACOSX_DEPLOYMENT_TARGET = 10.13
-
 // Other C Flags
 //
 // Space-separated list of additional flags to pass to the compiler for C and Objective-C
