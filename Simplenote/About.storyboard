@@ -157,8 +157,47 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <view id="dSD-IR-JgX" userLabel="Github" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                        <view id="Zkc-Fi-YIQ" userLabel="Help" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                             <rect key="frame" x="82" y="248" width="287" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <subviews>
+                                                <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-WF-Ia6">
+                                                    <rect key="frame" x="0.0" y="5" width="287" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <view key="contentView" id="mmA-Yc-qoF">
+                                                        <rect key="frame" x="1" y="1" width="285" height="0.0"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </view>
+                                                    <color key="borderColor" red="0.45882352939999999" green="0.68627450980000004" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </box>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ZU-8e-9pb" userLabel="Help">
+                                                    <rect key="frame" x="-2" y="34" width="291" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Get Help" id="j5d-Hj-dWw">
+                                                        <font key="font" metaFont="system" size="18"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-eo-l1R">
+                                                    <rect key="frame" x="-2" y="15" width="261" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="FAQ" id="yJx-Jh-VQO">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="spW-Qe-hoM">
+                                                    <rect key="frame" x="265" y="24" width="22" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="sdU-d0-gq1"/>
+                                                    <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <view id="dSD-IR-JgX" userLabel="Github" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                            <rect key="frame" x="82" y="188" width="287" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <subviews>
                                                 <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="uri-rw-ZA4">
@@ -197,7 +236,7 @@
                                             </subviews>
                                         </view>
                                         <view id="L6j-Jf-7Xu" userLabel="Hiring" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                            <rect key="frame" x="82" y="188" width="287" height="66"/>
+                                            <rect key="frame" x="82" y="128" width="287" height="66"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <subviews>
                                                 <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="BFf-mI-iQm">
@@ -210,9 +249,18 @@
                                                     <color key="borderColor" red="0.45882352939999999" green="0.68627450980000004" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uWG-aK-w4m">
-                                                    <rect key="frame" x="-2" y="19" width="260" height="34"/>
+                                                    <rect key="frame" x="-2" y="34" width="291" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Made with love by the folks at Automattic. Are you a developer? We're hiring." id="WV3-qs-WX7">
+                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="?Work with Us" id="WV3-qs-WX7">
+                                                        <font key="font" metaFont="system" size="18"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EXb-jz-cMg">
+                                                    <rect key="frame" x="-2" y="15" width="261" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="?Work with Us Text" id="yhj-Nw-ajw">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -222,45 +270,6 @@
                                                     <rect key="frame" x="265" y="27" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="yly-av-goz"/>
-                                                    <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <view id="Zkc-Fi-YIQ" userLabel="Help" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                            <rect key="frame" x="82" y="128" width="287" height="66"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <subviews>
-                                                <box fixedFrame="YES" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-WF-Ia6">
-                                                    <rect key="frame" x="0.0" y="5" width="287" height="1"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <view key="contentView" id="mmA-Yc-qoF">
-                                                        <rect key="frame" x="1" y="1" width="285" height="0.0"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    </view>
-                                                    <color key="borderColor" red="0.45882352939999999" green="0.68627450980000004" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </box>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ZU-8e-9pb" userLabel="Help">
-                                                    <rect key="frame" x="-2" y="34" width="291" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Get Help" id="j5d-Hj-dWw">
-                                                        <font key="font" metaFont="system" size="18"/>
-                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-eo-l1R">
-                                                    <rect key="frame" x="-2" y="15" width="261" height="19"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="FAQ" id="yJx-Jh-VQO">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="spW-Qe-hoM">
-                                                    <rect key="frame" x="265" y="24" width="22" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_arrow_top_right" id="sdU-d0-gq1"/>
                                                     <color key="contentTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
@@ -378,6 +387,8 @@
                         <outlet property="copyrightLabel" destination="7QO-fG-liO" id="FLV-mx-gvF"/>
                         <outlet property="githubView" destination="dSD-IR-JgX" id="of3-zu-X1y"/>
                         <outlet property="helpLabel" destination="7ZU-8e-9pb" id="Scj-Lc-pD9"/>
+                        <outlet property="hiringTextLabel" destination="EXb-jz-cMg" id="sW2-sy-o4L"/>
+                        <outlet property="hiringTitleLabel" destination="uWG-aK-w4m" id="B0y-U2-7ie"/>
                         <outlet property="hiringView" destination="L6j-Jf-7Xu" id="cTl-k7-IDu"/>
                         <outlet property="logoImageView" destination="O8W-lq-bJP" id="JSr-Cl-2Hq"/>
                         <outlet property="privacyLabel" destination="zLM-6J-YYw" id="8LB-Pe-71z"/>
