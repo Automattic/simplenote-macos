@@ -483,6 +483,7 @@
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
+		3F6827712553B05100B4091A /* Code-Sign-Mac-Developer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Sign-Mac-Developer.xcconfig"; sourceTree = "<group>"; };
 		3FAA553925526BBE001534D4 /* Version.public.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.public.xcconfig; sourceTree = "<group>"; };
 		3FAA554E25526C5C001534D4 /* SimplenoteSecrets-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteSecrets-Release.xcconfig"; sourceTree = "<group>"; };
 		3FAA554F25526C5C001534D4 /* Simplenote-AppStore-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-AppStore-Release.xcconfig"; sourceTree = "<group>"; };
@@ -939,6 +940,7 @@
 		3FAA553325526BBE001534D4 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				3F6827712553B05100B4091A /* Code-Sign-Mac-Developer.xcconfig */,
 				3FAA555A25526C5C001534D4 /* Project-Debug.xcconfig */,
 				3FAA555825526C5C001534D4 /* Project-Release.xcconfig */,
 				3FAA555125526C5C001534D4 /* Project-Shared.xcconfig */,
