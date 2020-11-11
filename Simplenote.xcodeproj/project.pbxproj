@@ -483,6 +483,24 @@
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
+		3F6827712553B05100B4091A /* Code-Sign-Mac-Developer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Code-Sign-Mac-Developer.xcconfig"; sourceTree = "<group>"; };
+		3FAA553925526BBE001534D4 /* Version.public.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.public.xcconfig; sourceTree = "<group>"; };
+		3FAA554E25526C5C001534D4 /* SimplenoteSecrets-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteSecrets-Release.xcconfig"; sourceTree = "<group>"; };
+		3FAA554F25526C5C001534D4 /* Simplenote-AppStore-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-AppStore-Release.xcconfig"; sourceTree = "<group>"; };
+		3FAA555025526C5C001534D4 /* Simplenote-AppStore-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-AppStore-Debug.xcconfig"; sourceTree = "<group>"; };
+		3FAA555125526C5C001534D4 /* Project-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Project-Shared.xcconfig"; sourceTree = "<group>"; };
+		3FAA555225526C5C001534D4 /* SimplenoteTests-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteTests-Shared.xcconfig"; sourceTree = "<group>"; };
+		3FAA555325526C5C001534D4 /* Simplenote-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-Shared.xcconfig"; sourceTree = "<group>"; };
+		3FAA555425526C5C001534D4 /* SimplenoteSecrets-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteSecrets-Debug.xcconfig"; sourceTree = "<group>"; };
+		3FAA555525526C5C001534D4 /* SimplenoteTests-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteTests-Release.xcconfig"; sourceTree = "<group>"; };
+		3FAA555625526C5C001534D4 /* Simplenote-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-Debug.xcconfig"; sourceTree = "<group>"; };
+		3FAA555725526C5C001534D4 /* Simplenote-AppStore-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-AppStore-Shared.xcconfig"; sourceTree = "<group>"; };
+		3FAA555825526C5C001534D4 /* Project-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Project-Release.xcconfig"; sourceTree = "<group>"; };
+		3FAA555925526C5C001534D4 /* SimplenoteTests-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteTests-Debug.xcconfig"; sourceTree = "<group>"; };
+		3FAA555A25526C5C001534D4 /* Project-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Project-Debug.xcconfig"; sourceTree = "<group>"; };
+		3FAA555B25526C5C001534D4 /* Simplenote-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Simplenote-Release.xcconfig"; sourceTree = "<group>"; };
+		3FAA555C25526C5D001534D4 /* SimplenoteSecrets-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SimplenoteSecrets-Shared.xcconfig"; sourceTree = "<group>"; };
+		3FE8E6C825538BAA00EFBD29 /* Swift-Optimization-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Swift-Optimization-Debug.xcconfig"; sourceTree = "<group>"; };
 		466FFF2F17CC10A800399652 /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469512CB17CD23100014A2BF /* Simplenote-Info-Hockey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-Info-Hockey.plist"; sourceTree = "<group>"; };
 		46A0BEB8175BFD540050E864 /* Simplenote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Simplenote.entitlements; sourceTree = SOURCE_ROOT; };
@@ -506,9 +524,6 @@
 		71DCEBE5152E2ED1002744C0 /* NSMutableAttributedString+Styling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Styling.h"; sourceTree = "<group>"; };
 		71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Styling.m"; sourceTree = "<group>"; };
 		86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Automattic_Simplenote_AppStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C902F8722D3ED910018D654 /* Simplenote.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Simplenote.release.xcconfig; path = config/Simplenote.release.xcconfig; sourceTree = "<group>"; };
-		8C902F8C22D3EE350018D654 /* Version.public.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Version.public.xcconfig; path = config/Version.public.xcconfig; sourceTree = "<group>"; };
-		8C902F8E22D3EFE60018D654 /* Simplenote.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Simplenote.debug.xcconfig; path = config/Simplenote.debug.xcconfig; sourceTree = "<group>"; };
 		9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		A6BBDA3225501398005C8343 /* SPTextView+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPTextView+Swift.swift"; sourceTree = "<group>"; };
 		B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewSimplenoteTests.swift; sourceTree = "<group>"; };
@@ -757,7 +772,7 @@
 		26F72A7D14032D2900A7935E = {
 			isa = PBXGroup;
 			children = (
-				8C902F8B22D3EDB30018D654 /* config */,
+				3FAA553325526BBE001534D4 /* config */,
 				26F72A9214032D2A00A7935E /* Simplenote */,
 				B5CBB06A241976230003C271 /* SimplenoteTests */,
 				26DBB1F61405A6E600186392 /* External */,
@@ -922,6 +937,31 @@
 			name = Tools;
 			sourceTree = "<group>";
 		};
+		3FAA553325526BBE001534D4 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				3F6827712553B05100B4091A /* Code-Sign-Mac-Developer.xcconfig */,
+				3FAA555A25526C5C001534D4 /* Project-Debug.xcconfig */,
+				3FAA555825526C5C001534D4 /* Project-Release.xcconfig */,
+				3FAA555125526C5C001534D4 /* Project-Shared.xcconfig */,
+				3FAA555025526C5C001534D4 /* Simplenote-AppStore-Debug.xcconfig */,
+				3FAA554F25526C5C001534D4 /* Simplenote-AppStore-Release.xcconfig */,
+				3FAA555725526C5C001534D4 /* Simplenote-AppStore-Shared.xcconfig */,
+				3FAA555625526C5C001534D4 /* Simplenote-Debug.xcconfig */,
+				3FAA555B25526C5C001534D4 /* Simplenote-Release.xcconfig */,
+				3FAA555325526C5C001534D4 /* Simplenote-Shared.xcconfig */,
+				3FAA555425526C5C001534D4 /* SimplenoteSecrets-Debug.xcconfig */,
+				3FAA554E25526C5C001534D4 /* SimplenoteSecrets-Release.xcconfig */,
+				3FAA555C25526C5D001534D4 /* SimplenoteSecrets-Shared.xcconfig */,
+				3FAA555925526C5C001534D4 /* SimplenoteTests-Debug.xcconfig */,
+				3FAA555525526C5C001534D4 /* SimplenoteTests-Release.xcconfig */,
+				3FAA555225526C5C001534D4 /* SimplenoteTests-Shared.xcconfig */,
+				3FE8E6C825538BAA00EFBD29 /* Swift-Optimization-Debug.xcconfig */,
+				3FAA553925526BBE001534D4 /* Version.public.xcconfig */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
 		463774DB171F111600E2E333 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,16 +1049,6 @@
 				5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		8C902F8B22D3EDB30018D654 /* config */ = {
-			isa = PBXGroup;
-			children = (
-				8C902F8C22D3EE350018D654 /* Version.public.xcconfig */,
-				8C902F8722D3ED910018D654 /* Simplenote.release.xcconfig */,
-				8C902F8E22D3EFE60018D654 /* Simplenote.debug.xcconfig */,
-			);
-			name = config;
 			sourceTree = "<group>";
 		};
 		B501AAD22437E52D0084CDA3 /* Constants */ = {
@@ -1379,6 +1409,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26F72AA914032D2A00A7935E /* Build configuration list for PBXNativeTarget "Simplenote" */;
 			buildPhases = (
+				3F8BDA2F255275F100C7A935 /* Verify No Build Settings */,
 				38E241AE28F50F41EF5E8346 /* [CP] Check Pods Manifest.lock */,
 				26F72A8414032D2A00A7935E /* Sources */,
 				26F72A8514032D2A00A7935E /* Frameworks */,
@@ -1659,6 +1690,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3F8BDA2F255275F100C7A935 /* Verify No Build Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Verify No Build Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcrun -sdk macosx swift ${PROJECT_DIR}/Scripts/VerifyNoBuildSettings.swift  --xcode  ${PROJECT_DIR}/${PROJECT_NAME}.xcodeproj/project.pbxproj\n";
 		};
 		4E51756AEE6CFE89EAD49829 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2207,425 +2256,71 @@
 /* Begin XCBuildConfiguration section */
 		26F72AA714032D2A00A7935E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C902F8E22D3EFE60018D654 /* Simplenote.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555A25526C5C001534D4 /* Project-Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "Simplenote/Simplenote-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Simplenote-Swift.h";
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Debug;
 		};
 		26F72AA814032D2A00A7935E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C902F8722D3ED910018D654 /* Simplenote.release.xcconfig */;
+			baseConfigurationReference = 3FAA555825526C5C001534D4 /* Project-Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				SDKROOT = macosx;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "Simplenote/Simplenote-Bridging-Header.h";
-				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Simplenote-Swift.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
 			name = Release;
 		};
 		26F72AAA14032D2A00A7935E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07BC80F83FE6EE9EED13F79B /* Pods-Automattic-Simplenote.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555625526C5C001534D4 /* Simplenote-Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = PZYM8XX95Q;
-				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/External\"",
-					"$(PROJECT_DIR)/External",
-					"$(PROJECT_DIR)/External/Sparkle/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-				);
-				GCC_WARN_UNDECLARED_SELECTOR = NO;
-				INFOPLIST_FILE = "Simplenote/Simplenote-Info-Hockey.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/../Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-					"${inherited}",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.beta;
-				PRODUCT_NAME = Simplenote;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		26F72AAB14032D2A00A7935E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */;
+			baseConfigurationReference = 3FAA555B25526C5C001534D4 /* Simplenote-Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Beta";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = PZYM8XX95Q;
-				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/External\"",
-					"$(PROJECT_DIR)/External",
-					"$(PROJECT_DIR)/External/Sparkle/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"SPARKLE_OTA=1",
-					"VERBOSE_LOGGING=1",
-					"${inherited}",
-					"PUBLIC_BUILD=1",
-				);
-				GCC_WARN_UNDECLARED_SELECTOR = NO;
-				INFOPLIST_FILE = "Simplenote/Simplenote-Info-Hockey.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/../Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-					"${inherited}",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.beta;
-				PRODUCT_NAME = Simplenote;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		466FFF2D17CC10A800399652 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12DA3C73E1DAA3D88413DAC5 /* Pods-Automattic-Simplenote-AppStore.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555025526C5C001534D4 /* Simplenote-AppStore-Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = PZYM8XX95Q;
-				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/External\"/**",
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_UNDECLARED_SELECTOR = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/Simplenote/Simplenote-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/../Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-					"${inherited}",
-					"-lc++",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac;
-				PRODUCT_NAME = Simplenote;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		466FFF2E17CC10A800399652 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */;
+			baseConfigurationReference = 3FAA554F25526C5C001534D4 /* Simplenote-AppStore-Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = PZYM8XX95Q;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/External\"/**",
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"${inherited}",
-					"APP_STORE_BUILD=1",
-				);
-				GCC_WARN_UNDECLARED_SELECTOR = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/Simplenote/Simplenote-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@loader_path/../Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "--deep";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-					"${inherited}",
-					"-lc++",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac;
-				PRODUCT_NAME = Simplenote;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=macosx*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Simplenote Mac Production Profile";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		B52D0EC6230DCAD7003F799D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FAA555425526C5C001534D4 /* SimplenoteSecrets-Debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		B52D0EC7230DCAD7003F799D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FAA554E25526C5C001534D4 /* SimplenoteSecrets-Release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 		B5CBB071241976230003C271 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22FCC18D2EF8FB85B32F04DD /* Pods-Automattic-SimplenoteTests.debug.xcconfig */;
+			baseConfigurationReference = 3FAA555925526C5C001534D4 /* SimplenoteTests-Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = PZYM8XX95Q;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SimplenoteTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simplenote.app/Contents/MacOS/Simplenote";
 			};
 			name = Debug;
 		};
 		B5CBB072241976230003C271 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */;
+			baseConfigurationReference = 3FAA555525526C5C001534D4 /* SimplenoteTests-Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = PZYM8XX95Q;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SimplenoteTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simplenote.app/Contents/MacOS/Simplenote";
 			};
 			name = Release;
 		};
