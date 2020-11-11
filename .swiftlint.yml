@@ -6,7 +6,7 @@ excluded:
   - External
 
 # Rules
-whitelist_rules:
+only_rules:
   # Colons should be next to the identifier when specifying a type.
   - colon
 
