@@ -30,7 +30,7 @@ DEPENDENCIES:
   - Simperium-OSX (= 0.8.30)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Automattic-Tracks-iOS
     - CocoaLumberjack
     - Reachability
@@ -48,4 +48,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 3e9e3836b359a135afd5e690bc752feda9e53e96
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.9.3
