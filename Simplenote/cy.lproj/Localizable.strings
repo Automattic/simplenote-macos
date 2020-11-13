@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-22 11:32:18+0000 */
+/* Translation-Revision-Date: 2020-11-06 10:53:26+0000 */
 /* Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: cy_GB */
@@ -88,6 +88,12 @@
 /* History Menu Action */
 "History" = "Hanes";
 
+/* Note Metrics Title */
+"Information" = "Information";
+
+/* Reference Last Modification Date */
+"Last modified" = "Last modified";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Log In";
@@ -165,6 +171,9 @@
 
 /* Displayed during a Publish Operation */
 "Publishing..." = "Publishing...";
+
+/* References Title */
+"References" = "Cyfeiriadau";
 
 /* Rename Tag Action */
 "Rename Tag" = "Rename Tag";
