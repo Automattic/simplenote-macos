@@ -341,6 +341,7 @@ extension NoteEditorViewController {
 
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
+        viewController.delegate = self
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
@@ -550,6 +551,25 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
 
         // Refreshes the note content in the editor, in case the popover was canceled
         didReceiveNewContent()
+    }
+}
+
+
+// MARK: - MetricsControllerDelegate
+//
+extension NoteEditorViewController: MetricsControllerDelegate {
+
+    /// When displaying a reference, we need to:
+    ///     A.  Switch to the `All Notes` Tag Row, if the target note isn't visible.
+    ///     B.  Select the target note
+    ///     C.  Refresh the Editor
+    ///
+    /// - Note: Since the AppDelegate holds references to all the things, the simplest approach is to just relay back the message.
+    /// - Important: We may need change this in the future, if support for detachable editors becomes a requirement.
+    ///
+    func metricsController(_ controller: MetricsViewController, selected note: Note) {
+        SimplenoteAppDelegate.shared().displayNote(simperiumKey: note.simperiumKey)
+        dismiss(controller)
     }
 }
 

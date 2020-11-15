@@ -7,11 +7,11 @@ struct NoteMetrics {
 
     /// Returns the total number of characters
     ///
-    let numberOfChars: Int
+    let numberOfChars: String
 
     /// Returns the total number of words
     ///
-    let numberOfWords: Int
+    let numberOfWords: String
 
     /// Creation Date (whenever we're in single selection mode)
     ///
@@ -29,9 +29,11 @@ struct NoteMetrics {
         let contents = notes.compactMap({ $0.content }).reduce("", +)
         let dateProviderNote = notes.count == 1 ? notes.first : nil
         let wordCount = NSSpellChecker.shared.countWords(in: contents, language: nil)
+        let safeWordCount = wordCount != -1 ? wordCount : .zero
 
-        numberOfChars = contents.count
-        numberOfWords = wordCount != -1 ? wordCount : .zero
+        numberOfChars = NumberFormatter.localizedString(from: contents.count, style: .decimal)
+
+        numberOfWords = NumberFormatter.localizedString(from: safeWordCount, style: .decimal)
 
         creationDate = dateProviderNote?.creationDate.map {
             DateFormatter.metricsFormatter.string(from: $0)

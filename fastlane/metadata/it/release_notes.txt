@@ -1,3 +1,0 @@
-- Risolto un bug che causava l'interruzione casuale della schermata di accesso
-- Digitando "[" ora potrai scegliere Note di interlink direttamente dall'editor
-- Nuova azione per ottenere assistenza nella finestra Informazioni di Simplenote

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
+/* Translation-Revision-Date: 2020-11-02 12:31:05+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -88,6 +88,12 @@
 /* History Menu Action */
 "History" = "Historik";
 
+/* Note Metrics Title */
+"Information" = "Information";
+
+/* Reference Last Modification Date */
+"Last modified" = "Senast modifierad";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Logga in";
@@ -165,6 +171,9 @@
 
 /* Displayed during a Publish Operation */
 "Publishing..." = "Publicerar…";
+
+/* References Title */
+"References" = "Referenser";
 
 /* Rename Tag Action */
 "Rename Tag" = "Byt namn på etikett";

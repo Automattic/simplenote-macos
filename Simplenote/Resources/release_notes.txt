@@ -1,3 +1,1 @@
-- Fixed a bug that randomly caused the login screen to cut off
-- Typing "[" will now allow you to pick Interlinking Notes right from the editor
-- New "Get Help" action in Simplenote's About window
+- Note Details now also display inbound references
