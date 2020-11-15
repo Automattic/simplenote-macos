@@ -88,6 +88,12 @@
 /* History Menu Action */
 "History" = "历史记录";
 
+/* Note Metrics Title */
+"Information" = "Information";
+
+/* Reference Last Modification Date */
+"Last modified" = "Last modified";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "登录";
@@ -165,6 +171,9 @@
 
 /* Displayed during a Publish Operation */
 "Publishing..." = "正在发布...";
+
+/* References Title */
+"References" = "References";
 
 /* Rename Tag Action */
 "Rename Tag" = "重命名标签";

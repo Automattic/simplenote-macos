@@ -88,6 +88,12 @@
 /* History Menu Action */
 "History" = "履歴";
 
+/* Note Metrics Title */
+"Information" = "Information";
+
+/* Reference Last Modification Date */
+"Last modified" = "Last modified";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "ログイン";
@@ -165,6 +171,9 @@
 
 /* Displayed during a Publish Operation */
 "Publishing..." = "公開中…";
+
+/* References Title */
+"References" = "References";
 
 /* Rename Tag Action */
 "Rename Tag" = "タグの名前を変更";
