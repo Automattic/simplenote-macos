@@ -285,7 +285,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods (~> 1)!
+  cocoapods (~> 1.8)!
   cocoapods-repo-update (~> 0.0.3)!
   dotenv!
   fastlane (~> 2)!
