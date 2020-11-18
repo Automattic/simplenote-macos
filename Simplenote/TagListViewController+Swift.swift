@@ -9,9 +9,7 @@ extension TagListViewController {
     ///
     @objc
     func refreshExtendedContentInsets() {
-        let titlebarHeight = view.window?.simplenoteTitlebarHeight ?? Settings.titlebarHeight
-        let topContentInset = titlebarHeight + Settings.searchBarHeight
-
+        let topContentInset = Settings.searchBarHeight
         guard clipView.contentInsets.top != topContentInset else {
             return
         }
