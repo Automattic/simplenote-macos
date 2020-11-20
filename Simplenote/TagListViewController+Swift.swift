@@ -5,6 +5,12 @@ import Foundation
 //
 extension TagListViewController {
 
+    @objc
+    func setupHeaderSeparator() {
+        headerSeparatorView.drawsBottomBorder = true
+        refreshHeaderSeparatorAlpha()
+    }
+
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     @objc
@@ -40,6 +46,35 @@ extension TagListViewController {
         }
 
         return state.rowAtIndex(selectedIndex)
+    }
+}
+
+
+// MARK: - Notifications
+//
+extension TagListViewController {
+
+    @objc
+    func startListeningToScrollNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(clipViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: clipView)
+    }
+
+    @objc
+    func clipViewDidScroll(sender: Notification) {
+        refreshHeaderSeparatorAlpha()
+    }
+
+    @objc
+    func refreshHeaderSeparatorAlpha() {
+        headerSeparatorView.alphaValue = alphaForHeaderSeparatorView
+    }
+
+    private var alphaForHeaderSeparatorView: CGFloat {
+        let absoluteOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
+        return min(max(absoluteOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -194,6 +229,7 @@ extension TagListViewController: SPTextFieldDelegate {
 // MARK: - Settings!
 //
 private enum Settings {
-    static let titlebarHeight = CGFloat(22)
+    static let maximumAlphaGradientOffset = CGFloat(30)
     static let searchBarHeight = CGFloat(52)
+    static let titlebarHeight = CGFloat(22)
 }

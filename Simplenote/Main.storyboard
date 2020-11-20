@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <visualEffectView blendingMode="behindWindow" material="menu" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="9tf-Lw-qRu">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="566"/>
                             </visualEffectView>
                             <scrollView borderType="none" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hn-Sh-zaZ">
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="618"/>
@@ -24,7 +24,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="1PS-xY-Vtk" customClass="SPTableView">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="618"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="566"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -148,7 +148,7 @@
                                             </connections>
                                         </tableView>
                                     </subviews>
-                                    <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    <edgeInsets key="contentInsets" left="0.0" right="0.0" top="52" bottom="0.0"/>
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="SFn-Uk-yVD"/>
@@ -163,22 +163,41 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <visualEffectView blendingMode="behindWindow" material="menu" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-PR-dA6">
+                                <rect key="frame" x="0.0" y="566" width="140" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="1Jn-yq-nkd"/>
+                                </constraints>
+                            </visualEffectView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="LCF-v1-7tj" userLabel="Header Separator View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="566" width="140" height="52"/>
+                            </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="W0l-PR-dA6" firstAttribute="top" secondItem="Muw-Yd-KYW" secondAttribute="top" id="143-Uc-OCx"/>
+                            <constraint firstItem="LCF-v1-7tj" firstAttribute="leading" secondItem="W0l-PR-dA6" secondAttribute="leading" id="59t-ro-30o"/>
                             <constraint firstAttribute="trailing" secondItem="2Hn-Sh-zaZ" secondAttribute="trailing" id="AZD-du-wyV"/>
                             <constraint firstItem="9tf-Lw-qRu" firstAttribute="leading" secondItem="Muw-Yd-KYW" secondAttribute="leading" id="CBl-CF-qi6"/>
+                            <constraint firstItem="LCF-v1-7tj" firstAttribute="bottom" secondItem="W0l-PR-dA6" secondAttribute="bottom" id="Mk8-8J-GGs"/>
+                            <constraint firstItem="W0l-PR-dA6" firstAttribute="leading" secondItem="Muw-Yd-KYW" secondAttribute="leading" id="PNh-J2-KN1"/>
+                            <constraint firstAttribute="trailing" secondItem="W0l-PR-dA6" secondAttribute="trailing" id="Vyf-mU-PIx"/>
+                            <constraint firstItem="LCF-v1-7tj" firstAttribute="top" secondItem="W0l-PR-dA6" secondAttribute="top" id="XpM-6E-WAJ"/>
                             <constraint firstAttribute="bottom" secondItem="2Hn-Sh-zaZ" secondAttribute="bottom" id="aWt-va-hvV"/>
                             <constraint firstAttribute="trailing" secondItem="9tf-Lw-qRu" secondAttribute="trailing" id="cYz-y6-jvd"/>
-                            <constraint firstItem="9tf-Lw-qRu" firstAttribute="top" secondItem="Muw-Yd-KYW" secondAttribute="top" id="cjN-94-D5D"/>
                             <constraint firstAttribute="bottom" secondItem="9tf-Lw-qRu" secondAttribute="bottom" id="hLs-ft-9Mk"/>
                             <constraint firstItem="2Hn-Sh-zaZ" firstAttribute="leading" secondItem="Muw-Yd-KYW" secondAttribute="leading" id="o7j-wo-hkv"/>
+                            <constraint firstItem="LCF-v1-7tj" firstAttribute="trailing" secondItem="W0l-PR-dA6" secondAttribute="trailing" id="tjZ-SU-BMZ"/>
                             <constraint firstItem="2Hn-Sh-zaZ" firstAttribute="top" secondItem="Muw-Yd-KYW" secondAttribute="top" id="uEi-hD-Qps"/>
+                            <constraint firstItem="9tf-Lw-qRu" firstAttribute="top" secondItem="LCF-v1-7tj" secondAttribute="bottom" id="y38-zs-lj1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundVisualEffectsView" destination="9tf-Lw-qRu" id="OsZ-lV-va3"/>
                         <outlet property="clipView" destination="elT-nR-XZN" id="LCl-3r-y3e"/>
+                        <outlet property="headerSeparatorView" destination="LCF-v1-7tj" id="hru-zD-RQL"/>
+                        <outlet property="headerVisualEffectsView" destination="W0l-PR-dA6" id="RxX-vO-ofp"/>
+                        <outlet property="scrollView" destination="2Hn-Sh-zaZ" id="q9P-tJ-TUc"/>
                         <outlet property="tableView" destination="1PS-xY-Vtk" id="JSq-mF-TJ5"/>
-                        <outlet property="visualEffectsView" destination="9tf-Lw-qRu" id="XDR-Tf-1aN"/>
                     </connections>
                 </viewController>
                 <customObject id="CM3-Mo-F1C" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -590,7 +609,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="508" height="518"/>
+                                            <size key="minSize" width="493" height="518"/>
                                             <size key="maxSize" width="10000000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>

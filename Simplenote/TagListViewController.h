@@ -27,7 +27,10 @@ extern NSString * const TagListDidEmptyTrashNotification;
                                                      NSDraggingDestination,
                                                      EditorControllerTagActionsDelegate>
 
-@property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *visualEffectsView;
+@property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *backgroundVisualEffectsView;
+@property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *headerVisualEffectsView;
+@property (nonatomic, strong, readwrite) IBOutlet BackgroundView        *headerSeparatorView;
+@property (nonatomic, strong, readwrite) IBOutlet NSScrollView          *scrollView;
 @property (nonatomic, strong, readwrite) IBOutlet NSClipView            *clipView;
 @property (nonatomic, strong, readwrite) IBOutlet NSTableView           *tableView;
 @property (nonatomic, strong,  readonly) NSMenu                         *tagDropdownMenu;
