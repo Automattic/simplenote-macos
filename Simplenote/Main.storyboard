@@ -553,7 +553,7 @@
                                             </button>
                                             <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-L9-Q1P" userLabel="More">
                                                 <rect key="frame" x="135" y="16" width="20" height="20"/>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ble-fl-POM">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis_outline" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ble-fl-POM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -823,7 +823,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_ellipsis" width="24" height="24"/>
+        <image name="button_ellipsis_outline" width="24" height="24"/>
         <image name="button_info" width="24" height="24"/>
         <image name="button_new_note" width="24" height="24"/>
         <image name="button_preview_off" width="24" height="24"/>

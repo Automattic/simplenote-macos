@@ -21,6 +21,10 @@ extension NSImage.Name {
     ///
     static let ellipsis = NSImage.Name("button_ellipsis")
 
+    /// Toolbar: Ellipsis Outline
+    ///
+    static let ellipsisOutline = NSImage.Name("button_ellipsis_outline")
+
     /// Toolbar: Info
     ///
     static let info = NSImage.Name("button_info")
