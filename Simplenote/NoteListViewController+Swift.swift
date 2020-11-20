@@ -38,6 +38,18 @@ extension NoteListViewController {
         topDividerView.drawsBottomBorder = true
     }
 
+    /// Refreshes the Top Content Insets: We'll match the Notes List Insets
+    ///
+    @objc
+    func refreshScrollInsets() {
+        let topContentInset = Settings.defaultTopInset
+        guard clipView.contentInsets.top != topContentInset else {
+            return
+        }
+
+        clipView.contentInsets.top = topContentInset
+    }
+
     /// Ensures only the actions that are valid can be performed
     ///
     @objc
@@ -140,6 +152,19 @@ private extension NoteListViewController {
 
     var isSelectionNotEmpty: Bool {
         selectedNotes().isEmpty == false
+    }
+}
+
+
+// MARK: - NSTableViewDelegate Helpers
+//
+extension NoteListViewController: NSTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let rowView = TableRowView()
+        rowView.selectedBackgroundColor = .simplenoteSecondarySelectedBackgroundColor
+        rowView.selectionInsets = .list
+        return rowView
     }
 }
 
@@ -347,4 +372,11 @@ extension NoteListViewController {
 
         arrayController.setSelectionIndex(previouslySelectedIndex)
     }
+}
+
+
+// MARK: - Settings!
+//
+private enum Settings {
+    static let defaultTopInset = CGFloat(12)
 }

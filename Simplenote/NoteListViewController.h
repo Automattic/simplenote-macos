@@ -16,13 +16,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NoteListViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
+@interface NoteListViewController : NSViewController <NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
 
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *backgroundView;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *topDividerView;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *statusField;
 @property (nonatomic, strong, readonly) IBOutlet NSProgressIndicator    *progressIndicator;
+@property (nonatomic, strong, readonly) IBOutlet NSClipView             *clipView;
 @property (nonatomic, strong, readonly) IBOutlet SPTableView            *tableView;
 @property (nonatomic, strong, readonly) IBOutlet NSView                 *searchView;
 @property (nonatomic, strong, readonly) IBOutlet NSSearchField          *searchField;
