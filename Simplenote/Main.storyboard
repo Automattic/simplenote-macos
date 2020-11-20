@@ -513,8 +513,8 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mdt-4X-jeq" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="566" width="508" height="52"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="337" y="0.0" width="155" height="52"/>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
+                                        <rect key="frame" x="346" y="0.0" width="146" height="52"/>
                                         <subviews>
                                             <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown">
                                                 <rect key="frame" x="0.0" y="16" width="20" height="20"/>
@@ -531,7 +531,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W50-6o-QGr" userLabel="Restore">
-                                                <rect key="frame" x="45" y="16" width="20" height="20"/>
+                                                <rect key="frame" x="42" y="16" width="20" height="20"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GVO-Z6-G3X">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -541,7 +541,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hVc-Cl-DHn" userLabel="Metrics">
-                                                <rect key="frame" x="90" y="16" width="20" height="20"/>
+                                                <rect key="frame" x="84" y="16" width="20" height="20"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="JJe-f9-FSN">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -554,7 +554,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-L9-Q1P" userLabel="More">
-                                                <rect key="frame" x="135" y="16" width="20" height="20"/>
+                                                <rect key="frame" x="126" y="16" width="20" height="20"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis_outline" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ble-fl-POM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
