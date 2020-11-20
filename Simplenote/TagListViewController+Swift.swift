@@ -195,5 +195,5 @@ extension TagListViewController: SPTextFieldDelegate {
 //
 private enum Settings {
     static let titlebarHeight = CGFloat(22)
-    static let searchBarHeight = CGFloat(48)
+    static let searchBarHeight = CGFloat(52)
 }
