@@ -245,9 +245,7 @@ extension InterlinkViewController: SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        let rowView = TableRowView()
-        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
-        return rowView
+        TableRowView(style: .fullWidth)
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {

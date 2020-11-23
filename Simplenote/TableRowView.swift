@@ -6,61 +6,97 @@ import Foundation
 @objcMembers
 class TableRowView : NSTableRowView {
 
-    /// Background Color to be applied whenever the Row is selected
-    ///
-    var selectedBackgroundColor: NSColor?
-
-    /// Selection's Corner Radius
-    ///
-    var selectionCornerRadius: CGFloat = Settings.defaultCornerRadius {
-        didSet {
-            needsDisplay = true
-        }
-    }
-
     /// Selection's Inner Selection Insets
     ///
-    var selectionInsets: TableRowInset = .sidebar {
-        didSet {
-            needsDisplay = true
-        }
+    let style: TableRowStyle
+
+    /// Designated Initialzer
+    ///
+    init(style: TableRowStyle) {
+        self.style = style
+        super.init(frame: .zero)
     }
 
+    private override init(frame frameRect: NSRect) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
 
     // MARK: - Overridden
 
     override func drawSelection(in dirtyRect: NSRect) {
-        guard selectionHighlightStyle != .none, let backgroundColor = selectedBackgroundColor else {
+        guard selectionHighlightStyle != .none else {
             return
         }
 
-        let insets = selectionInsets.vector
+        let insets = style.insets
         let targetRect = bounds.insetBy(dx: insets.dx, dy: insets.dy)
-        backgroundColor.setFill()
-        NSBezierPath(roundedRect: targetRect, xRadius: selectionCornerRadius, yRadius: selectionCornerRadius).fill()
+        style.selectionColor.setFill()
+        NSBezierPath(roundedRect: targetRect, xRadius: style.cornerRadius, yRadius: style.cornerRadius).fill()
     }
 }
 
 
 
-private enum Settings {
-    static let defaultCornerRadius = CGFloat(6)
-}
-
-
-enum TableRowInset {
+// MARK: - Defines a TableRowView Presentation Style
+//
+enum TableRowStyle {
     case sidebar
     case list
+    case fullWidth
 }
 
-extension TableRowInset {
-    var vector: CGVector {
+extension TableRowStyle {
+
+    var cornerRadius: CGFloat {
+        guard #available(macOS 11, *) else {
+            return Metrics.legacyCornerRadius
+        }
+
         switch self {
-        case .sidebar:
-            return CGVector(dx: 14, dy: .zero)
-        case .list:
-            return CGVector(dx: 12, dy: .zero)
+        case .fullWidth:
+            return Metrics.legacyCornerRadius
+        default:
+            return Metrics.roundedCornerRadius
         }
     }
+
+    var insets: CGVector {
+        guard #available(macOS 11, *) else {
+            return Metrics.fullWidthInsets
+        }
+
+        switch self {
+        case .fullWidth:
+            return Metrics.fullWidthInsets
+        case .list:
+            return Metrics.listInsets
+        case .sidebar:
+            return Metrics.sidebarInsets
+        }
+    }
+
+    var selectionColor: NSColor {
+        switch self {
+        case .fullWidth, .sidebar:
+            return .simplenoteSelectedBackgroundColor
+        case .list:
+            return .simplenoteSecondarySelectedBackgroundColor
+        }
+    }
+}
+
+
+// MARK: - Constants
+//
+private enum Metrics {
+    static let legacyCornerRadius   = CGFloat.zero
+    static let roundedCornerRadius  = CGFloat(6)
+    static let fullWidthInsets      = CGVector.zero
+    static let listInsets           = CGVector(dx: 12, dy: .zero)
+    static let sidebarInsets        = CGVector(dx: 14, dy: .zero)
 }

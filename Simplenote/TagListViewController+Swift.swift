@@ -118,9 +118,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        let rowView = TableRowView()
-        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
-        return rowView
+        TableRowView(style: .sidebar)
     }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {

@@ -161,10 +161,7 @@ private extension NoteListViewController {
 extension NoteListViewController: NSTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        let rowView = TableRowView()
-        rowView.selectedBackgroundColor = .simplenoteSecondarySelectedBackgroundColor
-        rowView.selectionInsets = .list
-        return rowView
+        TableRowView(style: .list)
     }
 }
 
