@@ -13,6 +13,12 @@ extension NoteListViewController {
         tableView.rowHeight = NoteTableCellView.rowHeight
         tableView.selectionHighlightStyle = .regular
         tableView.backgroundColor = .clear
+
+        guard #available(macOS 11.0, *) else {
+            return
+        }
+
+        tableView.style = .fullWidth
     }
 
     /// Setup: Progress Indicator

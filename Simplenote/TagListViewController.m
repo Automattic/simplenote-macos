@@ -63,6 +63,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
+    [self setupTableView];
     [self setupHeaderSeparator];
 
     [self startListeningToSettingsNotifications];

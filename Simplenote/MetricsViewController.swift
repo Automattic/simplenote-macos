@@ -119,7 +119,7 @@ private extension MetricsViewController {
     }
 
     func setupTableView() {
-        guard #available(OSX 11.0, *) else {
+        guard #available(macOS 11.0, *) else {
             return
         }
 

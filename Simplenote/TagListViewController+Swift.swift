@@ -5,6 +5,19 @@ import Foundation
 //
 extension TagListViewController {
 
+    /// Setup: TableView
+    ///
+    @objc
+    func setupTableView() {
+        guard #available(macOS 11.0, *) else {
+            return
+        }
+
+        tableView.style = .fullWidth
+    }
+
+    /// Setup: Top Header
+    ///
     @objc
     func setupHeaderSeparator() {
         headerSeparatorView.drawsBottomBorder = true
