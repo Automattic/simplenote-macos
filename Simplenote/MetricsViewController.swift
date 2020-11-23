@@ -119,9 +119,7 @@ private extension MetricsViewController {
     }
 
     func setupTableView() {
-        if #available(macOS 11, *) {
-            tableView.style = .fullWidth
-        }
+        tableView.ensureStyleIsFullWidth()
     }
 
     var mustSetupResultsController: Bool {

@@ -9,9 +9,7 @@ extension TagListViewController {
     ///
     @objc
     func setupTableView() {
-        if #available(macOS 11, *) {
-            tableView.style = .fullWidth
-        }
+        tableView.ensureStyleIsFullWidth()
     }
 
     /// Setup: Top Header
