@@ -14,11 +14,9 @@ extension NoteListViewController {
         tableView.selectionHighlightStyle = .regular
         tableView.backgroundColor = .clear
 
-        guard #available(macOS 11.0, *) else {
-            return
+        if #available(macOS 11, *) {
+            tableView.style = .fullWidth
         }
-
-        tableView.style = .fullWidth
     }
 
     /// Setup: Progress Indicator

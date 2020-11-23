@@ -113,11 +113,9 @@ private extension InterlinkViewController {
         tableView.target = self
         tableView.doubleAction = #selector(performInterlinkInsert)
 
-        guard #available(macOS 11.0, *) else {
-            return
+        if #available(macOS 11, *) {
+            tableView.style = .fullWidth
         }
-
-        tableView.style = .fullWidth
     }
 
     func setupTrackingAreas() {
