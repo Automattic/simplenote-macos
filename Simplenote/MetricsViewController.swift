@@ -85,6 +85,7 @@ class MetricsViewController: NSViewController {
         super.viewDidLoad()
         setupEntityObserver()
         setupResultsControllerIfNeeded()
+        setupTableView()
         startListeningToNotifications()
         refreshInterface()
     }
@@ -115,6 +116,14 @@ private extension MetricsViewController {
         }
 
         try? resultsController.performFetch()
+    }
+
+    func setupTableView() {
+        guard #available(OSX 11.0, *) else {
+            return
+        }
+
+        tableView.style = .fullWidth
     }
 
     var mustSetupResultsController: Bool {
