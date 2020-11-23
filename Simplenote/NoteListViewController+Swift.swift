@@ -161,7 +161,9 @@ private extension NoteListViewController {
 extension NoteListViewController: NSTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        TableRowView(style: .list)
+        let rowView = TableRowView()
+        rowView.style = .list
+        return rowView
     }
 }
 

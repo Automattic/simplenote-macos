@@ -264,7 +264,9 @@ extension MetricsViewController: NSTableViewDataSource {
 extension MetricsViewController: NSTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        return TableRowView()
+        let rowView = TableRowView()
+        rowView.style = .fullWidth
+        return rowView
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {

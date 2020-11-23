@@ -118,7 +118,9 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        TableRowView(style: .sidebar)
+        let rowView = TableRowView()
+        rowView.style = .sidebar
+        return rowView
     }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {

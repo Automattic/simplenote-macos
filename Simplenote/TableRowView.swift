@@ -8,21 +8,10 @@ class TableRowView : NSTableRowView {
 
     /// Selection's Inner Selection Insets
     ///
-    let style: TableRowStyle
-
-    /// Designated Initialzer
-    ///
-    init(style: TableRowStyle) {
-        self.style = style
-        super.init(frame: .zero)
-    }
-
-    private override init(frame frameRect: NSRect) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var style: TableRowStyle = .fullWidth {
+        didSet {
+            needsDisplay = true
+        }
     }
 
 

@@ -245,7 +245,9 @@ extension InterlinkViewController: SPTableViewDelegate {
     }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        TableRowView(style: .fullWidth)
+        let rowView = TableRowView()
+        rowView.style = .fullWidth
+        return rowView
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
