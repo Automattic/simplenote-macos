@@ -23,6 +23,7 @@
 @property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
 @property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
 @property (nonatomic, strong) IBOutlet BackgroundView       *topDividerView;
+@property (nonatomic, strong) IBOutlet NSTextField          *titleLabel;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusField;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (nonatomic, strong) IBOutlet NSClipView           *clipView;
@@ -392,6 +393,7 @@
 {
     [self refreshEnabledActions];
     [self refreshPredicate];
+    [self refreshTitle];
     [self selectFirstRow];
 }
 

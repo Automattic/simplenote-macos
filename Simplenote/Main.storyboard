@@ -235,10 +235,21 @@
                                             <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
                                         </connections>
                                     </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hhw-aN-z6h">
+                                        <rect key="frame" x="14" y="17" width="230" height="19"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Title" id="8eL-Pk-hE4">
+                                            <font key="font" metaFont="systemBold" size="16"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="35i-gS-rGO"/>
+                                    <constraint firstItem="hhw-aN-z6h" firstAttribute="centerY" secondItem="weN-h2-sJL" secondAttribute="centerY" id="5vg-8O-5ju"/>
                                     <constraint firstAttribute="height" constant="52" id="Reo-KD-mIh"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="hhw-aN-z6h" secondAttribute="trailing" constant="16" id="XIf-2n-ctF"/>
+                                    <constraint firstItem="hhw-aN-z6h" firstAttribute="leading" secondItem="weN-h2-sJL" secondAttribute="leading" constant="16" id="b69-Qt-5qs"/>
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="weN-h2-sJL" secondAttribute="centerY" id="hPz-Ca-aJu"/>
                                 </constraints>
                             </view>
@@ -424,6 +435,7 @@
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
+                        <outlet property="titleLabel" destination="hhw-aN-z6h" id="TeN-D9-RDy"/>
                         <outlet property="topDividerView" destination="s2j-Xp-jGd" id="7D1-cA-1N9"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>

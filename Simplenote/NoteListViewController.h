@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *backgroundView;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *topDividerView;
+@property (nonatomic, strong, readonly) IBOutlet NSTextField            *titleLabel;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *statusField;
 @property (nonatomic, strong, readonly) IBOutlet NSProgressIndicator    *progressIndicator;
 @property (nonatomic, strong, readonly) IBOutlet NSClipView             *clipView;

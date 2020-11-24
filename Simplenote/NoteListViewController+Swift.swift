@@ -52,6 +52,15 @@ extension NoteListViewController {
         addNoteButton.isEnabled = !viewingTrash
     }
 
+    @objc
+    func refreshTitle() {
+        guard let title = SimplenoteAppDelegate.shared().tagListViewController.selectedRow?.title else {
+            return
+        }
+
+        titleLabel.stringValue = title
+    }
+
     /// Refreshes the receiver's style
     ///
     @objc
