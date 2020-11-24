@@ -32,7 +32,6 @@
 @property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
 @property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
 @property (nonatomic, strong) NSString                      *oldTags;
-@property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
 @property (nonatomic, assign) BOOL                          preserveSelection;
 @end
@@ -397,25 +396,6 @@
 }
 
 
-#pragma mark - NSSearchFieldDelegate
-
-- (void)controlTextDidBeginEditing:(NSNotification *)notification
-{
-    [SPTracker trackListNotesSearched];
-    self.searching = YES;
-}
-
-- (void)controlTextDidChange:(NSNotification *)notification
-{
-    [self selectRow:0];
-}
-
-- (void)controlTextDidEndEditing:(NSNotification *)notification
-{
-    self.searching = NO;
-}
-
-
 #pragma mark - Actions
 
 - (void)deleteNote:(Note *)note
@@ -439,14 +419,6 @@
 {
     // TODO: Move the New Note Handler to a (New) NoteController!
     [self.noteEditorViewController newNoteWasPressed:sender];
-}
-
-
-#pragma mark - IBActions
-
-- (IBAction)filterNotes:(id)sender
-{
-    [self refreshPredicate];
 }
 
 @end

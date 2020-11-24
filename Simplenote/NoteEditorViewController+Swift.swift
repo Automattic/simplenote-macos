@@ -182,11 +182,39 @@ extension NoteEditorViewController {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
     }
+}
 
-    @IBAction
-    func performSearch(_ sender: Any) {
+
+// MARK: - NSSearchFieldDelegate
+//
+extension NoteEditorViewController: NSSearchFieldDelegate {
+
+    public func controlTextDidBeginEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        searchDelegate?.editorControllerDidBeginSearch(self)
+    }
+
+    public func controlTextDidChange(_ obj: Notification) {
+        guard let sender = obj.object as? NSSearchField else {
+            return
+        }
+
+        searchDelegate?.editorController(self, didSearchKeyword: sender.stringValue)
+    }
+
+    public func controlTextDidEndEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        searchDelegate?.editorControllerDidEndSearch(self)
     }
 }
+
+
 // MARK: - NSMenuItemValidation
 //
 extension NoteEditorViewController: NSMenuItemValidation {

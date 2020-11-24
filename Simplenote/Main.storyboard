@@ -556,7 +556,6 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </searchFieldCell>
                                                 <connections>
-                                                    <action selector="performSearch:" target="owM-kh-Bm6" id="Dxx-rb-etd"/>
                                                     <outlet property="delegate" destination="owM-kh-Bm6" id="PeJ-VQ-DId"/>
                                                 </connections>
                                             </searchField>

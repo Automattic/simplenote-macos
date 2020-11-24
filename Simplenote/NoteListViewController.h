@@ -31,8 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *noteListMenu;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
 
-@property (nonatomic, assign, readonly) BOOL                            searching;
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
+@property (nonatomic, strong, nullable) NSString                        *searchKeyword;
 
 - (void)loadNotes;
 - (void)reloadSynchronously;
@@ -47,7 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reloadDataAndPreserveSelection;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
-- (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
 

@@ -65,6 +65,19 @@ extension NoteListViewController {
 }
 
 
+// MARK: - State
+//
+extension NoteListViewController {
+
+    /// Indicates if we're in Search Mode
+    ///
+    @objc
+    var searching: Bool {
+        searchKeyword?.isEmpty == false
+    }
+}
+
+
 // MARK: - Filtering
 //
 extension NoteListViewController {
@@ -106,13 +119,12 @@ extension NoteListViewController {
     /// Returns a NSPredicate that will filter the current Search Text (if any)
     ///
     private var searchTextPredicates: [NSPredicate] {
-        let searchText = searchField.stringValue
-        guard !searchText.isEmpty else {
+        guard let keyword = searchKeyword, !keyword.isEmpty else {
             return []
         }
 
         return [
-            NSPredicate.predicateForNotes(searchText: searchText)
+            NSPredicate.predicateForNotes(searchText: keyword)
         ]
     }
 }
@@ -195,6 +207,26 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
         reloadRow(forNoteKey: simperiumKey)
+    }
+}
+
+
+// MARK: - EditorControllerSearchDelegate
+//
+extension NoteListViewController: EditorControllerSearchDelegate {
+
+    public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
+        SPTracker.trackListNotesSearched()
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
+        selectRow(.zero)
+        searchKeyword = keyword
+        refreshPredicate()
+    }
+
+    public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
+        searchKeyword = nil
     }
 }
 
