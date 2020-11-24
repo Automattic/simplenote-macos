@@ -231,11 +231,11 @@ extension NoteListViewController: EditorControllerSearchDelegate {
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         searchKeyword = keyword
         refreshPredicate()
-        selectRow(.zero)
     }
 
     public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
         searchKeyword = nil
+        refreshPredicate()
     }
 }
 
