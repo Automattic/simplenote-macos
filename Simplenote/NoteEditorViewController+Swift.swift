@@ -24,12 +24,6 @@ extension NoteEditorViewController {
     }
 
     @objc
-    func setupTopDivider() {
-        topDividerView.alphaValue = .zero
-        topDividerView.drawsBottomBorder = true
-    }
-
-    @objc
     func setupTagsField() {
         tagsField.delegate = self
         tagsField.focusRingType = .none
@@ -37,6 +31,17 @@ extension NoteEditorViewController {
         tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
         tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
+    }
+
+    @objc
+    func refreshScrollInsets() {
+        let topContentInset = Settings.defaultTopInset
+        guard clipView.contentInsets.top != topContentInset else {
+            return
+        }
+
+        clipView.contentInsets.top = topContentInset
+        scrollView.scrollerInsets.top = topContentInset
     }
 }
 
@@ -116,7 +121,6 @@ extension NoteEditorViewController {
         statusTextField.textColor               = .simplenoteSecondaryTextColor
         tagsField.textColor                     = .simplenoteTextColor
         tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
-        topDividerView.borderColor              = .simplenoteDividerColor
 
         if let note = note {
             storage.refreshStyle(markdownEnabled: note.markdown)
@@ -440,13 +444,13 @@ extension NoteEditorViewController {
     func displayMarkdownPreview(_ note: Note) {
         markdownViewController.startDisplayingContents(of: note)
         attachMarkdownViewController()
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
     @objc
     func dismissMarkdownPreview() {
         detachMarkdownViewController()
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
     private func attachMarkdownViewController() {
@@ -485,19 +489,21 @@ extension NoteEditorViewController {
 
     @objc
     func clipViewDidScroll(sender: Notification) {
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
-    private func refreshTopDividerAlpha() {
-        topDividerView.alphaValue = alphaForTopDivider
+    private func refreshHeaderState() {
+        let newAlpha = alphaForHeader
+        headerEffectView.alphaValue = newAlpha
+        headerEffectView.state = newAlpha > Settings.activeAlphaThreshold ? .active : .inactive
     }
 
-    private var alphaForTopDivider: CGFloat {
+    private var alphaForHeader: CGFloat {
         guard markdownViewController.parent == nil else {
             return AppKitConstants.alpha1_0
         }
 
-        let contentOffSetY = scrollView.documentVisibleRect.origin.y
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
         return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
     }
 }
@@ -739,7 +745,9 @@ private extension NoteEditorViewController {
 // MARK: - Settings
 //
 private enum Settings {
-    static let maximumAlphaGradientOffset = CGFloat(30)
+    static let defaultTopInset = CGFloat(64)
+    static let maximumAlphaGradientOffset = CGFloat(14)
+    static let activeAlphaThreshold = CGFloat(0.5)
 
     static var searchFieldPlaceholderString: NSAttributedString {
         let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
