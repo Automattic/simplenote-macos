@@ -215,41 +215,14 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dfi-py-m83" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="s2j-Xp-jGd" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
-                            </customView>
-                            <view translatesAutoresizingMaskIntoConstraints="NO" id="weN-h2-sJL" userLabel="HeaderView">
-                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
-                                <subviews>
-                                    <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
-                                        <rect key="frame" x="258" y="16" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="mDL-V4-Sng"/>
-                                            <constraint firstAttribute="height" constant="20" id="oUz-t6-8il"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRY-CA-4Eu">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="35i-gS-rGO"/>
-                                    <constraint firstAttribute="height" constant="52" id="Reo-KD-mIh"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="weN-h2-sJL" secondAttribute="centerY" id="hPz-Ca-aJu"/>
-                                </constraints>
-                            </view>
                             <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-c6-dqi">
-                                <rect key="frame" x="0.0" y="0.0" width="294" height="566"/>
+                                <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zul-ko-TNO">
-                                    <rect key="frame" x="0.0" y="0.0" width="294" height="566"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="72" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="q9F-rT-PZ2" customClass="SPTableView">
-                                            <rect key="frame" x="0.0" y="0.0" width="294" height="554"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="294" height="606"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
@@ -375,10 +348,39 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="OEr-We-MDq">
-                                    <rect key="frame" x="278" y="0.0" width="16" height="566"/>
+                                    <rect key="frame" x="278" y="0.0" width="16" height="618"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="vxX-pk-HGm">
+                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="P81-ae-CJn"/>
+                                </constraints>
+                            </visualEffectView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
+                                <subviews>
+                                    <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
+                                        <rect key="frame" x="258" y="16" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="mDL-V4-Sng"/>
+                                            <constraint firstAttribute="height" constant="20" id="oUz-t6-8il"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRY-CA-4Eu">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="EAu-95-CpX"/>
+                                    <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="OO0-gy-TNv"/>
+                                </constraints>
+                            </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
                                 <rect key="frame" x="10" y="323" width="274" height="23"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Notes" id="5l7-bS-Xdk">
@@ -393,23 +395,23 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Dfi-py-m83" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="0no-zJ-IpG"/>
-                            <constraint firstItem="weN-h2-sJL" firstAttribute="trailing" secondItem="s2j-Xp-jGd" secondAttribute="trailing" id="2fC-QI-CQl"/>
-                            <constraint firstItem="2I0-KH-uBu" firstAttribute="top" secondItem="weN-h2-sJL" secondAttribute="bottom" constant="220" id="5IF-k2-BrN"/>
-                            <constraint firstItem="weN-h2-sJL" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="5v9-sz-uMi"/>
+                            <constraint firstAttribute="trailing" secondItem="vxX-pk-HGm" secondAttribute="trailing" id="6Vv-3m-dh6"/>
                             <constraint firstAttribute="trailing" secondItem="Dfi-py-m83" secondAttribute="trailing" id="8vm-DU-QCc"/>
-                            <constraint firstAttribute="trailing" secondItem="weN-h2-sJL" secondAttribute="trailing" id="AIj-4D-kwX"/>
+                            <constraint firstItem="JDR-c6-dqi" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="CST-qB-GhQ"/>
+                            <constraint firstItem="dMC-MU-RmS" firstAttribute="top" secondItem="vxX-pk-HGm" secondAttribute="top" id="Fzb-fb-aW4"/>
+                            <constraint firstItem="dMC-MU-RmS" firstAttribute="leading" secondItem="vxX-pk-HGm" secondAttribute="leading" id="HYR-Vk-AxE"/>
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="centerX" secondItem="PJl-uT-IxK" secondAttribute="centerX" id="Hze-oN-sBR"/>
-                            <constraint firstItem="weN-h2-sJL" firstAttribute="bottom" secondItem="s2j-Xp-jGd" secondAttribute="bottom" id="Ki5-5F-rTy"/>
+                            <constraint firstItem="vxX-pk-HGm" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="MXl-4Q-xsZ"/>
                             <constraint firstAttribute="trailing" secondItem="2I0-KH-uBu" secondAttribute="trailing" constant="12" id="VcD-9X-4Pu"/>
+                            <constraint firstItem="vxX-pk-HGm" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="aZp-JB-f4c"/>
                             <constraint firstItem="JDR-c6-dqi" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="b4N-TU-lud"/>
                             <constraint firstItem="2I0-KH-uBu" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" constant="12" id="bOP-Pg-zTH"/>
-                            <constraint firstItem="JDR-c6-dqi" firstAttribute="top" secondItem="weN-h2-sJL" secondAttribute="bottom" id="dWE-bs-wYy"/>
                             <constraint firstAttribute="bottom" secondItem="JDR-c6-dqi" secondAttribute="bottom" id="h9H-wI-zNE"/>
-                            <constraint firstItem="weN-h2-sJL" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="hz3-6p-QGc"/>
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="top" secondItem="2I0-KH-uBu" secondAttribute="bottom" constant="15" id="jEQ-80-63D"/>
-                            <constraint firstItem="weN-h2-sJL" firstAttribute="leading" secondItem="s2j-Xp-jGd" secondAttribute="leading" id="ogi-AJ-Z6a"/>
+                            <constraint firstItem="2I0-KH-uBu" firstAttribute="top" secondItem="vxX-pk-HGm" secondAttribute="bottom" constant="220" id="kT0-Rz-hoF"/>
+                            <constraint firstItem="dMC-MU-RmS" firstAttribute="bottom" secondItem="vxX-pk-HGm" secondAttribute="bottom" id="mAP-Tb-GSM"/>
                             <constraint firstAttribute="trailing" secondItem="JDR-c6-dqi" secondAttribute="trailing" id="qX6-5i-V99"/>
-                            <constraint firstItem="s2j-Xp-jGd" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="toC-SO-xT8"/>
+                            <constraint firstItem="dMC-MU-RmS" firstAttribute="trailing" secondItem="vxX-pk-HGm" secondAttribute="trailing" id="snN-gy-EPy"/>
                             <constraint firstItem="Dfi-py-m83" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="w5l-T3-xAY"/>
                             <constraint firstAttribute="bottom" secondItem="Dfi-py-m83" secondAttribute="bottom" id="yNl-Uf-RoX"/>
                         </constraints>
@@ -419,12 +421,12 @@
                         <outlet property="arrayController" destination="QdT-mP-kT8" id="7HE-P5-XlT"/>
                         <outlet property="backgroundView" destination="Dfi-py-m83" id="OsW-dl-qhP"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
-                        <outlet property="headerView" destination="weN-h2-sJL" id="5Hg-DU-e1C"/>
+                        <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
+                        <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
-                        <outlet property="topDividerView" destination="s2j-Xp-jGd" id="7D1-cA-1N9"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
                 </viewController>

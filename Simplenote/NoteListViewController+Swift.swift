@@ -26,13 +26,6 @@ extension NoteListViewController {
         progressIndicator.isHidden = true
     }
 
-    /// Setup: Top Divider
-    ///
-    @objc
-    func setupTopDivider() {
-        topDividerView.drawsBottomBorder = true
-    }
-
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     @objc
@@ -43,6 +36,7 @@ extension NoteListViewController {
         }
 
         clipView.contentInsets.top = topContentInset
+        scrollView.scrollerInsets.top = topContentInset
     }
 
     /// Ensures only the actions that are valid can be performed
@@ -57,7 +51,6 @@ extension NoteListViewController {
     @objc
     func applyStyle() {
         backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
-        topDividerView.borderColor = .simplenoteDividerColor
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
         statusField.textColor = .simplenoteSecondaryTextColor
         reloadDataAndPreserveSelection()
@@ -72,7 +65,7 @@ extension NoteListViewController {
     /// Indicates if we're in Search Mode
     ///
     @objc
-    var searching: Bool {
+    var isSearching: Bool {
         searchKeyword?.isEmpty == false
     }
 }
@@ -140,6 +133,36 @@ private extension NoteListViewController {
 
     var isSelectionNotEmpty: Bool {
         selectedNotes().isEmpty == false
+    }
+}
+
+
+// MARK: - Notifications
+//
+extension NoteListViewController {
+
+    @objc
+    func startListeningToScrollNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(clipViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: clipView)
+    }
+
+    @objc
+    func clipViewDidScroll(sender: Notification) {
+        refreshHeaderState()
+    }
+
+    private func refreshHeaderState() {
+        let newAlpha = alphaForHeader
+        headerEffectView.alphaValue = newAlpha
+        headerEffectView.state = newAlpha > Settings.activeAlphaThreshold ? .active : .inactive
+    }
+
+    private var alphaForHeader: CGFloat {
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
+        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -382,5 +405,7 @@ extension NoteListViewController {
 // MARK: - Settings!
 //
 private enum Settings {
-    static let defaultTopInset = CGFloat(12)
+    static let defaultTopInset = CGFloat(64)
+    static let maximumAlphaGradientOffset = CGFloat(14)
+    static let activeAlphaThreshold = CGFloat(0.5)
 }

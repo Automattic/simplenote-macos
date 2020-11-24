@@ -22,12 +22,12 @@
 @interface NoteListViewController () <NSTableViewDelegate>
 @property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
 @property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
-@property (nonatomic, strong) IBOutlet BackgroundView       *topDividerView;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusField;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (nonatomic, strong) IBOutlet NSScrollView         *scrollView;
 @property (nonatomic, strong) IBOutlet NSClipView           *clipView;
 @property (nonatomic, strong) IBOutlet SPTableView          *tableView;
-@property (nonatomic, strong) IBOutlet NSView               *headerView;
+@property (nonatomic, strong) IBOutlet NSVisualEffectView   *headerEffectView;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
 @property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
 @property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
@@ -81,7 +81,7 @@
 
     [self setupProgressIndicator];
     [self setupTableView];
-    [self setupTopDivider];
+    [self startListeningToScrollNotifications];
 }
 
 - (void)viewWillAppear
@@ -265,12 +265,12 @@
     if (numNotes > 0 && self.noteEditorViewController.note == nil) {
         [self selectRow:0];
     }
-    
+
     self.statusField.hidden = numNotes > 0;
-    
+
     if (numNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
-    } else if (self.searching) {
+    } else if (self.isSearching) {
         [self selectRow:0];
     }
 }
