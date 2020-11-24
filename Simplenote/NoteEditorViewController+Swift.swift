@@ -8,6 +8,11 @@ import SimplenoteInterlinks
 extension NoteEditorViewController {
 
     @objc
+    func setupSearchBar() {
+        searchField.centersPlaceholder = false
+    }
+
+    @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
         statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
