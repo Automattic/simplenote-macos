@@ -259,6 +259,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
+    [self ensureSearchIsDismissed];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -267,6 +268,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
+    [self ensureSearchIsDismissed];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
@@ -473,7 +475,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         [newNote addTag:currentTag];
     }
 
-    [self endSearch:self];
+    [self ensureSearchIsDismissed];
     [self displayNote:newNote];
     [self save];
 

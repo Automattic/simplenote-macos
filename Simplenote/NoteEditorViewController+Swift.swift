@@ -182,6 +182,15 @@ extension NoteEditorViewController {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
     }
+
+    @objc
+    func ensureSearchIsDismissed() {
+        guard searchField.stringValue.isEmpty == false else {
+            return
+        }
+
+        endSearch(self)
+    }
 }
 
 

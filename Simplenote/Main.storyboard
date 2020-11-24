@@ -544,7 +544,7 @@
                                                     <action selector="moreWasPressed:" target="owM-kh-Bm6" id="jNg-pL-Pc6"/>
                                                 </connections>
                                             </button>
-                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
+                                            <searchField verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
                                                 <rect key="frame" x="168" y="12" width="230" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
