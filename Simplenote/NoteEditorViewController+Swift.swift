@@ -178,6 +178,11 @@ extension NoteEditorViewController {
     }
 
     @IBAction
+    func performSearch(_ sender: Any) {
+        searchDelegate?.editorController(self, didSearchKeyword: searchField.stringValue)
+    }
+
+    @IBAction
     func endSearch(_ sender: Any) {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
@@ -204,14 +209,6 @@ extension NoteEditorViewController: NSSearchFieldDelegate {
         }
 
         searchDelegate?.editorControllerDidBeginSearch(self)
-    }
-
-    public func controlTextDidChange(_ obj: Notification) {
-        guard let sender = obj.object as? NSSearchField else {
-            return
-        }
-
-        searchDelegate?.editorController(self, didSearchKeyword: sender.stringValue)
     }
 
     public func controlTextDidEndEditing(_ obj: Notification) {

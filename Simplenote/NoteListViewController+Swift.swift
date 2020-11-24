@@ -235,7 +235,6 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
         searchKeyword = nil
-        refreshPredicate()
     }
 }
 
