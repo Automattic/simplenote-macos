@@ -218,7 +218,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="s2j-Xp-jGd" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                             </customView>
-                            <view translatesAutoresizingMaskIntoConstraints="NO" id="weN-h2-sJL" userLabel="SearchView">
+                            <view translatesAutoresizingMaskIntoConstraints="NO" id="weN-h2-sJL" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
                                     <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvh-C8-b0b" userLabel="SearchField">
@@ -435,6 +435,7 @@
                         <outlet property="arrayController" destination="QdT-mP-kT8" id="7HE-P5-XlT"/>
                         <outlet property="backgroundView" destination="Dfi-py-m83" id="OsW-dl-qhP"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
+                        <outlet property="headerView" destination="weN-h2-sJL" id="5Hg-DU-e1C"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
