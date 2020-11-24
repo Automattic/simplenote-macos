@@ -179,7 +179,7 @@ extension NoteEditorViewController {
 
     @IBAction
     func endSearch(_ sender: Any) {
-        searchField.stringValue = String()
+        searchField.cancelSearch()
         searchField.resignFirstResponder()
     }
 

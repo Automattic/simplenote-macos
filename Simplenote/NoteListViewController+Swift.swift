@@ -172,9 +172,6 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-        searchField.cancelSearch()
-        searchField.resignFirstResponder()
-
         reloadSynchronously()
         selectRow(forNoteKey: simperiumKey)
     }

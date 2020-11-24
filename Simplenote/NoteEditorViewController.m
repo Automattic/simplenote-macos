@@ -473,6 +473,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         [newNote addTag:currentTag];
     }
 
+    [self endSearch:self];
     [self displayNote:newNote];
     [self save];
 
