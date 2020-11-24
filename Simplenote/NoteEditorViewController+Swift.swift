@@ -182,6 +182,10 @@ extension NoteEditorViewController {
         searchField.stringValue = String()
         searchField.resignFirstResponder()
     }
+
+    @IBAction
+    func performSearch(_ sender: Any) {
+    }
 }
 // MARK: - NSMenuItemValidation
 //

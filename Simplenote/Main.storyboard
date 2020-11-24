@@ -256,6 +256,7 @@
                                     <constraint firstAttribute="bottom" secondItem="cvh-C8-b0b" secondAttribute="bottom" constant="11" id="Gz4-wE-pXe"/>
                                     <constraint firstAttribute="height" constant="52" id="Reo-KD-mIh"/>
                                     <constraint firstItem="cvh-C8-b0b" firstAttribute="leading" secondItem="weN-h2-sJL" secondAttribute="leading" constant="12" id="uDy-dn-4qz"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="weN-h2-sJL" secondAttribute="centerY" id="hPz-Ca-aJu"/>
                                 </constraints>
                             </view>
                             <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-c6-dqi">
@@ -572,8 +573,8 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </searchFieldCell>
                                                 <connections>
-                                                    <action selector="filterNotes:" target="JtV-0Z-Zh8" id="aDo-FQ-3qt"/>
-                                                    <outlet property="delegate" destination="JtV-0Z-Zh8" id="YnA-Oi-izd"/>
+                                                    <action selector="performSearch:" target="owM-kh-Bm6" id="Dxx-rb-etd"/>
+                                                    <outlet property="delegate" destination="owM-kh-Bm6" id="PeJ-VQ-DId"/>
                                                 </connections>
                                             </searchField>
                                         </subviews>
@@ -748,7 +749,7 @@
                         <outlet property="moreActionsMenu" destination="O2x-0v-azu" id="jSV-Gb-XpN"/>
                         <outlet property="noteEditor" destination="84J-wh-qoX" id="MHx-LW-NED"/>
                         <outlet property="scrollView" destination="3M9-OX-Hpx" id="fps-1H-haD"/>
-                        <outlet property="searchField" destination="YLv-zp-fRS" id="xGX-p6-V8f"/>
+                        <outlet property="searchField" destination="YLv-zp-fRS" id="AFT-Zt-Kry"/>
                         <outlet property="statusImageView" destination="Dj2-Ut-m6l" id="vqt-cc-z7a"/>
                         <outlet property="statusTextField" destination="VFr-Z3-HgO" id="UWY-3k-pwd"/>
                         <outlet property="tagsField" destination="U3o-VN-U2S" id="qmL-AY-16b"/>
