@@ -475,7 +475,7 @@
 {
     // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
     // to override a search keyboard shortcut...which ends up calling searchAction: here
-    [self.noteListViewController searchAction:sender];
+    [self.noteEditorViewController searchAction:sender];
 }
 
 - (IBAction)toggleSidebarAction:(id)sender

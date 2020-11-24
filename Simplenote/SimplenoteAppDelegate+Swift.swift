@@ -126,7 +126,7 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func searchWasPressed(_ sender: Any) {
-        noteListViewController.searchAction(sender)
+        noteEditorViewController.searchAction(sender)
     }
 
     @IBAction

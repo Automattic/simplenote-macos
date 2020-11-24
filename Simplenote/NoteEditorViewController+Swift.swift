@@ -335,6 +335,11 @@ extension NoteEditorViewController {
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
     }
+
+    @IBAction
+    func searchAction(_ sender: Any) {
+        view.window?.makeFirstResponder(searchField)
+    }
 }
 
 

@@ -445,11 +445,6 @@
     [self.noteEditorViewController newNoteWasPressed:sender];
 }
 
-- (void)searchAction:(id)sender
-{
-    [self.view.window makeFirstResponder:self.searchField];
-}
-
 
 #pragma mark - IBActions
 
