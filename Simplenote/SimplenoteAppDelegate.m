@@ -456,9 +456,9 @@
     // Remove WordPress token
     [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
     
+    [self.noteEditorViewController endSearch:self];
     [self.noteEditorViewController displayNote:nil];
     [self.tagListViewController reset];
-    [self.noteListViewController reset];
     [self.noteListViewController setWaitingForIndex:YES];
     
     [_simperium signOutAndRemoveLocalData:YES completion:^{

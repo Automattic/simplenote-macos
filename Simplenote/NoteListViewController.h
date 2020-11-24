@@ -36,7 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadNotes;
 - (void)reloadSynchronously;
-- (void)reset;
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (NSArray<Note *> *)selectedNotes;
 - (void)setNotesPredicate:(NSPredicate *)predicate;

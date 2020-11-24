@@ -119,11 +119,6 @@
     return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
 }
 
-- (void)reset
-{
-    [self.searchField setStringValue:@""];
-}
-
 - (void)setNotesPredicate:(NSPredicate *)predicate
 {
     [self.arrayController setFetchPredicate:predicate];
@@ -419,6 +414,7 @@
 {
     self.searching = NO;
 }
+
 
 #pragma mark - Actions
 

@@ -168,6 +168,16 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Search API
+//
+extension NoteEditorViewController {
+
+    @IBAction
+    func endSearch(_ sender: Any) {
+        searchField.stringValue = String()
+        searchField.resignFirstResponder()
+    }
+}
 // MARK: - NSMenuItemValidation
 //
 extension NoteEditorViewController: NSMenuItemValidation {
