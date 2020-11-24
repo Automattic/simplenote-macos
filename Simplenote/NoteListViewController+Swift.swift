@@ -26,13 +26,6 @@ extension NoteListViewController {
         progressIndicator.isHidden = true
     }
 
-    /// Setup: SearchBar
-    ///
-    @objc
-    func setupSearchBar() {
-        searchField.centersPlaceholder = false
-    }
-
     /// Setup: Top Divider
     ///
     @objc
@@ -66,17 +59,8 @@ extension NoteListViewController {
         backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
         topDividerView.borderColor = .simplenoteDividerColor
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
-        searchField.textColor = .simplenoteTextColor
-        searchField.placeholderAttributedString = searchFieldPlaceholderString
         statusField.textColor = .simplenoteSecondaryTextColor
         reloadDataAndPreserveSelection()
-
-        // Legacy Support: High Sierra
-        if #available(macOS 10.14, *) {
-            return
-        }
-
-        searchField.appearance = .simplenoteAppearance
     }
 }
 
@@ -137,16 +121,6 @@ extension NoteListViewController {
 // MARK: - Helpers
 //
 private extension NoteListViewController {
-
-    var searchFieldPlaceholderString: NSAttributedString {
-        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
-        let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
-            .font: NSFont.simplenoteSecondaryTextFont
-        ]
-
-        return NSAttributedString(string: text, attributes: attributes)
-    }
 
     var simperium: Simperium {
         SimplenoteAppDelegate.shared().simperium

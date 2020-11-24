@@ -81,7 +81,6 @@
                                                object: nil];
 
     [self setupProgressIndicator];
-    [self setupSearchBar];
     [self setupTableView];
     [self setupTopDivider];
 }
