@@ -3,6 +3,7 @@
 - Removed Main Window's Titlebar #719
 - Adopting BigSur Inset Style #721
 - Relocated Search Bar #722
+- Updated minimum required OS to 10.14 #723
 
 2.4
 ---
