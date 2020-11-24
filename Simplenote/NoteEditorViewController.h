@@ -16,6 +16,7 @@
 @class NoteEditorViewController;
 @class NoteListViewController;
 @class MarkdownViewController;
+@class Storage;
 @class TagsField;
 @class ToolbarView;
 
@@ -62,6 +63,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong) IBOutlet TagsField                                *tagsField;
 
 @property (nonatomic, strong, readonly) MarkdownViewController                  *markdownViewController;
+@property (nonatomic, strong, readonly) Storage                                 *storage;
 @property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) InterlinkWindowController               *interlinkWindowController;
