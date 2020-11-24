@@ -27,8 +27,7 @@
 @property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
 @property (nonatomic, strong) IBOutlet NSClipView           *clipView;
 @property (nonatomic, strong) IBOutlet SPTableView          *tableView;
-@property (nonatomic, strong) IBOutlet NSView               *searchView;
-@property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
+@property (nonatomic, strong) IBOutlet NSView               *headerView;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
 @property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
 @property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;

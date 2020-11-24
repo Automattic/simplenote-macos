@@ -437,8 +437,6 @@
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
-                        <outlet property="searchField" destination="cvh-C8-b0b" id="R6h-sR-ND1"/>
-                        <outlet property="searchView" destination="weN-h2-sJL" id="Pbw-Ih-6lA"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
                         <outlet property="topDividerView" destination="s2j-Xp-jGd" id="7D1-cA-1N9"/>
