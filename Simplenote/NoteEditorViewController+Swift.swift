@@ -173,6 +173,11 @@ extension NoteEditorViewController {
 extension NoteEditorViewController {
 
     @IBAction
+    func beginSearch(_ sender: Any) {
+        view.window?.makeFirstResponder(searchField)
+    }
+
+    @IBAction
     func endSearch(_ sender: Any) {
         searchField.stringValue = String()
         searchField.resignFirstResponder()
@@ -344,11 +349,6 @@ extension NoteEditorViewController {
 
         SPTracker.trackEditorVersionsAccessed()
         displayVersionsPopover(from: toolbarView.moreButton, for: note)
-    }
-
-    @IBAction
-    func searchAction(_ sender: Any) {
-        view.window?.makeFirstResponder(searchField)
     }
 }
 
