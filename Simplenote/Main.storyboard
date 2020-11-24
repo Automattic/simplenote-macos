@@ -511,7 +511,7 @@
                                 <rect key="frame" x="0.0" y="566" width="508" height="52"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="346" y="0.0" width="146" height="52"/>
+                                        <rect key="frame" x="94" y="0.0" width="398" height="52"/>
                                         <subviews>
                                             <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown">
                                                 <rect key="frame" x="0.0" y="16" width="20" height="20"/>
@@ -560,6 +560,22 @@
                                                     <action selector="moreWasPressed:" target="owM-kh-Bm6" id="jNg-pL-Pc6"/>
                                                 </connections>
                                             </button>
+                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
+                                                <rect key="frame" x="168" y="12" width="230" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
+                                                    <constraint firstAttribute="width" constant="230" id="yv6-TC-X7T"/>
+                                                </constraints>
+                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </searchFieldCell>
+                                                <connections>
+                                                    <action selector="filterNotes:" target="JtV-0Z-Zh8" id="aDo-FQ-3qt"/>
+                                                    <outlet property="delegate" destination="JtV-0Z-Zh8" id="YnA-Oi-izd"/>
+                                                </connections>
+                                            </searchField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="hVc-Cl-DHn" firstAttribute="height" secondItem="TI9-l9-KN8" secondAttribute="height" id="2wO-UI-11h"/>
@@ -574,8 +590,10 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -730,6 +748,7 @@
                         <outlet property="moreActionsMenu" destination="O2x-0v-azu" id="jSV-Gb-XpN"/>
                         <outlet property="noteEditor" destination="84J-wh-qoX" id="MHx-LW-NED"/>
                         <outlet property="scrollView" destination="3M9-OX-Hpx" id="fps-1H-haD"/>
+                        <outlet property="searchField" destination="YLv-zp-fRS" id="xGX-p6-V8f"/>
                         <outlet property="statusImageView" destination="Dj2-Ut-m6l" id="vqt-cc-z7a"/>
                         <outlet property="statusTextField" destination="VFr-Z3-HgO" id="UWY-3k-pwd"/>
                         <outlet property="tagsField" destination="U3o-VN-U2S" id="qmL-AY-16b"/>
