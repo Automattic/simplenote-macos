@@ -78,7 +78,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (void)displayNotes:(NSArray<Note *> *)selectedNotes;
 - (void)didReceiveNewContent;
 - (void)willReceiveNewContent;
-- (void)applyStyle;
 - (void)fixChecklistColoring;
 - (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
