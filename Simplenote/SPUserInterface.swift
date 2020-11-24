@@ -26,20 +26,12 @@ class SPUserInterface: NSObject {
     ///
     @objc
     static var isSystemThemeSelected: Bool {
-        guard #available(macOS 10.14, *) else {
-            return false
-        }
-
         return Options.shared.themeName == nil
     }
 
     /// Indicates if macOS is in Dark Mode
     ///
     static var isSystemInDarkMode: Bool {
-        guard #available(macOS 10.14, *) else {
-            return false
-        }
-
         /// Note:
         ///  -   Yes. We must restort to UserDefaults to check if the system is in Dark Mode.
         ///  -   Reason: `NSApp.effectiveAppearance.isDark` might fall out of sync, in specific conditions, such as...

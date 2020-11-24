@@ -15,7 +15,7 @@ extension NoteEditorViewController {
     @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
-        statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
+        statusImageView.contentTintColor = .simplenotePlaceholderTintColor
     }
 
     @objc
@@ -121,13 +121,6 @@ extension NoteEditorViewController {
         if let note = note {
             storage.refreshStyle(markdownEnabled: note.markdown)
         }
-
-        // Legacy Support: High Sierra
-        if #available(macOS 10.14, *) {
-            return
-        }
-
-        searchField.appearance = .simplenoteAppearance
     }
 
     /// Refreshes the Toolbar's Inner State

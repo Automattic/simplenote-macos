@@ -67,7 +67,7 @@ extension NoteListViewController {
     func applyStyle() {
         backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
         topDividerView.borderColor = .simplenoteDividerColor
-        addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
+        addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         reloadDataAndPreserveSelection()
     }

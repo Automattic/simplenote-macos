@@ -218,8 +218,6 @@
 		B5609AF224EF17270097777A /* SimplenoteFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AF124EF17270097777A /* SimplenoteFoundation */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
-		B56EA2AA244F4CC70061EAD8 /* NSImageView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */; };
-		B56EA2AB244F4CC70061EAD8 /* NSImageView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */; };
 		B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA78E2437C672002CB9FF /* ColorStudio.swift */; };
 		B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA78E2437C672002CB9FF /* ColorStudio.swift */; };
 		B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA78F2437C672002CB9FF /* NSColor+Theme.swift */; };
@@ -318,8 +316,6 @@
 		B5D21CB824881EF600D57A34 /* Array+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D21CB624881EF600D57A34 /* Array+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
 		B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
-		B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D58879244F890100345916 /* NSButton+Simplenote.swift */; };
-		B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D58879244F890100345916 /* NSButton+Simplenote.swift */; };
 		B5DD0F912476309000C8DD41 /* NoteTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD0F902476309000C8DD41 /* NoteTableCellView.swift */; };
 		B5DD0F922476309000C8DD41 /* NoteTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD0F902476309000C8DD41 /* NoteTableCellView.swift */; };
 		B5E061772450AEDA0076111A /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E061762450AEDA0076111A /* ToolbarView.swift */; };
@@ -350,8 +346,6 @@
 		B5EB3AD52458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */; };
 		B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
 		B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
-		B5EB3ADA2458E8430089858D /* NSApplication+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD92458E8430089858D /* NSApplication+Simplenote.swift */; };
-		B5EB3ADB2458E8430089858D /* NSApplication+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD92458E8430089858D /* NSApplication+Simplenote.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -580,7 +574,6 @@
 		B55E98FB1BE03E3F0087CA48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPBucket+Simplenote.swift"; sourceTree = "<group>"; };
 		B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+Simplenote.swift"; sourceTree = "<group>"; };
 		B56FA78E2437C672002CB9FF /* ColorStudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorStudio.swift; sourceTree = "<group>"; };
 		B56FA78F2437C672002CB9FF /* NSColor+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Theme.swift"; sourceTree = "<group>"; };
 		B56FA7972437C79D002CB9FF /* SPUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUserInterface.swift; sourceTree = "<group>"; };
@@ -664,7 +657,6 @@
 		B5D21CB624881EF600D57A34 /* Array+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
-		B5D58879244F890100345916 /* NSButton+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Simplenote.swift"; sourceTree = "<group>"; };
 		B5DD0F902476309000C8DD41 /* NoteTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCellView.swift; sourceTree = "<group>"; };
 		B5E061762450AEDA0076111A /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		B5E073B424BF8BD900139912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -683,7 +675,6 @@
 		B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+Simplenote.m"; sourceTree = "<group>"; };
 		B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimplenoteAppDelegate+Swift.swift"; sourceTree = "<group>"; };
 		B5EB3AD62458CDB50089858D /* ThemeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeOption.swift; sourceTree = "<group>"; };
-		B5EB3AD92458E8430089858D /* NSApplication+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -1042,14 +1033,11 @@
 				B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */,
 				B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */,
 				B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */,
-				B5EB3AD92458E8430089858D /* NSApplication+Simplenote.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
-				B5D58879244F890100345916 /* NSButton+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
 				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
-				B56EA2A9244F4CC70061EAD8 /* NSImageView+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
 				B54F9A6624D0B21D00BCF754 /* NSNotification+Simplenote.swift */,
 				B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */,
@@ -1783,7 +1771,6 @@
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
-				B5EB3ADA2458E8430089858D /* NSApplication+Simplenote.swift in Sources */,
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
@@ -1851,7 +1838,6 @@
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
 				B52197862541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */,
-				B5D5887A244F890100345916 /* NSButton+Simplenote.swift in Sources */,
 				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
@@ -1884,7 +1870,6 @@
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
 				B5F3150924496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
-				B56EA2AA244F4CC70061EAD8 /* NSImageView+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
@@ -1934,7 +1919,6 @@
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
-				B5EB3ADB2458E8430089858D /* NSApplication+Simplenote.swift in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
@@ -1997,7 +1981,6 @@
 				B586C063245CCD35009508EC /* SplitViewController.swift in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
-				B5D5887B244F890100345916 /* NSButton+Simplenote.swift in Sources */,
 				B52197872541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */,
 				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
@@ -2032,7 +2015,6 @@
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
 				B5F3150A24496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
-				B56EA2AB244F4CC70061EAD8 /* NSImageView+Simplenote.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
