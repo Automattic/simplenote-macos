@@ -221,18 +221,6 @@
                             <view translatesAutoresizingMaskIntoConstraints="NO" id="weN-h2-sJL" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
-                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvh-C8-b0b" userLabel="SearchField">
-                                        <rect key="frame" x="12" y="11" width="230" height="30"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="Umi-3H-Bn4">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </searchFieldCell>
-                                        <connections>
-                                            <action selector="filterNotes:" target="JtV-0Z-Zh8" id="azo-As-k30"/>
-                                            <outlet property="delegate" destination="JtV-0Z-Zh8" id="iol-N5-Gsb"/>
-                                        </connections>
-                                    </searchField>
                                     <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                         <rect key="frame" x="258" y="16" width="20" height="20"/>
                                         <constraints>
@@ -250,12 +238,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="35i-gS-rGO"/>
-                                    <constraint firstItem="cvh-C8-b0b" firstAttribute="top" secondItem="weN-h2-sJL" secondAttribute="top" constant="11" id="7z3-yq-ana"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="cvh-C8-b0b" secondAttribute="trailing" constant="16" id="EaC-ed-3nU"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="cvh-C8-b0b" secondAttribute="centerY" id="GdR-Rc-HQZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="cvh-C8-b0b" secondAttribute="bottom" constant="11" id="Gz4-wE-pXe"/>
                                     <constraint firstAttribute="height" constant="52" id="Reo-KD-mIh"/>
-                                    <constraint firstItem="cvh-C8-b0b" firstAttribute="leading" secondItem="weN-h2-sJL" secondAttribute="leading" constant="12" id="uDy-dn-4qz"/>
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="weN-h2-sJL" secondAttribute="centerY" id="hPz-Ca-aJu"/>
                                 </constraints>
                             </view>
