@@ -103,6 +103,33 @@ extension NoteEditorViewController {
         noteEditor.isHidden = isDisplayingMarkdown
     }
 
+    /// Refreshes the Editor's UX
+    ///
+    @objc
+    func refreshStyle() {
+        backgroundView.fillColor                = .simplenoteBackgroundColor
+        bottomDividerView.borderColor           = .simplenoteDividerColor
+        noteEditor.insertionPointColor          = .simplenoteTextColor
+        noteEditor.textColor                    = .simplenoteTextColor
+        searchField.textColor                   = .simplenoteTextColor
+        searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
+        statusTextField.textColor               = .simplenoteSecondaryTextColor
+        tagsField.textColor                     = .simplenoteTextColor
+        tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
+        topDividerView.borderColor              = .simplenoteDividerColor
+
+        if let note = note {
+            storage.refreshStyle(markdownEnabled: note.markdown)
+        }
+
+        // Legacy Support: High Sierra
+        if #available(macOS 10.14, *) {
+            return
+        }
+
+        searchField.appearance = .simplenoteAppearance
+    }
+
     /// Refreshes the Toolbar's Inner State
     ///
     @objc
@@ -666,4 +693,13 @@ private extension NoteEditorViewController {
 //
 private enum Settings {
     static let maximumAlphaGradientOffset = CGFloat(30)
+
+    static var searchFieldPlaceholderString: NSAttributedString {
+        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
+
+        return NSAttributedString(string: text, attributes: [
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
+            .font: NSFont.simplenoteSecondaryTextFont
+        ])
+    }
 }
