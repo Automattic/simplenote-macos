@@ -247,7 +247,7 @@
                                                             <rect key="frame" x="10" y="0.0" width="274" height="72"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YP5-KE-GnO" userLabel="Pin Image View">
-                                                                    <rect key="frame" x="18" y="50" width="12" height="12"/>
+                                                                    <rect key="frame" x="12" y="50" width="12" height="12"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="12" id="3hZ-oW-r14"/>
                                                                         <constraint firstAttribute="width" constant="12" id="GP8-O5-fwy"/>
@@ -255,13 +255,13 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_pin" id="wSK-Lh-kY8"/>
                                                                 </imageView>
                                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6i-es-ABJ">
-                                                                    <rect key="frame" x="36" y="15" width="210" height="49"/>
+                                                                    <rect key="frame" x="30" y="15" width="222" height="49"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="251.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8v7-8o-Tsk">
-                                                                            <rect key="frame" x="0.0" y="32" width="210" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="32" width="222" height="17"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdO-10-DWt" userLabel="Title Label">
-                                                                                    <rect key="frame" x="-2" y="0.0" width="202" height="17"/>
+                                                                                    <rect key="frame" x="-2" y="0.0" width="214" height="17"/>
                                                                                     <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Note Title!" placeholderString="" allowsEditingTextAttributes="YES" id="yy1-Iz-EEZ">
                                                                                         <font key="font" metaFont="systemMedium" size="14"/>
                                                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -272,7 +272,7 @@
                                                                                     </attributedString>
                                                                                 </textField>
                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DYD-qJ-8kp" userLabel="Shared Image View">
-                                                                                    <rect key="frame" x="198" y="3" width="12" height="12"/>
+                                                                                    <rect key="frame" x="210" y="3" width="12" height="12"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="12" id="h39-F8-6Cf"/>
                                                                                         <constraint firstAttribute="width" constant="12" id="oAn-YZ-vIs"/>
@@ -290,7 +290,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="749" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1z2-Wd-bPU" userLabel="Body Label">
-                                                                            <rect key="frame" x="-2" y="0.0" width="214" height="30"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="226" height="30"/>
                                                                             <textFieldCell key="cell" lineBreakMode="charWrapping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Entered of cordial do on no hearted. Yet agreed whence and unable" placeholderString="" allowsEditingTextAttributes="YES" id="f5t-6G-s13">
                                                                                 <font key="font" metaFont="cellTitle"/>
                                                                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -317,11 +317,11 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="Y6i-es-ABJ" firstAttribute="top" secondItem="bde-Ei-vv5" secondAttribute="top" constant="8" id="5pu-Wf-nhG"/>
-                                                                <constraint firstItem="Y6i-es-ABJ" firstAttribute="leading" secondItem="bde-Ei-vv5" secondAttribute="leading" constant="36" id="BTW-kr-NIC"/>
+                                                                <constraint firstItem="Y6i-es-ABJ" firstAttribute="leading" secondItem="bde-Ei-vv5" secondAttribute="leading" constant="30" id="BTW-kr-NIC"/>
                                                                 <constraint firstItem="8v7-8o-Tsk" firstAttribute="centerY" secondItem="YP5-KE-GnO" secondAttribute="centerY" id="lce-PS-EYS"/>
-                                                                <constraint firstItem="YP5-KE-GnO" firstAttribute="leading" secondItem="bde-Ei-vv5" secondAttribute="leading" constant="18" id="s9T-qT-2jd"/>
+                                                                <constraint firstItem="YP5-KE-GnO" firstAttribute="leading" secondItem="bde-Ei-vv5" secondAttribute="leading" constant="12" id="s9T-qT-2jd"/>
                                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Y6i-es-ABJ" secondAttribute="bottom" constant="8" id="tVE-Mi-trA"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Y6i-es-ABJ" secondAttribute="trailing" constant="28" id="xMo-0i-fuZ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Y6i-es-ABJ" secondAttribute="trailing" constant="22" id="xMo-0i-fuZ"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="bodyTextField" destination="1z2-Wd-bPU" id="sFg-Zg-Puc"/>
@@ -517,7 +517,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="508" height="570"/>
+                                            <size key="minSize" width="493" height="570"/>
                                             <size key="maxSize" width="10000000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
