@@ -284,6 +284,8 @@
 		B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F372425651700DD5B34 /* TestConstants.swift */; };
 		B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
 		B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
+		B5B1CBCD256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */; };
+		B5B1CBCE256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */; };
 		B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B5F33C243244F100F31720 /* TextViewInputHandlerTests.swift */; };
 		B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */; };
 		B5BB8CD524DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */; };
@@ -637,6 +639,7 @@
 		B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5B17F372425651700DD5B34 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
+		B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScrollView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5B5F33C243244F100F31720 /* TextViewInputHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewInputHandlerTests.swift; sourceTree = "<group>"; };
 		B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSearchField+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
@@ -1046,6 +1049,7 @@
 				B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */,
 				B5985ACD24293E360044EDE9 /* NSRegularExpression+Simplenote.swift */,
 				B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */,
+				B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */,
 				B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */,
 				B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
@@ -1871,6 +1875,7 @@
 				B5F3150924496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
+				B5B1CBCD256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
@@ -2006,6 +2011,7 @@
 				B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				B53BF1A124AC1FB800938C34 /* Version.swift in Sources */,
+				B5B1CBCE256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
 				B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
