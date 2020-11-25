@@ -114,8 +114,8 @@ extension NoteEditorViewController {
     func refreshStyle() {
         backgroundView.fillColor                = .simplenoteBackgroundColor
         bottomDividerView.borderColor           = .simplenoteDividerColor
-        noteEditor.insertionPointColor          = .simplenoteTextColor
-        noteEditor.textColor                    = .simplenoteTextColor
+        noteEditor.insertionPointColor          = .simplenoteEditorTextColor
+        noteEditor.textColor                    = .simplenoteEditorTextColor
         searchField.textColor                   = .simplenoteTextColor
         searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
         statusTextField.textColor               = .simplenoteSecondaryTextColor

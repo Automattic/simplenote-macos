@@ -109,7 +109,7 @@ private extension Theme {
 
     static var bodyAttributes: [NSAttributedString.Key: AnyObject] {
         return [
-            .foregroundColor:   NSColor.simplenoteTextColor,
+            .foregroundColor:   NSColor.simplenoteEditorTextColor,
             .font:              NSFont.systemFont(ofSize: fontSize),
             .paragraphStyle:    bodyParagraphStyle
         ]
