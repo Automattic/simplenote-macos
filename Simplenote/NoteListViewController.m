@@ -19,12 +19,13 @@
 @import Simperium_OSX;
 
 
-@interface NoteListViewController ()
+@interface NoteListViewController () <NSTableViewDelegate>
 @property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
 @property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
 @property (nonatomic, strong) IBOutlet BackgroundView       *topDividerView;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusField;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (nonatomic, strong) IBOutlet NSClipView           *clipView;
 @property (nonatomic, strong) IBOutlet SPTableView          *tableView;
 @property (nonatomic, strong) IBOutlet NSView               *searchView;
 @property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
@@ -90,6 +91,12 @@
 {
     [super viewWillAppear];
     [self applyStyle];
+}
+
+- (void)viewWillLayout
+{
+    [super viewWillLayout];
+    [self refreshScrollInsets];
 }
 
 - (void)loadNotes
@@ -225,13 +232,6 @@
     NSInteger row = [self rowForNoteKey:key];
     [self selectRow:row];
     [self scrollToRow:row];
-}
-
-- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
-{
-    TableRowView *rowView = [TableRowView new];
-    rowView.selectedBackgroundColor = [NSColor simplenoteSecondarySelectedBackgroundColor];
-    return rowView;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row

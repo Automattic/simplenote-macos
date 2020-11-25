@@ -5,6 +5,15 @@ import Foundation
 //
 extension TagListViewController {
 
+    /// Setup: TableView
+    ///
+    @objc
+    func setupTableView() {
+        tableView.ensureStyleIsFullWidth()
+    }
+
+    /// Setup: Top Header
+    ///
     @objc
     func setupHeaderSeparator() {
         headerSeparatorView.drawsBottomBorder = true
@@ -15,7 +24,7 @@ extension TagListViewController {
     ///
     @objc
     func refreshExtendedContentInsets() {
-        let topContentInset = Settings.searchBarHeight
+        let topContentInset = Settings.defaultTopInset
         guard clipView.contentInsets.top != topContentInset else {
             return
         }
@@ -119,7 +128,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
-        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        rowView.style = .sidebar
         return rowView
     }
 
@@ -229,7 +238,7 @@ extension TagListViewController: SPTextFieldDelegate {
 // MARK: - Settings!
 //
 private enum Settings {
+    static let defaultTopInset = CGFloat(64)
     static let maximumAlphaGradientOffset = CGFloat(30)
-    static let searchBarHeight = CGFloat(52)
     static let titlebarHeight = CGFloat(22)
 }

@@ -142,7 +142,7 @@ private enum Metrics {
     static let lineHeightForBody = Fonts.body.boundingRectForFont.height.rounded(.up)
     static let maximumNumberOfTitleLines = 1
     static let maximumNumberOfBodyLines = 2
-    static let outerVerticalStackViewInsets = NSEdgeInsets(top: 8, left: 24, bottom: 8, right: 16)
+    static let outerVerticalStackViewInsets = NSEdgeInsets(top: 11, left: 24, bottom: 11, right: 16)
     static let outerVerticalStackViewSpacing = CGFloat(2)
 }
 

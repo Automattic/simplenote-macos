@@ -49,4 +49,18 @@ extension NSTableView {
         scrollRowToVisible(.zero)
         reloadData()
     }
+
+    /// Whenever we're compiling Simplenote in macOS +11 **AND** we're running the binary in macOS +11, we'll make sure the
+    /// receiver's style is set to Full Width.
+    ///
+    func ensureStyleIsFullWidth() {
+// BigSur compile-time guard
+#if canImport(WidgetKit)
+        guard #available(macOS 11, *) else {
+            return
+        }
+
+        style = .fullWidth
+#endif
+    }
 }
