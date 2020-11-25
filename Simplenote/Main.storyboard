@@ -361,6 +361,14 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
+                                        <rect key="frame" x="14" y="17" width="39" height="19"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Title" id="VNw-0O-CIA">
+                                            <font key="font" metaFont="systemBold" size="16"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                     <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                         <rect key="frame" x="258" y="16" width="20" height="20"/>
                                         <constraints>
@@ -377,8 +385,11 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="7yr-5F-Pa7"/>
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="EAu-95-CpX"/>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="OO0-gy-TNv"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="16" id="Q6T-vJ-qmu"/>
+                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="rhf-28-XBu"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
@@ -427,6 +438,7 @@
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
+                        <outlet property="titleLabel" destination="sHv-fV-cSL" id="gt3-Pp-KH6"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
                 </viewController>
@@ -501,7 +513,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="508" height="570"/>
+                                            <size key="minSize" width="493" height="570"/>
                                             <size key="maxSize" width="10000000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>

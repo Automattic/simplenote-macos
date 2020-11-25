@@ -35,8 +35,6 @@ class SplitView: NSSplitView {
                 performMojaveRedrawHack()
                 return
             }
-
-            performHighSierraRedawHack()
         }
     }
 
@@ -67,13 +65,5 @@ private extension SplitView {
         let oldAppearance = window.appearance
         window.appearance = nil
         window.appearance = oldAppearance
-    }
-
-    /// Rick-Level Hack:
-    /// Forces the receiver to re-render, by toggling it's orientation back and forth.
-    ///
-    func performHighSierraRedawHack() {
-        isVertical = false
-        isVertical = true
     }
 }

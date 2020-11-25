@@ -121,7 +121,7 @@ private extension TagTableCellView {
         let tintColor: NSColor = selected ? .simplenoteSelectedTextColor : .simplenoteTextColor
         let formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength, disallowSpaces: true)
 
-        iconImageView.tintImage(color: tintColor)
+        iconImageView.contentTintColor = tintColor
         nameTextField.isSelected = selected
         nameTextField.textRegularColor = .simplenoteTextColor
         nameTextField.textSelectionColor = .simplenoteSelectedTextColor

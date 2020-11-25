@@ -15,7 +15,7 @@ extension NoteEditorViewController {
     @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
-        statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
+        statusImageView.contentTintColor = .simplenotePlaceholderTintColor
     }
 
     @objc
@@ -125,13 +125,6 @@ extension NoteEditorViewController {
         if let note = note {
             storage.refreshStyle(markdownEnabled: note.markdown)
         }
-
-        // Legacy Support: High Sierra
-        if #available(macOS 10.14, *) {
-            return
-        }
-
-        searchField.appearance = .simplenoteAppearance
     }
 
     /// Refreshes the Toolbar's Inner State
@@ -182,9 +175,23 @@ extension NoteEditorViewController {
     }
 
     @IBAction
+    func performSearch(_ sender: Any) {
+        searchDelegate?.editorController(self, didSearchKeyword: searchField.stringValue)
+    }
+
+    @IBAction
     func endSearch(_ sender: Any) {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
+    }
+
+    @objc
+    func ensureSearchIsDismissed() {
+        guard searchField.stringValue.isEmpty == false else {
+            return
+        }
+
+        endSearch(self)
     }
 }
 
@@ -199,14 +206,6 @@ extension NoteEditorViewController: NSSearchFieldDelegate {
         }
 
         searchDelegate?.editorControllerDidBeginSearch(self)
-    }
-
-    public func controlTextDidChange(_ obj: Notification) {
-        guard let sender = obj.object as? NSSearchField else {
-            return
-        }
-
-        searchDelegate?.editorController(self, didSearchKeyword: sender.stringValue)
     }
 
     public func controlTextDidEndEditing(_ obj: Notification) {

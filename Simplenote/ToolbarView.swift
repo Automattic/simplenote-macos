@@ -81,7 +81,7 @@ private extension ToolbarView {
 
         previewButton.isHidden = state.isPreviewActionHidden
         previewButton.image = state.previewActionImage
-        previewButton.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
+        previewButton.contentTintColor = .simplenoteSecondaryActionButtonTintColor
 
         restoreButton.isEnabled = state.isRestoreActionEnabled
         restoreButton.isHidden = state.isRestoreActionHidden
@@ -100,7 +100,7 @@ private extension ToolbarView {
     @objc
     func refreshStyle() {
         for button in allButtons {
-            button.tintImage(color: .simplenoteSecondaryActionButtonTintColor)
+            button.contentTintColor = .simplenoteSecondaryActionButtonTintColor
         }
     }
 

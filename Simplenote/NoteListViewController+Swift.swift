@@ -46,12 +46,21 @@ extension NoteListViewController {
         addNoteButton.isEnabled = !viewingTrash
     }
 
+    @objc
+    func refreshTitle() {
+        guard let title = SimplenoteAppDelegate.shared().tagListViewController.selectedRow?.title else {
+            return
+        }
+
+        titleLabel.stringValue = title
+    }
+
     /// Refreshes the receiver's style
     ///
     @objc
     func applyStyle() {
         backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
-        addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
+        addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         reloadDataAndPreserveSelection()
     }
@@ -245,7 +254,6 @@ extension NoteListViewController: EditorControllerSearchDelegate {
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         searchKeyword = keyword
         refreshPredicate()
-        selectRow(.zero)
     }
 
     public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
