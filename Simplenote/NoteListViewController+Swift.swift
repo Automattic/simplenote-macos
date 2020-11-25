@@ -57,6 +57,7 @@ extension NoteListViewController {
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
+        titleLabel.textColor = .simplenoteTextColor
         reloadDataAndPreserveSelection()
     }
 }
