@@ -63,7 +63,10 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
-    [self startListeningToNotifications];
+    [self setupHeaderSeparator];
+
+    [self startListeningToSettingsNotifications];
+    [self startListeningToScrollNotifications];
 }
 
 - (void)viewWillAppear
@@ -78,7 +81,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self refreshExtendedContentInsets];
 }
 
-- (void)startListeningToNotifications
+- (void)startListeningToSettingsNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(sortModeWasUpdated:) name:TagSortModeDidChangeNotification object:nil];
@@ -592,8 +595,11 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)applyStyle
 {
-    self.visualEffectsView.appearance = [NSAppearance simplenoteAppearance];
-    self.visualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
+    self.headerSeparatorView.borderColor = [NSColor simplenoteDividerColor];
+    self.headerVisualEffectsView.appearance = [NSAppearance simplenoteAppearance];
+    self.headerVisualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
+    self.backgroundVisualEffectsView.appearance = [NSAppearance simplenoteAppearance];
+    self.backgroundVisualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
     [self reloadDataAndPreserveSelection];
 }
 

@@ -36,35 +36,6 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Autolayout FTW
-//
-extension NoteEditorViewController {
-
-    open override func updateViewConstraints() {
-        if mustUpdateToolbarConstraint {
-            updateToolbarTopConstraint()
-        }
-
-        super.updateViewConstraints()
-    }
-
-    var mustUpdateToolbarConstraint: Bool {
-        toolbarViewTopConstraint == nil
-    }
-
-    func updateToolbarTopConstraint() {
-        guard let layoutGuide = toolbarView.window?.contentLayoutGuide as? NSLayoutGuide else {
-            return
-        }
-
-        let newTopConstraint = toolbarView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
-        newTopConstraint.isActive = true
-
-        toolbarViewTopConstraint = newTopConstraint
-    }
-}
-
-
 // MARK: - Internal State
 //
 extension NoteEditorViewController {

@@ -120,33 +120,6 @@ extension NoteListViewController {
 }
 
 
-// MARK: - Autolayout FTW
-//
-extension NoteListViewController {
-
-    open override func updateViewConstraints() {
-        if mustUpdateSearchViewConstraint {
-            updateSearchViewTopConstraint()
-        }
-
-        super.updateViewConstraints()
-    }
-
-    var mustUpdateSearchViewConstraint: Bool {
-        searchViewTopConstraint == nil
-    }
-
-    func updateSearchViewTopConstraint() {
-        guard let layoutGuide = searchView.window?.contentLayoutGuide as? NSLayoutGuide else {
-            return
-        }
-
-        searchViewTopConstraint = searchView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
-        searchViewTopConstraint?.isActive = true
-    }
-}
-
-
 // MARK: - Helpers
 //
 private extension NoteListViewController {
