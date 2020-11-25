@@ -127,6 +127,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [super viewWillLayout];
     [self refreshScrollInsets];
+    [self refreshHeaderState];
 }
 
 - (void)save
