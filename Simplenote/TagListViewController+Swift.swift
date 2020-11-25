@@ -24,12 +24,7 @@ extension TagListViewController {
     ///
     @objc
     func refreshExtendedContentInsets() {
-        let topContentInset = Settings.defaultTopInset
-        guard clipView.contentInsets.top != topContentInset else {
-            return
-        }
-
-        clipView.contentInsets.top = topContentInset
+        clipView.contentInsets.top = Settings.defaultTopInset
     }
 
     /// Regenerates the Internal List State
@@ -238,7 +233,7 @@ extension TagListViewController: SPTextFieldDelegate {
 // MARK: - Settings!
 //
 private enum Settings {
-    static let defaultTopInset = CGFloat(64)
+    static let defaultTopInset = CGFloat(62)
     static let maximumAlphaGradientOffset = CGFloat(30)
     static let titlebarHeight = CGFloat(22)
 }
