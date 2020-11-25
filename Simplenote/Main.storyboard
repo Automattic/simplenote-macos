@@ -219,13 +219,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </box>
-                            <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-c6-dqi">
+                            <scrollView focusRingType="none" borderType="none" horizontalLineScroll="68" horizontalPageScroll="10" verticalLineScroll="68" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-c6-dqi">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zul-ko-TNO">
                                     <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="72" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="q9F-rT-PZ2" customClass="SPTableView">
+                                        <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="68" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="q9F-rT-PZ2" customClass="SPTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="294" height="556"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
@@ -244,10 +244,10 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="NoteTableCellView" translatesAutoresizingMaskIntoConstraints="NO" id="bde-Ei-vv5" customClass="NoteTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="0.0" width="274" height="72"/>
+                                                            <rect key="frame" x="10" y="0.0" width="274" height="68"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YP5-KE-GnO" userLabel="Pin Image View">
-                                                                    <rect key="frame" x="12" y="50" width="12" height="12"/>
+                                                                    <rect key="frame" x="12" y="45" width="12" height="12"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="12" id="3hZ-oW-r14"/>
                                                                         <constraint firstAttribute="width" constant="12" id="GP8-O5-fwy"/>
@@ -255,7 +255,7 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_pin" id="wSK-Lh-kY8"/>
                                                                 </imageView>
                                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6i-es-ABJ">
-                                                                    <rect key="frame" x="29" y="15" width="224" height="49"/>
+                                                                    <rect key="frame" x="29" y="10" width="224" height="49"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="251.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8v7-8o-Tsk">
                                                                             <rect key="frame" x="0.0" y="32" width="224" height="17"/>
@@ -316,11 +316,11 @@
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="Y6i-es-ABJ" firstAttribute="top" secondItem="bde-Ei-vv5" secondAttribute="top" constant="8" id="5pu-Wf-nhG"/>
+                                                                <constraint firstItem="Y6i-es-ABJ" firstAttribute="top" secondItem="bde-Ei-vv5" secondAttribute="top" constant="9" id="5pu-Wf-nhG"/>
                                                                 <constraint firstItem="Y6i-es-ABJ" firstAttribute="leading" secondItem="bde-Ei-vv5" secondAttribute="leading" constant="29" id="BTW-kr-NIC"/>
                                                                 <constraint firstItem="8v7-8o-Tsk" firstAttribute="centerY" secondItem="YP5-KE-GnO" secondAttribute="centerY" id="lce-PS-EYS"/>
                                                                 <constraint firstItem="YP5-KE-GnO" firstAttribute="leading" secondItem="bde-Ei-vv5" secondAttribute="leading" constant="12" id="s9T-qT-2jd"/>
-                                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Y6i-es-ABJ" secondAttribute="bottom" constant="8" id="tVE-Mi-trA"/>
+                                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Y6i-es-ABJ" secondAttribute="bottom" constant="9" id="tVE-Mi-trA"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Y6i-es-ABJ" secondAttribute="trailing" constant="21" id="xMo-0i-fuZ"/>
                                                             </constraints>
                                                             <connections>
