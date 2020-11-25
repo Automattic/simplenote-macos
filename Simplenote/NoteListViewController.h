@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NoteListViewController : NSViewController <NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
 
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
-@property (nonatomic, strong, readonly) IBOutlet BackgroundView         *backgroundView;
+@property (nonatomic, strong, readonly) IBOutlet NSBox                  *backgroundBox;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *titleLabel;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *statusField;
 @property (nonatomic, strong, readonly) IBOutlet NSProgressIndicator    *progressIndicator;
@@ -28,7 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet SPTableView            *tableView;
 @property (nonatomic, strong, readonly) IBOutlet NSVisualEffectView     *headerEffectView;
 @property (nonatomic, strong, readonly) IBOutlet NSButton               *addNoteButton;
-
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *noteListMenu;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
 

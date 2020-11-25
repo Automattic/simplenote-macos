@@ -212,9 +212,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dfi-py-m83" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
-                            </customView>
+                            <box borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="zXl-eL-J7J">
+                                <rect key="frame" x="-3" y="-4" width="300" height="624"/>
+                                <view key="contentView" id="hCi-MA-7L4">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="624"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </box>
                             <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-c6-dqi">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zul-ko-TNO">
@@ -222,7 +226,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="72" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="q9F-rT-PZ2" customClass="SPTableView">
-                                            <rect key="frame" x="0.0" y="0.0" width="294" height="606"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="294" height="554"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
@@ -370,10 +374,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
-                                        <rect key="frame" x="258" y="16" width="20" height="20"/>
+                                        <rect key="frame" x="256" y="15" width="22" height="22"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="mDL-V4-Sng"/>
-                                            <constraint firstAttribute="height" constant="20" id="oUz-t6-8il"/>
+                                            <constraint firstAttribute="width" constant="22" id="mDL-V4-Sng"/>
+                                            <constraint firstAttribute="height" constant="22" id="oUz-t6-8il"/>
                                         </constraints>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRY-CA-4Eu">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -405,32 +409,32 @@
                             </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Dfi-py-m83" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="0no-zJ-IpG"/>
                             <constraint firstAttribute="trailing" secondItem="vxX-pk-HGm" secondAttribute="trailing" id="6Vv-3m-dh6"/>
-                            <constraint firstAttribute="trailing" secondItem="Dfi-py-m83" secondAttribute="trailing" id="8vm-DU-QCc"/>
+                            <constraint firstAttribute="bottom" secondItem="zXl-eL-J7J" secondAttribute="bottom" id="C33-TU-yO5"/>
                             <constraint firstItem="JDR-c6-dqi" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="CST-qB-GhQ"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="top" secondItem="vxX-pk-HGm" secondAttribute="top" id="Fzb-fb-aW4"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="leading" secondItem="vxX-pk-HGm" secondAttribute="leading" id="HYR-Vk-AxE"/>
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="centerX" secondItem="PJl-uT-IxK" secondAttribute="centerX" id="Hze-oN-sBR"/>
+                            <constraint firstItem="zXl-eL-J7J" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="J50-dQ-XUD"/>
                             <constraint firstItem="vxX-pk-HGm" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="MXl-4Q-xsZ"/>
                             <constraint firstAttribute="trailing" secondItem="2I0-KH-uBu" secondAttribute="trailing" constant="12" id="VcD-9X-4Pu"/>
                             <constraint firstItem="vxX-pk-HGm" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="aZp-JB-f4c"/>
                             <constraint firstItem="JDR-c6-dqi" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="b4N-TU-lud"/>
                             <constraint firstItem="2I0-KH-uBu" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" constant="12" id="bOP-Pg-zTH"/>
+                            <constraint firstAttribute="trailing" secondItem="zXl-eL-J7J" secondAttribute="trailing" id="dNX-N8-h3z"/>
                             <constraint firstAttribute="bottom" secondItem="JDR-c6-dqi" secondAttribute="bottom" id="h9H-wI-zNE"/>
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="top" secondItem="2I0-KH-uBu" secondAttribute="bottom" constant="15" id="jEQ-80-63D"/>
                             <constraint firstItem="2I0-KH-uBu" firstAttribute="top" secondItem="vxX-pk-HGm" secondAttribute="bottom" constant="220" id="kT0-Rz-hoF"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="bottom" secondItem="vxX-pk-HGm" secondAttribute="bottom" id="mAP-Tb-GSM"/>
                             <constraint firstAttribute="trailing" secondItem="JDR-c6-dqi" secondAttribute="trailing" id="qX6-5i-V99"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="trailing" secondItem="vxX-pk-HGm" secondAttribute="trailing" id="snN-gy-EPy"/>
-                            <constraint firstItem="Dfi-py-m83" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="w5l-T3-xAY"/>
-                            <constraint firstAttribute="bottom" secondItem="Dfi-py-m83" secondAttribute="bottom" id="yNl-Uf-RoX"/>
+                            <constraint firstItem="zXl-eL-J7J" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="t7L-iv-WKJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="arrayController" destination="QdT-mP-kT8" id="7HE-P5-XlT"/>
-                        <outlet property="backgroundView" destination="Dfi-py-m83" id="OsW-dl-qhP"/>
+                        <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
