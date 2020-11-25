@@ -30,13 +30,8 @@ extension NoteListViewController {
     ///
     @objc
     func refreshScrollInsets() {
-        let topContentInset = Settings.defaultTopInset
-        guard clipView.contentInsets.top != topContentInset else {
-            return
-        }
-
-        clipView.contentInsets.top = topContentInset
-        scrollView.scrollerInsets.top = topContentInset
+        clipView.contentInsets.top = Settings.defaultTopInset
+        scrollView.scrollerInsets.top = Settings.defaultTopInset
     }
 
     /// Ensures only the actions that are valid can be performed
@@ -413,7 +408,7 @@ extension NoteListViewController {
 // MARK: - Settings!
 //
 private enum Settings {
-    static let defaultTopInset = CGFloat(64)
+    static let defaultTopInset = CGFloat(62)
     static let maximumAlphaGradientOffset = CGFloat(14)
     static let activeAlphaThreshold = CGFloat(0.5)
 }
