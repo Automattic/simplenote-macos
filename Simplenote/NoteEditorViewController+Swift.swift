@@ -486,7 +486,8 @@ extension NoteEditorViewController {
         refreshHeaderState()
     }
 
-    private func refreshHeaderState() {
+    @objc
+    func refreshHeaderState() {
         let newAlpha = alphaForHeader
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > Settings.activeAlphaThreshold ? .active : .inactive

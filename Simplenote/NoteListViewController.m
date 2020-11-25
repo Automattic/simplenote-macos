@@ -95,6 +95,7 @@
 {
     [super viewWillLayout];
     [self refreshScrollInsets];
+    [self refreshHeaderState];
 }
 
 - (void)loadNotes
