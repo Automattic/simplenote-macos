@@ -112,7 +112,7 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshStyle() {
-        backgroundView.fillColor                = .simplenoteBackgroundColor
+        backgroundView.fillColor                = .simplenoteSecondaryBackgroundColor
         bottomDividerView.borderColor           = .simplenoteDividerColor
         noteEditor.insertionPointColor          = .simplenoteEditorTextColor
         noteEditor.textColor                    = .simplenoteEditorTextColor
