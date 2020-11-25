@@ -365,9 +365,9 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
+                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
                                         <rect key="frame" x="14" y="17" width="39" height="19"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Title" id="VNw-0O-CIA">
+                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Title" id="VNw-0O-CIA">
                                             <font key="font" metaFont="systemBold" size="16"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
