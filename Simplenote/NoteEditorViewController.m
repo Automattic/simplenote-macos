@@ -413,7 +413,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Toggle the selected notes
     NSMenuItem *pinnedItem = (NSMenuItem *)sender;
-    BOOL isPinned = pinnedItem.state == NSOffState;
+    BOOL isPinned = pinnedItem.state == NSControlStateValueOff;
     
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.pinned = isPinned;
@@ -433,7 +433,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Toggle the markdown state
     NSMenuItem *markdownItem = (NSMenuItem *)sender;
-    BOOL isEnabled = markdownItem.state == NSOffState;
+    BOOL isEnabled = markdownItem.state == NSControlStateValueOff;
 
     for (Note *selectedNote in self.selectedNotes) {
         selectedNote.markdown = isEnabled;

@@ -494,9 +494,13 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
         tag.objectID.URIRepresentation
     ];
 
-    [pboard declareTypes:[NSArray arrayWithObject:@"Tag"] owner:self];
-    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:objectURIs] forType:@"Tag"];
-    
+    NSData *payload = [NSKeyedArchiver archivedDataWithRootObject:objectURIs
+                                            requiringSecureCoding:NO
+                                                            error:nil];
+
+    [pboard declareTypes:@[@"Tag"] owner:self];
+    [pboard setData:payload forType:@"Tag"];
+
     return YES;
 }
 
@@ -530,10 +534,11 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     row = row - self.state.indexOfFirstTagRow;
 
     // Get object URIs from paste board
-    NSData *data        = [info.draggingPasteboard dataForType:@"Tag"];
-    NSArray *objectURIs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    if (!objectURIs) {
+    NSData *data = [info.draggingPasteboard dataForType:@"Tag"];
+    NSSet *supportedClasses = [NSSet setWithObjects:[NSArray class], [NSURL class], nil];
+    NSArray *objectURIs = [NSKeyedUnarchiver unarchivedObjectOfClasses:supportedClasses fromData:data error:nil];
+
+    if (objectURIs == nil || [objectURIs isKindOfClass:[NSArray class]] == false) {
         return NO;
     }
     

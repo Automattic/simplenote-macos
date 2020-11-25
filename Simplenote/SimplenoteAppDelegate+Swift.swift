@@ -281,9 +281,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         item.state = SPUserInterface.activeThemeOption == option ? .on : .off
-
-        // System Appearance must only be available in Mojave
-        return option != .system ? true : NSApplication.runningOnMojaveOrLater
+        return true
     }
 
     func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {

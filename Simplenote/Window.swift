@@ -62,10 +62,6 @@ private extension Window {
 
     @objc
     func refreshStyle() {
-        guard #available(macOS 10.14, *) else {
-            return
-        }
-
         if SPUserInterface.isSystemThemeSelected {
             appearance = nil
             return
