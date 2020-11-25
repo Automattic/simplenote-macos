@@ -248,8 +248,7 @@ private extension MetricsViewController {
 
         height += sizingReferenceCell.fittingSize.height * min(Metrics.maximumVisibleReferences, numberOfReferences)
 
-        let width = numberOfReferences > .zero ? Metrics.widthForNonEmptyReferences : Metrics.widthForZeroReferences
-        return CGSize(width: width, height: height)
+        return CGSize(width: Metrics.defaultWidth, height: height)
     }
 }
 
@@ -347,8 +346,7 @@ private extension MetricsViewController {
 // MARK: - Private Types
 //
 private enum Metrics {
-    static let widthForZeroReferences = CGFloat(260)
-    static let widthForNonEmptyReferences = CGFloat(360)
+    static let defaultWidth = CGFloat(360)
     static let maximumVisibleReferences = CGFloat(2.5)
 }
 
