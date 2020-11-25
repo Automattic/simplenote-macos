@@ -456,9 +456,9 @@
     // Remove WordPress token
     [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
     
+    [self.noteEditorViewController ensureSearchIsDismissed];
     [self.noteEditorViewController displayNote:nil];
     [self.tagListViewController reset];
-    [self.noteListViewController reset];
     [self.noteListViewController setWaitingForIndex:YES];
     
     [_simperium signOutAndRemoveLocalData:YES completion:^{
@@ -475,7 +475,7 @@
 {
     // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
     // to override a search keyboard shortcut...which ends up calling searchAction: here
-    [self.noteListViewController searchAction:sender];
+    [self.noteEditorViewController beginSearch:sender];
 }
 
 - (IBAction)toggleSidebarAction:(id)sender
@@ -519,7 +519,7 @@
     [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
     [self.noteListViewController applyStyle];
-    [self.noteEditorViewController applyStyle];
+    [self.noteEditorViewController refreshStyle];
     [self.noteEditorViewController fixChecklistColoring];
 }
 

@@ -2,6 +2,7 @@
 -----
 - Removed Main Window's Titlebar #719
 - Adopting BigSur Inset Style #721
+- Relocated Search Bar #722
 
 2.4
 ---

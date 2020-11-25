@@ -8,6 +8,11 @@ import SimplenoteInterlinks
 extension NoteEditorViewController {
 
     @objc
+    func setupSearchBar() {
+        searchField.centersPlaceholder = false
+    }
+
+    @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
         statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
@@ -98,6 +103,33 @@ extension NoteEditorViewController {
         noteEditor.isHidden = isDisplayingMarkdown
     }
 
+    /// Refreshes the Editor's UX
+    ///
+    @objc
+    func refreshStyle() {
+        backgroundView.fillColor                = .simplenoteBackgroundColor
+        bottomDividerView.borderColor           = .simplenoteDividerColor
+        noteEditor.insertionPointColor          = .simplenoteTextColor
+        noteEditor.textColor                    = .simplenoteTextColor
+        searchField.textColor                   = .simplenoteTextColor
+        searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
+        statusTextField.textColor               = .simplenoteSecondaryTextColor
+        tagsField.textColor                     = .simplenoteTextColor
+        tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
+        topDividerView.borderColor              = .simplenoteDividerColor
+
+        if let note = note {
+            storage.refreshStyle(markdownEnabled: note.markdown)
+        }
+
+        // Legacy Support: High Sierra
+        if #available(macOS 10.14, *) {
+            return
+        }
+
+        searchField.appearance = .simplenoteAppearance
+    }
+
     /// Refreshes the Toolbar's Inner State
     ///
     @objc
@@ -132,6 +164,59 @@ extension NoteEditorViewController {
     ///
     private func refreshTagsFieldTokens() {
         tagsField.tokens = note?.tagsArray as? [String] ?? []
+    }
+}
+
+
+// MARK: - Search API
+//
+extension NoteEditorViewController {
+
+    @IBAction
+    func beginSearch(_ sender: Any) {
+        view.window?.makeFirstResponder(searchField)
+    }
+
+    @IBAction
+    func performSearch(_ sender: Any) {
+        searchDelegate?.editorController(self, didSearchKeyword: searchField.stringValue)
+    }
+
+    @IBAction
+    func endSearch(_ sender: Any) {
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
+    }
+
+    @objc
+    func ensureSearchIsDismissed() {
+        guard searchField.stringValue.isEmpty == false else {
+            return
+        }
+
+        endSearch(self)
+    }
+}
+
+
+// MARK: - NSSearchFieldDelegate
+//
+extension NoteEditorViewController: NSSearchFieldDelegate {
+
+    public func controlTextDidBeginEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        searchDelegate?.editorControllerDidBeginSearch(self)
+    }
+
+    public func controlTextDidEndEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        searchDelegate?.editorControllerDidEndSearch(self)
     }
 }
 
@@ -661,4 +746,13 @@ private extension NoteEditorViewController {
 //
 private enum Settings {
     static let maximumAlphaGradientOffset = CGFloat(30)
+
+    static var searchFieldPlaceholderString: NSAttributedString {
+        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
+
+        return NSAttributedString(string: text, attributes: [
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
+            .font: NSFont.simplenoteSecondaryTextFont
+        ])
+    }
 }

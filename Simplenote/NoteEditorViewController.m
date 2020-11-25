@@ -97,6 +97,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 	}
 
     // Interface Initialization
+    [self setupSearchBar];
     [self setupScrollView];
     [self setupTopDivider];
     [self setupStatusImageView];
@@ -120,7 +121,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     [self startListeningToScrollNotifications];
 
-    [self applyStyle];
+    [self refreshStyle];
 }
 
 - (void)save
@@ -258,6 +259,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
+    [self ensureSearchIsDismissed];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -266,6 +268,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
+    [self ensureSearchIsDismissed];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
@@ -472,6 +475,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         [newNote addTag:currentTag];
     }
 
+    [self ensureSearchIsDismissed];
     [self displayNote:newNote];
     [self save];
 
@@ -595,7 +599,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Update font size preference and reset fonts
     [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
-    [self applyStyle];
+    [self refreshStyle];
 }
 
 #pragma mark - NoteEditor Preferences Helpers
@@ -677,22 +681,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 
 #pragma mark - Style Helpers
-
-- (void)applyStyle
-{
-    if (self.note != nil) {
-        [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
-    }
-
-    self.backgroundView.fillColor       = [NSColor simplenoteBackgroundColor];
-    self.topDividerView.borderColor     = [NSColor simplenoteDividerColor];
-    self.bottomDividerView.borderColor  = [NSColor simplenoteDividerColor];
-    self.statusTextField.textColor      = [NSColor simplenoteSecondaryTextColor];
-    self.noteEditor.insertionPointColor = [NSColor simplenoteTextColor];
-    self.noteEditor.textColor           = [NSColor simplenoteTextColor];
-    self.tagsField.textColor            = [NSColor simplenoteTextColor];
-    self.tagsField.placeholderTextColor = [NSColor simplenoteSecondaryTextColor];
-}
 
 // Reprocesses note checklists after switching themes, so they apply the correct color
 - (void)fixChecklistColoring

@@ -26,13 +26,6 @@ extension NoteListViewController {
         progressIndicator.isHidden = true
     }
 
-    /// Setup: SearchBar
-    ///
-    @objc
-    func setupSearchBar() {
-        searchField.centersPlaceholder = false
-    }
-
     /// Setup: Top Divider
     ///
     @objc
@@ -59,6 +52,15 @@ extension NoteListViewController {
         addNoteButton.isEnabled = !viewingTrash
     }
 
+    @objc
+    func refreshTitle() {
+        guard let title = SimplenoteAppDelegate.shared().tagListViewController.selectedRow?.title else {
+            return
+        }
+
+        titleLabel.stringValue = title
+    }
+
     /// Refreshes the receiver's style
     ///
     @objc
@@ -66,17 +68,21 @@ extension NoteListViewController {
         backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
         topDividerView.borderColor = .simplenoteDividerColor
         addNoteButton.tintImage(color: .simplenoteActionButtonTintColor)
-        searchField.textColor = .simplenoteTextColor
-        searchField.placeholderAttributedString = searchFieldPlaceholderString
         statusField.textColor = .simplenoteSecondaryTextColor
         reloadDataAndPreserveSelection()
+    }
+}
 
-        // Legacy Support: High Sierra
-        if #available(macOS 10.14, *) {
-            return
-        }
 
-        searchField.appearance = .simplenoteAppearance
+// MARK: - State
+//
+extension NoteListViewController {
+
+    /// Indicates if we're in Search Mode
+    ///
+    @objc
+    var searching: Bool {
+        searchKeyword?.isEmpty == false
     }
 }
 
@@ -122,13 +128,12 @@ extension NoteListViewController {
     /// Returns a NSPredicate that will filter the current Search Text (if any)
     ///
     private var searchTextPredicates: [NSPredicate] {
-        let searchText = searchField.stringValue
-        guard !searchText.isEmpty else {
+        guard let keyword = searchKeyword, !keyword.isEmpty else {
             return []
         }
 
         return [
-            NSPredicate.predicateForNotes(searchText: searchText)
+            NSPredicate.predicateForNotes(searchText: keyword)
         ]
     }
 }
@@ -137,16 +142,6 @@ extension NoteListViewController {
 // MARK: - Helpers
 //
 private extension NoteListViewController {
-
-    var searchFieldPlaceholderString: NSAttributedString {
-        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
-        let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
-            .font: NSFont.simplenoteSecondaryTextFont
-        ]
-
-        return NSAttributedString(string: text, attributes: attributes)
-    }
 
     var simperium: Simperium {
         SimplenoteAppDelegate.shared().simperium
@@ -198,9 +193,6 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-        searchField.cancelSearch()
-        searchField.resignFirstResponder()
-
         reloadSynchronously()
         selectRow(forNoteKey: simperiumKey)
     }
@@ -224,6 +216,25 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
         reloadRow(forNoteKey: simperiumKey)
+    }
+}
+
+
+// MARK: - EditorControllerSearchDelegate
+//
+extension NoteListViewController: EditorControllerSearchDelegate {
+
+    public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
+        SPTracker.trackListNotesSearched()
+    }
+
+    public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
+        searchKeyword = keyword
+        refreshPredicate()
+    }
+
+    public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
+        searchKeyword = nil
     }
 }
 

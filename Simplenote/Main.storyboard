@@ -218,21 +218,9 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="s2j-Xp-jGd" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                             </customView>
-                            <view translatesAutoresizingMaskIntoConstraints="NO" id="weN-h2-sJL" userLabel="SearchView">
+                            <view translatesAutoresizingMaskIntoConstraints="NO" id="weN-h2-sJL" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
-                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvh-C8-b0b" userLabel="SearchField">
-                                        <rect key="frame" x="12" y="11" width="230" height="30"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="Umi-3H-Bn4">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </searchFieldCell>
-                                        <connections>
-                                            <action selector="filterNotes:" target="JtV-0Z-Zh8" id="azo-As-k30"/>
-                                            <outlet property="delegate" destination="JtV-0Z-Zh8" id="iol-N5-Gsb"/>
-                                        </connections>
-                                    </searchField>
                                     <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                         <rect key="frame" x="258" y="16" width="20" height="20"/>
                                         <constraints>
@@ -247,15 +235,22 @@
                                             <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
                                         </connections>
                                     </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hhw-aN-z6h">
+                                        <rect key="frame" x="14" y="17" width="230" height="19"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Title" id="8eL-Pk-hE4">
+                                            <font key="font" metaFont="systemBold" size="16"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="35i-gS-rGO"/>
-                                    <constraint firstItem="cvh-C8-b0b" firstAttribute="top" secondItem="weN-h2-sJL" secondAttribute="top" constant="11" id="7z3-yq-ana"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="cvh-C8-b0b" secondAttribute="trailing" constant="16" id="EaC-ed-3nU"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="cvh-C8-b0b" secondAttribute="centerY" id="GdR-Rc-HQZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="cvh-C8-b0b" secondAttribute="bottom" constant="11" id="Gz4-wE-pXe"/>
+                                    <constraint firstItem="hhw-aN-z6h" firstAttribute="centerY" secondItem="weN-h2-sJL" secondAttribute="centerY" id="5vg-8O-5ju"/>
                                     <constraint firstAttribute="height" constant="52" id="Reo-KD-mIh"/>
-                                    <constraint firstItem="cvh-C8-b0b" firstAttribute="leading" secondItem="weN-h2-sJL" secondAttribute="leading" constant="12" id="uDy-dn-4qz"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="hhw-aN-z6h" secondAttribute="trailing" constant="16" id="XIf-2n-ctF"/>
+                                    <constraint firstItem="hhw-aN-z6h" firstAttribute="leading" secondItem="weN-h2-sJL" secondAttribute="leading" constant="16" id="b69-Qt-5qs"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="weN-h2-sJL" secondAttribute="centerY" id="hPz-Ca-aJu"/>
                                 </constraints>
                             </view>
                             <scrollView focusRingType="none" borderType="none" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-c6-dqi">
@@ -435,12 +430,12 @@
                         <outlet property="arrayController" destination="QdT-mP-kT8" id="7HE-P5-XlT"/>
                         <outlet property="backgroundView" destination="Dfi-py-m83" id="OsW-dl-qhP"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
+                        <outlet property="headerView" destination="weN-h2-sJL" id="5Hg-DU-e1C"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
-                        <outlet property="searchField" destination="cvh-C8-b0b" id="R6h-sR-ND1"/>
-                        <outlet property="searchView" destination="weN-h2-sJL" id="Pbw-Ih-6lA"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
+                        <outlet property="titleLabel" destination="hhw-aN-z6h" id="TeN-D9-RDy"/>
                         <outlet property="topDividerView" destination="s2j-Xp-jGd" id="7D1-cA-1N9"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
@@ -512,7 +507,7 @@
                                 <rect key="frame" x="0.0" y="566" width="508" height="52"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="346" y="0.0" width="146" height="52"/>
+                                        <rect key="frame" x="94" y="0.0" width="398" height="52"/>
                                         <subviews>
                                             <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown">
                                                 <rect key="frame" x="0.0" y="16" width="20" height="20"/>
@@ -561,6 +556,22 @@
                                                     <action selector="moreWasPressed:" target="owM-kh-Bm6" id="jNg-pL-Pc6"/>
                                                 </connections>
                                             </button>
+                                            <searchField verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
+                                                <rect key="frame" x="168" y="12" width="230" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
+                                                    <constraint firstAttribute="width" constant="230" id="yv6-TC-X7T"/>
+                                                </constraints>
+                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </searchFieldCell>
+                                                <connections>
+                                                    <action selector="performSearch:" target="owM-kh-Bm6" id="aSU-vi-ZBC"/>
+                                                    <outlet property="delegate" destination="owM-kh-Bm6" id="PeJ-VQ-DId"/>
+                                                </connections>
+                                            </searchField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="hVc-Cl-DHn" firstAttribute="height" secondItem="TI9-l9-KN8" secondAttribute="height" id="2wO-UI-11h"/>
@@ -575,8 +586,10 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -731,6 +744,7 @@
                         <outlet property="moreActionsMenu" destination="O2x-0v-azu" id="jSV-Gb-XpN"/>
                         <outlet property="noteEditor" destination="84J-wh-qoX" id="MHx-LW-NED"/>
                         <outlet property="scrollView" destination="3M9-OX-Hpx" id="fps-1H-haD"/>
+                        <outlet property="searchField" destination="YLv-zp-fRS" id="AFT-Zt-Kry"/>
                         <outlet property="statusImageView" destination="Dj2-Ut-m6l" id="vqt-cc-z7a"/>
                         <outlet property="statusTextField" destination="VFr-Z3-HgO" id="UWY-3k-pwd"/>
                         <outlet property="tagsField" destination="U3o-VN-U2S" id="qmL-AY-16b"/>

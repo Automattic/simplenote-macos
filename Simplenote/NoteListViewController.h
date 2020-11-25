@@ -21,23 +21,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *backgroundView;
 @property (nonatomic, strong, readonly) IBOutlet BackgroundView         *topDividerView;
+@property (nonatomic, strong, readonly) IBOutlet NSTextField            *titleLabel;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *statusField;
 @property (nonatomic, strong, readonly) IBOutlet NSProgressIndicator    *progressIndicator;
 @property (nonatomic, strong, readonly) IBOutlet NSClipView             *clipView;
 @property (nonatomic, strong, readonly) IBOutlet SPTableView            *tableView;
-@property (nonatomic, strong, readonly) IBOutlet NSView                 *searchView;
-@property (nonatomic, strong, readonly) IBOutlet NSSearchField          *searchField;
+@property (nonatomic, strong, readonly) IBOutlet NSView                 *headerView;
 @property (nonatomic, strong, readonly) IBOutlet NSButton               *addNoteButton;
 
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *noteListMenu;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
 
-@property (nonatomic, assign, readonly) BOOL                            searching;
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
+@property (nonatomic, strong, nullable) NSString                        *searchKeyword;
 
 - (void)loadNotes;
 - (void)reloadSynchronously;
-- (void)reset;
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (NSArray<Note *> *)selectedNotes;
 - (void)setNotesPredicate:(NSPredicate *)predicate;
@@ -49,8 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reloadDataAndPreserveSelection;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
-- (IBAction)searchAction:(id)sender;
-- (IBAction)filterNotes:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
 
