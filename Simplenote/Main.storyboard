@@ -592,13 +592,13 @@
                                 <rect key="frame" x="0.0" y="566" width="508" height="52"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="94" y="0.0" width="398" height="52"/>
+                                        <rect key="frame" x="86" y="0.0" width="406" height="52"/>
                                         <subviews>
                                             <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown">
-                                                <rect key="frame" x="0.0" y="16" width="20" height="20"/>
+                                                <rect key="frame" x="0.0" y="15" width="22" height="22"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="1ZX-mt-a4G"/>
-                                                    <constraint firstAttribute="width" constant="20" id="JLQ-dt-xp9"/>
+                                                    <constraint firstAttribute="height" constant="22" id="1ZX-mt-a4G"/>
+                                                    <constraint firstAttribute="width" constant="22" id="JLQ-dt-xp9"/>
                                                 </constraints>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_preview_off" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="P50-gQ-L8m">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -609,7 +609,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W50-6o-QGr" userLabel="Restore">
-                                                <rect key="frame" x="42" y="16" width="20" height="20"/>
+                                                <rect key="frame" x="44" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GVO-Z6-G3X">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -619,7 +619,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hVc-Cl-DHn" userLabel="Metrics">
-                                                <rect key="frame" x="84" y="16" width="20" height="20"/>
+                                                <rect key="frame" x="88" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="JJe-f9-FSN">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -632,7 +632,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-L9-Q1P" userLabel="More">
-                                                <rect key="frame" x="126" y="16" width="20" height="20"/>
+                                                <rect key="frame" x="132" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis_outline" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ble-fl-POM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -642,7 +642,7 @@
                                                 </connections>
                                             </button>
                                             <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
-                                                <rect key="frame" x="168" y="12" width="230" height="29"/>
+                                                <rect key="frame" x="176" y="12" width="230" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
                                                     <constraint firstAttribute="width" constant="230" id="yv6-TC-X7T"/>
