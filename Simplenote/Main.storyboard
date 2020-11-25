@@ -29,7 +29,7 @@
                                             <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="NameColumn" width="108" minWidth="40" maxWidth="1000" id="TbY-k2-hUl">
+                                                <tableColumn identifier="Tags Column" width="108" minWidth="40" maxWidth="1000" id="TbY-k2-hUl">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,9 +41,8 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="SpacerTableViewCell" id="RyL-oL-AZL" userLabel="Spacer" customClass="SpacerTableViewCell" customModule="Simplenote" customModuleProvider="target">
+                                                        <tableCellView identifier="SpacerTableViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="RyL-oL-AZL" userLabel="Spacer" customClass="SpacerTableViewCell" customModule="Simplenote" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="0.0" width="120" height="16"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="xjr-Tk-HSi">
                                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="16"/>
@@ -59,9 +58,8 @@
                                                                 <constraint firstAttribute="trailing" secondItem="xjr-Tk-HSi" secondAttribute="trailing" id="zC1-EW-2M9"/>
                                                             </constraints>
                                                         </tableCellView>
-                                                        <tableCellView identifier="HeaderTableCellView" id="ftn-CT-UtG" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                        <tableCellView identifier="HeaderTableCellView" translatesAutoresizingMaskIntoConstraints="NO" id="ftn-CT-UtG" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="16" width="120" height="27"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gk-Te-s8H">
                                                                     <rect key="frame" x="14" y="6" width="96" height="15"/>
@@ -85,9 +83,8 @@
                                                                 <outlet property="textField" destination="3Gk-Te-s8H" id="4Ax-ix-Pc6"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="TagTableCellView" id="Nrb-k8-TzG" userLabel="Tag" customClass="TagTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                        <tableCellView identifier="TagTableCellView" translatesAutoresizingMaskIntoConstraints="NO" id="Nrb-k8-TzG" userLabel="Tag" customClass="TagTableCellView" customModule="Simplenote" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="43" width="120" height="29"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiU-KW-NFn">
                                                                     <rect key="frame" x="16" y="4" width="98" height="21"/>
