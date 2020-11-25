@@ -5,7 +5,7 @@ import Foundation
 //
 class SplitView: NSSplitView {
 
-    /// Default Divider Thickness: To be applied whenever NSScreen.main is inaccessible
+    /// Default Divider Thickness: 1pt
     ///
     private let defaultDividerThickness = CGFloat(1)
 
@@ -41,7 +41,7 @@ class SplitView: NSSplitView {
     // MARK: - Overridden Methods
 
     override var dividerThickness: CGFloat {
-        NSScreen.main?.pointToPixelRatio ?? defaultDividerThickness
+        defaultDividerThickness
     }
 
     override var dividerColor: NSColor {
