@@ -150,7 +150,7 @@ private enum Metrics {
 // MARK: - Interface Settings
 //
 private enum Fonts {
-    static let title = NSFont.systemFont(ofSize: 14)
+    static let title = NSFont.systemFont(ofSize: 14, weight: .semibold)
     static let body = NSFont.systemFont(ofSize: 12)
 }
 
