@@ -35,13 +35,8 @@ extension NoteEditorViewController {
 
     @objc
     func refreshScrollInsets() {
-        let topContentInset = Settings.defaultTopInset
-        guard clipView.contentInsets.top != topContentInset else {
-            return
-        }
-
-        clipView.contentInsets.top = topContentInset
-        scrollView.scrollerInsets.top = topContentInset
+        clipView.contentInsets.top = Settings.defaultTopInset
+        scrollView.scrollerInsets.top = Settings.defaultTopInset
     }
 }
 
@@ -460,7 +455,7 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            markdownView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Settings.defaultTopInset),
+            markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
             markdownView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
 
@@ -744,7 +739,7 @@ private extension NoteEditorViewController {
 // MARK: - Settings
 //
 private enum Settings {
-    static let defaultTopInset = CGFloat(64)
+    static let defaultTopInset = CGFloat(48)
     static let maximumAlphaGradientOffset = CGFloat(14)
     static let activeAlphaThreshold = CGFloat(0.5)
 
