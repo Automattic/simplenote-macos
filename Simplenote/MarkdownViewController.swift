@@ -176,7 +176,7 @@ private extension MarkdownViewController {
     }
 
     func refreshStyle() {
-        backgroundView.fillColor = .simplenoteBackgroundColor
+        backgroundView.fillColor = .simplenoteSecondaryBackgroundColor
     }
 
     func refreshHTML() {

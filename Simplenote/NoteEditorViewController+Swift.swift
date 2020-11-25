@@ -24,12 +24,6 @@ extension NoteEditorViewController {
     }
 
     @objc
-    func setupTopDivider() {
-        topDividerView.alphaValue = .zero
-        topDividerView.drawsBottomBorder = true
-    }
-
-    @objc
     func setupTagsField() {
         tagsField.delegate = self
         tagsField.focusRingType = .none
@@ -37,6 +31,12 @@ extension NoteEditorViewController {
         tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
         tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
+    }
+
+    @objc
+    func refreshScrollInsets() {
+        clipView.contentInsets.top = Settings.defaultTopInset
+        scrollView.scrollerInsets.top = Settings.defaultTopInset
     }
 }
 
@@ -107,16 +107,15 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshStyle() {
-        backgroundView.fillColor                = .simplenoteBackgroundColor
+        backgroundView.fillColor                = .simplenoteSecondaryBackgroundColor
         bottomDividerView.borderColor           = .simplenoteDividerColor
-        noteEditor.insertionPointColor          = .simplenoteTextColor
-        noteEditor.textColor                    = .simplenoteTextColor
+        noteEditor.insertionPointColor          = .simplenoteEditorTextColor
+        noteEditor.textColor                    = .simplenoteEditorTextColor
         searchField.textColor                   = .simplenoteTextColor
         searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
         statusTextField.textColor               = .simplenoteSecondaryTextColor
         tagsField.textColor                     = .simplenoteTextColor
         tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
-        topDividerView.borderColor              = .simplenoteDividerColor
 
         if let note = note {
             storage.refreshStyle(markdownEnabled: note.markdown)
@@ -439,13 +438,13 @@ extension NoteEditorViewController {
     func displayMarkdownPreview(_ note: Note) {
         markdownViewController.startDisplayingContents(of: note)
         attachMarkdownViewController()
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
     @objc
     func dismissMarkdownPreview() {
         detachMarkdownViewController()
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
     private func attachMarkdownViewController() {
@@ -456,7 +455,7 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            markdownView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
             markdownView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
 
@@ -484,19 +483,22 @@ extension NoteEditorViewController {
 
     @objc
     func clipViewDidScroll(sender: Notification) {
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
-    private func refreshTopDividerAlpha() {
-        topDividerView.alphaValue = alphaForTopDivider
+    @objc
+    func refreshHeaderState() {
+        let newAlpha = alphaForHeader
+        headerEffectView.alphaValue = newAlpha
+        headerEffectView.state = newAlpha > Settings.activeAlphaThreshold ? .active : .inactive
     }
 
-    private var alphaForTopDivider: CGFloat {
+    private var alphaForHeader: CGFloat {
         guard markdownViewController.parent == nil else {
             return AppKitConstants.alpha1_0
         }
 
-        let contentOffSetY = scrollView.documentVisibleRect.origin.y
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
         return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
     }
 }
@@ -738,7 +740,9 @@ private extension NoteEditorViewController {
 // MARK: - Settings
 //
 private enum Settings {
-    static let maximumAlphaGradientOffset = CGFloat(30)
+    static let defaultTopInset = CGFloat(48)
+    static let maximumAlphaGradientOffset = CGFloat(14)
+    static let activeAlphaThreshold = CGFloat(0.5)
 
     static var searchFieldPlaceholderString: NSAttributedString {
         let text = NSLocalizedString("Search", comment: "Search Field Placeholder")

@@ -97,7 +97,7 @@ extension NSString {
         for (index, line) in lines.enumerated() {
             let leading = line.leadingSpaces
             let payload = line.substring(from: leading.utf16.count)
-            let attachment = SPTextAttachment(tintColor: .simplenoteTextColor)
+            let attachment = SPTextAttachment(tintColor: .simplenoteEditorTextColor)
 
             output.append(string: leading)
             output.append(attachment: attachment)

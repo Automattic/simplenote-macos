@@ -99,7 +99,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     // Interface Initialization
     [self setupSearchBar];
     [self setupScrollView];
-    [self setupTopDivider];
     [self setupStatusImageView];
     [self setupTagsField];
 
@@ -122,6 +121,13 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self startListeningToScrollNotifications];
 
     [self refreshStyle];
+}
+
+- (void)viewWillLayout
+{
+    [super viewWillLayout];
+    [self refreshScrollInsets];
+    [self refreshHeaderState];
 }
 
 - (void)save
