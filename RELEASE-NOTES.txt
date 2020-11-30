@@ -1,3 +1,6 @@
+2.6
+-----
+ 
 2.5
 -----
 - Removed Main Window's Titlebar #719
