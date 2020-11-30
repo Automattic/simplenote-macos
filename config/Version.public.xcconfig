@@ -1,9 +1,9 @@
-VERSION_SHORT=2.4
+VERSION_SHORT=2.5
 
 // Public long version. Example: 2.0.0.0. The last 0 means the first build for
 // version 2.0.0
-VERSION_LONG=2.4.0.1
+VERSION_LONG=2.5.0.0
 
 // This is the value for the CFBundleVersion it should be incremented on every
 // build that gets distributed
-BUILD_NUMBER=11209
+BUILD_NUMBER=11210
