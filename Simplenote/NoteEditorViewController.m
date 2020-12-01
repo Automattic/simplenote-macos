@@ -193,7 +193,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
     NSString *simperiumKey = self.note.simperiumKey;
     if (simperiumKey != nil) {
-        // Save the scrollPosition of the current note
         NSValue *positionValue = [NSValue valueWithPoint:self.scrollView.contentView.bounds.origin];
         self.noteScrollPositions[simperiumKey] = positionValue;
     }
@@ -221,19 +220,12 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     }
 
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
-    
-    if ([self.noteScrollPositions objectForKey:selectedNote.simperiumKey] != nil) {
-        // Restore scroll position for note if it was saved previously in this session
-        double scrollDelay = 0.01;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, scrollDelay * NSEC_PER_SEC);
-        // #hack! Scroll after a very slight delay, to give the editor time to load the content
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-            NSPoint scrollPoint = [[self.noteScrollPositions objectForKey:selectedNote.simperiumKey] pointValue];
-            [[self.scrollView documentView] scrollPoint:scrollPoint];
-        });
+
+    NSValue *lastKnownScrollOffset = self.noteScrollPositions[selectedNote.simperiumKey];
+    if (lastKnownScrollOffset != nil) {
+        [self.scrollView.documentView scrollPoint:lastKnownScrollOffset.pointValue];
     } else {
-        // Otherwise we'll scroll to the top!
-        [[self.scrollView documentView] scrollPoint:NSMakePoint(0, 0)];
+        [self.scrollView scrollToTop];
     }
 }
 
