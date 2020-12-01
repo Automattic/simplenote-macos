@@ -202,7 +202,7 @@
                 </viewController>
                 <customObject id="CM3-Mo-F1C" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="220"/>
+            <point key="canvasLocation" x="118" y="220"/>
         </scene>
         <!--Note List View Controller-->
         <scene sceneID="GlM-Tn-ZsG">
