@@ -30,8 +30,8 @@ extension NoteListViewController {
     ///
     @objc
     func refreshScrollInsets() {
-        clipView.contentInsets.top = Settings.defaultTopInset
-        scrollView.scrollerInsets.top = Settings.defaultTopInset
+        clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
     }
 
     /// Ensures only the actions that are valid can be performed
@@ -164,12 +164,12 @@ extension NoteListViewController {
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
         headerEffectView.alphaValue = newAlpha
-        headerEffectView.state = newAlpha > Settings.activeAlphaThreshold ? .active : .inactive
+        headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
 
     private var alphaForHeader: CGFloat {
         let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
-        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+        return min(max(contentOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -405,13 +405,4 @@ extension NoteListViewController {
 
         arrayController.setSelectionIndex(previouslySelectedIndex)
     }
-}
-
-
-// MARK: - Settings!
-//
-private enum Settings {
-    static let defaultTopInset = CGFloat(62)
-    static let maximumAlphaGradientOffset = CGFloat(14)
-    static let activeAlphaThreshold = CGFloat(0.5)
 }

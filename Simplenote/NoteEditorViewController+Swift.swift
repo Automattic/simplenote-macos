@@ -35,8 +35,8 @@ extension NoteEditorViewController {
 
     @objc
     func refreshScrollInsets() {
-        clipView.contentInsets.top = Settings.defaultTopInset
-        scrollView.scrollerInsets.top = Settings.defaultTopInset
+        clipView.contentInsets.top = SplitItemMetrics.editorTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.editorTopInset
     }
 }
 
@@ -490,7 +490,7 @@ extension NoteEditorViewController {
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
         headerEffectView.alphaValue = newAlpha
-        headerEffectView.state = newAlpha > Settings.activeAlphaThreshold ? .active : .inactive
+        headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
 
     private var alphaForHeader: CGFloat {
@@ -499,7 +499,7 @@ extension NoteEditorViewController {
         }
 
         let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
-        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+        return min(max(contentOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -740,9 +740,6 @@ private extension NoteEditorViewController {
 // MARK: - Settings
 //
 private enum Settings {
-    static let defaultTopInset = CGFloat(48)
-    static let maximumAlphaGradientOffset = CGFloat(14)
-    static let activeAlphaThreshold = CGFloat(0.5)
 
     static var searchFieldPlaceholderString: NSAttributedString {
         let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
