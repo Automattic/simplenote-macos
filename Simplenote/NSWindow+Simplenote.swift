@@ -5,13 +5,13 @@ import Foundation
 //
 extension NSWindow {
 
-    ///
+    /// Indicates if the receiver is in Fullscreen
     ///
     var isFullscreen: Bool {
         styleMask.contains(.fullScreen)
     }
 
-    ///
+    /// Indicates if we're in RTL mode
     ///
     var isRTL: Bool {
         windowTitlebarLayoutDirection == .rightToLeft
