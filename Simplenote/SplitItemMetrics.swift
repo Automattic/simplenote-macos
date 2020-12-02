@@ -41,4 +41,8 @@ enum SplitItemMetrics {
     /// Header: Maximum Offset after which alpha should be set to (1.0)
     ///
     static let headerMaximumAlphaGradientOffset = CGFloat(14)
+
+    /// Spacing required between the Window's Semaphore (Close / Minimize / Maximize) and the first View component
+    ///
+    static let toolbarSemaphorePaddingX = CGFloat(16)
 }
