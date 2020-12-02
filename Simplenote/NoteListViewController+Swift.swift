@@ -68,13 +68,15 @@ extension NoteListViewController {
 extension NoteListViewController {
 
     open override func updateViewConstraints() {
-        if mustUpdateSemaphoreLeadingConstraint {
-            updateSemaphoreLeadingConstraint()
+        if mustSetupSemaphoreLeadingConstraint {
+            setupSemaphoreLeadingConstraint()
         }
+
+        refreshSemaphoreLeadingConstant()
         super.updateViewConstraints()
     }
 
-    var mustUpdateSemaphoreLeadingConstraint: Bool {
+    private var mustSetupSemaphoreLeadingConstraint: Bool {
         titleSemaphoreLeadingConstraint == nil
     }
 
@@ -85,22 +87,26 @@ extension NoteListViewController {
     ///     `priority` is set to `defaultLow` (250) for the constraint between TitleLabel and Window.contentLayoutGuide, whereas the regular `leading` is set to (249).
     ///     This way we avoid choppy NSSplitView animations (using a higher priority interfers with AppKit internals!)
     ///
-    func updateSemaphoreLeadingConstraint() {
-        guard let window = view.window,
-              let semaphoreMaxX = window.semaphoreMaximumLocationX,
-              let contentLayoutGuide = window.contentLayoutGuide as? NSLayoutGuide
-        else {
+    private func setupSemaphoreLeadingConstraint() {
+        guard let contentLayoutGuide = view.window?.contentLayoutGuide as? NSLayoutGuide else {
             return
         }
 
-        let padding = semaphoreMaxX + SplitItemMetrics.toolbarSemaphorePaddingX
-
-        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor, constant: padding)
+        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
         newConstraint.priority = .defaultLow
         newConstraint.isActive = true
-
         titleSemaphoreLeadingConstraint = newConstraint
      }
+
+    private func refreshSemaphoreLeadingConstant() {
+        guard let window = view.window, let semaphoreBounds = window.semaphoreBoundingRect else {
+            return
+        }
+
+        let isLTR = window.windowTitlebarLayoutDirection == .leftToRight
+
+        titleSemaphoreLeadingConstraint?.constant = padding + SplitItemMetrics.toolbarSemaphorePaddingX
+    }
 }
 
 
@@ -196,8 +202,22 @@ extension NoteListViewController {
     }
 
     @objc
+    func startListeningToWindowNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(windowDidResize),
+                                               name: NSWindow.didResizeNotification,
+                                               object: nil)
+    }
+
+    @objc
     func clipViewDidScroll(sender: Notification) {
         refreshHeaderState()
+    }
+
+    @objc
+    func windowDidResize(sender: Notification) {
+        // We might need to adjust the Title constraints (in order to prevent collisions!)
+        view.needsUpdateConstraints = true
     }
 
     @objc
