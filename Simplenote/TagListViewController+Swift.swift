@@ -10,6 +10,7 @@ extension TagListViewController {
     @objc
     func setupTableView() {
         tableView.ensureStyleIsFullWidth()
+        tableView.sizeLastColumnToFit()
     }
 
     /// Setup: Top Header

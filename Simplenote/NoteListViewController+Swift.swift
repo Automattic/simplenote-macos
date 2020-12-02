@@ -54,6 +54,7 @@ extension NoteListViewController {
     ///
     @objc
     func applyStyle() {
+        backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
