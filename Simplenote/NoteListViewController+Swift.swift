@@ -63,6 +63,47 @@ extension NoteListViewController {
 }
 
 
+// MARK: - Layout
+//
+extension NoteListViewController {
+
+    open override func updateViewConstraints() {
+        if mustUpdateSemaphoreLeadingConstraint {
+            updateSemaphoreLeadingConstraint()
+        }
+        super.updateViewConstraints()
+    }
+
+    var mustUpdateSemaphoreLeadingConstraint: Bool {
+        titleSemaphoreLeadingConstraint == nil
+    }
+
+    /// # Semaphore Leading:
+    /// We REALLY need to avoid collisions between the TitleLabel and the Window's Semaphore (Zoom / Close buttons).
+    ///
+    /// - Important:
+    ///     `priority` is set to `defaultLow` (250) for the constraint between TitleLabel and Window.contentLayoutGuide, whereas the regular `leading` is set to (249).
+    ///     This way we avoid choppy NSSplitView animations (using a higher priority interfers with AppKit internals!)
+    ///
+    func updateSemaphoreLeadingConstraint() {
+        guard let window = view.window,
+              let semaphoreMaxX = window.semaphoreMaximumLocationX,
+              let contentLayoutGuide = window.contentLayoutGuide as? NSLayoutGuide
+        else {
+            return
+        }
+
+        let padding = semaphoreMaxX + SplitItemMetrics.toolbarSemaphorePaddingX
+
+        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor, constant: padding)
+        newConstraint.priority = .defaultLow
+        newConstraint.isActive = true
+
+        titleSemaphoreLeadingConstraint = newConstraint
+     }
+}
+
+
 // MARK: - State
 //
 extension NoteListViewController {

@@ -390,7 +390,7 @@
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="EAu-95-CpX"/>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="OO0-gy-TNv"/>
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="16" id="Q6T-vJ-qmu"/>
-                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="rhf-28-XBu"/>
+                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" priority="249" constant="16" id="rhf-28-XBu"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
