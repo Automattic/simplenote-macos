@@ -76,6 +76,8 @@ extension NoteListViewController {
         super.updateViewConstraints()
     }
 
+    /// Indicates if the Semaphore Leading hasn't been initialized
+    ///
     private var mustSetupSemaphoreLeadingConstraint: Bool {
         titleSemaphoreLeadingConstraint == nil
     }
@@ -96,16 +98,26 @@ extension NoteListViewController {
         newConstraint.priority = .defaultLow
         newConstraint.isActive = true
         titleSemaphoreLeadingConstraint = newConstraint
-     }
+    }
 
+    /// Refreshes the Semaphore Leading
+    ///
     private func refreshSemaphoreLeadingConstant() {
-        guard let window = view.window, let semaphoreBounds = window.semaphoreBoundingRect else {
-            return
+        titleSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
+    }
+
+    /// Returns the Horizontal Padding required in order to prevent overlaps between our controls and the Window's Semaphore
+    /// - Note:
+    ///     - Fullscreen: zero padding
+    ///     - LTR: Semaphore's Maximum horizontal position
+    ///     - RTL: Window's Width minus the Semaphore's Minimum horizontal location
+    ///
+    private var semaphorePaddingX: CGFloat {
+        guard let window = view.window, let semaphoreBounds = window.semaphoreBoundingRect, window.isFullscreen == false else {
+            return .zero
         }
 
-        let isLTR = window.windowTitlebarLayoutDirection == .leftToRight
-
-        titleSemaphoreLeadingConstraint?.constant = padding + SplitItemMetrics.toolbarSemaphorePaddingX
+        return window.isRTL ? (window.frame.width - semaphoreBounds.minX) : semaphoreBounds.maxX
     }
 }
 
