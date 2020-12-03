@@ -83,6 +83,7 @@
     [self setupProgressIndicator];
     [self setupTableView];
     [self startListeningToScrollNotifications];
+    [self startListeningToWindowNotifications];
 }
 
 - (void)viewWillAppear
