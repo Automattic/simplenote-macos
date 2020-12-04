@@ -104,21 +104,11 @@ extension NoteListViewController {
     /// Refreshes the Semaphore Leading
     ///
     private func refreshSemaphoreLeadingConstant() {
-        titleSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
-    }
-
-    /// Returns the Horizontal Padding required in order to prevent overlaps between our controls and the Window's Semaphore
-    /// - Note:
-    ///     - Fullscreen: zero padding
-    ///     - LTR: Semaphore's Maximum horizontal position
-    ///     - RTL: Window's Width minus the Semaphore's Minimum horizontal location
-    ///
-    private var semaphorePaddingX: CGFloat {
-        guard let window = view.window, let semaphoreBounds = window.semaphoreBoundingRect, window.isFullscreen == false else {
-            return .zero
+        guard let semaphorePaddingX = view.window?.semaphorePaddingX else {
+            return
         }
 
-        return window.isRTL ? (window.frame.width - semaphoreBounds.minX) : semaphoreBounds.maxX
+        titleSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
     }
 }
 
