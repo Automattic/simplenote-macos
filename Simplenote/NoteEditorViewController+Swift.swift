@@ -41,6 +41,56 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Layout
+//
+extension NoteEditorViewController {
+
+    open override func updateViewConstraints() {
+        if mustSetupSemaphoreLeadingConstraint {
+            setupSemaphoreLeadingConstraint()
+        }
+
+        refreshSemaphoreLeadingConstant()
+        super.updateViewConstraints()
+    }
+
+    /// Indicates if the Semaphore Leading hasn't been initialized
+    ///
+    private var mustSetupSemaphoreLeadingConstraint: Bool {
+        sidebarSemaphoreLeadingConstraint == nil
+    }
+
+    /// # Semaphore Leading:
+    /// We REALLY need to avoid collisions between the Sidebar Button and the Window's Semaphore (Zoom / Close buttons).
+    ///
+    /// - Important:
+    ///     `priority` is set to `defaultLow` (250) for the constraint between Button and Window.contentLayoutGuide, whereas the regular `leading` is set to (249).
+    ///     This way we avoid choppy NSSplitView animations (using a higher priority interfers with AppKit internals!)
+    ///
+    private func setupSemaphoreLeadingConstraint() {
+        guard let contentLayoutGuide = view.window?.contentLayoutGuide as? NSLayoutGuide else {
+            return
+        }
+
+        let sidebarLeadingAnchor = toolbarView.sidebarButton.leadingAnchor
+        let newConstraint = sidebarLeadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
+        newConstraint.priority = .defaultLow
+        newConstraint.isActive = true
+        sidebarSemaphoreLeadingConstraint = newConstraint
+    }
+
+    /// Refreshes the Semaphore Leading
+    ///
+    private func refreshSemaphoreLeadingConstant() {
+        guard let semaphorePaddingX = view.window?.semaphorePaddingX else {
+            return
+        }
+
+        sidebarSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
+    }
+}
+
+
 // MARK: - Internal State
 //
 extension NoteEditorViewController {
@@ -326,6 +376,11 @@ extension NoteEditorViewController: NSMenuItemValidation {
 // MARK: - Actions
 //
 extension NoteEditorViewController {
+
+    @IBAction
+    func sidebarWasPressed(sender: Any) {
+
+    }
 
     @IBAction
     func metricsWasPressed(sender: Any) {
