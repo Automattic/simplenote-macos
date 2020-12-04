@@ -517,7 +517,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="493" height="570"/>
+                                            <size key="minSize" width="508" height="570"/>
                                             <size key="maxSize" width="10000000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -597,6 +597,20 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mdt-4X-jeq" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="566" width="508" height="52"/>
                                 <subviews>
+                                    <button toolTip="Toggle Sidebar" horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eki-Gw-aTk" userLabel="Sidebar">
+                                        <rect key="frame" x="16" y="15" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="3rm-0M-f5j"/>
+                                            <constraint firstAttribute="height" constant="22" id="OYN-wM-bl2"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_tags_close" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="4Lg-IG-ueJ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="sidebarWasPressedWithSender:" target="owM-kh-Bm6" id="qjG-A4-22Y"/>
+                                        </connections>
+                                    </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
                                         <rect key="frame" x="86" y="0.0" width="406" height="52"/>
                                         <subviews>
@@ -688,16 +702,20 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Eki-Gw-aTk" firstAttribute="centerY" secondItem="mdt-4X-jeq" secondAttribute="centerY" id="7KD-so-OMq"/>
+                                    <constraint firstItem="8xD-dy-bio" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mdt-4X-jeq" secondAttribute="leading" constant="60" id="C0D-cy-kLE"/>
                                     <constraint firstAttribute="bottom" secondItem="8xD-dy-bio" secondAttribute="bottom" id="PxV-l3-3xc"/>
                                     <constraint firstAttribute="height" constant="52" id="Sbd-Ya-Bl9"/>
                                     <constraint firstItem="8xD-dy-bio" firstAttribute="top" secondItem="mdt-4X-jeq" secondAttribute="top" id="Wcs-Kz-DWc"/>
                                     <constraint firstAttribute="trailing" secondItem="8xD-dy-bio" secondAttribute="trailing" constant="16" id="YLX-ev-0uq"/>
+                                    <constraint firstItem="Eki-Gw-aTk" firstAttribute="leading" secondItem="mdt-4X-jeq" secondAttribute="leading" priority="249" constant="16" id="xKL-7N-KKP"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="metricsButton" destination="hVc-Cl-DHn" id="WUB-8E-mFm"/>
                                     <outlet property="moreButton" destination="Z7O-L9-Q1P" id="nAT-Hn-2b2"/>
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
                                     <outlet property="restoreButton" destination="W50-6o-QGr" id="hF8-xI-ouJ"/>
+                                    <outlet property="sidebarButton" destination="Eki-Gw-aTk" id="i2B-I9-LMf"/>
                                     <outlet property="stackView" destination="8xD-dy-bio" id="ubf-Av-SAn"/>
                                 </connections>
                             </customView>
@@ -849,6 +867,7 @@
         <image name="button_new_note" width="24" height="24"/>
         <image name="button_preview_off" width="24" height="24"/>
         <image name="button_restore" width="24" height="24"/>
+        <image name="button_tags_close" width="24" height="24"/>
         <image name="icon_pin" width="16" height="16"/>
         <image name="icon_shared" width="16" height="16"/>
     </resources>

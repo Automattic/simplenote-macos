@@ -12,6 +12,10 @@ class ToolbarView: NSView {
 
     /// Metrics Button
     ///
+    @IBOutlet private(set) var sidebarButton: NSButton!
+
+    /// Metrics Button
+    ///
     @IBOutlet private(set) var metricsButton: NSButton!
 
     /// More Button
@@ -94,7 +98,7 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     var allButtons: [NSButton] {
-        [metricsButton, moreButton, previewButton, restoreButton]
+        [sidebarButton, metricsButton, moreButton, previewButton, restoreButton]
     }
 
     @objc
@@ -109,6 +113,7 @@ private extension ToolbarView {
         moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
         restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
+        sidebarButton.toolTip = NSLocalizedString("Sidebar", comment: "Tooltip: Restore a trashed note")
 
         let cells = allButtons.compactMap { $0.cell as? NSButtonCell }
         for cell in cells {
