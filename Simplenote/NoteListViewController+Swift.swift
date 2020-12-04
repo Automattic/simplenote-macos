@@ -30,8 +30,8 @@ extension NoteListViewController {
     ///
     @objc
     func refreshScrollInsets() {
-        clipView.contentInsets.top = Settings.defaultTopInset
-        scrollView.scrollerInsets.top = Settings.defaultTopInset
+        clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
     }
 
     /// Ensures only the actions that are valid can be performed
@@ -54,11 +54,71 @@ extension NoteListViewController {
     ///
     @objc
     func applyStyle() {
+        backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
         reloadDataAndPreserveSelection()
+    }
+}
+
+
+// MARK: - Layout
+//
+extension NoteListViewController {
+
+    open override func updateViewConstraints() {
+        if mustSetupSemaphoreLeadingConstraint {
+            setupSemaphoreLeadingConstraint()
+        }
+
+        refreshSemaphoreLeadingConstant()
+        super.updateViewConstraints()
+    }
+
+    /// Indicates if the Semaphore Leading hasn't been initialized
+    ///
+    private var mustSetupSemaphoreLeadingConstraint: Bool {
+        titleSemaphoreLeadingConstraint == nil
+    }
+
+    /// # Semaphore Leading:
+    /// We REALLY need to avoid collisions between the TitleLabel and the Window's Semaphore (Zoom / Close buttons).
+    ///
+    /// - Important:
+    ///     `priority` is set to `defaultLow` (250) for the constraint between TitleLabel and Window.contentLayoutGuide, whereas the regular `leading` is set to (249).
+    ///     This way we avoid choppy NSSplitView animations (using a higher priority interfers with AppKit internals!)
+    ///
+    private func setupSemaphoreLeadingConstraint() {
+        guard let contentLayoutGuide = view.window?.contentLayoutGuide as? NSLayoutGuide else {
+            return
+        }
+
+        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
+        newConstraint.priority = .defaultLow
+        newConstraint.isActive = true
+        titleSemaphoreLeadingConstraint = newConstraint
+    }
+
+    /// Refreshes the Semaphore Leading
+    ///
+    private func refreshSemaphoreLeadingConstant() {
+        titleSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
+    }
+
+    /// Returns the Horizontal Padding required in order to prevent overlaps between our controls and the Window's Semaphore
+    /// - Note:
+    ///     - Fullscreen: zero padding
+    ///     - LTR: Semaphore's Maximum horizontal position
+    ///     - RTL: Window's Width minus the Semaphore's Minimum horizontal location
+    ///
+    private var semaphorePaddingX: CGFloat {
+        guard let window = view.window, let semaphoreBounds = window.semaphoreBoundingRect, window.isFullscreen == false else {
+            return .zero
+        }
+
+        return window.isRTL ? (window.frame.width - semaphoreBounds.minX) : semaphoreBounds.maxX
     }
 }
 
@@ -155,20 +215,34 @@ extension NoteListViewController {
     }
 
     @objc
+    func startListeningToWindowNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(windowDidResize),
+                                               name: NSWindow.didResizeNotification,
+                                               object: nil)
+    }
+
+    @objc
     func clipViewDidScroll(sender: Notification) {
         refreshHeaderState()
+    }
+
+    @objc
+    func windowDidResize(sender: Notification) {
+        // We might need to adjust the Title constraints (in order to prevent collisions!)
+        view.needsUpdateConstraints = true
     }
 
     @objc
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
         headerEffectView.alphaValue = newAlpha
-        headerEffectView.state = newAlpha > Settings.activeAlphaThreshold ? .active : .inactive
+        headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
 
     private var alphaForHeader: CGFloat {
         let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
-        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+        return min(max(contentOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -404,13 +478,4 @@ extension NoteListViewController {
 
         arrayController.setSelectionIndex(previouslySelectedIndex)
     }
-}
-
-
-// MARK: - Settings!
-//
-private enum Settings {
-    static let defaultTopInset = CGFloat(62)
-    static let maximumAlphaGradientOffset = CGFloat(14)
-    static let activeAlphaThreshold = CGFloat(0.5)
 }

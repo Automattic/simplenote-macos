@@ -10,6 +10,7 @@ extension TagListViewController {
     @objc
     func setupTableView() {
         tableView.ensureStyleIsFullWidth()
+        tableView.sizeLastColumnToFit()
     }
 
     /// Setup: Top Header
@@ -24,7 +25,7 @@ extension TagListViewController {
     ///
     @objc
     func refreshExtendedContentInsets() {
-        clipView.contentInsets.top = Settings.defaultTopInset
+        clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
     }
 
     /// Regenerates the Internal List State
@@ -78,7 +79,7 @@ extension TagListViewController {
 
     private var alphaForHeaderSeparatorView: CGFloat {
         let absoluteOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
-        return min(max(absoluteOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+        return min(max(absoluteOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -227,13 +228,4 @@ extension TagListViewController: SPTextFieldDelegate {
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
         !menuShowing
     }
-}
-
-
-// MARK: - Settings!
-//
-private enum Settings {
-    static let defaultTopInset = CGFloat(62)
-    static let maximumAlphaGradientOffset = CGFloat(30)
-    static let titlebarHeight = CGFloat(22)
 }

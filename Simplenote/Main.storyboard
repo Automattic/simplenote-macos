@@ -11,25 +11,25 @@
             <objects>
                 <viewController storyboardIdentifier="TagListViewController" id="DTE-cl-X3E" customClass="TagListViewController" sceneMemberID="viewController">
                     <view key="view" id="Muw-Yd-KYW">
-                        <rect key="frame" x="0.0" y="0.0" width="140" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <visualEffectView blendingMode="behindWindow" material="menu" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="9tf-Lw-qRu">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="566"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="566"/>
                             </visualEffectView>
                             <scrollView borderType="none" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hn-Sh-zaZ">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="618"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="elT-nR-XZN" customClass="ClipView" customModule="Simplenote" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="140" height="618"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="618"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="fullWidth" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="1PS-xY-Vtk" customClass="SPTableView">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="556"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="556"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="0.0074358092779999996" blue="0.18312235169999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="Tags Column" width="128" minWidth="40" maxWidth="1000" id="TbY-k2-hUl">
+                                                <tableColumn identifier="Tags Column" width="138" minWidth="40" maxWidth="1000" id="TbY-k2-hUl">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,11 +41,12 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="SpacerTableViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="RyL-oL-AZL" userLabel="Spacer" customClass="SpacerTableViewCell" customModule="Simplenote" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="16"/>
+                                                        <tableCellView identifier="SpacerTableViewCell" id="RyL-oL-AZL" userLabel="Spacer" customClass="SpacerTableViewCell" customModule="Simplenote" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="xjr-Tk-HSi">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="hSU-O1-qCm"/>
                                                                     </constraints>
@@ -58,11 +59,12 @@
                                                                 <constraint firstAttribute="trailing" secondItem="xjr-Tk-HSi" secondAttribute="trailing" id="zC1-EW-2M9"/>
                                                             </constraints>
                                                         </tableCellView>
-                                                        <tableCellView identifier="HeaderTableCellView" translatesAutoresizingMaskIntoConstraints="NO" id="ftn-CT-UtG" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="16" width="140" height="27"/>
+                                                        <tableCellView identifier="HeaderTableCellView" id="ftn-CT-UtG" userLabel="Header" customClass="HeaderTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="16" width="150" height="27"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gk-Te-s8H">
-                                                                    <rect key="frame" x="14" y="6" width="116" height="15"/>
+                                                                    <rect key="frame" x="14" y="6" width="126" height="15"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Header" placeholderString="" usesSingleLineMode="YES" id="4mI-A4-Nw3">
                                                                         <font key="font" metaFont="cellTitle"/>
                                                                         <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,11 +85,12 @@
                                                                 <outlet property="textField" destination="3Gk-Te-s8H" id="4Ax-ix-Pc6"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="TagTableCellView" translatesAutoresizingMaskIntoConstraints="NO" id="Nrb-k8-TzG" userLabel="Tag" customClass="TagTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="43" width="140" height="29"/>
+                                                        <tableCellView identifier="TagTableCellView" id="Nrb-k8-TzG" userLabel="Tag" customClass="TagTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="43" width="150" height="29"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiU-KW-NFn">
-                                                                    <rect key="frame" x="16" y="4" width="118" height="21"/>
+                                                                    <rect key="frame" x="16" y="4" width="128" height="21"/>
                                                                     <subviews>
                                                                         <imageView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQa-wT-h4H">
                                                                             <rect key="frame" x="0.0" y="1" width="20" height="20"/>
@@ -98,7 +101,7 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ljx-Ru-cW4"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGW-Hf-ZuM" customClass="SPTextField" customModule="Simplenote" customModuleProvider="target">
-                                                                            <rect key="frame" x="-2" y="1" width="122" height="20"/>
+                                                                            <rect key="frame" x="-2" y="1" width="132" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="9Yn-WV-dra"/>
                                                                             </constraints>
@@ -161,13 +164,13 @@
                                 </scroller>
                             </scrollView>
                             <visualEffectView blendingMode="behindWindow" material="menu" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-PR-dA6">
-                                <rect key="frame" x="0.0" y="566" width="140" height="52"/>
+                                <rect key="frame" x="0.0" y="566" width="150" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="1Jn-yq-nkd"/>
                                 </constraints>
                             </visualEffectView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="LCF-v1-7tj" userLabel="Header Separator View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="566" width="140" height="52"/>
+                                <rect key="frame" x="0.0" y="566" width="150" height="52"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -199,7 +202,7 @@
                 </viewController>
                 <customObject id="CM3-Mo-F1C" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="220"/>
+            <point key="canvasLocation" x="118" y="220"/>
         </scene>
         <!--Note List View Controller-->
         <scene sceneID="GlM-Tn-ZsG">
@@ -362,7 +365,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
+                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
                                         <rect key="frame" x="14" y="17" width="39" height="19"/>
                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Title" id="VNw-0O-CIA">
                                             <font key="font" metaFont="systemBold" size="16"/>
@@ -389,8 +392,8 @@
                                     <constraint firstItem="sHv-fV-cSL" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="7yr-5F-Pa7"/>
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="EAu-95-CpX"/>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="OO0-gy-TNv"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="16" id="Q6T-vJ-qmu"/>
-                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="rhf-28-XBu"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="8" id="Q6T-vJ-qmu"/>
+                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" priority="249" constant="16" id="rhf-28-XBu"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">

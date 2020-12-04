@@ -274,6 +274,10 @@
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
 		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
+		B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
+		B5A9FE272576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
+		B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
 		B5ACE42E24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
 		B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
 		B5AF76C724A3F00600B7D530 /* TagListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C624A3F00600B7D530 /* TagListState.swift */; };
@@ -633,6 +637,8 @@
 		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
 		B5A89191231ECB3C0007EDCB /* INSTALL.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = INSTALL.markdown; sourceTree = "<group>"; };
 		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+Simplenote.swift"; sourceTree = "<group>"; };
+		B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemMetrics.swift; sourceTree = "<group>"; };
 		B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		B5AF76C624A3F00600B7D530 /* TagListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListState.swift; sourceTree = "<group>"; };
 		B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListRow.swift; sourceTree = "<group>"; };
@@ -1067,6 +1073,7 @@
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
+				B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1298,6 +1305,7 @@
 				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B5D6833324ACFA79004AFF1B /* Versions */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
+				B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
 				B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */,
@@ -1817,6 +1825,7 @@
 				B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */,
 				B5E0862C2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
 				B5C63337251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */,
+				B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */,
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
@@ -1856,6 +1865,7 @@
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
 				46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */,
+				B5A9FE272576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
 				B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42E24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
 				B5DD0F912476309000C8DD41 /* NoteTableCellView.swift in Sources */,
@@ -1918,6 +1928,7 @@
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
+				B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
 				B58BBD3E2523FF160025135F /* AutocompleteWindow.swift in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
@@ -2015,6 +2026,7 @@
 				B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
+				B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */,
 				B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */,
 				B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,

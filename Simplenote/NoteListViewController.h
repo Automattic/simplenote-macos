@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSButton               *addNoteButton;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *noteListMenu;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
+@property (nonatomic, strong, nullable) NSLayoutConstraint              *titleSemaphoreLeadingConstraint;
 
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
 @property (nonatomic, strong, nullable) NSString                        *searchKeyword;
