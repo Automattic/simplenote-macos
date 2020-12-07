@@ -176,14 +176,14 @@ extension ToolbarView {
 extension ToolbarView {
 
     func beginSearch() {
-        refreshLayoutIfNeeded(displaySearchBar: true)
+        updateLayoutIfNeeded(displaySearchBar: true)
         window?.makeFirstResponder(searchField)
     }
 
     func endSearch() {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
-        refreshLayoutIfNeeded(displaySearchBar: false)
+        updateLayoutIfNeeded(displaySearchBar: false)
     }
 
     func endSearchIfNeeded() {
@@ -211,7 +211,6 @@ extension ToolbarView: NSSearchFieldDelegate {
 
         dismissSearchBarIfNeeded()
         delegate?.toolbarDidEndSearch(self)
-
     }
 
     @IBAction
@@ -234,14 +233,18 @@ private extension ToolbarView {
             return
         }
 
-        refreshLayoutIfNeeded(displaySearchBar: false)
+        updateLayoutIfNeeded(displaySearchBar: false)
     }
 
-    func refreshLayoutIfNeeded(displaySearchBar: Bool) {
+    func updateLayoutIfNeeded(displaySearchBar: Bool) {
         guard isSearchBarVisible != displaySearchBar else {
             return
         }
 
+        updateLayout(displaySearchBar: displaySearchBar)
+    }
+
+    func updateLayout(displaySearchBar: Bool) {
         let newBarWidth     = displaySearchBar ? Metrics.searchBarSize.width : .zero
         let newButtonSize   = displaySearchBar ? .zero : Metrics.buttonSize
         let newButtonAlpha  = displaySearchBar ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
