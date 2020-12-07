@@ -424,7 +424,10 @@ extension NoteEditorViewController {
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
         viewController.delegate = self
+
+        toolbarView.dismissSearchBarOnEndEditing = false
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+        toolbarView.dismissSearchBarOnEndEditing = true
     }
 
     func displayPublishPopover(from sourceView: NSView, for note: Note) {

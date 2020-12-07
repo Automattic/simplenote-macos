@@ -42,6 +42,10 @@ class ToolbarView: NSView {
     ///
     weak var delegate: ToolbarDelegate?
 
+    /// Indicates if the Search Mode should be dismissed whenever the SearchBar stops being First Responder  (and there is no Search Keyword!)
+    ///
+    var dismissSearchBarOnEndEditing = true
+
     /// Represents the Toolbar's State
     ///
     var state: ToolbarState  = .default {
@@ -167,14 +171,14 @@ extension ToolbarView {
 extension ToolbarView {
 
     func beginSearch() {
-        displaySearchBarIfNeeded()
+        refreshLayoutIfNeeded(displaySearchBar: true)
         window?.makeFirstResponder(searchField)
     }
 
     func endSearch() {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
-        dismissSearchBarIfNeeded()
+        refreshLayoutIfNeeded(displaySearchBar: false)
     }
 
     func endSearchIfNeeded() {
@@ -192,20 +196,16 @@ extension ToolbarView {
 extension ToolbarView: NSSearchFieldDelegate {
 
     public func controlTextDidBeginEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
-            return
-        }
-
         delegate?.toolbarDidBeginSearch(self)
     }
 
     public func controlTextDidEndEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
+        guard dismissSearchBarOnEndEditing else {
             return
         }
 
         delegate?.toolbarDidEndSearch(self)
-        dismissSearchBarIfNeeded()
+        refreshLayoutIfNeeded(displaySearchBar: false)
     }
 
     @IBAction
@@ -223,32 +223,14 @@ private extension ToolbarView {
         searchFieldWidthConstraint.constant != 0
     }
 
-    func displaySearchBarIfNeeded() {
-        guard !isSearchBarVisible else {
+    func refreshLayoutIfNeeded(displaySearchBar: Bool) {
+        guard isSearchBarVisible != displaySearchBar else {
             return
         }
 
-        updateSearchBar(visible: true)
-    }
-
-    func dismissSearchBarIfNeeded() {
-        guard isSearchBarVisible, searchField.stringValue.isEmpty else {
-            return
-        }
-
-        updateSearchBar(visible: false)
-    }
-}
-
-
-// MARK: - Animations
-//
-private extension ToolbarView {
-
-    func updateSearchBar(visible: Bool) {
-        let newBarWidth     = visible ? Metrics.searchBarSize.width : .zero
-        let newButtonSize   = visible ? .zero : Metrics.buttonSize
-        let newButtonAlpha  = visible ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
+        let newBarWidth     = displaySearchBar ? Metrics.searchBarSize.width : .zero
+        let newButtonSize   = displaySearchBar ? .zero : Metrics.buttonSize
+        let newButtonAlpha  = displaySearchBar ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
 
         NSAnimationContext.runAnimationGroup { context in
             context.allowsImplicitAnimation = true
