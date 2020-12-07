@@ -209,8 +209,9 @@ extension ToolbarView: NSSearchFieldDelegate {
             return
         }
 
+        dismissSearchBarIfNeeded()
         delegate?.toolbarDidEndSearch(self)
-        refreshLayoutIfNeeded(displaySearchBar: false)
+
     }
 
     @IBAction
@@ -226,6 +227,14 @@ private extension ToolbarView {
 
     var isSearchBarVisible: Bool {
         searchFieldWidthConstraint.constant != 0
+    }
+
+    func dismissSearchBarIfNeeded() {
+        guard searchField.stringValue.isEmpty else {
+            return
+        }
+
+        refreshLayoutIfNeeded(displaySearchBar: false)
     }
 
     func refreshLayoutIfNeeded(displaySearchBar: Bool) {
