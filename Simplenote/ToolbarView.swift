@@ -1,6 +1,15 @@
 import Foundation
 
 
+// MARK: - ToolbarDelegate
+//
+protocol ToolbarDelegate: NSObject {
+    func toolbarDidBeginSearch(_ toolbar: ToolbarView)
+    func toolbarDidEndSearch(_ toolbar: ToolbarView)
+    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String)
+}
+
+
 // MARK: - ToolbarView
 //
 @objcMembers
@@ -28,6 +37,10 @@ class ToolbarView: NSView {
     @IBOutlet private(set) var searchWidthConstraint: NSLayoutConstraint!
     @IBOutlet private(set) var searchHeightConstraint: NSLayoutConstraint!
     @IBOutlet private(set) var searchFieldWidthConstraint: NSLayoutConstraint!
+
+    /// Toolbar Delegate
+    ///
+    weak var delegate: ToolbarDelegate?
 
     /// Represents the Toolbar's State
     ///
@@ -89,6 +102,8 @@ private extension ToolbarView {
 
         restoreButton.isEnabled = state.isRestoreActionEnabled
         restoreButton.isHidden = state.isRestoreActionHidden
+
+        searchButton.isEnabled = state.isSearchActionEnabled
     }
 }
 
@@ -113,8 +128,8 @@ private extension ToolbarView {
         moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
         restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
-        sidebarButton.toolTip = NSLocalizedString("Toggle Sidebar", comment: "Tooltip: Restore a trashed note")
         searchButton.toolTip =  NSLocalizedString("Search", comment: "Tooltip: Search Action")
+        sidebarButton.toolTip = NSLocalizedString("Toggle Sidebar", comment: "Tooltip: Restore a trashed note")
 
         let cells = allButtons.compactMap { $0.cell as? NSButtonCell }
         for cell in cells {
@@ -134,7 +149,60 @@ extension ToolbarView {
 
     @IBAction
     func searchWasPressed(_ sender: Any) {
-        updateSearchBar(visible: true)
+        beginSearch()
+    }
+}
+
+
+// MARK: - Search Bar Public API
+//
+extension ToolbarView {
+
+    func beginSearch() {
+        displaySearchBarIfNeeded()
+        window?.makeFirstResponder(searchField)
+    }
+
+    func endSearch() {
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
+        dismissSearchBarIfNeeded()
+    }
+
+    func endSearchIfNeeded() {
+        guard isSearchBarVisible else {
+            return
+        }
+
+        endSearch()
+    }
+}
+
+
+// MARK: - NSSearchFieldDelegate
+//
+extension ToolbarView: NSSearchFieldDelegate {
+
+    public func controlTextDidBeginEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        delegate?.toolbarDidBeginSearch(self)
+    }
+
+    public func controlTextDidEndEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        delegate?.toolbarDidEndSearch(self)
+        dismissSearchBarIfNeeded()
+    }
+
+    @IBAction
+    public func performSearch(_ sender: Any) {
+        delegate?.toolbar(self, didSearch: searchField.stringValue)
     }
 }
 
@@ -147,8 +215,29 @@ private extension ToolbarView {
         searchFieldWidthConstraint.constant != 0
     }
 
+    func displaySearchBarIfNeeded() {
+        guard !isSearchBarVisible else {
+            return
+        }
+
+        updateSearchBar(visible: true)
+    }
+
+    func dismissSearchBarIfNeeded() {
+        guard isSearchBarVisible, searchField.stringValue.isEmpty else {
+            return
+        }
+
+        updateSearchBar(visible: false)
+    }
+}
+
+
+// MARK: - Animations
+//
+private extension ToolbarView {
+
     func updateSearchBar(visible: Bool) {
-        let newBarAlpha     = visible ? AppKitConstants.alpha1_0 : AppKitConstants.alpha0_0
         let newBarWidth     = visible ? Metrics.searchBarSize.width : .zero
         let newButtonSize   = visible ? .zero : Metrics.buttonSize
         let newButtonAlpha  = visible ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
@@ -162,12 +251,8 @@ private extension ToolbarView {
             searchFieldWidthConstraint.animator().constant  = newBarWidth
 
             searchButton.animator().alphaValue = newButtonAlpha
-            searchField.animator().alphaValue  = newBarAlpha
 
             layoutSubtreeIfNeeded()
-
-        } completionHandler: {
-            self.searchField.becomeFirstResponder()
         }
     }
 }

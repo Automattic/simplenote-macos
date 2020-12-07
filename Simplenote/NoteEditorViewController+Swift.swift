@@ -34,6 +34,11 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupToolbarView() {
+        toolbarView.delegate = self
+    }
+
+    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorTopInset
@@ -224,51 +229,32 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
-    @IBAction
+    @objc
     func beginSearch(_ sender: Any) {
-        view.window?.makeFirstResponder(searchField)
-    }
-
-    @IBAction
-    func performSearch(_ sender: Any) {
-        searchDelegate?.editorController(self, didSearchKeyword: searchField.stringValue)
-    }
-
-    @IBAction
-    func endSearch(_ sender: Any) {
-        searchField.cancelSearch()
-        searchField.resignFirstResponder()
+        toolbarView.beginSearch()
     }
 
     @objc
     func ensureSearchIsDismissed() {
-        guard searchField.stringValue.isEmpty == false else {
-            return
-        }
-
-        endSearch(self)
+        toolbarView.endSearchIfNeeded()
     }
 }
 
 
-// MARK: - NSSearchFieldDelegate
+// MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController: NSSearchFieldDelegate {
+extension NoteEditorViewController: ToolbarDelegate {
 
-    public func controlTextDidBeginEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
-            return
-        }
-
+    func toolbarDidBeginSearch(_ toolbar: ToolbarView) {
         searchDelegate?.editorControllerDidBeginSearch(self)
     }
 
-    public func controlTextDidEndEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
-            return
-        }
-
+    func toolbarDidEndSearch(_ toolbar: ToolbarView) {
         searchDelegate?.editorControllerDidEndSearch(self)
+    }
+
+    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
+        searchDelegate?.editorController(self, didSearchKeyword: keyword)
     }
 }
 

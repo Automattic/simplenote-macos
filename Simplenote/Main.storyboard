@@ -695,8 +695,8 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <action selector="performSearch:" target="owM-kh-Bm6" id="JmP-rV-290"/>
-                                            <outlet property="delegate" destination="owM-kh-Bm6" id="PeJ-VQ-DId"/>
+                                            <action selector="performSearch:" target="mdt-4X-jeq" id="7xg-oL-34n"/>
+                                            <outlet property="delegate" destination="mdt-4X-jeq" id="KIG-lf-uMu"/>
                                         </connections>
                                     </searchField>
                                     <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-ze-2Lb" userLabel="SearchButton">
