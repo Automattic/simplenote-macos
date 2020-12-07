@@ -537,8 +537,22 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func startListeningToWindowNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(windowDidResize),
+                                               name: NSWindow.didResizeNotification,
+                                               object: nil)
+    }
+
+    @objc
     func clipViewDidScroll(sender: Notification) {
         refreshHeaderState()
+    }
+
+    @objc
+    func windowDidResize(sender: Notification) {
+        // We might need to adjust the constraints (in order to prevent collisions with the Window Semaphore)
+        view.needsUpdateConstraints = true
     }
 
     @objc

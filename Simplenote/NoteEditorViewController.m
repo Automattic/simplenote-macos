@@ -119,6 +119,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
 
     [self startListeningToScrollNotifications];
+    [self startListeningToWindowNotifications];
 
     [self refreshStyle];
 }
