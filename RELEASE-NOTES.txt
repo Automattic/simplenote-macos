@@ -1,5 +1,6 @@
 2.6
 -----
+- New Sidebar Toolbar Action #737
  
 2.5
 -----
