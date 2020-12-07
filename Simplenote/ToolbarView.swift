@@ -38,8 +38,6 @@ class ToolbarView: NSView {
 
     /// Layout Constraints
     ///
-    @IBOutlet private(set) var searchButtonWidthConstraint: NSLayoutConstraint!
-    @IBOutlet private(set) var searchButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet private(set) var searchFieldWidthConstraint: NSLayoutConstraint!
 
     /// Toolbar Delegate
@@ -176,14 +174,14 @@ extension ToolbarView {
 extension ToolbarView {
 
     func beginSearch() {
-        updateLayoutIfNeeded(displaySearchBar: true)
+        updateSearchBarIfNeeded(visible: true)
         window?.makeFirstResponder(searchField)
     }
 
     func endSearch() {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
-        updateLayoutIfNeeded(displaySearchBar: false)
+        updateSearchBarIfNeeded(visible: false)
     }
 
     func endSearchIfNeeded() {
@@ -233,32 +231,33 @@ private extension ToolbarView {
             return
         }
 
-        updateLayoutIfNeeded(displaySearchBar: false)
+        updateSearchBarIfNeeded(visible: false)
     }
 
-    func updateLayoutIfNeeded(displaySearchBar: Bool) {
-        guard isSearchBarVisible != displaySearchBar else {
+    func updateSearchBarIfNeeded(visible: Bool) {
+        guard isSearchBarVisible != visible else {
             return
         }
 
-        updateLayout(displaySearchBar: displaySearchBar)
+        updateSearchBar(visible: visible)
     }
 
-    func updateLayout(displaySearchBar: Bool) {
-        let newBarWidth     = displaySearchBar ? Metrics.searchBarSize.width : .zero
-        let newButtonSize   = displaySearchBar ? .zero : Metrics.buttonSize
-        let newButtonAlpha  = displaySearchBar ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
+    func updateSearchBar(visible: Bool) {
+        let newBarWidth     = visible ? Metrics.searchBarSize.width : .zero
+        let newButtonAlpha  = visible ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
 
-        NSAnimationContext.runAnimationGroup { context in
-            context.allowsImplicitAnimation = true
+        let delayForAlpha   = visible ? AppKitConstants.delay0_0 : AppKitConstants.delay0_15
+        let delayForResize  = visible ? AppKitConstants.delay0_15 : AppKitConstants.delay0_0
+
+        NSAnimationContext.runAnimationGroup(after: delayForAlpha) { context in
             context.duration = AppKitConstants.duration0_2
+            self.searchButton.animator().alphaValue = newButtonAlpha
+        }
 
-            searchButtonWidthConstraint.animator().constant     = newButtonSize.width
-            searchButtonHeightConstraint.animator().constant    = newButtonSize.height
-            searchFieldWidthConstraint.animator().constant      = newBarWidth
-            searchButton.animator().alphaValue = newButtonAlpha
-
-            layoutSubtreeIfNeeded()
+        NSAnimationContext.runAnimationGroup(after: delayForResize) { context in
+            context.duration = AppKitConstants.duration0_2
+            self.searchFieldWidthConstraint.animator().constant = newBarWidth
+            self.layoutSubtreeIfNeeded()
         }
     }
 }
@@ -267,7 +266,6 @@ private extension ToolbarView {
 // MARK: - Metrics
 //
 private enum Metrics {
-    static let buttonSize = CGSize(width: 22, height: 22)
     static let searchBarSize = CGSize(width: 222, height: 29)
 }
 
@@ -277,8 +275,8 @@ private enum Metrics {
 private enum Placeholders {
     static var searchString: NSAttributedString {
         NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
-            .font: NSFont.simplenoteSecondaryTextFont
+            .font: NSFont.simplenoteSecondaryTextFont,
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor
         ])
     }
 }

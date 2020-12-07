@@ -745,8 +745,6 @@
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
                                     <outlet property="restoreButton" destination="W50-6o-QGr" id="hF8-xI-ouJ"/>
                                     <outlet property="searchButton" destination="Jfd-ze-2Lb" id="7g1-aG-Ypt"/>
-                                    <outlet property="searchButtonHeightConstraint" destination="a2G-uF-0Aa" id="0oa-6v-79u"/>
-                                    <outlet property="searchButtonWidthConstraint" destination="1iW-dq-nal" id="cL4-rN-gG7"/>
                                     <outlet property="searchContainerView" destination="rlY-4u-bgn" id="bgl-gc-PhC"/>
                                     <outlet property="searchField" destination="YLv-zp-fRS" id="khj-QR-OsW"/>
                                     <outlet property="searchFieldWidthConstraint" destination="yv6-TC-X7T" id="0Zi-bE-niz"/>
