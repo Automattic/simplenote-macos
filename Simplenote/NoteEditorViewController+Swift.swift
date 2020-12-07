@@ -379,7 +379,7 @@ extension NoteEditorViewController {
 
     @IBAction
     func sidebarWasPressed(sender: Any) {
-
+        SimplenoteAppDelegate.shared().toggleSidebarAction(sender)
     }
 
     @IBAction
