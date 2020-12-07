@@ -113,7 +113,7 @@ private extension ToolbarView {
         moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
         restoreButton.toolTip = NSLocalizedString("Restore", comment: "Tooltip: Restore a trashed note")
-        sidebarButton.toolTip = NSLocalizedString("Sidebar", comment: "Tooltip: Restore a trashed note")
+        sidebarButton.toolTip = NSLocalizedString("Toggle Sidebar", comment: "Tooltip: Restore a trashed note")
 
         let cells = allButtons.compactMap { $0.cell as? NSButtonCell }
         for cell in cells {
