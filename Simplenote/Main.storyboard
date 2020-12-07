@@ -612,7 +612,7 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="114" y="0.0" width="154" height="52"/>
+                                        <rect key="frame" x="114" y="0.0" width="398" height="52"/>
                                         <subviews>
                                             <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown Button">
                                                 <rect key="frame" x="0.0" y="15" width="22" height="22"/>
@@ -661,6 +661,50 @@
                                                     <action selector="moreWasPressed:" target="owM-kh-Bm6" id="jNg-pL-Pc6"/>
                                                 </connections>
                                             </button>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="rlY-4u-bgn">
+                                                <rect key="frame" x="176" y="12" width="222" height="29"/>
+                                                <subviews>
+                                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
+                                                        <rect key="frame" x="0.0" y="0.0" width="222" height="29"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
+                                                            <constraint firstAttribute="width" constant="222" id="yv6-TC-X7T"/>
+                                                        </constraints>
+                                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </searchFieldCell>
+                                                        <connections>
+                                                            <action selector="performSearch:" target="mdt-4X-jeq" id="7xg-oL-34n"/>
+                                                            <outlet property="delegate" destination="mdt-4X-jeq" id="KIG-lf-uMu"/>
+                                                        </connections>
+                                                    </searchField>
+                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-ze-2Lb" userLabel="SearchButton">
+                                                        <rect key="frame" x="200" y="3" width="22" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="22" id="1iW-dq-nal"/>
+                                                            <constraint firstAttribute="height" constant="22" id="a2G-uF-0Aa"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GyS-Ju-oCW">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="searchWasPressed:" target="mdt-4X-jeq" id="cHE-CJ-Xv7"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="YLv-zp-fRS" secondAttribute="trailing" id="123-Kk-B8G"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YLv-zp-fRS" secondAttribute="bottom" id="6n7-FL-RNE"/>
+                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="centerY" secondItem="rlY-4u-bgn" secondAttribute="centerY" id="Abj-9e-UWC"/>
+                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rlY-4u-bgn" secondAttribute="leading" id="Ad6-Ly-or9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Jfd-ze-2Lb" secondAttribute="trailing" id="Oan-fh-mFW"/>
+                                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="top" secondItem="rlY-4u-bgn" secondAttribute="top" id="UQ4-A2-nxq"/>
+                                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="leading" secondItem="rlY-4u-bgn" secondAttribute="leading" priority="999" id="bPK-G4-RHB"/>
+                                                </constraints>
+                                            </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="hVc-Cl-DHn" firstAttribute="height" secondItem="TI9-l9-KN8" secondAttribute="height" id="2wO-UI-11h"/>
@@ -675,57 +719,24 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
-                                        <rect key="frame" x="290" y="12" width="222" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
-                                            <constraint firstAttribute="width" constant="222" id="yv6-TC-X7T"/>
-                                        </constraints>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </searchFieldCell>
-                                        <connections>
-                                            <action selector="performSearch:" target="mdt-4X-jeq" id="7xg-oL-34n"/>
-                                            <outlet property="delegate" destination="mdt-4X-jeq" id="KIG-lf-uMu"/>
-                                        </connections>
-                                    </searchField>
-                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-ze-2Lb" userLabel="SearchButton">
-                                        <rect key="frame" x="490" y="15" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="1iW-dq-nal"/>
-                                            <constraint firstAttribute="height" constant="22" id="a2G-uF-0Aa"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GyS-Ju-oCW">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="searchWasPressed:" target="mdt-4X-jeq" id="cHE-CJ-Xv7"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Eki-Gw-aTk" firstAttribute="centerY" secondItem="mdt-4X-jeq" secondAttribute="centerY" id="7KD-so-OMq"/>
                                     <constraint firstItem="8xD-dy-bio" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mdt-4X-jeq" secondAttribute="leading" constant="60" id="C0D-cy-kLE"/>
-                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="trailing" secondItem="Jfd-ze-2Lb" secondAttribute="trailing" id="FJJ-4B-WoR"/>
-                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8xD-dy-bio" secondAttribute="trailing" constant="22" id="NxV-Mf-6Bw"/>
                                     <constraint firstAttribute="bottom" secondItem="8xD-dy-bio" secondAttribute="bottom" id="PxV-l3-3xc"/>
-                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="centerY" secondItem="mdt-4X-jeq" secondAttribute="centerY" id="QZR-mm-Q16"/>
-                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="centerY" secondItem="mdt-4X-jeq" secondAttribute="centerY" id="Qbu-C9-08B"/>
                                     <constraint firstAttribute="height" constant="52" id="Sbd-Ya-Bl9"/>
                                     <constraint firstItem="8xD-dy-bio" firstAttribute="top" secondItem="mdt-4X-jeq" secondAttribute="top" id="Wcs-Kz-DWc"/>
-                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="leading" secondItem="8xD-dy-bio" secondAttribute="trailing" priority="999" constant="22" id="YLX-ev-0uq"/>
-                                    <constraint firstAttribute="trailing" secondItem="YLv-zp-fRS" secondAttribute="trailing" constant="16" id="ZAA-cS-7mp"/>
+                                    <constraint firstAttribute="trailing" secondItem="8xD-dy-bio" secondAttribute="trailing" constant="16" id="q2H-WF-pZK"/>
                                     <constraint firstItem="Eki-Gw-aTk" firstAttribute="leading" secondItem="mdt-4X-jeq" secondAttribute="leading" priority="249" constant="16" id="xKL-7N-KKP"/>
                                 </constraints>
                                 <connections>
@@ -734,10 +745,11 @@
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
                                     <outlet property="restoreButton" destination="W50-6o-QGr" id="hF8-xI-ouJ"/>
                                     <outlet property="searchButton" destination="Jfd-ze-2Lb" id="7g1-aG-Ypt"/>
+                                    <outlet property="searchButtonHeightConstraint" destination="a2G-uF-0Aa" id="0oa-6v-79u"/>
+                                    <outlet property="searchButtonWidthConstraint" destination="1iW-dq-nal" id="cL4-rN-gG7"/>
+                                    <outlet property="searchContainerView" destination="rlY-4u-bgn" id="bgl-gc-PhC"/>
                                     <outlet property="searchField" destination="YLv-zp-fRS" id="khj-QR-OsW"/>
                                     <outlet property="searchFieldWidthConstraint" destination="yv6-TC-X7T" id="0Zi-bE-niz"/>
-                                    <outlet property="searchHeightConstraint" destination="a2G-uF-0Aa" id="4Nn-p0-XBD"/>
-                                    <outlet property="searchWidthConstraint" destination="1iW-dq-nal" id="yLM-sH-LXv"/>
                                     <outlet property="sidebarButton" destination="Eki-Gw-aTk" id="i2B-I9-LMf"/>
                                     <outlet property="stackView" destination="8xD-dy-bio" id="ubf-Av-SAn"/>
                                 </connections>

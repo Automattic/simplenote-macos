@@ -28,14 +28,18 @@ class ToolbarView: NSView {
     @IBOutlet private(set) var restoreButton: NSButton!
     @IBOutlet private(set) var searchButton: NSButton!
 
+    /// Search Container
+    ///
+    @IBOutlet private(set) var searchContainerView: NSView!
+
     /// Search Field
     ///
     @IBOutlet private(set) var searchField: NSSearchField!
 
     /// Layout Constraints
     ///
-    @IBOutlet private(set) var searchWidthConstraint: NSLayoutConstraint!
-    @IBOutlet private(set) var searchHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) var searchButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) var searchButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet private(set) var searchFieldWidthConstraint: NSLayoutConstraint!
 
     /// Toolbar Delegate
@@ -64,7 +68,7 @@ class ToolbarView: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupActionButtons()
-        setupLayoutConstraints()
+        setupLayoutConstraintsForInitialState()
         setupSearchField()
         refreshStyle()
         startListeningToNotifications()
@@ -109,6 +113,7 @@ private extension ToolbarView {
         restoreButton.isHidden = state.isRestoreActionHidden
 
         searchButton.isEnabled = state.isSearchActionEnabled
+        searchContainerView.isHidden = state.isSearchActionHidden
     }
 }
 
@@ -145,7 +150,7 @@ private extension ToolbarView {
         }
     }
 
-    func setupLayoutConstraints() {
+    func setupLayoutConstraintsForInitialState() {
         searchFieldWidthConstraint.constant = .zero
     }
 
@@ -236,10 +241,9 @@ private extension ToolbarView {
             context.allowsImplicitAnimation = true
             context.duration = AppKitConstants.duration0_2
 
-            searchWidthConstraint.animator().constant       = newButtonSize.width
-            searchHeightConstraint.animator().constant      = newButtonSize.height
-            searchFieldWidthConstraint.animator().constant  = newBarWidth
-
+            searchButtonWidthConstraint.animator().constant     = newButtonSize.width
+            searchButtonHeightConstraint.animator().constant    = newButtonSize.height
+            searchFieldWidthConstraint.animator().constant      = newBarWidth
             searchButton.animator().alphaValue = newButtonAlpha
 
             layoutSubtreeIfNeeded()
