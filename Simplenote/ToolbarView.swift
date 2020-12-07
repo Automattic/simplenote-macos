@@ -30,6 +30,10 @@ class ToolbarView: NSView {
     ///
     @IBOutlet private(set) var restoreButton: NSButton!
 
+    /// Search Button
+    ///
+    @IBOutlet private(set) var searchField: NSSearchField!
+
     /// Represents the Toolbar's State
     ///
     var state: ToolbarState  = .default {

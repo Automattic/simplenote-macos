@@ -673,6 +673,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </searchFieldCell>
                                                 <connections>
+                                                    <action selector="performSearch:" target="owM-kh-Bm6" id="JmP-rV-290"/>
                                                     <outlet property="delegate" destination="owM-kh-Bm6" id="PeJ-VQ-DId"/>
                                                 </connections>
                                             </searchField>
@@ -715,6 +716,7 @@
                                     <outlet property="moreButton" destination="Z7O-L9-Q1P" id="nAT-Hn-2b2"/>
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
                                     <outlet property="restoreButton" destination="W50-6o-QGr" id="hF8-xI-ouJ"/>
+                                    <outlet property="searchField" destination="YLv-zp-fRS" id="khj-QR-OsW"/>
                                     <outlet property="sidebarButton" destination="Eki-Gw-aTk" id="i2B-I9-LMf"/>
                                     <outlet property="stackView" destination="8xD-dy-bio" id="ubf-Av-SAn"/>
                                 </connections>
@@ -770,7 +772,6 @@
                         <outlet property="moreActionsMenu" destination="O2x-0v-azu" id="jSV-Gb-XpN"/>
                         <outlet property="noteEditor" destination="84J-wh-qoX" id="MHx-LW-NED"/>
                         <outlet property="scrollView" destination="3M9-OX-Hpx" id="fps-1H-haD"/>
-                        <outlet property="searchField" destination="YLv-zp-fRS" id="AFT-Zt-Kry"/>
                         <outlet property="statusImageView" destination="Dj2-Ut-m6l" id="vqt-cc-z7a"/>
                         <outlet property="statusTextField" destination="VFr-Z3-HgO" id="UWY-3k-pwd"/>
                         <outlet property="tagsField" destination="U3o-VN-U2S" id="qmL-AY-16b"/>

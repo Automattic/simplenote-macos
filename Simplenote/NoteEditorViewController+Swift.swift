@@ -91,6 +91,16 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Calculated Properties
+//
+extension NoteEditorViewController {
+
+    var searchField: NSSearchField {
+        toolbarView.searchField
+    }
+}
+
+
 // MARK: - Internal State
 //
 extension NoteEditorViewController {
