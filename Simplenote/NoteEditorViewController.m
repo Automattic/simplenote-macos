@@ -97,7 +97,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 	}
 
     // Interface Initialization
-    [self setupSearchBar];
     [self setupScrollView];
     [self setupStatusImageView];
     [self setupTagsField];

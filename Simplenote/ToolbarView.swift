@@ -59,8 +59,9 @@ class ToolbarView: NSView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupSubviews()
-        setupInitialSearchState()
+        setupActionButtons()
+        setupLayoutConstraints()
+        setupSearchField()
         refreshStyle()
         startListeningToNotifications()
     }
@@ -121,9 +122,12 @@ private extension ToolbarView {
         for button in allButtons {
             button.contentTintColor = .simplenoteSecondaryActionButtonTintColor
         }
+
+        searchField.textColor = .simplenoteTextColor
+        searchField.placeholderAttributedString = Placeholders.searchString
     }
 
-    func setupSubviews() {
+    func setupActionButtons() {
         metricsButton.toolTip = NSLocalizedString("Metrics", comment: "Tooltip: Note Metrics")
         moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
@@ -137,8 +141,12 @@ private extension ToolbarView {
         }
     }
 
-    func setupInitialSearchState() {
+    func setupLayoutConstraints() {
         searchFieldWidthConstraint.constant = .zero
+    }
+
+    func setupSearchField() {
+        searchField.centersPlaceholder = false
     }
 }
 
@@ -263,4 +271,16 @@ private extension ToolbarView {
 private enum Metrics {
     static let buttonSize = CGSize(width: 22, height: 22)
     static let searchBarSize = CGSize(width: 222, height: 29)
+}
+
+
+// MARK: - Settings
+//
+private enum Placeholders {
+    static var searchString: NSAttributedString {
+        NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
+            .font: NSFont.simplenoteSecondaryTextFont
+        ])
+    }
 }

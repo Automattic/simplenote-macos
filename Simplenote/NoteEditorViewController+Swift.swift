@@ -8,11 +8,6 @@ import SimplenoteInterlinks
 extension NoteEditorViewController {
 
     @objc
-    func setupSearchBar() {
-        searchField.centersPlaceholder = false
-    }
-
-    @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
         statusImageView.contentTintColor = .simplenotePlaceholderTintColor
@@ -96,16 +91,6 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Calculated Properties
-//
-extension NoteEditorViewController {
-
-    var searchField: NSSearchField {
-        toolbarView.searchField
-    }
-}
-
-
 // MARK: - Internal State
 //
 extension NoteEditorViewController {
@@ -176,8 +161,6 @@ extension NoteEditorViewController {
         bottomDividerView.borderColor           = .simplenoteDividerColor
         noteEditor.insertionPointColor          = .simplenoteEditorTextColor
         noteEditor.textColor                    = .simplenoteEditorTextColor
-        searchField.textColor                   = .simplenoteTextColor
-        searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
         statusTextField.textColor               = .simplenoteSecondaryTextColor
         tagsField.textColor                     = .simplenoteTextColor
         tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
@@ -798,20 +781,5 @@ private extension NoteEditorViewController {
         self.interlinkWindowController = interlinkWindowController
 
         return interlinkWindowController
-    }
-}
-
-
-// MARK: - Settings
-//
-private enum Settings {
-
-    static var searchFieldPlaceholderString: NSAttributedString {
-        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
-
-        return NSAttributedString(string: text, attributes: [
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
-            .font: NSFont.simplenoteSecondaryTextFont
-        ])
     }
 }
