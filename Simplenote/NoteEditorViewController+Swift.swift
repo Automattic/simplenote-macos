@@ -213,7 +213,7 @@ extension NoteEditorViewController {
 extension NoteEditorViewController {
 
     @objc
-    func beginSearch(_ sender: Any) {
+    func beginSearch() {
         toolbarView.beginSearch()
     }
 
