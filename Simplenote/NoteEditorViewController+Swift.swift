@@ -228,14 +228,6 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController: ToolbarDelegate {
 
-    func toolbarDidBeginSearch(_ toolbar: ToolbarView) {
-        searchDelegate?.editorControllerDidBeginSearch(self)
-    }
-
-    func toolbarDidEndSearch(_ toolbar: ToolbarView) {
-        searchDelegate?.editorControllerDidEndSearch(self)
-    }
-
     func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
         searchDelegate?.editorController(self, didSearchKeyword: keyword)
     }

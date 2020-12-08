@@ -4,8 +4,6 @@ import Foundation
 // MARK: - ToolbarDelegate
 //
 protocol ToolbarDelegate: NSObject {
-    func toolbarDidBeginSearch(_ toolbar: ToolbarView)
-    func toolbarDidEndSearch(_ toolbar: ToolbarView)
     func toolbar(_ toolbar: ToolbarView, didSearch keyword: String)
 }
 
@@ -197,17 +195,12 @@ extension ToolbarView {
 //
 extension ToolbarView: NSSearchFieldDelegate {
 
-    public func controlTextDidBeginEditing(_ obj: Notification) {
-        delegate?.toolbarDidBeginSearch(self)
-    }
-
     public func controlTextDidEndEditing(_ obj: Notification) {
         guard dismissSearchBarOnEndEditing else {
             return
         }
 
         dismissSearchBarIfNeeded()
-        delegate?.toolbarDidEndSearch(self)
     }
 
     @IBAction
