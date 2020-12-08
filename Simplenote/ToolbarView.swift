@@ -248,9 +248,13 @@ private extension ToolbarView {
         let delayForAlpha   = visible ? AppKitConstants.delay0_0 : AppKitConstants.delay0_15
         let delayForResize  = visible ? AppKitConstants.delay0_15 : AppKitConstants.delay0_0
 
+        searchButton.isHidden = false
+
         NSAnimationContext.runAnimationGroup(after: delayForAlpha) { context in
             context.duration = AppKitConstants.duration0_2
             self.searchButton.animator().alphaValue = newButtonAlpha
+        } completionHandler: {
+            self.searchButton.isHidden = visible
         }
 
         NSAnimationContext.runAnimationGroup(after: delayForResize) { context in

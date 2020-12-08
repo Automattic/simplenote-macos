@@ -6,14 +6,16 @@ import AppKit
 //
 extension NSAnimationContext {
 
-    static func runAnimationGroup(after delay: TimeInterval, _ changes: @escaping (_ context: NSAnimationContext) -> Void) {
+    static func runAnimationGroup(after delay: TimeInterval,
+                                  _ changes: @escaping (_ context: NSAnimationContext) -> Void,
+                                  completionHandler: (() -> Void)? = nil) {
         if delay == .zero {
-            runAnimationGroup(changes)
+            runAnimationGroup(changes, completionHandler: completionHandler)
             return
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            runAnimationGroup(changes)
+            runAnimationGroup(changes, completionHandler: completionHandler)
         }
     }
 }
