@@ -2,16 +2,16 @@ PODS:
   - Automattic-Tracks-iOS (0.6.0):
     - CocoaLumberjack (~> 3)
     - Reachability (~> 3)
-    - Sentry (~> 4)
-    - Sodium-Fork (= 0.8.2)
+    - Sentry (~> 5)
+    - Sodium (~> 0.9)
     - UIDeviceIdentifier (~> 1)
   - CocoaLumberjack (3.7.0):
     - CocoaLumberjack/Core (= 3.7.0)
   - CocoaLumberjack/Core (3.7.0)
   - Reachability (3.2)
-  - Sentry (4.5.0):
-    - Sentry/Core (= 4.5.0)
-  - Sentry/Core (4.5.0)
+  - Sentry (5.2.2):
+    - Sentry/Core (= 5.2.2)
+  - Sentry/Core (5.2.2)
   - Simperium-OSX (1.1.0):
     - Simperium-OSX/DiffMatchPach (= 1.1.0)
     - Simperium-OSX/JRSwizzle (= 1.1.0)
@@ -23,29 +23,38 @@ PODS:
   - Simperium-OSX/SocketRocket (1.1.0)
   - Simperium-OSX/SPReachability (1.1.0)
   - Simperium-OSX/SSKeychain (1.1.0)
-  - Sodium-Fork (0.8.2)
+  - Sodium (0.9.0)
 
 DEPENDENCIES:
-  - Automattic-Tracks-iOS (~> 0.6)
+  - Automattic-Tracks-iOS (from `https://github.com/Automattic/Automattic-Tracks-iOS`, branch `switch-back-to-sodium-trunk`)
   - Simperium-OSX (= 1.1)
 
 SPEC REPOS:
   trunk:
-    - Automattic-Tracks-iOS
     - CocoaLumberjack
     - Reachability
     - Sentry
     - Simperium-OSX
-    - Sodium-Fork
+    - Sodium
+
+EXTERNAL SOURCES:
+  Automattic-Tracks-iOS:
+    :branch: switch-back-to-sodium-trunk
+    :git: https://github.com/Automattic/Automattic-Tracks-iOS
+
+CHECKOUT OPTIONS:
+  Automattic-Tracks-iOS:
+    :commit: 8d710e62a6ac2b27dbc80e8fb83652bdabb86698
+    :git: https://github.com/Automattic/Automattic-Tracks-iOS
 
 SPEC CHECKSUMS:
-  Automattic-Tracks-iOS: c525679cbf91ac8bcbcbed01bdaa564867173182
+  Automattic-Tracks-iOS: aabe126ab03ac9fdf3af812062ad3964acb9b770
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  Sentry: ab6c209f23700d1460691dbc90e19ed0a05d496b
+  Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   Simperium-OSX: 705b67b53840c46953a5ae9309a77a9a5ee126fc
-  Sodium-Fork: 45fe3a7c675898ca0635af4eadcb34985477e868
+  Sodium: 8106500200d1a80021cb9ea069ba0ea71fc26291
 
-PODFILE CHECKSUM: 31bdc08b539bb0bdc122701bfcc0bb548844b33e
+PODFILE CHECKSUM: e92b8f888a6432d8874b3eba91f5620ceda58532
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

@@ -15,7 +15,7 @@ abstract_target 'Automattic' do
 
   # Automattic Shared
   #
-  pod 'Automattic-Tracks-iOS', '~> 0.6'
+  pod 'Automattic-Tracks-iOS', git: 'https://github.com/Automattic/Automattic-Tracks-iOS', branch: 'switch-back-to-sodium-trunk'
   pod 'Simperium-OSX', '1.1'
 
   # Main Target
