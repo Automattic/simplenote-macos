@@ -185,11 +185,11 @@ extension ToolbarView {
         updateSearchBarIfNeeded(visible: true) {
 
             /// Note: Not waiting for the Animation's completion causes rendering issues in macOS < 11
-            self.searchField.becomeFirstResponder()
-        }
+            self.window?.makeFirstResponder(self.searchField)
 
-        /// Back to normal please
-        dismissSearchBarOnEndEditing = true
+            /// Back to normal please
+            self.dismissSearchBarOnEndEditing = true
+        }
     }
 
     /// Ends Search whenever the SearchBar was actually visible
