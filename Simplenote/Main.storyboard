@@ -873,6 +873,36 @@
             </objects>
             <point key="canvasLocation" x="830" y="220"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="JSU-Qr-9ys">
+            <objects>
+                <windowController storyboardIdentifier="MainWindowController" id="bDf-SG-cD5" customClass="MainWindowController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="Xk8-MH-eev" customClass="Window" customModule="Simplenote" customModuleProvider="target">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="900" height="618"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                        <value key="minSize" type="size" width="720" height="400"/>
+                        <view key="contentView" id="Azh-ap-G3a">
+                            <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="excludedFromWindowsMenu" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="delegate" destination="bDf-SG-cD5" id="tTI-xt-6V4"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <outlet property="simplenoteWindow" destination="Xk8-MH-eev" id="UZU-US-aOB"/>
+                        <segue destination="pbQ-Wy-u9S" kind="relationship" relationship="window.shadowedContentViewController" id="k1U-SQ-ruR"/>
+                    </connections>
+                </windowController>
+                <customObject id="z6J-n3-huD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="-690"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="ada-KS-Sgj">
             <objects>
@@ -890,7 +920,7 @@
                 </splitViewController>
                 <customObject id="ddL-k7-ABw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="-696"/>
+            <point key="canvasLocation" x="1175" y="-690"/>
         </scene>
     </scenes>
     <resources>
