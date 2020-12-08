@@ -110,7 +110,6 @@ private extension ToolbarView {
         restoreButton.isEnabled = state.isRestoreActionEnabled
         restoreButton.isHidden = state.isRestoreActionHidden
 
-        searchButton.isEnabled = state.isSearchActionEnabled
         searchContainerView.isHidden = state.isSearchActionHidden
     }
 }
@@ -131,7 +130,7 @@ private extension ToolbarView {
         }
 
         searchField.textColor = .simplenoteTextColor
-        searchField.placeholderAttributedString = Placeholders.searchString
+        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
     }
 
     func setupActionButtons() {
@@ -243,7 +242,7 @@ private extension ToolbarView {
     }
 
     func updateSearchBar(visible: Bool) {
-        let newBarWidth     = visible ? Metrics.searchBarSize.width : .zero
+        let newBarWidth     = visible ? Settings.searchBarFullWidth : .zero
         let newButtonAlpha  = visible ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
 
         let delayForAlpha   = visible ? AppKitConstants.delay0_0 : AppKitConstants.delay0_15
@@ -263,17 +262,11 @@ private extension ToolbarView {
 }
 
 
-// MARK: - Metrics
-//
-private enum Metrics {
-    static let searchBarSize = CGSize(width: 222, height: 29)
-}
-
-
 // MARK: - Settings
 //
-private enum Placeholders {
-    static var searchString: NSAttributedString {
+private enum Settings {
+    static let searchBarFullWidth = CGFloat(222)
+    static var searchBarPlaceholder: NSAttributedString {
         NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
             .font: NSFont.simplenoteSecondaryTextFont,
             .foregroundColor: NSColor.simplenoteSecondaryTextColor

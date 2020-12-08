@@ -59,10 +59,6 @@ extension ToolbarState {
         !isViewingTrash
     }
 
-    var isSearchActionEnabled: Bool {
-        !isViewingTrash
-    }
-
     var isSearchActionHidden: Bool {
         isViewingTrash
     }
