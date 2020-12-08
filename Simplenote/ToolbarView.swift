@@ -171,8 +171,10 @@ extension ToolbarView {
 extension ToolbarView {
 
     func beginSearch() {
+        dismissSearchBarOnEndEditing = false
         updateSearchBarIfNeeded(visible: true)
         window?.makeFirstResponder(searchField)
+        dismissSearchBarOnEndEditing = true
     }
 
     func endSearch() {
@@ -196,11 +198,11 @@ extension ToolbarView {
 extension ToolbarView: NSSearchFieldDelegate {
 
     public func controlTextDidEndEditing(_ obj: Notification) {
-        guard dismissSearchBarOnEndEditing else {
+        guard dismissSearchBarOnEndEditing, searchField.stringValue.isEmpty else {
             return
         }
 
-        dismissSearchBarIfNeeded()
+        updateSearchBarIfNeeded(visible: false)
     }
 
     @IBAction
@@ -216,14 +218,6 @@ private extension ToolbarView {
 
     var isSearchBarVisible: Bool {
         searchFieldWidthConstraint.constant != 0
-    }
-
-    func dismissSearchBarIfNeeded() {
-        guard searchField.stringValue.isEmpty else {
-            return
-        }
-
-        updateSearchBarIfNeeded(visible: false)
     }
 
     func updateSearchBarIfNeeded(visible: Bool) {
