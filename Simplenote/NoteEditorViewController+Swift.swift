@@ -219,7 +219,7 @@ extension NoteEditorViewController {
 
     @objc
     func ensureSearchIsDismissed() {
-        toolbarView.endSearchIfNeeded()
+        toolbarView.endSearch()
     }
 }
 

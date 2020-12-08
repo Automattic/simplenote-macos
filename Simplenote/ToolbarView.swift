@@ -170,25 +170,34 @@ extension ToolbarView {
 //
 extension ToolbarView {
 
+    /// Enters Search Mode whenever the current Toolbar State allows
+    ///
     func beginSearch() {
+        if state.isSearchActionHidden {
+            return
+        }
+
+        /// Whenever the SearchField IS the first responder, calling makeFirstResponder causes it to end editing (and back on again).
+        /// This yields a quite beautiful animation glitch we'd wanna savoid.
         dismissSearchBarOnEndEditing = false
+
         updateSearchBarIfNeeded(visible: true)
         window?.makeFirstResponder(searchField)
+
+        /// Back to normal please
         dismissSearchBarOnEndEditing = true
     }
 
+    /// Ends Search whenever the SearchBar was actually visible
+    ///
     func endSearch() {
-        searchField.cancelSearch()
-        searchField.resignFirstResponder()
-        updateSearchBarIfNeeded(visible: false)
-    }
-
-    func endSearchIfNeeded() {
         guard isSearchBarVisible else {
             return
         }
 
-        endSearch()
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
+        updateSearchBarIfNeeded(visible: false)
     }
 }
 
