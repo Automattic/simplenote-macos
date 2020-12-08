@@ -6,10 +6,11 @@ import Foundation
 extension SimplenoteAppDelegate {
 
     @objc
-    func configureSplitView() {
+    func configureMainInterface() {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
-        let splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
+        let mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
+        let splitViewController = mainWindowController.contentViewController as! SplitViewController
         let tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
         let notesViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
         let editorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
@@ -22,6 +23,7 @@ extension SimplenoteAppDelegate {
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
 
+        self.mainWindowController = mainWindowController
         self.splitViewController = splitViewController
         self.tagListViewController = tagListViewController
         self.noteListViewController = notesViewController
@@ -29,10 +31,8 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
-    func configureWindow() {
-        window.contentViewController = splitViewController
+    func configureInitialResponder() {
         window.initialFirstResponder = noteEditorViewController.noteEditor
-        window.setFrameAutosaveName(.mainWindow)
     }
 
     @objc
@@ -45,6 +45,12 @@ extension SimplenoteAppDelegate {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController
         noteEditorViewController.searchDelegate = noteListViewController
+    }
+
+    @objc
+    var window: Window {
+        // TODO: Temporary workaround. Let's get rid of this? please? 🔥🔥🔥
+        mainWindowController.window as! Window
     }
 }
 
