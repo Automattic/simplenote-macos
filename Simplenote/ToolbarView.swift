@@ -177,8 +177,7 @@ extension ToolbarView {
             return
         }
 
-        /// Whenever the SearchField IS the first responder, calling makeFirstResponder causes it to end editing (and back on again).
-        /// This yields a quite beautiful animation glitch we'd wanna avoid.
+        /// **Workaround:**  We're getting spurious `controlTextDidEndEditing` callbacks, which may yield to really uncool animation glitches.
         dismissSearchBarOnEndEditing = false
 
         /// Ensure the SearchBar is visible + Move the focus
@@ -187,7 +186,7 @@ extension ToolbarView {
             /// Note: Not waiting for the Animation's completion causes rendering issues in macOS < 11
             self.window?.makeFirstResponder(self.searchField)
 
-            /// Back to normal please
+            /// **Workaround:** Back to normal please
             self.dismissSearchBarOnEndEditing = true
         }
     }
