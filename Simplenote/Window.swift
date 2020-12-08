@@ -17,6 +17,10 @@ protocol ParentWindowDelegate {
 //
 class Window: NSWindow {
 
+    /// Allows us to adjust the Origin for the Semaphore Buttons (Close / Miniaturize / Zoom)
+    ///
+    var semaphoreButtonOriginY: CGFloat?
+
     // MARK: - Lifecycle
 
     deinit {
@@ -38,6 +42,15 @@ class Window: NSWindow {
         }
 
         super.sendEvent(event)
+    }
+
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        guard let semaphoreOriginY = semaphoreButtonOriginY else {
+            return
+        }
+
+        relocateSemaphoreButtons(originY: semaphoreOriginY)
     }
 }
 
@@ -68,5 +81,21 @@ private extension Window {
         }
 
         appearance = NSAppearance.simplenoteAppearance
+    }
+}
+
+
+// MARK: - Sempahore
+//
+private extension Window {
+
+    func relocateSemaphoreButtons(originY: CGFloat) {
+        let buttons: [NSButton] = [.closeButton, .miniaturizeButton, .zoomButton].compactMap { type in
+            standardWindowButton(type)
+        }
+
+        for button in buttons {
+            button.frame.origin.y = originY
+        }
     }
 }
