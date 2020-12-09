@@ -71,10 +71,12 @@ private extension MainWindowController {
 
     func relocateSemaphoreButtons() {
         simplenoteWindow.semaphoreButtonOriginY = Metrics.semaphoreButtonPositionY
+        simplenoteWindow.semaphoreButtonPaddingX = Metrics.semaphoreButtonPaddingX
     }
 
     func disableSemaphoreButtonsWorkaround() {
         simplenoteWindow.semaphoreButtonOriginY = nil
+        simplenoteWindow.semaphoreButtonPaddingX = nil
     }
 }
 
@@ -99,4 +101,5 @@ extension MainWindowController {
 //
 private enum Metrics {
     static let semaphoreButtonPositionY: CGFloat = 4
+    static let semaphoreButtonPaddingX: CGFloat = 7
 }
