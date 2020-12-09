@@ -2,6 +2,7 @@
 -----
 - New Sidebar Toolbar Action #737
 - New Search Toolbar Action #741
+- Updated Color Palette #733
  
 2.5
 -----
