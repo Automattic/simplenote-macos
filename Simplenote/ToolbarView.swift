@@ -177,15 +177,18 @@ extension ToolbarView {
             return
         }
 
-        /// Whenever the SearchField IS the first responder, calling makeFirstResponder causes it to end editing (and back on again).
-        /// This yields a quite beautiful animation glitch we'd wanna savoid.
+        /// **Workaround:**  We're getting spurious `controlTextDidEndEditing` callbacks, which may yield to really uncool animation glitches.
         dismissSearchBarOnEndEditing = false
 
-        updateSearchBarIfNeeded(visible: true)
-        window?.makeFirstResponder(searchField)
+        /// Ensure the SearchBar is visible + Move the focus
+        updateSearchBarIfNeeded(visible: true) {
 
-        /// Back to normal please
-        dismissSearchBarOnEndEditing = true
+            /// Note: Not waiting for the Animation's completion causes rendering issues in macOS < 11
+            self.window?.makeFirstResponder(self.searchField)
+
+            /// **Workaround:** Back to normal please
+            self.dismissSearchBarOnEndEditing = true
+        }
     }
 
     /// Ends Search whenever the SearchBar was actually visible
@@ -229,15 +232,16 @@ private extension ToolbarView {
         searchFieldWidthConstraint.constant != 0
     }
 
-    func updateSearchBarIfNeeded(visible: Bool) {
+    func updateSearchBarIfNeeded(visible: Bool, completionHandler: (() -> Void)? = nil) {
         guard isSearchBarVisible != visible else {
+            completionHandler?()
             return
         }
 
-        updateSearchBar(visible: visible)
+        updateSearchBar(visible: visible, completionHandler: completionHandler)
     }
 
-    func updateSearchBar(visible: Bool) {
+    func updateSearchBar(visible: Bool, completionHandler: (() -> Void)? = nil) {
         let newBarWidth     = visible ? Settings.searchBarFullWidth : .zero
         let newButtonAlpha  = visible ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
 
@@ -246,6 +250,8 @@ private extension ToolbarView {
 
         searchButton.isHidden = false
 
+        /// Phase #1: Fade In / Out the Search Action Button
+        ///
         NSAnimationContext.runAnimationGroup(after: delayForAlpha) { context in
             context.duration = AppKitConstants.duration0_2
             self.searchButton.animator().alphaValue = newButtonAlpha
@@ -253,10 +259,14 @@ private extension ToolbarView {
             self.searchButton.isHidden = visible
         }
 
+        /// Phase #2: Resize the SearchBar itself
+        ///
         NSAnimationContext.runAnimationGroup(after: delayForResize) { context in
             context.duration = AppKitConstants.duration0_2
             self.searchFieldWidthConstraint.animator().constant = newBarWidth
             self.layoutSubtreeIfNeeded()
+        } completionHandler: {
+            completionHandler?()
         }
     }
 }

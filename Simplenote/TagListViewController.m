@@ -68,11 +68,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     [self startListeningToSettingsNotifications];
     [self startListeningToScrollNotifications];
-}
 
-- (void)viewWillAppear
-{
-    [super viewWillAppear];
     [self applyStyle];
 }
 
