@@ -84,11 +84,7 @@
     [self setupTableView];
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
-}
 
-- (void)viewWillAppear
-{
-    [super viewWillAppear];
     [self applyStyle];
 }
 
