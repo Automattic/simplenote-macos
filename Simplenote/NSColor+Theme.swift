@@ -101,12 +101,12 @@ extension NSColor {
 
     @objc
     static var simplenoteTextColor: NSColor {
-        dynamicColor(lightStudio: .gray80, darkStudio: .white)
+        dynamicColor(lightStudio: .gray90, darkStudio: .gray5)
     }
 
     @objc
     static var simplenoteSecondaryTextColor: NSColor {
-        dynamicColor(lightStudio: .gray60, darkStudio: .gray20)
+        dynamicColor(lightStudio: .gray50, darkStudio: .gray30)
     }
 
     @objc
@@ -121,7 +121,7 @@ extension NSColor {
 
     @objc
     static var simplenoteEditorTextColor: NSColor {
-        dynamicColor(lightStudio: .gray80, darkStudio: .gray5)
+        dynamicColor(lightStudio: .gray70, darkStudio: .gray5)
     }
 
     @objc
