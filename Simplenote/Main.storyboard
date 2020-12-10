@@ -500,24 +500,24 @@
             <objects>
                 <viewController storyboardIdentifier="NoteEditorViewController" id="owM-kh-Bm6" customClass="NoteEditorViewController" sceneMemberID="viewController">
                     <view key="view" id="w7Z-Cl-xvM">
-                        <rect key="frame" x="0.0" y="0.0" width="508" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="528" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="RoF-0f-Ugm" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="508" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="528" height="618"/>
                             </customView>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="3M9-OX-Hpx">
-                                <rect key="frame" x="0.0" y="48" width="508" height="570"/>
+                                <rect key="frame" x="0.0" y="48" width="528" height="570"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="4oT-JU-wrs">
-                                    <rect key="frame" x="0.0" y="0.0" width="508" height="570"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="528" height="570"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" incrementalSearchingEnabled="YES" continuousSpellChecking="YES" allowsUndo="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dataDetection="YES" smartInsertDelete="YES" id="84J-wh-qoX" customClass="SPTextView">
-                                            <rect key="frame" x="0.0" y="0.0" width="493" height="570"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="513" height="570"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="508" height="570"/>
+                                            <size key="minSize" width="513" height="570"/>
                                             <size key="maxSize" width="10000000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -534,15 +534,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="lkL-cz-Hnm">
-                                    <rect key="frame" x="492" y="0.0" width="16" height="570"/>
+                                    <rect key="frame" x="512" y="0.0" width="16" height="570"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Zgz-qj-sTm" userLabel="Tags View">
-                                <rect key="frame" x="0.0" y="0.0" width="508" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="528" height="48"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="K6m-2B-IQ0" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="47" width="468" height="1"/>
+                                        <rect key="frame" x="20" y="47" width="488" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="6Tb-0t-bpO"/>
                                         </constraints>
@@ -551,9 +551,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </customView>
                                     <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="FMH-MU-LHX" customClass="HorizontalScrollView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="23" y="13" width="462" height="25"/>
+                                        <rect key="frame" x="23" y="13" width="482" height="25"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dTq-DR-Qae">
-                                            <rect key="frame" x="0.0" y="0.0" width="462" height="25"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="482" height="25"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tokenField horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" mirrorLayoutDirectionWhenInternationalizing="always" translatesAutoresizingMaskIntoConstraints="NO" id="U3o-VN-U2S" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
@@ -572,7 +572,7 @@
                                             </constraints>
                                         </clipView>
                                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="z3o-4M-GrW">
-                                            <rect key="frame" x="0.0" y="9" width="462" height="16"/>
+                                            <rect key="frame" x="0.0" y="9" width="482" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="jwH-gh-soS">
@@ -592,12 +592,12 @@
                                 </constraints>
                             </customView>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="wyB-gA-z62" userLabel="Header Effect View">
-                                <rect key="frame" x="0.0" y="566" width="508" height="52"/>
+                                <rect key="frame" x="0.0" y="566" width="528" height="52"/>
                             </visualEffectView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mdt-4X-jeq" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="566" width="508" height="52"/>
+                                <rect key="frame" x="0.0" y="566" width="528" height="52"/>
                                 <subviews>
-                                    <button toolTip="Toggle Sidebar" horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eki-Gw-aTk" userLabel="Sidebar">
+                                    <button toolTip="Toggle Sidebar" horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eki-Gw-aTk" userLabel="Sidebar Button">
                                         <rect key="frame" x="16" y="15" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="3rm-0M-f5j"/>
@@ -612,9 +612,9 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="86" y="0.0" width="406" height="52"/>
+                                        <rect key="frame" x="114" y="0.0" width="398" height="52"/>
                                         <subviews>
-                                            <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown">
+                                            <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown Button">
                                                 <rect key="frame" x="0.0" y="15" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="1ZX-mt-a4G"/>
@@ -628,7 +628,7 @@
                                                     <action selector="toggleMarkdownView:" target="owM-kh-Bm6" id="atS-Vp-By1"/>
                                                 </connections>
                                             </button>
-                                            <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W50-6o-QGr" userLabel="Restore">
+                                            <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W50-6o-QGr" userLabel="Restore Button">
                                                 <rect key="frame" x="44" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GVO-Z6-G3X">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -638,7 +638,7 @@
                                                     <action selector="restoreAction:" target="owM-kh-Bm6" id="Ngq-H4-UAg"/>
                                                 </connections>
                                             </button>
-                                            <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hVc-Cl-DHn" userLabel="Metrics">
+                                            <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hVc-Cl-DHn" userLabel="Metrics Button">
                                                 <rect key="frame" x="88" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="JJe-f9-FSN">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -651,7 +651,7 @@
                                                     <action selector="metricsWasPressedWithSender:" target="owM-kh-Bm6" id="vgk-6p-0lu"/>
                                                 </connections>
                                             </button>
-                                            <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-L9-Q1P" userLabel="More">
+                                            <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-L9-Q1P" userLabel="More Button">
                                                 <rect key="frame" x="132" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis_outline" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ble-fl-POM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -661,21 +661,50 @@
                                                     <action selector="moreWasPressed:" target="owM-kh-Bm6" id="jNg-pL-Pc6"/>
                                                 </connections>
                                             </button>
-                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
-                                                <rect key="frame" x="176" y="12" width="230" height="29"/>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="rlY-4u-bgn">
+                                                <rect key="frame" x="176" y="12" width="222" height="29"/>
+                                                <subviews>
+                                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
+                                                        <rect key="frame" x="0.0" y="0.0" width="222" height="29"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
+                                                            <constraint firstAttribute="width" constant="222" id="yv6-TC-X7T"/>
+                                                        </constraints>
+                                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </searchFieldCell>
+                                                        <connections>
+                                                            <action selector="performSearch:" target="mdt-4X-jeq" id="7xg-oL-34n"/>
+                                                            <outlet property="delegate" destination="mdt-4X-jeq" id="KIG-lf-uMu"/>
+                                                        </connections>
+                                                    </searchField>
+                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-ze-2Lb" userLabel="SearchButton">
+                                                        <rect key="frame" x="200" y="3" width="22" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="22" id="1iW-dq-nal"/>
+                                                            <constraint firstAttribute="height" constant="22" id="a2G-uF-0Aa"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GyS-Ju-oCW">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="searchWasPressed:" target="mdt-4X-jeq" id="cHE-CJ-Xv7"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
-                                                    <constraint firstAttribute="width" constant="230" id="yv6-TC-X7T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YLv-zp-fRS" secondAttribute="trailing" id="123-Kk-B8G"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YLv-zp-fRS" secondAttribute="bottom" id="6n7-FL-RNE"/>
+                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="centerY" secondItem="rlY-4u-bgn" secondAttribute="centerY" id="Abj-9e-UWC"/>
+                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rlY-4u-bgn" secondAttribute="leading" id="Ad6-Ly-or9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Jfd-ze-2Lb" secondAttribute="trailing" id="Oan-fh-mFW"/>
+                                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="top" secondItem="rlY-4u-bgn" secondAttribute="top" id="UQ4-A2-nxq"/>
+                                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="leading" secondItem="rlY-4u-bgn" secondAttribute="leading" priority="999" id="bPK-G4-RHB"/>
                                                 </constraints>
-                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </searchFieldCell>
-                                                <connections>
-                                                    <outlet property="delegate" destination="owM-kh-Bm6" id="PeJ-VQ-DId"/>
-                                                </connections>
-                                            </searchField>
+                                            </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="hVc-Cl-DHn" firstAttribute="height" secondItem="TI9-l9-KN8" secondAttribute="height" id="2wO-UI-11h"/>
@@ -707,7 +736,7 @@
                                     <constraint firstAttribute="bottom" secondItem="8xD-dy-bio" secondAttribute="bottom" id="PxV-l3-3xc"/>
                                     <constraint firstAttribute="height" constant="52" id="Sbd-Ya-Bl9"/>
                                     <constraint firstItem="8xD-dy-bio" firstAttribute="top" secondItem="mdt-4X-jeq" secondAttribute="top" id="Wcs-Kz-DWc"/>
-                                    <constraint firstAttribute="trailing" secondItem="8xD-dy-bio" secondAttribute="trailing" constant="16" id="YLX-ev-0uq"/>
+                                    <constraint firstAttribute="trailing" secondItem="8xD-dy-bio" secondAttribute="trailing" constant="16" id="q2H-WF-pZK"/>
                                     <constraint firstItem="Eki-Gw-aTk" firstAttribute="leading" secondItem="mdt-4X-jeq" secondAttribute="leading" priority="249" constant="16" id="xKL-7N-KKP"/>
                                 </constraints>
                                 <connections>
@@ -715,12 +744,16 @@
                                     <outlet property="moreButton" destination="Z7O-L9-Q1P" id="nAT-Hn-2b2"/>
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
                                     <outlet property="restoreButton" destination="W50-6o-QGr" id="hF8-xI-ouJ"/>
+                                    <outlet property="searchButton" destination="Jfd-ze-2Lb" id="7g1-aG-Ypt"/>
+                                    <outlet property="searchContainerView" destination="rlY-4u-bgn" id="bgl-gc-PhC"/>
+                                    <outlet property="searchField" destination="YLv-zp-fRS" id="khj-QR-OsW"/>
+                                    <outlet property="searchFieldWidthConstraint" destination="yv6-TC-X7T" id="0Zi-bE-niz"/>
                                     <outlet property="sidebarButton" destination="Eki-Gw-aTk" id="i2B-I9-LMf"/>
                                     <outlet property="stackView" destination="8xD-dy-bio" id="ubf-Av-SAn"/>
                                 </connections>
                             </customView>
                             <imageView translatesAutoresizingMaskIntoConstraints="NO" id="Dj2-Ut-m6l" userLabel="Status Image View">
-                                <rect key="frame" x="204" y="259" width="100" height="100"/>
+                                <rect key="frame" x="214" y="259" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="MbX-dt-Bj8"/>
                                     <constraint firstAttribute="width" constant="100" id="Rzw-dZ-IqB"/>
@@ -728,7 +761,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0jg-VV-Eyn"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VFr-Z3-HgO" userLabel="Status Label">
-                                <rect key="frame" x="252" y="230" width="4" height="17"/>
+                                <rect key="frame" x="262" y="230" width="4" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" id="J8W-QC-Sd4">
                                     <font key="font" metaFont="menu" size="14"/>
                                     <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -770,7 +803,6 @@
                         <outlet property="moreActionsMenu" destination="O2x-0v-azu" id="jSV-Gb-XpN"/>
                         <outlet property="noteEditor" destination="84J-wh-qoX" id="MHx-LW-NED"/>
                         <outlet property="scrollView" destination="3M9-OX-Hpx" id="fps-1H-haD"/>
-                        <outlet property="searchField" destination="YLv-zp-fRS" id="AFT-Zt-Kry"/>
                         <outlet property="statusImageView" destination="Dj2-Ut-m6l" id="vqt-cc-z7a"/>
                         <outlet property="statusTextField" destination="VFr-Z3-HgO" id="UWY-3k-pwd"/>
                         <outlet property="tagsField" destination="U3o-VN-U2S" id="qmL-AY-16b"/>
@@ -867,6 +899,7 @@
         <image name="button_new_note" width="24" height="24"/>
         <image name="button_preview_off" width="24" height="24"/>
         <image name="button_restore" width="24" height="24"/>
+        <image name="button_search" width="24" height="24"/>
         <image name="button_tags_close" width="24" height="24"/>
         <image name="icon_pin" width="16" height="16"/>
         <image name="icon_shared" width="16" height="16"/>

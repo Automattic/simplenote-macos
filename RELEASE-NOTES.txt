@@ -1,6 +1,7 @@
 2.6
 -----
 - New Sidebar Toolbar Action #737
+- New Search Toolbar Action #741
  
 2.5
 -----
