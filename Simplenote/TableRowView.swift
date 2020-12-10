@@ -71,10 +71,12 @@ extension TableRowStyle {
 
     var selectionColor: NSColor {
         switch self {
-        case .fullWidth, .sidebar:
+        case .fullWidth:
             return .simplenoteSelectedBackgroundColor
-        case .list:
+        case .sidebar:
             return .simplenoteSecondarySelectedBackgroundColor
+        case .list:
+            return .simplenoteSelectedBackgroundColor
         }
     }
 }

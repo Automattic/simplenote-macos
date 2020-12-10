@@ -84,6 +84,7 @@
     [self setupTableView];
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
+
     [self applyStyle];
 }
 
