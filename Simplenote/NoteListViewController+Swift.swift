@@ -265,7 +265,7 @@ extension NoteListViewController {
         noteView.body = note.bodyPreview
         noteView.rendersInCondensedMode = Options.shared.notesListCondensed
 
-        noteView.refreshAttributedStrings()
+        noteView.refreshStyle()
 
         return noteView
     }

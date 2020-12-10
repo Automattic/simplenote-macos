@@ -23,6 +23,26 @@ class NoteTableCellView: NSTableCellView {
     ///
     @IBOutlet private var sharedImageView: NSImageView!
 
+    /// Workaround: In AppKit, TableView Cell Selection works at the Row level
+    ///
+    override var backgroundStyle: NSView.BackgroundStyle {
+        didSet {
+            refreshSelectedState()
+        }
+    }
+
+    /// Indicates if the receiver's associated NSTableRowView is *selected*
+    ///
+    private var selected = false {
+        didSet {
+            guard oldValue != selected else {
+                return
+            }
+
+            refreshStyle()
+        }
+    }
+
     /// Indicates if the receiver displays the pinned indicator
     ///
     var displaysPinnedIndicator: Bool {
@@ -74,6 +94,11 @@ class NoteTableCellView: NSTableCellView {
         setupTextFields()
         setupImageViews()
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        reset()
+    }
 }
 
 
@@ -81,16 +106,50 @@ class NoteTableCellView: NSTableCellView {
 //
 extension NoteTableCellView {
 
+    /// Refreshes the receiver's style
+    ///
+    func refreshStyle() {
+        refreshAttributedStrings()
+        refreshAccessoryIcons()
+    }
+
     /// Refreshed the Label(s) Attributed Strings: Keywords, Bullets and the Body Prefix will be taken into consideration
     ///
-    func refreshAttributedStrings() {
+    private func refreshAttributedStrings() {
+        let bodyColor: NSColor = selected ? .simplenoteTextColor : .simplenoteSecondaryTextColor
+
         titleTextField.attributedStringValue = title.map {
             NSAttributedString.previewString(text: $0, font: Fonts.title, color: .simplenoteTextColor)
         } ?? NSAttributedString()
 
         bodyTextField.attributedStringValue = body.map {
-            NSAttributedString.previewString(text: $0, font: Fonts.body, color: .simplenoteSecondaryTextColor)
+            NSAttributedString.previewString(text: $0, font: Fonts.body, color: bodyColor)
         } ?? NSAttributedString()
+    }
+
+    /// Refreshes the Accessory Icons tint color
+    ///
+    func refreshAccessoryIcons() {
+        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
+        let pinnedColor: NSColor = selected ? .simplenoteTextColor : .simplenoteAccessoryTintColor
+        let sharedColor: NSColor = selected ? .simplenoteTextColor : .simplenoteSecondaryTextColor
+
+        pinnedImageView.image = pinnedImageView.image?.tinted(with: pinnedColor)
+        sharedImageView.image = sharedImageView.image?.tinted(with: sharedColor)
+    }
+}
+
+
+// MARK: - Selection Workaround
+//
+private extension NoteTableCellView {
+
+    func refreshSelectedState() {
+        guard let row = superview as? NSTableRowView else {
+            return
+        }
+
+        selected = row.isSelected
     }
 }
 
@@ -105,9 +164,12 @@ private extension NoteTableCellView {
     }
 
     func setupImageViews() {
-        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
-        pinnedImageView.image = NSImage(named: .pin)?.tinted(with: .simplenoteAccessoryTintColor)
-        sharedImageView.image = NSImage(named: .shared)?.tinted(with: .simplenoteSecondaryTextColor)
+        pinnedImageView.image = NSImage(named: .pin)
+        sharedImageView.image = NSImage(named: .shared)
+    }
+
+    func reset() {
+        selected = false
     }
 }
 
