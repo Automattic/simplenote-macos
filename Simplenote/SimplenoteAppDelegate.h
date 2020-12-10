@@ -10,6 +10,7 @@
 @import Simperium_OSX;
 
 
+@class MainWindowController;
 @class NoteListViewController;
 @class NoteEditorViewController;
 @class TagListViewController;
@@ -24,8 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 
-@property (strong, nonatomic, readonly) IBOutlet NSWindow                   *window;
-
 @property (strong, nonatomic, readonly) Simperium                           *simperium;
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator        *persistentStoreCoordinator;
 @property (strong, nonatomic, readonly) NSManagedObjectModel                *managedObjectModel;
@@ -33,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic, readonly) BOOL                                exportUnlocked;
 
+@property (strong, nonatomic) MainWindowController                          *mainWindowController;
 @property (strong, nonatomic) SplitViewController                           *splitViewController;
 @property (strong, nonatomic) TagListViewController                         *tagListViewController;
 @property (strong, nonatomic) NoteListViewController                        *noteListViewController;
@@ -51,7 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
-- (BOOL)isMainWindowVisible;
 
 @end
 

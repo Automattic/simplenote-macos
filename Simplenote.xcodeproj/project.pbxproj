@@ -166,6 +166,8 @@
 		B52197872541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */; };
 		B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
 		B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
+		B528D683257FF15000C1EEA4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528D682257FF15000C1EEA4 /* MainWindowController.swift */; };
+		B528D684257FF15000C1EEA4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528D682257FF15000C1EEA4 /* MainWindowController.swift */; };
 		B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529F7B424586D8700B168F1 /* MarkdownViewController.swift */; };
 		B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529F7B424586D8700B168F1 /* MarkdownViewController.swift */; };
 		B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B529F7B724586DF800B168F1 /* MarkdownViewController.xib */; };
@@ -559,6 +561,7 @@
 		B5242E0D24C923B400437E40 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5242E0F24C923B600437E40 /* cy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cy; path = cy.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
+		B528D682257FF15000C1EEA4 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B529F7B424586D8700B168F1 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
 		B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWindow+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1280,17 +1283,10 @@
 		B5C63353251E732600C8BF46 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5C63354251E733700C8BF46 /* Interlinks */,
+				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
+				B528D682257FF15000C1EEA4 /* MainWindowController.swift */,
 			);
 			name = WindowControllers;
-			sourceTree = "<group>";
-		};
-		B5C63354251E733700C8BF46 /* Interlinks */ = {
-			isa = PBXGroup;
-			children = (
-				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
-			);
-			name = Interlinks;
 			sourceTree = "<group>";
 		};
 		B5C63355251E734100C8BF46 /* Storyboards */ = {
@@ -1780,6 +1776,7 @@
 				B551187224E33BC2007B11E3 /* ClipView.swift in Sources */,
 				B5395E1D253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */,
 				B5E061772450AEDA0076111A /* ToolbarView.swift in Sources */,
+				B528D683257FF15000C1EEA4 /* MainWindowController.swift in Sources */,
 				F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
 				B586C062245CCD35009508EC /* SplitViewController.swift in Sources */,
@@ -2046,6 +2043,7 @@
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
+				B528D684257FF15000C1EEA4 /* MainWindowController.swift in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,

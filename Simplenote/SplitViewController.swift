@@ -24,8 +24,13 @@ class SplitViewController: NSSplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Note: we must manually set the `autosaveName`, otherwise divider location(s) won't be properly persisted
         splitView.autosaveName = "Please Save Me!"
+
+        /// Note: We'll enable Layer Backing, in order to fix this console message:
+        /// `WARNING: The SplitView is not layer-backed, but trying to use overlay sidebars` (...)
+        splitView.wantsLayer = true
     }
 }
 

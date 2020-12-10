@@ -43,7 +43,6 @@
 
 @interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
 
-@property (strong, nonatomic) IBOutlet NSWindow                 *window;
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
@@ -127,8 +126,8 @@
 {
     [SPTracker trackApplicationLaunched];
 
-    [self configureSplitView];
-    [self configureWindow];
+    [self configureMainInterface];
+    [self configureInitialResponder];
     [self hookWindowNotifications];
     [self applyStyle];
     
@@ -257,11 +256,6 @@
     [userDefaults synchronize];
     
     [self.noteListViewController setWaitingForIndex:YES];
-}
-
-- (BOOL)isMainWindowVisible
-{
-    return self.window.isVisible;
 }
 
 - (void)createWelcomeNote
@@ -466,8 +460,8 @@
         [[Options shared] reset];
 
         // Auth window won't show up until next run loop, so be careful not to close main window until then
-        [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
-        [self->_simperium authenticateIfNecessary];
+        [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
+        [self.simperium authenticateIfNecessary];
     }];
 }
 
