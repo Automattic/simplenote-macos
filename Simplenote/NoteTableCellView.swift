@@ -106,7 +106,7 @@ private extension NoteTableCellView {
 
     func setupImageViews() {
         // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
-        pinnedImageView.image = NSImage(named: .pin)?.tinted(with: .simplenoteActionButtonTintColor)
+        pinnedImageView.image = NSImage(named: .pin)?.tinted(with: .simplenoteAccessoryTintColor)
         sharedImageView.image = NSImage(named: .shared)?.tinted(with: .simplenoteSecondaryTextColor)
     }
 }
