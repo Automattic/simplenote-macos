@@ -8,11 +8,6 @@ import SimplenoteInterlinks
 extension NoteEditorViewController {
 
     @objc
-    func setupSearchBar() {
-        searchField.centersPlaceholder = false
-    }
-
-    @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
         statusImageView.contentTintColor = .simplenotePlaceholderTintColor
@@ -31,6 +26,11 @@ extension NoteEditorViewController {
         tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
         tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
+    }
+
+    @objc
+    func setupToolbarView() {
+        toolbarView.delegate = self
     }
 
     @objc
@@ -161,8 +161,6 @@ extension NoteEditorViewController {
         bottomDividerView.borderColor           = .simplenoteDividerColor
         noteEditor.insertionPointColor          = .simplenoteEditorTextColor
         noteEditor.textColor                    = .simplenoteEditorTextColor
-        searchField.textColor                   = .simplenoteTextColor
-        searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
         statusTextField.textColor               = .simplenoteSecondaryTextColor
         tagsField.textColor                     = .simplenoteTextColor
         tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
@@ -214,51 +212,24 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
-    @IBAction
-    func beginSearch(_ sender: Any) {
-        view.window?.makeFirstResponder(searchField)
-    }
-
-    @IBAction
-    func performSearch(_ sender: Any) {
-        searchDelegate?.editorController(self, didSearchKeyword: searchField.stringValue)
-    }
-
-    @IBAction
-    func endSearch(_ sender: Any) {
-        searchField.cancelSearch()
-        searchField.resignFirstResponder()
+    @objc
+    func beginSearch() {
+        toolbarView.beginSearch()
     }
 
     @objc
     func ensureSearchIsDismissed() {
-        guard searchField.stringValue.isEmpty == false else {
-            return
-        }
-
-        endSearch(self)
+        toolbarView.endSearch()
     }
 }
 
 
-// MARK: - NSSearchFieldDelegate
+// MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController: NSSearchFieldDelegate {
+extension NoteEditorViewController: ToolbarDelegate {
 
-    public func controlTextDidBeginEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
-            return
-        }
-
-        searchDelegate?.editorControllerDidBeginSearch(self)
-    }
-
-    public func controlTextDidEndEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
-            return
-        }
-
-        searchDelegate?.editorControllerDidEndSearch(self)
+    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
+        searchDelegate?.editorController(self, didSearchKeyword: keyword)
     }
 }
 
@@ -445,7 +416,15 @@ extension NoteEditorViewController {
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
         viewController.delegate = self
+
+        // Our SearchBar, if present, will freak out when presenting the Metrics Popover.
+        // We'll ensure it doesn't get dismissed (granted that it had no keywords!)
+        toolbarView.dismissSearchBarOnEndEditing = false
+
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+
+        // You may proceed. Nothing happened here.
+        toolbarView.dismissSearchBarOnEndEditing = true
     }
 
     func displayPublishPopover(from sourceView: NSView, for note: Note) {
@@ -802,20 +781,5 @@ private extension NoteEditorViewController {
         self.interlinkWindowController = interlinkWindowController
 
         return interlinkWindowController
-    }
-}
-
-
-// MARK: - Settings
-//
-private enum Settings {
-
-    static var searchFieldPlaceholderString: NSAttributedString {
-        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
-
-        return NSAttributedString(string: text, attributes: [
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
-            .font: NSFont.simplenoteSecondaryTextFont
-        ])
     }
 }

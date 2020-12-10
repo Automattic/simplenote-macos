@@ -274,10 +274,10 @@
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
 		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
-		B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
 		B5A9FE272576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
 		B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
+		B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
+		B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
 		B5ACE42E24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
 		B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
 		B5AF76C724A3F00600B7D530 /* TagListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C624A3F00600B7D530 /* TagListState.swift */; };
@@ -297,6 +297,10 @@
 		B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */; };
+		B5C620A2257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
+		B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
+		B5C620AB257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */; };
+		B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */; };
 		B5C63337251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
 		B5C63338251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
 		B5C63349251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */; };
@@ -637,8 +641,8 @@
 		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
 		B5A89191231ECB3C0007EDCB /* INSTALL.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = INSTALL.markdown; sourceTree = "<group>"; };
 		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+Simplenote.swift"; sourceTree = "<group>"; };
 		B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemMetrics.swift; sourceTree = "<group>"; };
+		B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+Simplenote.swift"; sourceTree = "<group>"; };
 		B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		B5AF76C624A3F00600B7D530 /* TagListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListState.swift; sourceTree = "<group>"; };
 		B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListRow.swift; sourceTree = "<group>"; };
@@ -650,6 +654,8 @@
 		B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSearchField+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
 		B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupTextView.swift; sourceTree = "<group>"; };
+		B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Simplenote.swift"; sourceTree = "<group>"; };
+		B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAnimationContext+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkViewController.swift; sourceTree = "<group>"; };
 		B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableCellView.swift; sourceTree = "<group>"; };
 		B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsViewController.swift; sourceTree = "<group>"; };
@@ -1041,8 +1047,10 @@
 				B5D21CB624881EF600D57A34 /* Array+Simplenote.swift */,
 				B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */,
 				B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */,
+				B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */,
 				B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
+				B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
 				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
@@ -1063,6 +1071,7 @@
 				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
+				B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */,
 				B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */,
 				B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */,
 				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
@@ -1073,7 +1082,6 @@
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
-				B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1792,6 +1800,7 @@
 				B5E0863B2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				B5D21CB724881EF600D57A34 /* Array+Simplenote.swift in Sources */,
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
+				B5C620AB257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
 				375D293A21E033D1007AB25A /* stack.c in Sources */,
 				B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294221E033D1007AB25A /* html5_blocks.c in Sources */,
@@ -1847,6 +1856,7 @@
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,
 				B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
+				B5C620A2257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
 				B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
@@ -1925,6 +1935,7 @@
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
 				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
+				B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
@@ -2033,6 +2044,7 @@
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
 				B5F3150A24496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
+				B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,

@@ -46,8 +46,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @end
 
 @protocol EditorControllerSearchDelegate <NSObject>
-- (void)editorControllerDidBeginSearch:(NoteEditorViewController *)controller;
-- (void)editorControllerDidEndSearch:(NoteEditorViewController *)controller;
 - (void)editorController:(NoteEditorViewController *)controller didSearchKeyword:(NSString *)keyword;
 @end
 
@@ -62,7 +60,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong) IBOutlet NSVisualEffectView                       *headerEffectView;
 @property (nonatomic, strong) IBOutlet BackgroundView                           *bottomDividerView;
 @property (nonatomic, strong) IBOutlet ToolbarView                              *toolbarView;
-@property (nonatomic, strong) IBOutlet NSSearchField                            *searchField;
 @property (nonatomic, strong) IBOutlet NSImageView                              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField                              *statusTextField;
 @property (nonatomic, strong) IBOutlet SPTextView                               *noteEditor;
