@@ -896,7 +896,7 @@
                     </window>
                     <connections>
                         <outlet property="simplenoteWindow" destination="Xk8-MH-eev" id="UZU-US-aOB"/>
-                        <segue destination="pbQ-Wy-u9S" kind="relationship" relationship="window.shadowedContentViewController" id="k1U-SQ-ruR"/>
+                        <segue destination="pbQ-Wy-u9S" kind="relationship" relationship="window.shadowedContentViewController" id="OXN-9V-bSk"/>
                     </connections>
                 </windowController>
                 <customObject id="z6J-n3-huD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -907,16 +907,13 @@
         <scene sceneID="ada-KS-Sgj">
             <objects>
                 <splitViewController storyboardIdentifier="SplitViewController" id="pbQ-Wy-u9S" customClass="SplitViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="YYi-Tg-xfR">
+                    <splitView key="splitView" wantsLayer="YES" dividerStyle="thin" vertical="YES" id="YYi-Tg-xfR" customClass="SplitView" customModule="Simplenote" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="pbQ-Wy-u9S" id="Eic-Td-J46"/>
                         </connections>
                     </splitView>
-                    <connections>
-                        <outlet property="splitView" destination="YYi-Tg-xfR" id="0q9-5k-xxj"/>
-                    </connections>
                 </splitViewController>
                 <customObject id="ddL-k7-ABw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

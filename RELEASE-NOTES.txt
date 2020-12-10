@@ -1,6 +1,7 @@
 2.6
 -----
 - New Sidebar Toolbar Action #737
+- New Big Sur Iconset #745
 - New Search Toolbar Action #741
 - Updated Color Palette #733
  
