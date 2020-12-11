@@ -1,0 +1,6 @@
+- De titelbalk van het hoofdvenster verwijderd
+- BigSur-invoegstijl overgenomen
+- De zoekbalk is verplaatst
+- Minimaal vereist besturingssysteem bijgewerkt naar 10.14
+- Tags en werkbalkkoppen geven nu een vervaagd effect weer
+- Een bug opgelost waardoor tekst elkaar overlapte in de UI voor statistieken
