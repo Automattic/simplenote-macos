@@ -77,28 +77,6 @@
     freopen([logPath fileSystemRepresentation],"a+",stderr);
 }
 
-- (Simperium *)configureSimperium
-{
-    Simperium *simperium                            = [[Simperium alloc] initWithModel:self.managedObjectModel
-                                                                               context:self.managedObjectContext
-                                                                           coordinator:self.persistentStoreCoordinator];
-    simperium.delegate                              = self;
-    simperium.verboseLoggingEnabled                 = NO;
-    simperium.presentsLoginByDefault                = YES;
-    simperium.authenticationWindowControllerClass   = [LoginWindowController class];
-    
-    SPAuthenticator *authenticator                  = simperium.authenticator;
-    authenticator.providerString                    = @"simplenote.com";
-    
-    SPAuthenticationConfiguration *config           = [SPAuthenticationConfiguration sharedInstance];
-    config.logoImageName                            = SPSimplenoteLogoImageName;
-    config.controlColor                             = [NSColor simplenoteBrandColor];
-    config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
-    config.resetPasswordURL                         = SPSimplenoteResetPasswordURL;
-    
-    return simperium;
-}
-
 #if SPARKLE_OTA
 - (void)configureSparkle
 {
@@ -129,8 +107,6 @@
     [self configureInitialResponder];
     [self hookWindowNotifications];
     [self applyStyle];
-    
-	self.simperium = [self configureSimperium];
 
     [self configureEditorController];
     [self configureVersionsController];

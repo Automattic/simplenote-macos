@@ -6,6 +6,29 @@ import Foundation
 extension SimplenoteAppDelegate {
 
     @objc
+    func configureSimperium() {
+        guard let simperium = Simperium(model: managedObjectModel, context: managedObjectContext, coordinator: persistentStoreCoordinator),
+              let config = SPAuthenticationConfiguration.sharedInstance()
+        else {
+            fatalError()
+        }
+
+        simperium.delegate = self
+        simperium.presentsLoginByDefault = true
+        simperium.verboseLoggingEnabled = false
+        simperium.authenticationWindowControllerClass = LoginWindowController.classForCoder()
+
+        simperium.authenticator.providerString = SPCredentials.simperiumProviderString
+
+        config.logoImageName = SPSimplenoteLogoImageName
+        config.controlColor = .simplenoteBrandColor
+        config.forgotPasswordURL = SPCredentials.simperiumForgotPasswordURL
+        config.resetPasswordURL = SPCredentials.simperiumResetPasswordURL
+
+        self.simperium = simperium
+    }
+
+    @objc
     func configureMainInterface() {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
