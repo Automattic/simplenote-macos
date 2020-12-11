@@ -78,6 +78,41 @@ extension SimplenoteAppDelegate {
 }
 
 
+// MARK: - Welcome Note
+//
+extension SimplenoteAppDelegate {
+
+    @objc
+    func configureWelcomeNoteIfNeeded() {
+        if Options.shared.initialSetupComplete {
+            return
+        }
+
+        Options.shared.initialSetupComplete = true
+        noteListViewController.setWaitingForIndex(true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + AppKitConstants.delay0_5) {
+            self.createWelcomeNote()
+        }
+    }
+
+    func createWelcomeNote() {
+        let bucket = simperium.notesBucket
+        guard bucket.object(forKey: SPWelcomeNoteID) == nil else {
+            return
+        }
+
+        let welcomeNote = bucket.insertNewObject(ofType: Note.self, key: SPWelcomeNoteID)
+        welcomeNote.modificationDate = Date()
+        welcomeNote.creationDate = Date()
+        welcomeNote.content = NSLocalizedString("welcomeNote-Mac", comment: "A welcome note for new Mac users")
+        welcomeNote.createPreview()
+
+        simperium.save()
+    }
+}
+
+
 // MARK: - Public API
 //
 extension SimplenoteAppDelegate {

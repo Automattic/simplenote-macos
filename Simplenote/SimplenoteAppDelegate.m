@@ -30,14 +30,6 @@
 
 
 #pragma mark ====================================================================================
-#pragma mark Constants
-#pragma mark ====================================================================================
-
-#define kFirstLaunchKey					@"SPFirstLaunch"
-
-
-
-#pragma mark ====================================================================================
 #pragma mark Private
 #pragma mark ====================================================================================
 
@@ -215,40 +207,6 @@
             [tagBucket deleteObject:tag];
 		}
     }
-    [_simperium save];
-}
-
-- (void)configureWelcomeNoteIfNeeded
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *firstLaunchKey = [userDefaults objectForKey:kFirstLaunchKey];
-    if (firstLaunchKey != nil) {
-        return;
-    }
-    
-    [self performSelector:@selector(createWelcomeNote) withObject:nil afterDelay:0.5];
-    
-    [userDefaults setObject:@(1) forKey:kFirstLaunchKey];
-    [userDefaults synchronize];
-    
-    [self.noteListViewController setWaitingForIndex:YES];
-}
-
-- (void)createWelcomeNote
-{
-    SPBucket *noteBucket = [_simperium bucketForName:@"Note"];
-    Note *welcomeNote = [noteBucket objectForKey:SPWelcomeNoteID];
-    
-    if (welcomeNote) {
-        return;
-	}
-    
-    welcomeNote = [noteBucket insertNewObjectForKey:SPWelcomeNoteID];
-    welcomeNote.modificationDate = [NSDate date];
-    welcomeNote.creationDate = [NSDate date];
-    welcomeNote.content = NSLocalizedString(@"welcomeNote-Mac", @"A welcome note for new Mac users");
-    [welcomeNote createPreview];
-	
     [_simperium save];
 }
 
