@@ -9,6 +9,7 @@ extension UserDefaults {
         case alphabeticallySortNotes = "kAlphabeticalSortPreferencesKey"
         case analyticsEnabled
         case editorFullWidth = "kEditorWidthPreferencesKey"
+        case initialSetupComplete = "SPFirstLaunch"
         case lastKnownVersion
         case notesListCondensed = "kPreviewLinesPref"
         case themeName = "VSThemeManagerThemePrefKey"
