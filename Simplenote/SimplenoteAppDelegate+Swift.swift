@@ -20,7 +20,7 @@ extension SimplenoteAppDelegate {
 
         simperium.authenticator.providerString = SPCredentials.simperiumProviderString
 
-        config.logoImageName = SPSimplenoteLogoImageName
+        config.logoImageName = .simplenoteLogoLogin
         config.controlColor = .simplenoteBrandColor
         config.forgotPasswordURL = SPCredentials.simperiumForgotPasswordURL
         config.resetPasswordURL = SPCredentials.simperiumResetPasswordURL

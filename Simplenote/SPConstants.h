@@ -23,7 +23,6 @@ extern NSString * const SPAutomatticAnalyticPrivacyURL;
 extern NSString * const SPSimplenotePublishURL;
 extern NSString * const SPSimplenoteForgotPasswordURL;
 extern NSString * const SPSimplenoteResetPasswordURL;
-extern NSString * const SPSimplenoteLogoImageName;
 extern NSString * const SPWPServiceName;
 extern NSString * const SPSignInErrorNotificationName;
 extern NSString * const SPWPSignInAuthURL;

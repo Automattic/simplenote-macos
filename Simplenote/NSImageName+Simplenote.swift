@@ -61,6 +61,10 @@ extension NSImage.Name {
     ///
     static let simplenoteLogoInner = NSImage.Name("icon_simplenote_inner")
 
+    /// Logo: Login Logo!
+    ///
+    static let simplenoteLogoLogin = NSImage.Name("icon_simplenote_login")
+
     /// Toolbar: Share
     ///
     static let share = NSImage.Name("button_share")
