@@ -98,11 +98,11 @@ extension SimplenoteAppDelegate {
 
     func createWelcomeNote() {
         let bucket = simperium.notesBucket
-        guard bucket.object(forKey: SPWelcomeNoteID) == nil else {
+        guard bucket.object(forKey: SimplenoteConstants.welcomeNoteObjectKey) == nil else {
             return
         }
 
-        let welcomeNote = bucket.insertNewObject(ofType: Note.self, key: SPWelcomeNoteID)
+        let welcomeNote = bucket.insertNewObject(ofType: Note.self, key: SimplenoteConstants.welcomeNoteObjectKey)
         welcomeNote.modificationDate = Date()
         welcomeNote.creationDate = Date()
         welcomeNote.content = NSLocalizedString("welcomeNote-Mac", comment: "A welcome note for new Mac users")
