@@ -101,8 +101,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [SPTracker trackApplicationLaunched];
-
+    [self configureSimperium];
     [self configureMainInterface];
     [self configureInitialResponder];
     [self hookWindowNotifications];
@@ -136,6 +135,8 @@
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
     [self startListeningForThemeNotifications];
+
+    [SPTracker trackApplicationLaunched];
 }
 
 - (void)hookWindowNotifications
