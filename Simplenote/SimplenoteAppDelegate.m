@@ -41,14 +41,13 @@
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
+@interface SimplenoteAppDelegate () <SPBucketDelegate>
 
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
 
-@property (strong, nonatomic) Simperium                         *simperium;
 @property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
 @property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
