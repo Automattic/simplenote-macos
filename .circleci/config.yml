@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: Copy Demo SPCredentials
-          command: mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
+          command: bundle exec fastlane run configure_apply --force
       - ios/install-dependencies:
           bundle-install: true
           pod-install: true
