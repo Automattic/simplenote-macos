@@ -25,7 +25,20 @@ class TableRowView : NSTableRowView {
         let insets = style.insets
         let targetRect = bounds.insetBy(dx: insets.dx, dy: insets.dy)
         style.selectionColor.setFill()
-        NSBezierPath(roundedRect: targetRect, xRadius: style.cornerRadius, yRadius: style.cornerRadius).fill()
+        NSBezierPath(roundedRect: targetRect, byRoundingCorners: roundedCorners, radius: style.cornerRadius).fill()
+    }
+
+    private var roundedCorners: RectCorner {
+        var output = RectCorner()
+        if !isPreviousRowSelected {
+            output.formUnion([.topLeft, .topRight])
+        }
+
+        if !isNextRowSelected {
+            output.formUnion([.bottomLeft, .bottomRight])
+        }
+
+        return output
     }
 }
 
