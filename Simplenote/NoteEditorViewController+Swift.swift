@@ -8,20 +8,19 @@ import SimplenoteInterlinks
 extension NoteEditorViewController {
 
     @objc
+    func setupSearchBar() {
+        searchField.centersPlaceholder = false
+    }
+
+    @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
-        statusImageView.tintImage(color: .simplenotePlaceholderTintColor)
+        statusImageView.contentTintColor = .simplenotePlaceholderTintColor
     }
 
     @objc
     func setupScrollView() {
         scrollView.contentView.postsBoundsChangedNotifications = true
-    }
-
-    @objc
-    func setupTopDivider() {
-        topDividerView.alphaValue = .zero
-        topDividerView.drawsBottomBorder = true
     }
 
     @objc
@@ -33,34 +32,11 @@ extension NoteEditorViewController {
         tagsField.nextKeyView = noteEditor
         tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
     }
-}
 
-
-// MARK: - Autolayout FTW
-//
-extension NoteEditorViewController {
-
-    open override func updateViewConstraints() {
-        if mustUpdateToolbarConstraint {
-            updateToolbarTopConstraint()
-        }
-
-        super.updateViewConstraints()
-    }
-
-    var mustUpdateToolbarConstraint: Bool {
-        toolbarViewTopConstraint == nil
-    }
-
-    func updateToolbarTopConstraint() {
-        guard let layoutGuide = toolbarView.window?.contentLayoutGuide as? NSLayoutGuide else {
-            return
-        }
-
-        let newTopConstraint = toolbarView.topAnchor.constraint(equalTo: layoutGuide.topAnchor)
-        newTopConstraint.isActive = true
-
-        toolbarViewTopConstraint = newTopConstraint
+    @objc
+    func refreshScrollInsets() {
+        clipView.contentInsets.top = SplitItemMetrics.editorTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.editorTopInset
     }
 }
 
@@ -127,6 +103,25 @@ extension NoteEditorViewController {
         noteEditor.isHidden = isDisplayingMarkdown
     }
 
+    /// Refreshes the Editor's UX
+    ///
+    @objc
+    func refreshStyle() {
+        backgroundView.fillColor                = .simplenoteSecondaryBackgroundColor
+        bottomDividerView.borderColor           = .simplenoteDividerColor
+        noteEditor.insertionPointColor          = .simplenoteEditorTextColor
+        noteEditor.textColor                    = .simplenoteEditorTextColor
+        searchField.textColor                   = .simplenoteTextColor
+        searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
+        statusTextField.textColor               = .simplenoteSecondaryTextColor
+        tagsField.textColor                     = .simplenoteTextColor
+        tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
+
+        if let note = note {
+            storage.refreshStyle(markdownEnabled: note.markdown)
+        }
+    }
+
     /// Refreshes the Toolbar's Inner State
     ///
     @objc
@@ -161,6 +156,59 @@ extension NoteEditorViewController {
     ///
     private func refreshTagsFieldTokens() {
         tagsField.tokens = note?.tagsArray as? [String] ?? []
+    }
+}
+
+
+// MARK: - Search API
+//
+extension NoteEditorViewController {
+
+    @IBAction
+    func beginSearch(_ sender: Any) {
+        view.window?.makeFirstResponder(searchField)
+    }
+
+    @IBAction
+    func performSearch(_ sender: Any) {
+        searchDelegate?.editorController(self, didSearchKeyword: searchField.stringValue)
+    }
+
+    @IBAction
+    func endSearch(_ sender: Any) {
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
+    }
+
+    @objc
+    func ensureSearchIsDismissed() {
+        guard searchField.stringValue.isEmpty == false else {
+            return
+        }
+
+        endSearch(self)
+    }
+}
+
+
+// MARK: - NSSearchFieldDelegate
+//
+extension NoteEditorViewController: NSSearchFieldDelegate {
+
+    public func controlTextDidBeginEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        searchDelegate?.editorControllerDidBeginSearch(self)
+    }
+
+    public func controlTextDidEndEditing(_ obj: Notification) {
+        guard let _ = obj.object as? NSSearchField else {
+            return
+        }
+
+        searchDelegate?.editorControllerDidEndSearch(self)
     }
 }
 
@@ -390,13 +438,13 @@ extension NoteEditorViewController {
     func displayMarkdownPreview(_ note: Note) {
         markdownViewController.startDisplayingContents(of: note)
         attachMarkdownViewController()
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
     @objc
     func dismissMarkdownPreview() {
         detachMarkdownViewController()
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
     private func attachMarkdownViewController() {
@@ -407,7 +455,7 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             markdownView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             markdownView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            markdownView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            markdownView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
             markdownView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
 
@@ -435,20 +483,23 @@ extension NoteEditorViewController {
 
     @objc
     func clipViewDidScroll(sender: Notification) {
-        refreshTopDividerAlpha()
+        refreshHeaderState()
     }
 
-    private func refreshTopDividerAlpha() {
-        topDividerView.alphaValue = alphaForTopDivider
+    @objc
+    func refreshHeaderState() {
+        let newAlpha = alphaForHeader
+        headerEffectView.alphaValue = newAlpha
+        headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
 
-    private var alphaForTopDivider: CGFloat {
+    private var alphaForHeader: CGFloat {
         guard markdownViewController.parent == nil else {
             return AppKitConstants.alpha1_0
         }
 
-        let contentOffSetY = scrollView.documentVisibleRect.origin.y
-        return min(max(contentOffSetY / Settings.maximumAlphaGradientOffset, 0), 1)
+        let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
+        return min(max(contentOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -689,5 +740,13 @@ private extension NoteEditorViewController {
 // MARK: - Settings
 //
 private enum Settings {
-    static let maximumAlphaGradientOffset = CGFloat(30)
+
+    static var searchFieldPlaceholderString: NSAttributedString {
+        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
+
+        return NSAttributedString(string: text, attributes: [
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
+            .font: NSFont.simplenoteSecondaryTextFont
+        ])
+    }
 }

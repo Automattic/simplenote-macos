@@ -142,7 +142,7 @@ private enum Metrics {
     static let lineHeightForBody = Fonts.body.boundingRectForFont.height.rounded(.up)
     static let maximumNumberOfTitleLines = 1
     static let maximumNumberOfBodyLines = 2
-    static let outerVerticalStackViewInsets = NSEdgeInsets(top: 8, left: 24, bottom: 8, right: 16)
+    static let outerVerticalStackViewInsets = NSEdgeInsets(top: 9, left: 24, bottom: 9, right: 16)
     static let outerVerticalStackViewSpacing = CGFloat(2)
 }
 
@@ -150,7 +150,7 @@ private enum Metrics {
 // MARK: - Interface Settings
 //
 private enum Fonts {
-    static let title = NSFont.systemFont(ofSize: 14)
+    static let title = NSFont.systemFont(ofSize: 14, weight: .semibold)
     static let body = NSFont.systemFont(ofSize: 12)
 }
 

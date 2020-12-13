@@ -85,6 +85,7 @@ class MetricsViewController: NSViewController {
         super.viewDidLoad()
         setupEntityObserver()
         setupResultsControllerIfNeeded()
+        setupTableView()
         startListeningToNotifications()
         refreshInterface()
     }
@@ -115,6 +116,10 @@ private extension MetricsViewController {
         }
 
         try? resultsController.performFetch()
+    }
+
+    func setupTableView() {
+        tableView.ensureStyleIsFullWidth()
     }
 
     var mustSetupResultsController: Bool {
@@ -243,8 +248,7 @@ private extension MetricsViewController {
 
         height += sizingReferenceCell.fittingSize.height * min(Metrics.maximumVisibleReferences, numberOfReferences)
 
-        let width = numberOfReferences > .zero ? Metrics.widthForNonEmptyReferences : Metrics.widthForZeroReferences
-        return CGSize(width: width, height: height)
+        return CGSize(width: Metrics.defaultWidth, height: height)
     }
 }
 
@@ -264,7 +268,9 @@ extension MetricsViewController: NSTableViewDataSource {
 extension MetricsViewController: NSTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        return TableRowView()
+        let rowView = TableRowView()
+        rowView.style = .fullWidth
+        return rowView
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -340,8 +346,7 @@ private extension MetricsViewController {
 // MARK: - Private Types
 //
 private enum Metrics {
-    static let widthForZeroReferences = CGFloat(260)
-    static let widthForNonEmptyReferences = CGFloat(360)
+    static let defaultWidth = CGFloat(360)
     static let maximumVisibleReferences = CGFloat(2.5)
 }
 

@@ -19,20 +19,20 @@
 @import Simperium_OSX;
 
 
-@interface NoteListViewController ()
+@interface NoteListViewController () <NSTableViewDelegate>
 @property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
-@property (nonatomic, strong) IBOutlet BackgroundView       *backgroundView;
-@property (nonatomic, strong) IBOutlet BackgroundView       *topDividerView;
+@property (nonatomic, strong) IBOutlet NSBox                *backgroundBox;
+@property (nonatomic, strong) IBOutlet NSTextField          *titleLabel;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusField;
 @property (nonatomic, strong) IBOutlet NSProgressIndicator  *progressIndicator;
+@property (nonatomic, strong) IBOutlet NSScrollView         *scrollView;
+@property (nonatomic, strong) IBOutlet NSClipView           *clipView;
 @property (nonatomic, strong) IBOutlet SPTableView          *tableView;
-@property (nonatomic, strong) IBOutlet NSView               *searchView;
-@property (nonatomic, strong) IBOutlet NSSearchField        *searchField;
+@property (nonatomic, strong) IBOutlet NSVisualEffectView   *headerEffectView;
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
 @property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
 @property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
 @property (nonatomic, strong) NSString                      *oldTags;
-@property (nonatomic, assign) BOOL                          searching;
 @property (nonatomic, assign) BOOL                          viewingTrash;
 @property (nonatomic, assign) BOOL                          preserveSelection;
 @end
@@ -81,15 +81,22 @@
                                                object: nil];
 
     [self setupProgressIndicator];
-    [self setupSearchBar];
     [self setupTableView];
-    [self setupTopDivider];
+    [self startListeningToScrollNotifications];
+    [self startListeningToWindowNotifications];
 }
 
 - (void)viewWillAppear
 {
     [super viewWillAppear];
     [self applyStyle];
+}
+
+- (void)viewWillLayout
+{
+    [super viewWillLayout];
+    [self refreshScrollInsets];
+    [self refreshHeaderState];
 }
 
 - (void)loadNotes
@@ -112,11 +119,6 @@
 - (NSManagedObjectContext*)mainContext
 {
     return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
-}
-
-- (void)reset
-{
-    [self.searchField setStringValue:@""];
 }
 
 - (void)setNotesPredicate:(NSPredicate *)predicate
@@ -227,13 +229,6 @@
     [self scrollToRow:row];
 }
 
-- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
-{
-    TableRowView *rowView = [TableRowView new];
-    rowView.selectedBackgroundColor = [NSColor simplenoteSecondarySelectedBackgroundColor];
-    return rowView;
-}
-
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     Note *note = [self.arrayController.arrangedObjects objectAtIndex:row];
@@ -273,12 +268,12 @@
     if (numNotes > 0 && self.noteEditorViewController.note == nil) {
         [self selectRow:0];
     }
-    
+
     self.statusField.hidden = numNotes > 0;
-    
+
     if (numNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
-    } else if (self.searching) {
+    } else if (self.isSearching) {
         [self selectRow:0];
     }
 }
@@ -400,27 +395,10 @@
 {
     [self refreshEnabledActions];
     [self refreshPredicate];
+    [self refreshTitle];
     [self selectFirstRow];
 }
 
-
-#pragma mark - NSSearchFieldDelegate
-
-- (void)controlTextDidBeginEditing:(NSNotification *)notification
-{
-    [SPTracker trackListNotesSearched];
-    self.searching = YES;
-}
-
-- (void)controlTextDidChange:(NSNotification *)notification
-{
-    [self selectRow:0];
-}
-
-- (void)controlTextDidEndEditing:(NSNotification *)notification
-{
-    self.searching = NO;
-}
 
 #pragma mark - Actions
 
@@ -445,19 +423,6 @@
 {
     // TODO: Move the New Note Handler to a (New) NoteController!
     [self.noteEditorViewController newNoteWasPressed:sender];
-}
-
-- (void)searchAction:(id)sender
-{
-    [self.view.window makeFirstResponder:self.searchField];
-}
-
-
-#pragma mark - IBActions
-
-- (IBAction)filterNotes:(id)sender
-{
-    [self refreshPredicate];
 }
 
 @end

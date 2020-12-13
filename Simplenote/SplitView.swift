@@ -5,7 +5,7 @@ import Foundation
 //
 class SplitView: NSSplitView {
 
-    /// Default Divider Thickness: To be applied whenever NSScreen.main is inaccessible
+    /// Default Divider Thickness: 1pt
     ///
     private let defaultDividerThickness = CGFloat(1)
 
@@ -35,15 +35,13 @@ class SplitView: NSSplitView {
                 performMojaveRedrawHack()
                 return
             }
-
-            performHighSierraRedawHack()
         }
     }
 
     // MARK: - Overridden Methods
 
     override var dividerThickness: CGFloat {
-        NSScreen.main?.pointToPixelRatio ?? defaultDividerThickness
+        defaultDividerThickness
     }
 
     override var dividerColor: NSColor {
@@ -67,13 +65,5 @@ private extension SplitView {
         let oldAppearance = window.appearance
         window.appearance = nil
         window.appearance = oldAppearance
-    }
-
-    /// Rick-Level Hack:
-    /// Forces the receiver to re-render, by toggling it's orientation back and forth.
-    ///
-    func performHighSierraRedawHack() {
-        isVertical = false
-        isVertical = true
     }
 }

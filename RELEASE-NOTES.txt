@@ -1,5 +1,14 @@
+2.6
+-----
+ 
 2.5
 -----
+- Removed Main Window's Titlebar #719
+- Adopting BigSur Inset Style #721
+- Relocated Search Bar #722
+- Updated minimum required OS to 10.14 #723
+- Tags and Toolbar headers now display a blur effect #724
+- Fixed a bug that caused the Metrics UI to display overlapped text #725
 
 2.4
 ---

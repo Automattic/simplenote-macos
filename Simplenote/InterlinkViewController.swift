@@ -112,6 +112,8 @@ private extension InterlinkViewController {
         tableView.becomeFirstResponder()
         tableView.target = self
         tableView.doubleAction = #selector(performInterlinkInsert)
+
+        tableView.ensureStyleIsFullWidth()
     }
 
     func setupTrackingAreas() {
@@ -246,7 +248,7 @@ extension InterlinkViewController: SPTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
-        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        rowView.style = .fullWidth
         return rowView
     }
 

@@ -9,10 +9,6 @@ extension NSVisualEffectView.Material {
     /// Returns the Material to be applied over the Tags List
     ///
     static var simplenoteTaglistMaterial: NSVisualEffectView.Material {
-        guard #available(OSX 10.14, *) else {
-            return .appearanceBased
-        }
-
         return .underWindowBackground
     }
 }

@@ -63,7 +63,11 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:@"Tag"]];
     [self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 
-    [self startListeningToNotifications];
+    [self setupTableView];
+    [self setupHeaderSeparator];
+
+    [self startListeningToSettingsNotifications];
+    [self startListeningToScrollNotifications];
 }
 
 - (void)viewWillAppear
@@ -78,7 +82,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self refreshExtendedContentInsets];
 }
 
-- (void)startListeningToNotifications
+- (void)startListeningToSettingsNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(sortModeWasUpdated:) name:TagSortModeDidChangeNotification object:nil];
@@ -490,9 +494,13 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
         tag.objectID.URIRepresentation
     ];
 
-    [pboard declareTypes:[NSArray arrayWithObject:@"Tag"] owner:self];
-    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:objectURIs] forType:@"Tag"];
-    
+    NSData *payload = [NSKeyedArchiver archivedDataWithRootObject:objectURIs
+                                            requiringSecureCoding:NO
+                                                            error:nil];
+
+    [pboard declareTypes:@[@"Tag"] owner:self];
+    [pboard setData:payload forType:@"Tag"];
+
     return YES;
 }
 
@@ -526,10 +534,11 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     row = row - self.state.indexOfFirstTagRow;
 
     // Get object URIs from paste board
-    NSData *data        = [info.draggingPasteboard dataForType:@"Tag"];
-    NSArray *objectURIs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    if (!objectURIs) {
+    NSData *data = [info.draggingPasteboard dataForType:@"Tag"];
+    NSSet *supportedClasses = [NSSet setWithObjects:[NSArray class], [NSURL class], nil];
+    NSArray *objectURIs = [NSKeyedUnarchiver unarchivedObjectOfClasses:supportedClasses fromData:data error:nil];
+
+    if (objectURIs == nil || [objectURIs isKindOfClass:[NSArray class]] == false) {
         return NO;
     }
     
@@ -592,8 +601,11 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)applyStyle
 {
-    self.visualEffectsView.appearance = [NSAppearance simplenoteAppearance];
-    self.visualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
+    self.headerSeparatorView.borderColor = [NSColor simplenoteDividerColor];
+    self.headerVisualEffectsView.appearance = [NSAppearance simplenoteAppearance];
+    self.headerVisualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
+    self.backgroundVisualEffectsView.appearance = [NSAppearance simplenoteAppearance];
+    self.backgroundVisualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
     [self reloadDataAndPreserveSelection];
 }
 

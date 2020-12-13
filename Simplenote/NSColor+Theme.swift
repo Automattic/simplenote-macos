@@ -120,6 +120,11 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteEditorTextColor: NSColor {
+        dynamicColor(lightStudio: .gray80, darkStudio: .gray5)
+    }
+
+    @objc
     static var simplenoteTokenBackgroundColor: NSColor {
         dynamicColor(lightColor: .simplenoteTokenBackgroundLightColor, darkColor: .simplenoteTokenBackgroundDarkColor)
     }
@@ -140,11 +145,7 @@ private extension NSColor {
     }
 
     static var simplenoteControlBackgroundColor: NSColor {
-        if #available(OSX 10.14, *) {
-            return dynamicColor(lightColor: .white, darkColor: .controlBackgroundColor)
-        }
-
-        return dynamicColor(lightColor: .white, darkColor: .simplenoteControlBackgroundDarkColor)
+        return dynamicColor(lightColor: .white, darkColor: .controlBackgroundColor)
     }
 
     static var simplenoteUnderPageBackgroundDarkColor: NSColor {

@@ -31,6 +31,8 @@ class AboutViewController: NSViewController {
 
     /// Labels
     ///
+    @IBOutlet private var hiringTitleLabel: NSTextField!
+    @IBOutlet private var hiringTextLabel:  NSTextField!
     @IBOutlet private var helpLabel:        NSTextField!
     @IBOutlet private var contactLabel:     NSTextField!
     @IBOutlet private var tosLabel:         SPAboutTextField!
@@ -83,6 +85,9 @@ class AboutViewController: NSViewController {
         let hiringClick = NSClickGestureRecognizer(target: self, action: #selector(hiringLabelClick))
         hiringView.addGestureRecognizer(hiringClick)
         hiringView.cursor = .pointingHand
+
+        hiringTitleLabel.stringValue = NSLocalizedString("Work with Us", comment: "Hiring Title")
+        hiringTextLabel.stringValue = NSLocalizedString("Are you a developer? Automattic is Hiring.", comment: "Hiring Details")
     }
 
     func setupContactView() {

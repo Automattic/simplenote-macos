@@ -5,18 +5,27 @@ import Foundation
 //
 extension TagListViewController {
 
+    /// Setup: TableView
+    ///
+    @objc
+    func setupTableView() {
+        tableView.ensureStyleIsFullWidth()
+        tableView.sizeLastColumnToFit()
+    }
+
+    /// Setup: Top Header
+    ///
+    @objc
+    func setupHeaderSeparator() {
+        headerSeparatorView.drawsBottomBorder = true
+        refreshHeaderSeparatorAlpha()
+    }
+
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     @objc
     func refreshExtendedContentInsets() {
-        let titlebarHeight = view.window?.simplenoteTitlebarHeight ?? Settings.titlebarHeight
-        let topContentInset = titlebarHeight + Settings.searchBarHeight
-
-        guard clipView.contentInsets.top != topContentInset else {
-            return
-        }
-
-        clipView.contentInsets.top = topContentInset
+        clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
     }
 
     /// Regenerates the Internal List State
@@ -42,6 +51,35 @@ extension TagListViewController {
         }
 
         return state.rowAtIndex(selectedIndex)
+    }
+}
+
+
+// MARK: - Notifications
+//
+extension TagListViewController {
+
+    @objc
+    func startListeningToScrollNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(clipViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: clipView)
+    }
+
+    @objc
+    func clipViewDidScroll(sender: Notification) {
+        refreshHeaderSeparatorAlpha()
+    }
+
+    @objc
+    func refreshHeaderSeparatorAlpha() {
+        headerSeparatorView.alphaValue = alphaForHeaderSeparatorView
+    }
+
+    private var alphaForHeaderSeparatorView: CGFloat {
+        let absoluteOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
+        return min(max(absoluteOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 }
 
@@ -86,7 +124,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
-        rowView.selectedBackgroundColor = .simplenoteSelectedBackgroundColor
+        rowView.style = .sidebar
         return rowView
     }
 
@@ -190,12 +228,4 @@ extension TagListViewController: SPTextFieldDelegate {
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
         !menuShowing
     }
-}
-
-
-// MARK: - Settings!
-//
-private enum Settings {
-    static let titlebarHeight = CGFloat(22)
-    static let searchBarHeight = CGFloat(48)
 }
