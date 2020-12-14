@@ -145,13 +145,27 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func notesSortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
+        guard let item = sender as? NSMenuItem, let identifier = item.identifier else {
             return
         }
 
-        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.noteSortAlphaMenuItem
-        Options.shared.alphabeticallySortNotes = isAlphaOn
-        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+        let newValue: SortMode
+
+        switch identifier {
+        case .noteSortAlphaMenuItem:
+            newValue = .alphabeticallyAscending
+        case .noteSortCreatedMenuItem:
+            newValue = .createdNewest
+        case .noteSortUpdatedMenuItem:
+            newValue = .modifiedNewest
+        case .noteSortReversedMenuItem:
+            newValue = Options.shared.notesListSortMode.inverse
+        default:
+            return
+        }
+
+        Options.shared.notesListSortMode = newValue
+        SPTracker.trackSettingsNoteListSortMode(newValue.description)
     }
 
     @IBAction
@@ -233,8 +247,8 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
             return validateNotesDisplayMenuItem(menuItem)
 
-        case .noteSortAlphaMenuItem, .noteSortUpdatedMenuItem:
-            return validateNotesSortMenuItem(menuItem)
+        case .noteSortAlphaMenuItem, .noteSortCreatedMenuItem, .noteSortUpdatedMenuItem, .noteSortReversedMenuItem:
+            return validateNotesSortModeMenuItem(menuItem)
 
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
@@ -290,11 +304,22 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         return true
     }
 
-    func validateNotesSortMenuItem(_ item: NSMenuItem) -> Bool {
-        let isAlphaItem = item.identifier == .noteSortAlphaMenuItem
-        let isAlphaEnabled = Options.shared.alphabeticallySortNotes
+    func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
+        guard let identifier = item.identifier else {
+            return false
+        }
 
-        item.state = isAlphaItem == isAlphaEnabled ? .on : .off
+        let mode = Options.shared.notesListSortMode
+
+        switch identifier {
+        case .noteSortAlphaMenuItem where mode.isAlphabetical,
+             .noteSortCreatedMenuItem where mode.isCreated,
+             .noteSortUpdatedMenuItem where mode.isUpdated,
+             .noteSortReversedMenuItem where mode.isReversed:
+            item.state = .on
+        default:
+            item.state = .off
+        }
 
         return true
     }
