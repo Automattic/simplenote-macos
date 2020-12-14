@@ -4,7 +4,8 @@
 - New Big Sur Iconset #745
 - New Search Toolbar Action #741
 - Updated Color Palette #733
- 
+- New Notes List Sort Modes #33
+
 2.5
 -----
 - Removed Main Window's Titlebar #719
