@@ -464,6 +464,21 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
                                     <items>
+                                        <menuItem title="Alphabetical" tag="1" identifier="noteSortAlphaMenuItem" id="i8p-Xx-VpF">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <attributedString key="userComments">
+                                                <fragment content="Toggles Alphabetical Note Sort Order"/>
+                                            </attributedString>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="6Fa-uq-lc4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Date Created" identifier="noteSortCreatedMenuItem" id="Z0V-Oz-ijh">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="usk-E1-YAj"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Date Updated" identifier="noteSortUpdatedMenuItem" id="fep-x2-0FA">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
@@ -473,13 +488,11 @@
                                                 <action selector="notesSortModeWasPressed:" target="494" id="haG-9p-5iz"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Alphabetical" tag="1" identifier="noteSortAlphaMenuItem" id="i8p-Xx-VpF">
+                                        <menuItem isSeparatorItem="YES" id="MyV-zT-mBR"/>
+                                        <menuItem title="Reversed" identifier="noteSortReversedMenuItem" id="9Rz-uM-yw7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Alphabetical Note Sort Order"/>
-                                            </attributedString>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="6Fa-uq-lc4"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="EOG-W9-rYc"/>
                                             </connections>
                                         </menuItem>
                                     </items>
