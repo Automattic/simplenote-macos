@@ -128,27 +128,6 @@
     [self performSelector:@selector(predicateDidChange) withObject:nil afterDelay:0];
 }
 
-- (NSArray *)sortDescriptors
-{
-    NSString *sortKey = nil;
-    BOOL ascending = NO;
-    SEL sortSelector = nil;
-
-    if ([[Options shared] alphabeticallySortNotes]) {
-        sortKey = @"content";
-        ascending = YES;
-        sortSelector = @selector(caseInsensitiveCompare:);
-    } else {
-        sortKey = @"modificationDate";
-    }
-
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:ascending selector:sortSelector];
-    NSSortDescriptor *pinnedSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"pinned" ascending:NO];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:pinnedSortDescriptor, sortDescriptor, nil];
-
-    return sortDescriptors;
-}
-
 - (void)predicateDidChange
 {
     if (self.allNotes.count != 0) {

@@ -192,6 +192,8 @@
 		B5438013246358BA00F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
 		B5469FCA2587DE3F007ED7BE /* SortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FC92587DE3F007ED7BE /* SortMode.swift */; };
 		B5469FCB2587DE3F007ED7BE /* SortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FC92587DE3F007ED7BE /* SortMode.swift */; };
+		B5469FD02587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */; };
+		B5469FD12587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */; };
 		B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
@@ -576,6 +578,7 @@
 		B53FF5462476F9450014E928 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B543800F246355FA00F34B1C /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		B5469FC92587DE3F007ED7BE /* SortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMode.swift; sourceTree = "<group>"; };
+		B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSortDescriptor+Simplenote.swift"; sourceTree = "<group>"; };
 		B547285B250920CA00D823BA /* URL+Interlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Interlink.swift"; sourceTree = "<group>"; };
 		B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Theme.swift"; sourceTree = "<group>"; };
 		B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricsViewController.xib; sourceTree = "<group>"; };
@@ -1071,6 +1074,7 @@
 				B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */,
 				B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */,
 				B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */,
+				B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */,
 				B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
 				B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */,
@@ -1789,6 +1793,7 @@
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */,
+				B5469FD02587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */,
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
@@ -1915,6 +1920,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5AF76C824A3F00600B7D530 /* TagListState.swift in Sources */,
+				B5469FD12587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */,
 				466FFEA817CC10A800399652 /* main.m in Sources */,
 				B518D37C2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */,
 				B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
