@@ -194,6 +194,8 @@
 		B5469FCB2587DE3F007ED7BE /* SortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FC92587DE3F007ED7BE /* SortMode.swift */; };
 		B5469FD02587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */; };
 		B5469FD12587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */; };
+		B5469FDA25880128007ED7BE /* OptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FD925880128007ED7BE /* OptionsTests.swift */; };
+		B5469FE225880181007ED7BE /* NSUserDefaults+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */; };
 		B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
@@ -579,6 +581,8 @@
 		B543800F246355FA00F34B1C /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		B5469FC92587DE3F007ED7BE /* SortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMode.swift; sourceTree = "<group>"; };
 		B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSortDescriptor+Simplenote.swift"; sourceTree = "<group>"; };
+		B5469FD925880128007ED7BE /* OptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTests.swift; sourceTree = "<group>"; };
+		B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Tests.swift"; sourceTree = "<group>"; };
 		B547285B250920CA00D823BA /* URL+Interlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Interlink.swift"; sourceTree = "<group>"; };
 		B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Theme.swift"; sourceTree = "<group>"; };
 		B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricsViewController.xib; sourceTree = "<group>"; };
@@ -1127,8 +1131,17 @@
 			isa = PBXGroup;
 			children = (
 				B53FF5462476F9450014E928 /* Constants.swift */,
+				B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		B5469FD825880106007ED7BE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B5469FD925880128007ED7BE /* OptionsTests.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		B55C313124A5339300B23B3F /* Metrics */ = {
@@ -1343,6 +1356,7 @@
 				B5985AD3242949C30044EDE9 /* Converters */,
 				B5985AD2242949B00044EDE9 /* Extensions */,
 				B5B5F33B243244D300F31720 /* Handlers */,
+				B5469FD825880106007ED7BE /* Settings */,
 				B5C1F0AD242E9AAA00A627E3 /* Mockups */,
 				B5CBB06D241976230003C271 /* Info.plist */,
 				B5B17F372425651700DD5B34 /* TestConstants.swift */,
@@ -2072,12 +2086,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5469FDA25880128007ED7BE /* OptionsTests.swift in Sources */,
 				B5985AD12429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift in Sources */,
 				B53FF5472476F9450014E928 /* Constants.swift in Sources */,
 				B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */,
 				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
 				B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */,
 				B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */,
+				B5469FE225880181007ED7BE /* NSUserDefaults+Tests.swift in Sources */,
 				B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */,
 				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 				B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */,
