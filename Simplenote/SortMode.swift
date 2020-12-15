@@ -42,37 +42,50 @@ extension SortMode {
             return NSLocalizedString("Modified: Oldest", comment: "Sort Mode: Modified Date, ascending")
         }
     }
+}
 
-    var inverse: SortMode {
-        switch self {
-        case .alphabeticallyAscending:
-            return .alphabeticallyDescending
-        case .alphabeticallyDescending:
-            return .alphabeticallyAscending
-        case .createdNewest:
-            return .createdOldest
-        case .createdOldest:
-            return .createdNewest
-        case .modifiedNewest:
-            return .modifiedOldest
-        case .modifiedOldest:
-            return .modifiedNewest
+
+// MARK: - Notes List SortMode <> Interface Identifier
+//
+extension SortMode {
+
+    /// Initializes a new Sort Mode given a **Note List** Interface Identifier: NSMenuItem Reference
+    ///
+    init?(noteListInterfaceID: NSUserInterfaceItemIdentifier) {
+        switch noteListInterfaceID {
+        case .noteSortAlphaAscMenuItem:
+            self = .alphabeticallyAscending
+        case .noteSortAlphaDescMenuItem:
+            self = .alphabeticallyDescending
+        case .noteSortCreateNewestMenuItem:
+            self = .createdNewest
+        case .noteSortCreateOldestMenuItem:
+            self = .createdOldest
+        case .noteSortModifyNewestMenuItem:
+            self = .modifiedNewest
+        case .noteSortModifyOldestMenuItem:
+            self = .modifiedOldest
+        default:
+            return nil
         }
     }
 
-    var isAlphabetical: Bool {
-        self == .alphabeticallyAscending || self == .alphabeticallyDescending
-    }
-
-    var isCreated: Bool {
-        self == .createdNewest || self == .createdOldest
-    }
-
-    var isUpdated: Bool {
-        self == .modifiedNewest || self == .modifiedOldest
-    }
-
-    var isReversed: Bool {
-        self == .alphabeticallyDescending || self == .modifiedOldest || self == .createdOldest
+    /// Returns the Notes List matching Interface Identifier
+    ///
+    var noteListInterfaceID: NSUserInterfaceItemIdentifier {
+        switch self {
+        case .alphabeticallyAscending:
+            return .noteSortAlphaAscMenuItem
+        case .alphabeticallyDescending:
+            return .noteSortAlphaDescMenuItem
+        case .createdNewest:
+            return .noteSortCreateNewestMenuItem
+        case .createdOldest:
+            return .noteSortCreateOldestMenuItem
+        case .modifiedNewest:
+            return .noteSortModifyNewestMenuItem
+        case .modifiedOldest:
+            return .noteSortModifyOldestMenuItem
+        }
     }
 }

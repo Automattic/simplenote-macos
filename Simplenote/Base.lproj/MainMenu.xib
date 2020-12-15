@@ -464,35 +464,43 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
                                     <items>
-                                        <menuItem title="Alphabetical" tag="1" identifier="noteSortAlphaMenuItem" id="i8p-Xx-VpF">
+                                        <menuItem title="Alphabetically: A-Z" identifier="noteSortAlphaAscMenuItem" id="AuW-hU-J6R">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Alphabetical Note Sort Order"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="6Fa-uq-lc4"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="s0n-Ud-VNS"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Date Created" identifier="noteSortCreatedMenuItem" id="Z0V-Oz-ijh">
+                                        <menuItem title="Alphabetically: Z-A" identifier="noteSortAlphaDescMenuItem" id="riY-RT-IN8">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="Jem-Lt-NMh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="Z0V-Oz-ijh">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="notesSortModeWasPressed:" target="494" id="usk-E1-YAj"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Date Updated" identifier="noteSortUpdatedMenuItem" id="fep-x2-0FA">
+                                        <menuItem title="Created: Oldest" identifier="noteSortCreateOldestMenuItem" id="S16-eV-qeq">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Note Order by Date"/>
-                                            </attributedString>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="haG-9p-5iz"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="4lP-Wy-PF3"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="MyV-zT-mBR"/>
-                                        <menuItem title="Reversed" identifier="noteSortReversedMenuItem" id="9Rz-uM-yw7">
+                                        <menuItem title="Modified: Newest" identifier="noteSortModifyNewestMenuItem" id="p5U-fB-pgR">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="EOG-W9-rYc"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="Ubm-cN-eZq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Modified: Oldest" identifier="noteSortModifyOldestMenuItem" id="ssB-vH-kwg">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="nMT-tD-mek"/>
                                             </connections>
                                         </menuItem>
                                     </items>

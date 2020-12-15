@@ -145,27 +145,12 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func notesSortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem, let identifier = item.identifier else {
+        guard let item = sender as? NSMenuItem, let identifier = item.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {
             return
         }
 
-        let newValue: SortMode
-
-        switch identifier {
-        case .noteSortAlphaMenuItem:
-            newValue = .alphabeticallyAscending
-        case .noteSortCreatedMenuItem:
-            newValue = .createdNewest
-        case .noteSortUpdatedMenuItem:
-            newValue = .modifiedNewest
-        case .noteSortReversedMenuItem:
-            newValue = Options.shared.notesListSortMode.inverse
-        default:
-            return
-        }
-
-        Options.shared.notesListSortMode = newValue
-        SPTracker.trackSettingsNoteListSortMode(newValue.description)
+        Options.shared.notesListSortMode = newMode
+        SPTracker.trackSettingsNoteListSortMode(newMode.description)
     }
 
     @IBAction
@@ -247,7 +232,10 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
             return validateNotesDisplayMenuItem(menuItem)
 
-        case .noteSortAlphaMenuItem, .noteSortCreatedMenuItem, .noteSortUpdatedMenuItem, .noteSortReversedMenuItem:
+        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
+             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
+             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
+
             return validateNotesSortModeMenuItem(menuItem)
 
         case .systemNewNoteMenuItem:
@@ -305,22 +293,8 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     }
 
     func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
-        guard let identifier = item.identifier else {
-            return false
-        }
-
-        let mode = Options.shared.notesListSortMode
-
-        switch identifier {
-        case .noteSortAlphaMenuItem where mode.isAlphabetical,
-             .noteSortCreatedMenuItem where mode.isCreated,
-             .noteSortUpdatedMenuItem where mode.isUpdated,
-             .noteSortReversedMenuItem where mode.isReversed:
-            item.state = .on
-        default:
-            item.state = .off
-        }
-
+        let isSelected = Options.shared.notesListSortMode.noteListInterfaceID == item.identifier
+        item.state = isSelected ? .on : .off
         return true
     }
 
