@@ -27,6 +27,26 @@ class TableRowView : NSTableRowView {
         style.selectionColor.setFill()
         NSBezierPath(roundedRect: targetRect, xRadius: style.cornerRadius, yRadius: style.cornerRadius).fill()
     }
+
+    override func drawSeparator(in dirtyRect: NSRect) {
+        if isSelected || isNextRowSelected {
+            return
+        }
+
+        guard let separatorColor = style.separatorColor else {
+            return
+        }
+
+        let insets = style.separatorInsets
+        let path = NSBezierPath()
+
+        path.move(to: NSMakePoint(.zero + insets.left, bounds.maxY))
+        path.line(to: NSMakePoint(bounds.maxX - insets.right, bounds.maxY))
+        path.lineWidth = NSScreen.main?.backingScaleFactor ?? Metrics.defaultSeparatorWidth
+
+        separatorColor.set()
+        path.stroke()
+    }
 }
 
 
@@ -34,8 +54,17 @@ class TableRowView : NSTableRowView {
 // MARK: - Defines a TableRowView Presentation Style
 //
 enum TableRowStyle {
+
+    /// Sidebar: Tags List
+    ///
     case sidebar
+
+    /// List: Notes List
+    ///
     case list
+
+    /// Full Width: Legacy // Interlinking // Metrics
+    ///
     case fullWidth
 }
 
@@ -79,15 +108,35 @@ extension TableRowStyle {
             return .simplenoteSelectedBackgroundColor
         }
     }
+
+    var separatorColor: NSColor? {
+        switch self {
+        case .list:
+            return .simplenoteSecondaryDividerColor
+        default:
+            return nil
+        }
+    }
+
+    var separatorInsets: NSEdgeInsets {
+        switch self {
+        case .list:
+            return Metrics.sidebarSeparatorInsets
+        default:
+            return NSEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
+        }
+    }
 }
 
 
 // MARK: - Constants
 //
 private enum Metrics {
-    static let legacyCornerRadius   = CGFloat.zero
-    static let roundedCornerRadius  = CGFloat(6)
-    static let fullWidthInsets      = CGVector.zero
-    static let listInsets           = CGVector(dx: 12, dy: .zero)
-    static let sidebarInsets        = CGVector(dx: 14, dy: .zero)
+    static let defaultSeparatorWidth    = CGFloat(1)
+    static let legacyCornerRadius       = CGFloat.zero
+    static let roundedCornerRadius      = CGFloat(6)
+    static let fullWidthInsets          = CGVector.zero
+    static let listInsets               = CGVector(dx: 12, dy: .zero)
+    static let sidebarInsets            = CGVector(dx: 14, dy: .zero)
+    static let sidebarSeparatorInsets   = NSEdgeInsets(top: .zero, left: 36, bottom: .zero, right: 28)
 }
