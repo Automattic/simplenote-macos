@@ -134,60 +134,33 @@ extension NoteListViewController {
     ///
     @objc
     func refreshPredicate() {
-        let predicates = selectedTagPredicates + searchTextPredicates
-        let compound = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-
-        setNotesPredicate(compound)
+        setNotesPredicate(filteringPredicate)
     }
 
-    /// Returns a collection of NSPredicate(s) that will filter the Notes associated with the Selected Tag
-    ///
-    private var selectedTagPredicates: [NSPredicate] {
-        guard let selectedTagRow = SimplenoteAppDelegate.shared().tagListViewController.selectedRow else {
-            return []
-        }
-
-        let isTrashOnscreen = selectedTagRow == .trash
-        var output = [
-            NSPredicate.predicateForNotes(deleted: isTrashOnscreen)
-        ]
-
-        switch selectedTagRow {
-        case .tag(let tag):
-            output.append( NSPredicate.predicateForNotes(tag: tag.name) )
-        case .untagged:
-            output.append( NSPredicate.predicateForUntaggedNotes() )
-        default:
-            break
-        }
-
-        return output
+    @objc
+    var filteringPredicate: NSPredicate {
+        state.predicateForNotes(filter: filter)
     }
-
-    /// Returns a NSPredicate that will filter the current Search Text (if any)
-    ///
-    private var searchTextPredicates: [NSPredicate] {
-        guard let keyword = searchKeyword, !keyword.isEmpty else {
-            return []
-        }
-
-        return [
-            NSPredicate.predicateForNotes(searchText: keyword)
-        ]
-    }
-}
-
-
-// MARK: - Sorting
-//
-extension NoteListViewController {
 
     @objc
     var sortDescriptors: [NSSortDescriptor] {
-        return [
-            NSSortDescriptor.descriptorForPinnedNotes(),
-            NSSortDescriptor.descriptorForNotes(sortMode: Options.shared.notesListSortMode)
-        ]
+        state.descriptorsForNotes(sortMode: Options.shared.notesListSortMode)
+    }
+
+    ///
+    ///
+    private var filter: NotesListFilter {
+        SimplenoteAppDelegate.shared().selectedNotesFilter
+    }
+
+    ///
+    ///
+    private var state: NotesListState {
+        guard let keyword = searchKeyword, !keyword.isEmpty else {
+            return .results
+        }
+
+        return .searching(keyword: keyword)
     }
 }
 
