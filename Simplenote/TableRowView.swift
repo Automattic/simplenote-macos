@@ -14,8 +14,21 @@ class TableRowView : NSTableRowView {
         }
     }
 
+    /// Setting `isNextRowSelected` should trigger a redraw!
+    ///
+    override var isNextRowSelected: Bool {
+        didSet {
+            needsDisplay = true
+        }
+    }
+
 
     // MARK: - Overridden
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        drawSimplenoteSeparator(in: dirtyRect)
+    }
 
     override func drawSelection(in dirtyRect: NSRect) {
         guard selectionHighlightStyle != .none else {
@@ -29,11 +42,14 @@ class TableRowView : NSTableRowView {
     }
 
     override func drawSeparator(in dirtyRect: NSRect) {
-        if isSelected || isNextRowSelected {
-            return
-        }
+        // NO-OP: Even overriding this API yields a weird effect!
+    }
 
-        guard let separatorColor = style.separatorColor else {
+
+    // MARK: - Drawing
+
+    func drawSimplenoteSeparator(in rect: NSRect) {
+        guard let separatorColor = style.separatorColor, mustDrawSeparator else {
             return
         }
 
@@ -46,6 +62,10 @@ class TableRowView : NSTableRowView {
 
         separatorColor.set()
         path.stroke()
+    }
+
+    private var mustDrawSeparator: Bool {
+        !isSelected && !isNextRowSelected
     }
 }
 
@@ -119,12 +139,15 @@ extension TableRowStyle {
     }
 
     var separatorInsets: NSEdgeInsets {
-        switch self {
-        case .list:
-            return Metrics.sidebarSeparatorInsets
-        default:
-            return NSEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
+        guard self == .list else {
+            return .zero
         }
+
+        guard #available(macOS 11, *) else {
+            return Metrics.sidebarLegacySeparatorInsets
+        }
+
+        return Metrics.sidebarSeparatorInsets
     }
 }
 
@@ -132,11 +155,12 @@ extension TableRowStyle {
 // MARK: - Constants
 //
 private enum Metrics {
-    static let defaultSeparatorWidth    = CGFloat(1)
-    static let legacyCornerRadius       = CGFloat.zero
-    static let roundedCornerRadius      = CGFloat(6)
-    static let fullWidthInsets          = CGVector.zero
-    static let listInsets               = CGVector(dx: 12, dy: .zero)
-    static let sidebarInsets            = CGVector(dx: 14, dy: .zero)
-    static let sidebarSeparatorInsets   = NSEdgeInsets(top: .zero, left: 36, bottom: .zero, right: 28)
+    static let defaultSeparatorWidth        = CGFloat(1)
+    static let legacyCornerRadius           = CGFloat.zero
+    static let roundedCornerRadius          = CGFloat(6)
+    static let fullWidthInsets              = CGVector.zero
+    static let listInsets                   = CGVector(dx: 12, dy: .zero)
+    static let sidebarInsets                = CGVector(dx: 14, dy: .zero)
+    static let sidebarSeparatorInsets       = NSEdgeInsets(top: .zero, left: 36, bottom: .zero, right: 28)
+    static let sidebarLegacySeparatorInsets = NSEdgeInsets(top: .zero, left: 29, bottom: .zero, right: 21)
 }
