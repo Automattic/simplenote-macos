@@ -137,23 +137,27 @@ extension NoteListViewController {
         setNotesPredicate(filteringPredicate)
     }
 
+    /// Predicate: Filters the current notes list, accounting for Search Keywords (OR) Selected Filters
+    ///
     @objc
     var filteringPredicate: NSPredicate {
         state.predicateForNotes(filter: filter)
     }
 
+    /// Sort Descriptors: Matches the current Settings
+    ///
     @objc
     var sortDescriptors: [NSSortDescriptor] {
         state.descriptorsForNotes(sortMode: Options.shared.notesListSortMode)
     }
 
-    ///
+    /// Filter: Matches the selected TagsList Row
     ///
     private var filter: NotesListFilter {
         SimplenoteAppDelegate.shared().selectedNotesFilter
     }
 
-    ///
+    /// State: Current NotesList State
     ///
     private var state: NotesListState {
         guard let keyword = searchKeyword, !keyword.isEmpty else {
