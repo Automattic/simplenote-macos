@@ -1,0 +1,6 @@
+- Suppression de la barre de titre de la fenêtre principale
+- Adoption du style BigSur Inset
+- Relocalisation de la barre de recherche
+- Mise à jour de la version de SE minimale requise sur la version 10.14
+- Les en-têtes d’étiquettes et de barres d’outils apparaissent désormais avec un effet flou
+- Résolution d’un bug qui provoquait la superposition du texte dans l’interface utilisateur de mesure
