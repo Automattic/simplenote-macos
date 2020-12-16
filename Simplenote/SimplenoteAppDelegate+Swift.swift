@@ -89,6 +89,12 @@ extension SimplenoteAppDelegate {
         tagListViewController.selectedTagName()
     }
 
+    /// Returns the NotesListFilters that matches with the current TagsList selection
+    ///
+    var selectedNotesFilter: NotesListFilter {
+        tagListViewController.selectedNotesFilter
+    }
+
     /// Displays the Note with the specified SimperiumKey
     ///
     func displayNote(simperiumKey: String) {

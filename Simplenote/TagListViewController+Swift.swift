@@ -52,6 +52,12 @@ extension TagListViewController {
 
         return state.rowAtIndex(selectedIndex)
     }
+
+    /// Selected TagListFilter, matching the current row
+    ///
+    var selectedNotesFilter: NotesListFilter {
+        selectedRow?.matchingNotesFilter ?? .everything
+    }
 }
 
 
