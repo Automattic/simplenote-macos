@@ -5,6 +5,7 @@
 - New Search Toolbar Action #741
 - Updated Color Palette #733
 - New Notes List Sort Modes #33
+- Search Results are now global #760
 
 2.5
 -----
