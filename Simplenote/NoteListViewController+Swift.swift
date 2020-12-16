@@ -43,11 +43,7 @@ extension NoteListViewController {
 
     @objc
     func refreshTitle() {
-        guard let title = SimplenoteAppDelegate.shared().tagListViewController.selectedRow?.title else {
-            return
-        }
-
-        titleLabel.stringValue = title
+        titleLabel.stringValue = filter.title
     }
 
     /// Refreshes the receiver's style
