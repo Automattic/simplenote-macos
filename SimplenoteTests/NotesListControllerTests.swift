@@ -201,7 +201,7 @@ class NotesListControllerTests: XCTestCase {
 
     /// Verifies that `indexOfNote(withSimperiumKey:)` returns the proper Note when in Results Mode
     ///
-    func testIndexPathForObjectReturnsTheProperPathWhenInResultsMode() {
+    func testIndexOfNoteReturnsTheProperIndexWhenInResultsMode() {
         let (notes, _) = insertSampleNotes(count: 100)
         storage.save()
 
@@ -210,6 +210,47 @@ class NotesListControllerTests: XCTestCase {
             XCTAssertEqual(noteListController.indexOfNote(withSimperiumKey: key), row)
         }
     }
+
+    /// Verifies that `indexPath(forObject:)` returns the proper Note/Tag when in Search Mode
+    ///
+    func testIndexOfNoteReturnsTheProperIndexWhenInSearchMode() {
+        let (notes, _) = insertSampleNotes(count: 100)
+
+        storage.save()
+        noteListController.beginSearch()
+
+        // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
+        noteListController.refreshSearchResults(keyword: "0")
+
+        for (index, note) in notes.enumerated() {
+            XCTAssertEqual(noteListController.indexOfNote(withSimperiumKey: note.simperiumKey), index)
+        }
+    }
+
+    /// Verifies that the SortMode property properly applies the specified order mode to the retrieved entities
+    ///
+    func testListControllerProperlyAppliesSearchSortModeToSearchResults() {
+        let (notes, _) = insertSampleNotes(count: 100)
+
+        storage.save()
+        noteListController.beginSearch()
+
+        // Search Mode: Expect an inverted collection (regardless of the regular sort mode)
+        noteListController.sortMode = .alphabeticallyAscending
+        noteListController.searchSortMode = .alphabeticallyDescending
+
+        // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
+        noteListController.refreshSearchResults(keyword: "0")
+
+        let reversedNotes = Array(notes.reversed())
+        let retrievedNotes = noteListController.retrievedNotes
+
+        for (index, note) in retrievedNotes.enumerated() {
+            XCTAssertEqual(note.content, reversedNotes[index].content)
+        }
+    }
+
+
 }
 
 
