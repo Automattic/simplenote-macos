@@ -85,7 +85,7 @@ class NotesListControllerTests: XCTestCase {
     /// Verifies that the SortMode property properly applies the specified order mode to the retrieved entities
     ///
     func testListControllerProperlyAppliesSortModeToRetrievedNotes() {
-        let (notes, _, _) = insertSampleEntities(count: 100)
+        let (notes, _) = insertSampleNotes(count: 100)
 
         storage.save()
         XCTAssertEqual(noteListController.numberOfNotes, notes.count)
@@ -119,7 +119,7 @@ class NotesListControllerTests: XCTestCase {
     /// Verifies that the `endSearch` switches the NotesList back to Results Mode
     ///
     func testEndSearchSwitchesBackToResultsMode() {
-        let (notes, _, _) = insertSampleEntities(count: 100)
+        let (notes, _) = insertSampleNotes(count: 100)
         storage.save()
 
         XCTAssertEqual(noteListController.numberOfNotes, notes.count)
@@ -149,6 +149,67 @@ class NotesListControllerTests: XCTestCase {
     }
 
 
+    // MARK: - Tests: `object(at:)`
+
+    /// Verifies that `object(at: Index)` returns the proper Note when in results mode
+    ///
+    func testObjectAtIndexReturnsTheProperEntityWhenInResultsMode() {
+        let (_, expected) = insertSampleNotes(count: 100)
+
+        storage.save()
+
+        for (index, payload) in expected.enumerated() {
+            let note = noteListController.note(at: index)!
+            XCTAssertEqual(note.content, payload)
+        }
+    }
+
+    /// Verifies that `object(at: Index)` returns the proper Note when in Search Mode (without Keywords)
+    ///
+    func testObjectAtIndexReturnsTheProperEntityWhenInSearchModeWithoutKeywords() {
+        let (_, expected) = insertSampleNotes(count: 100)
+
+        storage.save()
+        noteListController.beginSearch()
+
+        // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
+        noteListController.refreshSearchResults(keyword: "0")
+
+        for (index, payload) in expected.enumerated() {
+            let note = noteListController.note(at: index)!
+            XCTAssertEqual(note.content, payload)
+        }
+    }
+
+    /// Verifies that `object(at: Index)` returns the proper Note when in Search Mode (with Keywords)
+    ///
+    func testObjectAtIndexReturnsTheProperEntityWhenInSearchModeWithSomeKeyword() {
+        insertSampleNotes(count: 100)
+        storage.save()
+
+        noteListController.beginSearch()
+        noteListController.refreshSearchResults(keyword: "055")
+        XCTAssertEqual(noteListController.numberOfNotes, 1)
+
+        let note = noteListController.note(at: .zero)!
+
+        XCTAssertEqual(note.content, "055")
+    }
+
+
+    // MARK: - Tests: `indexOfNote(withSimperiumKey:)`
+
+    /// Verifies that `indexOfNote(withSimperiumKey:)` returns the proper Note when in Results Mode
+    ///
+    func testIndexPathForObjectReturnsTheProperPathWhenInResultsMode() {
+        let (notes, _) = insertSampleNotes(count: 100)
+        storage.save()
+
+        for (row, note) in notes.enumerated() {
+            let key = note.simperiumKey!
+            XCTAssertEqual(noteListController.indexOfNote(withSimperiumKey: key), row)
+        }
+    }
 }
 
 
@@ -156,23 +217,23 @@ class NotesListControllerTests: XCTestCase {
 //
 private extension NotesListControllerTests {
 
-    /// Inserts `N` entities  with ascending payloads (Name / Contents)
+    /// Inserts `N` entities  with ascending payloads (Contents)
     ///
     @discardableResult
-    func insertSampleEntities(count: Int) -> ([Note], [Tag], [String]) {
+    func insertSampleNotes(count: Int) -> ([Note], [String]) {
         var notes = [Note]()
-        var tags = [Tag]()
         var expected = [String]()
 
         for index in 0..<100 {
             let payload = String(format: "%03d", index)
+            let note = storage.insertSampleNote(contents: payload)
+            note.simperiumKey = index.description
 
-            tags.append( storage.insertSampleTag(name: payload) )
-            notes.append( storage.insertSampleNote(contents: payload) )
-            expected.append( payload )
+            notes.append(note)
+            expected.append(payload)
         }
 
-        return (notes, tags, expected)
+        return (notes, expected)
     }
 
 }
