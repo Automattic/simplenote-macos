@@ -237,12 +237,6 @@
     }
 }
 
-- (void)noteKeysAdded:(NSSet *)keys
-{
-    [self.arrayController setFetchPredicate:[self.arrayController fetchPredicate]];
-    [self.tableView reloadData];
-}
-
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames
 {
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
