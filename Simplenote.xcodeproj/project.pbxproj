@@ -250,6 +250,8 @@
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
 		B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
+		B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */; };
+		B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */; };
 		B58BBD2A2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
 		B58BBD2B2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
 		B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */; };
@@ -370,6 +372,8 @@
 		B5EDF330258A8EF00066D91D /* NotesListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF32E258A8EF00066D91D /* NotesListState.swift */; };
 		B5EDF338258A8F1B0066D91D /* NotesListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* NotesListFilter.swift */; };
 		B5EDF339258A8F1B0066D91D /* NotesListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* NotesListFilter.swift */; };
+		B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
+		B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -616,6 +620,7 @@
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
+		B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Simplenote.swift"; sourceTree = "<group>"; };
 		B58BBD292523D4CA0025135F /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteWindow.swift; sourceTree = "<group>"; };
 		B58BBD45252411530025135F /* NSEvent+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Simplenote.swift"; sourceTree = "<group>"; };
@@ -712,6 +717,7 @@
 		B5EB3AD62458CDB50089858D /* ThemeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeOption.swift; sourceTree = "<group>"; };
 		B5EDF32E258A8EF00066D91D /* NotesListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListState.swift; sourceTree = "<group>"; };
 		B5EDF337258A8F1B0066D91D /* NotesListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListFilter.swift; sourceTree = "<group>"; };
+		B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -1072,8 +1078,10 @@
 				B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */,
 				B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
+				B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */,
 				B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
+				B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */,
 				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
@@ -1824,6 +1832,7 @@
 				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
+				B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				A6BBDA3325501398005C8343 /* SPTextView+Swift.swift in Sources */,
@@ -1871,6 +1880,7 @@
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
+				B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
 				B5E8E41124575C990098892B /* ToolbarState.swift in Sources */,
@@ -2033,6 +2043,7 @@
 				B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
+				B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */,
 				B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */,
@@ -2064,6 +2075,7 @@
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
+				B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				B5DD0F922476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,

@@ -1,0 +1,6 @@
+- Ana Pencerenin Başlık Çubuğu Kaldırıldı
+- BigSur Inset Stili Benimsendi
+- Arama Çubuğunun Yeri Değiştirildi
+- Gerekli minimum işletim sistemi 10,14 olarak güncellendi
+- Etiketler ve Araç Çubuğu başlıklarına bulanıklaştırma efekti eklendi
+- Metrikler arayüzünün örtüşen metin görüntülemesine neden olan bir hata düzeltildi
