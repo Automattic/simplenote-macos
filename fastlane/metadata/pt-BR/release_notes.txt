@@ -1,0 +1,6 @@
+- Removed Main Window's Titlebar
+- Adopting BigSur Inset Style
+- Reposicionamento da barra de pesquisa
+- Atualização da versão mínima do OS para 10.14
+- Cabeçalhos de tags e barra superior agora exibem um efeito desfocado
+- Correção de um bug que exibia a interface de métricas sobre o texto

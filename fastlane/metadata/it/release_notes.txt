@@ -1,0 +1,6 @@
+- Rimossa la barra del titolo della finestra principale
+- Adozione dello stile BigSur per gli inserti
+- Riposizionamento della barra di ricerca
+- Sistema operativo minimo richiesto aggiornato a 10.14
+- Tag e intestazioni delle barre degli strumenti ora visualizzati con un effetto sfocato
+- Corretto un bug che causava la sovrapposizione del testo visualizzato nell'interfaccia utente delle metriche
