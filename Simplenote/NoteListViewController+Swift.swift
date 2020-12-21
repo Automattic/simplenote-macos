@@ -234,7 +234,11 @@ extension NoteListViewController {
 
 // MARK: - NSTableViewDelegate Helpers
 //
-extension NoteListViewController: NSTableViewDelegate {
+extension NoteListViewController: SPTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
+        viewingTrash ? trashListMenu : noteListMenu
+    }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
