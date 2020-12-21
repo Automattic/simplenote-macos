@@ -8,12 +8,9 @@ import SimplenoteSearch
 //
 class NotesListController: NSObject {
 
-    /// Main Context
+    /// Core Data Kung Fu
     ///
     private let viewContext: NSManagedObjectContext
-
-    /// Notes Controller
-    ///
     private lazy var notesController = ResultsController<Note>(viewContext: viewContext,
                                                                matching: state.predicateForNotes(filter: filter),
                                                                sortedBy: state.descriptorsForNotes(sortMode: sortMode))
@@ -30,7 +27,7 @@ class NotesListController: NSObject {
         }
     }
 
-    /// Filter to be applied (whenever we're not in Search Mode)
+    /// Filter: Applied when we're not in Search Mode
     ///
     var filter: NotesListFilter = .everything {
         didSet {
@@ -42,7 +39,7 @@ class NotesListController: NSObject {
         }
     }
 
-    /// SortMode to be applied to **regular** results
+    /// SortMode: Results Mode
     ///
     var sortMode: SortMode = .alphabeticallyAscending {
         didSet {
@@ -54,15 +51,11 @@ class NotesListController: NSObject {
         }
     }
 
-    /// SortMode to be applied to Search Results
+    /// SortMode: Search Mode
     ///
     var searchSortMode: SortMode = .alphabeticallyAscending {
         didSet {
-            guard case .searching = state else {
-                return
-            }
-
-            guard oldValue != searchSortMode else {
+            guard case .searching = state, oldValue != searchSortMode else {
                 return
             }
 
@@ -70,8 +63,7 @@ class NotesListController: NSObject {
         }
     }
 
-    /// Callback to be executed whenever the NotesController or TagsController were updated
-    /// - NOTE: This only happens as long as the current state must render such entities!
+    /// Relays back change events received from the FRC itself
     ///
     var onBatchChanges: ((_ rowsChangeset: ResultsObjectsChangeset) -> Void)?
 
@@ -92,14 +84,12 @@ extension NotesListController {
 
     /// Number of the notes we've got!
     ///
-    @objc
     var numberOfNotes: Int {
         notesController.numberOfObjects
     }
 
     /// Returns all of the Retrieved Notes
     ///
-    @objc
     var retrievedNotes: [Note] {
         notesController.fetchedObjects
     }
@@ -116,14 +106,12 @@ extension NotesListController {
 
     /// Returns the Object at a given IndexPath (If any!)
     ///
-    @objc(noteAtIndex:)
     func note(at index: Int) -> Note? {
         notesController.fetchedObjects[index]
     }
 
     /// Returns the Fetched Note with the specified SimperiumKey (if any)
     ///
-    @objc
     func note(forSimperiumKey key: String) -> Note? {
         notesController.fetchedObjects.first { note in
             note.simperiumKey == key
@@ -132,7 +120,6 @@ extension NotesListController {
 
     /// Collection of notes at the specified IndexSet
     ///
-    @objc(notesAtIndexes:)
     func notes(at indexes: IndexSet) -> [Note] {
         indexes.compactMap { index in
             note(at: index)
@@ -141,7 +128,6 @@ extension NotesListController {
 
     /// Reloads all of the FetchedObjects, as needed
     ///
-    @objc
     func performFetch() {
         try? notesController.performFetch()
     }
