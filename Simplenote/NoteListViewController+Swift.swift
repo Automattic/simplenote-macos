@@ -128,23 +128,19 @@ extension NoteListViewController {
     func startDisplayingEntities() {
         tableView.dataSource = self
 
-        listController.onBatchChanges = { [weak self] objectsChangeset in
-            defer {
-                self?.displayPlaceholderIfNeeded()
-            }
+        var selectedNotesBeforeChange = [Note]()
+        listController.onWillChangeContent = { [weak self] in
+            selectedNotesBeforeChange = self?.selectedNotes ?? []
+        }
 
+        listController.onDidChangeContent = { [weak self] objectsChangeset in
             guard let `self` = self else {
                 return
             }
 
-            /// Failsafe: Brought to you by our iOS Sibling
-            ///
-            guard let _ = self.view.window else {
-                self.tableView.reloadData()
-                return
-            }
-
             self.tableView.performChanges(objectsChangeset: objectsChangeset)
+            self.displayPlaceholderIfNeeded()
+            self.selectRowsForNotes(selectedNotesBeforeChange)
         }
     }
 
@@ -238,6 +234,14 @@ extension NoteListViewController {
         }
 
         selectAndMakeVisibleRow(at: index)
+    }
+
+    func selectRowsForNotes(_ notes: [Note]) {
+        let indexes = notes.compactMap { note in
+            listController.indexOfNote(withSimperiumKey: note.simperiumKey)
+        }
+
+        tableView.selectRowIndexes(IndexSet(indexes), byExtendingSelection: false)
     }
 
     func selectAndMakeVisibleRow(at index: Int) {

@@ -63,9 +63,13 @@ class NotesListController: NSObject {
         }
     }
 
-    /// Relays back change events received from the FRC itself
+    /// Relays back willChangeContent Events
     ///
-    var onBatchChanges: ((_ rowsChangeset: ResultsObjectsChangeset) -> Void)?
+    var onWillChangeContent: (() -> Void)?
+
+    /// Relays back didChangeContent Events
+    ///
+    var onDidChangeContent: ((_ rowsChangeset: ResultsObjectsChangeset) -> Void)?
 
 
     /// Designated Initializer
@@ -193,8 +197,12 @@ private extension NotesListController {
 private extension NotesListController {
 
     func startListeningToNoteEvents() {
+        notesController.onWillChangeContent = { [weak self] in
+            self?.onWillChangeContent?()
+        }
+
         notesController.onDidChangeContent = { [weak self] (_, objectsChangeset) in
-            self?.onBatchChanges?(objectsChangeset)
+            self?.onDidChangeContent?(objectsChangeset)
         }
     }
 
