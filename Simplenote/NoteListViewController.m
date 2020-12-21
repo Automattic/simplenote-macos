@@ -112,18 +112,6 @@
 {
     return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
 }
-
-- (void)setNotesPredicate:(NSPredicate *)predicate
-{
-    [self.arrayController setFetchPredicate:predicate];
-    self.arrayController.sortDescriptors = [self sortDescriptors];
-    [self.arrayController rearrangeObjects];
-    [self.tableView reloadData];
-
-    // The re-fetch won't happen until next run loop
-    [self performSelector:@selector(predicateDidChange) withObject:nil afterDelay:0];
-}
-
 - (void)predicateDidChange
 {
     if (self.allNotes.count != 0) {
