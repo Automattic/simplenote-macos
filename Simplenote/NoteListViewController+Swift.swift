@@ -153,7 +153,6 @@ extension NoteListViewController {
     func displayPlaceholderIfNeeded() {
         statusField.isHidden = listController.numberOfNotes > .zero
     }
-
 }
 
 
@@ -340,6 +339,10 @@ extension NoteListViewController: NSTableViewDataSource {
         }
 
         return noteTableViewCell(for: note)
+    }
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return true
     }
 }
 
