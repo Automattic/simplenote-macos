@@ -187,10 +187,9 @@ extension NoteListViewController {
     func refreshListController(keyword: String) {
         listController.refreshSearchResults(keyword: keyword)
 
-        displayPlaceholderIfNeeded()
         tableView.reloadData()
-        scrollView.scrollToTop()
         selectFirstRow()
+        displayPlaceholderIfNeeded()
     }
 }
 
@@ -227,18 +226,8 @@ extension NoteListViewController {
         listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
     }
 
-    @objc
     func selectFirstRow() {
-        scrollToRowAndSelect(at: .zero)
-    }
-
-    func scrollToRowAndSelect(at index: Int) {
-        guard index >= .zero else {
-            return
-        }
-
-        tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
-        tableView.scrollRowToVisible(index)
+        selectAndMakeVisibleRow(at: .zero)
     }
 
     @objc(selectRowForNoteWithSimperiumKey:)
@@ -247,7 +236,16 @@ extension NoteListViewController {
             return
         }
 
-        scrollToRowAndSelect(at: index)
+        selectAndMakeVisibleRow(at: index)
+    }
+
+    func selectAndMakeVisibleRow(at index: Int) {
+        guard index >= .zero && index < tableView.numberOfRows else {
+            return
+        }
+
+        tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        tableView.scrollRowToVisible(index)
     }
 }
 
