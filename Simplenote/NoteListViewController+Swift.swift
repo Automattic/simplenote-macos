@@ -178,6 +178,20 @@ extension NoteListViewController {
 }
 
 
+// MARK: - Sorting
+//
+extension NoteListViewController {
+
+    @objc
+    var sortDescriptors: [NSSortDescriptor] {
+        return [
+            NSSortDescriptor.descriptorForPinnedNotes(),
+            NSSortDescriptor.descriptorForNotes(sortMode: Options.shared.notesListSortMode)
+        ]
+    }
+}
+
+
 // MARK: - Helpers
 //
 private extension NoteListViewController {

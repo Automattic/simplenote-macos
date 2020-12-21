@@ -22,6 +22,7 @@ class Options: NSObject {
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         super.init()
+        migrateLegacyOptions()
     }
 
     /// Drops all the known settings
@@ -36,7 +37,7 @@ class Options: NSObject {
 //
 extension Options {
 
-    /// Indicates if Tags must be sorted Alphabetically
+    /// Tags: Alphabetical Sort
     ///
     var alphabeticallySortTags: Bool {
         get {
@@ -48,20 +49,7 @@ extension Options {
         }
     }
 
-    /// Indicates if Notes must be sorted Alphabetically
-    ///
-    @objc
-    var alphabeticallySortNotes: Bool {
-        get {
-            defaults.bool(forKey: .alphabeticallySortNotes)
-        }
-        set {
-            defaults.set(newValue, forKey: .alphabeticallySortNotes)
-            NotificationCenter.default.post(name: .NoteListSortModeDidChange, object: nil)
-        }
-    }
-
-    /// Indicates if Analytics should be enabled. Empty value defaults to `false`
+    /// Analytics
     ///
     var analyticsEnabled: Bool {
         get {
@@ -72,7 +60,7 @@ extension Options {
         }
     }
 
-    /// Indicates if the Editor should render in full width mode
+    /// Editor: Full Width
     ///
     @objc
     var editorFullWidth: Bool {
@@ -85,7 +73,7 @@ extension Options {
         }
     }
 
-    /// Indicates if the Notes List must render in condensed mode
+    /// Notes List: Condensed
     ///
     @objc
     var notesListCondensed: Bool {
@@ -98,7 +86,20 @@ extension Options {
         }
     }
 
-    /// Stores the name of the selected theme. Null indicates that the system's default theme should be picked, when possible
+    /// Notes List: Sort Mode
+    ///
+    var notesListSortMode: SortMode {
+        get {
+            let payload = defaults.integer(forKey: .notesListSortMode)
+            return SortMode(rawValue: payload) ?? .modifiedNewest
+        }
+        set {
+            defaults.set(newValue.rawValue, forKey: .notesListSortMode)
+            NotificationCenter.default.post(name: .NoteListSortModeDidChange, object: nil)
+        }
+    }
+
+    /// Theme Name: Null indicates that the system's default theme should be picked
     ///
     var themeName: String? {
         get {
@@ -109,5 +110,23 @@ extension Options {
             SPTracker.trackSettingsThemeUpdated(newValue)
             NotificationCenter.default.post(name: .ThemeDidChange, object: nil)
         }
+    }
+}
+
+
+// MARK: - Migrations
+//
+private extension Options {
+
+    func migrateLegacyOptions() {
+        guard defaults.containsObject(forKey: .notesListSortMode) == false else {
+            return
+        }
+
+        let legacySortAlphabetically = defaults.bool(forKey: .notesListSortModeLegacy)
+        let newMode: SortMode = legacySortAlphabetically ? .alphabeticallyAscending : .modifiedNewest
+
+        defaults.set(newMode.rawValue, forKey: .notesListSortMode)
+        defaults.removeObject(forKey: .notesListSortModeLegacy)
     }
 }
