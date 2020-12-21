@@ -35,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nonnull) NotesListController              *listController;
 @property (nonatomic, strong, nullable) NSLayoutConstraint              *titleSemaphoreLeadingConstraint;
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
-@property (nonatomic, strong, nullable) NSString                        *searchKeyword;
 
 - (void)reloadSynchronously;
 - (void)setWaitingForIndex:(BOOL)waiting;

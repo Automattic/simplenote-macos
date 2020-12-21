@@ -117,19 +117,6 @@ extension NoteListViewController {
 }
 
 
-// MARK: - State
-//
-extension NoteListViewController {
-
-    /// Indicates if we're in Search Mode
-    ///
-    @objc
-    var isSearching: Bool {
-        searchKeyword?.isEmpty == false
-    }
-}
-
-
 // MARK: - Filtering
 //
 extension NoteListViewController {
@@ -184,6 +171,11 @@ private extension NoteListViewController {
 
     var simperium: Simperium {
         SimplenoteAppDelegate.shared().simperium
+    }
+
+    @objc
+    var isSearching: Bool {
+        listController.state != .results
     }
 
     var isSelectionNotEmpty: Bool {
@@ -330,8 +322,6 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
-        searchKeyword = keyword
-        refreshPredicate()
     }
 }
 
