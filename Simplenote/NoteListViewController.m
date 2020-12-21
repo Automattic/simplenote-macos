@@ -230,33 +230,65 @@
 {
     return self.arrayController.arrangedObjects;
 }
-*/
 
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
-    NSUInteger numberOfNotes = self.listController.numberOfNotes;
-    if (numberOfNotes > 0 && self.noteEditorViewController.note == nil) {
-        [self selectFirstRow];
+    NSUInteger numNotes = self.allNotes.count;
+    
+    // As soon as at least one note is added, select it
+    if (numNotes > 0 && self.noteEditorViewController.note == nil) {
+        [self selectRow:0];
+    }
+
+    self.statusField.hidden = numNotes > 0;
+
+    if (numNotes == 0) {
+        [self.noteEditorViewController displayNote:nil];
+    } else if (self.isSearching) {
+        [self selectRow:0];
     }
 }
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification
+- (void)notesArraySelectionDidChange:(NSNotification *)notification
 {
+    // Check for empty list and clear editor contents if necessary
+    if (self.allNotes.count == 0) {
+        [self.noteEditorViewController displayNote:nil];
+    }
+    
     NSInteger selectedRow = [self.tableView selectedRow];    
+    
     if (selectedRow < 0) {
         return;
     }
 
     if ([self.tableView numberOfSelectedRows] == 1) {
-        Note *note = [self.listController noteAtIndex:selectedRow];
+        Note *note = [[self.arrayController arrangedObjects] objectAtIndex:selectedRow];
         if (![note.simperiumKey isEqualToString: self.noteEditorViewController.note.simperiumKey]) {
             [SPTracker trackListNoteOpened];
             [self.noteEditorViewController displayNote:note];
         }
     } else {
-        [self.noteEditorViewController displayNotes:self.selectedNotes];
+        [self.noteEditorViewController displayNotes:[self selectedNotes]];
     }
 }
+
+- (void)reloadDataAndPreserveSelection
+{
+    self.preserveSelection = YES;
+    // Reset the fetch predicate
+    [self.arrayController setFetchPredicate:self.arrayController.fetchPredicate];
+    self.arrayController.sortDescriptors = [self sortDescriptors];
+    [self.tableView reloadData];
+    self.preserveSelection = NO;
+
+    // Force array change logic to run in the next run loop
+    dispatch_async(dispatch_get_main_queue(), ^() {
+        [self notesArrayDidChange:nil];
+    });
+}
+
+ */
 
 
 #pragma mark - Notification handlers
@@ -273,6 +305,14 @@
         }
     }
 }
+
+/* TODO: Nuke!
+- (void)noteKeysAdded:(NSSet *)keys
+{
+    [self.arrayController setFetchPredicate:[self.arrayController fetchPredicate]];
+    [self.tableView reloadData];
+}
+ */
 
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames
 {
@@ -323,6 +363,16 @@
 
     [self.noteEditorViewController displayNote:nil];
 }
+
+/* TODO: Nuke!
+- (void)selectedTaglistRowWasUpdated
+{
+    [self refreshEnabledActions];
+    [self refreshPredicate];
+    [self refreshTitle];
+    [self selectFirstRow];
+}
+ */
 
 
 #pragma mark - Actions
