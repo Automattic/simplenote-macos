@@ -35,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
 @property (nonatomic, strong, nullable) NSString                        *searchKeyword;
 
-- (void)loadNotes;
 - (void)reloadSynchronously;
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (NSArray<Note *> *)selectedNotes;

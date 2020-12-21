@@ -111,7 +111,6 @@
     [self configureVersionsController];
 
     [self.tagListViewController loadTags];
-    [self.noteListViewController loadNotes];
     
     [self.simperium setAllBucketDelegates:self];
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;

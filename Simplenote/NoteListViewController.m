@@ -95,11 +95,6 @@
     [self refreshHeaderState];
 }
 
-- (void)loadNotes
-{
-    [self.arrayController fetch:self];
-}
-
 - (void)reloadSynchronously
 {
     [self.arrayController fetchWithRequest:nil merge:NO error:nil];
