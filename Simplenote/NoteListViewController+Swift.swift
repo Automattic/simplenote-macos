@@ -227,39 +227,27 @@ extension NoteListViewController {
         listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
     }
 
-    func indexOfNote(with simperiumKey: String) -> Int? {
-        listController.indexOfNote(withSimperiumKey: simperiumKey)
-    }
-
     @objc
     func selectFirstRow() {
-        scrollToRow(at: .zero)
+        scrollToRowAndSelect(at: .zero)
     }
 
-    func selectRow(at index: Int) {
+    func scrollToRowAndSelect(at index: Int) {
         guard index >= .zero else {
             return
         }
 
         tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        tableView.scrollRowToVisible(index)
     }
 
     @objc(selectRowForNoteWithSimperiumKey:)
     func selectRowForNote(with simperiumKey: String) {
-        guard let index = indexOfNote(with: simperiumKey) else {
+        guard let index = listController.indexOfNote(withSimperiumKey: simperiumKey) else {
             return
         }
 
-        selectRow(at: index)
-        scrollToRow(at: index)
-    }
-
-    func scrollToRow(at index: Int) {
-        guard index >= .zero else {
-            return
-        }
-
-        tableView.scrollRowToVisible(index)
+        scrollToRowAndSelect(at: index)
     }
 }
 
