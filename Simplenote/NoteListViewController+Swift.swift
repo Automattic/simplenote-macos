@@ -181,7 +181,7 @@ private extension NoteListViewController {
 
     var simperium: Simperium {
         SimplenoteAppDelegate.shared().simperium
-        }
+    }
 
     var isSelectionNotEmpty: Bool {
         selectedNotes().isEmpty == false

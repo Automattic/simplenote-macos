@@ -85,12 +85,52 @@
     [self refreshHeaderState];
 }
 
+/* TODO: Nuke!
+- (void)loadNotes
+{
+    [self.arrayController fetch:self];
+}
+
+- (void)reloadSynchronously
+{
+    [self.arrayController fetchWithRequest:nil merge:NO error:nil];
+}
+ */
+
 // TODO: Work in Progress. Decouple with a delegate please
 //
 - (NoteEditorViewController *)noteEditorViewController
 {
     return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
 }
+
+/* TODO: Nuke!
+- (NSManagedObjectContext*)mainContext
+{
+    return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
+}
+
+- (void)setNotesPredicate:(NSPredicate *)predicate
+{
+    [self.arrayController setFetchPredicate:predicate];
+    self.arrayController.sortDescriptors = [self sortDescriptors];
+    [self.arrayController rearrangeObjects];
+    [self.tableView reloadData];
+
+    // The re-fetch won't happen until next run loop
+    [self performSelector:@selector(predicateDidChange) withObject:nil afterDelay:0];
+}
+
+- (void)predicateDidChange
+{
+    if (self.allNotes.count != 0) {
+        return;
+    }
+
+    [self.noteEditorViewController displayNote:nil];
+    [self.statusField setHidden:NO];
+}
+ */
 
 - (void)setWaitingForIndex:(BOOL)waiting
 {
@@ -105,6 +145,92 @@
 
 
 #pragma mark - Table view
+
+/* TODO: Nuke!
+
+- (BOOL)displaysNoteForKey:(NSString *)key
+{
+    return [self rowForNoteKey:key] != -1;
+}
+
+- (NSInteger)rowForNoteKey:(NSString *)key
+{
+    NSInteger row = 0;
+    for (Note *note in [self.arrayController arrangedObjects]) {
+        if ([note.simperiumKey isEqualToString:key])
+            return row;
+        row += 1;
+    }
+    
+    return -1;
+}
+
+- (void)reloadRowForNoteKey:(NSString *)key
+{
+    NSInteger row = [self rowForNoteKey:key];
+    
+    if (row >= 0) {
+        [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:row] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+    }
+}
+
+- (void)selectFirstRow
+{
+    [self selectRow:0];
+}
+
+- (void)selectRow:(NSInteger)row
+{
+    if (row >= 0) {
+        [self.arrayController setSelectionIndex:row];
+    }
+}
+
+- (void)scrollToRow:(NSInteger)row
+{
+    if (row >= 0) {
+        [self.tableView scrollRowToVisible:row];
+    }
+}
+
+- (void)selectRowForNoteKey:(NSString *)key
+{
+    NSInteger row = [self rowForNoteKey:key];
+    [self selectRow:row];
+    [self scrollToRow:row];
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    Note *note = [self.arrayController.arrangedObjects objectAtIndex:row];
+    return [self noteTableViewCellForNote:note];
+}
+
+- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
+{
+    BOOL shouldSelect = YES;
+    if (self.preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
+        shouldSelect = NO;
+    }
+    
+    return shouldSelect;
+}
+
+- (NSMenu *)tableView:(NSTableView *)tableView menuForTableColumn:(NSInteger)column row:(NSInteger)row
+{
+    return self.viewingTrash ? self.trashListMenu : self.noteListMenu;
+}
+
+- (NSArray *)selectedNotes
+{
+    return [self.allNotes objectsAtIndexes:[self.tableView selectedRowIndexes]];
+}
+
+- (NSArray<Note *> *)allNotes
+{
+    return self.arrayController.arrangedObjects;
+}
+*/
 
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
