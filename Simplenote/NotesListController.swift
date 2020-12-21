@@ -107,6 +107,7 @@ extension NotesListController {
 
     /// Returns the Object at a given IndexPath (If any!)
     ///
+    @objc(noteAtIndex:)
     func note(at index: Int) -> Note? {
         notesController.fetchedObjects[index]
     }

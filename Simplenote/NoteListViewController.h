@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NoteListViewController : NSViewController <NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
 
-@property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
 @property (nonatomic, strong, readonly) IBOutlet NSBox                  *backgroundBox;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *titleLabel;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *statusField;

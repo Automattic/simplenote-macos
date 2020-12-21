@@ -10,7 +10,6 @@
 #import "Note.h"
 #import "NoteEditorViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "NotesArrayController.h"
 #import "TagListViewController.h"
 #import "SPTableView.h"
 #import "SPTracker.h"
@@ -20,7 +19,6 @@
 
 
 @interface NoteListViewController () <NSTableViewDelegate>
-@property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
 @property (nonatomic, strong) IBOutlet NSBox                *backgroundBox;
 @property (nonatomic, strong) IBOutlet NSTextField          *titleLabel;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusField;
@@ -50,14 +48,6 @@
 
     self.oldTags = @"";
 
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(notesArrayDidChange:)
-                                                 name: kNotesArrayDidChangeNotification
-                                               object: self.arrayController];
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(notesArraySelectionDidChange:)
-                                                 name: kNotesArraySelectionDidChangeNotification
-                                               object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(displayModeDidChange:)
                                                  name: NoteListDisplayModeDidChangeNotification
@@ -134,7 +124,7 @@
 - (void)selectRow:(NSInteger)row
 {
     if (row >= 0) {
-        [self.arrayController setSelectionIndex:row];
+        [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     }
 }
 
@@ -177,7 +167,7 @@
     }
 
     if ([self.tableView numberOfSelectedRows] == 1) {
-        Note *note = [[self.arrayController arrangedObjects] objectAtIndex:selectedRow];
+        Note *note = [self.listController noteAtIndex:selectedRow];
         if (![note.simperiumKey isEqualToString: self.noteEditorViewController.note.simperiumKey]) {
             [SPTracker trackListNoteOpened];
             [self.noteEditorViewController displayNote:note];

@@ -30,7 +30,6 @@
 		2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EC1405A1450031AE94 /* libz.dylib */; };
 		26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
-		26F592551408BF75003A5174 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
 		26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F72A8C14032D2A00A7935E /* Cocoa.framework */; };
 		26F72A9914032D2A00A7935E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
@@ -92,7 +91,6 @@
 		466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */; };
 		466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
-		466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
 		466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
@@ -368,6 +366,8 @@
 		B5EB3AD52458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */; };
 		B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
 		B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
+		B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
+		B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
 		B5EDF32F258A8EF00066D91D /* NotesListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF32E258A8EF00066D91D /* NotesListState.swift */; };
 		B5EDF330258A8EF00066D91D /* NotesListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF32E258A8EF00066D91D /* NotesListState.swift */; };
 		B5EDF338258A8F1B0066D91D /* NotesListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* NotesListFilter.swift */; };
@@ -377,8 +377,6 @@
 		B5EF32B9258D07F00069EC7D /* NotesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NotesListController.swift */; };
 		B5EF32BA258D07F00069EC7D /* NotesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NotesListController.swift */; };
 		B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */; };
-		B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
-		B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -458,8 +456,6 @@
 		26DBB1F01405A6A800186392 /* NSString+Condensing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Condensing.m"; sourceTree = "<group>"; };
 		26DBB1F11405A6A800186392 /* NSString+Metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Metadata.h"; sourceTree = "<group>"; };
 		26DBB1F21405A6A800186392 /* NSString+Metadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Metadata.m"; sourceTree = "<group>"; };
-		26F592531408BF75003A5174 /* NotesArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesArrayController.h; sourceTree = "<group>"; };
-		26F592541408BF75003A5174 /* NotesArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesArrayController.m; sourceTree = "<group>"; };
 		26F72A8814032D2A00A7935E /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F72A8C14032D2A00A7935E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		26F72A8F14032D2A00A7935E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -720,13 +716,13 @@
 		B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+Simplenote.m"; sourceTree = "<group>"; };
 		B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimplenoteAppDelegate+Swift.swift"; sourceTree = "<group>"; };
 		B5EB3AD62458CDB50089858D /* ThemeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeOption.swift; sourceTree = "<group>"; };
+		B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Simplenote.swift"; sourceTree = "<group>"; };
 		B5EDF32E258A8EF00066D91D /* NotesListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListState.swift; sourceTree = "<group>"; };
 		B5EDF337258A8F1B0066D91D /* NotesListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListFilter.swift; sourceTree = "<group>"; };
 		B5EF32A7258D05640069EC7D /* MockupStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupStorage.swift; sourceTree = "<group>"; };
 		B5EF32B0258D075C0069EC7D /* NotesListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListControllerTests.swift; sourceTree = "<group>"; };
 		B5EF32B8258D07F00069EC7D /* NotesListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListController.swift; sourceTree = "<group>"; };
 		B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockupStorage+Sample.swift"; sourceTree = "<group>"; };
-		B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -874,8 +870,6 @@
 				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
 				714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */,
 				B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */,
-				26F592531408BF75003A5174 /* NotesArrayController.h */,
-				26F592541408BF75003A5174 /* NotesArrayController.m */,
 				46EF5196177C4ECC00A139E0 /* SPApplication.h */,
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
@@ -1867,7 +1861,6 @@
 				B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294221E033D1007AB25A /* html5_blocks.c in Sources */,
 				B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
-				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
 				B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
@@ -2017,7 +2010,6 @@
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
-				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
 				B5D21CB824881EF600D57A34 /* Array+Simplenote.swift in Sources */,
 				B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
