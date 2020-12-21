@@ -63,9 +63,13 @@ class NotesListController: NSObject {
         }
     }
 
-    /// Relays back change events received from the FRC itself
+    /// Relays back willChangeContent Events
     ///
-    var onBatchChanges: ((_ rowsChangeset: ResultsObjectsChangeset) -> Void)?
+    var onWillChangeContent: (() -> Void)?
+
+    /// Relays back didChangeContent Events
+    ///
+    var onDidChangeContent: ((_ rowsChangeset: ResultsObjectsChangeset) -> Void)?
 
 
     /// Designated Initializer
@@ -84,6 +88,7 @@ extension NotesListController {
 
     /// Number of the notes we've got!
     ///
+    @objc
     var numberOfNotes: Int {
         notesController.numberOfObjects
     }
@@ -106,8 +111,10 @@ extension NotesListController {
 
     /// Returns the Object at a given IndexPath (If any!)
     ///
+    @objc(noteAtIndex:)
     func note(at index: Int) -> Note? {
-        notesController.fetchedObjects[index]
+        let fetchedObjects = notesController.fetchedObjects
+        return index >= .zero  && index < fetchedObjects.count ? fetchedObjects[index] : nil
     }
 
     /// Returns the Fetched Note with the specified SimperiumKey (if any)
@@ -190,8 +197,12 @@ private extension NotesListController {
 private extension NotesListController {
 
     func startListeningToNoteEvents() {
+        notesController.onWillChangeContent = { [weak self] in
+            self?.onWillChangeContent?()
+        }
+
         notesController.onDidChangeContent = { [weak self] (_, objectsChangeset) in
-            self?.onBatchChanges?(objectsChangeset)
+            self?.onDidChangeContent?(objectsChangeset)
         }
     }
 
