@@ -63,10 +63,6 @@
                                              selector: @selector(didBeginViewingTrash:)
                                                  name: TagListDidBeginViewingTrashNotification
                                                object: nil];
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(didEmptyTrash:)
-                                                 name: TagListDidEmptyTrashNotification
-                                               object: nil];
 
     [self setupResultsController];
     [self setupTableView];
@@ -108,29 +104,19 @@
 
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
-    NSUInteger numNotes = self.listController.numberOfNotes;
-    
-    // As soon as at least one note is added, select it
-    if (numNotes > 0 && self.noteEditorViewController.note == nil) {
+    NSUInteger numberOfNotes = self.listController.numberOfNotes;
+    if (numberOfNotes > 0 && self.noteEditorViewController.note == nil) {
         [self selectFirstRow];
     }
 
-    if (numNotes == 0) {
+    if (numberOfNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
-    } else if (self.isSearching) {
-        [self selectFirstRow];
     }
 }
 
-- (void)notesArraySelectionDidChange:(NSNotification *)notification
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    // Check for empty list and clear editor contents if necessary
-    if (self.listController.numberOfNotes == 0) {
-        [self.noteEditorViewController displayNote:nil];
-    }
-    
-    NSInteger selectedRow = [self.tableView selectedRow];
-    
+    NSInteger selectedRow = [self.tableView selectedRow];    
     if (selectedRow < 0) {
         return;
     }
@@ -200,15 +186,6 @@
     [SPTracker trackListTrashPressed];
     self.viewingTrash = YES;
     [self refreshEverything];
-}
-
-- (void)didEmptyTrash:(NSNotification *)notification
-{
-    if (self.listController.numberOfNotes != 0) {
-        return;
-    }
-
-    [self.noteEditorViewController displayNote:nil];
 }
 
 
