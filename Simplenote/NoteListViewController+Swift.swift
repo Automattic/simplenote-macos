@@ -213,7 +213,7 @@ extension NoteListViewController {
 }
 
 
-// MARK: - NSTableViewDelegate Helpers
+// MARK: - NSTableViewDelegate
 //
 extension NoteListViewController: SPTableViewDelegate {
 
@@ -229,7 +229,7 @@ extension NoteListViewController: SPTableViewDelegate {
 }
 
 
-// MARK: - NSTableViewDelegate Helpers
+// MARK: - NSTableViewDataSource
 //
 extension NoteListViewController: NSTableViewDataSource {
 
