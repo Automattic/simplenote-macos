@@ -281,7 +281,7 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     }
 
     public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
-        reloadRow(forNoteKey: simperiumKey)
+        // NO-OP
     }
 }
 

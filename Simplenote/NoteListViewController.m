@@ -143,15 +143,6 @@
     return -1;
 }
 
-- (void)reloadRowForNoteKey:(NSString *)key
-{
-    NSInteger row = [self rowForNoteKey:key];
-    
-    if (row >= 0) {
-        [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:row] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
-    }
-}
-
 - (void)selectFirstRow
 {
     [self selectRow:0];
@@ -277,9 +268,6 @@
     if (needsReloadData) {
         [self reloadDataAndPreserveSelection];
     }
-    
-    // Previews in the note list won't update automatically, so do it manually
-    [self reloadRowForNoteKey:key];
 }
 
 - (void)didBeginViewingTag:(NSNotification *)notification
