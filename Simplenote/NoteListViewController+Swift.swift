@@ -118,6 +118,78 @@ extension NoteListViewController {
 }
 
 
+/*
+// MARK: - State
+//
+extension NoteListViewController {
+
+    /// Indicates if we're in Search Mode
+    ///
+    @objc
+    var isSearching: Bool {
+        searchKeyword?.isEmpty == false
+    }
+}
+
+
+// MARK: - Filtering
+//
+extension NoteListViewController {
+
+    /// Refreshes the Filtering Predicate
+    ///
+    @objc
+    func refreshPredicate() {
+        setNotesPredicate(filteringPredicate)
+    }
+
+    /// Predicate: Filters the current notes list, accounting for Search Keywords (OR) Selected Filters
+    ///
+    @objc
+    var filteringPredicate: NSPredicate {
+        state.predicateForNotes(filter: filter)
+    }
+
+    /// Sort Descriptors: Matches the current Settings
+    ///
+    @objc
+    var sortDescriptors: [NSSortDescriptor] {
+        state.descriptorsForNotes(sortMode: Options.shared.notesListSortMode)
+    }
+
+    /// Filter: Matches the selected TagsList Row
+    ///
+    private var filter: NotesListFilter {
+        SimplenoteAppDelegate.shared().selectedNotesFilter
+    }
+
+    /// State: Current NotesList State
+    ///
+    private var state: NotesListState {
+        guard let keyword = searchKeyword, !keyword.isEmpty else {
+            return .results
+        }
+
+        return .searching(keyword: keyword)
+    }
+}
+
+
+// MARK: - Helpers
+//
+private extension NoteListViewController {
+
+    var simperium: Simperium {
+        SimplenoteAppDelegate.shared().simperium
+        }
+
+    var isSelectionNotEmpty: Bool {
+        selectedNotes().isEmpty == false
+    }
+}
+*/
+
+
 // MARK: - ListController API(s) 🤟
 //
 extension NoteListViewController {
