@@ -198,11 +198,6 @@
     return shouldSelect;
 }
 
-- (NSArray *)selectedNotes
-{
-    return [self.allNotes objectsAtIndexes:[self.tableView selectedRowIndexes]];
-}
-
 - (NSArray<Note *> *)allNotes
 {
     return self.arrayController.arrangedObjects;

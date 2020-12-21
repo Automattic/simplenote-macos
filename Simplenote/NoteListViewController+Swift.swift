@@ -177,6 +177,11 @@ extension NoteListViewController {
 //
 private extension NoteListViewController {
 
+    @objc
+    var selectedNotes: [Note] {
+        listController.notes(at: tableView.selectedRowIndexes)
+    }
+
     var simperium: Simperium {
         SimplenoteAppDelegate.shared().simperium
     }

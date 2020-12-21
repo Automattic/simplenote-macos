@@ -39,7 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reloadSynchronously;
 - (void)setWaitingForIndex:(BOOL)waiting;
-- (NSArray<Note *> *)selectedNotes;
 - (BOOL)displaysNoteForKey:(NSString *)key;
 - (NSInteger)rowForNoteKey:(NSString *)key;
 - (void)selectRow:(NSInteger)row;
