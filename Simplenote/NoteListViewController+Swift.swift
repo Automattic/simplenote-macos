@@ -63,7 +63,8 @@ extension NoteListViewController {
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
-        reloadDataAndPreserveSelection()
+
+        tableView.reloadData()
     }
 }
 
@@ -179,6 +180,17 @@ extension NoteListViewController {
 
         tableView.reloadData()
         displayPlaceholderIfNeeded()
+    }
+
+    /// Refreshes the ListController / TableView for a given Keyword
+    /// - Note: This will switch the state to `.searching` or `.results`, depending on the keyword length (!!!)
+    ///
+    func refreshListController(keyword: String) {
+        listController.refreshSearchResults(keyword: keyword)
+
+        tableView.reloadData()
+        displayPlaceholderIfNeeded()
+        scrollView.scrollToTop()
     }
 }
 
@@ -386,6 +398,7 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
+        refreshListController(keyword: keyword)
     }
 }
 
