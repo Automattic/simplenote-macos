@@ -158,6 +158,16 @@ extension NoteListViewController {
 }
 
 
+// MARK: - Public API(s)
+//
+extension NoteListViewController {
+
+    func displaysNote(for simperiumKey: String) -> Bool {
+        listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
+    }
+}
+
+
 // MARK: - Notifications
 //
 extension NoteListViewController {
