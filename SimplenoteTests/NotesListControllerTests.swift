@@ -267,14 +267,14 @@ extension NotesListControllerTests {
 }
 
 
-// MARK: - Tests: onBatchChanges
+// MARK: - Tests: onDidChangeContent
 //
 extension NotesListControllerTests {
 
-    /// Verifies that `onBatchChanges` is invoked for: `Insertion OP` /  `Results Mode`
+    /// Verifies that `onDidChangeContent` is invoked for: `Insertion OP` /  `Results Mode`
     ///
-    func testOnBatchChangesDoesRunForNoteInsertionsWhenInResultsMode() {
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(inserted: [
+    func testOnDidChangeContentDoesRunForNoteInsertionsWhenInResultsMode() {
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(inserted: [
             IndexPath(index: .zero)
         ]))
 
@@ -284,13 +284,13 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` is invoked for: `Deletion OP` /  `Results Mode`
+    /// Verifies that `onDidChangeContent` is invoked for: `Deletion OP` /  `Results Mode`
     ///
-    func testOnBatchChangesDoesRunForNoteDeletionsWhenInResultsMode() {
+    func testOnDidChangeContentDoesRunForNoteDeletionsWhenInResultsMode() {
         let note = storage.insertSampleNote()
         storage.save()
 
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(deleted: [
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(deleted: [
             IndexPath(index: .zero)
         ]))
 
@@ -300,13 +300,13 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` is invoked for: `Update OP` /  `Results Mode`
+    /// Verifies that `onDidChangeContent` is invoked for: `Update OP` /  `Results Mode`
     ///
-    func testOnBatchChangesDoesRunForNoteUpdatesWhenInResultsMode() {
+    func testOnDidChangeContentDoesRunForNoteUpdatesWhenInResultsMode() {
         let note = storage.insertSampleNote()
         storage.save()
 
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(updated: [
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(updated: [
             IndexPath(index: .zero)
         ]))
 
@@ -316,14 +316,14 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` is invoked for: `Update OP` /  `Results Mode`
+    /// Verifies that `onDidChangeContent` is invoked for: `Update OP` /  `Results Mode`
     ///
-    func testOnBatchChangesDoesRunForNoteUpdateWhenInResultsModeAndRelaysMoveOperations() {
+    func testOnDidChangeContentDoesRunForNoteUpdateWhenInResultsModeAndRelaysMoveOperations() {
         let firstNote = storage.insertSampleNote(contents: "A")
         storage.insertSampleNote(contents: "B")
         storage.save()
 
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(moved: [
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(moved: [
             (from: IndexPath(index: .zero), to: IndexPath(index: 1))
         ]))
 
@@ -333,10 +333,10 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` is invoked for: `Insert OP` /  `Search Mode`
+    /// Verifies that `onDidChangeContent` is invoked for: `Insert OP` /  `Search Mode`
     ///
-    func testOnBatchChangesDoesRunForNoteInsertionsWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(inserted: [
+    func testOnDidChangeContentDoesRunForNoteInsertionsWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(inserted: [
             IndexPath(index: .zero)
         ]))
 
@@ -348,13 +348,13 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` is invoked for: `Update OP` /  `Search Mode`
+    /// Verifies that `onDidChangeContent` is invoked for: `Update OP` /  `Search Mode`
     ///
-    func testOnBatchChangesDoesRunForNoteUpdatesWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
+    func testOnDidChangeContentDoesRunForNoteUpdatesWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
         let note = storage.insertSampleNote(contents: "Test")
         storage.save()
 
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(updated: [
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(updated: [
             IndexPath(index: .zero)
         ]))
 
@@ -366,13 +366,13 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` is invoked for: `Delete OP` /  `Search Mode`
+    /// Verifies that `onDidChangeContent` is invoked for: `Delete OP` /  `Search Mode`
     ///
-    func testOnBatchChangesDoesRunForNoteDeletionWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
+    func testOnDidChangeContentDoesRunForNoteDeletionWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
         let note = storage.insertSampleNote(contents: "Test")
         storage.save()
 
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(deleted: [
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(deleted: [
             IndexPath(index: .zero)
         ]))
 
@@ -384,13 +384,13 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` does not relay duplicated Changesets
+    /// Verifies that `onDidChangeContent` does not relay duplicated Changesets
     ///
-    func testOnBatchChangesDoesNotRelayDuplicatedEvents() {
+    func testOnDidChangeContentDoesNotRelayDuplicatedEvents() {
         storage.insertSampleNote(contents: "A")
         storage.save()
 
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(inserted: [
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(inserted: [
             IndexPath(index: 1)
         ]))
 
@@ -400,16 +400,16 @@ extension NotesListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    /// Verifies that `onBatchChanges` relays move events
+    /// Verifies that `onDidChangeContent` relays move events
     ///
-    func testOnBatchChangesRelaysMoveEvents() {
+    func testOnDidChangeContentRelaysMoveEvents() {
         storage.insertSampleNote(contents: "A")
         storage.insertSampleNote(contents: "B")
         let note = storage.insertSampleNote(contents: "C")
 
         storage.save()
 
-        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(moved: [
+        expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset(moved: [
             (from: IndexPath(index: 2), to: IndexPath(index: .zero))
         ]))
 
@@ -444,12 +444,12 @@ private extension NotesListControllerTests {
         return (notes, expected)
     }
 
-    /// Expects the specified Object and Section changes to be relayed via `onBatchChanges`
+    /// Expects the specified Object and Section changes to be relayed via `onDidChangeContent`
     ///
-    func expectBatchChanges(objectsChangeset: ResultsObjectsChangeset) {
+    func expectOnDidChangeContent(objectsChangeset: ResultsObjectsChangeset) {
         let expectation = self.expectation(description: "Waiting...")
 
-        noteListController.onBatchChanges = { receivedObjectChanges in
+        noteListController.onDidChangeContent = { receivedObjectChanges in
             for (index, change) in objectsChangeset.deleted.enumerated() {
                 XCTAssertEqual(change, objectsChangeset.deleted[index])
             }
