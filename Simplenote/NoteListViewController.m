@@ -200,12 +200,6 @@
     [self scrollToRow:row];
 }
 
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    Note *note = [self.arrayController.arrangedObjects objectAtIndex:row];
-    return [self noteTableViewCellForNote:note];
-}
-
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
     BOOL shouldSelect = YES;

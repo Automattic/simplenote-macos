@@ -246,6 +246,24 @@ extension NoteListViewController: NSTableViewDelegate {
 
 // MARK: - NSTableViewDelegate Helpers
 //
+extension NoteListViewController: NSTableViewDataSource {
+
+    public func numberOfRows(in tableView: NSTableView) -> Int {
+        listController.numberOfNotes
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let note = listController.note(at: row) else {
+            return nil
+        }
+
+        return noteTableViewCell(for: note)
+    }
+}
+
+
+// MARK: - NSTableViewDelegate Helpers
+//
 extension NoteListViewController {
 
     @objc(noteTableViewCellForNote:)
