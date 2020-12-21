@@ -121,48 +121,22 @@ extension NoteListViewController {
 //
 extension NoteListViewController {
 
-    /// Refreshes the Filtering Predicate
+    ///
     ///
     @objc
-    func refreshPredicate() {
-        setNotesPredicate(filteringPredicate)
-    }
+    func refreshListController() {
+        listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
+        listController.sortMode = Options.shared.notesListSortMode
+        listController.performFetch()
 
-    /// Predicate: Filters the current notes list, accounting for Search Keywords (OR) Selected Filters
-    ///
-    @objc
-    var filteringPredicate: NSPredicate {
-        state.predicateForNotes(filter: filter)
-    }
-
-    /// Sort Descriptors: Matches the current Settings
-    ///
-    @objc
-    var sortDescriptors: [NSSortDescriptor] {
-        state.descriptorsForNotes(sortMode: Options.shared.notesListSortMode)
-    }
-
-    /// Filter: Matches the selected TagsList Row
-    ///
-    private var filter: NotesListFilter {
-        SimplenoteAppDelegate.shared().selectedNotesFilter
-    }
-
-    /// State: Current NotesList State
-    ///
-    private var state: NotesListState {
-        guard let keyword = searchKeyword, !keyword.isEmpty else {
-            return .results
-        }
-
-        return .searching(keyword: keyword)
+        tableView.reloadData()
     }
 }
 
 
-// MARK: - Helpers
+// MARK: - Properties
 //
-private extension NoteListViewController {
+extension NoteListViewController {
 
     @objc
     var selectedNotes: [Note] {

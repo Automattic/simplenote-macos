@@ -332,7 +332,7 @@
 - (void)selectedTaglistRowWasUpdated
 {
     [self refreshEnabledActions];
-    [self refreshPredicate];
+    [self refreshListController];
     [self refreshTitle];
     [self selectFirstRow];
 }
