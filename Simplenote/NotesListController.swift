@@ -84,6 +84,7 @@ extension NotesListController {
 
     /// Number of the notes we've got!
     ///
+    @objc
     var numberOfNotes: Int {
         notesController.numberOfObjects
     }

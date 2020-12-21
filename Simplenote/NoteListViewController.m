@@ -109,7 +109,7 @@
 
 - (void)predicateDidChange
 {
-    if (self.allNotes.count != 0) {
+    if (self.listController.numberOfNotes != 0) {
         return;
     }
 
@@ -193,14 +193,9 @@
     return shouldSelect;
 }
 
-- (NSArray<Note *> *)allNotes
-{
-    return self.arrayController.arrangedObjects;
-}
-
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
-    NSUInteger numNotes = self.allNotes.count;
+    NSUInteger numNotes = self.listController.numberOfNotes;
     
     // As soon as at least one note is added, select it
     if (numNotes > 0 && self.noteEditorViewController.note == nil) {
@@ -219,7 +214,7 @@
 - (void)notesArraySelectionDidChange:(NSNotification *)notification
 {
     // Check for empty list and clear editor contents if necessary
-    if (self.allNotes.count == 0) {
+    if (self.listController.numberOfNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
     }
     
@@ -236,7 +231,7 @@
             [self.noteEditorViewController displayNote:note];
         }
     } else {
-        [self.noteEditorViewController displayNotes:[self selectedNotes]];
+        [self.noteEditorViewController displayNotes:self.selectedNotes];
     }
 }
 
@@ -307,7 +302,7 @@
 
 - (void)didEmptyTrash:(NSNotification *)notification
 {
-    if (self.allNotes.count != 0) {
+    if (self.listController.numberOfNotes != 0) {
         return;
     }
 
@@ -338,7 +333,7 @@
 
 - (void)deleteAction:(id)sender
 {
-    for (Note *selectedNote in [self selectedNotes]) {
+    for (Note *selectedNote in self.selectedNotes) {
         [self deleteNote:selectedNote];
     }
 }
