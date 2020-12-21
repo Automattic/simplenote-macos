@@ -188,9 +188,10 @@ extension NoteListViewController {
     func refreshListController(keyword: String) {
         listController.refreshSearchResults(keyword: keyword)
 
-        tableView.reloadData()
         displayPlaceholderIfNeeded()
+        tableView.reloadData()
         scrollView.scrollToTop()
+        selectFirstRow()
     }
 }
 
