@@ -226,6 +226,7 @@ extension NoteListViewController {
         listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
     }
 
+    @objc
     func selectFirstRow() {
         selectAndMakeVisibleRow(at: .zero)
     }
