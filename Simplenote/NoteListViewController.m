@@ -95,11 +95,6 @@
     [self refreshHeaderState];
 }
 
-- (void)reloadSynchronously
-{
-    [self.arrayController fetchWithRequest:nil merge:NO error:nil];
-}
-
 // TODO: Work in Progress. Decouple with a delegate please
 //
 - (NoteEditorViewController *)noteEditorViewController

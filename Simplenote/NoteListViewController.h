@@ -36,7 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSLayoutConstraint              *titleSemaphoreLeadingConstraint;
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
 
-- (void)reloadSynchronously;
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (BOOL)displaysNoteForKey:(NSString *)key;
 - (NSInteger)rowForNoteKey:(NSString *)key;

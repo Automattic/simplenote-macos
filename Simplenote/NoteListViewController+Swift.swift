@@ -269,11 +269,7 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     }
 
     public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
-        // The note was just deleted, but our tableView wasn't reload yet:
-        // We'll perform a synchronous reload, while keeping the same selected index!
-        performPerservingSelectedIndex {
-            self.reloadSynchronously()
-        }
+        // NO-OP
     }
 
     public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
