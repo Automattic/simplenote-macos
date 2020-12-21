@@ -5,7 +5,8 @@
 - New Search Toolbar Action #741
 - Updated Color Palette #733
 - New Notes List Sort Modes #33
-
+- Fixed a bug that affected Multiple Selection in Big Sur #753
+ 
 2.5
 -----
 - Removed Main Window's Titlebar #719

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-10-21 11:32:19+0000 */
+/* Translation-Revision-Date: 2020-12-10 15:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -18,7 +18,8 @@
 /* Placeholder text in the Tags View */
 "Add tag..." = "태그 추가...";
 
-/* Title of the view that displays all your notes */
+/* Title of the all notes filter
+   Title of the view that displays all your notes */
 "All Notes" = "모든 메모";
 
 /* Link to sign in to an account */
@@ -26,6 +27,9 @@
 
 /* Sign in error message */
 "An error was encountered while signing in." = "로그인하는 중 오류가 발생했습니다.";
+
+/* Hiring Details */
+"Are you a developer? Automattic is Hiring." = "개발자이십니까? Automattic에서 채용 모집 중입니다.";
 
 /* Error for bad email or password */
 "Bad email or password" = "이메일 주소 또는 비밀번호가 잘못되었습니다.";
@@ -89,10 +93,10 @@
 "History" = "내역";
 
 /* Note Metrics Title */
-"Information" = "Information";
+"Information" = "정보";
 
 /* Reference Last Modification Date */
-"Last modified" = "Last modified";
+"Last modified" = "마지막 변경";
 
 /* Title of button for logging in
    Title of button for login */
@@ -173,7 +177,7 @@
 "Publishing..." = "게시 중...";
 
 /* References Title */
-"References" = "References";
+"References" = "참조";
 
 /* Rename Tag Action */
 "Rename Tag" = "태그 이름 변경";
@@ -218,8 +222,12 @@
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "이 정보는 개인정보 취급방침에 명시된 것처럼 제품을 개선하고, 더욱 관련성 있는 마케팅을 제공하며, Simplenote.com 환경을 개인 설정하는 데 도움을 줍니다.";
 
-/* Title of the view that displays all your deleted notes */
+/* Title for the Trash filter
+   Title of the view that displays all your deleted notes */
 "Trash" = "휴지통";
+
+/* Title for Tag with no Name */
+"Unnamed Tag" = "이름 없는 태그";
 
 /* Unpublish Note Action */
 "Unpublish" = "공개 취소";
@@ -229,6 +237,9 @@
 
 /* Alert title displayed in when an account has unsynced notes */
 "Unsynced Notes Detected" = "동기화되지 않은 메모 감지됨";
+
+/* Untagged Notes Title */
+"Untagged" = "태그 없음";
 
 /* Untagged Notes Filter */
 "Untagged Notes" = "태그되지 않은 메모";
@@ -247,6 +258,9 @@
 
 /* Number of words in the note */
 "Words" = "단어";
+
+/* Hiring Title */
+"Work with Us" = "채용 공고";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "인터넷에 연결되지 않았습니다.";
