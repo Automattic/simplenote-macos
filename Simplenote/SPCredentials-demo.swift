@@ -11,27 +11,24 @@ class SPCredentials: NSObject {
     ///
     static let sentryDSN = "https://00000000000000000000000000000000@sentry.io/00000000"
 
-    /// Simperium: AppID
+    /// Simperium: Authentication
     ///
     static let simperiumAppID = "history-analyst-dad"
-
-    /// Simperium: API Key
-    ///
     static let simperiumApiKey = "1c40d66b2ddd422eb799a68518263360"
+    static let simperiumProviderString = "not-required"
 
-    /// Simperium: Preferences Object Key
+    /// Simperium: Reserved Object Keys
     ///
     static let simperiumPreferencesObjectKey = "not-required"
-
-    /// Simperium: Settings Object Key
-    ///
     static let simperiumSettingsObjectKey = "not-required"
 
-    /// WordPressSSO: Client ID
+    /// Simperium: Password Callback URLS
+    ///
+    static let simperiumForgotPasswordURL = "https://not-required/"
+    static let simperiumResetPasswordURL = "https://not-required/"
+
+    /// WordPress.com: SSO
     ///
     static let wpcomClientID = "not-required"
-
-    /// WordPressSSO: Redirect URL
-    ///
     static let wpcomRedirectURL = "not-required"
 }

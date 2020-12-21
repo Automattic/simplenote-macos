@@ -41,14 +41,13 @@
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
+@interface SimplenoteAppDelegate () <SPBucketDelegate>
 
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
 
-@property (strong, nonatomic) Simperium                         *simperium;
 @property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
 @property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
@@ -78,28 +77,6 @@
     freopen([logPath fileSystemRepresentation],"a+",stderr);
 }
 
-- (Simperium *)configureSimperium
-{
-    Simperium *simperium                            = [[Simperium alloc] initWithModel:self.managedObjectModel
-                                                                               context:self.managedObjectContext
-                                                                           coordinator:self.persistentStoreCoordinator];
-    simperium.delegate                              = self;
-    simperium.verboseLoggingEnabled                 = NO;
-    simperium.presentsLoginByDefault                = YES;
-    simperium.authenticationWindowControllerClass   = [LoginWindowController class];
-    
-    SPAuthenticator *authenticator                  = simperium.authenticator;
-    authenticator.providerString                    = @"simplenote.com";
-    
-    SPAuthenticationConfiguration *config           = [SPAuthenticationConfiguration sharedInstance];
-    config.logoImageName                            = SPSimplenoteLogoImageName;
-    config.controlColor                             = [NSColor simplenoteBrandColor];
-    config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
-    config.resetPasswordURL                         = SPSimplenoteResetPasswordURL;
-    
-    return simperium;
-}
-
 #if SPARKLE_OTA
 - (void)configureSparkle
 {
@@ -124,14 +101,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [SPTracker trackApplicationLaunched];
-
+    [self configureSimperium];
     [self configureMainInterface];
     [self configureInitialResponder];
     [self hookWindowNotifications];
     [self applyStyle];
-    
-	self.simperium = [self configureSimperium];
 
     [self configureEditorController];
     [self configureVersionsController];
@@ -161,6 +135,8 @@
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
     [self startListeningForThemeNotifications];
+
+    [SPTracker trackApplicationLaunched];
 }
 
 - (void)hookWindowNotifications

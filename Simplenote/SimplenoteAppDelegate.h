@@ -23,12 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
+@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SimperiumDelegate>
 
-@property (strong, nonatomic, readonly) Simperium                           *simperium;
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator        *persistentStoreCoordinator;
 @property (strong, nonatomic, readonly) NSManagedObjectModel                *managedObjectModel;
 @property (strong, nonatomic, readonly) NSManagedObjectContext              *managedObjectContext;
+@property (strong, nonatomic) Simperium                                     *simperium;
 
 @property (assign, nonatomic, readonly) BOOL                                exportUnlocked;
 
