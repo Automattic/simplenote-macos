@@ -105,38 +105,19 @@
 
 #pragma mark - Table view
 
-- (void)selectFirstRow
-{
-    [self selectRow:0];
-}
-
-- (void)selectRow:(NSInteger)row
-{
-    if (row >= 0) {
-        [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-    }
-}
-
-- (void)scrollToRow:(NSInteger)row
-{
-    if (row >= 0) {
-        [self.tableView scrollRowToVisible:row];
-    }
-}
-
 - (void)notesArrayDidChange:(NSNotification *)notification
 {
     NSUInteger numNotes = self.listController.numberOfNotes;
     
     // As soon as at least one note is added, select it
     if (numNotes > 0 && self.noteEditorViewController.note == nil) {
-        [self selectRow:0];
+        [self selectFirstRow];
     }
 
     if (numNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
     } else if (self.isSearching) {
-        [self selectRow:0];
+        [self selectFirstRow];
     }
 }
 

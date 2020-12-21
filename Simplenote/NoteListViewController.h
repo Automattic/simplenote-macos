@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-@import Simperium_OSX;
 
 @class BackgroundView;
 @class NotesListController;
@@ -36,8 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
 
 - (void)setWaitingForIndex:(BOOL)waiting;
-- (void)selectRow:(NSInteger)row;
-- (void)scrollToRow:(NSInteger)row;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;

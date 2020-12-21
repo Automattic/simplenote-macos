@@ -117,7 +117,7 @@ extension NoteListViewController {
 }
 
 
-// MARK: - Filtering
+// MARK: - ListController API(s) 🤟
 //
 extension NoteListViewController {
 
@@ -175,14 +175,35 @@ extension NoteListViewController {
         listController.indexOfNote(withSimperiumKey: simperiumKey)
     }
 
-    @objc(selectRowForNoteWithSimperiumKey:)
-    func selectRowForNote(with simperiumKey: String) {
-        guard let row = indexOfNote(with: simperiumKey) else {
+    @objc
+    func selectFirstRow() {
+        scrollToRow(at: .zero)
+    }
+
+    func selectRow(at index: Int) {
+        guard index >= .zero else {
             return
         }
 
-        selectRow(row)
-        scroll(toRow: row)
+        tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+    }
+
+    @objc(selectRowForNoteWithSimperiumKey:)
+    func selectRowForNote(with simperiumKey: String) {
+        guard let index = indexOfNote(with: simperiumKey) else {
+            return
+        }
+
+        selectRow(at: index)
+        scrollToRow(at: index)
+    }
+
+    func scrollToRow(at index: Int) {
+        guard index >= .zero else {
+            return
+        }
+
+        tableView.scrollRowToVisible(index)
     }
 }
 
