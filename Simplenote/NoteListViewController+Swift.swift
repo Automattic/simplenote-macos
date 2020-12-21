@@ -51,7 +51,7 @@ extension NoteListViewController {
 
     @objc
     func refreshTitle() {
-        titleLabel.stringValue = filter.title
+        titleLabel.stringValue = listController.filter.title
     }
 
     /// Refreshes the receiver's style
