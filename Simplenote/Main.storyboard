@@ -334,7 +334,6 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="JtV-0Z-Zh8" id="PMY-3G-Khc"/>
                                                 <outlet property="delegate" destination="JtV-0Z-Zh8" id="Nhg-8Q-VaR"/>
                                             </connections>
                                         </tableView>

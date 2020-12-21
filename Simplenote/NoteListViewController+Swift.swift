@@ -57,7 +57,7 @@ extension NoteListViewController {
     /// Refreshes the receiver's style
     ///
     @objc
-    func applyStyle() {
+    func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
@@ -121,13 +121,57 @@ extension NoteListViewController {
 //
 extension NoteListViewController {
 
+    /// Initializes the NSTableView <> NoteListController Link
+    ///
+    @objc
+    func startDisplayingEntities() {
+        tableView.dataSource = self
+
+        listController.onBatchChanges = { [weak self] objectsChangeset in
+            defer {
+                self?.displayPlaceholderIfNeeded()
+            }
+
+            guard let `self` = self else {
+                return
+            }
+
+            /// Failsafe: Brought to you by our iOS Sibling
+            ///
+            guard let _ = self.view.window else {
+                self.tableView.reloadData()
+                return
+            }
+
+            self.tableView.performChanges(objectsChangeset: objectsChangeset)
+        }
+    }
+
+    /// Displays the Empty State placeholder / If Needed
+    ///
     func displayPlaceholderIfNeeded() {
         statusField.isHidden = listController.numberOfNotes > .zero
     }
-    
-    ///
+
+}
+
+
+// MARK: - Refreshing
+//
+extension NoteListViewController {
+
+    /// Refreshes: Actions / Title / TableView
     ///
     @objc
+    func refreshEverything() {
+        refreshEnabledActions()
+        refreshListController()
+        refreshTitle()
+        selectFirstRow()
+    }
+
+    /// Refreshes the ListController / TableView
+    ///
     func refreshListController() {
         listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
         listController.sortMode = Options.shared.notesListSortMode

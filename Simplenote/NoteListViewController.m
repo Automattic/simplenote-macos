@@ -73,8 +73,9 @@
     [self setupProgressIndicator];
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
+    [self startDisplayingEntities];
 
-    [self applyStyle];
+    [self refreshStyle];
 }
 
 - (void)viewWillLayout
@@ -191,14 +192,14 @@
 - (void)didBeginViewingTag:(NSNotification *)notification
 {
     self.viewingTrash = NO;
-    [self selectedTaglistRowWasUpdated];
+    [self refreshEverything];
 }
 
 - (void)didBeginViewingTrash:(NSNotification *)notification
 {
     [SPTracker trackListTrashPressed];
     self.viewingTrash = YES;
-    [self selectedTaglistRowWasUpdated];
+    [self refreshEverything];
 }
 
 - (void)didEmptyTrash:(NSNotification *)notification
@@ -208,14 +209,6 @@
     }
 
     [self.noteEditorViewController displayNote:nil];
-}
-
-- (void)selectedTaglistRowWasUpdated
-{
-    [self refreshEnabledActions];
-    [self refreshListController];
-    [self refreshTitle];
-    [self selectFirstRow];
 }
 
 
