@@ -463,13 +463,13 @@ extension NoteListViewController {
 
     @objc
     func performPerservingSelectedIndex(block: () -> Void) {
-        var previouslySelectedIndex = arrayController.selectionIndex
+        var previouslySelectedRow = tableView.selectedRow
         block()
 
-        if previouslySelectedIndex == tableView.numberOfRows {
-            previouslySelectedIndex -= 1
+        if previouslySelectedRow == tableView.numberOfRows {
+            previouslySelectedRow -= 1
         }
 
-        arrayController.setSelectionIndex(previouslySelectedIndex)
+        tableView.selectRowIndexes(IndexSet(integer: previouslySelectedRow), byExtendingSelection: false)
     }
 }
