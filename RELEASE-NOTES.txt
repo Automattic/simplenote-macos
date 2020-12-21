@@ -6,7 +6,6 @@
 - Updated Color Palette #733
 - New Notes List Sort Modes #33
 - Search Results are now global #760
-
 - Notes List now display row separators #758
 - Fixed a bug that affected Multiple Selection in Big Sur #753
  
