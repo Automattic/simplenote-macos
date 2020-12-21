@@ -80,8 +80,9 @@
                                                  name: TagListDidEmptyTrashNotification
                                                object: nil];
 
-    [self setupProgressIndicator];
+    [self setupResultsController];
     [self setupTableView];
+    [self setupProgressIndicator];
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
 

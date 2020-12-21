@@ -6,6 +6,14 @@ import SimplenoteSearch
 //
 extension NoteListViewController {
 
+    /// Setup: Results Controller
+    ///
+    @objc
+    func setupResultsController() {
+        listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
+        listController.performFetch()
+    }
+
     /// Setup: TableView
     ///
     @objc
