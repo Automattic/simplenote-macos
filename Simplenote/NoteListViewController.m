@@ -63,10 +63,6 @@
                                              selector: @selector(didBeginViewingTrash:)
                                                  name: TagListDidBeginViewingTrashNotification
                                                object: nil];
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(didEmptyTrash:)
-                                                 name: TagListDidEmptyTrashNotification
-                                               object: nil];
 
     [self setupResultsController];
     [self setupTableView];
@@ -355,6 +351,8 @@
     [self refreshEverything];
 }
 
+
+/* TODO: Nuke!
 - (void)didEmptyTrash:(NSNotification *)notification
 {
     if (self.listController.numberOfNotes != 0) {
@@ -364,7 +362,6 @@
     [self.noteEditorViewController displayNote:nil];
 }
 
-/* TODO: Nuke!
 - (void)selectedTaglistRowWasUpdated
 {
     [self refreshEnabledActions];
