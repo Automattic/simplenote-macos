@@ -153,7 +153,7 @@ extension NoteListViewController {
     }
 
     var isSelectionNotEmpty: Bool {
-        selectedNotes().isEmpty == false
+        selectedNotes.isEmpty == false
     }
 }
 
@@ -336,7 +336,7 @@ extension NoteListViewController: NSMenuItemValidation {
     }
 
     func validateListPinMenuItem(_ item: NSMenuItem) -> Bool {
-        let isPinnedOff = selectedNotes().allSatisfy { $0.pinned == false }
+        let isPinnedOff = selectedNotes.allSatisfy { $0.pinned == false }
         item.state = isPinnedOff ? .off : .on
         item.title = NSLocalizedString("Pin to Top", comment: "List Pin Action")
         return isSelectionNotEmpty
@@ -379,7 +379,7 @@ extension NoteListViewController {
 
     @IBAction
     func copyInterlinkWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first else {
+        guard let note = selectedNotes.first else {
             return
         }
 
@@ -389,7 +389,7 @@ extension NoteListViewController {
 
     @IBAction
     func deleteFromTrashWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first else {
+        guard let note = selectedNotes.first else {
             return
         }
 
@@ -403,7 +403,7 @@ extension NoteListViewController {
 
     @IBAction
     func pinWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first, let pinnedItem = sender as? NSMenuItem else {
+        guard let note = selectedNotes.first, let pinnedItem = sender as? NSMenuItem else {
             return
         }
 
@@ -416,7 +416,7 @@ extension NoteListViewController {
 
     @IBAction
     func restoreWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first else {
+        guard let note = selectedNotes.first else {
             return
         }
 
