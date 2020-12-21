@@ -177,6 +177,7 @@
 
 - (void)didBeginViewingTag:(NSNotification *)notification
 {
+    [SPTracker trackTagRowPressed];
     self.viewingTrash = NO;
     [self refreshEverything];
 }
