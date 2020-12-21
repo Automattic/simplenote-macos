@@ -43,7 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)selectRow:(NSInteger)row;
 - (void)selectRowForNoteKey:(NSString *)key;
 - (void)reloadRowForNoteKey:(NSString *)key;
-- (void)reloadDataAndPreserveSelection;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;

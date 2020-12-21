@@ -435,6 +435,13 @@ extension NoteListViewController {
 extension NoteListViewController {
 
     @objc
+    func reloadDataAndPreserveSelection() {
+        performPerservingSelectedIndex {
+            self.tableView.reloadData()
+        }
+    }
+
+    @objc
     func performPerservingSelectedIndex(block: () -> Void) {
         var previouslySelectedRow = tableView.selectedRow
         block()

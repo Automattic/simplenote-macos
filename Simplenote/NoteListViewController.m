@@ -240,20 +240,6 @@
     }
 }
 
-- (void)reloadDataAndPreserveSelection
-{
-    self.preserveSelection = YES;
-    // Reset the fetch predicate
-    [self.arrayController setFetchPredicate:self.arrayController.fetchPredicate];
-    self.arrayController.sortDescriptors = [self sortDescriptors];
-    [self.tableView reloadData];
-    self.preserveSelection = NO;
-    
-    // Force array change logic to run in the next run loop
-    dispatch_async(dispatch_get_main_queue(), ^() {
-        [self notesArrayDidChange:nil];
-    });
-}
 
 #pragma mark - Notification handlers
 
