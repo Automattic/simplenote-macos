@@ -121,6 +121,10 @@ extension NoteListViewController {
 //
 extension NoteListViewController {
 
+    func displayPlaceholderIfNeeded() {
+        statusField.isHidden = listController.numberOfNotes > .zero
+    }
+    
     ///
     ///
     @objc
@@ -130,6 +134,7 @@ extension NoteListViewController {
         listController.performFetch()
 
         tableView.reloadData()
+        displayPlaceholderIfNeeded()
     }
 }
 

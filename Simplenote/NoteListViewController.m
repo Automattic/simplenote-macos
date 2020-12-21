@@ -10,7 +10,6 @@
 #import "Note.h"
 #import "NoteEditorViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "TagListViewController.h"
 #import "SPTableView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
@@ -92,16 +91,6 @@
     return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
 }
 
-- (void)predicateDidChange
-{
-    if (self.listController.numberOfNotes != 0) {
-        return;
-    }
-
-    [self.noteEditorViewController displayNote:nil];
-    [self.statusField setHidden:NO];
-}
-
 - (void)setWaitingForIndex:(BOOL)waiting
 {
     if (waiting) {
@@ -143,8 +132,6 @@
     if (numNotes > 0 && self.noteEditorViewController.note == nil) {
         [self selectRow:0];
     }
-
-    self.statusField.hidden = numNotes > 0;
 
     if (numNotes == 0) {
         [self.noteEditorViewController displayNote:nil];
@@ -240,7 +227,6 @@
     }
 
     [self.noteEditorViewController displayNote:nil];
-    [self.statusField setHidden:NO];
 }
 
 - (void)selectedTaglistRowWasUpdated
