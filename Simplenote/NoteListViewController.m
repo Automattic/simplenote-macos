@@ -49,7 +49,6 @@
     [super viewDidLoad];
 
     self.oldTags = @"";
-    self.arrayController.managedObjectContext = self.mainContext;
 
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(notesArrayDidChange:)
@@ -108,10 +107,6 @@
     return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
 }
 
-- (NSManagedObjectContext*)mainContext
-{
-    return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
-}
 - (void)predicateDidChange
 {
     if (self.allNotes.count != 0) {
