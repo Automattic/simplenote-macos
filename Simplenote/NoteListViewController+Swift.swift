@@ -272,7 +272,6 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-        reloadSynchronously()
         selectRow(forNoteKey: simperiumKey)
     }
 
@@ -285,12 +284,11 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     }
 
     public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
-        arrayController.rearrangeObjects()
         selectRow(forNoteKey: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
-        arrayController.rearrangeObjects()
+        // NO-OP
     }
 
     public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
