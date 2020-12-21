@@ -104,7 +104,6 @@
     [self configureSimperium];
     [self configureMainInterface];
     [self configureInitialResponder];
-    [self hookWindowNotifications];
     [self applyStyle];
 
     [self configureEditorController];
@@ -136,12 +135,6 @@
     [self startListeningForThemeNotifications];
 
     [SPTracker trackApplicationLaunched];
-}
-
-- (void)hookWindowNotifications
-{
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:) name:NSApplicationDidResignActiveNotification object:self.window];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -284,16 +277,6 @@
     [self.window beginSheet:_privacyWindowController.window completionHandler:^(NSModalResponse returnCode) {
         self.privacyWindowController = nil;
     }];
-}
-
-
-#pragma mark - NSWindow Notification Handlers
-
-- (void)handleWindowDidResignMainNote:(NSNotification *)notification
-{
-    // Use this as an opportunity to re-sort by modify date when the user isn't looking
-    // (otherwise it can be a little jarring)
-    [self.noteListViewController reloadDataAndPreserveSelection];
 }
 
 
