@@ -64,7 +64,7 @@ extension NoteListViewController {
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
 
-        tableView.reloadData()
+        reloadDataAndPreserveSelection()
     }
 }
 
@@ -118,7 +118,8 @@ extension NoteListViewController {
 }
 
 
-/*
+/* TODO: Nuke!
+
 // MARK: - State
 //
 extension NoteListViewController {
