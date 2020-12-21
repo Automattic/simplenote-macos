@@ -14,8 +14,21 @@ class TableRowView : NSTableRowView {
         }
     }
 
+    /// Setting `isNextRowSelected` should trigger a redraw!
+    ///
+    override var isNextRowSelected: Bool {
+        didSet {
+            needsDisplay = true
+        }
+    }
+
 
     // MARK: - Overridden
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        drawSimplenoteSeparator(in: dirtyRect)
+    }
 
     override func drawSelection(in dirtyRect: NSRect) {
         guard selectionHighlightStyle != .none else {
@@ -40,6 +53,33 @@ class TableRowView : NSTableRowView {
 
         return output
     }
+
+    override func drawSeparator(in dirtyRect: NSRect) {
+        // NO-OP: Even overriding this API yields a weird effect!
+    }
+
+
+    // MARK: - Drawing
+
+    func drawSimplenoteSeparator(in rect: NSRect) {
+        guard let separatorColor = style.separatorColor, mustDrawSeparator else {
+            return
+        }
+
+        let insets = style.separatorInsets
+        let path = NSBezierPath()
+
+        path.move(to: NSMakePoint(.zero + insets.left, bounds.maxY))
+        path.line(to: NSMakePoint(bounds.maxX - insets.right, bounds.maxY))
+        path.lineWidth = NSScreen.main?.backingScaleFactor ?? Metrics.defaultSeparatorWidth
+
+        separatorColor.set()
+        path.stroke()
+    }
+
+    private var mustDrawSeparator: Bool {
+        !isSelected && !isNextRowSelected
+    }
 }
 
 
@@ -47,8 +87,17 @@ class TableRowView : NSTableRowView {
 // MARK: - Defines a TableRowView Presentation Style
 //
 enum TableRowStyle {
+
+    /// Sidebar: Tags List
+    ///
     case sidebar
+
+    /// List: Notes List
+    ///
     case list
+
+    /// Full Width: Legacy // Interlinking // Metrics
+    ///
     case fullWidth
 }
 
@@ -92,15 +141,39 @@ extension TableRowStyle {
             return .simplenoteSelectedBackgroundColor
         }
     }
+
+    var separatorColor: NSColor? {
+        switch self {
+        case .list:
+            return .simplenoteSecondaryDividerColor
+        default:
+            return nil
+        }
+    }
+
+    var separatorInsets: NSEdgeInsets {
+        guard self == .list else {
+            return .zero
+        }
+
+        guard #available(macOS 11, *) else {
+            return Metrics.sidebarLegacySeparatorInsets
+        }
+
+        return Metrics.sidebarSeparatorInsets
+    }
 }
 
 
 // MARK: - Constants
 //
 private enum Metrics {
-    static let legacyCornerRadius   = CGFloat.zero
-    static let roundedCornerRadius  = CGFloat(6)
-    static let fullWidthInsets      = CGVector.zero
-    static let listInsets           = CGVector(dx: 12, dy: .zero)
-    static let sidebarInsets        = CGVector(dx: 14, dy: .zero)
+    static let defaultSeparatorWidth        = CGFloat(1)
+    static let legacyCornerRadius           = CGFloat.zero
+    static let roundedCornerRadius          = CGFloat(6)
+    static let fullWidthInsets              = CGVector.zero
+    static let listInsets                   = CGVector(dx: 12, dy: .zero)
+    static let sidebarInsets                = CGVector(dx: 14, dy: .zero)
+    static let sidebarSeparatorInsets       = NSEdgeInsets(top: .zero, left: 36, bottom: .zero, right: 28)
+    static let sidebarLegacySeparatorInsets = NSEdgeInsets(top: .zero, left: 29, bottom: .zero, right: 21)
 }

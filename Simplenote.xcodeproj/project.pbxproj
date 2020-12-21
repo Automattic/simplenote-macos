@@ -366,6 +366,8 @@
 		B5EB3AD52458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */; };
 		B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
 		B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
+		B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
+		B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -706,6 +708,7 @@
 		B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+Simplenote.m"; sourceTree = "<group>"; };
 		B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimplenoteAppDelegate+Swift.swift"; sourceTree = "<group>"; };
 		B5EB3AD62458CDB50089858D /* ThemeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeOption.swift; sourceTree = "<group>"; };
+		B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -1069,6 +1072,7 @@
 				B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */,
 				B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
+				B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */,
 				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
@@ -1863,6 +1867,7 @@
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
+				B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
 				B5E8E41124575C990098892B /* ToolbarState.swift in Sources */,
@@ -2022,6 +2027,7 @@
 				B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
+				B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */,
 				B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */,
