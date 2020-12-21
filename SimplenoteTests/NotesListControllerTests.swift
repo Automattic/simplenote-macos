@@ -25,9 +25,12 @@ class NotesListControllerTests: XCTestCase {
         super.tearDown()
         storage.reset()
     }
+}
 
 
-    // MARK: - Tests: Filters
+// MARK: - Tests: Filters
+//
+extension NotesListControllerTests {
 
     /// Verifies that the Filter property properly filters Deleted notes
     ///
@@ -77,10 +80,12 @@ class NotesListControllerTests: XCTestCase {
 
         XCTAssertEqual(noteListController.numberOfNotes, 1)
     }
+}
 
 
-
-    // MARK: - Tests: Sorting
+// MARK: - Tests: Sorting
+//
+extension NotesListControllerTests {
 
     /// Verifies that the SortMode property properly applies the specified order mode to the retrieved entities
     ///
@@ -100,8 +105,12 @@ class NotesListControllerTests: XCTestCase {
             XCTAssertEqual(note.content, reversedNotes[index].content)
         }
     }
+}
 
-    // MARK: - Tests: Search
+
+// MARK: - Tests: Search
+//
+extension NotesListControllerTests {
 
     /// Verifies that the Search API causes the List Controller to show matching entities
     ///
@@ -147,11 +156,14 @@ class NotesListControllerTests: XCTestCase {
 
         XCTAssertEqual(noteListController.retrievedNotes.first, note)
     }
+}
 
 
-    // MARK: - Tests: `object(at:)`
+// MARK: - Tests: `note(at:)`
+//
+extension NotesListControllerTests {
 
-    /// Verifies that `object(at: Index)` returns the proper Note when in results mode
+    /// Verifies that `note(at: Index)` returns the proper Note when in results mode
     ///
     func testObjectAtIndexReturnsTheProperEntityWhenInResultsMode() {
         let (_, expected) = insertSampleNotes(count: 100)
@@ -164,7 +176,7 @@ class NotesListControllerTests: XCTestCase {
         }
     }
 
-    /// Verifies that `object(at: Index)` returns the proper Note when in Search Mode (without Keywords)
+    /// Verifies that `note(at: Index)` returns the proper Note when in Search Mode (without Keywords)
     ///
     func testObjectAtIndexReturnsTheProperEntityWhenInSearchModeWithoutKeywords() {
         let (_, expected) = insertSampleNotes(count: 100)
@@ -181,7 +193,7 @@ class NotesListControllerTests: XCTestCase {
         }
     }
 
-    /// Verifies that `object(at: Index)` returns the proper Note when in Search Mode (with Keywords)
+    /// Verifies that `note(at: Index)` returns the proper Note when in Search Mode (with Keywords)
     ///
     func testObjectAtIndexReturnsTheProperEntityWhenInSearchModeWithSomeKeyword() {
         insertSampleNotes(count: 100)
@@ -195,9 +207,12 @@ class NotesListControllerTests: XCTestCase {
 
         XCTAssertEqual(note.content, "055")
     }
+}
 
 
-    // MARK: - Tests: `indexOfNote(withSimperiumKey:)`
+// MARK: - Tests: `indexOfNote(withSimperiumKey:)`
+//
+extension NotesListControllerTests {
 
     /// Verifies that `indexOfNote(withSimperiumKey:)` returns the proper Note when in Results Mode
     ///
@@ -211,7 +226,7 @@ class NotesListControllerTests: XCTestCase {
         }
     }
 
-    /// Verifies that `indexPath(forObject:)` returns the proper Note/Tag when in Search Mode
+    /// Verifies that `indexOfNote(withSimperiumKey:)` returns the proper Note/Tag when in Search Mode
     ///
     func testIndexOfNoteReturnsTheProperIndexWhenInSearchMode() {
         let (notes, _) = insertSampleNotes(count: 100)
@@ -249,8 +264,160 @@ class NotesListControllerTests: XCTestCase {
             XCTAssertEqual(note.content, reversedNotes[index].content)
         }
     }
+}
 
 
+// MARK: - Tests: onBatchChanges
+//
+extension NotesListControllerTests {
+
+    /// Verifies that `onBatchChanges` is invoked for: `Insertion OP` /  `Results Mode`
+    ///
+    func testOnBatchChangesDoesRunForNoteInsertionsWhenInResultsMode() {
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(inserted: [
+            IndexPath(index: .zero)
+        ]))
+
+        storage.insertSampleNote()
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` is invoked for: `Deletion OP` /  `Results Mode`
+    ///
+    func testOnBatchChangesDoesRunForNoteDeletionsWhenInResultsMode() {
+        let note = storage.insertSampleNote()
+        storage.save()
+
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(deleted: [
+            IndexPath(index: .zero)
+        ]))
+
+        storage.delete(note)
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` is invoked for: `Update OP` /  `Results Mode`
+    ///
+    func testOnBatchChangesDoesRunForNoteUpdatesWhenInResultsMode() {
+        let note = storage.insertSampleNote()
+        storage.save()
+
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(updated: [
+            IndexPath(index: .zero)
+        ]))
+
+        note.content = "Updated"
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` is invoked for: `Update OP` /  `Results Mode`
+    ///
+    func testOnBatchChangesDoesRunForNoteUpdateWhenInResultsModeAndRelaysMoveOperations() {
+        let firstNote = storage.insertSampleNote(contents: "A")
+        storage.insertSampleNote(contents: "B")
+        storage.save()
+
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(moved: [
+            (from: IndexPath(index: .zero), to: IndexPath(index: 1))
+        ]))
+
+        firstNote.content = "C"
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` is invoked for: `Insert OP` /  `Search Mode`
+    ///
+    func testOnBatchChangesDoesRunForNoteInsertionsWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(inserted: [
+            IndexPath(index: .zero)
+        ]))
+
+        noteListController.beginSearch()
+        noteListController.refreshSearchResults(keyword: "Test")
+        storage.insertSampleNote(contents: "Test")
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` is invoked for: `Update OP` /  `Search Mode`
+    ///
+    func testOnBatchChangesDoesRunForNoteUpdatesWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
+        let note = storage.insertSampleNote(contents: "Test")
+        storage.save()
+
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(updated: [
+            IndexPath(index: .zero)
+        ]))
+
+        noteListController.beginSearch()
+        noteListController.refreshSearchResults(keyword: "Test")
+        note.content = "Test Updated"
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` is invoked for: `Delete OP` /  `Search Mode`
+    ///
+    func testOnBatchChangesDoesRunForNoteDeletionWhenInSearchModeAndTheSectionIndexIsProperlyCorrected() {
+        let note = storage.insertSampleNote(contents: "Test")
+        storage.save()
+
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(deleted: [
+            IndexPath(index: .zero)
+        ]))
+
+        noteListController.beginSearch()
+        noteListController.refreshSearchResults(keyword: "Test")
+        storage.delete(note)
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` does not relay duplicated Changesets
+    ///
+    func testOnBatchChangesDoesNotRelayDuplicatedEvents() {
+        storage.insertSampleNote(contents: "A")
+        storage.save()
+
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(inserted: [
+            IndexPath(index: 1)
+        ]))
+
+        storage.insertSampleNote(contents: "B")
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
+
+    /// Verifies that `onBatchChanges` relays move events
+    ///
+    func testOnBatchChangesRelaysMoveEvents() {
+        storage.insertSampleNote(contents: "A")
+        storage.insertSampleNote(contents: "B")
+        let note = storage.insertSampleNote(contents: "C")
+
+        storage.save()
+
+        expectBatchChanges(objectsChangeset: ResultsObjectsChangeset(moved: [
+            (from: IndexPath(index: 2), to: IndexPath(index: .zero))
+        ]))
+
+        note.pinned = true
+        storage.save()
+
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
+    }
 }
 
 
@@ -258,7 +425,7 @@ class NotesListControllerTests: XCTestCase {
 //
 private extension NotesListControllerTests {
 
-    /// Inserts `N` entities  with ascending payloads (Contents)
+    /// Inserts `N` Notes  with ascending payloads (Contents)
     ///
     @discardableResult
     func insertSampleNotes(count: Int) -> ([Note], [String]) {
@@ -277,4 +444,34 @@ private extension NotesListControllerTests {
         return (notes, expected)
     }
 
+    /// Expects the specified Object and Section changes to be relayed via `onBatchChanges`
+    ///
+    func expectBatchChanges(objectsChangeset: ResultsObjectsChangeset) {
+        let expectation = self.expectation(description: "Waiting...")
+
+        noteListController.onBatchChanges = { receivedObjectChanges in
+            for (index, change) in objectsChangeset.deleted.enumerated() {
+                XCTAssertEqual(change, objectsChangeset.deleted[index])
+            }
+
+            for (index, change) in objectsChangeset.inserted.enumerated() {
+                XCTAssertEqual(change, objectsChangeset.inserted[index])
+            }
+
+            for (index, change) in objectsChangeset.moved.enumerated() {
+                XCTAssertEqual(change.from, objectsChangeset.moved[index].from)
+                XCTAssertEqual(change.to, objectsChangeset.moved[index].to)
+            }
+
+            for (index, change) in objectsChangeset.updated.enumerated() {
+                XCTAssertEqual(change, objectsChangeset.updated[index])
+            }
+
+            XCTAssertEqual(objectsChangeset.deleted.count, receivedObjectChanges.deleted.count)
+            XCTAssertEqual(objectsChangeset.inserted.count, receivedObjectChanges.inserted.count)
+            XCTAssertEqual(objectsChangeset.moved.count, receivedObjectChanges.moved.count)
+            XCTAssertEqual(objectsChangeset.updated.count, receivedObjectChanges.updated.count)
+            expectation.fulfill()
+        }
+    }
 }
