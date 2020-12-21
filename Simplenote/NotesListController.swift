@@ -109,7 +109,8 @@ extension NotesListController {
     ///
     @objc(noteAtIndex:)
     func note(at index: Int) -> Note? {
-        notesController.fetchedObjects[index]
+        let fetchedObjects = notesController.fetchedObjects
+        return index >= .zero  && index < fetchedObjects.count ? fetchedObjects[index] : nil
     }
 
     /// Returns the Fetched Note with the specified SimperiumKey (if any)
