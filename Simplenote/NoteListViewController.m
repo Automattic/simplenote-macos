@@ -126,18 +126,6 @@
 
 #pragma mark - Table view
 
-- (NSInteger)rowForNoteKey:(NSString *)key
-{
-    NSInteger row = 0;
-    for (Note *note in [self.arrayController arrangedObjects]) {
-        if ([note.simperiumKey isEqualToString:key])
-            return row;
-        row += 1;
-    }
-    
-    return -1;
-}
-
 - (void)selectFirstRow
 {
     [self selectRow:0];
@@ -155,23 +143,6 @@
     if (row >= 0) {
         [self.tableView scrollRowToVisible:row];
     }
-}
-
-- (void)selectRowForNoteKey:(NSString *)key
-{
-    NSInteger row = [self rowForNoteKey:key];
-    [self selectRow:row];
-    [self scrollToRow:row];
-}
-
-- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
-{
-    BOOL shouldSelect = YES;
-    if (self.preserveSelection && [self rowForNoteKey:self.noteEditorViewController.note.simperiumKey] != row) {
-        shouldSelect = NO;
-    }
-    
-    return shouldSelect;
 }
 
 - (void)notesArrayDidChange:(NSNotification *)notification

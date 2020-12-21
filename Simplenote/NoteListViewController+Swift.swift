@@ -165,6 +165,20 @@ extension NoteListViewController {
     func displaysNote(for simperiumKey: String) -> Bool {
         listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
     }
+
+    func indexOfNote(with simperiumKey: String) -> Int? {
+        listController.indexOfNote(withSimperiumKey: simperiumKey)
+    }
+
+    @objc(selectRowForNoteWithSimperiumKey:)
+    func selectRowForNote(with simperiumKey: String) {
+        guard let row = indexOfNote(with: simperiumKey) else {
+            return
+        }
+
+        selectRow(row)
+        scroll(toRow: row)
+    }
 }
 
 
@@ -275,7 +289,7 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-        selectRow(forNoteKey: simperiumKey)
+        selectRowForNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
@@ -283,7 +297,7 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     }
 
     public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
-        selectRow(forNoteKey: simperiumKey)
+        selectRowForNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {

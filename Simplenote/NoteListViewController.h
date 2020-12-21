@@ -37,9 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
 
 - (void)setWaitingForIndex:(BOOL)waiting;
-- (NSInteger)rowForNoteKey:(NSString *)key;
 - (void)selectRow:(NSInteger)row;
-- (void)selectRowForNoteKey:(NSString *)key;
+- (void)scrollToRow:(NSInteger)row;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
 - (void)noteKeysWillChange:(NSSet *)keys;
