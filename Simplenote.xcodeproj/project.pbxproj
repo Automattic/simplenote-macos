@@ -2743,8 +2743,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteFoundation-Swift.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
+				kind = revision;
+				revision = 3c641ef84ea48f78c15cbf4a601f418aa4129410;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
