@@ -609,6 +609,16 @@ extension NoteListViewController {
     }
 
     @IBAction
+    func deleteAction(_ sender: Any) {
+        for note in selectedNotes {
+            SPTracker.trackListNoteDeleted()
+            note.deleted = true
+        }
+
+        simperium.save()
+    }
+
+    @IBAction
     func deleteFromTrashWasPressed(_ sender: Any) {
         guard let note = selectedNotes.first else {
             return
