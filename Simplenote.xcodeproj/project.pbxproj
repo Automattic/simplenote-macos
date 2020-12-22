@@ -30,7 +30,6 @@
 		2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EC1405A1450031AE94 /* libz.dylib */; };
 		26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
-		26F592551408BF75003A5174 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
 		26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F72A8C14032D2A00A7935E /* Cocoa.framework */; };
 		26F72A9914032D2A00A7935E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
@@ -92,8 +91,6 @@
 		466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */; };
 		466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
-		466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
-		466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
 		466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
@@ -116,7 +113,6 @@
 		46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F0E66217A32269005BB4D1 /* SPTableView.m */; };
 		46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46F0E66517A3300B005BB4D1 /* Localizable.strings */; };
 		71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
-		714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
@@ -1867,12 +1863,10 @@
 				B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294221E033D1007AB25A /* html5_blocks.c in Sources */,
 				B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
-				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
 				B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
-				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
 				B59EA98124AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
 				B5EDF338258A8F1B0066D91D /* NotesListFilter.swift in Sources */,
@@ -2017,7 +2011,6 @@
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
-				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
 				B5D21CB824881EF600D57A34 /* Array+Simplenote.swift in Sources */,
 				B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
@@ -2026,7 +2019,6 @@
 				B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
-				466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				466FFEB417CC10A800399652 /* DateTransformer.m in Sources */,

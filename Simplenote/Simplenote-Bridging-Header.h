@@ -13,7 +13,6 @@
 
 #import "LoginWindowController.h"
 #import "NoteEditorViewController.h"
-#import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
