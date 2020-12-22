@@ -246,7 +246,7 @@ extension NoteListViewController {
 //
 extension NoteListViewController {
 
-    /// Refres: All of the Interface components
+    /// Refresh: All of the Interface components
     ///
     @objc
     func refreshEverything() {
@@ -258,6 +258,15 @@ extension NoteListViewController {
         refreshPresentedNoteIfNeeded()
     }
 
+    /// Refresh: Filters relevant Notes
+    ///
+    func refreshSearchResults(keyword: String) {
+        refreshListControllerState(keyword: keyword)
+        refreshEverything()
+    }
+
+    /// Refresh: ListController <> TableView
+    ///
     private func refreshListController() {
         listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
         listController.sortMode = Options.shared.notesListSortMode
@@ -266,16 +275,10 @@ extension NoteListViewController {
         tableView.reloadData()
     }
 
-    /// Refreshes the ListController / TableView for a given Keyword
-    /// - Note: This will switch the state to `.searching` or `.results`, depending on the keyword length (!!!)
+    /// Refresh: ListController Internal State
     ///
-    private func refreshListController(keyword: String) {
-// TODO: Drop this API?
-        listController.refreshSearchResults(keyword: keyword)
-
-        tableView.reloadData()
-        refreshPlaceholder()
-        displayAndSelectFirstNote()
+    private func refreshListControllerState(keyword: String) {
+        listController.searchKeyword = keyword
     }
 
     /// Refresh:  Actions
@@ -311,18 +314,22 @@ extension NoteListViewController {
     /// Refresh: Presented Note in the Editor
     ///
     private func refreshPresentedNote() {
+// TODO: Review how many times this gets called
         let selectedNotes = self.selectedNotes
         guard selectedNotes.count > .zero else {
+NSLog("# Display NIL")
             noteEditorViewController.displayNote(nil)
             return
         }
 
         guard selectedNotes.count == 1, let targetNote = selectedNotes.first else {
+NSLog("# Display \(selectedNotes.count)")
             noteEditorViewController.display(selectedNotes)
             return
         }
 
         SPTracker.trackListNoteOpened()
+NSLog("# Display \(targetNote.simperiumKey.debugDescription)")
         noteEditorViewController.displayNote(targetNote)
     }
 }
@@ -529,7 +536,7 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
-        refreshListController(keyword: keyword)
+        refreshSearchResults(keyword: keyword)
     }
 }
 
