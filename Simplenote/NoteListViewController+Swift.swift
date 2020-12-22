@@ -195,10 +195,12 @@ extension NoteListViewController {
         tableView.dataSource = self
 
         // We'll preserve the selected rows during an Update OP
-        var selectedKeysBeforeChange = [String]()
+        var selectedKeysBeforeChange: [String]?
+        var selectedIndexBeforeChange: Int?
 
         listController.onWillChangeContent = { [weak self] in
-            selectedKeysBeforeChange = self?.selectedNotes.compactMap { $0.simperiumKey } ?? []
+            selectedKeysBeforeChange = self?.selectedNotes.compactMap { $0.simperiumKey }
+            selectedIndexBeforeChange = self?.tableView.selectedRow
         }
 
         listController.onDidChangeContent = { [weak self] objectsChangeset in
@@ -206,20 +208,14 @@ extension NoteListViewController {
                 return
             }
 
-            /// Refresh TableView
+            /// Refresh Interface
             self.tableView.performBatchChanges(objectsChangeset: objectsChangeset)
-
-            /// Display Empty State
+            self.restoreSelectionBeforeChanges(oldSelectedKeys: selectedKeysBeforeChange, oldSelectedIndex: selectedIndexBeforeChange)
             self.refreshPlaceholder()
 
-            /// Restore previously selected notes
-            self.selectNotes(with: selectedKeysBeforeChange)
-            selectedKeysBeforeChange.removeAll()
-
-            /// # Always make sure there's at least one selected row:
-            ///  - No previously selected indexes
-            ///  - Old Indexes aren't valid anymore
-            self.ensureSelectionIsNotEmpty()
+            /// Cleanup
+            selectedKeysBeforeChange = nil
+            selectedIndexBeforeChange = nil
         }
     }
 }
@@ -297,7 +293,6 @@ extension NoteListViewController {
     /// Refresh: Presented Note in the Editor
     ///
     private func refreshPresentedNote() {
-// TODO: Review how many times this gets called
         let selectedNotes = self.selectedNotes
         guard selectedNotes.count > .zero else {
 NSLog("# Display NIL")
@@ -352,25 +347,24 @@ extension NoteListViewController {
         tableView.scrollRowToVisible(index)
     }
 
-    /// Whenever there are no selected rows, we'll select the top of the list!
+    /// This API will attempt to restore the Rows selected before applying a ResultsController Change
+    ///     1.  If there were previously Selected Notes, we'll attempt to preselect them
+    ///     2.  If ther was a previously Selected Index, we'll attempt to select the `n - 1` row
+    ///     3.  As a fallback, we'll automatically `preselect the first row`
     ///
-    func ensureSelectionIsNotEmpty() {
-        guard tableView.selectedRowIndexes.isEmpty else {
+    private func restoreSelectionBeforeChanges(oldSelectedKeys: [String]?, oldSelectedIndex: Int?) {
+        if let targetKeys = oldSelectedKeys, let targetIndexes = listController.indexesOfNotes(withSimperiumKeys: targetKeys) {
+            tableView.selectRowIndexes(targetIndexes, byExtendingSelection: false)
             return
         }
 
-        displayAndSelectFirstNote()
-    }
-
-    /// Selects the Notes with the specified SimperiumKeys.
-    /// - Note: Scroll Offset **is NOT** altered anyhow
-    ///
-    func selectNotes(with simperiumKeys: [String]) {
-        let indexes = simperiumKeys.compactMap { simperiumKey in
-            listController.indexOfNote(withSimperiumKey: simperiumKey)
+        guard let oldSelectedIndex = oldSelectedIndex else {
+            displayAndSelectFirstNote()
+            return
         }
 
-        tableView.selectRowIndexes(IndexSet(indexes), byExtendingSelection: false)
+        let newIndex = oldSelectedIndex < tableView.numberOfRows ? oldSelectedIndex : oldSelectedIndex - 1
+        displayAndSelectNote(at: newIndex)
     }
 }
 
