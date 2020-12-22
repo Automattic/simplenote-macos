@@ -42,18 +42,6 @@ extension NoteListViewController {
         scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
     }
 
-    /// Ensures only the actions that are valid can be performed
-    ///
-    @objc
-    func refreshEnabledActions() {
-        addNoteButton.isEnabled = !viewingTrash
-    }
-
-    @objc
-    func refreshTitle() {
-        titleLabel.stringValue = listController.filter.title
-    }
-
     /// Refreshes the receiver's style
     ///
     @objc
@@ -114,6 +102,30 @@ extension NoteListViewController {
         }
 
         titleSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
+    }
+}
+
+
+// MARK: - Dynamic Properties
+//
+extension NoteListViewController {
+
+    @objc
+    var selectedNotes: [Note] {
+        listController.notes(at: tableView.selectedRowIndexes)
+    }
+
+    var simperium: Simperium {
+        SimplenoteAppDelegate.shared().simperium
+    }
+
+    @objc
+    var isSearching: Bool {
+        listController.state != .results
+    }
+
+    var isSelectionNotEmpty: Bool {
+        selectedNotes.isEmpty == false
     }
 }
 
@@ -215,10 +227,11 @@ extension NoteListViewController {
 
             // Refresh TableView / Display Empty State
             self.tableView.performBatchChanges(objectsChangeset: objectsChangeset)
-            self.displayPlaceholderIfNeeded()
+            self.refreshPlaceholder()
 
             // Restore previously selected notes
-            self.selectRowsForNotes(with: selectedKeysBeforeChange)
+// TODO: Ensure selection isn't empty
+            self.selectNotes(with: selectedKeysBeforeChange)
             selectedKeysBeforeChange.removeAll()
         }
     }
@@ -233,15 +246,14 @@ extension NoteListViewController {
     ///
     @objc
     func refreshEverything() {
-        refreshTitle()
-        refreshEnabledActions()
         refreshListController()
-        displayPlaceholderIfNeeded()
-        selectAndScrollToFirstRow()
+        refreshEnabledActions()
+        refreshTitle()
+        refreshPlaceholder()
+        ensureFirstRowIsSelected()
+        ensureEditorIsCleared()
     }
 
-    /// Refreshes the ListController / TableView
-    ///
     private func refreshListController() {
         listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
         listController.sortMode = Options.shared.notesListSortMode
@@ -254,70 +266,108 @@ extension NoteListViewController {
     /// - Note: This will switch the state to `.searching` or `.results`, depending on the keyword length (!!!)
     ///
     private func refreshListController(keyword: String) {
+// TODO: Perhaps drop this API?
         listController.refreshSearchResults(keyword: keyword)
 
         tableView.reloadData()
-        selectAndScrollToFirstRow()
-        displayPlaceholderIfNeeded()
+        refreshPlaceholder()
+        ensureFirstRowIsSelected()
     }
 
-    private func displayPlaceholderIfNeeded() {
+    /// Refreshes the Active Actions
+    ///
+    private func refreshEnabledActions() {
+        addNoteButton.isEnabled = !viewingTrash
+    }
+
+    /// Refreshes the List Title
+    /// - Important: Seriously update the ListController first
+    ///
+    private func refreshTitle() {
+        titleLabel.stringValue = listController.filter.title
+    }
+
+    /// Refreshes the Placeholder Visibility
+    ///
+    private func refreshPlaceholder() {
         statusField.isHidden = listController.numberOfNotes > .zero
     }
+
+    /// Although we refresh the Editor in `tableViewSelectionDidChange`, whenever we manually update the ListController and the resulting collection is empty,
+    /// we won't be getting any kind of callback.
+    ///
+    /// For that reason, we must manually ensure the editor isn't left with an orphan note
+    ///
+    private func ensureEditorIsCleared() {
+        guard listController.numberOfNotes == .zero, !noteEditorViewController.selectedNotes.isEmpty else {
+            return
+        }
+
+        refreshPresentedNote()
+    }
+
+    ///
+    ///
+    private func ensureFirstRowIsSelected() {
+        guard listController.numberOfNotes > .zero else {
+            return
+        }
+
+        displayAndSelectNote(at: .zero)
+    }
+
+    /// Refreshes the presented note in the Editor
+    ///
+    private func refreshPresentedNote() {
+        let selectedNotes = self.selectedNotes
+        guard selectedNotes.count > .zero else {
+            noteEditorViewController.displayNote(nil)
+            return
+        }
+
+        guard selectedNotes.count == 1, let targetNote = selectedNotes.first else {
+            noteEditorViewController.display(selectedNotes)
+            return
+        }
+
+        SPTracker.trackListNoteOpened()
+        noteEditorViewController.displayNote(targetNote)
+    }
 }
 
 
-// MARK: - Properties
+// MARK: - Row Selection API(s)
 //
 extension NoteListViewController {
 
-    @objc
-    var selectedNotes: [Note] {
-        listController.notes(at: tableView.selectedRowIndexes)
-    }
-
-    var simperium: Simperium {
-        SimplenoteAppDelegate.shared().simperium
-    }
-
-    @objc
-    var isSearching: Bool {
-        listController.state != .results
-    }
-
-    var isSelectionNotEmpty: Bool {
-        selectedNotes.isEmpty == false
-    }
-}
-
-
-// MARK: - Public API(s)
-//
-extension NoteListViewController {
-
+    /// Indicates if the Note with the specified SimperiumKey is being displayed
+    ///
     func displaysNote(for simperiumKey: String) -> Bool {
         listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
     }
 
-    func selectAndScrollToFirstRow() {
-        selectAndScrollToRow(at: .zero)
-    }
-
-    @objc(selectAndScrollToRowForNoteWithSimperiumKey:)
-    func selectAndScrollToRowForNote(with simperiumKey: String) {
+    /// Displays and Selects the Note with a given SimperiumKey
+    ///
+    @objc(displayAndSelectNoteWithSimperiumKey:)
+    func displayAndSelectNote(with simperiumKey: String) {
         guard let index = listController.indexOfNote(withSimperiumKey: simperiumKey) else {
             return
         }
 
-        selectAndScrollToRow(at: index)
+        displayAndSelectNote(at: index)
     }
 
-    private func selectAndScrollToRow(at index: Int) {
+    /// Displays and Selects the Note at a given Index
+    ///
+    private func displayAndSelectNote(at index: Int) {
         tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
         tableView.scrollRowToVisible(index)
     }
 
-    func selectRowsForNotes(with simperiumKeys: [String]) {
+    /// Selects the Notes with the specified SimperiumKeys.
+    /// - Note: Scroll Offset **is NOT** altered anyhow
+    ///
+    func selectNotes(with simperiumKeys: [String]) {
         let indexes = simperiumKeys.compactMap { simperiumKey in
             listController.indexOfNote(withSimperiumKey: simperiumKey)
         }
@@ -389,23 +439,8 @@ extension NoteListViewController: SPTableViewDelegate {
     public func tableViewSelectionDidChange(_ notification: Notification) {
         NSLog("# TableView Selection \(tableView.selectedRow)")
 // TODO: Proper fix please
-
         DispatchQueue.main.async {
-            let selectedNotes = self.selectedNotes
-            if selectedNotes.isEmpty {
-                self.noteEditorViewController.displayNote(nil)
-                return
-            }
-
-            if selectedNotes.count > 1 {
-                self.noteEditorViewController.display(selectedNotes)
-                return
-            }
-
-            if let targetNote = selectedNotes.first {
-                SPTracker.trackListNoteOpened()
-                self.noteEditorViewController.displayNote(targetNote)
-            }
+            self.refreshPresentedNote()
         }
     }
 }
@@ -461,7 +496,7 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-        selectAndScrollToRowForNote(with: simperiumKey)
+        displayAndSelectNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
@@ -469,7 +504,7 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     }
 
     public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
-        selectAndScrollToRowForNote(with: simperiumKey)
+        displayAndSelectNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
