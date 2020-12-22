@@ -385,6 +385,29 @@ extension NoteListViewController: SPTableViewDelegate {
         rowView.style = .list
         return rowView
     }
+
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        NSLog("# TableView Selection \(tableView.selectedRow)")
+// TODO: Proper fix please
+
+        DispatchQueue.main.async {
+            let selectedNotes = self.selectedNotes
+            if selectedNotes.isEmpty {
+                self.noteEditorViewController.displayNote(nil)
+                return
+            }
+
+            if selectedNotes.count > 1 {
+                self.noteEditorViewController.display(selectedNotes)
+                return
+            }
+
+            if let targetNote = selectedNotes.first {
+                SPTracker.trackListNoteOpened()
+                self.noteEditorViewController.displayNote(targetNote)
+            }
+        }
+    }
 }
 
 

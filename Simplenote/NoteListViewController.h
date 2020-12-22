@@ -10,6 +10,7 @@
 #import "Note.h"
 
 @class BackgroundView;
+@class NoteEditorViewController;
 @class NotesListController;
 @class SPTableView;
 
@@ -29,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSButton               *addNoteButton;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *noteListMenu;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
+
+// TODO: Work in Progress. Decouple with a delegate please
+//
+@property (nonatomic, strong, readonly) NoteEditorViewController        *noteEditorViewController;
 
 @property (nonatomic, strong, nonnull) NotesListController              *listController;
 @property (nonatomic, strong, nullable) NSLayoutConstraint              *titleSemaphoreLeadingConstraint;
