@@ -230,9 +230,13 @@ extension NoteListViewController {
             self.refreshPlaceholder()
 
             // Restore previously selected notes
-// TODO: Ensure selection isn't empty
             self.selectNotes(with: selectedKeysBeforeChange)
             selectedKeysBeforeChange.removeAll()
+
+            // Always make sure there's at least one row:
+            //  - No previously selected indexes
+            //  - Old Indexes aren't valid anymore
+            self.ensureSelectionIsNotEmpty()
         }
     }
 }
@@ -242,7 +246,7 @@ extension NoteListViewController {
 //
 extension NoteListViewController {
 
-    /// Refreshes: Actions / Title / TableView
+    /// Refres: All of the Interface components
     ///
     @objc
     func refreshEverything() {
@@ -250,8 +254,8 @@ extension NoteListViewController {
         refreshEnabledActions()
         refreshTitle()
         refreshPlaceholder()
-        ensureFirstRowIsSelected()
-        ensureEditorIsCleared()
+        displayAndSelectFirstNote()
+        refreshPresentedNoteIfNeeded()
     }
 
     private func refreshListController() {
@@ -266,39 +270,37 @@ extension NoteListViewController {
     /// - Note: This will switch the state to `.searching` or `.results`, depending on the keyword length (!!!)
     ///
     private func refreshListController(keyword: String) {
-// TODO: Perhaps drop this API?
+// TODO: Drop this API?
         listController.refreshSearchResults(keyword: keyword)
 
         tableView.reloadData()
         refreshPlaceholder()
-        ensureFirstRowIsSelected()
+        displayAndSelectFirstNote()
     }
 
-    /// Refreshes the Active Actions
+    /// Refresh:  Actions
     ///
     private func refreshEnabledActions() {
         addNoteButton.isEnabled = !viewingTrash
     }
 
-    /// Refreshes the List Title
-    /// - Important: Seriously update the ListController first
-    ///
-    private func refreshTitle() {
-        titleLabel.stringValue = listController.filter.title
-    }
-
-    /// Refreshes the Placeholder Visibility
+    /// Refresh: Placeholder
     ///
     private func refreshPlaceholder() {
         statusField.isHidden = listController.numberOfNotes > .zero
     }
 
+    /// Refresh: Title
+    /// - Important: Update the ListController first!!
+    ///
+    private func refreshTitle() {
+        titleLabel.stringValue = listController.filter.title
+    }
+
     /// Although we refresh the Editor in `tableViewSelectionDidChange`, whenever we manually update the ListController and the resulting collection is empty,
     /// we won't be getting any kind of callback.
     ///
-    /// For that reason, we must manually ensure the editor isn't left with an orphan note
-    ///
-    private func ensureEditorIsCleared() {
+    private func refreshPresentedNoteIfNeeded() {
         guard listController.numberOfNotes == .zero, !noteEditorViewController.selectedNotes.isEmpty else {
             return
         }
@@ -306,17 +308,7 @@ extension NoteListViewController {
         refreshPresentedNote()
     }
 
-    ///
-    ///
-    private func ensureFirstRowIsSelected() {
-        guard listController.numberOfNotes > .zero else {
-            return
-        }
-
-        displayAndSelectNote(at: .zero)
-    }
-
-    /// Refreshes the presented note in the Editor
+    /// Refresh: Presented Note in the Editor
     ///
     private func refreshPresentedNote() {
         let selectedNotes = self.selectedNotes
@@ -342,8 +334,14 @@ extension NoteListViewController {
 
     /// Indicates if the Note with the specified SimperiumKey is being displayed
     ///
-    func displaysNote(for simperiumKey: String) -> Bool {
+    func displaysNote(with simperiumKey: String) -> Bool {
         listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
+    }
+
+    /// Displays and selects the very first row
+    ///
+    func displayAndSelectFirstNote() {
+        displayAndSelectNote(at: .zero)
     }
 
     /// Displays and Selects the Note with a given SimperiumKey
@@ -362,6 +360,16 @@ extension NoteListViewController {
     private func displayAndSelectNote(at index: Int) {
         tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
         tableView.scrollRowToVisible(index)
+    }
+
+    /// Whenever there are no selected rows, we'll select the top of the list!
+    ///
+    func ensureSelectionIsNotEmpty() {
+        guard tableView.selectedRowIndexes.isEmpty else {
+            return
+        }
+
+        displayAndSelectFirstNote()
     }
 
     /// Selects the Notes with the specified SimperiumKeys.
@@ -455,11 +463,9 @@ extension NoteListViewController: NSTableViewDataSource {
     }
 
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let note = listController.note(at: row) else {
-            return nil
+        listController.note(at: row).map { note in
+            noteTableViewCell(for: note)
         }
-
-        return noteTableViewCell(for: note)
     }
 
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
