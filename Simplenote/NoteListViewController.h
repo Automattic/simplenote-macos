@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
 
-@class BackgroundView;
 @class NoteEditorViewController;
 @class NotesListController;
 @class SPTableView;
@@ -17,7 +16,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NoteListViewController : NSViewController <NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
+@interface NoteListViewController : NSViewController
 
 @property (nonatomic, strong, readonly) IBOutlet NSBox                  *backgroundBox;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *titleLabel;
@@ -30,13 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSButton               *addNoteButton;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *noteListMenu;
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
+@property (nonatomic, strong, nullable) NSLayoutConstraint              *titleSemaphoreLeadingConstraint;
 
-// TODO: Work in Progress. Decouple with a delegate please
+// TODO: Work in Progress. Decouple ASAP!
 //
 @property (nonatomic, strong, readonly) NoteEditorViewController        *noteEditorViewController;
-
-@property (nonatomic, strong, nonnull) NotesListController              *listController;
-@property (nonatomic, strong, nullable) NSLayoutConstraint              *titleSemaphoreLeadingConstraint;
+@property (nonatomic, strong,  nonnull) NotesListController             *listController;
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
 
 - (void)setWaitingForIndex:(BOOL)waiting;
