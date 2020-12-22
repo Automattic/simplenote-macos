@@ -207,7 +207,7 @@
         <!--Note List View Controller-->
         <scene sceneID="GlM-Tn-ZsG">
             <objects>
-                <viewController storyboardIdentifier="NoteListViewController" id="JtV-0Z-Zh8" customClass="NoteListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteListViewController" id="JtV-0Z-Zh8" customClass="NoteListViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PJl-uT-IxK">
                         <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -399,7 +399,7 @@
                                     <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5oO-Ju-l1S">
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5oO-Ju-l1S">
                                 <rect key="frame" x="139" y="292" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
