@@ -591,6 +591,18 @@ extension NoteListViewController {
     func sortModeDidChange(_ note: Notification) {
         reloadDataAndPreserveSelection()
     }
+
+    @objc
+    func didBeginViewingTag(_ note: Notification) {
+        SPTracker.trackTagRowPressed()
+        refreshEverything()
+    }
+
+    @objc
+    func didBeginViewingTrash(_ note: Notification) {
+        SPTracker.trackListTrashPressed()
+        refreshEverything()
+    }
 }
 
 
