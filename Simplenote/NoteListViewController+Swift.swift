@@ -16,7 +16,6 @@ extension NoteListViewController {
 
     /// Setup: TableView
     ///
-    @objc
     func setupTableView() {
         tableView.rowHeight = NoteTableCellView.rowHeight
         tableView.selectionHighlightStyle = .regular
@@ -27,7 +26,6 @@ extension NoteListViewController {
 
     /// Setup: Progress Indicator
     ///
-    @objc
     func setupProgressIndicator() {
         progressIndicator.wantsLayer = true
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
@@ -36,7 +34,6 @@ extension NoteListViewController {
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
-    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
@@ -167,9 +164,8 @@ extension NoteListViewController {
 
 // MARK: - Dynamic Properties
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
-    @objc
     var selectedNotes: [Note] {
         listController.notes(at: tableView.selectedRowIndexes)
     }
@@ -186,11 +182,10 @@ extension NoteListViewController {
 
 // MARK: - ListController API(s) 🤟
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
     /// Initializes the NSTableView <> NoteListController Link
     ///
-    @objc
     func startDisplayingEntities() {
         tableView.dataSource = self
 
@@ -223,11 +218,10 @@ extension NoteListViewController {
 
 // MARK: - Refreshing
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
     /// Refresh: All of the Interface components
     ///
-    @objc
     func refreshEverything() {
         refreshListController()
         refreshEnabledActions()
@@ -325,7 +319,7 @@ extension NoteListViewController {
 
     /// Displays and selects the very first row
     ///
-    func displayAndSelectFirstNote() {
+    private func displayAndSelectFirstNote() {
         displayAndSelectNote(at: .zero)
     }
 
@@ -369,7 +363,7 @@ extension NoteListViewController {
 }
 
 
-// MARK: - Notifications
+// MARK: - Header
 //
 extension NoteListViewController {
 
@@ -400,7 +394,6 @@ extension NoteListViewController {
         view.needsUpdateConstraints = true
     }
 
-    @objc
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
         headerEffectView.alphaValue = newAlpha
@@ -473,9 +466,8 @@ extension NoteListViewController: NSTableViewDataSource {
 
 // MARK: - NSTableViewDelegate Helpers
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
-    @objc(noteTableViewCellForNote:)
     func noteTableViewCell(for note: Note) -> NoteTableCellView {
         note.ensurePreviewStringsAreAvailable()
 
