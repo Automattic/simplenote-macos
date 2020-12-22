@@ -375,11 +375,8 @@
 - (void)deleteNote:(Note *)note
 {
     [SPTracker trackListNoteDeleted];
-    
-    [self performPerservingSelectedIndexWithBlock:^{
-        note.deleted = YES;
-        [[[SimplenoteAppDelegate sharedDelegate] simperium] save];
-    }];
+    note.deleted = YES;
+    [[[SimplenoteAppDelegate sharedDelegate] simperium] save];
 }
 
 - (void)deleteAction:(id)sender

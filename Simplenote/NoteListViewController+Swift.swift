@@ -603,10 +603,8 @@ extension NoteListViewController {
 
     @objc
     func displayModeDidChange(_ note: Notification) {
-        performPerservingSelectedIndex {
-            self.tableView.rowHeight = NoteTableCellView.rowHeight
-            self.tableView.reloadData()
-        }
+        tableView.rowHeight = NoteTableCellView.rowHeight
+        reloadDataAndPreserveSelection()
     }
 
     @objc
@@ -636,10 +634,8 @@ extension NoteListViewController {
             return
         }
 
-        performPerservingSelectedIndex {
-            simperium.notesBucket.delete(note)
-            simperium.save()
-        }
+        simperium.notesBucket.delete(note)
+        simperium.save()
 
         SPTracker.trackListNoteDeletedForever()
     }
@@ -652,7 +648,6 @@ extension NoteListViewController {
 
         note.pinned = pinnedItem.state == .off
         simperium.save()
-        reloadDataAndPreserveSelection()
 
         SPTracker.trackListNotePinningToggled()
     }
@@ -663,10 +658,8 @@ extension NoteListViewController {
             return
         }
 
-        performPerservingSelectedIndex {
-            note.deleted = false
-            simperium.save()
-        }
+        note.deleted = false
+        simperium.save()
 
         SPTracker.trackListNoteRestored()
     }
@@ -677,15 +670,13 @@ extension NoteListViewController {
 //
 extension NoteListViewController {
 
-    @objc
     func reloadDataAndPreserveSelection() {
         performPerservingSelectedIndex {
             self.tableView.reloadData()
         }
     }
 
-    @objc
-    func performPerservingSelectedIndex(block: () -> Void) {
+    private func performPerservingSelectedIndex(block: () -> Void) {
         var previouslySelectedRow = tableView.selectedRow
         block()
 
