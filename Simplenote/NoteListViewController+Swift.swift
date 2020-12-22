@@ -2,13 +2,79 @@ import Foundation
 import SimplenoteSearch
 
 
-// MARK: - Private Helpers
+// MARK: - NoteListViewController
 //
-extension NoteListViewController {
+class NoteListViewController: NSViewController {
+
+    /// Storyboard Outlets
+    ///
+    @IBOutlet private var backgroundBox: NSBox!
+    @IBOutlet private var titleLabel: NSTextField!
+    @IBOutlet private var statusField: NSTextField!
+    @IBOutlet private var progressIndicator: NSProgressIndicator!
+    @IBOutlet private var scrollView: NSScrollView!
+    @IBOutlet private var clipView: NSClipView!
+    @IBOutlet private var tableView: SPTableView!
+    @IBOutlet private var headerEffectView: NSVisualEffectView!
+    @IBOutlet private var addNoteButton: NSButton!
+    @IBOutlet private var noteListMenu: NSMenu!
+    @IBOutlet private var trashListMenu: NSMenu!
+    @IBOutlet private var titleSemaphoreLeadingConstraint: NSLayoutConstraint!
+
+    /// ListController
+    ///
+    private var listController: NotesListController!
+
+    /// TODO: Work in Progress. Decouple with a delegate please
+    ///
+    private var noteEditorViewController: NoteEditorViewController {
+        SimplenoteAppDelegate.shared().noteEditorViewController
+    }
+
+
+    // MARK: - ViewController Lifecycle
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupResultsController()
+        setupProgressIndicator()
+        setupTableView()
+        startListeningToNotifications()
+        startDisplayingEntities()
+
+        refreshStyle()
+    }
+
+    override func viewWillLayout() {
+        super.viewWillLayout()
+
+        refreshScrollInsets()
+        refreshHeaderState()
+    }
+
+    @objc
+    func setWaitingForIndex(_ waiting: Bool) {
+        guard waiting else {
+            progressIndicator.stopAnimation(self)
+            return
+        }
+
+        progressIndicator.startAnimation(self)
+    }
+}
+
+
+// MARK: - Interface Initialization
+//
+private extension NoteListViewController {
 
     /// Setup: Results Controller
     ///
-    @objc
     func setupResultsController() {
         listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
         listController.performFetch()
