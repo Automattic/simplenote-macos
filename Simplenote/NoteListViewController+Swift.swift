@@ -225,17 +225,19 @@ extension NoteListViewController {
                 return
             }
 
-            // Refresh TableView / Display Empty State
+            /// Refresh TableView
             self.tableView.performBatchChanges(objectsChangeset: objectsChangeset)
+
+            /// Display Empty State
             self.refreshPlaceholder()
 
-            // Restore previously selected notes
+            /// Restore previously selected notes
             self.selectNotes(with: selectedKeysBeforeChange)
             selectedKeysBeforeChange.removeAll()
 
-            // Always make sure there's at least one row:
-            //  - No previously selected indexes
-            //  - Old Indexes aren't valid anymore
+            /// # Always make sure there's at least one selected row:
+            ///  - No previously selected indexes
+            ///  - Old Indexes aren't valid anymore
             self.ensureSelectionIsNotEmpty()
         }
     }
