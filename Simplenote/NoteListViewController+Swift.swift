@@ -106,30 +106,6 @@ extension NoteListViewController {
 }
 
 
-// MARK: - Dynamic Properties
-//
-extension NoteListViewController {
-
-    @objc
-    var selectedNotes: [Note] {
-        listController.notes(at: tableView.selectedRowIndexes)
-    }
-
-    var simperium: Simperium {
-        SimplenoteAppDelegate.shared().simperium
-    }
-
-    @objc
-    var isSearching: Bool {
-        listController.state != .results
-    }
-
-    var isSelectionNotEmpty: Bool {
-        selectedNotes.isEmpty == false
-    }
-}
-
-
 /* TODO: Nuke!
 
 // MARK: - State
@@ -186,21 +162,26 @@ extension NoteListViewController {
         return .searching(keyword: keyword)
     }
 }
+*/
 
 
-// MARK: - Helpers
+// MARK: - Dynamic Properties
 //
-private extension NoteListViewController {
+extension NoteListViewController {
+
+    @objc
+    var selectedNotes: [Note] {
+        listController.notes(at: tableView.selectedRowIndexes)
+    }
 
     var simperium: Simperium {
         SimplenoteAppDelegate.shared().simperium
     }
 
     var isSelectionNotEmpty: Bool {
-        selectedNotes().isEmpty == false
+        selectedNotes.isEmpty == false
     }
 }
-*/
 
 
 // MARK: - ListController API(s) 🤟
