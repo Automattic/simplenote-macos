@@ -201,10 +201,10 @@ extension NoteListViewController {
     func startDisplayingEntities() {
         tableView.dataSource = self
 
-        var oldSelectedSimperiumKeys = [String]()
+        var selectedKeysBeforeChange = [String]()
 
         listController.onWillChangeContent = { [weak self] in
-            oldSelectedSimperiumKeys = self?.selectedNotes.compactMap { $0.simperiumKey } ?? []
+            selectedKeysBeforeChange = self?.selectedNotes.compactMap { $0.simperiumKey } ?? []
         }
 
         listController.onDidChangeContent = { [weak self] objectsChangeset in
@@ -212,16 +212,11 @@ extension NoteListViewController {
                 return
             }
 
-            self.tableView.performChanges(objectsChangeset: objectsChangeset)
+            self.tableView.performBatchChanges(objectsChangeset: objectsChangeset)
             self.displayPlaceholderIfNeeded()
-            self.selectRowsForNotes(with: oldSelectedSimperiumKeys)
+            self.selectRowsForNotes(with: selectedKeysBeforeChange)
+            selectedKeysBeforeChange = []
         }
-    }
-
-    /// Displays the Empty State placeholder / If Needed
-    ///
-    func displayPlaceholderIfNeeded() {
-        statusField.isHidden = listController.numberOfNotes > .zero
     }
 }
 
@@ -234,32 +229,36 @@ extension NoteListViewController {
     ///
     @objc
     func refreshEverything() {
+        refreshTitle()
         refreshEnabledActions()
         refreshListController()
-        refreshTitle()
+        displayPlaceholderIfNeeded()
         selectAndScrollToFirstRow()
     }
 
     /// Refreshes the ListController / TableView
     ///
-    func refreshListController() {
+    private func refreshListController() {
         listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
         listController.sortMode = Options.shared.notesListSortMode
         listController.performFetch()
 
         tableView.reloadData()
-        displayPlaceholderIfNeeded()
     }
 
     /// Refreshes the ListController / TableView for a given Keyword
     /// - Note: This will switch the state to `.searching` or `.results`, depending on the keyword length (!!!)
     ///
-    func refreshListController(keyword: String) {
+    private func refreshListController(keyword: String) {
         listController.refreshSearchResults(keyword: keyword)
 
         tableView.reloadData()
         selectAndScrollToFirstRow()
         displayPlaceholderIfNeeded()
+    }
+
+    private func displayPlaceholderIfNeeded() {
+        statusField.isHidden = listController.numberOfNotes > .zero
     }
 }
 
