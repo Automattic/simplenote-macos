@@ -454,8 +454,6 @@
 		26DBB1F01405A6A800186392 /* NSString+Condensing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Condensing.m"; sourceTree = "<group>"; };
 		26DBB1F11405A6A800186392 /* NSString+Metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Metadata.h"; sourceTree = "<group>"; };
 		26DBB1F21405A6A800186392 /* NSString+Metadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Metadata.m"; sourceTree = "<group>"; };
-		26F592531408BF75003A5174 /* NotesArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesArrayController.h; sourceTree = "<group>"; };
-		26F592541408BF75003A5174 /* NotesArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesArrayController.m; sourceTree = "<group>"; };
 		26F72A8814032D2A00A7935E /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F72A8C14032D2A00A7935E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		26F72A8F14032D2A00A7935E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -521,8 +519,6 @@
 		5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-SimplenoteTests.release.xcconfig"; path = "Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.release.xcconfig"; sourceTree = "<group>"; };
 		71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NoteEditorViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NoteEditorViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListViewController.h; sourceTree = "<group>"; };
-		714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListViewController.m; sourceTree = "<group>"; };
 		714BA66C14D4AE6200A6CCC1 /* DateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTransformer.h; sourceTree = "<group>"; };
 		714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTransformer.m; sourceTree = "<group>"; };
 		7154811614E5A9E800CB8964 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -867,11 +863,7 @@
 				B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */,
 				B5D3FCCB201F906E00A813B7 /* StatusChecker.h */,
 				B5D3FCCA201F906E00A813B7 /* StatusChecker.m */,
-				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
-				714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */,
 				B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */,
-				26F592531408BF75003A5174 /* NotesArrayController.h */,
-				26F592541408BF75003A5174 /* NotesArrayController.m */,
 				46EF5196177C4ECC00A139E0 /* SPApplication.h */,
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
