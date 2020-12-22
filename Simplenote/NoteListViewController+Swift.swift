@@ -454,8 +454,23 @@ extension NoteListViewController: SPTableViewDelegate {
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
-        NSLog("# TableView Selection \(tableView.selectedRow)")
-// TODO: Proper fix please
+NSLog("# TableView Selection \(tableView.selectedRow)")
+
+        /// Why do we `need` a debounce here:
+        ///
+        /// # Scenario #1: Empty Trash
+        ///     1.  Empty Trash ends up in a `save()` NSManagedObjectContext invocation
+        ///     2.  This results in a call to our FRC's `onDidChangeContent` callback
+        ///     3.  Refreshing the presented note in the editor also invokes `save()`, to persist any uncommitted changes
+        ///     4.  This causes a CoreData exception, because of the re-entrant `save()` OP
+        ///
+        /// # Scenario #2: Delete Note / List with `.count > 2` notes
+        ///     1.  Note deletion ends up in a `save()` NSManagedObjectContext invocation
+        ///     2.  This results in `performBatchChanges`
+        ///     3.  Whenever the previously selected index is gone, NSTableView will pick up `-1` as the new selected row
+        ///     4.  `ensureSelectionIsNotEmpty` will, then, select the first row as a fallback
+        ///     5.  `performPerservingSelectedIndex` will fallback to the `old index - 1`
+        ///
         DispatchQueue.main.async {
             self.refreshPresentedNote()
         }
