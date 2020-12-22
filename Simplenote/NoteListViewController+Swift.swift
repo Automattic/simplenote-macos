@@ -365,34 +365,7 @@ extension NoteListViewController {
 
 // MARK: - Header
 //
-extension NoteListViewController {
-
-    @objc
-    func startListeningToScrollNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(clipViewDidScroll),
-                                               name: NSView.boundsDidChangeNotification,
-                                               object: clipView)
-    }
-
-    @objc
-    func startListeningToWindowNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(windowDidResize),
-                                               name: NSWindow.didResizeNotification,
-                                               object: nil)
-    }
-
-    @objc
-    func clipViewDidScroll(sender: Notification) {
-        refreshHeaderState()
-    }
-
-    @objc
-    func windowDidResize(sender: Notification) {
-        // We might need to adjust the Title constraints (in order to prevent collisions!)
-        view.needsUpdateConstraints = true
-    }
+private extension NoteListViewController {
 
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
@@ -580,6 +553,35 @@ extension NoteListViewController: NSMenuItemValidation {
 // MARK: - Notifications
 //
 extension NoteListViewController {
+
+    func startListeningToNotifications() {
+        let nc = NotificationCenter.default
+
+        // Notifications: Window
+        nc.addObserver(self, selector: #selector(windowDidResize), name: NSWindow.didResizeNotification, object: nil)
+
+        // Notifications: ClipView
+        nc.addObserver(self, selector: #selector(clipViewDidScroll), name: NSView.boundsDidChangeNotification, object: clipView)
+
+        // Notifications: Tags
+        nc.addObserver(self, selector: #selector(didBeginViewingTag), name: .TagListDidBeginViewingTag, object: nil)
+        nc.addObserver(self, selector: #selector(didBeginViewingTrash), name: .TagListDidBeginViewingTrash, object: nil)
+
+        // Notifications: Settings
+        nc.addObserver(self, selector: #selector(displayModeDidChange), name: .NoteListDisplayModeDidChange, object: nil)
+        nc.addObserver(self, selector: #selector(sortModeDidChange), name: .NoteListSortModeDidChange, object: nil)
+    }
+
+    @objc
+    func clipViewDidScroll(sender: Notification) {
+        refreshHeaderState()
+    }
+
+    @objc
+    func windowDidResize(sender: Notification) {
+        // We might need to adjust the Title constraints (in order to prevent collisions!)
+        view.needsUpdateConstraints = true
+    }
 
     @objc
     func displayModeDidChange(_ note: Notification) {
