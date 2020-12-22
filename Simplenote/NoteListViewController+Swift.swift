@@ -631,6 +631,12 @@ extension NoteListViewController {
     }
 
     @IBAction
+    func newNoteWasPressed(_ sender: Any) {
+        // TODO: Move the New Note Handler to a (New) NoteController!
+        noteEditorViewController.newNoteWasPressed(sender)
+    }
+
+    @IBAction
     func pinWasPressed(_ sender: Any) {
         guard let note = selectedNotes.first, let pinnedItem = sender as? NSMenuItem else {
             return
