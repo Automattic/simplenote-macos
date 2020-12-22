@@ -62,8 +62,8 @@
                                                object: nil];
 
     [self setupResultsController];
-    [self setupTableView];
     [self setupProgressIndicator];
+    [self setupTableView];
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
     [self startDisplayingEntities];
@@ -249,7 +249,7 @@
         [self.noteEditorViewController displayNote:nil];
     }
     
-    NSInteger selectedRow = [self.tableView selectedRow];    
+    NSInteger selectedRow = [self.tableView selectedRow];
     
     if (selectedRow < 0) {
         return;
@@ -281,12 +281,9 @@
     });
 }
 
- */
-
 
 #pragma mark - Notification handlers
 
-/* TODO: Nuke!
 - (void)noteKeysWillChange:(NSSet *)keys
 {
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -331,6 +328,9 @@
     if (needsReloadData) {
         [self reloadDataAndPreserveSelection];
     }
+
+    // Previews in the note list won't update automatically, so do it manually
+    [self reloadRowForNoteKey:key];
 }
 
  */
@@ -353,11 +353,12 @@
 /* TODO: Nuke!
 - (void)didEmptyTrash:(NSNotification *)notification
 {
-    if (self.listController.numberOfNotes != 0) {
+    if (self.allNotes.count != 0) {
         return;
     }
 
     [self.noteEditorViewController displayNote:nil];
+    [self.statusField setHidden:NO];
 }
 
 - (void)selectedTaglistRowWasUpdated
