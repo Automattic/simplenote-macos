@@ -201,9 +201,10 @@ extension NoteListViewController {
     func startDisplayingEntities() {
         tableView.dataSource = self
 
-        var selectedNotesBeforeChange = [Note]()
+        var oldSelectedSimperiumKeys = [String]()
+
         listController.onWillChangeContent = { [weak self] in
-            selectedNotesBeforeChange = self?.selectedNotes ?? []
+            oldSelectedSimperiumKeys = self?.selectedNotes.compactMap { $0.simperiumKey } ?? []
         }
 
         listController.onDidChangeContent = { [weak self] objectsChangeset in
@@ -213,7 +214,7 @@ extension NoteListViewController {
 
             self.tableView.performChanges(objectsChangeset: objectsChangeset)
             self.displayPlaceholderIfNeeded()
-            self.selectRowsForNotes(selectedNotesBeforeChange)
+            self.selectRowsForNotes(with: oldSelectedSimperiumKeys)
         }
     }
 
@@ -236,7 +237,7 @@ extension NoteListViewController {
         refreshEnabledActions()
         refreshListController()
         refreshTitle()
-        selectFirstRow()
+        selectAndScrollToFirstRow()
     }
 
     /// Refreshes the ListController / TableView
@@ -257,7 +258,7 @@ extension NoteListViewController {
         listController.refreshSearchResults(keyword: keyword)
 
         tableView.reloadData()
-        selectFirstRow()
+        selectAndScrollToFirstRow()
         displayPlaceholderIfNeeded()
     }
 }
@@ -295,35 +296,30 @@ extension NoteListViewController {
         listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
     }
 
-    @objc
-    func selectFirstRow() {
-        selectAndMakeVisibleRow(at: .zero)
+    func selectAndScrollToFirstRow() {
+        selectAndScrollToRow(at: .zero)
     }
 
-    @objc(selectRowForNoteWithSimperiumKey:)
-    func selectRowForNote(with simperiumKey: String) {
+    @objc(selectAndScrollToRowForNoteWithSimperiumKey:)
+    func selectAndScrollToRowForNote(with simperiumKey: String) {
         guard let index = listController.indexOfNote(withSimperiumKey: simperiumKey) else {
             return
         }
 
-        selectAndMakeVisibleRow(at: index)
+        selectAndScrollToRow(at: index)
     }
 
-    func selectRowsForNotes(_ notes: [Note]) {
-        let indexes = notes.compactMap { note in
-            listController.indexOfNote(withSimperiumKey: note.simperiumKey)
+    private func selectAndScrollToRow(at index: Int) {
+        tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        tableView.scrollRowToVisible(index)
+    }
+
+    func selectRowsForNotes(with simperiumKeys: [String]) {
+        let indexes = simperiumKeys.compactMap { simperiumKey in
+            listController.indexOfNote(withSimperiumKey: simperiumKey)
         }
 
         tableView.selectRowIndexes(IndexSet(indexes), byExtendingSelection: false)
-    }
-
-    func selectAndMakeVisibleRow(at index: Int) {
-        guard index >= .zero && index < tableView.numberOfRows else {
-            return
-        }
-
-        tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
-        tableView.scrollRowToVisible(index)
     }
 }
 
@@ -439,7 +435,7 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-        selectRowForNote(with: simperiumKey)
+        selectAndScrollToRowForNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
@@ -447,7 +443,7 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     }
 
     public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
-        selectRowForNote(with: simperiumKey)
+        selectAndScrollToRowForNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {

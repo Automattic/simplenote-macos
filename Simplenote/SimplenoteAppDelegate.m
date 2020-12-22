@@ -194,7 +194,7 @@
 
 - (void)selectNoteWithKey:(NSString *)simperiumKey
 {
-    [self.noteListViewController selectRowForNoteWithSimperiumKey:simperiumKey];
+    [self.noteListViewController selectAndScrollToRowForNoteWithSimperiumKey:simperiumKey];
 }
 
 - (void)cleanupTags
