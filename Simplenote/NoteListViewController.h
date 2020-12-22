@@ -42,8 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setWaitingForIndex:(BOOL)waiting;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
-- (void)noteKeysWillChange:(NSSet *)keys;
-- (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
 
 @end
 

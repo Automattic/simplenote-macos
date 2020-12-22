@@ -29,7 +29,6 @@
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
 @property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
 @property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
-@property (nonatomic, strong) NSString                      *oldTags;
 @property (nonatomic, assign) BOOL                          viewingTrash;
 @property (nonatomic, assign) BOOL                          preserveSelection;
 @end
@@ -44,8 +43,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.oldTags = @"";
 
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(displayModeDidChange:)
@@ -289,6 +286,7 @@
 
 #pragma mark - Notification handlers
 
+/* TODO: Nuke!
 - (void)noteKeysWillChange:(NSSet *)keys
 {
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
@@ -302,13 +300,11 @@
     }
 }
 
-/* TODO: Nuke!
 - (void)noteKeysAdded:(NSSet *)keys
 {
     [self.arrayController setFetchPredicate:[self.arrayController fetchPredicate]];
     [self.tableView reloadData];
 }
- */
 
 - (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames
 {
@@ -331,11 +327,13 @@
     if ([memberNames indexOfObject:@"deleted"] != NSNotFound) {
         needsReloadData = YES;
     }
-    
+
     if (needsReloadData) {
         [self reloadDataAndPreserveSelection];
     }
 }
+
+ */
 
 - (void)didBeginViewingTag:(NSNotification *)notification
 {

@@ -316,8 +316,6 @@
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
                 }
-                [self.noteListViewController noteKeyDidChange:key memberNames:memberNames];
-
                 break;
             
             case SPBucketChangeTypeInsert:
@@ -339,7 +337,6 @@
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
         }
-        [self.noteListViewController noteKeysWillChange:keys];
     }
 }
 
