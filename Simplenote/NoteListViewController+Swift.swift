@@ -358,7 +358,7 @@ extension NoteListViewController {
             return
         }
 
-        guard let oldSelectedIndex = oldSelectedIndex else {
+        guard let oldSelectedIndex = oldSelectedIndex, oldSelectedIndex >= .zero else {
             displayAndSelectFirstNote()
             return
         }
@@ -429,8 +429,6 @@ extension NoteListViewController: SPTableViewDelegate {
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
-NSLog("# TableView Selection \(tableView.selectedRow)")
-
         /// Why do we `need` a debounce here:
         ///
         /// # Scenario #1: Empty Trash
