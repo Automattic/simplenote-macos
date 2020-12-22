@@ -130,6 +130,13 @@ extension NotesListController {
         return nil
     }
 
+    /// Returns the Indexes for the specified Note Keys (if any)
+    ///
+    func indexesOfNotes(withSimperiumKeys keys: [String]) -> IndexSet? {
+        let indexes = keys.compactMap { indexOfNote(withSimperiumKey: $0) }
+        return indexes.isEmpty ? nil : IndexSet(indexes)
+    }
+
     /// Returns the Object at a given IndexPath (If any!)
     ///
     @objc(noteAtIndex:)
