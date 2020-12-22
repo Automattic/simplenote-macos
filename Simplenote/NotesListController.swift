@@ -39,6 +39,27 @@ class NotesListController: NSObject {
         }
     }
 
+    /// Refreshes the Internal State, so that Search Results matching the specified Keyword will be filtered out.
+    /// - Important: It's up to the caller to invoke `performFetch`!!
+    ///
+    var searchKeyword: String? {
+        get {
+            guard case let .searching(keyword) = self.state else {
+                return nil
+            }
+
+            return keyword
+        }
+        set {
+            guard let keyword = newValue, !keyword.isEmpty else {
+                state = .results
+                return
+            }
+
+            state = .searching(keyword: keyword)
+        }
+    }
+
     /// SortMode: Results Mode
     ///
     var sortMode: SortMode = .alphabeticallyAscending {
@@ -141,37 +162,6 @@ extension NotesListController {
 }
 
 
-// MARK: - Search API
-//
-extension NotesListController {
-
-    /// Enters into Search Mode. Alledgedly.
-    ///
-    func beginSearch() {
-        // NO-OP: Just for consistency's sake
-    }
-
-    /// Refreshes the FetchedObjects so that they match a given Keyword
-    ///
-    /// -   Note: Whenever the Keyword is actually empty, we'll fallback to regular results. Capisci?
-    ///
-    @objc
-    func refreshSearchResults(keyword: String) {
-        if keyword.isEmpty {
-            state = .results
-            return
-        }
-        state = .searching(keyword: keyword)
-    }
-
-    /// Switches back to Results Mode
-    ///
-    func endSearch() {
-        state = .results
-    }
-}
-
-
 // MARK: - Private API: ResultsController Refreshing
 //
 private extension NotesListController {
@@ -187,7 +177,6 @@ private extension NotesListController {
     func refreshEverything() {
         refreshPredicates()
         refreshSortDescriptors()
-        performFetch()
     }
 }
 

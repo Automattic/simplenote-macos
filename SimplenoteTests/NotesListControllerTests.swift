@@ -121,22 +121,45 @@ extension NotesListControllerTests {
         storage.save()
         XCTAssertEqual(noteListController.numberOfNotes, 2)
 
-        noteListController.refreshSearchResults(keyword: "34")
+        noteListController.searchKeyword = "34"
+        noteListController.performFetch()
+
         XCTAssertEqual(noteListController.numberOfNotes, 1)
     }
 
-    /// Verifies that the `endSearch` switches the NotesList back to Results Mode
+    /// Verifies that an Empty Keyword causes the NotesList to go back into Results Mode
     ///
-    func testEndSearchSwitchesBackToResultsMode() {
+    func testEmptyKeywordSwitchesBackToResultsMode() {
         let (notes, _) = insertSampleNotes(count: 100)
         storage.save()
 
         XCTAssertEqual(noteListController.numberOfNotes, notes.count)
 
-        noteListController.refreshSearchResults(keyword: "99")
+        noteListController.searchKeyword = "99"
+        noteListController.performFetch()
+
         XCTAssertEqual(noteListController.numberOfNotes, 1)
 
-        noteListController.endSearch()
+        noteListController.searchKeyword = ""
+        noteListController.performFetch()
+
+        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
+    }
+
+    /// Verifies that a nil Keyword causes the NotesList to go back into Results Mode
+    ///
+    func testNullKeywordSwitchesBackToResultsMode() {
+        let (notes, _) = insertSampleNotes(count: 100)
+        storage.save()
+
+        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
+
+        noteListController.searchKeyword = "99"
+        noteListController.performFetch()
+        XCTAssertEqual(noteListController.numberOfNotes, 1)
+
+        noteListController.searchKeyword = nil
+        noteListController.performFetch()
         XCTAssertEqual(noteListController.numberOfNotes, notes.count)
     }
 
@@ -151,9 +174,8 @@ extension NotesListControllerTests {
 
         XCTAssertEqual(noteListController.numberOfNotes, .zero)
 
-        noteListController.beginSearch()
-        noteListController.refreshSearchResults(keyword: "Here")
-
+        noteListController.searchKeyword = "Here"
+        noteListController.performFetch()
         XCTAssertEqual(noteListController.retrievedNotes.first, note)
     }
 }
@@ -182,10 +204,10 @@ extension NotesListControllerTests {
         let (_, expected) = insertSampleNotes(count: 100)
 
         storage.save()
-        noteListController.beginSearch()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.refreshSearchResults(keyword: "0")
+        noteListController.searchKeyword = "0"
+        noteListController.performFetch()
 
         for (index, payload) in expected.enumerated() {
             let note = noteListController.note(at: index)!
@@ -199,12 +221,11 @@ extension NotesListControllerTests {
         insertSampleNotes(count: 100)
         storage.save()
 
-        noteListController.beginSearch()
-        noteListController.refreshSearchResults(keyword: "055")
+        noteListController.searchKeyword = "055"
+        noteListController.performFetch()
         XCTAssertEqual(noteListController.numberOfNotes, 1)
 
         let note = noteListController.note(at: .zero)!
-
         XCTAssertEqual(note.content, "055")
     }
 }
@@ -230,12 +251,11 @@ extension NotesListControllerTests {
     ///
     func testIndexOfNoteReturnsTheProperIndexWhenInSearchMode() {
         let (notes, _) = insertSampleNotes(count: 100)
-
         storage.save()
-        noteListController.beginSearch()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.refreshSearchResults(keyword: "0")
+        noteListController.searchKeyword = "0"
+        noteListController.performFetch()
 
         for (index, note) in notes.enumerated() {
             XCTAssertEqual(noteListController.indexOfNote(withSimperiumKey: note.simperiumKey), index)
@@ -246,16 +266,15 @@ extension NotesListControllerTests {
     ///
     func testListControllerProperlyAppliesSearchSortModeToSearchResults() {
         let (notes, _) = insertSampleNotes(count: 100)
-
         storage.save()
-        noteListController.beginSearch()
 
         // Search Mode: Expect an inverted collection (regardless of the regular sort mode)
         noteListController.sortMode = .alphabeticallyAscending
         noteListController.searchSortMode = .alphabeticallyDescending
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.refreshSearchResults(keyword: "0")
+        noteListController.searchKeyword = "0"
+        noteListController.performFetch()
 
         let reversedNotes = Array(notes.reversed())
         let retrievedNotes = noteListController.retrievedNotes
@@ -340,8 +359,9 @@ extension NotesListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.beginSearch()
-        noteListController.refreshSearchResults(keyword: "Test")
+        noteListController.searchKeyword = "Test"
+        noteListController.performFetch()
+
         storage.insertSampleNote(contents: "Test")
         storage.save()
 
@@ -358,8 +378,7 @@ extension NotesListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.beginSearch()
-        noteListController.refreshSearchResults(keyword: "Test")
+        noteListController.searchKeyword = "Test"
         note.content = "Test Updated"
         storage.save()
 
@@ -376,8 +395,7 @@ extension NotesListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.beginSearch()
-        noteListController.refreshSearchResults(keyword: "Test")
+        noteListController.searchKeyword = "Test"
         storage.delete(note)
         storage.save()
 
