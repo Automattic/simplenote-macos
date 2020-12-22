@@ -7,7 +7,6 @@
 //
 
 #import "TagListViewController.h"
-#import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
 #import "Tag.h"
 #import "NSString+Metadata.h"
@@ -140,26 +139,14 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     return [unsorted sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
-// TODO: Work in Progress. Decouple with a delegate please
-//
-- (NoteListViewController *)noteListViewController
-{
-    return [[SimplenoteAppDelegate sharedDelegate] noteListViewController];
-}
-
 - (void)reloadDataAndPreserveSelection
 {
-    // Remember last selections
     NSInteger tagRow = [self.tableView selectedRow];
-    NSInteger noteRow = [self.noteListViewController.tableView selectedRow];
 
     [self refreshState];
     
     // Restore last selections
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:tagRow] byExtendingSelection:NO];
-    
-    [self.noteListViewController.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:noteRow] byExtendingSelection:NO];
-
 }
 
 - (void)reset
