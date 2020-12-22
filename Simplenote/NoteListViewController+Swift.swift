@@ -201,6 +201,7 @@ extension NoteListViewController {
     func startDisplayingEntities() {
         tableView.dataSource = self
 
+        // We'll preserve the selected rows during an Update OP
         var selectedKeysBeforeChange = [String]()
 
         listController.onWillChangeContent = { [weak self] in
@@ -212,10 +213,13 @@ extension NoteListViewController {
                 return
             }
 
+            // Refresh TableView / Display Empty State
             self.tableView.performBatchChanges(objectsChangeset: objectsChangeset)
             self.displayPlaceholderIfNeeded()
+
+            // Restore previously selected notes
             self.selectRowsForNotes(with: selectedKeysBeforeChange)
-            selectedKeysBeforeChange = []
+            selectedKeysBeforeChange.removeAll()
         }
     }
 }
