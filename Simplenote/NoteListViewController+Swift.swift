@@ -177,6 +177,10 @@ private extension NoteListViewController {
     var isSelectionNotEmpty: Bool {
         selectedNotes.isEmpty == false
     }
+
+    var isViewingTrash: Bool {
+        listController.filter == .deleted
+    }
 }
 
 
@@ -257,7 +261,7 @@ private extension NoteListViewController {
     /// Refresh:  Actions
     ///
     private func refreshEnabledActions() {
-        addNoteButton.isEnabled = !viewingTrash
+        addNoteButton.isEnabled = !isViewingTrash
     }
 
     /// Refresh: Placeholder
@@ -385,7 +389,7 @@ private extension NoteListViewController {
 extension NoteListViewController: SPTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
-        viewingTrash ? trashListMenu : noteListMenu
+        isViewingTrash ? trashListMenu : noteListMenu
     }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
