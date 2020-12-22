@@ -359,19 +359,16 @@ private extension NoteListViewController {
     private func refreshPresentedNote() {
         let selectedNotes = self.selectedNotes
         guard selectedNotes.count > .zero else {
-NSLog("# Display NIL")
             noteEditorViewController.displayNote(nil)
             return
         }
 
         guard selectedNotes.count == 1, let targetNote = selectedNotes.first else {
-NSLog("# Display \(selectedNotes.count)")
             noteEditorViewController.display(selectedNotes)
             return
         }
 
         SPTracker.trackListNoteOpened()
-NSLog("# Display \(targetNote.simperiumKey.debugDescription)")
         noteEditorViewController.displayNote(targetNote)
     }
 }
