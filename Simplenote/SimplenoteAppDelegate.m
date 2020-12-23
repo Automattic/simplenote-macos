@@ -102,6 +102,7 @@
 {
     [self configureSimperium];
     [self configureMainInterface];
+    [self configureSplitView];
     [self configureInitialResponder];
     [self applyStyle];
 
