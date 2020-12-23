@@ -68,6 +68,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self startListeningToSettingsNotifications];
     [self startListeningToScrollNotifications];
 
+    [self loadTags];
     [self applyStyle];
 }
 
