@@ -31,12 +31,20 @@ extension NSTableView {
     /// Reloads the receiver's data and preserves the selected row
     ///
     func reloadAndPreserveSelection() {
-        let previouslySelectedRow = self.selectedRow
-        reloadData()
+        performPreservingSelection {
+            reloadData()
+        }
+    }
 
-        // Out of Bounds failsafe. Always!
-        guard previouslySelectedRow < numberOfRows else {
-            return
+    /// Performs a given closure, and preserves the TableView Selection
+    /// - Note:If the previously selected row is no more, we'll fallback to selecting the last row
+    ///
+    func performPreservingSelection(block: () -> Void) {
+        var previouslySelectedRow = selectedRow
+        block()
+
+        if previouslySelectedRow >= numberOfRows {
+            previouslySelectedRow = numberOfRows - 1
         }
 
         selectRowIndexes(IndexSet(integer: previouslySelectedRow), byExtendingSelection: false)

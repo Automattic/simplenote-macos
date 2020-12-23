@@ -23,7 +23,7 @@ class NoteListViewController: NSViewController {
 
     /// ListController
     ///
-    private var listController: NotesListController!
+    private lazy var listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
 
     /// TODO: Work in Progress. Decouple with a delegate please
     ///
@@ -41,13 +41,13 @@ class NoteListViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupResultsController()
         setupProgressIndicator()
         setupTableView()
         startListeningToNotifications()
-        startDisplayingEntities()
+        startListControllerSync()
 
         refreshStyle()
+        refreshEverything()
     }
 
     override func viewWillLayout() {
@@ -73,13 +73,6 @@ class NoteListViewController: NSViewController {
 //
 private extension NoteListViewController {
 
-    /// Setup: Results Controller
-    ///
-    func setupResultsController() {
-        listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
-        listController.performFetch()
-    }
-
     /// Setup: TableView
     ///
     func setupTableView() {
@@ -95,7 +88,6 @@ private extension NoteListViewController {
     func setupProgressIndicator() {
         progressIndicator.wantsLayer = true
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
-        progressIndicator.isHidden = true
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -104,6 +96,12 @@ private extension NoteListViewController {
         clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
     }
+}
+
+
+// MARK: - Skinning
+//
+extension NoteListViewController {
 
     /// Refreshes the receiver's style
     ///
@@ -115,7 +113,7 @@ private extension NoteListViewController {
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
 
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 }
 
@@ -197,7 +195,7 @@ private extension NoteListViewController {
 
     /// Initializes the NSTableView <> NoteListController Link
     ///
-    func startDisplayingEntities() {
+    func startListControllerSync() {
         tableView.dataSource = self
 
         // We'll preserve the selected rows during an Update OP
@@ -415,8 +413,9 @@ extension NoteListViewController: SPTableViewDelegate {
         ///     1.  Note deletion ends up in a `save()` NSManagedObjectContext invocation
         ///     2.  This results in `performBatchChanges`
         ///     3.  Whenever the previously selected index is gone, NSTableView will pick up `-1` as the new selected row
-        ///     4.  `ensureSelectionIsNotEmpty` will, then, select the first row as a fallback
-        ///     5.  `performPerservingSelectedIndex` will fallback to the `old index - 1`
+        ///     4.  `restoreSelectionBeforeChanges` will, then, select the first row as a fallback
+        ///     5.  Same as scenario #1, this ends up refreshing the Editor, and invoking `save()`
+        ///     6.  Because of the re-entrant `save()` OP, this scenario will also produce an exception
         ///
         DispatchQueue.main.async {
             self.refreshPresentedNote()
@@ -594,12 +593,12 @@ extension NoteListViewController {
     @objc
     func displayModeDidChange(_ note: Notification) {
         tableView.rowHeight = NoteTableCellView.rowHeight
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 
     @objc
     func sortModeDidChange(_ note: Notification) {
-        reloadDataAndPreserveSelection()
+        refreshEverything()
     }
 
     @objc
@@ -680,28 +679,5 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteRestored()
-    }
-}
-
-
-// MARK: - Helpers
-//
-extension NoteListViewController {
-
-    func reloadDataAndPreserveSelection() {
-        performPerservingSelectedIndex {
-            self.tableView.reloadData()
-        }
-    }
-
-    private func performPerservingSelectedIndex(block: () -> Void) {
-        var previouslySelectedRow = tableView.selectedRow
-        block()
-
-        if previouslySelectedRow == tableView.numberOfRows {
-            previouslySelectedRow -= 1
-        }
-
-        tableView.selectRowIndexes(IndexSet(integer: previouslySelectedRow), byExtendingSelection: false)
     }
 }

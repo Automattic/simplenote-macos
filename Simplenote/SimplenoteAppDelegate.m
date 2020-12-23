@@ -102,13 +102,12 @@
 {
     [self configureSimperium];
     [self configureMainInterface];
+    [self configureSplitView];
     [self configureInitialResponder];
     [self applyStyle];
 
     [self configureEditorController];
     [self configureVersionsController];
-
-    [self.tagListViewController loadTags];
     
     [self.simperium setAllBucketDelegates:self];
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
@@ -466,6 +465,7 @@
 {
     [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
+    [self.noteListViewController refreshStyle];
     [self.noteEditorViewController refreshStyle];
     [self.noteEditorViewController fixChecklistColoring];
 }
