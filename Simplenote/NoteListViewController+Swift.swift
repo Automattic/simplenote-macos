@@ -438,8 +438,9 @@ extension NoteListViewController: SPTableViewDelegate {
         ///     1.  Note deletion ends up in a `save()` NSManagedObjectContext invocation
         ///     2.  This results in `performBatchChanges`
         ///     3.  Whenever the previously selected index is gone, NSTableView will pick up `-1` as the new selected row
-        ///     4.  `ensureSelectionIsNotEmpty` will, then, select the first row as a fallback
-        ///     5.  `performPerservingSelectedIndex` will fallback to the `old index - 1`
+        ///     4.  `restoreSelectionBeforeChanges` will, then, select the first row as a fallback
+        ///     5.  Same as scenario #1, this ends up refreshing the Editor, and invoking `save()`
+        ///     6.  Because of the re-entrant `save()` OP, this scenario will also produce an exception
         ///
         DispatchQueue.main.async {
             self.refreshPresentedNote()
