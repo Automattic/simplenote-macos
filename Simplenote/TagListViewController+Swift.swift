@@ -47,7 +47,7 @@ extension TagListViewController {
     ///
     @objc
     func reloadDataAndPreserveSelection() {
-        let previouslySelectedFilter = selectedNotesFilter
+        let previouslySelectedRow = selectedRow
         mustSkipSelectionDidChange = true
 
         tableView.performPreservingSelection {
@@ -56,7 +56,7 @@ extension TagListViewController {
 
         mustSkipSelectionDidChange = false
 
-        if previouslySelectedFilter != selectedNotesFilter {
+        if previouslySelectedRow != selectedRow {
             notifyTagsListFilterDidChange()
         }
     }
