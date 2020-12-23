@@ -466,6 +466,7 @@
 {
     [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
+    [self.noteListViewController refreshStyle];
     [self.noteEditorViewController refreshStyle];
     [self.noteEditorViewController fixChecklistColoring];
 }

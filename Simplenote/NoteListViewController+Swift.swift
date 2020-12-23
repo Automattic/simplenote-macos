@@ -104,6 +104,12 @@ private extension NoteListViewController {
         clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
     }
+}
+
+
+// MARK: - Skinning
+//
+extension NoteListViewController {
 
     /// Refreshes the receiver's style
     ///
