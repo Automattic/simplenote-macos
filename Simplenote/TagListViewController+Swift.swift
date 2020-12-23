@@ -47,7 +47,6 @@ extension TagListViewController {
     ///
     @objc
     func reloadDataAndPreserveSelection() {
-        // Let's not post Selection didChange notifications
         let previouslySelectedFilter = selectedNotesFilter
         mustSkipSelectionDidChange = true
 
@@ -57,12 +56,9 @@ extension TagListViewController {
 
         mustSkipSelectionDidChange = false
 
-        // If the List Filter `ACTUALLY` changed, let's notify our crowd
-        if previouslySelectedFilter == selectedNotesFilter {
-            return
+        if previouslySelectedFilter != selectedNotesFilter {
+            notifyTagsListFilterDidChange()
         }
-
-        notifyTagsListFilterDidChange()
     }
 }
 
