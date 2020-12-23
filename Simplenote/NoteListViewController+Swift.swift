@@ -23,7 +23,7 @@ class NoteListViewController: NSViewController {
 
     /// ListController
     ///
-    private var listController: NotesListController!
+    private lazy var listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
 
     /// TODO: Work in Progress. Decouple with a delegate please
     ///
@@ -41,13 +41,13 @@ class NoteListViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupResultsController()
         setupProgressIndicator()
         setupTableView()
         startListeningToNotifications()
-        startDisplayingEntities()
+        startListControllerSync()
 
         refreshStyle()
+        refreshEverything()
     }
 
     override func viewWillLayout() {
@@ -72,13 +72,6 @@ class NoteListViewController: NSViewController {
 // MARK: - Interface Initialization
 //
 private extension NoteListViewController {
-
-    /// Setup: Results Controller
-    ///
-    func setupResultsController() {
-        listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
-        listController.performFetch()
-    }
 
     /// Setup: TableView
     ///
@@ -262,7 +255,7 @@ private extension NoteListViewController {
 
     /// Initializes the NSTableView <> NoteListController Link
     ///
-    func startDisplayingEntities() {
+    func startListControllerSync() {
         tableView.dataSource = self
 
         // We'll preserve the selected rows during an Update OP
