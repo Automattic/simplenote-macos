@@ -52,7 +52,7 @@ extension NoteListViewController {
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
 
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 }
 
@@ -590,12 +590,12 @@ extension NoteListViewController {
     @objc
     func displayModeDidChange(_ note: Notification) {
         tableView.rowHeight = NoteTableCellView.rowHeight
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 
     @objc
     func sortModeDidChange(_ note: Notification) {
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 }
 
@@ -648,28 +648,5 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteRestored()
-    }
-}
-
-
-// MARK: - Helpers
-//
-extension NoteListViewController {
-
-    func reloadDataAndPreserveSelection() {
-        performPerservingSelectedIndex {
-            self.tableView.reloadData()
-        }
-    }
-
-    private func performPerservingSelectedIndex(block: () -> Void) {
-        var previouslySelectedRow = tableView.selectedRow
-        block()
-
-        if previouslySelectedRow == tableView.numberOfRows {
-            previouslySelectedRow -= 1
-        }
-
-        tableView.selectRowIndexes(IndexSet(integer: previouslySelectedRow), byExtendingSelection: false)
     }
 }
