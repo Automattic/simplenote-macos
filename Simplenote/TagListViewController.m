@@ -139,16 +139,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     return [unsorted sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
-- (void)reloadDataAndPreserveSelection
-{
-    NSInteger tagRow = [self.tableView selectedRow];
-
-    [self refreshState];
-    
-    // Restore last selections
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:tagRow] byExtendingSelection:NO];
-}
-
 - (void)reset
 {
     self.tagArray = @[];
