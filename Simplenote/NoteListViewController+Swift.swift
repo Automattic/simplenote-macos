@@ -88,7 +88,6 @@ private extension NoteListViewController {
     func setupProgressIndicator() {
         progressIndicator.wantsLayer = true
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
-        progressIndicator.isHidden = true
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
