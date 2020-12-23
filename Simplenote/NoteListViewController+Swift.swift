@@ -665,7 +665,7 @@ extension NoteListViewController {
 
     @objc
     func sortModeDidChange(_ note: Notification) {
-        tableView.reloadAndPreserveSelection()
+        refreshEverything()
     }
 
     @objc
