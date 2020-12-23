@@ -115,7 +115,7 @@ private extension NoteListViewController {
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
 
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 }
 
@@ -474,8 +474,9 @@ extension NoteListViewController: SPTableViewDelegate {
         ///     1.  Note deletion ends up in a `save()` NSManagedObjectContext invocation
         ///     2.  This results in `performBatchChanges`
         ///     3.  Whenever the previously selected index is gone, NSTableView will pick up `-1` as the new selected row
-        ///     4.  `ensureSelectionIsNotEmpty` will, then, select the first row as a fallback
-        ///     5.  `performPerservingSelectedIndex` will fallback to the `old index - 1`
+        ///     4.  `restoreSelectionBeforeChanges` will, then, select the first row as a fallback
+        ///     5.  Same as scenario #1, this ends up refreshing the Editor, and invoking `save()`
+        ///     6.  Because of the re-entrant `save()` OP, this scenario will also produce an exception
         ///
         DispatchQueue.main.async {
             self.refreshPresentedNote()
@@ -653,12 +654,12 @@ extension NoteListViewController {
     @objc
     func displayModeDidChange(_ note: Notification) {
         tableView.rowHeight = NoteTableCellView.rowHeight
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 
     @objc
     func sortModeDidChange(_ note: Notification) {
-        reloadDataAndPreserveSelection()
+        tableView.reloadAndPreserveSelection()
     }
 
     @objc
@@ -739,28 +740,5 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteRestored()
-    }
-}
-
-
-// MARK: - Helpers
-//
-extension NoteListViewController {
-
-    func reloadDataAndPreserveSelection() {
-        performPerservingSelectedIndex {
-            self.tableView.reloadData()
-        }
-    }
-
-    private func performPerservingSelectedIndex(block: () -> Void) {
-        var previouslySelectedRow = tableView.selectedRow
-        block()
-
-        if previouslySelectedRow == tableView.numberOfRows {
-            previouslySelectedRow -= 1
-        }
-
-        tableView.selectRowIndexes(IndexSet(integer: previouslySelectedRow), byExtendingSelection: false)
     }
 }
