@@ -9,6 +9,7 @@
 - Notes List now display row separators #758
 - Fixed a bug that affected Multiple Selection in Big Sur #753
 - Notes List will now animate content changes #764
+- Fixed a bug that caused an unexpected jump in the Tags List #767
  
 2.5
 -----
