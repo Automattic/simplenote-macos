@@ -49,6 +49,14 @@ extension SplitViewController {
         splitViewItem.maximumThickness = kind.maximumThickness
         insertSplitViewItem(splitViewItem, at: kind.index)
     }
+
+    /// Refreshes the Collapsed State of the all of the Collapsible Items
+    ///
+    func refreshCollapsibleItems(collapsed: Bool) {
+        for splitItem in collapsibleItems where splitItem.isCollapsed != collapsed {
+            splitItem.animator().isCollapsed = collapsed
+        }
+    }
 }
 
 
@@ -92,11 +100,7 @@ extension SplitViewController {
 
     @IBAction
     func focusModeAction(sender: Any) {
-        let nextState = !isFocusModeEnabled
-
-        for splitItem in collapsibleItems {
-            splitItem.animator().isCollapsed = nextState
-        }
+        refreshCollapsibleItems(collapsed: !isFocusModeEnabled)
     }
 
     @objc
