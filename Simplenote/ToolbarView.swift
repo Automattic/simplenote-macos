@@ -4,6 +4,8 @@ import Foundation
 // MARK: - ToolbarDelegate
 //
 protocol ToolbarDelegate: NSObject {
+    func toolbarDidBeginSearch()
+    func toolbarDidEndSearch()
     func toolbar(_ toolbar: ToolbarView, didSearch keyword: String)
 }
 
@@ -239,6 +241,7 @@ private extension ToolbarView {
         }
 
         updateSearchBar(visible: visible, completionHandler: completionHandler)
+        notifySearchStateWasChanged(visible: visible)
     }
 
     func updateSearchBar(visible: Bool, completionHandler: (() -> Void)? = nil) {
@@ -267,6 +270,14 @@ private extension ToolbarView {
             self.layoutSubtreeIfNeeded()
         } completionHandler: {
             completionHandler?()
+        }
+    }
+
+    func notifySearchStateWasChanged(visible: Bool) {
+        if visible {
+            delegate?.toolbarDidBeginSearch()
+        } else {
+            delegate?.toolbarDidEndSearch()
         }
     }
 }

@@ -322,6 +322,12 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 //
 extension NoteListViewController: EditorControllerSearchDelegate {
 
+    public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
+    }
+
+    public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
+    }
+
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
         searchKeyword = keyword
