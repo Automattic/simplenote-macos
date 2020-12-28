@@ -194,6 +194,17 @@ class Storage: NSTextStorage {
 }
 
 
+// MARK: - Typing Attributes
+//
+extension Storage {
+
+    @objc
+    var typingAttributes: [NSAttributedString.Key: Any] {
+        backingStore.length == .zero ? theme.headlineStyle.attributes : theme.bodyStyle.attributes
+    }
+}
+
+
 // MARK: - Helpers
 //
 private extension Storage {
