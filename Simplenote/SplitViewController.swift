@@ -50,12 +50,11 @@ extension SplitViewController {
         insertSplitViewItem(splitViewItem, at: kind.index)
     }
 
-    /// Refreshes the Collapsed State of the all of the Collapsible Items
+    /// Refreshes the Collapsed State of the specified Split Item
     ///
-    func refreshCollapsibleItems(collapsed: Bool) {
-        for splitItem in collapsibleItems where splitItem.isCollapsed != collapsed {
-            splitItem.animator().isCollapsed = collapsed
-        }
+    func refreshSplitViewItem(ofKind kind: SplitItemKind, collapsed: Bool) {
+        let splitItem = splitViewItem(ofKind: kind)
+        splitItem.animator().isCollapsed = collapsed
     }
 }
 
@@ -100,7 +99,11 @@ extension SplitViewController {
 
     @IBAction
     func focusModeAction(sender: Any) {
-        refreshCollapsibleItems(collapsed: !isFocusModeEnabled)
+        let nextState = !isFocusModeEnabled
+
+        for splitItem in collapsibleItems {
+            splitItem.animator().isCollapsed = nextState
+        }
     }
 
     @objc

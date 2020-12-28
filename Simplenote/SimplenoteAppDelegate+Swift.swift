@@ -99,7 +99,7 @@ extension SimplenoteAppDelegate {
     /// Ensures the Notes List / Tags list are visible
     ///
     func ensureNotesListIsVisible() {
-        splitViewController.refreshCollapsibleItems(collapsed: false)
+        splitViewController.refreshSplitViewItem(ofKind: .notes, collapsed: false)
     }
 }
 
