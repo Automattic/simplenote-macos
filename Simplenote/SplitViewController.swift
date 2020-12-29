@@ -18,6 +18,7 @@ class SplitViewController: NSSplitViewController {
     override func loadView() {
         let splitView = SplitView()
         splitView.isVertical = true
+        splitView.dividerStyle = .thin
         self.splitView = splitView
         self.view = splitView
     }
