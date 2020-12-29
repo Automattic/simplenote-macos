@@ -65,7 +65,7 @@ extension Options {
     @objc
     var editorFullWidth: Bool {
         get {
-            defaults.bool(forKey: .editorFullWidth)
+            defaults.bool(forKey: .editorFullWidth, defaultValue: true)
         }
         set {
             defaults.set(newValue, forKey: .editorFullWidth)
