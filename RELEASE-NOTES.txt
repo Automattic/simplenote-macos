@@ -7,6 +7,7 @@
 - New Notes List Sort Modes #33
 - Notes List now display row separators #758
 - Fixed a bug that affected Multiple Selection in Big Sur #753
+- Full Width Line Length is now enabeld by default #762
  
 2.5
 -----
