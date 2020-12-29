@@ -180,13 +180,12 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func notesSortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
+        guard let item = sender as? NSMenuItem, let identifier = item.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {
             return
         }
 
-        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.noteSortAlphaMenuItem
-        Options.shared.alphabeticallySortNotes = isAlphaOn
-        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+        Options.shared.notesListSortMode = newMode
+        SPTracker.trackSettingsNoteListSortMode(newMode.description)
     }
 
     @IBAction
@@ -268,8 +267,11 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
             return validateNotesDisplayMenuItem(menuItem)
 
-        case .noteSortAlphaMenuItem, .noteSortUpdatedMenuItem:
-            return validateNotesSortMenuItem(menuItem)
+        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
+             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
+             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
+
+            return validateNotesSortModeMenuItem(menuItem)
 
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
@@ -325,12 +327,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         return true
     }
 
-    func validateNotesSortMenuItem(_ item: NSMenuItem) -> Bool {
-        let isAlphaItem = item.identifier == .noteSortAlphaMenuItem
-        let isAlphaEnabled = Options.shared.alphabeticallySortNotes
-
-        item.state = isAlphaItem == isAlphaEnabled ? .on : .off
-
+    func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
+        let isSelected = Options.shared.notesListSortMode.noteListInterfaceID == item.identifier
+        item.state = isSelected ? .on : .off
         return true
     }
 

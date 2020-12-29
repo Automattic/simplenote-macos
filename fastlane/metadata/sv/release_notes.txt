@@ -1,0 +1,6 @@
+- Huvudfönstrets titelfält har tagits bort 
+- BigSur Inset-stil används
+- Sökfältet har flyttat
+- Minimikravet på OS har uppdaterats till 10.14
+- Rubrikerna för Etiketter och Verktygsfältet visas nu med en oskärpa-effekt
+- Ett fel som gjorde att Metrics-användargränssnittet visade överlappande text har åtgärdats

@@ -1,0 +1,6 @@
+- Hemos eliminado la barra de título de la ventana principal
+- Hemos adoptado el estilo de inserción de Big Sur
+- Hemos cambiado la ubicación de la barra de búsqueda
+- Hemos actualizado el requisito de sistema operativo mínimo a 10,14
+- Las etiquetas y los encabezados de la barra de herramientas ahora muestran un efecto borroso
+- Hemos corregido un error que hacía que la interfaz de usuario de métricas mostrara texto superpuesto
