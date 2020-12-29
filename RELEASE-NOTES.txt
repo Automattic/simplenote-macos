@@ -8,6 +8,7 @@
 - Search Results are now global #760
 - Notes List now display row separators #758
 - Fixed a bug that affected Multiple Selection in Big Sur #753
+- Fixed a bug that caused an artifact to show up in the SplitView dividers #779
  
 2.5
 -----
