@@ -24,6 +24,18 @@ enum SplitItemMetrics {
         return sidebarTopInsetBigSur
     }
 
+    /// List Insets: Content
+    ///
+    static var listContentTopInset: CGFloat {
+        sidebarTopInset
+    }
+
+    /// List Insets: Scroller
+    ///
+    static var listScrollerTopInset: CGFloat {
+        sidebarTopInset
+    }
+
     /// Editor Insets: Content
     ///
     static var editorContentTopInset: CGFloat {
@@ -37,11 +49,7 @@ enum SplitItemMetrics {
     /// Editor Insets: Scroller
     ///
     static var editorScrollerTopInset: CGFloat {
-        guard #available(macOS 11, *) else {
-            return sidebarTopInsetLegacy
-        }
-
-        return sidebarTopInsetBigSur
+        sidebarTopInset
     }
 
     /// Header Alpha Threshold: Alpha Visibility threshold after which the Blur should be enabled

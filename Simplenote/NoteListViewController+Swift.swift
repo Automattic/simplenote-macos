@@ -30,8 +30,8 @@ extension NoteListViewController {
     ///
     @objc
     func refreshScrollInsets() {
-        clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
-        scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
+        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset
     }
 
     /// Ensures only the actions that are valid can be performed
