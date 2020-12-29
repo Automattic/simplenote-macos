@@ -7,6 +7,7 @@
 - New Notes List Sort Modes #33
 - Notes List now display row separators #758
 - Fixed a bug that affected Multiple Selection in Big Sur #753
+- Fixed a bug that caused the Editor's Scrollbar to get clipped #777
  
 2.5
 -----
