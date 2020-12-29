@@ -9,9 +9,9 @@ enum SplitItemMetrics {
     private static let sidebarTopInsetLegacy = CGFloat(52)
     private static let sidebarTopInsetBigSur = CGFloat(62)
 
-    /// Editor Insets
-    private static let editorTopInsetLegacy = CGFloat(38)
-    private static let editorTopInsetBigSur = CGFloat(48)
+    /// Editor: Content Insets
+    private static let editorContentTopInsetLegacy = CGFloat(38)
+    private static let editorContentTopInsetBigSur = CGFloat(48)
 
     
     /// Sidebar Insets: Tags + Notes Lists
@@ -24,14 +24,24 @@ enum SplitItemMetrics {
         return sidebarTopInsetBigSur
     }
 
-    /// Editor Insets
+    /// Editor Insets: Content
     ///
-    static var editorTopInset: CGFloat {
+    static var editorContentTopInset: CGFloat {
         guard #available(macOS 11, *) else {
-            return editorTopInsetLegacy
+            return editorContentTopInsetLegacy
         }
 
-        return editorTopInsetBigSur
+        return editorContentTopInsetBigSur
+    }
+
+    /// Editor Insets: Scroller
+    ///
+    static var editorScrollerTopInset: CGFloat {
+        guard #available(macOS 11, *) else {
+            return sidebarTopInsetLegacy
+        }
+
+        return sidebarTopInsetBigSur
     }
 
     /// Header Alpha Threshold: Alpha Visibility threshold after which the Blur should be enabled
