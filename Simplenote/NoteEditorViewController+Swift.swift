@@ -91,6 +91,47 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Display Mode
+//
+extension NoteEditorViewController {
+
+    @objc
+    func refreshTextContainer() {
+        guard let container = noteEditor.textContainer else {
+            fatalError()
+        }
+
+        let superviewWidth              = view.frame.width
+        let targetMaximumTextWidth      = maximumTextWidth(for: superviewWidth)
+        let targetContainerInset        = textContainerInset(superviewWidth: superviewWidth, maximumTextWidth: targetMaximumTextWidth)
+        let targetContainerSize         = textContainerSize(superviewWidth: superviewWidth, textContainerInset: targetContainerInset)
+
+        noteEditor.textContainerInset  = targetContainerInset
+        container.containerSize        = targetContainerSize
+        container.widthTracksTextView  = false
+    }
+
+    private func maximumTextWidth(for superviewWidth: CGFloat) -> CGFloat {
+        Options.shared.editorFullWidth ? superviewWidth : min(EditorMetrics.maximumNarrowWidth, superviewWidth)
+    }
+
+    /// Whenever `SuperviewWidth > MaximumTextWidth` this API will return an Inset which will center onscreen the TextContainer
+    ///
+    private func textContainerInset(superviewWidth: CGFloat, maximumTextWidth: CGFloat) -> NSSize {
+        let width = max((superviewWidth - maximumTextWidth), .zero) * 0.5
+        return NSMakeSize(width + EditorMetrics.minimumPadding, EditorMetrics.minimumPadding)
+    }
+
+    /// # Note: Why not receiving the MaximumTextWidth instead?
+    /// Because in Narrow Display we intend to center the TextContainer, and such calculation is actually done in `textContainerInset`
+    ///
+    private func textContainerSize(superviewWidth: CGFloat, textContainerInset: NSSize) -> NSSize {
+        let width = superviewWidth - textContainerInset.width * 2
+        return NSSize(width: width, height: .greatestFiniteMagnitude)
+    }
+}
+
+
 // MARK: - Internal State
 //
 extension NoteEditorViewController {
@@ -860,4 +901,18 @@ private extension NoteEditorViewController {
 
         return interlinkWindowController
     }
+}
+
+
+// MARK: - EditorMetrics
+//
+private enum EditorMetrics {
+
+    /// Note: This matches the Electron apps max editor width
+    ///
+    static let maximumNarrowWidth = CGFloat(750)
+
+    /// Minimum Text Padding: To be applied Vertically / Horizontally
+    ///
+    static let minimumPadding = CGFloat(20)
 }
