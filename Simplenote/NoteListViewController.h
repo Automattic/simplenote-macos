@@ -8,17 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-@import Simperium_OSX;
 
-@class BackgroundView;
+@class NoteEditorViewController;
+@class NotesListController;
 @class SPTableView;
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NoteListViewController : NSViewController <NSTableViewDataSource, NSTextFieldDelegate, SimperiumDelegate, NSMenuDelegate>
+@interface NoteListViewController : NSViewController
 
-@property (nonatomic, strong, readonly) IBOutlet NSArrayController      *arrayController;
 @property (nonatomic, strong, readonly) IBOutlet NSBox                  *backgroundBox;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *titleLabel;
 @property (nonatomic, strong, readonly) IBOutlet NSTextField            *statusField;
@@ -32,24 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) IBOutlet NSMenu                 *trashListMenu;
 @property (nonatomic, strong, nullable) NSLayoutConstraint              *titleSemaphoreLeadingConstraint;
 
+// TODO: Work in Progress. Decouple ASAP!
+//
+@property (nonatomic, strong, readonly) NoteEditorViewController        *noteEditorViewController;
+@property (nonatomic, strong,  nonnull) NotesListController             *listController;
 @property (nonatomic, assign, readonly) BOOL                            viewingTrash;
-@property (nonatomic, strong, nullable) NSString                        *searchKeyword;
 
-- (void)loadNotes;
-- (void)reloadSynchronously;
 - (void)setWaitingForIndex:(BOOL)waiting;
-- (NSArray<Note *> *)selectedNotes;
-- (void)setNotesPredicate:(NSPredicate *)predicate;
-- (BOOL)displaysNoteForKey:(NSString *)key;
-- (NSInteger)rowForNoteKey:(NSString *)key;
-- (void)selectRow:(NSInteger)row;
-- (void)selectRowForNoteKey:(NSString *)key;
-- (void)reloadRowForNoteKey:(NSString *)key;
-- (void)reloadDataAndPreserveSelection;
 - (void)deleteNote:(Note *)note;
 - (IBAction)deleteAction:(id)sender;
-- (void)noteKeysWillChange:(NSSet *)keys;
-- (void)noteKeyDidChange:(NSString *)key memberNames:(NSArray *)memberNames;
 
 @end
 
