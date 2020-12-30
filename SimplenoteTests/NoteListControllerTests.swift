@@ -91,7 +91,6 @@ extension NoteListControllerTests {
         XCTAssertEqual(noteListController.numberOfNotes, notes.count)
 
         noteListController.sortMode = .alphabeticallyDescending
-        noteListController.searchSortMode = .alphabeticallyDescending
         noteListController.performFetch()
 
         let reversedNotes = Array(notes.reversed())
@@ -116,7 +115,7 @@ extension NoteListControllerTests {
         storage.save()
         XCTAssertEqual(noteListController.numberOfNotes, 2)
 
-        noteListController.searchKeyword = "34"
+        noteListController.filter = .searching(keyword: "34")
         noteListController.performFetch()
 
         XCTAssertEqual(noteListController.numberOfNotes, 1)
@@ -124,18 +123,14 @@ extension NoteListControllerTests {
 
     /// Verifies that the SearchMode disregards active Filters
     ///
-    func testSearchModeYieldsGlobalResultsDisregardingActiveFilter() {
+    func testSearchModeYieldsGlobalResultsDisregardingDeletedEntities() {
         let note = storage.insertSampleNote(contents: "Something Here")
+        note.deleted = true
         storage.save()
 
-        noteListController.filter = .deleted
+        noteListController.filter = .searching(keyword: "Here") 
         noteListController.performFetch()
-
         XCTAssertEqual(noteListController.numberOfNotes, .zero)
-
-        noteListController.searchKeyword = "Here"
-        noteListController.performFetch()
-        XCTAssertEqual(noteListController.notes.first, note)
     }
 }
 
@@ -165,7 +160,7 @@ extension NoteListControllerTests {
         storage.save()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.searchKeyword = "0"
+        noteListController.filter = .searching(keyword: "0")
         noteListController.performFetch()
 
         for (index, payload) in expected.enumerated() {
@@ -180,7 +175,7 @@ extension NoteListControllerTests {
         insertSampleNotes(count: 100)
         storage.save()
 
-        noteListController.searchKeyword = "055"
+        noteListController.filter = .searching(keyword: "055")
         noteListController.performFetch()
         XCTAssertEqual(noteListController.numberOfNotes, 1)
 
@@ -213,33 +208,11 @@ extension NoteListControllerTests {
         storage.save()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.searchKeyword = "0"
+        noteListController.filter = .searching(keyword: "0")
         noteListController.performFetch()
 
         for (index, note) in notes.enumerated() {
             XCTAssertEqual(noteListController.indexOfNote(withSimperiumKey: note.simperiumKey), index)
-        }
-    }
-
-    /// Verifies that the SortMode property properly applies the specified order mode to the retrieved entities
-    ///
-    func testListControllerProperlyAppliesSearchSortModeToSearchResults() {
-        let (notes, _) = insertSampleNotes(count: 100)
-        storage.save()
-
-        // Search Mode: Expect an inverted collection (regardless of the regular sort mode)
-        noteListController.sortMode = .alphabeticallyAscending
-        noteListController.searchSortMode = .alphabeticallyDescending
-
-        // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.searchKeyword = "0"
-        noteListController.performFetch()
-
-        let reversedNotes = Array(notes.reversed())
-        let retrievedNotes = noteListController.notes
-
-        for (index, note) in retrievedNotes.enumerated() {
-            XCTAssertEqual(note.content, reversedNotes[index].content)
         }
     }
 }
@@ -318,7 +291,7 @@ extension NoteListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.searchKeyword = "Test"
+        noteListController.filter = .searching(keyword: "Test")
         noteListController.performFetch()
 
         storage.insertSampleNote(contents: "Test")
@@ -337,7 +310,7 @@ extension NoteListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.searchKeyword = "Test"
+        noteListController.filter = .searching(keyword: "Test")
         note.content = "Test Updated"
         storage.save()
 
@@ -354,7 +327,7 @@ extension NoteListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.searchKeyword = "Test"
+        noteListController.filter = .searching(keyword: "Test")
         storage.delete(note)
         storage.save()
 
