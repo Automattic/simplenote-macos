@@ -35,8 +35,8 @@ extension NoteEditorViewController {
 
     @objc
     func refreshScrollInsets() {
-        clipView.contentInsets.top = SplitItemMetrics.editorTopInset
-        scrollView.scrollerInsets.top = SplitItemMetrics.editorTopInset
+        clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
     }
 }
 
