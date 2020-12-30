@@ -35,28 +35,7 @@ class NoteListController: NSObject {
                 return
             }
 
-            refreshPredicates()
-        }
-    }
-
-    /// Refreshes the Internal State, so that Search Results matching the specified Keyword will be filtered out.
-    /// - Important: It's up to the caller to invoke `performFetch`!!
-    ///
-    var searchKeyword: String? {
-        get {
-            guard case let .searching(keyword) = self.state else {
-                return nil
-            }
-
-            return keyword
-        }
-        set {
-            guard let keyword = newValue, !keyword.isEmpty else {
-                state = .results
-                return
-            }
-
-            state = .searching(keyword: keyword)
+            refreshEverything()
         }
     }
 
