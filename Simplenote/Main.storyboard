@@ -207,7 +207,7 @@
         <!--Note List View Controller-->
         <scene sceneID="GlM-Tn-ZsG">
             <objects>
-                <viewController storyboardIdentifier="NoteListViewController" id="JtV-0Z-Zh8" customClass="NoteListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteListViewController" id="JtV-0Z-Zh8" customClass="NoteListViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PJl-uT-IxK">
                         <rect key="frame" x="0.0" y="0.0" width="294" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -331,14 +331,9 @@
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
-                                                    <connections>
-                                                        <binding destination="QdT-mP-kT8" name="value" keyPath="arrangedObjects.content" id="EEv-j1-4gj"/>
-                                                    </connections>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <binding destination="QdT-mP-kT8" name="content" keyPath="arrangedObjects" id="5dm-92-UYZ"/>
-                                                <binding destination="QdT-mP-kT8" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="5dm-92-UYZ" id="T7G-fh-wQl"/>
                                                 <outlet property="delegate" destination="JtV-0Z-Zh8" id="Nhg-8Q-VaR"/>
                                             </connections>
                                         </tableView>
@@ -404,7 +399,7 @@
                                     <color key="backgroundColor" white="0.79553489960000001" alpha="1" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5oO-Ju-l1S">
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5oO-Ju-l1S">
                                 <rect key="frame" x="139" y="292" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
@@ -433,7 +428,6 @@
                     </view>
                     <connections>
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
-                        <outlet property="arrayController" destination="QdT-mP-kT8" id="7HE-P5-XlT"/>
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
@@ -490,7 +484,6 @@
                         <outlet property="delegate" destination="JtV-0Z-Zh8" id="eTf-Hn-ETC"/>
                     </connections>
                 </menu>
-                <arrayController mode="entity" entityName="Note" fetchPredicateFormat="deleted == 0" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="QdT-mP-kT8" customClass="NotesArrayController"/>
                 <customObject id="41I-un-qkw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="382" y="220"/>

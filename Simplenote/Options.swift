@@ -73,6 +73,18 @@ extension Options {
         }
     }
 
+    /// Flag used to run First Launch initialization (such as Welcome Note creation)
+    ///
+    @objc
+    var initialSetupComplete: Bool {
+        get {
+            defaults.bool(forKey: .initialSetupComplete)
+        }
+        set {
+            defaults.set(newValue, forKey: .initialSetupComplete)
+        }
+    }
+
     /// Notes List: Condensed
     ///
     @objc

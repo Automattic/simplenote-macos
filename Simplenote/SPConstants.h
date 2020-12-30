@@ -14,8 +14,6 @@
 #pragma mark Constants
 #pragma mark ====================================================================================
 
-extern NSString * const SPWelcomeNoteID;
-
 extern NSString * const SPSimperiumPreferencesObjectKey;
 extern NSString * const SPAutomatticAnalyticCookiesURL;
 extern NSString * const SPAutomatticAnalyticPrivacyURL;
