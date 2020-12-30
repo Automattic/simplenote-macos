@@ -512,6 +512,14 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 //
 extension NoteListViewController: EditorControllerSearchDelegate {
 
+    public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
+        SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
+    }
+
+    public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
+        // NO-OP
+    }
+
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
         self.keyword = keyword

@@ -133,6 +133,12 @@ extension SimplenoteAppDelegate {
         ensureSelectedTagDisplaysNote(key: simperiumKey)
         selectNote(withKey: simperiumKey)
     }
+
+    /// Ensures the Notes List / Tags list are visible
+    ///
+    func ensureNotesListIsVisible() {
+        splitViewController.refreshSplitViewItem(ofKind: .notes, collapsed: false)
+    }
 }
 
 
