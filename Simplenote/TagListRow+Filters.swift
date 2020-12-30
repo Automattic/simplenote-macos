@@ -1,13 +1,13 @@
 import Foundation
 
 
-// MARK: - NotesListFilter: Public API
+// MARK: - NoteListFilter: Public API
 //
 extension TagListRow {
 
-    /// Returns the NotesListFilter that matches with the receiver (if any)
+    /// Returns the NoteListFilter that matches with the receiver (if any)
     ///
-    var matchingNotesFilter: NotesListFilter? {
+    var matchingNotesFilter: NoteListFilter? {
         switch self {
         case .allNotes:
             return .everything

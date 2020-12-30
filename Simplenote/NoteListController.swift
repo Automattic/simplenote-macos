@@ -17,7 +17,7 @@ class NoteListController: NSObject {
 
     /// FSM: Active State
     ///
-    private(set) var state: NotesListState = .results {
+    private(set) var state: NoteListState = .results {
         didSet {
             guard oldValue != state else {
                 return
@@ -29,7 +29,7 @@ class NoteListController: NSObject {
 
     /// Filter: Applied when we're not in Search Mode
     ///
-    var filter: NotesListFilter = .everything {
+    var filter: NoteListFilter = .everything {
         didSet {
             guard oldValue != filter else {
                 return
