@@ -12,22 +12,10 @@ class NoteListController: NSObject {
     ///
     private let viewContext: NSManagedObjectContext
     private lazy var notesController = ResultsController<Note>(viewContext: viewContext,
-                                                               matching: state.predicateForNotes(filter: filter),
-                                                               sortedBy: state.descriptorsForNotes(sortMode: sortMode))
+                                                               matching: filter.predicateForNotes(),
+                                                               sortedBy: filter.descriptorsForNotes(sortMode: sortMode))
 
-    /// FSM: Active State
-    ///
-    private(set) var state: NoteListState = .results {
-        didSet {
-            guard oldValue != state else {
-                return
-            }
-
-            refreshEverything()
-        }
-    }
-
-    /// Filter: Applied when we're not in Search Mode
+    /// Active Filter
     ///
     var filter: NoteListFilter = .everything {
         didSet {
@@ -139,11 +127,11 @@ extension NoteListController {
 private extension NoteListController {
 
     func refreshPredicates() {
-        notesController.predicate = state.predicateForNotes(filter: filter)
+        notesController.predicate = filter.predicateForNotes()
     }
 
     func refreshSortDescriptors() {
-        notesController.sortDescriptors = state.descriptorsForNotes(sortMode: sortModeForActiveState)
+        notesController.sortDescriptors = filter.descriptorsForNotes(sortMode: sortMode)
     }
 
     func refreshEverything() {
