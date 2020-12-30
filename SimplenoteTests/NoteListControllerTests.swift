@@ -122,42 +122,6 @@ extension NoteListControllerTests {
         XCTAssertEqual(noteListController.numberOfNotes, 1)
     }
 
-    /// Verifies that an Empty Keyword causes the NotesList to go back into Results Mode
-    ///
-    func testEmptyKeywordSwitchesBackToResultsMode() {
-        let (notes, _) = insertSampleNotes(count: 100)
-        storage.save()
-
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
-
-        noteListController.searchKeyword = "99"
-        noteListController.performFetch()
-
-        XCTAssertEqual(noteListController.numberOfNotes, 1)
-
-        noteListController.searchKeyword = ""
-        noteListController.performFetch()
-
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
-    }
-
-    /// Verifies that a nil Keyword causes the NotesList to go back into Results Mode
-    ///
-    func testNullKeywordSwitchesBackToResultsMode() {
-        let (notes, _) = insertSampleNotes(count: 100)
-        storage.save()
-
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
-
-        noteListController.searchKeyword = "99"
-        noteListController.performFetch()
-        XCTAssertEqual(noteListController.numberOfNotes, 1)
-
-        noteListController.searchKeyword = nil
-        noteListController.performFetch()
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
-    }
-
     /// Verifies that the SearchMode disregards active Filters
     ///
     func testSearchModeYieldsGlobalResultsDisregardingActiveFilter() {
