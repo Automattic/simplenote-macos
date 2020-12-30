@@ -3,21 +3,21 @@ import SimplenoteFoundation
 @testable import Simplenote
 
 
-// MARK: - NotesListControllerTests
+// MARK: - NoteListControllerTests
 //
-class NotesListControllerTests: XCTestCase {
+class NoteListControllerTests: XCTestCase {
 
     /// Let's launch an actual CoreData testing stack 🤟
     ///
     private let storage = MockupStorage()
-    private var noteListController: NotesListController!
+    private var noteListController: NoteListController!
 
 
     // MARK: - Overridden Methods
 
     override func setUp() {
         super.setUp()
-        noteListController = NotesListController(viewContext: storage.viewContext)
+        noteListController = NoteListController(viewContext: storage.viewContext)
         noteListController.performFetch()
     }
 }
@@ -25,7 +25,7 @@ class NotesListControllerTests: XCTestCase {
 
 // MARK: - Tests: Filters
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that the Filter property properly filters Deleted notes
     ///
@@ -80,7 +80,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: Sorting
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that the SortMode property properly applies the specified order mode to the retrieved entities
     ///
@@ -105,7 +105,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: Search
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that the Search API causes the List Controller to show matching entities
     ///
@@ -178,7 +178,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: `note(at:)`
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that `note(at: Index)` returns the proper Note when in results mode
     ///
@@ -228,7 +228,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: `indexOfNote(withSimperiumKey:)`
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that `indexOfNote(withSimperiumKey:)` returns the proper Note when in Results Mode
     ///
@@ -283,7 +283,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: onDidChangeContent
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that `onDidChangeContent` is invoked for: `Insertion OP` /  `Results Mode`
     ///
@@ -436,7 +436,7 @@ extension NotesListControllerTests {
 
 // MARK: - Private APIs
 //
-private extension NotesListControllerTests {
+private extension NoteListControllerTests {
 
     /// Inserts `N` Notes  with ascending payloads (Contents)
     ///

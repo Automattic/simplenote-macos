@@ -23,7 +23,7 @@ class NoteListViewController: NSViewController {
 
     /// ListController
     ///
-    private lazy var listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
+    private lazy var listController = NoteListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
 
     /// TODO: Work in Progress. Decouple with a delegate please
     ///

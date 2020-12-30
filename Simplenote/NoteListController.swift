@@ -4,9 +4,9 @@ import SimplenoteFoundation
 import SimplenoteSearch
 
 
-// MARK: - NotesListController
+// MARK: - NoteListController
 //
-class NotesListController: NSObject {
+class NoteListController: NSObject {
 
     /// Core Data Kung Fu
     ///
@@ -105,7 +105,7 @@ class NotesListController: NSObject {
 
 // MARK: - Public API
 //
-extension NotesListController {
+extension NoteListController {
 
     /// Number of the notes we've got!
     ///
@@ -169,7 +169,7 @@ extension NotesListController {
 
 // MARK: - Private API: ResultsController Refreshing
 //
-private extension NotesListController {
+private extension NoteListController {
 
     func refreshPredicates() {
         notesController.predicate = state.predicateForNotes(filter: filter)
@@ -188,7 +188,7 @@ private extension NotesListController {
 
 // MARK: - Private API
 //
-private extension NotesListController {
+private extension NoteListController {
 
     func startListeningToNoteEvents() {
         notesController.onWillChangeContent = { [weak self] in
