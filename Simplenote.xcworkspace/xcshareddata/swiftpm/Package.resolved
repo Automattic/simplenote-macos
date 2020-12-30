@@ -6,8 +6,8 @@
         "repositoryURL": "git@github.com:Automattic/SimplenoteFoundation-Swift.git",
         "state": {
           "branch": null,
-          "revision": "77346d7b4d3b2a5d7a0034be06a33e45fbc9d414",
-          "version": null
+          "revision": "2731e4d28c42d394ddc62cd864d9f7ff96759228",
+          "version": "1.3.0"
         }
       },
       {
