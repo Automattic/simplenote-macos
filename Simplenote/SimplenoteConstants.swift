@@ -18,11 +18,12 @@ class SimplenoteConstants: NSObject {
     ///
     static let simplenoteScheme = "simplenote"
 
-    /// Simplenote: Interlink Host
+    /// Simplenote: Interlink
     ///
     static let simplenoteInterlinkHost = "note"
-
-    /// Simplenote: Interlink Maximum Title Length
-    ///
     static let simplenoteInterlinkMaxTitleLength = 150
+
+    /// Reserved Object Keys
+    ///
+    static let welcomeNoteObjectKey = "welcomeNote-Mac"
 }

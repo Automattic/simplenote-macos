@@ -20,11 +20,6 @@ class NotesListControllerTests: XCTestCase {
         noteListController = NotesListController(viewContext: storage.viewContext)
         noteListController.performFetch()
     }
-
-    override func tearDown() {
-        super.tearDown()
-        storage.reset()
-    }
 }
 
 
@@ -101,7 +96,7 @@ extension NotesListControllerTests {
 
         let reversedNotes = Array(notes.reversed())
 
-        for (index, note) in noteListController.retrievedNotes.enumerated() {
+        for (index, note) in noteListController.notes.enumerated() {
             XCTAssertEqual(note.content, reversedNotes[index].content)
         }
     }
@@ -176,7 +171,7 @@ extension NotesListControllerTests {
 
         noteListController.searchKeyword = "Here"
         noteListController.performFetch()
-        XCTAssertEqual(noteListController.retrievedNotes.first, note)
+        XCTAssertEqual(noteListController.notes.first, note)
     }
 }
 
@@ -277,7 +272,7 @@ extension NotesListControllerTests {
         noteListController.performFetch()
 
         let reversedNotes = Array(notes.reversed())
-        let retrievedNotes = noteListController.retrievedNotes
+        let retrievedNotes = noteListController.notes
 
         for (index, note) in retrievedNotes.enumerated() {
             XCTAssertEqual(note.content, reversedNotes[index].content)
