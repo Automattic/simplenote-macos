@@ -116,18 +116,16 @@ extension NotesListController {
 
     /// Returns all of the Retrieved Notes
     ///
-    var retrievedNotes: [Note] {
+    var notes: [Note] {
         notesController.fetchedObjects
     }
 
     /// Returns the index of a given note (if any)
     ///
     func indexOfNote(withSimperiumKey key: String) -> Int? {
-        for (index, note) in notesController.fetchedObjects.enumerated() where note.simperiumKey == key {
-            return index
+        return notesController.fetchedObjects.firstIndex { note in
+            note.simperiumKey == key
         }
-
-        return nil
     }
 
     /// Returns the Indexes for the specified Note Keys (if any)
@@ -148,8 +146,8 @@ extension NotesListController {
     /// Returns the Fetched Note with the specified SimperiumKey (if any)
     ///
     func note(forSimperiumKey key: String) -> Note? {
-        notesController.fetchedObjects.first { note in
-            note.simperiumKey == key
+        indexOfNote(withSimperiumKey: key).flatMap { index in
+            note(at: index)
         }
     }
 
