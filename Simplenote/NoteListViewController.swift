@@ -97,8 +97,8 @@ private extension NoteListViewController {
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     func refreshScrollInsets() {
-        clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
-        scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
+        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset
     }
 }
 
