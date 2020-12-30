@@ -312,7 +312,7 @@ private extension NoteListViewController {
     ///
     func nextListFilter() -> NoteListFilter {
         if let keyword = keyword, !keyword.isEmpty {
-            return .searching(keyword: keyword)
+            return .search(keyword: keyword)
         }
 
         switch SimplenoteAppDelegate.shared().selectedTagFilter {

@@ -9,7 +9,7 @@ enum NoteListFilter: Equatable {
     case everything
     case tag(name: String)
     case untagged
-    case searching(keyword: String)
+    case search(keyword: String)
 }
 
 
@@ -34,7 +34,7 @@ extension NoteListFilter {
         case .untagged:
             subpredicates.append( NSPredicate.predicateForUntaggedNotes() )
 
-        case .searching(let keyword):
+        case .search(let keyword):
             subpredicates.append( NSPredicate.predicateForNotes(searchText: keyword) )
         }
 
@@ -47,7 +47,7 @@ extension NoteListFilter {
         var descriptors = [NSSortDescriptor]()
 
         switch self {
-        case .searching:
+        case .search:
             // Search shouldn't be affected by pinned notes
             break
         default:
@@ -73,7 +73,7 @@ extension NoteListFilter {
             return name
         case .untagged:
             return NSLocalizedString("Untagged", comment: "Untagged Notes Title")
-        case .searching:
+        case .search:
             return NSLocalizedString("Searching", comment: "Search Results Title")
         }
     }
