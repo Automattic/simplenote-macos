@@ -10,8 +10,6 @@
 #import "Note.h"
 #import "NoteEditorViewController.h"
 #import "SimplenoteAppDelegate.h"
-#import "NotesArrayController.h"
-#import "TagListViewController.h"
 #import "SPTableView.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
@@ -20,7 +18,6 @@
 
 
 @interface NoteListViewController () <NSTableViewDelegate>
-@property (nonatomic, strong) IBOutlet NSArrayController    *arrayController;
 @property (nonatomic, strong) IBOutlet NSBox                *backgroundBox;
 @property (nonatomic, strong) IBOutlet NSTextField          *titleLabel;
 @property (nonatomic, strong) IBOutlet NSTextField          *statusField;
@@ -32,7 +29,6 @@
 @property (nonatomic, strong) IBOutlet NSButton             *addNoteButton;
 @property (nonatomic, strong) IBOutlet NSMenu               *noteListMenu;
 @property (nonatomic, strong) IBOutlet NSMenu               *trashListMenu;
-@property (nonatomic, strong) NSString                      *oldTags;
 @property (nonatomic, assign) BOOL                          viewingTrash;
 @property (nonatomic, assign) BOOL                          preserveSelection;
 @end
@@ -48,17 +44,6 @@
 {
     [super viewDidLoad];
 
-    self.oldTags = @"";
-    self.arrayController.managedObjectContext = self.mainContext;
-
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(notesArrayDidChange:)
-                                                 name: kNotesArrayDidChangeNotification
-                                               object: self.arrayController];
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(notesArraySelectionDidChange:)
-                                                 name: kNotesArraySelectionDidChangeNotification
-                                               object: self.arrayController];
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(displayModeDidChange:)
                                                  name: NoteListDisplayModeDidChangeNotification
@@ -75,17 +60,15 @@
                                              selector: @selector(didBeginViewingTrash:)
                                                  name: TagListDidBeginViewingTrashNotification
                                                object: nil];
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(didEmptyTrash:)
-                                                 name: TagListDidEmptyTrashNotification
-                                               object: nil];
 
+    [self setupResultsController];
     [self setupProgressIndicator];
     [self setupTableView];
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
+    [self startDisplayingEntities];
 
-    [self applyStyle];
+    [self refreshStyle];
 }
 
 - (void)viewWillLayout
@@ -95,6 +78,7 @@
     [self refreshHeaderState];
 }
 
+/* TODO: Nuke!
 - (void)loadNotes
 {
     [self.arrayController fetch:self];
@@ -104,6 +88,7 @@
 {
     [self.arrayController fetchWithRequest:nil merge:NO error:nil];
 }
+ */
 
 // TODO: Work in Progress. Decouple with a delegate please
 //
@@ -112,6 +97,7 @@
     return [[SimplenoteAppDelegate sharedDelegate] noteEditorViewController];
 }
 
+/* TODO: Nuke!
 - (NSManagedObjectContext*)mainContext
 {
     return [[SimplenoteAppDelegate sharedDelegate] managedObjectContext];
@@ -137,6 +123,7 @@
     [self.noteEditorViewController displayNote:nil];
     [self.statusField setHidden:NO];
 }
+ */
 
 - (void)setWaitingForIndex:(BOOL)waiting
 {
@@ -151,6 +138,8 @@
 
 
 #pragma mark - Table view
+
+/* TODO: Nuke!
 
 - (BOOL)displaysNoteForKey:(NSString *)key
 {
@@ -285,12 +274,13 @@
     self.arrayController.sortDescriptors = [self sortDescriptors];
     [self.tableView reloadData];
     self.preserveSelection = NO;
-    
+
     // Force array change logic to run in the next run loop
     dispatch_async(dispatch_get_main_queue(), ^() {
         [self notesArrayDidChange:nil];
     });
 }
+
 
 #pragma mark - Notification handlers
 
@@ -334,28 +324,33 @@
     if ([memberNames indexOfObject:@"deleted"] != NSNotFound) {
         needsReloadData = YES;
     }
-    
+
     if (needsReloadData) {
         [self reloadDataAndPreserveSelection];
     }
-    
+
     // Previews in the note list won't update automatically, so do it manually
     [self reloadRowForNoteKey:key];
 }
 
+ */
+
 - (void)didBeginViewingTag:(NSNotification *)notification
 {
+    [SPTracker trackTagRowPressed];
     self.viewingTrash = NO;
-    [self selectedTaglistRowWasUpdated];
+    [self refreshEverything];
 }
 
 - (void)didBeginViewingTrash:(NSNotification *)notification
 {
     [SPTracker trackListTrashPressed];
     self.viewingTrash = YES;
-    [self selectedTaglistRowWasUpdated];
+    [self refreshEverything];
 }
 
+
+/* TODO: Nuke!
 - (void)didEmptyTrash:(NSNotification *)notification
 {
     if (self.allNotes.count != 0) {
@@ -373,6 +368,7 @@
     [self refreshTitle];
     [self selectFirstRow];
 }
+ */
 
 
 #pragma mark - Actions
@@ -380,16 +376,13 @@
 - (void)deleteNote:(Note *)note
 {
     [SPTracker trackListNoteDeleted];
-    
-    [self performPerservingSelectedIndexWithBlock:^{
-        note.deleted = YES;
-        [[[SimplenoteAppDelegate sharedDelegate] simperium] save];
-    }];
+    note.deleted = YES;
+    [[[SimplenoteAppDelegate sharedDelegate] simperium] save];
 }
 
 - (void)deleteAction:(id)sender
 {
-    for (Note *selectedNote in [self selectedNotes]) {
+    for (Note *selectedNote in self.selectedNotes) {
         [self deleteNote:selectedNote];
     }
 }

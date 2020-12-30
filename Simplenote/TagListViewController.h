@@ -38,6 +38,7 @@ extern NSString * const TagListDidEmptyTrashNotification;
 @property (nonatomic, strong, readwrite) TagListState                   *state;
 @property (nonatomic, strong,  readonly) NSArray<Tag *>                 *tagArray;
 @property (nonatomic, assign,  readonly) BOOL                           menuShowing;
+@property (nonatomic, assign, readwrite) BOOL                           mustSkipSelectionDidChange;
 @property (nonatomic, strong,  readonly) Simperium                      *simperium;
 
 - (void)loadTags;

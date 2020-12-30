@@ -144,6 +144,16 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
+    /// Refreshes the Editor's Interface
+    ///
+    @objc
+    func refreshInterface() {
+        refreshToolbarActions()
+        refreshEditorActions()
+        refreshEditorText()
+        refreshTagsField()
+    }
+
     /// Refreshes the Editor's Inner State
     ///
     @objc
@@ -151,6 +161,14 @@ extension NoteEditorViewController {
         noteEditor.isEditable = isDisplayingNote && !viewingTrash
         noteEditor.isSelectable = isDisplayingNote && !viewingTrash
         noteEditor.isHidden = isDisplayingMarkdown
+    }
+
+    /// Refreshes the Editor's Text
+    ///
+    @objc
+    func refreshEditorText() {
+        let content = note?.content ?? ""
+        noteEditor.displayNote(content: content)
     }
 
     /// Refreshes the Editor's UX
