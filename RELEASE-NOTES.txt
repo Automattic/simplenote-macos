@@ -3,15 +3,16 @@
 - New Sidebar Toolbar Action #737
 - New Big Sur Iconset #745
 - New Search Toolbar Action #741
-- Updated Color Palette #733
 - New Notes List Sort Modes #33
-- Search Results are now global #760
-- Notes List now display row separators #758
-- Fixed a bug that affected Multiple Selection in Big Sur #753
-- Fixed a bug that caused the Editor's Scrollbar to get clipped #777
+- Updated Color Palette #733
 - Entering Search Mode now displays automatically the Notes List #770
-- Fixed the Line Height when editing an empty document #771
 - Notes List will now animate content changes #764
+- Notes List now display row separators #758
+- Search Results are now global #760
+- Fixed a bug that affected Multiple Selection in Big Sur #753
+- Fixed a bug that caused an artifact to show up in the SplitView dividers #779
+- Fixed a bug that caused the Editor's Scrollbar to get clipped #777
+- Fixed a bug that caused Line Height to be inconsistent in Empty Documents #771
 - Fixed a bug that caused an unexpected jump in the Tags List #767
 - Fixed a bug that caused the Tags List to go blank upon tag rename #344
  
