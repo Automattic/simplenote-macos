@@ -25,6 +25,10 @@ class NoteListViewController: NSViewController {
     ///
     private lazy var listController = NoteListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
 
+    /// Search Keyword
+    ///
+    private var keyword: String?
+
     /// TODO: Work in Progress. Decouple with a delegate please
     ///
     private var noteEditorViewController: NoteEditorViewController {
@@ -498,7 +502,8 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
-        refreshSearchResults(keyword: keyword)
+        self.keyword = keyword
+        refreshEverything()
     }
 }
 
