@@ -108,6 +108,9 @@ extension NoteEditorViewController {
 
         noteEditor.textContainerInset  = targetContainerInset
         container.containerSize        = targetContainerSize
+
+        /// Note: Disabling `widthTracksTextView` fixes jumpy Scroll Offsets on resize
+        /// Ref. https://github.com/Automattic/simplenote-macos/issues/536
         container.widthTracksTextView  = false
     }
 
