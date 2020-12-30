@@ -12,22 +12,10 @@ class NoteListController: NSObject {
     ///
     private let viewContext: NSManagedObjectContext
     private lazy var notesController = ResultsController<Note>(viewContext: viewContext,
-                                                               matching: state.predicateForNotes(filter: filter),
-                                                               sortedBy: state.descriptorsForNotes(sortMode: sortMode))
+                                                               matching: filter.predicateForNotes(),
+                                                               sortedBy: filter.descriptorsForNotes(sortMode: sortMode))
 
-    /// FSM: Active State
-    ///
-    private(set) var state: NoteListState = .results {
-        didSet {
-            guard oldValue != state else {
-                return
-            }
-
-            refreshEverything()
-        }
-    }
-
-    /// Filter: Applied when we're not in Search Mode
+    /// Active Filter
     ///
     var filter: NoteListFilter = .everything {
         didSet {
@@ -35,28 +23,7 @@ class NoteListController: NSObject {
                 return
             }
 
-            refreshPredicates()
-        }
-    }
-
-    /// Refreshes the Internal State, so that Search Results matching the specified Keyword will be filtered out.
-    /// - Important: It's up to the caller to invoke `performFetch`!!
-    ///
-    var searchKeyword: String? {
-        get {
-            guard case let .searching(keyword) = self.state else {
-                return nil
-            }
-
-            return keyword
-        }
-        set {
-            guard let keyword = newValue, !keyword.isEmpty else {
-                state = .results
-                return
-            }
-
-            state = .searching(keyword: keyword)
+            refreshEverything()
         }
     }
 
@@ -65,18 +32,6 @@ class NoteListController: NSObject {
     var sortMode: SortMode = .alphabeticallyAscending {
         didSet {
             guard oldValue != sortMode else {
-                return
-            }
-
-            refreshSortDescriptors()
-        }
-    }
-
-    /// SortMode: Search Mode
-    ///
-    var searchSortMode: SortMode = .alphabeticallyAscending {
-        didSet {
-            guard case .searching = state, oldValue != searchSortMode else {
                 return
             }
 
@@ -172,11 +127,11 @@ extension NoteListController {
 private extension NoteListController {
 
     func refreshPredicates() {
-        notesController.predicate = state.predicateForNotes(filter: filter)
+        notesController.predicate = filter.predicateForNotes()
     }
 
     func refreshSortDescriptors() {
-        notesController.sortDescriptors = state.descriptorsForNotes(sortMode: sortModeForActiveState)
+        notesController.sortDescriptors = filter.descriptorsForNotes(sortMode: sortMode)
     }
 
     func refreshEverything() {
@@ -197,15 +152,6 @@ private extension NoteListController {
 
         notesController.onDidChangeContent = { [weak self] (_, objectsChangeset) in
             self?.onDidChangeContent?(objectsChangeset)
-        }
-    }
-
-    var sortModeForActiveState: SortMode {
-        switch state {
-        case .searching:
-            return searchSortMode
-        case .results:
-            return sortMode
         }
     }
 }

@@ -25,6 +25,10 @@ class NoteListViewController: NSViewController {
     ///
     private lazy var listController = NoteListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
 
+    /// Search Keyword
+    ///
+    private var keyword: String?
+
     /// TODO: Work in Progress. Decouple with a delegate please
     ///
     private var noteEditorViewController: NoteEditorViewController {
@@ -240,27 +244,14 @@ private extension NoteListViewController {
         refreshPresentedNoteIfNeeded()
     }
 
-    /// Refresh: Filters relevant Notes
-    ///
-    func refreshSearchResults(keyword: String) {
-        refreshListControllerState(keyword: keyword)
-        refreshEverything()
-    }
-
     /// Refresh: ListController <> TableView
     ///
     private func refreshListController() {
-        listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
+        listController.filter = nextListFilter()
         listController.sortMode = Options.shared.notesListSortMode
         listController.performFetch()
 
         tableView.reloadData()
-    }
-
-    /// Refresh: ListController Internal State
-    ///
-    private func refreshListControllerState(keyword: String) {
-        listController.searchKeyword = keyword
     }
 
     /// Refresh:  Actions
@@ -309,6 +300,31 @@ private extension NoteListViewController {
 
         SPTracker.trackListNoteOpened()
         noteEditorViewController.displayNote(targetNote)
+    }
+}
+
+
+// MARK: - Filtering
+//
+private extension NoteListViewController {
+
+    /// Determines the next Filter, based on the current Keyword + Selected Tag Filter
+    ///
+    func nextListFilter() -> NoteListFilter {
+        if let keyword = keyword, !keyword.isEmpty {
+            return .search(keyword: keyword)
+        }
+
+        switch SimplenoteAppDelegate.shared().selectedTagFilter {
+        case .deleted:
+            return .deleted
+        case .everything:
+            return .everything
+        case .tag(let name):
+            return .tag(name: name)
+        case .untagged:
+            return .untagged
+        }
     }
 }
 
@@ -498,7 +514,8 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
-        refreshSearchResults(keyword: keyword)
+        self.keyword = keyword
+        refreshEverything()
     }
 }
 
