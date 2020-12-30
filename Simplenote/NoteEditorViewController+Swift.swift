@@ -230,6 +230,11 @@ extension NoteEditorViewController {
         tagsField.isSelectable = isEnabled
     }
 
+    @objc
+    func resetTagsFieldScrollOffset() {
+        tagsField.scroll(.zero)
+    }
+
     /// Refreshes the TagsField's Tokens
     ///
     private func refreshTagsFieldTokens() {
