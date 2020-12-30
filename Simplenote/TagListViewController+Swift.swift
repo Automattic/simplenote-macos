@@ -80,8 +80,8 @@ extension TagListViewController {
 
     /// Selected TagListFilter, matching the current row
     ///
-    var selectedNotesFilter: NotesListFilter {
-        selectedRow?.matchingNotesFilter ?? .everything
+    var selectedFilter: TagListFilter {
+        selectedRow?.matchingFilter ?? .everything
     }
 }
 
@@ -114,7 +114,7 @@ extension TagListViewController {
     }
 
     private func notifyTagsListFilterDidChange() {
-        let isViewingTrash = selectedNotesFilter == .deleted
+        let isViewingTrash = selectedFilter == .deleted
         let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
         NotificationCenter.default.post(name: name, object: self)
     }

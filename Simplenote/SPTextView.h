@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define kMinEditorPadding 20
 
 @interface SPTextView : NSTextView
 
