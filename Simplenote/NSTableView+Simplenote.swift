@@ -29,6 +29,7 @@ extension NSTableView {
     }
 
     /// Reloads the receiver's data and preserves the selected row
+    /// - Note:If the previously selected row is no more, we'll fallback to selecting the last row
     ///
     func reloadAndPreserveSelection() {
         performPreservingSelection {
