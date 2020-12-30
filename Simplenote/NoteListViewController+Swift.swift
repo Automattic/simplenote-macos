@@ -2,21 +2,79 @@ import Foundation
 import SimplenoteSearch
 
 
-// MARK: - Private Helpers
+// MARK: - NoteListViewController
 //
-extension NoteListViewController {
+class NoteListViewController: NSViewController {
 
-    /// Setup: Results Controller
+    /// Storyboard Outlets
     ///
-    @objc
-    func setupResultsController() {
-        listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
-        listController.performFetch()
+    @IBOutlet private var backgroundBox: NSBox!
+    @IBOutlet private var titleLabel: NSTextField!
+    @IBOutlet private var statusField: NSTextField!
+    @IBOutlet private var progressIndicator: NSProgressIndicator!
+    @IBOutlet private var scrollView: NSScrollView!
+    @IBOutlet private var clipView: NSClipView!
+    @IBOutlet private var tableView: SPTableView!
+    @IBOutlet private var headerEffectView: NSVisualEffectView!
+    @IBOutlet private var addNoteButton: NSButton!
+    @IBOutlet private var noteListMenu: NSMenu!
+    @IBOutlet private var trashListMenu: NSMenu!
+    @IBOutlet private var titleSemaphoreLeadingConstraint: NSLayoutConstraint!
+
+    /// ListController
+    ///
+    private lazy var listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
+
+    /// TODO: Work in Progress. Decouple with a delegate please
+    ///
+    private var noteEditorViewController: NoteEditorViewController {
+        SimplenoteAppDelegate.shared().noteEditorViewController
     }
+
+
+    // MARK: - ViewController Lifecycle
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupProgressIndicator()
+        setupTableView()
+        startListeningToNotifications()
+        startListControllerSync()
+
+        refreshStyle()
+        refreshEverything()
+    }
+
+    override func viewWillLayout() {
+        super.viewWillLayout()
+
+        refreshScrollInsets()
+        refreshHeaderState()
+    }
+
+    @objc
+    func setWaitingForIndex(_ waiting: Bool) {
+        guard waiting else {
+            progressIndicator.stopAnimation(self)
+            return
+        }
+
+        progressIndicator.startAnimation(self)
+    }
+}
+
+
+// MARK: - Interface Initialization
+//
+private extension NoteListViewController {
 
     /// Setup: TableView
     ///
-    @objc
     func setupTableView() {
         tableView.rowHeight = NoteTableCellView.rowHeight
         tableView.selectionHighlightStyle = .regular
@@ -27,20 +85,23 @@ extension NoteListViewController {
 
     /// Setup: Progress Indicator
     ///
-    @objc
     func setupProgressIndicator() {
         progressIndicator.wantsLayer = true
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
-        progressIndicator.isHidden = true
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
-    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.sidebarTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
     }
+}
+
+
+// MARK: - Skinning
+//
+extension NoteListViewController {
 
     /// Refreshes the receiver's style
     ///
@@ -167,9 +228,8 @@ extension NoteListViewController {
 
 // MARK: - Dynamic Properties
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
-    @objc
     var selectedNotes: [Note] {
         listController.notes(at: tableView.selectedRowIndexes)
     }
@@ -181,17 +241,20 @@ extension NoteListViewController {
     var isSelectionNotEmpty: Bool {
         selectedNotes.isEmpty == false
     }
+
+    var isViewingTrash: Bool {
+        listController.filter == .deleted
+    }
 }
 
 
 // MARK: - ListController API(s) 🤟
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
     /// Initializes the NSTableView <> NoteListController Link
     ///
-    @objc
-    func startDisplayingEntities() {
+    func startListControllerSync() {
         tableView.dataSource = self
 
         // We'll preserve the selected rows during an Update OP
@@ -223,11 +286,10 @@ extension NoteListViewController {
 
 // MARK: - Refreshing
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
     /// Refresh: All of the Interface components
     ///
-    @objc
     func refreshEverything() {
         refreshListController()
         refreshEnabledActions()
@@ -263,7 +325,7 @@ extension NoteListViewController {
     /// Refresh:  Actions
     ///
     private func refreshEnabledActions() {
-        addNoteButton.isEnabled = !viewingTrash
+        addNoteButton.isEnabled = !isViewingTrash
     }
 
     /// Refresh: Placeholder
@@ -322,7 +384,7 @@ extension NoteListViewController {
 
     /// Displays and selects the very first row
     ///
-    func displayAndSelectFirstNote() {
+    private func displayAndSelectFirstNote() {
         displayAndSelectNote(at: .zero)
     }
 
@@ -366,38 +428,10 @@ extension NoteListViewController {
 }
 
 
-// MARK: - Notifications
+// MARK: - Header
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
-    @objc
-    func startListeningToScrollNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(clipViewDidScroll),
-                                               name: NSView.boundsDidChangeNotification,
-                                               object: clipView)
-    }
-
-    @objc
-    func startListeningToWindowNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(windowDidResize),
-                                               name: NSWindow.didResizeNotification,
-                                               object: nil)
-    }
-
-    @objc
-    func clipViewDidScroll(sender: Notification) {
-        refreshHeaderState()
-    }
-
-    @objc
-    func windowDidResize(sender: Notification) {
-        // We might need to adjust the Title constraints (in order to prevent collisions!)
-        view.needsUpdateConstraints = true
-    }
-
-    @objc
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
         headerEffectView.alphaValue = newAlpha
@@ -416,7 +450,7 @@ extension NoteListViewController {
 extension NoteListViewController: SPTableViewDelegate {
 
     public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
-        viewingTrash ? trashListMenu : noteListMenu
+        isViewingTrash ? trashListMenu : noteListMenu
     }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
@@ -471,9 +505,8 @@ extension NoteListViewController: NSTableViewDataSource {
 
 // MARK: - NSTableViewDelegate Helpers
 //
-extension NoteListViewController {
+private extension NoteListViewController {
 
-    @objc(noteTableViewCellForNote:)
     func noteTableViewCell(for note: Note) -> NoteTableCellView {
         note.ensurePreviewStringsAreAvailable()
 
@@ -587,6 +620,35 @@ extension NoteListViewController: NSMenuItemValidation {
 //
 extension NoteListViewController {
 
+    func startListeningToNotifications() {
+        let nc = NotificationCenter.default
+
+        // Notifications: Window
+        nc.addObserver(self, selector: #selector(windowDidResize), name: NSWindow.didResizeNotification, object: nil)
+
+        // Notifications: ClipView
+        nc.addObserver(self, selector: #selector(clipViewDidScroll), name: NSView.boundsDidChangeNotification, object: clipView)
+
+        // Notifications: Tags
+        nc.addObserver(self, selector: #selector(didBeginViewingTag), name: .TagListDidBeginViewingTag, object: nil)
+        nc.addObserver(self, selector: #selector(didBeginViewingTrash), name: .TagListDidBeginViewingTrash, object: nil)
+
+        // Notifications: Settings
+        nc.addObserver(self, selector: #selector(displayModeDidChange), name: .NoteListDisplayModeDidChange, object: nil)
+        nc.addObserver(self, selector: #selector(sortModeDidChange), name: .NoteListSortModeDidChange, object: nil)
+    }
+
+    @objc
+    func clipViewDidScroll(sender: Notification) {
+        refreshHeaderState()
+    }
+
+    @objc
+    func windowDidResize(sender: Notification) {
+        // We might need to adjust the Title constraints (in order to prevent collisions!)
+        view.needsUpdateConstraints = true
+    }
+
     @objc
     func displayModeDidChange(_ note: Notification) {
         tableView.rowHeight = NoteTableCellView.rowHeight
@@ -595,6 +657,18 @@ extension NoteListViewController {
 
     @objc
     func sortModeDidChange(_ note: Notification) {
+        refreshEverything()
+    }
+
+    @objc
+    func didBeginViewingTag(_ note: Notification) {
+        SPTracker.trackTagRowPressed()
+        refreshEverything()
+    }
+
+    @objc
+    func didBeginViewingTrash(_ note: Notification) {
+        SPTracker.trackListTrashPressed()
         refreshEverything()
     }
 }
@@ -615,6 +689,16 @@ extension NoteListViewController {
     }
 
     @IBAction
+    func deleteAction(_ sender: Any) {
+        for note in selectedNotes {
+            SPTracker.trackListNoteDeleted()
+            note.deleted = true
+        }
+
+        simperium.save()
+    }
+
+    @IBAction
     func deleteFromTrashWasPressed(_ sender: Any) {
         guard let note = selectedNotes.first else {
             return
@@ -624,6 +708,12 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteDeletedForever()
+    }
+
+    @IBAction
+    func newNoteWasPressed(_ sender: Any) {
+        // TODO: Move the New Note Handler to a (New) NoteController!
+        noteEditorViewController.newNoteWasPressed(sender)
     }
 
     @IBAction

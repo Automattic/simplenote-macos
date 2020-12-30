@@ -13,7 +13,6 @@
 #import "Tag.h"
 #import "NSNotification+Simplenote.h"
 #import "LoginWindowController.h"
-#import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
@@ -95,13 +94,12 @@
 {
     [self configureSimperium];
     [self configureMainInterface];
+    [self configureSplitView];
     [self configureInitialResponder];
     [self applyStyle];
 
     [self configureEditorController];
     [self configureVersionsController];
-
-    [self.tagListViewController loadTags];
     
     [self.simperium setAllBucketDelegates:self];
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;

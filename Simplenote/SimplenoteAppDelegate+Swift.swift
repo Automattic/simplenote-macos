@@ -32,25 +32,22 @@ extension SimplenoteAppDelegate {
     func configureMainInterface() {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
-        let mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
-        let splitViewController = mainWindowController.contentViewController as! SplitViewController
-        let tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
-        let notesViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
-        let editorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+        mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
+        splitViewController = mainWindowController.contentViewController as! SplitViewController
+        tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
+        noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
+        noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+    }
 
+    @objc
+    func configureSplitView() {
         let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
-        let listSplitItem = NSSplitViewItem(contentListWithViewController: notesViewController)
-        let editorSplitItem = NSSplitViewItem(viewController: editorViewController)
+        let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
+        let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
 
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
-
-        self.mainWindowController = mainWindowController
-        self.splitViewController = splitViewController
-        self.tagListViewController = tagListViewController
-        self.noteListViewController = notesViewController
-        self.noteEditorViewController = editorViewController
     }
 
     @objc
