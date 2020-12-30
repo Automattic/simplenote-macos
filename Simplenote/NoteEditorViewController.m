@@ -78,7 +78,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [super viewDidLoad];
 
-    [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage new];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     [self.noteEditor.layoutManager setDefaultAttachmentScaling:NSImageScaleProportionallyDown];
@@ -524,41 +523,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     NSPrintOperation *operation = [NSPrintOperation printOperationWithView:printView];
     [operation setPrintInfo:printInfo];
     [operation runOperation];
-}
-
-
-
-#pragma mark - TagsField Helpers
-
-- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens
-{
-    SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
-    Simperium *simperium                = appDelegate.simperium;
-    Note *note                          = self.note;
-    NSString *oldTags                   = note.tags;
-
-    // Create any new tags that don't already exist
-    for (NSString *token in tokens) {
-        Tag *tag = [simperium searchTagWithName:token];
-        if (!tag && ![token containsEmailAddress]) {
-            [self.tagActionsDelegate editorController:self didAddNewTag:token];
-        }
-    }
-
-    // Update Tags: Internally they're JSON Encoded!
-    [note setTagsFromList:tokens];
-
-    // Ensure the right Tag remains selected
-    if ([note hasTag:appDelegate.selectedTagName] == false) {
-        [appDelegate selectAllNotesTag];
-        [appDelegate selectNoteWithKey:note.simperiumKey];
-    }
-    
-    if ([self.note.tags isEqualToString:oldTags]) {
-        return;
-    }
-    
-    [self save];
 }
 
 

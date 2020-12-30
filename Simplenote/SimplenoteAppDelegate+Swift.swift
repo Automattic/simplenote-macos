@@ -121,10 +121,10 @@ extension SimplenoteAppDelegate {
         tagListViewController.selectedTagName()
     }
 
-    /// Returns the NotesListFilters that matches with the current TagsList selection
+    /// Returns the TagListFilter that matches with the current TagsList selection
     ///
-    var selectedNotesFilter: NotesListFilter {
-        tagListViewController.selectedNotesFilter
+    var selectedTagFilter: TagListFilter {
+        tagListViewController.selectedFilter
     }
 
     /// Displays the Note with the specified SimperiumKey
@@ -132,6 +132,12 @@ extension SimplenoteAppDelegate {
     func displayNote(simperiumKey: String) {
         ensureSelectedTagDisplaysNote(key: simperiumKey)
         selectNote(withKey: simperiumKey)
+    }
+
+    /// Ensures the Notes List / Tags list are visible
+    ///
+    func ensureNotesListIsVisible() {
+        splitViewController.refreshSplitViewItem(ofKind: .notes, collapsed: false)
     }
 }
 

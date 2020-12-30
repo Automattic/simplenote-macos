@@ -49,6 +49,13 @@ extension SplitViewController {
         splitViewItem.maximumThickness = kind.maximumThickness
         insertSplitViewItem(splitViewItem, at: kind.index)
     }
+
+    /// Refreshes the Collapsed State of the specified Split Item
+    ///
+    func refreshSplitViewItem(ofKind kind: SplitItemKind, collapsed: Bool) {
+        let splitItem = splitViewItem(ofKind: kind)
+        splitItem.animator().isCollapsed = collapsed
+    }
 }
 
 

@@ -3,21 +3,21 @@ import SimplenoteFoundation
 @testable import Simplenote
 
 
-// MARK: - NotesListControllerTests
+// MARK: - NoteListControllerTests
 //
-class NotesListControllerTests: XCTestCase {
+class NoteListControllerTests: XCTestCase {
 
     /// Let's launch an actual CoreData testing stack 🤟
     ///
     private let storage = MockupStorage()
-    private var noteListController: NotesListController!
+    private var noteListController: NoteListController!
 
 
     // MARK: - Overridden Methods
 
     override func setUp() {
         super.setUp()
-        noteListController = NotesListController(viewContext: storage.viewContext)
+        noteListController = NoteListController(viewContext: storage.viewContext)
         noteListController.performFetch()
     }
 }
@@ -25,7 +25,7 @@ class NotesListControllerTests: XCTestCase {
 
 // MARK: - Tests: Filters
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that the Filter property properly filters Deleted notes
     ///
@@ -80,7 +80,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: Sorting
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that the SortMode property properly applies the specified order mode to the retrieved entities
     ///
@@ -91,7 +91,6 @@ extension NotesListControllerTests {
         XCTAssertEqual(noteListController.numberOfNotes, notes.count)
 
         noteListController.sortMode = .alphabeticallyDescending
-        noteListController.searchSortMode = .alphabeticallyDescending
         noteListController.performFetch()
 
         let reversedNotes = Array(notes.reversed())
@@ -105,7 +104,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: Search
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that the Search API causes the List Controller to show matching entities
     ///
@@ -116,69 +115,29 @@ extension NotesListControllerTests {
         storage.save()
         XCTAssertEqual(noteListController.numberOfNotes, 2)
 
-        noteListController.searchKeyword = "34"
+        noteListController.filter = .search(keyword: "34")
         noteListController.performFetch()
 
         XCTAssertEqual(noteListController.numberOfNotes, 1)
-    }
-
-    /// Verifies that an Empty Keyword causes the NotesList to go back into Results Mode
-    ///
-    func testEmptyKeywordSwitchesBackToResultsMode() {
-        let (notes, _) = insertSampleNotes(count: 100)
-        storage.save()
-
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
-
-        noteListController.searchKeyword = "99"
-        noteListController.performFetch()
-
-        XCTAssertEqual(noteListController.numberOfNotes, 1)
-
-        noteListController.searchKeyword = ""
-        noteListController.performFetch()
-
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
-    }
-
-    /// Verifies that a nil Keyword causes the NotesList to go back into Results Mode
-    ///
-    func testNullKeywordSwitchesBackToResultsMode() {
-        let (notes, _) = insertSampleNotes(count: 100)
-        storage.save()
-
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
-
-        noteListController.searchKeyword = "99"
-        noteListController.performFetch()
-        XCTAssertEqual(noteListController.numberOfNotes, 1)
-
-        noteListController.searchKeyword = nil
-        noteListController.performFetch()
-        XCTAssertEqual(noteListController.numberOfNotes, notes.count)
     }
 
     /// Verifies that the SearchMode disregards active Filters
     ///
-    func testSearchModeYieldsGlobalResultsDisregardingActiveFilter() {
+    func testSearchModeYieldsGlobalResultsDisregardingDeletedEntities() {
         let note = storage.insertSampleNote(contents: "Something Here")
+        note.deleted = true
         storage.save()
 
-        noteListController.filter = .deleted
+        noteListController.filter = .search(keyword: "Here") 
         noteListController.performFetch()
-
         XCTAssertEqual(noteListController.numberOfNotes, .zero)
-
-        noteListController.searchKeyword = "Here"
-        noteListController.performFetch()
-        XCTAssertEqual(noteListController.notes.first, note)
     }
 }
 
 
 // MARK: - Tests: `note(at:)`
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that `note(at: Index)` returns the proper Note when in results mode
     ///
@@ -201,7 +160,7 @@ extension NotesListControllerTests {
         storage.save()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.searchKeyword = "0"
+        noteListController.filter = .search(keyword: "0")
         noteListController.performFetch()
 
         for (index, payload) in expected.enumerated() {
@@ -216,7 +175,7 @@ extension NotesListControllerTests {
         insertSampleNotes(count: 100)
         storage.save()
 
-        noteListController.searchKeyword = "055"
+        noteListController.filter = .search(keyword: "055")
         noteListController.performFetch()
         XCTAssertEqual(noteListController.numberOfNotes, 1)
 
@@ -228,7 +187,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: `indexOfNote(withSimperiumKey:)`
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that `indexOfNote(withSimperiumKey:)` returns the proper Note when in Results Mode
     ///
@@ -249,33 +208,11 @@ extension NotesListControllerTests {
         storage.save()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.searchKeyword = "0"
+        noteListController.filter = .search(keyword: "0")
         noteListController.performFetch()
 
         for (index, note) in notes.enumerated() {
             XCTAssertEqual(noteListController.indexOfNote(withSimperiumKey: note.simperiumKey), index)
-        }
-    }
-
-    /// Verifies that the SortMode property properly applies the specified order mode to the retrieved entities
-    ///
-    func testListControllerProperlyAppliesSearchSortModeToSearchResults() {
-        let (notes, _) = insertSampleNotes(count: 100)
-        storage.save()
-
-        // Search Mode: Expect an inverted collection (regardless of the regular sort mode)
-        noteListController.sortMode = .alphabeticallyAscending
-        noteListController.searchSortMode = .alphabeticallyDescending
-
-        // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.searchKeyword = "0"
-        noteListController.performFetch()
-
-        let reversedNotes = Array(notes.reversed())
-        let retrievedNotes = noteListController.notes
-
-        for (index, note) in retrievedNotes.enumerated() {
-            XCTAssertEqual(note.content, reversedNotes[index].content)
         }
     }
 }
@@ -283,7 +220,7 @@ extension NotesListControllerTests {
 
 // MARK: - Tests: onDidChangeContent
 //
-extension NotesListControllerTests {
+extension NoteListControllerTests {
 
     /// Verifies that `onDidChangeContent` is invoked for: `Insertion OP` /  `Results Mode`
     ///
@@ -354,7 +291,7 @@ extension NotesListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.searchKeyword = "Test"
+        noteListController.filter = .search(keyword: "Test")
         noteListController.performFetch()
 
         storage.insertSampleNote(contents: "Test")
@@ -373,7 +310,7 @@ extension NotesListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.searchKeyword = "Test"
+        noteListController.filter = .search(keyword: "Test")
         note.content = "Test Updated"
         storage.save()
 
@@ -390,7 +327,7 @@ extension NotesListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.searchKeyword = "Test"
+        noteListController.filter = .search(keyword: "Test")
         storage.delete(note)
         storage.save()
 
@@ -436,7 +373,7 @@ extension NotesListControllerTests {
 
 // MARK: - Private APIs
 //
-private extension NotesListControllerTests {
+private extension NoteListControllerTests {
 
     /// Inserts `N` Notes  with ascending payloads (Contents)
     ///

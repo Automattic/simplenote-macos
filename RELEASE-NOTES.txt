@@ -9,7 +9,11 @@
 - Notes List now display row separators #758
 - Fixed a bug that affected Multiple Selection in Big Sur #753
 - Fixed a bug that caused the Editor's Scrollbar to get clipped #777
+- Entering Search Mode now displays automatically the Notes List #770
+- Fixed the Line Height when editing an empty document #771
 - Notes List will now animate content changes #764
+- Fixed a bug that caused an unexpected jump in the Tags List #767
+- Fixed a bug that caused the Tags List to go blank upon tag rename #344
  
 2.5
 -----

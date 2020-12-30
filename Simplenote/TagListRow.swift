@@ -59,3 +59,24 @@ extension TagListRow {
         return rows
     }
 }
+
+
+// MARK: - TagListRow: Filter Mapping
+//
+extension TagListRow {
+
+    /// Returns the matching Tag Filter
+    ///
+    var matchingFilter: TagListFilter {
+        switch self {
+        case .tag(let tag):
+            return .tag(name: tag.name)
+        case .trash:
+            return .deleted
+        case .untagged:
+            return .untagged
+        default:
+            return .everything
+        }
+    }
+}
