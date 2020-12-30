@@ -8,6 +8,7 @@ extension UserDefaults {
         case alphabeticallySortTags = "kTagSortPreferencesKey"
         case analyticsEnabled
         case editorFullWidth = "kEditorWidthPreferencesKey"
+        case initialSetupComplete = "SPFirstLaunch"
         case lastKnownVersion
         case notesListCondensed = "kPreviewLinesPref"
         case notesListSortMode

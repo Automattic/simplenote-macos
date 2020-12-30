@@ -62,10 +62,6 @@ extension TagTableCellView {
     override func mouseExited(with event: NSEvent) {
         mouseInside = false
     }
-
-    override func resetCursorRects() {
-        addCursorRect(bounds, cursor: .pointingHand)
-    }
 }
 
 

@@ -16,6 +16,16 @@ static CGFloat const SPTextViewMinimumPadding = 20;
 
 @implementation SPTextView
 
+- (nullable Storage *)simplenoteStorage
+{
+    return [self.textStorage isKindOfClass:[Storage class]] ? (Storage *)self.textStorage : nil;
+}
+
+- (NSDictionary *)typingAttributes
+{
+    return (self.simplenoteStorage != nil) ? self.simplenoteStorage.typingAttributes : super.typingAttributes;
+}
+
 - (void)mouseDown:(NSEvent *)theEvent
 {
     if ([self checkForChecklistClick:theEvent]) {

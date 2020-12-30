@@ -137,12 +137,34 @@ extension NoteEditorViewController {
     var isSelectingText: Bool {
         noteEditor.selectedRange().length != .zero
     }
+
+    /// Simperium 🖖
+    ///
+    var simperium: Simperium {
+        simplenoteAppDelegate.simperium
+    }
+
+    /// TODO: Let's decouple with dependency injection (OR) a delegate please!!
+    ///
+    var simplenoteAppDelegate: SimplenoteAppDelegate {
+        SimplenoteAppDelegate.shared()
+    }
 }
 
 
 // MARK: - Refreshing Interface
 //
 extension NoteEditorViewController {
+
+    /// Refreshes the Editor's Interface
+    ///
+    @objc
+    func refreshInterface() {
+        refreshToolbarActions()
+        refreshEditorActions()
+        refreshEditorText()
+        refreshTagsField()
+    }
 
     /// Refreshes the Editor's Inner State
     ///
@@ -151,6 +173,14 @@ extension NoteEditorViewController {
         noteEditor.isEditable = isDisplayingNote && !viewingTrash
         noteEditor.isSelectable = isDisplayingNote && !viewingTrash
         noteEditor.isHidden = isDisplayingMarkdown
+    }
+
+    /// Refreshes the Editor's Text
+    ///
+    @objc
+    func refreshEditorText() {
+        let content = note?.content ?? ""
+        noteEditor.displayNote(content: content)
     }
 
     /// Refreshes the Editor's UX
@@ -227,6 +257,14 @@ extension NoteEditorViewController {
 // MARK: - ToolbarDelegate
 //
 extension NoteEditorViewController: ToolbarDelegate {
+
+    func toolbarDidBeginSearch() {
+        searchDelegate?.editorControllerDidBeginSearch(self)
+    }
+
+    func toolbarDidEndSearch() {
+        searchDelegate?.editorControllerDidEndSearch(self)
+    }
 
     func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
         searchDelegate?.editorController(self, didSearchKeyword: keyword)
@@ -589,7 +627,42 @@ extension NoteEditorViewController: TagsFieldDelegate {
         //
         // For that reason, we'll filtering out duplicates.
         //
-        updateTags(withTokens: tokens.caseInsensitiveUnique)
+        guard let note = note else {
+            return
+        }
+
+        updateNoteTags(tokens: tokens.caseInsensitiveUnique, note: note)
+    }
+}
+
+
+// MARK: - Tags Processing
+//
+extension NoteEditorViewController {
+
+    /// TODO: Let's analyze and potentially build NotesController / TagsController
+    ///
+    func updateNoteTags(tokens: [String], note: Note) {
+        let newTags = tokens.filter { token in
+            simperium.searchTag(name: token) == nil && token.containsEmailAddress() == false
+        }
+
+        for newTag in newTags {
+            tagActionsDelegate?.editorController(self, didAddNewTag: newTag)
+        }
+
+        // Update Tags: Internally they're JSON Encoded!
+        let oldTags = note.tags
+        note.setTagsFromList(tokens)
+
+        guard note.tags != oldTags else {
+            return
+        }
+
+        save()
+
+        // Ensure the note remains onscreen
+        simplenoteAppDelegate.displayNote(simperiumKey: note.simperiumKey)
     }
 }
 

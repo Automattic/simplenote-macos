@@ -121,6 +121,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self startListeningToWindowNotifications];
 
     [self refreshStyle];
+    [self refreshInterface];
 }
 
 - (void)viewWillLayout
@@ -178,10 +179,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     if (selectedNote == nil) {
         self.note = nil;
         self.selectedNotes = @[];
-        [self refreshToolbarActions];
-        [self refreshEditorActions];
-        [self refreshTagsField];
-        [self.noteEditor displayNoteWithContent:@""];
+
+        [self refreshInterface];
 
         return;
     }
@@ -524,41 +523,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     NSPrintOperation *operation = [NSPrintOperation printOperationWithView:printView];
     [operation setPrintInfo:printInfo];
     [operation runOperation];
-}
-
-
-
-#pragma mark - TagsField Helpers
-
-- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens
-{
-    SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
-    Simperium *simperium                = appDelegate.simperium;
-    Note *note                          = self.note;
-    NSString *oldTags                   = note.tags;
-
-    // Create any new tags that don't already exist
-    for (NSString *token in tokens) {
-        Tag *tag = [simperium searchTagWithName:token];
-        if (!tag && ![token containsEmailAddress]) {
-            [self.tagActionsDelegate editorController:self didAddNewTag:token];
-        }
-    }
-
-    // Update Tags: Internally they're JSON Encoded!
-    [note setTagsFromList:tokens];
-
-    // Ensure the right Tag remains selected
-    if ([note hasTag:appDelegate.selectedTagName] == false) {
-        [appDelegate selectAllNotesTag];
-        [appDelegate selectNoteWithKey:note.simperiumKey];
-    }
-    
-    if ([self.note.tags isEqualToString:oldTags]) {
-        return;
-    }
-    
-    [self save];
 }
 
 

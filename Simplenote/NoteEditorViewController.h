@@ -46,6 +46,8 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @end
 
 @protocol EditorControllerSearchDelegate <NSObject>
+- (void)editorControllerDidBeginSearch:(NoteEditorViewController *)controller;
+- (void)editorControllerDidEndSearch:(NoteEditorViewController *)controller;
 - (void)editorController:(NoteEditorViewController *)controller didSearchKeyword:(NSString *)keyword;
 @end
 
@@ -85,7 +87,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (void)didReceiveNewContent;
 - (void)willReceiveNewContent;
 - (void)fixChecklistColoring;
-- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)printAction:(id)sender;

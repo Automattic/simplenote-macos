@@ -33,23 +33,6 @@ extension TagListRow {
         self != .header && self != .spacer
     }
 
-    /// Returns a human friendly descriptive string
-    ///
-    var title: String? {
-        switch self {
-        case .allNotes:
-            return NSLocalizedString("All Notes", comment: "Title of the all notes filter")
-        case .trash:
-            return NSLocalizedString("Trash", comment: "Title for the Trash filter")
-        case .tag(let tag):
-            return tag.name ?? NSLocalizedString("Unnamed Tag", comment: "Title for Tag with no Name")
-        case .untagged:
-            return NSLocalizedString("Untagged", comment: "Untagged Notes Title")
-        default:
-            return nil
-        }
-    }
-
     /// Returns a collection of Rows that
     ///
     static func buildListRows(for tags: [Tag] = []) -> [TagListRow] {
@@ -74,5 +57,26 @@ extension TagListRow {
         rows.append(.spacer)
 
         return rows
+    }
+}
+
+
+// MARK: - TagListRow: Filter Mapping
+//
+extension TagListRow {
+
+    /// Returns the matching Tag Filter
+    ///
+    var matchingFilter: TagListFilter {
+        switch self {
+        case .tag(let tag):
+            return .tag(name: tag.name)
+        case .trash:
+            return .deleted
+        case .untagged:
+            return .untagged
+        default:
+            return .everything
+        }
     }
 }
