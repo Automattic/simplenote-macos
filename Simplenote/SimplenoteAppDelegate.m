@@ -13,7 +13,6 @@
 #import "Tag.h"
 #import "NSNotification+Simplenote.h"
 #import "LoginWindowController.h"
-#import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
@@ -26,14 +25,6 @@
 #if SPARKLE_OTA
 #import <Sparkle/Sparkle.h>
 #endif
-
-
-
-#pragma mark ====================================================================================
-#pragma mark Constants
-#pragma mark ====================================================================================
-
-#define kFirstLaunchKey					@"SPFirstLaunch"
 
 
 
@@ -103,15 +94,12 @@
 {
     [self configureSimperium];
     [self configureMainInterface];
+    [self configureSplitView];
     [self configureInitialResponder];
-    [self hookWindowNotifications];
     [self applyStyle];
 
     [self configureEditorController];
     [self configureVersionsController];
-
-    [self.tagListViewController loadTags];
-    [self.noteListViewController loadNotes];
     
     [self.simperium setAllBucketDelegates:self];
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
@@ -137,12 +125,6 @@
     [self startListeningForThemeNotifications];
 
     [SPTracker trackApplicationLaunched];
-}
-
-- (void)hookWindowNotifications
-{
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:) name:NSApplicationDidResignActiveNotification object:self.window];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -202,7 +184,7 @@
 
 - (void)selectNoteWithKey:(NSString *)simperiumKey
 {
-    [self.noteListViewController selectRowForNoteKey:simperiumKey];
+    [self.noteListViewController displayAndSelectNoteWithSimperiumKey:simperiumKey];
 }
 
 - (void)cleanupTags
@@ -215,40 +197,6 @@
             [tagBucket deleteObject:tag];
 		}
     }
-    [_simperium save];
-}
-
-- (void)configureWelcomeNoteIfNeeded
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *firstLaunchKey = [userDefaults objectForKey:kFirstLaunchKey];
-    if (firstLaunchKey != nil) {
-        return;
-    }
-    
-    [self performSelector:@selector(createWelcomeNote) withObject:nil afterDelay:0.5];
-    
-    [userDefaults setObject:@(1) forKey:kFirstLaunchKey];
-    [userDefaults synchronize];
-    
-    [self.noteListViewController setWaitingForIndex:YES];
-}
-
-- (void)createWelcomeNote
-{
-    SPBucket *noteBucket = [_simperium bucketForName:@"Note"];
-    Note *welcomeNote = [noteBucket objectForKey:SPWelcomeNoteID];
-    
-    if (welcomeNote) {
-        return;
-	}
-    
-    welcomeNote = [noteBucket insertNewObjectForKey:SPWelcomeNoteID];
-    welcomeNote.modificationDate = [NSDate date];
-    welcomeNote.creationDate = [NSDate date];
-    welcomeNote.content = NSLocalizedString(@"welcomeNote-Mac", @"A welcome note for new Mac users");
-    [welcomeNote createPreview];
-	
     [_simperium save];
 }
 
@@ -288,16 +236,6 @@
 }
 
 
-#pragma mark - NSWindow Notification Handlers
-
-- (void)handleWindowDidResignMainNote:(NSNotification *)notification
-{
-    // Use this as an opportunity to re-sort by modify date when the user isn't looking
-    // (otherwise it can be a little jarring)
-    [self.noteListViewController reloadDataAndPreserveSelection];
-}
-
-
 #pragma mark - Simperium Delegates
 
 - (void)simperiumDidLogin:(Simperium *)simperium
@@ -334,8 +272,6 @@
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
                 }
-                [self.noteListViewController noteKeyDidChange:key memberNames:memberNames];
-
                 break;
             
             case SPBucketChangeTypeInsert:
@@ -357,7 +293,6 @@
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
         }
-        [self.noteListViewController noteKeysWillChange:keys];
     }
 }
 
@@ -488,7 +423,7 @@
 {
     [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
-    [self.noteListViewController applyStyle];
+    [self.noteListViewController refreshStyle];
     [self.noteEditorViewController refreshStyle];
     [self.noteEditorViewController fixChecklistColoring];
 }

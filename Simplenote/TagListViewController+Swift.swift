@@ -20,6 +20,12 @@ extension TagListViewController {
         headerSeparatorView.drawsBottomBorder = true
         refreshHeaderSeparatorAlpha()
     }
+}
+
+
+// MARK: - Refreshing
+//
+extension TagListViewController {
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
@@ -34,6 +40,25 @@ extension TagListViewController {
     func refreshState() {
         state = TagListState(tags: tagArray)
         tableView.reloadData()
+    }
+
+    /// Reloads the TableView while preserving the selected index
+    /// - Important: `TagListDidBeginViewingZZZ` will only be posted *if* the actual selected filter was changed
+    ///
+    @objc
+    func reloadDataAndPreserveSelection() {
+        let previouslySelectedRow = selectedRow
+        mustSkipSelectionDidChange = true
+
+        tableView.performPreservingSelection {
+            self.refreshState()
+        }
+
+        mustSkipSelectionDidChange = false
+
+        if previouslySelectedRow != selectedRow {
+            notifyTagsListFilterDidChange()
+        }
     }
 }
 
@@ -51,6 +76,12 @@ extension TagListViewController {
         }
 
         return state.rowAtIndex(selectedIndex)
+    }
+
+    /// Selected TagListFilter, matching the current row
+    ///
+    var selectedNotesFilter: NotesListFilter {
+        selectedRow?.matchingNotesFilter ?? .everything
     }
 }
 
@@ -80,6 +111,12 @@ extension TagListViewController {
     private var alphaForHeaderSeparatorView: CGFloat {
         let absoluteOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
         return min(max(absoluteOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
+    }
+
+    private func notifyTagsListFilterDidChange() {
+        let isViewingTrash = selectedNotesFilter == .deleted
+        let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
+        NotificationCenter.default.post(name: name, object: self)
     }
 }
 
@@ -133,10 +170,11 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     }
 
     public func tableViewSelectionDidChange(_ notification: Notification) {
-        let isViewingTrash = tableView.selectedRow != NSNotFound && state.rowAtIndex(tableView.selectedRow) == .trash
-        let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
+        if mustSkipSelectionDidChange {
+            return
+        }
 
-        NotificationCenter.default.post(name: name, object: self)
+        notifyTagsListFilterDidChange()
     }
 }
 

@@ -122,6 +122,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self startListeningToWindowNotifications];
 
     [self refreshStyle];
+    [self refreshInterface];
 }
 
 - (void)viewWillLayout
@@ -179,10 +180,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     if (selectedNote == nil) {
         self.note = nil;
         self.selectedNotes = @[];
-        [self refreshToolbarActions];
-        [self refreshEditorActions];
-        [self refreshTagsField];
-        [self.noteEditor displayNoteWithContent:@""];
+
+        [self refreshInterface];
 
         return;
     }

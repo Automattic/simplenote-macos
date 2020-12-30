@@ -32,25 +32,22 @@ extension SimplenoteAppDelegate {
     func configureMainInterface() {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
-        let mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
-        let splitViewController = mainWindowController.contentViewController as! SplitViewController
-        let tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
-        let notesViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
-        let editorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+        mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
+        splitViewController = mainWindowController.contentViewController as! SplitViewController
+        tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
+        noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
+        noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+    }
 
+    @objc
+    func configureSplitView() {
         let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
-        let listSplitItem = NSSplitViewItem(contentListWithViewController: notesViewController)
-        let editorSplitItem = NSSplitViewItem(viewController: editorViewController)
+        let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
+        let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
 
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
-
-        self.mainWindowController = mainWindowController
-        self.splitViewController = splitViewController
-        self.tagListViewController = tagListViewController
-        self.noteListViewController = notesViewController
-        self.noteEditorViewController = editorViewController
     }
 
     @objc
@@ -78,6 +75,41 @@ extension SimplenoteAppDelegate {
 }
 
 
+// MARK: - Welcome Note
+//
+extension SimplenoteAppDelegate {
+
+    @objc
+    func configureWelcomeNoteIfNeeded() {
+        if Options.shared.initialSetupComplete {
+            return
+        }
+
+        Options.shared.initialSetupComplete = true
+        noteListViewController.setWaitingForIndex(true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + AppKitConstants.delay0_5) {
+            self.createWelcomeNote()
+        }
+    }
+
+    func createWelcomeNote() {
+        let bucket = simperium.notesBucket
+        guard bucket.object(forKey: SimplenoteConstants.welcomeNoteObjectKey) == nil else {
+            return
+        }
+
+        let welcomeNote = bucket.insertNewObject(ofType: Note.self, key: SimplenoteConstants.welcomeNoteObjectKey)
+        welcomeNote.modificationDate = Date()
+        welcomeNote.creationDate = Date()
+        welcomeNote.content = NSLocalizedString("welcomeNote-Mac", comment: "A welcome note for new Mac users")
+        welcomeNote.createPreview()
+
+        simperium.save()
+    }
+}
+
+
 // MARK: - Public API
 //
 extension SimplenoteAppDelegate {
@@ -87,6 +119,12 @@ extension SimplenoteAppDelegate {
     @objc
     var selectedTagName: String {
         tagListViewController.selectedTagName()
+    }
+
+    /// Returns the NotesListFilters that matches with the current TagsList selection
+    ///
+    var selectedNotesFilter: NotesListFilter {
+        tagListViewController.selectedNotesFilter
     }
 
     /// Displays the Note with the specified SimperiumKey
@@ -192,7 +230,7 @@ extension SimplenoteAppDelegate {
     /// Ensures that the Note with the specified Key is displayed by the Notes List
     ///
     func ensureSelectedTagDisplaysNote(key: String) {
-        if noteListViewController.displaysNote(forKey: key) {
+        if noteListViewController.displaysNote(with: key) {
             return
         }
 

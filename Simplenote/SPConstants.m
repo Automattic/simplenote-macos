@@ -14,8 +14,6 @@
 #pragma mark Constants
 #pragma mark ====================================================================================
 
-NSString * const SPWelcomeNoteID                    = @"welcomeNote-Mac";
-
 NSString * const SPSimperiumPreferencesObjectKey    = @"preferences-key";
 NSString * const SPAutomatticAnalyticCookiesURL     = @"https://automattic.com/cookies";
 NSString * const SPAutomatticAnalyticPrivacyURL     = @"https://automattic.com/privacy";
