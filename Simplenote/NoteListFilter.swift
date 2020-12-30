@@ -1,9 +1,9 @@
 import Foundation
 
 
-// MARK: - NotesListFilter
+// MARK: - NoteListFilter
 //
-enum NotesListFilter: Equatable {
+enum NoteListFilter: Equatable {
     case everything
     case deleted
     case untagged
@@ -13,7 +13,7 @@ enum NotesListFilter: Equatable {
 
 // MARK: - Public API(s)
 //
-extension NotesListFilter {
+extension NoteListFilter {
 
     var title: String {
         switch self {

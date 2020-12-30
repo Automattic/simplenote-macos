@@ -2,21 +2,21 @@ import Foundation
 import SimplenoteSearch
 
 
-// MARK: - NotesListState
+// MARK: - NoteListState
 //
-enum NotesListState: Equatable {
+enum NoteListState: Equatable {
     case results
     case searching(keyword: String)
 }
 
 
-// MARK: - NotesListState: Public API
+// MARK: - NoteListState: Public API
 //
-extension NotesListState {
+extension NoteListState {
 
     /// Returns a NSPredicate to filter out Notes in the current state, with the specified Filter
     ///
-    func predicateForNotes(filter: NotesListFilter) -> NSPredicate {
+    func predicateForNotes(filter: NoteListFilter) -> NSPredicate {
         var subpredicates = [NSPredicate]()
 
         switch self {

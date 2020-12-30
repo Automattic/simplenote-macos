@@ -80,7 +80,7 @@ extension TagListViewController {
 
     /// Selected TagListFilter, matching the current row
     ///
-    var selectedNotesFilter: NotesListFilter {
+    var selectedNotesFilter: NoteListFilter {
         selectedRow?.matchingNotesFilter ?? .everything
     }
 }
