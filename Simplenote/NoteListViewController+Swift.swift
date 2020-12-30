@@ -6,6 +6,14 @@ import SimplenoteSearch
 //
 extension NoteListViewController {
 
+    /// Setup: Results Controller
+    ///
+    @objc
+    func setupResultsController() {
+        listController = NotesListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
+        listController.performFetch()
+    }
+
     /// Setup: TableView
     ///
     @objc
@@ -34,28 +42,17 @@ extension NoteListViewController {
         scrollView.scrollerInsets.top = SplitItemMetrics.sidebarTopInset
     }
 
-    /// Ensures only the actions that are valid can be performed
-    ///
-    @objc
-    func refreshEnabledActions() {
-        addNoteButton.isEnabled = !viewingTrash
-    }
-
-    @objc
-    func refreshTitle() {
-        titleLabel.stringValue = filter.title
-    }
-
     /// Refreshes the receiver's style
     ///
     @objc
-    func applyStyle() {
+    func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
-        reloadDataAndPreserveSelection()
+
+        tableView.reloadAndPreserveSelection()
     }
 }
 
@@ -108,6 +105,8 @@ extension NoteListViewController {
     }
 }
 
+
+/* TODO: Nuke!
 
 // MARK: - State
 //
@@ -163,18 +162,206 @@ extension NoteListViewController {
         return .searching(keyword: keyword)
     }
 }
+*/
 
 
-// MARK: - Helpers
+// MARK: - Dynamic Properties
 //
-private extension NoteListViewController {
+extension NoteListViewController {
+
+    @objc
+    var selectedNotes: [Note] {
+        listController.notes(at: tableView.selectedRowIndexes)
+    }
 
     var simperium: Simperium {
         SimplenoteAppDelegate.shared().simperium
     }
 
     var isSelectionNotEmpty: Bool {
-        selectedNotes().isEmpty == false
+        selectedNotes.isEmpty == false
+    }
+}
+
+
+// MARK: - ListController API(s) 🤟
+//
+extension NoteListViewController {
+
+    /// Initializes the NSTableView <> NoteListController Link
+    ///
+    @objc
+    func startDisplayingEntities() {
+        tableView.dataSource = self
+
+        // We'll preserve the selected rows during an Update OP
+        var selectedKeysBeforeChange: [String]?
+        var selectedIndexBeforeChange: Int?
+
+        listController.onWillChangeContent = { [weak self] in
+            selectedKeysBeforeChange = self?.selectedNotes.compactMap { $0.simperiumKey }
+            selectedIndexBeforeChange = self?.tableView.selectedRow
+        }
+
+        listController.onDidChangeContent = { [weak self] objectsChangeset in
+            guard let `self` = self else {
+                return
+            }
+
+            /// Refresh Interface
+            self.tableView.performBatchChanges(objectsChangeset: objectsChangeset)
+            self.restoreSelectionBeforeChanges(oldSelectedKeys: selectedKeysBeforeChange, oldSelectedIndex: selectedIndexBeforeChange)
+            self.refreshPlaceholder()
+
+            /// Cleanup
+            selectedKeysBeforeChange = nil
+            selectedIndexBeforeChange = nil
+        }
+    }
+}
+
+
+// MARK: - Refreshing
+//
+extension NoteListViewController {
+
+    /// Refresh: All of the Interface components
+    ///
+    @objc
+    func refreshEverything() {
+        refreshListController()
+        refreshEnabledActions()
+        refreshTitle()
+        refreshPlaceholder()
+        displayAndSelectFirstNote()
+        refreshPresentedNoteIfNeeded()
+    }
+
+    /// Refresh: Filters relevant Notes
+    ///
+    func refreshSearchResults(keyword: String) {
+        refreshListControllerState(keyword: keyword)
+        refreshEverything()
+    }
+
+    /// Refresh: ListController <> TableView
+    ///
+    private func refreshListController() {
+        listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
+        listController.sortMode = Options.shared.notesListSortMode
+        listController.performFetch()
+
+        tableView.reloadData()
+    }
+
+    /// Refresh: ListController Internal State
+    ///
+    private func refreshListControllerState(keyword: String) {
+        listController.searchKeyword = keyword
+    }
+
+    /// Refresh:  Actions
+    ///
+    private func refreshEnabledActions() {
+        addNoteButton.isEnabled = !viewingTrash
+    }
+
+    /// Refresh: Placeholder
+    ///
+    private func refreshPlaceholder() {
+        statusField.isHidden = listController.numberOfNotes > .zero
+    }
+
+    /// Refresh: Title
+    /// - Important: Update the ListController first!!
+    ///
+    private func refreshTitle() {
+        titleLabel.stringValue = listController.filter.title
+    }
+
+    /// Although we refresh the Editor in `tableViewSelectionDidChange`, whenever we manually update the ListController and the resulting collection is empty,
+    /// we won't be getting any kind of callback.
+    ///
+    private func refreshPresentedNoteIfNeeded() {
+        guard listController.numberOfNotes == .zero, !noteEditorViewController.selectedNotes.isEmpty else {
+            return
+        }
+
+        refreshPresentedNote()
+    }
+
+    /// Refresh: Presented Note in the Editor
+    ///
+    private func refreshPresentedNote() {
+        let selectedNotes = self.selectedNotes
+        guard selectedNotes.count > .zero else {
+            noteEditorViewController.displayNote(nil)
+            return
+        }
+
+        guard selectedNotes.count == 1, let targetNote = selectedNotes.first else {
+            noteEditorViewController.display(selectedNotes)
+            return
+        }
+
+        SPTracker.trackListNoteOpened()
+        noteEditorViewController.displayNote(targetNote)
+    }
+}
+
+
+// MARK: - Row Selection API(s)
+//
+extension NoteListViewController {
+
+    /// Indicates if the Note with the specified SimperiumKey is being displayed
+    ///
+    func displaysNote(with simperiumKey: String) -> Bool {
+        listController.indexOfNote(withSimperiumKey: simperiumKey) != nil
+    }
+
+    /// Displays and selects the very first row
+    ///
+    func displayAndSelectFirstNote() {
+        displayAndSelectNote(at: .zero)
+    }
+
+    /// Displays and Selects the Note with a given SimperiumKey
+    ///
+    @objc(displayAndSelectNoteWithSimperiumKey:)
+    func displayAndSelectNote(with simperiumKey: String) {
+        guard let index = listController.indexOfNote(withSimperiumKey: simperiumKey) else {
+            return
+        }
+
+        displayAndSelectNote(at: index)
+    }
+
+    /// Displays and Selects the Note at a given Index
+    ///
+    private func displayAndSelectNote(at index: Int) {
+        tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        tableView.scrollRowToVisible(index)
+    }
+
+    /// This API will attempt to restore the Rows selected before applying a ResultsController Change
+    ///     1.  If there were previously Selected Notes, we'll attempt to preselect them
+    ///     2.  If ther was a previously Selected Index, we'll attempt to select the `n - 1` row
+    ///     3.  As a fallback, we'll automatically `preselect the first row`
+    ///
+    private func restoreSelectionBeforeChanges(oldSelectedKeys: [String]?, oldSelectedIndex: Int?) {
+        if let targetKeys = oldSelectedKeys, let targetIndexes = listController.indexesOfNotes(withSimperiumKeys: targetKeys) {
+            tableView.selectRowIndexes(targetIndexes, byExtendingSelection: false)
+            return
+        }
+
+        guard let oldSelectedIndex = oldSelectedIndex, oldSelectedIndex >= .zero else {
+            displayAndSelectFirstNote()
+            return
+        }
+
+        let newIndex = oldSelectedIndex < tableView.numberOfRows ? oldSelectedIndex : oldSelectedIndex - 1
+        displayAndSelectNote(at: newIndex)
     }
 }
 
@@ -224,14 +411,60 @@ extension NoteListViewController {
 }
 
 
-// MARK: - NSTableViewDelegate Helpers
+// MARK: - NSTableViewDelegate
 //
-extension NoteListViewController: NSTableViewDelegate {
+extension NoteListViewController: SPTableViewDelegate {
+
+    public func tableView(_ tableView: NSTableView, menuForTableColumn column: Int, row: Int) -> NSMenu? {
+        viewingTrash ? trashListMenu : noteListMenu
+    }
 
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.style = .list
         return rowView
+    }
+
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        /// Why do we `need` a debounce here:
+        ///
+        /// # Scenario #1: Empty Trash
+        ///     1.  Empty Trash ends up in a `save()` NSManagedObjectContext invocation
+        ///     2.  This results in a call to our FRC's `onDidChangeContent` callback
+        ///     3.  Refreshing the presented note in the editor also invokes `save()`, to persist any uncommitted changes
+        ///     4.  This causes a CoreData exception, because of the re-entrant `save()` OP
+        ///
+        /// # Scenario #2: Delete Note / List with `.count > 2` notes
+        ///     1.  Note deletion ends up in a `save()` NSManagedObjectContext invocation
+        ///     2.  This results in `performBatchChanges`
+        ///     3.  Whenever the previously selected index is gone, NSTableView will pick up `-1` as the new selected row
+        ///     4.  `restoreSelectionBeforeChanges` will, then, select the first row as a fallback
+        ///     5.  Same as scenario #1, this ends up refreshing the Editor, and invoking `save()`
+        ///     6.  Because of the re-entrant `save()` OP, this scenario will also produce an exception
+        ///
+        DispatchQueue.main.async {
+            self.refreshPresentedNote()
+        }
+    }
+}
+
+
+// MARK: - NSTableViewDataSource
+//
+extension NoteListViewController: NSTableViewDataSource {
+
+    public func numberOfRows(in tableView: NSTableView) -> Int {
+        listController.numberOfNotes
+    }
+
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        listController.note(at: row).map { note in
+            noteTableViewCell(for: note)
+        }
+    }
+
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return true
     }
 }
 
@@ -264,29 +497,23 @@ extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
-        reloadSynchronously()
-        selectRow(forNoteKey: simperiumKey)
+        displayAndSelectNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, deletedNoteWithSimperiumKey simperiumKey: String) {
-        // The note was just deleted, but our tableView wasn't reload yet:
-        // We'll perform a synchronous reload, while keeping the same selected index!
-        performPerservingSelectedIndex {
-            self.reloadSynchronously()
-        }
+        // NO-OP
     }
 
     public func editorController(_ controller: NoteEditorViewController, pinnedNoteWithSimperiumKey simperiumKey: String) {
-        arrayController.rearrangeObjects()
-        selectRow(forNoteKey: simperiumKey)
+        displayAndSelectNote(with: simperiumKey)
     }
 
     public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
-        arrayController.rearrangeObjects()
+        // NO-OP
     }
 
     public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
-        reloadRow(forNoteKey: simperiumKey)
+        // NO-OP
     }
 }
 
@@ -297,8 +524,7 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         SPTracker.trackListNotesSearched()
-        searchKeyword = keyword
-        refreshPredicate()
+        refreshSearchResults(keyword: keyword)
     }
 }
 
@@ -339,7 +565,7 @@ extension NoteListViewController: NSMenuItemValidation {
     }
 
     func validateListPinMenuItem(_ item: NSMenuItem) -> Bool {
-        let isPinnedOff = selectedNotes().allSatisfy { $0.pinned == false }
+        let isPinnedOff = selectedNotes.allSatisfy { $0.pinned == false }
         item.state = isPinnedOff ? .off : .on
         item.title = NSLocalizedString("Pin to Top", comment: "List Pin Action")
         return isSelectionNotEmpty
@@ -363,15 +589,13 @@ extension NoteListViewController {
 
     @objc
     func displayModeDidChange(_ note: Notification) {
-        performPerservingSelectedIndex {
-            self.tableView.rowHeight = NoteTableCellView.rowHeight
-            self.tableView.reloadData()
-        }
+        tableView.rowHeight = NoteTableCellView.rowHeight
+        tableView.reloadAndPreserveSelection()
     }
 
     @objc
     func sortModeDidChange(_ note: Notification) {
-        reloadDataAndPreserveSelection()
+        refreshEverything()
     }
 }
 
@@ -382,7 +606,7 @@ extension NoteListViewController {
 
     @IBAction
     func copyInterlinkWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first else {
+        guard let note = selectedNotes.first else {
             return
         }
 
@@ -392,60 +616,37 @@ extension NoteListViewController {
 
     @IBAction
     func deleteFromTrashWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first else {
+        guard let note = selectedNotes.first else {
             return
         }
 
-        performPerservingSelectedIndex {
-            simperium.notesBucket.delete(note)
-            simperium.save()
-        }
+        simperium.notesBucket.delete(note)
+        simperium.save()
 
         SPTracker.trackListNoteDeletedForever()
     }
 
     @IBAction
     func pinWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first, let pinnedItem = sender as? NSMenuItem else {
+        guard let note = selectedNotes.first, let pinnedItem = sender as? NSMenuItem else {
             return
         }
 
         note.pinned = pinnedItem.state == .off
         simperium.save()
-        reloadDataAndPreserveSelection()
 
         SPTracker.trackListNotePinningToggled()
     }
 
     @IBAction
     func restoreWasPressed(_ sender: Any) {
-        guard let note = selectedNotes().first else {
+        guard let note = selectedNotes.first else {
             return
         }
 
-        performPerservingSelectedIndex {
-            note.deleted = false
-            simperium.save()
-        }
+        note.deleted = false
+        simperium.save()
 
         SPTracker.trackListNoteRestored()
-    }
-}
-
-
-// MARK: - Helpers
-//
-extension NoteListViewController {
-
-    @objc
-    func performPerservingSelectedIndex(block: () -> Void) {
-        var previouslySelectedIndex = arrayController.selectionIndex
-        block()
-
-        if previouslySelectedIndex == tableView.numberOfRows {
-            previouslySelectedIndex -= 1
-        }
-
-        arrayController.setSelectionIndex(previouslySelectedIndex)
     }
 }

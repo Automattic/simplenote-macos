@@ -208,15 +208,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 {
     [self.tableView selectRowIndexes:self.state.indexSetForAllNotesRow byExtendingSelection:NO];
     [self.tableView scrollRowToVisible:self.state.indexOfAllNotesTagRow];
-
-    // Notes:
-    //  1.  Programatically selecting the Row Indexes trigger the regular callback chain
-    //  2.  Because of the above, NoteListController's predicate is already refreshed
-    //  3.  Standard mechanism will refresh the UI in the next runloop cycle
-    //
-    // Since this API is expected to be synchronous, we'll force a resync.
-    //
-    [self.noteListViewController reloadSynchronously];
 }
 
 - (void)selectTag:(Tag *)tagToSelect

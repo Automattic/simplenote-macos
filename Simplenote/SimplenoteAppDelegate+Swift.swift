@@ -227,7 +227,7 @@ extension SimplenoteAppDelegate {
     /// Ensures that the Note with the specified Key is displayed by the Notes List
     ///
     func ensureSelectedTagDisplaysNote(key: String) {
-        if noteListViewController.displaysNote(forKey: key) {
+        if noteListViewController.displaysNote(with: key) {
             return
         }
 
