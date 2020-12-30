@@ -10,7 +10,9 @@
 #import "NSMutableAttributedString+Styling.h"
 #import "Simplenote-Swift.h"
 
-#define kMaxEditorWidth 750 // Note: This matches the Electron apps max editor width
+// Note: This matches the Electron apps max editor width
+static CGFloat const SPTextViewMaximumWidth = 750;
+static CGFloat const SPTextViewMinimumPadding = 20;
 
 @implementation SPTextView
 
@@ -39,22 +41,25 @@
     [self processLinksInDocumentAsynchronously];
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
+- (void)drawRect:(NSRect)dirtyRect
+{
     CGFloat viewWidth = self.frame.size.width;
-    CGFloat insetX = [self shouldCalculateInset:viewWidth] ? [self getAdjustedInsetX:viewWidth] : kMinEditorPadding;
-    [self setTextContainerInset: NSMakeSize(insetX, kMinEditorPadding)];
+    CGFloat insetX = [self shouldCalculateInset:viewWidth] ? [self getAdjustedInsetX:viewWidth] : SPTextViewMinimumPadding;
+    [self setTextContainerInset: NSMakeSize(insetX, SPTextViewMinimumPadding)];
     
     [super drawRect:dirtyRect];
 }
 
-- (BOOL)shouldCalculateInset: (CGFloat)viewWidth {
-    return viewWidth > kMaxEditorWidth && ![[Options shared] editorFullWidth];
+- (BOOL)shouldCalculateInset:(CGFloat)viewWidth
+{
+    return viewWidth > SPTextViewMaximumWidth && ![[Options shared] editorFullWidth];
 }
 
-- (CGFloat)getAdjustedInsetX: (CGFloat)viewWidth {
-    CGFloat adjustedInset = (viewWidth - kMaxEditorWidth) / 2;
+- (CGFloat)getAdjustedInsetX:(CGFloat)viewWidth
+{
+    CGFloat adjustedInset = (viewWidth - SPTextViewMaximumWidth) / 2;
     
-    return lroundf(adjustedInset) + kMinEditorPadding;
+    return lroundf(adjustedInset) + SPTextViewMinimumPadding;
 }
 
 - (BOOL)checkForChecklistClick:(NSEvent *)event
