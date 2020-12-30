@@ -51,18 +51,6 @@ class NoteListController: NSObject {
         }
     }
 
-    /// SortMode: Search Mode
-    ///
-    var searchSortMode: SortMode = .alphabeticallyAscending {
-        didSet {
-            guard case .searching = state, oldValue != searchSortMode else {
-                return
-            }
-
-            refreshSortDescriptors()
-        }
-    }
-
     /// Relays back willChangeContent Events
     ///
     var onWillChangeContent: (() -> Void)?
@@ -176,15 +164,6 @@ private extension NoteListController {
 
         notesController.onDidChangeContent = { [weak self] (_, objectsChangeset) in
             self?.onDidChangeContent?(objectsChangeset)
-        }
-    }
-
-    var sortModeForActiveState: SortMode {
-        switch state {
-        case .searching:
-            return searchSortMode
-        case .results:
-            return sortMode
         }
     }
 }
