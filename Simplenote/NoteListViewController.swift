@@ -598,6 +598,7 @@ extension NoteListViewController {
         // Notifications: Tags
         nc.addObserver(self, selector: #selector(didBeginViewingTag), name: .TagListDidBeginViewingTag, object: nil)
         nc.addObserver(self, selector: #selector(didBeginViewingTrash), name: .TagListDidBeginViewingTrash, object: nil)
+        nc.addObserver(self, selector: #selector(didUpdateTag), name: .TagListDidUpdateTag, object: nil)
 
         // Notifications: Settings
         nc.addObserver(self, selector: #selector(displayModeDidChange), name: .NoteListDisplayModeDidChange, object: nil)
@@ -635,6 +636,18 @@ extension NoteListViewController {
     @objc
     func didBeginViewingTrash(_ note: Notification) {
         SPTracker.trackListTrashPressed()
+        refreshEverything()
+    }
+
+    @objc
+    func didUpdateTag(_ note: Notification) {
+        guard case let .tag(name) = listController.filter,
+              let oldName = note.userInfo?[TagListDidUpdateTagOldNameKey] as? String,
+              name == oldName
+        else {
+            return
+        }
+
         refreshEverything()
     }
 }

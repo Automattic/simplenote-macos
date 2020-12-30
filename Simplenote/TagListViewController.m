@@ -19,6 +19,8 @@
 
 NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
 NSString * const TagListDidUpdateTagNotification            = @"TagListDidUpdateTagNotification";
+NSString * const TagListDidUpdateTagOldNameKey              = @"OldTag";
+NSString * const TagListDidUpdateTagNewNameKey              = @"NewTag";
 NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginViewingTrashNotification";
 NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
 CGFloat const TagListEstimatedRowHeight                     = 30;
@@ -255,9 +257,12 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     
     renamedTag.name = newTagName;
     [self.simperium save];
-    
-    NSDictionary *userInfo = @{@"tagName": newTagName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:userInfo];
+
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:@{
+        TagListDidUpdateTagNewNameKey: newTagName,
+        TagListDidUpdateTagOldNameKey: oldTagName
+    }];
 }
 
 - (void)deleteTag:(Tag *)tag
@@ -290,9 +295,10 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 	} else {
         [self selectTag:selectedTag];
 	}
-	
-    NSDictionary *userInfo = @{@"tagName": tagName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:userInfo];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo: @{
+        TagListDidUpdateTagOldNameKey: tagName
+    }];
 }
 
 
