@@ -244,27 +244,14 @@ private extension NoteListViewController {
         refreshPresentedNoteIfNeeded()
     }
 
-    /// Refresh: Filters relevant Notes
-    ///
-    func refreshSearchResults(keyword: String) {
-        refreshListControllerState(keyword: keyword)
-        refreshEverything()
-    }
-
     /// Refresh: ListController <> TableView
     ///
     private func refreshListController() {
-        listController.filter = SimplenoteAppDelegate.shared().selectedNotesFilter
+        listController.filter = nextListFilter()
         listController.sortMode = Options.shared.notesListSortMode
         listController.performFetch()
 
         tableView.reloadData()
-    }
-
-    /// Refresh: ListController Internal State
-    ///
-    private func refreshListControllerState(keyword: String) {
-        listController.searchKeyword = keyword
     }
 
     /// Refresh:  Actions
@@ -313,6 +300,31 @@ private extension NoteListViewController {
 
         SPTracker.trackListNoteOpened()
         noteEditorViewController.displayNote(targetNote)
+    }
+}
+
+
+// MARK: - Filtering
+//
+private extension NoteListViewController {
+
+    /// Determines the next Filter, based on the current Keyword + Selected Tag Filter
+    ///
+    func nextListFilter() -> NoteListFilter {
+        if let keyword = keyword, !keyword.isEmpty {
+            return .searching(keyword: keyword)
+        }
+
+        switch SimplenoteAppDelegate.shared().selectedTagFilter {
+        case .deleted:
+            return .deleted
+        case .everything:
+            return .everything
+        case .tag(let name):
+            return .tag(name: name)
+        case .untagged:
+            return .untagged
+        }
     }
 }
 
