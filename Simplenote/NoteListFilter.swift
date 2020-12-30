@@ -35,10 +35,7 @@ extension NoteListFilter {
             subpredicates.append( NSPredicate.predicateForUntaggedNotes() )
 
         case .searching(let keyword):
-            subpredicates += [
-                NSPredicate.predicateForNotes(deleted: false),
-                NSPredicate.predicateForNotes(searchText: keyword)
-            ]
+            subpredicates.append( NSPredicate.predicateForNotes(searchText: keyword) )
         }
 
         return NSCompoundPredicate(andPredicateWithSubpredicates: subpredicates)
