@@ -208,6 +208,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     
     [self refreshToolbarActions];
     [self refreshTagsField];
+    [self resetTagsFieldScrollOffset];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
