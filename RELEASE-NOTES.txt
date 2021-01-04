@@ -14,7 +14,8 @@
 - Notes List will now animate content changes #764
 - Fixed a bug that caused an unexpected jump in the Tags List #767
 - Fixed a bug that caused the Tags List to go blank upon tag rename #344
- 
+- Fixed a bug that caused the Editor Scroll Offset to jump #785
+
 2.5
 -----
 - Removed Main Window's Titlebar #719
