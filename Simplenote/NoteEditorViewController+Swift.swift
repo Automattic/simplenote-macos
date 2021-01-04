@@ -101,17 +101,17 @@ extension NoteEditorViewController {
             fatalError()
         }
 
-        let superviewWidth              = view.frame.width
-        let targetMaximumTextWidth      = maximumTextWidth(for: superviewWidth)
-        let targetContainerInset        = textContainerInset(superviewWidth: superviewWidth, maximumTextWidth: targetMaximumTextWidth)
-        let targetContainerSize         = textContainerSize(superviewWidth: superviewWidth, textContainerInset: targetContainerInset)
+        let superviewWidth = view.frame.width
+        let targetMaxTextWidth = maximumTextWidth(for: superviewWidth)
+        let targetContainerInset = textContainerInset(superviewWidth: superviewWidth, maximumTextWidth: targetMaxTextWidth)
+        let targetContainerSize = textContainerSize(superviewWidth: superviewWidth, textContainerInset: targetContainerInset)
 
-        noteEditor.textContainerInset  = targetContainerInset
-        container.containerSize        = targetContainerSize
+        noteEditor.textContainerInset = targetContainerInset
+        container.containerSize = targetContainerSize
 
         /// Note: Disabling `widthTracksTextView` fixes jumpy Scroll Offsets on resize
         /// Ref. https://github.com/Automattic/simplenote-macos/issues/536
-        container.widthTracksTextView  = false
+        container.widthTracksTextView = false
     }
 
     private func maximumTextWidth(for superviewWidth: CGFloat) -> CGFloat {
