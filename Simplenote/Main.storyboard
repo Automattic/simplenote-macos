@@ -484,6 +484,49 @@
                         <outlet property="delegate" destination="JtV-0Z-Zh8" id="eTf-Hn-ETC"/>
                     </connections>
                 </menu>
+                <menu id="gYa-0Y-UQ7" userLabel="Sortbar Menu">
+                    <items>
+                        <menuItem title="Alphabetically: A-Z" identifier="noteSortAlphaAscMenuItem" id="ikC-AF-W3i" userLabel="Alphabetically: A-Z">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="hbI-sy-rJr"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Alphabetically: Z-A" identifier="noteSortAlphaDescMenuItem" id="498-Zr-l4M" userLabel="Alphabetically: Z-A">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="YSs-I2-cWS"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="NdB-Ek-Oe1" userLabel="Created: Newest">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="1Zt-1G-dgs"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Created: Oldest" identifier="noteSortCreateOldestMenuItem" id="jrS-Tc-xfY" userLabel="Created: Oldest">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="fP4-Dl-TeG"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Modified: Newest" identifier="noteSortModifyNewestMenuItem" id="jGu-O5-Go3" userLabel="Modified: Newest">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="Nmj-xq-cW0"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Modified: Oldest" identifier="noteSortModifyOldestMenuItem" id="kdm-Gr-CTS" userLabel="Modified: Oldest">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="z6P-jm-AcL"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="JtV-0Z-Zh8" id="Ghd-YD-hii"/>
+                    </connections>
+                </menu>
                 <customObject id="41I-un-qkw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="382" y="220"/>
@@ -921,6 +964,7 @@
         <image name="button_restore" width="24" height="24"/>
         <image name="button_search" width="24" height="24"/>
         <image name="button_tags_close" width="24" height="24"/>
+        <image name="icon_chevron_down" width="16" height="16"/>
         <image name="icon_pin" width="16" height="16"/>
         <image name="icon_shared" width="16" height="16"/>
     </resources>
