@@ -9,21 +9,8 @@ class SplitViewController: NSSplitViewController {
     /// Indicates if we're in Focus Mode (Also known as Notes List is collapsed)
     ///
     var isFocusModeEnabled: Bool {
-        isNotesCollapsed
+        notesSplitItem.isCollapsed
     }
-
-    /// Indicates if the Tags List is collapsed
-    ///
-    var isTagsCollapsed: Bool {
-        splitViewItem(ofKind: .tags).isCollapsed
-    }
-
-    /// Indicates if the Notes List is collapsed
-    ///
-    var isNotesCollapsed: Bool {
-        splitViewItem(ofKind: .notes).isCollapsed
-    }
-
 
 
     // MARK: - Overridden Methods
@@ -77,14 +64,12 @@ extension SplitViewController {
 //
 private extension SplitViewController {
 
-    var collapsibleItems: [NSSplitViewItem] {
-        SplitItemKind.allCases.compactMap { kind in
-            guard kind.isCollapsible else {
-                return nil
-            }
+    var tagsSplitItem: NSSplitViewItem {
+        splitViewItem(ofKind: .tags)
+    }
 
-            return splitViewItem(ofKind: kind)
-        }
+    var notesSplitItem: NSSplitViewItem {
+        splitViewItem(ofKind: .notes)
     }
 
     func splitViewItem(ofKind kind: SplitItemKind) -> NSSplitViewItem {
@@ -99,15 +84,15 @@ extension SplitViewController {
 
     @IBAction
     func toggleSidebarAction(sender: Any) {
-        let tagsSplitItem = splitViewItem(ofKind: .tags)
-        let notesSplitItem = splitViewItem(ofKind: .notes)
+        let tagsItem = tagsSplitItem
+        let notesItem = notesSplitItem
 
         // State #0: Hide the Tags List
-        if !isTagsCollapsed {
+        if !tagsItem.isCollapsed {
             tagsSplitItem.animator().isCollapsed = true
 
         // State #1: Hide the Notes List
-        } else if !isNotesCollapsed {
+        } else if !notesItem.isCollapsed {
             notesSplitItem.animator().isCollapsed = true
 
         // State #2: Show all the things
@@ -123,7 +108,7 @@ extension SplitViewController {
     func focusModeAction(sender: Any) {
         let nextState = !isFocusModeEnabled
 
-        for splitItem in collapsibleItems {
+        for splitItem in [tagsSplitItem, notesSplitItem] {
             splitItem.animator().isCollapsed = nextState
         }
     }
@@ -155,10 +140,6 @@ extension SplitItemKind {
 
     var index: Int {
         rawValue
-    }
-
-    var isCollapsible: Bool {
-        self != .editor
     }
 
     var minimumThickness: CGFloat {
