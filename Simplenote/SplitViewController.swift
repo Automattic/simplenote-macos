@@ -6,11 +6,24 @@ import Foundation
 @objc
 class SplitViewController: NSSplitViewController {
 
-    /// Indicates if the Notes List is collapsed
+    /// Indicates if we're in Focus Mode (Also known as Notes List is collapsed)
     ///
     var isFocusModeEnabled: Bool {
+        isNotesCollapsed
+    }
+
+    /// Indicates if the Tags List is collapsed
+    ///
+    var isTagsCollapsed: Bool {
+        splitViewItem(ofKind: .tags).isCollapsed
+    }
+
+    /// Indicates if the Notes List is collapsed
+    ///
+    var isNotesCollapsed: Bool {
         splitViewItem(ofKind: .notes).isCollapsed
     }
+
 
 
     // MARK: - Overridden Methods
@@ -86,16 +99,24 @@ extension SplitViewController {
 
     @IBAction
     func toggleSidebarAction(sender: Any) {
-        SPTracker.trackSidebarButtonPresed()
+        let tagsSplitItem = splitViewItem(ofKind: .tags)
+        let notesSplitItem = splitViewItem(ofKind: .notes)
 
-        // Stop focus mode when the sidebar button is pressed with focus mode active
-        if isFocusModeEnabled {
-            focusModeAction(sender: sender)
-            return
+        // State #0: Hide the Tags List
+        if !isTagsCollapsed {
+            tagsSplitItem.animator().isCollapsed = true
+
+        // State #1: Hide the Notes List
+        } else if !isNotesCollapsed {
+            notesSplitItem.animator().isCollapsed = true
+
+        // State #2: Show all the things
+        } else {
+            notesSplitItem.animator().isCollapsed = false
+            tagsSplitItem.animator().isCollapsed = false
         }
 
-        let tagsSplitItem = splitViewItem(ofKind: .tags)
-        tagsSplitItem.animator().isCollapsed = !tagsSplitItem.isCollapsed
+        SPTracker.trackSidebarButtonPresed()
     }
 
     @IBAction
