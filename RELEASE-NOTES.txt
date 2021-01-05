@@ -10,6 +10,7 @@
 - Search Results are now global #760
 - Updated Color Palette #733
 - Entering Search Mode now displays automatically the Notes List #770
+- Exiting Focus Mode will now restore the previous Sidebar State #742
 - Full Width Line Length is now enabled by default #762
 - Fixed a bug that affected Multiple Selection in Big Sur #753
 - Fixed a bug that caused an artifact to show up in the SplitView dividers #779
