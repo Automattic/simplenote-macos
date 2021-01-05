@@ -352,47 +352,136 @@
                                 </scroller>
                             </scrollView>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="vxX-pk-HGm">
-                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="P81-ae-CJn"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="538" width="294" height="80"/>
                             </visualEffectView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
+                                <rect key="frame" x="0.0" y="538" width="294" height="80"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
-                                        <rect key="frame" x="14" y="17" width="39" height="19"/>
-                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Title" id="VNw-0O-CIA">
-                                            <font key="font" metaFont="systemBold" size="16"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
-                                        <rect key="frame" x="256" y="15" width="22" height="22"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D6u-00-cLs">
+                                        <rect key="frame" x="16" y="0.0" width="262" height="80"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Title View">
+                                                <rect key="frame" x="0.0" y="28" width="262" height="52"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
+                                                        <rect key="frame" x="-2" y="17" width="39" height="19"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Title" id="VNw-0O-CIA">
+                                                            <font key="font" metaFont="systemBold" size="16"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
+                                                        <rect key="frame" x="240" y="15" width="22" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="22" id="mDL-V4-Sng"/>
+                                                            <constraint firstAttribute="height" constant="22" id="oUz-t6-8il"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRY-CA-4Eu">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" id="0qP-3a-rqW"/>
+                                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="8" id="CLx-vg-kmF"/>
+                                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="CxI-qO-8jA"/>
+                                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" id="keN-Tv-rKe"/>
+                                                    <constraint firstAttribute="height" constant="52" id="wkJ-yn-7qc"/>
+                                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
+                                                </constraints>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="DV3-ul-I2L" userLabel="SortBar View" customClass="SortBarView" customModule="Simplenote" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="262" height="28"/>
+                                                <subviews>
+                                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-zn-kyD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="28"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffx-55-RlY">
+                                                                <rect key="frame" x="-2" y="7" width="32" height="15"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Sort:" id="REi-2x-g6N">
+                                                                    <font key="font" metaFont="cellTitle"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="hao-b3-D5s">
+                                                                <rect key="frame" x="30" y="7" width="116" height="15"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Alphabetically A-Z" id="EvQ-V8-rEa">
+                                                                    <font key="font" metaFont="systemBold" size="12"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qKt-ft-2oz" userLabel="Arrow">
+                                                                <rect key="frame" x="148" y="8" width="12" height="12"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="12" id="FZT-8V-05L"/>
+                                                                    <constraint firstAttribute="width" constant="12" id="las-mC-CP5"/>
+                                                                </constraints>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_chevron_down" id="o8z-AK-8yf"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <gestureRecognizers>
+                                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PLi-zb-9Na">
+                                                                <connections>
+                                                                    <action selector="searchSortbarWasPressed:" target="JtV-0Z-Zh8" id="SLj-SK-My6"/>
+                                                                </connections>
+                                                            </clickGestureRecognizer>
+                                                        </gestureRecognizers>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="8D5-zn-kyD" firstAttribute="leading" secondItem="DV3-ul-I2L" secondAttribute="leading" id="KzO-tr-WGG"/>
+                                                    <constraint firstItem="8D5-zn-kyD" firstAttribute="top" secondItem="DV3-ul-I2L" secondAttribute="top" id="Nc1-wG-yGp"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8D5-zn-kyD" secondAttribute="bottom" id="Nqb-pt-WB7"/>
+                                                    <constraint firstAttribute="height" constant="28" id="OWt-Gu-soR"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8D5-zn-kyD" secondAttribute="trailing" id="ckG-M9-jJD"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="chevronImageView" destination="qKt-ft-2oz" id="Hkx-uJ-ICi"/>
+                                                    <outlet property="sortModeLabel" destination="hao-b3-D5s" id="xlb-Kx-6Nc"/>
+                                                    <outlet property="titleLabel" destination="ffx-55-RlY" id="8QJ-j1-8my"/>
+                                                </connections>
+                                            </customView>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="mDL-V4-Sng"/>
-                                            <constraint firstAttribute="height" constant="22" id="oUz-t6-8il"/>
+                                            <constraint firstItem="DV3-ul-I2L" firstAttribute="leading" secondItem="D6u-00-cLs" secondAttribute="leading" id="dY8-R6-h03"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRY-CA-4Eu">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
-                                        </connections>
-                                    </button>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="7yr-5F-Pa7"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="EAu-95-CpX"/>
-                                    <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="OO0-gy-TNv"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="8" id="Q6T-vJ-qmu"/>
-                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" priority="249" constant="16" id="rhf-28-XBu"/>
+                                    <constraint firstAttribute="trailing" secondItem="D6u-00-cLs" secondAttribute="trailing" constant="16" id="2ba-JM-kNA"/>
+                                    <constraint firstItem="D6u-00-cLs" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="3Bj-25-WMw"/>
+                                    <constraint firstAttribute="bottom" secondItem="D6u-00-cLs" secondAttribute="bottom" id="Rw6-hB-kIR"/>
+                                    <constraint firstItem="D6u-00-cLs" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="cv5-n9-3Ms"/>
+                                    <constraint firstItem="D6u-00-cLs" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="q2Y-TB-Qyl"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
-                                <rect key="frame" x="10" y="323" width="274" height="23"/>
+                                <rect key="frame" x="10" y="295" width="274" height="23"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Notes" id="5l7-bS-Xdk">
                                     <font key="font" size="20" name="HelveticaNeue"/>
                                     <color key="textColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="deviceWhite"/>
@@ -400,7 +489,7 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5oO-Ju-l1S">
-                                <rect key="frame" x="139" y="292" width="16" height="16"/>
+                                <rect key="frame" x="139" y="264" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
                         <constraints>
@@ -419,7 +508,7 @@
                             <constraint firstAttribute="trailing" secondItem="zXl-eL-J7J" secondAttribute="trailing" id="dNX-N8-h3z"/>
                             <constraint firstAttribute="bottom" secondItem="JDR-c6-dqi" secondAttribute="bottom" id="h9H-wI-zNE"/>
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="top" secondItem="2I0-KH-uBu" secondAttribute="bottom" constant="15" id="jEQ-80-63D"/>
-                            <constraint firstItem="2I0-KH-uBu" firstAttribute="top" secondItem="vxX-pk-HGm" secondAttribute="bottom" constant="220" id="kT0-Rz-hoF"/>
+                            <constraint firstItem="2I0-KH-uBu" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="bottom" constant="220" id="kT0-Rz-hoF"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="bottom" secondItem="vxX-pk-HGm" secondAttribute="bottom" id="mAP-Tb-GSM"/>
                             <constraint firstAttribute="trailing" secondItem="JDR-c6-dqi" secondAttribute="trailing" id="qX6-5i-V99"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="trailing" secondItem="vxX-pk-HGm" secondAttribute="trailing" id="snN-gy-EPy"/>
@@ -431,16 +520,19 @@
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
+                        <outlet property="headerStackView" destination="D6u-00-cLs" id="WnW-Zq-PTf"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
+                        <outlet property="sortbarMenu" destination="gYa-0Y-UQ7" id="ztX-V1-UHE"/>
+                        <outlet property="sortbarView" destination="DV3-ul-I2L" id="ZzI-lw-Y5Y"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
                         <outlet property="titleLabel" destination="sHv-fV-cSL" id="gt3-Pp-KH6"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
                 </viewController>
-                <menu id="JPb-EX-UT9" userLabel="Note List Menu">
+                <menu id="JPb-EX-UT9" userLabel="Notes Menu">
                     <items>
                         <menuItem title="Pin to Top" identifier="listPinMenuItem" id="PE0-42-5TG">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -465,7 +557,7 @@
                         <outlet property="delegate" destination="JtV-0Z-Zh8" id="W7P-Gb-i6g"/>
                     </connections>
                 </menu>
-                <menu id="cOD-m3-0ET" userLabel="Trash List Menu">
+                <menu id="cOD-m3-0ET" userLabel="Trash Menu">
                     <items>
                         <menuItem title="Restore" identifier="listRestoreNoteMenuItem" id="O9Z-zU-i3L">
                             <modifierMask key="keyEquivalentModifierMask"/>
