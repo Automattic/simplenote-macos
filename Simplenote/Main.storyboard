@@ -429,7 +429,7 @@
                                                         <gestureRecognizers>
                                                             <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PLi-zb-9Na">
                                                                 <connections>
-                                                                    <action selector="searchSortbarWasPressed:" target="JtV-0Z-Zh8" id="SLj-SK-My6"/>
+                                                                    <action selector="searchSortBarWasPressed:" target="JtV-0Z-Zh8" id="TQ7-ve-qOg"/>
                                                                 </connections>
                                                             </clickGestureRecognizer>
                                                         </gestureRecognizers>

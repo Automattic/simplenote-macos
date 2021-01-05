@@ -744,4 +744,28 @@ extension NoteListViewController {
 
         SPTracker.trackListNoteRestored()
     }
+
+    @IBAction
+    func searchSortModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem,
+              let identifier = item.identifier,
+              let newSortMode = SortMode(noteListInterfaceID: identifier)
+        else {
+            return
+        }
+
+        Options.shared.notesSearchSortMode = newSortMode
+    }
+
+    @IBAction
+    func searchSortBarWasPressed(_ sender: Any) {
+        guard let recognizer = sender as? NSClickGestureRecognizer else {
+            return
+        }
+
+        let clickLocation = recognizer.location(in: headerStackView)
+        let menuOrigin = NSPoint(x: clickLocation.x, y: sortbarView.frame.minY)
+
+        sortbarMenu.popUp(positioning: nil, at: menuOrigin, in: headerStackView)
+    }
 }
