@@ -390,7 +390,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" id="0qP-3a-rqW"/>
                                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="8" id="CLx-vg-kmF"/>
                                                     <constraint firstItem="sHv-fV-cSL" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="CxI-qO-8jA"/>
-                                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" id="keN-Tv-rKe"/>
+                                                    <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" priority="249" id="keN-Tv-rKe"/>
                                                     <constraint firstAttribute="height" constant="52" id="wkJ-yn-7qc"/>
                                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
                                                 </constraints>
