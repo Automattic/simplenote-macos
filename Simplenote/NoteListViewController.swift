@@ -107,8 +107,10 @@ private extension NoteListViewController {
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     func refreshScrollInsets() {
-        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset
-        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset
+        let extraInsets: CGFloat = sortbarView.isHidden ? .zero : sortbarView.bounds.height
+
+        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset + extraInsets
+        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset + extraInsets
     }
 }
 
@@ -259,7 +261,7 @@ private extension NoteListViewController {
         refreshEnabledActions()
         refreshTitle()
         refreshPlaceholder()
-        refreshSortBar()
+        refreshSortBarTitle()
         displayAndSelectFirstNote()
         refreshPresentedNoteIfNeeded()
     }
@@ -325,8 +327,21 @@ private extension NoteListViewController {
 
     /// Refresh: Sortbar
     ///
-    func refreshSortBar() {
+    func refreshSortBarTitle() {
         sortbarView.sortModeDescription = Options.shared.notesSearchSortMode.description
+    }
+
+    /// Refresh: Sortbar Visibility
+    ///
+    func refreshSortBarVisibility(visible: Bool) {
+        let newHiddenState = !visible
+        guard sortbarView.isHidden != newHiddenState else {
+            return
+        }
+
+        sortbarView.isHidden = newHiddenState
+        refreshScrollInsets()
+        scrollView.scrollToTop(animated: true)
     }
 }
 
@@ -425,20 +440,6 @@ private extension NoteListViewController {
     private var alphaForHeader: CGFloat {
         let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
         return min(max(contentOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
-    }
-}
-
-
-// MARK: - Sortbar
-//
-private extension NoteListViewController {
-
-    func displaySortBar() {
-        sortbarView.isHidden = false
-    }
-
-    func dismissSortBar() {
-        sortbarView.isHidden = true
     }
 }
 
@@ -555,17 +556,19 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
         SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
-        displaySortBar()
     }
 
     public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
-        dismissSortBar()
+        refreshSortBarVisibility(visible: false)
     }
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
-        SPTracker.trackListNotesSearched()
         self.keyword = keyword
+
         refreshEverything()
+        refreshSortBarVisibility(visible: !keyword.isEmpty)
+
+        SPTracker.trackListNotesSearched()
     }
 }
 
