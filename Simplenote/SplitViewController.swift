@@ -89,8 +89,13 @@ private extension SplitViewController {
     }
 
     func refreshCollapsedItems(for state: SplitState) {
-        tagsSplitItem.animator().isCollapsed = state.isTagsCollapsed
-        notesSplitItem.animator().isCollapsed = state.isNotesCollapsed
+        if tagsSplitItem.isCollapsed != state.isTagsCollapsed {
+            tagsSplitItem.animator().isCollapsed = state.isTagsCollapsed
+        }
+
+        if notesSplitItem.isCollapsed != state.isNotesCollapsed {
+            notesSplitItem.animator().isCollapsed = state.isNotesCollapsed
+        }
     }
 
     func restorePreviousState() -> Bool {
