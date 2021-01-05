@@ -16,7 +16,10 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var clipView: NSClipView!
     @IBOutlet private var tableView: SPTableView!
     @IBOutlet private var headerEffectView: NSVisualEffectView!
+    @IBOutlet private var headerStackView: NSStackView!
     @IBOutlet private var addNoteButton: NSButton!
+    @IBOutlet private var sortbarView: SortBarView!
+    @IBOutlet private var sortbarMenu: NSMenu!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
     @IBOutlet private var titleSemaphoreLeadingConstraint: NSLayoutConstraint!
@@ -117,6 +120,7 @@ extension NoteListViewController {
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
 
+        sortbarView.refreshStyle()
         tableView.reloadAndPreserveSelection()
     }
 }
