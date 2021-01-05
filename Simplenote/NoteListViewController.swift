@@ -187,6 +187,10 @@ private extension NoteListViewController {
         SimplenoteAppDelegate.shared().simperium
     }
 
+    var isSearching: Bool {
+        keyword?.isEmpty == false
+    }
+
     var isSelectionNotEmpty: Bool {
         selectedNotes.isEmpty == false
     }
@@ -251,8 +255,9 @@ private extension NoteListViewController {
     /// Refresh: ListController <> TableView
     ///
     private func refreshListController() {
+        let options = Options.shared
         listController.filter = nextListFilter()
-        listController.sortMode = Options.shared.notesListSortMode
+        listController.sortMode = isSearching ? options.notesSearchSortMode : options.notesListSortMode
         listController.performFetch()
 
         tableView.reloadData()
