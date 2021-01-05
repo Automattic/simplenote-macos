@@ -341,7 +341,7 @@ private extension NoteListViewController {
 
         sortbarView.isHidden = newHiddenState
         refreshScrollInsets()
-        scrollView.scrollToTop(animated: true)
+        scrollView.scrollToTop(animated: false)
     }
 }
 
