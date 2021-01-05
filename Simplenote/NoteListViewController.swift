@@ -52,6 +52,7 @@ class NoteListViewController: NSViewController {
         setupTableView()
         startListeningToNotifications()
         startListControllerSync()
+        dismissSortBar()
 
         refreshStyle()
         refreshEverything()
@@ -188,7 +189,11 @@ private extension NoteListViewController {
     }
 
     var isSearching: Bool {
-        keyword?.isEmpty == false
+        guard case .search = listController.filter else {
+            return false
+        }
+
+        return true
     }
 
     var isSelectionNotEmpty: Bool {
@@ -248,6 +253,7 @@ private extension NoteListViewController {
         refreshEnabledActions()
         refreshTitle()
         refreshPlaceholder()
+        refreshSortBar()
         displayAndSelectFirstNote()
         refreshPresentedNoteIfNeeded()
     }
@@ -309,6 +315,12 @@ private extension NoteListViewController {
 
         SPTracker.trackListNoteOpened()
         noteEditorViewController.displayNote(targetNote)
+    }
+
+    /// Refresh: Sortbar
+    ///
+    func refreshSortBar() {
+        sortbarView.sortModeDescription = Options.shared.notesSearchSortMode.description
     }
 }
 
@@ -407,6 +419,20 @@ private extension NoteListViewController {
     private var alphaForHeader: CGFloat {
         let contentOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
         return min(max(contentOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
+    }
+}
+
+
+// MARK: - Sortbar
+//
+private extension NoteListViewController {
+
+    func displaySortBar() {
+        sortbarView.isHidden = false
+    }
+
+    func dismissSortBar() {
+        sortbarView.isHidden = true
     }
 }
 
@@ -523,10 +549,11 @@ extension NoteListViewController: EditorControllerSearchDelegate {
 
     public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
         SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
+        displaySortBar()
     }
 
     public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
-        // NO-OP
+        dismissSortBar()
     }
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
