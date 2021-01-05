@@ -50,9 +50,9 @@ class NoteListViewController: NSViewController {
 
         setupProgressIndicator()
         setupTableView()
+        setupSortbar()
         startListeningToNotifications()
         startListControllerSync()
-        dismissSortBar()
 
         refreshStyle()
         refreshEverything()
@@ -96,6 +96,12 @@ private extension NoteListViewController {
     func setupProgressIndicator() {
         progressIndicator.wantsLayer = true
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
+    }
+
+    /// Setup: Sortbar
+    ///
+    func setupSortbar() {
+        sortbarView.isHidden = true
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
