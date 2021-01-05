@@ -540,14 +540,25 @@ extension NoteListViewController: NSMenuItemValidation {
         switch identifier {
         case .listCopyInterlinkMenuItem:
             return validateListCopyInterlinkMenuItem(menuItem)
+
         case .listDeleteForeverMenuItem:
             return validateListDeleteForeverMenuItem(menuItem)
+
         case .listPinMenuItem:
             return validateListPinMenuItem(menuItem)
+
         case .listRestoreNoteMenuItem:
             return validateListRestoreMenuItem(menuItem)
+
         case .listTrashNoteMenuItem:
             return validateListTrashMenuItem(menuItem)
+
+        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
+             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
+             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
+
+            return validateNotesSortModeMenuItem(menuItem)
+
         default:
             return true
         }
@@ -578,6 +589,17 @@ extension NoteListViewController: NSMenuItemValidation {
     func validateListTrashMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Move to Trash", comment: "Move to Trash List Action")
         return isSelectionNotEmpty
+    }
+
+    func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
+        guard let identifier = item.identifier, let itemSortMode = SortMode(noteListInterfaceID: identifier) else {
+            return false
+        }
+
+        let isSelected = Options.shared.notesSearchSortMode == itemSortMode
+        item.state = isSelected ? .on : .off
+        item.title = itemSortMode.description
+        return true
     }
 }
 
