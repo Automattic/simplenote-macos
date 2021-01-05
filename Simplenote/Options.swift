@@ -111,6 +111,19 @@ extension Options {
         }
     }
 
+    /// Notes List: Sort Mode when Searching!
+    ///
+    var notesSearchSortMode: SortMode {
+        get {
+            let payload = defaults.integer(forKey: .notesSearchSortMode)
+            return SortMode(rawValue: payload) ?? notesListSortMode
+        }
+        set {
+            defaults.set(newValue.rawValue, forKey: .notesSearchSortMode)
+            NotificationCenter.default.post(name: .NoteListSortModeDidChange, object: nil)
+        }
+    }
+
     /// Theme Name: Null indicates that the system's default theme should be picked
     ///
     var themeName: String? {
