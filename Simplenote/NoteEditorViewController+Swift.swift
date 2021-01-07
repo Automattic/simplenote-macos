@@ -709,9 +709,20 @@ extension NoteEditorViewController {
         }
 
         save()
+        ensureSelectedNoteIsVisible(oldTags: oldTags, newTags: note.tags, simperiumKey: note.simperiumKey)
+    }
 
-        // Ensure the note remains onscreen
-        simplenoteAppDelegate.displayNote(simperiumKey: note.simperiumKey)
+    /// Displays the current Note in the Notes List whenever we're filtering by Tag, and such String gets removed from the Tags collection
+    ///
+    private func ensureSelectedNoteIsVisible(oldTags: String?, newTags: String?, simperiumKey: String) {
+        guard case let .tag(selectedTag) = simplenoteAppDelegate.selectedTagFilter,
+              oldTags?.contains(selectedTag) == true,
+              newTags?.contains(selectedTag) == false
+        else {
+            return
+        }
+
+        simplenoteAppDelegate.displayNote(simperiumKey: simperiumKey)
     }
 }
 
