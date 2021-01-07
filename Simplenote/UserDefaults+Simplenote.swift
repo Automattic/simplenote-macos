@@ -28,6 +28,16 @@ extension UserDefaults {
         return bool(forKey: key.rawValue)
     }
 
+    /// Returns the Booolean associated with the specified Key. Falls back to the Default Value, when there is nothing stored
+    ///
+    func bool(forKey key: Key, defaultValue: Bool) -> Bool {
+        guard containsObject(forKey: key) else {
+            return defaultValue
+        }
+
+        return bool(forKey: key)
+    }
+
     /// Returns the Integer (if any) associated with the specified Key.
     ///
     func integer(forKey key: Key) -> Int {
