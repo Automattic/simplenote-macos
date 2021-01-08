@@ -524,11 +524,11 @@ private extension NoteListViewController {
     }
 
     func bodyPrefix(for note: Note) -> String? {
-        guard isSearching, let date = note.date(for: listController.sortMode) else {
+        guard isSearching else {
             return nil
         }
 
-        return DateFormatter.notesFormatter.string(from: date)
+        return NoteListPrefixFormatter.shared.prefix(from: note, for: listController.sortMode)
     }
 }
 
