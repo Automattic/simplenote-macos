@@ -5,11 +5,6 @@ import Foundation
 //
 struct NoteListPrefixFormatter {
 
-    /// Let's... reuse the formatter?
-    ///
-    static let shared = NoteListPrefixFormatter()
-
-
     /// Returns a Prefix for the specified Note, matching a given SortMode
     ///
     func prefix(from note: Note, for sortMode: SortMode) -> String? {

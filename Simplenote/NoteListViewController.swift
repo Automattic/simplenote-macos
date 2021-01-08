@@ -528,7 +528,7 @@ private extension NoteListViewController {
             return nil
         }
 
-        return NoteListPrefixFormatter.shared.prefix(from: note, for: listController.sortMode)
+        return NoteListPrefixFormatter().prefix(from: note, for: listController.sortMode)
     }
 }
 
