@@ -10,9 +10,6 @@
 #import "NSMutableAttributedString+Styling.h"
 #import "Simplenote-Swift.h"
 
-// Note: This matches the Electron apps max editor width
-static CGFloat const SPTextViewMaximumWidth = 750;
-static CGFloat const SPTextViewMinimumPadding = 20;
 
 @implementation SPTextView
 
@@ -39,27 +36,6 @@ static CGFloat const SPTextViewMinimumPadding = 20;
 {
     [super paste:sender];
     [self processLinksInDocumentAsynchronously];
-}
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    CGFloat viewWidth = self.frame.size.width;
-    CGFloat insetX = [self shouldCalculateInset:viewWidth] ? [self getAdjustedInsetX:viewWidth] : SPTextViewMinimumPadding;
-    [self setTextContainerInset: NSMakeSize(insetX, SPTextViewMinimumPadding)];
-    
-    [super drawRect:dirtyRect];
-}
-
-- (BOOL)shouldCalculateInset:(CGFloat)viewWidth
-{
-    return viewWidth > SPTextViewMaximumWidth && ![[Options shared] editorFullWidth];
-}
-
-- (CGFloat)getAdjustedInsetX:(CGFloat)viewWidth
-{
-    CGFloat adjustedInset = (viewWidth - SPTextViewMaximumWidth) / 2;
-    
-    return lroundf(adjustedInset) + SPTextViewMinimumPadding;
 }
 
 - (BOOL)checkForChecklistClick:(NSEvent *)event

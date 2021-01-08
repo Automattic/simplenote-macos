@@ -27,7 +27,7 @@ class SortBarView: NSView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.stringValue = NSLocalizedString("Sort:", comment: "Sortbar Title")
+        titleLabel.stringValue = NSLocalizedString("Sort", comment: "Sortbar Title")
     }
 
     func refreshStyle() {

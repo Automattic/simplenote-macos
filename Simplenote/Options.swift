@@ -102,8 +102,9 @@ extension Options {
     ///
     var notesListSortMode: SortMode {
         get {
-            let payload = defaults.integer(forKey: .notesListSortMode)
-            return SortMode(rawValue: payload) ?? .modifiedNewest
+            return defaults.integer(forKey: .notesListSortMode).flatMap { mode in
+                SortMode(rawValue: mode)
+            } ?? .modifiedNewest
         }
         set {
             defaults.set(newValue.rawValue, forKey: .notesListSortMode)
@@ -115,8 +116,9 @@ extension Options {
     ///
     var notesSearchSortMode: SortMode {
         get {
-            let payload = defaults.integer(forKey: .notesSearchSortMode)
-            return SortMode(rawValue: payload) ?? notesListSortMode
+            return defaults.integer(forKey: .notesSearchSortMode).flatMap { mode in
+                SortMode(rawValue: mode)
+            } ?? notesListSortMode
         }
         set {
             defaults.set(newValue.rawValue, forKey: .notesSearchSortMode)

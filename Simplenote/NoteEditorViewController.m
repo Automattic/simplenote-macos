@@ -81,7 +81,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.storage = [Storage new];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     [self.noteEditor.layoutManager setDefaultAttachmentScaling:NSImageScaleProportionallyDown];
-    
+
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
        NSForegroundColorAttributeName: [NSColor simplenoteLinkColor],
@@ -129,6 +129,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [super viewWillLayout];
     [self refreshScrollInsets];
     [self refreshHeaderState];
+    [self refreshTextContainer];
 }
 
 - (void)save
@@ -281,7 +282,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (void)displayModeWasUpdated:(NSNotification *)notification
 {
-    self.noteEditor.needsDisplay = YES;
+    self.view.needsLayout = YES;
 }
 
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)location
