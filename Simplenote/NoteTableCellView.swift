@@ -86,6 +86,10 @@ class NoteTableCellView: NSTableCellView {
     ///
     var body: String?
 
+    /// Body's Prefix: Designed to display Dates (with a slightly different style) when appropriate.
+    ///
+    var bodyPrefix: String?
+
 
     // MARK: - Overridden Methods
 
@@ -116,15 +120,8 @@ extension NoteTableCellView {
     /// Refreshed the Label(s) Attributed Strings: Keywords, Bullets and the Body Prefix will be taken into consideration
     ///
     private func refreshAttributedStrings() {
-        let bodyColor: NSColor = selected ? .simplenoteTextColor : .simplenoteSecondaryTextColor
-
-        titleTextField.attributedStringValue = title.map {
-            NSAttributedString.previewString(text: $0, font: Fonts.title, color: .simplenoteTextColor)
-        } ?? NSAttributedString()
-
-        bodyTextField.attributedStringValue = body.map {
-            NSAttributedString.previewString(text: $0, font: Fonts.body, color: bodyColor)
-        } ?? NSAttributedString()
+        titleTextField.attributedStringValue = titleString
+        bodyTextField.attributedStringValue = bodyString
     }
 
     /// Refreshes the Accessory Icons tint color
@@ -136,6 +133,33 @@ extension NoteTableCellView {
 
         pinnedImageView.image = pinnedImageView.image?.tinted(with: pinnedColor)
         sharedImageView.image = sharedImageView.image?.tinted(with: sharedColor)
+    }
+}
+
+
+// MARK: - String Builders
+//
+private extension NoteTableCellView {
+
+    var titleString: NSAttributedString {
+        return title.map {
+            NSAttributedString.previewString(text: $0, font: Fonts.title, color: .simplenoteTextColor)
+        } ?? NSAttributedString()
+    }
+
+    var bodyString: NSAttributedString {
+        let bodyString = NSMutableAttributedString()
+        let bodyColor: NSColor = selected ? .simplenoteTextColor : .simplenoteSecondaryTextColor
+
+        if let bodyPrefix = bodyPrefix {
+            bodyString += NSAttributedString.previewString(text: bodyPrefix + String.space, font: Fonts.bodyPrefix, color: .simplenoteTextColor)
+        }
+
+        if let bodySuffix = body {
+            bodyString += NSAttributedString.previewString(text: bodySuffix, font: Fonts.body, color: bodyColor)
+        }
+
+        return bodyString
     }
 }
 
@@ -214,6 +238,7 @@ private enum Metrics {
 private enum Fonts {
     static let title = NSFont.systemFont(ofSize: 14, weight: .semibold)
     static let body = NSFont.systemFont(ofSize: 12)
+    static let bodyPrefix = NSFont.systemFont(ofSize: 12, weight: .semibold)
 }
 
 
@@ -234,4 +259,8 @@ extension NSAttributedString {
 
         return attrString
     }
+}
+
+func +=(lhs: NSMutableAttributedString, rhs: NSAttributedString) {
+    lhs.append(rhs)
 }

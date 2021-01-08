@@ -515,11 +515,20 @@ private extension NoteListViewController {
         noteView.displaysSharedIndicator = note.published
         noteView.title = note.titlePreview
         noteView.body = note.bodyPreview
+        noteView.bodyPrefix = bodyPrefix(for: note)
         noteView.rendersInCondensedMode = Options.shared.notesListCondensed
 
         noteView.refreshStyle()
 
         return noteView
+    }
+
+    func bodyPrefix(for note: Note) -> String? {
+        guard isSearching else {
+            return nil
+        }
+
+        return NoteListPrefixFormatter().prefix(from: note, for: listController.sortMode)
     }
 }
 

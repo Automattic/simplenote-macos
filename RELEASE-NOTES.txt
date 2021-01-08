@@ -8,6 +8,7 @@
 - Notes List now display row separators #758
 - Notes List will now animate content changes #764
 - Search Results are now global #760
+- Search Results will now display the Creation or Modification date when appropriate #790
 - Updated Color Palette #733
 - Entering Search Mode now displays automatically the Notes List #770
 - Full Width Line Length is now enabled by default #762
