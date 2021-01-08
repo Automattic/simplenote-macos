@@ -17,7 +17,9 @@
 - Fixed a bug that caused Line Height to be inconsistent in Empty Documents #771
 - Fixed a bug that caused an unexpected jump in the Tags List #767
 - Fixed a bug that caused the Tags List to go blank upon tag rename #344
- 
+- Fixed a bug that prevented the Window from Maximizing / Minimizing on double click #786
+- Fixed a bug that caused the Editor Scroll Offset to jump #785
+
 2.5
 -----
 - Removed Main Window's Titlebar #719

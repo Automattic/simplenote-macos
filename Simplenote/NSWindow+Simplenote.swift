@@ -55,4 +55,11 @@ extension NSWindow {
 
         return isRTL ? (frame.width - semaphoreBounds.minX) : semaphoreBounds.maxX
     }
+
+    /// Returns the Titlebar's Rect 
+    ///
+    var titlebarRect: NSRect {
+        let layoutRect = contentLayoutRect
+        return NSRect(x: layoutRect.minX, y: layoutRect.maxY, width: layoutRect.width, height: frame.height - layoutRect.height)
+    }
 }
