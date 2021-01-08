@@ -288,6 +288,14 @@ private extension NoteListViewController {
     ///
     private func refreshPlaceholder() {
         statusField.isHidden = listController.numberOfNotes > .zero
+
+        statusField.stringValue = {
+            if isSearching {
+                return NSLocalizedString("No Results", comment: "No Search Results")
+            }
+
+            return NSLocalizedString("No Notes", comment: "No Notes Available")
+        }()
     }
 
     /// Refresh: Title
