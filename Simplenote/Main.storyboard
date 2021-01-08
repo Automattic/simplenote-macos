@@ -889,7 +889,6 @@
                     </window>
                     <connections>
                         <outlet property="simplenoteWindow" destination="Xk8-MH-eev" id="UZU-US-aOB"/>
-                        <segue destination="pbQ-Wy-u9S" kind="relationship" relationship="window.shadowedContentViewController" id="OXN-9V-bSk"/>
                     </connections>
                 </windowController>
                 <customObject id="z6J-n3-huD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

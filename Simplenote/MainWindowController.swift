@@ -9,6 +9,16 @@ class MainWindowController: NSWindowController {
     ///
     @IBOutlet private(set) var simplenoteWindow: Window!
 
+    /// We can't have nice things (II): Autosave must be set **after** the contentViewController has been assigned. Otherwise it won't work
+    /// Ref.:  https://developer.apple.com/forums/thread/23453
+    ///
+    override var contentViewController: NSViewController? {
+        didSet {
+            setupAutosave()
+        }
+    }
+
+
     // MARK: - Overridden Methods
 
     deinit {
@@ -17,7 +27,6 @@ class MainWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        setupMainWindow()
         setupToolbar()
         relocateSemaphoreButtons()
         startListeningToFullscreenNotifications()
@@ -41,9 +50,9 @@ extension MainWindowController: NSWindowDelegate {
 //
 private extension MainWindowController {
 
-    /// Initalizes the Main Window
+    /// Initalizes the Autosave: **MUST** happen after the content has been set!
     ///
-    func setupMainWindow() {
+    func setupAutosave() {
         simplenoteWindow.setFrameAutosaveName(.mainWindow)
     }
 

@@ -33,14 +33,14 @@ extension SimplenoteAppDelegate {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
         mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
-        splitViewController = mainWindowController.contentViewController as! SplitViewController
+        splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
         tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
         noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
         noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
     }
 
     @objc
-    func configureSplitView() {
+    func configureSplitViewController() {
         let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
         let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
         let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
@@ -51,8 +51,9 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
-    func configureInitialResponder() {
-        window.initialFirstResponder = noteEditorViewController.noteEditor
+    func configureMainWindowController() {
+        mainWindowController.contentViewController = splitViewController
+        mainWindowController.simplenoteWindow.initialFirstResponder = noteEditorViewController.noteEditor
     }
 
     @objc

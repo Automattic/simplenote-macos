@@ -94,8 +94,8 @@
 {
     [self configureSimperium];
     [self configureMainInterface];
-    [self configureSplitView];
-    [self configureInitialResponder];
+    [self configureSplitViewController];
+    [self configureMainWindowController];
     [self applyStyle];
 
     [self configureEditorController];
