@@ -102,11 +102,26 @@ extension Options {
     ///
     var notesListSortMode: SortMode {
         get {
-            let payload = defaults.integer(forKey: .notesListSortMode)
-            return SortMode(rawValue: payload) ?? .modifiedNewest
+            return defaults.integer(forKey: .notesListSortMode).flatMap { mode in
+                SortMode(rawValue: mode)
+            } ?? .modifiedNewest
         }
         set {
             defaults.set(newValue.rawValue, forKey: .notesListSortMode)
+            NotificationCenter.default.post(name: .NoteListSortModeDidChange, object: nil)
+        }
+    }
+
+    /// Notes List: Sort Mode when Searching!
+    ///
+    var notesSearchSortMode: SortMode {
+        get {
+            return defaults.integer(forKey: .notesSearchSortMode).flatMap { mode in
+                SortMode(rawValue: mode)
+            } ?? notesListSortMode
+        }
+        set {
+            defaults.set(newValue.rawValue, forKey: .notesSearchSortMode)
             NotificationCenter.default.post(name: .NoteListSortModeDidChange, object: nil)
         }
     }

@@ -16,7 +16,10 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var clipView: NSClipView!
     @IBOutlet private var tableView: SPTableView!
     @IBOutlet private var headerEffectView: NSVisualEffectView!
+    @IBOutlet private var headerStackView: NSStackView!
     @IBOutlet private var addNoteButton: NSButton!
+    @IBOutlet private var sortbarView: SortBarView!
+    @IBOutlet private var sortbarMenu: NSMenu!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
     @IBOutlet private var titleSemaphoreLeadingConstraint: NSLayoutConstraint!
@@ -47,6 +50,7 @@ class NoteListViewController: NSViewController {
 
         setupProgressIndicator()
         setupTableView()
+        setupSortbar()
         startListeningToNotifications()
         startListControllerSync()
 
@@ -94,11 +98,19 @@ private extension NoteListViewController {
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
     }
 
+    /// Setup: Sortbar
+    ///
+    func setupSortbar() {
+        sortbarView.isHidden = true
+    }
+
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     func refreshScrollInsets() {
-        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset
-        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset
+        let extraInsets: CGFloat = sortbarView.isHidden ? .zero : sortbarView.bounds.height
+
+        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset + extraInsets
+        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset + extraInsets
     }
 }
 
@@ -117,6 +129,7 @@ extension NoteListViewController {
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
 
+        sortbarView.refreshStyle()
         tableView.reloadAndPreserveSelection()
     }
 }
@@ -183,6 +196,14 @@ private extension NoteListViewController {
         SimplenoteAppDelegate.shared().simperium
     }
 
+    var isSearching: Bool {
+        guard case .search = listController.filter else {
+            return false
+        }
+
+        return true
+    }
+
     var isSelectionNotEmpty: Bool {
         selectedNotes.isEmpty == false
     }
@@ -240,6 +261,7 @@ private extension NoteListViewController {
         refreshEnabledActions()
         refreshTitle()
         refreshPlaceholder()
+        refreshSortBarTitle()
         displayAndSelectFirstNote()
         refreshPresentedNoteIfNeeded()
     }
@@ -247,8 +269,9 @@ private extension NoteListViewController {
     /// Refresh: ListController <> TableView
     ///
     private func refreshListController() {
+        let options = Options.shared
         listController.filter = nextListFilter()
-        listController.sortMode = Options.shared.notesListSortMode
+        listController.sortMode = isSearching ? options.notesSearchSortMode : options.notesListSortMode
         listController.performFetch()
 
         tableView.reloadData()
@@ -300,6 +323,25 @@ private extension NoteListViewController {
 
         SPTracker.trackListNoteOpened()
         noteEditorViewController.displayNote(targetNote)
+    }
+
+    /// Refresh: Sortbar
+    ///
+    func refreshSortBarTitle() {
+        sortbarView.sortModeDescription = Options.shared.notesSearchSortMode.description
+    }
+
+    /// Refresh: Sortbar Visibility
+    ///
+    func refreshSortBarVisibility(visible: Bool) {
+        let newHiddenState = !visible
+        guard sortbarView.isHidden != newHiddenState else {
+            return
+        }
+
+        sortbarView.isHidden = newHiddenState
+        refreshScrollInsets()
+        scrollView.scrollToTop(animated: false)
     }
 }
 
@@ -517,13 +559,16 @@ extension NoteListViewController: EditorControllerSearchDelegate {
     }
 
     public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
-        // NO-OP
+        refreshSortBarVisibility(visible: false)
     }
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
-        SPTracker.trackListNotesSearched()
         self.keyword = keyword
+
         refreshEverything()
+        refreshSortBarVisibility(visible: !keyword.isEmpty)
+
+        SPTracker.trackListNotesSearched()
     }
 }
 
@@ -540,14 +585,25 @@ extension NoteListViewController: NSMenuItemValidation {
         switch identifier {
         case .listCopyInterlinkMenuItem:
             return validateListCopyInterlinkMenuItem(menuItem)
+
         case .listDeleteForeverMenuItem:
             return validateListDeleteForeverMenuItem(menuItem)
+
         case .listPinMenuItem:
             return validateListPinMenuItem(menuItem)
+
         case .listRestoreNoteMenuItem:
             return validateListRestoreMenuItem(menuItem)
+
         case .listTrashNoteMenuItem:
             return validateListTrashMenuItem(menuItem)
+
+        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
+             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
+             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
+
+            return validateNotesSortModeMenuItem(menuItem)
+
         default:
             return true
         }
@@ -578,6 +634,17 @@ extension NoteListViewController: NSMenuItemValidation {
     func validateListTrashMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Move to Trash", comment: "Move to Trash List Action")
         return isSelectionNotEmpty
+    }
+
+    func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
+        guard let identifier = item.identifier, let itemSortMode = SortMode(noteListInterfaceID: identifier) else {
+            return false
+        }
+
+        let isSelected = Options.shared.notesSearchSortMode == itemSortMode
+        item.state = isSelected ? .on : .off
+        item.title = itemSortMode.description
+        return true
     }
 }
 
@@ -717,5 +784,29 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteRestored()
+    }
+
+    @IBAction
+    func searchSortModeWasPressed(_ sender: Any) {
+        guard let item = sender as? NSMenuItem,
+              let identifier = item.identifier,
+              let newSortMode = SortMode(noteListInterfaceID: identifier)
+        else {
+            return
+        }
+
+        Options.shared.notesSearchSortMode = newSortMode
+    }
+
+    @IBAction
+    func searchSortBarWasPressed(_ sender: Any) {
+        guard let recognizer = sender as? NSClickGestureRecognizer else {
+            return
+        }
+
+        let clickLocation = recognizer.location(in: headerStackView)
+        let menuOrigin = NSPoint(x: clickLocation.x, y: sortbarView.frame.minY)
+
+        sortbarMenu.popUp(positioning: nil, at: menuOrigin, in: headerStackView)
     }
 }

@@ -226,7 +226,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     if (lastKnownScrollOffset != nil) {
         [self.scrollView.documentView scrollPoint:lastKnownScrollOffset.pointValue];
     } else {
-        [self.scrollView scrollToTop];
+        [self.scrollView scrollToTopWithAnimation:NO];
     }
 }
 

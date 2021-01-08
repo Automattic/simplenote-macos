@@ -49,6 +49,10 @@ extension NSImage.Name {
     ///
     static let restore = NSImage.Name("button_restore")
 
+    /// Note List: Chevron Down
+    ///
+    static let chevronDown = NSImage.Name("icon_chevron_down")
+
     /// Note List: Shared
     ///
     static let shared = NSImage.Name("icon_shared")

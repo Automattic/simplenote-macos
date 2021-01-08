@@ -4,6 +4,7 @@
 - New Big Sur Iconset #745
 - New Search Toolbar Action #741
 - New Notes List Sort Modes #33
+- New Search Sort Bar #789
 - Notes List now display row separators #758
 - Notes List will now animate content changes #764
 - Search Results are now global #760

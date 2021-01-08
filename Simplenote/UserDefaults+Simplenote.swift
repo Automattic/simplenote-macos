@@ -13,6 +13,7 @@ extension UserDefaults {
         case notesListCondensed = "kPreviewLinesPref"
         case notesListSortMode
         case notesListSortModeLegacy = "kAlphabeticalSortPreferencesKey"
+        case notesSearchSortMode
         case themeName = "VSThemeManagerThemePrefKey"
     }
 }
@@ -40,7 +41,11 @@ extension UserDefaults {
 
     /// Returns the Integer (if any) associated with the specified Key.
     ///
-    func integer(forKey key: Key) -> Int {
+    func integer(forKey key: Key) -> Int? {
+        guard containsObject(forKey: key) else {
+            return nil
+        }
+
         return integer(forKey: key.rawValue)
     }
 
