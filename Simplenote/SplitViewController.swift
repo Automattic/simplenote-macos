@@ -6,10 +6,22 @@ import Foundation
 @objc
 class SplitViewController: NSSplitViewController {
 
-    /// Indicates if the Notes List is collapsed
+    /// State FSM: Represents the current Display Mode
+    ///
+    private var state: SplitState = .everything {
+        didSet {
+            refreshCollapsedItems(for: state)
+        }
+    }
+
+    /// State prior to toggling Focus Mode
+    ///
+    private var previousState: SplitState?
+
+    /// Indicates if we're in Focus Mode (Also known as Notes List is collapsed)
     ///
     var isFocusModeEnabled: Bool {
-        splitViewItem(ofKind: .notes).isCollapsed
+        notesSplitItem.isCollapsed
     }
 
 
@@ -64,18 +76,36 @@ extension SplitViewController {
 //
 private extension SplitViewController {
 
-    var collapsibleItems: [NSSplitViewItem] {
-        SplitItemKind.allCases.compactMap { kind in
-            guard kind.isCollapsible else {
-                return nil
-            }
+    var tagsSplitItem: NSSplitViewItem {
+        splitViewItem(ofKind: .tags)
+    }
 
-            return splitViewItem(ofKind: kind)
-        }
+    var notesSplitItem: NSSplitViewItem {
+        splitViewItem(ofKind: .notes)
     }
 
     func splitViewItem(ofKind kind: SplitItemKind) -> NSSplitViewItem {
         splitViewItems[kind.index]
+    }
+
+    func refreshCollapsedItems(for state: SplitState) {
+        if tagsSplitItem.isCollapsed != state.isTagsCollapsed {
+            tagsSplitItem.animator().isCollapsed = state.isTagsCollapsed
+        }
+
+        if notesSplitItem.isCollapsed != state.isNotesCollapsed {
+            notesSplitItem.animator().isCollapsed = state.isNotesCollapsed
+        }
+    }
+
+    func restorePreviousState() -> Bool {
+        guard let nextState = previousState else {
+            return false
+        }
+
+        state = nextState
+        previousState = nil
+        return true
     }
 }
 
@@ -86,25 +116,21 @@ extension SplitViewController {
 
     @IBAction
     func toggleSidebarAction(sender: Any) {
+        self.state = state.next
+        self.previousState = nil
+
         SPTracker.trackSidebarButtonPresed()
-
-        // Stop focus mode when the sidebar button is pressed with focus mode active
-        if isFocusModeEnabled {
-            focusModeAction(sender: sender)
-            return
-        }
-
-        let tagsSplitItem = splitViewItem(ofKind: .tags)
-        tagsSplitItem.animator().isCollapsed = !tagsSplitItem.isCollapsed
     }
 
     @IBAction
     func focusModeAction(sender: Any) {
-        let nextState = !isFocusModeEnabled
-
-        for splitItem in collapsibleItems {
-            splitItem.animator().isCollapsed = nextState
+        if restorePreviousState() {
+            return
         }
+
+        let nextState: SplitState = state != .editor ? .editor : .everything
+        previousState = state
+        state = nextState
     }
 
     @objc
@@ -117,6 +143,36 @@ extension SplitViewController {
     }
 }
 
+
+// MARK: - SplitState: Represents the Internal SplitView State
+//
+private enum SplitState {
+    case everything
+    case tagsCollapsed
+    case editor
+}
+
+extension SplitState {
+
+    var next: SplitState {
+        switch self {
+        case .everything:
+            return .tagsCollapsed
+        case .tagsCollapsed:
+            return .editor
+        case .editor:
+            return .everything
+        }
+    }
+
+    var isTagsCollapsed: Bool {
+        self != .everything
+    }
+
+    var isNotesCollapsed: Bool {
+        self == .editor
+    }
+}
 
 
 // MARK: SplitItemName(s) Enum
@@ -134,10 +190,6 @@ extension SplitItemKind {
 
     var index: Int {
         rawValue
-    }
-
-    var isCollapsible: Bool {
-        self != .editor
     }
 
     var minimumThickness: CGFloat {
