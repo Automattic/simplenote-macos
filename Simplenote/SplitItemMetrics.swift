@@ -24,10 +24,21 @@ enum SplitItemMetrics {
         return sidebarTopInsetBigSur
     }
 
-    /// List Insets: Content
+    /// List Insets: Content / Top
     ///
     static var listContentTopInset: CGFloat {
         sidebarTopInset
+    }
+
+    /// List Insets: Content / Bottom
+    ///
+    static var listContentBottomInset: CGFloat {
+        let bottomInsetBigSur: CGFloat = 10
+        guard #available(macOS 11, *) else {
+            return .zero
+        }
+
+        return bottomInsetBigSur
     }
 
     /// List Insets: Scroller

@@ -110,6 +110,7 @@ private extension NoteListViewController {
         let extraInsets: CGFloat = sortbarView.isHidden ? .zero : sortbarView.bounds.height
 
         clipView.contentInsets.top = SplitItemMetrics.listContentTopInset + extraInsets
+        clipView.contentInsets.bottom = SplitItemMetrics.listContentBottomInset
         scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset + extraInsets
     }
 }
