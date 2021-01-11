@@ -1,6 +1,21 @@
-- Removed Main Window's Titlebar 
-- Adopting BigSur Inset Style 
-- Relocated Search Bar 
-- Updated minimum required OS to 10.14 
-- Tags and Toolbar headers now display a blur effect 
-- Fixed a bug that caused the Metrics UI to display overlapped text 
+- New Sidebar Toolbar Action
+- New Big Sur Iconset
+- New Search Toolbar Action
+- New Notes List Sort Modes
+- New Search Sort Bar
+- Notes List now display row separators
+- Notes List will now animate content changes
+- Search Results are now global
+- Search Results will now display the Creation or Modification date when appropriate
+- Updated Color Palette
+- Entering Search Mode now displays automatically the Notes List
+- Exiting Focus Mode will now restore the previous Sidebar State
+- Full Width Line Length is now enabled by default
+- Fixed a bug that affected Multiple Selection in Big Sur
+- Fixed a bug that caused an artifact to show up in the SplitView dividers
+- Fixed a bug that caused the Editor's Scrollbar to get clipped
+- Fixed a bug that caused Line Height to be inconsistent in Empty Documents
+- Fixed a bug that caused an unexpected jump in the Tags List
+- Fixed a bug that caused the Tags List to go blank upon tag rename
+- Fixed a bug that prevented the Window from Maximizing / Minimizing on double click
+- Fixed a bug that caused the Editor Scroll Offset to jump
