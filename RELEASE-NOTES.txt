@@ -1,3 +1,6 @@
+2.7
+-----
+ 
 2.6
 -----
 - New Sidebar Toolbar Action #737
