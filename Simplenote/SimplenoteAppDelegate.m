@@ -312,6 +312,10 @@
     if ([bucket.name isEqualToString:@"Note"]) {
         [self.noteListViewController setWaitingForIndex:NO];
     }
+
+    if ([bucket isEqual:self.simperium.accountBucket]) {
+        [self debugEmailVerification];
+    }
 }
 
 
