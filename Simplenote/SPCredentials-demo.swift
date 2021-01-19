@@ -19,6 +19,7 @@ class SPCredentials: NSObject {
 
     /// Simperium: Reserved Object Keys
     ///
+    static let simperiumEmailVerificationObjectKey = "not-required"
     static let simperiumPreferencesObjectKey = "not-required"
     static let simperiumSettingsObjectKey = "not-required"
 
