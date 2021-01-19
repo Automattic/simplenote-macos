@@ -37,19 +37,6 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
-    func debugEmailVerification() {
-        guard let rawVerification = simperium.accountBucket.object(forKey: SPCredentials.simperiumEmailVerificationObjectKey) as? [AnyHashable: Any],
-              let verification = EmailVerification(payload: rawVerification)
-        else {
-            return
-        }
-
-        NSLog("# Email Verification")
-        NSLog("### Status: \(verification.status)")
-        NSLog("### Token: \(String(describing: verification.token))")
-    }
-
-    @objc
     func configureMainInterface() {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
