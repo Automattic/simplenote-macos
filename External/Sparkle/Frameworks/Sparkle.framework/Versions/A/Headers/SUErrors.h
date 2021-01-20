@@ -14,30 +14,22 @@
 #else
 #import <Foundation/Foundation.h>
 #endif
-#import <Sparkle/SUExport.h>
+#import "SUExport.h"
 
 /**
  * Error domain used by Sparkle
  */
 SU_EXPORT extern NSString *const SUSparkleErrorDomain;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wc++98-compat"
 typedef NS_ENUM(OSStatus, SUError) {
-    // Configuration phase errors
-    SUNoPublicDSAFoundError = 0001,
-    SUInsufficientSigningError = 0002,
-    SUInsecureFeedURLError = 0003,
-    SUInvalidFeedURLError = 0004,
-    SUInvalidUpdaterError = 0005,
-    SUInvalidHostBundleIdentifierError = 0006,
-    SUInvalidHostVersionError = 0007,
-    
     // Appcast phase errors.
     SUAppcastParseError = 1000,
     SUNoUpdateError = 1001,
     SUAppcastError = 1002,
     SURunningFromDiskImageError = 1003,
-    SUResumeAppcastError = 1004,
-    SURunningTranslocated = 1005,
+    SURunningTranslocated = 1004,
 
     // Download phase errors.
     SUTemporaryDirectoryError = 2000,
@@ -55,12 +47,11 @@ typedef NS_ENUM(OSStatus, SUError) {
     SURelaunchError = 4004,
     SUInstallationError = 4005,
     SUDowngradeError = 4006,
-    SUInstallationCanceledError = 4007,
-    SUInstallationAuthorizeLaterError = 4008,
-    SUNotAllowedInteractionError = 4009,
+    SUInstallationCancelledError = 4007,
     
-    // API misuse errors.
-    SUIncorrectAPIUsageError = 5000
+    // System phase errors
+    SUSystemPowerOffError = 5000
 };
+#pragma clang diagnostic pop
 
 #endif

@@ -14,27 +14,23 @@
 #else
 #import <Cocoa/Cocoa.h>
 #endif
-#import <Sparkle/SUExport.h>
-#import <Sparkle/SUVersionComparisonProtocol.h>
-#import <Sparkle/SUVersionDisplayProtocol.h>
-#import <Sparkle/SUUpdaterDelegate.h>
+#import "SUExport.h"
+#import "SUVersionComparisonProtocol.h"
+#import "SUVersionDisplayProtocol.h"
 
-@class SUAppcastItem, SUAppcast, NSMenuItem;
+@class SUAppcastItem, SUAppcast;
 
 @protocol SUUpdaterDelegate;
 
 /*!
- The main API in Sparkle for controlling the update mechanism.
+    The main API in Sparkle for controlling the update mechanism.
 
- This class is used to configure the update paramters as well as manually
- and automatically schedule and control checks for updates.
- 
- Note: This class is now deprecated and acts as a thin wrapper around SPUUpdater and SPUStandardUserDriver
+    This class is used to configure the update paramters as well as manually
+    and automatically schedule and control checks for updates.
  */
-__deprecated_msg("Use SPUStandardUpdaterController or SPUUpdater instead")
 SU_EXPORT @interface SUUpdater : NSObject
 
-@property (unsafe_unretained, nonatomic) IBOutlet id<SUUpdaterDelegate> delegate;
+@property (unsafe_unretained) IBOutlet id<SUUpdaterDelegate> delegate;
 
 /*!
  The shared updater for the main bundle.
@@ -45,6 +41,7 @@ SU_EXPORT @interface SUUpdater : NSObject
 
 /*!
  The shared updater for a specified bundle.
+
  If an updater has already been initialized for the provided bundle, that shared instance will be returned.
  */
 + (SUUpdater *)updaterForBundle:(NSBundle *)bundle;
@@ -95,17 +92,18 @@ SU_EXPORT @interface SUUpdater : NSObject
  The update schedule cycle will be reset in a short delay after the property's new value is set.
  This is to allow reverting this property without kicking off a schedule change immediately
  */
-@property (nonatomic) BOOL automaticallyChecksForUpdates;
+@property BOOL automaticallyChecksForUpdates;
 
 /*!
  A property indicating whether or not updates can be automatically downloaded in the background.
 
- Note that automatic downloading of updates can be disallowed by the developer.
+ Note that automatic downloading of updates can be disallowed by the developer
+ or by the user's system if silent updates cannot be done (eg: if they require authentication).
  In this case, -automaticallyDownloadsUpdates will return NO regardless of how this property is set.
 
  Setting this property will persist in the host bundle's user defaults.
  */
-@property (nonatomic) BOOL automaticallyDownloadsUpdates;
+@property BOOL automaticallyDownloadsUpdates;
 
 /*!
  A property indicating the current automatic update check interval.
@@ -114,7 +112,7 @@ SU_EXPORT @interface SUUpdater : NSObject
  The update schedule cycle will be reset in a short delay after the property's new value is set.
  This is to allow reverting this property without kicking off a schedule change immediately
  */
-@property (nonatomic) NSTimeInterval updateCheckInterval;
+@property NSTimeInterval updateCheckInterval;
 
 /*!
  Begins a "probing" check for updates which will not actually offer to
@@ -138,17 +136,17 @@ SU_EXPORT @interface SUUpdater : NSObject
 
  This property must be called on the main thread.
  */
-@property (nonatomic, copy) NSURL *feedURL;
+@property (copy) NSURL *feedURL;
 
 /*!
  The host bundle that is being updated.
  */
-@property (readonly, nonatomic) NSBundle *hostBundle;
+@property (readonly, strong) NSBundle *hostBundle;
 
 /*!
  The bundle this class (SUUpdater) is loaded into.
  */
-@property (nonatomic, readonly) NSBundle *sparkleBundle;
+@property (strong, readonly) NSBundle *sparkleBundle;
 
 /*!
  The user agent used when checking for updates.
@@ -169,7 +167,7 @@ SU_EXPORT @interface SUUpdater : NSObject
 
  Setting this property will persist in the host bundle's user defaults.
  */
-@property (nonatomic) BOOL sendsSystemProfile;
+@property BOOL sendsSystemProfile;
 
 /*!
  A property indicating the decryption password used for extracting updates shipped as Apple Disk Images (dmg)
@@ -177,28 +175,58 @@ SU_EXPORT @interface SUUpdater : NSObject
 @property (nonatomic, copy) NSString *decryptionPassword;
 
 /*!
- Returns the date of last update check.
+    This function ignores normal update schedule, ignores user preferences,
+    and interrupts users with an unwanted immediate app update.
 
- \returns \c nil if no check has been performed.
+    WARNING: this function should not be used in regular apps. This function
+    is a user-unfriendly hack only for very special cases, like unstable
+    rapidly-changing beta builds that would not run correctly if they were
+    even one day out of date.
+
+    Instead of this function you should set `SUAutomaticallyUpdate` to `YES`,
+    which will gracefully install updates when the app quits.
+
+    For UI-less/daemon apps that aren't usually quit, instead of this function,
+    you can use the delegate method
+    SUUpdaterDelegate::updater:willInstallUpdateOnQuit:immediateInstallationInvocation:
+    or
+    SUUpdaterDelegate::updater:willInstallUpdateOnQuit:immediateInstallationBlock:
+    to immediately start installation when an update was found.
+
+    A progress dialog is shown but the user will never be prompted to read the
+    release notes.
+
+    This function will cause update to be downloaded twice if automatic updates are
+    enabled.
+
+    You may want to respond to the userDidCancelDownload delegate method in case
+    the user clicks the "Cancel" button while the update is downloading.
  */
-@property (nonatomic, readonly, copy) NSDate *lastUpdateCheckDate;
+- (void)installUpdatesIfAvailable;
 
 /*!
- Appropriately schedules or cancels the update checking timer according to
- the preferences for time interval and automatic checks.
+    Returns the date of last update check.
 
- This call does not change the date of the next check,
- but only the internal NSTimer.
+    \returns \c nil if no check has been performed.
+ */
+@property (readonly, copy) NSDate *lastUpdateCheckDate;
+
+/*!
+    Appropriately schedules or cancels the update checking timer according to
+    the preferences for time interval and automatic checks.
+
+    This call does not change the date of the next check,
+    but only the internal NSTimer.
  */
 - (void)resetUpdateCycle;
 
 /*!
- A property indicating whether or not an update is in progress.
+   A property indicating whether or not an update is in progress.
 
- Note this property is not indicative of whether or not user initiated updates can be performed.
- Use SUUpdater::validateMenuItem: for that instead.
+   Note this property is not indicative of whether or not user initiated updates can be performed.
+   Use SUUpdater::validateMenuItem: for that instead.
  */
-@property (nonatomic, readonly) BOOL updateInProgress;
+@property (readonly) BOOL updateInProgress;
 
 @end
 

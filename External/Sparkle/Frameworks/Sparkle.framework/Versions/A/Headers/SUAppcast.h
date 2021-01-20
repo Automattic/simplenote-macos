@@ -14,12 +14,12 @@
 #else
 #import <Foundation/Foundation.h>
 #endif
-#import <Sparkle/SUExport.h>
+#import "SUExport.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class SUAppcastItem;
-SU_EXPORT @interface SUAppcast : NSObject<NSURLDownloadDelegate>
+SU_EXPORT @interface SUAppcast : NSObject
 
 @property (copy, nullable) NSString *userAgentString;
 @property (copy, nullable) NSDictionary<NSString *, NSString *> *httpHeaders;

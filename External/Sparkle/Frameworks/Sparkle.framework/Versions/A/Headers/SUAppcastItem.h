@@ -14,14 +14,16 @@
 #else
 #import <Foundation/Foundation.h>
 #endif
-#import <Sparkle/SUExport.h>
+#import "SUExport.h"
+@class SUSignatures;
 
-SU_EXPORT @interface SUAppcastItem : NSObject<NSSecureCoding>
+SU_EXPORT @interface SUAppcastItem : NSObject
 @property (copy, readonly) NSString *title;
 @property (copy, readonly) NSString *dateString;
+@property (copy, readonly) NSDate *date;
 @property (copy, readonly) NSString *itemDescription;
 @property (strong, readonly) NSURL *releaseNotesURL;
-@property (copy, readonly) NSString *DSASignature;
+@property (strong, readonly) SUSignatures *signatures;
 @property (copy, readonly) NSString *minimumSystemVersion;
 @property (copy, readonly) NSString *maximumSystemVersion;
 @property (strong, readonly) NSURL *fileURL;
@@ -31,7 +33,7 @@ SU_EXPORT @interface SUAppcastItem : NSObject<NSSecureCoding>
 @property (copy, readonly) NSString *displayVersionString;
 @property (copy, readonly) NSDictionary *deltaUpdates;
 @property (strong, readonly) NSURL *infoURL;
-@property (nonatomic, copy, readonly) NSString *installationType;
+@property (copy, readonly) NSNumber* phasedRolloutInterval;
 
 // Initializes with data from a dictionary provided by the RSS class.
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -14,8 +14,8 @@
 #else
 #import <Foundation/Foundation.h>
 #endif
-#import <Sparkle/SUExport.h>
-#import <Sparkle/SUVersionComparisonProtocol.h>
+#import "SUExport.h"
+#import "SUVersionComparisonProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,14 +30,14 @@ SU_EXPORT @interface SUStandardVersionComparator : NSObject <SUVersionComparison
 
 /*!
     Initializes a new instance of the standard version comparator.
-*/
+ */
 - (instancetype)init;
 
 /*!
     Returns a singleton instance of the comparator.
-
+ 
     It is usually preferred to alloc/init new a comparator instead.
- */
+*/
 + (SUStandardVersionComparator *)defaultComparator;
 
 /*!
