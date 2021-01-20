@@ -1,16 +1,26 @@
 import Foundation
 
 
+
+// MARK: - EmailVerification
+//          There is only one condition in which an account is verified
+//          - The email verification token exists, is secure, and matches the email for the account as the app knows it
+//            (either from login or from the response of the init call).
+//
+//          If those three conditions hold (two for now) then it’s verified. If any of those fail then it’s not verified
+//
+enum EmailVerificationStatus: Equatable {
+    case sent
+    case verified
+}
+
+
 // MARK: - EmailVerification
 //
 struct EmailVerification {
-    let token: String?
-    let status: EmailVerificationStatus
-}
-
-enum EmailVerificationStatus: Equatable {
-    case sent(email: String?)
-    case verified
+    let username: String?
+    let timestamp: Int?
+    let signature: String?
 }
 
 
@@ -18,48 +28,17 @@ enum EmailVerificationStatus: Equatable {
 //
 extension EmailVerification {
 
-    /// Initializes an EmailVerification entity from a dictionary
-    ///
     init?(payload: [AnyHashable: Any]) {
-        guard let rawStatus = payload[EmailVerificationKeys.status.rawValue] as? String,
-            let parsedStatus = EmailVerificationStatus(rawValue: rawStatus)
+        guard let tokenAsJSON = payload[EmailVerificationKeys.token.rawValue] as? String,
+              let tokenAsData = tokenAsJSON.data(using: .utf8),
+              let token = try? JSONSerialization.jsonObject(with: tokenAsData, options: []) as? [String: Any]
         else {
             return nil
         }
 
-        self.token = payload[EmailVerificationKeys.token.rawValue] as? String
-        self.status = parsedStatus
-    }
-
-    var tokenEmail: String? {
-        guard let email = token?.split(separator: ":", maxSplits: 1).first else {
-            return nil
-        }
-        return String(email)
-    }
-}
-
-
-// MARK: - EmailVerificationStatus Parsing
-//
-extension EmailVerificationStatus {
-
-    init?(rawValue: String) {
-        let tokens = rawValue.lowercased().split(separator: ":", maxSplits: 2).map {
-            String($0)
-        }
-
-        switch tokens.first {
-        case EmailStatusKeys.verified.rawValue:
-            self = .verified
-
-        case EmailStatusKeys.sent.rawValue:
-            let value = tokens.last != tokens.first ? tokens.last : nil
-            self = .sent(email: value)
-
-        default:
-            return nil
-        }
+        username = token[EmailVerificationKeys.username.rawValue] as? String
+        timestamp = token[EmailVerificationKeys.timestamp.rawValue] as? Int
+        signature = payload[EmailVerificationKeys.signature.rawValue] as? String
     }
 }
 
@@ -68,10 +47,7 @@ extension EmailVerificationStatus {
 //
 private enum EmailVerificationKeys: String {
     case token
-    case status
-}
-
-private enum EmailStatusKeys: String {
-    case verified
-    case sent
+    case username
+    case timestamp = "verified_at"
+    case signature = "token_signature"
 }
