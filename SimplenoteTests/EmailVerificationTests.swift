@@ -8,7 +8,7 @@ class EmailVerificationTests: XCTestCase {
 
     func testEmailVerificationCorrectlyParsesRemotePayload() {
         let payload: [String: Any] = [
-            "token": ["username": "test@test.com", "verified_at": 1611171132],
+            "token": "{ \"username\": \"test@test.com\", \"verified_at\": 1611171132 }",
             "token_signature": "token_signature"
         ]
 
