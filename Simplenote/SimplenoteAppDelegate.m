@@ -309,6 +309,10 @@
 
 - (void)bucketDidFinishIndexing:(SPBucket *)bucket
 {
+    if ([bucket isEqual:self.simperium.accountBucket]) {
+        [self debugEmailVerification];
+    }
+    
     if ([bucket.name isEqualToString:@"Note"]) {
         [self.noteListViewController setWaitingForIndex:NO];
     }
