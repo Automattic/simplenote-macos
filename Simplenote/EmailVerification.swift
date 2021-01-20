@@ -8,8 +8,8 @@ struct EmailVerification {
     let status: EmailVerificationStatus
 }
 
-enum EmailVerificationStatus: String {
-    case sent
+enum EmailVerificationStatus {
+    case sent(email: String?)
     case verified
 }
 
@@ -21,13 +21,13 @@ extension EmailVerification {
     /// Initializes an EmailVerification entity from a dictionary
     ///
     init?(payload: [AnyHashable: Any]) {
-        guard let rawStatus = payload[CodingKeys.status.rawValue] as? String,
-              let parsedStatus = EmailVerificationStatus(rawValue: rawStatus)
+        guard let rawStatus = payload[EmailVerificationKeys.status.rawValue] as? String,
+            let parsedStatus = EmailVerificationStatus(rawValue: rawStatus)
         else {
             return nil
         }
 
-        self.token = payload[CodingKeys.token.rawValue] as? String
+        self.token = payload[EmailVerificationKeys.token.rawValue] as? String
         self.status = parsedStatus
     }
 
@@ -39,9 +39,38 @@ extension EmailVerification {
     }
 }
 
+
+// MARK: - EmailVerificationStatus Parsing
+//
+private extension EmailVerificationStatus {
+
+    init?(rawValue: String) {
+        let tokens = rawValue.lowercased().split(separator: ":", maxSplits: 2).map {
+            String($0)
+        }
+
+        switch tokens.first {
+        case EmailStatusKeys.verified.rawValue:
+            self = .verified
+
+        case EmailStatusKeys.sent.rawValue where tokens.count > 1:
+            self = .sent(email: tokens.last)
+
+        default:
+            return nil
+        }
+    }
+}
+
+
 // MARK: - CodingKeys
 //
-private enum CodingKeys: String {
+private enum EmailVerificationKeys: String {
     case token
     case status
+}
+
+private enum EmailStatusKeys: String {
+    case verified
+    case sent
 }
