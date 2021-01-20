@@ -8,7 +8,7 @@ struct EmailVerification {
     let status: EmailVerificationStatus
 }
 
-enum EmailVerificationStatus {
+enum EmailVerificationStatus: Equatable {
     case sent(email: String?)
     case verified
 }
@@ -42,7 +42,7 @@ extension EmailVerification {
 
 // MARK: - EmailVerificationStatus Parsing
 //
-private extension EmailVerificationStatus {
+extension EmailVerificationStatus {
 
     init?(rawValue: String) {
         let tokens = rawValue.lowercased().split(separator: ":", maxSplits: 2).map {
@@ -53,8 +53,9 @@ private extension EmailVerificationStatus {
         case EmailStatusKeys.verified.rawValue:
             self = .verified
 
-        case EmailStatusKeys.sent.rawValue where tokens.count > 1:
-            self = .sent(email: tokens.last)
+        case EmailStatusKeys.sent.rawValue:
+            let value = tokens.last != tokens.first ? tokens.last : nil
+            self = .sent(email: value)
 
         default:
             return nil
