@@ -6,9 +6,6 @@ use_frameworks!
 platform :osx, '10.13'
 workspace 'Simplenote.xcworkspace'
 
-plugin 'cocoapods-repo-update'
-
-
 # Main
 #
 abstract_target 'Automattic' do
