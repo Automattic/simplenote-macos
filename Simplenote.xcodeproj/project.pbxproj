@@ -1200,6 +1200,14 @@
 			name = Themes;
 			sourceTree = "<group>";
 		};
+		B57401A725B7D9A60058960E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B574016825B7D3980058960E /* EmailVerificationTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B574CA71242D539400F8D02F /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1394,12 +1402,12 @@
 				B5EF32AF258D07420069EC7D /* Controllers */,
 				B5985AD3242949C30044EDE9 /* Converters */,
 				B5985AD2242949B00044EDE9 /* Extensions */,
+				B57401A725B7D9A60058960E /* Model */,
 				B5B5F33B243244D300F31720 /* Handlers */,
 				B5469FD825880106007ED7BE /* Settings */,
 				B5C1F0AD242E9AAA00A627E3 /* Mockups */,
 				B5CBB06D241976230003C271 /* Info.plist */,
 				B5B17F372425651700DD5B34 /* TestConstants.swift */,
-				B574016825B7D3980058960E /* EmailVerificationTests.swift */,
 			);
 			path = SimplenoteTests;
 			sourceTree = "<group>";
