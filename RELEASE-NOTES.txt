@@ -1,6 +1,6 @@
 2.7
 -----
- 
+
 2.6
 -----
 - New Sidebar Toolbar Action #737
@@ -24,6 +24,7 @@
 - Fixed a bug that caused the Tags List to go blank upon tag rename #344
 - Fixed a bug that prevented the Window from Maximizing / Minimizing on double click #786
 - Fixed a bug that caused the Editor Scroll Offset to jump #785
+- Add Apple Silicon build support #802
 
 2.5
 -----
