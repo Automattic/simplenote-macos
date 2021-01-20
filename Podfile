@@ -16,7 +16,7 @@ abstract_target 'Automattic' do
   # Automattic Shared
   #
   pod 'Automattic-Tracks-iOS', '~> 0.6'
-  pod 'Simperium-OSX', '1.2'
+  pod 'Simperium-OSX', '1.3'
 
   # Main Target
   #
