@@ -12,7 +12,7 @@ abstract_target 'Automattic' do
 
   # Automattic Shared
   #
-  pod 'Automattic-Tracks-iOS', '~> 0.6'
+  pod 'Automattic-Tracks-iOS', git: 'git@github.com:Automattic/Automattic-Tracks-iOS', branch: 'update/sentry-to-v6'
   pod 'Simperium-OSX', '1.1'
 
   # Main Target
