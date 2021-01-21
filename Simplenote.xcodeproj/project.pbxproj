@@ -177,6 +177,8 @@
 		B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */; };
 		B52F203A24C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */; };
 		B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
+		B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532728125BA1510001DB882 /* SPTracker+Swift.swift */; };
+		B532728325BA1510001DB882 /* SPTracker+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532728125BA1510001DB882 /* SPTracker+Swift.swift */; };
 		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
@@ -594,6 +596,7 @@
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
 		B52EE32625927D5100347F2B /* NoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWindow+Simplenote.swift"; sourceTree = "<group>"; };
+		B532728125BA1510001DB882 /* SPTracker+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPTracker+Swift.swift"; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1274,6 +1277,7 @@
 				B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */,
 				B598487E1BCDB95A005EFBBE /* SPTracker.h */,
 				B598487F1BCDB95A005EFBBE /* SPTracker.m */,
+				B532728125BA1510001DB882 /* SPTracker+Swift.swift */,
 			);
 			name = Trackers;
 			sourceTree = "<group>";
@@ -1871,6 +1875,7 @@
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
+				B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
 				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
@@ -2094,6 +2099,7 @@
 				B5EDF339258A8F1B0066D91D /* TagListFilter.swift in Sources */,
 				B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				B51699852480B93100ACF2F4 /* TagsField.swift in Sources */,
+				B532728325BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
 				3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,

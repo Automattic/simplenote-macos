@@ -11,6 +11,7 @@
                 <outlet property="dismissButton" destination="q2p-l5-XcX" id="MeH-yR-DZ7"/>
                 <outlet property="iconImageView" destination="D22-GY-wVp" id="xDq-S1-Sxi"/>
                 <outlet property="primaryButton" destination="38B-iD-Rwu" id="4jd-LP-Jzs"/>
+                <outlet property="progressIndicator" destination="4QZ-Mp-DNh" id="26R-Hm-8wo"/>
                 <outlet property="secondaryButton" destination="Aro-Qg-Nyt" id="28E-8b-8IB"/>
                 <outlet property="textLabel" destination="UPQ-2D-QRL" id="WSF-og-kfr"/>
                 <outlet property="titleLabel" destination="Psb-Ek-zco" id="qbh-rg-5Yu"/>
@@ -48,26 +49,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aro-Qg-Nyt">
-                    <rect key="frame" x="219" y="36" width="45" height="28"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="28" id="A56-9k-aj2"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" inset="2" id="nsq-9j-vNA">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38B-iD-Rwu" customClass="Button" customModule="Simplenote" customModuleProvider="target">
-                    <rect key="frame" x="219" y="76" width="45" height="28"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="28" id="4e0-Mf-IKs"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" controlSize="large" imageScaling="proportionallyDown" inset="2" id="JZU-7d-nmW" customClass="ButtonCell" customModule="Simplenote" customModuleProvider="target">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2p-l5-XcX">
                     <rect key="frame" x="432" y="567" width="30" height="30"/>
                     <constraints>
@@ -85,22 +66,64 @@ Gw
                         <action selector="dismissWasPressed:" target="-2" id="ws4-zQ-via"/>
                     </connections>
                 </button>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h46-NQ-2gg">
+                    <rect key="frame" x="207" y="36" width="69" height="96"/>
+                    <subviews>
+                        <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="4QZ-Mp-DNh">
+                            <rect key="frame" x="26" y="80" width="16" height="16"/>
+                        </progressIndicator>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38B-iD-Rwu" customClass="Button" customModule="Simplenote" customModuleProvider="target">
+                            <rect key="frame" x="9" y="40" width="51" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="4e0-Mf-IKs"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="Primary" bezelStyle="rounded" alignment="center" controlSize="large" imageScaling="proportionallyDown" inset="2" id="JZU-7d-nmW" customClass="ButtonCell" customModule="Simplenote" customModuleProvider="target">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="primaryButtonWasPressed:" target="-2" id="90F-UX-XGU"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aro-Qg-Nyt">
+                            <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="A56-9k-aj2"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="Secondary" bezelStyle="rounded" alignment="center" inset="2" id="nsq-9j-vNA">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="secondaryButtonWasPressed:" target="-2" id="7Rd-E0-6LC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
                 <constraint firstItem="UPQ-2D-QRL" firstAttribute="top" secondItem="Psb-Ek-zco" secondAttribute="bottom" constant="60" id="2r9-a4-mpg"/>
-                <constraint firstItem="Aro-Qg-Nyt" firstAttribute="top" secondItem="38B-iD-Rwu" secondAttribute="bottom" constant="12" id="2z9-g1-F9y"/>
                 <constraint firstItem="q2p-l5-XcX" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="6Sx-y8-txP"/>
                 <constraint firstItem="Psb-Ek-zco" firstAttribute="top" secondItem="D22-GY-wVp" secondAttribute="bottom" constant="26" id="8qw-tt-bv0"/>
                 <constraint firstItem="UPQ-2D-QRL" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="91" id="AZo-lL-wJi"/>
-                <constraint firstItem="Aro-Qg-Nyt" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="FGR-1n-wAB"/>
                 <constraint firstAttribute="trailing" secondItem="UPQ-2D-QRL" secondAttribute="trailing" constant="91" id="QKk-PF-vwK"/>
                 <constraint firstAttribute="trailing" secondItem="q2p-l5-XcX" secondAttribute="trailing" constant="20" id="TJt-xY-jI4"/>
                 <constraint firstItem="Psb-Ek-zco" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="UoD-Zk-agS"/>
+                <constraint firstItem="h46-NQ-2gg" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Ybg-Ca-fzx"/>
                 <constraint firstItem="D22-GY-wVp" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="aBQ-5v-osV"/>
-                <constraint firstItem="38B-iD-Rwu" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="fXz-Kk-DTP"/>
+                <constraint firstAttribute="bottom" secondItem="h46-NQ-2gg" secondAttribute="bottom" constant="36" id="s53-Lb-HQN"/>
                 <constraint firstItem="UPQ-2D-QRL" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="wGe-e0-ohK"/>
                 <constraint firstItem="D22-GY-wVp" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="60" id="x04-bM-Mzq"/>
-                <constraint firstAttribute="bottom" secondItem="Aro-Qg-Nyt" secondAttribute="bottom" constant="36" id="yYe-ll-Btl"/>
             </constraints>
             <point key="canvasLocation" x="27" y="154"/>
         </customView>

@@ -14,6 +14,7 @@ class AccountVerificationViewController: NSViewController {
     @IBOutlet private var primaryButton: NSButton!
     @IBOutlet private var secondaryButton: NSButton!
     @IBOutlet private var dismissButton: NSButton!
+    @IBOutlet private var progressIndicator: NSProgressIndicator!
 
     /// Verification Controller
     ///
@@ -68,8 +69,84 @@ class AccountVerificationViewController: NSViewController {
 extension AccountVerificationViewController {
 
     @IBAction
+    func primaryButtonWasPressed(_ sender: Any) {
+        guard configuration == .review else {
+            return
+        }
+
+        requestEmailVerification { [weak self] in
+            self?.transitionToVerificationScreen()
+        }
+
+        SPTracker.trackVerificationConfirmButtonTapped()
+    }
+
+    @IBAction
+    func secondaryButtonWasPressed(_ sender: Any) {
+        switch configuration {
+        case .review:
+            presentChangeEmailURL()
+            dismissWasPressed(sender)
+            SPTracker.trackVerificationChangeEmailButtonTapped()
+
+        case .verify:
+            requestEmailVerification()
+            SPTracker.trackVerificationResendEmailButtonTapped()
+
+        default:
+            return
+        }
+    }
+
+    @IBAction
     func dismissWasPressed(_ sender: Any) {
         super.dismiss(sender)
+        SPTracker.trackVerificationDismissed()
+    }
+}
+
+
+// MARK: - Private
+//
+private extension AccountVerificationViewController {
+
+    func requestEmailVerification(onSuccess: (() -> Void)? = nil) {
+        progressIndicator.startAnimation(nil)
+        refreshButtons(isEnabled: false)
+
+        controller.verify { [weak self] success in
+            if success {
+                onSuccess?()
+            } else {
+                self?.presentErrorAlert()
+            }
+
+            self?.progressIndicator.stopAnimation(nil)
+            self?.refreshButtons(isEnabled: true)
+        }
+    }
+
+    func presentChangeEmailURL() {
+        let url = URL(string: SimplenoteConstants.simplenoteSettingsURL)!
+        NSWorkspace.shared.open(url)
+    }
+
+    func presentErrorAlert() {
+        guard let window = view.window else {
+            assertionFailure("[Verification] Impossible to access the Window")
+            return
+        }
+
+        let alert = NSAlert()
+        alert.messageText = configuration.errorMessageTitle
+        alert.informativeText = Localization.errorMessage
+        alert.addButton(withTitle: Localization.okButton)
+
+        alert.beginSheetModal(for: window, completionHandler: nil)
+    }
+
+    func transitionToVerificationScreen() {
+        configuration = .verify
     }
 }
 
@@ -91,7 +168,14 @@ private extension AccountVerificationViewController {
         primaryButtonCell?.regularBackgroundColor = .simplenoteAlertPrimaryActionBackgroundColor
         primaryButtonCell?.highlightedBackgroundColor = .simplenoteAlertPrimaryActionHighlightedBackgroundColor
 
+
 //        dismissButton
+    }
+
+    func refreshButtons(isEnabled: Bool) {
+        [primaryButton, secondaryButton].forEach {
+            $0?.isEnabled = isEnabled
+        }
     }
 
     func refreshContent() {
@@ -101,9 +185,8 @@ private extension AccountVerificationViewController {
         titleLabel.stringValue = configuration.title
         textLabel.attributedStringValue = attributedText(message, highlighting: controller.email)
         primaryButton.title = configuration.primaryActionTitle ?? String()
+        primaryButton.isHidden = !configuration.displaysPrimaryAction
         secondaryButton.title = configuration.secondaryActionTitle
-
-        primaryButton.isHidden = configuration.primaryActionTitle == nil
     }
 
     func attributedText(_ text: String, highlighting term: String) -> NSAttributedString {
@@ -148,6 +231,7 @@ private extension AccountVerificationViewController {
 // MARK: - Tracks
 //
 private extension AccountVerificationViewController {
+
     func trackScreen() {
         switch configuration {
         case .review:
@@ -170,6 +254,10 @@ struct AccountVerificationConfiguration: Equatable {
     let primaryActionTitle: String?
     let secondaryActionTitle: String
     let errorMessageTitle: String
+
+    var displaysPrimaryAction: Bool {
+        primaryActionTitle != nil
+    }
 }
 
 extension AccountVerificationConfiguration {
