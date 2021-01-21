@@ -15,6 +15,7 @@
 @class NoteEditorViewController;
 @class TagListViewController;
 @class SplitViewController;
+@class AccountVerificationController;
 @class VersionsController;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -37,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) TagListViewController                         *tagListViewController;
 @property (strong, nonatomic) NoteListViewController                        *noteListViewController;
 @property (strong, nonatomic) NoteEditorViewController                      *noteEditorViewController;
+
+@property (strong, nonatomic, nullable) AccountVerificationController       *verificationController;
 @property (strong, nonatomic) VersionsController                            *versionsController;
 
 

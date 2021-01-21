@@ -237,12 +237,16 @@
 
 - (void)simperiumDidLogin:(Simperium *)simperium
 {
-    [SPTracker refreshMetadataWithEmail:simperium.user.email];
-    [CrashLogging cacheUser: simperium.user];
+    SPUser *user = simperium.user;
+
+    [self configureVerificationControllerWithEmail:user.email];
+    [SPTracker refreshMetadataWithEmail:user.email];
+    [CrashLogging cacheUser: user];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
 {
+    [self destroyVerificationController];
     [SPTracker refreshMetadataForAnonymousUser];
     [CrashLogging clearCachedUser];
 }
@@ -262,7 +266,7 @@
         return;
 	}
     
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         // Note change
         switch (change) {                
             case SPBucketChangeTypeUpdate:
@@ -277,15 +281,25 @@
             default:
                 break;
         }
-    } else {
-        // Tag change
+        return;
+    }
+
+    // Tag change
+    if ([bucket isEqual: self.simperium.tagsBucket]) {
         [self.tagListViewController loadTags];
+        return;
+    }
+
+    // Verification Status Change
+    if ([bucket isEqual: self.simperium.accountBucket] && [key isEqualToString:SPCredentials.simperiumEmailVerificationObjectKey]) {
+        [self.verificationController updateWith:[bucket objectForKey:key]];
+        return;
     }
 }
 
 - (void)bucket:(SPBucket *)bucket willChangeObjectsForKeys:(NSSet *)keys
 {
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         for (NSString *key in keys) {
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
@@ -295,22 +309,28 @@
 
 - (void)bucket:(SPBucket *)bucket didReceiveObjectForKey:(NSString *)key version:(NSString *)version data:(NSDictionary *)data
 {
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         [self.versionsController didReceiveObjectForSimperiumKey:key version:version data:data];
     }
 }
 
 - (void)bucketWillStartIndexing:(SPBucket *)bucket
 {
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         [self.noteListViewController setWaitingForIndex:YES];
     }
 }
 
 - (void)bucketDidFinishIndexing:(SPBucket *)bucket
 {
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         [self.noteListViewController setWaitingForIndex:NO];
+        return;
+    }
+
+    if ([bucket isEqual: self.simperium.accountBucket]) {
+        [self.verificationController updateWith:[bucket objectForKey:SPCredentials.simperiumEmailVerificationObjectKey]];
+        return;
     }
 }
 
