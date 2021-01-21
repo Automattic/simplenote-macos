@@ -83,7 +83,7 @@
 		37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
-		3FAC7B25254BBCA600B47276 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = 3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */; };
+		3FAC7B25254BBCA600B47276 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3FAC7B24254BBCA600B47276 /* SwiftPackageProductDependency */; };
 		466FFEA817CC10A800399652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
 		466FFEAA17CC10A800399652 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
@@ -140,7 +140,7 @@
 		B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
 		B50FB223251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
 		B50FB224251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
-		B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = B50FB24B251C08910028DE25 /* SimplenoteInterlinks */; };
+		B50FB24C251C08910028DE25 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B50FB24B251C08910028DE25 /* SwiftPackageProductDependency */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */; };
@@ -222,12 +222,12 @@
 		B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */; };
 		B55C313D24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */; };
 		B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55E98FB1BE03E3F0087CA48 /* Security.framework */; };
-		B5609AE824EEC9860097777A /* SimplenoteSearch in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE724EEC9860097777A /* SimplenoteSearch */; };
-		B5609AEA24EEC9910097777A /* SimplenoteSearch in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE924EEC9910097777A /* SimplenoteSearch */; };
+		B5609AE824EEC9860097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE724EEC9860097777A /* SwiftPackageProductDependency */; };
+		B5609AEA24EEC9910097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AE924EEC9910097777A /* SwiftPackageProductDependency */; };
 		B5609AEC24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */; };
 		B5609AED24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5609AEB24EEE7200097777A /* SPBucket+Simplenote.swift */; };
-		B5609AF024EF171D0097777A /* SimplenoteFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AEF24EF171D0097777A /* SimplenoteFoundation */; };
-		B5609AF224EF17270097777A /* SimplenoteFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AF124EF17270097777A /* SimplenoteFoundation */; };
+		B5609AF024EF171D0097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AEF24EF171D0097777A /* SwiftPackageProductDependency */; };
+		B5609AF224EF17270097777A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B5609AF124EF17270097777A /* SwiftPackageProductDependency */; };
 		B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5686D0D1AEAE6D7009F9E20 /* Images.xcassets */; };
 		B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA78E2437C672002CB9FF /* ColorStudio.swift */; };
@@ -762,14 +762,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */,
-				B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */,
+				B50FB24C251C08910028DE25 /* BuildFile in Frameworks */,
 				2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */,
 				2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */,
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
 				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
-				B5609AEA24EEC9910097777A /* SimplenoteSearch in Frameworks */,
-				B5609AF224EF17270097777A /* SimplenoteFoundation in Frameworks */,
+				B5609AEA24EEC9910097777A /* BuildFile in Frameworks */,
+				B5609AF224EF17270097777A /* BuildFile in Frameworks */,
 				D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,14 +779,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				466FFEDD17CC10A800399652 /* WebKit.framework in Frameworks */,
-				3FAC7B25254BBCA600B47276 /* SimplenoteInterlinks in Frameworks */,
+				3FAC7B25254BBCA600B47276 /* BuildFile in Frameworks */,
 				466FFEDE17CC10A800399652 /* libz.dylib in Frameworks */,
 				466FFEDF17CC10A800399652 /* SystemConfiguration.framework in Frameworks */,
 				466FFEE017CC10A800399652 /* CoreServices.framework in Frameworks */,
 				466FFEE117CC10A800399652 /* Cocoa.framework in Frameworks */,
 				B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */,
-				B5609AE824EEC9860097777A /* SimplenoteSearch in Frameworks */,
-				B5609AF024EF171D0097777A /* SimplenoteFoundation in Frameworks */,
+				B5609AE824EEC9860097777A /* BuildFile in Frameworks */,
+				B5609AF024EF171D0097777A /* BuildFile in Frameworks */,
 				1E077730C2108B885911E3B5 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1504,9 +1504,9 @@
 			);
 			name = Simplenote;
 			packageProductDependencies = (
-				B5609AE924EEC9910097777A /* SimplenoteSearch */,
-				B5609AF124EF17270097777A /* SimplenoteFoundation */,
-				B50FB24B251C08910028DE25 /* SimplenoteInterlinks */,
+				B5609AE924EEC9910097777A /* SwiftPackageProductDependency */,
+				B5609AF124EF17270097777A /* SwiftPackageProductDependency */,
+				B50FB24B251C08910028DE25 /* SwiftPackageProductDependency */,
 			);
 			productName = Simplenote;
 			productReference = 26F72A8814032D2A00A7935E /* Simplenote.app */;
@@ -1530,9 +1530,9 @@
 			);
 			name = "Simplenote-AppStore";
 			packageProductDependencies = (
-				B5609AE724EEC9860097777A /* SimplenoteSearch */,
-				B5609AEF24EF171D0097777A /* SimplenoteFoundation */,
-				3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */,
+				B5609AE724EEC9860097777A /* SwiftPackageProductDependency */,
+				B5609AEF24EF171D0097777A /* SwiftPackageProductDependency */,
+				3FAC7B24254BBCA600B47276 /* SwiftPackageProductDependency */,
 			);
 			productName = Simplenote;
 			productReference = 466FFF2F17CC10A800399652 /* Simplenote.app */;
@@ -1618,9 +1618,9 @@
 			);
 			mainGroup = 26F72A7D14032D2900A7935E;
 			packageReferences = (
-				B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */,
-				B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */,
-				B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */,
+				B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */,
+				B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */,
+				B50FB24A251C08910028DE25 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 26F72A8914032D2A00A7935E /* Products */;
 			projectDirPath = "";
@@ -1700,12 +1700,23 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
+				"${BUILT_PRODUCTS_DIR}/Sodium-Fork/Sodium.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sodium.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1761,12 +1772,23 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
+				"${BUILT_PRODUCTS_DIR}/Sodium-Fork/Sodium.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sodium.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1845,12 +1867,23 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
+				"${BUILT_PRODUCTS_DIR}/Sodium-Fork/Sodium.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sodium.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2784,7 +2817,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */ = {
+		B50FB24A251C08910028DE25 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteInterlinks-Swift.git";
 			requirement = {
@@ -2792,7 +2825,7 @@
 				minimumVersion = 1.1.0;
 			};
 		};
-		B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */ = {
+		B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteSearch-Swift.git";
 			requirement = {
@@ -2800,7 +2833,7 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */ = {
+		B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:Automattic/SimplenoteFoundation-Swift.git";
 			requirement = {
@@ -2811,34 +2844,34 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */ = {
+		3FAC7B24254BBCA600B47276 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */;
+			package = B50FB24A251C08910028DE25 /* RemoteSwiftPackageReference */;
 			productName = SimplenoteInterlinks;
 		};
-		B50FB24B251C08910028DE25 /* SimplenoteInterlinks */ = {
+		B50FB24B251C08910028DE25 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */;
+			package = B50FB24A251C08910028DE25 /* RemoteSwiftPackageReference */;
 			productName = SimplenoteInterlinks;
 		};
-		B5609AE724EEC9860097777A /* SimplenoteSearch */ = {
+		B5609AE724EEC9860097777A /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */;
+			package = B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */;
 			productName = SimplenoteSearch;
 		};
-		B5609AE924EEC9910097777A /* SimplenoteSearch */ = {
+		B5609AE924EEC9910097777A /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */;
+			package = B5609AE624EEC9860097777A /* RemoteSwiftPackageReference */;
 			productName = SimplenoteSearch;
 		};
-		B5609AEF24EF171D0097777A /* SimplenoteFoundation */ = {
+		B5609AEF24EF171D0097777A /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */;
+			package = B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */;
 			productName = SimplenoteFoundation;
 		};
-		B5609AF124EF17270097777A /* SimplenoteFoundation */ = {
+		B5609AF124EF17270097777A /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */;
+			package = B5609AEE24EF171D0097777A /* RemoteSwiftPackageReference */;
 			productName = SimplenoteFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
