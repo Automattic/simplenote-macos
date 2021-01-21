@@ -167,9 +167,6 @@ private extension AccountVerificationViewController {
         primaryButtonCell?.textColor = .simplenoteAlertPrimaryActionTextColor
         primaryButtonCell?.regularBackgroundColor = .simplenoteAlertPrimaryActionBackgroundColor
         primaryButtonCell?.highlightedBackgroundColor = .simplenoteAlertPrimaryActionHighlightedBackgroundColor
-
-
-//        dismissButton
     }
 
     func refreshButtons(isEnabled: Bool) {
@@ -224,6 +221,7 @@ private extension AccountVerificationViewController {
 
     @objc func themeWasUpdated() {
         refreshStyle()
+        refreshContent()
     }
 }
 
