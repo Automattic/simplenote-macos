@@ -25,6 +25,7 @@ class AccountVerificationViewController: NSViewController {
         didSet {
             refreshStyle()
             refreshContent()
+            trackScreen()
         }
     }
 
@@ -53,6 +54,11 @@ class AccountVerificationViewController: NSViewController {
         refreshStyle()
         refreshContent()
         startListeningToNotifications()
+    }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        trackScreen()
     }
 }
 
@@ -135,6 +141,22 @@ private extension AccountVerificationViewController {
 
     @objc func themeWasUpdated() {
         refreshStyle()
+    }
+}
+
+
+// MARK: - Tracks
+//
+private extension AccountVerificationViewController {
+    func trackScreen() {
+        switch configuration {
+        case .review:
+            SPTracker.trackVerificationReviewScreenViewed()
+        case .verify:
+            SPTracker.trackVerificationVerifyScreenViewed()
+        default:
+            break
+        }
     }
 }
 
