@@ -26,6 +26,7 @@ class SimplenoteConstants: NSObject {
     /// URL(s)
     ///
     static let simplenoteSettingsURL = "https://app.simplenote.com/settings"
+    static let simplenoteVerificationURL = "https://app.simplenote.com/account/verify-email/"
 
     /// Reserved Object Keys
     ///
