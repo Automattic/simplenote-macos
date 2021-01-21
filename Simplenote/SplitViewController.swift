@@ -45,16 +45,6 @@ class SplitViewController: NSSplitViewController {
         /// `WARNING: The SplitView is not layer-backed, but trying to use overlay sidebars` (...)
         splitView.wantsLayer = true
     }
-
-    override func viewWillAppear() {
-        super.viewWillAppear()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let controller = AccountVerificationController(email: "test@test.com")
-            let viewController = AccountVerificationViewController(configuration: .review, controller: controller)
-            self.presentAsSheet(viewController)
-        }
-    }
 }
 
 
