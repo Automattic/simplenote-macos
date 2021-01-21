@@ -33,6 +33,10 @@ extension NSImage.Name {
     ///
     static let info = NSImage.Name("button_info")
 
+    /// Alert: Mail
+    ///
+    static let mail = NSImage.Name("icon_mail")
+
     /// Notes List: New Note
     ///
     static let newNote = NSImage.Name("button_new_note")
