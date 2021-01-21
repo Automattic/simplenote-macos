@@ -13,6 +13,10 @@ extension NSImage.Name {
     ///
     static let arrowTopRight = NSImage.Name("icon_arrow_top_right")
 
+    /// Alerts: Cross
+    ///
+    static let cross = NSImage.Name("button_cross")
+
     /// Toolbar: History
     ///
     static let history = NSImage.Name("button_history")
