@@ -324,7 +324,7 @@
 		B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
-		B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */; };
+		B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockTextView.swift */; };
 		B5C620A2257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
 		B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
 		B5C620AB257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */; };
@@ -390,11 +390,11 @@
 		B5EDF330258A8EF00066D91D /* NoteListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */; };
 		B5EDF338258A8F1B0066D91D /* TagListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* TagListFilter.swift */; };
 		B5EDF339258A8F1B0066D91D /* TagListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* TagListFilter.swift */; };
-		B5EF32A8258D05640069EC7D /* MockupStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32A7258D05640069EC7D /* MockupStorage.swift */; };
+		B5EF32A8258D05640069EC7D /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32A7258D05640069EC7D /* MockStorage.swift */; };
 		B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */; };
 		B5EF32B9258D07F00069EC7D /* NoteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NoteListController.swift */; };
 		B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NoteListController.swift */; };
-		B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */; };
+		B5EF32CF258D08E70069EC7D /* MockStorage+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32CE258D08E70069EC7D /* MockStorage+Sample.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -707,7 +707,7 @@
 		B5B5F33C243244F100F31720 /* TextViewInputHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewInputHandlerTests.swift; sourceTree = "<group>"; };
 		B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSearchField+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
-		B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupTextView.swift; sourceTree = "<group>"; };
+		B5C1F0AB242E9A9800A627E3 /* MockTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTextView.swift; sourceTree = "<group>"; };
 		B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAnimationContext+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkViewController.swift; sourceTree = "<group>"; };
@@ -747,10 +747,10 @@
 		B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Simplenote.swift"; sourceTree = "<group>"; };
 		B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListFilter.swift; sourceTree = "<group>"; };
 		B5EDF337258A8F1B0066D91D /* TagListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListFilter.swift; sourceTree = "<group>"; };
-		B5EF32A7258D05640069EC7D /* MockupStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupStorage.swift; sourceTree = "<group>"; };
+		B5EF32A7258D05640069EC7D /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 		B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListControllerTests.swift; sourceTree = "<group>"; };
 		B5EF32B8258D07F00069EC7D /* NoteListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListController.swift; sourceTree = "<group>"; };
-		B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockupStorage+Sample.swift"; sourceTree = "<group>"; };
+		B5EF32CE258D08E70069EC7D /* MockStorage+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockStorage+Sample.swift"; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -1386,9 +1386,9 @@
 			children = (
 				B502C1EE25BA2F2400145D6C /* MockURLSession.swift */,
 				B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */,
-				B5EF32A7258D05640069EC7D /* MockupStorage.swift */,
-				B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */,
-				B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */,
+				B5EF32A7258D05640069EC7D /* MockStorage.swift */,
+				B5EF32CE258D08E70069EC7D /* MockStorage+Sample.swift */,
+				B5C1F0AB242E9A9800A627E3 /* MockTextView.swift */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -2232,14 +2232,14 @@
 				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
 				B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */,
 				B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */,
-				B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */,
+				B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */,
 				B5469FE225880181007ED7BE /* NSUserDefaults+Tests.swift in Sources */,
-				B5EF32A8258D05640069EC7D /* MockupStorage.swift in Sources */,
+				B5EF32A8258D05640069EC7D /* MockStorage.swift in Sources */,
 				B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */,
 				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 				B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */,
 				B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */,
-				B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */,
+				B5EF32CF258D08E70069EC7D /* MockStorage+Sample.swift in Sources */,
 				B574016925B7D3980058960E /* EmailVerificationTests.swift in Sources */,
 				B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */,
 				B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */,

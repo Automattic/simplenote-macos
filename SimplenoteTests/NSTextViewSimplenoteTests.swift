@@ -8,7 +8,7 @@ class NSTextViewSimplenoteTests: XCTestCase {
 
     /// TextView!
     ///
-    private var textView = MockupTextView()
+    private var textView = MockTextView()
 
     /// Mockup TextViewDelegate
     ///

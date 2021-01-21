@@ -5,7 +5,7 @@ import CoreData
 
 /// MockupStorage: InMemory CoreData Stack.
 ///
-class MockupStorage {
+class MockStorage {
 
     /// DataModel Name
     ///
@@ -44,7 +44,7 @@ class MockupStorage {
 
 // MARK: - Descriptors
 //
-extension MockupStorage {
+extension MockStorage {
 
     /// Returns the Application's ManagedObjectModel
     ///
@@ -68,7 +68,7 @@ extension MockupStorage {
 
 // MARK: - Stack URL's
 //
-extension MockupStorage {
+extension MockStorage {
 
     /// Returns the ManagedObjectModel's URL: Pick this up from the Storage bundle. OKAY?
     ///
@@ -85,7 +85,7 @@ extension MockupStorage {
 
 // MARK: - Private API(s)
 //
-private extension MockupStorage {
+private extension MockStorage {
 
     func buildPersistentContainer() -> NSPersistentContainer {
         let container = NSPersistentContainer(name: name, managedObjectModel: managedModel)
