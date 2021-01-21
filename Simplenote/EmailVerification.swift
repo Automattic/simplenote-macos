@@ -1,53 +1,69 @@
 import Foundation
 
 
-
-// MARK: - EmailVerification
-//          There is only one condition in which an account is verified
-//          - The email verification token exists, is secure, and matches the email for the account as the app knows it
-//            (either from login or from the response of the init call).
-//
-//          If those three conditions hold (two for now) then it’s verified. If any of those fail then it’s not verified
-//
-enum EmailVerificationStatus: Equatable {
-    case sent
-    case verified
-}
-
-
 // MARK: - EmailVerification
 //
 struct EmailVerification {
-    let username: String?
-    let timestamp: Int?
-    let signature: String?
+    let token: EmailVerificationToken?
+    let pending: EmailVerificationPending?
 }
 
+// MARK: - EmailVerificationToken
+//
+struct EmailVerificationToken: Decodable {
+    let username: String
+}
 
-// MARK: - Public API(s)
+// MARK: - EmailVerificationPending
+//
+struct EmailVerificationPending {
+    let email: String
+}
+
+// MARK: - Init from payload
 //
 extension EmailVerification {
 
-    init?(payload: [AnyHashable: Any]) {
-        guard let tokenAsJSON = payload[EmailVerificationKeys.token.rawValue] as? String,
-              let tokenAsData = tokenAsJSON.data(using: .utf8),
-              let token = try? JSONSerialization.jsonObject(with: tokenAsData, options: []) as? [String: Any]
-        else {
-            return nil
-        }
+    /// Initializes an EmailVerification entity from a dictionary
+    ///
+    init(payload: [AnyHashable: Any]) {
+        token = {
+            guard let dataString = payload[EmailVerificationKeys.token.rawValue] as? String,
+                  let data = dataString.data(using: .utf8) else {
+                return nil
+            }
 
-        username = token[EmailVerificationKeys.username.rawValue] as? String
-        timestamp = token[EmailVerificationKeys.timestamp.rawValue] as? Int
-        signature = payload[EmailVerificationKeys.signature.rawValue] as? String
+            return try? JSONDecoder().decode(EmailVerificationToken.self, from: data)
+        }()
+
+
+        pending = {
+            guard let payload = payload[EmailVerificationKeys.pending.rawValue] as? [AnyHashable: Any] else {
+                return nil
+            }
+
+            return EmailVerificationPending(payload: payload)
+        }()
     }
 }
 
+extension EmailVerificationPending {
+    init?(payload: [AnyHashable: Any]) {
+        guard let email = payload[EmailVerificationPendingKeys.email.rawValue] as? String else {
+            return nil
+        }
+
+        self.email = email
+    }
+}
 
 // MARK: - CodingKeys
 //
 private enum EmailVerificationKeys: String {
     case token
-    case username
-    case timestamp = "verified_at"
-    case signature = "token_signature"
+    case pending
+}
+
+private enum EmailVerificationPendingKeys: String {
+    case email = "sent_to"
 }

@@ -6,15 +6,40 @@ import XCTest
 //
 class EmailVerificationTests: XCTestCase {
 
-    func testEmailVerificationCorrectlyParsesRemotePayload() {
-        let payload: [String: Any] = [
-            "token": "{ \"username\": \"test@test.com\", \"verified_at\": 1611171132 }",
-            "token_signature": "token_signature"
+    func testEmailVerificationCorrectlyParsesToken() {
+        let payload = [
+            "token": #"{"username": "1234"}"#
         ]
+        let parsed = EmailVerification(payload: payload)
+        XCTAssertEqual(parsed.token?.username, "1234")
+    }
 
-        let verification = EmailVerification(payload: payload)!
-        XCTAssertEqual(verification.username, "test@test.com")
-        XCTAssertEqual(verification.timestamp, 1611171132)
-        XCTAssertEqual(verification.signature, "token_signature")
+    func testEmailVerificationCorrectlyParsesPending() {
+        let payload = [
+            "pending": [
+                "sent_to": "1234"
+            ]
+        ]
+        let parsed = EmailVerification(payload: payload)
+        XCTAssertEqual(parsed.pending?.email, "1234")
+    }
+
+    func testEmailVerificationCorrectlyParsesEmptyPayload() {
+        let payload: [AnyHashable: Any] = [:]
+        let parsed = EmailVerification(payload: payload)
+        XCTAssertNil(parsed.token)
+        XCTAssertNil(parsed.pending)
+    }
+
+    func testEmailVerificationIgnoresBrokenPayload() {
+        let payload : [AnyHashable: Any] = [
+            "token": #"{"user": "1234"}"#,
+            "pending": [
+                "sent": "1234"
+            ]
+        ]
+        let parsed = EmailVerification(payload: payload)
+        XCTAssertNil(parsed.token)
+        XCTAssertNil(parsed.pending)
     }
 }
