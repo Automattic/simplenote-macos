@@ -115,6 +115,11 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteAlertTextColor: NSColor {
+        dynamicColor(lightStudio: .black, darkStudio: .white)
+    }
+
+    @objc
     static var simplenoteSelectedTextColor: NSColor {
         .white
     }
