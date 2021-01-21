@@ -23,6 +23,10 @@ class SimplenoteConstants: NSObject {
     static let simplenoteInterlinkHost = "note"
     static let simplenoteInterlinkMaxTitleLength = 150
 
+    /// URL(s)
+    ///
+    static let simplenoteSettingsURL = "https://app.simplenote.com/settings"
+
     /// Reserved Object Keys
     ///
     static let welcomeNoteObjectKey = "welcomeNote-Mac"
