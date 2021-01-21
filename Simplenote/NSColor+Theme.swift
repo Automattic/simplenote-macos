@@ -115,11 +115,6 @@ extension NSColor {
     }
 
     @objc
-    static var simplenoteAlertTextColor: NSColor {
-        dynamicColor(lightStudio: .black, darkStudio: .white)
-    }
-
-    @objc
     static var simplenoteSelectedTextColor: NSColor {
         .white
     }
@@ -142,6 +137,29 @@ extension NSColor {
     @objc
     static var simplenoteTokenSelectedBackgroundColor: NSColor {
         dynamicColor(lightColor: .simplenoteTokenSelectedBackgroundLightColor, darkColor: .simplenoteTokenSelectedBackgroundDarkColor)
+    }
+
+    @objc
+    static var simplenoteAlertTextColor: NSColor {
+        dynamicColor(lightStudio: .black, darkStudio: .white)
+    }
+
+    @objc
+    static var simplenoteAlertPrimaryActionTextColor: NSColor {
+        dynamicColor(lightStudio: .white, darkStudio: .black)
+    }
+
+    @objc
+    static var simplenoteAlertPrimaryActionBackgroundColor: NSColor {
+        .simplenoteBrandColor
+    }
+
+    @objc
+    static var simplenoteAlertPrimaryActionHighlightedBackgroundColor: NSColor {
+        let blendFraction = CGFloat(0.1)
+        let output = NSColor.simplenoteBrandColor.blended(withFraction: blendFraction, of: .simplenoteAlertTextColor)
+
+        return output ?? .simplenoteBrandColor
     }
 }
 
