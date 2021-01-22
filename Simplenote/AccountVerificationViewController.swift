@@ -86,7 +86,7 @@ extension AccountVerificationViewController {
         switch configuration {
         case .review:
             presentChangeEmailURL()
-            dismissWasPressed(sender)
+            dismiss(sender)
             SPTracker.trackVerificationChangeEmailButtonTapped()
 
         case .verify:
@@ -100,7 +100,7 @@ extension AccountVerificationViewController {
 
     @IBAction
     func dismissWasPressed(_ sender: Any) {
-        super.dismiss(sender)
+        dismiss(sender)
         SPTracker.trackVerificationDismissed()
     }
 }
