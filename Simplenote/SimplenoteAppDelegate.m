@@ -32,7 +32,7 @@
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate ()
+@interface SimplenoteAppDelegate () <SPBucketDelegate>
 
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
@@ -100,6 +100,7 @@
     [self applyStyle];
 
     [self configureEditorController];
+    [self configureVerificationCoordinator];
     [self configureVersionsController];
 
 #if SPARKLE_OTA
@@ -239,14 +240,14 @@
 {
     SPUser *user = simperium.user;
 
-    [self configureVerificationControllerWithEmail:user.email];
+    [self.verificationCoordinator processDidLoginWithEmail:user.email];
     [SPTracker refreshMetadataWithEmail:user.email];
     [CrashLogging cacheUser: user];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
 {
-    [self destroyVerificationController];
+    [self.verificationCoordinator processDidLogout];
     [SPTracker refreshMetadataForAnonymousUser];
     [CrashLogging clearCachedUser];
 }
@@ -292,7 +293,8 @@
 
     // Verification Status Change
     if ([bucket isEqual: self.simperium.accountBucket] && [key isEqualToString:SPCredentials.simperiumEmailVerificationObjectKey]) {
-        [self.verificationController updateWith:[bucket objectForKey:key]];
+        NSDictionary *verification = [bucket objectForKey:key];
+        [self.verificationCoordinator refreshStateWithVerification:verification];
         return;
     }
 }
@@ -311,26 +313,6 @@
 {
     if ([bucket isEqual: self.simperium.notesBucket]) {
         [self.versionsController didReceiveObjectForSimperiumKey:key version:version data:data];
-    }
-}
-
-- (void)bucketWillStartIndexing:(SPBucket *)bucket
-{
-    if ([bucket isEqual: self.simperium.notesBucket]) {
-        [self.noteListViewController setWaitingForIndex:YES];
-    }
-}
-
-- (void)bucketDidFinishIndexing:(SPBucket *)bucket
-{
-    if ([bucket isEqual: self.simperium.notesBucket]) {
-        [self.noteListViewController setWaitingForIndex:NO];
-        return;
-    }
-
-    if ([bucket isEqual: self.simperium.accountBucket]) {
-        [self.verificationController updateWith:[bucket objectForKey:SPCredentials.simperiumEmailVerificationObjectKey]];
-        return;
     }
 }
 

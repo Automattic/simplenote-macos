@@ -48,13 +48,12 @@ class AccountVerificationController: NSObject {
 
     /// Update verification state with data from `email-verification` entity
     ///
-    @objc
-    func update(with rawData: Any?) {
+    func update(with rawData: [AnyHashable: Any]?) {
         guard !email.isEmpty else {
             return
         }
 
-        guard let rawData = rawData as? [AnyHashable: Any] else {
+        guard let rawData = rawData else {
             state = .unverified
             return
         }

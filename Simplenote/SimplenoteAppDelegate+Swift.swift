@@ -65,6 +65,11 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureVerificationCoordinator() {
+        verificationCoordinator = AccountVerificationCoordinator(parentViewController: splitViewController)
+    }
+
+    @objc
     func configureVersionsController() {
         versionsController = VersionsController(simperium: simperium)
     }
@@ -115,70 +120,6 @@ extension SimplenoteAppDelegate {
         welcomeNote.createPreview()
 
         simperium.save()
-    }
-}
-
-
-// MARK: - Account Verification
-//
-extension SimplenoteAppDelegate {
-
-    /// Initializes the Verification Controller
-    /// - Note:Invoked during the Login Sequence
-    ///
-    @objc
-    func configureVerificationController(email: String?) {
-        guard let email = email, !email.isEmpty else {
-            return
-        }
-
-        verificationController = AccountVerificationController(email: email)
-        verificationController?.onStateChange = { [weak self] (oldState, state) in
-            switch (oldState, state) {
-            case (.unknown, .unverified):
-                self?.presentVerificationViewController(configuration: .review)
-                break
-
-            case (.unknown, .verificationInProgress):
-                self?.presentVerificationViewController(configuration: .verify)
-                break
-
-            case (.unverified, .verified), (.verificationInProgress, .verified):
-                self?.dismissVerificationViewController()
-                break
-
-            default:
-                break
-            }
-        }
-    }
-
-    /// Obliterates the Verification Controller
-    /// - Note:Invoked during the Logout Sequence
-    ///
-    @objc
-    func destroyVerificationController() {
-        verificationController = nil
-    }
-
-    // TODO: Should this live in SplitViewController itself?
-
-    var verificationViewController: AccountVerificationViewController? {
-        let presentedViewControllers = splitViewController.presentedViewControllers?.first { $0 is AccountVerificationViewController }
-        return presentedViewControllers as? AccountVerificationViewController
-    }
-
-    func presentVerificationViewController(configuration: AccountVerificationConfiguration) {
-        guard let controller = verificationController, verificationViewController == nil else {
-            return
-        }
-
-        let viewController = AccountVerificationViewController(configuration: configuration, controller: controller)
-        splitViewController.presentAsSheet(viewController)
-    }
-
-    func dismissVerificationViewController() {
-        verificationViewController?.dismiss(self)
     }
 }
 
@@ -320,6 +261,36 @@ extension SimplenoteAppDelegate {
 
         displayNote(simperiumKey: simperiumKey)
         return true
+    }
+}
+
+
+// MARK: - SPBucketDelegate
+//
+extension SimplenoteAppDelegate: SPBucketDelegate {
+
+    public func bucketWillStartIndexing(_ bucket: SPBucket!) {
+        switch bucket {
+        case simperium.notesBucket:
+            noteListViewController.setWaitingForIndex(true)
+
+        default:
+            break
+        }
+    }
+
+    public func bucketDidFinishIndexing(_ bucket: SPBucket!) {
+        switch bucket {
+        case simperium.notesBucket:
+            noteListViewController.setWaitingForIndex(false)
+
+        case simperium.accountBucket:
+            let payload = bucket.object(forKey: SPCredentials.simperiumEmailVerificationObjectKey) as? [AnyHashable: Any]
+            verificationCoordinator.refreshState(verification: payload)
+
+        default:
+            break
+        }
     }
 }
 
