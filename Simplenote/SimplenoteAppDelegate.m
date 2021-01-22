@@ -32,7 +32,7 @@
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate () <SPBucketDelegate>
+@interface SimplenoteAppDelegate ()
 
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
@@ -93,6 +93,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self configureSimperium];
+    [self configureSimperiumBuckets];
     [self configureMainInterface];
     [self configureSplitViewController];
     [self configureMainWindowController];
@@ -100,10 +101,6 @@
 
     [self configureEditorController];
     [self configureVersionsController];
-    
-    [self.simperium setAllBucketDelegates:self];
-    [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
-    [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
 
 #if SPARKLE_OTA
     [self configureSparkle];

@@ -236,6 +236,9 @@
 		B56FA7992437C79D002CB9FF /* SPUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA7972437C79D002CB9FF /* SPUserInterface.swift */; };
 		B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */; };
 		B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */; };
+		B574015325B783500058960E /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574015225B783500058960E /* EmailVerification.swift */; };
+		B574015425B783500058960E /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574015225B783500058960E /* EmailVerification.swift */; };
+		B574016925B7D3980058960E /* EmailVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574016825B7D3980058960E /* EmailVerificationTests.swift */; };
 		B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B57CB874244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
@@ -613,6 +616,8 @@
 		B56FA78F2437C672002CB9FF /* NSColor+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Theme.swift"; sourceTree = "<group>"; };
 		B56FA7972437C79D002CB9FF /* SPUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUserInterface.swift; sourceTree = "<group>"; };
 		B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAppearance+Simplenote.swift"; sourceTree = "<group>"; };
+		B574015225B783500058960E /* EmailVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerification.swift; sourceTree = "<group>"; };
+		B574016825B7D3980058960E /* EmailVerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationTests.swift; sourceTree = "<group>"; };
 		B574CA72242D552100F8D02F /* TextViewInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputHandler.swift; sourceTree = "<group>"; };
 		B57CB873244DEBC300BA7969 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Simplenote.swift"; sourceTree = "<group>"; };
@@ -960,6 +965,7 @@
 			isa = PBXGroup;
 			children = (
 				2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */,
+				B574015225B783500058960E /* EmailVerification.swift */,
 				2614F1DB1405A0B10031AE94 /* Note.h */,
 				2614F1DC1405A0B10031AE94 /* Note.m */,
 				B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */,
@@ -1194,6 +1200,14 @@
 			name = Themes;
 			sourceTree = "<group>";
 		};
+		B57401A725B7D9A60058960E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B574016825B7D3980058960E /* EmailVerificationTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B574CA71242D539400F8D02F /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1388,6 +1402,7 @@
 				B5EF32AF258D07420069EC7D /* Controllers */,
 				B5985AD3242949C30044EDE9 /* Converters */,
 				B5985AD2242949B00044EDE9 /* Extensions */,
+				B57401A725B7D9A60058960E /* Model */,
 				B5B5F33B243244D300F31720 /* Handlers */,
 				B5469FD825880106007ED7BE /* Settings */,
 				B5C1F0AD242E9AAA00A627E3 /* Mockups */,
@@ -1541,7 +1556,6 @@
 					};
 					B5CBB068241976230003C271 = {
 						CreatedOnToolsVersion = 11.3.1;
-						DevelopmentTeam = PZYM8XX95Q;
 						ProvisioningStyle = Manual;
 						TestTargetID = 26F72A8714032D2A00A7935E;
 					};
@@ -1983,6 +1997,7 @@
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
+				B574015325B783500058960E /* EmailVerification.swift in Sources */,
 				B53BF1A024AC1FB800938C34 /* Version.swift in Sources */,
 				B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
@@ -2161,6 +2176,7 @@
 				B5EB3AD22458B9940089858D /* NSNotification+Simplenote.m in Sources */,
 				B54F9A6424D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */,
 				B518D3792507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */,
+				B574015425B783500058960E /* EmailVerification.swift in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
@@ -2185,6 +2201,7 @@
 				B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */,
 				B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */,
 				B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */,
+				B574016925B7D3980058960E /* EmailVerificationTests.swift in Sources */,
 				B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */,
 				B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */,
 			);
@@ -2642,7 +2659,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2685,7 +2702,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;

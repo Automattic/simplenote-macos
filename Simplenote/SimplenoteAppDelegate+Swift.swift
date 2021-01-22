@@ -29,6 +29,14 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureSimperiumBuckets() {
+        for bucket in simperium.allBuckets {
+            bucket.notifyWhileIndexing = true
+            bucket.delegate = self
+        }
+    }
+
+    @objc
     func configureMainInterface() {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
