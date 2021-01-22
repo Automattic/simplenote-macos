@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-17 09:54:05+0000 */
+/* Translation-Revision-Date: 2021-01-21 10:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: it */
@@ -228,6 +228,9 @@
 /* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
 "83.title" = "Nota";
 
+/* Class = "NSMenuItem"; title = "Alphabetically: A-Z"; ObjectID = "AuW-hU-J6R"; Note = "Toggles Alphabetical Note Sort Order"; */
+"AuW-hU-J6R.title" = "In ordine alfabetico: A-Z";
+
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
 
@@ -258,6 +261,9 @@
 /* Class = "NSMenuItem"; title = "Privacy Settings"; ObjectID = "RZM-N8-VLN"; Note = "Opens the Privacy Settings"; */
 "RZM-N8-VLN.title" = "Impostazioni privacy";
 
+/* Class = "NSMenuItem"; title = "Created: Oldest"; ObjectID = "S16-eV-qeq"; */
+"S16-eV-qeq.title" = "Data di creazione: meno recente";
+
 /* Class = "NSMenu"; title = "Theme"; ObjectID = "SIP-Tf-W7J"; Note = "Theme Settings Menu"; */
 "SIP-Tf-W7J.title" = "Tema";
 
@@ -269,6 +275,9 @@
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
 "YpJ-fs-p4p.title" = "Ordinamento nota";
+
+/* Class = "NSMenuItem"; title = "Created: Newest"; ObjectID = "Z0V-Oz-ijh"; */
+"Z0V-Oz-ijh.title" = "Data di creazione: più recente";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
 "Zhe-Bb-jvT.title" = "Light";
@@ -285,12 +294,6 @@
 /* Class = "NSMenu"; title = "Note Display"; ObjectID = "fB2-X8-xNp"; Note = "Note Display Settings"; */
 "fB2-X8-xNp.title" = "Visualizzazione nota";
 
-/* Class = "NSMenuItem"; title = "Date Updated"; ObjectID = "fep-x2-0FA"; Note = "Toggles Note Order by Date"; */
-"fep-x2-0FA.title" = "Data aggiornata";
-
-/* Class = "NSMenuItem"; title = "Alphabetical"; ObjectID = "i8p-Xx-VpF"; Note = "Toggles Alphabetical Note Sort Order"; */
-"i8p-Xx-VpF.title" = "Alfabetico";
-
 /* Class = "NSMenuItem"; title = "Insert Checklist"; ObjectID = "iNS-zx-oXr"; Note = "Inserts a new Checklist"; */
 "iNS-zx-oXr.title" = "Inserisci checklist";
 
@@ -303,8 +306,17 @@
 /* Class = "NSMenuItem"; title = "Reset"; ObjectID = "oS8-Vc-yog"; Note = "Resets the Font Size"; */
 "oS8-Vc-yog.title" = "Azzera";
 
+/* Class = "NSMenuItem"; title = "Modified: Newest"; ObjectID = "p5U-fB-pgR"; */
+"p5U-fB-pgR.title" = "Data di modifica: più recente";
+
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
 "qcT-FY-eHe.title" = "Dark";
+
+/* Class = "NSMenuItem"; title = "Alphabetically: Z-A"; ObjectID = "riY-RT-IN8"; */
+"riY-RT-IN8.title" = "In ordine alfabetico: Z-A";
+
+/* Class = "NSMenuItem"; title = "Modified: Oldest"; ObjectID = "ssB-vH-kwg"; */
+"ssB-vH-kwg.title" = "Data di modifica: meno recente";
 
 /* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
 "tQC-gw-hdq.title" = "Ridotta";
