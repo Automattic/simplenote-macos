@@ -44,9 +44,6 @@ extension AccountVerificationControllerTests {
         controller.update(with: nil)
         XCTAssertEqual(controller.state, .unverified)
 
-        controller.update(with: "verified")
-        XCTAssertEqual(controller.state, .unverified)
-
         controller.update(with: invalidVerification)
         XCTAssertEqual(controller.state, .unverified)
     }
