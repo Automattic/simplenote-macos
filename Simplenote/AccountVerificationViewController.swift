@@ -189,12 +189,12 @@ private extension AccountVerificationViewController {
     func attributedText(_ text: String, highlighting term: String) -> NSAttributedString {
         let attributedMessage = NSMutableAttributedString(string: text, attributes: [
             .foregroundColor: NSColor.simplenoteTextColor,
-            .font: NSFont.systemFont(ofSize: Metrics.bodyFontSize)
+            .font: Settings.bodyFont
         ])
 
         if let range = text.range(of: term) {
             attributedMessage.addAttribute(.font,
-                                           value: NSFont.boldSystemFont(ofSize: Metrics.bodyFontSize),
+                                           value: Settings.bodyHightlightFont,
                                            range: NSRange(range, in: text))
         }
 
@@ -277,8 +277,9 @@ extension AccountVerificationConfiguration {
 
 // MARK: - UI Metrics
 //
-private enum Metrics {
-    static let bodyFontSize: CGFloat = 16
+private enum Settings {
+    static let bodyFont = NSFont.systemFont(ofSize: 16)
+    static let bodyHightlightFont = NSFont.systemFont(ofSize: 16, weight: .semibold)
 }
 
 
