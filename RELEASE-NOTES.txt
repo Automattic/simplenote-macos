@@ -1,6 +1,7 @@
 2.7
 -----
- 
+- New account verification screen #800
+
 2.6
 -----
 - New Sidebar Toolbar Action #737

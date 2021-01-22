@@ -77,6 +77,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackWPCCLoginSucceeded;
 + (void)trackWPCCLoginFailed;
 
+#pragma mark - Swift Bridging
++ (void)trackAutomatticEventWithName:(NSString *)name properties:(nullable NSDictionary *)properties;
+
 @end
 
 NS_ASSUME_NONNULL_END
