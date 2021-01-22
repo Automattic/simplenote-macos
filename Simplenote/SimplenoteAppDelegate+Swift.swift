@@ -65,6 +65,11 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureVerificationCoordinator() {
+        verificationCoordinator = AccountVerificationCoordinator(parentViewController: splitViewController)
+    }
+
+    @objc
     func configureVersionsController() {
         versionsController = VersionsController(simperium: simperium)
     }
@@ -256,6 +261,36 @@ extension SimplenoteAppDelegate {
 
         displayNote(simperiumKey: simperiumKey)
         return true
+    }
+}
+
+
+// MARK: - SPBucketDelegate
+//
+extension SimplenoteAppDelegate: SPBucketDelegate {
+
+    public func bucketWillStartIndexing(_ bucket: SPBucket!) {
+        switch bucket {
+        case simperium.notesBucket:
+            noteListViewController.setWaitingForIndex(true)
+
+        default:
+            break
+        }
+    }
+
+    public func bucketDidFinishIndexing(_ bucket: SPBucket!) {
+        switch bucket {
+        case simperium.notesBucket:
+            noteListViewController.setWaitingForIndex(false)
+
+        case simperium.accountBucket:
+            let payload = bucket.object(forKey: SPCredentials.simperiumEmailVerificationObjectKey) as? [AnyHashable: Any]
+            verificationCoordinator.refreshState(verification: payload)
+
+        default:
+            break
+        }
     }
 }
 

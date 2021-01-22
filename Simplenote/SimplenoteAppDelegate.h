@@ -15,6 +15,7 @@
 @class NoteEditorViewController;
 @class TagListViewController;
 @class SplitViewController;
+@class AccountVerificationCoordinator;
 @class VersionsController;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark SimplenoteAppDelegate
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SimperiumDelegate, SPBucketDelegate>
+@interface SimplenoteAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, SimperiumDelegate>
 
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator        *persistentStoreCoordinator;
 @property (strong, nonatomic, readonly) NSManagedObjectModel                *managedObjectModel;
@@ -37,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) TagListViewController                         *tagListViewController;
 @property (strong, nonatomic) NoteListViewController                        *noteListViewController;
 @property (strong, nonatomic) NoteEditorViewController                      *noteEditorViewController;
+
+@property (strong, nonatomic) AccountVerificationCoordinator                *verificationCoordinator;
 @property (strong, nonatomic) VersionsController                            *versionsController;
 
 

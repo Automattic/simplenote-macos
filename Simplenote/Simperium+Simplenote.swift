@@ -21,6 +21,7 @@ extension Simperium {
 
     /// Notes Bucket
     ///
+    @objc
     var notesBucket: SPBucket {
         bucket(forName: Note.classNameWithoutNamespaces)
     }
