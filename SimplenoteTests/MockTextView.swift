@@ -4,7 +4,7 @@ import Foundation
 // MARK: - MockupTextView: Useful for Unit Testing purposes.
 //         NSTextView(s) not properly attached to a window lack UndoManager
 //
-class MockupTextView: NSTextView {
+class MockTextView: NSTextView {
 
     let internalUndoManager = UndoManager()
 
