@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Preferences
 + (void)trackSettingsFontSizeUpdated;
-+ (void)trackSettingsAlphabeticalSortEnabled:(BOOL)isOn;
++ (void)trackSettingsNoteListSortMode:(NSString *)description;
 + (void)trackSettingsThemeUpdated:(nullable NSString *)themeName;
 + (void)trackSettingsListCondensedEnabled:(BOOL)isOn;
 

@@ -78,11 +78,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [super viewDidLoad];
 
-    [self.noteEditor setFrameSize:NSMakeSize(self.noteEditor.frame.size.width-kMinEditorPadding/2, self.noteEditor.frame.size.height-kMinEditorPadding/2)];
     self.storage = [Storage new];
     [self.noteEditor.layoutManager replaceTextStorage:self.storage];
     [self.noteEditor.layoutManager setDefaultAttachmentScaling:NSImageScaleProportionallyDown];
-    
+
     // Set hyperlinks to be the same color as the app's highlight color
     [self.noteEditor setLinkTextAttributes: @{
        NSForegroundColorAttributeName: [NSColor simplenoteLinkColor],
@@ -97,10 +96,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 	}
 
     // Interface Initialization
-    [self setupSearchBar];
     [self setupScrollView];
     [self setupStatusImageView];
     [self setupTagsField];
+    [self setupToolbarView];
 
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
@@ -119,8 +118,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
 
     [self startListeningToScrollNotifications];
+    [self startListeningToWindowNotifications];
 
     [self refreshStyle];
+    [self refreshInterface];
 }
 
 - (void)viewWillLayout
@@ -128,6 +129,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [super viewWillLayout];
     [self refreshScrollInsets];
     [self refreshHeaderState];
+    [self refreshTextContainer];
 }
 
 - (void)save
@@ -178,10 +180,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     if (selectedNote == nil) {
         self.note = nil;
         self.selectedNotes = @[];
-        [self refreshToolbarActions];
-        [self refreshEditorActions];
-        [self refreshTagsField];
-        [self.noteEditor displayNoteWithContent:@""];
+
+        [self refreshInterface];
 
         return;
     }
@@ -209,6 +209,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     
     [self refreshToolbarActions];
     [self refreshTagsField];
+    [self resetTagsFieldScrollOffset];
 
     if (selectedNote.content != nil) {
         // Force selection to start; not doing this can cause an NSTextStorage exception when
@@ -225,7 +226,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     if (lastKnownScrollOffset != nil) {
         [self.scrollView.documentView scrollPoint:lastKnownScrollOffset.pointValue];
     } else {
-        [self.scrollView scrollToTop];
+        [self.scrollView scrollToTopWithAnimation:NO];
     }
 }
 
@@ -281,7 +282,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (void)displayModeWasUpdated:(NSNotification *)notification
 {
-    self.noteEditor.needsDisplay = YES;
+    self.view.needsLayout = YES;
 }
 
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)location
@@ -524,41 +525,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     NSPrintOperation *operation = [NSPrintOperation printOperationWithView:printView];
     [operation setPrintInfo:printInfo];
     [operation runOperation];
-}
-
-
-
-#pragma mark - TagsField Helpers
-
-- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens
-{
-    SimplenoteAppDelegate *appDelegate  = [SimplenoteAppDelegate sharedDelegate];
-    Simperium *simperium                = appDelegate.simperium;
-    Note *note                          = self.note;
-    NSString *oldTags                   = note.tags;
-
-    // Create any new tags that don't already exist
-    for (NSString *token in tokens) {
-        Tag *tag = [simperium searchTagWithName:token];
-        if (!tag && ![token containsEmailAddress]) {
-            [self.tagActionsDelegate editorController:self didAddNewTag:token];
-        }
-    }
-
-    // Update Tags: Internally they're JSON Encoded!
-    [note setTagsFromList:tokens];
-
-    // Ensure the right Tag remains selected
-    if ([note hasTag:appDelegate.selectedTagName] == false) {
-        [appDelegate selectAllNotesTag];
-        [appDelegate selectNoteWithKey:note.simperiumKey];
-    }
-    
-    if ([self.note.tags isEqualToString:oldTags]) {
-        return;
-    }
-    
-    [self save];
 }
 
 

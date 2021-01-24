@@ -49,6 +49,10 @@ extension NSImage.Name {
     ///
     static let restore = NSImage.Name("button_restore")
 
+    /// Note List: Chevron Down
+    ///
+    static let chevronDown = NSImage.Name("icon_chevron_down")
+
     /// Note List: Shared
     ///
     static let shared = NSImage.Name("icon_shared")
@@ -60,6 +64,10 @@ extension NSImage.Name {
     /// Logo: Simplenote (Inner)
     ///
     static let simplenoteLogoInner = NSImage.Name("icon_simplenote_inner")
+
+    /// Logo: Login Logo!
+    ///
+    static let simplenoteLogoLogin = NSImage.Name("icon_simplenote_login")
 
     /// Toolbar: Share
     ///

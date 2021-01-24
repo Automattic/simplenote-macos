@@ -23,6 +23,26 @@ class NoteTableCellView: NSTableCellView {
     ///
     @IBOutlet private var sharedImageView: NSImageView!
 
+    /// Workaround: In AppKit, TableView Cell Selection works at the Row level
+    ///
+    override var backgroundStyle: NSView.BackgroundStyle {
+        didSet {
+            refreshSelectedState()
+        }
+    }
+
+    /// Indicates if the receiver's associated NSTableRowView is *selected*
+    ///
+    private var selected = false {
+        didSet {
+            guard oldValue != selected else {
+                return
+            }
+
+            refreshStyle()
+        }
+    }
+
     /// Indicates if the receiver displays the pinned indicator
     ///
     var displaysPinnedIndicator: Bool {
@@ -66,6 +86,10 @@ class NoteTableCellView: NSTableCellView {
     ///
     var body: String?
 
+    /// Body's Prefix: Designed to display Dates (with a slightly different style) when appropriate.
+    ///
+    var bodyPrefix: String?
+
 
     // MARK: - Overridden Methods
 
@@ -74,6 +98,11 @@ class NoteTableCellView: NSTableCellView {
         setupTextFields()
         setupImageViews()
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        reset()
+    }
 }
 
 
@@ -81,16 +110,70 @@ class NoteTableCellView: NSTableCellView {
 //
 extension NoteTableCellView {
 
+    /// Refreshes the receiver's style
+    ///
+    func refreshStyle() {
+        refreshAttributedStrings()
+        refreshAccessoryIcons()
+    }
+
     /// Refreshed the Label(s) Attributed Strings: Keywords, Bullets and the Body Prefix will be taken into consideration
     ///
-    func refreshAttributedStrings() {
-        titleTextField.attributedStringValue = title.map {
+    private func refreshAttributedStrings() {
+        titleTextField.attributedStringValue = titleString
+        bodyTextField.attributedStringValue = bodyString
+    }
+
+    /// Refreshes the Accessory Icons tint color
+    ///
+    func refreshAccessoryIcons() {
+        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
+        let pinnedColor: NSColor = selected ? .simplenoteTextColor : .simplenoteAccessoryTintColor
+        let sharedColor: NSColor = selected ? .simplenoteTextColor : .simplenoteSecondaryTextColor
+
+        pinnedImageView.image = pinnedImageView.image?.tinted(with: pinnedColor)
+        sharedImageView.image = sharedImageView.image?.tinted(with: sharedColor)
+    }
+}
+
+
+// MARK: - String Builders
+//
+private extension NoteTableCellView {
+
+    var titleString: NSAttributedString {
+        return title.map {
             NSAttributedString.previewString(text: $0, font: Fonts.title, color: .simplenoteTextColor)
         } ?? NSAttributedString()
+    }
 
-        bodyTextField.attributedStringValue = body.map {
-            NSAttributedString.previewString(text: $0, font: Fonts.body, color: .simplenoteSecondaryTextColor)
-        } ?? NSAttributedString()
+    var bodyString: NSAttributedString {
+        let bodyString = NSMutableAttributedString()
+        let bodyColor: NSColor = selected ? .simplenoteTextColor : .simplenoteSecondaryTextColor
+
+        if let bodyPrefix = bodyPrefix {
+            bodyString += NSAttributedString.previewString(text: bodyPrefix + String.space, font: Fonts.bodyPrefix, color: .simplenoteTextColor)
+        }
+
+        if let bodySuffix = body {
+            bodyString += NSAttributedString.previewString(text: bodySuffix, font: Fonts.body, color: bodyColor)
+        }
+
+        return bodyString
+    }
+}
+
+
+// MARK: - Selection Workaround
+//
+private extension NoteTableCellView {
+
+    func refreshSelectedState() {
+        guard let row = superview as? NSTableRowView else {
+            return
+        }
+
+        selected = row.isSelected
     }
 }
 
@@ -105,9 +188,12 @@ private extension NoteTableCellView {
     }
 
     func setupImageViews() {
-        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
-        pinnedImageView.image = NSImage(named: .pin)?.tinted(with: .simplenoteActionButtonTintColor)
-        sharedImageView.image = NSImage(named: .shared)?.tinted(with: .simplenoteSecondaryTextColor)
+        pinnedImageView.image = NSImage(named: .pin)
+        sharedImageView.image = NSImage(named: .shared)
+    }
+
+    func reset() {
+        selected = false
     }
 }
 
@@ -152,6 +238,7 @@ private enum Metrics {
 private enum Fonts {
     static let title = NSFont.systemFont(ofSize: 14, weight: .semibold)
     static let body = NSFont.systemFont(ofSize: 12)
+    static let bodyPrefix = NSFont.systemFont(ofSize: 12, weight: .semibold)
 }
 
 
@@ -172,4 +259,8 @@ extension NSAttributedString {
 
         return attrString
     }
+}
+
+func +=(lhs: NSMutableAttributedString, rhs: NSAttributedString) {
+    lhs.append(rhs)
 }

@@ -50,12 +50,12 @@ extension NSColor {
 extension NSColor {
 
     @objc
-    static var simplenoteActionButtonTintColor: NSColor {
+    static var simplenoteAccessoryTintColor: NSColor {
         dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
     }
 
     @objc
-    static var simplenoteSecondaryActionButtonTintColor: NSColor {
+    static var simplenoteActionButtonTintColor: NSColor {
         dynamicColor(lightStudio: .gray50, darkStudio: .gray30)
     }
 
@@ -71,7 +71,7 @@ extension NSColor {
 
     @objc
     static var simplenoteSelectedBackgroundColor: NSColor {
-        NSColor(studioColor: .spBlue50)
+        dynamicColor(lightStudio: .spBlue5, darkStudio: .spBlue50)
     }
 
     @objc
@@ -95,18 +95,23 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteSecondaryDividerColor: NSColor {
+        dynamicColor(lightColor: simplenoteSecondaryDividerLightColor, darkColor: simplenoteSecondaryDividerDarkColor)
+    }
+
+    @objc
     static var simplenoteLinkColor: NSColor {
         dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
     }
 
     @objc
     static var simplenoteTextColor: NSColor {
-        dynamicColor(lightStudio: .gray80, darkStudio: .white)
+        dynamicColor(lightStudio: .gray90, darkStudio: .gray5)
     }
 
     @objc
     static var simplenoteSecondaryTextColor: NSColor {
-        dynamicColor(lightStudio: .gray60, darkStudio: .gray20)
+        dynamicColor(lightStudio: .gray50, darkStudio: .gray30)
     }
 
     @objc
@@ -121,7 +126,7 @@ extension NSColor {
 
     @objc
     static var simplenoteEditorTextColor: NSColor {
-        dynamicColor(lightStudio: .gray80, darkStudio: .gray5)
+        dynamicColor(lightStudio: .gray70, darkStudio: .gray5)
     }
 
     @objc
@@ -160,12 +165,20 @@ private extension NSColor {
         NSColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0)
     }
 
+    static var simplenoteSecondarySelectedBackgroundLightColor: NSColor {
+        NSColor(calibratedWhite: 0.0, alpha: 0.1)
+    }
+
     static var simplenoteSecondarySelectedBackgroundDarkColor: NSColor {
         NSColor(calibratedWhite: 1.0, alpha: 0.1)
     }
 
-    static var simplenoteSecondarySelectedBackgroundLightColor: NSColor {
-        NSColor(studioColor: .spBlue5)
+    static var simplenoteSecondaryDividerLightColor: NSColor {
+        NSColor(studioColor: .gray5)
+    }
+
+    static var simplenoteSecondaryDividerDarkColor: NSColor {
+        NSColor(calibratedWhite: 255.0, alpha: 0.1)
     }
 
     static var simplenoteTokenBackgroundLightColor: NSColor {

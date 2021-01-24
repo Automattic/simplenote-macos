@@ -15,28 +15,10 @@ class TagTableCellView: NSTableCellView {
     ///
     @IBOutlet var nameTextField: SPTextField!
 
-    /// Workaround: In AppKit, TableView Cell Selection works at the Row level
-    ///
-    override var backgroundStyle: NSView.BackgroundStyle {
-        didSet {
-            refreshSelectedState()
-        }
-    }
-
     /// Indicates if the mouse was last seen inside the receiver's bounds
     ///
     private(set) var mouseInside = false
 
-    /// Indicates if the receiver's associated NSTableRowView is *selected*
-    ///
-    private var selected = false {
-        didSet {
-            guard oldValue != selected else {
-                return
-            }
-            refreshStyle()
-        }
-    }
 
     /// Tracking Areas
     ///
@@ -80,24 +62,6 @@ extension TagTableCellView {
     override func mouseExited(with event: NSEvent) {
         mouseInside = false
     }
-
-    override func resetCursorRects() {
-        addCursorRect(bounds, cursor: .pointingHand)
-    }
-}
-
-
-// MARK: - Selection Workaround
-//
-private extension TagTableCellView {
-
-    func refreshSelectedState() {
-        guard let row = superview as? NSTableRowView else {
-            return
-        }
-
-        selected = row.isSelected
-    }
 }
 
 
@@ -112,19 +76,18 @@ private extension TagTableCellView {
 
     func reset() {
         mouseInside = false
-        selected = false
         iconImageView.isHidden = true
         nameTextField.isEditable = false
     }
 
     func refreshStyle() {
-        let tintColor: NSColor = selected ? .simplenoteSelectedTextColor : .simplenoteTextColor
         let formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength, disallowSpaces: true)
+        let icon = iconImageView.image
 
-        iconImageView.contentTintColor = tintColor
-        nameTextField.isSelected = selected
+        // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
+        iconImageView.image = icon?.tinted(with: .simplenoteAccessoryTintColor)
         nameTextField.textRegularColor = .simplenoteTextColor
-        nameTextField.textSelectionColor = .simplenoteSelectedTextColor
+
         nameTextField.textEditionColor = .simplenoteTextColor
         nameTextField.formatter = formatter
     }

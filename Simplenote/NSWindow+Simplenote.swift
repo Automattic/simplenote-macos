@@ -41,4 +41,25 @@ extension NSWindow {
 
         return bounds
     }
+
+    /// Returns the Horizontal Padding required in order to prevent overlaps between our controls and the Window's Semaphore
+    /// - Note:
+    ///     - Fullscreen: zero padding
+    ///     - LTR: Semaphore's Maximum horizontal position
+    ///     - RTL: Window's Width minus the Semaphore's Minimum horizontal location
+    ///
+    var semaphorePaddingX: CGFloat {
+        guard isFullscreen == false, let semaphoreBounds = semaphoreBoundingRect else {
+            return .zero
+        }
+
+        return isRTL ? (frame.width - semaphoreBounds.minX) : semaphoreBounds.maxX
+    }
+
+    /// Returns the Titlebar's Rect 
+    ///
+    var titlebarRect: NSRect {
+        let layoutRect = contentLayoutRect
+        return NSRect(x: layoutRect.minX, y: layoutRect.maxY, width: layoutRect.width, height: frame.height - layoutRect.height)
+    }
 }

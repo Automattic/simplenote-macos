@@ -1,6 +1,30 @@
-2.6
+2.7
 -----
  
+2.6
+-----
+- New Sidebar Toolbar Action #737
+- New Big Sur Iconset #745
+- New Search Toolbar Action #741
+- New Notes List Sort Modes #33
+- New Search Sort Bar #789
+- Notes List now display row separators #758
+- Notes List will now animate content changes #764
+- Search Results are now global #760
+- Search Results will now display the Creation or Modification date when appropriate #790
+- Updated Color Palette #733
+- Entering Search Mode now displays automatically the Notes List #770
+- Exiting Focus Mode will now restore the previous Sidebar State #742
+- Full Width Line Length is now enabled by default #762
+- Fixed a bug that affected Multiple Selection in Big Sur #753
+- Fixed a bug that caused an artifact to show up in the SplitView dividers #779
+- Fixed a bug that caused the Editor's Scrollbar to get clipped #777
+- Fixed a bug that caused Line Height to be inconsistent in Empty Documents #771
+- Fixed a bug that caused an unexpected jump in the Tags List #767
+- Fixed a bug that caused the Tags List to go blank upon tag rename #344
+- Fixed a bug that prevented the Window from Maximizing / Minimizing on double click #786
+- Fixed a bug that caused the Editor Scroll Offset to jump #785
+
 2.5
 -----
 - Removed Main Window's Titlebar #719

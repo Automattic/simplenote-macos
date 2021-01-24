@@ -14,16 +14,11 @@
 #pragma mark Constants
 #pragma mark ====================================================================================
 
-NSString * const SPWelcomeNoteID                    = @"welcomeNote-Mac";
-
 NSString * const SPSimperiumPreferencesObjectKey    = @"preferences-key";
 NSString * const SPAutomatticAnalyticCookiesURL     = @"https://automattic.com/cookies";
 NSString * const SPAutomatticAnalyticPrivacyURL     = @"https://automattic.com/privacy";
 
 NSString * const SPSimplenotePublishURL             = @"http://simp.ly/publish/";
-NSString * const SPSimplenoteForgotPasswordURL      = @"https://app.simplenote.com/forgot/";
-NSString * const SPSimplenoteResetPasswordURL       = @"https://app.simplenote.com/reset/?redirect=simplenote://launch&email=";
-NSString * const SPSimplenoteLogoImageName          = @"icon_simplenote_login";
 NSString * const SPWPServiceName                    = @"simplenote-wpcom";
 NSString * const SPSignInErrorNotificationName      = @"SPSignInErrorNotificationName";
 NSString * const SPWPSignInAuthURL                  = @"https://public-api.wordpress.com/oauth2/authorize?response_type=code&scope=global&client_id=%@&redirect_uri=%@&state=%@";

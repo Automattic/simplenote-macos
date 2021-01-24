@@ -62,7 +62,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong) IBOutlet NSVisualEffectView                       *headerEffectView;
 @property (nonatomic, strong) IBOutlet BackgroundView                           *bottomDividerView;
 @property (nonatomic, strong) IBOutlet ToolbarView                              *toolbarView;
-@property (nonatomic, strong) IBOutlet NSSearchField                            *searchField;
 @property (nonatomic, strong) IBOutlet NSImageView                              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField                              *statusTextField;
 @property (nonatomic, strong) IBOutlet SPTextView                               *noteEditor;
@@ -74,6 +73,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong, readonly) Storage                                 *storage;
 @property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
+@property (nonatomic, strong, nullable) NSLayoutConstraint                      *sidebarSemaphoreLeadingConstraint;
 @property (nonatomic, strong, nullable) InterlinkWindowController               *interlinkWindowController;
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
@@ -87,7 +87,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (void)didReceiveNewContent;
 - (void)willReceiveNewContent;
 - (void)fixChecklistColoring;
-- (void)updateTagsWithTokens:(NSArray<NSString *> *)tokens;
 - (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)printAction:(id)sender;

@@ -30,8 +30,9 @@ class Theme {
     ///
     private static let headlineSpacing = CGFloat.zero
 
-    /// The body style
+    /// Main Styles
     ///
+    let headlineStyle: Style
     let bodyStyle: Style
 
     /// All of the (other) Theme Styles
@@ -46,6 +47,7 @@ class Theme {
     /// Designated Initializer
     ///
     init(markdownEnabled: Bool) {
+        self.headlineStyle = Theme.headlineStyle
         self.bodyStyle = Theme.bodyStyle
         self.styles = markdownEnabled ? Theme.markdownStyles : Theme.regularStyles
         self.markdownEnabled = markdownEnabled
@@ -57,13 +59,17 @@ class Theme {
 //
 private extension Theme {
 
+    static var headlineStyle: Style {
+        return Style(element: .firstLine, attributes: headlineAttributes)
+    }
+
     static var bodyStyle: Style {
         return Style(element: .body, attributes: bodyAttributes)
     }
 
     static var regularStyles: [Style] {
         return [
-            Style(element: .firstLine, attributes: headlineAttributes)
+            headlineStyle
         ]
     }
 
@@ -71,7 +77,7 @@ private extension Theme {
         return [
             Style(element: .h1, attributes: headingAttributes),
             Style(element: .h2, attributes: headingAttributes),
-            Style(element: .firstLine, attributes: headlineAttributes),
+            headlineStyle,
             Style(element: .bold, attributes: boldAttributes),
             Style(element: .inlineCode, attributes: codeAttributes),
             Style(element: .italic, attributes: italicAttributes),

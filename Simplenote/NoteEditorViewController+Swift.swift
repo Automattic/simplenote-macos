@@ -8,11 +8,6 @@ import SimplenoteInterlinks
 extension NoteEditorViewController {
 
     @objc
-    func setupSearchBar() {
-        searchField.centersPlaceholder = false
-    }
-
-    @objc
     func setupStatusImageView() {
         statusImageView.image = NSImage(named: .simplenoteLogoInner)
         statusImageView.contentTintColor = .simplenotePlaceholderTintColor
@@ -34,9 +29,108 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupToolbarView() {
+        toolbarView.delegate = self
+    }
+
+    @objc
     func refreshScrollInsets() {
-        clipView.contentInsets.top = SplitItemMetrics.editorTopInset
-        scrollView.scrollerInsets.top = SplitItemMetrics.editorTopInset
+        clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
+        scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
+    }
+}
+
+
+// MARK: - Layout
+//
+extension NoteEditorViewController {
+
+    open override func updateViewConstraints() {
+        if mustSetupSemaphoreLeadingConstraint {
+            setupSemaphoreLeadingConstraint()
+        }
+
+        refreshSemaphoreLeadingConstant()
+        super.updateViewConstraints()
+    }
+
+    /// Indicates if the Semaphore Leading hasn't been initialized
+    ///
+    private var mustSetupSemaphoreLeadingConstraint: Bool {
+        sidebarSemaphoreLeadingConstraint == nil
+    }
+
+    /// # Semaphore Leading:
+    /// We REALLY need to avoid collisions between the Sidebar Button and the Window's Semaphore (Zoom / Close buttons).
+    ///
+    /// - Important:
+    ///     `priority` is set to `defaultLow` (250) for the constraint between Button and Window.contentLayoutGuide, whereas the regular `leading` is set to (249).
+    ///     This way we avoid choppy NSSplitView animations (using a higher priority interfers with AppKit internals!)
+    ///
+    private func setupSemaphoreLeadingConstraint() {
+        guard let contentLayoutGuide = view.window?.contentLayoutGuide as? NSLayoutGuide else {
+            return
+        }
+
+        let sidebarLeadingAnchor = toolbarView.sidebarButton.leadingAnchor
+        let newConstraint = sidebarLeadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
+        newConstraint.priority = .defaultLow
+        newConstraint.isActive = true
+        sidebarSemaphoreLeadingConstraint = newConstraint
+    }
+
+    /// Refreshes the Semaphore Leading
+    ///
+    private func refreshSemaphoreLeadingConstant() {
+        guard let semaphorePaddingX = view.window?.semaphorePaddingX else {
+            return
+        }
+
+        sidebarSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
+    }
+}
+
+
+// MARK: - Display Mode
+//
+extension NoteEditorViewController {
+
+    @objc
+    func refreshTextContainer() {
+        guard let container = noteEditor.textContainer else {
+            fatalError()
+        }
+
+        let superviewWidth = view.frame.width
+        let targetMaxTextWidth = maximumTextWidth(for: superviewWidth)
+        let targetContainerInset = textContainerInset(superviewWidth: superviewWidth, maximumTextWidth: targetMaxTextWidth)
+        let targetContainerSize = textContainerSize(superviewWidth: superviewWidth, textContainerInset: targetContainerInset)
+
+        noteEditor.textContainerInset = targetContainerInset
+        container.containerSize = targetContainerSize
+
+        /// Note: Disabling `widthTracksTextView` fixes jumpy Scroll Offsets on resize
+        /// Ref. https://github.com/Automattic/simplenote-macos/issues/536
+        container.widthTracksTextView = false
+    }
+
+    private func maximumTextWidth(for superviewWidth: CGFloat) -> CGFloat {
+        Options.shared.editorFullWidth ? superviewWidth : min(EditorMetrics.maximumNarrowWidth, superviewWidth)
+    }
+
+    /// Whenever `SuperviewWidth > MaximumTextWidth` this API will return an Inset which will center onscreen the TextContainer
+    ///
+    private func textContainerInset(superviewWidth: CGFloat, maximumTextWidth: CGFloat) -> NSSize {
+        let width = max((superviewWidth - maximumTextWidth), .zero) * 0.5
+        return NSMakeSize(width + EditorMetrics.minimumPadding, EditorMetrics.minimumPadding)
+    }
+
+    /// # Note: Why not receiving the MaximumTextWidth instead?
+    /// Because in Narrow Display we intend to center the TextContainer, and such calculation is actually done in `textContainerInset`
+    ///
+    private func textContainerSize(superviewWidth: CGFloat, textContainerInset: NSSize) -> NSSize {
+        let width = superviewWidth - textContainerInset.width * 2
+        return NSSize(width: width, height: .greatestFiniteMagnitude)
     }
 }
 
@@ -87,12 +181,34 @@ extension NoteEditorViewController {
     var isSelectingText: Bool {
         noteEditor.selectedRange().length != .zero
     }
+
+    /// Simperium 🖖
+    ///
+    var simperium: Simperium {
+        simplenoteAppDelegate.simperium
+    }
+
+    /// TODO: Let's decouple with dependency injection (OR) a delegate please!!
+    ///
+    var simplenoteAppDelegate: SimplenoteAppDelegate {
+        SimplenoteAppDelegate.shared()
+    }
 }
 
 
 // MARK: - Refreshing Interface
 //
 extension NoteEditorViewController {
+
+    /// Refreshes the Editor's Interface
+    ///
+    @objc
+    func refreshInterface() {
+        refreshToolbarActions()
+        refreshEditorActions()
+        refreshEditorText()
+        refreshTagsField()
+    }
 
     /// Refreshes the Editor's Inner State
     ///
@@ -103,6 +219,14 @@ extension NoteEditorViewController {
         noteEditor.isHidden = isDisplayingMarkdown
     }
 
+    /// Refreshes the Editor's Text
+    ///
+    @objc
+    func refreshEditorText() {
+        let content = note?.content ?? ""
+        noteEditor.displayNote(content: content)
+    }
+
     /// Refreshes the Editor's UX
     ///
     @objc
@@ -111,8 +235,6 @@ extension NoteEditorViewController {
         bottomDividerView.borderColor           = .simplenoteDividerColor
         noteEditor.insertionPointColor          = .simplenoteEditorTextColor
         noteEditor.textColor                    = .simplenoteEditorTextColor
-        searchField.textColor                   = .simplenoteTextColor
-        searchField.placeholderAttributedString = Settings.searchFieldPlaceholderString
         statusTextField.textColor               = .simplenoteSecondaryTextColor
         tagsField.textColor                     = .simplenoteTextColor
         tagsField.placeholderTextColor          = .simplenoteSecondaryTextColor
@@ -152,6 +274,11 @@ extension NoteEditorViewController {
         tagsField.isSelectable = isEnabled
     }
 
+    @objc
+    func resetTagsFieldScrollOffset() {
+        tagsField.scroll(.zero)
+    }
+
     /// Refreshes the TagsField's Tokens
     ///
     private func refreshTagsFieldTokens() {
@@ -164,51 +291,32 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
 
-    @IBAction
-    func beginSearch(_ sender: Any) {
-        view.window?.makeFirstResponder(searchField)
-    }
-
-    @IBAction
-    func performSearch(_ sender: Any) {
-        searchDelegate?.editorController(self, didSearchKeyword: searchField.stringValue)
-    }
-
-    @IBAction
-    func endSearch(_ sender: Any) {
-        searchField.cancelSearch()
-        searchField.resignFirstResponder()
+    @objc
+    func beginSearch() {
+        toolbarView.beginSearch()
     }
 
     @objc
     func ensureSearchIsDismissed() {
-        guard searchField.stringValue.isEmpty == false else {
-            return
-        }
-
-        endSearch(self)
+        toolbarView.endSearch()
     }
 }
 
 
-// MARK: - NSSearchFieldDelegate
+// MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController: NSSearchFieldDelegate {
+extension NoteEditorViewController: ToolbarDelegate {
 
-    public func controlTextDidBeginEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
-            return
-        }
-
+    func toolbarDidBeginSearch() {
         searchDelegate?.editorControllerDidBeginSearch(self)
     }
 
-    public func controlTextDidEndEditing(_ obj: Notification) {
-        guard let _ = obj.object as? NSSearchField else {
-            return
-        }
-
+    func toolbarDidEndSearch() {
         searchDelegate?.editorControllerDidEndSearch(self)
+    }
+
+    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
+        searchDelegate?.editorController(self, didSearchKeyword: keyword)
     }
 }
 
@@ -328,6 +436,11 @@ extension NoteEditorViewController: NSMenuItemValidation {
 extension NoteEditorViewController {
 
     @IBAction
+    func sidebarWasPressed(sender: Any) {
+        SimplenoteAppDelegate.shared().toggleSidebarAction(sender)
+    }
+
+    @IBAction
     func metricsWasPressed(sender: Any) {
         guard !dismissMetricsPopoverIfNeeded() else {
             return
@@ -390,7 +503,15 @@ extension NoteEditorViewController {
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
         viewController.delegate = self
+
+        // Our SearchBar, if present, will freak out when presenting the Metrics Popover.
+        // We'll ensure it doesn't get dismissed (granted that it had no keywords!)
+        toolbarView.dismissSearchBarOnEndEditing = false
+
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+
+        // You may proceed. Nothing happened here.
+        toolbarView.dismissSearchBarOnEndEditing = true
     }
 
     func displayPublishPopover(from sourceView: NSView, for note: Note) {
@@ -482,8 +603,22 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func startListeningToWindowNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(windowDidResize),
+                                               name: NSWindow.didResizeNotification,
+                                               object: nil)
+    }
+
+    @objc
     func clipViewDidScroll(sender: Notification) {
         refreshHeaderState()
+    }
+
+    @objc
+    func windowDidResize(sender: Notification) {
+        // We might need to adjust the constraints (in order to prevent collisions with the Window Semaphore)
+        view.needsUpdateConstraints = true
     }
 
     @objc
@@ -541,7 +676,53 @@ extension NoteEditorViewController: TagsFieldDelegate {
         //
         // For that reason, we'll filtering out duplicates.
         //
-        updateTags(withTokens: tokens.caseInsensitiveUnique)
+        guard let note = note else {
+            return
+        }
+
+        updateNoteTags(tokens: tokens.caseInsensitiveUnique, note: note)
+    }
+}
+
+
+// MARK: - Tags Processing
+//
+extension NoteEditorViewController {
+
+    /// TODO: Let's analyze and potentially build NotesController / TagsController
+    ///
+    func updateNoteTags(tokens: [String], note: Note) {
+        let newTags = tokens.filter { token in
+            simperium.searchTag(name: token) == nil && token.containsEmailAddress() == false
+        }
+
+        for newTag in newTags {
+            tagActionsDelegate?.editorController(self, didAddNewTag: newTag)
+        }
+
+        // Update Tags: Internally they're JSON Encoded!
+        let oldTags = note.tags
+        note.setTagsFromList(tokens)
+
+        guard note.tags != oldTags else {
+            return
+        }
+
+        save()
+        ensureSelectedNoteIsVisible(oldTags: oldTags, newTags: note.tags, simperiumKey: note.simperiumKey)
+    }
+
+    /// Displays the current Note in the Notes List whenever we're filtering by Tag, and such String gets removed from the Tags collection
+    ///
+    private func ensureSelectedNoteIsVisible(oldTags: String?, newTags: String?, simperiumKey: String) {
+        guard case let .tag(selectedTag) = simplenoteAppDelegate.selectedTagFilter,
+              oldTags?.contains(selectedTag) == true,
+              newTags?.contains(selectedTag) == false
+        else {
+            return
+        }
+
+        simplenoteAppDelegate.displayNote(simperiumKey: simperiumKey)
     }
 }
 
@@ -737,16 +918,15 @@ private extension NoteEditorViewController {
 }
 
 
-// MARK: - Settings
+// MARK: - EditorMetrics
 //
-private enum Settings {
+private enum EditorMetrics {
 
-    static var searchFieldPlaceholderString: NSAttributedString {
-        let text = NSLocalizedString("Search", comment: "Search Field Placeholder")
+    /// Note: This matches the Electron apps max editor width
+    ///
+    static let maximumNarrowWidth = CGFloat(750)
 
-        return NSAttributedString(string: text, attributes: [
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor,
-            .font: NSFont.simplenoteSecondaryTextFont
-        ])
-    }
+    /// Minimum Text Padding: To be applied Vertically / Horizontally
+    ///
+    static let minimumPadding = CGFloat(20)
 }

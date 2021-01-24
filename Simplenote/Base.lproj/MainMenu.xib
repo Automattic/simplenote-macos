@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -465,22 +464,43 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
                                     <items>
-                                        <menuItem title="Date Updated" identifier="noteSortUpdatedMenuItem" id="fep-x2-0FA">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Note Order by Date"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="haG-9p-5iz"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Alphabetical" tag="1" identifier="noteSortAlphaMenuItem" id="i8p-Xx-VpF">
+                                        <menuItem title="Alphabetically: A-Z" identifier="noteSortAlphaAscMenuItem" id="AuW-hU-J6R">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Alphabetical Note Sort Order"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="6Fa-uq-lc4"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="s0n-Ud-VNS"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Alphabetically: Z-A" identifier="noteSortAlphaDescMenuItem" id="riY-RT-IN8">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="Jem-Lt-NMh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="Z0V-Oz-ijh">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="usk-E1-YAj"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Created: Oldest" identifier="noteSortCreateOldestMenuItem" id="S16-eV-qeq">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="4lP-Wy-PF3"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Modified: Newest" identifier="noteSortModifyNewestMenuItem" id="p5U-fB-pgR">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="Ubm-cN-eZq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Modified: Oldest" identifier="noteSortModifyOldestMenuItem" id="ssB-vH-kwg">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="nMT-tD-mek"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -713,29 +733,7 @@
             </connections>
             <point key="canvasLocation" x="-84" y="-325"/>
         </menu>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SPWindow" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="371" customClass="Window" customModule="Simplenote" customModuleProvider="target">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
-            <rect key="contentRect" x="199" y="95" width="900" height="618"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
-            <value key="minSize" type="size" width="720" height="400"/>
-            <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="900" height="618"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            </view>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="excludedFromWindowsMenu" value="YES"/>
-            </userDefinedRuntimeAttributes>
-            <connections>
-                <outlet property="delegate" destination="494" id="1423"/>
-            </connections>
-            <point key="canvasLocation" x="138" y="262"/>
-        </window>
-        <customObject id="494" customClass="SimplenoteAppDelegate">
-            <connections>
-                <outlet property="window" destination="371" id="748"/>
-            </connections>
-        </customObject>
+        <customObject id="494" customClass="SimplenoteAppDelegate"/>
         <customObject id="420" customClass="NSFontManager"/>
     </objects>
 </document>

@@ -13,7 +13,6 @@
 #import "Tag.h"
 #import "NSNotification+Simplenote.h"
 #import "LoginWindowController.h"
-#import "NoteListViewController.h"
 #import "NoteEditorViewController.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
@@ -30,26 +29,16 @@
 
 
 #pragma mark ====================================================================================
-#pragma mark Constants
-#pragma mark ====================================================================================
-
-#define kFirstLaunchKey					@"SPFirstLaunch"
-
-
-
-#pragma mark ====================================================================================
 #pragma mark Private
 #pragma mark ====================================================================================
 
-@interface SimplenoteAppDelegate () <SimperiumDelegate, SPBucketDelegate>
+@interface SimplenoteAppDelegate () <SPBucketDelegate>
 
-@property (strong, nonatomic) IBOutlet NSWindow                 *window;
 @property (assign, nonatomic) BOOL                              exportUnlocked;
 
 @property (strong, nonatomic) NSWindowController                *aboutWindowController;
 @property (strong, nonatomic) NSWindowController                *privacyWindowController;
 
-@property (strong, nonatomic) Simperium                         *simperium;
 @property (strong, nonatomic) NSPersistentStoreCoordinator      *persistentStoreCoordinator;
 @property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
@@ -79,28 +68,6 @@
     freopen([logPath fileSystemRepresentation],"a+",stderr);
 }
 
-- (Simperium *)configureSimperium
-{
-    Simperium *simperium                            = [[Simperium alloc] initWithModel:self.managedObjectModel
-                                                                               context:self.managedObjectContext
-                                                                           coordinator:self.persistentStoreCoordinator];
-    simperium.delegate                              = self;
-    simperium.verboseLoggingEnabled                 = NO;
-    simperium.presentsLoginByDefault                = YES;
-    simperium.authenticationWindowControllerClass   = [LoginWindowController class];
-    
-    SPAuthenticator *authenticator                  = simperium.authenticator;
-    authenticator.providerString                    = @"simplenote.com";
-    
-    SPAuthenticationConfiguration *config           = [SPAuthenticationConfiguration sharedInstance];
-    config.logoImageName                            = SPSimplenoteLogoImageName;
-    config.controlColor                             = [NSColor simplenoteBrandColor];
-    config.forgotPasswordURL                        = SPSimplenoteForgotPasswordURL;
-    config.resetPasswordURL                         = SPSimplenoteResetPasswordURL;
-    
-    return simperium;
-}
-
 #if SPARKLE_OTA
 - (void)configureSparkle
 {
@@ -125,20 +92,14 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [SPTracker trackApplicationLaunched];
-
-    [self configureSplitView];
-    [self configureWindow];
-    [self hookWindowNotifications];
+    [self configureSimperium];
+    [self configureMainInterface];
+    [self configureSplitViewController];
+    [self configureMainWindowController];
     [self applyStyle];
-    
-	self.simperium = [self configureSimperium];
 
     [self configureEditorController];
     [self configureVersionsController];
-
-    [self.tagListViewController loadTags];
-    [self.noteListViewController loadNotes];
     
     [self.simperium setAllBucketDelegates:self];
     [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
@@ -162,12 +123,8 @@
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
     [self startListeningForThemeNotifications];
-}
 
-- (void)hookWindowNotifications
-{
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(handleWindowDidResignMainNote:) name:NSApplicationDidResignActiveNotification object:self.window];
+    [SPTracker trackApplicationLaunched];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -227,7 +184,7 @@
 
 - (void)selectNoteWithKey:(NSString *)simperiumKey
 {
-    [self.noteListViewController selectRowForNoteKey:simperiumKey];
+    [self.noteListViewController displayAndSelectNoteWithSimperiumKey:simperiumKey];
 }
 
 - (void)cleanupTags
@@ -240,45 +197,6 @@
             [tagBucket deleteObject:tag];
 		}
     }
-    [_simperium save];
-}
-
-- (void)configureWelcomeNoteIfNeeded
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *firstLaunchKey = [userDefaults objectForKey:kFirstLaunchKey];
-    if (firstLaunchKey != nil) {
-        return;
-    }
-    
-    [self performSelector:@selector(createWelcomeNote) withObject:nil afterDelay:0.5];
-    
-    [userDefaults setObject:@(1) forKey:kFirstLaunchKey];
-    [userDefaults synchronize];
-    
-    [self.noteListViewController setWaitingForIndex:YES];
-}
-
-- (BOOL)isMainWindowVisible
-{
-    return self.window.isVisible;
-}
-
-- (void)createWelcomeNote
-{
-    SPBucket *noteBucket = [_simperium bucketForName:@"Note"];
-    Note *welcomeNote = [noteBucket objectForKey:SPWelcomeNoteID];
-    
-    if (welcomeNote) {
-        return;
-	}
-    
-    welcomeNote = [noteBucket insertNewObjectForKey:SPWelcomeNoteID];
-    welcomeNote.modificationDate = [NSDate date];
-    welcomeNote.creationDate = [NSDate date];
-    welcomeNote.content = NSLocalizedString(@"welcomeNote-Mac", @"A welcome note for new Mac users");
-    [welcomeNote createPreview];
-	
     [_simperium save];
 }
 
@@ -318,16 +236,6 @@
 }
 
 
-#pragma mark - NSWindow Notification Handlers
-
-- (void)handleWindowDidResignMainNote:(NSNotification *)notification
-{
-    // Use this as an opportunity to re-sort by modify date when the user isn't looking
-    // (otherwise it can be a little jarring)
-    [self.noteListViewController reloadDataAndPreserveSelection];
-}
-
-
 #pragma mark - Simperium Delegates
 
 - (void)simperiumDidLogin:(Simperium *)simperium
@@ -364,8 +272,6 @@
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
                 }
-                [self.noteListViewController noteKeyDidChange:key memberNames:memberNames];
-
                 break;
             
             case SPBucketChangeTypeInsert:
@@ -387,7 +293,6 @@
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
         }
-        [self.noteListViewController noteKeysWillChange:keys];
     }
 }
 
@@ -466,8 +371,8 @@
         [[Options shared] reset];
 
         // Auth window won't show up until next run loop, so be careful not to close main window until then
-        [self->_window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
-        [self->_simperium authenticateIfNecessary];
+        [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
+        [self.simperium authenticateIfNecessary];
     }];
 }
 
@@ -475,7 +380,7 @@
 {
     // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
     // to override a search keyboard shortcut...which ends up calling searchAction: here
-    [self.noteEditorViewController beginSearch:sender];
+    [self.noteEditorViewController beginSearch];
 }
 
 - (IBAction)toggleSidebarAction:(id)sender
@@ -518,7 +423,7 @@
 {
     [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
-    [self.noteListViewController applyStyle];
+    [self.noteListViewController refreshStyle];
     [self.noteEditorViewController refreshStyle];
     [self.noteEditorViewController fixChecklistColoring];
 }

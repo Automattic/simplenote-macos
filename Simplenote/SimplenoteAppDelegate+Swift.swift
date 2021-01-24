@@ -6,33 +6,54 @@ import Foundation
 extension SimplenoteAppDelegate {
 
     @objc
-    func configureSplitView() {
+    func configureSimperium() {
+        guard let simperium = Simperium(model: managedObjectModel, context: managedObjectContext, coordinator: persistentStoreCoordinator),
+              let config = SPAuthenticationConfiguration.sharedInstance()
+        else {
+            fatalError()
+        }
+
+        simperium.delegate = self
+        simperium.presentsLoginByDefault = true
+        simperium.verboseLoggingEnabled = false
+        simperium.authenticationWindowControllerClass = LoginWindowController.classForCoder()
+
+        simperium.authenticator.providerString = SPCredentials.simperiumProviderString
+
+        config.logoImageName = .simplenoteLogoLogin
+        config.controlColor = .simplenoteBrandColor
+        config.forgotPasswordURL = SPCredentials.simperiumForgotPasswordURL
+        config.resetPasswordURL = SPCredentials.simperiumResetPasswordURL
+
+        self.simperium = simperium
+    }
+
+    @objc
+    func configureMainInterface() {
         let storyboard = NSStoryboard(name: .main, bundle: nil)
 
-        let splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
-        let tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
-        let notesViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
-        let editorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+        mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
+        splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
+        tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
+        noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
+        noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+    }
 
+    @objc
+    func configureSplitViewController() {
         let tagsSplitItem = NSSplitViewItem(sidebarWithViewController: tagListViewController)
-        let listSplitItem = NSSplitViewItem(contentListWithViewController: notesViewController)
-        let editorSplitItem = NSSplitViewItem(viewController: editorViewController)
+        let listSplitItem = NSSplitViewItem(contentListWithViewController: noteListViewController)
+        let editorSplitItem = NSSplitViewItem(viewController: noteEditorViewController)
 
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
-
-        self.splitViewController = splitViewController
-        self.tagListViewController = tagListViewController
-        self.noteListViewController = notesViewController
-        self.noteEditorViewController = editorViewController
     }
 
     @objc
-    func configureWindow() {
-        window.contentViewController = splitViewController
-        window.initialFirstResponder = noteEditorViewController.noteEditor
-        window.setFrameAutosaveName(.mainWindow)
+    func configureMainWindowController() {
+        mainWindowController.contentViewController = splitViewController
+        mainWindowController.simplenoteWindow.initialFirstResponder = noteEditorViewController.noteEditor
     }
 
     @objc
@@ -45,6 +66,47 @@ extension SimplenoteAppDelegate {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController
         noteEditorViewController.searchDelegate = noteListViewController
+    }
+
+    @objc
+    var window: Window {
+        // TODO: Temporary workaround. Let's get rid of this? please? 🔥🔥🔥
+        mainWindowController.window as! Window
+    }
+}
+
+
+// MARK: - Welcome Note
+//
+extension SimplenoteAppDelegate {
+
+    @objc
+    func configureWelcomeNoteIfNeeded() {
+        if Options.shared.initialSetupComplete {
+            return
+        }
+
+        Options.shared.initialSetupComplete = true
+        noteListViewController.setWaitingForIndex(true)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + AppKitConstants.delay0_5) {
+            self.createWelcomeNote()
+        }
+    }
+
+    func createWelcomeNote() {
+        let bucket = simperium.notesBucket
+        guard bucket.object(forKey: SimplenoteConstants.welcomeNoteObjectKey) == nil else {
+            return
+        }
+
+        let welcomeNote = bucket.insertNewObject(ofType: Note.self, key: SimplenoteConstants.welcomeNoteObjectKey)
+        welcomeNote.modificationDate = Date()
+        welcomeNote.creationDate = Date()
+        welcomeNote.content = NSLocalizedString("welcomeNote-Mac", comment: "A welcome note for new Mac users")
+        welcomeNote.createPreview()
+
+        simperium.save()
     }
 }
 
@@ -60,11 +122,23 @@ extension SimplenoteAppDelegate {
         tagListViewController.selectedTagName()
     }
 
+    /// Returns the TagListFilter that matches with the current TagsList selection
+    ///
+    var selectedTagFilter: TagListFilter {
+        tagListViewController.selectedFilter
+    }
+
     /// Displays the Note with the specified SimperiumKey
     ///
     func displayNote(simperiumKey: String) {
         ensureSelectedTagDisplaysNote(key: simperiumKey)
         selectNote(withKey: simperiumKey)
+    }
+
+    /// Ensures the Notes List / Tags list are visible
+    ///
+    func ensureNotesListIsVisible() {
+        splitViewController.refreshSplitViewItem(ofKind: .notes, collapsed: false)
     }
 }
 
@@ -116,18 +190,17 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func notesSortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
+        guard let item = sender as? NSMenuItem, let identifier = item.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {
             return
         }
 
-        let isAlphaOn = item.identifier == NSUserInterfaceItemIdentifier.noteSortAlphaMenuItem
-        Options.shared.alphabeticallySortNotes = isAlphaOn
-        SPTracker.trackSettingsAlphabeticalSortEnabled(isAlphaOn)
+        Options.shared.notesListSortMode = newMode
+        SPTracker.trackSettingsNoteListSortMode(newMode.description)
     }
 
     @IBAction
     func searchWasPressed(_ sender: Any) {
-        noteEditorViewController.beginSearch(sender)
+        noteEditorViewController.beginSearch()
     }
 
     @IBAction
@@ -158,7 +231,7 @@ extension SimplenoteAppDelegate {
     /// Ensures that the Note with the specified Key is displayed by the Notes List
     ///
     func ensureSelectedTagDisplaysNote(key: String) {
-        if noteListViewController.displaysNote(forKey: key) {
+        if noteListViewController.displaysNote(with: key) {
             return
         }
 
@@ -204,8 +277,11 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
             return validateNotesDisplayMenuItem(menuItem)
 
-        case .noteSortAlphaMenuItem, .noteSortUpdatedMenuItem:
-            return validateNotesSortMenuItem(menuItem)
+        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
+             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
+             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
+
+            return validateNotesSortModeMenuItem(menuItem)
 
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
@@ -261,12 +337,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         return true
     }
 
-    func validateNotesSortMenuItem(_ item: NSMenuItem) -> Bool {
-        let isAlphaItem = item.identifier == .noteSortAlphaMenuItem
-        let isAlphaEnabled = Options.shared.alphabeticallySortNotes
-
-        item.state = isAlphaItem == isAlphaEnabled ? .on : .off
-
+    func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
+        let isSelected = Options.shared.notesListSortMode.noteListInterfaceID == item.identifier
+        item.state = isSelected ? .on : .off
         return true
     }
 

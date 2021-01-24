@@ -11,8 +11,8 @@
 
 #pragma mark - Simplenote-Y
 
+#import "LoginWindowController.h"
 #import "NoteEditorViewController.h"
-#import "NoteListViewController.h"
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"
 #import "SPMarkdownParser.h"
@@ -25,5 +25,6 @@
 
 #import "Simperium+Simplenote.h"
 #import "NSString+Condensing.h"
+#import "NSString+Metadata.h"
 #import "NSNotification+Simplenote.h"
 #import "NSMutableAttributedString+Styling.h"

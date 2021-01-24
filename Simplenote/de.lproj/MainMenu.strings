@@ -228,6 +228,9 @@
 /* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
 "83.title" = "Anmerkung";
 
+/* Class = "NSMenuItem"; title = "Alphabetically: A-Z"; ObjectID = "AuW-hU-J6R"; Note = "Toggles Alphabetical Note Sort Order"; */
+"AuW-hU-J6R.title" = "Alphabetically: A-Z";
+
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
 
@@ -258,6 +261,9 @@
 /* Class = "NSMenuItem"; title = "Privacy Settings"; ObjectID = "RZM-N8-VLN"; Note = "Opens the Privacy Settings"; */
 "RZM-N8-VLN.title" = "Datenschutzeinstellungen";
 
+/* Class = "NSMenuItem"; title = "Created: Oldest"; ObjectID = "S16-eV-qeq"; */
+"S16-eV-qeq.title" = "Created: Oldest";
+
 /* Class = "NSMenu"; title = "Theme"; ObjectID = "SIP-Tf-W7J"; Note = "Theme Settings Menu"; */
 "SIP-Tf-W7J.title" = "Theme";
 
@@ -269,6 +275,9 @@
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
 "YpJ-fs-p4p.title" = "Notizensortierung";
+
+/* Class = "NSMenuItem"; title = "Created: Newest"; ObjectID = "Z0V-Oz-ijh"; */
+"Z0V-Oz-ijh.title" = "Created: Newest";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
 "Zhe-Bb-jvT.title" = "Hell";
@@ -285,12 +294,6 @@
 /* Class = "NSMenu"; title = "Note Display"; ObjectID = "fB2-X8-xNp"; Note = "Note Display Settings"; */
 "fB2-X8-xNp.title" = "Notizanzeige";
 
-/* Class = "NSMenuItem"; title = "Date Updated"; ObjectID = "fep-x2-0FA"; Note = "Toggles Note Order by Date"; */
-"fep-x2-0FA.title" = "Datum aktualisiert";
-
-/* Class = "NSMenuItem"; title = "Alphabetical"; ObjectID = "i8p-Xx-VpF"; Note = "Toggles Alphabetical Note Sort Order"; */
-"i8p-Xx-VpF.title" = "Alphabetisch";
-
 /* Class = "NSMenuItem"; title = "Insert Checklist"; ObjectID = "iNS-zx-oXr"; Note = "Inserts a new Checklist"; */
 "iNS-zx-oXr.title" = "Checkliste einfügen";
 
@@ -303,8 +306,17 @@
 /* Class = "NSMenuItem"; title = "Reset"; ObjectID = "oS8-Vc-yog"; Note = "Resets the Font Size"; */
 "oS8-Vc-yog.title" = "Verwerfen";
 
+/* Class = "NSMenuItem"; title = "Modified: Newest"; ObjectID = "p5U-fB-pgR"; */
+"p5U-fB-pgR.title" = "Modified: Newest";
+
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
 "qcT-FY-eHe.title" = "Dunkel";
+
+/* Class = "NSMenuItem"; title = "Alphabetically: Z-A"; ObjectID = "riY-RT-IN8"; */
+"riY-RT-IN8.title" = "Alphabetically: Z-A";
+
+/* Class = "NSMenuItem"; title = "Modified: Oldest"; ObjectID = "ssB-vH-kwg"; */
+"ssB-vH-kwg.title" = "Modified: Oldest";
 
 /* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
 "tQC-gw-hdq.title" = "Komprimiert";

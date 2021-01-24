@@ -30,7 +30,6 @@
 		2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EC1405A1450031AE94 /* libz.dylib */; };
 		26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
-		26F592551408BF75003A5174 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
 		26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F72A8C14032D2A00A7935E /* Cocoa.framework */; };
 		26F72A9914032D2A00A7935E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
@@ -92,8 +91,6 @@
 		466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */; };
 		466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
-		466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F592541408BF75003A5174 /* NotesArrayController.m */; };
-		466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
 		466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
@@ -116,7 +113,6 @@
 		46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F0E66217A32269005BB4D1 /* SPTableView.m */; };
 		46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46F0E66517A3300B005BB4D1 /* Localizable.strings */; };
 		71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
-		714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */; };
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
@@ -134,6 +130,8 @@
 		B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4424848B6700066059 /* TagsFieldCell.swift */; };
 		B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4724848D0B00066059 /* TagAttachmentCell.swift */; };
 		B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4724848D0B00066059 /* TagAttachmentCell.swift */; };
+		B505068D25A3DF4E008A8E10 /* SortBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505068C25A3DF4E008A8E10 /* SortBarView.swift */; };
+		B505068E25A3DF4E008A8E10 /* SortBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505068C25A3DF4E008A8E10 /* SortBarView.swift */; };
 		B5070E16245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B50F999224F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
@@ -158,6 +156,8 @@
 		B518D37B2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */; };
 		B518D37C2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */; };
 		B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */; };
+		B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */; };
+		B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */; };
 		B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
 		B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
 		B51E9FE522E644A0004F16B4 /* NSObject+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */; };
@@ -166,10 +166,14 @@
 		B52197872541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */; };
 		B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
 		B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */; };
+		B528D683257FF15000C1EEA4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528D682257FF15000C1EEA4 /* MainWindowController.swift */; };
+		B528D684257FF15000C1EEA4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B528D682257FF15000C1EEA4 /* MainWindowController.swift */; };
 		B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529F7B424586D8700B168F1 /* MarkdownViewController.swift */; };
 		B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529F7B424586D8700B168F1 /* MarkdownViewController.swift */; };
 		B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B529F7B724586DF800B168F1 /* MarkdownViewController.xib */; };
 		B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B529F7B724586DF800B168F1 /* MarkdownViewController.xib */; };
+		B52EE32725927D5100347F2B /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52EE32625927D5100347F2B /* NoteListViewController.swift */; };
+		B52EE32825927D5100347F2B /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52EE32625927D5100347F2B /* NoteListViewController.swift */; };
 		B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */; };
 		B52F203A24C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */; };
 		B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
@@ -188,6 +192,12 @@
 		B53FF5472476F9450014E928 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5462476F9450014E928 /* Constants.swift */; };
 		B5438012246358B700F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
 		B5438013246358BA00F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
+		B5469FCA2587DE3F007ED7BE /* SortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FC92587DE3F007ED7BE /* SortMode.swift */; };
+		B5469FCB2587DE3F007ED7BE /* SortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FC92587DE3F007ED7BE /* SortMode.swift */; };
+		B5469FD02587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */; };
+		B5469FD12587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */; };
+		B5469FDA25880128007ED7BE /* OptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FD925880128007ED7BE /* OptionsTests.swift */; };
+		B5469FE225880181007ED7BE /* NSUserDefaults+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */; };
 		B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547285B250920CA00D823BA /* URL+Interlink.swift */; };
 		B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
@@ -242,6 +252,8 @@
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
 		B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
+		B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */; };
+		B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */; };
 		B58BBD2A2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
 		B58BBD2B2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
 		B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */; };
@@ -266,18 +278,16 @@
 		B59EA98224AA5EFA008ABE4B /* NoteMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EA98024AA5EFA008ABE4B /* NoteMetrics.swift */; };
 		B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
-		B5A5AF79244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */; };
-		B5A5AF7A244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */; };
 		B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */; };
 		B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */; };
 		B5A89195231ECB3C0007EDCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B5A8918A231ECB3C0007EDCB /* LICENSE */; };
 		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
 		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
 		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
-		B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
 		B5A9FE272576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
 		B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
+		B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
+		B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
 		B5ACE42E24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
 		B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */; };
 		B5AF76C724A3F00600B7D530 /* TagListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76C624A3F00600B7D530 /* TagListState.swift */; };
@@ -297,6 +307,10 @@
 		B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */; };
+		B5C620A2257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
+		B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
+		B5C620AB257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */; };
+		B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */; };
 		B5C63337251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
 		B5C63338251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */; };
 		B5C63349251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */; };
@@ -352,6 +366,17 @@
 		B5EB3AD52458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */; };
 		B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
 		B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD62458CDB50089858D /* ThemeOption.swift */; };
+		B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
+		B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */; };
+		B5EDF32F258A8EF00066D91D /* NoteListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */; };
+		B5EDF330258A8EF00066D91D /* NoteListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */; };
+		B5EDF338258A8F1B0066D91D /* TagListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* TagListFilter.swift */; };
+		B5EDF339258A8F1B0066D91D /* TagListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* TagListFilter.swift */; };
+		B5EF32A8258D05640069EC7D /* MockupStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32A7258D05640069EC7D /* MockupStorage.swift */; };
+		B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */; };
+		B5EF32B9258D07F00069EC7D /* NoteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NoteListController.swift */; };
+		B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NoteListController.swift */; };
+		B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -431,8 +456,6 @@
 		26DBB1F01405A6A800186392 /* NSString+Condensing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Condensing.m"; sourceTree = "<group>"; };
 		26DBB1F11405A6A800186392 /* NSString+Metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Metadata.h"; sourceTree = "<group>"; };
 		26DBB1F21405A6A800186392 /* NSString+Metadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Metadata.m"; sourceTree = "<group>"; };
-		26F592531408BF75003A5174 /* NotesArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesArrayController.h; sourceTree = "<group>"; };
-		26F592541408BF75003A5174 /* NotesArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesArrayController.m; sourceTree = "<group>"; };
 		26F72A8814032D2A00A7935E /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F72A8C14032D2A00A7935E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		26F72A8F14032D2A00A7935E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -498,8 +521,6 @@
 		5FE387B418ABC1E4D8A75103 /* Pods-Automattic-SimplenoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-SimplenoteTests.release.xcconfig"; path = "Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests.release.xcconfig"; sourceTree = "<group>"; };
 		71233DD314DB6CCD00139E61 /* NoteEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NoteEditorViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NoteEditorViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListViewController.h; sourceTree = "<group>"; };
-		714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListViewController.m; sourceTree = "<group>"; };
 		714BA66C14D4AE6200A6CCC1 /* DateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTransformer.h; sourceTree = "<group>"; };
 		714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTransformer.m; sourceTree = "<group>"; };
 		7154811614E5A9E800CB8964 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -519,6 +540,7 @@
 		B501AAD12437E5250084CDA3 /* AppKitConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKitConstants.swift; sourceTree = "<group>"; };
 		B503FF4424848B6700066059 /* TagsFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFieldCell.swift; sourceTree = "<group>"; };
 		B503FF4724848D0B00066059 /* TagAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentCell.swift; sourceTree = "<group>"; };
+		B505068C25A3DF4E008A8E10 /* SortBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBarView.swift; sourceTree = "<group>"; };
 		B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserInterfaceItemIdentifier+Simplenote.swift"; sourceTree = "<group>"; };
 		B50F999124F98FFD00A1058D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkWindowController.swift; sourceTree = "<group>"; };
@@ -532,6 +554,7 @@
 		B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasteboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Interlinks.swift"; sourceTree = "<group>"; };
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
+		B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListPrefixFormatter.swift; sourceTree = "<group>"; };
 		B51E9FE022E615FA004F16B4 /* SPExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPExporter.swift; sourceTree = "<group>"; };
 		B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helpers.swift"; sourceTree = "<group>"; };
 		B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Simplenote.swift"; sourceTree = "<group>"; };
@@ -555,8 +578,10 @@
 		B5242E0D24C923B400437E40 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5242E0F24C923B600437E40 /* cy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cy; path = cy.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
+		B528D682257FF15000C1EEA4 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B529F7B424586D8700B168F1 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
+		B52EE32625927D5100347F2B /* NoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWindow+Simplenote.swift"; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
@@ -566,6 +591,10 @@
 		B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringCondensingTests.swift; sourceTree = "<group>"; };
 		B53FF5462476F9450014E928 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B543800F246355FA00F34B1C /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		B5469FC92587DE3F007ED7BE /* SortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMode.swift; sourceTree = "<group>"; };
+		B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSortDescriptor+Simplenote.swift"; sourceTree = "<group>"; };
+		B5469FD925880128007ED7BE /* OptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTests.swift; sourceTree = "<group>"; };
+		B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Tests.swift"; sourceTree = "<group>"; };
 		B547285B250920CA00D823BA /* URL+Interlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Interlink.swift"; sourceTree = "<group>"; };
 		B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Theme.swift"; sourceTree = "<group>"; };
 		B54F4AA124A6588700D8FAB1 /* MetricsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricsViewController.xib; sourceTree = "<group>"; };
@@ -593,6 +622,7 @@
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
+		B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Simplenote.swift"; sourceTree = "<group>"; };
 		B58BBD292523D4CA0025135F /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteWindow.swift; sourceTree = "<group>"; };
 		B58BBD45252411530025135F /* NSEvent+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Simplenote.swift"; sourceTree = "<group>"; };
@@ -629,7 +659,6 @@
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
 		B59EA98024AA5EFA008ABE4B /* NoteMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMetrics.swift; sourceTree = "<group>"; };
 		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
-		B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteListViewController+Swift.swift"; sourceTree = "<group>"; };
 		B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEditorViewController+Swift.swift"; sourceTree = "<group>"; };
 		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
@@ -637,8 +666,8 @@
 		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
 		B5A89191231ECB3C0007EDCB /* INSTALL.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = INSTALL.markdown; sourceTree = "<group>"; };
 		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+Simplenote.swift"; sourceTree = "<group>"; };
 		B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemMetrics.swift; sourceTree = "<group>"; };
+		B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+Simplenote.swift"; sourceTree = "<group>"; };
 		B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		B5AF76C624A3F00600B7D530 /* TagListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListState.swift; sourceTree = "<group>"; };
 		B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListRow.swift; sourceTree = "<group>"; };
@@ -650,6 +679,8 @@
 		B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSearchField+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
 		B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupTextView.swift; sourceTree = "<group>"; };
+		B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Simplenote.swift"; sourceTree = "<group>"; };
+		B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAnimationContext+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkViewController.swift; sourceTree = "<group>"; };
 		B5C63348251E6E3200C8BF46 /* LinkTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableCellView.swift; sourceTree = "<group>"; };
 		B5C7DD3C243E1F1900BEE354 /* VersionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsViewController.swift; sourceTree = "<group>"; };
@@ -684,6 +715,13 @@
 		B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+Simplenote.m"; sourceTree = "<group>"; };
 		B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimplenoteAppDelegate+Swift.swift"; sourceTree = "<group>"; };
 		B5EB3AD62458CDB50089858D /* ThemeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeOption.swift; sourceTree = "<group>"; };
+		B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Simplenote.swift"; sourceTree = "<group>"; };
+		B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListFilter.swift; sourceTree = "<group>"; };
+		B5EDF337258A8F1B0066D91D /* TagListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListFilter.swift; sourceTree = "<group>"; };
+		B5EF32A7258D05640069EC7D /* MockupStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupStorage.swift; sourceTree = "<group>"; };
+		B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListControllerTests.swift; sourceTree = "<group>"; };
+		B5EF32B8258D07F00069EC7D /* NoteListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListController.swift; sourceTree = "<group>"; };
+		B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockupStorage+Sample.swift"; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -828,11 +866,6 @@
 				B5EB3AD32458C48C0089858D /* SimplenoteAppDelegate+Swift.swift */,
 				B5D3FCCB201F906E00A813B7 /* StatusChecker.h */,
 				B5D3FCCA201F906E00A813B7 /* StatusChecker.m */,
-				714BA66714D4A3F400A6CCC1 /* NoteListViewController.h */,
-				714BA66814D4A3F500A6CCC1 /* NoteListViewController.m */,
-				B5A5AF78244F9DB80051D927 /* NoteListViewController+Swift.swift */,
-				26F592531408BF75003A5174 /* NotesArrayController.h */,
-				26F592541408BF75003A5174 /* NotesArrayController.m */,
 				46EF5196177C4ECC00A139E0 /* SPApplication.h */,
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
 				B5E96B641BDE732500D707F5 /* LoginWindowController.h */,
@@ -915,6 +948,7 @@
 				F998F3EA22853C29008C2B59 /* CrashLogging.swift */,
 				B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */,
 				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
+				B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */,
 				B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */,
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
@@ -1041,9 +1075,13 @@
 				B5D21CB624881EF600D57A34 /* Array+Simplenote.swift */,
 				B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */,
 				B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */,
+				B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */,
 				B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */,
 				B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */,
+				B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */,
+				B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */,
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
+				B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */,
 				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
@@ -1057,12 +1095,14 @@
 				B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */,
 				B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */,
 				B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */,
+				B5469FCF2587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift */,
 				B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */,
 				B5117997242036B0005F8936 /* NSString+Simplenote.swift */,
 				B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */,
 				B5E0862B2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift */,
 				B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */,
 				B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */,
+				B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */,
 				B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */,
 				B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */,
 				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
@@ -1073,7 +1113,6 @@
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
-				B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1084,6 +1123,15 @@
 				B5E196C0230F5F5300F5658A /* SPCredentials.swift */,
 			);
 			path = Credentials;
+			sourceTree = "<group>";
+		};
+		B52EE32C25927D5D00347F2B /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				B52EE32625927D5100347F2B /* NoteListViewController.swift */,
+				B505068C25A3DF4E008A8E10 /* SortBarView.swift */,
+			);
+			name = Notes;
 			sourceTree = "<group>";
 		};
 		B53BF19E24AC1F9500938C34 /* Editor */ = {
@@ -1099,6 +1147,8 @@
 		B53BF1A224AC388F00938C34 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF32B8258D07F00069EC7D /* NoteListController.swift */,
+				B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */,
 				B53BF1A324AC38C100938C34 /* VersionsController.swift */,
 				B53BF19F24AC1FB800938C34 /* Version.swift */,
 			);
@@ -1109,8 +1159,17 @@
 			isa = PBXGroup;
 			children = (
 				B53FF5462476F9450014E928 /* Constants.swift */,
+				B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		B5469FD825880106007ED7BE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B5469FD925880128007ED7BE /* OptionsTests.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		B55C313124A5339300B23B3F /* Metrics */ = {
@@ -1147,6 +1206,7 @@
 			isa = PBXGroup;
 			children = (
 				B57CB873244DEBC300BA7969 /* Options.swift */,
+				B5469FC92587DE3F007ED7BE /* SortMode.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1236,6 +1296,7 @@
 		B5AF76C924A3F06D00B7D530 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
+				B5EDF337258A8F1B0066D91D /* TagListFilter.swift */,
 				B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */,
 				B5AF76C624A3F00600B7D530 /* TagListState.swift */,
 				46CF73051782C6B200FC2B5C /* TagListViewController.h */,
@@ -1256,6 +1317,8 @@
 		B5C1F0AD242E9AAA00A627E3 /* Mockups */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF32A7258D05640069EC7D /* MockupStorage.swift */,
+				B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */,
 				B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */,
 			);
 			name = Mockups;
@@ -1272,17 +1335,10 @@
 		B5C63353251E732600C8BF46 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5C63354251E733700C8BF46 /* Interlinks */,
+				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
+				B528D682257FF15000C1EEA4 /* MainWindowController.swift */,
 			);
 			name = WindowControllers;
-			sourceTree = "<group>";
-		};
-		B5C63354251E733700C8BF46 /* Interlinks */ = {
-			isa = PBXGroup;
-			children = (
-				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
-			);
-			name = Interlinks;
 			sourceTree = "<group>";
 		};
 		B5C63355251E734100C8BF46 /* Storyboards */ = {
@@ -1303,6 +1359,7 @@
 				B5C63352251E727300C8BF46 /* Interlinks */,
 				B55C313124A5339300B23B3F /* Metrics */,
 				B5AF76C924A3F06D00B7D530 /* Tags */,
+				B52EE32C25927D5D00347F2B /* Notes */,
 				B5D6833324ACFA79004AFF1B /* Versions */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */,
@@ -1328,9 +1385,11 @@
 			isa = PBXGroup;
 			children = (
 				B53FF5482476F94B0014E928 /* Helpers */,
+				B5EF32AF258D07420069EC7D /* Controllers */,
 				B5985AD3242949C30044EDE9 /* Converters */,
 				B5985AD2242949B00044EDE9 /* Extensions */,
 				B5B5F33B243244D300F31720 /* Handlers */,
+				B5469FD825880106007ED7BE /* Settings */,
 				B5C1F0AD242E9AAA00A627E3 /* Mockups */,
 				B5CBB06D241976230003C271 /* Info.plist */,
 				B5B17F372425651700DD5B34 /* TestConstants.swift */,
@@ -1370,6 +1429,14 @@
 				B5E8E41024575C990098892B /* ToolbarState.swift */,
 			);
 			name = Toolbar;
+			sourceTree = "<group>";
+		};
+		B5EF32AF258D07420069EC7D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1765,6 +1832,7 @@
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
 				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
+				B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
 				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
 				B58BBD2A2523D4CA0025135F /* Window.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
@@ -1772,6 +1840,7 @@
 				B551187224E33BC2007B11E3 /* ClipView.swift in Sources */,
 				B5395E1D253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */,
 				B5E061772450AEDA0076111A /* ToolbarView.swift in Sources */,
+				B528D683257FF15000C1EEA4 /* MainWindowController.swift in Sources */,
 				F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */,
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
 				B586C062245CCD35009508EC /* SplitViewController.swift in Sources */,
@@ -1780,10 +1849,12 @@
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */,
+				B5469FD02587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */,
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
+				B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				A6BBDA3325501398005C8343 /* SPTextView+Swift.swift in Sources */,
@@ -1792,20 +1863,19 @@
 				B5E0863B2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				B5D21CB724881EF600D57A34 /* Array+Simplenote.swift in Sources */,
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
+				B5C620AB257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
 				375D293A21E033D1007AB25A /* stack.c in Sources */,
 				B57CB877244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294221E033D1007AB25A /* html5_blocks.c in Sources */,
 				B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
-				26F592551408BF75003A5174 /* NotesArrayController.m in Sources */,
 				375D293C21E033D1007AB25A /* hash.c in Sources */,
 				B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
-				714BA66A14D4A3F600A6CCC1 /* NoteListViewController.m in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
 				B59EA98124AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
+				B5EDF338258A8F1B0066D91D /* TagListFilter.swift in Sources */,
 				375D293621E033D1007AB25A /* document.c in Sources */,
-				B5A5AF79244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
 				B5609AEC24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5F50915247319360042FA1D /* SplitView.swift in Sources */,
@@ -1829,6 +1899,7 @@
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
+				B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
 				375D293221E033D1007AB25A /* buffer.c in Sources */,
 				375D294421E033D1007AB25A /* html.c in Sources */,
 				B5E8E41124575C990098892B /* ToolbarState.swift in Sources */,
@@ -1840,6 +1911,7 @@
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B54F9A6724D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
+				B505068D25A3DF4E008A8E10 /* SortBarView.swift in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
@@ -1847,6 +1919,7 @@
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,
 				B529F7B524586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
+				B5C620A2257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
 				B5C7DD40243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
 				B5E196C1230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
@@ -1854,6 +1927,7 @@
 				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
+				B5469FCA2587DE3F007ED7BE /* SortMode.swift in Sources */,
 				B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
@@ -1861,6 +1935,8 @@
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
+				B5EDF32F258A8EF00066D91D /* NoteListFilter.swift in Sources */,
+				B52EE32725927D5100347F2B /* NoteListViewController.swift in Sources */,
 				B5562435253E328400836E20 /* ReferenceTableViewCell.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
@@ -1893,6 +1969,7 @@
 				B5EB3AD12458B9940089858D /* NSNotification+Simplenote.m in Sources */,
 				B54F9A6324D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */,
 				B518D3782507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */,
+				B5EF32B9258D07F00069EC7D /* NoteListController.swift in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
@@ -1903,12 +1980,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5AF76C824A3F00600B7D530 /* TagListState.swift in Sources */,
+				B5469FD12587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */,
 				466FFEA817CC10A800399652 /* main.m in Sources */,
 				B518D37C2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */,
 				B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
 				375D294721E033D1007AB25A /* version.c in Sources */,
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
+				B52EE32825927D5100347F2B /* NoteListViewController.swift in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
@@ -1925,27 +2004,28 @@
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
 				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
+				B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
 				B58BBD3E2523FF160025135F /* AutocompleteWindow.swift in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
+				B5469FCB2587DE3F007ED7BE /* SortMode.swift in Sources */,
 				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
-				466FFEAF17CC10A800399652 /* NotesArrayController.m in Sources */,
 				B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
 				B5D21CB824881EF600D57A34 /* Array+Simplenote.swift in Sources */,
 				B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
 				B5E0863C2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
 				B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
+				B505068E25A3DF4E008A8E10 /* SortBarView.swift in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
-				466FFEB317CC10A800399652 /* NoteListViewController.m in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				466FFEB417CC10A800399652 /* DateTransformer.m in Sources */,
@@ -1953,7 +2033,6 @@
 				375D293721E033D1007AB25A /* document.c in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B59EA98224AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
-				B5A5AF7A244F9DB80051D927 /* NoteListViewController+Swift.swift in Sources */,
 				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5609AED24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */,
 				B5F50916247319360042FA1D /* SplitView.swift in Sources */,
@@ -1966,6 +2045,7 @@
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
 				B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
+				B5EDF339258A8F1B0066D91D /* TagListFilter.swift in Sources */,
 				B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				B51699852480B93100ACF2F4 /* TagsField.swift in Sources */,
 				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
@@ -1983,6 +2063,7 @@
 				B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
+				B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
 				B5E086302448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */,
 				B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */,
@@ -2014,6 +2095,7 @@
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
+				B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				B5DD0F922476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
@@ -2032,8 +2114,13 @@
 				3712FC831FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293521E033D1007AB25A /* autolink.c in Sources */,
 				B5F3150A24496A970036872D /* TableRowView.swift in Sources */,
+				B5EDF330258A8EF00066D91D /* NoteListFilter.swift in Sources */,
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
+				B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
+				B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */,
+				B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
+				B528D684257FF15000C1EEA4 /* MainWindowController.swift in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				B5CBB05D2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B671BDE732500D707F5 /* LoginWindowController.m in Sources */,
@@ -2050,16 +2137,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5469FDA25880128007ED7BE /* OptionsTests.swift in Sources */,
 				B5985AD12429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift in Sources */,
 				B53FF5472476F9450014E928 /* Constants.swift in Sources */,
 				B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */,
 				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
+				B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */,
 				B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */,
 				B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */,
+				B5469FE225880181007ED7BE /* NSUserDefaults+Tests.swift in Sources */,
+				B5EF32A8258D05640069EC7D /* MockupStorage.swift in Sources */,
 				B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */,
 				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 				B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */,
 				B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */,
+				B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */,
 				B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */,
 				B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */,
 			);
@@ -2531,7 +2623,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
@@ -2575,7 +2667,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac.betatests;
@@ -2658,7 +2750,7 @@
 			repositoryURL = "git@github.com:Automattic/SimplenoteFoundation-Swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
+				minimumVersion = 1.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

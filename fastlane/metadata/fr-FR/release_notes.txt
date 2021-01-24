@@ -1,6 +1,21 @@
-- Suppression de la barre de titre de la fenêtre principale
-- Adoption du style BigSur Inset
-- Relocalisation de la barre de recherche
-- Mise à jour de la version de SE minimale requise sur la version 10.14
-- Les en-têtes d’étiquettes et de barres d’outils apparaissent désormais avec un effet flou
-- Résolution d’un bug qui provoquait la superposition du texte dans l’interface utilisateur de mesure
+- Nouvelle action de la barre d’outils de la colonne latérale
+- Nouveau jeu d’icônes Big Sur
+- Nouvelle action de la barre d’outils de recherche
+- Nouveaux modes de tri de la liste de notes
+- Nouvelle barre de tri de recherche
+- La liste de notes affiche désormais des séparateurs de ligne
+- La liste de notes anime désormais les changements de contenu
+- Les résultats de recherche sont désormais globaux
+- Les résultats de recherche affichent désormais la date de création ou de modification, le cas échéant
+- Mise à jour de la palette de couleurs
+- Le passage en mode Recherche affiche désormais automatiquement la liste de notes
+- La sortie du mode Concentration restaure désormais l’état précédent de la barre latérale
+- La longueur de ligne pleine largeur est désormais activée par défaut
+- Résolution d’un bogue qui affectait la sélection multiple dans Big Sur
+- Résolution d’un bogue qui entraînait l’affichage d’un artefact dans les séparateurs de SplitView
+- Résolution d’un bogue qui faisait que la barre de défilement de l’éditeur était coupée
+- Résolution d’un bogue qui rendait la hauteur de ligne incohérente dans les documents vides
+- Résolution d’un bogue qui entraînait un saut inattendu dans la liste des étiquettes
+- Résolution d’un bogue qui entraînait le vidage de la liste des étiquettes lors du changement de nom d’une étiquette
+- Résolution d’un bogue qui empêchait l’agrandissement/la réduction de la fenêtre avec un double-clic
+- Résolution d’un bogue qui provoquait le saut du décalage de défilement de l’éditeur
