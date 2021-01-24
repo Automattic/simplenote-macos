@@ -1,6 +1,0 @@
-- Bilah Judul Jendela Utama Dihapus
-- Mengadopsi Gaya Inset BigSur
-- Posisi Bilah Pencarian Dipindah
-- Syarat OS minimum diperbarui menjadi 10.14
-- Judul Tag dan Bilah Peralatan sekarang menampilkan efek kabur
-- Bug yang menyebabkan UI Metrik menampilkan teks yang tumpang tindih diperbaiki

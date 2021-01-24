@@ -1,6 +1,0 @@
-- Titelleiste aus dem Hauptfenster wurde entfernt
- - eingerückter BigSur Stil wird angewandt
-- Suchleiste neu angeordnet
-- Erforderliches Betriebssystem auf mindestens 10.14 aktualisiert
-- Schlagwörter und Toolbar-Headers werden jetzt mit verschleiertem Effekt angezeigt
-- Fehler behoben, der dazu führte, dass die Metriken-UI überlappenden Text anzeigt
