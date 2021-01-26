@@ -43,10 +43,6 @@
 @property (strong, nonatomic) NSManagedObjectModel              *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext            *managedObjectContext;
 
-#if SPARKLE_OTA
-@property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
-#endif
-
 @end
 
 
@@ -71,13 +67,9 @@
 #if SPARKLE_OTA
 - (void)configureSparkle
 {
-    self.updaterController = [[SPUStandardUpdaterController alloc] initWithUpdaterDelegate:nil
-                                                                        userDriverDelegate:nil];
-
-    _updaterController.updater.sendsSystemProfile = YES;
-    _updaterController.updater.automaticallyChecksForUpdates = YES;
-
-    [_updaterController.updater checkForUpdatesInBackground];
+    [SUUpdater.sharedUpdater setSendsSystemProfile: YES];
+    [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates:YES];
+    [SUUpdater.sharedUpdater checkForUpdatesInBackground];
 }
 #endif
 
