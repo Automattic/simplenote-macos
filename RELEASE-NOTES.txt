@@ -1,5 +1,9 @@
+2.8
+-----
+ 
 2.7
 -----
+- New account verification screen #800
 
 2.6
 -----

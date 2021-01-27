@@ -12,7 +12,7 @@ class TextViewInputHandlerTests: XCTestCase {
 
     /// Mockup TextView
     ///
-    let textView = MockupTextView()
+    let textView = MockTextView()
 
     /// Mockup TextViewDelegate
     ///

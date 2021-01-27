@@ -2,9 +2,9 @@ import Foundation
 @testable import Simplenote
 
 
-// MARK: - MockupStorage Sample Entity Insertion Methods
+// MARK: - MockStorage Sample Entity Insertion Methods
 //
-extension MockupStorage {
+extension MockStorage {
 
     /// Inserts a new (Sample) Note into the receiver's Main MOC
     ///

@@ -126,6 +126,13 @@
 		B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */; };
 		B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501AAD12437E5250084CDA3 /* AppKitConstants.swift */; };
 		B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501AAD12437E5250084CDA3 /* AppKitConstants.swift */; };
+		B502C1DD25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */; };
+		B502C1DE25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */; };
+		B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */; };
+		B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1EE25BA2F2400145D6C /* MockURLSession.swift */; };
+		B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */; };
+		B502C22325BA345700145D6C /* AccountVerificationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C22225BA345700145D6C /* AccountVerificationControllerTests.swift */; };
+		B502C22B25BA347700145D6C /* MockAccountVerificationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C22A25BA347700145D6C /* MockAccountVerificationRemote.swift */; };
 		B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4424848B6700066059 /* TagsFieldCell.swift */; };
 		B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4424848B6700066059 /* TagsFieldCell.swift */; };
 		B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4724848D0B00066059 /* TagAttachmentCell.swift */; };
@@ -177,6 +184,8 @@
 		B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */; };
 		B52F203A24C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */; };
 		B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B549B084245A2E7500FB95B9 /* NSFont+Theme.swift */; };
+		B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532728125BA1510001DB882 /* SPTracker+Swift.swift */; };
+		B532728325BA1510001DB882 /* SPTracker+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532728125BA1510001DB882 /* SPTracker+Swift.swift */; };
 		B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
@@ -213,6 +222,8 @@
 		B551187324E33BC2007B11E3 /* ClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551187124E33BC2007B11E3 /* ClipView.swift */; };
 		B5562435253E328400836E20 /* ReferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5562434253E328400836E20 /* ReferenceTableViewCell.swift */; };
 		B5562436253E328400836E20 /* ReferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5562434253E328400836E20 /* ReferenceTableViewCell.swift */; };
+		B557A0E325BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557A0E225BB0DC000E5313E /* AccountVerificationCoordinator.swift */; };
+		B557A0E425BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557A0E225BB0DC000E5313E /* AccountVerificationCoordinator.swift */; };
 		B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */; };
 		B55C312C24A530A500B23B3F /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C312B24A530A500B23B3F /* MetricsViewController.swift */; };
@@ -236,6 +247,9 @@
 		B56FA7992437C79D002CB9FF /* SPUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA7972437C79D002CB9FF /* SPUserInterface.swift */; };
 		B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */; };
 		B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */; };
+		B574015325B783500058960E /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574015225B783500058960E /* EmailVerification.swift */; };
+		B574015425B783500058960E /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574015225B783500058960E /* EmailVerification.swift */; };
+		B574016925B7D3980058960E /* EmailVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574016825B7D3980058960E /* EmailVerificationTests.swift */; };
 		B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B574CA72242D552100F8D02F /* TextViewInputHandler.swift */; };
 		B57CB874244DEBC300BA7969 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB873244DEBC300BA7969 /* Options.swift */; };
@@ -248,6 +262,14 @@
 		B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B57CB881244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
 		B57CB882244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
+		B58117C425B9D57F00927E0C /* AccountVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117C325B9D57F00927E0C /* AccountVerificationViewController.swift */; };
+		B58117C525B9D57F00927E0C /* AccountVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117C325B9D57F00927E0C /* AccountVerificationViewController.swift */; };
+		B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58117D525B9D5F500927E0C /* AccountVerificationViewController.xib */; };
+		B58117D725B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58117D525B9D5F500927E0C /* AccountVerificationViewController.xib */; };
+		B58117E225B9E5D200927E0C /* AccountVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117E125B9E5D200927E0C /* AccountVerificationController.swift */; };
+		B58117E325B9E5D200927E0C /* AccountVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117E125B9E5D200927E0C /* AccountVerificationController.swift */; };
+		B58117E825B9EE7B00927E0C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117E725B9EE7B00927E0C /* Button.swift */; };
+		B58117E925B9EE7B00927E0C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117E725B9EE7B00927E0C /* Button.swift */; };
 		B586C062245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B586C063245CCD35009508EC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586C061245CCD35009508EC /* SplitViewController.swift */; };
 		B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */; };
@@ -306,7 +328,7 @@
 		B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
 		B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C19D8A243D30690014086C /* VersionsViewController.xib */; };
-		B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */; };
+		B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1F0AB242E9A9800A627E3 /* MockTextView.swift */; };
 		B5C620A2257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
 		B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */; };
 		B5C620AB257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */; };
@@ -372,11 +394,11 @@
 		B5EDF330258A8EF00066D91D /* NoteListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */; };
 		B5EDF338258A8F1B0066D91D /* TagListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* TagListFilter.swift */; };
 		B5EDF339258A8F1B0066D91D /* TagListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDF337258A8F1B0066D91D /* TagListFilter.swift */; };
-		B5EF32A8258D05640069EC7D /* MockupStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32A7258D05640069EC7D /* MockupStorage.swift */; };
+		B5EF32A8258D05640069EC7D /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32A7258D05640069EC7D /* MockStorage.swift */; };
 		B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */; };
 		B5EF32B9258D07F00069EC7D /* NoteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NoteListController.swift */; };
 		B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32B8258D07F00069EC7D /* NoteListController.swift */; };
-		B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */; };
+		B5EF32CF258D08E70069EC7D /* MockStorage+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF32CE258D08E70069EC7D /* MockStorage+Sample.swift */; };
 		B5F04FCC215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCB215949FD004B1AA0 /* Preferences.m */; };
 		B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F04FCE21594B6C004B1AA0 /* Simperium+Simplenote.m */; };
@@ -538,6 +560,12 @@
 		B500993B24213B370037A431 /* String+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Simplenote.swift"; sourceTree = "<group>"; };
 		B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B501AAD12437E5250084CDA3 /* AppKitConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKitConstants.swift; sourceTree = "<group>"; };
+		B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationRemote.swift; sourceTree = "<group>"; };
+		B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationRemoteTests.swift; sourceTree = "<group>"; };
+		B502C1EE25BA2F2400145D6C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		B502C22225BA345700145D6C /* AccountVerificationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationControllerTests.swift; sourceTree = "<group>"; };
+		B502C22A25BA347700145D6C /* MockAccountVerificationRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountVerificationRemote.swift; sourceTree = "<group>"; };
 		B503FF4424848B6700066059 /* TagsFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFieldCell.swift; sourceTree = "<group>"; };
 		B503FF4724848D0B00066059 /* TagAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentCell.swift; sourceTree = "<group>"; };
 		B505068C25A3DF4E008A8E10 /* SortBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBarView.swift; sourceTree = "<group>"; };
@@ -583,6 +611,7 @@
 		B529F7B724586DF800B168F1 /* MarkdownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkdownViewController.xib; sourceTree = "<group>"; };
 		B52EE32625927D5100347F2B /* NoteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWindow+Simplenote.swift"; sourceTree = "<group>"; };
+		B532728125BA1510001DB882 /* SPTracker+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPTracker+Swift.swift"; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
@@ -603,6 +632,7 @@
 		B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTextFormatter.swift; sourceTree = "<group>"; };
 		B551187124E33BC2007B11E3 /* ClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipView.swift; sourceTree = "<group>"; };
 		B5562434253E328400836E20 /* ReferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceTableViewCell.swift; sourceTree = "<group>"; };
+		B557A0E225BB0DC000E5313E /* AccountVerificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationCoordinator.swift; sourceTree = "<group>"; };
 		B55C312524A5117F00B23B3F /* SpacerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCell.swift; sourceTree = "<group>"; };
 		B55C312B24A530A500B23B3F /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
 		B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSVisualEffectView+Simplenote.swift"; sourceTree = "<group>"; };
@@ -613,6 +643,8 @@
 		B56FA78F2437C672002CB9FF /* NSColor+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Theme.swift"; sourceTree = "<group>"; };
 		B56FA7972437C79D002CB9FF /* SPUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUserInterface.swift; sourceTree = "<group>"; };
 		B56FA79A2437D2E0002CB9FF /* NSAppearance+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAppearance+Simplenote.swift"; sourceTree = "<group>"; };
+		B574015225B783500058960E /* EmailVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerification.swift; sourceTree = "<group>"; };
+		B574016825B7D3980058960E /* EmailVerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationTests.swift; sourceTree = "<group>"; };
 		B574CA72242D552100F8D02F /* TextViewInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputHandler.swift; sourceTree = "<group>"; };
 		B57CB873244DEBC300BA7969 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Simplenote.swift"; sourceTree = "<group>"; };
@@ -620,6 +652,10 @@
 		B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Simplenote.swift"; sourceTree = "<group>"; };
 		B57CB880244E421400BA7969 /* SPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextField.swift; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
+		B58117C325B9D57F00927E0C /* AccountVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationViewController.swift; sourceTree = "<group>"; };
+		B58117D525B9D5F500927E0C /* AccountVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountVerificationViewController.xib; sourceTree = "<group>"; };
+		B58117E125B9E5D200927E0C /* AccountVerificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationController.swift; sourceTree = "<group>"; };
+		B58117E725B9EE7B00927E0C /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		B586C061245CCD35009508EC /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
 		B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Simplenote.swift"; sourceTree = "<group>"; };
@@ -678,7 +714,7 @@
 		B5B5F33C243244F100F31720 /* TextViewInputHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewInputHandlerTests.swift; sourceTree = "<group>"; };
 		B5BB8CD324DB51670024E4C5 /* NSSearchField+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSearchField+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C19D8A243D30690014086C /* VersionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VersionsViewController.xib; sourceTree = "<group>"; };
-		B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupTextView.swift; sourceTree = "<group>"; };
+		B5C1F0AB242E9A9800A627E3 /* MockTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTextView.swift; sourceTree = "<group>"; };
 		B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C620AA257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAnimationContext+Simplenote.swift"; sourceTree = "<group>"; };
 		B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkViewController.swift; sourceTree = "<group>"; };
@@ -718,10 +754,10 @@
 		B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEdgeInsets+Simplenote.swift"; sourceTree = "<group>"; };
 		B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListFilter.swift; sourceTree = "<group>"; };
 		B5EDF337258A8F1B0066D91D /* TagListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListFilter.swift; sourceTree = "<group>"; };
-		B5EF32A7258D05640069EC7D /* MockupStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupStorage.swift; sourceTree = "<group>"; };
+		B5EF32A7258D05640069EC7D /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 		B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListControllerTests.swift; sourceTree = "<group>"; };
 		B5EF32B8258D07F00069EC7D /* NoteListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListController.swift; sourceTree = "<group>"; };
-		B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockupStorage+Sample.swift"; sourceTree = "<group>"; };
+		B5EF32CE258D08E70069EC7D /* MockStorage+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockStorage+Sample.swift"; sourceTree = "<group>"; };
 		B5F04FC921594980004B1AA0 /* Simplenote 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simplenote 3.xcdatamodel"; sourceTree = "<group>"; };
 		B5F04FCA215949FD004B1AA0 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		B5F04FCB215949FD004B1AA0 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -843,10 +879,12 @@
 				B501AAD22437E52D0084CDA3 /* Constants */,
 				B53BF1A224AC388F00938C34 /* Controllers */,
 				B5CBB05A241971240003C271 /* Converters */,
+				B557A0E825BB0DC700E5313E /* Coordinators */,
 				B52D0ECA230DCE22003F799D /* Credentials */,
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				B574CA71242D539400F8D02F /* Handlers */,
 				463774DB171F111600E2E333 /* Models */,
+				B502C1DB25BA2EA200145D6C /* Remote */,
 				B57CB879244DEBD500BA7969 /* Settings */,
 				B5C63355251E734100C8BF46 /* Storyboards */,
 				B56FA78D2437C650002CB9FF /* Themes */,
@@ -960,6 +998,7 @@
 			isa = PBXGroup;
 			children = (
 				2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */,
+				B574015225B783500058960E /* EmailVerification.swift */,
 				2614F1DB1405A0B10031AE94 /* Note.h */,
 				2614F1DC1405A0B10031AE94 /* Note.m */,
 				B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */,
@@ -1017,6 +1056,7 @@
 				B5E0862A2448B58D00DEF476 /* TableViewCells */,
 				B5E8E41324575C9F0098892B /* Toolbar */,
 				B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */,
+				B58117E725B9EE7B00927E0C /* Button.swift */,
 				B551187124E33BC2007B11E3 /* ClipView.swift */,
 				B5F50914247319360042FA1D /* SplitView.swift */,
 				B535014A249D5908003837C8 /* HorizontalScrollView.swift */,
@@ -1067,6 +1107,22 @@
 				B54F9A6224D0AE0700BCF754 /* SimplenoteConstants.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		B502C1DB25BA2EA200145D6C /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */,
+			);
+			name = Remote;
+			sourceTree = "<group>";
+		};
+		B502C1E525BA2EFB00145D6C /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */,
+			);
+			name = Remote;
 			sourceTree = "<group>";
 		};
 		B51E9FE322E64473004F16B4 /* Extensions */ = {
@@ -1147,6 +1203,7 @@
 		B53BF1A224AC388F00938C34 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B58117E125B9E5D200927E0C /* AccountVerificationController.swift */,
 				B5EF32B8258D07F00069EC7D /* NoteListController.swift */,
 				B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */,
 				B53BF1A324AC38C100938C34 /* VersionsController.swift */,
@@ -1172,6 +1229,14 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		B557A0E825BB0DC700E5313E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B557A0E225BB0DC000E5313E /* AccountVerificationCoordinator.swift */,
+			);
+			name = Coordinators;
+			sourceTree = "<group>";
+		};
 		B55C313124A5339300B23B3F /* Metrics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1194,6 +1259,14 @@
 			name = Themes;
 			sourceTree = "<group>";
 		};
+		B57401A725B7D9A60058960E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B574016825B7D3980058960E /* EmailVerificationTests.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B574CA71242D539400F8D02F /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1209,6 +1282,15 @@
 				B5469FC92587DE3F007ED7BE /* SortMode.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		B58117C225B9D48B00927E0C /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				B58117C325B9D57F00927E0C /* AccountVerificationViewController.swift */,
+				B58117D525B9D5F500927E0C /* AccountVerificationViewController.xib */,
+			);
+			name = Verification;
 			sourceTree = "<group>";
 		};
 		B58BBD352523D7B20025135F /* Windows */ = {
@@ -1237,6 +1319,7 @@
 				B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */,
 				B598487E1BCDB95A005EFBBE /* SPTracker.h */,
 				B598487F1BCDB95A005EFBBE /* SPTracker.m */,
+				B532728125BA1510001DB882 /* SPTracker+Swift.swift */,
 			);
 			name = Trackers;
 			sourceTree = "<group>";
@@ -1314,14 +1397,17 @@
 			name = Handlers;
 			sourceTree = "<group>";
 		};
-		B5C1F0AD242E9AAA00A627E3 /* Mockups */ = {
+		B5C1F0AD242E9AAA00A627E3 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				B5EF32A7258D05640069EC7D /* MockupStorage.swift */,
-				B5EF32CE258D08E70069EC7D /* MockupStorage+Sample.swift */,
-				B5C1F0AB242E9A9800A627E3 /* MockupTextView.swift */,
+				B502C22A25BA347700145D6C /* MockAccountVerificationRemote.swift */,
+				B502C1EE25BA2F2400145D6C /* MockURLSession.swift */,
+				B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */,
+				B5EF32A7258D05640069EC7D /* MockStorage.swift */,
+				B5EF32CE258D08E70069EC7D /* MockStorage+Sample.swift */,
+				B5C1F0AB242E9A9800A627E3 /* MockTextView.swift */,
 			);
-			name = Mockups;
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		B5C63352251E727300C8BF46 /* Interlinks */ = {
@@ -1360,6 +1446,7 @@
 				B55C313124A5339300B23B3F /* Metrics */,
 				B5AF76C924A3F06D00B7D530 /* Tags */,
 				B52EE32C25927D5D00347F2B /* Notes */,
+				B58117C225B9D48B00927E0C /* Verification */,
 				B5D6833324ACFA79004AFF1B /* Versions */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */,
@@ -1388,9 +1475,11 @@
 				B5EF32AF258D07420069EC7D /* Controllers */,
 				B5985AD3242949C30044EDE9 /* Converters */,
 				B5985AD2242949B00044EDE9 /* Extensions */,
+				B57401A725B7D9A60058960E /* Model */,
 				B5B5F33B243244D300F31720 /* Handlers */,
+				B502C1E525BA2EFB00145D6C /* Remote */,
 				B5469FD825880106007ED7BE /* Settings */,
-				B5C1F0AD242E9AAA00A627E3 /* Mockups */,
+				B5C1F0AD242E9AAA00A627E3 /* Mocks */,
 				B5CBB06D241976230003C271 /* Info.plist */,
 				B5B17F372425651700DD5B34 /* TestConstants.swift */,
 			);
@@ -1434,6 +1523,7 @@
 		B5EF32AF258D07420069EC7D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B502C22225BA345700145D6C /* AccountVerificationControllerTests.swift */,
 				B5EF32B0258D075C0069EC7D /* NoteListControllerTests.swift */,
 			);
 			name = Controllers;
@@ -1541,7 +1631,6 @@
 					};
 					B5CBB068241976230003C271 = {
 						CreatedOnToolsVersion = 11.3.1;
-						DevelopmentTeam = PZYM8XX95Q;
 						ProvisioningStyle = Manual;
 						TestTargetID = 26F72A8714032D2A00A7935E;
 					};
@@ -1606,6 +1695,7 @@
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
+				B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
 				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
@@ -1630,6 +1720,7 @@
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
 				B5C7DD44243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
+				B58117D725B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */,
@@ -1831,12 +1922,14 @@
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
+				B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
 				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
 				B58BBD2A2523D4CA0025135F /* Window.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
+				B58117C425B9D57F00927E0C /* AccountVerificationViewController.swift in Sources */,
 				B551187224E33BC2007B11E3 /* ClipView.swift in Sources */,
 				B5395E1D253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */,
 				B5E061772450AEDA0076111A /* ToolbarView.swift in Sources */,
@@ -1845,6 +1938,7 @@
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
 				B586C062245CCD35009508EC /* SplitViewController.swift in Sources */,
 				2614F1E01405A0B10031AE94 /* Tag.m in Sources */,
+				B58117E225B9E5D200927E0C /* AccountVerificationController.swift in Sources */,
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
@@ -1855,6 +1949,7 @@
 				2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */,
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
+				B557A0E325BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				A6BBDA3325501398005C8343 /* SPTextView+Swift.swift in Sources */,
@@ -1887,6 +1982,7 @@
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
+				B502C1DD25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
 				B5E086352448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
@@ -1933,6 +2029,7 @@
 				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				B56FA7982437C79D002CB9FF /* SPUserInterface.swift in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
+				B58117E825B9EE7B00927E0C /* Button.swift in Sources */,
 				B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
 				B5EDF32F258A8EF00066D91D /* NoteListFilter.swift in Sources */,
@@ -1950,6 +2047,7 @@
 				46EEA3C717B2FEA500914D1A /* SPTextView.m in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
+				B574015325B783500058960E /* EmailVerification.swift in Sources */,
 				B53BF1A024AC1FB800938C34 /* Version.swift in Sources */,
 				B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
@@ -1979,10 +2077,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58117C525B9D57F00927E0C /* AccountVerificationViewController.swift in Sources */,
 				B5AF76C824A3F00600B7D530 /* TagListState.swift in Sources */,
 				B5469FD12587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */,
 				466FFEA817CC10A800399652 /* main.m in Sources */,
 				B518D37C2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */,
+				B58117E925B9EE7B00927E0C /* Button.swift in Sources */,
 				B5E086292448B57200DEF476 /* HeaderTableCellView.swift in Sources */,
 				375D294721E033D1007AB25A /* version.c in Sources */,
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
@@ -1996,12 +2096,14 @@
 				B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
 				B58BBD2B2523D4CA0025135F /* Window.swift in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
+				B557A0E425BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,
 				B500993D24213B370037A431 /* String+Simplenote.swift in Sources */,
 				B551187324E33BC2007B11E3 /* ClipView.swift in Sources */,
 				B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */,
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
+				B502C1DE25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */,
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
 				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
 				B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
@@ -2048,6 +2150,7 @@
 				B5EDF339258A8F1B0066D91D /* TagListFilter.swift in Sources */,
 				B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				B51699852480B93100ACF2F4 /* TagsField.swift in Sources */,
+				B532728325BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5F04FCD215949FE004B1AA0 /* Preferences.m in Sources */,
 				3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862D2448B69B00DEF476 /* NSTableViewCell+Simplenote.swift in Sources */,
@@ -2082,6 +2185,7 @@
 				B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
 				3712FC871FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
+				B58117E325B9E5D200927E0C /* AccountVerificationController.swift in Sources */,
 				B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
@@ -2128,6 +2232,7 @@
 				B5EB3AD22458B9940089858D /* NSNotification+Simplenote.m in Sources */,
 				B54F9A6424D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */,
 				B518D3792507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */,
+				B574015425B783500058960E /* EmailVerification.swift in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
@@ -2143,15 +2248,21 @@
 				B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */,
 				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
 				B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */,
+				B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */,
+				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
 				B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */,
-				B5C1F0AC242E9A9800A627E3 /* MockupTextView.swift in Sources */,
+				B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */,
+				B502C22325BA345700145D6C /* AccountVerificationControllerTests.swift in Sources */,
+				B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */,
+				B502C22B25BA347700145D6C /* MockAccountVerificationRemote.swift in Sources */,
 				B5469FE225880181007ED7BE /* NSUserDefaults+Tests.swift in Sources */,
-				B5EF32A8258D05640069EC7D /* MockupStorage.swift in Sources */,
+				B5EF32A8258D05640069EC7D /* MockStorage.swift in Sources */,
 				B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */,
 				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 				B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */,
 				B5B5F33D243244F100F31720 /* TextViewInputHandlerTests.swift in Sources */,
-				B5EF32CF258D08E70069EC7D /* MockupStorage+Sample.swift in Sources */,
+				B5EF32CF258D08E70069EC7D /* MockStorage+Sample.swift in Sources */,
+				B574016925B7D3980058960E /* EmailVerificationTests.swift in Sources */,
 				B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */,
 				B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */,
 			);
@@ -2605,7 +2716,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2648,7 +2759,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
