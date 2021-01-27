@@ -47,6 +47,8 @@
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
 #endif
 
+@property (strong, nonatomic) CrashLogging                      *crashLogging;
+
 @end
 
 
@@ -165,7 +167,7 @@
 
 - (void)setupCrashLogging
 {
-    [CrashLogging startWithSimperium: self.simperium];
+    self.crashLogging = [[CrashLogging alloc] initWithSimperium:self.simperium];
 }
 
 - (IBAction)ensureMainWindowIsVisible:(id)sender
@@ -241,13 +243,13 @@
 - (void)simperiumDidLogin:(Simperium *)simperium
 {
     [SPTracker refreshMetadataWithEmail:simperium.user.email];
-    [CrashLogging cacheUser: simperium.user];
+    [self.crashLogging cacheUser: simperium.user];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
 {
     [SPTracker refreshMetadataForAnonymousUser];
-    [CrashLogging clearCachedUser];
+    [self.crashLogging clearCachedUser];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
