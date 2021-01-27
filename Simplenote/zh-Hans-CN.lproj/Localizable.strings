@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-12-10 13:54:03+0000 */
+/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -21,6 +21,12 @@
 /* Title of the all notes filter
    Title of the view that displays all your notes */
 "All Notes" = "全部笔记";
+
+/* Sort Mode: Alphabetically, ascending */
+"Alphabetically: A-Z" = "按字母顺序：A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Alphabetically: Z-A" = "按字母顺序：Z-A";
 
 /* Link to sign in to an account */
 "Already have an account?" = "已有帐户？";
@@ -58,6 +64,12 @@
 
 /* Note Creation Date */
 "Created" = "已创建";
+
+/* Sort Mode: Creation Date, descending */
+"Created: Newest" = "创建时间：最新";
+
+/* Sort Mode: Creation Date, ascending */
+"Created: Oldest" = "创建时间：最旧";
 
 /* Delete Forever List Action */
 "Delete Forever" = "永久删除";
@@ -117,6 +129,12 @@
 /* Note Modification Date */
 "Modified" = "已修改";
 
+/* Sort Mode: Modified Date, descending */
+"Modified: Newest" = "修改时间：最新";
+
+/* Sort Mode: Modified Date, ascending */
+"Modified: Oldest" = "修改时间：最旧";
+
 /* Tooltip: More Actions */
 "More" = "更多";
 
@@ -129,6 +147,12 @@
 
 /* Empty Note Placeholder */
 "New note..." = "新建笔记...";
+
+/* No Notes Available */
+"No Notes" = "No Notes";
+
+/* No Search Results */
+"No Results" = "无结果";
 
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "未发布";
@@ -189,8 +213,12 @@
    Tooltip: Restore a trashed note */
 "Restore" = "恢复";
 
-/* Search Field Placeholder */
+/* Search Field Placeholder
+   Tooltip: Search Action */
 "Search" = "搜索";
+
+/* Search Results Title */
+"Searching" = "Searching";
 
 /* Share Menu Action */
 "Share" = "分享";
@@ -213,6 +241,9 @@
 /* Text to display on OSX cancel button */
 "Skip" = "跳过";
 
+/* Sortbar Title */
+"Sort" = "Sort";
+
 /* Tags Section Name */
 "Tags" = "标签";
 
@@ -221,6 +252,9 @@
 
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "此信息有助于我们改善产品、开展与您更加相关的营销活动、个性化您的 Simplenote.com 体验等，请参阅隐私政策以了解详情。";
+
+/* Tooltip: Restore a trashed note */
+"Toggle Sidebar" = "Toggle Sidebar";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

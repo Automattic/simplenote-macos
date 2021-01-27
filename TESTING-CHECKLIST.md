@@ -16,11 +16,14 @@
 - [ ] Removed tag immediately syncs to/from other device
 - [ ] Note publishes with link
 - [ ] Note unpublishes
-- [ ] Note publish change syncs _from_ other device
+- [ ] Note publish change syncs _from_ other device (visible with dialog open)
 - [ ] Markdown setting syncs to/from other device
 - [ ] Preview mode disappears/reappears when receiving remote changes to markdown setting
 - [ ] Note pinning syncs immediately to/from other device
+- [ ] Note pinning works regardless if clicking in list view of from note info
+- [ ] Viewing history on one deivce leaves note unchanged on other device
 - [ ] Restoring history immediately syncs note from both directions
+- [ ] Syncs when introducing sequential surrogate pairs sharing the same high surrogate, e.g. `🅰🅱` to `🅰🅰🅱`
 
 ### Note editor
 
@@ -31,6 +34,7 @@
 - [ ] Typing `- [x]` creates a checked checklist item
 - [ ] Typing `- [ ]` created an unchecked checklist item
 - [ ] Typing `-`, `+`, or `*` creates a list
+- [ ] Changing `-` to `+` changes the list item bullet, also for `*` and `•` (`u2022`)
 - [ ] Typing _tab_ in a list item underneath another list item indents item
 - [ ] All list bullet types render to markdown lists
 - [ ] Added URL is linkified
@@ -40,25 +44,32 @@
 ### Tags & search
 
 - [ ] Can filter by tag when clicking on tag in tag drawer
+- [ ] Can add tag to note and have it appear in filtered tag view when previously not in filter
 - [ ] Can search by keyword, filtered instantly
-- [ ] Can search by keyword with tag selected
+- [ ] Can search by keyword with tag selected (Not anymore since 2.6. Keeping this for a while)
 - [ ] Clearing the search field immediately updates filtered notes
-- [ ] While searching, clicking on different tags or All Notes or Trash immediately updates filtered notes
+- [ ] Clicking on different tags or `All Notes` or `Trash` immediately updates filtered notes
+- [ ] Search field updates with results of `tag:test` format search string
 
 ### Trash
 
 - [ ] Can trash note
 - [ ] Can view trashed notes by selecting `Trash`
 - [ ] Can right-click on `Trash` to empty trash
-- [ ] Can restore note from trash screen
+- [ ] Can restore note from `Trash`
+- [ ] Can delete note forever from `Trash`
+- [ ] Trashing note selects the note below
+- [ ] Restoring note selects the note below
+- [ ] Deleting note forever selects the note below
 
 ### Settings
 
 - [ ] Can toggle sidebar
 - [ ] Can change analytics sharing setting
 - [ ] With wide editor screen, toggling `Note Editor` > `Line Length` between `Narrow` and `Full` removes and adds border around note content appropriately and immediately.
-- [ ] Changing `Notes List` > `Note Display` mode immediately updates and reflects in note list
-- [ ] Changing `Notes List` > `Sort Order` immediately updates and reflects in note list for each sort type
+- [ ] Changing `Note Display` mode immediately updates and reflects in note list
+- [ ] Changing `Note Sorting` immediately updates and reflects in note list for each sort type
+- [ ] Changing `Tag Sorting` immediately updates and reflects in tag list
 - [ ] For each sort type the pinned notes appear first in the note list
 - [ ] Changing `Theme` immediately updates app for desired color scheme
 

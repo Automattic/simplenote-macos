@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-12-04 19:45:42+0000 */
+/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: pt_BR */
@@ -21,6 +21,12 @@
 /* Title of the all notes filter
    Title of the view that displays all your notes */
 "All Notes" = "Todas as notas";
+
+/* Sort Mode: Alphabetically, ascending */
+"Alphabetically: A-Z" = "Ordem alfabética: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Alphabetically: Z-A" = "Ordem alfabética: Z-A";
 
 /* Link to sign in to an account */
 "Already have an account?" = "Já possui uma conta?";
@@ -58,6 +64,12 @@
 
 /* Note Creation Date */
 "Created" = "Criada";
+
+/* Sort Mode: Creation Date, descending */
+"Created: Newest" = "Criado: mais recente";
+
+/* Sort Mode: Creation Date, ascending */
+"Created: Oldest" = "Criado: mais antiga";
 
 /* Delete Forever List Action */
 "Delete Forever" = "Excluir de forma permanente";
@@ -117,6 +129,12 @@
 /* Note Modification Date */
 "Modified" = "Modificada";
 
+/* Sort Mode: Modified Date, descending */
+"Modified: Newest" = "Modificado: mais recente";
+
+/* Sort Mode: Modified Date, ascending */
+"Modified: Oldest" = "Modificado: mais antiga";
+
 /* Tooltip: More Actions */
 "More" = "Mais";
 
@@ -129,6 +147,12 @@
 
 /* Empty Note Placeholder */
 "New note..." = "Nova nota...";
+
+/* No Notes Available */
+"No Notes" = "No Notes";
+
+/* No Search Results */
+"No Results" = "Nenhum resultado";
 
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Não publicada";
@@ -189,8 +213,12 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Restaurar";
 
-/* Search Field Placeholder */
+/* Search Field Placeholder
+   Tooltip: Search Action */
 "Search" = "Pesquisar";
+
+/* Search Results Title */
+"Searching" = "Searching";
 
 /* Share Menu Action */
 "Share" = "Compartilhar";
@@ -213,6 +241,9 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Pular";
 
+/* Sortbar Title */
+"Sort" = "Sort";
+
 /* Tags Section Name */
 "Tags" = "Tags";
 
@@ -221,6 +252,9 @@
 
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Essas informações nos ajudam a melhorar nossos produtos, tornar ações de marketing mais relevantes, personalizar sua experiência no Simplenote.com e mais como detalhado em nossa política de privacidade.";
+
+/* Tooltip: Restore a trashed note */
+"Toggle Sidebar" = "Toggle Sidebar";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

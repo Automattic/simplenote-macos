@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-12-09 08:54:04+0000 */
+/* Translation-Revision-Date: 2021-01-21 14:54:49+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -21,6 +21,12 @@
 /* Title of the all notes filter
    Title of the view that displays all your notes */
 "All Notes" = "Все примечания";
+
+/* Sort Mode: Alphabetically, ascending */
+"Alphabetically: A-Z" = "По алфавиту: А–Я";
+
+/* Sort Mode: Alphabetically, descending */
+"Alphabetically: Z-A" = "По алфавиту: Я–А";
 
 /* Link to sign in to an account */
 "Already have an account?" = "Уже есть учетная запись?";
@@ -58,6 +64,12 @@
 
 /* Note Creation Date */
 "Created" = "Создано";
+
+/* Sort Mode: Creation Date, descending */
+"Created: Newest" = "Дата создания: сначала новые";
+
+/* Sort Mode: Creation Date, ascending */
+"Created: Oldest" = "Дата создания: сначала старые";
 
 /* Delete Forever List Action */
 "Delete Forever" = "Удалить навсегда";
@@ -117,6 +129,12 @@
 /* Note Modification Date */
 "Modified" = "Изменено";
 
+/* Sort Mode: Modified Date, descending */
+"Modified: Newest" = "Дата изменения: сначала новые";
+
+/* Sort Mode: Modified Date, ascending */
+"Modified: Oldest" = "Дата изменения: сначала старые";
+
 /* Tooltip: More Actions */
 "More" = "Еще";
 
@@ -129,6 +147,12 @@
 
 /* Empty Note Placeholder */
 "New note..." = "Новая заметка...";
+
+/* No Notes Available */
+"No Notes" = "Нет заметок";
+
+/* No Search Results */
+"No Results" = "Нет результатов";
 
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Не опубликовано";
@@ -189,8 +213,12 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Восстановить";
 
-/* Search Field Placeholder */
+/* Search Field Placeholder
+   Tooltip: Search Action */
 "Search" = "Поиск";
+
+/* Search Results Title */
+"Searching" = "Поиск";
 
 /* Share Menu Action */
 "Share" = "Поделиться";
@@ -213,6 +241,9 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Пропустить";
 
+/* Sortbar Title */
+"Sort" = "Сортировать";
+
 /* Tags Section Name */
 "Tags" = "Метки";
 
@@ -221,6 +252,9 @@
 
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Эти сведения помогают нам улучшать продукты, предлагать более полезную рекламу, настраивать Simplenote.com согласно вашим предпочтениям и решать другие задачи. Дополнительную информацию см. в политике конфиденциальности.";
+
+/* Tooltip: Restore a trashed note */
+"Toggle Sidebar" = "Включить\/выключить боковую панель";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */
