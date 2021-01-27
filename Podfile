@@ -14,6 +14,7 @@ abstract_target 'Automattic' do
   #
   pod 'Automattic-Tracks-iOS', '0.8.0'
   pod 'Simperium-OSX', '1.4'
+  pod 'Sparkle', '~> 1.24'
 
   # Main Target
   #

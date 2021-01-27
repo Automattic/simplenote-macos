@@ -302,10 +302,6 @@
 		B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */; };
 		B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */; };
-		B5A89195231ECB3C0007EDCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B5A8918A231ECB3C0007EDCB /* LICENSE */; };
-		B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B5A89191231ECB3C0007EDCB /* INSTALL.markdown */; };
-		B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; };
-		B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A89194231ECB3C0007EDCB /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5A9FE272576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
 		B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */; };
 		B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */; };
@@ -452,7 +448,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B5A891A1231ECB710007EDCB /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,12 +691,6 @@
 		B59EA98024AA5EFA008ABE4B /* NoteMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMetrics.swift; sourceTree = "<group>"; };
 		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
 		B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEditorViewController+Swift.swift"; sourceTree = "<group>"; };
-		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
-		B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerConnection.xpc"; sourceTree = "<group>"; };
-		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
-		B5A89191231ECB3C0007EDCB /* INSTALL.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = INSTALL.markdown; sourceTree = "<group>"; };
-		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemMetrics.swift; sourceTree = "<group>"; };
 		B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+Simplenote.swift"; sourceTree = "<group>"; };
 		B5ACE42D24785D8C00AB02C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -782,7 +771,6 @@
 				2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */,
 				2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */,
 				2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */,
-				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
 				B5609AEA24EEC9910097777A /* SimplenoteSearch in Frameworks */,
 				B5609AF224EF17270097777A /* SimplenoteFoundation in Frameworks */,
@@ -823,7 +811,6 @@
 			children = (
 				375D291C21E033D1007AB25A /* Hoextdown */,
 				3712FC6F1FE1ACA9008544AC /* Notepad */,
-				B5A89189231ECB3C0007EDCB /* Sparkle */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -1346,36 +1333,6 @@
 			name = Converters;
 			sourceTree = "<group>";
 		};
-		B5A89189231ECB3C0007EDCB /* Sparkle */ = {
-			isa = PBXGroup;
-			children = (
-				B5A89192231ECB3C0007EDCB /* Frameworks */,
-				B5A8918B231ECB3C0007EDCB /* XPCServices */,
-				B5A8918A231ECB3C0007EDCB /* LICENSE */,
-				B5A89191231ECB3C0007EDCB /* INSTALL.markdown */,
-			);
-			name = Sparkle;
-			path = External/Sparkle;
-			sourceTree = "<group>";
-		};
-		B5A8918B231ECB3C0007EDCB /* XPCServices */ = {
-			isa = PBXGroup;
-			children = (
-				B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */,
-				B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */,
-				B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */,
-			);
-			path = XPCServices;
-			sourceTree = "<group>";
-		};
-		B5A89192231ECB3C0007EDCB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B5A89194231ECB3C0007EDCB /* Sparkle.framework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		B5AF76C924A3F06D00B7D530 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -1541,7 +1498,6 @@
 				26F72A8514032D2A00A7935E /* Frameworks */,
 				26F72A8614032D2A00A7935E /* Resources */,
 				71881504155F487D001F2E30 /* CopyFiles */,
-				B51D44911945FEFD00496889 /* ShellScript */,
 				BCBFB16555965D73674605BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1691,13 +1647,11 @@
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
-				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
 				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
-				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
 				B50F999224F98FFD00A1058D /* Main.storyboard in Resources */,
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
@@ -1854,19 +1808,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "plist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nyear=$(date \"+%Y\")\ncopyright=\"Copyright © $year Automattic. All rights reserved.\"\n\n# Set the version numbers in the buildPlist\n#\n# Temporarily disabled! It's failing the build after updating to support Apple Silicon.\n#\n# Unfortunately, a number of changes were required to make the build pass before getting to this point,\n# so there is no clear responsible for this failure yet.\n# /usr/libexec/PlistBuddy -c \"Set :NSHumanReadableCopyright $copyright\" $plist\n";
-		};
-		B51D44911945FEFD00496889 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Codesign\n#\nIDENTITY=\"Developer ID Application: Automattic, Inc.\"\nSPARKLE_BIN=\"${SRCROOT}/External/Sparkle/bin\"\nCODESIGN_TOOL=\"${SPARKLE_BIN}/codesign_embedded_executable\"\nCODESIGN_HARDENEDRUNTIME_CMD=\"codesign --force -o runtime -s\"\n\n# XPC\n#\nXPC_SOURCE=\"${SRCROOT}/External/Sparkle/XPCServices\"\nXPC_TARGET=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\n\n# Services\n#\nXPC_NETWORK=\"org.sparkle-project.InstallerConnection.xpc\"\nXPC_LAUNCHER=\"org.sparkle-project.InstallerLauncher.xpc\"\nXPC_STATUS=\"org.sparkle-project.InstallerStatus.xpc\"\n\n# UPDATER\nUPDATER_TARGET=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework/Versions/A/Resources\"\nSPARKLE_AUTOUPDATE=\"Autoupdate\"\nSPARKLE_UPDATER=\"Updater.app/Contents/MacOS/Updater\"\n\n# Bail out whenever we're not in Release\n#\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then\n    echo \"NOT Signing in debug!\"\n    exit 0\nfi\n\n# Reset: Sparkle's Codesign fails when attempting to re-sign\n#\necho \"Nuking old XPC...\"\n\nrm -r \"${XPC_TARGET}\"\n\n# Copy Phase\n#\necho \"Copying...\"\n\nmkdir \"${XPC_TARGET}\"\ncp -R \"${XPC_SOURCE}/${XPC_NETWORK}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\ncp -R \"${XPC_SOURCE}/${XPC_LAUNCHER}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\ncp -R \"${XPC_SOURCE}/${XPC_STATUS}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n\n# Codesign Phase\n#\necho \"Signing... \"\n\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n${CODESIGN_HARDENEDRUNTIME_CMD} \"${IDENTITY}\" \"${UPDATER_TARGET}/${SPARKLE_AUTOUPDATE}\"\n${CODESIGN_HARDENEDRUNTIME_CMD} \"${IDENTITY}\" \"${UPDATER_TARGET}/${SPARKLE_UPDATER}\"\n";
 		};
 		B52D0EC9230DCB15003F799D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2490,7 +2431,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
 					"$(PROJECT_DIR)/External",
-					"$(PROJECT_DIR)/External/Sparkle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";
@@ -2544,7 +2484,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
 					"$(PROJECT_DIR)/External",
-					"$(PROJECT_DIR)/External/Sparkle/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Simplenote/Simplenote-Prefix.pch";

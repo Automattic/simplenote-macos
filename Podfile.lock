@@ -24,10 +24,12 @@ PODS:
   - Simperium-OSX/SPReachability (1.4.0)
   - Simperium-OSX/SSKeychain (1.4.0)
   - Sodium (0.9.1)
+  - Sparkle (1.24.0)
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (= 0.8.0)
   - Simperium-OSX (= 1.4)
+  - Sparkle (~> 1.24)
 
 SPEC REPOS:
   trunk:
@@ -37,6 +39,7 @@ SPEC REPOS:
     - Sentry
     - Simperium-OSX
     - Sodium
+    - Sparkle
 
 SPEC CHECKSUMS:
   Automattic-Tracks-iOS: 1f68ebf14cc9607c65685f46b58e81532932bf48
@@ -45,7 +48,8 @@ SPEC CHECKSUMS:
   Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
   Simperium-OSX: 966559d023886dce461ddd20fad78ff684bea5e3
   Sodium: 23d11554ecd556196d313cf6130d406dfe7ac6da
+  Sparkle: 270cd27377bf04e9c128af06e3a22d0f572d6ee3
 
-PODFILE CHECKSUM: f82422d24826645d26466f593a0c9bccb088d800
+PODFILE CHECKSUM: add41740df8412f19cffc6dc51f9c4f6c687c411
 
 COCOAPODS: 1.10.1
