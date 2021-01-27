@@ -1567,7 +1567,7 @@
 				466FFEA717CC10A800399652 /* Sources */,
 				466FFEDC17CC10A800399652 /* Frameworks */,
 				466FFEE517CC10A800399652 /* Resources */,
-				B51D44821945EF7900496889 /* ShellScript */,
+				B51D44821945EF7900496889 /* Set copyright year */,
 				4E51756AEE6CFE89EAD49829 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1842,18 +1842,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B51D44821945EF7900496889 /* ShellScript */ = {
+		B51D44821945EF7900496889 /* Set copyright year */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Set copyright year";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "plist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nyear=$(date \"+%Y\")\ncopyright=\"Copyright © $year Automattic. All rights reserved.\"\n\n# Set the version numbers in the buildPlist\n#\n# Temporarily disabled! It's failing the build after updating to support Apple Silicon.\n#\n# Unfortunately, a number of changes were required to make the build pass before getting to this point,\n# so there is no clear responsible for this failure yet.\n# /usr/libexec/PlistBuddy -c \"Set :NSHumanReadableCopyright $copyright\" $plist\n";
+			shellScript = "# Set the copyright year to the current year in the Info.plist\nplist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nyear=$(date \"+%Y\")\ncopyright=\"Copyright © $year Automattic. All rights reserved.\"\n\n/usr/libexec/PlistBuddy -c \"Set :NSHumanReadableCopyright $copyright\" $plist\n";
 		};
 		B51D44911945FEFD00496889 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
