@@ -41,7 +41,11 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPQ-2D-QRL">
-                    <rect key="frame" x="89" y="218" width="304" height="160"/>
+                    <rect key="frame" x="89" y="144" width="304" height="234"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="234" id="B6A-gI-o40"/>
+                        <constraint firstAttribute="width" constant="300" id="Mkw-gh-bzB"/>
+                    </constraints>
                     <textFieldCell key="cell" selectable="YES" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" id="YNU-az-7jB">
                         <font key="font" metaFont="system"/>
                         <string key="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
@@ -99,6 +103,9 @@ Gw
                             </connections>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="96" id="sv9-kx-Mn0"/>
+                    </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>
                         <integer value="1000"/>
@@ -113,6 +120,7 @@ Gw
             </subviews>
             <constraints>
                 <constraint firstItem="UPQ-2D-QRL" firstAttribute="top" secondItem="Psb-Ek-zco" secondAttribute="bottom" constant="60" id="2r9-a4-mpg"/>
+                <constraint firstItem="h46-NQ-2gg" firstAttribute="top" secondItem="UPQ-2D-QRL" secondAttribute="bottom" constant="12" id="594-Wj-k5L"/>
                 <constraint firstItem="q2p-l5-XcX" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="6Sx-y8-txP"/>
                 <constraint firstItem="Psb-Ek-zco" firstAttribute="top" secondItem="D22-GY-wVp" secondAttribute="bottom" constant="26" id="8qw-tt-bv0"/>
                 <constraint firstItem="UPQ-2D-QRL" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="91" id="AZo-lL-wJi"/>
