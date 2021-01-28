@@ -166,6 +166,7 @@
 - (void)setupCrashLogging
 {
     self.crashLogging = [[CrashLogging alloc] initWithSimperium:self.simperium];
+    [self.crashLogging start];
 }
 
 - (IBAction)ensureMainWindowIsVisible:(id)sender
