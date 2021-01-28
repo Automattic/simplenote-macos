@@ -44,6 +44,7 @@
                     <rect key="frame" x="89" y="144" width="304" height="234"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="234" id="B6A-gI-o40"/>
+                        <constraint firstAttribute="width" constant="300" id="Mkw-gh-bzB"/>
                     </constraints>
                     <textFieldCell key="cell" selectable="YES" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" id="YNU-az-7jB">
                         <font key="font" metaFont="system"/>
