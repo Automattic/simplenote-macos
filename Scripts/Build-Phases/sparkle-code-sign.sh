@@ -34,9 +34,10 @@ fi
 
 # Reset: Sparkle's Codesign fails when attempting to re-sign
 #
-echo "Nuking old XPC..."
-
-rm -r "${XPC_TARGET}"
+if [[ -d "${XPC_TARGET}" ]]; then
+  echo "Nuking old XPC..."
+  rm -r "${XPC_TARGET}"
+fi
 
 # Copy Phase
 #
