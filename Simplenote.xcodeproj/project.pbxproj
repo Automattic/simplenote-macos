@@ -317,7 +317,6 @@
 		B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */; };
 		B5AF76CC24A3F27E00B7D530 /* TagListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */; };
 		B5B17F362425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */; };
-		B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F372425651700DD5B34 /* TestConstants.swift */; };
 		B5B17F3A2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
 		B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */; };
 		B5B1CBCD256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */; };
@@ -708,7 +707,6 @@
 		B5AF76C624A3F00600B7D530 /* TagListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListState.swift; sourceTree = "<group>"; };
 		B5AF76CA24A3F27E00B7D530 /* TagListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListRow.swift; sourceTree = "<group>"; };
 		B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringSimplenoteTests.swift; sourceTree = "<group>"; };
-		B5B17F372425651700DD5B34 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		B5B17F392425668400DD5B34 /* NSAttributedString+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Simplenote.swift"; sourceTree = "<group>"; };
 		B5B1CBCC256EE72C0040726C /* NSScrollView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScrollView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5B5F33C243244F100F31720 /* TextViewInputHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewInputHandlerTests.swift; sourceTree = "<group>"; };
@@ -1481,7 +1479,6 @@
 				B5469FD825880106007ED7BE /* Settings */,
 				B5C1F0AD242E9AAA00A627E3 /* Mocks */,
 				B5CBB06D241976230003C271 /* Info.plist */,
-				B5B17F372425651700DD5B34 /* TestConstants.swift */,
 			);
 			path = SimplenoteTests;
 			sourceTree = "<group>";
@@ -2279,7 +2276,6 @@
 				B5985AD12429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift in Sources */,
 				B53FF5472476F9450014E928 /* Constants.swift in Sources */,
 				B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */,
-				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
 				B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */,
 				B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */,
 				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
