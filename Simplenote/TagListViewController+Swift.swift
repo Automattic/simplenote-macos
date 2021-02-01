@@ -17,7 +17,6 @@ extension TagListViewController {
     ///
     @objc
     func setupHeaderSeparator() {
-        headerSeparatorView.drawsBottomBorder = true
         refreshHeaderSeparatorAlpha()
     }
 }

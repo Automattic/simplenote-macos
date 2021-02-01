@@ -24,8 +24,7 @@ class BackgroundView: NSView {
 
     /// Bottom Border: Width
     ///
-    @IBInspectable
-    var borderWidth: CGFloat = NSScreen.main?.pointToPixelRatio ?? defaultBorderWidth {
+    var borderWidth: CGFloat = defaultBorderWidth {
         didSet {
             guard borderWidth != oldValue else {
                 return
