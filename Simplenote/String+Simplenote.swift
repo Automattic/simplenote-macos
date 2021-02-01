@@ -41,6 +41,12 @@ extension String {
 //
 extension String {
 
+    /// Returns the Range enclosing all of the receiver's contents
+    ///
+    var fullRange: Range<String.Index> {
+        startIndex ..< endIndex
+    }
+
     /// Returns a copy of the receiver minus its trailing newline (if any)
     ///
     func dropTrailingNewline() -> String {

@@ -118,6 +118,8 @@
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
 		A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */; };
 		A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */; };
+		A6672FBE25C7F77000090DE3 /* StringContentSliceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */; };
+		A6672FBF25C7F77000090DE3 /* NoteBodyExcerptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */; };
 		A6BBDA3325501398005C8343 /* SPTextView+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBDA3225501398005C8343 /* SPTextView+Swift.swift */; };
 		B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */; };
 		B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
@@ -557,6 +559,8 @@
 		9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
 		A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteContentHelper.swift; sourceTree = "<group>"; };
 		A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSlice.swift; sourceTree = "<group>"; };
+		A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringContentSliceTests.swift; sourceTree = "<group>"; };
+		A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBodyExcerptTests.swift; sourceTree = "<group>"; };
 		A6BBDA3225501398005C8343 /* SPTextView+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPTextView+Swift.swift"; sourceTree = "<group>"; };
 		B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnicodeScalar+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1340,6 +1344,8 @@
 				B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */,
 				B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */,
 				B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */,
+				A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */,
+				A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2287,7 +2293,9 @@
 				B5985AD12429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift in Sources */,
 				B53FF5472476F9450014E928 /* Constants.swift in Sources */,
 				B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */,
+				A6672FBF25C7F77000090DE3 /* NoteBodyExcerptTests.swift in Sources */,
 				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
+				A6672FBE25C7F77000090DE3 /* StringContentSliceTests.swift in Sources */,
 				B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */,
 				B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */,
 				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
