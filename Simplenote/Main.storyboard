@@ -471,12 +471,22 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cpV-AA-3mi" userLabel="Header Background View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="80"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="D6u-00-cLs" secondAttribute="trailing" constant="16" id="2ba-JM-kNA"/>
                                     <constraint firstItem="D6u-00-cLs" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="3Bj-25-WMw"/>
+                                    <constraint firstItem="cpV-AA-3mi" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="Cmq-ag-hwh"/>
+                                    <constraint firstItem="cpV-AA-3mi" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="Gf7-KT-Rxx"/>
                                     <constraint firstAttribute="bottom" secondItem="D6u-00-cLs" secondAttribute="bottom" id="Rw6-hB-kIR"/>
+                                    <constraint firstAttribute="bottom" secondItem="cpV-AA-3mi" secondAttribute="bottom" id="XPa-p5-qJw"/>
                                     <constraint firstItem="D6u-00-cLs" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="cv5-n9-3Ms"/>
+                                    <constraint firstAttribute="trailing" secondItem="cpV-AA-3mi" secondAttribute="trailing" id="ezk-xK-9nH"/>
                                     <constraint firstItem="D6u-00-cLs" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="q2Y-TB-Qyl"/>
                                 </constraints>
                             </customView>
@@ -519,6 +529,7 @@
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
+                        <outlet property="headerBackgroundView" destination="cpV-AA-3mi" id="jo0-fD-dp1"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
                         <outlet property="headerStackView" destination="D6u-00-cLs" id="WnW-Zq-PTf"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>

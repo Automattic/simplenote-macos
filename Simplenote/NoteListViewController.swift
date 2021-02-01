@@ -17,6 +17,7 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var tableView: SPTableView!
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerStackView: NSStackView!
+    @IBOutlet private var headerBackgroundView: BackgroundView!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var sortbarView: SortBarView!
     @IBOutlet private var sortbarMenu: NSMenu!
@@ -124,6 +125,7 @@ extension NoteListViewController {
     func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
+        headerBackgroundView.borderColor = .simplenoteDividerColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
