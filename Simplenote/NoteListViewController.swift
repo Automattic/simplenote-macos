@@ -431,6 +431,7 @@ private extension NoteListViewController {
         let newAlpha = alphaForHeader
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
+        headerSeparatorView.alphaValue = newAlpha
     }
 
     private var alphaForHeader: CGFloat {
