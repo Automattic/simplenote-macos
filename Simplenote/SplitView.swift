@@ -5,13 +5,9 @@ import Foundation
 //
 class SplitView: NSSplitView {
 
-    /// Allows us to override the divider thickness
+    /// Default Divider Thickness: 1pt
     ///
-    var overriddenDividerThickness = CGFloat(1) {
-        didSet {
-            needsDisplay = true
-        }
-    }
+    private let defaultDividerThickness = CGFloat(1)
 
 
     /// Divider Color
@@ -45,7 +41,7 @@ class SplitView: NSSplitView {
     // MARK: - Overridden Methods
 
     override var dividerThickness: CGFloat {
-        overriddenDividerThickness
+        defaultDividerThickness
     }
 
     override var dividerColor: NSColor {

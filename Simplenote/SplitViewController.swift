@@ -31,7 +31,6 @@ class SplitViewController: NSSplitViewController {
         let splitView = SplitView()
         splitView.isVertical = true
         splitView.dividerStyle = .thin
-        splitView.overriddenDividerThickness = NSScreen.main?.pointToPixelRatio ?? Metrics.defaultDividerThickness
         self.splitView = splitView
         self.view = splitView
     }
@@ -220,8 +219,6 @@ extension SplitItemKind {
 // MARK: - SplitView's Metrics
 //
 private enum Metrics {
-    static let defaultDividerThickness: CGFloat = 1
-
     static let tagsMinWidth: CGFloat = 150
     static let tagsMaxWidth: CGFloat = 300
 
