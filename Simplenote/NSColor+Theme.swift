@@ -91,7 +91,7 @@ extension NSColor {
 
     @objc
     static var simplenoteDividerColor: NSColor {
-        dynamicColor(lightStudio: .gray10, darkStudio: .black)
+        dynamicColor(lightStudio: .gray5, darkStudio: .black)
     }
 
     @objc
