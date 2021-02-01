@@ -50,12 +50,16 @@ class NoteListViewController: NSViewController {
 
         setupProgressIndicator()
         setupTableView()
-        setupSortbar()
         startListeningToNotifications()
         startListControllerSync()
 
         refreshStyle()
         refreshEverything()
+    }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        scrollView.scrollToTop(animated: false)
     }
 
     override func viewWillLayout() {
@@ -96,12 +100,6 @@ private extension NoteListViewController {
     func setupProgressIndicator() {
         progressIndicator.wantsLayer = true
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
-    }
-
-    /// Setup: Sortbar
-    ///
-    func setupSortbar() {
-        sortbarView.isHidden = true
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -272,7 +270,7 @@ private extension NoteListViewController {
     private func refreshListController() {
         let options = Options.shared
         listController.filter = nextListFilter()
-        listController.sortMode = isSearching ? options.notesSearchSortMode : options.notesListSortMode
+        listController.sortMode = options.notesListSortMode
         listController.performFetch()
 
         tableView.reloadData()
@@ -337,20 +335,7 @@ private extension NoteListViewController {
     /// Refresh: Sortbar
     ///
     func refreshSortBarTitle() {
-        sortbarView.sortModeDescription = Options.shared.notesSearchSortMode.description
-    }
-
-    /// Refresh: Sortbar Visibility
-    ///
-    func refreshSortBarVisibility(visible: Bool) {
-        let newHiddenState = !visible
-        guard sortbarView.isHidden != newHiddenState else {
-            return
-        }
-
-        sortbarView.isHidden = newHiddenState
-        refreshScrollInsets()
-        scrollView.scrollToTop(animated: false)
+        sortbarView.sortModeDescription = Options.shared.notesListSortMode.description
     }
 }
 
@@ -577,14 +562,13 @@ extension NoteListViewController: EditorControllerSearchDelegate {
     }
 
     public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
-        refreshSortBarVisibility(visible: false)
+        // NO-OP
     }
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
         self.keyword = keyword
 
         refreshEverything()
-        refreshSortBarVisibility(visible: !keyword.isEmpty)
 
         SPTracker.trackListNotesSearched()
     }
@@ -659,7 +643,7 @@ extension NoteListViewController: NSMenuItemValidation {
             return false
         }
 
-        let isSelected = Options.shared.notesSearchSortMode == itemSortMode
+        let isSelected = Options.shared.notesListSortMode == itemSortMode
         item.state = isSelected ? .on : .off
         item.title = itemSortMode.description
         return true
@@ -813,7 +797,7 @@ extension NoteListViewController {
             return
         }
 
-        Options.shared.notesSearchSortMode = newSortMode
+        Options.shared.notesListSortMode = newSortMode
     }
 
     @IBAction
