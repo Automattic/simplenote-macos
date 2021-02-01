@@ -6,6 +6,10 @@ import Foundation
 @objcMembers
 class BackgroundView: NSView {
 
+    /// Border Width fallback value (In case the main Screen couldn't be accessed)
+    ///
+    private static let defaultBorderWidth = CGFloat(1)
+
     /// Bottom Border: Color
     ///
     var borderColor: NSColor? = .simplenoteDividerColor {
@@ -20,7 +24,8 @@ class BackgroundView: NSView {
 
     /// Bottom Border: Width
     ///
-    var borderWidth = NSScreen.main?.pointToPixelRatio {
+    @IBInspectable
+    var borderWidth: CGFloat = NSScreen.main?.pointToPixelRatio ?? defaultBorderWidth {
         didSet {
             guard borderWidth != oldValue else {
                 return
@@ -81,13 +86,13 @@ class BackgroundView: NSView {
             NSBezierPath(rect: dirtyRect).fill()
         }
 
-        if drawsBottomBorder, let borderWidth = borderWidth, let borderColor = borderColor {
+        if drawsBottomBorder, let borderColor = borderColor {
             let bottomRect = NSRect(x: .zero, y: .zero, width: dirtyRect.width, height: borderWidth)
             borderColor.set()
             NSBezierPath(rect: bottomRect).fill()
         }
 
-        if drawsTopBorder, let borderWidth = borderWidth, let borderColor = borderColor {
+        if drawsTopBorder, let borderColor = borderColor {
             let bottomRect = NSRect(x: .zero, y: dirtyRect.height - borderWidth, width: dirtyRect.width, height: borderWidth)
             borderColor.set()
             NSBezierPath(rect: bottomRect).fill()
