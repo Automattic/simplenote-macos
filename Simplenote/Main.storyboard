@@ -738,6 +738,9 @@
                             </visualEffectView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="LMj-Ag-ut7" userLabel="Header Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="566" width="528" height="52"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mdt-4X-jeq" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="566" width="528" height="52"/>
