@@ -624,6 +624,7 @@ extension NoteEditorViewController {
     @objc
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
+        headerDividerView.alphaValue = newAlpha
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }

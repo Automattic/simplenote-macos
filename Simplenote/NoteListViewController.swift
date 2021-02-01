@@ -17,7 +17,7 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var tableView: SPTableView!
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerStackView: NSStackView!
-    @IBOutlet private var headerSeparatorView: BackgroundView!
+    @IBOutlet private var headerDividerView: BackgroundView!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var sortbarView: SortBarView!
     @IBOutlet private var sortbarMenu: NSMenu!
@@ -125,7 +125,7 @@ extension NoteListViewController {
     func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
-        headerSeparatorView.borderColor = .simplenoteSecondaryDividerColor
+        headerDividerView.borderColor = .simplenoteSecondaryDividerColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
@@ -429,9 +429,9 @@ private extension NoteListViewController {
 
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
+        headerDividerView.alphaValue = newAlpha
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
-        headerSeparatorView.alphaValue = newAlpha
     }
 
     private var alphaForHeader: CGFloat {

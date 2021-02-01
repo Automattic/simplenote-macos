@@ -357,6 +357,12 @@
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="vxX-pk-HGm">
                                 <rect key="frame" x="0.0" y="538" width="294" height="80"/>
                             </visualEffectView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cpV-AA-3mi" userLabel="Header Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="538" width="294" height="80"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="538" width="294" height="80"/>
                                 <subviews>
@@ -474,22 +480,12 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cpV-AA-3mi" userLabel="Header Background View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="80"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="D6u-00-cLs" secondAttribute="trailing" constant="16" id="2ba-JM-kNA"/>
                                     <constraint firstItem="D6u-00-cLs" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="3Bj-25-WMw"/>
-                                    <constraint firstItem="cpV-AA-3mi" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="Cmq-ag-hwh"/>
-                                    <constraint firstItem="cpV-AA-3mi" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="Gf7-KT-Rxx"/>
                                     <constraint firstAttribute="bottom" secondItem="D6u-00-cLs" secondAttribute="bottom" id="Rw6-hB-kIR"/>
-                                    <constraint firstAttribute="bottom" secondItem="cpV-AA-3mi" secondAttribute="bottom" id="XPa-p5-qJw"/>
                                     <constraint firstItem="D6u-00-cLs" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="cv5-n9-3Ms"/>
-                                    <constraint firstAttribute="trailing" secondItem="cpV-AA-3mi" secondAttribute="trailing" id="ezk-xK-9nH"/>
                                     <constraint firstItem="D6u-00-cLs" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="q2Y-TB-Qyl"/>
                                 </constraints>
                             </customView>
@@ -514,7 +510,11 @@
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="centerX" secondItem="PJl-uT-IxK" secondAttribute="centerX" id="Hze-oN-sBR"/>
                             <constraint firstItem="zXl-eL-J7J" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="J50-dQ-XUD"/>
                             <constraint firstItem="vxX-pk-HGm" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="MXl-4Q-xsZ"/>
+                            <constraint firstItem="cpV-AA-3mi" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="PBN-nj-3bb"/>
                             <constraint firstAttribute="trailing" secondItem="2I0-KH-uBu" secondAttribute="trailing" constant="12" id="VcD-9X-4Pu"/>
+                            <constraint firstItem="cpV-AA-3mi" firstAttribute="trailing" secondItem="dMC-MU-RmS" secondAttribute="trailing" id="Vgz-uu-QHc"/>
+                            <constraint firstItem="cpV-AA-3mi" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="ZHY-qN-y4g"/>
+                            <constraint firstItem="cpV-AA-3mi" firstAttribute="bottom" secondItem="dMC-MU-RmS" secondAttribute="bottom" id="a8u-Z8-pm2"/>
                             <constraint firstItem="vxX-pk-HGm" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="aZp-JB-f4c"/>
                             <constraint firstItem="JDR-c6-dqi" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="b4N-TU-lud"/>
                             <constraint firstItem="2I0-KH-uBu" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" constant="12" id="bOP-Pg-zTH"/>
@@ -532,8 +532,8 @@
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
+                        <outlet property="headerDividerView" destination="cpV-AA-3mi" id="2oh-lc-t6t"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
-                        <outlet property="headerSeparatorView" destination="cpV-AA-3mi" id="N1Y-bx-Vnh"/>
                         <outlet property="headerStackView" destination="D6u-00-cLs" id="WnW-Zq-PTf"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
@@ -736,6 +736,9 @@
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="wyB-gA-z62" userLabel="Header Effect View">
                                 <rect key="frame" x="0.0" y="566" width="528" height="52"/>
                             </visualEffectView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="LMj-Ag-ut7" userLabel="Header Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="566" width="528" height="52"/>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mdt-4X-jeq" customClass="ToolbarView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="566" width="528" height="52"/>
                                 <subviews>
@@ -914,14 +917,18 @@
                         <constraints>
                             <constraint firstItem="VFr-Z3-HgO" firstAttribute="top" secondItem="Dj2-Ut-m6l" secondAttribute="bottom" constant="12" id="38q-FL-Jic"/>
                             <constraint firstItem="mdt-4X-jeq" firstAttribute="leading" secondItem="w7Z-Cl-xvM" secondAttribute="leading" id="6oU-zT-Ov7"/>
+                            <constraint firstItem="LMj-Ag-ut7" firstAttribute="leading" secondItem="wyB-gA-z62" secondAttribute="leading" id="8Ki-J6-s2P"/>
                             <constraint firstItem="VFr-Z3-HgO" firstAttribute="centerX" secondItem="w7Z-Cl-xvM" secondAttribute="centerX" id="8aQ-5C-SKq"/>
                             <constraint firstAttribute="trailing" secondItem="mdt-4X-jeq" secondAttribute="trailing" id="97a-7l-ZTe"/>
+                            <constraint firstItem="LMj-Ag-ut7" firstAttribute="bottom" secondItem="wyB-gA-z62" secondAttribute="bottom" id="9M6-7R-AAX"/>
                             <constraint firstItem="Dj2-Ut-m6l" firstAttribute="centerX" secondItem="w7Z-Cl-xvM" secondAttribute="centerX" id="Aih-4w-tkI"/>
                             <constraint firstItem="wyB-gA-z62" firstAttribute="top" secondItem="mdt-4X-jeq" secondAttribute="top" id="BaZ-Pi-vNU"/>
+                            <constraint firstItem="LMj-Ag-ut7" firstAttribute="top" secondItem="wyB-gA-z62" secondAttribute="top" id="HLE-3c-ZEM"/>
                             <constraint firstItem="RoF-0f-Ugm" firstAttribute="leading" secondItem="w7Z-Cl-xvM" secondAttribute="leading" id="RhM-cA-pSD"/>
                             <constraint firstItem="wyB-gA-z62" firstAttribute="trailing" secondItem="mdt-4X-jeq" secondAttribute="trailing" id="SO2-Ts-sGE"/>
                             <constraint firstAttribute="trailing" secondItem="3M9-OX-Hpx" secondAttribute="trailing" id="SaF-9N-ZkN"/>
                             <constraint firstAttribute="trailing" secondItem="Zgz-qj-sTm" secondAttribute="trailing" id="TWe-DC-gjH"/>
+                            <constraint firstItem="LMj-Ag-ut7" firstAttribute="trailing" secondItem="wyB-gA-z62" secondAttribute="trailing" id="UME-sK-gmJ"/>
                             <constraint firstAttribute="trailing" secondItem="RoF-0f-Ugm" secondAttribute="trailing" id="Xbp-bO-h93"/>
                             <constraint firstItem="RoF-0f-Ugm" firstAttribute="top" secondItem="w7Z-Cl-xvM" secondAttribute="top" id="YgL-n8-HLQ"/>
                             <constraint firstItem="Zgz-qj-sTm" firstAttribute="leading" secondItem="w7Z-Cl-xvM" secondAttribute="leading" id="ZU3-rD-Cfp"/>
@@ -941,6 +948,7 @@
                         <outlet property="backgroundView" destination="RoF-0f-Ugm" id="U5O-mZ-5Kd"/>
                         <outlet property="bottomDividerView" destination="K6m-2B-IQ0" id="NX8-nx-JVt"/>
                         <outlet property="clipView" destination="4oT-JU-wrs" id="6KU-5h-AY4"/>
+                        <outlet property="headerDividerView" destination="LMj-Ag-ut7" id="cby-F8-k2W"/>
                         <outlet property="headerEffectView" destination="wyB-gA-z62" id="WlD-sQ-TGV"/>
                         <outlet property="moreActionsMenu" destination="O2x-0v-azu" id="jSV-Gb-XpN"/>
                         <outlet property="noteEditor" destination="84J-wh-qoX" id="MHx-LW-NED"/>
