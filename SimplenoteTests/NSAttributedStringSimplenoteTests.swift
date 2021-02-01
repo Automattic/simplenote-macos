@@ -25,7 +25,7 @@ class NSAttributedStringSimplenoteTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: TestConstants.defaultTimeout, handler: nil)
+        waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
     /// Verifies that `numberOfAttachments` returns zero whenever the receiver has no attachments
