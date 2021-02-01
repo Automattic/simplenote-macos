@@ -83,6 +83,5 @@
 - (void)setTagsFromList:(NSArray *)tagList;
 - (void)stripTag:(NSString *)tag;
 - (void)ensurePreviewStringsAreAvailable;
-- (void)createPreview;
 
 @end

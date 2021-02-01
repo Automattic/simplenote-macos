@@ -10,7 +10,7 @@
 #import "NSString+Metadata.h"
 #import "JSONKit+Simplenote.h"
 #import "SimplenoteAppDelegate.h"
-
+#import "Simplenote-Swift.h"
 
 
 @interface Note (PrimitiveAccessors)
@@ -159,24 +159,6 @@
     }
 
     [self createPreview];
-}
-
-- (void)createPreview
-{
-    NSString *aString = self.content;
-    if (aString.length > 500) {
-        aString = [aString substringToIndex:500];
-    }
-
-    [aString generatePreviewStrings:^(NSString *title, NSString *body) {
-        self.titlePreview = title;
-        self.bodyPreview = body;
-    }];
-
-    if (self.titlePreview.length == 0) {
-        self.titlePreview = NSLocalizedString(@"New note...", @"Empty Note Placeholder");
-        self.bodyPreview = nil;
-    }
 }
 
 - (BOOL)deleted

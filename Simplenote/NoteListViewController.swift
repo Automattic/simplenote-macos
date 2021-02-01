@@ -28,9 +28,9 @@ class NoteListViewController: NSViewController {
     ///
     private lazy var listController = NoteListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
 
-    /// Search Keyword
+    /// Search Query
     ///
-    private var keyword: String?
+    private var searchQuery: SearchQuery?
 
     /// TODO: Work in Progress. Decouple with a delegate please
     ///
@@ -362,8 +362,8 @@ private extension NoteListViewController {
     /// Determines the next Filter, based on the current Keyword + Selected Tag Filter
     ///
     func nextListFilter() -> NoteListFilter {
-        if let keyword = keyword, !keyword.isEmpty {
-            return .search(keyword: keyword)
+        if let query = searchQuery, !query.isEmpty {
+            return .search(query: query)
         }
 
         switch SimplenoteAppDelegate.shared().selectedTagFilter {
@@ -523,7 +523,7 @@ private extension NoteListViewController {
         noteView.displaysPinnedIndicator = note.pinned
         noteView.displaysSharedIndicator = note.published
         noteView.title = note.titlePreview
-        noteView.body = note.bodyPreview
+        noteView.body = note.bodyExcerpt(keywords: searchQuery?.keywords)
         noteView.bodyPrefix = bodyPrefix(for: note)
         noteView.rendersInCondensedMode = Options.shared.notesListCondensed
 
@@ -581,7 +581,7 @@ extension NoteListViewController: EditorControllerSearchDelegate {
     }
 
     public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
-        self.keyword = keyword
+        searchQuery = SearchQuery(searchText: keyword)
 
         refreshEverything()
         refreshSortBarVisibility(visible: !keyword.isEmpty)

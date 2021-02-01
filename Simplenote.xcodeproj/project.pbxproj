@@ -116,6 +116,8 @@
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
+		A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */; };
+		A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */; };
 		A6BBDA3325501398005C8343 /* SPTextView+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBDA3225501398005C8343 /* SPTextView+Swift.swift */; };
 		B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */; };
 		B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
@@ -553,6 +555,8 @@
 		8C902F8C22D3EE350018D654 /* Version.public.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Version.public.xcconfig; path = config/Version.public.xcconfig; sourceTree = "<group>"; };
 		8C902F8E22D3EFE60018D654 /* Simplenote.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Simplenote.debug.xcconfig; path = config/Simplenote.debug.xcconfig; sourceTree = "<group>"; };
 		9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
+		A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteContentHelper.swift; sourceTree = "<group>"; };
+		A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSlice.swift; sourceTree = "<group>"; };
 		A6BBDA3225501398005C8343 /* SPTextView+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPTextView+Swift.swift"; sourceTree = "<group>"; };
 		B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnicodeScalar+Simplenote.swift"; sourceTree = "<group>"; };
@@ -990,6 +994,7 @@
 				B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */,
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
+				A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -1007,6 +1012,7 @@
 				2614F1DE1405A0B10031AE94 /* Tag.m */,
 				B5F04FCA215949FD004B1AA0 /* Preferences.h */,
 				B5F04FCB215949FD004B1AA0 /* Preferences.m */,
+				A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1985,6 +1991,7 @@
 				B557A0E325BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,
 				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
+				A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */,
 				A6BBDA3325501398005C8343 /* SPTextView+Swift.swift in Sources */,
 				B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
 				B54F9A6A24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
@@ -2043,6 +2050,7 @@
 				B505068D25A3DF4E008A8E10 /* SortBarView.swift in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
+				A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				375D294821E033D1007AB25A /* html_blocks.c in Sources */,
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,

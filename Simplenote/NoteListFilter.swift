@@ -9,7 +9,7 @@ enum NoteListFilter: Equatable {
     case everything
     case tag(name: String)
     case untagged
-    case search(keyword: String)
+    case search(query: SearchQuery)
 }
 
 
@@ -34,8 +34,8 @@ extension NoteListFilter {
         case .untagged:
             subpredicates.append( NSPredicate.predicateForUntaggedNotes() )
 
-        case .search(let keyword):
-            subpredicates.append( NSPredicate.predicateForNotes(searchText: keyword) )
+        case .search(let query):
+            subpredicates.append( NSPredicate.predicateForNotes(query: query) )
         }
 
         return NSCompoundPredicate(andPredicateWithSubpredicates: subpredicates)
