@@ -798,6 +798,7 @@ extension NoteListViewController {
         }
 
         Options.shared.notesListSortMode = newSortMode
+        SPTracker.trackListSortBarModeChanged()
     }
 
     @IBAction
