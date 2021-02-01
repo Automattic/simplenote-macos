@@ -125,7 +125,7 @@ extension NoteListViewController {
     func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
-        headerBackgroundView.borderColor = .simplenoteDividerColor
+        headerBackgroundView.borderColor = .simplenoteSecondaryDividerColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
