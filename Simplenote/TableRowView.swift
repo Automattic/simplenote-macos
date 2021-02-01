@@ -71,7 +71,7 @@ class TableRowView : NSTableRowView {
 
         path.move(to: NSMakePoint(.zero + insets.left, bounds.maxY))
         path.line(to: NSMakePoint(bounds.maxX - insets.right, bounds.maxY))
-        path.lineWidth = NSScreen.main?.backingScaleFactor ?? Metrics.defaultSeparatorWidth
+        path.lineWidth = NSScreen.main?.pointToPixelRatio ?? Metrics.defaultSeparatorWidth
 
         separatorColor.set()
         path.stroke()
