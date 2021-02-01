@@ -161,6 +161,14 @@ extension NSColor {
 
         return output ?? .simplenoteBrandColor
     }
+
+    static var simplenoteExcerptHighlightColor: NSColor {
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
+    }
+
+    static var simplenoteSelectedExcerptHighlightColor: NSColor {
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue10)
+    }
 }
 
 

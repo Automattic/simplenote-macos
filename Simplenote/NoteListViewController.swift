@@ -525,6 +525,7 @@ private extension NoteListViewController {
         noteView.title = note.titlePreview
         noteView.body = note.bodyExcerpt(keywords: searchQuery?.keywords)
         noteView.bodyPrefix = bodyPrefix(for: note)
+        noteView.keywords = searchQuery?.keywords
         noteView.rendersInCondensedMode = Options.shared.notesListCondensed
 
         noteView.refreshStyle()
