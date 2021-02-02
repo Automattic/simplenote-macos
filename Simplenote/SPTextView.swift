@@ -16,6 +16,8 @@ class SPTextView: NSTextView {
                 return
             }
 
+            textStorage.beginEditing()
+
             for range in oldValue where range.upperBound <= textStorage.fullRange.upperBound {
                 textStorage.removeAttribute(.backgroundColor, range: range)
             }
@@ -25,6 +27,8 @@ class SPTextView: NSTextView {
                     .backgroundColor: NSColor.simplenoteEditorSearchHighlightColor
                 ], range: range)
             }
+
+            textStorage.endEditing()
         }
     }
 
