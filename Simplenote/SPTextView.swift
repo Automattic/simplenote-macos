@@ -12,7 +12,7 @@ class SPTextView: NSTextView {
     ///
     var highlightedRanges: [NSRange] = [] {
         didSet {
-            guard let textStorage = textStorage else {
+            guard let textStorage = simplenoteStorage else {
                 return
             }
 
@@ -23,12 +23,10 @@ class SPTextView: NSTextView {
             }
 
             for range in highlightedRanges {
-                textStorage.setAttributes([
-                    .backgroundColor: NSColor.simplenoteEditorSearchHighlightColor
-                ], range: range)
+                textStorage.addAttribute(.backgroundColor, value: NSColor.simplenoteEditorSearchHighlightColor, range: range)
             }
 
-            textStorage.endEditing()
+            textStorage.endEditingWithoutRestyling()
         }
     }
 
