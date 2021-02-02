@@ -4,45 +4,24 @@ import AppKit
 //
 @objc
 final class SearchMapView: NSView {
-    private var barViews: [NSView] = []
+    private var positions: [CGFloat] = []
 
     /// Update with positions of bars. Position is from 0.0 to 1.0
     ///
     func update(with positions: [CGFloat]) {
-        for barView in barViews {
-            barView.removeFromSuperview()
-        }
-        barViews = []
-        for position in positions {
-            createBarView(with: position)
-        }
+        self.positions = positions
+        needsDisplay = true
     }
 
-    private func createBarView(with position: CGFloat) {
-        let view = NSView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.simplenoteExcerptHighlightColor.cgColor
-
-        addSubview(view)
-
-        let verticalCenterConstraint = NSLayoutConstraint(item: view,
-                                                          attribute: .centerY,
-                                                          relatedBy: .equal,
-                                                          toItem: self,
-                                                          attribute: .centerY,
-                                                          multiplier: position * 2,
-                                                          constant: 0.0)
-        verticalCenterConstraint.priority = .defaultHigh
-
-        NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: Metrics.barHeight),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            verticalCenterConstraint
-        ])
-
-        barViews.append(view)
+    override func draw(_ dirtyRect: NSRect) {
+        NSColor.simplenoteExcerptHighlightColor.set()
+        for position in positions {
+            let rect = NSRect(x: 0,
+                              y: (bounds.height - bounds.height * position) - Metrics.barHeight / 2,
+                              width: bounds.width,
+                              height: Metrics.barHeight)
+            NSBezierPath.fill(rect)
+        }
     }
 }
 
