@@ -16,8 +16,9 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var clipView: NSClipView!
     @IBOutlet private var tableView: SPTableView!
     @IBOutlet private var headerEffectView: NSVisualEffectView!
-    @IBOutlet private var headerStackView: NSStackView!
-    @IBOutlet private var headerDividerView: BackgroundView!
+    @IBOutlet private var headerContainerView: NSView!
+    @IBOutlet private var titleDividerView: BackgroundView!
+    @IBOutlet private var sortbarDividerView: BackgroundView!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var sortbarView: SortBarView!
     @IBOutlet private var sortbarMenu: NSMenu!
@@ -125,7 +126,8 @@ extension NoteListViewController {
     func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
-        headerDividerView.borderColor = .simplenoteSecondaryDividerColor
+        titleDividerView.borderColor = .simplenoteDividerColor
+        sortbarDividerView.borderColor = .simplenoteSecondaryDividerColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
         titleLabel.textColor = .simplenoteTextColor
@@ -429,7 +431,7 @@ private extension NoteListViewController {
 
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
-        headerDividerView.alphaValue = newAlpha
+        titleDividerView.alphaValue = newAlpha
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
@@ -810,9 +812,9 @@ extension NoteListViewController {
             return
         }
 
-        let clickLocation = recognizer.location(in: headerStackView)
+        let clickLocation = recognizer.location(in: headerContainerView)
         let menuOrigin = NSPoint(x: clickLocation.x, y: sortbarView.frame.minY)
 
-        sortbarMenu.popUp(positioning: nil, at: menuOrigin, in: headerStackView)
+        sortbarMenu.popUp(positioning: nil, at: menuOrigin, in: headerContainerView)
     }
 }
