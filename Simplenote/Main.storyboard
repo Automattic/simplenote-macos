@@ -360,19 +360,19 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="538" width="294" height="80"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="wpb-oV-A2U" userLabel="Title Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="wpb-oV-A2U" userLabel="Top Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="294" height="52"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cpV-AA-3mi" userLabel="SortBar Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cpV-AA-3mi" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Title Container View">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Title View">
                                         <rect key="frame" x="16" y="28" width="262" height="52"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
@@ -407,7 +407,7 @@
                                             <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="DV3-ul-I2L" userLabel="SortBar Container View" customClass="SortBarView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="DV3-ul-I2L" userLabel="SortBar View" customClass="SortBarView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="16" y="0.0" width="262" height="28"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-zn-kyD">
@@ -527,19 +527,19 @@
                     <connections>
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
+                        <outlet property="bottomDividerView" destination="cpV-AA-3mi" id="NJl-dX-mqp"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
                         <outlet property="headerContainerView" destination="dMC-MU-RmS" id="3K3-ly-nyU"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
-                        <outlet property="sortbarDividerView" destination="cpV-AA-3mi" id="zQa-Sh-2Yi"/>
                         <outlet property="sortbarMenu" destination="gYa-0Y-UQ7" id="ztX-V1-UHE"/>
                         <outlet property="sortbarView" destination="DV3-ul-I2L" id="ZzI-lw-Y5Y"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
-                        <outlet property="titleDividerView" destination="wpb-oV-A2U" id="aeO-zK-vgr"/>
                         <outlet property="titleLabel" destination="sHv-fV-cSL" id="gt3-Pp-KH6"/>
+                        <outlet property="topDividerView" destination="wpb-oV-A2U" id="4jU-o3-DOg"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
                 </viewController>
