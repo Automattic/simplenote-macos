@@ -181,6 +181,10 @@ extension NSColor {
     static var simplenoteSelectedExcerptHighlightColor: NSColor {
         dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue20)
     }
+
+    static var simplenoteEditorSearchHighlightColor: NSColor {
+        dynamicColor(lightStudio: .spBlue5, darkStudio: .spBlue50, darkColorAlpha: AppKitConstants.alpha0_5)
+    }
 }
 
 

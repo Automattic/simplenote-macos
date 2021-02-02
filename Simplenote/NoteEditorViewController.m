@@ -215,9 +215,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         // Force selection to start; not doing this can cause an NSTextStorage exception when
         // switching away from long notes (> 5000 characters)
         [self.noteEditor setSelectedRange:NSMakeRange(0, 0)];
-        [self.noteEditor displayNoteWithContent:self.note.content];
+        [self displayContent:self.note.content];
     } else {
-        [self.noteEditor displayNoteWithContent:@""];
+        [self displayContent:nil];
     }
 
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
@@ -234,7 +234,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     self.note = nil;
     self.selectedNotes = notes;
-    [self.noteEditor displayNoteWithContent:@""];
+    [self displayContent:nil];
 
     [self refreshToolbarActions];
     [self refreshEditorActions];
@@ -372,7 +372,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
                                              oldText:self.noteContentBeforeRemoteUpdate
                                      currentLocation:self.cursorLocationBeforeRemoteUpdate];
 
-    [self.noteEditor displayNoteWithContent:self.note.content];
+    [self displayContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
     [self refreshTagsField];
 }
@@ -604,6 +604,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self startObservingEditorProperties:editor];
 
     _noteEditor = editor;
+
+    [self observeEditorIsFirstResponder];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -650,7 +652,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (void)fixChecklistColoring
 {
     NSString *content = [self.noteEditor plainTextContent];
-    [self.noteEditor displayNoteWithContent:content];
+    [self displayContent:content];
 }
 
 

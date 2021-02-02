@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SPTextView.h"
 
 @protocol SPTableViewDelegate <NSTableViewDelegate>
 

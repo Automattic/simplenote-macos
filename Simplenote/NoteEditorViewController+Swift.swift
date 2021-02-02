@@ -1,6 +1,7 @@
 import Foundation
 import SimplenoteFoundation
 import SimplenoteInterlinks
+import SimplenoteSearch
 
 
 // MARK: - Interface Initialization
@@ -223,8 +224,7 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshEditorText() {
-        let content = note?.content ?? ""
-        noteEditor.displayNote(content: content)
+        displayContent(note?.content)
     }
 
     /// Refreshes the Editor's UX
@@ -317,6 +317,7 @@ extension NoteEditorViewController: ToolbarDelegate {
 
     func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
         searchDelegate?.editorController(self, didSearchKeyword: keyword)
+        updateKeywordsHighlight()
     }
 }
 
@@ -758,7 +759,7 @@ extension NoteEditorViewController: PublishViewControllerDelegate {
 extension NoteEditorViewController: VersionsViewControllerDelegate {
 
     func versionsController(_ controller: VersionsViewController, selected version: Version) {
-        noteEditor.displayNote(content: version.content)
+        displayContent(version.content)
     }
 
     func versionsControllerDidClickRestore(_ controller: VersionsViewController) {
@@ -914,6 +915,40 @@ private extension NoteEditorViewController {
         self.interlinkWindowController = interlinkWindowController
 
         return interlinkWindowController
+    }
+}
+
+
+// MARK: - Content and Highlights
+//
+extension NoteEditorViewController {
+    @objc
+    func displayContent(_ content: String?) {
+        noteEditor.displayNote(content: content ?? "")
+        updateKeywordsHighlight()
+    }
+
+    @objc
+    func observeEditorIsFirstResponder() {
+        noteEditor.onResignFirstResponder = { [weak self] in
+            self?.updateKeywordsHighlight()
+        }
+    }
+
+    private var searchQuery: SearchQuery {
+        SearchQuery(searchText: toolbarView.searchField.stringValue)
+    }
+
+    private func updateKeywordsHighlight() {
+        let keywords = searchQuery.keywords
+
+        guard !noteEditor.isFirstResponder, !keywords.isEmpty else {
+            noteEditor.highlightedRanges = []
+            return
+        }
+
+        let slice = noteEditor.attributedString().string.contentSlice(matching: keywords)
+        noteEditor.highlightedRanges = slice?.nsMatches ?? []
     }
 }
 

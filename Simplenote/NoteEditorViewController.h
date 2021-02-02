@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Note.h"
-#import "SPTextView.h"
 @import Simperium_OSX;
 
 @class BackgroundView;
@@ -19,7 +18,7 @@
 @class Storage;
 @class TagsField;
 @class ToolbarView;
-
+@class SPTextView;
 
 NS_ASSUME_NONNULL_BEGIN
 
