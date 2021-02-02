@@ -12,21 +12,21 @@ class SPTextView: NSTextView {
     ///
     var highlightedRanges: [NSRange] = [] {
         didSet {
-            guard let textStorage = textStorage else {
+            guard let textStorage = simplenoteStorage else {
                 return
             }
 
             textStorage.beginEditing()
+
             for range in oldValue where range.upperBound <= textStorage.fullRange.upperBound {
                 textStorage.removeAttribute(.backgroundColor, range: range)
             }
 
             for range in highlightedRanges {
-                textStorage.setAttributes([
-                    .backgroundColor: NSColor.simplenoteEditorSearchHighlightColor
-                ], range: range)
+                textStorage.addAttribute(.backgroundColor, value: NSColor.simplenoteEditorSearchHighlightColor, range: range)
             }
-            textStorage.endEditing()
+
+            textStorage.endEditingWithoutRestyling()
         }
     }
 
