@@ -939,16 +939,77 @@ extension NoteEditorViewController {
         SearchQuery(searchText: toolbarView.searchField.stringValue)
     }
 
-    private func updateKeywordsHighlight() {
+    private var highlightRanges: [NSRange] {
         let keywords = searchQuery.keywords
 
         guard !noteEditor.isFirstResponder, !keywords.isEmpty else {
-            noteEditor.highlightedRanges = []
-            return
+            return []
         }
 
         let slice = noteEditor.attributedString().string.contentSlice(matching: keywords)
-        noteEditor.highlightedRanges = slice?.nsMatches ?? []
+        return slice?.nsMatches ?? []
+    }
+
+    private func updateKeywordsHighlight() {
+        let ranges = highlightRanges
+
+        noteEditor.highlightedRanges = ranges
+
+        createSearchMapViewIfNeeded()
+        searchMapView?.update(with: searchBarPositions(with: ranges))
+    }
+}
+
+
+// MARK: - Search Map
+//
+extension NoteEditorViewController {
+    private func createSearchMapViewIfNeeded() {
+        guard searchMapView == nil else {
+            return
+        }
+
+        let searchMapView = SearchMapView()
+        searchMapView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(searchMapView)
+
+        NSLayoutConstraint.activate([
+            searchMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchMapView.widthAnchor.constraint(equalToConstant: EditorMetrics.searchMapWidth),
+            searchMapView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            searchMapView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: SplitItemMetrics.editorScrollerTopInset)
+        ])
+
+        self.searchMapView = searchMapView
+    }
+
+    /// Returns position relative to the total text container height.
+    /// Position value is from 0 to 1
+    ///
+    private func searchBarPositions(with searchRanges: [NSRange]) -> [CGFloat] {
+        let textContainerHeight = textContainerHeightForSearchMap()
+        guard textContainerHeight > CGFloat.leastNormalMagnitude else {
+            return []
+        }
+
+        return searchRanges.map {
+            var boundingRect = noteEditor.boundingRect(for: $0)
+            boundingRect.origin.y -= noteEditor.textContainerOrigin.y
+            return max(boundingRect.midY / textContainerHeight, CGFloat.leastNormalMagnitude)
+        }
+    }
+
+    private func textContainerHeightForSearchMap() -> CGFloat {
+        guard let layoutManager = noteEditor.layoutManager,
+              let textContainer = noteEditor.textContainer else {
+            return 0.0
+        }
+
+        layoutManager.ensureLayout(for: textContainer)
+        let textContainerHeight = layoutManager.usedRect(for: textContainer).size.height
+        let textContainerMinHeight = scrollView.frame.size.height - SplitItemMetrics.editorScrollerTopInset
+        return max(textContainerHeight, textContainerMinHeight)
     }
 }
 
@@ -964,4 +1025,8 @@ private enum EditorMetrics {
     /// Minimum Text Padding: To be applied Vertically / Horizontally
     ///
     static let minimumPadding = CGFloat(20)
+
+    /// Search map width
+    ///
+    static let searchMapWidth = CGFloat(12)
 }
