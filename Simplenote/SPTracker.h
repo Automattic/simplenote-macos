@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackListTrashEmptied;
 + (void)trackListNotesSearched;
 + (void)trackListTrashPressed;
++ (void)trackListSortBarModeChanged;
 
 #pragma mark - Preferences
 + (void)trackSettingsFontSizeUpdated;
