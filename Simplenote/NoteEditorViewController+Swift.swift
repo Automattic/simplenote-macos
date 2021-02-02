@@ -939,7 +939,7 @@ extension NoteEditorViewController {
         SearchQuery(searchText: toolbarView.searchField.stringValue)
     }
 
-    private var highlightRanges: [NSRange] {
+    private var highlightedRanges: [NSRange] {
         let keywords = searchQuery.keywords
 
         guard !noteEditor.isFirstResponder, !keywords.isEmpty else {
@@ -951,7 +951,7 @@ extension NoteEditorViewController {
     }
 
     private func updateKeywordsHighlight() {
-        let ranges = highlightRanges
+        let ranges = highlightedRanges
 
         noteEditor.highlightedRanges = ranges
 
