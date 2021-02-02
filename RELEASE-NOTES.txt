@@ -2,6 +2,7 @@
 -----
 - Searching for a note is showing relevant excerpts #830
 - Search keywords are highlighted in the editor #835
+- Add search map to the editor #836
 
 2.7
 -----
