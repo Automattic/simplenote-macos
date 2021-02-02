@@ -1,7 +1,10 @@
+2.8
+-----
+- SortBar is now always visible #831
+
 2.7
 -----
 - New account verification screen #800
-- SortBar is now always visible #831
 
 2.6
 -----
