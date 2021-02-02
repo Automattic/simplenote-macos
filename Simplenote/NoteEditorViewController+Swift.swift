@@ -930,7 +930,7 @@ extension NoteEditorViewController {
 
     @objc
     func observeEditorIsFirstResponder() {
-        noteEditor.onResignFirstResponder = { [weak self] in
+        noteEditor.onUpdateFirstResponder = { [weak self] in
             self?.updateKeywordsHighlight()
         }
     }

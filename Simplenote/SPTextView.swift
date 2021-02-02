@@ -4,9 +4,9 @@ import AppKit
 //
 class SPTextView: NSTextView {
 
-    /// Is called when text view resigns being first responder
+    /// Is called when first responder status changes
     ///
-    var onResignFirstResponder: (() -> Void)?
+    var onUpdateFirstResponder: (() -> Void)?
 
     /// Highlighted ranges
     ///
@@ -16,6 +16,7 @@ class SPTextView: NSTextView {
                 return
             }
 
+            textStorage.beginEditing()
             for range in oldValue where range.upperBound <= textStorage.fullRange.upperBound {
                 textStorage.removeAttribute(.backgroundColor, range: range)
             }
@@ -25,6 +26,7 @@ class SPTextView: NSTextView {
                     .backgroundColor: NSColor.simplenoteEditorSearchHighlightColor
                 ], range: range)
             }
+            textStorage.endEditing()
         }
     }
 
@@ -74,7 +76,10 @@ class SPTextView: NSTextView {
     override func becomeFirstResponder() -> Bool {
         let value = super.becomeFirstResponder()
         if value {
-            highlightedRanges = []
+            // Async to wait for the state to fully update
+            DispatchQueue.main.async {
+                self.onUpdateFirstResponder?()
+            }
         }
         return value
     }
@@ -84,7 +89,7 @@ class SPTextView: NSTextView {
         if value {
             // Async to wait for the state to fully update
             DispatchQueue.main.async {
-                self.onResignFirstResponder?()
+                self.onUpdateFirstResponder?()
             }
         }
         return value

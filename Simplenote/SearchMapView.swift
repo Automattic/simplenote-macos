@@ -33,7 +33,7 @@ final class SearchMapView: NSView {
                                                           attribute: .centerY,
                                                           multiplier: position * 2,
                                                           constant: 0.0)
-        verticalCenterConstraint.priority = .defaultLow
+        verticalCenterConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
             view.heightAnchor.constraint(equalToConstant: Metrics.barHeight),
