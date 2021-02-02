@@ -28,7 +28,6 @@
 		2614F1E91405A1150031AE94 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1E81405A1150031AE94 /* CoreServices.framework */; };
 		2614F1EB1405A1250031AE94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EA1405A1250031AE94 /* SystemConfiguration.framework */; };
 		2614F1ED1405A1450031AE94 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614F1EC1405A1450031AE94 /* libz.dylib */; };
-		26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
 		26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F72A8C14032D2A00A7935E /* Cocoa.framework */; };
 		26F72A9914032D2A00A7935E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
@@ -89,7 +88,6 @@
 		466FFEAA17CC10A800399652 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
 		466FFEAB17CC10A800399652 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DE1405A0B10031AE94 /* Tag.m */; };
 		466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */; };
-		466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F01405A6A800186392 /* NSString+Condensing.m */; };
 		466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DBB1F21405A6A800186392 /* NSString+Metadata.m */; };
 		466FFEB417CC10A800399652 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		466FFEB817CC10A800399652 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71233DD414DB6CCF00139E61 /* NoteEditorViewController.m */; };
@@ -201,7 +199,6 @@
 		B53BF1A124AC1FB800938C34 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* Version.swift */; };
 		B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
 		B53BF1A524AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
-		B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */; };
 		B53FF5472476F9450014E928 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5462476F9450014E928 /* Constants.swift */; };
 		B5438012246358B700F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
 		B5438013246358BA00F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
@@ -478,8 +475,6 @@
 		2614F1EA1405A1250031AE94 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2614F1EC1405A1450031AE94 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2614F1EE1405A14D0031AE94 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		26DBB1EF1405A6A800186392 /* NSString+Condensing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Condensing.h"; sourceTree = "<group>"; };
-		26DBB1F01405A6A800186392 /* NSString+Condensing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Condensing.m"; sourceTree = "<group>"; };
 		26DBB1F11405A6A800186392 /* NSString+Metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Metadata.h"; sourceTree = "<group>"; };
 		26DBB1F21405A6A800186392 /* NSString+Metadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Metadata.m"; sourceTree = "<group>"; };
 		26F72A8814032D2A00A7935E /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -625,7 +620,6 @@
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B53BF19F24AC1FB800938C34 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
-		B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringCondensingTests.swift; sourceTree = "<group>"; };
 		B53FF5462476F9450014E928 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B543800F246355FA00F34B1C /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		B5469FC92587DE3F007ED7BE /* SortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMode.swift; sourceTree = "<group>"; };
@@ -1024,8 +1018,6 @@
 		463774DC171F114900E2E333 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				26DBB1EF1405A6A800186392 /* NSString+Condensing.h */,
-				26DBB1F01405A6A800186392 /* NSString+Condensing.m */,
 				26DBB1F11405A6A800186392 /* NSString+Metadata.h */,
 				26DBB1F21405A6A800186392 /* NSString+Metadata.m */,
 				71DCEBE5152E2ED1002744C0 /* NSMutableAttributedString+Styling.h */,
@@ -1339,7 +1331,6 @@
 			children = (
 				B5B17F352425641E00DD5B34 /* NSAttributedStringSimplenoteTests.swift */,
 				B5985AD02429499D0044EDE9 /* NSRegularExpressionSimplenoteTests.swift */,
-				B53FF5442476EFFE0014E928 /* NSStringCondensingTests.swift */,
 				B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */,
 				B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */,
 				B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */,
@@ -1995,7 +1986,6 @@
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				B557A0E325BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,
-				26DBB1F41405A6A800186392 /* NSString+Condensing.m in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */,
 				A6BBDA3325501398005C8343 /* SPTextView+Swift.swift in Sources */,
@@ -2155,7 +2145,6 @@
 				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
 				B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
-				466FFEAD17CC10A800399652 /* NSString+Condensing.m in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
 				B58BBD3E2523FF160025135F /* AutocompleteWindow.swift in Sources */,
@@ -2299,7 +2288,6 @@
 				B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */,
 				B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */,
 				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
-				B53FF5452476EFFE0014E928 /* NSStringCondensingTests.swift in Sources */,
 				B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */,
 				B502C22325BA345700145D6C /* AccountVerificationControllerTests.swift in Sources */,
 				B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */,

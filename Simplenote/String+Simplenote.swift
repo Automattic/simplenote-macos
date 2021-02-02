@@ -85,6 +85,12 @@ extension String {
 
         return String(dropFirst(prefix.count))
     }
+
+    /// Returns a new string replacing newlines with spaces
+    ///
+    func replacingNewlinesWithSpaces() -> String {
+        split(whereSeparator: { $0.isNewline }).joined(separator: " ")
+    }
 }
 
 

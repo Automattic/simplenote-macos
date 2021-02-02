@@ -6,7 +6,6 @@
 //
 
 #import "Note.h"
-#import "NSString+Condensing.h"
 #import "NSString+Metadata.h"
 #import "JSONKit+Simplenote.h"
 #import "SimplenoteAppDelegate.h"
