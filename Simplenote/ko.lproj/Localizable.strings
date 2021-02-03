@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
+/* Translation-Revision-Date: 2021-01-22 17:54:07+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -149,7 +149,7 @@
 "New note..." = "새 메모...";
 
 /* No Notes Available */
-"No Notes" = "No Notes";
+"No Notes" = "메모 없음";
 
 /* No Search Results */
 "No Results" = "결과 없음";
@@ -218,7 +218,7 @@
 "Search" = "검색";
 
 /* Search Results Title */
-"Searching" = "Searching";
+"Searching" = "검색 중";
 
 /* Share Menu Action */
 "Share" = "공유";
@@ -242,7 +242,7 @@
 "Skip" = "생략하기";
 
 /* Sortbar Title */
-"Sort" = "Sort";
+"Sort" = "정렬";
 
 /* Tags Section Name */
 "Tags" = "태그";
@@ -254,7 +254,7 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "이 정보는 개인정보 취급방침에 명시된 것처럼 제품을 개선하고, 더욱 관련성 있는 마케팅을 제공하며, Simplenote.com 환경을 개인 설정하는 데 도움을 줍니다.";
 
 /* Tooltip: Restore a trashed note */
-"Toggle Sidebar" = "Toggle Sidebar";
+"Toggle Sidebar" = "사이드바 전환";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */
