@@ -930,7 +930,7 @@ extension NoteEditorViewController {
     }
 
     private var searchQuery: SearchQuery {
-        SearchQuery(searchText: toolbarView.searchField.stringValue)
+        SearchQuery(searchText: "") //toolbarView.searchField.stringValue)
     }
 
     private var highlightedRanges: [NSRange] {

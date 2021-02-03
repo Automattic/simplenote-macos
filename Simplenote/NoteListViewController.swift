@@ -16,14 +16,17 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var tableView: SPTableView!
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerContainerView: NSView!
-    @IBOutlet private var topDividerView: BackgroundView!
-    @IBOutlet private var bottomDividerView: BackgroundView!
+    @IBOutlet private var headerDividerView: BackgroundView!
+    @IBOutlet private var searchField: NSSearchField!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var sortbarView: SortBarView!
     @IBOutlet private var sortbarMenu: NSMenu!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
-    @IBOutlet private var titleSemaphoreLeadingConstraint: NSLayoutConstraint!
+
+    /// Layout
+    ///
+    private var searchFieldSemaphoreLeadingConstraint: NSLayoutConstraint!
 
     /// ListController
     ///
@@ -125,8 +128,7 @@ extension NoteListViewController {
     func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
-        topDividerView.borderColor = .simplenoteDividerColor
-        bottomDividerView.borderColor = .simplenoteSecondaryDividerColor
+        headerDividerView.borderColor = .simplenoteDividerColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
 
@@ -152,7 +154,7 @@ extension NoteListViewController {
     /// Indicates if the Semaphore Leading hasn't been initialized
     ///
     private var mustSetupSemaphoreLeadingConstraint: Bool {
-        titleSemaphoreLeadingConstraint == nil
+        searchFieldSemaphoreLeadingConstraint == nil
     }
 
     /// # Semaphore Leading:
@@ -167,10 +169,10 @@ extension NoteListViewController {
             return
         }
 
-//        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
-//        newConstraint.priority = .defaultLow
-//        newConstraint.isActive = true
-//        titleSemaphoreLeadingConstraint = newConstraint
+        let newConstraint = searchField.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
+        newConstraint.priority = .defaultLow
+        newConstraint.isActive = true
+        searchFieldSemaphoreLeadingConstraint = newConstraint
     }
 
     /// Refreshes the Semaphore Leading
@@ -180,7 +182,7 @@ extension NoteListViewController {
             return
         }
 
-        titleSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
+        searchFieldSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
     }
 }
 
@@ -421,7 +423,7 @@ private extension NoteListViewController {
 
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
-        topDividerView.alphaValue = newAlpha
+        headerDividerView.alphaValue = newAlpha
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }

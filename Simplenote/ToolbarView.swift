@@ -29,7 +29,7 @@ class ToolbarView: NSView {
 
     /// Search Field
     ///
-    @IBOutlet private(set) var searchField: NSSearchField!
+//    @IBOutlet private(set) var searchField: NSSearchField!
 
     /// Toolbar Delegate
     ///
@@ -53,7 +53,7 @@ class ToolbarView: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupActionButtons()
-        setupSearchField()
+//        setupSearchField()
         refreshStyle()
         startListeningToNotifications()
     }
@@ -113,8 +113,8 @@ private extension ToolbarView {
             button.contentTintColor = .simplenoteActionButtonTintColor
         }
 
-        searchField.textColor = .simplenoteTextColor
-        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
+//        searchField.textColor = .simplenoteTextColor
+//        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
     }
 
     func setupActionButtons() {
@@ -130,9 +130,9 @@ private extension ToolbarView {
         }
     }
 
-    func setupSearchField() {
-        searchField.centersPlaceholder = false
-    }
+//    func setupSearchField() {
+//        searchField.centersPlaceholder = false
+//    }
 }
 
 
@@ -154,15 +154,15 @@ extension ToolbarView {
     /// Enters Search Mode whenever the current Toolbar State allows
     ///
     func beginSearch() {
-        window?.makeFirstResponder(self.searchField)
+//        window?.makeFirstResponder(self.searchField)
         delegate?.toolbarDidBeginSearch()
     }
 
     /// Ends Search whenever the SearchBar was actually visible
     ///
     func endSearch() {
-        searchField.cancelSearch()
-        searchField.resignFirstResponder()
+//        searchField.cancelSearch()
+//        searchField.resignFirstResponder()
         delegate?.toolbarDidEndSearch()
     }
 }
@@ -178,7 +178,7 @@ extension ToolbarView: NSSearchFieldDelegate {
 
     @IBAction
     public func performSearch(_ sender: Any) {
-        delegate?.toolbar(self, didSearch: searchField.stringValue)
+//        delegate?.toolbar(self, didSearch: searchField.stringValue)
     }
 }
 
