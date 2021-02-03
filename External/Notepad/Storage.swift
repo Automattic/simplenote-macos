@@ -37,6 +37,9 @@ class Storage: NSTextStorage {
         return backingString
     }
 
+    /// Skip restyling after the change
+    ///
+    private var skipRestyling: Bool = false
 
     /// Designated Initializer
     ///
@@ -129,6 +132,11 @@ class Storage: NSTextStorage {
     /// Processes any edits made to the text in the editor.
     ///
     override func processEditing() {
+        guard !skipRestyling else {
+            super.processEditing()
+            return
+        }
+
         let foundationBackingString = backingString as NSString
         let lineRange = foundationBackingString.lineRange(for: NSRange(location: NSMaxRange(editedRange), length: 0))
         let extendedRange = NSUnionRange(editedRange, lineRange)
@@ -190,6 +198,12 @@ class Storage: NSTextStorage {
     @objc
     func refreshStyle(markdownEnabled: Bool) {
         self.theme = Theme(markdownEnabled: markdownEnabled)
+    }
+
+    func endEditingWithoutRestyling() {
+        skipRestyling = true
+        endEditing()
+        skipRestyling = false
     }
 }
 
