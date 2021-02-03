@@ -560,20 +560,21 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 }
 
 
-// MARK: - EditorControllerSearchDelegate
+// MARK: - NSSearchFieldDelegate
 //
-extension NoteListViewController {
+extension NoteListViewController: NSSearchFieldDelegate {
 
     public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
         SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
     }
 
-    public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
-        // NO-OP
+    public func controlTextDidEndEditing(_ obj: Notification) {
+//        delegate?.toolbarDidEndSearch()
     }
 
-    public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
-        searchQuery = SearchQuery(searchText: keyword)
+    @IBAction
+    public func performSearch(_ sender: Any) {
+        searchQuery = SearchQuery(searchText: searchField.stringValue)
 
         refreshEverything()
 

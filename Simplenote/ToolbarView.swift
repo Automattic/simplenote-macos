@@ -18,10 +18,6 @@ class ToolbarView: NSView {
     @IBOutlet private(set) var previewButton: NSButton!
     @IBOutlet private(set) var restoreButton: NSButton!
 
-    /// Search Field
-    ///
-//    @IBOutlet private(set) var searchField: NSSearchField!
-
     /// Represents the Toolbar's State
     ///
     var state: ToolbarState  = .default {
@@ -143,20 +139,5 @@ extension ToolbarView {
 //        searchField.cancelSearch()
 //        searchField.resignFirstResponder()
 //        delegate?.toolbarDidEndSearch()
-    }
-}
-
-
-// MARK: - NSSearchFieldDelegate
-//
-extension ToolbarView: NSSearchFieldDelegate {
-
-    public func controlTextDidEndEditing(_ obj: Notification) {
-//        delegate?.toolbarDidEndSearch()
-    }
-
-    @IBAction
-    public func performSearch(_ sender: Any) {
-//        delegate?.toolbar(self, didSearch: searchField.stringValue)
     }
 }

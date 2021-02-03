@@ -379,6 +379,10 @@
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </searchFieldCell>
+                                                <connections>
+                                                    <action selector="performSearch:" target="JtV-0Z-Zh8" id="wWj-Jf-LAH"/>
+                                                    <outlet property="delegate" destination="JtV-0Z-Zh8" id="vnb-XE-0zI"/>
+                                                </connections>
                                             </searchField>
                                             <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                                 <rect key="frame" x="240" y="15" width="22" height="22"/>
