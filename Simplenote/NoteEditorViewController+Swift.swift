@@ -232,6 +232,7 @@ extension NoteEditorViewController {
     @objc
     func refreshStyle() {
         backgroundView.fillColor                = .simplenoteSecondaryBackgroundColor
+        headerDividerView.borderColor           = .simplenoteDividerColor
         bottomDividerView.borderColor           = .simplenoteDividerColor
         noteEditor.insertionPointColor          = .simplenoteEditorTextColor
         noteEditor.textColor                    = .simplenoteEditorTextColor
@@ -624,6 +625,7 @@ extension NoteEditorViewController {
     @objc
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
+        headerDividerView.alphaValue = newAlpha
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
