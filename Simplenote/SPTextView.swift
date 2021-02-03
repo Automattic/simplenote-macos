@@ -41,7 +41,9 @@ class SPTextView: NSTextView {
         get {
             simplenoteStorage?.typingAttributes ?? super.typingAttributes
         }
-        set { }
+        set {
+            super.typingAttributes = newValue
+        }
     }
 
     private var simplenoteStorage: Storage? {
