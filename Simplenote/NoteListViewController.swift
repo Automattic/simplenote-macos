@@ -554,6 +554,7 @@ private extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
+        dismissSearch()
         displayAndSelectNote(with: simperiumKey)
     }
 
@@ -588,7 +589,8 @@ extension NoteListViewController {
 
     /// Ends Search whenever the SearchBar was actually visible
     ///
-    func endSearch() {
+    @objc
+    func dismissSearch() {
         searchField.cancelSearch()
         searchField.resignFirstResponder()
     }
@@ -732,12 +734,16 @@ extension NoteListViewController {
     @objc
     func didBeginViewingTag(_ note: Notification) {
         SPTracker.trackTagRowPressed()
+
+        dismissSearch()
         refreshEverything()
     }
 
     @objc
     func didBeginViewingTrash(_ note: Notification) {
         SPTracker.trackListTrashPressed()
+
+        dismissSearch()
         refreshEverything()
     }
 

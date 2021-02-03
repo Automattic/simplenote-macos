@@ -283,17 +283,6 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Search API
-//
-extension NoteEditorViewController {
-
-    @objc
-    func ensureSearchIsDismissed() {
-//        toolbarView.endSearch()
-    }
-}
-
-
 // MARK: - ToolbarDelegate
 //
 extension NoteEditorViewController: NoteListSearchDelegate {
