@@ -30,11 +30,6 @@ extension NoteEditorViewController {
     }
 
     @objc
-    func setupToolbarView() {
-        toolbarView.delegate = self
-    }
-
-    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
@@ -306,18 +301,9 @@ extension NoteEditorViewController {
 
 // MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController: ToolbarDelegate {
-
-    func toolbarDidBeginSearch() {
-        searchDelegate?.editorControllerDidBeginSearch(self)
-    }
-
-    func toolbarDidEndSearch() {
-        searchDelegate?.editorControllerDidEndSearch(self)
-    }
+extension NoteEditorViewController {
 
     func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
-        searchDelegate?.editorController(self, didSearchKeyword: keyword)
         updateKeywordsHighlight()
     }
 }

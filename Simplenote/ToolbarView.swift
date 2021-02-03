@@ -1,15 +1,6 @@
 import Foundation
 
 
-// MARK: - ToolbarDelegate
-//
-protocol ToolbarDelegate: NSObject {
-    func toolbarDidBeginSearch()
-    func toolbarDidEndSearch()
-    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String)
-}
-
-
 // MARK: - ToolbarView
 //
 @objcMembers
@@ -30,10 +21,6 @@ class ToolbarView: NSView {
     /// Search Field
     ///
 //    @IBOutlet private(set) var searchField: NSSearchField!
-
-    /// Toolbar Delegate
-    ///
-    weak var delegate: ToolbarDelegate?
 
     /// Represents the Toolbar's State
     ///
@@ -155,7 +142,7 @@ extension ToolbarView {
     ///
     func beginSearch() {
 //        window?.makeFirstResponder(self.searchField)
-        delegate?.toolbarDidBeginSearch()
+//        delegate?.toolbarDidBeginSearch()
     }
 
     /// Ends Search whenever the SearchBar was actually visible
@@ -163,7 +150,7 @@ extension ToolbarView {
     func endSearch() {
 //        searchField.cancelSearch()
 //        searchField.resignFirstResponder()
-        delegate?.toolbarDidEndSearch()
+//        delegate?.toolbarDidEndSearch()
     }
 }
 
@@ -173,7 +160,7 @@ extension ToolbarView {
 extension ToolbarView: NSSearchFieldDelegate {
 
     public func controlTextDidEndEditing(_ obj: Notification) {
-        delegate?.toolbarDidEndSearch()
+//        delegate?.toolbarDidEndSearch()
     }
 
     @IBAction
