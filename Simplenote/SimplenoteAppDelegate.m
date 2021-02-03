@@ -99,6 +99,7 @@
     [self configureMainWindowController];
     [self applyStyle];
 
+    [self configureNotesController];
     [self configureEditorController];
     [self configureVerificationCoordinator];
     [self configureVersionsController];

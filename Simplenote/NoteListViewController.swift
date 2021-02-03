@@ -2,6 +2,13 @@ import Foundation
 import SimplenoteSearch
 
 
+// MARK: - NoteListSearchDelegate
+//
+protocol NoteListSearchDelegate: class {
+    func notesListViewControllerDidSearch(_ query: SearchQuery?)
+}
+
+
 // MARK: - NoteListViewController
 //
 class NoteListViewController: NSViewController {
@@ -34,13 +41,21 @@ class NoteListViewController: NSViewController {
 
     /// Search Query
     ///
-    private var searchQuery: SearchQuery?
+    private var searchQuery: SearchQuery? {
+        didSet {
+            searchDelegate?.notesListViewControllerDidSearch(searchQuery)
+        }
+    }
 
     /// TODO: Work in Progress. Decouple with a delegate please
     ///
     private var noteEditorViewController: NoteEditorViewController {
         SimplenoteAppDelegate.shared().noteEditorViewController
     }
+
+    /// Search Listener
+    ///
+    weak var searchDelegate: NoteListSearchDelegate?
 
 
     // MARK: - ViewController Lifecycle
@@ -560,7 +575,7 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 }
 
 
-// MARK: - Search API
+// MARK: - Public Search API
 //
 extension NoteListViewController {
 

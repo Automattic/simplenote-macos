@@ -75,6 +75,11 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureNotesController() {
+        noteListViewController.searchDelegate = noteEditorViewController
+    }
+
+    @objc
     func configureEditorController() {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController

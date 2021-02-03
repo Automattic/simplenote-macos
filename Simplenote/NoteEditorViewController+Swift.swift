@@ -296,9 +296,10 @@ extension NoteEditorViewController {
 
 // MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController {
+extension NoteEditorViewController: NoteListSearchDelegate {
 
-    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
+    func notesListViewControllerDidSearch(_ query: SearchQuery?) {
+        searchQuery = query
         updateKeywordsHighlight()
     }
 }
@@ -897,6 +898,7 @@ private extension NoteEditorViewController {
 // MARK: - Content and Highlights
 //
 extension NoteEditorViewController {
+
     @objc
     func displayContent(_ content: String?) {
         noteEditor.displayNote(content: content ?? "")
@@ -910,18 +912,12 @@ extension NoteEditorViewController {
         }
     }
 
-    private var searchQuery: SearchQuery {
-        SearchQuery(searchText: "") //toolbarView.searchField.stringValue)
-    }
-
     private var highlightedRanges: [NSRange] {
-        let keywords = searchQuery.keywords
-
-        guard !noteEditor.isFirstResponder, !keywords.isEmpty else {
+        guard !noteEditor.isFirstResponder, let searchQuery = searchQuery as? SearchQuery, !searchQuery.keywords.isEmpty else {
             return []
         }
 
-        let slice = noteEditor.attributedString().string.contentSlice(matching: keywords)
+        let slice = noteEditor.attributedString().string.contentSlice(matching: searchQuery.keywords)
         return slice?.nsMatches ?? []
     }
 
