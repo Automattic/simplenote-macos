@@ -140,6 +140,20 @@ private extension Window {
             return
         }
 
+        // Let's all calm down, and allow double click over the First Responder
+        if titlebarIntersectsFirstResponder {
+            return
+        }
+
         self.performZoom(nil)
+    }
+
+    var titlebarIntersectsFirstResponder: Bool {
+        guard let responder = firstResponder as? NSView else {
+            return false
+        }
+
+        let onScreenResponderBounds = responder.convert(responder.bounds, to: nil)
+        return titlebarRect.intersects(onScreenResponderBounds)
     }
 }
