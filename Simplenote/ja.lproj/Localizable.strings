@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
+/* Translation-Revision-Date: 2021-01-22 08:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ja_JP */
@@ -149,7 +149,7 @@
 "New note..." = "新しいメモ…";
 
 /* No Notes Available */
-"No Notes" = "No Notes";
+"No Notes" = "ノートがありません";
 
 /* No Search Results */
 "No Results" = "一致する結果がありません";
@@ -218,7 +218,7 @@
 "Search" = "検索";
 
 /* Search Results Title */
-"Searching" = "Searching";
+"Searching" = "検索中";
 
 /* Share Menu Action */
 "Share" = "共有";
@@ -242,7 +242,7 @@
 "Skip" = "スキップ";
 
 /* Sortbar Title */
-"Sort" = "Sort";
+"Sort" = "並べ替え";
 
 /* Tags Section Name */
 "Tags" = "タグ";
@@ -254,7 +254,7 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "この情報は、製品を改善し、マーケティングをより関連性の高いものとし、Simplenote.com の利用をパーソナライズするのに役立ちます。詳しくは、個人情報保護方針をご覧ください。";
 
 /* Tooltip: Restore a trashed note */
-"Toggle Sidebar" = "Toggle Sidebar";
+"Toggle Sidebar" = "サイドバーを切り替える";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

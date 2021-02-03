@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
+/* Translation-Revision-Date: 2021-01-22 14:54:05+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -149,7 +149,7 @@
 "New note..." = "Nieuwe notitie …";
 
 /* No Notes Available */
-"No Notes" = "No Notes";
+"No Notes" = "Geen notities";
 
 /* No Search Results */
 "No Results" = "Geen resultaten";
@@ -218,7 +218,7 @@
 "Search" = "Zoeken";
 
 /* Search Results Title */
-"Searching" = "Searching";
+"Searching" = "Bezig met zoeken";
 
 /* Share Menu Action */
 "Share" = "Delen";
@@ -242,7 +242,7 @@
 "Skip" = "Overslaan";
 
 /* Sortbar Title */
-"Sort" = "Sort";
+"Sort" = "Sorteren";
 
 /* Tags Section Name */
 "Tags" = "Tags";
@@ -254,7 +254,7 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Deze informatie helpt ons onze producten te verbeteren, marketing relevanter te maken en de Simplenote.com-ervaring op je af te stemmen. Je vindt hierover meer informatie in ons privacybeleid.";
 
 /* Tooltip: Restore a trashed note */
-"Toggle Sidebar" = "Toggle Sidebar";
+"Toggle Sidebar" = "Sidebar weergeven\/verbergen";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */
