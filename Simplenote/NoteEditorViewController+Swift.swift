@@ -931,7 +931,7 @@ extension NoteEditorViewController {
         noteEditor.highlightedRanges = ranges
 
         createSearchMapViewIfNeeded()
-        searchMapView?.update(with: searchBarPositions(with: ranges))
+        searchMapView?.update(with: noteEditor.relativeLocationsForText(in: ranges))
     }
 }
 
@@ -957,34 +957,6 @@ extension NoteEditorViewController {
         ])
 
         self.searchMapView = searchMapView
-    }
-
-    /// Returns position relative to the total text container height.
-    /// Position value is from 0 to 1
-    ///
-    private func searchBarPositions(with searchRanges: [NSRange]) -> [CGFloat] {
-        let textContainerHeight = textContainerHeightForSearchMap()
-        guard textContainerHeight > CGFloat.leastNormalMagnitude else {
-            return []
-        }
-
-        return searchRanges.map {
-            var boundingRect = noteEditor.boundingRect(for: $0)
-            boundingRect.origin.y -= noteEditor.textContainerOrigin.y
-            return max(boundingRect.midY / textContainerHeight, CGFloat.leastNormalMagnitude)
-        }
-    }
-
-    private func textContainerHeightForSearchMap() -> CGFloat {
-        guard let layoutManager = noteEditor.layoutManager,
-              let textContainer = noteEditor.textContainer else {
-            return 0.0
-        }
-
-        layoutManager.ensureLayout(for: textContainer)
-        let textContainerHeight = layoutManager.usedRect(for: textContainer).size.height
-        let textContainerMinHeight = scrollView.frame.size.height - SplitItemMetrics.editorScrollerTopInset
-        return max(textContainerHeight, textContainerMinHeight)
     }
 }
 

@@ -133,3 +133,37 @@ class SPTextView: NSTextView {
         return true
     }
 }
+
+
+// MARK: - Relative locations
+//
+extension SPTextView {
+    /// Returns position relative to the total text container height.
+    /// Position value is from 0 to 1
+    ///
+    func relativeLocationsForText(in ranges: [NSRange]) -> [CGFloat] {
+        let textContainerHeight = textContainerHeightForSearchMap()
+        guard textContainerHeight > CGFloat.leastNormalMagnitude else {
+            return []
+        }
+
+        return ranges.map {
+            var boundingRect = self.boundingRect(for: $0)
+            boundingRect.origin.y -= textContainerOrigin.y
+            return max(boundingRect.midY / textContainerHeight, CGFloat.leastNormalMagnitude)
+        }
+    }
+
+    private func textContainerHeightForSearchMap() -> CGFloat {
+        guard let layoutManager = layoutManager,
+              let textContainer = textContainer,
+              let scrollView = enclosingScrollView else {
+            return 0.0
+        }
+
+        layoutManager.ensureLayout(for: textContainer)
+        let textContainerHeight = layoutManager.usedRect(for: textContainer).size.height
+        let textContainerMinHeight = scrollView.frame.size.height - scrollView.scrollerInsets.top
+        return max(textContainerHeight, textContainerMinHeight)
+    }
+}
