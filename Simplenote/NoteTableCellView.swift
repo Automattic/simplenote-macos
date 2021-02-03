@@ -90,6 +90,10 @@ class NoteTableCellView: NSTableCellView {
     ///
     var bodyPrefix: String?
 
+    /// Keywords to use for higlighting title and body
+    ///
+    var keywords: [String]?
+
 
     // MARK: - Overridden Methods
 
@@ -141,9 +145,16 @@ extension NoteTableCellView {
 //
 private extension NoteTableCellView {
 
+    var excerptHighlightColor: NSColor {
+        selected ? .simplenoteSelectedExcerptHighlightColor : .simplenoteExcerptHighlightColor
+    }
+
     var titleString: NSAttributedString {
         return title.map {
-            NSAttributedString.previewString(text: $0, font: Fonts.title, color: .simplenoteTextColor)
+            return NSAttributedString.previewString(text: $0,
+                                                    font: Fonts.title,
+                                                    color: .simplenoteTextColor,
+                                                    highlighting: (keywords: keywords, color: excerptHighlightColor, font: Fonts.title))
         } ?? NSAttributedString()
     }
 
@@ -156,7 +167,10 @@ private extension NoteTableCellView {
         }
 
         if let bodySuffix = body {
-            bodyString += NSAttributedString.previewString(text: bodySuffix, font: Fonts.body, color: bodyColor)
+            bodyString += NSAttributedString.previewString(text: bodySuffix,
+                                                           font: Fonts.body,
+                                                           color: bodyColor,
+                                                           highlighting: (keywords: keywords, color: excerptHighlightColor, font: Fonts.bodyHighlight))
         }
 
         return bodyString
@@ -237,7 +251,10 @@ private enum Metrics {
 //
 private enum Fonts {
     static let title = NSFont.systemFont(ofSize: 14, weight: .semibold)
+
     static let body = NSFont.systemFont(ofSize: 12)
+    static let bodyHighlight = NSFont.systemFont(ofSize: 12, weight: .semibold)
+
     static let bodyPrefix = NSFont.systemFont(ofSize: 12, weight: .semibold)
 }
 
@@ -246,16 +263,34 @@ private enum Fonts {
 //
 extension NSAttributedString {
 
+    typealias KeywordHighlight = (keywords: [String]?, color: NSColor, font: NSFont)
+
     /// Returns a NSAttributedString representation of a given String, with the specified parameters.
     /// List Markers will be replaced by Text Attachments
     ///
-    static func previewString(text: String, font: NSFont, color: NSColor) -> NSAttributedString {
+    static func previewString(text: String,
+                              font: NSFont,
+                              color: NSColor,
+                              highlighting highlight: KeywordHighlight? = nil) -> NSAttributedString {
+
         let attrString = NSMutableAttributedString(string: text)
         attrString.processChecklists(with: color, sizingFont: font, allowsMultiplePerLine: true)
 
         let fullRange = attrString.fullRange
         attrString.addAttribute(.font, value: font, range: fullRange)
         attrString.addAttribute(.foregroundColor, value: color, range: fullRange)
+
+        if let highlight = highlight,
+           let keywords = highlight.keywords, !keywords.isEmpty,
+           let excerpt = attrString.string.contentSlice(matching: keywords) {
+
+            for range in excerpt.nsMatches {
+                attrString.addAttributes([
+                    .foregroundColor: highlight.color,
+                    .font: highlight.font
+                ], range: range)
+            }
+        }
 
         return attrString
     }

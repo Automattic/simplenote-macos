@@ -1,5 +1,6 @@
 2.8
 -----
+- Searching for a note is showing relevant excerpts #830
 - SortBar is now always visible #831
 
 2.7
