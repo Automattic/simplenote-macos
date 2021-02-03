@@ -734,7 +734,6 @@ extension NoteListViewController {
     @objc
     func didBeginViewingTag(_ note: Notification) {
         SPTracker.trackTagRowPressed()
-
         dismissSearch()
         refreshEverything()
     }
@@ -742,7 +741,6 @@ extension NoteListViewController {
     @objc
     func didBeginViewingTrash(_ note: Notification) {
         SPTracker.trackListTrashPressed()
-
         dismissSearch()
         refreshEverything()
     }
