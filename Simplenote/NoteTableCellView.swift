@@ -263,13 +263,15 @@ private enum Fonts {
 //
 extension NSAttributedString {
 
+    typealias KeywordHighlight = (keywords: [String]?, color: NSColor, font: NSFont)
+
     /// Returns a NSAttributedString representation of a given String, with the specified parameters.
     /// List Markers will be replaced by Text Attachments
     ///
     static func previewString(text: String,
                               font: NSFont,
                               color: NSColor,
-                              highlighting highlight: (keywords: [String]?, color: NSColor, font: NSFont)? = nil) -> NSAttributedString {
+                              highlighting highlight: KeywordHighlight? = nil) -> NSAttributedString {
 
         let attrString = NSMutableAttributedString(string: text)
         attrString.processChecklists(with: color, sizingFont: font, allowsMultiplePerLine: true)

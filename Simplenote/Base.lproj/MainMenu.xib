@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -90,13 +90,14 @@
                                     <action selector="emptyTrashWasPressed:" target="494" id="hK4-FN-3lK"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Sign Out" id="1541" userLabel="Menu Item - Sign Out">
+                            <menuItem isSeparatorItem="YES" id="Jd8-h6-yd1"/>
+                            <menuItem title="Log Out" id="Pde-gm-aAD">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <attributedString key="userComments">
-                                    <fragment content="Signs out from the Account"/>
+                                    <fragment content="Logs out from the Account"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="signOutAction:" target="494" id="1689"/>
+                                    <action selector="signOutAction:" target="494" id="VGf-Gg-vor"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="1548">

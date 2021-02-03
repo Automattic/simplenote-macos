@@ -59,6 +59,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong) IBOutlet NSMenu                                   *moreActionsMenu;
 @property (nonatomic, strong) IBOutlet BackgroundView                           *backgroundView;
 @property (nonatomic, strong) IBOutlet NSVisualEffectView                       *headerEffectView;
+@property (nonatomic, strong) IBOutlet BackgroundView                           *headerDividerView;
 @property (nonatomic, strong) IBOutlet BackgroundView                           *bottomDividerView;
 @property (nonatomic, strong) IBOutlet ToolbarView                              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView                              *statusImageView;
