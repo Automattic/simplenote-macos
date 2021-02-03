@@ -9,7 +9,6 @@ class NoteListViewController: NSViewController {
     /// Storyboard Outlets
     ///
     @IBOutlet private var backgroundBox: NSBox!
-    @IBOutlet private var titleLabel: NSTextField!
     @IBOutlet private var statusField: NSTextField!
     @IBOutlet private var progressIndicator: NSProgressIndicator!
     @IBOutlet private var scrollView: NSScrollView!
@@ -130,7 +129,6 @@ extension NoteListViewController {
         bottomDividerView.borderColor = .simplenoteSecondaryDividerColor
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
-        titleLabel.textColor = .simplenoteTextColor
 
         sortbarView.refreshStyle()
         tableView.reloadAndPreserveSelection()
@@ -169,10 +167,10 @@ extension NoteListViewController {
             return
         }
 
-        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
-        newConstraint.priority = .defaultLow
-        newConstraint.isActive = true
-        titleSemaphoreLeadingConstraint = newConstraint
+//        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
+//        newConstraint.priority = .defaultLow
+//        newConstraint.isActive = true
+//        titleSemaphoreLeadingConstraint = newConstraint
     }
 
     /// Refreshes the Semaphore Leading
@@ -262,7 +260,6 @@ private extension NoteListViewController {
     func refreshEverything() {
         refreshListController()
         refreshEnabledActions()
-        refreshTitle()
         refreshPlaceholder()
         refreshSortBarTitle()
         displayAndSelectFirstNote()
@@ -298,13 +295,6 @@ private extension NoteListViewController {
 
             return NSLocalizedString("No Notes", comment: "No Notes Available")
         }()
-    }
-
-    /// Refresh: Title
-    /// - Important: Update the ListController first!!
-    ///
-    private func refreshTitle() {
-        titleLabel.stringValue = listController.filter.title
     }
 
     /// Although we refresh the Editor in `tableViewSelectionDidChange`, whenever we manually update the ListController and the resulting collection is empty,

@@ -375,14 +375,6 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Title View">
                                         <rect key="frame" x="16" y="28" width="262" height="52"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
-                                                <rect key="frame" x="-2" y="17" width="39" height="19"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Title" id="VNw-0O-CIA">
-                                                    <font key="font" metaFont="systemBold" size="16"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
                                             <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                                 <rect key="frame" x="240" y="15" width="22" height="22"/>
                                                 <constraints>
@@ -400,9 +392,6 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" id="0qP-3a-rqW"/>
-                                            <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="8" id="CLx-vg-kmF"/>
-                                            <constraint firstItem="sHv-fV-cSL" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="CxI-qO-8jA"/>
-                                            <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" priority="249" id="keN-Tv-rKe"/>
                                             <constraint firstAttribute="height" constant="52" id="wkJ-yn-7qc"/>
                                             <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
                                         </constraints>
@@ -538,7 +527,6 @@
                         <outlet property="sortbarView" destination="DV3-ul-I2L" id="ZzI-lw-Y5Y"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
-                        <outlet property="titleLabel" destination="sHv-fV-cSL" id="gt3-Pp-KH6"/>
                         <outlet property="topDividerView" destination="wpb-oV-A2U" id="4jU-o3-DOg"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
