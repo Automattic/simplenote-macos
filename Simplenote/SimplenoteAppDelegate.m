@@ -375,13 +375,6 @@
     }];
 }
 
-- (void)searchAction:(id)sender
-{
-    // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
-    // to override a search keyboard shortcut...which ends up calling searchAction: here
-    [self.noteEditorViewController beginSearch];
-}
-
 - (IBAction)toggleSidebarAction:(id)sender
 {
     [self.splitViewController toggleSidebarActionWithSender:sender];

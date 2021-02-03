@@ -288,11 +288,6 @@ extension NoteEditorViewController {
 extension NoteEditorViewController {
 
     @objc
-    func beginSearch() {
-        toolbarView.beginSearch()
-    }
-
-    @objc
     func ensureSearchIsDismissed() {
         toolbarView.endSearch()
     }

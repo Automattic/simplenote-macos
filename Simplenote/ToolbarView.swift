@@ -115,13 +115,6 @@ private extension ToolbarView {
 //
 extension ToolbarView {
 
-    /// Enters Search Mode whenever the current Toolbar State allows
-    ///
-    func beginSearch() {
-//        window?.makeFirstResponder(self.searchField)
-//        delegate?.toolbarDidBeginSearch()
-    }
-
     /// Ends Search whenever the SearchBar was actually visible
     ///
     func endSearch() {

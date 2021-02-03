@@ -212,7 +212,7 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func searchWasPressed(_ sender: Any) {
-        noteEditorViewController.beginSearch()
+        noteListViewController.beginSearch()
     }
 
     @IBAction

@@ -560,13 +560,20 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 }
 
 
+
+extension NoteListViewController {
+    /// Enters Search Mode whenever the current Toolbar State allows
+    ///
+    func beginSearch() {
+        SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
+        view.window?.makeFirstResponder(searchField)
+    }
+}
+
+
 // MARK: - NSSearchFieldDelegate
 //
 extension NoteListViewController: NSSearchFieldDelegate {
-
-    public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
-        SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
-    }
 
     public func controlTextDidEndEditing(_ obj: Notification) {
 //        delegate?.toolbarDidEndSearch()
@@ -575,9 +582,7 @@ extension NoteListViewController: NSSearchFieldDelegate {
     @IBAction
     public func performSearch(_ sender: Any) {
         searchQuery = SearchQuery(searchText: searchField.stringValue)
-
         refreshEverything()
-
         SPTracker.trackListNotesSearched()
     }
 }
