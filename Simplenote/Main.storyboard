@@ -813,27 +813,10 @@
                                                             <outlet property="delegate" destination="mdt-4X-jeq" id="KIG-lf-uMu"/>
                                                         </connections>
                                                     </searchField>
-                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-ze-2Lb" userLabel="SearchButton">
-                                                        <rect key="frame" x="200" y="3" width="22" height="22"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="22" id="1iW-dq-nal"/>
-                                                            <constraint firstAttribute="height" constant="22" id="a2G-uF-0Aa"/>
-                                                        </constraints>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GyS-Ju-oCW">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="searchWasPressed:" target="mdt-4X-jeq" id="cHE-CJ-Xv7"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="YLv-zp-fRS" secondAttribute="trailing" id="123-Kk-B8G"/>
                                                     <constraint firstAttribute="bottom" secondItem="YLv-zp-fRS" secondAttribute="bottom" id="6n7-FL-RNE"/>
-                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="centerY" secondItem="rlY-4u-bgn" secondAttribute="centerY" id="Abj-9e-UWC"/>
-                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rlY-4u-bgn" secondAttribute="leading" id="Ad6-Ly-or9"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jfd-ze-2Lb" secondAttribute="trailing" id="Oan-fh-mFW"/>
                                                     <constraint firstItem="YLv-zp-fRS" firstAttribute="top" secondItem="rlY-4u-bgn" secondAttribute="top" id="UQ4-A2-nxq"/>
                                                     <constraint firstItem="YLv-zp-fRS" firstAttribute="leading" secondItem="rlY-4u-bgn" secondAttribute="leading" priority="999" id="bPK-G4-RHB"/>
                                                 </constraints>
@@ -877,10 +860,7 @@
                                     <outlet property="moreButton" destination="Z7O-L9-Q1P" id="nAT-Hn-2b2"/>
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
                                     <outlet property="restoreButton" destination="W50-6o-QGr" id="hF8-xI-ouJ"/>
-                                    <outlet property="searchButton" destination="Jfd-ze-2Lb" id="7g1-aG-Ypt"/>
-                                    <outlet property="searchContainerView" destination="rlY-4u-bgn" id="bgl-gc-PhC"/>
                                     <outlet property="searchField" destination="YLv-zp-fRS" id="khj-QR-OsW"/>
-                                    <outlet property="searchFieldWidthConstraint" destination="yv6-TC-X7T" id="0Zi-bE-niz"/>
                                     <outlet property="sidebarButton" destination="Eki-Gw-aTk" id="i2B-I9-LMf"/>
                                     <outlet property="stackView" destination="8xD-dy-bio" id="ubf-Av-SAn"/>
                                 </connections>
@@ -1063,7 +1043,6 @@
         <image name="button_new_note" width="24" height="24"/>
         <image name="button_preview_off" width="24" height="24"/>
         <image name="button_restore" width="24" height="24"/>
-        <image name="button_search" width="24" height="24"/>
         <image name="button_tags_close" width="24" height="24"/>
         <image name="icon_chevron_down" width="16" height="16"/>
         <image name="icon_pin" width="16" height="16"/>

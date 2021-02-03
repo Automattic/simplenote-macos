@@ -505,15 +505,7 @@ extension NoteEditorViewController {
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
         viewController.delegate = self
-
-        // Our SearchBar, if present, will freak out when presenting the Metrics Popover.
-        // We'll ensure it doesn't get dismissed (granted that it had no keywords!)
-        toolbarView.dismissSearchBarOnEndEditing = false
-
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
-
-        // You may proceed. Nothing happened here.
-        toolbarView.dismissSearchBarOnEndEditing = true
     }
 
     func displayPublishPopover(from sourceView: NSView, for note: Note) {

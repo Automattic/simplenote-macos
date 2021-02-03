@@ -59,10 +59,6 @@ extension ToolbarState {
         !isViewingTrash
     }
 
-    var isSearchActionHidden: Bool {
-        isViewingTrash
-    }
-
     var previewActionImage: NSImage? {
         let name: NSImage.Name = isDisplayingMarkdown ? .previewOff : .previewOn
         return NSImage(named: name)
