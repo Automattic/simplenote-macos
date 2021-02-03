@@ -412,26 +412,26 @@
                                         <rect key="frame" x="16" y="0.0" width="262" height="28"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-zn-kyD">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="172" height="28"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffx-55-RlY">
-                                                        <rect key="frame" x="-2" y="7" width="32" height="15"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Sort:" id="REi-2x-g6N">
+                                                        <rect key="frame" x="-2" y="7" width="46" height="15"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Sort by" id="REi-2x-g6N">
                                                             <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="hao-b3-D5s">
-                                                        <rect key="frame" x="30" y="7" width="116" height="15"/>
+                                                        <rect key="frame" x="44" y="7" width="114" height="15"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Alphabetically A-Z" id="EvQ-V8-rEa">
-                                                            <font key="font" metaFont="systemBold" size="12"/>
+                                                            <font key="font" metaFont="systemSemibold" size="12"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qKt-ft-2oz" userLabel="Arrow">
-                                                        <rect key="frame" x="148" y="8" width="12" height="12"/>
+                                                        <rect key="frame" x="160" y="8" width="12" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="FZT-8V-05L"/>
                                                             <constraint firstAttribute="width" constant="12" id="las-mC-CP5"/>
