@@ -109,17 +109,3 @@ private extension ToolbarView {
         }
     }
 }
-
-
-// MARK: - Search Bar Public API
-//
-extension ToolbarView {
-
-    /// Ends Search whenever the SearchBar was actually visible
-    ///
-    func endSearch() {
-//        searchField.cancelSearch()
-//        searchField.resignFirstResponder()
-//        delegate?.toolbarDidEndSearch()
-    }
-}

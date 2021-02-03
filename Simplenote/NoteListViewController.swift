@@ -560,13 +560,22 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 }
 
 
-
+// MARK: - Search API
+//
 extension NoteListViewController {
+
     /// Enters Search Mode whenever the current Toolbar State allows
     ///
     func beginSearch() {
         SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
         view.window?.makeFirstResponder(searchField)
+    }
+
+    /// Ends Search whenever the SearchBar was actually visible
+    ///
+    func endSearch() {
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
     }
 }
 
@@ -574,10 +583,6 @@ extension NoteListViewController {
 // MARK: - NSSearchFieldDelegate
 //
 extension NoteListViewController: NSSearchFieldDelegate {
-
-    public func controlTextDidEndEditing(_ obj: Notification) {
-//        delegate?.toolbarDidEndSearch()
-    }
 
     @IBAction
     public func performSearch(_ sender: Any) {
