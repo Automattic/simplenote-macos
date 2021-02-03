@@ -553,7 +553,7 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
 // MARK: - EditorControllerSearchDelegate
 //
-extension NoteListViewController: EditorControllerSearchDelegate {
+extension NoteListViewController {
 
     public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
         SimplenoteAppDelegate.shared().ensureNotesListIsVisible()

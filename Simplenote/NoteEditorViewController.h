@@ -45,12 +45,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (void)editorController:(NoteEditorViewController *)controller didAddNewTag:(NSString *)tag;
 @end
 
-@protocol EditorControllerSearchDelegate <NSObject>
-- (void)editorControllerDidBeginSearch:(NoteEditorViewController *)controller;
-- (void)editorControllerDidEndSearch:(NoteEditorViewController *)controller;
-- (void)editorController:(NoteEditorViewController *)controller didSearchKeyword:(NSString *)keyword;
-@end
-
 
 
 #pragma mark - NoteEditorViewController
@@ -79,7 +73,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
-@property (nonatomic,   weak) id<EditorControllerSearchDelegate>                searchDelegate;
 @property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
 
 - (IBAction)newNoteWasPressed:(id)sender;
