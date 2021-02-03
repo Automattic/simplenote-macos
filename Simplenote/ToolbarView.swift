@@ -111,17 +111,6 @@ private extension ToolbarView {
 }
 
 
-// MARK: - Actions
-//
-extension ToolbarView {
-
-    @IBAction
-    func searchWasPressed(_ sender: Any) {
-        beginSearch()
-    }
-}
-
-
 // MARK: - Search Bar Public API
 //
 extension ToolbarView {
