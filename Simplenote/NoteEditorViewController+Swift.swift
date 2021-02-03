@@ -932,7 +932,7 @@ extension NoteEditorViewController {
 
     @objc
     func observeEditorIsFirstResponder() {
-        noteEditor.onResignFirstResponder = { [weak self] in
+        noteEditor.onUpdateFirstResponder = { [weak self] in
             self?.updateKeywordsHighlight()
         }
     }
@@ -941,16 +941,49 @@ extension NoteEditorViewController {
         SearchQuery(searchText: toolbarView.searchField.stringValue)
     }
 
-    private func updateKeywordsHighlight() {
+    private var highlightedRanges: [NSRange] {
         let keywords = searchQuery.keywords
 
         guard !noteEditor.isFirstResponder, !keywords.isEmpty else {
-            noteEditor.highlightedRanges = []
-            return
+            return []
         }
 
         let slice = noteEditor.attributedString().string.contentSlice(matching: keywords)
-        noteEditor.highlightedRanges = slice?.nsMatches ?? []
+        return slice?.nsMatches ?? []
+    }
+
+    private func updateKeywordsHighlight() {
+        let ranges = highlightedRanges
+
+        noteEditor.highlightedRanges = ranges
+
+        createSearchMapViewIfNeeded()
+        searchMapView?.update(with: noteEditor.relativeLocationsForText(in: ranges))
+    }
+}
+
+
+// MARK: - Search Map
+//
+extension NoteEditorViewController {
+    private func createSearchMapViewIfNeeded() {
+        guard searchMapView == nil else {
+            return
+        }
+
+        let searchMapView = SearchMapView()
+        searchMapView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(searchMapView)
+
+        NSLayoutConstraint.activate([
+            searchMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchMapView.widthAnchor.constraint(equalToConstant: EditorMetrics.searchMapWidth),
+            searchMapView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            searchMapView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: SplitItemMetrics.editorScrollerTopInset)
+        ])
+
+        self.searchMapView = searchMapView
     }
 }
 
@@ -966,4 +999,8 @@ private enum EditorMetrics {
     /// Minimum Text Padding: To be applied Vertically / Horizontally
     ///
     static let minimumPadding = CGFloat(20)
+
+    /// Search map width
+    ///
+    static let searchMapWidth = CGFloat(12)
 }

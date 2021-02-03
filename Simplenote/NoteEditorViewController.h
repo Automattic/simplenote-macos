@@ -19,6 +19,7 @@
 @class TagsField;
 @class ToolbarView;
 @class SPTextView;
+@class SearchMapView;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -79,6 +80,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerSearchDelegate>                searchDelegate;
+@property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
 
 - (IBAction)newNoteWasPressed:(id)sender;
 - (void)save;

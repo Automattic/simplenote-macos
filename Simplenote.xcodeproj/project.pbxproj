@@ -116,6 +116,7 @@
 		A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */; };
 		A6672FBE25C7F77000090DE3 /* StringContentSliceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */; };
 		A6672FBF25C7F77000090DE3 /* NoteBodyExcerptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */; };
+		A667305425C9751B00090DE3 /* SearchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667305325C9751B00090DE3 /* SearchMapView.swift */; };
 		A6BBDA3325501398005C8343 /* SPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBDA3225501398005C8343 /* SPTextView.swift */; };
 		B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */; };
 		B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
@@ -551,6 +552,7 @@
 		A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSlice.swift; sourceTree = "<group>"; };
 		A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringContentSliceTests.swift; sourceTree = "<group>"; };
 		A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBodyExcerptTests.swift; sourceTree = "<group>"; };
+		A667305325C9751B00090DE3 /* SearchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapView.swift; sourceTree = "<group>"; };
 		A6BBDA3225501398005C8343 /* SPTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextView.swift; sourceTree = "<group>"; };
 		B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnicodeScalar+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1062,6 +1064,7 @@
 				376EE3EA202B748E00E3812E /* SPAboutTextField.swift */,
 				3700E97521C1E390004771C9 /* SPTextAttachment.swift */,
 				B57CB880244E421400BA7969 /* SPTextField.swift */,
+				A667305325C9751B00090DE3 /* SearchMapView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2095,6 +2098,7 @@
 				B54F9A6324D0AE0700BCF754 /* SimplenoteConstants.swift in Sources */,
 				B518D3782507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */,
 				B5EF32B9258D07F00069EC7D /* NoteListController.swift in Sources */,
+				A667305425C9751B00090DE3 /* SearchMapView.swift in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
 			);
@@ -2272,7 +2276,6 @@
 				B53FF5472476F9450014E928 /* Constants.swift in Sources */,
 				B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */,
 				A6672FBF25C7F77000090DE3 /* NoteBodyExcerptTests.swift in Sources */,
-				B5B17F382425651700DD5B34 /* TestConstants.swift in Sources */,
 				A6672FBE25C7F77000090DE3 /* StringContentSliceTests.swift in Sources */,
 				B5EF32B1258D075C0069EC7D /* NoteListControllerTests.swift in Sources */,
 				B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */,

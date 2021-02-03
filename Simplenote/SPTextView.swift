@@ -4,9 +4,9 @@ import AppKit
 //
 class SPTextView: NSTextView {
 
-    /// Is called when text view resigns being first responder
+    /// Is called when first responder status changes
     ///
-    var onResignFirstResponder: (() -> Void)?
+    var onUpdateFirstResponder: (() -> Void)?
 
     /// Highlighted ranges
     ///
@@ -78,7 +78,10 @@ class SPTextView: NSTextView {
     override func becomeFirstResponder() -> Bool {
         let value = super.becomeFirstResponder()
         if value {
-            highlightedRanges = []
+            // Async to wait for the state to fully update
+            DispatchQueue.main.async {
+                self.onUpdateFirstResponder?()
+            }
         }
         return value
     }
@@ -88,7 +91,7 @@ class SPTextView: NSTextView {
         if value {
             // Async to wait for the state to fully update
             DispatchQueue.main.async {
-                self.onResignFirstResponder?()
+                self.onUpdateFirstResponder?()
             }
         }
         return value
@@ -128,5 +131,39 @@ class SPTextView: NSTextView {
         layoutManager.invalidateDisplay(forCharacterRange: range)
 
         return true
+    }
+}
+
+
+// MARK: - Relative locations
+//
+extension SPTextView {
+    /// Returns position relative to the total text container height.
+    /// Position value is from 0 to 1
+    ///
+    func relativeLocationsForText(in ranges: [NSRange]) -> [CGFloat] {
+        let textContainerHeight = textContainerHeightForSearchMap()
+        guard textContainerHeight > CGFloat.leastNormalMagnitude else {
+            return []
+        }
+
+        return ranges.map {
+            var boundingRect = self.boundingRect(for: $0)
+            boundingRect.origin.y -= textContainerOrigin.y
+            return max(boundingRect.midY / textContainerHeight, CGFloat.leastNormalMagnitude)
+        }
+    }
+
+    private func textContainerHeightForSearchMap() -> CGFloat {
+        guard let layoutManager = layoutManager,
+              let textContainer = textContainer,
+              let scrollView = enclosingScrollView else {
+            return 0.0
+        }
+
+        layoutManager.ensureLayout(for: textContainer)
+        let textContainerHeight = layoutManager.usedRect(for: textContainer).size.height
+        let textContainerMinHeight = scrollView.frame.size.height - scrollView.scrollerInsets.top
+        return max(textContainerHeight, textContainerMinHeight)
     }
 }
