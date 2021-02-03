@@ -40,7 +40,6 @@ class ToolbarView: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupActionButtons()
-//        setupSearchField()
         refreshStyle()
         startListeningToNotifications()
     }
@@ -99,9 +98,6 @@ private extension ToolbarView {
         for button in allButtons {
             button.contentTintColor = .simplenoteActionButtonTintColor
         }
-
-//        searchField.textColor = .simplenoteTextColor
-//        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
     }
 
     func setupActionButtons() {
@@ -116,10 +112,6 @@ private extension ToolbarView {
             cell.highlightsBy = .pushInCellMask
         }
     }
-
-//    func setupSearchField() {
-//        searchField.centersPlaceholder = false
-//    }
 }
 
 
@@ -166,18 +158,5 @@ extension ToolbarView: NSSearchFieldDelegate {
     @IBAction
     public func performSearch(_ sender: Any) {
 //        delegate?.toolbar(self, didSearch: searchField.stringValue)
-    }
-}
-
-
-// MARK: - Settings
-//
-private enum Settings {
-    static let searchBarFullWidth = CGFloat(222)
-    static var searchBarPlaceholder: NSAttributedString {
-        NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
-            .font: NSFont.simplenoteSecondaryTextFont,
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor
-        ])
     }
 }

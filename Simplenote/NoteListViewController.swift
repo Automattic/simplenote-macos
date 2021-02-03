@@ -53,6 +53,7 @@ class NoteListViewController: NSViewController {
         super.viewDidLoad()
 
         setupProgressIndicator()
+        setupSearchField()
         setupTableView()
         startListeningToNotifications()
         startListControllerSync()
@@ -106,6 +107,12 @@ private extension NoteListViewController {
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
     }
 
+    /// Setup: Search Field
+    ///
+    func setupSearchField() {
+        searchField.centersPlaceholder = false
+    }
+
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     func refreshScrollInsets() {
@@ -129,6 +136,8 @@ extension NoteListViewController {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         headerDividerView.borderColor = .simplenoteDividerColor
+        searchField.textColor = .simplenoteTextColor
+        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
 
@@ -809,5 +818,17 @@ extension NoteListViewController {
         let menuOrigin = NSPoint(x: clickLocation.x, y: sortbarView.frame.minY)
 
         sortbarMenu.popUp(positioning: nil, at: menuOrigin, in: headerContainerView)
+    }
+}
+
+
+// MARK: - Settings
+//
+private enum Settings {
+    static var searchBarPlaceholder: NSAttributedString {
+        NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
+            .font: NSFont.simplenoteSecondaryTextFont,
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor
+        ])
     }
 }
