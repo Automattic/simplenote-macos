@@ -182,7 +182,7 @@ extension NoteListViewController {
     }
 
     /// # Semaphore Leading:
-    /// We REALLY need to avoid collisions between the TitleLabel and the Window's Semaphore (Zoom / Close buttons).
+    /// # We REALLY need to avoid collisions between the SearchField and the Window's Semaphore (Zoom / Close buttons).
     ///
     /// - Important:
     ///     `priority` is set to `defaultLow` (250) for the constraint between TitleLabel and Window.contentLayoutGuide, whereas the regular `leading` is set to (249).
