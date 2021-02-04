@@ -20,6 +20,7 @@
 @class ToolbarView;
 @class SPTextView;
 @class SearchMapView;
+@class SearchQuery;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,12 +44,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 
 @protocol EditorControllerTagActionsDelegate <NSObject>
 - (void)editorController:(NoteEditorViewController *)controller didAddNewTag:(NSString *)tag;
-@end
-
-@protocol EditorControllerSearchDelegate <NSObject>
-- (void)editorControllerDidBeginSearch:(NoteEditorViewController *)controller;
-- (void)editorControllerDidEndSearch:(NoteEditorViewController *)controller;
-- (void)editorController:(NoteEditorViewController *)controller didSearchKeyword:(NSString *)keyword;
 @end
 
 
@@ -79,8 +74,10 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
-@property (nonatomic,   weak) id<EditorControllerSearchDelegate>                searchDelegate;
 @property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
+
+// TODO: Switch NSObject >> SearchQuery. ObjC compiler isn't picking up the Swift Package =(
+@property (nonatomic, strong, nullable) NSObject                                *searchQuery;
 
 - (IBAction)newNoteWasPressed:(id)sender;
 - (void)save;

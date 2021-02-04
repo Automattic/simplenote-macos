@@ -30,11 +30,6 @@ extension NoteEditorViewController {
     }
 
     @objc
-    func setupToolbarView() {
-        toolbarView.delegate = self
-    }
-
-    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
@@ -288,36 +283,12 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Search API
-//
-extension NoteEditorViewController {
-
-    @objc
-    func beginSearch() {
-        toolbarView.beginSearch()
-    }
-
-    @objc
-    func ensureSearchIsDismissed() {
-        toolbarView.endSearch()
-    }
-}
-
-
 // MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController: ToolbarDelegate {
+extension NoteEditorViewController: NoteListSearchDelegate {
 
-    func toolbarDidBeginSearch() {
-        searchDelegate?.editorControllerDidBeginSearch(self)
-    }
-
-    func toolbarDidEndSearch() {
-        searchDelegate?.editorControllerDidEndSearch(self)
-    }
-
-    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
-        searchDelegate?.editorController(self, didSearchKeyword: keyword)
+    func notesListViewControllerDidSearch(_ query: SearchQuery?) {
+        searchQuery = query
         updateKeywordsHighlight()
     }
 }
@@ -505,15 +476,7 @@ extension NoteEditorViewController {
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
         viewController.delegate = self
-
-        // Our SearchBar, if present, will freak out when presenting the Metrics Popover.
-        // We'll ensure it doesn't get dismissed (granted that it had no keywords!)
-        toolbarView.dismissSearchBarOnEndEditing = false
-
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
-
-        // You may proceed. Nothing happened here.
-        toolbarView.dismissSearchBarOnEndEditing = true
     }
 
     func displayPublishPopover(from sourceView: NSView, for note: Note) {
@@ -924,6 +887,7 @@ private extension NoteEditorViewController {
 // MARK: - Content and Highlights
 //
 extension NoteEditorViewController {
+
     @objc
     func displayContent(_ content: String?) {
         noteEditor.displayNote(content: content ?? "")
@@ -937,18 +901,12 @@ extension NoteEditorViewController {
         }
     }
 
-    private var searchQuery: SearchQuery {
-        SearchQuery(searchText: toolbarView.searchField.stringValue)
-    }
-
     private var highlightedRanges: [NSRange] {
-        let keywords = searchQuery.keywords
-
-        guard !noteEditor.isFirstResponder, !keywords.isEmpty else {
+        guard !noteEditor.isFirstResponder, let searchQuery = searchQuery as? SearchQuery, !searchQuery.keywords.isEmpty else {
             return []
         }
 
-        let slice = noteEditor.attributedString().string.contentSlice(matching: keywords)
+        let slice = noteEditor.attributedString().string.contentSlice(matching: searchQuery.keywords)
         return slice?.nsMatches ?? []
     }
 

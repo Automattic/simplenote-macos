@@ -99,7 +99,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self setupScrollView];
     [self setupStatusImageView];
     [self setupTagsField];
-    [self setupToolbarView];
 
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
@@ -258,7 +257,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
-    [self ensureSearchIsDismissed];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -267,7 +265,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
-    [self ensureSearchIsDismissed];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
@@ -456,15 +453,15 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [SPTracker trackEditorNoteCreated];
 
-    
     // Save current note first
     self.note.content = [self.noteEditor plainTextContent];
     [self save];
 
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     [appDelegate ensureMainWindowIsVisible:nil];
-    
-    Note *newNote = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:appDelegate.simperium.managedObjectContext];
+
+    Simperium *simperium = appDelegate.simperium;
+    Note *newNote = [simperium.notesBucket insertNewObject];
     newNote.modificationDate = [NSDate date];
     newNote.creationDate = [NSDate date];
     newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
@@ -474,10 +471,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         [newNote addTag:currentTag];
     }
 
-    [self ensureSearchIsDismissed];
-    [self displayNote:newNote];
-    [self save];
+    [simperium save];
 
+    [self displayNote:newNote];
     [self.noteActionsDelegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
 
     [self.view.window makeFirstResponder:self.noteEditor];
