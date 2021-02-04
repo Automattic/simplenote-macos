@@ -465,19 +465,19 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
                                     <items>
-                                        <menuItem title="Alphabetically: A-Z" identifier="noteSortAlphaAscMenuItem" id="AuW-hU-J6R">
+                                        <menuItem title="Name: A-Z" identifier="noteSortAlphaAscMenuItem" id="XEL-Qt-3Ik">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Alphabetical Note Sort Order"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="s0n-Ud-VNS"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="ox3-Cu-8NL"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Alphabetically: Z-A" identifier="noteSortAlphaDescMenuItem" id="riY-RT-IN8">
+                                        <menuItem title="Name: Z-A" identifier="noteSortAlphaDescMenuItem" id="BFX-rl-bcH">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="Jem-Lt-NMh"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="IR5-AJ-8nP"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="Z0V-Oz-ijh">

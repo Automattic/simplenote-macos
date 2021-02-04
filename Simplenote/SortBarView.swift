@@ -10,7 +10,6 @@ class SortBarView: NSView {
     ///
     @IBOutlet private var titleLabel: NSTextField!
     @IBOutlet private var sortModeLabel: NSTextField!
-    @IBOutlet private var chevronImageView: NSImageView!
 
     /// Wraps up access around the SortMode Label
     ///
@@ -27,7 +26,7 @@ class SortBarView: NSView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.stringValue = NSLocalizedString("Sort", comment: "Sortbar Title")
+        titleLabel.stringValue = NSLocalizedString("Sort by", comment: "Sortbar Title")
     }
 
     func refreshStyle() {

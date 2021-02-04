@@ -418,32 +418,24 @@
                                         <rect key="frame" x="16" y="0.0" width="262" height="28"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-zn-kyD">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="156" height="28"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffx-55-RlY">
-                                                        <rect key="frame" x="-2" y="7" width="32" height="15"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Sort:" id="REi-2x-g6N">
+                                                        <rect key="frame" x="-2" y="7" width="46" height="15"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Sort by" id="REi-2x-g6N">
                                                             <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="hao-b3-D5s">
-                                                        <rect key="frame" x="30" y="7" width="116" height="15"/>
+                                                        <rect key="frame" x="44" y="7" width="114" height="15"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Alphabetically A-Z" id="EvQ-V8-rEa">
-                                                            <font key="font" metaFont="systemBold" size="12"/>
+                                                            <font key="font" metaFont="systemSemibold" size="12"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qKt-ft-2oz" userLabel="Arrow">
-                                                        <rect key="frame" x="148" y="8" width="12" height="12"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="12" id="FZT-8V-05L"/>
-                                                            <constraint firstAttribute="width" constant="12" id="las-mC-CP5"/>
-                                                        </constraints>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_chevron_down" id="o8z-AK-8yf"/>
-                                                    </imageView>
                                                 </subviews>
                                                 <gestureRecognizers>
                                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PLi-zb-9Na">
@@ -455,10 +447,8 @@
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
-                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
@@ -472,7 +462,6 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8D5-zn-kyD" secondAttribute="trailing" id="ckG-M9-jJD"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="chevronImageView" destination="qKt-ft-2oz" id="Hkx-uJ-ICi"/>
                                             <outlet property="sortModeLabel" destination="hao-b3-D5s" id="xlb-Kx-6Nc"/>
                                             <outlet property="titleLabel" destination="ffx-55-RlY" id="8QJ-j1-8my"/>
                                         </connections>
@@ -1033,7 +1022,6 @@
         <image name="button_preview_off" width="24" height="24"/>
         <image name="button_restore" width="24" height="24"/>
         <image name="button_tags_close" width="24" height="24"/>
-        <image name="icon_chevron_down" width="16" height="16"/>
         <image name="icon_pin" width="16" height="16"/>
         <image name="icon_shared" width="16" height="16"/>
     </resources>
