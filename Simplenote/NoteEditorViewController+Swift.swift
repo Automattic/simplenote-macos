@@ -39,6 +39,44 @@ extension NoteEditorViewController {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
     }
+
+    @objc
+    func setupSearchMatchesBar() {
+        let viewController = SearchMatchesBarViewController()
+        addChild(viewController)
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(viewController.view)
+
+        NSLayoutConstraint.activate([
+            viewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            viewController.view.topAnchor.constraint(equalTo: toolbarView.bottomAnchor),
+            viewController.view.heightAnchor.constraint(equalToConstant: 28),
+        ])
+
+        searchMatchesBarViewController = viewController
+
+        viewController.onCompletion = { [weak self] in
+            self?.toolbarView.endSearch()
+        }
+    }
+
+    @objc
+    func setupSearchMap() {
+        let searchMapView = SearchMapView()
+        searchMapView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(searchMapView)
+
+        NSLayoutConstraint.activate([
+            searchMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchMapView.widthAnchor.constraint(equalToConstant: EditorMetrics.searchMapWidth),
+            searchMapView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            searchMapView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor)
+        ])
+
+        self.searchMapView = searchMapView
+    }
 }
 
 
@@ -955,35 +993,15 @@ extension NoteEditorViewController {
     private func updateKeywordsHighlight() {
         let ranges = highlightedRanges
 
+        searchMatchesBarViewController?.setup(with: ranges.count, onChange: { [weak self] (index) in
+            let range = ranges[index]
+            self?.noteEditor.scrollRangeToVisible(range)
+            self?.noteEditor.showFindIndicator(for: range)
+        })
+        searchMatchesBarViewController?.view.isHidden = ranges.isEmpty
+
         noteEditor.highlightedRanges = ranges
-
-        createSearchMapViewIfNeeded()
         searchMapView?.update(with: noteEditor.relativeLocationsForText(in: ranges))
-    }
-}
-
-
-// MARK: - Search Map
-//
-extension NoteEditorViewController {
-    private func createSearchMapViewIfNeeded() {
-        guard searchMapView == nil else {
-            return
-        }
-
-        let searchMapView = SearchMapView()
-        searchMapView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(searchMapView)
-
-        NSLayoutConstraint.activate([
-            searchMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            searchMapView.widthAnchor.constraint(equalToConstant: EditorMetrics.searchMapWidth),
-            searchMapView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            searchMapView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: SplitItemMetrics.editorScrollerTopInset)
-        ])
-
-        self.searchMapView = searchMapView
     }
 }
 

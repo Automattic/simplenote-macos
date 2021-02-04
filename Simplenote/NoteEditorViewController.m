@@ -100,6 +100,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self setupStatusImageView];
     [self setupTagsField];
     [self setupToolbarView];
+    [self setupSearchMap];
+    [self setupSearchMatchesBar];
 
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
