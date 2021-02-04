@@ -24,6 +24,7 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerContainerView: NSView!
     @IBOutlet private var headerDividerView: BackgroundView!
+    @IBOutlet private var headerBottomDividerView: BackgroundView!
     @IBOutlet private var searchField: NSSearchField!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var sortbarView: SortBarView!
@@ -151,6 +152,7 @@ extension NoteListViewController {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         headerDividerView.borderColor = .simplenoteDividerColor
+        headerBottomDividerView.borderColor = .simplenoteSecondaryDividerColor
         searchField.textColor = .simplenoteTextColor
         searchField.placeholderAttributedString = Settings.searchBarPlaceholder
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor

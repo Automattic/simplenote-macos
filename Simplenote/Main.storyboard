@@ -366,6 +366,12 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CAe-TX-MuL" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Actions View">
                                         <rect key="frame" x="16" y="28" width="262" height="52"/>
                                         <subviews>
@@ -475,6 +481,7 @@
                                 <constraints>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="BDw-oI-YFp"/>
                                     <constraint firstItem="DV3-ul-I2L" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" id="BKi-ae-Xtg"/>
+                                    <constraint firstItem="CAe-TX-MuL" firstAttribute="top" secondItem="wpb-oV-A2U" secondAttribute="bottom" id="CBP-10-Wgq"/>
                                     <constraint firstItem="DV3-ul-I2L" firstAttribute="top" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="IAa-25-IXP"/>
                                     <constraint firstAttribute="trailing" secondItem="wpb-oV-A2U" secondAttribute="trailing" id="LKN-YZ-d4a"/>
                                     <constraint firstItem="Al7-ZM-ybK" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="V7W-em-DYm"/>
@@ -482,8 +489,11 @@
                                     <constraint firstAttribute="trailing" secondItem="Al7-ZM-ybK" secondAttribute="trailing" constant="16" id="Xgn-Hb-470"/>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="top" secondItem="Al7-ZM-ybK" secondAttribute="top" id="Xzh-Vr-wIZ"/>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="bottom" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="aBa-sg-bu7"/>
+                                    <constraint firstAttribute="bottom" secondItem="CAe-TX-MuL" secondAttribute="bottom" id="cEy-T1-hqM"/>
                                     <constraint firstAttribute="bottom" secondItem="DV3-ul-I2L" secondAttribute="bottom" id="fND-lm-KYT"/>
                                     <constraint firstItem="DV3-ul-I2L" firstAttribute="trailing" secondItem="Al7-ZM-ybK" secondAttribute="trailing" id="v9L-7t-MRq"/>
+                                    <constraint firstItem="CAe-TX-MuL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="vpD-c6-lOG"/>
+                                    <constraint firstAttribute="trailing" secondItem="CAe-TX-MuL" secondAttribute="trailing" id="y2I-X7-AuW"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
@@ -525,6 +535,7 @@
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
+                        <outlet property="headerBottomDividerView" destination="CAe-TX-MuL" id="286-dI-pZY"/>
                         <outlet property="headerContainerView" destination="dMC-MU-RmS" id="3K3-ly-nyU"/>
                         <outlet property="headerDividerView" destination="wpb-oV-A2U" id="n5Z-Rv-Jf2"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
