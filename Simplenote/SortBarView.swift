@@ -10,7 +10,6 @@ class SortBarView: NSView {
     ///
     @IBOutlet private var titleLabel: NSTextField!
     @IBOutlet private var sortModeLabel: NSTextField!
-    @IBOutlet private var chevronImageView: NSImageView!
 
     /// Wraps up access around the SortMode Label
     ///
