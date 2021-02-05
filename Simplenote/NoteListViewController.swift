@@ -2,6 +2,13 @@ import Foundation
 import SimplenoteSearch
 
 
+// MARK: - NoteListSearchDelegate
+//
+protocol NoteListSearchDelegate: class {
+    func notesListViewControllerDidSearch(_ query: SearchQuery?)
+}
+
+
 // MARK: - NoteListViewController
 //
 class NoteListViewController: NSViewController {
@@ -9,7 +16,6 @@ class NoteListViewController: NSViewController {
     /// Storyboard Outlets
     ///
     @IBOutlet private var backgroundBox: NSBox!
-    @IBOutlet private var titleLabel: NSTextField!
     @IBOutlet private var statusField: NSTextField!
     @IBOutlet private var progressIndicator: NSProgressIndicator!
     @IBOutlet private var scrollView: NSScrollView!
@@ -17,14 +23,18 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var tableView: SPTableView!
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerContainerView: NSView!
-    @IBOutlet private var topDividerView: BackgroundView!
-    @IBOutlet private var bottomDividerView: BackgroundView!
+    @IBOutlet private var headerDividerView: BackgroundView!
+    @IBOutlet private var headerBottomDividerView: BackgroundView!
+    @IBOutlet private var searchField: NSSearchField!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var sortbarView: SortBarView!
     @IBOutlet private var sortbarMenu: NSMenu!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
-    @IBOutlet private var titleSemaphoreLeadingConstraint: NSLayoutConstraint!
+
+    /// Layout
+    ///
+    private var searchFieldSemaphoreLeadingConstraint: NSLayoutConstraint!
 
     /// ListController
     ///
@@ -32,13 +42,21 @@ class NoteListViewController: NSViewController {
 
     /// Search Query
     ///
-    private var searchQuery: SearchQuery?
+    private var searchQuery: SearchQuery? {
+        didSet {
+            searchDelegate?.notesListViewControllerDidSearch(searchQuery)
+        }
+    }
 
     /// TODO: Work in Progress. Decouple with a delegate please
     ///
     private var noteEditorViewController: NoteEditorViewController {
         SimplenoteAppDelegate.shared().noteEditorViewController
     }
+
+    /// Search Listener
+    ///
+    weak var searchDelegate: NoteListSearchDelegate?
 
 
     // MARK: - ViewController Lifecycle
@@ -51,6 +69,7 @@ class NoteListViewController: NSViewController {
         super.viewDidLoad()
 
         setupProgressIndicator()
+        setupSearchField()
         setupTableView()
         startListeningToNotifications()
         startListControllerSync()
@@ -104,6 +123,12 @@ private extension NoteListViewController {
         progressIndicator.alphaValue = AppKitConstants.alpha0_5
     }
 
+    /// Setup: Search Field
+    ///
+    func setupSearchField() {
+        searchField.centersPlaceholder = false
+    }
+
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     func refreshScrollInsets() {
@@ -126,11 +151,12 @@ extension NoteListViewController {
     func refreshStyle() {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
-        topDividerView.borderColor = .simplenoteDividerColor
-        bottomDividerView.borderColor = .simplenoteSecondaryDividerColor
+        headerDividerView.borderColor = .simplenoteDividerColor
+        headerBottomDividerView.borderColor = .simplenoteSecondaryDividerColor
+        searchField.textColor = .simplenoteTextColor
+        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
-        titleLabel.textColor = .simplenoteTextColor
 
         sortbarView.refreshStyle()
         tableView.reloadAndPreserveSelection()
@@ -154,11 +180,11 @@ extension NoteListViewController {
     /// Indicates if the Semaphore Leading hasn't been initialized
     ///
     private var mustSetupSemaphoreLeadingConstraint: Bool {
-        titleSemaphoreLeadingConstraint == nil
+        searchFieldSemaphoreLeadingConstraint == nil
     }
 
     /// # Semaphore Leading:
-    /// We REALLY need to avoid collisions between the TitleLabel and the Window's Semaphore (Zoom / Close buttons).
+    /// # We REALLY need to avoid collisions between the SearchField and the Window's Semaphore (Zoom / Close buttons).
     ///
     /// - Important:
     ///     `priority` is set to `defaultLow` (250) for the constraint between TitleLabel and Window.contentLayoutGuide, whereas the regular `leading` is set to (249).
@@ -169,10 +195,10 @@ extension NoteListViewController {
             return
         }
 
-        let newConstraint = titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
+        let newConstraint = searchField.leadingAnchor.constraint(greaterThanOrEqualTo: contentLayoutGuide.leadingAnchor)
         newConstraint.priority = .defaultLow
         newConstraint.isActive = true
-        titleSemaphoreLeadingConstraint = newConstraint
+        searchFieldSemaphoreLeadingConstraint = newConstraint
     }
 
     /// Refreshes the Semaphore Leading
@@ -182,7 +208,7 @@ extension NoteListViewController {
             return
         }
 
-        titleSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
+        searchFieldSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
     }
 }
 
@@ -262,7 +288,6 @@ private extension NoteListViewController {
     func refreshEverything() {
         refreshListController()
         refreshEnabledActions()
-        refreshTitle()
         refreshPlaceholder()
         refreshSortBarTitle()
         displayAndSelectFirstNote()
@@ -298,13 +323,6 @@ private extension NoteListViewController {
 
             return NSLocalizedString("No Notes", comment: "No Notes Available")
         }()
-    }
-
-    /// Refresh: Title
-    /// - Important: Update the ListController first!!
-    ///
-    private func refreshTitle() {
-        titleLabel.stringValue = listController.filter.title
     }
 
     /// Although we refresh the Editor in `tableViewSelectionDidChange`, whenever we manually update the ListController and the resulting collection is empty,
@@ -431,7 +449,7 @@ private extension NoteListViewController {
 
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
-        topDividerView.alphaValue = newAlpha
+        headerDividerView.alphaValue = newAlpha
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
@@ -538,6 +556,7 @@ private extension NoteListViewController {
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
 
     public func editorController(_ controller: NoteEditorViewController, addedNoteWithSimperiumKey simperiumKey: String) {
+        dismissSearch()
         displayAndSelectNote(with: simperiumKey)
     }
 
@@ -559,23 +578,35 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
 }
 
 
-// MARK: - EditorControllerSearchDelegate
+// MARK: - Public Search API
 //
-extension NoteListViewController: EditorControllerSearchDelegate {
+extension NoteListViewController {
 
-    public func editorControllerDidBeginSearch(_ controller: NoteEditorViewController) {
+    /// Enters Search Mode whenever the current Toolbar State allows
+    ///
+    func beginSearch() {
         SimplenoteAppDelegate.shared().ensureNotesListIsVisible()
+        view.window?.makeFirstResponder(searchField)
     }
 
-    public func editorControllerDidEndSearch(_ controller: NoteEditorViewController) {
-        // NO-OP
+    /// Ends Search whenever the SearchBar was actually visible
+    ///
+    @objc
+    func dismissSearch() {
+        searchField.cancelSearch()
+        searchField.resignFirstResponder()
     }
+}
 
-    public func editorController(_ controller: NoteEditorViewController, didSearchKeyword keyword: String) {
-        searchQuery = SearchQuery(searchText: keyword)
 
+// MARK: - NSSearchFieldDelegate
+//
+extension NoteListViewController: NSSearchFieldDelegate {
+
+    @IBAction
+    public func performSearch(_ sender: Any) {
+        searchQuery = SearchQuery(searchText: searchField.stringValue)
         refreshEverything()
-
         SPTracker.trackListNotesSearched()
     }
 }
@@ -705,12 +736,14 @@ extension NoteListViewController {
     @objc
     func didBeginViewingTag(_ note: Notification) {
         SPTracker.trackTagRowPressed()
+        dismissSearch()
         refreshEverything()
     }
 
     @objc
     func didBeginViewingTrash(_ note: Notification) {
         SPTracker.trackListTrashPressed()
+        dismissSearch()
         refreshEverything()
     }
 
@@ -817,5 +850,17 @@ extension NoteListViewController {
         let menuOrigin = NSPoint(x: clickLocation.x, y: sortbarView.frame.minY)
 
         sortbarMenu.popUp(positioning: nil, at: menuOrigin, in: headerContainerView)
+    }
+}
+
+
+// MARK: - Settings
+//
+private enum Settings {
+    static var searchBarPlaceholder: NSAttributedString {
+        NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
+            .font: NSFont.simplenoteSecondaryTextFont,
+            .foregroundColor: NSColor.simplenoteSecondaryTextColor
+        ])
     }
 }

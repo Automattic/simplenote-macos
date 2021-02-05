@@ -360,29 +360,36 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="538" width="294" height="80"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="wpb-oV-A2U" userLabel="Top Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="wpb-oV-A2U" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="294" height="52"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cpV-AA-3mi" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CAe-TX-MuL" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Title View">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Actions View">
                                         <rect key="frame" x="16" y="28" width="262" height="52"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-fV-cSL">
-                                                <rect key="frame" x="-2" y="17" width="39" height="19"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Title" id="VNw-0O-CIA">
-                                                    <font key="font" metaFont="systemBold" size="16"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
+                                                <rect key="frame" x="0.0" y="12" width="222" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
+                                                </constraints>
+                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
+                                                </searchFieldCell>
+                                                <connections>
+                                                    <action selector="performSearch:" target="JtV-0Z-Zh8" id="wWj-Jf-LAH"/>
+                                                    <outlet property="delegate" destination="JtV-0Z-Zh8" id="vnb-XE-0zI"/>
+                                                </connections>
+                                            </searchField>
                                             <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                                 <rect key="frame" x="240" y="15" width="22" height="22"/>
                                                 <constraints>
@@ -400,9 +407,9 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" id="0qP-3a-rqW"/>
-                                            <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHv-fV-cSL" secondAttribute="trailing" constant="8" id="CLx-vg-kmF"/>
-                                            <constraint firstItem="sHv-fV-cSL" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="CxI-qO-8jA"/>
-                                            <constraint firstItem="sHv-fV-cSL" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" priority="249" id="keN-Tv-rKe"/>
+                                            <constraint firstItem="YLv-zp-fRS" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="9lA-j7-B8N"/>
+                                            <constraint firstItem="YLv-zp-fRS" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" priority="249" id="ZAI-kw-ua0"/>
+                                            <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="YLv-zp-fRS" secondAttribute="trailing" constant="18" id="m8s-ab-ePI"/>
                                             <constraint firstAttribute="height" constant="52" id="wkJ-yn-7qc"/>
                                             <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
                                         </constraints>
@@ -411,32 +418,24 @@
                                         <rect key="frame" x="16" y="0.0" width="262" height="28"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-zn-kyD">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="156" height="28"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffx-55-RlY">
-                                                        <rect key="frame" x="-2" y="7" width="32" height="15"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Sort:" id="REi-2x-g6N">
+                                                        <rect key="frame" x="-2" y="7" width="46" height="15"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Sort by" id="REi-2x-g6N">
                                                             <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="hao-b3-D5s">
-                                                        <rect key="frame" x="30" y="7" width="116" height="15"/>
+                                                        <rect key="frame" x="44" y="7" width="114" height="15"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Alphabetically A-Z" id="EvQ-V8-rEa">
-                                                            <font key="font" metaFont="systemBold" size="12"/>
+                                                            <font key="font" metaFont="systemSemibold" size="12"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qKt-ft-2oz" userLabel="Arrow">
-                                                        <rect key="frame" x="148" y="8" width="12" height="12"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="12" id="FZT-8V-05L"/>
-                                                            <constraint firstAttribute="width" constant="12" id="las-mC-CP5"/>
-                                                        </constraints>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_chevron_down" id="o8z-AK-8yf"/>
-                                                    </imageView>
                                                 </subviews>
                                                 <gestureRecognizers>
                                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PLi-zb-9Na">
@@ -448,10 +447,8 @@
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
-                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
@@ -465,7 +462,6 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8D5-zn-kyD" secondAttribute="trailing" id="ckG-M9-jJD"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="chevronImageView" destination="qKt-ft-2oz" id="Hkx-uJ-ICi"/>
                                             <outlet property="sortModeLabel" destination="hao-b3-D5s" id="xlb-Kx-6Nc"/>
                                             <outlet property="titleLabel" destination="ffx-55-RlY" id="8QJ-j1-8my"/>
                                         </connections>
@@ -474,19 +470,19 @@
                                 <constraints>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="BDw-oI-YFp"/>
                                     <constraint firstItem="DV3-ul-I2L" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" id="BKi-ae-Xtg"/>
+                                    <constraint firstItem="CAe-TX-MuL" firstAttribute="top" secondItem="wpb-oV-A2U" secondAttribute="bottom" id="CBP-10-Wgq"/>
                                     <constraint firstItem="DV3-ul-I2L" firstAttribute="top" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="IAa-25-IXP"/>
-                                    <constraint firstItem="DV3-ul-I2L" firstAttribute="bottom" secondItem="cpV-AA-3mi" secondAttribute="bottom" id="KgE-71-308"/>
                                     <constraint firstAttribute="trailing" secondItem="wpb-oV-A2U" secondAttribute="trailing" id="LKN-YZ-d4a"/>
-                                    <constraint firstAttribute="trailing" secondItem="cpV-AA-3mi" secondAttribute="trailing" id="R1I-2m-Du1"/>
                                     <constraint firstItem="Al7-ZM-ybK" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="V7W-em-DYm"/>
                                     <constraint firstItem="Al7-ZM-ybK" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="VTs-UB-jhP"/>
-                                    <constraint firstItem="cpV-AA-3mi" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="Xei-mL-k2W"/>
                                     <constraint firstAttribute="trailing" secondItem="Al7-ZM-ybK" secondAttribute="trailing" constant="16" id="Xgn-Hb-470"/>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="top" secondItem="Al7-ZM-ybK" secondAttribute="top" id="Xzh-Vr-wIZ"/>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="bottom" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="aBa-sg-bu7"/>
-                                    <constraint firstItem="DV3-ul-I2L" firstAttribute="top" secondItem="cpV-AA-3mi" secondAttribute="top" id="bIa-4f-dCN"/>
+                                    <constraint firstAttribute="bottom" secondItem="CAe-TX-MuL" secondAttribute="bottom" id="cEy-T1-hqM"/>
                                     <constraint firstAttribute="bottom" secondItem="DV3-ul-I2L" secondAttribute="bottom" id="fND-lm-KYT"/>
                                     <constraint firstItem="DV3-ul-I2L" firstAttribute="trailing" secondItem="Al7-ZM-ybK" secondAttribute="trailing" id="v9L-7t-MRq"/>
+                                    <constraint firstItem="CAe-TX-MuL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="vpD-c6-lOG"/>
+                                    <constraint firstAttribute="trailing" secondItem="CAe-TX-MuL" secondAttribute="trailing" id="y2I-X7-AuW"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
@@ -527,19 +523,19 @@
                     <connections>
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
-                        <outlet property="bottomDividerView" destination="cpV-AA-3mi" id="NJl-dX-mqp"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
+                        <outlet property="headerBottomDividerView" destination="CAe-TX-MuL" id="286-dI-pZY"/>
                         <outlet property="headerContainerView" destination="dMC-MU-RmS" id="3K3-ly-nyU"/>
+                        <outlet property="headerDividerView" destination="wpb-oV-A2U" id="n5Z-Rv-Jf2"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
+                        <outlet property="searchField" destination="YLv-zp-fRS" id="vqB-c6-e3u"/>
                         <outlet property="sortbarMenu" destination="gYa-0Y-UQ7" id="ztX-V1-UHE"/>
                         <outlet property="sortbarView" destination="DV3-ul-I2L" id="ZzI-lw-Y5Y"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
-                        <outlet property="titleLabel" destination="sHv-fV-cSL" id="gt3-Pp-KH6"/>
-                        <outlet property="topDividerView" destination="wpb-oV-A2U" id="4jU-o3-DOg"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
                     </connections>
                 </viewController>
@@ -757,7 +753,7 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="114" y="0.0" width="398" height="52"/>
+                                        <rect key="frame" x="358" y="0.0" width="154" height="52"/>
                                         <subviews>
                                             <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown Button">
                                                 <rect key="frame" x="0.0" y="15" width="22" height="22"/>
@@ -806,50 +802,6 @@
                                                     <action selector="moreWasPressed:" target="owM-kh-Bm6" id="jNg-pL-Pc6"/>
                                                 </connections>
                                             </button>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="rlY-4u-bgn">
-                                                <rect key="frame" x="176" y="12" width="222" height="29"/>
-                                                <subviews>
-                                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="222" height="29"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
-                                                            <constraint firstAttribute="width" constant="222" id="yv6-TC-X7T"/>
-                                                        </constraints>
-                                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </searchFieldCell>
-                                                        <connections>
-                                                            <action selector="performSearch:" target="mdt-4X-jeq" id="7xg-oL-34n"/>
-                                                            <outlet property="delegate" destination="mdt-4X-jeq" id="KIG-lf-uMu"/>
-                                                        </connections>
-                                                    </searchField>
-                                                    <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-ze-2Lb" userLabel="SearchButton">
-                                                        <rect key="frame" x="200" y="3" width="22" height="22"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="22" id="1iW-dq-nal"/>
-                                                            <constraint firstAttribute="height" constant="22" id="a2G-uF-0Aa"/>
-                                                        </constraints>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GyS-Ju-oCW">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="searchWasPressed:" target="mdt-4X-jeq" id="cHE-CJ-Xv7"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="YLv-zp-fRS" secondAttribute="trailing" id="123-Kk-B8G"/>
-                                                    <constraint firstAttribute="bottom" secondItem="YLv-zp-fRS" secondAttribute="bottom" id="6n7-FL-RNE"/>
-                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="centerY" secondItem="rlY-4u-bgn" secondAttribute="centerY" id="Abj-9e-UWC"/>
-                                                    <constraint firstItem="Jfd-ze-2Lb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rlY-4u-bgn" secondAttribute="leading" id="Ad6-Ly-or9"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Jfd-ze-2Lb" secondAttribute="trailing" id="Oan-fh-mFW"/>
-                                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="top" secondItem="rlY-4u-bgn" secondAttribute="top" id="UQ4-A2-nxq"/>
-                                                    <constraint firstItem="YLv-zp-fRS" firstAttribute="leading" secondItem="rlY-4u-bgn" secondAttribute="leading" priority="999" id="bPK-G4-RHB"/>
-                                                </constraints>
-                                            </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="hVc-Cl-DHn" firstAttribute="height" secondItem="TI9-l9-KN8" secondAttribute="height" id="2wO-UI-11h"/>
@@ -864,10 +816,8 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -889,10 +839,6 @@
                                     <outlet property="moreButton" destination="Z7O-L9-Q1P" id="nAT-Hn-2b2"/>
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
                                     <outlet property="restoreButton" destination="W50-6o-QGr" id="hF8-xI-ouJ"/>
-                                    <outlet property="searchButton" destination="Jfd-ze-2Lb" id="7g1-aG-Ypt"/>
-                                    <outlet property="searchContainerView" destination="rlY-4u-bgn" id="bgl-gc-PhC"/>
-                                    <outlet property="searchField" destination="YLv-zp-fRS" id="khj-QR-OsW"/>
-                                    <outlet property="searchFieldWidthConstraint" destination="yv6-TC-X7T" id="0Zi-bE-niz"/>
                                     <outlet property="sidebarButton" destination="Eki-Gw-aTk" id="i2B-I9-LMf"/>
                                     <outlet property="stackView" destination="8xD-dy-bio" id="ubf-Av-SAn"/>
                                 </connections>
@@ -1075,9 +1021,7 @@
         <image name="button_new_note" width="24" height="24"/>
         <image name="button_preview_off" width="24" height="24"/>
         <image name="button_restore" width="24" height="24"/>
-        <image name="button_search" width="24" height="24"/>
         <image name="button_tags_close" width="24" height="24"/>
-        <image name="icon_chevron_down" width="16" height="16"/>
         <image name="icon_pin" width="16" height="16"/>
         <image name="icon_shared" width="16" height="16"/>
     </resources>

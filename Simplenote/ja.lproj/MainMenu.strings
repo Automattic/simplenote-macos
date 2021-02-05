@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-17 08:54:03+0000 */
+/* Translation-Revision-Date: 2021-01-22 08:54:04+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ja_JP */
@@ -229,7 +229,7 @@
 "83.title" = "メモ";
 
 /* Class = "NSMenuItem"; title = "Alphabetically: A-Z"; ObjectID = "AuW-hU-J6R"; Note = "Toggles Alphabetical Note Sort Order"; */
-"AuW-hU-J6R.title" = "Alphabetically: A-Z";
+"AuW-hU-J6R.title" = "アルファベット順 :A-Z";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
@@ -262,7 +262,7 @@
 "RZM-N8-VLN.title" = "プライバシー設定";
 
 /* Class = "NSMenuItem"; title = "Created: Oldest"; ObjectID = "S16-eV-qeq"; */
-"S16-eV-qeq.title" = "Created: Oldest";
+"S16-eV-qeq.title" = "作成日 :最も古い";
 
 /* Class = "NSMenu"; title = "Theme"; ObjectID = "SIP-Tf-W7J"; Note = "Theme Settings Menu"; */
 "SIP-Tf-W7J.title" = "テーマ";
@@ -277,7 +277,7 @@
 "YpJ-fs-p4p.title" = "ノートの並べ替え";
 
 /* Class = "NSMenuItem"; title = "Created: Newest"; ObjectID = "Z0V-Oz-ijh"; */
-"Z0V-Oz-ijh.title" = "Created: Newest";
+"Z0V-Oz-ijh.title" = "作成日 :最新";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
 "Zhe-Bb-jvT.title" = "ライト";
@@ -307,16 +307,16 @@
 "oS8-Vc-yog.title" = "リセット";
 
 /* Class = "NSMenuItem"; title = "Modified: Newest"; ObjectID = "p5U-fB-pgR"; */
-"p5U-fB-pgR.title" = "Modified: Newest";
+"p5U-fB-pgR.title" = "更新日 :最新";
 
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
 "qcT-FY-eHe.title" = "ダーク";
 
 /* Class = "NSMenuItem"; title = "Alphabetically: Z-A"; ObjectID = "riY-RT-IN8"; */
-"riY-RT-IN8.title" = "Alphabetically: Z-A";
+"riY-RT-IN8.title" = "アルファベット順 :Z-A";
 
 /* Class = "NSMenuItem"; title = "Modified: Oldest"; ObjectID = "ssB-vH-kwg"; */
-"ssB-vH-kwg.title" = "Modified: Oldest";
+"ssB-vH-kwg.title" = "更新日 :最も古い";
 
 /* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
 "tQC-gw-hdq.title" = "要約";

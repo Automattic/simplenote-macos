@@ -75,10 +75,14 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureNotesController() {
+        noteListViewController.searchDelegate = noteEditorViewController
+    }
+
+    @objc
     func configureEditorController() {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController
-        noteEditorViewController.searchDelegate = noteListViewController
     }
 
     @objc
@@ -213,7 +217,7 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func searchWasPressed(_ sender: Any) {
-        noteEditorViewController.beginSearch()
+        noteListViewController.beginSearch()
     }
 
     @IBAction

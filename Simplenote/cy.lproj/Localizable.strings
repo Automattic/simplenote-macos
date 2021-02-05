@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
+/* Translation-Revision-Date: 2021-01-26 11:32:58+0000 */
 /* Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: cy_GB */
@@ -78,7 +78,7 @@
 "Delete Notes" = "Delete Notes";
 
 /* Delete Tag Action */
-"Delete Tag" = "Delete Tag";
+"Delete Tag" = "Dileu tag";
 
 /* Closes the Privacy View */
 "Dismiss" = "Dismiss";

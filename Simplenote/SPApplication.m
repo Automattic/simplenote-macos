@@ -15,7 +15,7 @@
     if ([event type] == NSEventTypeKeyDown) {
         if (([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == NSEventModifierFlagCommand) {
             if ([[event charactersIgnoringModifiers] isEqualToString:@"l"]) {
-                if ([self sendAction:@selector(searchAction:) to:nil from:self])
+                if ([self sendAction:@selector(searchWasPressed:) to:nil from:self])
                     return;
             }
         }

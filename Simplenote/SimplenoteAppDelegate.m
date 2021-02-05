@@ -47,6 +47,8 @@
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
 #endif
 
+@property (strong, nonatomic) CrashLogging                      *crashLogging;
+
 @end
 
 
@@ -99,6 +101,7 @@
     [self configureMainWindowController];
     [self applyStyle];
 
+    [self configureNotesController];
     [self configureEditorController];
     [self configureVerificationCoordinator];
     [self configureVersionsController];
@@ -163,7 +166,8 @@
 
 - (void)setupCrashLogging
 {
-    [CrashLogging startWithSimperium: self.simperium];
+    self.crashLogging = [[CrashLogging alloc] initWithSimperium:self.simperium];
+    [self.crashLogging start];
 }
 
 - (IBAction)ensureMainWindowIsVisible:(id)sender
@@ -242,14 +246,14 @@
 
     [self.verificationCoordinator processDidLoginWithEmail:user.email];
     [SPTracker refreshMetadataWithEmail:user.email];
-    [CrashLogging cacheUser: user];
+    [self.crashLogging cacheUser: simperium.user];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
 {
     [self.verificationCoordinator processDidLogout];
     [SPTracker refreshMetadataForAnonymousUser];
-    [CrashLogging clearCachedUser];
+    [self.crashLogging clearCachedUser];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
@@ -360,7 +364,7 @@
     // Remove WordPress token
     [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
     
-    [self.noteEditorViewController ensureSearchIsDismissed];
+    [self.noteListViewController dismissSearch];
     [self.noteEditorViewController displayNote:nil];
     [self.tagListViewController reset];
     [self.noteListViewController setWaitingForIndex:YES];
@@ -373,13 +377,6 @@
         [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self.simperium authenticateIfNecessary];
     }];
-}
-
-- (void)searchAction:(id)sender
-{
-    // Needs to be here because this class is the window's delegate, and SPApplication uses sendEvent:
-    // to override a search keyboard shortcut...which ends up calling searchAction: here
-    [self.noteEditorViewController beginSearch];
 }
 
 - (IBAction)toggleSidebarAction:(id)sender

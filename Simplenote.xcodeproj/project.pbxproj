@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -1552,7 +1552,7 @@
 				26F72A8514032D2A00A7935E /* Frameworks */,
 				26F72A8614032D2A00A7935E /* Resources */,
 				71881504155F487D001F2E30 /* CopyFiles */,
-				B51D44911945FEFD00496889 /* ShellScript */,
+				B51D44911945FEFD00496889 /* Sparkle XPC Code Sign For Sandbox */,
 				BCBFB16555965D73674605BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1578,7 +1578,7 @@
 				466FFEA717CC10A800399652 /* Sources */,
 				466FFEDC17CC10A800399652 /* Frameworks */,
 				466FFEE517CC10A800399652 /* Resources */,
-				B51D44821945EF7900496889 /* ShellScript */,
+				B51D44821945EF7900496889 /* Set copyright year */,
 				4E51756AEE6CFE89EAD49829 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1648,7 +1648,7 @@
 				};
 			};
 			buildConfigurationList = 26F72A8214032D2900A7935E /* Build configuration list for PBXProject "Simplenote" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1759,23 +1759,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
-				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
-				"${BUILT_PRODUCTS_DIR}/Sodium-Fork/Sodium.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sodium.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-SimplenoteTests/Pods-Automattic-SimplenoteTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1831,23 +1820,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
-				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
-				"${BUILT_PRODUCTS_DIR}/Sodium-Fork/Sodium.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sodium.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1876,31 +1854,33 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B51D44821945EF7900496889 /* ShellScript */ = {
+		B51D44821945EF7900496889 /* Set copyright year */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Set copyright year";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "plist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nyear=$(date \"+%Y\")\ncopyright=\"Copyright © $year Automattic. All rights reserved.\"\n\n# Set the version numbers in the buildPlist\n/usr/libexec/PlistBuddy -c \"Set :NSHumanReadableCopyright $copyright\" $plist\n";
+			shellScript = "# Set the copyright year to the current year in the Info.plist\nplist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nyear=$(date \"+%Y\")\ncopyright=\"Copyright © $year Automattic. All rights reserved.\"\n\n/usr/libexec/PlistBuddy -c \"Set :NSHumanReadableCopyright $copyright\" $plist\n";
 		};
-		B51D44911945FEFD00496889 /* ShellScript */ = {
+		B51D44911945FEFD00496889 /* Sparkle XPC Code Sign For Sandbox */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Sparkle XPC Code Sign For Sandbox";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Codesign\n#\nIDENTITY=\"Developer ID Application: Automattic, Inc.\"\nSPARKLE_BIN=\"${SRCROOT}/External/Sparkle/bin\"\nCODESIGN_TOOL=\"${SPARKLE_BIN}/codesign_embedded_executable\"\nCODESIGN_HARDENEDRUNTIME_CMD=\"codesign --force -o runtime -s\"\n\n# XPC\n#\nXPC_SOURCE=\"${SRCROOT}/External/Sparkle/XPCServices\"\nXPC_TARGET=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/../XPCServices\"\n\n# Services\n#\nXPC_NETWORK=\"org.sparkle-project.InstallerConnection.xpc\"\nXPC_LAUNCHER=\"org.sparkle-project.InstallerLauncher.xpc\"\nXPC_STATUS=\"org.sparkle-project.InstallerStatus.xpc\"\n\n# UPDATER\nUPDATER_TARGET=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework/Versions/A/Resources\"\nSPARKLE_AUTOUPDATE=\"Autoupdate\"\nSPARKLE_UPDATER=\"Updater.app/Contents/MacOS/Updater\"\n\n# Bail out whenever we're not in Release\n#\nif [ \"${CONFIGURATION}\" != \"Release\" ]; then\n    echo \"NOT Signing in debug!\"\n    exit 0\nfi\n\n# Reset: Sparkle's Codesign fails when attempting to re-sign\n#\necho \"Nuking old XPC...\"\n\nrm -r \"${XPC_TARGET}\"\n\n# Copy Phase\n#\necho \"Copying...\"\n\nmkdir \"${XPC_TARGET}\"\ncp -R \"${XPC_SOURCE}/${XPC_NETWORK}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\ncp -R \"${XPC_SOURCE}/${XPC_LAUNCHER}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\ncp -R \"${XPC_SOURCE}/${XPC_STATUS}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n\n# Codesign Phase\n#\necho \"Signing... \"\n\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_NETWORK}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_LAUNCHER}\"\n${CODESIGN_TOOL} \"${IDENTITY}\" \"${XPC_TARGET}/${XPC_STATUS}\"\n${CODESIGN_HARDENEDRUNTIME_CMD} \"${IDENTITY}\" \"${UPDATER_TARGET}/${SPARKLE_AUTOUPDATE}\"\n${CODESIGN_HARDENEDRUNTIME_CMD} \"${IDENTITY}\" \"${UPDATER_TARGET}/${SPARKLE_UPDATER}\"\n";
+			shellScript = "${SRCROOT}/Scripts/Build-Phases/sparkle-code-sign.sh\n";
 		};
 		B52D0EC9230DCB15003F799D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1926,23 +1906,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Automattic-Tracks-iOS/AutomatticTracks.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
-				"${BUILT_PRODUCTS_DIR}/Simperium-OSX/Simperium_OSX.framework",
-				"${BUILT_PRODUCTS_DIR}/Sodium-Fork/Sodium.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutomatticTracks.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Simperium_OSX.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sodium.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2542,6 +2511,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
+					"SPARKLE_OTA=1",
 				);
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				INFOPLIST_FILE = "Simplenote/Simplenote-Info-Hockey.plist";
@@ -2565,7 +2535,6 @@
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2620,7 +2589,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -2674,7 +2642,6 @@
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2726,7 +2693,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Simplenote Mac Production Profile";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

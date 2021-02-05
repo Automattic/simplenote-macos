@@ -29,9 +29,9 @@ extension SortMode {
     var description: String {
         switch self {
         case .alphabeticallyAscending:
-            return NSLocalizedString("Alphabetically: A-Z", comment: "Sort Mode: Alphabetically, ascending")
+            return NSLocalizedString("Name: A-Z", comment: "Sort Mode: Alphabetically, ascending")
         case .alphabeticallyDescending:
-            return NSLocalizedString("Alphabetically: Z-A", comment: "Sort Mode: Alphabetically, descending")
+            return NSLocalizedString("Name: Z-A", comment: "Sort Mode: Alphabetically, descending")
         case .createdNewest:
             return NSLocalizedString("Created: Newest", comment: "Sort Mode: Creation Date, descending")
         case .createdOldest:
