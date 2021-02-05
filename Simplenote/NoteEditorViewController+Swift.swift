@@ -49,11 +49,11 @@ extension NoteEditorViewController {
             viewController.view.heightAnchor.constraint(equalToConstant: 28),
         ])
 
-        searchMatchesBarViewController = viewController
-
         viewController.onCompletion = { [weak self] in
-            self?.toolbarView.endSearch()
+//            self?.toolbarView.endSearch()
         }
+
+        searchMatchesBarViewController = viewController
     }
 
     @objc
