@@ -33,6 +33,7 @@ class SearchMatchesBarViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshStyle()
         update()
     }
 
@@ -40,7 +41,6 @@ class SearchMatchesBarViewController: NSViewController {
     ///
     func setup(with total: Int, onChange: @escaping (_ current: Int) -> Void) {
         self.onChange = onChange
-
         self.total = total
         current = Constants.defaultCurrentValue
     }
@@ -50,6 +50,16 @@ class SearchMatchesBarViewController: NSViewController {
 
         navigationControl.setEnabled(current - 1 >= 0 && total > 0, forSegment: Constants.backButtonIndex)
         navigationControl.setEnabled(current + 1 < total && total > 0, forSegment: Constants.forwardButtonIndex)
+    }
+}
+
+
+// MARK: - Style
+//
+extension SearchMatchesBarViewController {
+    func refreshStyle() {
+        textLabel.textColor = .simplenoteSecondaryTextColor
+        doneButton.contentTintColor = .simplenoteActionButtonTintColor
     }
 }
 

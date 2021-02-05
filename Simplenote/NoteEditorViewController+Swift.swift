@@ -276,6 +276,8 @@ extension NoteEditorViewController {
         if let note = note {
             storage.refreshStyle(markdownEnabled: note.markdown)
         }
+
+        searchMatchesBarViewController?.refreshStyle()
     }
 
     /// Refreshes the Toolbar's Inner State

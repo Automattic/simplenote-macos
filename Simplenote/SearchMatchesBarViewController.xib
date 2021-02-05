@@ -23,9 +23,9 @@
                     <rect key="frame" x="16" y="0.0" width="448" height="102"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Kj-lG-zos">
-                            <rect key="frame" x="-2" y="43" width="341" height="16"/>
+                            <rect key="frame" x="-2" y="44" width="341" height="15"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="lQs-iW-2Af">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="system" size="12"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
