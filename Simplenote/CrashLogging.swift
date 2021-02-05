@@ -7,19 +7,33 @@ import AutomatticTracks
 /// using `SNCrashLoggingDataProvider`.
 @objc(CrashLogging)
 class CrashLoggingShim: NSObject {
-    @objc static func start(withSimperium simperium: Simperium) {
-        let dataProvider = SNCrashLoggingDataProvider(withSimperium: simperium)
-        CrashLogging.start(withDataProvider: dataProvider)
+
+    private let crashLogging: CrashLogging
+
+    @objc init(simperium: Simperium) {
+        self.crashLogging = CrashLogging(
+            dataProvider: SNCrashLoggingDataProvider(withSimperium: simperium)
+        )
+        super.init()
     }
 
-    @objc static func cacheUser(_ user: SPUser) {
+    @available(*, unavailable, message: "Use `init(with simperium:)` instead")
+    override init() {
+        fatalError("Use `init(with simperium:)` instead")
+    }
+
+    @objc func start() {
+        _ = try? crashLogging.start()
+    }
+
+    @objc func cacheUser(_ user: SPUser) {
         CrashLoggingCache.emailAddress = user.email
-        CrashLogging.setNeedsDataRefresh()
+        crashLogging.setNeedsDataRefresh()
     }
 
-    @objc static func clearCachedUser() {
+    @objc func clearCachedUser() {
         CrashLoggingCache.emailAddress = nil
-        CrashLogging.setNeedsDataRefresh()
+        crashLogging.setNeedsDataRefresh()
     }
 }
 

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2020-09-18 12:54:04+0000 */
+/* Translation-Revision-Date: 2021-01-22 18:54:03+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -229,7 +229,7 @@
 "83.title" = "ملاحظة";
 
 /* Class = "NSMenuItem"; title = "Alphabetically: A-Z"; ObjectID = "AuW-hU-J6R"; Note = "Toggles Alphabetical Note Sort Order"; */
-"AuW-hU-J6R.title" = "Alphabetically: A-Z";
+"AuW-hU-J6R.title" = "أبجديًا: أ-ي";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "تويتر";
@@ -262,7 +262,7 @@
 "RZM-N8-VLN.title" = "إعدادات الخصوصية";
 
 /* Class = "NSMenuItem"; title = "Created: Oldest"; ObjectID = "S16-eV-qeq"; */
-"S16-eV-qeq.title" = "Created: Oldest";
+"S16-eV-qeq.title" = "تاريخ الإنشاء: الأقدم";
 
 /* Class = "NSMenu"; title = "Theme"; ObjectID = "SIP-Tf-W7J"; Note = "Theme Settings Menu"; */
 "SIP-Tf-W7J.title" = "القالب";
@@ -277,7 +277,7 @@
 "YpJ-fs-p4p.title" = "فرز الملحوظة";
 
 /* Class = "NSMenuItem"; title = "Created: Newest"; ObjectID = "Z0V-Oz-ijh"; */
-"Z0V-Oz-ijh.title" = "Created: Newest";
+"Z0V-Oz-ijh.title" = "تاريخ الإنشاء: الأحدث";
 
 /* Class = "NSMenuItem"; title = "Light"; ObjectID = "Zhe-Bb-jvT"; Note = "Toggles Light Mode"; */
 "Zhe-Bb-jvT.title" = "فاتح";
@@ -307,16 +307,16 @@
 "oS8-Vc-yog.title" = "إعادة تعيين";
 
 /* Class = "NSMenuItem"; title = "Modified: Newest"; ObjectID = "p5U-fB-pgR"; */
-"p5U-fB-pgR.title" = "Modified: Newest";
+"p5U-fB-pgR.title" = "تاريخ التعديل: الأحدث";
 
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
 "qcT-FY-eHe.title" = "داكن";
 
 /* Class = "NSMenuItem"; title = "Alphabetically: Z-A"; ObjectID = "riY-RT-IN8"; */
-"riY-RT-IN8.title" = "Alphabetically: Z-A";
+"riY-RT-IN8.title" = "أبجديًا: أ-ي";
 
 /* Class = "NSMenuItem"; title = "Modified: Oldest"; ObjectID = "ssB-vH-kwg"; */
-"ssB-vH-kwg.title" = "Modified: Oldest";
+"ssB-vH-kwg.title" = "تاريخ التعديل: الأقدم";
 
 /* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
 "tQC-gw-hdq.title" = "مكثَّف";

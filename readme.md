@@ -21,6 +21,16 @@ We use a few tools to help with development. To install or update the required d
 Simplenote for iOS uses [CocoaPods](http://cocoapods.org/) to manage third party libraries.
 Third party libraries and resources managed by CocoaPods will be installed by the `rake dependencies` command above.
 
+#### Why isn't Sparkle fetched with CocoaPods
+
+At the time of writing, the version of Sparkle distributed via CocoaPods doesn't support Sandboxing, a feature that we value in Simplenote macOS.
+
+To distribute the beta version of Simplenote with Sparkle, we need to use the [`2.x`](https://github.com/sparkle-project/Sparkle/tree/2.x) branch.
+This new version has been in the works for quite some time and you can keep track of process to get it shipped [on this issue in the Sparkle repo](https://github.com/sparkle-project/Sparkle/issues/1523).
+
+In the meantime, we need to manually clone the branch, build the framework and copy it in our repo.
+Hopefully, you won't need to update Sparkle till version 2.x has shipped but, in case you do, this process is automated via the `./Scripts/update-sparkle.sh` script.
+
 #### SwiftLint
 
 We use [SwiftLint](https://github.com/realm/SwiftLint) to enforce a common style for Swift code. The app should build and work without it, but if you plan to write code, you are encouraged to install it. No commit should have lint warnings or errors.
