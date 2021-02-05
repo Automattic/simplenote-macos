@@ -108,7 +108,7 @@ extension TagListState {
     ///
     @objc
     func tag(atIndex index: Int) -> Tag? {
-        guard case let .tag(tag) = rowAtIndex(index) else {
+        guard let row = rowAtIndex(index), case let .tag(tag) = row else {
             return nil
         }
 

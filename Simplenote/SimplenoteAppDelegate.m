@@ -47,6 +47,8 @@
 @property (strong, nonatomic) SPUStandardUpdaterController      *updaterController;
 #endif
 
+@property (strong, nonatomic) CrashLogging                      *crashLogging;
+
 @end
 
 
@@ -93,17 +95,15 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self configureSimperium];
+    [self configureSimperiumBuckets];
     [self configureMainInterface];
     [self configureSplitViewController];
     [self configureMainWindowController];
     [self applyStyle];
 
     [self configureEditorController];
+    [self configureVerificationCoordinator];
     [self configureVersionsController];
-    
-    [self.simperium setAllBucketDelegates:self];
-    [self.simperium bucketForName:@"Note"].notifyWhileIndexing = YES;
-    [self.simperium bucketForName:@"Tag"].notifyWhileIndexing = YES;
 
 #if SPARKLE_OTA
     [self configureSparkle];
@@ -165,7 +165,8 @@
 
 - (void)setupCrashLogging
 {
-    [CrashLogging startWithSimperium: self.simperium];
+    self.crashLogging = [[CrashLogging alloc] initWithSimperium:self.simperium];
+    [self.crashLogging start];
 }
 
 - (IBAction)ensureMainWindowIsVisible:(id)sender
@@ -240,14 +241,18 @@
 
 - (void)simperiumDidLogin:(Simperium *)simperium
 {
-    [SPTracker refreshMetadataWithEmail:simperium.user.email];
-    [CrashLogging cacheUser: simperium.user];
+    SPUser *user = simperium.user;
+
+    [self.verificationCoordinator processDidLoginWithEmail:user.email];
+    [SPTracker refreshMetadataWithEmail:user.email];
+    [self.crashLogging cacheUser: simperium.user];
 }
 
 - (void)simperiumDidLogout:(Simperium *)simperium
 {
+    [self.verificationCoordinator processDidLogout];
     [SPTracker refreshMetadataForAnonymousUser];
-    [CrashLogging clearCachedUser];
+    [self.crashLogging clearCachedUser];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
@@ -265,7 +270,7 @@
         return;
 	}
     
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         // Note change
         switch (change) {                
             case SPBucketChangeTypeUpdate:
@@ -280,15 +285,26 @@
             default:
                 break;
         }
-    } else {
-        // Tag change
+        return;
+    }
+
+    // Tag change
+    if ([bucket isEqual: self.simperium.tagsBucket]) {
         [self.tagListViewController loadTags];
+        return;
+    }
+
+    // Verification Status Change
+    if ([bucket isEqual: self.simperium.accountBucket] && [key isEqualToString:SPCredentials.simperiumEmailVerificationObjectKey]) {
+        NSDictionary *verification = [bucket objectForKey:key];
+        [self.verificationCoordinator refreshStateWithVerification:verification];
+        return;
     }
 }
 
 - (void)bucket:(SPBucket *)bucket willChangeObjectsForKeys:(NSSet *)keys
 {
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         for (NSString *key in keys) {
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
@@ -298,22 +314,8 @@
 
 - (void)bucket:(SPBucket *)bucket didReceiveObjectForKey:(NSString *)key version:(NSString *)version data:(NSDictionary *)data
 {
-    if ([bucket.name isEqualToString:@"Note"]) {
+    if ([bucket isEqual: self.simperium.notesBucket]) {
         [self.versionsController didReceiveObjectForSimperiumKey:key version:version data:data];
-    }
-}
-
-- (void)bucketWillStartIndexing:(SPBucket *)bucket
-{
-    if ([bucket.name isEqualToString:@"Note"]) {
-        [self.noteListViewController setWaitingForIndex:YES];
-    }
-}
-
-- (void)bucketDidFinishIndexing:(SPBucket *)bucket
-{
-    if ([bucket.name isEqualToString:@"Note"]) {
-        [self.noteListViewController setWaitingForIndex:NO];
     }
 }
 

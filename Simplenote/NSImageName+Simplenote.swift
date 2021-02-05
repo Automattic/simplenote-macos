@@ -13,6 +13,10 @@ extension NSImage.Name {
     ///
     static let arrowTopRight = NSImage.Name("icon_arrow_top_right")
 
+    /// Alerts: Cross
+    ///
+    static let cross = NSImage.Name("button_cross")
+
     /// Toolbar: History
     ///
     static let history = NSImage.Name("button_history")
@@ -28,6 +32,10 @@ extension NSImage.Name {
     /// Toolbar: Info
     ///
     static let info = NSImage.Name("button_info")
+
+    /// Alert: Mail
+    ///
+    static let mail = NSImage.Name("icon_mail")
 
     /// Notes List: New Note
     ///

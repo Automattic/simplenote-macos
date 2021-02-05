@@ -9,7 +9,7 @@ class NoteListControllerTests: XCTestCase {
 
     /// Let's launch an actual CoreData testing stack 🤟
     ///
-    private let storage = MockupStorage()
+    private let storage = MockStorage()
     private var noteListController: NoteListController!
 
 
