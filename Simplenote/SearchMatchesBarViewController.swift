@@ -13,11 +13,15 @@ class SearchMatchesBarViewController: NSViewController {
     }
 
     private var total: Int = 0
-    private var current: Int = 0 {
+
+    ///
+    private var current: Int = Constants.defaultCurrentValue {
         didSet {
-            if oldValue != current {
+            if oldValue != current, current >= 0 {
                 onChange?(current)
             }
+
+            update()
         }
     }
 
@@ -35,20 +39,17 @@ class SearchMatchesBarViewController: NSViewController {
     /// Setup with total number of matches and "on change" callback
     ///
     func setup(with total: Int, onChange: @escaping (_ current: Int) -> Void) {
-        self.onChange = nil
+        self.onChange = onChange
 
         self.total = total
-        current = 0
-        update()
-
-        self.onChange = onChange
+        current = Constants.defaultCurrentValue
     }
 
     private func update() {
         textLabel.stringValue = Localization.matches(with: total)
 
         navigationControl.setEnabled(current - 1 >= 0 && total > 0, forSegment: Constants.backButtonIndex)
-        navigationControl.setEnabled(current + 1 < total, forSegment: Constants.forwardButtonIndex)
+        navigationControl.setEnabled(current + 1 < total && total > 0, forSegment: Constants.forwardButtonIndex)
     }
 }
 
@@ -72,7 +73,6 @@ private extension SearchMatchesBarViewController {
         newCurrent = max(newCurrent, 0)
 
         current = newCurrent
-        update()
     }
 }
 
@@ -82,6 +82,9 @@ private extension SearchMatchesBarViewController {
 private struct Constants {
     static let backButtonIndex = 0
     static let forwardButtonIndex = 1
+
+    /// We use -1 so that we can navigate to the first match. User presses ">", we go from -1 to 0 and 0 is the index of the first match.
+    static let defaultCurrentValue = -1
 }
 
 
