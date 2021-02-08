@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
+/* Translation-Revision-Date: 2021-01-22 17:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -149,7 +149,7 @@
 "New note..." = "Catatan baru...";
 
 /* No Notes Available */
-"No Notes" = "No Notes";
+"No Notes" = "Tidak ada Catatan";
 
 /* No Search Results */
 "No Results" = "Tidak ada Hasil";
@@ -218,7 +218,7 @@
 "Search" = "Cari";
 
 /* Search Results Title */
-"Searching" = "Searching";
+"Searching" = "Mencari";
 
 /* Share Menu Action */
 "Share" = "Sebarkan";
@@ -242,7 +242,7 @@
 "Skip" = "Lewati";
 
 /* Sortbar Title */
-"Sort" = "Sort";
+"Sort" = "Urutkan";
 
 /* Tags Section Name */
 "Tags" = "Tag";
@@ -254,7 +254,7 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Informasi ini membantu kami menyempurnakan produk, menyusun konten pemasaran yang lebih relevan untuk Anda, mempersonalisasi pengalaman Simplenote.com Anda, dan lainnya seperti yang dijelaskan dalam kebijakan privasi kami.";
 
 /* Tooltip: Restore a trashed note */
-"Toggle Sidebar" = "Toggle Sidebar";
+"Toggle Sidebar" = "Sidebar Toggle";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */
