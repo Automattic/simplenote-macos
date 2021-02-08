@@ -203,9 +203,6 @@
 /* Class = "NSMenuItem"; title = "Search..."; ObjectID = "1417"; */
 "1417.title" = "Search...";
 
-/* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
-"1541.title" = "Sign Out";
-
 /* Class = "NSMenuItem"; title = "New"; ObjectID = "1654"; Note = "Adds a New Note"; */
 "1654.title" = "New";
 
@@ -224,8 +221,8 @@
 /* Class = "NSMenu"; title = "Tags Sorting"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
 "76D-S0-1JD.title" = "Tags Sorting";
 
-/* Class = "NSMenuItem"; title = "Alphabetically: A-Z"; ObjectID = "AuW-hU-J6R"; Note = "Toggles Alphabetical Note Sort Order"; */
-"AuW-hU-J6R.title" = "Alphabetically: A-Z";
+/* Class = "NSMenuItem"; title = "Name: Z-A"; ObjectID = "BFX-rl-bcH"; */
+"BFX-rl-bcH.title" = "Name: Z-A";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
@@ -244,6 +241,9 @@
 
 /* Class = "NSMenuItem"; title = "Line Length"; ObjectID = "P9P-ed-21W"; */
 "P9P-ed-21W.title" = "Line Length";
+
+/* Class = "NSMenuItem"; title = "Log Out"; ObjectID = "Pde-gm-aAD"; Note = "Logs out from the Account"; */
+"Pde-gm-aAD.title" = "Log Out";
 
 /* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
 "Pwd-hR-fBt.title" = "Export Everything";
@@ -268,6 +268,9 @@
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "THl-80-myZ"; Note = "Opens the Format Menu"; */
 "THl-80-myZ.title" = "Format";
+
+/* Class = "NSMenuItem"; title = "Name: A-Z"; ObjectID = "XEL-Qt-3Ik"; Note = "Toggles Alphabetical Note Sort Order"; */
+"XEL-Qt-3Ik.title" = "Name: A-Z";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
 "YpJ-fs-p4p.title" = "Note Sorting";
@@ -307,9 +310,6 @@
 
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
 "qcT-FY-eHe.title" = "Dark";
-
-/* Class = "NSMenuItem"; title = "Alphabetically: Z-A"; ObjectID = "riY-RT-IN8"; */
-"riY-RT-IN8.title" = "Alphabetically: Z-A";
 
 /* Class = "NSMenuItem"; title = "Modified: Oldest"; ObjectID = "ssB-vH-kwg"; */
 "ssB-vH-kwg.title" = "Modified: Oldest";
