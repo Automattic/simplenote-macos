@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
+/* Translation-Revision-Date: 2021-01-22 17:54:04+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -149,7 +149,7 @@
 "New note..." = "新增筆記...";
 
 /* No Notes Available */
-"No Notes" = "No Notes";
+"No Notes" = "沒有筆記";
 
 /* No Search Results */
 "No Results" = "沒有任何搜尋結果";
@@ -218,7 +218,7 @@
 "Search" = "搜尋";
 
 /* Search Results Title */
-"Searching" = "Searching";
+"Searching" = "搜尋";
 
 /* Share Menu Action */
 "Share" = "分享";
@@ -242,7 +242,7 @@
 "Skip" = "跳過";
 
 /* Sortbar Title */
-"Sort" = "Sort";
+"Sort" = "排序";
 
 /* Tags Section Name */
 "Tags" = "標籤";
@@ -254,7 +254,7 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "這類資訊有助我們改善產品、提供與你更加相關的行銷活動、帶來量身打造的 Simplenote.com 使用體驗；若要瞭解更多詳細內容，請參閱我們的隱私權政策。";
 
 /* Tooltip: Restore a trashed note */
-"Toggle Sidebar" = "Toggle Sidebar";
+"Toggle Sidebar" = "切換側邊欄";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */
