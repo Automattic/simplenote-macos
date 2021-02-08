@@ -113,7 +113,7 @@ extension NSColor {
 
     @objc
     static var simplenoteSidebarDividerColor: NSColor {
-        dynamicColor(lightColor: simplenoteSidebarDividerLightColor, darkColor: simplenoteSecondaryDividerDarkColor)
+        dynamicColor(lightColor: simplenoteSidebarDividerLightColor, darkColor: .black)
     }
 
     @objc
