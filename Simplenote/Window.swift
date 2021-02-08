@@ -141,19 +141,33 @@ private extension Window {
         }
 
         // Let's all calm down, and allow double click over the First Responder
-        if titlebarIntersectsFirstResponder {
+        if effectiveFirstResponder(contains: event.locationInWindow) {
+            return
+        }
+
+        // Plus let's ignore double clicks over Subviews that can become first responders
+        if contentView?.hitTest(event.locationInWindow)?.acceptsFirstResponder == true {
             return
         }
 
         self.performZoom(nil)
     }
 
-    var titlebarIntersectsFirstResponder: Bool {
-        guard let responder = firstResponder as? NSView else {
+    /// In AppKit the Window's Field Editor handles Input, "on behalf" of the First Responder
+    ///
+    /// In the particular case of NSSearchField, the `firstResponder` (Field Editor) will only match the bounds of the TextField Area,
+    /// ignoring the Loupe + enclosing rectangle.
+    ///
+    /// By accessing the `Effective First Responder` we can ignore double clicks over areas such as the Loupe.
+    ///
+    func effectiveFirstResponder(contains point: CGPoint) -> Bool {
+        guard let fieldEditor = firstResponder as? NSText,
+           let effectiveFirstResponder = fieldEditor.delegate as? NSView
+        else {
             return false
         }
 
-        let onScreenResponderBounds = responder.convert(responder.bounds, to: nil)
-        return titlebarRect.intersects(onScreenResponderBounds)
+        let onScreenResponderBounds = effectiveFirstResponder.convert(effectiveFirstResponder.bounds, to: nil)
+        return onScreenResponderBounds.contains(point)
     }
 }
