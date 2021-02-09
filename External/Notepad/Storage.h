@@ -8,9 +8,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong, readonly) NSMutableAttributedString *backingStore;
 @property(nonatomic, strong, readonly) Theme *theme;
-@property(nonatomic, assign) BOOL skipRestyling;
 
 - (void)refreshStyleWithMarkdownEnabled:(BOOL)markdownEnabled NS_SWIFT_NAME(refreshStyle(markdownEnabled:));
+
+- (void)endEditingWithoutRestyling;
 
 @end
 

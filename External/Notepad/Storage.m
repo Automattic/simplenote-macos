@@ -4,6 +4,7 @@
 @interface Storage ()
 @property(nonatomic, strong) NSMutableAttributedString *backingStore;
 @property(nonatomic, strong) Theme *theme;
+@property(nonatomic, assign) BOOL skipRestyling;
 @end
 
 @implementation Storage
@@ -65,6 +66,12 @@
     [self applyStyles:extendedRange];
 
     [super processEditing];
+}
+
+- (void)endEditingWithoutRestyling {
+    self.skipRestyling = YES;
+    [self endEditing];
+    self.skipRestyling = NO;
 }
 
 @end
