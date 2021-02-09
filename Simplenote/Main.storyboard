@@ -229,7 +229,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="68" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="q9F-rT-PZ2" customClass="SPTableView">
-                                            <rect key="frame" x="0.0" y="0.0" width="294" height="538"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="294" height="566"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                             <color key="gridColor" white="0.94999999999999996" alpha="1" colorSpace="deviceWhite"/>
@@ -342,7 +342,7 @@
                                         </tableView>
                                     </subviews>
                                     <nil key="backgroundColor"/>
-                                    <edgeInsets key="contentInsets" left="0.0" right="0.0" top="80" bottom="0.0"/>
+                                    <edgeInsets key="contentInsets" left="0.0" right="0.0" top="52" bottom="0.0"/>
                                 </clipView>
                                 <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="jZz-dv-fIm">
@@ -355,25 +355,19 @@
                                 </scroller>
                             </scrollView>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="vxX-pk-HGm">
-                                <rect key="frame" x="0.0" y="538" width="294" height="80"/>
+                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                             </visualEffectView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="538" width="294" height="80"/>
+                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="wpb-oV-A2U" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="294" height="52"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CAe-TX-MuL" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="52"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Actions View">
-                                        <rect key="frame" x="16" y="28" width="262" height="52"/>
+                                        <rect key="frame" x="16" y="0.0" width="262" height="52"/>
                                         <subviews>
                                             <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
                                                 <rect key="frame" x="0.0" y="12" width="222" height="29"/>
@@ -414,79 +408,20 @@
                                             <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="DV3-ul-I2L" userLabel="SortBar View" customClass="SortBarView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="0.0" width="262" height="28"/>
-                                        <subviews>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-zn-kyD">
-                                                <rect key="frame" x="0.0" y="0.0" width="156" height="28"/>
-                                                <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ffx-55-RlY">
-                                                        <rect key="frame" x="-2" y="7" width="46" height="15"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Sort by" id="REi-2x-g6N">
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="hao-b3-D5s">
-                                                        <rect key="frame" x="44" y="7" width="114" height="15"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Alphabetically A-Z" id="EvQ-V8-rEa">
-                                                            <font key="font" metaFont="systemSemibold" size="12"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <gestureRecognizers>
-                                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PLi-zb-9Na">
-                                                        <connections>
-                                                            <action selector="searchSortBarWasPressed:" target="JtV-0Z-Zh8" id="TQ7-ve-qOg"/>
-                                                        </connections>
-                                                    </clickGestureRecognizer>
-                                                </gestureRecognizers>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="8D5-zn-kyD" firstAttribute="leading" secondItem="DV3-ul-I2L" secondAttribute="leading" id="KzO-tr-WGG"/>
-                                            <constraint firstItem="8D5-zn-kyD" firstAttribute="top" secondItem="DV3-ul-I2L" secondAttribute="top" id="Nc1-wG-yGp"/>
-                                            <constraint firstAttribute="bottom" secondItem="8D5-zn-kyD" secondAttribute="bottom" id="Nqb-pt-WB7"/>
-                                            <constraint firstAttribute="height" constant="28" id="OWt-Gu-soR"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8D5-zn-kyD" secondAttribute="trailing" id="ckG-M9-jJD"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="sortModeLabel" destination="hao-b3-D5s" id="xlb-Kx-6Nc"/>
-                                            <outlet property="titleLabel" destination="ffx-55-RlY" id="8QJ-j1-8my"/>
-                                        </connections>
-                                    </customView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="BDw-oI-YFp"/>
-                                    <constraint firstItem="DV3-ul-I2L" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" id="BKi-ae-Xtg"/>
-                                    <constraint firstItem="CAe-TX-MuL" firstAttribute="top" secondItem="wpb-oV-A2U" secondAttribute="bottom" id="CBP-10-Wgq"/>
-                                    <constraint firstItem="DV3-ul-I2L" firstAttribute="top" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="IAa-25-IXP"/>
                                     <constraint firstAttribute="trailing" secondItem="wpb-oV-A2U" secondAttribute="trailing" id="LKN-YZ-d4a"/>
                                     <constraint firstItem="Al7-ZM-ybK" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="V7W-em-DYm"/>
                                     <constraint firstItem="Al7-ZM-ybK" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="VTs-UB-jhP"/>
                                     <constraint firstAttribute="trailing" secondItem="Al7-ZM-ybK" secondAttribute="trailing" constant="16" id="Xgn-Hb-470"/>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="top" secondItem="Al7-ZM-ybK" secondAttribute="top" id="Xzh-Vr-wIZ"/>
                                     <constraint firstItem="wpb-oV-A2U" firstAttribute="bottom" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="aBa-sg-bu7"/>
-                                    <constraint firstAttribute="bottom" secondItem="CAe-TX-MuL" secondAttribute="bottom" id="cEy-T1-hqM"/>
-                                    <constraint firstAttribute="bottom" secondItem="DV3-ul-I2L" secondAttribute="bottom" id="fND-lm-KYT"/>
-                                    <constraint firstItem="DV3-ul-I2L" firstAttribute="trailing" secondItem="Al7-ZM-ybK" secondAttribute="trailing" id="v9L-7t-MRq"/>
-                                    <constraint firstItem="CAe-TX-MuL" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="vpD-c6-lOG"/>
-                                    <constraint firstAttribute="trailing" secondItem="CAe-TX-MuL" secondAttribute="trailing" id="y2I-X7-AuW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="uL4-Fg-r6V"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
-                                <rect key="frame" x="10" y="295" width="274" height="23"/>
+                                <rect key="frame" x="10" y="323" width="274" height="23"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Notes" id="5l7-bS-Xdk">
                                     <font key="font" size="20" name="HelveticaNeue"/>
                                     <color key="textColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="deviceWhite"/>
@@ -494,7 +429,7 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5oO-Ju-l1S">
-                                <rect key="frame" x="139" y="264" width="16" height="16"/>
+                                <rect key="frame" x="139" y="292" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
                         <constraints>
@@ -524,7 +459,6 @@
                         <outlet property="addNoteButton" destination="LGw-AF-2MK" id="s6O-Qf-p2T"/>
                         <outlet property="backgroundBox" destination="zXl-eL-J7J" id="Iu3-6M-C6x"/>
                         <outlet property="clipView" destination="zul-ko-TNO" id="WiT-34-HPY"/>
-                        <outlet property="headerBottomDividerView" destination="CAe-TX-MuL" id="286-dI-pZY"/>
                         <outlet property="headerContainerView" destination="dMC-MU-RmS" id="3K3-ly-nyU"/>
                         <outlet property="headerDividerView" destination="wpb-oV-A2U" id="n5Z-Rv-Jf2"/>
                         <outlet property="headerEffectView" destination="vxX-pk-HGm" id="kTl-9u-MLE"/>
@@ -532,8 +466,6 @@
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
                         <outlet property="searchField" destination="YLv-zp-fRS" id="vqB-c6-e3u"/>
-                        <outlet property="sortbarMenu" destination="gYa-0Y-UQ7" id="ztX-V1-UHE"/>
-                        <outlet property="sortbarView" destination="DV3-ul-I2L" id="ZzI-lw-Y5Y"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>
@@ -581,49 +513,6 @@
                     </items>
                     <connections>
                         <outlet property="delegate" destination="JtV-0Z-Zh8" id="eTf-Hn-ETC"/>
-                    </connections>
-                </menu>
-                <menu id="gYa-0Y-UQ7" userLabel="Sortbar Menu">
-                    <items>
-                        <menuItem title="Alphabetically: A-Z" identifier="noteSortAlphaAscMenuItem" id="ikC-AF-W3i" userLabel="Alphabetically: A-Z">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="hbI-sy-rJr"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Alphabetically: Z-A" identifier="noteSortAlphaDescMenuItem" id="498-Zr-l4M" userLabel="Alphabetically: Z-A">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="YSs-I2-cWS"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="NdB-Ek-Oe1" userLabel="Created: Newest">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="1Zt-1G-dgs"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Created: Oldest" identifier="noteSortCreateOldestMenuItem" id="jrS-Tc-xfY" userLabel="Created: Oldest">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="fP4-Dl-TeG"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Modified: Newest" identifier="noteSortModifyNewestMenuItem" id="jGu-O5-Go3" userLabel="Modified: Newest">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="Nmj-xq-cW0"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Modified: Oldest" identifier="noteSortModifyOldestMenuItem" id="kdm-Gr-CTS" userLabel="Modified: Oldest">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="searchSortModeWasPressed:" target="JtV-0Z-Zh8" id="z6P-jm-AcL"/>
-                            </connections>
-                        </menuItem>
-                    </items>
-                    <connections>
-                        <outlet property="delegate" destination="JtV-0Z-Zh8" id="Ghd-YD-hii"/>
                     </connections>
                 </menu>
                 <customObject id="41I-un-qkw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
