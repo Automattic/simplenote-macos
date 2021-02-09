@@ -112,6 +112,11 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteSidebarDividerColor: NSColor {
+        dynamicColor(lightColor: simplenoteSidebarDividerLightColor, darkColor: .black)
+    }
+
+    @objc
     static var simplenoteLinkColor: NSColor {
         dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
     }
@@ -226,6 +231,10 @@ private extension NSColor {
 
     static var simplenoteSecondaryDividerDarkColor: NSColor {
         NSColor(calibratedWhite: 255.0, alpha: 0.1)
+    }
+
+    static var simplenoteSidebarDividerLightColor: NSColor {
+        NSColor(calibratedWhite: 0.0, alpha: 0.1)
     }
 
     static var simplenoteTokenBackgroundLightColor: NSColor {
