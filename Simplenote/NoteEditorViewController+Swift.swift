@@ -891,7 +891,9 @@ extension NoteEditorViewController {
     @objc
     func displayContent(_ content: String?) {
         noteEditor.displayNote(content: content ?? "")
-        updateKeywordsHighlight()
+        DispatchQueue.main.async { [weak self] in
+            self?.updateKeywordsHighlight()
+        }
     }
 
     @objc
