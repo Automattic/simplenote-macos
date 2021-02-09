@@ -165,7 +165,6 @@ extension NSTextView {
 
         /// Issue #472: Linkification should not be undoable
         undoManager?.disableUndoRegistration()
-        checkTextInDocument(nil)
 
         if let layoutManager = layoutManager,
            let textContainer = textContainer,
