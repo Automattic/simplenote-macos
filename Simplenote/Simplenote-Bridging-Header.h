@@ -19,7 +19,7 @@
 #import "SPTableView.h"
 #import "SPTracker.h"
 #import "TagListViewController.h"
-
+#import "Storage.h"
 
 #pragma mark - Extensions
 

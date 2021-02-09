@@ -26,7 +26,9 @@ class SPTextView: NSTextView {
                 textStorage.addAttribute(.backgroundColor, value: NSColor.simplenoteEditorSearchHighlightColor, range: range)
             }
 
-            textStorage.endEditingWithoutRestyling()
+            textStorage.skipRestyling = true
+            textStorage.endEditing()
+            textStorage.skipRestyling = false
         }
     }
 
