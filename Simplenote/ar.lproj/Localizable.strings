@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-12 11:32:41+0000 */
+/* Translation-Revision-Date: 2021-01-22 18:54:03+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -149,7 +149,7 @@
 "New note..." = "ملاحظة جديدة...";
 
 /* No Notes Available */
-"No Notes" = "No Notes";
+"No Notes" = "لا توجد ملاحظات";
 
 /* No Search Results */
 "No Results" = "لا توجد نتائج";
@@ -218,7 +218,7 @@
 "Search" = "بحث";
 
 /* Search Results Title */
-"Searching" = "Searching";
+"Searching" = "البحث";
 
 /* Share Menu Action */
 "Share" = "شارك";
@@ -242,7 +242,7 @@
 "Skip" = "تخطي";
 
 /* Sortbar Title */
-"Sort" = "Sort";
+"Sort" = "فرز";
 
 /* Tags Section Name */
 "Tags" = "وسوم";
@@ -254,7 +254,7 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "تساعدنا هذه المعلومات على تحسين منتجاتنا، وجعل التسويق لصالحك أكثر ملاءمة، وتخصيص تجربة Simplenote.com الخاصة بك والمزيد، مثلما ورد بالتفصيل في سياسة الخصوصية الخاصة بنا.";
 
 /* Tooltip: Restore a trashed note */
-"Toggle Sidebar" = "Toggle Sidebar";
+"Toggle Sidebar" = "تبديل الشريط الجانبي";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

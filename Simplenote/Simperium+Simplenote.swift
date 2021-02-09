@@ -5,10 +5,32 @@ import Foundation
 //
 extension Simperium {
 
+    /// All of the Buckets we're Sync'ing
+    ///
+    var allBuckets: [SPBucket] {
+        [ accountBucket, notesBucket, preferencesBucket, tagsBucket ]
+    }
+
+    /// Bucket: Account
+    /// - Note: Since it's **dynamic** (InMemory JSON Storage), we don't really have an Account class
+    ///
+    @objc
+    var accountBucket: SPBucket {
+        bucket(forName: Simperium.accountBucketName)
+    }
+
     /// Notes Bucket
     ///
+    @objc
     var notesBucket: SPBucket {
         bucket(forName: Note.classNameWithoutNamespaces)
+    }
+
+    /// Bucket: Preferences
+    ///
+    @objc
+    var preferencesBucket: SPBucket {
+        bucket(forName: Preferences.classNameWithoutNamespaces)
     }
 
     /// Tags Bucket
@@ -95,3 +117,9 @@ extension Simperium {
     }
 }
 
+
+// MARK: - Constants
+//
+extension Simperium {
+    static let accountBucketName = "Account"
+}

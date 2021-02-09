@@ -2,6 +2,6 @@
 #
 # Ensure this file is checked in to source control!
 
-gem 'fastlane-plugin-wpmreleasetoolkit', git: 'https://github.com/wordpress-mobile/release-toolkit', tag: '0.9.14'
+gem 'fastlane-plugin-wpmreleasetoolkit', git: 'https://github.com/wordpress-mobile/release-toolkit', tag: '0.13.0'
 gem 'fastlane-plugin-sentry'
 gem 'fastlane-plugin-appcenter', '1.6.0'

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AccountVerificationViewController" customModule="Simplenote" customModuleProvider="target">
+            <connections>
+                <outlet property="dismissButton" destination="q2p-l5-XcX" id="MeH-yR-DZ7"/>
+                <outlet property="iconImageView" destination="D22-GY-wVp" id="xDq-S1-Sxi"/>
+                <outlet property="primaryButton" destination="38B-iD-Rwu" id="4jd-LP-Jzs"/>
+                <outlet property="progressIndicator" destination="4QZ-Mp-DNh" id="26R-Hm-8wo"/>
+                <outlet property="secondaryButton" destination="Aro-Qg-Nyt" id="28E-8b-8IB"/>
+                <outlet property="textLabel" destination="UPQ-2D-QRL" id="WSF-og-kfr"/>
+                <outlet property="titleLabel" destination="Psb-Ek-zco" id="qbh-rg-5Yu"/>
+                <outlet property="view" destination="c22-O7-iKe" id="Fq7-rM-ffe"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="617"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D22-GY-wVp">
+                    <rect key="frame" x="211" y="497" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="dAn-aR-nmK"/>
+                        <constraint firstAttribute="height" constant="60" id="iXB-hc-kPb"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="button_info" id="2TU-xF-4vY"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Psb-Ek-zco">
+                    <rect key="frame" x="210" y="438" width="62" height="33"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Title" id="EA9-aL-uwC">
+                        <font key="font" metaFont="systemBold" size="28"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPQ-2D-QRL">
+                    <rect key="frame" x="89" y="144" width="304" height="234"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="234" id="B6A-gI-o40"/>
+                        <constraint firstAttribute="width" constant="300" id="Mkw-gh-bzB"/>
+                    </constraints>
+                    <textFieldCell key="cell" selectable="YES" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" id="YNU-az-7jB">
+                        <font key="font" metaFont="system"/>
+                        <string key="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2p-l5-XcX">
+                    <rect key="frame" x="432" y="567" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="jxt-r2-EsU"/>
+                        <constraint firstAttribute="width" constant="30" id="xs5-8V-9X5"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="button_cross" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="s3o-wH-mZR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="dismissWasPressed:" target="-2" id="ws4-zQ-via"/>
+                    </connections>
+                </button>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h46-NQ-2gg">
+                    <rect key="frame" x="207" y="36" width="69" height="96"/>
+                    <subviews>
+                        <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="4QZ-Mp-DNh">
+                            <rect key="frame" x="26" y="80" width="16" height="16"/>
+                        </progressIndicator>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38B-iD-Rwu" customClass="Button" customModule="Simplenote" customModuleProvider="target">
+                            <rect key="frame" x="9" y="40" width="51" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="4e0-Mf-IKs"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="Primary" bezelStyle="rounded" alignment="center" controlSize="large" imageScaling="proportionallyDown" inset="2" id="JZU-7d-nmW" customClass="ButtonCell" customModule="Simplenote" customModuleProvider="target">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="primaryButtonWasPressed:" target="-2" id="90F-UX-XGU"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aro-Qg-Nyt">
+                            <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="A56-9k-aj2"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="Secondary" bezelStyle="rounded" alignment="center" inset="2" id="nsq-9j-vNA">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="secondaryButtonWasPressed:" target="-2" id="7Rd-E0-6LC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="96" id="sv9-kx-Mn0"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="UPQ-2D-QRL" firstAttribute="top" secondItem="Psb-Ek-zco" secondAttribute="bottom" constant="60" id="2r9-a4-mpg"/>
+                <constraint firstItem="h46-NQ-2gg" firstAttribute="top" secondItem="UPQ-2D-QRL" secondAttribute="bottom" constant="12" id="594-Wj-k5L"/>
+                <constraint firstItem="q2p-l5-XcX" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="6Sx-y8-txP"/>
+                <constraint firstItem="Psb-Ek-zco" firstAttribute="top" secondItem="D22-GY-wVp" secondAttribute="bottom" constant="26" id="8qw-tt-bv0"/>
+                <constraint firstItem="UPQ-2D-QRL" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="91" id="AZo-lL-wJi"/>
+                <constraint firstAttribute="trailing" secondItem="UPQ-2D-QRL" secondAttribute="trailing" constant="91" id="QKk-PF-vwK"/>
+                <constraint firstAttribute="trailing" secondItem="q2p-l5-XcX" secondAttribute="trailing" constant="20" id="TJt-xY-jI4"/>
+                <constraint firstItem="Psb-Ek-zco" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="UoD-Zk-agS"/>
+                <constraint firstItem="h46-NQ-2gg" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Ybg-Ca-fzx"/>
+                <constraint firstItem="D22-GY-wVp" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="aBQ-5v-osV"/>
+                <constraint firstAttribute="bottom" secondItem="h46-NQ-2gg" secondAttribute="bottom" constant="36" id="s53-Lb-HQN"/>
+                <constraint firstItem="UPQ-2D-QRL" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="wGe-e0-ohK"/>
+                <constraint firstItem="D22-GY-wVp" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="60" id="x04-bM-Mzq"/>
+            </constraints>
+            <point key="canvasLocation" x="27" y="154"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="button_cross" width="24" height="24"/>
+        <image name="button_info" width="24" height="24"/>
+    </resources>
+</document>

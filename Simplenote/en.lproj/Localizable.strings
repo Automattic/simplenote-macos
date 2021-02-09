@@ -39,6 +39,15 @@
    Password Reset: Cancel */
 "Cancel" = "Cancel";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "Cannot Confirm Account";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "Cannot Send Verification Email";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "Change Account Email";
+
 /* Number of characters in the note */
 "Characters" = "Characters";
 
@@ -47,6 +56,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "Collect Information";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "Confirm";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Confirm Password";
@@ -155,7 +167,8 @@
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Not Published";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "OK";
 
 /* Placeholder text for password field */
@@ -180,6 +193,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Please activate your WordPress.com account via email and try again.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "Please check your network settings and try again.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "Privacy Policy";
 
@@ -201,12 +217,18 @@
 /* Rename Tag Action */
 "Rename Tag" = "Rename Tag";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "Resend Email";
+
 /* Password Reset: Proceed */
 "Reset" = "Reset";
 
 /* Restore List Action
    Tooltip: Restore a trashed note */
 "Restore" = "Restore";
+
+/* Title -> Review you account screen */
+"Review Your Account" = "Review Your Account";
 
 /* Search Field Placeholder
    Tooltip: Search Action */
@@ -273,6 +295,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "Untagged Notes";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "Verify Your Email";
+
 /* Label for the current version of a note */
 "Version" = "Version";
 
@@ -288,11 +313,17 @@
 /* A welcome note for new Mac users */
 "welcomeNote-Mac" = "Welcome to Simplenote Mac!\n\nTo add a note, click the new note button with the plus symbol.\n\nTo remove a note, click the trash button.\n\nYou can search all your notes by typing in the search field above the note list.\n\nClick the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.\n\nThere are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.\n\nUse Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "Words";
 
 /* Hiring Title */
 "Work with Us" = "Work with Us";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "You're not connected to the internet";
