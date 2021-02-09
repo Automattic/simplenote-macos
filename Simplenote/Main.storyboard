@@ -357,66 +357,52 @@
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="vxX-pk-HGm">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                             </visualEffectView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="wpb-oV-A2U" userLabel="Header Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="566" width="294" height="52"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="wpb-oV-A2U" userLabel="Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="52"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Actions View">
-                                        <rect key="frame" x="16" y="0.0" width="262" height="52"/>
-                                        <subviews>
-                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQb-Jb-9cK" userLabel="SearchField" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="12" width="226" height="29"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="29" id="1FF-5p-QMv"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Search" usesSingleLineMode="YES" id="VXi-6k-6ql" customClass="SearchFieldCell" customModule="Simplenote" customModuleProvider="target">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                                <connections>
-                                                    <outlet property="delegate" destination="JtV-0Z-Zh8" id="aBy-hi-zoh"/>
-                                                </connections>
-                                            </textField>
-                                            <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
-                                                <rect key="frame" x="240" y="15" width="22" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="22" id="mDL-V4-Sng"/>
-                                                    <constraint firstAttribute="height" constant="22" id="oUz-t6-8il"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRY-CA-4Eu">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQb-Jb-9cK" userLabel="SearchField" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="13" width="224" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" id="0qP-3a-rqW"/>
-                                            <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="pQb-Jb-9cK" secondAttribute="trailing" constant="18" id="O9n-UA-S2z"/>
-                                            <constraint firstItem="pQb-Jb-9cK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="PKb-FN-s0o"/>
-                                            <constraint firstItem="pQb-Jb-9cK" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" priority="249" id="PyF-E5-fHS"/>
-                                            <constraint firstAttribute="height" constant="52" id="wkJ-yn-7qc"/>
-                                            <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
+                                            <constraint firstAttribute="height" constant="26" id="1FF-5p-QMv"/>
                                         </constraints>
-                                    </customView>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Search" usesSingleLineMode="YES" id="VXi-6k-6ql" customClass="SearchFieldCell" customModule="Simplenote" customModuleProvider="target">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <outlet property="delegate" destination="JtV-0Z-Zh8" id="aBy-hi-zoh"/>
+                                        </connections>
+                                    </textField>
+                                    <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
+                                        <rect key="frame" x="256" y="15" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="mDL-V4-Sng"/>
+                                            <constraint firstAttribute="height" constant="22" id="oUz-t6-8il"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_new_note" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRY-CA-4Eu">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="newNoteWasPressed:" target="JtV-0Z-Zh8" id="Zao-qM-kLO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="wpb-oV-A2U" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="BDw-oI-YFp"/>
-                                    <constraint firstAttribute="trailing" secondItem="wpb-oV-A2U" secondAttribute="trailing" id="LKN-YZ-d4a"/>
-                                    <constraint firstItem="Al7-ZM-ybK" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="16" id="V7W-em-DYm"/>
-                                    <constraint firstItem="Al7-ZM-ybK" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="VTs-UB-jhP"/>
-                                    <constraint firstAttribute="trailing" secondItem="Al7-ZM-ybK" secondAttribute="trailing" constant="16" id="Xgn-Hb-470"/>
-                                    <constraint firstItem="wpb-oV-A2U" firstAttribute="top" secondItem="Al7-ZM-ybK" secondAttribute="top" id="Xzh-Vr-wIZ"/>
-                                    <constraint firstItem="wpb-oV-A2U" firstAttribute="bottom" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="aBa-sg-bu7"/>
-                                    <constraint firstAttribute="bottom" secondItem="Al7-ZM-ybK" secondAttribute="bottom" id="uL4-Fg-r6V"/>
+                                    <constraint firstAttribute="bottom" secondItem="pQb-Jb-9cK" secondAttribute="bottom" constant="13" id="E8S-jK-IoM"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="pQb-Jb-9cK" secondAttribute="trailing" constant="18" id="ELv-AT-8mW"/>
+                                    <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="GQ2-r3-7p0"/>
+                                    <constraint firstItem="pQb-Jb-9cK" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="18" id="IEK-NM-dNq"/>
+                                    <constraint firstItem="pQb-Jb-9cK" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" constant="13" id="MJ1-cE-rPX"/>
+                                    <constraint firstItem="pQb-Jb-9cK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="tGW-Vb-OgH"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="uSI-Q8-BV2"/>
                                 </constraints>
                             </customView>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2I0-KH-uBu">
@@ -434,17 +420,21 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vxX-pk-HGm" secondAttribute="trailing" id="6Vv-3m-dh6"/>
                             <constraint firstAttribute="bottom" secondItem="zXl-eL-J7J" secondAttribute="bottom" id="C33-TU-yO5"/>
+                            <constraint firstItem="wpb-oV-A2U" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" id="CJM-MG-gUf"/>
                             <constraint firstItem="JDR-c6-dqi" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="CST-qB-GhQ"/>
+                            <constraint firstItem="wpb-oV-A2U" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" id="Enj-Wt-16m"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="top" secondItem="vxX-pk-HGm" secondAttribute="top" id="Fzb-fb-aW4"/>
                             <constraint firstItem="dMC-MU-RmS" firstAttribute="leading" secondItem="vxX-pk-HGm" secondAttribute="leading" id="HYR-Vk-AxE"/>
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="centerX" secondItem="PJl-uT-IxK" secondAttribute="centerX" id="Hze-oN-sBR"/>
                             <constraint firstItem="zXl-eL-J7J" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="J50-dQ-XUD"/>
                             <constraint firstItem="vxX-pk-HGm" firstAttribute="top" secondItem="PJl-uT-IxK" secondAttribute="top" id="MXl-4Q-xsZ"/>
+                            <constraint firstItem="wpb-oV-A2U" firstAttribute="trailing" secondItem="dMC-MU-RmS" secondAttribute="trailing" id="RwX-ZS-QJp"/>
                             <constraint firstAttribute="trailing" secondItem="2I0-KH-uBu" secondAttribute="trailing" constant="12" id="VcD-9X-4Pu"/>
                             <constraint firstItem="vxX-pk-HGm" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="aZp-JB-f4c"/>
                             <constraint firstItem="JDR-c6-dqi" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" id="b4N-TU-lud"/>
                             <constraint firstItem="2I0-KH-uBu" firstAttribute="leading" secondItem="PJl-uT-IxK" secondAttribute="leading" constant="12" id="bOP-Pg-zTH"/>
                             <constraint firstAttribute="trailing" secondItem="zXl-eL-J7J" secondAttribute="trailing" id="dNX-N8-h3z"/>
+                            <constraint firstItem="wpb-oV-A2U" firstAttribute="bottom" secondItem="dMC-MU-RmS" secondAttribute="bottom" id="dm7-NY-TQ1"/>
                             <constraint firstAttribute="bottom" secondItem="JDR-c6-dqi" secondAttribute="bottom" id="h9H-wI-zNE"/>
                             <constraint firstItem="5oO-Ju-l1S" firstAttribute="top" secondItem="2I0-KH-uBu" secondAttribute="bottom" constant="15" id="jEQ-80-63D"/>
                             <constraint firstItem="2I0-KH-uBu" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="bottom" constant="220" id="kT0-Rz-hoF"/>
