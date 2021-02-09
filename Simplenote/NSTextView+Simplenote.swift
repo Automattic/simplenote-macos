@@ -165,7 +165,21 @@ extension NSTextView {
 
         /// Issue #472: Linkification should not be undoable
         undoManager?.disableUndoRegistration()
-        checkTextInDocument(nil)
+
+        if let layoutManager = layoutManager,
+           let textContainer = textContainer,
+           let textStorage = textStorage as? Storage {
+
+            // checkTextInDocument calculate bounds for links and we need to ensure that layout is current before calling beginEditing
+            // otherwise it will crash trying to update layout inside beginEditing / endEditing block
+            layoutManager.ensureLayout(for: textContainer)
+            textStorage.beginEditing()
+            checkTextInDocument(nil)
+            textStorage.endEditingWithoutRestyling()
+        } else {
+            checkTextInDocument(nil)
+        }
+
         undoManager?.enableUndoRegistration()
 
         /// Restore the Delegate

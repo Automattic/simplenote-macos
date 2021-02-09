@@ -112,6 +112,7 @@
 		714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BA66D14D4AE6200A6CCC1 /* DateTransformer.m */; };
 		7154811714E5A9E800CB8964 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7154811614E5A9E800CB8964 /* WebKit.framework */; };
 		71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCEBE6152E2ED1002744C0 /* NSMutableAttributedString+Styling.m */; };
+		A6084B2C25D1B77000DDFAB2 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = A6084B2B25D1B77000DDFAB2 /* Storage.m */; };
 		A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */; };
 		A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */; };
 		A6672FBE25C7F77000090DE3 /* StringContentSliceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */; };
@@ -548,6 +549,8 @@
 		8C902F8C22D3EE350018D654 /* Version.public.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Version.public.xcconfig; path = config/Version.public.xcconfig; sourceTree = "<group>"; };
 		8C902F8E22D3EFE60018D654 /* Simplenote.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Simplenote.debug.xcconfig; path = config/Simplenote.debug.xcconfig; sourceTree = "<group>"; };
 		9F3E61907F329B466EEE619E /* Pods-Automattic-Simplenote-AppStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote-AppStore.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote-AppStore/Pods-Automattic-Simplenote-AppStore.release.xcconfig"; sourceTree = "<group>"; };
+		A6084B2A25D1B77000DDFAB2 /* Storage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
+		A6084B2B25D1B77000DDFAB2 /* Storage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteContentHelper.swift; sourceTree = "<group>"; };
 		A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSlice.swift; sourceTree = "<group>"; };
 		A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringContentSliceTests.swift; sourceTree = "<group>"; };
@@ -932,6 +935,8 @@
 			children = (
 				373B50DC20179DFE000568A6 /* Extensions.swift */,
 				3712FC701FE1ACA9008544AC /* Storage.swift */,
+				A6084B2A25D1B77000DDFAB2 /* Storage.h */,
+				A6084B2B25D1B77000DDFAB2 /* Storage.m */,
 				3712FC721FE1ACA9008544AC /* Element.swift */,
 				3712FC751FE1ACA9008544AC /* Style.swift */,
 				3712FC761FE1ACA9008544AC /* Theme.swift */,
@@ -2060,6 +2065,7 @@
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B5B1CBCD256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
+				A6084B2C25D1B77000DDFAB2 /* Storage.m in Sources */,
 				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
 				B5E96B661BDE732500D707F5 /* LoginWindowController.m in Sources */,
 				B5EB3AD42458C48D0089858D /* SimplenoteAppDelegate+Swift.swift in Sources */,
