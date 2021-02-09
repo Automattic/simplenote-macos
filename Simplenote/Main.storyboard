@@ -369,21 +369,20 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Al7-ZM-ybK" userLabel="Actions View">
                                         <rect key="frame" x="16" y="0.0" width="262" height="52"/>
                                         <subviews>
-                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLv-zp-fRS" userLabel="SearchField">
-                                                <rect key="frame" x="0.0" y="12" width="222" height="29"/>
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQb-Jb-9cK" userLabel="SearchField" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
+                                                <rect key="frame" x="-2" y="12" width="226" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="29" id="qWD-ui-HWt"/>
+                                                    <constraint firstAttribute="height" constant="29" id="1FF-5p-QMv"/>
                                                 </constraints>
-                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="aSI-77-VjM">
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Search" usesSingleLineMode="YES" id="VXi-6k-6ql" customClass="SearchFieldCell" customModule="Simplenote" customModuleProvider="target">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </searchFieldCell>
+                                                </textFieldCell>
                                                 <connections>
-                                                    <action selector="performSearch:" target="JtV-0Z-Zh8" id="wWj-Jf-LAH"/>
-                                                    <outlet property="delegate" destination="JtV-0Z-Zh8" id="vnb-XE-0zI"/>
+                                                    <outlet property="delegate" destination="JtV-0Z-Zh8" id="aBy-hi-zoh"/>
                                                 </connections>
-                                            </searchField>
+                                            </textField>
                                             <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                                 <rect key="frame" x="240" y="15" width="22" height="22"/>
                                                 <constraints>
@@ -401,9 +400,9 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" id="0qP-3a-rqW"/>
-                                            <constraint firstItem="YLv-zp-fRS" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="9lA-j7-B8N"/>
-                                            <constraint firstItem="YLv-zp-fRS" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" priority="249" id="ZAI-kw-ua0"/>
-                                            <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="YLv-zp-fRS" secondAttribute="trailing" constant="18" id="m8s-ab-ePI"/>
+                                            <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="pQb-Jb-9cK" secondAttribute="trailing" constant="18" id="O9n-UA-S2z"/>
+                                            <constraint firstItem="pQb-Jb-9cK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="PKb-FN-s0o"/>
+                                            <constraint firstItem="pQb-Jb-9cK" firstAttribute="leading" secondItem="Al7-ZM-ybK" secondAttribute="leading" priority="249" id="PyF-E5-fHS"/>
                                             <constraint firstAttribute="height" constant="52" id="wkJ-yn-7qc"/>
                                             <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="Al7-ZM-ybK" secondAttribute="centerY" id="x5v-n3-E6L"/>
                                         </constraints>
@@ -465,7 +464,7 @@
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
-                        <outlet property="searchField" destination="YLv-zp-fRS" id="vqB-c6-e3u"/>
+                        <outlet property="searchField" destination="pQb-Jb-9cK" id="7Wh-Qp-9tz"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>

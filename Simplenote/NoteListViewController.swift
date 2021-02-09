@@ -24,7 +24,7 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerContainerView: NSView!
     @IBOutlet private var headerDividerView: BackgroundView!
-    @IBOutlet private var searchField: NSSearchField!
+    @IBOutlet private var searchField: SearchField!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
@@ -123,7 +123,8 @@ private extension NoteListViewController {
     /// Setup: Search Field
     ///
     func setupSearchField() {
-        searchField.centersPlaceholder = false
+        searchField.font = .simplenoteSecondaryTextFont
+        searchField.drawsBackground = false
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -579,18 +580,17 @@ extension NoteListViewController {
     ///
     @objc
     func dismissSearch() {
-        searchField.cancelSearch()
+//        searchField.cancelSearch()
         searchField.resignFirstResponder()
     }
 }
 
 
-// MARK: - NSSearchFieldDelegate
+// MARK: - Search Action
 //
-extension NoteListViewController: NSSearchFieldDelegate {
+extension NoteListViewController: NSTextFieldDelegate {
 
-    @IBAction
-    public func performSearch(_ sender: Any) {
+    func controlTextDidChange(_ note: Notification) {
         searchQuery = SearchQuery(searchText: searchField.stringValue)
         refreshEverything()
         SPTracker.trackListNotesSearched()
@@ -819,7 +819,7 @@ extension NoteListViewController {
 //
 private enum Settings {
     static var searchBarPlaceholder: NSAttributedString {
-        NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
+        NSAttributedString(string: NSLocalizedString("Search notes", comment: "Search Field Placeholder"), attributes: [
             .font: NSFont.simplenoteSecondaryTextFont,
             .foregroundColor: NSColor.simplenoteSecondaryTextColor
         ])
