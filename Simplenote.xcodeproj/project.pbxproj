@@ -138,8 +138,6 @@
 		B503FF4624848B6700066059 /* TagsFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4424848B6700066059 /* TagsFieldCell.swift */; };
 		B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4724848D0B00066059 /* TagAttachmentCell.swift */; };
 		B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503FF4724848D0B00066059 /* TagAttachmentCell.swift */; };
-		B505068D25A3DF4E008A8E10 /* SortBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505068C25A3DF4E008A8E10 /* SortBarView.swift */; };
-		B505068E25A3DF4E008A8E10 /* SortBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505068C25A3DF4E008A8E10 /* SortBarView.swift */; };
 		B5070E16245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B50F999224F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
@@ -568,7 +566,6 @@
 		B502C22A25BA347700145D6C /* MockAccountVerificationRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountVerificationRemote.swift; sourceTree = "<group>"; };
 		B503FF4424848B6700066059 /* TagsFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFieldCell.swift; sourceTree = "<group>"; };
 		B503FF4724848D0B00066059 /* TagAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentCell.swift; sourceTree = "<group>"; };
-		B505068C25A3DF4E008A8E10 /* SortBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBarView.swift; sourceTree = "<group>"; };
 		B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserInterfaceItemIdentifier+Simplenote.swift"; sourceTree = "<group>"; };
 		B50F999124F98FFD00A1058D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkWindowController.swift; sourceTree = "<group>"; };
@@ -1182,7 +1179,6 @@
 			isa = PBXGroup;
 			children = (
 				B52EE32625927D5100347F2B /* NoteListViewController.swift */,
-				B505068C25A3DF4E008A8E10 /* SortBarView.swift */,
 			);
 			name = Notes;
 			sourceTree = "<group>";
@@ -2006,7 +2002,6 @@
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B54F9A6724D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
-				B505068D25A3DF4E008A8E10 /* SortBarView.swift in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
 				A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */,
@@ -2124,7 +2119,6 @@
 				B5E0863C2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
 				B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
-				B505068E25A3DF4E008A8E10 /* SortBarView.swift in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
