@@ -165,6 +165,8 @@
 		B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */; };
 		B51AFE6D25D30A1800A196DF /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AFE6C25D30A1800A196DF /* SearchField.swift */; };
 		B51AFE6E25D30A1800A196DF /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AFE6C25D30A1800A196DF /* SearchField.swift */; };
+		B51AFE7625D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AFE7525D36CDD00A196DF /* NSFont+Simplenote.swift */; };
+		B51AFE7725D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AFE7525D36CDD00A196DF /* NSFont+Simplenote.swift */; };
 		B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */; };
 		B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */; };
 		B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E9FE022E615FA004F16B4 /* SPExporter.swift */; };
@@ -585,6 +587,7 @@
 		B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Interlinks.swift"; sourceTree = "<group>"; };
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B51AFE6C25D30A1800A196DF /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		B51AFE7525D36CDD00A196DF /* NSFont+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Simplenote.swift"; sourceTree = "<group>"; };
 		B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListPrefixFormatter.swift; sourceTree = "<group>"; };
 		B51E9FE022E615FA004F16B4 /* SPExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPExporter.swift; sourceTree = "<group>"; };
 		B51E9FE422E644A0004F16B4 /* NSObject+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helpers.swift"; sourceTree = "<group>"; };
@@ -1142,6 +1145,7 @@
 				B5985AD4242950B40044EDE9 /* NSColor+Simplenote.swift */,
 				B5EDF322258A236C0066D91D /* NSEdgeInsets+Simplenote.swift */,
 				B58BBD45252411530025135F /* NSEvent+Simplenote.swift */,
+				B51AFE7525D36CDD00A196DF /* NSFont+Simplenote.swift */,
 				B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */,
 				B5E0862E2448E58C00DEF476 /* NSImageName+Simplenote.swift */,
 				B5283BCF23B679C00085826F /* NSMutableAttributedString+Simplenote.swift */,
@@ -1980,6 +1984,7 @@
 				B5F50915247319360042FA1D /* SplitView.swift in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */,
+				B51AFE7625D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
 				B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
@@ -2131,6 +2136,7 @@
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
 				B57CB878244DEBCE00BA7969 /* UserDefaults+Simplenote.swift in Sources */,
 				375D294321E033D1007AB25A /* html5_blocks.c in Sources */,
+				B51AFE7725D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */,
 				375D293D21E033D1007AB25A /* hash.c in Sources */,
 				B574CA74242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
