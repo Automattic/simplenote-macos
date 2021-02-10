@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 17:54:07+0000 */
+/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "모든 메모";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "알파벳순: A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "알파벳순: Z-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "이미 계정이 있나요?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "취소";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "계정을 확인할 수 없음";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "인증 이메일을 보낼 수 없음";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "계정 이메일 변경";
+
 /* Number of characters in the note */
 "Characters" = "문자";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "정보 수집";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "확인";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "비밀번호 확인";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "휴지통으로 이동";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Name: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Name: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "계정이 필요하세요?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "유효한 이메일 주소가 아닙니다.";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "OK";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "이메일을 통해 워드프레스닷컴 계정을 활성화하고 다시 시도하세요.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "네트워크 설정을 확인하고 다시 시도해 주세요.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "개인 정보 보호 정책";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "태그 이름 변경";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "이메일 다시 보내기";
+
 /* Password Reset: Proceed */
 "Reset" = "재설정";
 
@@ -213,8 +232,10 @@
    Tooltip: Restore a trashed note */
 "Restore" = "복원";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
+/* Title -> Review you account screen */
+"Review Your Account" = "계정 검토";
+
+/* Search Field Placeholder */
 "Search" = "검색";
 
 /* Search Results Title */
@@ -242,7 +263,7 @@
 "Skip" = "생략하기";
 
 /* Sortbar Title */
-"Sort" = "정렬";
+"Sort by" = "정렬 기준";
 
 /* Tags Section Name */
 "Tags" = "태그";
@@ -278,6 +299,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "태그되지 않은 메모";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "이메일 확인";
+
 /* Label for the current version of a note */
 "Version" = "버전";
 
@@ -290,11 +314,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "문제가 있습니다. 나중에 다시 시도하세요.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "%1$@(으)로 인증 이메일을 보내드렸습니다. 받은 편지함을 확인하고 지침에 따라 주세요.";
+
 /* Number of words in the note */
 "Words" = "단어";
 
 /* Hiring Title */
 "Work with Us" = "채용 공고";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "이메일 %1$@을(를) 사용하여 Simplenote에 등록하셨습니다.\n\n더는 이 이메일 주소에 액세스하는 권한이 없는 경우 계정 보안 향상으로 인해 계정을 상실하실 수 있습니다.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "인터넷에 연결되지 않았습니다.";
