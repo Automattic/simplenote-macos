@@ -367,7 +367,7 @@
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
                                     <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="whk-9q-XA7" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="13" width="224" height="26"/>
+                                        <rect key="frame" x="14" y="13" width="228" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="sya-sR-Sqq"/>
                                         </constraints>
@@ -398,8 +398,8 @@
                                 <constraints>
                                     <constraint firstItem="whk-9q-XA7" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" constant="13" id="GEf-3N-hR1"/>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="GQ2-r3-7p0"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="whk-9q-XA7" secondAttribute="trailing" constant="18" id="Lti-ZQ-clm"/>
-                                    <constraint firstItem="whk-9q-XA7" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" priority="249" constant="18" id="bJS-cv-jmr"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="whk-9q-XA7" secondAttribute="trailing" constant="16" id="Lti-ZQ-clm"/>
+                                    <constraint firstItem="whk-9q-XA7" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" priority="249" constant="16" id="bJS-cv-jmr"/>
                                     <constraint firstItem="whk-9q-XA7" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="m9J-wj-SUP"/>
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="uSI-Q8-BV2"/>
                                 </constraints>

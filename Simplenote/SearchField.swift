@@ -222,6 +222,3 @@ extension SearchFieldStyle {
                          searchButtonTintColor: .simplenoteSecondaryTextColor)
     }
 }
-
-//  1.  Metrics / Negative Frames
-//  2.  Clicking over the SearchBar causes the FistResponder status to be lost
