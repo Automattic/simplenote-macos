@@ -198,6 +198,11 @@
 		B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
 		B53BF1A524AC38C100938C34 /* VersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF1A324AC38C100938C34 /* VersionsController.swift */; };
 		B53FF5472476F9450014E928 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FF5462476F9450014E928 /* Constants.swift */; };
+		B542FE4725D42E6D00A3582D /* SearchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667305325C9751B00090DE3 /* SearchMapView.swift */; };
+		B542FE4B25D42E7B00A3582D /* NoteContentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */; };
+		B542FE4F25D42E8900A3582D /* ContentSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FB725C7F1BB00090DE3 /* ContentSlice.swift */; };
+		B542FE5325D42EA600A3582D /* SPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBDA3225501398005C8343 /* SPTextView.swift */; };
+		B542FE5725D42EC700A3582D /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = A6084B2B25D1B77000DDFAB2 /* Storage.m */; };
 		B5438012246358B700F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
 		B5438013246358BA00F34B1C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B543800F246355FA00F34B1C /* Icons.xcassets */; };
 		B5469FCA2587DE3F007ED7BE /* SortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5469FC92587DE3F007ED7BE /* SortMode.swift */; };
@@ -2089,6 +2094,7 @@
 				466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */,
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				B52EE32825927D5100347F2B /* NoteListViewController.swift in Sources */,
+				B542FE4B25D42E7B00A3582D /* NoteContentHelper.swift in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
@@ -2121,6 +2127,7 @@
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
 				B5D21CB824881EF600D57A34 /* Array+Simplenote.swift in Sources */,
+				B542FE4F25D42E8900A3582D /* ContentSlice.swift in Sources */,
 				B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
 				B5E0863C2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				375D293B21E033D1007AB25A /* stack.c in Sources */,
@@ -2133,6 +2140,7 @@
 				B5132FA923C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
 				375D293721E033D1007AB25A /* document.c in Sources */,
 				376EE3EC202B748E00E3812E /* SPAboutTextField.swift in Sources */,
+				B542FE5725D42EC700A3582D /* Storage.m in Sources */,
 				B59EA98224AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
 				B56FA7912437C672002CB9FF /* ColorStudio.swift in Sources */,
 				B5609AED24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */,
@@ -2163,6 +2171,7 @@
 				B5E8E41224575C990098892B /* ToolbarState.swift in Sources */,
 				B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
 				B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
+				B542FE4725D42E6D00A3582D /* SearchMapView.swift in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5EDF324258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
@@ -2174,6 +2183,7 @@
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
 				B5BB8CD524DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
+				B542FE5325D42EA600A3582D /* SPTextView.swift in Sources */,
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5C7DD41243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
