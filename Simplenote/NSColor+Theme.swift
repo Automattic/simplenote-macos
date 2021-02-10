@@ -190,6 +190,15 @@ extension NSColor {
     static var simplenoteEditorSearchHighlightColor: NSColor {
         dynamicColor(lightStudio: .spBlue5, darkStudio: .spBlue50, darkColorAlpha: AppKitConstants.alpha0_5)
     }
+
+    static var simplenoteSearchBarBackgroundColor: NSColor {
+        dynamicColor(lightStudio: .gray5, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_1, darkColorAlpha: AppKitConstants.alpha0_05)
+    }
+
+    @objc
+    static var simplenoteSearchBarHighlightedBorderColor: NSColor {
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30, lightColorAlpha: AppKitConstants.alpha0_4, darkColorAlpha: AppKitConstants.alpha0_4)
+    }
 }
 
 

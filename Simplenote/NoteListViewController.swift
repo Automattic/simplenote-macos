@@ -24,7 +24,7 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerContainerView: NSView!
     @IBOutlet private var headerDividerView: BackgroundView!
-    @IBOutlet private var searchField: NSSearchField!
+    @IBOutlet private var searchField: SearchField!
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
@@ -124,6 +124,7 @@ private extension NoteListViewController {
     ///
     func setupSearchField() {
         searchField.centersPlaceholder = false
+        searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -147,11 +148,10 @@ extension NoteListViewController {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         headerDividerView.borderColor = .simplenoteDividerColor
-        searchField.textColor = .simplenoteTextColor
-        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
 
+        searchField.refreshStyle()
         tableView.reloadAndPreserveSelection()
     }
 }
@@ -585,12 +585,12 @@ extension NoteListViewController {
 }
 
 
-// MARK: - NSSearchFieldDelegate
+// MARK: - Search Action
 //
-extension NoteListViewController: NSSearchFieldDelegate {
+extension NoteListViewController {
 
     @IBAction
-    public func performSearch(_ sender: Any) {
+    func performSearch(_ sender: Any) {
         searchQuery = SearchQuery(searchText: searchField.stringValue)
         refreshEverything()
         SPTracker.trackListNotesSearched()
@@ -811,17 +811,5 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteRestored()
-    }
-}
-
-
-// MARK: - Settings
-//
-private enum Settings {
-    static var searchBarPlaceholder: NSAttributedString {
-        NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
-            .font: NSFont.simplenoteSecondaryTextFont,
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor
-        ])
     }
 }
