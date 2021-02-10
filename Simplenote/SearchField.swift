@@ -91,7 +91,8 @@ private extension SearchField {
 //
 class SearchFieldCell: NSSearchFieldCell {
 
-    // MARK: Properties
+    // MARK: - Properties
+    //         Rather than mirroring SearchField's properties, we'll just access the same reference, in the name of simplicity.
 
     var searchField: SearchField {
         controlView as! SearchField
