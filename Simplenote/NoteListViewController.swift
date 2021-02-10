@@ -123,7 +123,6 @@ private extension NoteListViewController {
     /// Setup: Search Field
     ///
     func setupSearchField() {
-        searchField.drawsBackground = false
         searchField.centersPlaceholder = false
         searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
     }
