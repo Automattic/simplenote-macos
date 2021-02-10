@@ -181,16 +181,6 @@ struct SearchFieldMetrics {
     let textPadding : NSEdgeInsets
 }
 
-extension SearchFieldMetrics {
-    static var `default`: SearchFieldMetrics {
-        SearchFieldMetrics(borderRadius:        5,
-                           borderWidth:         2,
-                           searchIconSize:      NSSize(width: 16, height: 16),
-                           searchIconPaddingX:  9,
-                           textPadding:         NSEdgeInsets(top: .zero, left: 32, bottom: .zero, right: 40))
-    }
-}
-
 
 // MARK: - Style
 //
@@ -206,11 +196,24 @@ struct SearchFieldStyle {
     let searchButtonTintColor: NSColor
 }
 
+
+// MARK: - Defaults
+//
+extension SearchFieldMetrics {
+    static var `default`: SearchFieldMetrics {
+        SearchFieldMetrics(borderRadius:        5,
+                           borderWidth:         2,
+                           searchIconSize:      NSSize(width: 16, height: 16),
+                           searchIconPaddingX:  9,
+                           textPadding:         NSEdgeInsets(top: .zero, left: 32, bottom: .zero, right: 40))
+    }
+}
+
 extension SearchFieldStyle {
     static var `default`: SearchFieldStyle {
         SearchFieldStyle(borderColor:           .simplenoteSecondaryDividerColor,
-                         highlightBorderColor:  .simplenoteBrandColor,
-                         innerBackgroundColor:  NSColor(calibratedWhite: 1.0, alpha: 0.05),
+                         highlightBorderColor:  .simplenoteAccessoryTintColor,
+                         innerBackgroundColor:  .simplenoteSearchBarBackgroundColor,
                          placeholderFont:       .simplenoteSecondaryTextFont,
                          placeholderColor:      .simplenoteSecondaryTextColor,
                          textColor:             .simplenoteTextColor,
@@ -220,7 +223,5 @@ extension SearchFieldStyle {
     }
 }
 
-
-
-//  1.  Review Colors
+//  1.  Metrics / Negative Frames
 //  2.  Clicking over the SearchBar causes the FistResponder status to be lost
