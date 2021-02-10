@@ -8,7 +8,7 @@ class SearchField: NSSearchField {
 
     /// Style
     ///
-    var style = SearchFieldStyle.standard {
+    var style = SearchFieldStyle.default {
         didSet {
             styleWasUpdated()
         }
@@ -16,7 +16,7 @@ class SearchField: NSSearchField {
 
     /// Metrics
     ///
-    var metrics = SearchFieldMetrics.standard {
+    var metrics = SearchFieldMetrics.default {
         didSet {
             needsDisplay = true
         }
@@ -26,7 +26,7 @@ class SearchField: NSSearchField {
     ///
     var placeholder = String() {
         didSet {
-            refreshAttributedPlaceholder()
+            refreshPlaceholderStyle()
         }
     }
 
@@ -47,7 +47,7 @@ class SearchField: NSSearchField {
     /// - Note: In Mojave / Catalina, this API has the beautiful side effect of going Dark Mode 😬
     ///
     func refreshStyle() {
-        style = SearchFieldStyle.standard
+        style = SearchFieldStyle.default
     }
 }
 
@@ -57,23 +57,24 @@ class SearchField: NSSearchField {
 private extension SearchField {
 
     func styleWasUpdated() {
-        refreshTextColor()
-        refreshAttributedPlaceholder()
-        refreshSearchButtonCell()
+        refreshTextStyle()
+        refreshPlaceholderStyle()
+        refreshSearchIconStyle()
     }
 
-    func refreshTextColor() {
+    func refreshTextStyle() {
         textColor = style.textColor
+        font = style.textFont
     }
 
-    func refreshAttributedPlaceholder() {
+    func refreshPlaceholderStyle() {
         placeholderAttributedString = NSAttributedString(string: placeholder, attributes: [
             .font:              style.placeholderFont,
             .foregroundColor:   style.placeholderColor
         ])
     }
 
-    func refreshSearchButtonCell() {
+    func refreshSearchIconStyle() {
         guard let searchFieldCell = cell as? SearchFieldCell, let searchButtonCell = searchFieldCell.searchButtonCell else {
             return
         }
@@ -180,7 +181,7 @@ struct SearchFieldMetrics {
 }
 
 extension SearchFieldMetrics {
-    static var standard: SearchFieldMetrics {
+    static var `default`: SearchFieldMetrics {
         SearchFieldMetrics(borderRadius:        5,
                            borderWidth:         2,
                            searchIconSize:      NSSize(width: 16, height: 16),
@@ -199,19 +200,26 @@ struct SearchFieldStyle {
     let placeholderFont: NSFont
     let placeholderColor: NSColor
     let textColor: NSColor
+    let textFont: NSFont
     let searchButtonImage: NSImage
     let searchButtonTintColor: NSColor
 }
 
 extension SearchFieldStyle {
-    static var standard: SearchFieldStyle {
+    static var `default`: SearchFieldStyle {
         SearchFieldStyle(borderColor:           .simplenoteSecondaryDividerColor,
                          highlightBorderColor:  .simplenoteBrandColor,
                          innerBackgroundColor:  NSColor(calibratedWhite: 1.0, alpha: 0.05),
                          placeholderFont:       .simplenoteSecondaryTextFont,
                          placeholderColor:      .simplenoteSecondaryTextColor,
                          textColor:             .simplenoteTextColor,
+                         textFont:              .simplenoteSecondaryTextFont,
                          searchButtonImage:     NSImage(named: .search)!,
                          searchButtonTintColor: .simplenoteSecondaryTextColor)
     }
 }
+
+
+
+//  1.  Review Colors
+//  2.  Clicking over the SearchBar causes the FistResponder status to be lost
