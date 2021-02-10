@@ -366,7 +366,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header Container View">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
-                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="whk-9q-XA7" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
+                                    <searchField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="whk-9q-XA7" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="14" y="13" width="228" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="sya-sR-Sqq"/>
