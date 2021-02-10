@@ -12,12 +12,11 @@ extension NSView {
             return false
         }
 
-        if responder == self {
-            return true
+        guard let fieldEditor = responder as? NSText else {
+            return responder == self
         }
 
-        let fieldEditor = responder as? NSText
-        let effectiveResponder = fieldEditor?.delegate as? NSControl
+        let effectiveResponder = fieldEditor.delegate as? NSControl
         return effectiveResponder == self
     }
 }
