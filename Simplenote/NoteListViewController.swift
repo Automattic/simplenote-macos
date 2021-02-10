@@ -126,6 +126,7 @@ private extension NoteListViewController {
         searchField.font = .simplenoteSecondaryTextFont
         searchField.drawsBackground = false
         searchField.centersPlaceholder = false
+        searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -149,11 +150,10 @@ extension NoteListViewController {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         headerDividerView.borderColor = .simplenoteDividerColor
-        searchField.textColor = .simplenoteTextColor
-        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
 
+        searchField.refreshStyle()
         tableView.reloadAndPreserveSelection()
     }
 }
@@ -813,17 +813,5 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteRestored()
-    }
-}
-
-
-// MARK: - Settings
-//
-private enum Settings {
-    static var searchBarPlaceholder: NSAttributedString {
-        NSAttributedString(string: NSLocalizedString("Search notes", comment: "Search Field Placeholder"), attributes: [
-            .font: NSFont.simplenoteSecondaryTextFont,
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor
-        ])
     }
 }

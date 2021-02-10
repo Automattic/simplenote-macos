@@ -6,10 +6,29 @@ import AppKit
 //
 class SearchField: NSSearchField {
 
-    /// Accessory
+    /// Style
     ///
-    var searchButtonImage = NSImage(named: .search)
-    var searchButtonTintColor = NSColor.simplenoteSecondaryTextColor
+    var style = SearchFieldStyle.standard {
+        didSet {
+            styleWasUpdated()
+        }
+    }
+
+    /// Metrics
+    ///
+    var metrics = SearchFieldMetrics.standard {
+        didSet {
+            needsDisplay = true
+        }
+    }
+
+    /// Placeholder
+    ///
+    var placeholder = String() {
+        didSet {
+            refreshAttributedPlaceholder()
+        }
+    }
 
 
     // MARK: - Overridden
@@ -20,7 +39,15 @@ class SearchField: NSSearchField {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        refreshSearchButtonStyle()
+        refreshStyle()
+    }
+
+
+    /// Resets the Style
+    /// - Note: In Mojave / Catalina, this API has the beautiful side effect of going Dark Mode 😬
+    ///
+    func refreshStyle() {
+        style = SearchFieldStyle.standard
     }
 }
 
@@ -29,12 +56,29 @@ class SearchField: NSSearchField {
 //
 private extension SearchField {
 
-    func refreshSearchButtonStyle() {
-        guard let searchFieldCell = self.cell as? SearchFieldCell, let searchButtonCell = searchFieldCell.searchButtonCell else {
+    func styleWasUpdated() {
+        refreshTextColor()
+        refreshAttributedPlaceholder()
+        refreshSearchButtonCell()
+    }
+
+    func refreshTextColor() {
+        textColor = style.textColor
+    }
+
+    func refreshAttributedPlaceholder() {
+        placeholderAttributedString = NSAttributedString(string: placeholder, attributes: [
+            .font:              style.placeholderFont,
+            .foregroundColor:   style.placeholderColor
+        ])
+    }
+
+    func refreshSearchButtonCell() {
+        guard let searchFieldCell = cell as? SearchFieldCell, let searchButtonCell = searchFieldCell.searchButtonCell else {
             return
         }
 
-        let image = searchButtonImage?.tinted(with: searchButtonTintColor)
+        let image = style.searchButtonImage.tinted(with: style.searchButtonTintColor)
         searchButtonCell.image = image
         searchButtonCell.imageScaling = .scaleProportionallyUpOrDown
         searchButtonCell.alternateImage = image
@@ -46,15 +90,19 @@ private extension SearchField {
 //
 class SearchFieldCell: NSSearchFieldCell {
 
-    /// Background / Dividers
-    ///
-    var innerBackgroundColor    = NSColor(calibratedWhite: 1.0, alpha: 0.05)
-    var regularDividerColor     = NSColor.simplenoteSecondaryDividerColor
-    var highlightDividerColor   = NSColor.simplenoteBrandColor
+    // MARK: Properties
 
-    /// Search Button metrics
-    ///
-    var searchButtonFrame       = Metrics.searchIconFrame
+    var searchField: SearchField {
+        controlView as! SearchField
+    }
+
+    var metrics: SearchFieldMetrics {
+        searchField.metrics
+    }
+
+    var style: SearchFieldStyle {
+        searchField.style
+    }
 
 
     // MARK: - Geometry
@@ -64,9 +112,9 @@ class SearchFieldCell: NSSearchFieldCell {
     }
 
     override func searchButtonRect(forBounds rect: NSRect) -> NSRect {
-        var frame = searchButtonFrame
-        frame.origin.y = floor((rect.height - frame.height) * 0.5)
-        return frame
+        let originY = floor((rect.height - metrics.searchIconSize.height) * 0.5)
+        let origin = NSPoint(x: metrics.searchIconPaddingX, y: originY)
+        return NSRect(origin: origin, size: metrics.searchIconSize)
     }
 
 
@@ -94,25 +142,27 @@ class SearchFieldCell: NSSearchFieldCell {
 private extension SearchFieldCell {
 
     func drawSimplenoteBackground(cellFrame: NSRect, isHighlighted: Bool) {
-        let bezier = NSBezierPath(roundedRect: cellFrame, xRadius: Metrics.borderRadius, yRadius: Metrics.borderRadius)
-        bezier.lineWidth = Metrics.borderWidth
+        let bezier = NSBezierPath(roundedRect: cellFrame, xRadius: metrics.borderRadius, yRadius: metrics.borderRadius)
+        bezier.lineWidth = metrics.borderWidth
 
-        innerBackgroundColor.setFill()
+
+        style.innerBackgroundColor.setFill()
         bezier.addClip()
         bezier.fill()
 
-        let borderColor = isHighlighted ? highlightDividerColor : regularDividerColor
+        let borderColor = isHighlighted ? style.highlightBorderColor : style.borderColor
         borderColor.setStroke()
         bezier.stroke()
     }
 
     func verticallyCenteredTitleFrame(for rect: NSRect) -> NSRect {
-        let lineHeight              = font?.lineHeight ?? Metrics.defaultLineHeight
+        let defaultLineHeight       = CGFloat(16)
+        let lineHeight              = font?.lineHeight ?? defaultLineHeight
         var adjustedFrame           = rect
-        adjustedFrame.origin.x      = Metrics.textPadding.left
+        adjustedFrame.origin.x      = metrics.textPadding.left
         adjustedFrame.origin.y      = floor((adjustedFrame.height - lineHeight) * 0.5)
         adjustedFrame.size.height   = lineHeight
-        adjustedFrame.size.width    -= Metrics.textPadding.left + Metrics.textPadding.right
+        adjustedFrame.size.width    -= metrics.textPadding.left + metrics.textPadding.right
 
         return adjustedFrame
     }
@@ -121,16 +171,47 @@ private extension SearchFieldCell {
 
 // MARK: - Metrics
 //
-private enum Metrics {
-    static let defaultLineHeight    = CGFloat(16)
-    static let borderRadius         = CGFloat(5)
-    static let borderWidth          = CGFloat(2)
-    static let searchIconFrame      = NSRect(x: 9, y: .zero, width: 16, height: 16)
-    static let textPadding          = NSEdgeInsets(top: .zero, left: 32, bottom: .zero, right: 40)
+struct SearchFieldMetrics {
+    let borderRadius : CGFloat
+    let borderWidth : CGFloat
+    let searchIconSize : NSSize
+    let searchIconPaddingX : CGFloat
+    let textPadding : NSEdgeInsets
+}
+
+extension SearchFieldMetrics {
+    static var standard: SearchFieldMetrics {
+        SearchFieldMetrics(borderRadius:        5,
+                           borderWidth:         2,
+                           searchIconSize:      NSSize(width: 16, height: 16),
+                           searchIconPaddingX:  9,
+                           textPadding:         NSEdgeInsets(top: .zero, left: 32, bottom: .zero, right: 40))
+    }
 }
 
 
-//     1.  Review Colors
-//     2.  Clicking over the SearchBar causes the FistResponder status to be lost
-//     3.  Dark / Light
+// MARK: - Style
 //
+struct SearchFieldStyle {
+    let borderColor: NSColor
+    let highlightBorderColor: NSColor
+    let innerBackgroundColor: NSColor
+    let placeholderFont: NSFont
+    let placeholderColor: NSColor
+    let textColor: NSColor
+    let searchButtonImage: NSImage
+    let searchButtonTintColor: NSColor
+}
+
+extension SearchFieldStyle {
+    static var standard: SearchFieldStyle {
+        SearchFieldStyle(borderColor:           .simplenoteSecondaryDividerColor,
+                         highlightBorderColor:  .simplenoteBrandColor,
+                         innerBackgroundColor:  NSColor(calibratedWhite: 1.0, alpha: 0.05),
+                         placeholderFont:       .simplenoteSecondaryTextFont,
+                         placeholderColor:      .simplenoteSecondaryTextColor,
+                         textColor:             .simplenoteTextColor,
+                         searchButtonImage:     NSImage(named: .search)!,
+                         searchButtonTintColor: .simplenoteSecondaryTextColor)
+    }
+}
