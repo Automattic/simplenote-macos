@@ -107,7 +107,7 @@ private extension SearchFieldCell {
     }
 
     func verticallyCenteredTitleFrame(for rect: NSRect) -> NSRect {
-        let lineHeight              = textLineHeight
+        let lineHeight              = font?.lineHeight ?? Metrics.defaultLineHeight
         var adjustedFrame           = rect
         adjustedFrame.origin.x      = Metrics.textPadding.left
         adjustedFrame.origin.y      = floor((adjustedFrame.height - lineHeight) * 0.5)
@@ -115,14 +115,6 @@ private extension SearchFieldCell {
         adjustedFrame.size.width    -= Metrics.textPadding.left + Metrics.textPadding.right
 
         return adjustedFrame
-    }
-
-    var textLineHeight: CGFloat {
-        guard let font = self.font else {
-            return Metrics.defaultLineHeight
-        }
-
-        return ceil(font.ascender - font.descender)
     }
 }
 
