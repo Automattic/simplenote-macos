@@ -144,9 +144,12 @@ class SearchFieldCell: NSSearchFieldCell {
 private extension SearchFieldCell {
 
     func drawSimplenoteBackground(cellFrame: NSRect, isHighlighted: Bool) {
-        let bezier = NSBezierPath(roundedRect: cellFrame, xRadius: metrics.borderRadius, yRadius: metrics.borderRadius)
-        bezier.lineWidth = metrics.borderWidth
+        let defaultFactor = CGFloat(1)
+        let scaleFactor = NSScreen.main?.backingScaleFactor ?? defaultFactor
+        let borderWidth = isHighlighted ? metrics.highlightBorderWidth : metrics.borderWidth
 
+        let bezier = NSBezierPath(roundedRect: cellFrame, xRadius: metrics.borderRadius, yRadius: metrics.borderRadius)
+        bezier.lineWidth = scaleFactor * borderWidth
 
         style.innerBackgroundColor.setFill()
         bezier.addClip()
@@ -176,6 +179,7 @@ private extension SearchFieldCell {
 struct SearchFieldMetrics {
     let borderRadius : CGFloat
     let borderWidth : CGFloat
+    let highlightBorderWidth: CGFloat
     let searchIconSize : NSSize
     let searchIconPaddingX : CGFloat
     let textPadding : NSEdgeInsets
@@ -201,24 +205,25 @@ struct SearchFieldStyle {
 //
 extension SearchFieldMetrics {
     static var `default`: SearchFieldMetrics {
-        SearchFieldMetrics(borderRadius:        5,
-                           borderWidth:         2,
-                           searchIconSize:      NSSize(width: 16, height: 16),
-                           searchIconPaddingX:  9,
-                           textPadding:         NSEdgeInsets(top: .zero, left: 28, bottom: .zero, right: 40))
+        SearchFieldMetrics(borderRadius:            5,
+                           borderWidth:             1,
+                           highlightBorderWidth:    3,
+                           searchIconSize:          NSSize(width: 16, height: 16),
+                           searchIconPaddingX:      9,
+                           textPadding:             NSEdgeInsets(top: .zero, left: 28, bottom: .zero, right: 40))
     }
 }
 
 extension SearchFieldStyle {
     static var `default`: SearchFieldStyle {
-        SearchFieldStyle(borderColor:           .simplenoteSecondaryDividerColor,
-                         highlightBorderColor:  .simplenoteAccessoryTintColor,
-                         innerBackgroundColor:  .simplenoteSearchBarBackgroundColor,
-                         placeholderFont:       .simplenoteSecondaryTextFont,
-                         placeholderColor:      .simplenoteSecondaryTextColor,
-                         textColor:             .simplenoteTextColor,
-                         textFont:              .simplenoteSecondaryTextFont,
-                         searchButtonImage:     NSImage(named: .search)!,
-                         searchButtonTintColor: .simplenoteSecondaryTextColor)
+        SearchFieldStyle(borderColor:               .simplenoteSecondaryDividerColor,
+                         highlightBorderColor:      .simplenoteSearchBarHighlightedBorderColor,
+                         innerBackgroundColor:      .simplenoteSearchBarBackgroundColor,
+                         placeholderFont:           .simplenoteSecondaryTextFont,
+                         placeholderColor:          .simplenoteSecondaryTextColor,
+                         textColor:                 .simplenoteTextColor,
+                         textFont:                  .simplenoteSecondaryTextFont,
+                         searchButtonImage:         NSImage(named: .search)!,
+                         searchButtonTintColor:     .simplenoteSecondaryTextColor)
     }
 }
