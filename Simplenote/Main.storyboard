@@ -363,23 +363,23 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="drawsBottomBorder" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header View">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="dMC-MU-RmS" userLabel="Header Container View">
                                 <rect key="frame" x="0.0" y="566" width="294" height="52"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQb-Jb-9cK" userLabel="SearchField" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
+                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="whk-9q-XA7" customClass="SearchField" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="16" y="13" width="224" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="26" id="1FF-5p-QMv"/>
+                                            <constraint firstAttribute="height" constant="26" id="sya-sR-Sqq"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Search" usesSingleLineMode="YES" id="VXi-6k-6ql" customClass="SearchFieldCell" customModule="Simplenote" customModuleProvider="target">
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" usesSingleLineMode="YES" id="IMw-3m-wa0" customClass="SearchFieldCell" customModule="Simplenote" customModuleProvider="target">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
+                                        </searchFieldCell>
                                         <connections>
-                                            <outlet property="delegate" destination="JtV-0Z-Zh8" id="aBy-hi-zoh"/>
+                                            <action selector="performSearch:" target="JtV-0Z-Zh8" id="ach-8a-wUY"/>
                                         </connections>
-                                    </textField>
+                                    </searchField>
                                     <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
                                         <rect key="frame" x="256" y="15" width="22" height="22"/>
                                         <constraints>
@@ -396,12 +396,11 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="pQb-Jb-9cK" secondAttribute="bottom" constant="13" id="E8S-jK-IoM"/>
-                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="pQb-Jb-9cK" secondAttribute="trailing" constant="18" id="ELv-AT-8mW"/>
+                                    <constraint firstItem="whk-9q-XA7" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" constant="13" id="GEf-3N-hR1"/>
                                     <constraint firstAttribute="trailing" secondItem="LGw-AF-2MK" secondAttribute="trailing" constant="16" id="GQ2-r3-7p0"/>
-                                    <constraint firstItem="pQb-Jb-9cK" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" constant="18" id="IEK-NM-dNq"/>
-                                    <constraint firstItem="pQb-Jb-9cK" firstAttribute="top" secondItem="dMC-MU-RmS" secondAttribute="top" constant="13" id="MJ1-cE-rPX"/>
-                                    <constraint firstItem="pQb-Jb-9cK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="tGW-Vb-OgH"/>
+                                    <constraint firstItem="LGw-AF-2MK" firstAttribute="leading" secondItem="whk-9q-XA7" secondAttribute="trailing" constant="18" id="Lti-ZQ-clm"/>
+                                    <constraint firstItem="whk-9q-XA7" firstAttribute="leading" secondItem="dMC-MU-RmS" secondAttribute="leading" priority="249" constant="18" id="bJS-cv-jmr"/>
+                                    <constraint firstItem="whk-9q-XA7" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="m9J-wj-SUP"/>
                                     <constraint firstItem="LGw-AF-2MK" firstAttribute="centerY" secondItem="dMC-MU-RmS" secondAttribute="centerY" id="uSI-Q8-BV2"/>
                                 </constraints>
                             </customView>
@@ -454,7 +453,7 @@
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
-                        <outlet property="searchField" destination="pQb-Jb-9cK" id="7Wh-Qp-9tz"/>
+                        <outlet property="searchField" destination="whk-9q-XA7" id="uS6-tc-AER"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
                         <outlet property="trashListMenu" destination="cOD-m3-0ET" id="LM7-S3-9Vt"/>

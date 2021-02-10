@@ -125,6 +125,7 @@ private extension NoteListViewController {
     func setupSearchField() {
         searchField.font = .simplenoteSecondaryTextFont
         searchField.drawsBackground = false
+        searchField.centersPlaceholder = false
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -580,7 +581,7 @@ extension NoteListViewController {
     ///
     @objc
     func dismissSearch() {
-//        searchField.cancelSearch()
+        searchField.cancelSearch()
         searchField.resignFirstResponder()
     }
 }
@@ -588,9 +589,10 @@ extension NoteListViewController {
 
 // MARK: - Search Action
 //
-extension NoteListViewController: NSTextFieldDelegate {
+extension NoteListViewController {
 
-    func controlTextDidChange(_ note: Notification) {
+    @IBAction
+    func performSearch(_ sender: Any) {
         searchQuery = SearchQuery(searchText: searchField.stringValue)
         refreshEverything()
         SPTracker.trackListNotesSearched()
