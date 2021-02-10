@@ -119,6 +119,14 @@ class SearchFieldCell: NSSearchFieldCell {
         return NSRect(origin: origin, size: metrics.searchIconSize)
     }
 
+    override func cancelButtonRect(forBounds rect: NSRect) -> NSRect {
+        var output = super.cancelButtonRect(forBounds: rect)
+
+        // Ask Catalina / Mojave, exactly, why this is really needed :facepalm:
+        output.origin.x = rect.width - output.width - metrics.cancelButtonPaddingX
+        return output
+    }
+
 
     // MARK: - Overridden Methods
 
@@ -180,6 +188,7 @@ struct SearchFieldMetrics {
     let borderRadius : CGFloat
     let borderWidth : CGFloat
     let highlightBorderWidth: CGFloat
+    let cancelButtonPaddingX: CGFloat
     let searchIconSize : NSSize
     let searchIconPaddingX : CGFloat
     let textPadding : NSEdgeInsets
@@ -208,6 +217,7 @@ extension SearchFieldMetrics {
         SearchFieldMetrics(borderRadius:            5,
                            borderWidth:             1,
                            highlightBorderWidth:    3,
+                           cancelButtonPaddingX:    4,
                            searchIconSize:          NSSize(width: 16, height: 16),
                            searchIconPaddingX:      9,
                            textPadding:             NSEdgeInsets(top: .zero, left: 28, bottom: .zero, right: 40))
