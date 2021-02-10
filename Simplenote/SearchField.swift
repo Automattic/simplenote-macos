@@ -34,8 +34,10 @@ private extension SearchField {
             return
         }
 
-        searchButtonCell.image = searchButtonImage?.tinted(with: searchButtonTintColor)
+        let image = searchButtonImage?.tinted(with: searchButtonTintColor)
+        searchButtonCell.image = image
         searchButtonCell.imageScaling = .scaleProportionallyUpOrDown
+        searchButtonCell.alternateImage = image
     }
 }
 
