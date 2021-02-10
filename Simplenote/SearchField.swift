@@ -205,7 +205,7 @@ extension SearchFieldMetrics {
                            borderWidth:         2,
                            searchIconSize:      NSSize(width: 16, height: 16),
                            searchIconPaddingX:  9,
-                           textPadding:         NSEdgeInsets(top: .zero, left: 32, bottom: .zero, right: 40))
+                           textPadding:         NSEdgeInsets(top: .zero, left: 28, bottom: .zero, right: 40))
     }
 }
 
