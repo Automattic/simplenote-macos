@@ -257,9 +257,6 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Skip";
 
-/* Sortbar Title */
-"Sort by" = "Sort by";
-
 /* Tags Section Name */
 "Tags" = "Tags";
 
