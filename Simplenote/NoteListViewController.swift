@@ -605,7 +605,7 @@ extension NoteListViewController: NSSearchFieldDelegate {
 
     @IBAction
     public func performSearch(_ sender: Any) {
-        searchQuery = SearchQuery(searchText: searchField.stringValue)
+        searchQuery = SearchQuery(searchText: searchField.stringValue, settings: SearchQuerySettings.default)
         refreshEverything()
         SPTracker.trackListNotesSearched()
     }
@@ -853,6 +853,12 @@ extension NoteListViewController {
     }
 }
 
+extension SearchQuerySettings {
+     static var `default`: SearchQuerySettings {
+         let localizedKeyword = NSLocalizedString("tag:", comment: "Search Operator for tags. Please preserve the semicolons")
+         return SearchQuerySettings(tagsKeyword: "tag:", localizedTagKeyword: localizedKeyword)
+     }
+ }
 
 // MARK: - Settings
 //
