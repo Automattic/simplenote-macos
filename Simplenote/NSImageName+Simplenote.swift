@@ -61,6 +61,10 @@ extension NSImage.Name {
     ///
     static let chevronDown = NSImage.Name("icon_chevron_down")
 
+    /// Note List: Search
+    ///
+    static let search = NSImage.Name("button_search")
+
     /// Note List: Shared
     ///
     static let shared = NSImage.Name("icon_shared")

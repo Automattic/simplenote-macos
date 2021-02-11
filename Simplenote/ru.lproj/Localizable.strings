@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-21 14:54:49+0000 */
+/* Translation-Revision-Date: 2021-02-09 14:54:04+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "Все примечания";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "По алфавиту: А–Я";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "По алфавиту: Я–А";
-
 /* Link to sign in to an account */
 "Already have an account?" = "Уже есть учетная запись?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "Отменить";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "Не удалось подтвердить учётную запись";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "Не удалось отправить письмо с подтверждением";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "Изменить адрес эл. почты для учетной записи";
+
 /* Number of characters in the note */
 "Characters" = "Символы";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "Сбор информации";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "Подтвердить";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Подтвердите пароль";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "Удалить";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Name: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Name: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "Нужна учетная запись?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Этот адрес эл. почты недействителен";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "ОК";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Активируйте учетную запись WordPress.com через эл. почту или повторите попытку.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "Проверьте настройки сети и повторите попытку.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "Конфиденциальность";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "Переименовать метку";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "Отправить ещё раз";
+
 /* Password Reset: Proceed */
 "Reset" = "Сбросить";
 
@@ -213,8 +232,10 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Восстановить";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
+/* Title -> Review you account screen */
+"Review Your Account" = "Проверить учётную запись";
+
+/* Search Field Placeholder */
 "Search" = "Поиск";
 
 /* Search Results Title */
@@ -242,7 +263,7 @@
 "Skip" = "Пропустить";
 
 /* Sortbar Title */
-"Sort" = "Сортировать";
+"Sort by" = "Приоритет сортировки";
 
 /* Tags Section Name */
 "Tags" = "Метки";
@@ -278,6 +299,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "Заметки без меток";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "Проверить адрес электронной почты";
+
 /* Label for the current version of a note */
 "Version" = "Версия";
 
@@ -290,11 +314,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "Произошла ошибка. Повторите попытку позже.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "На адрес %1$@ отправлено письмо с подтверждением. Проверьте свой почтовый ящик и следуйте инструкциям.";
+
 /* Number of words in the note */
 "Words" = "Слова";
 
 /* Hiring Title */
 "Work with Us" = "Сотрудничество";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "Вы зарегистрированы в Simplenote с адресом электронной почты %1$@.\n\nВ результате повышения безопасности учётной записи вы можете её потерять, если лишитесь доступа к этому адресу электронной почты.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "Нет подключения к Интернету";
