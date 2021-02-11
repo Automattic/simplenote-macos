@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 14:54:05+0000 */
+/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "Alle notities";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "Alfabetisch: A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "Alfabetisch: Z-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "Heb je al een account?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "Annuleren";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "Account kan niet worden bevestigd";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "Verificatiemail kan niet worden verzonden";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "Change Account Email";
+
 /* Number of characters in the note */
 "Characters" = "Tekens";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "Verzamel informatie";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "Bevestigen";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Wachtwoord bevestigen";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "Verplaatsen naar prullenbak";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Name: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Name: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "Een account nodig?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Geen geldig e-mailadres";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "OK";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Activeer je WordPress.com-account via e-mail en probeer het nogmaals.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "Controleer je netwerkinstellingen en probeer het nogmaals.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "Privacybeleid";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "Tag hernoemen";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "E-mail opnieuw verzenden";
+
 /* Password Reset: Proceed */
 "Reset" = "Opnieuw instellen";
 
@@ -213,8 +232,10 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Herstellen";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
+/* Title -> Review you account screen */
+"Review Your Account" = "Controleer je account";
+
+/* Search Field Placeholder */
 "Search" = "Zoeken";
 
 /* Search Results Title */
@@ -242,7 +263,7 @@
 "Skip" = "Overslaan";
 
 /* Sortbar Title */
-"Sort" = "Sorteren";
+"Sort by" = "Sorteren op";
 
 /* Tags Section Name */
 "Tags" = "Tags";
@@ -278,6 +299,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "Niet-getagde notities";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "Verifieer je e-mail";
+
 /* Label for the current version of a note */
 "Version" = "Versie";
 
@@ -290,11 +314,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "We ondervinden wat problemen. Probeer het later opnieuw.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "We hebben een verificatiemail verzonden naar %1$@. Controleer je postvak IN en volg de instructies.";
+
 /* Number of words in the note */
 "Words" = "Woorden";
 
 /* Hiring Title */
 "Work with Us" = "Bij ons werken";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "Je staat geregistreerd bij Simplenote met het e-mailadres %1$@.\n\nVerbeteringen aan accountbeveiliging kunnen leiden tot accountverlies als je geen toegang meer hebt tot dit e-mailadres.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "Je bent niet verbonden met het internet";

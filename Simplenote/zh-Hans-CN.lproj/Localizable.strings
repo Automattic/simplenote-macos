@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 17:54:04+0000 */
+/* Translation-Revision-Date: 2021-02-10 11:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "全部笔记";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "按字母顺序：A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "按字母顺序：Z-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "已有帐户？";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "取消";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "无法确认帐户";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "无法发送验证电子邮件";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "更改帐户电子邮件";
+
 /* Number of characters in the note */
 "Characters" = "字符";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "收集信息";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "确定";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "确认密码";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "移动到回收站";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Name: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Name: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "需要一个帐户？";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "电子邮件地址无效";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "好";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "请通过电子邮件激活您的 WordPress.com 帐户，然后重试。";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "请检查您的网络设置，然后重试。";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "隐私政策";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "重命名标签";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "重发电子邮件";
+
 /* Password Reset: Proceed */
 "Reset" = "重设";
 
@@ -213,8 +232,10 @@
    Tooltip: Restore a trashed note */
 "Restore" = "恢复";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
+/* Title -> Review you account screen */
+"Review Your Account" = "检查您的帐户";
+
+/* Search Field Placeholder */
 "Search" = "搜索";
 
 /* Search Results Title */
@@ -242,7 +263,7 @@
 "Skip" = "跳过";
 
 /* Sortbar Title */
-"Sort" = "排序";
+"Sort by" = "排序方式";
 
 /* Tags Section Name */
 "Tags" = "标签";
@@ -278,6 +299,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "未标记备注";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "验证您的电子邮件";
+
 /* Label for the current version of a note */
 "Version" = "版本";
 
@@ -290,11 +314,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "我们遇到了问题。请稍后重试。";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "我们已向 %1$@ 发送了一封验证电子邮件。 请检查您的收件箱并按照说明执行操作。";
+
 /* Number of words in the note */
 "Words" = "单词";
 
 /* Hiring Title */
 "Work with Us" = "与我们合作";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "您已使用电子邮件 %1$@ 注册 Simplenote。\n\n如果您无法再访问此电子邮件地址，那么帐户安全性的改进可能会导致您无法找回帐户。";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "您未连接到互联网";

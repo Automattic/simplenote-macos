@@ -12,7 +12,8 @@ import AppKit
 
 // MARK: - Theme
 //
-class Theme {
+@objc
+class Theme: NSObject {
 
     /// Default Font Size
     ///
@@ -46,6 +47,7 @@ class Theme {
 
     /// Designated Initializer
     ///
+    @objc
     init(markdownEnabled: Bool) {
         self.headlineStyle = Theme.headlineStyle
         self.bodyStyle = Theme.bodyStyle

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-13 21:11:34+0000 */
+/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "Alla anteckningar";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "Alfabetiskt: A-Ö";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "Alfabetiskt: Ö-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "Har du redan ett konto?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "Avbryt";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "Kan inte bekräfta konto";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "Kan inte skicka e-postverifiering";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "Ändra e-postadress för kontot";
+
 /* Number of characters in the note */
 "Characters" = "Tecken";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "Samla information";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "Bekräfta";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Bekräfta lösenord";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "Flytta till papperskorgen";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Name: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Name: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "Behöver du ett konto?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Inte en giltig e-postadress";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "OK";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Aktivera ditt WordPress.com-konto via e-post och försök igen.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "Kontrollera dina nätverksinställningar och försök igen.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "Integritetspolicy";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "Byt namn på etikett";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "Skicka e-post igen";
+
 /* Password Reset: Proceed */
 "Reset" = "Återställ";
 
@@ -213,8 +232,10 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Återställ";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
+/* Title -> Review you account screen */
+"Review Your Account" = "Granska ditt konto";
+
+/* Search Field Placeholder */
 "Search" = "Sök";
 
 /* Search Results Title */
@@ -242,7 +263,7 @@
 "Skip" = "Hoppa över";
 
 /* Sortbar Title */
-"Sort" = "Sortera";
+"Sort by" = "Sortera efter";
 
 /* Tags Section Name */
 "Tags" = "Etiketter";
@@ -278,6 +299,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "Omärkta anteckningar";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "Verifiera din e-post";
+
 /* Label for the current version of a note */
 "Version" = "Version";
 
@@ -290,11 +314,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "Vi har problem. Försök igen om en stund.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Vi har skickat en e-postverifiering till %1$@. Kontrollera din inkorg och följ instruktionerna.";
+
 /* Number of words in the note */
 "Words" = "Ord";
 
 /* Hiring Title */
 "Work with Us" = "Arbeta hos oss";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "Du är registrerad hos Simplenote med e-postadressen %1$@.\n\nFörbättringar av kontosäkerhet kan leda till kontoförlust om du inte längre har tillgång till den här e-postadressen.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "Du är inte ansluten till Internet";
