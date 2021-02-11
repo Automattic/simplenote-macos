@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-10 09:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: fr */
@@ -45,7 +45,7 @@
 "Cannot Send Verification Email" = "Envoi de l’e-mail de vérification impossible";
 
 /* Change email button -> Review you account screen */
-"Change Account Email" = "Change Account Email";
+"Change Account Email" = "Modifier le compte de messagerie";
 
 /* Number of characters in the note */
 "Characters" = "Caractères";

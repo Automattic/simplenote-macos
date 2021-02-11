@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-10 09:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -45,7 +45,7 @@
 "Cannot Send Verification Email" = "Doğrulama E-postası Gönderilemiyor";
 
 /* Change email button -> Review you account screen */
-"Change Account Email" = "Change Account Email";
+"Change Account Email" = "Hesap E-postasını Değiştir";
 
 /* Number of characters in the note */
 "Characters" = "Karakter";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-10 11:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -45,7 +45,7 @@
 "Cannot Send Verification Email" = "无法发送验证电子邮件";
 
 /* Change email button -> Review you account screen */
-"Change Account Email" = "Change Account Email";
+"Change Account Email" = "更改帐户电子邮件";
 
 /* Number of characters in the note */
 "Characters" = "字符";
