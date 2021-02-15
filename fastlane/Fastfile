@@ -198,7 +198,58 @@ end
       project_slug: 'simplenote-macos',
       dsym_path: dSYM_PATH,
     )
+  end
 
+  desc "Builds and uploads the app for the App Store"
+  lane :build_and_upload_app_store do | options |
+    bundle_id = "com.automattic.SimplenoteMac"
+    output_directory = "./build"
+    dSYM_PATH = File.dirname(Dir.pwd) + "/build/Simplenote.app.dSYM.zip"
+
+    ensure_git_status_clean()
+
+    configure_apply()
+    sh("rake dependencies:pod:clean")
+    cocoapods()
+
+    sync_code_signing(
+      type: "appstore",
+      platform: "macos",
+      # Will default to false, unless a readonly value is specified, or is
+      # running on CI, in which case it will always true.
+      readonly: options[:readonly] || is_ci,
+      app_identifier: bundle_id,
+    )
+
+    build_mac_app(
+      workspace: "Simplenote.xcworkspace",
+      scheme: "Simplenote-AppStore",
+      clean: true,
+      # It might not be necessary to use this, just trying to mimic a setup I
+      # know works
+      configuration: 'Release',
+      export_method: "app-store",
+      output_directory: output_directory,
+      archive_path: File.join(output_directory, 'Simplenote-AppStore')
+    )
+
+    # TestFlight does not suport macOS but we can use deliver to upload the
+    # binary to the App Store
+    deliver(
+      skip_screenshots: true,
+      skip_metadata: true,
+      skip_app_version_update: true,
+      skip_binary_upload: false,
+      force: true, # Skip verification of HTML preview file
+      overwrite_screenshots: false
+    )
+
+    sentry_upload_dsym(
+      auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
+      org_slug: 'a8c',
+      project_slug: 'simplenote-macos',
+      dsym_path: dSYM_PATH,
+    )
   end
 
 ########################################################################
