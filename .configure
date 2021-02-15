@@ -1,11 +1,16 @@
 {
   "project_name": "simplenote-macos",
   "branch": "trunk",
-  "pinned_hash": "b29f37343b6e812d7d04539575672efc5bef926c",
+  "pinned_hash": "5052344724cba0bae4d6c81da199dacbe700e3fe",
   "files_to_copy": [
     {
       "file": "macOS/simplenote/SPCredentials.swift",
       "destination": "Simplenote/Credentials/SPCredentials.swift",
+      "encrypt": true
+    },
+    {
+      "file": "shared/google_cloud_keys.json",
+      "destination": ".configure-files/google_cloud_keys.json",
       "encrypt": true
     }
   ],
