@@ -203,8 +203,11 @@ end
   desc "Builds and uploads the app for the App Store"
   lane :build_and_upload_app_store do | options |
     bundle_id = "com.automattic.SimplenoteMac"
-    output_directory = "./build"
-    dSYM_PATH = File.dirname(Dir.pwd) + "/build/Simplenote.app.dSYM.zip"
+    project_root = File.expand_path(File.join("#{File.dirname(__FILE__)}", ".."))
+    output_directory = File.join(project_root, "build")
+    app_name = "Simplenote.app"
+    dsym_path = File.join(output_directory, "#{app_name}.dSYM.zip")
+    app_zip_path = File.join(output_directory, "#{app_name}.zip")
 
     ensure_git_status_clean()
 
@@ -248,7 +251,22 @@ end
       auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
       org_slug: 'a8c',
       project_slug: 'simplenote-macos',
-      dsym_path: dSYM_PATH,
+      dsym_path: dsym_path,
+    )
+
+    next unless options[:create_github_release]
+
+    # Create the ZIP package from the .app folder to upload to GitHub
+    zip(path: File.join(output_directory, app_name), output_path: app_zip_path)
+
+    # TODO: This version of the release notes doesn't include nice links to the
+    # PRs
+    create_release(
+      repository: "Automattic/simplenote-macos",
+      version: read_version_from_config,
+      release_notes_file_path: File.join(project_root, 'Simplenote/Resources/release_notes.txt'),
+      release_assets: [app_zip_path, dsym_path],
+      prerelease: true # options[:prerelease],
     )
   end
 
@@ -258,4 +276,16 @@ end
 desc "Get a list of pull request from `start_tag` to the current state"
 lane :get_pullrequests_list do | options |
   get_prs_list(repository:GHHELPER_REPO, start_tag:"#{options[:start_tag]}", report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list.txt")
+end
+
+def read_version_from_config
+  fastlane_require "Xcodeproj"
+  version = ""
+  # If the file is not available, the method will raise so we should be fine
+  # not handling that case – we'll never return an empty string.
+  File.open("#{File.dirname(__FILE__)}/../Config/Version.public.xcconfig") do |config|
+    configuration = Xcodeproj::Config.new(config)
+    version = configuration.attributes["VERSION_SHORT"]
+  end
+  return version
 end
