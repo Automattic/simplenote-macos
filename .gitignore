@@ -47,5 +47,7 @@ fastlane/test_output/
 build/
 
 # Secrets
-.configure-files/
+# All secrets should be stored encrypted in .configure-files, anything that's
+# not encrypted should be ignored
+.configure-files/*
 !.configure-files/*.enc
