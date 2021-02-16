@@ -416,6 +416,7 @@
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
+		BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
@@ -771,6 +772,7 @@
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
+		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1179,6 +1181,7 @@
 				B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */,
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
+				BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2037,6 +2040,7 @@
 				B51374F61AC0591900825FCC /* SPConstants.m in Sources */,
 				B52197862541C65C00182928 /* NumberFormatter+Simplenote.swift in Sources */,
 				B5E086382448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */,
+				BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */,
 				3712FC861FE1ACAA008544AC /* Element.swift in Sources */,
 				B5F04FD021594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B5469FCA2587DE3F007ED7BE /* SortMode.swift in Sources */,
@@ -2864,7 +2868,7 @@
 			repositoryURL = "git@github.com:Automattic/SimplenoteSearch-Swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
+				minimumVersion = 1.3.0;
 			};
 		};
 		B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */ = {

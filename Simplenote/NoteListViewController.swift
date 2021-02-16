@@ -853,7 +853,6 @@ extension NoteListViewController {
     }
 }
 
-
 // MARK: - Settings
 //
 private enum Settings {

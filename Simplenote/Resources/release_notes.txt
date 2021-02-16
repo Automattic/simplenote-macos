@@ -1,1 +1,5 @@
-New account verification screen
+- Searching for a note is showing relevant excerpts
+- Search keywords are highlighted in the editor
+- Add search map to the editor
+- SortBar is now always visible
+- SearchBar has been relocated into the Notes List
