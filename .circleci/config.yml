@@ -99,19 +99,17 @@ workflows:
   deploy_to_app_store:
     jobs:
       - Test:
+          # Only run on tags in the 1.2 or 1.2.3 form – i.e. only final release
           filters:
-          # Only run on tags in the v1.2.3 form –i.e. not alpha tags
             branches:
               ignore: /.*/
             tags:
-              # TODO: Fix the regex later
-              only: /.*/
+              only: /^\d+\.\d+(\.\d)?$/
       - App Store Deployment:
           requires: [ Test ]
+          # Only run on tags in the 1.2 or 1.2.3 form – i.e. only final release
           filters:
-          # Only run on tags in the v1.2.3 form –i.e. not alpha tags
             branches:
               ignore: /.*/
             tags:
-              # TODO: Fix the regex later
-              only: /.*/
+              only: /^\d+\.\d+(\.\d)?$/
