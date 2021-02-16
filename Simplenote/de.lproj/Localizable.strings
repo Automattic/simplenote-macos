@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 18:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: de */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "Alle Notizen";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "Alphabetisch: A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "Alphabetisch: Z-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "Du hast bereits ein Konto?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "Abbrechen";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "Konto kann nicht bestätigt werden";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "Verifizierungs-E-Mail kann nicht gesendet werden";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "Change Account Email";
+
 /* Number of characters in the note */
 "Characters" = "Zeichen";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "Informationen erfassen";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "Bestätigen";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Passwort bestätigen";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "In Papierkorb verschieben";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Name: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Name: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "Du brauchst ein Benutzerkonto?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Keine gültige E-Mail-Adresse";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "OK";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Aktiviere dein WordPress.com-Konto per E-Mail und versuche es erneut.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "Prüfe bitte deine Netzwerkeinstellungen und versuche es noch einmal.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "Datenschutzerklärung";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "Schlagwort umbenennen";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "E-Mail erneut senden";
+
 /* Password Reset: Proceed */
 "Reset" = "Zurücksetzen";
 
@@ -213,8 +232,10 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Wiederherstellen";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
+/* Title -> Review you account screen */
+"Review Your Account" = "Konto prüfen";
+
+/* Search Field Placeholder */
 "Search" = "Suche";
 
 /* Search Results Title */
@@ -242,7 +263,7 @@
 "Skip" = "Überspringen";
 
 /* Sortbar Title */
-"Sort" = "Sortieren";
+"Sort by" = "Sortieren nach";
 
 /* Tags Section Name */
 "Tags" = "Schlagwörter";
@@ -278,6 +299,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "Nicht markierte Notizen";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "E-Mail-Adresse bestätigen";
+
 /* Label for the current version of a note */
 "Version" = "Version";
 
@@ -290,11 +314,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "Momentan gibt es ein paar Probleme. Bitte versuche es später erneut.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Wir haben an %1$@ eine Verifizierungs-E-Mail gesendet. Sieh bitte in deinem Posteingang nach und befolge die Anweisungen.";
+
 /* Number of words in the note */
 "Words" = "Wörter";
 
 /* Hiring Title */
 "Work with Us" = "Werde Teil unseres Teams";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "Du bist mit der E-Mail-Adresse %1$@ bei Simplenote registriert.\n\nVerbesserungen der Kontosicherheit können zum Verlust des Kontos führen, wenn du keinen Zugriff mehr auf diese E-Mail-Adresse hast.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "Du bist nicht mit dem Internet verbunden";

@@ -6,77 +6,16 @@
 //  Copyright © 2016 Rudd Fawcett. All rights reserved.
 //
 
-#if os(iOS)
-    import UIKit
-#elseif os(macOS)
-    import AppKit
-#endif
+import AppKit
 
-@objc
-class Storage: NSTextStorage {
-
-    /// Simplenote's Active Theme
-    ///
-    private var theme = Theme(markdownEnabled: false) {
-        didSet {
-            resetStyles()
-        }
-    }
-
-    /// Backing String (Cache) reference
-    ///
-    private var backingString = String()
-
-    /// The underlying text storage implementation.
-    ///
-    private let backingStore = NSMutableAttributedString()
-
-    /// Returns the BackingString
-    ///
-    override var string: String {
-        return backingString
-    }
-
-    /// Skip restyling after the change
-    ///
-    private var skipRestyling: Bool = false
-
-    /// Designated Initializer
-    ///
-    override init() {
-        super.init()
-    }
-
-    override init(attributedString attrStr: NSAttributedString) {
-        super.init(attributedString:attrStr)
-        backingStore.setAttributedString(attrStr)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    required init?(pasteboardPropertyList propertyList: Any, ofType type: NSPasteboard.PasteboardType) {
-        super.init(pasteboardPropertyList: propertyList, ofType: type)
-    }
-
-    /// Finds attributes within a given range on a String.
-    ///
-    /// - parameter location: How far into the String to look.
-    /// - parameter range:    The range to find attributes for.
-    ///
-    /// - returns: The attributes on a String within a certain range.
-    ///
-    override func attributes(at location: Int, effectiveRange range: NSRangePointer?) -> [NSAttributedString.Key : Any] {
-        return backingStore.attributes(at: location, effectiveRange: range)
-    }
+extension Storage {
 
     /// Replaces edited characters within a certain range with a new string.
     ///
     /// - parameter range: The range to replace.
     /// - parameter str:   The new string to replace the range with.
     ///
-    override func replaceCharacters(in range: NSRange, with str: String) {
+    open override func replaceCharacters(in range: NSRange, with str: String) {
         self.beginEditing()
 
         var performedActions: NSTextStorageEditActions = [.editedCharacters]
@@ -85,32 +24,30 @@ class Storage: NSTextStorage {
         }
 
         backingStore.replaceCharacters(in: range, with: str)
-        replaceBackingStringSubrange(range, with: str)
 
         let change = str.utf16.count - range.length
         self.edited(performedActions, range: range, changeInLength: change)
         self.endEditing()
     }
 
-    override func replaceCharacters(in range: NSRange, with attrString: NSAttributedString) {
+    open override func replaceCharacters(in range: NSRange, with attrString: NSAttributedString) {
         self.beginEditing()
 
         backingStore.replaceCharacters(in: range, with: attrString)
-        replaceBackingStringSubrange(range, with: attrString.string)
 
         let change = attrString.length - range.length
         self.edited([.editedCharacters, .editedAttributes], range: range, changeInLength: change)
         self.endEditing()
     }
 
-    override func addAttribute(_ name: NSAttributedString.Key, value: Any, range: NSRange) {
+    open override func addAttribute(_ name: NSAttributedString.Key, value: Any, range: NSRange) {
         self.beginEditing()
         backingStore.addAttribute(name, value: value, range: range)
         self.edited(.editedAttributes, range: range, changeInLength: 0)
         self.endEditing()
     }
 
-    override func removeAttribute(_ name: NSAttributedString.Key, range: NSRange) {
+    open override func removeAttribute(_ name: NSAttributedString.Key, range: NSRange) {
         self.beginEditing()
         backingStore.removeAttribute(name, range: range)
         self.edited(.editedAttributes, range: range, changeInLength: 0)
@@ -122,37 +59,22 @@ class Storage: NSTextStorage {
     /// - parameter attrs: The attributes to add to the string for the range.
     /// - parameter range: The range in which to add attributes.
     ///
-    override func setAttributes(_ attrs: [NSAttributedString.Key : Any]?, range: NSRange) {
+    open override func setAttributes(_ attrs: [NSAttributedString.Key : Any]?, range: NSRange) {
         self.beginEditing()
         backingStore.setAttributes(attrs, range: range)
         self.edited(.editedAttributes, range: range, changeInLength: 0)
         self.endEditing()
     }
 
-    /// Processes any edits made to the text in the editor.
-    ///
-    override func processEditing() {
-        guard !skipRestyling else {
-            super.processEditing()
-            return
-        }
-
-        let foundationBackingString = backingString as NSString
-        let lineRange = foundationBackingString.lineRange(for: NSRange(location: NSMaxRange(editedRange), length: 0))
-        let extendedRange = NSUnionRange(editedRange, lineRange)
-
-        applyStyles(extendedRange)
-        super.processEditing()
-    }
-
     /// Applies styles to a range on the backingString.
     ///
     /// - parameter range: The range in which to apply styles.
     ///
-    private func applyStyles(_ range: NSRange) {
-        let string = backingString
+    @objc
+    func applyStyles(_ range: NSRange) {
         backingStore.addAttributes(theme.bodyStyle.attributes, range: range)
 
+        let string = self.string
         for style in theme.styles {
             style.regex.enumerateMatches(in: string, options: .withoutAnchoringBounds, range: range) { (match, flags, stop) in
                 guard let range = match?.range(at: 0) else {
@@ -178,7 +100,8 @@ class Storage: NSTextStorage {
 
     /// RE-Applies the Styles to the whole BackingStore
     ///
-    private func resetStyles() {
+    @objc
+    func resetStyles() {
         beginEditing()
 
         // Reset the Style Keys: Do this for specific attributes. Otherwise we risk loosing the NSTextAttachment attribute!
@@ -191,19 +114,6 @@ class Storage: NSTextStorage {
         // No need to explicitly call `process` (!)
         edited(.editedAttributes, range: range, changeInLength: 0)
         endEditing()
-    }
-
-    /// Refreshes the receiver's Attributes. We must always do this since `Markdown` isn't the only variable: FontSize might have been also updated!
-    ///
-    @objc
-    func refreshStyle(markdownEnabled: Bool) {
-        self.theme = Theme(markdownEnabled: markdownEnabled)
-    }
-
-    func endEditingWithoutRestyling() {
-        skipRestyling = true
-        endEditing()
-        skipRestyling = false
     }
 }
 
@@ -222,13 +132,6 @@ extension Storage {
 // MARK: - Helpers
 //
 private extension Storage {
-
-    func replaceBackingStringSubrange(_ range: NSRange, with string: String) {
-        let utf16String = backingString.utf16
-        let startIndex = utf16String.index(utf16String.startIndex, offsetBy: range.location)
-        let endIndex = utf16String.index(startIndex, offsetBy: range.length)
-        backingString.replaceSubrange(startIndex..<endIndex, with: string)
-    }
 
     /// Drops the Link Attribute whenever we're about to replace the (full) range. This method should only be tied up to plain String replacements (non attributed), otherwise
     /// it's not really needed

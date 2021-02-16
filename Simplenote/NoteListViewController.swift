@@ -24,11 +24,8 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var headerEffectView: NSVisualEffectView!
     @IBOutlet private var headerContainerView: NSView!
     @IBOutlet private var headerDividerView: BackgroundView!
-    @IBOutlet private var headerBottomDividerView: BackgroundView!
-    @IBOutlet private var searchField: NSSearchField!
+    @IBOutlet private var searchField: SearchField!
     @IBOutlet private var addNoteButton: NSButton!
-    @IBOutlet private var sortbarView: SortBarView!
-    @IBOutlet private var sortbarMenu: NSMenu!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
 
@@ -127,16 +124,15 @@ private extension NoteListViewController {
     ///
     func setupSearchField() {
         searchField.centersPlaceholder = false
+        searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
     ///
     func refreshScrollInsets() {
-        let extraInsets: CGFloat = sortbarView.isHidden ? .zero : sortbarView.bounds.height
-
-        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset + extraInsets
+        clipView.contentInsets.top = SplitItemMetrics.listContentTopInset
         clipView.contentInsets.bottom = SplitItemMetrics.listContentBottomInset
-        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset + extraInsets
+        scrollView.scrollerInsets.top = SplitItemMetrics.listScrollerTopInset
     }
 }
 
@@ -152,13 +148,10 @@ extension NoteListViewController {
         backgroundBox.boxType = .simplenoteSidebarBoxType
         backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
         headerDividerView.borderColor = .simplenoteDividerColor
-        headerBottomDividerView.borderColor = .simplenoteSecondaryDividerColor
-        searchField.textColor = .simplenoteTextColor
-        searchField.placeholderAttributedString = Settings.searchBarPlaceholder
         addNoteButton.contentTintColor = .simplenoteActionButtonTintColor
         statusField.textColor = .simplenoteSecondaryTextColor
 
-        sortbarView.refreshStyle()
+        searchField.refreshStyle()
         tableView.reloadAndPreserveSelection()
     }
 }
@@ -289,7 +282,6 @@ private extension NoteListViewController {
         refreshListController()
         refreshEnabledActions()
         refreshPlaceholder()
-        refreshSortBarTitle()
         displayAndSelectFirstNote()
         refreshPresentedNoteIfNeeded()
     }
@@ -352,12 +344,6 @@ private extension NoteListViewController {
 
         SPTracker.trackListNoteOpened()
         noteEditorViewController.displayNote(targetNote)
-    }
-
-    /// Refresh: Sortbar
-    ///
-    func refreshSortBarTitle() {
-        sortbarView.sortModeDescription = Options.shared.notesListSortMode.description
     }
 }
 
@@ -599,12 +585,12 @@ extension NoteListViewController {
 }
 
 
-// MARK: - NSSearchFieldDelegate
+// MARK: - Search Action
 //
-extension NoteListViewController: NSSearchFieldDelegate {
+extension NoteListViewController {
 
     @IBAction
-    public func performSearch(_ sender: Any) {
+    func performSearch(_ sender: Any) {
         searchQuery = SearchQuery(searchText: searchField.stringValue)
         refreshEverything()
         SPTracker.trackListNotesSearched()
@@ -825,41 +811,5 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteRestored()
-    }
-
-    @IBAction
-    func searchSortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem,
-              let identifier = item.identifier,
-              let newSortMode = SortMode(noteListInterfaceID: identifier)
-        else {
-            return
-        }
-
-        Options.shared.notesListSortMode = newSortMode
-        SPTracker.trackListSortBarModeChanged()
-    }
-
-    @IBAction
-    func searchSortBarWasPressed(_ sender: Any) {
-        guard let recognizer = sender as? NSClickGestureRecognizer else {
-            return
-        }
-
-        let clickLocation = recognizer.location(in: headerContainerView)
-        let menuOrigin = NSPoint(x: clickLocation.x, y: sortbarView.frame.minY)
-
-        sortbarMenu.popUp(positioning: nil, at: menuOrigin, in: headerContainerView)
-    }
-}
-
-// MARK: - Settings
-//
-private enum Settings {
-    static var searchBarPlaceholder: NSAttributedString {
-        NSAttributedString(string: NSLocalizedString("Search", comment: "Search Field Placeholder"), attributes: [
-            .font: NSFont.simplenoteSecondaryTextFont,
-            .foregroundColor: NSColor.simplenoteSecondaryTextColor
-        ])
     }
 }
