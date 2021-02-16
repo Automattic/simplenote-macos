@@ -32,7 +32,7 @@ jobs:
     steps:
       - setup_environment
       - run:
-          name: Build
+          name: Build & Test
           # We've seen some builds timeout because CircleCI didn't receive
           # output for 10m. Making it wait for 20m instead should address that.
           #
@@ -44,11 +44,13 @@ jobs:
           no_output_timeout: 20m
           command: |
             # Build without code signing to avoid missing cert errors
-            xcodebuild COMPILER_INDEX_STORE_ENABLE=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
-                       -workspace 'Simplenote.xcworkspace' \
-                       -scheme 'Simplenote' \
-                       -configuration 'Debug' \
-                       test
+            xcodebuild clean test \
+                -workspace 'Simplenote.xcworkspace' \
+                -scheme 'Simplenote' \
+                -configuration 'Debug' \
+                COMPILER_INDEX_STORE_ENABLE=NO \
+                CODE_SIGN_IDENTITY="" \
+                CODE_SIGNING_REQUIRED=NO
 
 workflows:
   simplenote_macos:
