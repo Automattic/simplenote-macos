@@ -9,14 +9,14 @@ import AppKit
 //  - Will get dismissed whenever any Mouse Event happens in the Parent
 //  - Captures Arrow Up / Down / Return / Esc key events happening in the parent
 //
-class AutocompleteWindow: Window {
+class PopoverWindow: Window {
 
 }
 
 
 // MARK: - ParentWindowDelegate
 //
-extension AutocompleteWindow: ParentWindowDelegate {
+extension PopoverWindow: ParentWindowDelegate {
 
     /// Handles Events happening in the Parent Window.
     /// - Note: Returning `true` will cause the parent not to forward the Event.
@@ -42,7 +42,7 @@ extension AutocompleteWindow: ParentWindowDelegate {
 
 // MARK: - Private API(s)
 //
-private extension AutocompleteWindow {
+private extension PopoverWindow {
 
     /// Capture Up / Down / Return / Escape!!
     ///

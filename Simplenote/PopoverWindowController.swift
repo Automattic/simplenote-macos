@@ -9,7 +9,7 @@ class PopoverWindowController: NSWindowController {
     // MARK: - Overridden Methods
 
     init() {
-        let window = AutocompleteWindow()
+        let window = PopoverWindow()
         super.init(window: window)
         setupWindowStyle(window)
     }
@@ -39,7 +39,7 @@ extension PopoverWindowController {
         parentWindow.addChildWindow(interlinkWindow, ordered: .above)
     }
 
-    /// Adjusts the receiver's Window Location relative to the specified frame. We'll make sure it doesn't get clipped horizontally or vertically
+    /// Adjusts the receiver's Window Location relative to the specified frame (in screen cordinates). We'll make sure it doesn't get clipped horizontally or vertically
     ///
     func positionWindow(relativeTo positioningRect: NSRect) {
         guard let window = window else {
