@@ -5,6 +5,18 @@ import Foundation
 //
 class InterlinkProcessor: NSObject {
 
+    /// Main MOC
+    ///
+    private let viewContext: NSManagedObjectContext
+
+    /// Hosting TextView
+    ///
+    private let parentTextView: SPTextView
+    
+    /// Storage Lookup
+    ///
+    private lazy var resultsController = InterlinkResultsController(viewContext: viewContext)
+
     /// Interlink Popover
     ///
     private lazy var interlinkWindowController: PopoverWindowController = {
@@ -17,14 +29,11 @@ class InterlinkProcessor: NSObject {
     ///
     private lazy var interlinkViewController = InterlinkViewController()
 
-    /// Hosting TextView
-    ///
-    private let parentTextView: SPTextView
-
 
     /// Designated Initialier
     ///
-    init(parentTextView: SPTextView) {
+    init(viewContext: NSManagedObjectContext, parentTextView: SPTextView) {
+        self.viewContext = viewContext
         self.parentTextView = parentTextView
     }
 
@@ -42,11 +51,14 @@ class InterlinkProcessor: NSObject {
     func processInterlinkLookup(excludedEntityID: NSManagedObjectID) {
         guard mustProcessInterlinkLookup,
               let (markdownRange, keywordRange, keywordText) = parentTextView.interlinkKeywordAtSelectedLocation,
-              refreshInterlinks(for: keywordText, in: markdownRange, excluding: excludedEntityID)
+              let notes = resultsController.searchNotes(byTitleKeyword: keywordText, excluding: excludedEntityID)
         else {
             dismissInterlinkWindow()
             return
         }
+
+        refreshInterlinkController(notes: notes)
+        setupInterlinkEventListeners(replacementRange: markdownRange)
 
         displayInterlinkWindow(around: keywordRange)
     }
@@ -123,15 +135,19 @@ private extension InterlinkProcessor {
         interlinkWindowController.close()
     }
 
-    /// Refreshes the Interlinks for a given Keyword at the specified Replacement Range (including Markdown `[` opening character).
-    /// - Returns: `true` whenever there *are* interlinks to be presented
+
+    /// Refreshes the Interlink UI
     ///
-    func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>, excluding excludedID: NSManagedObjectID?) -> Bool {
+    func refreshInterlinkController(notes: [Note]) {
+        interlinkViewController.notes = notes
+    }
+
+    /// Sets up the Replacement Callback Mechanism
+    ///
+    func setupInterlinkEventListeners(replacementRange: Range<String.Index>) {
         interlinkViewController.onInsertInterlink = { [weak self] text in
             self?.parentTextView.insertTextAndLinkify(text: text, in: replacementRange)
             self?.dismissInterlinkWindow()
         }
-
-        return interlinkViewController.refreshInterlinks(for: keywordText, excluding: excludedID)
     }
 }

@@ -31,7 +31,8 @@ extension NoteEditorViewController {
 
     @objc
     func setupInterlinksProcessor() {
-        interlinkProcessor = InterlinkProcessor(parentTextView: noteEditor)
+        interlinkProcessor = InterlinkProcessor(viewContext: simplenoteAppDelegate.managedObjectContext,
+                                                parentTextView: noteEditor)
     }
 
     @objc
