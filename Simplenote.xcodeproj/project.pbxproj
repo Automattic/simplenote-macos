@@ -143,8 +143,8 @@
 		B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B50F999224F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
 		B50F999324F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
-		B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
-		B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
+		B50FB214251BB2E00028DE25 /* PopoverWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */; };
+		B50FB215251BB2E00028DE25 /* PopoverWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */; };
 		B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = B50FB24B251C08910028DE25 /* SimplenoteInterlinks */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
@@ -195,8 +195,6 @@
 		B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
 		B53ACDE425DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
 		B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
-		B53ACDEA25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */; };
-		B53ACDEB25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF1A024AC1FB800938C34 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* Version.swift */; };
@@ -583,7 +581,7 @@
 		B503FF4724848D0B00066059 /* TagAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentCell.swift; sourceTree = "<group>"; };
 		B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserInterfaceItemIdentifier+Simplenote.swift"; sourceTree = "<group>"; };
 		B50F999124F98FFD00A1058D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkWindowController.swift; sourceTree = "<group>"; };
+		B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverWindowController.swift; sourceTree = "<group>"; };
 		B5117997242036B0005F8936 /* NSString+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Simplenote.swift"; sourceTree = "<group>"; };
 		B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Simplenote.swift"; sourceTree = "<group>"; };
@@ -628,7 +626,6 @@
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
 		B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterlinkViewController.xib; sourceTree = "<group>"; };
-		B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterlinkWindowController.xib; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B53BF19F24AC1FB800938C34 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
@@ -1440,8 +1437,7 @@
 		B5C63353251E732600C8BF46 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
-				B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */,
+				B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */,
 				B528D682257FF15000C1EEA4 /* MainWindowController.swift */,
 			);
 			name = WindowControllers;
@@ -1721,7 +1717,6 @@
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
-				B53ACDEA25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */,
 				37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1747,7 +1742,6 @@
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 				B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */,
-				B53ACDEB25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */,
 				B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1947,7 +1941,7 @@
 				B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
-				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B50FB214251BB2E00028DE25 /* PopoverWindowController.swift in Sources */,
 				B58BBD2A2523D4CA0025135F /* Window.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
@@ -2120,7 +2114,7 @@
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				B5C9776D25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
-				B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B50FB215251BB2E00028DE25 /* PopoverWindowController.swift in Sources */,
 				B58BBD2B2523D4CA0025135F /* Window.swift in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B557A0E425BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,

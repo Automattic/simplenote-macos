@@ -2,9 +2,9 @@ import Foundation
 import AppKit
 
 
-// MARK: - InterlinkWindowController
+// MARK: - PopoverWindowController
 //
-class InterlinkWindowController: NSWindowController {
+class PopoverWindowController: NSWindowController {
 
     /// Returns the InterlinkViewController Instance
     ///
@@ -28,7 +28,7 @@ class InterlinkWindowController: NSWindowController {
 
 // MARK: - Public API
 //
-extension InterlinkWindowController {
+extension PopoverWindowController {
 
     /// Attaches the receiver's window to a given Parent Window
     ///
@@ -61,7 +61,7 @@ extension InterlinkWindowController {
 
 // MARK: - Private API(s)
 //
-private extension InterlinkWindowController {
+private extension PopoverWindowController {
 
     func setupWindowStyle(_ window: NSWindow) {
         window.titleVisibility = .hidden
