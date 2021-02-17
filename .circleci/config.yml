@@ -33,24 +33,7 @@ jobs:
       - setup_environment
       - run:
           name: Build & Test
-          # We've seen some builds timeout because CircleCI didn't receive
-          # output for 10m. Making it wait for 20m instead should address that.
-          #
-          # For example,
-          # https://app.circleci.com/pipelines/github/Automattic/simplenote-macos/1879/workflows/23bba8c2-3bc0-447e-877c-b3eadd326c12/jobs/1834
-          # timed out but its re-run
-          # https://app.circleci.com/pipelines/github/Automattic/simplenote-macos/1879/workflows/d1d5b6d6-90b0-42c4-81ff-466625e26a6b/jobs/1835
-          # succeeded
-          no_output_timeout: 20m
-          command: |
-            # Build without code signing to avoid missing cert errors
-            xcodebuild clean test \
-                -workspace 'Simplenote.xcworkspace' \
-                -scheme 'Simplenote' \
-                -configuration 'Debug' \
-                COMPILER_INDEX_STORE_ENABLE=NO \
-                CODE_SIGN_IDENTITY="" \
-                CODE_SIGNING_REQUIRED=NO
+          command: bundle exec fastlane test
 
   Build App Store Target:
     executor:

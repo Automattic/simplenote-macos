@@ -34,7 +34,22 @@ end
 
 desc "Runs the unit tests for the project"
 lane :test do | options |
-  run_tests(workspace: workspace, scheme: internal_scheme, clean: true)
+  # Skip code signing when testing to avoid missing certificates errors.
+  #
+  # Only necessary in CI, but doesn't hurt locally either, if you happen to run
+  # the tests from here instead of Xcode.
+  xcargs = [
+    'COMPILER_INDEX_STORE_ENABLE=NO',
+    "CODE_SIGN_IDENTITY=''",
+    'CODE_SIGNING_REQUIRED=NO',
+  ]
+
+  run_tests(
+    workspace: workspace,
+    scheme: internal_scheme,
+    clean: true,
+    xcargs: xcargs.join(' ')
+  )
 end
 
 ########################################################################
