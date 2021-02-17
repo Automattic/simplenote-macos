@@ -32,6 +32,11 @@ before_all do
   end
 end
 
+desc "Runs the unit tests for the project"
+lane :test do | options |
+  run_tests(workspace: workspace, scheme: internal_scheme, clean: true)
+end
+
 ########################################################################
 # Release Lanes
 ########################################################################
