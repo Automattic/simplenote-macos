@@ -4,26 +4,35 @@ orbs:
   # This uses the Orbs located at https://github.com/wordpress-mobile/circleci-orbs
   ios: wordpress-mobile/ios@1.0
 
+# Reusable sets of steps
+commands:
+  setup_environment:
+    steps:
+      - checkout
+      - run:
+          name: Copy Demo SPCredentials
+          command: |
+            mkdir -p Simplenote/Credentials
+            cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
+      - ios/install-dependencies:
+          bundle-install: true
+          pod-install: true
+      - run:
+          # See https://support.circleci.com/hc/en-us/articles/360044709573-Swift-Package-Manager-fails-to-clone-from-private-Git-repositories
+          name: Workaround for Swift Package Manager and xcodebuild
+          command: |
+            rm ~/.ssh/id_rsa
+            for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
+
 jobs:
   Test:
     executor:
       name: ios/default
       xcode-version: "12.0"
     steps:
-      - checkout
+      - setup_environment
       - run:
-          name: Copy Demo SPCredentials
-          command: mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
-      - ios/install-dependencies:
-          bundle-install: true
-          pod-install: true
-      # Start: Swift Package Manager Workaround
-      # Ref. https://support.circleci.com/hc/en-us/articles/360044709573-Swift-Package-Manager-fails-to-clone-from-private-Git-repositories
-      - run: rm ~/.ssh/id_rsa
-      - run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
-      # END: Swift Package Manager Workaround
-      - run:
-          name: Build
+          name: Build & Test
           # We've seen some builds timeout because CircleCI didn't receive
           # output for 10m. Making it wait for 20m instead should address that.
           #
@@ -35,13 +44,34 @@ jobs:
           no_output_timeout: 20m
           command: |
             # Build without code signing to avoid missing cert errors
-            xcodebuild COMPILER_INDEX_STORE_ENABLE=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
-                       -workspace 'Simplenote.xcworkspace' \
-                       -scheme 'Simplenote' \
-                       -configuration 'Debug' \
-                       test
+            xcodebuild clean test \
+                -workspace 'Simplenote.xcworkspace' \
+                -scheme 'Simplenote' \
+                -configuration 'Debug' \
+                COMPILER_INDEX_STORE_ENABLE=NO \
+                CODE_SIGN_IDENTITY="" \
+                CODE_SIGNING_REQUIRED=NO
+
+  Build App Store Target:
+    executor:
+      name: ios/default
+      xcode-version: "12.0"
+    steps:
+      - setup_environment
+      - run:
+          name: Build App Store Target
+          command: |
+            # Build without code signing to avoid missing cert errors
+            xcodebuild clean build \
+                -workspace 'Simplenote.xcworkspace' \
+                -scheme 'Simplenote-AppStore' \
+                -configuration 'Release' \
+                COMPILER_INDEX_STORE_ENABLE=NO \
+                CODE_SIGN_IDENTITY="" \
+                CODE_SIGNING_REQUIRED=NO
 
 workflows:
   simplenote_macos:
     jobs:
       - Test
+      - Build App Store Target
