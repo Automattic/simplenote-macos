@@ -6,12 +6,6 @@ import AppKit
 //
 class PopoverWindowController: NSWindowController {
 
-    /// Returns the InterlinkViewController Instance
-    ///
-    var interlinkViewController: InterlinkViewController? {
-        contentViewController as? InterlinkViewController
-    }
-
     // MARK: - Overridden Methods
 
     init() {

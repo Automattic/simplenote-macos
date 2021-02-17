@@ -856,7 +856,7 @@ private extension NoteEditorViewController {
     /// - Returns: `true` whenever there *are* interlinks to be presented
     ///
     func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>, excluding excludedID: NSManagedObjectID?) -> Bool {
-        guard let interlinkViewController = reusableInterlinkWindowController().interlinkViewController else {
+        guard let interlinkViewController = reusableInterlinkWindowController().contentViewController as? InterlinkViewController else {
             fatalError()
         }
 
@@ -875,11 +875,11 @@ private extension NoteEditorViewController {
             return interlinkWindowController
         }
 
-        let interlinkViewController = InterlinkViewController()
         let interlinkWindowController = PopoverWindowController()
-        interlinkWindowController.contentViewController = interlinkViewController
-
         self.interlinkWindowController = interlinkWindowController
+
+        let interlinkViewController = InterlinkViewController()
+        interlinkWindowController.contentViewController = interlinkViewController
 
         return interlinkWindowController
     }
