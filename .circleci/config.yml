@@ -43,15 +43,7 @@ jobs:
       - setup_environment
       - run:
           name: Build App Store Target
-          command: |
-            # Build without code signing to avoid missing cert errors
-            xcodebuild clean build \
-                -workspace 'Simplenote.xcworkspace' \
-                -scheme 'Simplenote-AppStore' \
-                -configuration 'Release' \
-                COMPILER_INDEX_STORE_ENABLE=NO \
-                CODE_SIGN_IDENTITY="" \
-                CODE_SIGNING_REQUIRED=NO
+          command: bundle exec fastlane build_app_store
 
 workflows:
   simplenote_macos:
