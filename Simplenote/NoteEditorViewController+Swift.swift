@@ -33,6 +33,7 @@ extension NoteEditorViewController {
     func setupInterlinksProcessor() {
         interlinkProcessor = InterlinkProcessor(viewContext: simplenoteAppDelegate.managedObjectContext,
                                                 parentTextView: noteEditor)
+        interlinkProcessor.delegate = self
     }
 
     @objc
@@ -826,6 +827,17 @@ extension NoteEditorViewController {
         ])
 
         self.searchMapView = searchMapView
+    }
+}
+
+
+// MARK: - Interlinks Insertion
+//
+extension NoteEditorViewController: InterlinkProcessorDelegate {
+
+    func interlinkProcessor(_ processor: InterlinkProcessor, insert text: String, in range: Range<String.Index>) {
+        noteEditor.insertTextAndLinkify(text: text, in: range)
+        processor.dismissInterlinkLookup()
     }
 }
 

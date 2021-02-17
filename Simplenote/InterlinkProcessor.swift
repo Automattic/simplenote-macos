@@ -1,6 +1,16 @@
 import Foundation
 
 
+// MARK: - InterlinkProcessorDelegate
+//
+protocol InterlinkProcessorDelegate: NSObjectProtocol {
+
+    /// Invoked whenever an Autocomplete Row has been selected: The handler should insert the specified text at a given range
+    ///
+    func interlinkProcessor(_ processor: InterlinkProcessor, insert text: String, in range: Range<String.Index>)
+}
+
+
 // MARK: - InterlinkProcessor
 //
 class InterlinkProcessor: NSObject {
@@ -12,7 +22,7 @@ class InterlinkProcessor: NSObject {
     /// Hosting TextView
     ///
     private let parentTextView: SPTextView
-    
+
     /// Storage Lookup
     ///
     private lazy var resultsController = InterlinkResultsController(viewContext: viewContext)
@@ -28,6 +38,10 @@ class InterlinkProcessor: NSObject {
     /// Interlink ViewController!
     ///
     private lazy var interlinkViewController = InterlinkViewController()
+
+    /// Insertion Delegate
+    ///
+    weak var delegate: InterlinkProcessorDelegate?
 
 
     /// Designated Initialier
@@ -53,7 +67,7 @@ class InterlinkProcessor: NSObject {
               let (markdownRange, keywordRange, keywordText) = parentTextView.interlinkKeywordAtSelectedLocation,
               let notes = resultsController.searchNotes(byTitleKeyword: keywordText, excluding: excludedEntityID)
         else {
-            dismissInterlinkWindow()
+            dismissInterlinkLookup()
             return
         }
 
@@ -74,7 +88,13 @@ class InterlinkProcessor: NSObject {
             return
         }
 
-        dismissInterlinkWindow()
+        dismissInterlinkLookup()
+    }
+
+    /// DIsmisses the Interlink Window
+    ///
+    func dismissInterlinkLookup() {
+        interlinkWindowController.close()
     }
 }
 
@@ -129,13 +149,6 @@ private extension InterlinkProcessor {
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
     }
 
-    /// DIsmisses the Interlink Window
-    ///
-    func dismissInterlinkWindow() {
-        interlinkWindowController.close()
-    }
-
-
     /// Refreshes the Interlink UI
     ///
     func refreshInterlinkController(notes: [Note]) {
@@ -146,8 +159,11 @@ private extension InterlinkProcessor {
     ///
     func setupInterlinkEventListeners(replacementRange: Range<String.Index>) {
         interlinkViewController.onInsertInterlink = { [weak self] text in
-            self?.parentTextView.insertTextAndLinkify(text: text, in: replacementRange)
-            self?.dismissInterlinkWindow()
+            guard let `self` = self else {
+                return
+            }
+
+            self.delegate?.interlinkProcessor(self, insert: text, in: replacementRange)
         }
     }
 }
