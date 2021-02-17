@@ -145,8 +145,6 @@
 		B50F999324F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
 		B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
 		B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
-		B50FB223251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
-		B50FB224251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
 		B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = B50FB24B251C08910028DE25 /* SimplenoteInterlinks */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
@@ -195,6 +193,10 @@
 		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B5395E1D253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
 		B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
+		B53ACDE425DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
+		B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
+		B53ACDEA25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */; };
+		B53ACDEB25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF1A024AC1FB800938C34 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* Version.swift */; };
@@ -582,7 +584,6 @@
 		B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserInterfaceItemIdentifier+Simplenote.swift"; sourceTree = "<group>"; };
 		B50F999124F98FFD00A1058D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkWindowController.swift; sourceTree = "<group>"; };
-		B50FB222251BB6110028DE25 /* Interlink.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interlink.storyboard; sourceTree = "<group>"; };
 		B5117997242036B0005F8936 /* NSString+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Simplenote.swift"; sourceTree = "<group>"; };
 		B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Simplenote.swift"; sourceTree = "<group>"; };
@@ -626,6 +627,8 @@
 		B532728125BA1510001DB882 /* SPTracker+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPTracker+Swift.swift"; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
+		B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterlinkViewController.xib; sourceTree = "<group>"; };
+		B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterlinkWindowController.xib; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B53BF19F24AC1FB800938C34 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
@@ -1429,6 +1432,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */,
+				B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */,
 			);
 			name = Interlinks;
 			sourceTree = "<group>";
@@ -1437,6 +1441,7 @@
 			isa = PBXGroup;
 			children = (
 				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
+				B53ACDE925DD4D4F00CF527A /* InterlinkWindowController.xib */,
 				B528D682257FF15000C1EEA4 /* MainWindowController.swift */,
 			);
 			name = WindowControllers;
@@ -1446,7 +1451,6 @@
 			isa = PBXGroup;
 			children = (
 				B50F999124F98FFD00A1058D /* Main.storyboard */,
-				B50FB222251BB6110028DE25 /* Interlink.storyboard */,
 				375581C120292AA800529D79 /* About.storyboard */,
 				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
 			);
@@ -1700,13 +1704,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50FB223251BB6110028DE25 /* Interlink.storyboard in Resources */,
 				B54F4AA224A6588700D8FAB1 /* MetricsViewController.xib in Resources */,
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
+				B53ACDE425DD47BB00CF527A /* InterlinkViewController.xib in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
@@ -1717,6 +1721,7 @@
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
+				B53ACDEA25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */,
 				37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1725,13 +1730,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50FB224251BB6110028DE25 /* Interlink.storyboard in Resources */,
 				B54F4AA324A6588700D8FAB1 /* MetricsViewController.xib in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
+				B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */,
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
 				B5C7DD44243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B58117D725B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
@@ -1742,6 +1747,7 @@
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 				B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */,
+				B53ACDEB25DD4D4F00CF527A /* InterlinkWindowController.xib in Resources */,
 				B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

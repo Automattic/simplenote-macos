@@ -14,9 +14,14 @@ class InterlinkWindowController: NSWindowController {
 
     // MARK: - Overridden Methods
 
-    override func windowDidLoad() {
-        super.windowDidLoad()
-        setupWindowStyle()
+    init() {
+        let window = AutocompleteWindow()
+        super.init(window: window)
+        setupWindowStyle(window)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -58,13 +63,16 @@ extension InterlinkWindowController {
 //
 private extension InterlinkWindowController {
 
-    func setupWindowStyle() {
-        window?.animationBehavior = .utilityWindow
+    func setupWindowStyle(_ window: NSWindow) {
+        window.titleVisibility = .hidden
+        window.titlebarAppearsTransparent = true
+        window.styleMask = [.borderless]
+        window.animationBehavior = .utilityWindow
 
         // In macOS +10.15 the main ViewController will display rounded corners!
         if #available(macOS 10.15, *) {
-            window?.backgroundColor = .clear
-            window?.isOpaque = false
+            window.backgroundColor = .clear
+            window.isOpaque = false
         }
     }
 

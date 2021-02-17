@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="InterlinkWindowController" customModule="Simplenote" customModuleProvider="target">
+            <connections>
+                <outlet property="window" destination="pkf-2O-xAA" id="FPH-18-ua9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="pkf-2O-xAA" customClass="AutocompleteWindow" customModule="Simplenote" customModuleProvider="target">
+            <rect key="contentRect" x="245" y="410" width="230" height="57"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <value key="minSize" type="size" width="230" height="57"/>
+            <value key="maxSize" type="size" width="230" height="57"/>
+            <view key="contentView" id="ci1-Jt-1Y4">
+                <rect key="frame" x="0.0" y="0.0" width="230" height="57"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="bXZ-bv-hOU"/>
+            </connections>
+            <point key="canvasLocation" x="-275" y="155"/>
+        </window>
+    </objects>
+</document>

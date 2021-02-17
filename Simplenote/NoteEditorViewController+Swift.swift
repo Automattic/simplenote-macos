@@ -875,8 +875,10 @@ private extension NoteEditorViewController {
             return interlinkWindowController
         }
 
-        let storyboard = NSStoryboard(name: .interlink, bundle: nil)
-        let interlinkWindowController = storyboard.instantiateWindowController(ofType: InterlinkWindowController.self)
+        let interlinkViewController = InterlinkViewController()
+        let interlinkWindowController = InterlinkWindowController()
+        interlinkWindowController.contentViewController = interlinkViewController
+
         self.interlinkWindowController = interlinkWindowController
 
         return interlinkWindowController
