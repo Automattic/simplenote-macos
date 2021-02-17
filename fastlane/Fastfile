@@ -15,6 +15,17 @@ USER_ENV_FILE_PATH = File.join(Dir.home, '.simplenotemacos-env.default')
 
 workspace = 'Simplenote.xcworkspace'
 internal_scheme = 'Simplenote'
+app_store_scheme = 'Simplenote-AppStore'
+build_folder = 'build'
+
+# On CI, it's useful to skip code signing unless necessary to avoid spending
+# time syncing the certificates and profiles with match. And while not
+# neccessary, it doesn't hurt on a dev machine either.
+skip_code_signing_xcargs = [
+  'COMPILER_INDEX_STORE_ENABLE=NO',
+  "CODE_SIGN_IDENTITY=''",
+  'CODE_SIGNING_REQUIRED=NO',
+]
 
 # Use this instead of getting values from ENV directly
 # It will throw an error if the requested value is missing
@@ -32,23 +43,27 @@ before_all do
   end
 end
 
-desc "Runs the unit tests for the project"
+desc 'Runs the unit tests for the project'
 lane :test do | options |
-  # Skip code signing when testing to avoid missing certificates errors.
-  #
-  # Only necessary in CI, but doesn't hurt locally either, if you happen to run
-  # the tests from here instead of Xcode.
-  xcargs = [
-    'COMPILER_INDEX_STORE_ENABLE=NO',
-    "CODE_SIGN_IDENTITY=''",
-    'CODE_SIGNING_REQUIRED=NO',
-  ]
-
   run_tests(
     workspace: workspace,
     scheme: internal_scheme,
     clean: true,
-    xcargs: xcargs.join(' ')
+    xcargs: skip_code_signing_xcargs.join(' ')
+  )
+end
+
+desc 'Builds the app for App Store distribution'
+lane :build_app_store do | options |
+  build_mac_app(
+    workspace: workspace,
+    scheme: app_store_scheme,
+    configuration: 'Release',
+    clean: true,
+    output_directory: build_folder,
+    # Skip archive so we don't need to worry about code signing
+    skip_archive: true,
+    xcargs: skip_code_signing_xcargs.join(' ')
   )
 end
 
