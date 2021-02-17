@@ -1438,8 +1438,8 @@
 		B5C63353251E732600C8BF46 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */,
 				B528D682257FF15000C1EEA4 /* MainWindowController.swift */,
+				B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */,
 			);
 			name = WindowControllers;
 			sourceTree = "<group>";
