@@ -4,7 +4,7 @@ import AppKit
 
 // MARK: - AutocompleteWindow
 //
-// This class renders an Autocomplete Window: the Parent Window is expected to rely events via the `ParentWindowDelegate` protocol.
+// This class renders a PopoverWindow: the Parent Window is expected to rely events via the `ParentWindowDelegate` protocol.
 //
 //  - Will get dismissed whenever any Mouse Event happens in the Parent
 //  - Captures Arrow Up / Down / Return / Esc key events happening in the parent
