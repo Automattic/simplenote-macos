@@ -40,4 +40,13 @@ extension NSSortDescriptor {
     static func descriptorForPinnedNotes() -> NSSortDescriptor {
         return NSSortDescriptor(keyPath: \Note.pinned, ascending: false)
     }
+
+    /// Returns a NSSortDescriptor, to be applied over Tag collections. Yields a sorted collection of Tags, by name, ascending
+    ///
+    static func descriptorForTags() -> NSSortDescriptor {
+        let key = NSStringFromSelector(#selector(getter: Tag.name))
+        let selector = #selector(NSString.caseInsensitiveCompare)
+
+        return NSSortDescriptor(key: key, ascending: true, selector: selector)
+    }
 }
