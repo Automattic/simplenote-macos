@@ -28,7 +28,7 @@ jobs:
   Test:
     executor:
       name: ios/default
-      xcode-version: "12.0"
+      xcode-version: "12.4.0"
     steps:
       - setup_environment
       - run:
@@ -38,7 +38,7 @@ jobs:
   Build App Store Target:
     executor:
       name: ios/default
-      xcode-version: "12.0"
+      xcode-version: "12.4.0"
     steps:
       - setup_environment
       - run:
