@@ -1,18 +1,14 @@
 import Foundation
 import AppKit
-import SimplenoteFoundation
 
 
 // MARK: - InterlinkViewController
 //
 class InterlinkViewController: NSViewController {
 
-    /// Background
+    /// Interface Outlets
     ///
     @IBOutlet private var backgroundView: BackgroundView!
-
-    /// Autocomplete TableView
-    ///
     @IBOutlet private var tableView: NSTableView!
 
     /// Mouse Tracking
@@ -82,16 +78,6 @@ private extension InterlinkViewController {
 
     func setupTrackingAreas() {
         view.addTrackingArea(trackingArea)
-    }
-}
-
-
-// MARK: - Filtering
-//
-private extension InterlinkViewController {
-
-    func refreshTableView() {
-        tableView.reloadDataAndResetSelection()
     }
 }
 
