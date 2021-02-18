@@ -20,4 +20,11 @@ extension NSView {
         let effectiveResponder = fieldEditor?.delegate as? NSControl
         return effectiveResponder == self
     }
+
+    /// Returns the receiver's location, in Screen Coordinates
+    ///
+    var locationOnScreen: NSRect {
+        let rectInWindow = convert(frame, to: nil)
+        return window?.convertToScreen(rectInWindow) ?? rectInWindow
+    }
 }
