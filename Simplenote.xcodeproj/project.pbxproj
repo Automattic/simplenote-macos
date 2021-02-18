@@ -366,6 +366,14 @@
 		B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CBB062241975B30003C271 /* NSAttributedStringToMarkdownConverterTests.swift */; };
 		B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
 		B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */; };
+		B5CF8DE525DEB62C003BCA8F /* TagSuggestionsResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF8DE425DEB62C003BCA8F /* TagSuggestionsResultsController.swift */; };
+		B5CF8DE625DEB62C003BCA8F /* TagSuggestionsResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF8DE425DEB62C003BCA8F /* TagSuggestionsResultsController.swift */; };
+		B5CF8DEE25DEBC6B003BCA8F /* TagSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF8DED25DEBC6B003BCA8F /* TagSuggestionsViewController.swift */; };
+		B5CF8DEF25DEBC6B003BCA8F /* TagSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF8DED25DEBC6B003BCA8F /* TagSuggestionsViewController.swift */; };
+		B5CF8DFA25DEC1B0003BCA8F /* TagSuggestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CF8DF925DEC1B0003BCA8F /* TagSuggestionsViewController.xib */; };
+		B5CF8DFB25DEC1B0003BCA8F /* TagSuggestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CF8DF925DEC1B0003BCA8F /* TagSuggestionsViewController.xib */; };
+		B5CF8E0025DEC2E8003BCA8F /* TagSuggestionsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF8DFF25DEC2E8003BCA8F /* TagSuggestionsProcessor.swift */; };
+		B5CF8E0125DEC2E8003BCA8F /* TagSuggestionsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF8DFF25DEC2E8003BCA8F /* TagSuggestionsProcessor.swift */; };
 		B5D21CB724881EF600D57A34 /* Array+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D21CB624881EF600D57A34 /* Array+Simplenote.swift */; };
 		B5D21CB824881EF600D57A34 /* Array+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D21CB624881EF600D57A34 /* Array+Simplenote.swift */; };
 		B5D3FCCC201F906E00A813B7 /* StatusChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3FCCA201F906E00A813B7 /* StatusChecker.m */; };
@@ -747,6 +755,10 @@
 		B5CBB069241976230003C271 /* SimplenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CBB06D241976230003C271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5CD5F7D241AC69900D0260F /* NSProcessInfo+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProcessInfo+Simplenote.swift"; sourceTree = "<group>"; };
+		B5CF8DE425DEB62C003BCA8F /* TagSuggestionsResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSuggestionsResultsController.swift; sourceTree = "<group>"; };
+		B5CF8DED25DEBC6B003BCA8F /* TagSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSuggestionsViewController.swift; sourceTree = "<group>"; };
+		B5CF8DF925DEC1B0003BCA8F /* TagSuggestionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagSuggestionsViewController.xib; sourceTree = "<group>"; };
+		B5CF8DFF25DEC2E8003BCA8F /* TagSuggestionsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSuggestionsProcessor.swift; sourceTree = "<group>"; };
 		B5D21CB624881EF600D57A34 /* Array+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Simplenote.swift"; sourceTree = "<group>"; };
 		B5D3FCCA201F906E00A813B7 /* StatusChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChecker.m; sourceTree = "<group>"; };
 		B5D3FCCB201F906E00A813B7 /* StatusChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChecker.h; sourceTree = "<group>"; };
@@ -1469,6 +1481,7 @@
 				B5C63352251E727300C8BF46 /* Interlinks */,
 				B55C313124A5339300B23B3F /* Metrics */,
 				B5AF76C924A3F06D00B7D530 /* Tags */,
+				B5CF8DE325DEB21B003BCA8F /* TagSuggestions */,
 				B52EE32C25927D5D00347F2B /* Notes */,
 				B58117C225B9D48B00927E0C /* Verification */,
 				B5D6833324ACFA79004AFF1B /* Versions */,
@@ -1507,6 +1520,17 @@
 				B5CBB06D241976230003C271 /* Info.plist */,
 			);
 			path = SimplenoteTests;
+			sourceTree = "<group>";
+		};
+		B5CF8DE325DEB21B003BCA8F /* TagSuggestions */ = {
+			isa = PBXGroup;
+			children = (
+				B5CF8DED25DEBC6B003BCA8F /* TagSuggestionsViewController.swift */,
+				B5CF8DF925DEC1B0003BCA8F /* TagSuggestionsViewController.xib */,
+				B5CF8DFF25DEC2E8003BCA8F /* TagSuggestionsProcessor.swift */,
+				B5CF8DE425DEB62C003BCA8F /* TagSuggestionsResultsController.swift */,
+			);
+			name = TagSuggestions;
 			sourceTree = "<group>";
 		};
 		B5D6833324ACFA79004AFF1B /* Versions */ = {
@@ -1719,6 +1743,7 @@
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
+				B5CF8DFA25DEC1B0003BCA8F /* TagSuggestionsViewController.xib in Resources */,
 				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
@@ -1744,6 +1769,7 @@
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
 				B5C7DD44243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B58117D725B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
+				B5CF8DFB25DEC1B0003BCA8F /* TagSuggestionsViewController.xib in Resources */,
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */,
@@ -2060,11 +2086,13 @@
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				B58117E825B9EE7B00927E0C /* Button.swift in Sources */,
 				B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */,
+				B5CF8DEE25DEBC6B003BCA8F /* TagSuggestionsViewController.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
 				B5EDF32F258A8EF00066D91D /* NoteListFilter.swift in Sources */,
 				B52EE32725927D5100347F2B /* NoteListViewController.swift in Sources */,
 				B5562435253E328400836E20 /* ReferenceTableViewCell.swift in Sources */,
 				46EF5198177C4ECC00A139E0 /* SPApplication.m in Sources */,
+				B5CF8DE525DEB62C003BCA8F /* TagSuggestionsResultsController.swift in Sources */,
 				B51E9FE122E615FA004F16B4 /* SPExporter.swift in Sources */,
 				46CF73071782C6B200FC2B5C /* TagListViewController.m in Sources */,
 				B5A9FE272576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
@@ -2101,6 +2129,7 @@
 				A667305425C9751B00090DE3 /* SearchMapView.swift in Sources */,
 				B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD621596551004B1AA0 /* PrivacyViewController.swift in Sources */,
+				B5CF8E0025DEC2E8003BCA8F /* TagSuggestionsProcessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2232,11 +2261,13 @@
 				B51AFE6E25D30A1800A196DF /* SearchField.swift in Sources */,
 				B51E9FE222E615FA004F16B4 /* SPExporter.swift in Sources */,
 				B5562436253E328400836E20 /* ReferenceTableViewCell.swift in Sources */,
+				B5CF8DEF25DEBC6B003BCA8F /* TagSuggestionsViewController.swift in Sources */,
 				466FFECF17CC10A800399652 /* TagListViewController.m in Sources */,
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
 				B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
+				B5CF8DE625DEB62C003BCA8F /* TagSuggestionsResultsController.swift in Sources */,
 				B5DD0F922476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
@@ -2273,6 +2304,7 @@
 				B574015425B783500058960E /* EmailVerification.swift in Sources */,
 				B5BD016B1897552500753208 /* JSONKit+Simplenote.m in Sources */,
 				B5F04FD721596551004B1AA0 /* PrivacyViewController.swift in Sources */,
+				B5CF8E0125DEC2E8003BCA8F /* TagSuggestionsProcessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

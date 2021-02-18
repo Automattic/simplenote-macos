@@ -35,7 +35,11 @@ class NoteListViewController: NSViewController {
 
     /// ListController
     ///
-    private lazy var listController = NoteListController(viewContext: SimplenoteAppDelegate.shared().managedObjectContext)
+    private lazy var listController = NoteListController(viewContext: viewContext)
+
+    /// Tag Suggestions: Presenting Tag Matches on Search
+    ///
+    private lazy var tagSuggestionsProcessor = TagSuggestionsProcessor(viewContext: viewContext)
 
     /// Search Query
     ///
@@ -49,6 +53,12 @@ class NoteListViewController: NSViewController {
     ///
     private var noteEditorViewController: NoteEditorViewController {
         SimplenoteAppDelegate.shared().noteEditorViewController
+    }
+
+    /// Main MOC
+    ///
+    private var viewContext: NSManagedObjectContext {
+        SimplenoteAppDelegate.shared().managedObjectContext
     }
 
     /// Search Listener
@@ -124,7 +134,7 @@ private extension NoteListViewController {
     ///
     func setupSearchField() {
         searchField.centersPlaceholder = false
-        searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
+        searchField.placeholder = NSLocalizedString("Search notes or tags", comment: "Search Field Placeholder")
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -344,6 +354,23 @@ private extension NoteListViewController {
 
         SPTracker.trackListNoteOpened()
         noteEditorViewController.displayNote(targetNote)
+    }
+}
+
+
+// MARK: - Search: Tags
+//
+private extension NoteListViewController {
+
+    /// Refresh: Tag Suggestions
+    ///
+    func processSearchTagSuggestions() {
+        guard let searchQuery = searchQuery else {
+            tagSuggestionsProcessor.dismissTagSuggestions()
+            return
+        }
+
+        tagSuggestionsProcessor.processTagSuggestions(for: searchQuery, in: searchField)
     }
 }
 
@@ -593,6 +620,7 @@ extension NoteListViewController {
     func performSearch(_ sender: Any) {
         searchQuery = SearchQuery(searchText: searchField.stringValue)
         refreshEverything()
+        processSearchTagSuggestions()
         SPTracker.trackListNotesSearched()
     }
 }
