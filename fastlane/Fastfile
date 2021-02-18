@@ -37,6 +37,28 @@ def get_required_env(key)
   ENV[key]
 end
 
+# Helper function to DRY the code to build the app
+def build_simplenote(codesign:)
+  if codesign
+    skip_archive = false
+    xcargs = []
+  else
+    # Skip archiving when not codesigning
+    skip_archive = true
+    xcargs = SKIP_CODE_SIGNING_XCARGS
+  end
+
+  build_mac_app(
+    workspace: WORKSPACE,
+    scheme: APP_STORE_SCHEME,
+    configuration: 'Release',
+    clean: true,
+    output_directory: BUILD_FOLDER,
+    skip_archive: skip_archive,
+    xcargs: xcargs
+  )
+end
+
 before_all do
   # Check that the env files exist
   unless is_ci || File.file?(USER_ENV_FILE_PATH)
@@ -57,16 +79,7 @@ end
 
 desc 'Builds the app for App Store distribution'
 lane :build_app_store do | options |
-  build_mac_app(
-    workspace: WORKSPACE,
-    scheme: APP_STORE_SCHEME,
-    configuration: 'Release',
-    clean: true,
-    output_directory: BUILD_FOLDER,
-    # Skip archive so we don't need to worry about code signing
-    skip_archive: true,
-    xcargs: SKIP_CODE_SIGNING_XCARGS
-  )
+  build_simplenote(codesign: false)
 end
 
 ########################################################################
@@ -87,7 +100,7 @@ end
   desc "Creates a new release branch from the current develop"
   lane :code_freeze do | options |
     old_version = ios_codefreeze_prechecks(options)
-    
+
     ios_bump_version_release()
     new_version = ios_get_app_version()
     ios_update_release_notes(new_version: new_version)
@@ -156,7 +169,7 @@ end
   #####################################################################################
   # new_hotfix_release
   # -----------------------------------------------------------------------------------
-  # This lane updates the release branch for a new hotix release. 
+  # This lane updates the release branch for a new hotix release.
   # -----------------------------------------------------------------------------------
   # Usage:
   # bundle exec fastlane new_hotfix_release [skip_confirm:<skip confirm>] [version:<version>]
@@ -175,15 +188,15 @@ end
   #####################################################################################
   # finalize_release
   # -----------------------------------------------------------------------------------
-  # This lane finalize a release: updates store metadata, pushes the final tag and  
+  # This lane finalize a release: updates store metadata, pushes the final tag and
   # cleans all the temp ones
   # -----------------------------------------------------------------------------------
   # Usage:
-  # bundle exec fastlane finalize_release [skip_confirm:<skip confirm>] [version:<version>] 
+  # bundle exec fastlane finalize_release [skip_confirm:<skip confirm>] [version:<version>]
   #
   # Example:
-  # bundle exec fastlane finalize_release 
-  # bundle exec fastlane finalize_release skip_confirm:true 
+  # bundle exec fastlane finalize_release
+  # bundle exec fastlane finalize_release skip_confirm:true
   #####################################################################################
   desc "Removes all the temp tags and puts the final one"
   lane :finalize_release do | options |
@@ -204,8 +217,8 @@ end
   # bundle exec fastlane build_and_upload_beta [skip_confirm:<skip confirm>]
   #
   # Example:
-  # bundle exec fastlane build_and_upload_beta 
-  # bundle exec fastlane build_and_upload_beta skip_confirm:true 
+  # bundle exec fastlane build_and_upload_beta
+  # bundle exec fastlane build_and_upload_beta skip_confirm:true
   #####################################################################################
   desc "Builds and updates for beta distribution"
   lane :build_and_upload_beta do | options |
@@ -225,12 +238,12 @@ end
     appcenter_upload(
       api_token: get_required_env("APPCENTER_API_TOKEN"),
       owner_name: "automattic",
-      owner_type: "organization", 
+      owner_type: "organization",
       app_name: "Simplenote-OSX",
       ipa: "./build/Simplenote.app",
-      notify_testers: false 
+      notify_testers: false
     )
-    
+
     dSYM_PATH = File.dirname(Dir.pwd) + "/build/Simplenote.app.dSYM.zip"
 
     sentry_upload_dsym(
@@ -239,7 +252,6 @@ end
       project_slug: 'simplenote-macos',
       dsym_path: dSYM_PATH,
     )
-
   end
 
   # Temporary lane to automate the process of uploading the .app manually
@@ -279,7 +291,7 @@ end
 
 ########################################################################
 # Helper Lanes
-########################################################################  
+########################################################################
 desc "Get a list of pull request from `start_tag` to the current state"
 lane :get_pullrequests_list do | options |
   get_prs_list(repository:GHHELPER_REPO, start_tag:"#{options[:start_tag]}", report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list.txt")
