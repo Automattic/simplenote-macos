@@ -49,6 +49,7 @@ class InterlinkProcessor: NSObject {
     init(viewContext: NSManagedObjectContext, parentTextView: SPTextView) {
         self.viewContext = viewContext
         self.parentTextView = parentTextView
+        super.init()
     }
 
 
