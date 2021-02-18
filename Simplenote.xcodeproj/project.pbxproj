@@ -119,6 +119,8 @@
 		A6672FBF25C7F77000090DE3 /* NoteBodyExcerptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */; };
 		A667305425C9751B00090DE3 /* SearchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667305325C9751B00090DE3 /* SearchMapView.swift */; };
 		A6BBDA3325501398005C8343 /* SPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBDA3225501398005C8343 /* SPTextView.swift */; };
+		A6FFE3AF25CAC75400F937A5 /* SearchMatchesBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FFE3AD25CAC75400F937A5 /* SearchMatchesBarViewController.swift */; };
+		A6FFE3B025CAC75400F937A5 /* SearchMatchesBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FFE3AE25CAC75400F937A5 /* SearchMatchesBarViewController.xib */; };
 		B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */; };
 		B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
 		B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */; };
@@ -565,6 +567,8 @@
 		A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBodyExcerptTests.swift; sourceTree = "<group>"; };
 		A667305325C9751B00090DE3 /* SearchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapView.swift; sourceTree = "<group>"; };
 		A6BBDA3225501398005C8343 /* SPTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextView.swift; sourceTree = "<group>"; };
+		A6FFE3AD25CAC75400F937A5 /* SearchMatchesBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMatchesBarViewController.swift; sourceTree = "<group>"; };
+		A6FFE3AE25CAC75400F937A5 /* SearchMatchesBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMatchesBarViewController.xib; sourceTree = "<group>"; };
 		B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnicodeScalar+Simplenote.swift"; sourceTree = "<group>"; };
 		B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeScalarSimplenoteTests.swift; sourceTree = "<group>"; };
@@ -1108,6 +1112,15 @@
 			name = config;
 			sourceTree = "<group>";
 		};
+		A6FFE39F25CABD6800F937A5 /* SearchMatchesBar */ = {
+			isa = PBXGroup;
+			children = (
+				A6FFE3AD25CAC75400F937A5 /* SearchMatchesBarViewController.swift */,
+				A6FFE3AE25CAC75400F937A5 /* SearchMatchesBarViewController.xib */,
+			);
+			name = SearchMatchesBar;
+			sourceTree = "<group>";
+		};
 		B501AAD22437E52D0084CDA3 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1456,6 +1469,7 @@
 		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A6FFE39F25CABD6800F937A5 /* SearchMatchesBar */,
 				B53BF19E24AC1F9500938C34 /* Editor */,
 				B5C63352251E727300C8BF46 /* Interlinks */,
 				B55C313124A5339300B23B3F /* Metrics */,
@@ -1710,6 +1724,7 @@
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
+				A6FFE3B025CAC75400F937A5 /* SearchMatchesBarViewController.xib in Resources */,
 				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
@@ -2023,6 +2038,7 @@
 				B58CE26524F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */,
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
+				A6FFE3AF25CAC75400F937A5 /* SearchMatchesBarViewController.swift in Sources */,
 				B54F9A6724D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,

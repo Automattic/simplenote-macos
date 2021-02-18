@@ -20,7 +20,7 @@
 @class ToolbarView;
 @class SPTextView;
 @class SearchMapView;
-@class SearchQuery;
+@class SearchMatchesBarViewController;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -75,6 +75,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
 @property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
+@property (nonatomic, strong, nullable) SearchMatchesBarViewController          *searchMatchesBarViewController;
 
 // TODO: Switch NSObject >> SearchQuery. ObjC compiler isn't picking up the Swift Package =(
 @property (nonatomic, strong, nullable) NSObject                                *searchQuery;
