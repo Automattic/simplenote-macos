@@ -1,9 +1,27 @@
 import Foundation
 
 
+// MARK: - InterlinkProcessorDelegate
+//
+protocol InterlinkProcessorDelegate: NSObjectProtocol {
+
+    /// Invoked whenever an Autocomplete Row has been selected: The handler should insert the specified text at a given range
+    ///
+    func interlinkProcessor(_ processor: InterlinkProcessor, insert text: String, in range: Range<String.Index>)
+}
+
+
 // MARK: - InterlinkProcessor
 //
 class InterlinkProcessor: NSObject {
+
+    /// Hosting TextView
+    ///
+    private let parentTextView: SPTextView
+
+    /// Storage Lookup
+    ///
+    private let resultsController: InterlinkResultsController
 
     /// Interlink Popover
     ///
@@ -17,14 +35,15 @@ class InterlinkProcessor: NSObject {
     ///
     private lazy var interlinkViewController = InterlinkViewController()
 
-    /// Hosting TextView
+    /// Insertion Delegate
     ///
-    private let parentTextView: SPTextView
+    weak var delegate: InterlinkProcessorDelegate?
 
 
     /// Designated Initialier
     ///
-    init(parentTextView: SPTextView) {
+    init(viewContext: NSManagedObjectContext, parentTextView: SPTextView) {
+        self.resultsController = InterlinkResultsController(viewContext: viewContext)
         self.parentTextView = parentTextView
     }
 
@@ -42,11 +61,14 @@ class InterlinkProcessor: NSObject {
     func processInterlinkLookup(excludedEntityID: NSManagedObjectID) {
         guard mustProcessInterlinkLookup,
               let (markdownRange, keywordRange, keywordText) = parentTextView.interlinkKeywordAtSelectedLocation,
-              refreshInterlinks(for: keywordText, in: markdownRange, excluding: excludedEntityID)
+              let notes = resultsController.searchNotes(byTitleKeyword: keywordText, excluding: excludedEntityID)
         else {
-            dismissInterlinkWindow()
+            dismissInterlinkLookup()
             return
         }
+
+        refreshInterlinkController(notes: notes)
+        setupInterlinkEventListeners(replacementRange: markdownRange)
 
         displayInterlinkWindow(around: keywordRange)
     }
@@ -62,7 +84,13 @@ class InterlinkProcessor: NSObject {
             return
         }
 
-        dismissInterlinkWindow()
+        dismissInterlinkLookup()
+    }
+
+    /// DIsmisses the Interlink Window
+    ///
+    func dismissInterlinkLookup() {
+        interlinkWindowController.close()
     }
 }
 
@@ -117,21 +145,21 @@ private extension InterlinkProcessor {
         interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
     }
 
-    /// DIsmisses the Interlink Window
+    /// Refreshes the Interlink UI
     ///
-    func dismissInterlinkWindow() {
-        interlinkWindowController.close()
+    func refreshInterlinkController(notes: [Note]) {
+        interlinkViewController.notes = notes
     }
 
-    /// Refreshes the Interlinks for a given Keyword at the specified Replacement Range (including Markdown `[` opening character).
-    /// - Returns: `true` whenever there *are* interlinks to be presented
+    /// Sets up the Replacement Callback Mechanism
     ///
-    func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>, excluding excludedID: NSManagedObjectID?) -> Bool {
+    func setupInterlinkEventListeners(replacementRange: Range<String.Index>) {
         interlinkViewController.onInsertInterlink = { [weak self] text in
-            self?.parentTextView.insertTextAndLinkify(text: text, in: replacementRange)
-            self?.dismissInterlinkWindow()
-        }
+            guard let `self` = self else {
+                return
+            }
 
-        return interlinkViewController.refreshInterlinks(for: keywordText, excluding: excludedID)
+            self.delegate?.interlinkProcessor(self, insert: text, in: replacementRange)
+        }
     }
 }

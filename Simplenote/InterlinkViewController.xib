@@ -25,13 +25,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="230" height="57"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="19" viewBased="YES" id="kmt-Mq-rj9" customClass="SPTableView">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="plain" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="19" usesAutomaticRowHeights="YES" viewBased="YES" id="kmt-Mq-rj9" customClass="SPTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="230" height="57"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" white="0.66666666669999997" alpha="0.43099850169999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <tableColumns>
-                                    <tableColumn width="198" minWidth="40" maxWidth="1000" id="F7x-Cd-um9">
+                                    <tableColumn width="230" minWidth="47" maxWidth="230" id="F7x-Cd-um9">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -41,14 +41,12 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView identifier="LinkTableCellView" id="c7l-Cg-OcQ" customClass="LinkTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="0.0" width="210" height="19"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <tableCellView identifier="LinkTableCellView" translatesAutoresizingMaskIntoConstraints="NO" id="c7l-Cg-OcQ" customClass="LinkTableCellView" customModule="Simplenote" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="230" height="19"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlK-lN-eE6">
-                                                        <rect key="frame" x="15" y="0.0" width="174" height="19"/>
+                                                        <rect key="frame" x="15" y="0.0" width="194" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="pQm-Hj-7Zk"/>
                                                         </constraints>
