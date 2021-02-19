@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)signOutAction:(nullable id)sender;
 - (IBAction)toggleSidebarAction:(nullable id)sender;
+- (IBAction)cycleSidebarAction:(nullable id)sender;
 - (IBAction)ensureMainWindowIsVisible:(nullable id)sender;
 - (IBAction)aboutAction:(nullable id)sender;
 - (IBAction)privacyAction:(nullable id)sender;
