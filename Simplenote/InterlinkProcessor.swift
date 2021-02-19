@@ -15,17 +15,13 @@ protocol InterlinkProcessorDelegate: NSObjectProtocol {
 //
 class InterlinkProcessor: NSObject {
 
-    /// Main MOC
-    ///
-    private let viewContext: NSManagedObjectContext
-
     /// Hosting TextView
     ///
     private let parentTextView: SPTextView
 
     /// Storage Lookup
     ///
-    private lazy var resultsController = InterlinkResultsController(viewContext: viewContext)
+    private let resultsController: InterlinkResultsController
 
     /// Interlink Popover
     ///
@@ -47,7 +43,7 @@ class InterlinkProcessor: NSObject {
     /// Designated Initialier
     ///
     init(viewContext: NSManagedObjectContext, parentTextView: SPTextView) {
-        self.viewContext = viewContext
+        self.resultsController = InterlinkResultsController(viewContext: viewContext)
         self.parentTextView = parentTextView
     }
 
