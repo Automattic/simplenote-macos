@@ -100,6 +100,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self setupStatusImageView];
     [self setupTagsField];
 
+    // Interlinks
+    [self setupInterlinksProcessor];
+
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
     [self.markdownViewController preloadView];
@@ -346,7 +349,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     [self refreshToolbarActions];
 
-    [self processInterlinkLookup];
+    [self.interlinkProcessor processInterlinkLookupExcludingEntityID: self.note.objectID];
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
@@ -357,7 +360,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (void)textViewDidChangeSelection:(NSNotification *)notification
 {
-    [self dismissInterlinkLookupIfNeeded];
+    [self.interlinkProcessor dismissInterlinkLookupIfNeeded];
 }
 
 

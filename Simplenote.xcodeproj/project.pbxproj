@@ -195,6 +195,8 @@
 		B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
 		B53ACDE425DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
 		B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
+		B53ACE0E25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */; };
+		B53ACE0F25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */; };
 		B53ACE1325DD7E6C00CF527A /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
@@ -627,6 +629,7 @@
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
 		B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterlinkViewController.xib; sourceTree = "<group>"; };
+		B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkProcessor.swift; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B53BF19F24AC1FB800938C34 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
@@ -1431,6 +1434,7 @@
 			children = (
 				B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */,
 				B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */,
+				B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */,
 			);
 			name = Interlinks;
 			sourceTree = "<group>";
@@ -2075,6 +2079,7 @@
 				B57CB87E244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
+				B53ACE0E25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */,
 				B5F3150924496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
@@ -2233,6 +2238,7 @@
 				B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				B53BF1A124AC1FB800938C34 /* Version.swift in Sources */,
+				B53ACE0F25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */,
 				B5B1CBCE256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
 				B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,

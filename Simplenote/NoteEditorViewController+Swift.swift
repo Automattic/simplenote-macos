@@ -30,6 +30,11 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupInterlinksProcessor() {
+        interlinkProcessor = InterlinkProcessor(parentTextView: noteEditor)
+    }
+
+    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
@@ -164,18 +169,6 @@ extension NoteEditorViewController {
     ///
     var isSelectingMultipleNotes: Bool {
         selectedNotes.count > 1
-    }
-
-    /// Indicates if there's an ongoing Undo Operation in the Text Editor
-    ///
-    var isUndoingEditOP: Bool {
-        noteEditor.undoManager?.isUndoing == true
-    }
-
-    /// Indicates if the Selected Range's Length is non zero: at least one character is highlighted
-    ///
-    var isSelectingText: Bool {
-        noteEditor.selectedRange().length != .zero
     }
 
     /// Simperium 🖖
@@ -768,120 +761,6 @@ extension NoteEditorViewController: MetricsControllerDelegate {
     func metricsController(_ controller: MetricsViewController, selected note: Note) {
         SimplenoteAppDelegate.shared().displayNote(simperiumKey: note.simperiumKey)
         dismiss(controller)
-    }
-}
-
-
-// MARK: - Interlinking Autocomplete: Public API(s)
-//
-extension NoteEditorViewController {
-
-    /// Displays the Interlink Lookup Window at the cursor's location when all of the following are **true**:
-    ///
-    ///     1. We're not performing an Undo OP
-    ///     2. There is no Highlighted Text in the editor
-    ///     3. There is an interlink `[keyword` at the current location
-    ///     4. There are Notes with `keyword` in their title
-    ///
-    ///  Otherwise we'll simply dismiss the Autocomplete Window, if any.
-    ///
-    @objc
-    func processInterlinkLookup() {
-        guard mustProcessInterlinkLookup,
-              let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation,
-              refreshInterlinks(for: keywordText, in: markdownRange, excluding: note?.objectID)
-        else {
-            dismissInterlinkWindow()
-            return
-        }
-
-        displayInterlinkWindow(around: keywordRange)
-    }
-
-    /// Dismisses the Interlink Window when ANY of the following evaluates **true**:
-    ///
-    ///     1.  There is Highlighted Text in the editor (or)
-    ///     2.  There is no Interlink `[keyword` at the selected location
-    ///
-    @objc
-    func dismissInterlinkLookupIfNeeded() {
-        guard mustDismissInterlinkLookup else {
-            return
-        }
-
-        dismissInterlinkWindow()
-    }
-}
-
-
-// MARK: - Interlinking Autocomplete: Private API(s)
-//
-private extension NoteEditorViewController {
-
-    /// Indicates if we should process Interlink Lookup
-    ///
-    var mustProcessInterlinkLookup: Bool {
-        isUndoingEditOP == false && isSelectingText == false
-    }
-
-    /// Indicates if we should dismiss the Interlink Window
-    ///
-    var mustDismissInterlinkLookup: Bool {
-        isSelectingText || isInterlinkWindowOnScreen && noteEditor.interlinkKeywordAtSelectedLocation == nil
-    }
-
-    /// Indicates if the Interlink Window is visible
-    ///
-    var isInterlinkWindowOnScreen: Bool {
-        interlinkWindowController?.window?.parent != nil
-    }
-
-    /// Presents the Interlink PopoverWindow at a given Editor Range (Below / Above!)
-    ///
-    func displayInterlinkWindow(around range: Range<String.Index>) {
-        let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
-        let interlinkWindowController = reusableInterlinkWindowController()
-
-        interlinkWindowController.attach(to: view.window)
-        interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
-    }
-
-    /// DIsmisses the Interlink Window (if any!)
-    ///
-    func dismissInterlinkWindow() {
-        interlinkWindowController?.close()
-    }
-
-    /// Refreshes the Interlinks for a given Keyword at the specified Replacement Range (including Markdown `[` opening character).
-    /// - Returns: `true` whenever there *are* interlinks to be presented
-    ///
-    func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>, excluding excludedID: NSManagedObjectID?) -> Bool {
-        guard let interlinkViewController = reusableInterlinkWindowController().contentViewController as? InterlinkViewController else {
-            fatalError()
-        }
-
-        interlinkViewController.onInsertInterlink = { [weak self] text in
-            self?.noteEditor.insertTextAndLinkify(text: text, in: replacementRange)
-            self?.dismissInterlinkWindow()
-        }
-
-        return interlinkViewController.refreshInterlinks(for: keywordText, excluding: excludedID)
-    }
-
-    /// Returns a reusable InterlinkWindowController instance
-    ///
-    func reusableInterlinkWindowController() -> PopoverWindowController {
-        if let interlinkWindowController = interlinkWindowController {
-            return interlinkWindowController
-        }
-
-        let interlinkWindowController = PopoverWindowController()
-        self.interlinkWindowController = interlinkWindowController
-
-        let interlinkViewController = InterlinkViewController()
-        interlinkWindowController.contentViewController = interlinkViewController
-
-        return interlinkWindowController
     }
 }
 
