@@ -122,8 +122,7 @@ extension SplitViewController {
         SPTracker.trackSidebarButtonPresed()
     }
 
-    @IBAction
-    func cycleSidebarAction(sender: Any) {
+    func cycleSidebarAction() {
         self.state = state.next
         self.previousState = nil
 

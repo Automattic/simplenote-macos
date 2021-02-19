@@ -384,11 +384,6 @@
     [self.splitViewController toggleSidebarActionWithSender:sender];
 }
 
-- (IBAction)cycleSidebarAction:(id)sender
-{
-    [self.splitViewController cycleSidebarActionWithSender:sender];
-}
-
 - (IBAction)focusModeAction:(id)sender
 {
     [self.splitViewController focusModeActionWithSender:sender];

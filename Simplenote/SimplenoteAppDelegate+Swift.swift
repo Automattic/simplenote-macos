@@ -238,6 +238,10 @@ extension SimplenoteAppDelegate {
 
         Options.shared.themeName = option.themeName
     }
+
+    func cycleSidebarAction() {
+        splitViewController.cycleSidebarAction()
+    }
 }
 
 

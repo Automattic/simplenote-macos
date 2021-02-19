@@ -410,7 +410,7 @@ extension NoteEditorViewController {
 
     @IBAction
     func sidebarWasPressed(sender: Any) {
-        SimplenoteAppDelegate.shared().cycleSidebarAction(sender)
+        SimplenoteAppDelegate.shared().cycleSidebarAction()
     }
 
     @IBAction
