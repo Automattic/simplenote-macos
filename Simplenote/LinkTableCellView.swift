@@ -65,6 +65,6 @@ private extension LinkTableCellView {
 private extension LinkTableCellView {
 
     func refreshStyle() {
-        textField?.textColor = selected ? .simplenoteSelectedTextColor : .simplenoteTextColor
+        textField?.textColor = .simplenoteTextColor
     }
 }
