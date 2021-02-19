@@ -202,8 +202,7 @@
                             <menuItem title="Find" id="218">
                                 <menu key="submenu" title="Find" id="220">
                                     <items>
-                                        <menuItem title="Search..." tag="1" keyEquivalent="f" toolTip="Search all notes" id="1417">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                        <menuItem title="Search..." keyEquivalent="F" toolTip="Search all notes" id="1417">
                                             <connections>
                                                 <action selector="searchWasPressed:" target="494" id="7Ex-5C-tXu"/>
                                             </connections>
@@ -578,7 +577,8 @@
                                 </attributedString>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="PUD-cg-cbF"/>
-                            <menuItem title="Focus Mode" keyEquivalent="F" identifier="focusMenuItem" id="nrD-mL-W7Q">
+                            <menuItem title="Focus Mode" keyEquivalent="f" identifier="focusMenuItem" id="nrD-mL-W7Q">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <attributedString key="userComments">
                                     <fragment content="Toggles the Focus Mode"/>
                                 </attributedString>
