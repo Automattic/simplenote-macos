@@ -836,7 +836,7 @@ private extension NoteEditorViewController {
         interlinkWindowController?.window?.parent != nil
     }
 
-    /// Presents the Interlink Window at a given Editor Range (Below / Above!)
+    /// Presents the Interlink PopoverWindow at a given Editor Range (Below / Above!)
     ///
     func displayInterlinkWindow(around range: Range<String.Index>) {
         let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
@@ -856,7 +856,7 @@ private extension NoteEditorViewController {
     /// - Returns: `true` whenever there *are* interlinks to be presented
     ///
     func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>, excluding excludedID: NSManagedObjectID?) -> Bool {
-        guard let interlinkViewController = reusableInterlinkWindowController().interlinkViewController else {
+        guard let interlinkViewController = reusableInterlinkWindowController().contentViewController as? InterlinkViewController else {
             fatalError()
         }
 
@@ -870,14 +870,16 @@ private extension NoteEditorViewController {
 
     /// Returns a reusable InterlinkWindowController instance
     ///
-    func reusableInterlinkWindowController() -> InterlinkWindowController {
+    func reusableInterlinkWindowController() -> PopoverWindowController {
         if let interlinkWindowController = interlinkWindowController {
             return interlinkWindowController
         }
 
-        let storyboard = NSStoryboard(name: .interlink, bundle: nil)
-        let interlinkWindowController = storyboard.instantiateWindowController(ofType: InterlinkWindowController.self)
+        let interlinkWindowController = PopoverWindowController()
         self.interlinkWindowController = interlinkWindowController
+
+        let interlinkViewController = InterlinkViewController()
+        interlinkWindowController.contentViewController = interlinkViewController
 
         return interlinkWindowController
     }
