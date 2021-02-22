@@ -656,7 +656,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)toggleMarkdownView:(id)sender
 {
-    if (self.isDisplayingMarkdown) {
+    if (self.isDisplayingMarkdown || !self.isMarkdownEnabled) {
         [self dismissMarkdownPreview];
     } else {
         [self displayMarkdownPreview:self.note];

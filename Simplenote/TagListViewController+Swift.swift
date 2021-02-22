@@ -258,6 +258,16 @@ extension TagListViewController {
 }
 
 
+// MARK: - Keyboard Navigation
+//
+extension TagListViewController {
+    @objc
+    func switchToRightPanel() {
+        SimplenoteAppDelegate.shared().focusOnTheNoteList()
+    }
+}
+
+
 // MARK: - SPTextFieldDelegate
 //
 extension TagListViewController: SPTextFieldDelegate {

@@ -242,6 +242,21 @@ extension SimplenoteAppDelegate {
     func cycleSidebarAction() {
         splitViewController.cycleSidebarAction()
     }
+
+    @objc
+    func focusOnTheNoteList() {
+        noteListViewController.focusOnTheNoteList()
+    }
+
+    @objc
+    func focusOnTheEditor() {
+        window.makeFirstResponder(noteEditorViewController.noteEditor)
+    }
+
+    @objc
+    func focusOnTheTags() {
+        window.makeFirstResponder(tagListViewController.tableView)
+    }
 }
 
 

@@ -1,5 +1,6 @@
 import Cocoa
 
+
 @objc(SPApplication)
 final class SPApplication: NSApplication {
     override func sendEvent(_ event: NSEvent) {
@@ -8,18 +9,47 @@ final class SPApplication: NSApplication {
             return
         }
 
-        if event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command &&
+        let excludedFlags: NSEvent.ModifierFlags = [.shift, .command, .control, .option]
+
+        let modifierFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+
+        if  modifierFlags == .command &&
             event.charactersIgnoringModifiers == "l" {
-            SimplenoteAppDelegate.shared().searchWasPressed(self)
-            return
+
+            if sendAction(Selector(("searchWasPressed:")), to: nil, from: self) {
+                return
+            }
         }
 
-        if event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command &&
+        if modifierFlags == .command &&
             event.simplenoteSpecialKey == .some(.carriageReturn) &&
             SimplenoteAppDelegate.shared().window.firstResponder is SPTextView {
 
-            SimplenoteAppDelegate.shared().noteListViewController.focusOnTheList()
-            return
+            if sendAction(Selector(("focusOnTheNoteList")), to: nil, from: self) {
+                return
+            }
+        }
+
+        if modifierFlags == [.command, .shift] &&
+            event.charactersIgnoringModifiers == "Y" {
+
+            if sendAction(Selector(("toggleTagsAndEditor")), to: nil, from: self) {
+                return
+            }
+        }
+
+        if modifierFlags.intersection(excludedFlags).isEmpty {
+            if event.simplenoteSpecialKey == .some(.rightArrow) {
+                if sendAction(Selector(("switchToRightPanel")), to: nil, from: self) {
+                    return
+                }
+            }
+
+            if event.simplenoteSpecialKey == .some(.leftArrow) {
+                if sendAction(Selector(("switchToLeftPanel")), to: nil, from: self) {
+                    return
+                }
+            }
         }
 
         super.sendEvent(event)

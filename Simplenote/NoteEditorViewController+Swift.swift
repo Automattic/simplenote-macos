@@ -156,6 +156,7 @@ extension NoteEditorViewController {
 
     /// Indicates if the current document is expected to support Markdown
     ///
+    @objc
     var isMarkdownEnabled: Bool {
         note?.markdown == true
     }
@@ -944,6 +945,22 @@ extension NoteEditorViewController {
         ])
 
         self.searchMapView = searchMapView
+    }
+}
+
+
+// MARK: - Shortcuts
+//
+extension NoteEditorViewController {
+    @objc
+    func toggleTagsAndEditor() {
+        if noteEditor.isFirstResponder {
+            view.window?.makeFirstResponder(tagsField)
+            tagsField.currentEditor()?.moveToEndOfDocument(nil)
+            tagsField.ensureCaretIsOnscreen()
+        } else {
+            view.window?.makeFirstResponder(noteEditor)
+        }
     }
 }
 
