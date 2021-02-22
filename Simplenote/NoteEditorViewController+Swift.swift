@@ -402,6 +402,10 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
         return isDisplayingNote || isSelectingMultipleNotes
     }
+
+    func validateToogleMarkdownPreviewItem(_ item: NSMenuItem) -> Bool {
+        return isMarkdownEnabled
+    }
 }
 
 

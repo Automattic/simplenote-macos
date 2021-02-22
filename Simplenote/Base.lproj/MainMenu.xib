@@ -535,6 +535,15 @@
                                 </attributedString>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
+                            <menuItem title="Toggle Markdown Preview" keyEquivalent="P" identifier="toggleMarkdownPreview" id="1db-JI-NZH">
+                                <attributedString key="userComments">
+                                    <fragment content="Toggles Markdown Preview"/>
+                                </attributedString>
+                                <connections>
+                                    <action selector="toggleMarkdownPreviewAction:" target="494" id="U7g-tl-5Zq"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="mgi-Y5-YB1"/>
                             <menuItem title="Theme" id="Jtf-4C-imn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
