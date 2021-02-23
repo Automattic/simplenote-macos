@@ -172,6 +172,10 @@
     [self trackAutomatticEventWithName:@"list_trash_viewed" properties:nil];
 }
 
++ (void)trackListSortBarModeChanged
+{
+    [self trackAutomatticEventWithName:@"list_sortbar_mode_changed" properties:nil];
+}
 
 
 #pragma mark - Preferences

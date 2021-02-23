@@ -1,6 +1,7 @@
 import Foundation
 import SimplenoteFoundation
 import SimplenoteInterlinks
+import SimplenoteSearch
 
 
 // MARK: - Interface Initialization
@@ -26,11 +27,6 @@ extension NoteEditorViewController {
         tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
         tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
-    }
-
-    @objc
-    func setupToolbarView() {
-        toolbarView.delegate = self
     }
 
     @objc
@@ -223,8 +219,7 @@ extension NoteEditorViewController {
     ///
     @objc
     func refreshEditorText() {
-        let content = note?.content ?? ""
-        noteEditor.displayNote(content: content)
+        displayContent(note?.content)
     }
 
     /// Refreshes the Editor's UX
@@ -232,7 +227,8 @@ extension NoteEditorViewController {
     @objc
     func refreshStyle() {
         backgroundView.fillColor                = .simplenoteSecondaryBackgroundColor
-        bottomDividerView.borderColor           = .simplenoteDividerColor
+        headerDividerView.borderColor           = .simplenoteDividerColor
+        bottomDividerView.borderColor           = .simplenoteSecondaryDividerColor
         noteEditor.insertionPointColor          = .simplenoteEditorTextColor
         noteEditor.textColor                    = .simplenoteEditorTextColor
         statusTextField.textColor               = .simplenoteSecondaryTextColor
@@ -287,36 +283,13 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - Search API
-//
-extension NoteEditorViewController {
-
-    @objc
-    func beginSearch() {
-        toolbarView.beginSearch()
-    }
-
-    @objc
-    func ensureSearchIsDismissed() {
-        toolbarView.endSearch()
-    }
-}
-
-
 // MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController: ToolbarDelegate {
+extension NoteEditorViewController: NoteListSearchDelegate {
 
-    func toolbarDidBeginSearch() {
-        searchDelegate?.editorControllerDidBeginSearch(self)
-    }
-
-    func toolbarDidEndSearch() {
-        searchDelegate?.editorControllerDidEndSearch(self)
-    }
-
-    func toolbar(_ toolbar: ToolbarView, didSearch keyword: String) {
-        searchDelegate?.editorController(self, didSearchKeyword: keyword)
+    func notesListViewControllerDidSearch(_ query: SearchQuery?) {
+        searchQuery = query
+        updateKeywordsHighlight()
     }
 }
 
@@ -503,15 +476,7 @@ extension NoteEditorViewController {
     func displayMetricsPopover(from sourceView: NSView, for notes: [Note]) {
         let viewController = MetricsViewController(notes: notes)
         viewController.delegate = self
-
-        // Our SearchBar, if present, will freak out when presenting the Metrics Popover.
-        // We'll ensure it doesn't get dismissed (granted that it had no keywords!)
-        toolbarView.dismissSearchBarOnEndEditing = false
-
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
-
-        // You may proceed. Nothing happened here.
-        toolbarView.dismissSearchBarOnEndEditing = true
     }
 
     func displayPublishPopover(from sourceView: NSView, for note: Note) {
@@ -624,6 +589,7 @@ extension NoteEditorViewController {
     @objc
     func refreshHeaderState() {
         let newAlpha = alphaForHeader
+        headerDividerView.alphaValue = newAlpha
         headerEffectView.alphaValue = newAlpha
         headerEffectView.state = newAlpha > SplitItemMetrics.headerAlphaActiveThreshold ? .active : .inactive
     }
@@ -758,7 +724,7 @@ extension NoteEditorViewController: PublishViewControllerDelegate {
 extension NoteEditorViewController: VersionsViewControllerDelegate {
 
     func versionsController(_ controller: VersionsViewController, selected version: Version) {
-        noteEditor.displayNote(content: version.content)
+        displayContent(version.content)
     }
 
     func versionsControllerDidClickRestore(_ controller: VersionsViewController) {
@@ -918,6 +884,70 @@ private extension NoteEditorViewController {
 }
 
 
+// MARK: - Content and Highlights
+//
+extension NoteEditorViewController {
+
+    @objc
+    func displayContent(_ content: String?) {
+        noteEditor.displayNote(content: content ?? "")
+        DispatchQueue.main.async { [weak self] in
+            self?.updateKeywordsHighlight()
+        }
+    }
+
+    @objc
+    func observeEditorIsFirstResponder() {
+        noteEditor.onUpdateFirstResponder = { [weak self] in
+            self?.updateKeywordsHighlight()
+        }
+    }
+
+    private var highlightedRanges: [NSRange] {
+        guard !noteEditor.isFirstResponder, let searchQuery = searchQuery as? SearchQuery, !searchQuery.keywords.isEmpty else {
+            return []
+        }
+
+        let slice = noteEditor.attributedString().string.contentSlice(matching: searchQuery.keywords)
+        return slice?.nsMatches ?? []
+    }
+
+    private func updateKeywordsHighlight() {
+        let ranges = highlightedRanges
+
+        noteEditor.highlightedRanges = ranges
+
+        createSearchMapViewIfNeeded()
+        searchMapView?.update(with: noteEditor.relativeLocationsForText(in: ranges))
+    }
+}
+
+
+// MARK: - Search Map
+//
+extension NoteEditorViewController {
+    private func createSearchMapViewIfNeeded() {
+        guard searchMapView == nil else {
+            return
+        }
+
+        let searchMapView = SearchMapView()
+        searchMapView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(searchMapView)
+
+        NSLayoutConstraint.activate([
+            searchMapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchMapView.widthAnchor.constraint(equalToConstant: EditorMetrics.searchMapWidth),
+            searchMapView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            searchMapView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: SplitItemMetrics.editorScrollerTopInset)
+        ])
+
+        self.searchMapView = searchMapView
+    }
+}
+
+
 // MARK: - EditorMetrics
 //
 private enum EditorMetrics {
@@ -929,4 +959,8 @@ private enum EditorMetrics {
     /// Minimum Text Padding: To be applied Vertically / Horizontally
     ///
     static let minimumPadding = CGFloat(20)
+
+    /// Search map width
+    ///
+    static let searchMapWidth = CGFloat(12)
 }

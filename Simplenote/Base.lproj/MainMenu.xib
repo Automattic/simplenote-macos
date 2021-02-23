@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -90,13 +90,14 @@
                                     <action selector="emptyTrashWasPressed:" target="494" id="hK4-FN-3lK"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Sign Out" id="1541" userLabel="Menu Item - Sign Out">
+                            <menuItem isSeparatorItem="YES" id="Jd8-h6-yd1"/>
+                            <menuItem title="Log Out" id="Pde-gm-aAD">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <attributedString key="userComments">
-                                    <fragment content="Signs out from the Account"/>
+                                    <fragment content="Logs out from the Account"/>
                                 </attributedString>
                                 <connections>
-                                    <action selector="signOutAction:" target="494" id="1689"/>
+                                    <action selector="signOutAction:" target="494" id="VGf-Gg-vor"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="1548">
@@ -464,19 +465,19 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
                                     <items>
-                                        <menuItem title="Alphabetically: A-Z" identifier="noteSortAlphaAscMenuItem" id="AuW-hU-J6R">
+                                        <menuItem title="Name: A-Z" identifier="noteSortAlphaAscMenuItem" id="XEL-Qt-3Ik">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <attributedString key="userComments">
                                                 <fragment content="Toggles Alphabetical Note Sort Order"/>
                                             </attributedString>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="s0n-Ud-VNS"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="ox3-Cu-8NL"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Alphabetically: Z-A" identifier="noteSortAlphaDescMenuItem" id="riY-RT-IN8">
+                                        <menuItem title="Name: Z-A" identifier="noteSortAlphaDescMenuItem" id="BFX-rl-bcH">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="Jem-Lt-NMh"/>
+                                                <action selector="notesSortModeWasPressed:" target="494" id="IR5-AJ-8nP"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="Z0V-Oz-ijh">

@@ -13,7 +13,6 @@ extension UserDefaults {
         case notesListCondensed = "kPreviewLinesPref"
         case notesListSortMode
         case notesListSortModeLegacy = "kAlphabeticalSortPreferencesKey"
-        case notesSearchSortMode
         case themeName = "VSThemeManagerThemePrefKey"
     }
 }

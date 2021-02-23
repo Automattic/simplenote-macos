@@ -1,1 +1,6 @@
-New account verification screen
+- Searching for a note is showing relevant excerpts
+- Search keywords are highlighted in the editor
+- Add search map to the editor
+- SearchBar has been relocated into the Notes List
+- SearchBar UI was adjusted
+- Fixed a bug that Zoomed the window when double clicking on the Search Bar

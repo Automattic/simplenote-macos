@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-20 14:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "כל הפתקים";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "סדר אלפביתי: A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "סדר אלפביתי: Z-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "יש לך כבר חשבון?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "בטל";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "אין אפשרות לאמת את החשבון";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "אין אפשרות לשלוח אימייל לאימות";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "לשנות את כתובת האימייל של החשבון";
+
 /* Number of characters in the note */
 "Characters" = "תווים";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "לאסוף מידע";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "אשר";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "לאשר סיסמה";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "העברה לפח";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "שם: מ-A ל-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "שם: מ-Z ל-A";
+
 /* Link to create an account */
 "Need an account?" = "נדרש לך חשבון?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "כתובת האימייל לא חוקית";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "אוקיי";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "יש להפעיל את החשבון שלך ב-WordPress.com באמצעות האימייל ולנסות שוב.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "עליך לבדוק את הגדרות הרשת ולנסות שוב.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "מדיניות פרטיות";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "לשנות את שם התגית";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "לשלוח אימייל מחדש";
+
 /* Password Reset: Proceed */
 "Reset" = "אתחול";
 
@@ -213,9 +232,11 @@
    Tooltip: Restore a trashed note */
 "Restore" = "לשחזר";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
-"Search" = "חיפוש";
+/* Title -> Review you account screen */
+"Review Your Account" = "לבדוק את החשבון שלך";
+
+/* Search Field Placeholder */
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "מחפש";
@@ -240,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "דלג";
-
-/* Sortbar Title */
-"Sort" = "למיין";
 
 /* Tags Section Name */
 "Tags" = "תגיות";
@@ -278,6 +296,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "הסרת התגיות מהערות";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "לאמת את כתובת האימייל שלך";
+
 /* Label for the current version of a note */
 "Version" = "גרסה";
 
@@ -290,11 +311,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "נתקלנו בבעיות. יש לנסות שוב בקרוב.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "שלחנו את האימות לכתובת האימייל %1$@. יש לבדוק את תיבת הדואר הנכנס ולפעול לפי ההוראות.";
+
 /* Number of words in the note */
 "Words" = "מילים";
 
 /* Hiring Title */
 "Work with Us" = "להצטרף לכוח העבודה שלנו";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "החשבון שלך רשום עם Simplenote באמצעות האימייל %1$@.\n\nשיפורים באבטחת החשבון עלולים לגרום לאבדן החשבון אם אין לך עוד גישה לכתובת האימייל הזאת.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "לא התחברת לאינטרנט";

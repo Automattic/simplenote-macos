@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 17:54:04+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "Semua Catatan";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "Menurut Abjad: A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "Menurut Abjad: Z-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "Sudah memiliki akun?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "Batal";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "Tidak Dapat Mengonfirmasi Akun";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "Tidak Dapat Mengirimkan Email Verifikasi";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "Ubah Email Akun";
+
 /* Number of characters in the note */
 "Characters" = "Karakter";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "Kumpulkan informasi";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "Konfirmasi";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Tegaskan (ulangi) Kata Sandi";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "Pindahkan ke Sampah";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Nama: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Nama: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "Memerlukan akun?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Bukan alamat email yang valid";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "OK";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Harap aktifkan akun WordPress.com Anda melalui email dan coba lagi.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "Harap periksa pengaturan jaringan Anda lalu coba lagi.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "Kebijakan Privasi";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "Ubah Nama Tag";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "Kirim Ulang Email";
+
 /* Password Reset: Proceed */
 "Reset" = "Reset";
 
@@ -213,9 +232,11 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Pulihkan";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
-"Search" = "Cari";
+/* Title -> Review you account screen */
+"Review Your Account" = "Tinjau Akun Anda";
+
+/* Search Field Placeholder */
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Mencari";
@@ -240,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Lewati";
-
-/* Sortbar Title */
-"Sort" = "Urutkan";
 
 /* Tags Section Name */
 "Tags" = "Tag";
@@ -278,6 +296,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "Catatan Tanpa Tag";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "Verifikasi Email Anda";
+
 /* Label for the current version of a note */
 "Version" = "Versi";
 
@@ -290,11 +311,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "Kami mengalami masalah. Harap coba lagi nanti.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Kami telah mengirimkan email verifikasi ke %1$@. Harap periksa kotak masuk Anda dan ikuti instruksi berikut.";
+
 /* Number of words in the note */
 "Words" = "Kata";
 
 /* Hiring Title */
 "Work with Us" = "Berkarya Bersama Kami";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "Anda terdaftar pada SImplenote menggunakan email %1$@.\n\nPeningkatan keamanan akun dapat menyebabkan akun hilang jika Anda tidak lagi memiliki akses ke alamat email ini.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "Anda tidak terhubung ke internet";

@@ -8,7 +8,6 @@
 
 #import "SPMarkdownParser.h"
 #import "html.h"
-#import "SPTextView.h"
 #import "Simplenote-Swift.h"
 
 @implementation SPMarkdownParser

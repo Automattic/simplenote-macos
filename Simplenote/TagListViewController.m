@@ -572,7 +572,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 - (void)applyStyle
 {
-    self.headerSeparatorView.borderColor = [NSColor simplenoteDividerColor];
+    self.headerSeparatorView.borderColor = [NSColor simplenoteSidebarDividerColor];
     self.headerVisualEffectsView.appearance = [NSAppearance simplenoteAppearance];
     self.headerVisualEffectsView.material = [NSVisualEffectView simplenoteTaglistMaterial];
     self.backgroundVisualEffectsView.appearance = [NSAppearance simplenoteAppearance];

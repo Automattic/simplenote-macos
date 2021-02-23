@@ -45,3 +45,7 @@ fastlane/report.xml
 fastlane/README.md
 fastlane/test_output/
 build/
+
+# Secrets
+.configure-files/
+!.configure-files/*.enc
