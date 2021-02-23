@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-19 10:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -149,10 +149,10 @@
 "Move to Trash" = "移至垃圾桶";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "名稱：A 到 Z";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "名稱：Z 到 A";
 
 /* Link to create an account */
 "Need an account?" = "需要帳號？";
@@ -236,7 +236,7 @@
 "Review Your Account" = "檢閱你的帳號";
 
 /* Search Field Placeholder */
-"Search" = "搜尋";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "搜尋";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "跳過";
-
-/* Sortbar Title */
-"Sort by" = "排序依據";
 
 /* Tags Section Name */
 "Tags" = "標籤";

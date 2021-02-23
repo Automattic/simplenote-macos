@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -149,10 +149,10 @@
 "Move to Trash" = "휴지통으로 이동";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "이름: 오름차순";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "이름: 내림차순";
 
 /* Link to create an account */
 "Need an account?" = "계정이 필요하세요?";
@@ -236,7 +236,7 @@
 "Review Your Account" = "계정 검토";
 
 /* Search Field Placeholder */
-"Search" = "검색";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "검색 중";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "생략하기";
-
-/* Sortbar Title */
-"Sort by" = "정렬 기준";
 
 /* Tags Section Name */
 "Tags" = "태그";

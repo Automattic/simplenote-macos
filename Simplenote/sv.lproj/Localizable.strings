@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-19 09:10:05+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -149,10 +149,10 @@
 "Move to Trash" = "Flytta till papperskorgen";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "Namn: A–Z";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "Namn: Z–A";
 
 /* Link to create an account */
 "Need an account?" = "Behöver du ett konto?";
@@ -236,7 +236,7 @@
 "Review Your Account" = "Granska ditt konto";
 
 /* Search Field Placeholder */
-"Search" = "Sök";
+"Search notes" = "Sök anteckningar";
 
 /* Search Results Title */
 "Searching" = "Sökning";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Hoppa över";
-
-/* Sortbar Title */
-"Sort by" = "Sortera efter";
 
 /* Tags Section Name */
 "Tags" = "Etiketter";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-10 09:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -149,10 +149,10 @@
 "Move to Trash" = "Çöpe taşı";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "Ad: A-Z";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "Ad: Z-A";
 
 /* Link to create an account */
 "Need an account?" = "Hesap mı istiyorsunuz?";
@@ -236,7 +236,7 @@
 "Review Your Account" = "Hesabınızı İnceleyin";
 
 /* Search Field Placeholder */
-"Search" = "Arama";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Arama";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Atla";
-
-/* Sortbar Title */
-"Sort by" = "Sırala";
 
 /* Tags Section Name */
 "Tags" = "Etiketler";

@@ -236,7 +236,7 @@
 "Review Your Account" = "Review Your Account";
 
 /* Search Field Placeholder */
-"Search" = "";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Searching";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Skip";
-
-/* Sortbar Title */
-"Sort by" = "";
 
 /* Tags Section Name */
 "Tags" = "Tags";

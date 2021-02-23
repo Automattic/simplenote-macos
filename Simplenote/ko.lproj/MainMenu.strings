@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 17:54:08+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -226,7 +226,7 @@
 "83.title" = "메모";
 
 /* Class = "NSMenuItem"; title = "Name: Z-A"; ObjectID = "BFX-rl-bcH"; */
-"BFX-rl-bcH.title" = "Name: Z-A";
+"BFX-rl-bcH.title" = "이름: 내림차순";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
@@ -247,7 +247,7 @@
 "P9P-ed-21W.title" = "줄 길이";
 
 /* Class = "NSMenuItem"; title = "Log Out"; ObjectID = "Pde-gm-aAD"; Note = "Logs out from the Account"; */
-"Pde-gm-aAD.title" = "Log Out";
+"Pde-gm-aAD.title" = "로그아웃";
 
 /* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
 "Pwd-hR-fBt.title" = "모두 내보내기";
@@ -274,7 +274,7 @@
 "THl-80-myZ.title" = "형식";
 
 /* Class = "NSMenuItem"; title = "Name: A-Z"; ObjectID = "XEL-Qt-3Ik"; Note = "Toggles Alphabetical Note Sort Order"; */
-"XEL-Qt-3Ik.title" = "Name: A-Z";
+"XEL-Qt-3Ik.title" = "이름: 오름차순";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
 "YpJ-fs-p4p.title" = "노트 정렬";

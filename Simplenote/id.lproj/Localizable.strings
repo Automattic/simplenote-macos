@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -149,10 +149,10 @@
 "Move to Trash" = "Pindahkan ke Sampah";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "Nama: A-Z";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "Nama: Z-A";
 
 /* Link to create an account */
 "Need an account?" = "Memerlukan akun?";
@@ -236,7 +236,7 @@
 "Review Your Account" = "Tinjau Akun Anda";
 
 /* Search Field Placeholder */
-"Search" = "Cari";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Mencari";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Lewati";
-
-/* Sortbar Title */
-"Sort by" = "Urutkan berdasarkan";
 
 /* Tags Section Name */
 "Tags" = "Tag";

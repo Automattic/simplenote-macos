@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-10 09:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-19 17:23:16+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: it */
@@ -149,10 +149,10 @@
 "Move to Trash" = "Sposta nel cestino";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "Nome: A-Z";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "Nome: Z-A";
 
 /* Link to create an account */
 "Need an account?" = "Bisogno di un conto?";
@@ -236,7 +236,7 @@
 "Review Your Account" = "Verifica il tuo account";
 
 /* Search Field Placeholder */
-"Search" = "Cerca";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Ricerca";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Salta";
-
-/* Sortbar Title */
-"Sort by" = "Ordina per";
 
 /* Tags Section Name */
 "Tags" = "Tag";

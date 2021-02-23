@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-10 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-19 17:23:39+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -149,10 +149,10 @@
 "Move to Trash" = "移动到回收站";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "名称：A-Z";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "名称：Z-A";
 
 /* Link to create an account */
 "Need an account?" = "需要一个帐户？";
@@ -236,7 +236,7 @@
 "Review Your Account" = "检查您的帐户";
 
 /* Search Field Placeholder */
-"Search" = "搜索";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "搜索";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "跳过";
-
-/* Sortbar Title */
-"Sort by" = "排序方式";
 
 /* Tags Section Name */
 "Tags" = "标签";
