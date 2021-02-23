@@ -905,6 +905,9 @@ extension NoteEditorViewController {
     func observeEditorIsFirstResponder() {
         noteEditor.onUpdateFirstResponder = { [weak self] in
             self?.updateKeywordsHighlight()
+            if self?.noteEditor.isFirstResponder == false {
+                self?.saveCursorLocation()
+            }
         }
     }
 
@@ -992,6 +995,23 @@ extension NoteEditorViewController {
         }
 
         scrollView.documentView?.scroll(NSPoint(x: 0, y: scrollPosition))
+    }
+
+    @objc
+    func saveCursorLocation() {
+        guard let simperiumKey = note?.simperiumKey else {
+            return
+        }
+        metadataCache.store(cursorLocation: noteEditor.selectedRange().location, for: simperiumKey)
+    }
+
+    @objc
+    func restoreCursorLocation() {
+        guard let simperiumKey = note?.simperiumKey,
+              let cursorLocation = metadataCache.metadata(for: simperiumKey)?.cursorLocation else {
+            return
+        }
+        noteEditor.setSelectedRange(NSRange(location: cursorLocation, length: 0))
     }
 }
 

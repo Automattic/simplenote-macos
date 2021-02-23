@@ -41,12 +41,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
-@property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSArray                   *selectedNotes;
 @property (nonatomic, strong) Storage                   *storage;
 @property (nonatomic, strong) TextViewInputHandler      *inputHandler;
 
-@property (nonatomic, assign) NSUInteger                cursorLocationBeforeRemoteUpdate;
 @property (nonatomic, assign) BOOL                      viewingTrash;
 
 @end
@@ -269,42 +267,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.view.needsLayout = YES;
 }
 
-- (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)location
-{
-	NSUInteger newCursorLocation = location;
-    
-    // Cases:
-    // 0. All text after cursor (and possibly more) was removed ==> put cursor at end
-    // 1. Text was added after the cursor ==> no change
-    // 2. Text was added before the cursor ==> location advances
-    // 3. Text was removed after the cursor ==> no change
-    // 4. Text was removed before the cursor ==> location retreats
-    // 5. Text was added/removed on both sides of the cursor ==> not handled
-    
-    NSInteger deltaLength = newText.length - oldText.length;
-    
-    // Case 0
-    if (newText.length < location)
-        return newText.length;
-    
-    BOOL beforeCursorMatches = NO;
-    BOOL afterCursorMatches = NO;
-    @try {
-        beforeCursorMatches = [[oldText substringToIndex:location] compare:[newText substringToIndex:location]] == NSOrderedSame;
-        afterCursorMatches = [[oldText substringFromIndex:location] compare:[newText substringFromIndex:location+deltaLength]] == NSOrderedSame;
-    } @catch (NSException *e) {
-        
-    }
-    
-    // Cases 2 and 4
-    if (!beforeCursorMatches && afterCursorMatches) {
-        newCursorLocation += deltaLength;
-    }
-    
-    // Cases 1, 3 and 5 have no change
-    return newCursorLocation;
-}
-
 
 #pragma mark - Text Delegates
 
@@ -352,20 +314,15 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (void)didReceiveNewContent
 {
-    NSUInteger newLocation = [self newCursorLocation:self.note.content
-                                             oldText:self.noteContentBeforeRemoteUpdate
-                                     currentLocation:self.cursorLocationBeforeRemoteUpdate];
-
     [self displayContent:self.note.content];
-    self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
+    [self restoreCursorLocation];
     [self refreshTagsField];
 }
 
 - (void)willReceiveNewContent
 {
-    self.cursorLocationBeforeRemoteUpdate = [self.noteEditor selectedRange].location;
-    self.noteContentBeforeRemoteUpdate = self.noteEditor.string;
-    
+    [self saveCursorLocation];
+
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
 	
     if (self.note != nil && ![self.noteEditor.string isEqualToString:@""]) {

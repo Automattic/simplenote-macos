@@ -4,5 +4,5 @@ import Foundation
 //
 struct NoteEditorMetadata: Codable {
     var scrollPosition: CGFloat?
-    var cursorPosition: Int?
+    var cursorLocation: Int?
 }
