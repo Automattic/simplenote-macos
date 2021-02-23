@@ -117,6 +117,12 @@
 		A6672FBF25C7F77000090DE3 /* NoteBodyExcerptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */; };
 		A667305425C9751B00090DE3 /* SearchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667305325C9751B00090DE3 /* SearchMapView.swift */; };
 		A6BBDA3325501398005C8343 /* SPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBDA3225501398005C8343 /* SPTextView.swift */; };
+		A6BF918925E4EAC6003C2018 /* NoteEditorMetadataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF918825E4EAC6003C2018 /* NoteEditorMetadataCache.swift */; };
+		A6BF918A25E4EAC6003C2018 /* NoteEditorMetadataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF918825E4EAC6003C2018 /* NoteEditorMetadataCache.swift */; };
+		A6BF918F25E4EB44003C2018 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF918E25E4EB44003C2018 /* FileStorage.swift */; };
+		A6BF919025E4EB44003C2018 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF918E25E4EB44003C2018 /* FileStorage.swift */; };
+		A6BF919525E4F09F003C2018 /* NoteEditorMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF919425E4F09F003C2018 /* NoteEditorMetadata.swift */; };
+		A6BF919625E4F09F003C2018 /* NoteEditorMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF919425E4F09F003C2018 /* NoteEditorMetadata.swift */; };
 		A6C1E21425E010140076ADF7 /* SPApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1E21325E010140076ADF7 /* SPApplication.swift */; };
 		A6C1E21525E010140076ADF7 /* SPApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C1E21325E010140076ADF7 /* SPApplication.swift */; };
 		B50099322421218B0037A431 /* NSTextViewSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */; };
@@ -563,6 +569,9 @@
 		A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBodyExcerptTests.swift; sourceTree = "<group>"; };
 		A667305325C9751B00090DE3 /* SearchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapView.swift; sourceTree = "<group>"; };
 		A6BBDA3225501398005C8343 /* SPTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextView.swift; sourceTree = "<group>"; };
+		A6BF918825E4EAC6003C2018 /* NoteEditorMetadataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorMetadataCache.swift; sourceTree = "<group>"; };
+		A6BF918E25E4EB44003C2018 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		A6BF919425E4F09F003C2018 /* NoteEditorMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorMetadata.swift; sourceTree = "<group>"; };
 		A6C1E21325E010140076ADF7 /* SPApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPApplication.swift; sourceTree = "<group>"; };
 		B50099312421218B0037A431 /* NSTextViewSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextViewSimplenoteTests.swift; sourceTree = "<group>"; };
 		B5009936242130F70037A431 /* UnicodeScalar+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnicodeScalar+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1002,6 +1011,9 @@
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
 				A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */,
+				A6BF918825E4EAC6003C2018 /* NoteEditorMetadataCache.swift */,
+				A6BF919425E4F09F003C2018 /* NoteEditorMetadata.swift */,
+				A6BF918E25E4EB44003C2018 /* FileStorage.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -1981,6 +1993,7 @@
 				B574CA73242D552100F8D02F /* TextViewInputHandler.swift in Sources */,
 				B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */,
 				B5132FA823C4B9760065DD80 /* NSTextStorage+Simplenote.swift in Sources */,
+				A6BF918F25E4EB44003C2018 /* FileStorage.swift in Sources */,
 				714BA66E14D4AE6300A6CCC1 /* DateTransformer.m in Sources */,
 				B59EA98124AA5EFA008ABE4B /* NoteMetrics.swift in Sources */,
 				B5EDF338258A8F1B0066D91D /* TagListFilter.swift in Sources */,
@@ -2023,6 +2036,7 @@
 				3700E97621C1E390004771C9 /* SPTextAttachment.swift in Sources */,
 				B5E0862F2448E58C00DEF476 /* NSImageName+Simplenote.swift in Sources */,
 				B54F9A6724D0B21D00BCF754 /* NSNotification+Simplenote.swift in Sources */,
+				A6BF918925E4EAC6003C2018 /* NoteEditorMetadataCache.swift in Sources */,
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
 				A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */,
@@ -2048,6 +2062,7 @@
 				B56FA7982437C79D002CB9FF /* SPUserInterface.swift in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
 				B58117E825B9EE7B00927E0C /* Button.swift in Sources */,
+				A6BF919525E4F09F003C2018 /* NoteEditorMetadata.swift in Sources */,
 				B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */,
 				B549B085245A2E7500FB95B9 /* NSFont+Theme.swift in Sources */,
 				B5EDF32F258A8EF00066D91D /* NoteListFilter.swift in Sources */,
@@ -2110,6 +2125,7 @@
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
+				A6BF919625E4F09F003C2018 /* NoteEditorMetadata.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				B5C9776D25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
@@ -2136,6 +2152,7 @@
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
+				A6BF919025E4EB44003C2018 /* FileStorage.swift in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				B54F9A6B24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
 				B5D21CB824881EF600D57A34 /* Array+Simplenote.swift in Sources */,
@@ -2243,6 +2260,7 @@
 				B5EDF330258A8EF00066D91D /* NoteListFilter.swift in Sources */,
 				B5CD5F7F241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
+				A6BF918A25E4EAC6003C2018 /* NoteEditorMetadataCache.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */,
 				B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,

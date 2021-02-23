@@ -17,6 +17,7 @@
 @class SplitViewController;
 @class AccountVerificationCoordinator;
 @class VersionsController;
+@class NoteEditorMetadataCache;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -42,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) AccountVerificationCoordinator                *verificationCoordinator;
 @property (strong, nonatomic) VersionsController                            *versionsController;
 
+@property (strong, nonatomic) NoteEditorMetadataCache                       *noteEditorMetadataCache;
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 

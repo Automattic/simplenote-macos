@@ -41,7 +41,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 @property (nonatomic, strong) MarkdownViewController    *markdownViewController;
 
 @property (nonatomic, strong) NSTimer                   *saveTimer;
-@property (nonatomic, strong) NSMutableDictionary       *noteScrollPositions;
 @property (nonatomic,   copy) NSString                  *noteContentBeforeRemoteUpdate;
 @property (nonatomic, strong) NSArray                   *selectedNotes;
 @property (nonatomic, strong) Storage                   *storage;
@@ -107,8 +106,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     // Realtime Markdown Support
     self.inputHandler = [TextViewInputHandler new];
 
-    self.noteScrollPositions = [[NSMutableDictionary alloc] init];
-    
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(trashDidLoad:) name:TagListDidBeginViewingTrashNotification object:nil];
     [nc addObserver:self selector:@selector(tagsDidLoad:) name:TagListDidBeginViewingTagNotification object:nil];
@@ -189,12 +186,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         return;
     }
 
-    // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
-    NSString *simperiumKey = self.note.simperiumKey;
-    if (simperiumKey != nil) {
-        NSValue *positionValue = [NSValue valueWithPoint:self.scrollView.contentView.bounds.origin];
-        self.noteScrollPositions[simperiumKey] = positionValue;
-    }
+    [self saveScrollPosition];
     
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)
@@ -221,12 +213,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
 
-    NSValue *lastKnownScrollOffset = self.noteScrollPositions[selectedNote.simperiumKey];
-    if (lastKnownScrollOffset != nil) {
-        [self.scrollView.documentView scrollPoint:lastKnownScrollOffset.pointValue];
-    } else {
-        [self.scrollView scrollToTopWithAnimation:NO];
-    }
+    [self restoreScrollPosition];
 }
 
 - (void)displayNotes:(NSArray *)notes

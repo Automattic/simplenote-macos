@@ -969,6 +969,33 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Editor Metadata
+//
+extension NoteEditorViewController {
+    @objc
+    func saveScrollPosition() {
+        // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
+        guard let simperiumKey = note?.simperiumKey else {
+            return
+        }
+
+        let scrollPosition = scrollView.contentView.bounds.origin.y
+        metadataCache.store(scrollPosition: scrollPosition, for: simperiumKey)
+    }
+
+    @objc
+    func restoreScrollPosition() {
+        guard let simperiumKey = note?.simperiumKey,
+              let scrollPosition = metadataCache.metadata(for: simperiumKey)?.scrollPosition else {
+            scrollView.scrollToTop(animated: false)
+            return
+        }
+
+        scrollView.documentView?.scroll(NSPoint(x: 0, y: scrollPosition))
+    }
+}
+
+
 // MARK: - EditorMetrics
 //
 private enum EditorMetrics {

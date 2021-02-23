@@ -94,6 +94,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [self configureEditorMetadataCache];
     [self configureSimperium];
     [self configureSimperiumBuckets];
     [self configureMainInterface];
