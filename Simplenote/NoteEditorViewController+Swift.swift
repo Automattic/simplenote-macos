@@ -993,7 +993,8 @@ extension NoteEditorViewController {
             scrollView.scrollToTop(animated: false)
             return
         }
-
+        // ensure layout to make sure that content size is updated
+        noteEditor.ensureLayout()
         scrollView.documentView?.scroll(NSPoint(x: 0, y: scrollPosition))
     }
 
