@@ -212,6 +212,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
 
     [self restoreScrollPosition];
+    [self restoreCursorLocation];
 }
 
 - (void)displayNotes:(NSArray *)notes
