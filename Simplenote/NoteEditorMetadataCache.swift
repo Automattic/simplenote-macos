@@ -45,10 +45,17 @@ class NoteEditorMetadataCache: NSObject {
         cache[key] = metadata
     }
 
-    /// Cleanup
+    /// Remove metadata for key
     ///
     func cleanup(keeping keys: [String]) {
         cache = cache.filter({ keys.contains($0.key) })
+    }
+
+    /// Remove all cached data
+    ///
+    @objc
+    func removeAll() {
+        cache.removeAll()
     }
 }
 

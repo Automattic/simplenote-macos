@@ -457,6 +457,16 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
 }
 
 
+// MARK: - Editor Cache
+//
+extension SimplenoteAppDelegate {
+    @objc
+    func cleanupEditorMetadataCache() {
+        let allKeys = simperium.allNotes.compactMap({ $0.deleted ? nil : $0.simperiumKey })
+        noteEditorMetadataCache.cleanup(keeping: allKeys)
+    }
+}
+
 // MARK: - Constants
 //
 private struct Constants {
