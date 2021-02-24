@@ -188,6 +188,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     }
 
     [self saveScrollPosition];
+    [self saveCursorLocation];
     
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)

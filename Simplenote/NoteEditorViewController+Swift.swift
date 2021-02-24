@@ -788,9 +788,6 @@ extension NoteEditorViewController {
     func observeEditorIsFirstResponder() {
         noteEditor.onUpdateFirstResponder = { [weak self] in
             self?.updateKeywordsHighlight()
-            if self?.noteEditor.isFirstResponder == false {
-                self?.saveCursorLocation()
-            }
         }
     }
 
