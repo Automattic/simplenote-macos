@@ -253,17 +253,17 @@ extension SimplenoteAppDelegate {
 
     @objc
     func focusOnTheNoteList() {
-        noteListViewController.focusOnTheNoteList()
+        noteListViewController.focus()
     }
 
     @objc
     func focusOnTheEditor() {
-        window.makeFirstResponder(noteEditorViewController.noteEditor)
+        noteEditorViewController.focus()
     }
 
     @objc
     func focusOnTheTags() {
-        window.makeFirstResponder(tagListViewController.tableView)
+        tagListViewController.focus()
     }
 
     @IBAction

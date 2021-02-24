@@ -44,6 +44,17 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Public
+//
+extension NoteEditorViewController {
+    /// Makes editor first responder
+    ///
+    func focus() {
+        view.window?.makeFirstResponder(noteEditor)
+    }
+}
+
+
 // MARK: - Layout
 //
 extension NoteEditorViewController {

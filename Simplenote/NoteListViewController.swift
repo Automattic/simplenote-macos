@@ -97,7 +97,7 @@ class NoteListViewController: NSViewController {
         progressIndicator.startAnimation(self)
     }
 
-    func focusOnTheNoteList() {
+    func focus() {
         view.window?.makeFirstResponder(tableView)
     }
 }

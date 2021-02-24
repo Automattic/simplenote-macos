@@ -82,6 +82,12 @@ extension TagListViewController {
     var selectedFilter: TagListFilter {
         selectedRow?.matchingFilter ?? .everything
     }
+
+    /// Makes table view first responder
+    ///
+    func focus() {
+        view.window?.makeFirstResponder(tableView)
+    }
 }
 
 
