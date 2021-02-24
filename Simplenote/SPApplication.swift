@@ -37,7 +37,8 @@ final class SPApplication: NSApplication {
         }
 
         if modifierFlags.intersection([.shift, .command, .control, .option]).isEmpty &&
-            !(appDelegate.window.firstResponder is NSTextView) {
+            !(appDelegate.window.firstResponder is NSTextView) &&
+            !(appDelegate.window.firstResponder is NSTextField) {
             if event.simplenoteSpecialKey == .some(.trailingArrow) {
                 if sendAction(#selector(NoteListViewController.switchToTrailingPanel), to: nil, from: self) {
                     return

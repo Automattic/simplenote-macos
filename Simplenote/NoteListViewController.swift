@@ -147,6 +147,7 @@ private extension NoteListViewController {
     func setupSearchField() {
         searchField.centersPlaceholder = false
         searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
+        searchField.delegate = self
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -616,6 +617,32 @@ extension NoteListViewController {
         searchQuery = SearchQuery(searchText: searchField.stringValue)
         refreshEverything()
         SPTracker.trackListNotesSearched()
+    }
+}
+
+
+// MARK: - NSSearchFieldDelegate
+//
+extension NoteListViewController: NSSearchFieldDelegate {
+    func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        guard let event = NSApp.currentEvent else {
+            return false
+        }
+
+        let modifierFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+
+        guard event.type == .keyDown,
+              modifierFlags.intersection([.shift, .command, .control, .option]).isEmpty else {
+            return false
+        }
+
+        switch event.simplenoteSpecialKey {
+        case .some(.downArrow), .some(.upArrow):
+            tableView.keyDown(with: event)
+            return true
+        default:
+            return false
+        }
     }
 }
 
