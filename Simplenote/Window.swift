@@ -64,6 +64,14 @@ class Window: NSWindow {
         super.layoutIfNeeded()
         relocateSemaphoreButtonsIfNeeded()
     }
+
+    override func selectNextKeyView(_ sender: Any?) {
+        NSApplication.shared.sendAction(#selector(NoteListViewController.switchToTrailingPanel), to: nil, from: sender)
+    }
+
+    override func selectPreviousKeyView(_ sender: Any?) {
+        NSApplication.shared.sendAction(#selector(NoteListViewController.switchToLeadingPanel), to: nil, from: sender)
+    }
 }
 
 
