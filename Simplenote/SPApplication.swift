@@ -9,27 +9,25 @@ final class SPApplication: NSApplication {
             return
         }
 
-        let excludedFlags: NSEvent.ModifierFlags = [.shift, .command, .control, .option]
-
+        let appDelegate = SimplenoteAppDelegate.shared()
         let modifierFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
 
         if  modifierFlags == .command &&
             event.charactersIgnoringModifiers == "l" {
 
-            if sendAction(Selector(("searchWasPressed:")), to: nil, from: self) {
-                return
-            }
+            appDelegate.searchWasPressed(self)
+            return
         }
 
         if modifierFlags == .command &&
             event.simplenoteSpecialKey == .some(.carriageReturn) &&
-            SimplenoteAppDelegate.shared().window.firstResponder is SPTextView {
+            appDelegate.window.firstResponder is SPTextView {
 
-            if sendAction(Selector(("focusOnTheNoteList")), to: nil, from: self) {
-                return
-            }
+            appDelegate.focusOnTheNoteList()
+            return
         }
 
+        // We're using `sendAction` in the following methods to make sure the action is delivered through the current responder chain
         if modifierFlags == [.command, .shift] &&
             event.charactersIgnoringModifiers == "Y" {
 
@@ -38,15 +36,15 @@ final class SPApplication: NSApplication {
             }
         }
 
-        if modifierFlags.intersection(excludedFlags).isEmpty {
-            if event.simplenoteSpecialKey == .some(.rightArrow) {
-                if sendAction(Selector(("switchToRightPanel")), to: nil, from: self) {
+        if modifierFlags.intersection([.shift, .command, .control, .option]).isEmpty {
+            if event.simplenoteSpecialKey == .some(.trailingArrow) {
+                if sendAction(Selector(("switchToTrailingPanel")), to: nil, from: self) {
                     return
                 }
             }
 
-            if event.simplenoteSpecialKey == .some(.leftArrow) {
-                if sendAction(Selector(("switchToLeftPanel")), to: nil, from: self) {
+            if event.simplenoteSpecialKey == .some(.leadingArrow) {
+                if sendAction(Selector(("switchToLeadingPanel")), to: nil, from: self) {
                     return
                 }
             }

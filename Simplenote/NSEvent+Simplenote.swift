@@ -10,6 +10,18 @@ extension NSEvent.SpecialKey {
     static var esc: NSEvent.SpecialKey {
         NSEvent.SpecialKey(rawValue: 53)
     }
+
+    static var leadingArrow: NSEvent.SpecialKey {
+        return isRTL ? .rightArrow : .leftArrow
+    }
+
+    static var trailingArrow: NSEvent.SpecialKey {
+        return isRTL ? .leftArrow : .rightArrow
+    }
+
+    private static var isRTL: Bool {
+        SimplenoteAppDelegate.shared().window.isRTL
+    }
 }
 
 

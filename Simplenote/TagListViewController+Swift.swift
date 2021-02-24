@@ -262,7 +262,7 @@ extension TagListViewController {
 //
 extension TagListViewController {
     @objc
-    func switchToRightPanel() {
+    func switchToTrailingPanel() {
         SimplenoteAppDelegate.shared().focusOnTheNoteList()
     }
 }

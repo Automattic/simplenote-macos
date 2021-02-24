@@ -107,12 +107,12 @@ class NoteListViewController: NSViewController {
 //
 extension NoteListViewController {
     @objc
-    func switchToRightPanel() {
+    func switchToTrailingPanel() {
         SimplenoteAppDelegate.shared().focusOnTheEditor()
     }
 
     @objc
-    func switchToLeftPanel() {
+    func switchToLeadingPanel() {
         SimplenoteAppDelegate.shared().focusOnTheTags()
     }
 }
