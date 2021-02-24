@@ -86,6 +86,9 @@ extension TagListViewController {
     /// Makes table view first responder
     ///
     func focus() {
+        guard isViewLoaded && !view.isHiddenOrHasHiddenAncestor else {
+            return
+        }
         view.window?.makeFirstResponder(tableView)
     }
 }
