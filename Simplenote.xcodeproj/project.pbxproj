@@ -82,6 +82,7 @@
 		37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D4DD6820B3574C00C225EA /* WPAuthHandler.m */; };
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
+		3F07D7B225DD1CDD00D680D0 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		3FAC7B25254BBCA600B47276 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = 3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */; };
 		466FFEA817CC10A800399652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
@@ -149,10 +150,8 @@
 		B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */; };
 		B50F999224F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
 		B50F999324F98FFD00A1058D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50F999124F98FFD00A1058D /* Main.storyboard */; };
-		B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
-		B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */; };
-		B50FB223251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
-		B50FB224251BB6110028DE25 /* Interlink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50FB222251BB6110028DE25 /* Interlink.storyboard */; };
+		B50FB214251BB2E00028DE25 /* PopoverWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */; };
+		B50FB215251BB2E00028DE25 /* PopoverWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */; };
 		B50FB24C251C08910028DE25 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = B50FB24B251C08910028DE25 /* SimplenoteInterlinks */; };
 		B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
 		B5117999242036B1005F8936 /* NSString+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117997242036B0005F8936 /* NSString+Simplenote.swift */; };
@@ -201,6 +200,13 @@
 		B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535014A249D5908003837C8 /* HorizontalScrollView.swift */; };
 		B5395E1D253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
 		B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */; };
+		B53ACDE425DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
+		B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
+		B53ACE0E25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */; };
+		B53ACE0F25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */; };
+		B53ACE1325DD7E6C00CF527A /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
+		B53ACE1E25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE1D25DD9C6A00CF527A /* InterlinkResultsController.swift */; };
+		B53ACE1F25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE1D25DD9C6A00CF527A /* InterlinkResultsController.swift */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
 		B53BF1A024AC1FB800938C34 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19F24AC1FB800938C34 /* Version.swift */; };
@@ -292,8 +298,8 @@
 		B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */; };
 		B58BBD2A2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
 		B58BBD2B2523D4CA0025135F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD292523D4CA0025135F /* Window.swift */; };
-		B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */; };
-		B58BBD3E2523FF160025135F /* AutocompleteWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */; };
+		B58BBD3D2523FF160025135F /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* PopoverWindow.swift */; };
+		B58BBD3E2523FF160025135F /* PopoverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD3C2523FF160025135F /* PopoverWindow.swift */; };
 		B58BBD46252411530025135F /* NSEvent+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD45252411530025135F /* NSEvent+Simplenote.swift */; };
 		B58BBD47252411530025135F /* NSEvent+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BBD45252411530025135F /* NSEvent+Simplenote.swift */; };
 		B58CE26524F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
@@ -589,8 +595,7 @@
 		B503FF4724848D0B00066059 /* TagAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAttachmentCell.swift; sourceTree = "<group>"; };
 		B5070E15245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserInterfaceItemIdentifier+Simplenote.swift"; sourceTree = "<group>"; };
 		B50F999124F98FFD00A1058D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkWindowController.swift; sourceTree = "<group>"; };
-		B50FB222251BB6110028DE25 /* Interlink.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interlink.storyboard; sourceTree = "<group>"; };
+		B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverWindowController.swift; sourceTree = "<group>"; };
 		B5117997242036B0005F8936 /* NSString+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Simplenote.swift"; sourceTree = "<group>"; };
 		B511799A242036BD005F8936 /* NSTextView+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5132FA723C4B9760065DD80 /* NSTextStorage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextStorage+Simplenote.swift"; sourceTree = "<group>"; };
@@ -634,6 +639,9 @@
 		B532728125BA1510001DB882 /* SPTracker+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPTracker+Swift.swift"; sourceTree = "<group>"; };
 		B535014A249D5908003837C8 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		B5395E1C253F70E30068F1A6 /* MetricTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTableViewCell.swift; sourceTree = "<group>"; };
+		B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterlinkViewController.xib; sourceTree = "<group>"; };
+		B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkProcessor.swift; sourceTree = "<group>"; };
+		B53ACE1D25DD9C6A00CF527A /* InterlinkResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlinkResultsController.swift; sourceTree = "<group>"; };
 		B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Simplenote.swift"; sourceTree = "<group>"; };
 		B53BF19F24AC1FB800938C34 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		B53BF1A324AC38C100938C34 /* VersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsController.swift; sourceTree = "<group>"; };
@@ -679,7 +687,7 @@
 		B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindowFrameAutosaveName+Simplenote.swift"; sourceTree = "<group>"; };
 		B58A71BD258422CC00601641 /* NSBezierPath+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Simplenote.swift"; sourceTree = "<group>"; };
 		B58BBD292523D4CA0025135F /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
-		B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteWindow.swift; sourceTree = "<group>"; };
+		B58BBD3C2523FF160025135F /* PopoverWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverWindow.swift; sourceTree = "<group>"; };
 		B58BBD45252411530025135F /* NSEvent+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Simplenote.swift"; sourceTree = "<group>"; };
 		B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStoryboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B58CE28724F9C3420079C04B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -1321,7 +1329,7 @@
 			isa = PBXGroup;
 			children = (
 				B58BBD292523D4CA0025135F /* Window.swift */,
-				B58BBD3C2523FF160025135F /* AutocompleteWindow.swift */,
+				B58BBD3C2523FF160025135F /* PopoverWindow.swift */,
 			);
 			name = Windows;
 			sourceTree = "<group>";
@@ -1439,6 +1447,9 @@
 			isa = PBXGroup;
 			children = (
 				B5C63336251E6A5A00C8BF46 /* InterlinkViewController.swift */,
+				B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */,
+				B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */,
+				B53ACE1D25DD9C6A00CF527A /* InterlinkResultsController.swift */,
 			);
 			name = Interlinks;
 			sourceTree = "<group>";
@@ -1446,8 +1457,8 @@
 		B5C63353251E732600C8BF46 /* WindowControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B50FB213251BB2E00028DE25 /* InterlinkWindowController.swift */,
 				B528D682257FF15000C1EEA4 /* MainWindowController.swift */,
+				B50FB213251BB2E00028DE25 /* PopoverWindowController.swift */,
 			);
 			name = WindowControllers;
 			sourceTree = "<group>";
@@ -1456,7 +1467,6 @@
 			isa = PBXGroup;
 			children = (
 				B50F999124F98FFD00A1058D /* Main.storyboard */,
-				B50FB222251BB6110028DE25 /* Interlink.storyboard */,
 				375581C120292AA800529D79 /* About.storyboard */,
 				B5F04FD2215964BC004B1AA0 /* Privacy.storyboard */,
 			);
@@ -1710,13 +1720,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50FB223251BB6110028DE25 /* Interlink.storyboard in Resources */,
 				B54F4AA224A6588700D8FAB1 /* MetricsViewController.xib in Resources */,
 				B5C19D8B243D30690014086C /* VersionsViewController.xib in Resources */,
 				B5C7DD49243E524000BEE354 /* PublishViewController.xib in Resources */,
 				26F72AA314032D2A00A7935E /* MainMenu.xib in Resources */,
 				B5A8919A231ECB3C0007EDCB /* INSTALL.markdown in Resources */,
 				B5F04FD3215964BC004B1AA0 /* Privacy.storyboard in Resources */,
+				B53ACDE425DD47BB00CF527A /* InterlinkViewController.xib in Resources */,
 				37AE49C91FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				B5686D0E1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
 				B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
@@ -1735,13 +1745,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50FB224251BB6110028DE25 /* Interlink.storyboard in Resources */,
 				B54F4AA324A6588700D8FAB1 /* MetricsViewController.xib in Resources */,
 				466FFEE617CC10A800399652 /* InfoPlist.strings in Resources */,
 				466FFEE717CC10A800399652 /* Credits.rtf in Resources */,
 				B5F04FD4215964BC004B1AA0 /* Privacy.storyboard in Resources */,
 				466FFEE817CC10A800399652 /* MainMenu.xib in Resources */,
 				B5686D0F1AEAE6D7009F9E20 /* Images.xcassets in Resources */,
+				B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */,
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
 				B5C7DD44243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B58117D725B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
@@ -1951,7 +1961,7 @@
 				B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
-				B50FB214251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B50FB214251BB2E00028DE25 /* PopoverWindowController.swift in Sources */,
 				B58BBD2A2523D4CA0025135F /* Window.swift in Sources */,
 				3712FC8C1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294021E033D1007AB25A /* html_smartypants.c in Sources */,
@@ -1968,7 +1978,7 @@
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5C7DD3D243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
-				B58BBD3D2523FF160025135F /* AutocompleteWindow.swift in Sources */,
+				B58BBD3D2523FF160025135F /* PopoverWindow.swift in Sources */,
 				B5469FD02587FCD9007ED7BE /* NSSortDescriptor+Simplenote.swift in Sources */,
 				B57CB87B244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
 				B535014B249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
@@ -1977,6 +1987,7 @@
 				B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				B557A0E325BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
+				B53ACE1E25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */,
 				A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */,
 				A6BBDA3325501398005C8343 /* SPTextView.swift in Sources */,
 				B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
@@ -2087,6 +2098,7 @@
 				B57CB87E244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */,
 				3712FC821FE1ACAA008544AC /* Storage.swift in Sources */,
 				375D293421E033D1007AB25A /* autolink.c in Sources */,
+				B53ACE0E25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */,
 				B5F3150924496A970036872D /* TableRowView.swift in Sources */,
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
@@ -2128,7 +2140,7 @@
 				A6BF919625E4F09F003C2018 /* NoteEditorMetadata.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
 				B5C9776D25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
-				B50FB215251BB2E00028DE25 /* InterlinkWindowController.swift in Sources */,
+				B50FB215251BB2E00028DE25 /* PopoverWindowController.swift in Sources */,
 				B58BBD2B2523D4CA0025135F /* Window.swift in Sources */,
 				B5A5AF7D244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B557A0E425BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,
@@ -2142,15 +2154,17 @@
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
 				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
 				B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
+				3F07D7B225DD1CDD00D680D0 /* SearchQuery+Simplenote.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
-				B58BBD3E2523FF160025135F /* AutocompleteWindow.swift in Sources */,
+				B58BBD3E2523FF160025135F /* PopoverWindow.swift in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5469FCB2587DE3F007ED7BE /* SortMode.swift in Sources */,
 				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
+				B53ACE1F25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				A6BF919025E4EB44003C2018 /* FileStorage.swift in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
@@ -2247,6 +2261,7 @@
 				B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				B53BF1A124AC1FB800938C34 /* Version.swift in Sources */,
+				B53ACE0F25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */,
 				B5B1CBCE256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
 				B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
@@ -2262,6 +2277,7 @@
 				B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
 				A6BF918A25E4EAC6003C2018 /* NoteEditorMetadataCache.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
+				B53ACE1325DD7E6C00CF527A /* SearchQuery+Simplenote.swift in Sources */,
 				B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */,
 				B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
 				B528D684257FF15000C1EEA4 /* MainWindowController.swift in Sources */,

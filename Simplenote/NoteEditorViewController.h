@@ -11,7 +11,7 @@
 @import Simperium_OSX;
 
 @class BackgroundView;
-@class InterlinkWindowController;
+@class InterlinkProcessor;
 @class NoteEditorViewController;
 @class NoteListViewController;
 @class MarkdownViewController;
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) NSLayoutConstraint                      *sidebarSemaphoreLeadingConstraint;
-@property (nonatomic, strong, nullable) InterlinkWindowController               *interlinkWindowController;
+@property (nonatomic, strong) InterlinkProcessor                                *interlinkProcessor;
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
