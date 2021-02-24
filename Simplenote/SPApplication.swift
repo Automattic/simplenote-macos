@@ -31,20 +31,20 @@ final class SPApplication: NSApplication {
         if modifierFlags == [.command, .shift] &&
             event.charactersIgnoringModifiers == "Y" {
 
-            if sendAction(Selector(("toggleTagsAndEditor")), to: nil, from: self) {
+            if sendAction(#selector(NoteEditorViewController.toggleTagsAndEditor), to: nil, from: self) {
                 return
             }
         }
 
         if modifierFlags.intersection([.shift, .command, .control, .option]).isEmpty {
             if event.simplenoteSpecialKey == .some(.trailingArrow) {
-                if sendAction(Selector(("switchToTrailingPanel")), to: nil, from: self) {
+                if sendAction(#selector(NoteListViewController.switchToTrailingPanel), to: nil, from: self) {
                     return
                 }
             }
 
             if event.simplenoteSpecialKey == .some(.leadingArrow) {
-                if sendAction(Selector(("switchToLeadingPanel")), to: nil, from: self) {
+                if sendAction(#selector(NoteListViewController.switchToLeadingPanel), to: nil, from: self) {
                     return
                 }
             }
