@@ -619,6 +619,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [self.noteEditor toggleListMarkersAtSelectedRange];
     [SPTracker trackEditorChecklistInserted];
+
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        [SPTracker trackShortcutToggleChecklist];
+    }
 }
 
 @end

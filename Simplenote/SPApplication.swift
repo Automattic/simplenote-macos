@@ -32,6 +32,7 @@ final class SPApplication: NSApplication {
             event.charactersIgnoringModifiers == "Y" {
 
             if sendAction(#selector(NoteEditorViewController.toggleTagsAndEditor), to: nil, from: self) {
+                SPTracker.trackShortcutToggleEditorAndTags()
                 return
             }
         }

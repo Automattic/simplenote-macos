@@ -402,11 +402,13 @@
 - (IBAction)toggleSidebarAction:(id)sender
 {
     [self.splitViewController toggleSidebarActionWithSender:sender];
+    [SPTracker trackShortcutToggleSidebar];
 }
 
 - (IBAction)focusModeAction:(id)sender
 {
     [self.splitViewController focusModeActionWithSender:sender];
+    [SPTracker trackToggleFocusMode];
 }
 
 - (IBAction)helpAction:(id)sender

@@ -175,6 +175,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func newNoteWasPressed(_ sender: Any) {
         noteEditorViewController.newNoteWasPressed(sender)
+        SPTracker.trackShortcutCreateNote()
     }
 
     @IBAction
@@ -226,6 +227,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func searchWasPressed(_ sender: Any) {
         noteListViewController.beginSearch()
+        SPTracker.trackShortcutSearch()
     }
 
     @IBAction
@@ -269,6 +271,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func toggleMarkdownPreviewAction(_ sender: Any) {
         noteEditorViewController.toggleMarkdownView(sender)
+        SPTracker.trackShortcutToggleMarkdownPreview()
     }
 }
 
