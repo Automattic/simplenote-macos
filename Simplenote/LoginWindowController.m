@@ -12,12 +12,10 @@
 #import "Simplenote-Swift.h"
 
 
-#pragma mark ====================================================================================
-#pragma mark Constants
-#pragma mark ====================================================================================
+#pragma mark - Constants
 
 static CGFloat const SPAuthenticationWindowWidth        = 380.0f;
-static CGFloat const SPAuthenticationWindowHeight       = 540.0f;
+static CGFloat const SPAuthenticationWindowHeight       = 580.0f;
 static CGFloat const SPAuthenticationRowSize            = 50;
 
 static CGFloat const SPAuthenticationCancelWidth        = 60.0f;
@@ -28,14 +26,11 @@ static CGFloat const SPAuthenticationFieldHeight        = 40.0f;
 
 static CGFloat const SPAuthenticationProgressSize       = 20.0f;
 
-static CGFloat const SPLoginAdditionalHeight        = 40.0f;
 static CGFloat const SPLoginWPButtonWidth           = 270.0f;
 static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 
 
-#pragma mark ====================================================================================
-#pragma mark Private
-#pragma mark ====================================================================================
+#pragma mark - Private
 
 @interface LoginWindowController () <NSTextFieldDelegate>
 @property (nonatomic, strong) NSImageView               *logoImageView;
@@ -57,9 +52,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
 @end
 
 
-#pragma mark ====================================================================================
-#pragma mark SPAuthenticationWindowController
-#pragma mark ====================================================================================
+#pragma mark - SPAuthenticationWindowController
 
 @implementation LoginWindowController
 
@@ -81,7 +74,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
     if ((self = [super initWithWindow: window])) {
         self.validator = [[SPAuthenticationValidator alloc] init];
 
-        SPAuthenticationView *authView = [[SPAuthenticationView alloc] initWithFrame:window.frame];
+        SPAuthenticationView *authView = [[SPAuthenticationView alloc] initWithFrame:windowFrame];
         [window.contentView addSubview:authView];
 
         NSString *cancelButtonText = NSLocalizedString(@"Skip", @"Text to display on OSX cancel button");
@@ -168,24 +161,7 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
         // Enter sign up mode
         [self toggleAuthenticationMode:self.signUpButton];
 
-
         // Make the window a bit taller than the default to make room for the wp.com button
-        CGRect frame = self.window.frame;
-        frame.size.height += SPLoginAdditionalHeight;
-        [self.window setFrame:frame display:YES animate:NO];
-
-        // Make sure the rootView's origin is always zero.
-        // Ref. https://github.com/Automattic/simplenote-macos/issues/664
-        frame.origin = CGPointZero;
-        [authView setFrame:frame];
-
-        // Move up all subviews (Frame origin.y is at the bottom on macOS?)
-        for(NSView *view in authView.subviews) {
-            CGRect frame = view.frame;
-            frame.origin.y += SPLoginAdditionalHeight;
-            [view setFrame:frame];
-        }
-
         NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
         NSButton *wpccButton = [[NSButton alloc] init];
         [wpccButton setTitle:NSLocalizedString(@"Sign in with WordPress.com", @"button title for wp.com sign in button")];
@@ -203,13 +179,12 @@ static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
         [colorString addAttribute:NSForegroundColorAttributeName value:textColor range:titleRange];
         [wpccButton setAttributedTitle:colorString];
 
-        int centerPosition = (authView.frame.size.width / 2) - (SPLoginWPButtonWidth / 2);
-        wpccButton.frame = CGRectMake(centerPosition, SPLoginAdditionalHeight, SPLoginWPButtonWidth, SPLoginAdditionalHeight);
+        CGFloat centerPosition = (authView.frame.size.width / 2) - (SPLoginWPButtonWidth / 2);
+        wpccButton.frame = CGRectMake(centerPosition, SPAuthenticationRowSize, SPLoginWPButtonWidth, SPAuthenticationFieldHeight);
         [authView addSubview:wpccButton];
 
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(signInErrorAction:) name:SPSignInErrorNotificationName object:nil];
-
     }
 
     return self;
