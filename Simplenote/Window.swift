@@ -72,6 +72,14 @@ class Window: NSWindow {
     override func selectPreviousKeyView(_ sender: Any?) {
         NSApplication.shared.sendAction(#selector(NoteListViewController.switchToLeadingPanel), to: nil, from: sender)
     }
+
+    override func makeFirstResponder(_ responder: NSResponder?) -> Bool {
+        let result = super.makeFirstResponder(responder)
+        if result, let responder = responder {
+            SimplenoteAppDelegate.shared().updateActivePanel(with: responder)
+        }
+        return result
+    }
 }
 
 

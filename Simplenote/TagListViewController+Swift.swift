@@ -170,6 +170,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.style = .sidebar
+        rowView.isActive = isActive
         return rowView
     }
 
@@ -283,5 +284,19 @@ extension TagListViewController: SPTextFieldDelegate {
 
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
         !menuShowing
+    }
+}
+
+
+// MARK: - Appearance
+//
+extension TagListViewController {
+    @objc
+    func refreshTableRowsActiveStatus() {
+        for row in 0..<tableView.numberOfRows {
+            let tableRow = tableView.rowView(atRow: row, makeIfNecessary: false) as? TableRowView
+            tableRow?.isActive = isActive
+        }
+        tableView.reloadSelectedRow()
     }
 }

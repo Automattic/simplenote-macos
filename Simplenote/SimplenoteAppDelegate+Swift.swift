@@ -454,8 +454,27 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     func validateToogleMarkdownPreviewItem(_ item: NSMenuItem) -> Bool {
         noteEditorViewController.validateToogleMarkdownPreviewItem(item)
     }
-}
 
+    /// Updates `active` state of top view controllers based on the current first responder
+    ///
+    func updateActivePanel(with responder: NSResponder) {
+        let viewControllers: [NSResponder] = [tagListViewController, noteListViewController, noteEditorViewController]
+        var responder = responder
+        while true {
+            if viewControllers.contains(responder) {
+                tagListViewController.isActive = tagListViewController == responder
+                noteListViewController.isActive = noteListViewController == responder
+                break
+            }
+
+            guard let nextResponder = responder.nextResponder else {
+                break
+            }
+
+            responder = nextResponder
+        }
+    }
+}
 
 // MARK: - Editor Cache
 //

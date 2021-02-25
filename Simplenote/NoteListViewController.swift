@@ -56,6 +56,20 @@ class NoteListViewController: NSViewController {
     weak var searchDelegate: NoteListSearchDelegate?
 
 
+    var isActive: Bool = false {
+        didSet {
+            guard oldValue != isActive else {
+                return
+            }
+            
+            for row in 0..<tableView.numberOfRows {
+                let rowView = tableView.rowView(atRow: row, makeIfNecessary: false) as? TableRowView
+                rowView?.isActive = isActive
+            }
+        }
+    }
+
+
     // MARK: - ViewController Lifecycle
 
     deinit {
@@ -481,6 +495,7 @@ extension NoteListViewController: SPTableViewDelegate {
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.style = .list
+        rowView.isActive = isActive
         return rowView
     }
 

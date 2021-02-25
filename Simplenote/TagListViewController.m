@@ -580,4 +580,13 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     [self reloadDataAndPreserveSelection];
 }
 
+- (void)setActive:(BOOL)active
+{
+    if (active == _active) {
+        return;
+    }
+    _active = active;
+    [self refreshTableRowsActiveStatus];
+}
+
 @end
