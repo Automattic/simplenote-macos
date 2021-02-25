@@ -1,5 +1,6 @@
 import XCTest
 import SimplenoteFoundation
+import SimplenoteSearch
 @testable import Simplenote
 
 
@@ -115,7 +116,7 @@ extension NoteListControllerTests {
         storage.save()
         XCTAssertEqual(noteListController.numberOfNotes, 2)
 
-        noteListController.filter = .search(keyword: "34")
+        noteListController.filter = .search(query: SearchQuery(searchText: "34"))
         noteListController.performFetch()
 
         XCTAssertEqual(noteListController.numberOfNotes, 1)
@@ -128,7 +129,7 @@ extension NoteListControllerTests {
         note.deleted = true
         storage.save()
 
-        noteListController.filter = .search(keyword: "Here") 
+        noteListController.filter = .search(query: SearchQuery(searchText: "Here"))
         noteListController.performFetch()
         XCTAssertEqual(noteListController.numberOfNotes, .zero)
     }
@@ -160,7 +161,7 @@ extension NoteListControllerTests {
         storage.save()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.filter = .search(keyword: "0")
+        noteListController.filter = .search(query: SearchQuery(searchText: "0"))
         noteListController.performFetch()
 
         for (index, payload) in expected.enumerated() {
@@ -175,7 +176,7 @@ extension NoteListControllerTests {
         insertSampleNotes(count: 100)
         storage.save()
 
-        noteListController.filter = .search(keyword: "055")
+        noteListController.filter = .search(query: SearchQuery(searchText: "055"))
         noteListController.performFetch()
         XCTAssertEqual(noteListController.numberOfNotes, 1)
 
@@ -208,7 +209,7 @@ extension NoteListControllerTests {
         storage.save()
 
         // This is a specific keyword contained by eeeevery siiiiinnnnngle entity!
-        noteListController.filter = .search(keyword: "0")
+        noteListController.filter = .search(query: SearchQuery(searchText: "0"))
         noteListController.performFetch()
 
         for (index, note) in notes.enumerated() {
@@ -291,7 +292,7 @@ extension NoteListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.filter = .search(keyword: "Test")
+        noteListController.filter = .search(query: SearchQuery(searchText: "Test"))
         noteListController.performFetch()
 
         storage.insertSampleNote(contents: "Test")
@@ -310,7 +311,7 @@ extension NoteListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.filter = .search(keyword: "Test")
+        noteListController.filter = .search(query: SearchQuery(searchText: "Test"))
         note.content = "Test Updated"
         storage.save()
 
@@ -327,7 +328,7 @@ extension NoteListControllerTests {
             IndexPath(index: .zero)
         ]))
 
-        noteListController.filter = .search(keyword: "Test")
+        noteListController.filter = .search(query: SearchQuery(searchText: "Test"))
         storage.delete(note)
         storage.save()
 

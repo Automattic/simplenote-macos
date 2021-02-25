@@ -17,12 +17,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "All Notes";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "Alphabetically: A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "Alphabetically: Z-A";
-
 /* Link to sign in to an account */
 "Already have an account?" = "Already have an account?";
 
@@ -149,6 +143,12 @@
    Trash Menu Action */
 "Move to Trash" = "Move to Trash";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Name: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Name: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "Need an account?";
 
@@ -230,9 +230,8 @@
 /* Title -> Review you account screen */
 "Review Your Account" = "Review Your Account";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
-"Search" = "Search";
+/* Search Field Placeholder */
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Searching";
@@ -257,9 +256,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Skip";
-
-/* Sortbar Title */
-"Sort" = "Sort";
 
 /* Tags Section Name */
 "Tags" = "Tags";

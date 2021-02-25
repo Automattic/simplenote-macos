@@ -99,7 +99,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self setupScrollView];
     [self setupStatusImageView];
     [self setupTagsField];
-    [self setupToolbarView];
 
     // Preload Markdown Preview
     self.markdownViewController = [MarkdownViewController new];
@@ -215,9 +214,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         // Force selection to start; not doing this can cause an NSTextStorage exception when
         // switching away from long notes (> 5000 characters)
         [self.noteEditor setSelectedRange:NSMakeRange(0, 0)];
-        [self.noteEditor displayNoteWithContent:self.note.content];
+        [self displayContent:self.note.content];
     } else {
-        [self.noteEditor displayNoteWithContent:@""];
+        [self displayContent:nil];
     }
 
     [self.storage refreshStyleWithMarkdownEnabled:self.note.markdown];
@@ -234,7 +233,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     self.note = nil;
     self.selectedNotes = notes;
-    [self.noteEditor displayNoteWithContent:@""];
+    [self displayContent:nil];
 
     [self refreshToolbarActions];
     [self refreshEditorActions];
@@ -258,7 +257,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
-    [self ensureSearchIsDismissed];
 }
 
 - (void)tagsDidLoad:(NSNotification *)notification
@@ -267,7 +265,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self refreshEditorActions];
     [self refreshToolbarActions];
     [self refreshTagsFieldActions];
-    [self ensureSearchIsDismissed];
 }
 
 - (void)tagUpdated:(NSNotification *)notification
@@ -372,7 +369,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
                                              oldText:self.noteContentBeforeRemoteUpdate
                                      currentLocation:self.cursorLocationBeforeRemoteUpdate];
 
-    [self.noteEditor displayNoteWithContent:self.note.content];
+    [self displayContent:self.note.content];
     self.noteEditor.selectedRange = NSMakeRange(newLocation, 0);
     [self refreshTagsField];
 }
@@ -456,15 +453,15 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     [SPTracker trackEditorNoteCreated];
 
-    
     // Save current note first
     self.note.content = [self.noteEditor plainTextContent];
     [self save];
 
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
     [appDelegate ensureMainWindowIsVisible:nil];
-    
-    Note *newNote = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:appDelegate.simperium.managedObjectContext];
+
+    Simperium *simperium = appDelegate.simperium;
+    Note *newNote = [simperium.notesBucket insertNewObject];
     newNote.modificationDate = [NSDate date];
     newNote.creationDate = [NSDate date];
     newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
@@ -474,10 +471,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         [newNote addTag:currentTag];
     }
 
-    [self ensureSearchIsDismissed];
-    [self displayNote:newNote];
-    [self save];
+    [simperium save];
 
+    [self displayNote:newNote];
     [self.noteActionsDelegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
 
     [self.view.window makeFirstResponder:self.noteEditor];
@@ -604,6 +600,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self startObservingEditorProperties:editor];
 
     _noteEditor = editor;
+
+    [self observeEditorIsFirstResponder];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -650,7 +648,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (void)fixChecklistColoring
 {
     NSString *content = [self.noteEditor plainTextContent];
-    [self.noteEditor displayNoteWithContent:content];
+    [self displayContent:content];
 }
 
 

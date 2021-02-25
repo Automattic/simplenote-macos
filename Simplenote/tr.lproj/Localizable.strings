@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-21 15:54:04+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "Tüm Notlar";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "Alfabetik: A-Z";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "Alfabetik: Z'den A'ya";
-
 /* Link to sign in to an account */
 "Already have an account?" = "Hesabınız zaten var mı?";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "İptal";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "Hesap Onaylanamıyor";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "Doğrulama E-postası Gönderilemiyor";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "Hesap E-postasını Değiştir";
+
 /* Number of characters in the note */
 "Characters" = "Karakter";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "Bilgi topla";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "Onayla";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "Şifreyi Doğrula";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "Çöpe taşı";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "Ad: A-Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "Ad: Z-A";
+
 /* Link to create an account */
 "Need an account?" = "Hesap mı istiyorsunuz?";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Geçerli bir e-posta adresi değil";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "Tamam";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "Lütfen WordPress.com hesabınızı e-posta aracılığıyla etkinleştirin ve tekrar deneyin.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "Lütfen ağ ayarlarınızı kontrol edip tekrar deneyin.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "Gizlilik politikası";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "Etiketi Yeniden Adlandır";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "E-postayı yeniden gönder";
+
 /* Password Reset: Proceed */
 "Reset" = "Sıfırla";
 
@@ -213,9 +232,11 @@
    Tooltip: Restore a trashed note */
 "Restore" = "Geri yükle";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
-"Search" = "Arama";
+/* Title -> Review you account screen */
+"Review Your Account" = "Hesabınızı İnceleyin";
+
+/* Search Field Placeholder */
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Arama";
@@ -240,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Atla";
-
-/* Sortbar Title */
-"Sort" = "Sırala";
 
 /* Tags Section Name */
 "Tags" = "Etiketler";
@@ -278,6 +296,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "Etiketsiz Notlar";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "Eposta Adresinizi Doğrulayın";
+
 /* Label for the current version of a note */
 "Version" = "Sürüm";
 
@@ -290,11 +311,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "Sorun yaşanıyor. Lütfen kısa bir süre sonra tekrar deneyin.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "%1$@ adresine bir doğrulama e-postası gönderdik. Lütfen gelen kutunuzu kontrol edin ve talimatları izleyin.";
+
 /* Number of words in the note */
 "Words" = "Sözcük";
 
 /* Hiring Title */
 "Work with Us" = "Bizimle Çalışın";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "%1$@ e-postasını kullanarak Simplenote'a kaydoldunuz.\n\nBu e-posta adresine artık erişiminiz yoksa, hesap güvenliğindeki iyileştirmeler hesap kaybına neden olabilir.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "İnternet'e bağlandınız";

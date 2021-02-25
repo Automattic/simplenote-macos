@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 18:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -22,12 +22,6 @@
    Title of the view that displays all your notes */
 "All Notes" = "كل الملاحظات";
 
-/* Sort Mode: Alphabetically, ascending */
-"Alphabetically: A-Z" = "أبجديًا: أ-ي";
-
-/* Sort Mode: Alphabetically, descending */
-"Alphabetically: Z-A" = "أبجديًا: أ-ي";
-
 /* Link to sign in to an account */
 "Already have an account?" = "ألديك حساب بالفعل؟";
 
@@ -44,6 +38,15 @@
    Password Reset: Cancel */
 "Cancel" = "إلغاء";
 
+/* Error message title. Review you account screen */
+"Cannot Confirm Account" = "يتعذر تأكيد الحساب";
+
+/* Error message title. Verify your email screen */
+"Cannot Send Verification Email" = "يتعذر إرسال رسالة البريد الإلكتروني الخاصة بالتحقُّق";
+
+/* Change email button -> Review you account screen */
+"Change Account Email" = "تغيير البريد الإلكتروني للحساب";
+
 /* Number of characters in the note */
 "Characters" = "أحرف";
 
@@ -52,6 +55,9 @@
 
 /* Analytics Toggle Text */
 "Collect Information" = "جمع المعلومات";
+
+/* Confirm button -> Review you account screen */
+"Confirm" = "تأكيد";
 
 /* Placeholder text for confirmation field */
 "Confirm Password" = "تأكيد كلمة المرور";
@@ -142,6 +148,12 @@
    Trash Menu Action */
 "Move to Trash" = "نقل إلى سلة المهملات";
 
+/* Sort Mode: Alphabetically, ascending */
+"Name: A-Z" = "الاسم: من A إلى Z";
+
+/* Sort Mode: Alphabetically, descending */
+"Name: Z-A" = "الاسم: من Z إلى A";
+
 /* Link to create an account */
 "Need an account?" = "هل أنت بحاجة إلى حساب؟";
 
@@ -160,7 +172,8 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "ليس بريدًا إلكترونيًا صالحًا";
 
-/* OK button in error alert dialog */
+/* Dismisses an AlertController
+   OK button in error alert dialog */
 "OK" = "موافق";
 
 /* Placeholder text for password field */
@@ -185,6 +198,9 @@
 /* Error message displayed when user has not verified their WordPress.com account */
 "Please activate your WordPress.com account via email and try again." = "يرجى تنشيط حساب ووردبريس.كوم الخاص بك عبر البريد الإلكتروني والمحاولة مجددًا.";
 
+/* Error message. Account verification */
+"Please check your network settings and try again." = "يرجى التحقُّق من إعدادات الشبكة لديك والمحاولة مرة أخرى.";
+
 /* Privacy Policy's Title */
 "Privacy Policy" = "سياسة الخصوصية";
 
@@ -206,6 +222,9 @@
 /* Rename Tag Action */
 "Rename Tag" = "إعادة تسمية الوسم";
 
+/* Resend email button -> Verify your email screen */
+"Resend Email" = "إعادة إرسال البريد الإلكتروني";
+
 /* Password Reset: Proceed */
 "Reset" = "استعادة";
 
@@ -213,9 +232,11 @@
    Tooltip: Restore a trashed note */
 "Restore" = "استعادة";
 
-/* Search Field Placeholder
-   Tooltip: Search Action */
-"Search" = "بحث";
+/* Title -> Review you account screen */
+"Review Your Account" = "مراجعة حسابك";
+
+/* Search Field Placeholder */
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "البحث";
@@ -240,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "تخطي";
-
-/* Sortbar Title */
-"Sort" = "فرز";
 
 /* Tags Section Name */
 "Tags" = "وسوم";
@@ -278,6 +296,9 @@
 /* Untagged Notes Filter */
 "Untagged Notes" = "ملحوظات غير مميزة";
 
+/* Title -> Verify your email screen */
+"Verify Your Email" = "التحقُّق من بريدك الإلكتروني";
+
 /* Label for the current version of a note */
 "Version" = "النسخة";
 
@@ -290,11 +311,17 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "لدينا مشكلات. يُرجى المحاولة مرة أخرى لاحقًا.";
 
+/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+"We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "لقد أرسلنا بريدًا إلكترونيًا للتحقق إلى %1$@. يرجى التحقُّق من علبة الوارد لديك واتباع الإرشادات.";
+
 /* Number of words in the note */
 "Words" = "الكلمات";
 
 /* Hiring Title */
 "Work with Us" = "العمل معنا";
+
+/* Message -> Review you account screen. Parameter: %1$@ - email address */
+"You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "لقد قمت بالتسجيل في Simplenote باستخدام البريد الإلكتروني %1$@.\n\nقد تؤدي التحسينات التي يتم إجراؤها على أمان الحساب إلى فقدان الحساب إذا لم يعد لديك حق الوصول إلى عنوان البريد الإلكتروني هذا.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "أنتَ غير متصل بالإنترنت";

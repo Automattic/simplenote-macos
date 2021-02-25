@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-20 13:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: es */
@@ -32,9 +32,6 @@
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
 "150.title" = "Mostrar todo";
-
-/* Class = "NSMenuItem"; title = "Sign Out"; ObjectID = "1541"; Note = "Signs out from the Account"; */
-"1541.title" = "Cerrar sesion";
 
 /* Class = "NSMenuItem"; title = "New"; ObjectID = "1654"; Note = "Adds a New Note"; */
 "1654.title" = "Nuevo";
@@ -228,8 +225,8 @@
 /* Class = "NSMenuItem"; title = "Note"; ObjectID = "83"; Note = "Opens the Note Actions Menu"; */
 "83.title" = "Nota";
 
-/* Class = "NSMenuItem"; title = "Alphabetically: A-Z"; ObjectID = "AuW-hU-J6R"; Note = "Toggles Alphabetical Note Sort Order"; */
-"AuW-hU-J6R.title" = "Alfabéticamente: A-Z";
+/* Class = "NSMenuItem"; title = "Name: Z-A"; ObjectID = "BFX-rl-bcH"; */
+"BFX-rl-bcH.title" = "Nombre: Z-A";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
@@ -248,6 +245,9 @@
 
 /* Class = "NSMenuItem"; title = "Line Length"; ObjectID = "P9P-ed-21W"; */
 "P9P-ed-21W.title" = "Longitud de la línea";
+
+/* Class = "NSMenuItem"; title = "Log Out"; ObjectID = "Pde-gm-aAD"; Note = "Logs out from the Account"; */
+"Pde-gm-aAD.title" = "Salir";
 
 /* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
 "Pwd-hR-fBt.title" = "Exportar todo";
@@ -272,6 +272,9 @@
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "THl-80-myZ"; Note = "Opens the Format Menu"; */
 "THl-80-myZ.title" = "Formato";
+
+/* Class = "NSMenuItem"; title = "Name: A-Z"; ObjectID = "XEL-Qt-3Ik"; Note = "Toggles Alphabetical Note Sort Order"; */
+"XEL-Qt-3Ik.title" = "Nombre: A-Z";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
 "YpJ-fs-p4p.title" = "Clasificación de notas";
@@ -311,9 +314,6 @@
 
 /* Class = "NSMenuItem"; title = "Dark"; ObjectID = "qcT-FY-eHe"; Note = "Toggles Dark Mode"; */
 "qcT-FY-eHe.title" = "Oscuro";
-
-/* Class = "NSMenuItem"; title = "Alphabetically: Z-A"; ObjectID = "riY-RT-IN8"; */
-"riY-RT-IN8.title" = "Alfabéticamente: Z-A";
 
 /* Class = "NSMenuItem"; title = "Modified: Oldest"; ObjectID = "ssB-vH-kwg"; */
 "ssB-vH-kwg.title" = "Modificado: Más antiguo";

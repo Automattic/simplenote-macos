@@ -7,8 +7,8 @@ extension NSColor {
 
     /// Initializes a new NSColor instance with a given ColorStudio value
     ///
-    convenience init(studioColor: ColorStudio) {
-        self.init(hexString: studioColor.rawValue)
+    convenience init(studioColor: ColorStudio, alpha: CGFloat = AppKitConstants.alpha1_0) {
+        self.init(hexString: studioColor.rawValue, alpha: alpha)
     }
 }
 
@@ -33,13 +33,25 @@ extension NSColor {
     /// Initializes a new dynamic NSColor instance that will automatically react to Appearance changes
     /// Note: In `macOS <10.15` this API will always return the NSColor matching the `Current` Appearance
     ///
-    static func dynamicColor(lightStudio: ColorStudio, darkStudio: ColorStudio) -> NSColor {
+    static func dynamicColor(lightStudio: ColorStudio,
+                             darkStudio: ColorStudio,
+                             lightColorAlpha: CGFloat = AppKitConstants.alpha1_0,
+                             darkColorAlpha: CGFloat = AppKitConstants.alpha1_0) -> NSColor {
+        let colorProvider: (_ isDark: Bool) -> (value: ColorStudio, alpha: CGFloat) = { isDark in
+            if isDark {
+                return (darkStudio, darkColorAlpha)
+            }
+            return (lightStudio, lightColorAlpha)
+        }
+
         guard #available(macOS 10.15, *) else {
-            return NSColor(studioColor: SPUserInterface.isDark ? darkStudio : lightStudio)
+            let targetColor = colorProvider(SPUserInterface.isDark)
+            return NSColor(studioColor: targetColor.value, alpha: targetColor.alpha)
         }
 
         return NSColor(name: nil) {
-            NSColor(studioColor: $0.isDark ? darkStudio : lightStudio)
+            let targetColor = colorProvider($0.isDark)
+            return NSColor(studioColor: targetColor.value, alpha: targetColor.alpha)
         }
     }
 }
@@ -71,7 +83,7 @@ extension NSColor {
 
     @objc
     static var simplenoteSelectedBackgroundColor: NSColor {
-        dynamicColor(lightStudio: .spBlue5, darkStudio: .spBlue50)
+        dynamicColor(lightStudio: .spBlue5, darkStudio: .spBlue50, darkColorAlpha: AppKitConstants.alpha0_4)
     }
 
     @objc
@@ -91,12 +103,17 @@ extension NSColor {
 
     @objc
     static var simplenoteDividerColor: NSColor {
-        dynamicColor(lightStudio: .gray10, darkStudio: .black)
+        dynamicColor(lightStudio: .gray5, darkStudio: .black)
     }
 
     @objc
     static var simplenoteSecondaryDividerColor: NSColor {
         dynamicColor(lightColor: simplenoteSecondaryDividerLightColor, darkColor: simplenoteSecondaryDividerDarkColor)
+    }
+
+    @objc
+    static var simplenoteSidebarDividerColor: NSColor {
+        dynamicColor(lightColor: simplenoteSidebarDividerLightColor, darkColor: .black)
     }
 
     @objc
@@ -161,6 +178,27 @@ extension NSColor {
 
         return output ?? .simplenoteBrandColor
     }
+
+    static var simplenoteExcerptHighlightColor: NSColor {
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30)
+    }
+
+    static var simplenoteSelectedExcerptHighlightColor: NSColor {
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue20)
+    }
+
+    static var simplenoteEditorSearchHighlightColor: NSColor {
+        dynamicColor(lightStudio: .spBlue5, darkStudio: .spBlue50, darkColorAlpha: AppKitConstants.alpha0_5)
+    }
+
+    static var simplenoteSearchBarBackgroundColor: NSColor {
+        dynamicColor(lightStudio: .gray5, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_1, darkColorAlpha: AppKitConstants.alpha0_05)
+    }
+
+    @objc
+    static var simplenoteSearchBarHighlightedBorderColor: NSColor {
+        dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30, lightColorAlpha: AppKitConstants.alpha0_4, darkColorAlpha: AppKitConstants.alpha0_4)
+    }
 }
 
 
@@ -202,6 +240,10 @@ private extension NSColor {
 
     static var simplenoteSecondaryDividerDarkColor: NSColor {
         NSColor(calibratedWhite: 255.0, alpha: 0.1)
+    }
+
+    static var simplenoteSidebarDividerLightColor: NSColor {
+        NSColor(calibratedWhite: 0.0, alpha: 0.1)
     }
 
     static var simplenoteTokenBackgroundLightColor: NSColor {
