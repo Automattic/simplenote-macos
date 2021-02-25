@@ -1,11 +1,3 @@
-//
-//  LoginWindowController.m
-//  Simplenote
-//
-//  Created by Jorge Leandro Perez on 10/26/15.
-//  Copyright © 2015 Simperium. All rights reserved.
-//
-
 #import "LoginWindowController.h"
 #import "SPConstants.h"
 #import "SPTracker.h"
@@ -26,8 +18,8 @@ static CGFloat const SPAuthenticationFieldHeight        = 40.0f;
 
 static CGFloat const SPAuthenticationProgressSize       = 20.0f;
 
-static CGFloat const SPLoginWPButtonWidth           = 270.0f;
-static NSString *SPAuthSessionKey                   = @"SPAuthSessionKey";
+static CGFloat const SPLoginWPButtonWidth               = 270.0f;
+static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
 
 
 #pragma mark - Private
