@@ -55,13 +55,16 @@ class NoteListViewController: NSViewController {
     ///
     weak var searchDelegate: NoteListSearchDelegate?
 
-
     var isActive: Bool = false {
         didSet {
+            if isActive && searchField.currentEditor() != nil {
+                isActive = false
+            }
+
             guard oldValue != isActive else {
                 return
             }
-            
+
             for row in 0..<tableView.numberOfRows {
                 let rowView = tableView.rowView(atRow: row, makeIfNecessary: false) as? TableRowView
                 rowView?.isActive = isActive
