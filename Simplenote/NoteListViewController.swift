@@ -518,6 +518,15 @@ extension NoteListViewController: SPTableViewDelegate {
         ///     5.  Same as scenario #1, this ends up refreshing the Editor, and invoking `save()`
         ///     6.  Because of the re-entrant `save()` OP, this scenario will also produce an exception
         ///
+
+        /// We need the following code to avoid text editor scroll animation when using keyboard to select a note from the list
+        /// No other methods are working :facepalm:
+        if let window = view.window,
+           NSApp.currentEvent?.type == .some(.keyDown),
+           let event = NSEvent.otherEvent(with: .applicationDefined, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: window.windowNumber, context: nil, subtype: 0, data1: 0, data2: 0) {
+            NSApp.postEvent(event, atStart: true)
+        }
+
         DispatchQueue.main.async {
             self.refreshPresentedNote()
         }
