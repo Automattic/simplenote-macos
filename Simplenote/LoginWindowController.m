@@ -78,18 +78,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     self.changeToSignUpButton.action = @selector(toggleAuthenticationMode:);
 
 
-// TODO:
-// -    Use signUpButton + changeToSignInField for both actions
-//
-//        self.signUpButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-//        self.signUpButton.target = self;
-//        self.signUpButton.action = @selector(signUpAction:);
-//
-//        // Toggle SignIn
-//        NSString *signInTip = NSLocalizedString(@"Already have an account?", @"Link to sign in to an account");
-//        self.changeToSignInField.stringValue = signInTip;
-//        self.changeToSignInField.textColor = [NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0];
-
     // Make the window a bit taller than the default to make room for the wp.com button
     NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
 
@@ -158,11 +146,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (void)refreshFields {
     // Refresh Buttons
-    [self.signInButton setHidden:!_signingIn];
-    [self.signInButton setEnabled:_signingIn];
-    [self.changeToSignUpButton setHidden:!_signingIn];
-    [self.changeToSignUpButton setEnabled:_signingIn];
-    [self.changeToSignUpField setHidden:!_signingIn];
+    [self refreshButtons];
 
     // Remove any pending errors
     [self clearAuthenticationError];
@@ -171,11 +155,25 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self.passwordField setHidden:!_signingIn];
 
     // Forgot Password
-    BOOL shouldDisplayForgotPassword = _signingIn && [[SPAuthenticationConfiguration sharedInstance] forgotPasswordURL];
-    [self.forgotPasswordButton setHidden:!shouldDisplayForgotPassword];
+    [self.forgotPasswordButton setHidden:!_signingIn];
 
     // Refresh the entire View
     [self.window.contentView setNeedsDisplay:YES];
+}
+
+- (void)refreshButtons {
+    NSString *signInText    = NSLocalizedString(@"Log In", @"Title of button for logging in");;
+    NSString *signUpText    = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
+    NSString *signInTip     = [NSLocalizedString(@"Already have an account?", @"Link to sign in to an account") uppercaseString];
+    NSString *signUpTip     = [NSLocalizedString(@"Need an account?", @"Link to create an account") uppercaseString];
+
+    NSString *actionText    = self.signingIn ? signInText : signUpText;
+    NSString *tipText       = self.signingIn ? signUpTip  : signInTip;
+    NSString *switchText    = self.signingIn ? signUpText : signInText;
+
+    self.signInButton.title = actionText;
+    self.changeToSignUpField.stringValue = tipText;
+    self.changeToSignUpButton.attributedTitle = [self buttonAttributedText:switchText];
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
@@ -222,6 +220,15 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 
 #pragma mark - Actions
+
+- (IBAction)performMainAction:(id)sender {
+    if (self.signingIn) {
+        [self signInAction:sender];
+        return;
+    }
+
+    [self signUpAction:sender];
+}
 
 - (IBAction)signInAction:(id)sender {
     [SPTracker trackUserSignedIn];
