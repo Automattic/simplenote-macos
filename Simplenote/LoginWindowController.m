@@ -16,11 +16,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 @property (nonatomic, strong) IBOutlet NSTextField                  *errorField;
 @property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *usernameField;
 @property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *passwordField;
-@property (nonatomic, strong) IBOutlet NSTextField                  *changeToSignUpField;
-@property (nonatomic, strong) IBOutlet NSButton                     *signInButton;
-@property (nonatomic, strong) IBOutlet NSProgressIndicator          *signInProgress;
+@property (nonatomic, strong) IBOutlet NSButton                     *actionButton;
+@property (nonatomic, strong) IBOutlet NSProgressIndicator          *actionProgress;
 @property (nonatomic, strong) IBOutlet NSButton                     *forgotPasswordButton;
-@property (nonatomic, strong) IBOutlet NSButton                     *changeToSignUpButton;
+@property (nonatomic, strong) IBOutlet NSTextField                  *switchTipField;
+@property (nonatomic, strong) IBOutlet NSButton                     *switchActionButton;
 @property (nonatomic, strong) IBOutlet NSButton                     *wordPressSSOButton;
 @property (nonatomic, assign) BOOL                                  isAnimatingProgress;
 @end
@@ -56,9 +56,9 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self.passwordField setPlaceholderString:NSLocalizedString(@"Password", @"Placeholder text for password field")];
     self.passwordField.delegate = self;
 
-    self.signInButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
-    self.signInButton.target = self;
-    self.signInButton.action = @selector(signInAction:);
+    self.actionButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
+    self.actionButton.target = self;
+    self.actionButton.action = @selector(signInAction:);
 
     // Forgot Password!
     NSString *forgotText = NSLocalizedString(@"Forgot your Password?", @"Forgot Password Button");
@@ -68,15 +68,14 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
     // Toggle Signup: Tip
     NSString *signUpTip = NSLocalizedString(@"Need an account?", @"Link to create an account");
-    self.changeToSignUpField.stringValue = [signUpTip uppercaseString];
-    self.changeToSignUpField.textColor = [NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0];
+    self.switchTipField.stringValue = [signUpTip uppercaseString];
+    self.switchTipField.textColor = [NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0];
 
     // Toggle Signup: Action
     NSString *toggleSignupText = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-    self.changeToSignUpButton.attributedTitle = [self buttonAttributedText:toggleSignupText];
-    self.changeToSignUpButton.target = self;
-    self.changeToSignUpButton.action = @selector(toggleAuthenticationMode:);
-
+    self.switchActionButton.attributedTitle = [self buttonAttributedText:toggleSignupText];
+    self.switchActionButton.target = self;
+    self.switchActionButton.action = @selector(toggleAuthenticationMode:);
 
     // Make the window a bit taller than the default to make room for the wp.com button
     NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
@@ -171,14 +170,14 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     NSString *tipText       = self.signingIn ? signUpTip  : signInTip;
     NSString *switchText    = self.signingIn ? signUpText : signInText;
 
-    self.signInButton.title = actionText;
-    self.changeToSignUpField.stringValue = tipText;
-    self.changeToSignUpButton.attributedTitle = [self buttonAttributedText:switchText];
+    self.actionButton.title = actionText;
+    self.switchTipField.stringValue = tipText;
+    self.switchActionButton.attributedTitle = [self buttonAttributedText:switchText];
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
-    [self.signInButton setEnabled:enabled];
-    [self.changeToSignUpButton setEnabled:enabled];
+    [self.actionButton setEnabled:enabled];
+    [self.switchActionButton setEnabled:enabled];
     [self.usernameField setEnabled:enabled];
     [self.passwordField setEnabled:enabled];
 }
@@ -265,26 +264,26 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 #pragma mark - Displaying Porgress
 
 - (void)startLoginAnimation {
-    self.signInButton.title = NSLocalizedString(@"Logging In...", @"Displayed temporarily while logging in");
-    [self.signInProgress startAnimation:self];
+    self.actionButton.title = NSLocalizedString(@"Logging In...", @"Displayed temporarily while logging in");
+    [self.actionProgress startAnimation:self];
     self.isAnimatingProgress = YES;
 }
 
 - (void)stopLoginAnimation {
-    self.signInButton.title = NSLocalizedString(@"Log In", @"Title of button for login");
-    [self.signInProgress stopAnimation:self];
+    self.actionButton.title = NSLocalizedString(@"Log In", @"Title of button for login");
+    [self.actionProgress stopAnimation:self];
     self.isAnimatingProgress = NO;
 }
 
 - (void)startSignupAnimation {
-    self.signInButton.title = NSLocalizedString(@"Signing Up...", @"Displayed temoprarily while signing up");
-    [self.signInProgress startAnimation:self];
+    self.actionButton.title = NSLocalizedString(@"Signing Up...", @"Displayed temoprarily while signing up");
+    [self.actionProgress startAnimation:self];
     self.isAnimatingProgress = YES;
 }
 
 - (void)stopSignupAnimation {
-    self.signInButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-    [self.signInProgress stopAnimation:self];
+    self.actionButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
+    [self.actionProgress stopAnimation:self];
     self.isAnimatingProgress = NO;
 }
 

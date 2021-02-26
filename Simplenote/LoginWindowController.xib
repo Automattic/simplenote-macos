@@ -8,14 +8,14 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController">
             <connections>
-                <outlet property="changeToSignUpButton" destination="Ftn-jT-SMD" id="jex-7j-5mx"/>
-                <outlet property="changeToSignUpField" destination="lcb-YX-nf2" id="Eh0-dr-Cv7"/>
+                <outlet property="actionButton" destination="BZx-n2-0up" id="WkO-k2-BN1"/>
+                <outlet property="actionProgress" destination="ndK-j7-hqV" id="Pch-wZ-wdq"/>
                 <outlet property="errorField" destination="Sve-Wg-daO" id="UUl-Jx-Nsj"/>
                 <outlet property="forgotPasswordButton" destination="vyy-1P-J8b" id="CTN-ZV-Gov"/>
                 <outlet property="logoImageView" destination="4GD-2z-TtL" id="fQT-5b-5Yw"/>
                 <outlet property="passwordField" destination="FQS-TT-U1K" id="RA9-18-apK"/>
-                <outlet property="signInButton" destination="BZx-n2-0up" id="2RJ-rd-EBG"/>
-                <outlet property="signInProgress" destination="ndK-j7-hqV" id="fY9-SW-KRG"/>
+                <outlet property="switchActionButton" destination="Ftn-jT-SMD" id="1HT-69-eTV"/>
+                <outlet property="switchTipField" destination="lcb-YX-nf2" id="VTb-gs-Afb"/>
                 <outlet property="usernameField" destination="4O1-9J-6E0" id="lGk-lf-evn"/>
                 <outlet property="window" destination="t2s-9v-4GP" id="4HU-rR-R3z"/>
                 <outlet property="wordPressSSOButton" destination="KRK-gN-wNA" id="wKN-5k-ob3"/>
@@ -70,7 +70,7 @@
                             <constraint firstAttribute="height" constant="40" id="Rq2-Gu-19K"/>
                             <constraint firstAttribute="width" constant="320" id="epR-Ib-Nfk"/>
                         </constraints>
-                        <buttonCell key="cell" type="bevel" title="[Sign In]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="KE5-s2-LbJ" customClass="SPAuthenticationButtonCell">
+                        <buttonCell key="cell" type="bevel" title="[Main Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="KE5-s2-LbJ" customClass="SPAuthenticationButtonCell">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
