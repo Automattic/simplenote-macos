@@ -217,7 +217,8 @@ end
       workspace: WORKSPACE,
       scheme: INTERNAL_SCHEME,
       clean: true,
-      output_directory: "./build/")
+      output_directory: BUILD_FOLDER
+    )
 
     appcenter_upload(
       api_token: get_required_env("APPCENTER_API_TOKEN"),
