@@ -98,7 +98,6 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
         self.passwordField.delegate = self;
         [authView addSubview:self.passwordField];
 
-        markerY -= 30;
         self.signInButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*3, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
         self.signInButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
         self.signInButton.target = self;
@@ -110,7 +109,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
         [self.signInProgress setDisplayedWhenStopped:NO];
         [self.signInButton addSubview:self.signInProgress];
 
-        self.signUpButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*3, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
+        self.signUpButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*2, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
         self.signUpButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
         self.signUpButton.target = self;
         self.signUpButton.action = @selector(signUpAction:);
