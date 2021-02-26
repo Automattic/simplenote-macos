@@ -13,15 +13,15 @@ ENV["DOWNLOAD_METADATA"]="./fastlane/download_metadata.swift"
 
 USER_ENV_FILE_PATH = File.join(Dir.home, '.simplenotemacos-env.default')
 
-workspace = 'Simplenote.xcworkspace'
-internal_scheme = 'Simplenote'
-app_store_scheme = 'Simplenote-AppStore'
-build_folder = 'build'
+WORKSPACE = 'Simplenote.xcworkspace'
+INTERNAL_SCHEME = 'Simplenote'
+APP_STORE_SCHEME = 'Simplenote-AppStore'
+BUILD_FOLDER = 'build'
 
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
 # neccessary, it doesn't hurt on a dev machine either.
-skip_code_signing_xcargs = [
+SKIP_CODE_SIGNING_XCARGS = [
   'COMPILER_INDEX_STORE_ENABLE=NO',
   "CODE_SIGN_IDENTITY=''",
   'CODE_SIGNING_REQUIRED=NO',
@@ -46,24 +46,24 @@ end
 desc 'Runs the unit tests for the project'
 lane :test do | options |
   run_tests(
-    workspace: workspace,
-    scheme: internal_scheme,
+    workspace: WORKSPACE,
+    scheme: INTERNAL_SCHEME,
     clean: true,
-    xcargs: skip_code_signing_xcargs.join(' ')
+    xcargs: SKIP_CODE_SIGNING_XCARGS.join(' ')
   )
 end
 
 desc 'Builds the app for App Store distribution'
 lane :build_app_store do | options |
   build_mac_app(
-    workspace: workspace,
-    scheme: app_store_scheme,
+    workspace: WORKSPACE,
+    scheme: APP_STORE_SCHEME,
     configuration: 'Release',
     clean: true,
-    output_directory: build_folder,
+    output_directory: BUILD_FOLDER,
     # Skip archive so we don't need to worry about code signing
     skip_archive: true,
-    xcargs: skip_code_signing_xcargs.join(' ')
+    xcargs: SKIP_CODE_SIGNING_XCARGS.join(' ')
   )
 end
 
@@ -214,8 +214,8 @@ end
     cocoapods()
 
     build_app(
-      workspace: workspace,
-      scheme: internal_scheme,
+      workspace: WORKSPACE,
+      scheme: INTERNAL_SCHEME,
       clean: true,
       output_directory: "./build/")
 
