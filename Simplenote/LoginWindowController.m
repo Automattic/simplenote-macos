@@ -274,6 +274,9 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     // Remove any pending errors
     [self clearAuthenticationError];
 
+    // Password: Hide when Signing Up
+    [self.passwordField setHidden:!_signingIn];
+
     // Forgot Password
     BOOL shouldDisplayForgotPassword = _signingIn && [[SPAuthenticationConfiguration sharedInstance] forgotPasswordURL];
     [self.forgotPasswordButton setHidden:!shouldDisplayForgotPassword];
@@ -528,8 +531,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
 
 - (BOOL)validateSignUp {
     return [self validateConnection] &&
-           [self validateUsername] &&
-           [self validatePasswordSecurity];
+           [self validateUsername];
 }
 
 - (void)showAuthenticationError:(NSString *)errorMessage {
