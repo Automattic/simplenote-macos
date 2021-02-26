@@ -149,7 +149,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
         // Make the window a bit taller than the default to make room for the wp.com button
         NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
         NSButton *wpccButton = [[NSButton alloc] init];
-        [wpccButton setTitle:NSLocalizedString(@"Sign in with WordPress.com", @"button title for wp.com sign in button")];
+        [wpccButton setTitle:NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button")];
         [wpccButton setTarget:self];
         [wpccButton setAction:@selector(wpccSignInAction:)];
         [wpccButton setImage:wpIcon];
