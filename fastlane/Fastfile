@@ -21,11 +21,11 @@ BUILD_FOLDER = 'build'
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
 # neccessary, it doesn't hurt on a dev machine either.
-SKIP_CODE_SIGNING_XCARGS = [
-  'COMPILER_INDEX_STORE_ENABLE=NO',
-  "CODE_SIGN_IDENTITY=''",
-  'CODE_SIGNING_REQUIRED=NO',
-]
+SKIP_CODE_SIGNING_XCARGS = {
+  COMPILER_INDEX_STORE_ENABLE: 'NO',
+  CODE_SIGN_IDENTITY: '',
+  CODE_SIGNING_REQUIRED: 'NO',
+}
 
 # Use this instead of getting values from ENV directly
 # It will throw an error if the requested value is missing
@@ -49,7 +49,7 @@ lane :test do | options |
     workspace: WORKSPACE,
     scheme: INTERNAL_SCHEME,
     clean: true,
-    xcargs: SKIP_CODE_SIGNING_XCARGS.join(' ')
+    xcargs: SKIP_CODE_SIGNING_XCARGS
   )
 end
 
@@ -63,7 +63,7 @@ lane :build_app_store do | options |
     output_directory: BUILD_FOLDER,
     # Skip archive so we don't need to worry about code signing
     skip_archive: true,
-    xcargs: SKIP_CODE_SIGNING_XCARGS.join(' ')
+    xcargs: SKIP_CODE_SIGNING_XCARGS
   )
 end
 
