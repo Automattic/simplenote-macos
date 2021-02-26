@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController">
+            <connections>
+                <outlet property="changeToSignUpButton" destination="Ftn-jT-SMD" id="jex-7j-5mx"/>
+                <outlet property="changeToSignUpField" destination="lcb-YX-nf2" id="Eh0-dr-Cv7"/>
+                <outlet property="errorField" destination="Sve-Wg-daO" id="UUl-Jx-Nsj"/>
+                <outlet property="forgotPasswordButton" destination="vyy-1P-J8b" id="CTN-ZV-Gov"/>
+                <outlet property="logoImageView" destination="4GD-2z-TtL" id="fQT-5b-5Yw"/>
+                <outlet property="passwordField" destination="FQS-TT-U1K" id="RA9-18-apK"/>
+                <outlet property="signInButton" destination="BZx-n2-0up" id="2RJ-rd-EBG"/>
+                <outlet property="signInProgress" destination="ndK-j7-hqV" id="fY9-SW-KRG"/>
+                <outlet property="usernameField" destination="4O1-9J-6E0" id="lGk-lf-evn"/>
+                <outlet property="window" destination="t2s-9v-4GP" id="4HU-rR-R3z"/>
+                <outlet property="wordPressSSOButton" destination="KRK-gN-wNA" id="wKN-5k-ob3"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" appearanceType="aqua" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="t2s-9v-4GP">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
+            <rect key="contentRect" x="163" y="198" width="380" height="580"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <view key="contentView" id="Jvt-QE-qg3" customClass="SPAuthenticationView">
+                <rect key="frame" x="0.0" y="0.0" width="380" height="580"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4GD-2z-TtL">
+                        <rect key="frame" x="142" y="439" width="96" height="96"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="96" id="RwB-Pk-GjN"/>
+                            <constraint firstAttribute="width" constant="96" id="rq8-al-hpc"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_simplenote_login" id="rk2-Rd-ObM"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sve-Wg-daO">
+                        <rect key="frame" x="28" y="413" width="324" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="[Error Label]" id="j7x-tE-ZJk">
+                            <font key="font" metaFont="systemSemibold" size="13"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="4O1-9J-6E0" userLabel="Username TextField" customClass="SPAuthenticationTextField">
+                        <rect key="frame" x="30" y="359" width="320" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="ITq-gB-Qtq"/>
+                            <constraint firstAttribute="height" constant="40" id="V4Y-hO-QiN"/>
+                        </constraints>
+                    </customView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="FQS-TT-U1K" userLabel="Password TextField" customClass="SPAuthenticationTextField">
+                        <rect key="frame" x="30" y="309" width="320" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="KWt-8N-LjW"/>
+                            <constraint firstAttribute="height" constant="40" id="m4D-4o-vIx"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="secure" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BZx-n2-0up" userLabel="SignIn Button" customClass="SPAuthenticationButton">
+                        <rect key="frame" x="30" y="229" width="320" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Rq2-Gu-19K"/>
+                            <constraint firstAttribute="width" constant="320" id="epR-Ib-Nfk"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" title="[Sign In]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="KE5-s2-LbJ" customClass="SPAuthenticationButtonCell">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ndK-j7-hqV" userLabel="SignIn Progress Indicator">
+                        <rect key="frame" x="304" y="241" width="16" height="16"/>
+                    </progressIndicator>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vyy-1P-J8b" userLabel="ForgotPassword Button">
+                        <rect key="frame" x="30" y="194" width="320" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="GdN-BW-xUE"/>
+                            <constraint firstAttribute="height" constant="20" id="t1w-vZ-ViM"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" title="[Forgot]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="gWZ-sp-oTt">
+                            <behavior key="behavior" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcb-YX-nf2">
+                        <rect key="frame" x="28" y="144" width="324" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="gGC-cr-vht"/>
+                        </constraints>
+                        <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="[Switch Tip]" id="UVf-T6-6eF">
+                            <font key="font" metaFont="systemSemibold" size="13"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ftn-jT-SMD" userLabel="ForgotPassword Button">
+                        <rect key="frame" x="30" y="124" width="320" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Xh2-qq-DgV"/>
+                            <constraint firstAttribute="width" constant="320" id="mAL-sT-Ygd"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" title="[Switch Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="V9Z-oA-rzi">
+                            <behavior key="behavior" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KRK-gN-wNA" userLabel="WordPress SSO Button">
+                        <rect key="frame" x="30" y="40" width="320" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Pav-cC-7VH"/>
+                            <constraint firstAttribute="width" constant="320" id="uS5-vi-9Q1"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" title="[WordPress SSO]" bezelStyle="rounded" image="icon_wp" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="kQr-uO-bsP">
+                            <behavior key="behavior" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KRK-gN-wNA" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="33c-dQ-nhT"/>
+                    <constraint firstItem="4GD-2z-TtL" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="47Y-Ok-E6L"/>
+                    <constraint firstItem="vyy-1P-J8b" firstAttribute="top" secondItem="BZx-n2-0up" secondAttribute="bottom" constant="15" id="5aI-nw-5Tx"/>
+                    <constraint firstItem="4O1-9J-6E0" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="9Ps-rp-odT"/>
+                    <constraint firstItem="ndK-j7-hqV" firstAttribute="trailing" secondItem="BZx-n2-0up" secondAttribute="trailing" constant="-30" id="9nN-U3-A8L"/>
+                    <constraint firstItem="Ftn-jT-SMD" firstAttribute="top" secondItem="lcb-YX-nf2" secondAttribute="bottom" id="AhX-YE-YQJ"/>
+                    <constraint firstItem="4GD-2z-TtL" firstAttribute="top" secondItem="Jvt-QE-qg3" secondAttribute="top" constant="45" id="CNO-Ac-EsL"/>
+                    <constraint firstItem="Sve-Wg-daO" firstAttribute="width" secondItem="4O1-9J-6E0" secondAttribute="width" id="JAm-cT-e54"/>
+                    <constraint firstItem="FQS-TT-U1K" firstAttribute="top" secondItem="4O1-9J-6E0" secondAttribute="bottom" constant="10" id="Nvb-xN-crY"/>
+                    <constraint firstAttribute="bottom" secondItem="KRK-gN-wNA" secondAttribute="bottom" constant="40" id="SUx-az-4oO"/>
+                    <constraint firstItem="4O1-9J-6E0" firstAttribute="top" secondItem="4GD-2z-TtL" secondAttribute="bottom" constant="40" id="Tc0-0J-KUD"/>
+                    <constraint firstItem="lcb-YX-nf2" firstAttribute="width" secondItem="vyy-1P-J8b" secondAttribute="width" id="VhE-YT-Wdh"/>
+                    <constraint firstItem="Sve-Wg-daO" firstAttribute="top" secondItem="4GD-2z-TtL" secondAttribute="bottom" constant="10" id="VrE-70-ypO"/>
+                    <constraint firstItem="BZx-n2-0up" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="dQs-kQ-Qtl"/>
+                    <constraint firstItem="ndK-j7-hqV" firstAttribute="centerY" secondItem="BZx-n2-0up" secondAttribute="centerY" id="hOO-DR-R8r"/>
+                    <constraint firstItem="FQS-TT-U1K" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="iDf-zy-yHT"/>
+                    <constraint firstItem="lcb-YX-nf2" firstAttribute="top" secondItem="vyy-1P-J8b" secondAttribute="bottom" constant="30" id="ikS-EB-m0z"/>
+                    <constraint firstItem="BZx-n2-0up" firstAttribute="top" secondItem="FQS-TT-U1K" secondAttribute="bottom" constant="40" id="jfS-Jy-gXt"/>
+                    <constraint firstItem="vyy-1P-J8b" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="oe9-mL-ynj"/>
+                    <constraint firstItem="Ftn-jT-SMD" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="qKc-9X-Mwv"/>
+                    <constraint firstItem="Sve-Wg-daO" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="qhV-jH-IwZ"/>
+                    <constraint firstItem="lcb-YX-nf2" firstAttribute="centerX" secondItem="Jvt-QE-qg3" secondAttribute="centerX" id="v4S-UE-pzu"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="-441" y="-47"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="icon_simplenote_login" width="96" height="96"/>
+        <image name="icon_wp" width="32" height="32"/>
+    </resources>
+</document>

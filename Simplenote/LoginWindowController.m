@@ -6,40 +6,23 @@
 
 #pragma mark - Constants
 
-static CGFloat const SPAuthenticationWindowWidth        = 380.0f;
-static CGFloat const SPAuthenticationWindowHeight       = 580.0f;
-static CGFloat const SPAuthenticationRowSize            = 50;
-
-static CGFloat const SPAuthenticationCancelWidth        = 60.0f;
-
-static CGFloat const SPAuthenticationFieldPaddingX      = 30.0f;
-static CGFloat const SPAuthenticationFieldWidth         = SPAuthenticationWindowWidth - SPAuthenticationFieldPaddingX * 2;
-static CGFloat const SPAuthenticationFieldHeight        = 40.0f;
-
-static CGFloat const SPAuthenticationProgressSize       = 20.0f;
-
-static CGFloat const SPLoginWPButtonWidth               = 270.0f;
-static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
+static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 
 #pragma mark - Private
 
 @interface LoginWindowController () <NSTextFieldDelegate>
-@property (nonatomic, strong) NSImageView               *logoImageView;
-@property (nonatomic, strong) NSButton                  *cancelButton;
-@property (nonatomic, strong) SPAuthenticationTextField *usernameField;
-@property (nonatomic, strong) SPAuthenticationTextField *passwordField;
-@property (nonatomic, strong) NSTextField               *changeToSignInField;
-@property (nonatomic, strong) NSTextField               *changeToSignUpField;
-@property (nonatomic, strong) NSTextField               *errorField;
-@property (nonatomic, strong) NSButton                  *signInButton;
-@property (nonatomic, strong) NSButton                  *signUpButton;
-@property (nonatomic, strong) NSButton                  *forgotPasswordButton;
-@property (nonatomic, strong) NSButton                  *changeToSignInButton;
-@property (nonatomic, strong) NSButton                  *changeToSignUpButton;
-@property (nonatomic, strong) NSProgressIndicator       *signInProgress;
-@property (nonatomic, strong) NSProgressIndicator       *signUpProgress;
-@property (nonatomic, assign) BOOL                      isAnimatingProgress;
+@property (nonatomic, strong) IBOutlet NSImageView                  *logoImageView;
+@property (nonatomic, strong) IBOutlet NSTextField                  *errorField;
+@property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *usernameField;
+@property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *passwordField;
+@property (nonatomic, strong) IBOutlet NSTextField                  *changeToSignUpField;
+@property (nonatomic, strong) IBOutlet NSButton                     *signInButton;
+@property (nonatomic, strong) IBOutlet NSProgressIndicator          *signInProgress;
+@property (nonatomic, strong) IBOutlet NSButton                     *forgotPasswordButton;
+@property (nonatomic, strong) IBOutlet NSButton                     *changeToSignUpButton;
+@property (nonatomic, strong) IBOutlet NSButton                     *wordPressSSOButton;
+@property (nonatomic, assign) BOOL                                  isAnimatingProgress;
 @end
 
 
@@ -52,154 +35,76 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
-- (instancetype)init {
-    NSWindowStyleMask styleMask = NSWindowStyleMaskBorderless | NSWindowStyleMaskClosable | NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView;
-    CGRect windowFrame = NSMakeRect(0, 0, SPAuthenticationWindowWidth, SPAuthenticationWindowHeight);
-    SPAuthenticationWindow *window = [[SPAuthenticationWindow alloc] initWithContentRect:windowFrame styleMask:styleMask backing:NSBackingStoreBuffered defer:NO];
-
-    // We want the login window to always have the 'light' aqua appearance
-    window.appearance                 = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
-    window.titleVisibility            = NSWindowTitleHidden;
-    window.titlebarAppearsTransparent = YES;
-
-    if ((self = [super initWithWindow: window])) {
-        self.validator = [[SPAuthenticationValidator alloc] init];
-
-        SPAuthenticationView *authView = [[SPAuthenticationView alloc] initWithFrame:windowFrame];
-        [window.contentView addSubview:authView];
-
-        NSString *cancelButtonText = NSLocalizedString(@"Skip", @"Text to display on OSX cancel button");
-
-        self.cancelButton = [self linkButtonWithText:cancelButtonText frame:NSMakeRect(SPAuthenticationWindowWidth-SPAuthenticationCancelWidth, SPAuthenticationWindowHeight-5-20, SPAuthenticationCancelWidth, 20)];
-        self.cancelButton.target = self;
-        self.cancelButton.action = @selector(cancelAction:);
-        [authView addSubview:self.cancelButton];
-
-        NSImage *logoImage = [NSImage imageNamed:[[SPAuthenticationConfiguration sharedInstance] logoImageName]];
-        CGFloat markerY = SPAuthenticationWindowHeight-45-logoImage.size.height;
-        NSRect logoRect = NSMakeRect(SPAuthenticationWindowWidth * 0.5f - logoImage.size.width * 0.5f, markerY, logoImage.size.width, logoImage.size.height);
-        self.logoImageView = [[NSImageView alloc] initWithFrame:logoRect];
-        self.logoImageView.image = logoImage;
-        [authView addSubview:self.logoImageView];
-
-        self.errorField = [self tipFieldWithText:@"" frame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - 30, SPAuthenticationFieldWidth, 20)];
-        [self.errorField setTextColor:[NSColor redColor]];
-        [authView addSubview:self.errorField];
-
-        markerY -= 30;
-        self.usernameField = [[SPAuthenticationTextField alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight) secure:NO];
-        [self.usernameField setPlaceholderString:NSLocalizedString(@"Email", @"Placeholder text for login field")];
-        self.usernameField.delegate = self;
-        [authView addSubview:self.usernameField];
-
-        self.passwordField = [[SPAuthenticationTextField alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*2, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight) secure:YES];
-        [self.passwordField setPlaceholderString:NSLocalizedString(@"Password", @"Placeholder text for password field")];
-
-        self.passwordField.delegate = self;
-        [authView addSubview:self.passwordField];
-
-        self.signInButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*3, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
-        self.signInButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
-        self.signInButton.target = self;
-        self.signInButton.action = @selector(signInAction:);
-        [authView addSubview:self.signInButton];
-
-        self.signInProgress = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(self.signInButton.frame.size.width - SPAuthenticationProgressSize - SPAuthenticationFieldPaddingX, (self.signInButton.frame.size.height - SPAuthenticationProgressSize) * 0.5f, SPAuthenticationProgressSize, SPAuthenticationProgressSize)];
-        [self.signInProgress setStyle:NSProgressIndicatorStyleSpinning];
-        [self.signInProgress setDisplayedWhenStopped:NO];
-        [self.signInButton addSubview:self.signInProgress];
-
-        self.signUpButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*2, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
-        self.signUpButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-        self.signUpButton.target = self;
-        self.signUpButton.action = @selector(signUpAction:);
-        [authView addSubview:self.signUpButton];
-
-        self.signUpProgress = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(self.signUpButton.frame.size.width - SPAuthenticationProgressSize - SPAuthenticationFieldPaddingX, (self.signUpButton.frame.size.height - SPAuthenticationProgressSize) * 0.5f, SPAuthenticationProgressSize, SPAuthenticationProgressSize)];
-        [self.signUpProgress setStyle:NSProgressIndicatorStyleSpinning];
-        [self.signUpProgress setDisplayedWhenStopped:NO];
-        [self.signUpButton addSubview:self.signUpProgress];
-
-        // Forgot Password!
-        NSString *forgotText = NSLocalizedString(@"Forgot your Password?", @"Forgot Password Button");
-        self.forgotPasswordButton = [self linkButtonWithText:forgotText frame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*3 - 35, SPAuthenticationFieldWidth, 20)];
-        self.forgotPasswordButton.target = self;
-        self.forgotPasswordButton.action = @selector(forgotPassword:);
-        [authView addSubview:self.forgotPasswordButton];
-
-        // Toggle Signup
-        NSString *signUpTip = NSLocalizedString(@"Need an account?", @"Link to create an account");
-        self.changeToSignUpField = [self tipFieldWithText:signUpTip frame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*4 - 35, SPAuthenticationFieldWidth, 20)];
-        [authView addSubview:self.changeToSignUpField];
-
-        self.changeToSignUpButton = [self toggleButtonWithText:self.signUpButton.title frame:NSMakeRect(SPAuthenticationFieldPaddingX, self.changeToSignUpField.frame.origin.y - self.changeToSignUpField.frame.size.height - 2, SPAuthenticationFieldWidth, 30)];
-        [authView addSubview:self.changeToSignUpButton];
-
-        // Toggle SignIn
-        NSString *signInTip = NSLocalizedString(@"Already have an account?", @"Link to sign in to an account");
-        self.changeToSignInField = [self tipFieldWithText:signInTip frame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*4 - 35, SPAuthenticationFieldWidth, 20)];
-        [authView addSubview:self.changeToSignInField];
-
-        self.changeToSignInButton = [self toggleButtonWithText:self.signInButton.title frame:NSMakeRect(SPAuthenticationFieldPaddingX, self.changeToSignInField.frame.origin.y - self.changeToSignInField.frame.size.height - 2, SPAuthenticationFieldWidth, 30)];
-        [authView addSubview:self.changeToSignInButton];
-
-        // Enter sign up mode
-        [self toggleAuthenticationMode:self.signUpButton];
-
-        // Make the window a bit taller than the default to make room for the wp.com button
-        NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
-        NSButton *wpccButton = [[NSButton alloc] init];
-        [wpccButton setTitle:NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button")];
-        [wpccButton setTarget:self];
-        [wpccButton setAction:@selector(wpccSignInAction:)];
-        [wpccButton setImage:wpIcon];
-        [wpccButton setImagePosition:NSImageLeft];
-        [wpccButton setBordered:NO];
-        [wpccButton setFont:[NSFont systemFontOfSize:16.0]];
-
-        // A lot of code just to color the button text :|
-        NSMutableAttributedString *colorString = [[NSMutableAttributedString alloc] initWithAttributedString:[wpccButton attributedTitle]];
-        NSRange titleRange = NSMakeRange(0, [colorString length]);
-        NSColor *textColor = [NSColor colorWithCalibratedWhite:120.0/255.0 alpha:1.0];
-        [colorString addAttribute:NSForegroundColorAttributeName value:textColor range:titleRange];
-        [wpccButton setAttributedTitle:colorString];
-
-        CGFloat centerPosition = (authView.frame.size.width / 2) - (SPLoginWPButtonWidth / 2);
-        wpccButton.frame = CGRectMake(centerPosition, SPAuthenticationRowSize, SPLoginWPButtonWidth, SPAuthenticationFieldHeight);
-        [authView addSubview:wpccButton];
-
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc addObserver:self selector:@selector(signInErrorAction:) name:SPSignInErrorNotificationName object:nil];
+- (instancetype)init
+{
+    NSString *nibName = NSStringFromClass([self class]);
+    if (self = [super initWithWindowNibName:nibName]) {
+        self.validator = [SPAuthenticationValidator new];
     }
 
     return self;
 }
 
-- (void)setOptional:(BOOL)on {
-    _optional = on;
-    [self.cancelButton setHidden:!_optional];
+- (void)windowDidLoad
+{
+    self.errorField.stringValue = @"";
+    [self.errorField setTextColor:[NSColor redColor]];
+
+    [self.usernameField setPlaceholderString:NSLocalizedString(@"Email", @"Placeholder text for login field")];
+    self.usernameField.delegate = self;
+
+    [self.passwordField setPlaceholderString:NSLocalizedString(@"Password", @"Placeholder text for password field")];
+    self.passwordField.delegate = self;
+
+    self.signInButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
+    self.signInButton.target = self;
+    self.signInButton.action = @selector(signInAction:);
+
+    // Forgot Password!
+    NSString *forgotText = NSLocalizedString(@"Forgot your Password?", @"Forgot Password Button");
+    self.forgotPasswordButton.attributedTitle = [self buttonAttributedText:forgotText];
+    self.forgotPasswordButton.target = self;
+    self.forgotPasswordButton.action = @selector(forgotPassword:);
+
+    // Toggle Signup: Tip
+    NSString *signUpTip = NSLocalizedString(@"Need an account?", @"Link to create an account");
+    self.changeToSignUpField.stringValue = [signUpTip uppercaseString];
+    self.changeToSignUpField.textColor = [NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0];
+
+    // Toggle Signup: Action
+    NSString *toggleSignupText = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
+    self.changeToSignUpButton.attributedTitle = [self buttonAttributedText:toggleSignupText];
+    self.changeToSignUpButton.target = self;
+    self.changeToSignUpButton.action = @selector(toggleAuthenticationMode:);
+
+
+// TODO:
+// -    Use signUpButton + changeToSignInField for both actions
+//
+//        self.signUpButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
+//        self.signUpButton.target = self;
+//        self.signUpButton.action = @selector(signUpAction:);
+//
+//        // Toggle SignIn
+//        NSString *signInTip = NSLocalizedString(@"Already have an account?", @"Link to sign in to an account");
+//        self.changeToSignInField.stringValue = signInTip;
+//        self.changeToSignInField.textColor = [NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0];
+
+    // Make the window a bit taller than the default to make room for the wp.com button
+    NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
+
+    self.wordPressSSOButton.image = wpIcon;
+    self.wordPressSSOButton.title = NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button");
+    self.wordPressSSOButton.target = self;
+    self.wordPressSSOButton.action = @selector(wpccSignInAction:);
+    self.wordPressSSOButton.font = [NSFont systemFontOfSize:16.0];
+    self.wordPressSSOButton.contentTintColor = [NSColor colorWithCalibratedWhite:120.0/255.0 alpha:1.0];
+
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(signInErrorAction:) name:SPSignInErrorNotificationName object:nil];
 }
 
-- (NSTextField *)tipFieldWithText:(NSString *)text frame:(CGRect)frame {
-    NSTextField *field = [[NSTextField alloc] initWithFrame:frame];
-    NSFont *font = [NSFont fontWithName:[SPAuthenticationConfiguration sharedInstance].mediumFontName size:13];
-    [field setStringValue:[text uppercaseString]];
-    [field setEditable:NO];
-    [field setSelectable:NO];
-    [field setBordered:NO];
-    [field setDrawsBackground:NO];
-    [field setAlignment:NSTextAlignmentCenter];
-    [field setFont:font];
-    [field setTextColor:[NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0]];
-
-    return field;
-}
-
-- (NSButton *)linkButtonWithText:(NSString *)text frame:(CGRect)frame {
-    NSButton *button = [[NSButton alloc] initWithFrame:frame];
-    [button setBordered:NO];
-    [button setButtonType:NSButtonTypeMomentaryChange];
-
+- (NSAttributedString *)buttonAttributedText:(NSString *)text {
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setAlignment:NSTextAlignmentCenter];
     NSColor *linkColor = [SPAuthenticationConfiguration sharedInstance].controlColor;
@@ -208,18 +113,12 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     NSDictionary *attributes = @{NSFontAttributeName : font,
                                  NSForegroundColorAttributeName : linkColor,
                                  NSParagraphStyleAttributeName : style};
-    [button setAttributedTitle: [[NSAttributedString alloc] initWithString:[text uppercaseString] attributes:attributes]];
 
-    return button;
+    return [[NSAttributedString alloc] initWithString:[text uppercaseString] attributes:attributes];
 }
 
-- (NSButton *)toggleButtonWithText:(NSString *)text frame:(CGRect)frame {
-    NSButton *button = [self linkButtonWithText:text frame:frame];
-    button.target = self;
-    button.action = @selector(toggleAuthenticationMode:);
 
-    return button;
-}
+#pragma mark - Action Handlers
 
 - (IBAction)forgotPassword:(id)sender {
     NSString *forgotPasswordURL = [[SPAuthenticationConfiguration sharedInstance] forgotPasswordURL];
@@ -235,7 +134,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
 }
 
 - (IBAction)toggleAuthenticationMode:(id)sender {
-    self.signingIn = (sender == self.changeToSignInButton);
+    self.signingIn = !self.signingIn;
 }
 
 
@@ -261,13 +160,8 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     // Refresh Buttons
     [self.signInButton setHidden:!_signingIn];
     [self.signInButton setEnabled:_signingIn];
-    [self.signUpButton setHidden:_signingIn];
-    [self.signUpButton setEnabled:!_signingIn];
-    [self.changeToSignInButton setHidden:_signingIn];
-    [self.changeToSignInButton setEnabled:!_signingIn];
     [self.changeToSignUpButton setHidden:!_signingIn];
     [self.changeToSignUpButton setEnabled:_signingIn];
-    [self.changeToSignInField setHidden:_signingIn];
     [self.changeToSignUpField setHidden:!_signingIn];
 
     // Remove any pending errors
@@ -286,9 +180,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
     [self.signInButton setEnabled:enabled];
-    [self.signUpButton setEnabled:enabled];
     [self.changeToSignUpButton setEnabled:enabled];
-    [self.changeToSignInButton setEnabled:enabled];
     [self.usernameField setEnabled:enabled];
     [self.passwordField setEnabled:enabled];
 }
@@ -378,14 +270,14 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
 }
 
 - (void)startSignupAnimation {
-    self.signUpButton.title = NSLocalizedString(@"Signing Up...", @"Displayed temoprarily while signing up");
-    [self.signUpProgress startAnimation:self];
+    self.signInButton.title = NSLocalizedString(@"Signing Up...", @"Displayed temoprarily while signing up");
+    [self.signInProgress startAnimation:self];
     self.isAnimatingProgress = YES;
 }
 
 - (void)stopSignupAnimation {
-    self.signUpButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-    [self.signUpProgress stopAnimation:self];
+    self.signInButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
+    [self.signInProgress stopAnimation:self];
     self.isAnimatingProgress = NO;
 }
 
