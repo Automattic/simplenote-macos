@@ -89,7 +89,7 @@
                         </constraints>
                         <buttonCell key="cell" type="bevel" title="[Forgot]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="gWZ-sp-oTt">
                             <behavior key="behavior" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="systemMedium" size="13"/>
                         </buttonCell>
                         <connections>
                             <action selector="forgotPassword:" target="-2" id="IwY-km-FhY"/>
@@ -114,7 +114,7 @@
                         </constraints>
                         <buttonCell key="cell" type="bevel" title="[Switch Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="V9Z-oA-rzi">
                             <behavior key="behavior" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="systemSemibold" size="13"/>
                         </buttonCell>
                         <connections>
                             <action selector="toggleAuthenticationMode:" target="-2" id="93a-QW-Nkl"/>

@@ -48,7 +48,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 - (void)windowDidLoad
 {
     self.errorField.stringValue = @"";
-    [self.errorField setTextColor:[NSColor redColor]];
+    self.errorField.textColor = [NSColor redColor];
 
     [self.usernameField setPlaceholderString:NSLocalizedString(@"Email", @"Placeholder text for login field")];
     self.usernameField.delegate = self;
@@ -60,7 +60,8 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
     // Forgot Password!
     NSString *forgotText = NSLocalizedString(@"Forgot your Password?", @"Forgot Password Button");
-    self.forgotPasswordButton.attributedTitle = [self buttonAttributedText:forgotText];
+    self.forgotPasswordButton.title = [forgotText uppercaseString];
+    self.forgotPasswordButton.contentTintColor = [NSColor simplenoteBrandColor];
 
     // Toggle Signup: Tip
     NSString *signUpTip = NSLocalizedString(@"Need an account?", @"Link to create an account");
@@ -69,30 +70,17 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
     // Toggle Signup: Action
     NSString *toggleSignupText = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-    self.switchActionButton.attributedTitle = [self buttonAttributedText:toggleSignupText];
+    self.switchActionButton.title = [toggleSignupText uppercaseString];
+    self.switchActionButton.contentTintColor = [NSColor simplenoteBrandColor];
 
     // WordPress SSO
     NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
-
     self.wordPressSSOButton.image = wpIcon;
     self.wordPressSSOButton.title = NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button");
     self.wordPressSSOButton.contentTintColor = [NSColor colorWithCalibratedWhite:120.0/255.0 alpha:1.0];
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(signInErrorAction:) name:SPSignInErrorNotificationName object:nil];
-}
-
-- (NSAttributedString *)buttonAttributedText:(NSString *)text {
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setAlignment:NSTextAlignmentCenter];
-    NSColor *linkColor = [SPAuthenticationConfiguration sharedInstance].controlColor;
-
-    NSFont *font = [NSFont fontWithName:[SPAuthenticationConfiguration sharedInstance].mediumFontName size:13];
-    NSDictionary *attributes = @{NSFontAttributeName : font,
-                                 NSForegroundColorAttributeName : linkColor,
-                                 NSParagraphStyleAttributeName : style};
-
-    return [[NSAttributedString alloc] initWithString:[text uppercaseString] attributes:attributes];
 }
 
 
@@ -163,7 +151,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
     self.actionButton.title = actionText;
     self.switchTipField.stringValue = tipText;
-    self.switchActionButton.attributedTitle = [self buttonAttributedText:switchText];
+    self.switchActionButton.title = switchText;
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
