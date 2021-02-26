@@ -29,7 +29,6 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
 @property (nonatomic, strong) NSButton                  *cancelButton;
 @property (nonatomic, strong) SPAuthenticationTextField *usernameField;
 @property (nonatomic, strong) SPAuthenticationTextField *passwordField;
-@property (nonatomic, strong) SPAuthenticationTextField *confirmField;
 @property (nonatomic, strong) NSTextField               *changeToSignInField;
 @property (nonatomic, strong) NSTextField               *changeToSignUpField;
 @property (nonatomic, strong) NSTextField               *errorField;
@@ -99,11 +98,6 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
         self.passwordField.delegate = self;
         [authView addSubview:self.passwordField];
 
-        self.confirmField = [[SPAuthenticationTextField alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*3, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight) secure:YES];
-        [self.confirmField setPlaceholderString:NSLocalizedString(@"Confirm Password", @"Placeholder text for confirmation field")];
-        self.confirmField.delegate = self;
-        [authView addSubview:self.confirmField];
-
         markerY -= 30;
         self.signInButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*3, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
         self.signInButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
@@ -116,7 +110,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
         [self.signInProgress setDisplayedWhenStopped:NO];
         [self.signInButton addSubview:self.signInProgress];
 
-        self.signUpButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*4, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
+        self.signUpButton = [[SPAuthenticationButton alloc] initWithFrame:NSMakeRect(SPAuthenticationFieldPaddingX, markerY - SPAuthenticationRowSize*3, SPAuthenticationFieldWidth, SPAuthenticationFieldHeight)];
         self.signUpButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
         self.signUpButton.target = self;
         self.signUpButton.action = @selector(signUpAction:);
@@ -276,7 +270,6 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     [self.changeToSignUpButton setEnabled:_signingIn];
     [self.changeToSignInField setHidden:_signingIn];
     [self.changeToSignUpField setHidden:!_signingIn];
-    [self.confirmField setHidden:_signingIn];
 
     // Remove any pending errors
     [self clearAuthenticationError];
@@ -296,7 +289,6 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     [self.changeToSignInButton setEnabled:enabled];
     [self.usernameField setEnabled:enabled];
     [self.passwordField setEnabled:enabled];
-    [self.confirmField setEnabled:enabled];
 }
 
 
@@ -512,17 +504,6 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     return NO;
 }
 
-- (BOOL)validatePasswordsMatch {
-    NSError *error = nil;
-    if ([self.validator validatePasswordConfirmation:self.confirmField.stringValue password:self.passwordText error:&error]) {
-        return YES;
-    }
-
-    [self showAuthenticationError:error.localizedDescription];
-
-    return NO;
-}
-
 - (BOOL)validateConnection {
     if (!self.authenticator.connected) {
         [self showAuthenticationError:NSLocalizedString(@"You're not connected to the internet", @"Error when you're not connected")];
@@ -548,7 +529,6 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
 - (BOOL)validateSignUp {
     return [self validateConnection] &&
            [self validateUsername] &&
-           [self validatePasswordsMatch] &&
            [self validatePasswordSecurity];
 }
 
@@ -588,7 +568,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     if (commandSelector == @selector(insertNewline:)) {
         if (_signingIn && [control isEqual:self.passwordField.textField]) {
             [self signInAction:nil];
-        } else if (!_signingIn && [control isEqual:self.confirmField.textField]) {
+        } else if (!_signingIn && [control isEqual:self.usernameField.textField]) {
             [self signUpAction:nil];
         }
     }
@@ -607,7 +587,7 @@ static NSString *SPAuthSessionKey                       = @"SPAuthSessionKey";
     if (currentEvent.type == NSEventTypeKeyDown && [currentEvent.charactersIgnoringModifiers isEqualToString:@"\r"]) {
         if (_signingIn && [[obj object] isEqual:self.passwordField.textField]) {
             [self signInAction:nil];
-        } else if (!_signingIn && [[obj object] isEqual:self.confirmField.textField]) {
+        } else if (!_signingIn && [[obj object] isEqual:self.usernameField.textField]) {
             [self signUpAction:nil];
         }
     }
