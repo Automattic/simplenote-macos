@@ -57,14 +57,10 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     self.passwordField.delegate = self;
 
     self.actionButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
-    self.actionButton.target = self;
-    self.actionButton.action = @selector(signInAction:);
 
     // Forgot Password!
     NSString *forgotText = NSLocalizedString(@"Forgot your Password?", @"Forgot Password Button");
     self.forgotPasswordButton.attributedTitle = [self buttonAttributedText:forgotText];
-    self.forgotPasswordButton.target = self;
-    self.forgotPasswordButton.action = @selector(forgotPassword:);
 
     // Toggle Signup: Tip
     NSString *signUpTip = NSLocalizedString(@"Need an account?", @"Link to create an account");
@@ -74,17 +70,12 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     // Toggle Signup: Action
     NSString *toggleSignupText = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
     self.switchActionButton.attributedTitle = [self buttonAttributedText:toggleSignupText];
-    self.switchActionButton.target = self;
-    self.switchActionButton.action = @selector(toggleAuthenticationMode:);
 
-    // Make the window a bit taller than the default to make room for the wp.com button
+    // WordPress SSO
     NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
 
     self.wordPressSSOButton.image = wpIcon;
     self.wordPressSSOButton.title = NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button");
-    self.wordPressSSOButton.target = self;
-    self.wordPressSSOButton.action = @selector(wpccSignInAction:);
-    self.wordPressSSOButton.font = [NSFont systemFontOfSize:16.0];
     self.wordPressSSOButton.contentTintColor = [NSColor colorWithCalibratedWhite:120.0/255.0 alpha:1.0];
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

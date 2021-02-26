@@ -74,6 +74,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="performMainAction:" target="-2" id="wkH-aA-1OR"/>
+                        </connections>
                     </button>
                     <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ndK-j7-hqV" userLabel="SignIn Progress Indicator">
                         <rect key="frame" x="304" y="241" width="16" height="16"/>
@@ -88,6 +91,9 @@
                             <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="forgotPassword:" target="-2" id="IwY-km-FhY"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcb-YX-nf2">
                         <rect key="frame" x="28" y="144" width="324" height="20"/>
@@ -110,6 +116,9 @@
                             <behavior key="behavior" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="toggleAuthenticationMode:" target="-2" id="93a-QW-Nkl"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KRK-gN-wNA" userLabel="WordPress SSO Button">
                         <rect key="frame" x="30" y="40" width="320" height="40"/>
@@ -119,8 +128,11 @@
                         </constraints>
                         <buttonCell key="cell" type="bevel" title="[WordPress SSO]" bezelStyle="rounded" image="icon_wp" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="kQr-uO-bsP">
                             <behavior key="behavior" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="system" size="16"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="wpccSignInAction:" target="-2" id="zOY-g2-Z6L"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
