@@ -48,6 +48,7 @@ lane :test do | options |
   run_tests(
     workspace: WORKSPACE,
     scheme: INTERNAL_SCHEME,
+    configuration: 'Debug',
     clean: true,
     xcargs: SKIP_CODE_SIGNING_XCARGS
   )
