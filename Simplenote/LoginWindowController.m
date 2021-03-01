@@ -96,6 +96,10 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (IBAction)toggleAuthenticationMode:(id)sender {
     self.signingIn = !self.signingIn;
+    NSRect windowFrame = [window frame];
+    windowFrame.size.height -= delta;
+    windowFrame.origin.y += delta;
+    [window setFrame:windowFrame display:YES animate:YES];
 }
 
 
