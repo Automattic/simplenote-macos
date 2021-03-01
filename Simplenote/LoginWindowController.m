@@ -56,21 +56,15 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self.passwordField setPlaceholderString:NSLocalizedString(@"Password", @"Placeholder text for password field")];
     self.passwordField.delegate = self;
 
-    self.actionButton.title = NSLocalizedString(@"Log In", @"Title of button for logging in");
-
     // Forgot Password!
     NSString *forgotText = NSLocalizedString(@"Forgot your Password?", @"Forgot Password Button");
     self.forgotPasswordButton.title = [forgotText uppercaseString];
     self.forgotPasswordButton.contentTintColor = [NSColor simplenoteBrandColor];
 
     // Toggle Signup: Tip
-    NSString *signUpTip = NSLocalizedString(@"Need an account?", @"Link to create an account");
-    self.switchTipField.stringValue = [signUpTip uppercaseString];
     self.switchTipField.textColor = [NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0];
 
     // Toggle Signup: Action
-    NSString *toggleSignupText = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-    self.switchActionButton.title = [toggleSignupText uppercaseString];
     self.switchActionButton.contentTintColor = [NSColor simplenoteBrandColor];
 
     // WordPress SSO
@@ -149,9 +143,9 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     NSString *tipText       = self.signingIn ? signUpTip  : signInTip;
     NSString *switchText    = self.signingIn ? signUpText : signInText;
 
-    self.actionButton.title = actionText;
+    self.actionButton.title         = actionText;
     self.switchTipField.stringValue = tipText;
-    self.switchActionButton.title = switchText;
+    self.switchActionButton.title   = switchText;
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
