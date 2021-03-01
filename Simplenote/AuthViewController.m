@@ -127,19 +127,13 @@ static CGFloat const SPSignUpHeight = 440;
     [self refreshFields];
 }
 
-- (NSWindow *)window {
-    return self.view.window;
-}
-
 
 #pragma mark - Interface Helpers
 
 - (void)refreshFields {
     [self clearAuthenticationError];
-
     [self refreshButtonTitles];
     [self refreshVisibleComponents];
-
     [self ensureWindowFitsContent];
 }
 
@@ -170,7 +164,6 @@ static CGFloat const SPSignUpHeight = 440;
 //    CGFloat delta           = newFrame.size.height - newHeight;
 //    newFrame.size.height    -= delta;
 //    newFrame.origin.y       += delta;
-
 //    [self.window setFrame:newFrame display:YES animate:YES];
 }
 
@@ -406,10 +399,7 @@ static CGFloat const SPSignUpHeight = 440;
 }
 
 - (BOOL)mustUpgradePasswordStrength {
-    BOOL passwordResetEnabled = [[SPAuthenticationConfiguration sharedInstance] passwordUpgradeFlowEnabled];
-    BOOL mustResetPassword = [self.validator mustPerformPasswordResetWithUsername:self.usernameText password:self.passwordText];
-
-    return passwordResetEnabled && mustResetPassword;
+    return [self.validator mustPerformPasswordResetWithUsername:self.usernameText password:self.passwordText];
 }
 
 - (BOOL)validateSignIn {

@@ -8,7 +8,7 @@
 
 @interface AuthViewController : NSViewController <SPAuthenticationInterface>
 
-@property (nonatomic,   strong) SPAuthenticator *authenticator;
-@property (nonatomic,   assign) BOOL            signingIn;
+@property (nonatomic, strong) SPAuthenticator *authenticator;
+@property (nonatomic, assign) BOOL            signingIn;
 
 @end
