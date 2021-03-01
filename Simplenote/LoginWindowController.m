@@ -8,6 +8,10 @@
 
 static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
+// TODO: Drop please
+static CGFloat const SPSignInHeight = 570;
+static CGFloat const SPSignUpHeight = 440;
+
 
 #pragma mark - Private
 
@@ -96,10 +100,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (IBAction)toggleAuthenticationMode:(id)sender {
     self.signingIn = !self.signingIn;
-    NSRect windowFrame = [window frame];
-    windowFrame.size.height -= delta;
-    windowFrame.origin.y += delta;
-    [window setFrame:windowFrame display:YES animate:YES];
 }
 
 
@@ -123,13 +123,12 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (void)refreshFields {
     [self ensureWindowIsLoaded];
-
     [self clearAuthenticationError];
+
     [self refreshButtonTitles];
     [self refreshVisibleComponents];
 
-    // Refresh the entire View
-    [self.window.contentView setNeedsDisplay:YES];
+    [self ensureWindowFitsContent];
 }
 
 - (void)refreshButtonTitles {
@@ -148,8 +147,9 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 }
 
 - (void)refreshVisibleComponents {
-    self.forgotPasswordButton.hidden = !_signingIn;
-    self.wordPressSSOButton.hidden = !_signingIn;
+    self.passwordField.hidden           = !self.signingIn;
+    self.forgotPasswordButton.hidden    = !self.signingIn;
+    self.wordPressSSOButton.hidden      = !self.signingIn;
 }
 
 - (void)ensureWindowIsLoaded {
@@ -158,6 +158,16 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     }
 
     [self window];
+}
+
+- (void)ensureWindowFitsContent {
+    NSRect newFrame         = self.window.frame;
+    CGFloat newHeight       = _signingIn ? SPSignInHeight : SPSignUpHeight;
+    CGFloat delta           = newFrame.size.height - newHeight;
+    newFrame.size.height    -= delta;
+    newFrame.origin.y       += delta;
+
+    [self.window setFrame:newFrame display:YES animate:YES];
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
