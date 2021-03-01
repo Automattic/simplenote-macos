@@ -276,8 +276,6 @@
 		B57CB87F244DED2300BA7969 /* Bundle+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */; };
 		B57CB881244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
 		B57CB882244E421400BA7969 /* SPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57CB880244E421400BA7969 /* SPTextField.swift */; };
-		B57EEEEB25E80B1200192141 /* AuthenticationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EEEEA25E80B1200192141 /* AuthenticationRemote.swift */; };
-		B57EEEEC25E80B1200192141 /* AuthenticationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EEEEA25E80B1200192141 /* AuthenticationRemote.swift */; };
 		B58117C425B9D57F00927E0C /* AccountVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117C325B9D57F00927E0C /* AccountVerificationViewController.swift */; };
 		B58117C525B9D57F00927E0C /* AccountVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58117C325B9D57F00927E0C /* AccountVerificationViewController.swift */; };
 		B58117D625B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58117D525B9D5F500927E0C /* AccountVerificationViewController.xib */; };
@@ -674,7 +672,6 @@
 		B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationsHandler.swift; sourceTree = "<group>"; };
 		B57CB87D244DED2300BA7969 /* Bundle+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Simplenote.swift"; sourceTree = "<group>"; };
 		B57CB880244E421400BA7969 /* SPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTextField.swift; sourceTree = "<group>"; };
-		B57EEEEA25E80B1200192141 /* AuthenticationRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRemote.swift; sourceTree = "<group>"; };
 		B57F50B2231971670074D535 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		B58117C325B9D57F00927E0C /* AccountVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationViewController.swift; sourceTree = "<group>"; };
 		B58117D525B9D5F500927E0C /* AccountVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountVerificationViewController.xib; sourceTree = "<group>"; };
@@ -1141,7 +1138,6 @@
 			isa = PBXGroup;
 			children = (
 				B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */,
-				B57EEEEA25E80B1200192141 /* AuthenticationRemote.swift */,
 			);
 			name = Remote;
 			sourceTree = "<group>";
@@ -1986,7 +1982,6 @@
 				B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
 				B58A71BE258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				B557A0E325BB0DC000E5313E /* AccountVerificationCoordinator.swift in Sources */,
-				B57EEEEB25E80B1200192141 /* AuthenticationRemote.swift in Sources */,
 				B503FF4824848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				B53ACE1E25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */,
 				A6672FB825C7F1BB00090DE3 /* ContentSlice.swift in Sources */,
@@ -2227,7 +2222,6 @@
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
 				B5B17F3B2425668400DD5B34 /* NSAttributedString+Simplenote.swift in Sources */,
 				B5C7DD41243E4A7D00BEE354 /* CollaborateViewController.swift in Sources */,
-				B57EEEEC25E80B1200192141 /* AuthenticationRemote.swift in Sources */,
 				B586C063245CCD35009508EC /* SplitViewController.swift in Sources */,
 				B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */,
 				B51374F71AC0591900825FCC /* SPConstants.m in Sources */,
