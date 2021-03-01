@@ -128,7 +128,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self refreshButtonTitles];
 
     // Refresh: Fields
-    self.passwordField.hidden = !_signingIn;
     self.forgotPasswordButton.hidden =!_signingIn;
 
     // Refresh the entire View
@@ -432,20 +431,14 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 }
 
 
-#pragma mark - NSTextView delegates
+#pragma mark - NSTextView
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)fieldEditor doCommandBySelector:(SEL)commandSelector {
-    BOOL retval = NO;
-
     if (commandSelector == @selector(insertNewline:)) {
-        if (_signingIn && [control isEqual:self.passwordField.textField]) {
-            [self signInAction:nil];
-        } else if (!_signingIn && [control isEqual:self.usernameField.textField]) {
-            [self signUpAction:nil];
-        }
+        [self handleNewlineInField:control];
     }
 
-    return retval;
+    return NO;
 }
 
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
@@ -454,14 +447,20 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 }
 
 - (void)controlTextDidChange:(NSNotification *)obj {
-    // Intercept return and invoke actions
     NSEvent *currentEvent = [NSApp currentEvent];
     if (currentEvent.type == NSEventTypeKeyDown && [currentEvent.charactersIgnoringModifiers isEqualToString:@"\r"]) {
-        if (_signingIn && [[obj object] isEqual:self.passwordField.textField]) {
-            [self signInAction:nil];
-        } else if (!_signingIn && [[obj object] isEqual:self.usernameField.textField]) {
-            [self signUpAction:nil];
-        }
+        [self handleNewlineInField:obj.object];
+    }
+}
+
+- (void)handleNewlineInField:(NSControl *)field {
+    if (_signingIn && [field isEqual:self.passwordField.textField]) {
+        [self signInAction:nil];
+        return;
+    }
+
+    if (!_signingIn && [field isEqual:self.passwordField.textField]) {
+        [self signUpAction:nil];
     }
 }
 
