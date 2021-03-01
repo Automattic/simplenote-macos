@@ -23,151 +23,165 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <view appearanceType="aqua" id="kU7-kg-wG3" customClass="SPAuthenticationView">
+        <view appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="kU7-kg-wG3" customClass="SPAuthenticationView">
             <rect key="frame" x="0.0" y="0.0" width="380" height="570"/>
-            <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWa-EY-51O">
-                    <rect key="frame" x="30" y="297" width="320" height="228"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="6eM-ID-eIk" userLabel="Container View">
+                    <rect key="frame" x="30" y="20" width="320" height="505"/>
                     <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9h-HS-WbG">
-                            <rect key="frame" x="112" y="132" width="96" height="96"/>
+                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWa-EY-51O" userLabel="Header Stack View">
+                            <rect key="frame" x="0.0" y="277" width="320" height="228"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9h-HS-WbG">
+                                    <rect key="frame" x="112" y="132" width="96" height="96"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="96" id="Sys-NN-iWa"/>
+                                        <constraint firstAttribute="height" constant="96" id="mq9-yP-8Tc"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_simplenote_login" id="2Fh-2C-hTH"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lwM-mh-i3o">
+                                    <rect key="frame" x="-2" y="104" width="324" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="[Error Label]" id="iCX-gU-FQf">
+                                        <font key="font" metaFont="systemSemibold" size="13"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Fco-3r-2Ys" userLabel="Username TextField" customClass="SPAuthenticationTextField">
+                                    <rect key="frame" x="0.0" y="52" width="320" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="ZyF-TN-zXQ"/>
+                                    </constraints>
+                                </customView>
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="2bk-bk-VfG" userLabel="Password TextField" customClass="SPAuthenticationTextField">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Cah-V8-aCS"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="secure" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </customView>
+                            </subviews>
                             <constraints>
-                                <constraint firstAttribute="width" constant="96" id="Sys-NN-iWa"/>
-                                <constraint firstAttribute="height" constant="96" id="mq9-yP-8Tc"/>
+                                <constraint firstAttribute="trailing" secondItem="lwM-mh-i3o" secondAttribute="trailing" id="2mH-bL-ey0"/>
+                                <constraint firstAttribute="trailing" secondItem="2bk-bk-VfG" secondAttribute="trailing" id="2on-9K-qrh"/>
+                                <constraint firstItem="2bk-bk-VfG" firstAttribute="leading" secondItem="PWa-EY-51O" secondAttribute="leading" id="GPa-uH-nyA"/>
+                                <constraint firstAttribute="trailing" secondItem="Fco-3r-2Ys" secondAttribute="trailing" id="gTV-rG-Rz6"/>
+                                <constraint firstItem="Fco-3r-2Ys" firstAttribute="leading" secondItem="PWa-EY-51O" secondAttribute="leading" id="lFa-dR-M3o"/>
+                                <constraint firstItem="lwM-mh-i3o" firstAttribute="leading" secondItem="PWa-EY-51O" secondAttribute="leading" id="pMz-cI-3Ed"/>
                             </constraints>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_simplenote_login" id="2Fh-2C-hTH"/>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lwM-mh-i3o">
-                            <rect key="frame" x="-2" y="104" width="324" height="16"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="[Error Label]" id="iCX-gU-FQf">
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lid-6Q-zHR" userLabel="Main Action Button" customClass="SPAuthenticationButton">
+                            <rect key="frame" x="0.0" y="199" width="320" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="UVW-gz-8cN"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="[Main Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="2il-zd-A17" customClass="SPAuthenticationButtonCell">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="performMainAction:" target="-2" id="oQR-Zg-shZ"/>
+                            </connections>
+                        </button>
+                        <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-3v-AEQ" userLabel="Main Action Progress Indicator">
+                            <rect key="frame" x="274" y="211" width="16" height="16"/>
+                        </progressIndicator>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1M-Np-v9m" userLabel="ForgotPassword Button">
+                            <rect key="frame" x="0.0" y="164" width="320" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="HrL-ss-QSd"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="[Forgot]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="zjo-dD-vux">
+                                <behavior key="behavior" lightByContents="YES"/>
+                                <font key="font" metaFont="systemMedium" size="13"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="forgotPassword:" target="-2" id="pEz-hB-6Tz"/>
+                            </connections>
+                        </button>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yP-IQ-Unz">
+                            <rect key="frame" x="-2" y="114" width="324" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="5GW-OX-wF2"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="[Switch Tip]" id="lWM-Lh-rKn">
                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Fco-3r-2Ys" userLabel="Username TextField" customClass="SPAuthenticationTextField">
-                            <rect key="frame" x="0.0" y="52" width="320" height="40"/>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5np-Xn-oop" userLabel="ForgotPassword Button">
+                            <rect key="frame" x="0.0" y="94" width="320" height="20"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="320" id="50o-QH-MWp"/>
-                                <constraint firstAttribute="height" constant="40" id="ZyF-TN-zXQ"/>
+                                <constraint firstAttribute="height" constant="20" id="3pI-cn-CI2"/>
                             </constraints>
-                        </customView>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2bk-bk-VfG" userLabel="Password TextField" customClass="SPAuthenticationTextField">
+                            <buttonCell key="cell" type="bevel" title="[Switch Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="nb6-bt-sFC">
+                                <behavior key="behavior" lightByContents="YES"/>
+                                <font key="font" metaFont="systemSemibold" size="13"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toggleAuthenticationMode:" target="-2" id="MRn-Y7-TWp"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sc9-DH-ug9" userLabel="WordPress SSO Button">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="Cah-V8-aCS"/>
-                                <constraint firstAttribute="width" constant="320" id="FWU-hP-Aiv"/>
+                                <constraint firstAttribute="height" constant="40" id="ynU-1V-xiN"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="secure" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </customView>
+                            <buttonCell key="cell" type="bevel" title="[WordPress SSO]" bezelStyle="rounded" image="icon_wp" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="Mzh-LI-XpK">
+                                <behavior key="behavior" lightByContents="YES"/>
+                                <font key="font" metaFont="system" size="16"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="wpccSignInAction:" target="-2" id="XuG-cb-poD"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="lwM-mh-i3o" firstAttribute="width" secondItem="Fco-3r-2Ys" secondAttribute="width" id="32N-0F-HEm"/>
+                        <constraint firstItem="0yP-IQ-Unz" firstAttribute="top" secondItem="y1M-Np-v9m" secondAttribute="bottom" constant="30" id="0Oe-Kg-28P"/>
+                        <constraint firstAttribute="trailing" secondItem="5np-Xn-oop" secondAttribute="trailing" id="4dF-52-qfQ"/>
+                        <constraint firstItem="GMB-3v-AEQ" firstAttribute="trailing" secondItem="Lid-6Q-zHR" secondAttribute="trailing" constant="-30" id="6GN-0u-pwZ"/>
+                        <constraint firstItem="y1M-Np-v9m" firstAttribute="leading" secondItem="6eM-ID-eIk" secondAttribute="leading" id="6OW-TY-c3a"/>
+                        <constraint firstAttribute="trailing" secondItem="y1M-Np-v9m" secondAttribute="trailing" id="6Uz-qf-OgN"/>
+                        <constraint firstItem="PWa-EY-51O" firstAttribute="leading" secondItem="6eM-ID-eIk" secondAttribute="leading" id="6ik-zn-FKq"/>
+                        <constraint firstItem="sc9-DH-ug9" firstAttribute="top" secondItem="5np-Xn-oop" secondAttribute="bottom" constant="54" id="AZE-pG-yPp"/>
+                        <constraint firstItem="5np-Xn-oop" firstAttribute="leading" secondItem="6eM-ID-eIk" secondAttribute="leading" id="RHo-9O-xGf"/>
+                        <constraint firstItem="PWa-EY-51O" firstAttribute="top" secondItem="6eM-ID-eIk" secondAttribute="top" id="SZ5-Yz-A29"/>
+                        <constraint firstItem="Lid-6Q-zHR" firstAttribute="top" secondItem="PWa-EY-51O" secondAttribute="bottom" constant="38" id="Tey-US-1AR"/>
+                        <constraint firstItem="GMB-3v-AEQ" firstAttribute="centerY" secondItem="Lid-6Q-zHR" secondAttribute="centerY" id="Uv8-rk-UbU"/>
+                        <constraint firstItem="sc9-DH-ug9" firstAttribute="leading" secondItem="6eM-ID-eIk" secondAttribute="leading" id="Xka-oe-YGR"/>
+                        <constraint firstAttribute="trailing" secondItem="PWa-EY-51O" secondAttribute="trailing" id="YgG-A1-pmO"/>
+                        <constraint firstAttribute="trailing" secondItem="0yP-IQ-Unz" secondAttribute="trailing" id="Zxy-yc-ICz"/>
+                        <constraint firstAttribute="trailing" secondItem="sc9-DH-ug9" secondAttribute="trailing" id="aRs-qq-hPb"/>
+                        <constraint firstAttribute="bottom" secondItem="sc9-DH-ug9" secondAttribute="bottom" id="aqP-Ho-cld"/>
+                        <constraint firstAttribute="trailing" secondItem="Lid-6Q-zHR" secondAttribute="trailing" id="fM4-E3-e5i"/>
+                        <constraint firstItem="0yP-IQ-Unz" firstAttribute="leading" secondItem="6eM-ID-eIk" secondAttribute="leading" id="j6n-eD-TCC"/>
+                        <constraint firstItem="Lid-6Q-zHR" firstAttribute="leading" secondItem="6eM-ID-eIk" secondAttribute="leading" id="mrf-xD-PgZ"/>
+                        <constraint firstItem="5np-Xn-oop" firstAttribute="top" secondItem="0yP-IQ-Unz" secondAttribute="bottom" id="u6j-SI-Jj3"/>
+                        <constraint firstItem="y1M-Np-v9m" firstAttribute="top" secondItem="Lid-6Q-zHR" secondAttribute="bottom" constant="15" id="vo8-ie-bTp"/>
                     </constraints>
-                    <visibilityPriorities>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                    </visibilityPriorities>
-                    <customSpacing>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                    </customSpacing>
-                </stackView>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lid-6Q-zHR" userLabel="SignIn Button" customClass="SPAuthenticationButton">
-                    <rect key="frame" x="30" y="219" width="320" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="UVW-gz-8cN"/>
-                        <constraint firstAttribute="width" constant="320" id="e6a-g6-xPe"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="[Main Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="2il-zd-A17" customClass="SPAuthenticationButtonCell">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="performMainAction:" target="-2" id="oQR-Zg-shZ"/>
-                    </connections>
-                </button>
-                <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-3v-AEQ" userLabel="SignIn Progress Indicator">
-                    <rect key="frame" x="304" y="231" width="16" height="16"/>
-                </progressIndicator>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1M-Np-v9m" userLabel="ForgotPassword Button">
-                    <rect key="frame" x="30" y="184" width="320" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="9hh-H3-s4r"/>
-                        <constraint firstAttribute="height" constant="20" id="HrL-ss-QSd"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="[Forgot]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="zjo-dD-vux">
-                        <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="systemMedium" size="13"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="forgotPassword:" target="-2" id="pEz-hB-6Tz"/>
-                    </connections>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yP-IQ-Unz">
-                    <rect key="frame" x="28" y="134" width="324" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="5GW-OX-wF2"/>
-                    </constraints>
-                    <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="[Switch Tip]" id="lWM-Lh-rKn">
-                        <font key="font" metaFont="systemSemibold" size="13"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5np-Xn-oop" userLabel="ForgotPassword Button">
-                    <rect key="frame" x="30" y="114" width="320" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="3pI-cn-CI2"/>
-                        <constraint firstAttribute="width" constant="320" id="yH8-jD-UYO"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="[Switch Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="nb6-bt-sFC">
-                        <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="systemSemibold" size="13"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="toggleAuthenticationMode:" target="-2" id="MRn-Y7-TWp"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sc9-DH-ug9" userLabel="WordPress SSO Button">
-                    <rect key="frame" x="30" y="30" width="320" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="0KW-2Q-FIo"/>
-                        <constraint firstAttribute="height" constant="40" id="ynU-1V-xiN"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="[WordPress SSO]" bezelStyle="rounded" image="icon_wp" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="Mzh-LI-XpK">
-                        <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="system" size="16"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="wpccSignInAction:" target="-2" id="XuG-cb-poD"/>
-                    </connections>
-                </button>
+                </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="0yP-IQ-Unz" firstAttribute="width" secondItem="y1M-Np-v9m" secondAttribute="width" id="56n-K7-Nes"/>
-                <constraint firstItem="GMB-3v-AEQ" firstAttribute="centerY" secondItem="Lid-6Q-zHR" secondAttribute="centerY" id="57Y-Lc-Rb1"/>
-                <constraint firstItem="5np-Xn-oop" firstAttribute="top" secondItem="0yP-IQ-Unz" secondAttribute="bottom" id="BpJ-on-4iS"/>
-                <constraint firstItem="PWa-EY-51O" firstAttribute="top" secondItem="kU7-kg-wG3" secondAttribute="top" constant="45" id="D0T-oM-ght"/>
-                <constraint firstItem="5np-Xn-oop" firstAttribute="centerX" secondItem="kU7-kg-wG3" secondAttribute="centerX" id="Gut-Ca-mI6"/>
-                <constraint firstItem="0yP-IQ-Unz" firstAttribute="top" secondItem="y1M-Np-v9m" secondAttribute="bottom" constant="30" id="Hr1-Xr-EE0"/>
-                <constraint firstAttribute="trailing" secondItem="PWa-EY-51O" secondAttribute="trailing" constant="30" id="OxK-yd-d72"/>
-                <constraint firstItem="sc9-DH-ug9" firstAttribute="centerX" secondItem="kU7-kg-wG3" secondAttribute="centerX" id="SSp-gT-eCE"/>
-                <constraint firstItem="Lid-6Q-zHR" firstAttribute="centerX" secondItem="kU7-kg-wG3" secondAttribute="centerX" id="VPV-Ck-JXY"/>
-                <constraint firstItem="Lid-6Q-zHR" firstAttribute="top" secondItem="PWa-EY-51O" secondAttribute="bottom" constant="38" id="eC8-JH-hxH"/>
-                <constraint firstItem="GMB-3v-AEQ" firstAttribute="trailing" secondItem="Lid-6Q-zHR" secondAttribute="trailing" constant="-30" id="hRv-38-WV1"/>
-                <constraint firstAttribute="bottom" secondItem="sc9-DH-ug9" secondAttribute="bottom" constant="30" id="iwG-U9-HTi"/>
-                <constraint firstItem="0yP-IQ-Unz" firstAttribute="centerX" secondItem="kU7-kg-wG3" secondAttribute="centerX" id="jdC-CH-r18"/>
-                <constraint firstItem="y1M-Np-v9m" firstAttribute="centerX" secondItem="kU7-kg-wG3" secondAttribute="centerX" id="jiI-Bg-ctt"/>
-                <constraint firstItem="y1M-Np-v9m" firstAttribute="top" secondItem="Lid-6Q-zHR" secondAttribute="bottom" constant="15" id="kbd-6H-Iv1"/>
-                <constraint firstItem="PWa-EY-51O" firstAttribute="leading" secondItem="kU7-kg-wG3" secondAttribute="leading" constant="30" id="psG-UB-Vb4"/>
+                <constraint firstAttribute="trailing" secondItem="6eM-ID-eIk" secondAttribute="trailing" constant="30" id="eH3-hZ-i3g"/>
+                <constraint firstItem="6eM-ID-eIk" firstAttribute="top" secondItem="kU7-kg-wG3" secondAttribute="top" constant="45" id="lKg-9K-s9G"/>
+                <constraint firstItem="6eM-ID-eIk" firstAttribute="leading" secondItem="kU7-kg-wG3" secondAttribute="leading" constant="30" id="qk2-Lz-G12"/>
+                <constraint firstAttribute="bottom" secondItem="6eM-ID-eIk" secondAttribute="bottom" constant="20" symbolic="YES" id="wg3-D2-J8a"/>
             </constraints>
             <point key="canvasLocation" x="-472" y="-86"/>
         </view>
