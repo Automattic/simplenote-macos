@@ -8,10 +8,6 @@
 
 static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
-// TODO: Drop please
-static CGFloat const SPSignInHeight = 570;
-static CGFloat const SPSignUpHeight = 440;
-
 
 #pragma mark - Private
 
@@ -134,7 +130,6 @@ static CGFloat const SPSignUpHeight = 440;
     [self clearAuthenticationError];
     [self refreshButtonTitles];
     [self refreshVisibleComponents];
-    [self ensureWindowFitsContent];
 }
 
 - (void)refreshButtonTitles {
@@ -156,15 +151,6 @@ static CGFloat const SPSignUpHeight = 440;
     self.passwordField.hidden           = !self.signingIn;
     self.forgotPasswordButton.hidden    = !self.signingIn;
     self.wordPressSSOButton.hidden      = !self.signingIn;
-}
-
-- (void)ensureWindowFitsContent {
-//    NSRect newFrame         = self.window.frame;
-//    CGFloat newHeight       = _signingIn ? SPSignInHeight : SPSignUpHeight;
-//    CGFloat delta           = newFrame.size.height - newHeight;
-//    newFrame.size.height    -= delta;
-//    newFrame.origin.y       += delta;
-//    [self.window setFrame:newFrame display:YES animate:YES];
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
