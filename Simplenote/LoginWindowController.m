@@ -46,6 +46,8 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (void)windowDidLoad
 {
+    [super windowDidLoad];
+
     self.errorField.stringValue = @"";
     self.errorField.textColor = [NSColor redColor];
 
@@ -116,35 +118,44 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 #pragma mark - Interface Helpers
 
 - (void)refreshFields {
-    // Refresh Buttons
-    [self refreshButtons];
+
+    [self ensureWindowIsLoaded];
 
     // Remove any pending errors
     [self clearAuthenticationError];
 
-    // Password: Hide when Signing Up
-    [self.passwordField setHidden:!_signingIn];
+    // Refresh: Button Titles
+    [self refreshButtonTitles];
 
-    // Forgot Password
-    [self.forgotPasswordButton setHidden:!_signingIn];
+    // Refresh: Fields
+    self.passwordField.hidden = !_signingIn;
+    self.forgotPasswordButton.hidden =!_signingIn;
 
     // Refresh the entire View
     [self.window.contentView setNeedsDisplay:YES];
 }
 
-- (void)refreshButtons {
+- (void)refreshButtonTitles {
     NSString *signInText    = NSLocalizedString(@"Log In", @"Title of button for logging in");;
     NSString *signUpText    = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-    NSString *signInTip     = [NSLocalizedString(@"Already have an account?", @"Link to sign in to an account") uppercaseString];
-    NSString *signUpTip     = [NSLocalizedString(@"Need an account?", @"Link to create an account") uppercaseString];
+    NSString *signInTip     = NSLocalizedString(@"Already have an account?", @"Link to sign in to an account");
+    NSString *signUpTip     = NSLocalizedString(@"Need an account?", @"Link to create an account");
 
     NSString *actionText    = self.signingIn ? signInText : signUpText;
     NSString *tipText       = self.signingIn ? signUpTip  : signInTip;
     NSString *switchText    = self.signingIn ? signUpText : signInText;
 
     self.actionButton.title         = actionText;
-    self.switchTipField.stringValue = tipText;
-    self.switchActionButton.title   = switchText;
+    self.switchTipField.stringValue = [tipText uppercaseString];
+    self.switchActionButton.title   = [switchText uppercaseString];
+}
+
+- (void)ensureWindowIsLoaded {
+    if (self.isWindowLoaded) {
+        return;
+    }
+
+    [self window];
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
@@ -403,17 +414,14 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 - (void)showAuthenticationErrorForCode:(NSUInteger)responseCode {
     switch (responseCode) {
         case 409:
-            // User already exists
             [self showAuthenticationError:NSLocalizedString(@"That email is already being used", @"Error when address is in use")];
             [self.window makeFirstResponder:self.usernameField];
             break;
         case 401:
-            // Bad email or password
             [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
             break;
 
         default:
-            // General network problem
             [self showAuthenticationError:NSLocalizedString(@"We're having problems. Please try again soon.", @"Generic error")];
             break;
     }
