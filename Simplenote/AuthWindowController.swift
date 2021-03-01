@@ -6,23 +6,29 @@ import AppKit
 //
 class AuthWindowController: NSWindowController, SPAuthenticationInterface {
 
+    /// Starting Point!
+    ///
+    let authViewController = AuthViewController()
+
     /// Simperium's Authenticator Instance
     ///
-    var authenticator: SPAuthenticator?
+    var authenticator: SPAuthenticator? {
+        didSet {
+            authViewController.authenticator = authenticator
+        }
+    }
 
 
     // MARK: - Initializer
 
     init() {
-        let styleMask: NSWindow.StyleMask = [.borderless, .closable, .titled, .fullSizeContentView]
-        let window = NSWindow(contentRect: .zero, styleMask: styleMask, backing: .buffered, defer: false, screen: nil)
+        let window = NSWindow(contentViewController: authViewController)
+        window.styleMask = [.borderless, .closable, .titled, .fullSizeContentView]
         window.appearance = NSAppearance(named: .aqua)
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
 
         super.init(window: window)
-
-        self.contentViewController = AuthViewController()
     }
 
     required init?(coder: NSCoder) {

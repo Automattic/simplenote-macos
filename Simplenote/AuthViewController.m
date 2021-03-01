@@ -26,6 +26,7 @@ static CGFloat const SPSignUpHeight = 440;
 @property (nonatomic, strong) IBOutlet NSTextField                  *switchTipField;
 @property (nonatomic, strong) IBOutlet NSButton                     *switchActionButton;
 @property (nonatomic, strong) IBOutlet NSButton                     *wordPressSSOButton;
+@property (nonatomic, strong) SPAuthenticationValidator             *validator;
 @end
 
 
@@ -96,9 +97,8 @@ static CGFloat const SPSignUpHeight = 440;
 
 - (IBAction)forgotPassword:(id)sender {
     NSString *forgotPasswordURL = [SPCredentials simperiumForgotPasswordURL];
-
-    // Post the email already entered in the Username Field. This allows us to prefill the Forgot Password Form
     NSString *username = self.usernameText;
+
     if (username.length) {
         NSString *parameters = [NSString stringWithFormat:@"?email=%@", username];
         forgotPasswordURL = [forgotPasswordURL stringByAppendingString:parameters];

@@ -302,8 +302,8 @@
 		B58CE26624F9AE870079C04B /* NSStoryboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CE26424F9AE870079C04B /* NSStoryboard+Simplenote.swift */; };
 		B5919364245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
 		B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */; };
-		B597429325E97ADC0063DDD2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B597429225E97ADC0063DDD2 /* LoginViewController.xib */; };
-		B597429425E97ADC0063DDD2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B597429225E97ADC0063DDD2 /* LoginViewController.xib */; };
+		B597429325E97ADC0063DDD2 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B597429225E97ADC0063DDD2 /* AuthViewController.xib */; };
+		B597429425E97ADC0063DDD2 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B597429225E97ADC0063DDD2 /* AuthViewController.xib */; };
 		B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */; };
 		B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = B598487F1BCDB95A005EFBBE /* SPTracker.m */; };
@@ -708,7 +708,7 @@
 		B58D399C24BF9E64008E4ABC /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B58D399D24BF9E82008E4ABC /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B5919363245A7AD300A70C0C /* NSScreen+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSScreen+Simplenote.swift"; sourceTree = "<group>"; };
-		B597429225E97ADC0063DDD2 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		B597429225E97ADC0063DDD2 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		B598487C1BCDB95A005EFBBE /* SPAutomatticTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAutomatticTracker.h; sourceTree = "<group>"; };
 		B598487D1BCDB95A005EFBBE /* SPAutomatticTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAutomatticTracker.m; sourceTree = "<group>"; };
 		B598487E1BCDB95A005EFBBE /* SPTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTracker.h; sourceTree = "<group>"; };
@@ -931,9 +931,6 @@
 				B5D3FCCA201F906E00A813B7 /* StatusChecker.m */,
 				46EF5196177C4ECC00A139E0 /* SPApplication.h */,
 				46EF5197177C4ECC00A139E0 /* SPApplication.m */,
-				B5E96B641BDE732500D707F5 /* AuthViewController.h */,
-				B5E96B651BDE732500D707F5 /* AuthViewController.m */,
-				B597429225E97ADC0063DDD2 /* LoginViewController.xib */,
 				26F72AA114032D2A00A7935E /* MainMenu.xib */,
 			);
 			path = Simplenote;
@@ -1258,6 +1255,16 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		B555CE5925EDA29F00610BC6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B5E96B641BDE732500D707F5 /* AuthViewController.h */,
+				B5E96B651BDE732500D707F5 /* AuthViewController.m */,
+				B597429225E97ADC0063DDD2 /* AuthViewController.xib */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		B557A0E825BB0DC700E5313E /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -1474,6 +1481,7 @@
 		B5C7DD4B243E697F00BEE354 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B555CE5925EDA29F00610BC6 /* Authentication */,
 				B53BF19E24AC1F9500938C34 /* Editor */,
 				B5C63352251E727300C8BF46 /* Interlinks */,
 				B55C313124A5339300B23B3F /* Metrics */,
@@ -1734,7 +1742,7 @@
 				B50F999224F98FFD00A1058D /* Main.storyboard in Resources */,
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
-				B597429325E97ADC0063DDD2 /* LoginViewController.xib in Resources */,
+				B597429325E97ADC0063DDD2 /* AuthViewController.xib in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 			);
@@ -1760,7 +1768,7 @@
 				B50F999324F98FFD00A1058D /* Main.storyboard in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
-				B597429425E97ADC0063DDD2 /* LoginViewController.xib in Resources */,
+				B597429425E97ADC0063DDD2 /* AuthViewController.xib in Resources */,
 				B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */,
 				B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */,
 			);
