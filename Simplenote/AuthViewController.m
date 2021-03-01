@@ -1,4 +1,4 @@
-#import "LoginWindowController.h"
+#import "AuthViewController.h"
 #import "SPConstants.h"
 #import "SPTracker.h"
 #import "Simplenote-Swift.h"
@@ -15,7 +15,7 @@ static CGFloat const SPSignUpHeight = 440;
 
 #pragma mark - Private
 
-@interface LoginWindowController () <NSTextFieldDelegate>
+@interface AuthViewController () <NSTextFieldDelegate>
 @property (nonatomic, strong) IBOutlet NSImageView                  *logoImageView;
 @property (nonatomic, strong) IBOutlet NSTextField                  *errorField;
 @property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *usernameField;
@@ -29,9 +29,9 @@ static CGFloat const SPSignUpHeight = 440;
 @end
 
 
-#pragma mark - SPAuthenticationWindowController
+#pragma mark - LoginViewController
 
-@implementation LoginWindowController
+@implementation AuthViewController
 
 - (void)dealloc
 {
@@ -40,18 +40,24 @@ static CGFloat const SPSignUpHeight = 440;
 
 - (instancetype)init
 {
-    NSString *nibName = NSStringFromClass([self class]);
-    if (self = [super initWithWindowNibName:nibName]) {
+    if (self = [super init]) {
         self.validator = [SPAuthenticationValidator new];
+        self.signingIn = YES;
     }
 
     return self;
 }
 
-- (void)windowDidLoad
+- (void)viewDidLoad
 {
-    [super windowDidLoad];
+    [super viewDidLoad];
+    [self setupInterface];
+    [self refreshFields];
+    [self startListeningToNotifications];
+}
 
+- (void)setupInterface
+{
     self.errorField.stringValue = @"";
     self.errorField.textColor = [NSColor redColor];
 
@@ -77,7 +83,10 @@ static CGFloat const SPSignUpHeight = 440;
     self.wordPressSSOButton.image = wpIcon;
     self.wordPressSSOButton.title = NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button");
     self.wordPressSSOButton.contentTintColor = [NSColor colorWithCalibratedWhite:120.0/255.0 alpha:1.0];
+}
 
+- (void)startListeningToNotifications
+{
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(signInErrorAction:) name:SPSignInErrorNotificationName object:nil];
 }
@@ -86,7 +95,7 @@ static CGFloat const SPSignUpHeight = 440;
 #pragma mark - Action Handlers
 
 - (IBAction)forgotPassword:(id)sender {
-    NSString *forgotPasswordURL = [[SPAuthenticationConfiguration sharedInstance] forgotPasswordURL];
+    NSString *forgotPasswordURL = [SPCredentials simperiumForgotPasswordURL];
 
     // Post the email already entered in the Username Field. This allows us to prefill the Forgot Password Form
     NSString *username = self.usernameText;
@@ -118,11 +127,14 @@ static CGFloat const SPSignUpHeight = 440;
     [self refreshFields];
 }
 
+- (NSWindow *)window {
+    return self.view.window;
+}
+
 
 #pragma mark - Interface Helpers
 
 - (void)refreshFields {
-    [self ensureWindowIsLoaded];
     [self clearAuthenticationError];
 
     [self refreshButtonTitles];
@@ -152,22 +164,14 @@ static CGFloat const SPSignUpHeight = 440;
     self.wordPressSSOButton.hidden      = !self.signingIn;
 }
 
-- (void)ensureWindowIsLoaded {
-    if (self.isWindowLoaded) {
-        return;
-    }
-
-    [self window];
-}
-
 - (void)ensureWindowFitsContent {
-    NSRect newFrame         = self.window.frame;
-    CGFloat newHeight       = _signingIn ? SPSignInHeight : SPSignUpHeight;
-    CGFloat delta           = newFrame.size.height - newHeight;
-    newFrame.size.height    -= delta;
-    newFrame.origin.y       += delta;
+//    NSRect newFrame         = self.window.frame;
+//    CGFloat newHeight       = _signingIn ? SPSignInHeight : SPSignUpHeight;
+//    CGFloat delta           = newFrame.size.height - newHeight;
+//    newFrame.size.height    -= delta;
+//    newFrame.origin.y       += delta;
 
-    [self.window setFrame:newFrame display:YES animate:YES];
+//    [self.window setFrame:newFrame display:YES animate:YES];
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
@@ -329,7 +333,7 @@ static CGFloat const SPSignUpHeight = 440;
     [alert addButtonWithTitle:self.passwordResetCancelText];
 
     __weak typeof(self) weakSelf = self;
-    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+    [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode != NSAlertFirstButtonReturn) {
             return;
         }
@@ -357,7 +361,7 @@ static CGFloat const SPSignUpHeight = 440;
 }
 
 - (void)openResetPasswordURL {
-    NSString *resetPasswordPath = [SPAuthenticationConfiguration.sharedInstance.resetPasswordURL stringByAppendingString:self.usernameText];
+    NSString *resetPasswordPath = [SPCredentials.simperiumResetPasswordURL stringByAppendingString:self.usernameText];
     NSURL *targetURL = [NSURL URLWithString:resetPasswordPath];
 
     if (!targetURL) {
@@ -427,7 +431,7 @@ static CGFloat const SPSignUpHeight = 440;
     switch (responseCode) {
         case 409:
             [self showAuthenticationError:NSLocalizedString(@"That email is already being used", @"Error when address is in use")];
-            [self.window makeFirstResponder:self.usernameField];
+            [self.view.window makeFirstResponder:self.usernameField];
             break;
         case 401:
             [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
@@ -455,7 +459,7 @@ static CGFloat const SPSignUpHeight = 440;
 }
 
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
-    [self.window.contentView setNeedsDisplay:YES];
+    [self.view setNeedsDisplay:YES];
     return YES;
 }
 

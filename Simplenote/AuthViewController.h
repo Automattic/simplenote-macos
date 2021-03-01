@@ -4,13 +4,12 @@
 
 
 
-// MARK: - LoginWindowController: Simperium's Authentication UI
+// MARK: - AuthViewController: Simperium's Authentication UI
 
-@interface LoginWindowController : NSWindowController <SPAuthenticationInterface>
+@interface AuthViewController : NSViewController <SPAuthenticationInterface>
 
 @property (nonatomic,   strong) SPAuthenticator             *authenticator;
 @property (nonatomic,   strong) SPAuthenticationValidator   *validator;
-@property (nonatomic,   assign) BOOL                        optional;
 @property (nonatomic,   assign) BOOL                        signingIn;
 @property (nonatomic, readonly) BOOL                        isAnimatingProgress;
 

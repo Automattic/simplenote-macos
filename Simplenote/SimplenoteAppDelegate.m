@@ -12,7 +12,7 @@
 #import "Note.h"
 #import "Tag.h"
 #import "NSNotification+Simplenote.h"
-#import "LoginWindowController.h"
+#import "AuthViewController.h"
 #import "NoteEditorViewController.h"
 #import "StatusChecker.h"
 #import "SPConstants.h"
