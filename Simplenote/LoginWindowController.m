@@ -118,17 +118,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 #pragma mark - Interface Helpers
 
 - (void)refreshFields {
-
     [self ensureWindowIsLoaded];
 
-    // Remove any pending errors
     [self clearAuthenticationError];
-
-    // Refresh: Button Titles
     [self refreshButtonTitles];
-
-    // Refresh: Fields
-    self.forgotPasswordButton.hidden =!_signingIn;
+    [self refreshVisibleComponents];
 
     // Refresh the entire View
     [self.window.contentView setNeedsDisplay:YES];
@@ -147,6 +141,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     self.actionButton.title         = actionText;
     self.switchTipField.stringValue = [tipText uppercaseString];
     self.switchActionButton.title   = [switchText uppercaseString];
+}
+
+- (void)refreshVisibleComponents {
+    self.forgotPasswordButton.hidden = !_signingIn;
+    self.wordPressSSOButton.hidden = !_signingIn;
 }
 
 - (void)ensureWindowIsLoaded {
