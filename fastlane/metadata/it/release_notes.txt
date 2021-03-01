@@ -1,0 +1,6 @@
+- Il risultato di una ricerca ora mostra estratti dai risultati
+- Le keywords di ricerca sono evidenziate nell'editor
+- Nuova mappa dei risultati di ricerca nella scrollbar dell'editor
+- Riposizionata la barra di ricerca nella lista delle note
+- Aggiornata la UI della barra di ricerca
+- Risolto un bug che faceva lo zoom della finestra dopo un doppio-click sulla barra di ricerca

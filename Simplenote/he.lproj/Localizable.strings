@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 14:54:04+0000 */
+/* Translation-Revision-Date: 2021-02-18 11:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -149,10 +149,10 @@
 "Move to Trash" = "העברה לפח";
 
 /* Sort Mode: Alphabetically, ascending */
-"Name: A-Z" = "Name: A-Z";
+"Name: A-Z" = "שם: מ-A ל-Z";
 
 /* Sort Mode: Alphabetically, descending */
-"Name: Z-A" = "Name: Z-A";
+"Name: Z-A" = "שם: מ-Z ל-A";
 
 /* Link to create an account */
 "Need an account?" = "נדרש לך חשבון?";
@@ -236,7 +236,7 @@
 "Review Your Account" = "לבדוק את החשבון שלך";
 
 /* Search Field Placeholder */
-"Search" = "חיפוש";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "מחפש";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "דלג";
-
-/* Sortbar Title */
-"Sort by" = "מיון לפי";
 
 /* Tags Section Name */
 "Tags" = "תגיות";

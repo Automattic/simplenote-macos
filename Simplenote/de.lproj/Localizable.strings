@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 11:32:26+0000 */
+/* Translation-Revision-Date: 2021-02-19 17:24:26+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: de */
@@ -45,7 +45,7 @@
 "Cannot Send Verification Email" = "Verifizierungs-E-Mail kann nicht gesendet werden";
 
 /* Change email button -> Review you account screen */
-"Change Account Email" = "Change Account Email";
+"Change Account Email" = "E-Mail-Adresse des Kontos ändern";
 
 /* Number of characters in the note */
 "Characters" = "Zeichen";
@@ -236,7 +236,7 @@
 "Review Your Account" = "Konto prüfen";
 
 /* Search Field Placeholder */
-"Search" = "Suche";
+"Search notes" = "Search notes";
 
 /* Search Results Title */
 "Searching" = "Suchen";
@@ -261,9 +261,6 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Überspringen";
-
-/* Sortbar Title */
-"Sort by" = "Sortieren nach";
 
 /* Tags Section Name */
 "Tags" = "Schlagwörter";
