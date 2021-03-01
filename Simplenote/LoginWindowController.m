@@ -22,7 +22,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 @property (nonatomic, strong) IBOutlet NSTextField                  *switchTipField;
 @property (nonatomic, strong) IBOutlet NSButton                     *switchActionButton;
 @property (nonatomic, strong) IBOutlet NSButton                     *wordPressSSOButton;
-@property (nonatomic, assign) BOOL                                  isAnimatingProgress;
 @end
 
 
@@ -149,10 +148,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
-    [self.actionButton setEnabled:enabled];
-    [self.switchActionButton setEnabled:enabled];
     [self.usernameField setEnabled:enabled];
     [self.passwordField setEnabled:enabled];
+    [self.actionButton setEnabled:enabled];
+    [self.switchActionButton setEnabled:enabled];
+    [self.wordPressSSOButton setEnabled:enabled];
 }
 
 
@@ -160,10 +160,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (IBAction)wpccSignInAction:(id)sender
 {
-    if (self.isAnimatingProgress) {
-        return;
-    }
-
     NSString *sessionState = [[NSUUID UUID] UUIDString];
     sessionState = [@"app-" stringByAppendingString:sessionState];
     [[NSUserDefaults standardUserDefaults] setObject:sessionState forKey:SPAuthSessionKey];
@@ -239,25 +235,21 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 - (void)startLoginAnimation {
     self.actionButton.title = NSLocalizedString(@"Logging In...", @"Displayed temporarily while logging in");
     [self.actionProgress startAnimation:self];
-    self.isAnimatingProgress = YES;
 }
 
 - (void)stopLoginAnimation {
     self.actionButton.title = NSLocalizedString(@"Log In", @"Title of button for login");
     [self.actionProgress stopAnimation:self];
-    self.isAnimatingProgress = NO;
 }
 
 - (void)startSignupAnimation {
     self.actionButton.title = NSLocalizedString(@"Signing Up...", @"Displayed temoprarily while signing up");
     [self.actionProgress startAnimation:self];
-    self.isAnimatingProgress = YES;
 }
 
 - (void)stopSignupAnimation {
     self.actionButton.title = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
     [self.actionProgress stopAnimation:self];
-    self.isAnimatingProgress = NO;
 }
 
 
