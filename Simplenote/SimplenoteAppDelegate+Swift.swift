@@ -1,4 +1,5 @@
 import Foundation
+import Simperium_OSX
 
 
 // MARK: - Initialization
