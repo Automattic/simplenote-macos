@@ -157,6 +157,8 @@
 		B51374F71AC0591900825FCC /* SPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B51374F51AC0591900825FCC /* SPConstants.m */; };
 		B51699842480B93100ACF2F4 /* TagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51699832480B93100ACF2F4 /* TagsField.swift */; };
 		B51699852480B93100ACF2F4 /* TagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51699832480B93100ACF2F4 /* TagsField.swift */; };
+		B5177CBB25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */; };
+		B5177CBC25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */; };
 		B518D3782507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D3792507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D37B2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */; };
@@ -598,6 +600,7 @@
 		B51374F41AC0591900825FCC /* SPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPConstants.h; sourceTree = "<group>"; };
 		B51374F51AC0591900825FCC /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPConstants.m; sourceTree = "<group>"; };
 		B51699832480B93100ACF2F4 /* TagsField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsField.swift; sourceTree = "<group>"; };
+		B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthViewController+Swift.swift"; sourceTree = "<group>"; };
 		B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasteboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Interlinks.swift"; sourceTree = "<group>"; };
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
@@ -1260,6 +1263,7 @@
 			children = (
 				B5E96B641BDE732500D707F5 /* AuthViewController.h */,
 				B5E96B651BDE732500D707F5 /* AuthViewController.m */,
+				B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */,
 				B597429225E97ADC0063DDD2 /* AuthViewController.xib */,
 			);
 			name = Authentication;
@@ -2002,6 +2006,7 @@
 				B54F9A6A24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
 				B5E0863B2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				B5D21CB724881EF600D57A34 /* Array+Simplenote.swift in Sources */,
+				B5177CBB25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */,
 				26DBB1F51405A6A800186392 /* NSString+Metadata.m in Sources */,
 				B5C620AB257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
 				375D293A21E033D1007AB25A /* stack.c in Sources */,
@@ -2162,6 +2167,7 @@
 				3F07D7B225DD1CDD00D680D0 /* SearchQuery+Simplenote.swift in Sources */,
 				466FFEAC17CC10A800399652 /* Simplenote.xcdatamodeld in Sources */,
 				B5009938242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
+				B5177CBC25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */,
 				B5A9FE282576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
 				B58BBD3E2523FF160025135F /* PopoverWindow.swift in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,

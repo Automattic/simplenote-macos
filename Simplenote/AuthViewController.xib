@@ -12,8 +12,10 @@
                 <outlet property="actionProgress" destination="GMB-3v-AEQ" id="Qv3-0X-3xO"/>
                 <outlet property="errorField" destination="lwM-mh-i3o" id="hCf-XY-GKI"/>
                 <outlet property="forgotPasswordButton" destination="y1M-Np-v9m" id="wMf-VC-rpx"/>
+                <outlet property="forgotPasswordHeightConstraint" destination="HrL-ss-QSd" id="grM-HB-9fi"/>
                 <outlet property="logoImageView" destination="W9h-HS-WbG" id="GV7-vy-NaT"/>
                 <outlet property="passwordField" destination="2bk-bk-VfG" id="JQn-Xi-XNs"/>
+                <outlet property="passwordFieldHeightConstraint" destination="Cah-V8-aCS" id="saQ-Mz-zu6"/>
                 <outlet property="stackView" destination="PWa-EY-51O" id="jUJ-sH-HgC"/>
                 <outlet property="switchActionButton" destination="5np-Xn-oop" id="KYi-sy-yoJ"/>
                 <outlet property="switchTipField" destination="0yP-IQ-Unz" id="jvk-lr-cHO"/>
@@ -21,11 +23,12 @@
                 <outlet property="view" destination="kU7-kg-wG3" id="WH8-Qa-i4c"/>
                 <outlet property="wordPressSSOButton" destination="sc9-DH-ug9" id="bjJ-cB-cCj"/>
                 <outlet property="wordPressSSOContainerView" destination="3tE-Zi-edS" id="Nhq-OA-Rqf"/>
+                <outlet property="wordPressSSOHeightConstraint" destination="IW2-ZK-7lM" id="NWD-Sk-CYO"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <view appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="kU7-kg-wG3" customClass="SPAuthenticationView">
+        <view wantsLayer="YES" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="kU7-kg-wG3" customClass="SPAuthenticationView">
             <rect key="frame" x="0.0" y="0.0" width="380" height="582"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWa-EY-51O">
@@ -41,6 +44,9 @@
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lwM-mh-i3o">
                             <rect key="frame" x="-2" y="368" width="324" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="Pcu-pb-Ma8"/>
+                            </constraints>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="[Error Label]" id="iCX-gU-FQf">
                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -53,7 +59,7 @@
                                 <constraint firstAttribute="height" constant="40" id="ZyF-TN-zXQ"/>
                             </constraints>
                         </customView>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2bk-bk-VfG" userLabel="Password TextField" customClass="SPAuthenticationTextField">
+                        <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2bk-bk-VfG" userLabel="Password TextField" customClass="SPAuthenticationTextField">
                             <rect key="frame" x="0.0" y="264" width="320" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Cah-V8-aCS"/>
@@ -91,7 +97,7 @@
                                 <constraint firstAttribute="bottom" secondItem="Lid-6Q-zHR" secondAttribute="bottom" id="lmu-Jy-hXf"/>
                             </constraints>
                         </customView>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1M-Np-v9m" userLabel="Forgot Button">
+                        <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1M-Np-v9m" userLabel="Forgot Button">
                             <rect key="frame" x="0.0" y="154" width="320" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="HrL-ss-QSd"/>
@@ -111,6 +117,7 @@
                                     <rect key="frame" x="-2" y="20" width="324" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="5GW-OX-wF2"/>
+                                        <constraint firstAttribute="width" constant="320" id="Ice-bc-Xa9"/>
                                     </constraints>
                                     <textFieldCell key="cell" lineBreakMode="clipping" allowsUndo="NO" alignment="center" title="[Switch Tip]" id="lWM-Lh-rKn">
                                         <font key="font" metaFont="systemSemibold" size="13"/>
@@ -121,6 +128,7 @@
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5np-Xn-oop" userLabel="Switch Button">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                     <constraints>
+                                        <constraint firstAttribute="width" constant="320" id="3N3-wW-P6F"/>
                                         <constraint firstAttribute="height" constant="20" id="3pI-cn-CI2"/>
                                     </constraints>
                                     <buttonCell key="cell" type="bevel" title="[Switch Action]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="nb6-bt-sFC">
@@ -142,13 +150,13 @@
                                 <constraint firstAttribute="bottom" secondItem="5np-Xn-oop" secondAttribute="bottom" id="zC9-oc-1g2"/>
                             </constraints>
                         </customView>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="3tE-Zi-edS" userLabel="WordPress SSO View">
+                        <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3tE-Zi-edS" userLabel="WordPress SSO View">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sc9-DH-ug9" userLabel="WordPress SSO Button">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="ynU-1V-xiN"/>
+                                        <constraint firstAttribute="height" priority="999" constant="40" id="ynU-1V-xiN"/>
                                     </constraints>
                                     <buttonCell key="cell" type="bevel" title="[WordPress SSO]" bezelStyle="rounded" image="icon_wp" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="Mzh-LI-XpK">
                                         <behavior key="behavior" lightByContents="YES"/>
@@ -161,9 +169,10 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="sc9-DH-ug9" secondAttribute="trailing" id="8Jl-X1-wpa"/>
+                                <constraint firstAttribute="height" constant="72" id="IW2-ZK-7lM"/>
                                 <constraint firstAttribute="bottom" secondItem="sc9-DH-ug9" secondAttribute="bottom" id="OYw-Do-eII"/>
                                 <constraint firstItem="sc9-DH-ug9" firstAttribute="leading" secondItem="3tE-Zi-edS" secondAttribute="leading" id="Q4j-qA-c63"/>
-                                <constraint firstItem="sc9-DH-ug9" firstAttribute="top" secondItem="3tE-Zi-edS" secondAttribute="top" constant="32" id="k9B-l0-1OW"/>
+                                <constraint firstItem="sc9-DH-ug9" firstAttribute="top" secondItem="3tE-Zi-edS" secondAttribute="top" priority="999" constant="32" id="k9B-l0-1OW"/>
                             </constraints>
                         </customView>
                     </subviews>

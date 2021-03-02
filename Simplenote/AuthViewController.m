@@ -12,19 +12,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 #pragma mark - Private
 
 @interface AuthViewController () <NSTextFieldDelegate>
-@property (nonatomic, strong) IBOutlet NSStackView                  *stackView;
-@property (nonatomic, strong) IBOutlet NSImageView                  *logoImageView;
-@property (nonatomic, strong) IBOutlet NSTextField                  *errorField;
-@property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *usernameField;
-@property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *passwordField;
-@property (nonatomic, strong) IBOutlet NSButton                     *actionButton;
-@property (nonatomic, strong) IBOutlet NSProgressIndicator          *actionProgress;
-@property (nonatomic, strong) IBOutlet NSButton                     *forgotPasswordButton;
-@property (nonatomic, strong) IBOutlet NSTextField                  *switchTipField;
-@property (nonatomic, strong) IBOutlet NSButton                     *switchActionButton;
-@property (nonatomic, strong) IBOutlet NSView                       *wordPressSSOContainerView;
-@property (nonatomic, strong) IBOutlet NSButton                     *wordPressSSOButton;
-@property (nonatomic, strong) SPAuthenticationValidator             *validator;
+@property (nonatomic, strong) SPAuthenticationValidator *validator;
 @end
 
 
@@ -107,6 +95,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (IBAction)toggleAuthenticationMode:(id)sender {
     self.signingIn = !self.signingIn;
+    [self.view.window makeFirstResponder:self.usernameField];
 }
 
 
@@ -135,7 +124,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
     [self clearAuthenticationError];
     [self refreshButtonTitles];
-    [self refreshVisibleComponents];
+    [self refreshVisibleComponentsWithAnimation];
 }
 
 - (void)refreshButtonTitles {
@@ -151,12 +140,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     self.actionButton.title         = actionText;
     self.switchTipField.stringValue = [tipText uppercaseString];
     self.switchActionButton.title   = [switchText uppercaseString];
-}
-
-- (void)refreshVisibleComponents {
-    self.passwordField.hidden               = !self.signingIn;
-    self.forgotPasswordButton.hidden        = !self.signingIn;
-    self.wordPressSSOContainerView.hidden   = !self.signingIn;
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
