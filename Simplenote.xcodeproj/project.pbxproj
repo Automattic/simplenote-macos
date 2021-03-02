@@ -159,6 +159,10 @@
 		B51699852480B93100ACF2F4 /* TagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51699832480B93100ACF2F4 /* TagsField.swift */; };
 		B5177CBB25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */; };
 		B5177CBC25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */; };
+		B5177CC425EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */; };
+		B5177CC525EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */; };
+		B5177CCA25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */; };
+		B5177CCB25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */; };
 		B518D3782507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D3792507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D37B2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */; };
@@ -601,6 +605,8 @@
 		B51374F51AC0591900825FCC /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPConstants.m; sourceTree = "<group>"; };
 		B51699832480B93100ACF2F4 /* TagsField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsField.swift; sourceTree = "<group>"; };
 		B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthViewController+Swift.swift"; sourceTree = "<group>"; };
+		B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVerificationViewController.swift; sourceTree = "<group>"; };
+		B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupVerificationViewController.xib; sourceTree = "<group>"; };
 		B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasteboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Interlinks.swift"; sourceTree = "<group>"; };
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
@@ -1265,6 +1271,8 @@
 				B5E96B651BDE732500D707F5 /* AuthViewController.m */,
 				B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */,
 				B597429225E97ADC0063DDD2 /* AuthViewController.xib */,
+				B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */,
+				B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -1747,6 +1755,7 @@
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
 				B597429325E97ADC0063DDD2 /* AuthViewController.xib in Resources */,
+				B5177CCA25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 			);
@@ -1773,6 +1782,7 @@
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 				B597429425E97ADC0063DDD2 /* AuthViewController.xib in Resources */,
+				B5177CCB25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */,
 				B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */,
 				B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */,
 			);
@@ -2080,6 +2090,7 @@
 				B5469FCA2587DE3F007ED7BE /* SortMode.swift in Sources */,
 				B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
+				B5177CC425EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */,
 				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				B56FA7982437C79D002CB9FF /* SPUserInterface.swift in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
@@ -2145,6 +2156,7 @@
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				B52EE32825927D5100347F2B /* NoteListViewController.swift in Sources */,
 				B542FE4B25D42E7B00A3582D /* NoteContentHelper.swift in Sources */,
+				B5177CC525EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
