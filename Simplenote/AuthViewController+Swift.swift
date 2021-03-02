@@ -36,6 +36,22 @@ extension AuthViewController {
 }
 
 
+// MARK: - Dynamic Properties
+//
+extension AuthViewController {
+
+    @objc
+    var usernameText: String {
+        usernameField.stringValue()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+
+    @objc
+    var passwordText: String {
+        passwordField.stringValue()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+}
+
+
 // MARK: - Refreshing
 //
 extension AuthViewController {

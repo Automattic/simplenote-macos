@@ -71,14 +71,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 #pragma mark - Dynamic Properties
 
-- (NSString *)usernameText {
-    return self.usernameField.stringValue.sp_trim ?: @"";
-}
-
-- (NSString *)passwordText {
-    return self.passwordField.stringValue ?: @"";
-}
-
 - (void)setSigningIn:(BOOL)signingIn {
     _signingIn = signingIn;
     [self refreshFields];
