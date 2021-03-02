@@ -163,6 +163,8 @@
 		B5177CC525EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */; };
 		B5177CCA25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */; };
 		B5177CCB25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */; };
+		B5177CD025EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */; };
+		B5177CD125EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */; };
 		B518D3782507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D3792507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D37B2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */; };
@@ -607,6 +609,7 @@
 		B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthViewController+Swift.swift"; sourceTree = "<group>"; };
 		B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVerificationViewController.swift; sourceTree = "<group>"; };
 		B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupVerificationViewController.xib; sourceTree = "<group>"; };
+		B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Transitions.swift"; sourceTree = "<group>"; };
 		B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasteboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Interlinks.swift"; sourceTree = "<group>"; };
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
@@ -1196,6 +1199,7 @@
 				B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */,
 				B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */,
 				B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */,
+				B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */,
 				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
 				B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */,
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
@@ -2033,6 +2037,7 @@
 				375D293621E033D1007AB25A /* document.c in Sources */,
 				B5609AEC24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
+				B5177CD025EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */,
 				B5F50915247319360042FA1D /* SplitView.swift in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B555CE3625ED81F200610BC6 /* AuthWindowController.swift in Sources */,
@@ -2187,6 +2192,7 @@
 				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
+				B5177CD125EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */,
 				B53ACE1F25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */,
