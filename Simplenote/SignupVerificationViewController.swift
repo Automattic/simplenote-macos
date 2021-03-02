@@ -16,10 +16,16 @@ class SignupVerificationViewController: NSViewController {
     ///
     private let email: String
 
+    /// Simperium's Authenticator: Required only in case we must present back the Authentication Flow
+    ///
+    private let authenticator: SPAuthenticator
+
+
     /// Designated Initializer
     ///
-    init(email: String) {
+    init(email: String, authenticator: SPAuthenticator) {
         self.email = email
+        self.authenticator = authenticator
         let nibName = type(of: self).classNameWithoutNamespaces
         super.init(nibName: nibName, bundle: nil)
     }
@@ -97,6 +103,7 @@ private extension SignupVerificationViewController {
 
     func presentAuthenticationInteface() {
         let authViewController = AuthViewController()
+        authViewController.authenticator = authenticator
         view.window?.transition(to: authViewController)
     }
 }
