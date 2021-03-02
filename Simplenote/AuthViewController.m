@@ -12,6 +12,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 #pragma mark - Private
 
 @interface AuthViewController () <NSTextFieldDelegate>
+@property (nonatomic, strong) IBOutlet NSStackView                  *stackView;
 @property (nonatomic, strong) IBOutlet NSImageView                  *logoImageView;
 @property (nonatomic, strong) IBOutlet NSTextField                  *errorField;
 @property (nonatomic, strong) IBOutlet SPAuthenticationTextField    *usernameField;
@@ -21,6 +22,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 @property (nonatomic, strong) IBOutlet NSButton                     *forgotPasswordButton;
 @property (nonatomic, strong) IBOutlet NSTextField                  *switchTipField;
 @property (nonatomic, strong) IBOutlet NSButton                     *switchActionButton;
+@property (nonatomic, strong) IBOutlet NSView                       *wordPressSSOContainerView;
 @property (nonatomic, strong) IBOutlet NSButton                     *wordPressSSOButton;
 @property (nonatomic, strong) SPAuthenticationValidator             *validator;
 @end
@@ -49,6 +51,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 {
     [super viewDidLoad];
     [self setupInterface];
+// TODO: Drop
     [self refreshFields];
     [self startListeningToNotifications];
 }
@@ -148,9 +151,10 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 }
 
 - (void)refreshVisibleComponents {
-    self.passwordField.hidden           = !self.signingIn;
-    self.forgotPasswordButton.hidden    = !self.signingIn;
-    self.wordPressSSOButton.hidden      = !self.signingIn;
+
+    self.passwordField.hidden               = !self.signingIn;
+    self.forgotPasswordButton.hidden        = !self.signingIn;
+    self.wordPressSSOContainerView.hidden   = !self.signingIn;
 }
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
