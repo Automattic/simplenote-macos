@@ -51,7 +51,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 {
     [super viewDidLoad];
     [self setupInterface];
-    [self refreshFields];
+    [self refreshButtonTitles];
     [self startListeningToNotifications];
 }
 
@@ -129,6 +129,10 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 #pragma mark - Interface Helpers
 
 - (void)refreshFields {
+    if (!self.isViewLoaded) {
+        return;
+    }
+
     [self clearAuthenticationError];
     [self refreshButtonTitles];
     [self refreshVisibleComponents];
