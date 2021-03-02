@@ -66,7 +66,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (IBAction)toggleAuthenticationMode:(id)sender {
     self.signingIn = !self.signingIn;
-    [self.view.window makeFirstResponder:self.usernameField];
 }
 
 
