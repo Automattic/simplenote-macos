@@ -132,6 +132,11 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteTertiaryTextColor: NSColor {
+        dynamicColor(lightStudio: .gray20, darkStudio: .gray20)
+    }
+
+    @objc
     static var simplenoteSelectedTextColor: NSColor {
         .white
     }

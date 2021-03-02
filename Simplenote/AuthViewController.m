@@ -73,7 +73,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     self.forgotPasswordButton.contentTintColor = [NSColor simplenoteBrandColor];
 
     // Toggle Signup: Tip
-    self.switchTipField.textColor = [NSColor colorWithCalibratedWhite:153.f/255.f alpha:1.0];
+    self.switchTipField.textColor = [NSColor simplenoteTertiaryTextColor];
 
     // Toggle Signup: Action
     self.switchActionButton.contentTintColor = [NSColor simplenoteBrandColor];
@@ -82,7 +82,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
     self.wordPressSSOButton.image = wpIcon;
     self.wordPressSSOButton.title = NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button");
-    self.wordPressSSOButton.contentTintColor = [NSColor colorWithCalibratedWhite:120.0/255.0 alpha:1.0];
+    self.wordPressSSOButton.contentTintColor = [NSColor simplenoteTertiaryTextColor];
 }
 
 - (void)startListeningToNotifications
