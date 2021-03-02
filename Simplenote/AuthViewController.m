@@ -51,7 +51,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 {
     [super viewDidLoad];
     [self setupInterface];
-// TODO: Drop
     [self refreshFields];
     [self startListeningToNotifications];
 }
@@ -151,7 +150,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 }
 
 - (void)refreshVisibleComponents {
-
     self.passwordField.hidden               = !self.signingIn;
     self.forgotPasswordButton.hidden        = !self.signingIn;
     self.wordPressSSOContainerView.hidden   = !self.signingIn;
