@@ -77,6 +77,41 @@ private extension SignupVerificationViewController {
         backButton.title = Localization.back
         backButton.contentTintColor = .simplenoteLinkColor
     }
+}
+
+
+// MARK: - Action Handlers
+//
+extension SignupVerificationViewController {
+
+    @IBAction
+    func backWasPressed(_ sender: Any) {
+        presentAuthenticationInteface()
+    }
+}
+
+
+// MARK: - Private API(s)
+//
+private extension SignupVerificationViewController {
+
+    func presentAuthenticationInteface() {
+        let authViewController = AuthViewController()
+
+        let targetView = authViewController.view
+        targetView.alphaValue = AppKitConstants.alpha0_0
+        targetView.layoutSubtreeIfNeeded()
+
+        NSAnimationContext.runAnimationGroup { context in
+            context.allowsImplicitAnimation = true
+            context.duration = AppKitConstants.duration0_4
+            targetView.alphaValue = AppKitConstants.alpha1_0
+
+            view.window?.contentViewController = authViewController
+            view.window?.layoutIfNeeded()
+        }
+    }
+}
 
 
 // MARK: - Localization
