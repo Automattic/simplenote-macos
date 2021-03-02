@@ -28,7 +28,7 @@ class AuthWindowController: NSWindowController, SPAuthenticationInterface {
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
         window.isOpaque = false
-        window.backgroundColor = .clear
+        window.backgroundColor = .white
 
         super.init(window: window)
     }
