@@ -43,35 +43,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self startListeningToNotifications];
 }
 
-- (void)setupInterface
-{
-    self.errorField.stringValue = @"";
-    self.errorField.textColor = [NSColor redColor];
-
-    [self.usernameField setPlaceholderString:NSLocalizedString(@"Email", @"Placeholder text for login field")];
-    self.usernameField.delegate = self;
-
-    [self.passwordField setPlaceholderString:NSLocalizedString(@"Password", @"Placeholder text for password field")];
-    self.passwordField.delegate = self;
-
-    // Forgot Password!
-    NSString *forgotText = NSLocalizedString(@"Forgot your Password?", @"Forgot Password Button");
-    self.forgotPasswordButton.title = [forgotText uppercaseString];
-    self.forgotPasswordButton.contentTintColor = [NSColor simplenoteBrandColor];
-
-    // Toggle Signup: Tip
-    self.switchTipField.textColor = [NSColor simplenoteTertiaryTextColor];
-
-    // Toggle Signup: Action
-    self.switchActionButton.contentTintColor = [NSColor simplenoteBrandColor];
-
-    // WordPress SSO
-    NSImage *wpIcon = [[NSImage imageNamed:@"icon_wp"] tintedWithColor:[NSColor simplenoteBrandColor]];
-    self.wordPressSSOButton.image = wpIcon;
-    self.wordPressSSOButton.title = NSLocalizedString(@"Log in with WordPress.com", @"button title for wp.com sign in button");
-    self.wordPressSSOButton.contentTintColor = [NSColor simplenoteTertiaryTextColor];
-}
-
 - (void)startListeningToNotifications
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -116,31 +87,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 
 #pragma mark - Interface Helpers
-
-- (void)refreshFields {
-    if (!self.isViewLoaded) {
-        return;
-    }
-
-    [self clearAuthenticationError];
-    [self refreshButtonTitles];
-    [self refreshVisibleComponentsWithAnimation];
-}
-
-- (void)refreshButtonTitles {
-    NSString *signInText    = NSLocalizedString(@"Log In", @"Title of button for logging in");;
-    NSString *signUpText    = NSLocalizedString(@"Sign Up", @"Title of button for signing up");
-    NSString *signInTip     = NSLocalizedString(@"Already have an account?", @"Link to sign in to an account");
-    NSString *signUpTip     = NSLocalizedString(@"Need an account?", @"Link to create an account");
-
-    NSString *actionText    = self.signingIn ? signInText : signUpText;
-    NSString *tipText       = self.signingIn ? signUpTip  : signInTip;
-    NSString *switchText    = self.signingIn ? signUpText : signInText;
-
-    self.actionButton.title         = actionText;
-    self.switchTipField.stringValue = [tipText uppercaseString];
-    self.switchActionButton.title   = [switchText uppercaseString];
-}
 
 - (void)setInterfaceEnabled:(BOOL)enabled {
     [self.usernameField setEnabled:enabled];
@@ -408,9 +354,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     }
 }
 
-- (void)clearAuthenticationError {
-    [self.errorField setStringValue:@""];
-}
 
 
 #pragma mark - NSTextView
