@@ -27,4 +27,12 @@
 @property (nonatomic, strong) SPAuthenticator                       *authenticator;
 @property (nonatomic, assign) BOOL                                  signingIn;
 
+- (void)setInterfaceEnabled:(BOOL)enabled;
+
+- (void)startLoginAnimation;
+- (void)stopLoginAnimation;
+
+- (void)presentPasswordResetAlert;
+- (void)showAuthenticationErrorForCode:(NSUInteger)responseCode;
+
 @end
