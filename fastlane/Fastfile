@@ -38,7 +38,7 @@ def get_required_env(key)
 end
 
 # Helper function to DRY the code to build the app
-def build_simplenote(codesign:)
+def build_simplenote(codesign:, archive_path: nil)
   if codesign
     skip_archive = false
     xcargs = []
@@ -54,8 +54,14 @@ def build_simplenote(codesign:)
     configuration: 'Release',
     clean: true,
     output_directory: BUILD_FOLDER,
+    archive_path: archive_path,
     skip_archive: skip_archive,
-    xcargs: xcargs
+    export_method: 'mac-application',
+    export_team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
+    xcargs: xcargs,
+    # This is required to successfully archive, see
+    # https://github.com/fastlane/fastlane/issues/15963#issuecomment-593649185
+    skip_package_pkg: true,
   )
 end
 
@@ -251,6 +257,41 @@ end
       org_slug: 'a8c',
       project_slug: 'simplenote-macos',
       dsym_path: dSYM_PATH,
+    )
+  end
+
+  # TODO: Add documentation
+  lane :build_and_upload_app_store do | options |
+    # This allows code signing to work on CircleCI. It is skipped if this isn't
+    # running on CI.
+    #
+    # See https://circleci.com/docs/2.0/ios-codesigning/
+    setup_circle_ci
+
+    sync_code_signing(
+      type: 'appstore',
+      platform: 'macos',
+      # Will default to false, unless a readonly value is specified, or is
+      # running on CI, in which case it will always be true.
+      readonly: options[:readonly] || is_ci,
+      app_identifier: 'com.automattic.SimplenoteMac'
+    )
+
+    archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
+    build_simplenote(codesign: true, archive_path: archive_path)
+
+    archive_zip_path = "#{archive_path}.zip"
+    zip(path: archive_path, output_path: archive_zip_path)
+
+    # TODO: Upload to App Store Connect
+
+    # TODO: Add "create_release" parameter to opt out from here
+    create_release(
+      repository: GHHELPER_REPO,
+      version: ios_get_app_version(),
+      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+      release_assets: [archive_zip_path],
+      prerelease: options[:prerelease],
     )
   end
 
