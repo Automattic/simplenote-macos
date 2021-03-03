@@ -27,7 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (= 0.8.0)
-  - Simperium-OSX (= 1.5)
+  - Simperium-OSX (from `https://github.com/Simperium/simperium-ios.git`, commit `5d889632a521230582effefb58700bd33258c7fd`)
 
 SPEC REPOS:
   trunk:
@@ -35,8 +35,17 @@ SPEC REPOS:
     - CocoaLumberjack
     - Reachability
     - Sentry
-    - Simperium-OSX
     - Sodium
+
+EXTERNAL SOURCES:
+  Simperium-OSX:
+    :commit: 5d889632a521230582effefb58700bd33258c7fd
+    :git: https://github.com/Simperium/simperium-ios.git
+
+CHECKOUT OPTIONS:
+  Simperium-OSX:
+    :commit: 5d889632a521230582effefb58700bd33258c7fd
+    :git: https://github.com/Simperium/simperium-ios.git
 
 SPEC CHECKSUMS:
   Automattic-Tracks-iOS: 1f68ebf14cc9607c65685f46b58e81532932bf48
@@ -46,6 +55,6 @@ SPEC CHECKSUMS:
   Simperium-OSX: 855b24a6e8b27354f399310a1959b21de1b6db2e
   Sodium: 23d11554ecd556196d313cf6130d406dfe7ac6da
 
-PODFILE CHECKSUM: c352f29a07e8cc14edfbb087234865502127eeed
+PODFILE CHECKSUM: a783619a60cbfa72b095810abcef955329e205b9
 
 COCOAPODS: 1.10.1
