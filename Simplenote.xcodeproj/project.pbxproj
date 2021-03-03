@@ -436,6 +436,8 @@
 		B5F3150A24496A970036872D /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3150824496A970036872D /* TableRowView.swift */; };
 		B5F50915247319360042FA1D /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F50914247319360042FA1D /* SplitView.swift */; };
 		B5F50916247319360042FA1D /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F50914247319360042FA1D /* SplitView.swift */; };
+		B5F5414825EFFC2200CAF52C /* SignupRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414725EFFC2200CAF52C /* SignupRemote.swift */; };
+		B5F5414925EFFC2200CAF52C /* SignupRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414725EFFC2200CAF52C /* SignupRemote.swift */; };
 		B5F5414E25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */; };
 		B5F5414F25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */; };
 		B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
@@ -805,6 +807,7 @@
 		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		B5F3150824496A970036872D /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		B5F5414725EFFC2200CAF52C /* SignupRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupRemote.swift; sourceTree = "<group>"; };
 		B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteConstants.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1154,6 +1157,7 @@
 			children = (
 				B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */,
 				B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */,
+				B5F5414725EFFC2200CAF52C /* SignupRemote.swift */,
 			);
 			name = Remote;
 			sourceTree = "<group>";
@@ -1988,6 +1992,7 @@
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
+				B5F5414825EFFC2200CAF52C /* SignupRemote.swift in Sources */,
 				B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
@@ -2274,6 +2279,7 @@
 				B555CE3725ED81F200610BC6 /* AuthWindowController.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B58117E325B9E5D200927E0C /* AccountVerificationController.swift in Sources */,
+				B5F5414925EFFC2200CAF52C /* SignupRemote.swift in Sources */,
 				B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,

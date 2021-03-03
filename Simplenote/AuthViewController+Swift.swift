@@ -110,6 +110,45 @@ extension AuthViewController {
 }
 
 
+// MARK: - Action Handlers
+//
+extension AuthViewController {
+
+    @objc
+    func performSignupRequest() {
+        startSignupAnimation()
+        setInterfaceEnabled(false)
+
+        let email = usernameText
+        SignupRemote().requestSignup(email: email) { [weak self] (success, statusCode) in
+            guard let self = `self` else {
+                return
+            }
+
+            if success {
+                self.presentSignupVerification(email: email)
+            } else {
+                self.showAuthenticationError(forCode: statusCode)
+            }
+
+            self.stopSignupAnimation()
+            self.setInterfaceEnabled(true)
+        }
+    }
+}
+
+
+// MARK: - Presenting!
+//
+extension AuthViewController {
+
+    func presentSignupVerification(email: String) {
+        let vc = SignupVerificationViewController(email: usernameText, authenticator: authenticator)
+        view.window?.transition(to: vc)
+    }
+}
+
+
 // MARK: - Metrics
 //
 private enum Metrics {

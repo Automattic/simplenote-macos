@@ -154,7 +154,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
         return;
     }
 
-    [self performSignup];
+    [self performSignupRequest];
 }
 
 - (IBAction)cancelAction:(id)sender {
@@ -211,19 +211,6 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     } failure:^(NSInteger responseCode, NSString *responseString, NSError *error) {
         [self showAuthenticationErrorForCode:responseCode];
         [self stopLoginAnimation];
-        [self setInterfaceEnabled:YES];
-    }];
-}
-
-- (void)performSignup {
-    [self startSignupAnimation];
-    [self setInterfaceEnabled:NO];
-
-    [self.authenticator signupWithUsername:self.usernameText password:self.passwordText success:^{
-        // NO-OP
-    } failure:^(NSInteger responseCode, NSString *responseString, NSError *error) {
-        [self showAuthenticationErrorForCode:responseCode];
-        [self stopSignupAnimation];
         [self setInterfaceEnabled:YES];
     }];
 }
@@ -329,7 +316,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self.errorField setStringValue:errorMessage];
 }
 
-- (void)showAuthenticationErrorForCode:(NSUInteger)responseCode {
+- (void)showAuthenticationErrorForCode:(NSInteger)responseCode {
     switch (responseCode) {
         case 409:
             [self showAuthenticationError:NSLocalizedString(@"That email is already being used", @"Error when address is in use")];

@@ -29,10 +29,10 @@
 
 - (void)setInterfaceEnabled:(BOOL)enabled;
 
-- (void)startLoginAnimation;
-- (void)stopLoginAnimation;
+- (void)startSignupAnimation;
+- (void)stopSignupAnimation;
 
 - (void)presentPasswordResetAlert;
-- (void)showAuthenticationErrorForCode:(NSUInteger)responseCode;
+- (void)showAuthenticationErrorForCode:(NSInteger)responseCode;
 
 @end
