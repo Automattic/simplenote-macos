@@ -270,14 +270,14 @@ end
     # TestFlight does not suport macOS but we can use deliver to upload the
     # binary to the App Store by telling it to skip all the metadata,
     # screenshots, etc.
-    deliver(
-      skip_screenshots: true,
-      overwrite_screenshots: false,
-      skip_metadata: true,
-      skip_app_version_update: true,
-      skip_binary_upload: false,
-      force: true, # Skip verification of HTML preview file
-    )
+    # deliver(
+    #   skip_screenshots: true,
+    #   overwrite_screenshots: false,
+    #   skip_metadata: true,
+    #   skip_app_version_update: true,
+    #   skip_binary_upload: false,
+    #   force: true, # Skip verification of HTML preview file
+    # )
 
     sentry_upload_dsym(
       auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
