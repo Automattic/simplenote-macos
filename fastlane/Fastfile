@@ -267,7 +267,27 @@ end
     archive_path = File.join(@BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
     build_simplenote(codesign: true, archive_path: archive_path)
 
-    # TODO: Upload to App Store Connect
+    # TestFlight does not suport macOS but we can use deliver to upload the
+    # binary to the App Store by telling it to skip all the metadata,
+    # screenshots, etc.
+    deliver(
+      skip_screenshots: true,
+      overwrite_screenshots: false,
+      skip_metadata: true,
+      skip_app_version_update: true,
+      skip_binary_upload: false,
+      force: true, # Skip verification of HTML preview file
+    )
+
+    sentry_upload_dsym(
+      auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
+      org_slug: 'a8c',
+      project_slug: 'simplenotemacos',
+      # At the time of writing, there's no way to explicitly configure the
+      # dSYM path, but build_mac_app sets it in the environment if successful.
+      # See `bundle exec fastlane action build_mac_app`.
+      dsym_path: ENV['DSYM_OUTPUT_PATH'],
+    )
 
     next unless options[:create_github_release]
 
