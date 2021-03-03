@@ -43,7 +43,8 @@ jobs:
       - setup_environment
       - run:
           name: Build App Store Target
-          command: bundle exec fastlane build_app_store
+          # command: bundle exec fastlane build_app_store
+          command: bundle exec fastlane build_and_upload_app_store
 
 workflows:
   simplenote_macos:
