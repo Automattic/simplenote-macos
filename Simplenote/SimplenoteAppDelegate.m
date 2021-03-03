@@ -133,8 +133,17 @@
     NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
     NSURL *url = [NSURL URLWithString:urlString];
 
+    if (!url) {
+        return;
+    }
+
     // URL: Open a Note!
     if ([self handleOpenNoteWithUrl:url]) {
+        return;
+    }
+
+    // Magic Link
+    if ([self handleMagicAuthWithUrl:url]) {
         return;
     }
 

@@ -440,6 +440,8 @@
 		B5F5414925EFFC2200CAF52C /* SignupRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414725EFFC2200CAF52C /* SignupRemote.swift */; };
 		B5F5414E25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */; };
 		B5F5414F25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */; };
+		B5F5415425F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */; };
+		B5F5415525F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */; };
 		B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
@@ -809,6 +811,7 @@
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		B5F5414725EFFC2200CAF52C /* SignupRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupRemote.swift; sourceTree = "<group>"; };
 		B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteConstants.swift; sourceTree = "<group>"; };
+		B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkAuthenticator.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
 		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1027,13 +1030,14 @@
 			isa = PBXGroup;
 			children = (
 				F998F3EA22853C29008C2B59 /* CrashLogging.swift */,
+				B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */,
 				B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */,
-				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
+				A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */,
 				B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */,
+				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
 				B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */,
 				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
 				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
-				A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -2054,6 +2058,7 @@
 				B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */,
 				B51AFE7625D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
+				B5F5415425F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */,
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
 				B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
@@ -2294,6 +2299,7 @@
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
+				B5F5415525F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */,
 				B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				B5DD0F922476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */,

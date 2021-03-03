@@ -262,6 +262,17 @@ extension SimplenoteAppDelegate {
         displayNote(simperiumKey: simperiumKey)
         return true
     }
+
+    // MARK: - Magic Link authentication
+    //
+    @objc
+    func handleMagicAuth(url: URL) -> Bool {
+        if simperium.user?.authenticated() == true {
+            return false
+        }
+
+        return MagicLinkAuthenticator(authenticator: simperium.authenticator).handle(url: url)
+    }
 }
 
 
