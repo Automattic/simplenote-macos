@@ -591,7 +591,7 @@ extension NoteListViewController {
 
     @IBAction
     func performSearch(_ sender: Any) {
-        searchQuery = SearchQuery(searchText: searchField.stringValue)
+        searchQuery = SearchQuery(searchText: searchField.stringValue, settings: .default)
         refreshEverything()
         SPTracker.trackListNotesSearched()
     }

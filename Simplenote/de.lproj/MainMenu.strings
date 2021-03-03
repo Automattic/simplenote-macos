@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 18:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-19 17:24:27+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: de */
@@ -247,7 +247,7 @@
 "P9P-ed-21W.title" = "Zeilenlänge";
 
 /* Class = "NSMenuItem"; title = "Log Out"; ObjectID = "Pde-gm-aAD"; Note = "Logs out from the Account"; */
-"Pde-gm-aAD.title" = "Log Out";
+"Pde-gm-aAD.title" = "Abmelden";
 
 /* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
 "Pwd-hR-fBt.title" = "Alle Inhalte exportieren";
