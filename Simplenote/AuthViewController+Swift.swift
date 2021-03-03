@@ -143,7 +143,7 @@ extension AuthViewController {
 extension AuthViewController {
 
     func presentSignupVerification(email: String) {
-        let vc = SignupVerificationViewController(email: usernameText, authenticator: authenticator)
+        let vc = SignupVerificationViewController(email: email, authenticator: authenticator)
         view.window?.transition(to: vc)
     }
 }

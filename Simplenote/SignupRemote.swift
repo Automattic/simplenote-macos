@@ -17,14 +17,15 @@ class SignupRemote {
 
         let dataTask = urlSession.dataTask(with: requestURL) { (data, response, error) in
             DispatchQueue.main.async {
-                // Check for 2xx status code
-                guard let response = response as? HTTPURLResponse, response.statusCode / 100 == 2 else {
+                guard let response = response as? HTTPURLResponse else {
                     // This should never, ever happen
                     completion(false, .zero)
                     return
                 }
 
-                completion(true, response.statusCode)
+                // Check for 2xx status code
+                let success = response.statusCode / 100 == 2
+                completion(success, response.statusCode)
             }
         }
 
