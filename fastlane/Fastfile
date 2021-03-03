@@ -296,7 +296,8 @@ end
 
     create_release(
       repository: GHHELPER_REPO,
-      version: ios_get_app_version(),
+      # version: ios_get_app_version(),
+      version: "test-#{Time.now.to_i}",
       release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
       release_assets: [archive_zip_path],
       prerelease: options[:prerelease],
