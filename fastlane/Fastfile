@@ -267,12 +267,13 @@ end
     archive_path = File.join(@BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
     build_simplenote(codesign: true, archive_path: archive_path)
 
+    # TODO: Upload to App Store Connect
+
+    next unless options[:create_github_release]
+
     archive_zip_path = "#{archive_path}.zip"
     zip(path: archive_path, output_path: archive_zip_path)
 
-    # TODO: Upload to App Store Connect
-
-    # TODO: Add "create_release" parameter to opt out from here
     create_release(
       repository: GHHELPER_REPO,
       version: ios_get_app_version(),
