@@ -37,7 +37,7 @@ def get_required_env(key)
 end
 
 # Helper function to DRY the code to build the app
-def build_simplenote(codesign:)
+def build_simplenote(codesign:, archive_path: nil)
   if codesign
     skip_archive = false
     xcargs = []
@@ -53,6 +53,7 @@ def build_simplenote(codesign:)
     configuration: 'Release',
     clean: true,
     output_directory: @BUILD_FOLDER,
+    archive_path: archive_path,
     skip_archive: skip_archive,
     xcargs: xcargs
   )
@@ -251,7 +252,34 @@ end
       project_slug: 'simplenote-macos',
       dsym_path: dSYM_PATH,
     )
+  end
 
+  lane :build_and_upload_app_store do | options |
+    sync_code_signing(
+      type: 'appstore',
+      platform: 'macos',
+      # Will default to false, unless a readonly value is specified, or is
+      # running on CI, in which case it will always be true.
+      readonly: options[:readonly] || is_ci,
+      app_identifier: 'com.automattic.SimplenoteMac'
+    )
+
+    archive_path = File.join(@BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
+    build_simplenote(codesign: true, archive_path: archive_path)
+
+    archive_zip_path = "#{archive_path}.zip"
+    zip(path: archive_path, output_path: archive_zip_path)
+
+    # TODO: Upload to App Store Connect
+
+    # TODO: Add "create_release" parameter to opt out from here
+    create_release(
+      repository: GHHELPER_REPO,
+      version: ios_get_app_version(),
+      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+      release_assets: [archive_zip_path],
+      prerelease: options[:prerelease],
+    )
   end
 
 ########################################################################
