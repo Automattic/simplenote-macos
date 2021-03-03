@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-09 15:24:57+0000 */
+/* Translation-Revision-Date: 2021-02-16 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -226,7 +226,7 @@
 "83.title" = "Anteckning";
 
 /* Class = "NSMenuItem"; title = "Name: Z-A"; ObjectID = "BFX-rl-bcH"; */
-"BFX-rl-bcH.title" = "Name: Z-A";
+"BFX-rl-bcH.title" = "Namn: Z–A";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
@@ -274,7 +274,7 @@
 "THl-80-myZ.title" = "Format";
 
 /* Class = "NSMenuItem"; title = "Name: A-Z"; ObjectID = "XEL-Qt-3Ik"; Note = "Toggles Alphabetical Note Sort Order"; */
-"XEL-Qt-3Ik.title" = "Name: A-Z";
+"XEL-Qt-3Ik.title" = "Namn: A–Z";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
 "YpJ-fs-p4p.title" = "Sortering av anteckningar";

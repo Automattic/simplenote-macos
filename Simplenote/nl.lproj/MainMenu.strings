@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-01-22 14:54:03+0000 */
+/* Translation-Revision-Date: 2021-02-19 17:25:02+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -226,7 +226,7 @@
 "83.title" = "Notitie";
 
 /* Class = "NSMenuItem"; title = "Name: Z-A"; ObjectID = "BFX-rl-bcH"; */
-"BFX-rl-bcH.title" = "Name: Z-A";
+"BFX-rl-bcH.title" = "Naam: Z-A";
 
 /* Class = "NSMenuItem"; title = "Twitter"; ObjectID = "E6O-ds-BEj"; Note = "Opens Simplenote's Twitter Profile"; */
 "E6O-ds-BEj.title" = "Twitter";
@@ -247,7 +247,7 @@
 "P9P-ed-21W.title" = "Regellengte";
 
 /* Class = "NSMenuItem"; title = "Log Out"; ObjectID = "Pde-gm-aAD"; Note = "Logs out from the Account"; */
-"Pde-gm-aAD.title" = "Log Out";
+"Pde-gm-aAD.title" = "Uitloggen";
 
 /* Class = "NSMenuItem"; title = "Export Everything"; ObjectID = "Pwd-hR-fBt"; Note = "Opens the Export UI"; */
 "Pwd-hR-fBt.title" = "Alles exporteren";
@@ -274,7 +274,7 @@
 "THl-80-myZ.title" = "Berichttype";
 
 /* Class = "NSMenuItem"; title = "Name: A-Z"; ObjectID = "XEL-Qt-3Ik"; Note = "Toggles Alphabetical Note Sort Order"; */
-"XEL-Qt-3Ik.title" = "Name: A-Z";
+"XEL-Qt-3Ik.title" = "Naam: A-Z";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
 "YpJ-fs-p4p.title" = "Notities sorteren";
