@@ -255,6 +255,12 @@ end
   end
 
   lane :build_and_upload_app_store do | options |
+    # This allows code signing to work on CircleCI. It is skipped if this isn't
+    # running on CI.
+    #
+    # See https://circleci.com/docs/2.0/ios-codesigning/
+    setup_circle_ci
+
     sync_code_signing(
       type: 'appstore',
       platform: 'macos',
