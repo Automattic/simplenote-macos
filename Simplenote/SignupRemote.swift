@@ -40,6 +40,7 @@ class SignupRemote {
                                  timeoutInterval: RemoteConstants.timeout)
         request.httpMethod = RemoteConstants.Method.POST
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(Locale.current.languageCode, forHTTPHeaderField: "Accept-Language")
         request.httpBody = try? JSONEncoder().encode(["username": email])
 
         return request
