@@ -462,19 +462,16 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     ///
     func updateActivePanel(with responder: NSResponder) {
         let viewControllers: [NSResponder] = [tagListViewController, noteListViewController, noteEditorViewController]
-        var responder = responder
-        while true {
-            if viewControllers.contains(responder) {
-                tagListViewController.isActive = tagListViewController == responder
-                noteListViewController.isActive = noteListViewController == responder
+        var nextResponder: NSResponder? = responder
+
+        while let currentResponder = nextResponder {
+            if viewControllers.contains(currentResponder) {
+                tagListViewController.isActive = tagListViewController == currentResponder
+                noteListViewController.isActive = noteListViewController == currentResponder
                 break
             }
 
-            guard let nextResponder = responder.nextResponder else {
-                break
-            }
-
-            responder = nextResponder
+            nextResponder = currentResponder.nextResponder
         }
     }
 }
