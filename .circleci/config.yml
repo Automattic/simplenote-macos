@@ -44,12 +44,23 @@ jobs:
       xcode-version: "12.4.0"
     steps:
       - setup_environment
+      - copy_demo_credentials
       - run:
           name: Build App Store Target
-          # command: bundle exec fastlane build_app_store
-          command: |
-            brew install getsentry/tools/sentry-cli
+          command: bundle exec fastlane build_app_store
 
+  Upload to App Store:
+    executor:
+      name: ios/default
+      xcode-version: "12.4.0"
+    steps:
+      - setup_environment
+      - run:
+          name: Install Sentry CLI
+          command: brew install getsentry/tools/sentry-cli
+      - run:
+          name: Build and Upload for App Store
+          command: |
             bundle exec fastlane run configure_apply
             bundle exec fastlane build_and_upload_app_store
 
@@ -58,3 +69,5 @@ workflows:
     jobs:
       - Test
       - Build App Store Target
+      - Upload to App Store:
+          requires: [ "Test",  "Build App Store Target" ]
