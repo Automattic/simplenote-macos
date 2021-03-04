@@ -74,6 +74,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 - (void)setSigningIn:(BOOL)signingIn {
     _signingIn = signingIn;
     [self refreshFields];
+    [self ensureUsernameIsFirstResponder];
 }
 
 

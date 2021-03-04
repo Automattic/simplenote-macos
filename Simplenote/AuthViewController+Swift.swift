@@ -116,6 +116,14 @@ extension AuthViewController {
     func clearAuthenticationError() {
         errorField.stringValue = ""
     }
+
+    /// Marks the Username Field as the First Responder
+    ///
+    @objc
+    func ensureUsernameIsFirstResponder() {
+        usernameField?.textField.becomeFirstResponder()
+        view.needsDisplay = true
+    }
 }
 
 
