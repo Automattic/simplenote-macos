@@ -86,6 +86,9 @@ extension TagListViewController {
     /// Makes table view first responder
     ///
     func focus() {
+        guard isViewLoaded && !view.isHiddenOrHasHiddenAncestor else {
+            return
+        }
         view.window?.makeFirstResponder(tableView)
     }
 }
@@ -167,6 +170,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.style = .sidebar
+        rowView.isActive = isActive
         return rowView
     }
 
@@ -280,5 +284,16 @@ extension TagListViewController: SPTextFieldDelegate {
 
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
         !menuShowing
+    }
+}
+
+
+// MARK: - Appearance
+//
+extension TagListViewController {
+    @objc
+    func refreshTableRowsActiveStatus() {
+        tableView.refreshRows(isActive: isActive)
+        tableView.reloadSelectedRow()
     }
 }

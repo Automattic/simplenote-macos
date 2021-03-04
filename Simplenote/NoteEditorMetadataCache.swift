@@ -29,26 +29,23 @@ class NoteEditorMetadataCache: NSObject {
         return cache[key]
     }
 
-    /// Stores scroll position
+    /// Stores metadata
     ///
-    func store(scrollPosition: CGFloat, for key: String) {
-        var metadata = self.metadata(for: key) ?? NoteEditorMetadata()
-        metadata.scrollPosition = scrollPosition
+    func store(metadata: NoteEditorMetadata, for key: String) {
         cache[key] = metadata
     }
 
-    /// Stores cursor location
-    ///
-    func store(cursorLocation: Int, for key: String) {
-        var metadata = self.metadata(for: key) ?? NoteEditorMetadata()
-        metadata.cursorLocation = cursorLocation
-        cache[key] = metadata
-    }
-
-    /// Cleanup
+    /// Remove metadata for key
     ///
     func cleanup(keeping keys: [String]) {
         cache = cache.filter({ keys.contains($0.key) })
+    }
+
+    /// Remove all cached data
+    ///
+    @objc
+    func removeAll() {
+        cache.removeAll()
     }
 }
 
@@ -74,11 +71,13 @@ extension NoteEditorMetadataCache {
             return
         }
 
-        guard let oldCursorLocation = metadata(for: key)?.cursorLocation else {
+        guard let oldMetadata = metadata(for: key), let oldCursorLocation = oldMetadata.cursorLocation else {
             return
         }
 
         let location = (oldContent as NSString).convertCursorLocation(oldCursorLocation, toLocationInText: note.content ?? "")
-        store(cursorLocation: location, for: key)
+        let metadata = NoteEditorMetadata(scrollPosition: oldMetadata.scrollPosition,
+                                          cursorLocation: location)
+        store(metadata: metadata, for: key)
     }
 }

@@ -24,6 +24,13 @@ class TagTableCellView: NSTableCellView {
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
+    private var isSelected: Bool {
+        (superview as? NSTableRowView)?.isSelected ?? false
+    }
+
+    private var isActive: Bool {
+        (superview as? TableRowView)?.isActive ?? false
+    }
 
     // MARK: - Overridden Methods
 
@@ -69,6 +76,14 @@ extension TagTableCellView {
 //
 private extension TagTableCellView {
 
+    var iconTintColor: NSColor {
+        (isSelected && isActive) ? .white : .simplenoteAccessoryTintColor
+    }
+
+    var textRegularColor: NSColor {
+        (isSelected && isActive) ? .white : .simplenoteTextColor
+    }
+
     func setupSubviews() {
         iconImageView.wantsLayer = true
         nameTextField.wantsLayer = true
@@ -85,8 +100,8 @@ private extension TagTableCellView {
         let icon = iconImageView.image
 
         // We *don't wanna use* `imageView.contentTintColor` since on highlight it's automatically changing the tintColor!
-        iconImageView.image = icon?.tinted(with: .simplenoteAccessoryTintColor)
-        nameTextField.textRegularColor = .simplenoteTextColor
+        iconImageView.image = icon?.tinted(with: iconTintColor)
+        nameTextField.textRegularColor = textRegularColor
 
         nameTextField.textEditionColor = .simplenoteTextColor
         nameTextField.formatter = formatter

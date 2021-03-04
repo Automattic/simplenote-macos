@@ -176,6 +176,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func newNoteWasPressed(_ sender: Any) {
         noteEditorViewController.newNoteWasPressed(sender)
+        SPTracker.trackShortcutCreateNote()
     }
 
     @IBAction
@@ -227,6 +228,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func searchWasPressed(_ sender: Any) {
         noteListViewController.beginSearch()
+        SPTracker.trackShortcutSearch()
     }
 
     @IBAction
@@ -270,6 +272,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func toggleMarkdownPreviewAction(_ sender: Any) {
         noteEditorViewController.toggleMarkdownView(sender)
+        SPTracker.trackShortcutToggleMarkdownPreview()
     }
 }
 
@@ -455,8 +458,34 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     func validateToogleMarkdownPreviewItem(_ item: NSMenuItem) -> Bool {
         noteEditorViewController.validateToogleMarkdownPreviewItem(item)
     }
+
+    /// Updates `active` state of top view controllers based on the current first responder
+    ///
+    func updateActivePanel(with responder: NSResponder) {
+        let viewControllers: [NSResponder] = [tagListViewController, noteListViewController, noteEditorViewController]
+        var nextResponder: NSResponder? = responder
+
+        while let currentResponder = nextResponder {
+            if viewControllers.contains(currentResponder) {
+                tagListViewController.isActive = tagListViewController == currentResponder
+                noteListViewController.isActive = noteListViewController == currentResponder
+                break
+            }
+
+            nextResponder = currentResponder.nextResponder
+        }
+    }
 }
 
+// MARK: - Editor Cache
+//
+extension SimplenoteAppDelegate {
+    @objc
+    func cleanupEditorMetadataCache() {
+        let allKeys = simperium.allNotes.compactMap({ $0.deleted ? nil : $0.simperiumKey })
+        noteEditorMetadataCache.cleanup(keeping: allKeys)
+    }
+}
 
 // MARK: - Constants
 //

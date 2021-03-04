@@ -32,12 +32,14 @@ final class SPApplication: NSApplication {
             event.charactersIgnoringModifiers == "Y" {
 
             if sendAction(#selector(NoteEditorViewController.toggleTagsAndEditor), to: nil, from: self) {
+                SPTracker.trackShortcutToggleEditorAndTags()
                 return
             }
         }
 
         if modifierFlags.intersection([.shift, .command, .control, .option]).isEmpty &&
-            !(appDelegate.window.firstResponder is NSTextView) {
+            !(appDelegate.window.firstResponder is NSTextView) &&
+            !(appDelegate.window.firstResponder is NSTextField) {
             if event.simplenoteSpecialKey == .some(.trailingArrow) {
                 if sendAction(#selector(NoteListViewController.switchToTrailingPanel), to: nil, from: self) {
                     return

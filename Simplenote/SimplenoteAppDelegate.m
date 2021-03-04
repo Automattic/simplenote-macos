@@ -129,6 +129,11 @@
     [SPTracker trackApplicationLaunched];
 }
 
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    [self cleanupEditorMetadataCache];
+}
+
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
     NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
@@ -255,6 +260,8 @@
     [self.verificationCoordinator processDidLogout];
     [SPTracker refreshMetadataForAnonymousUser];
     [self.crashLogging clearCachedUser];
+
+    [self.noteEditorMetadataCache removeAll];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
@@ -384,6 +391,7 @@
     [_simperium signOutAndRemoveLocalData:YES completion:^{
         // Nuke User Settings
         [[Options shared] reset];
+        [self.noteEditorMetadataCache removeAll];
 
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
@@ -394,11 +402,13 @@
 - (IBAction)toggleSidebarAction:(id)sender
 {
     [self.splitViewController toggleSidebarActionWithSender:sender];
+    [SPTracker trackShortcutToggleSidebar];
 }
 
 - (IBAction)focusModeAction:(id)sender
 {
     [self.splitViewController focusModeActionWithSender:sender];
+    [SPTracker trackToggleFocusMode];
 }
 
 - (IBAction)helpAction:(id)sender

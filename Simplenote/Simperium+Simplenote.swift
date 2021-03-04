@@ -83,6 +83,12 @@ extension Simperium {
 //
 extension Simperium {
 
+    /// Returns all of the available `Notes`
+    ///
+    var allNotes: [Note] {
+        notesBucket.allObjects(ofType: Note.self)
+    }
+
     /// Deletes all of the Note entities, from Core Data, whose `deleted` flag are set to `true`.
     /// - Note: It's up to the caller to actually persist the change.
     ///
