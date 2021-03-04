@@ -55,12 +55,12 @@ def build_simplenote(codesign:, archive_path: nil)
     output_directory: @BUILD_FOLDER,
     archive_path: archive_path,
     skip_archive: skip_archive,
+    export_method: 'mac-application',
+    export_team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
+    xcargs: xcargs,
     # This is required to successfully archive, see
     # https://github.com/fastlane/fastlane/issues/15963#issuecomment-593649185
     skip_package_pkg: true,
-    export_method: 'mac-application',
-    export_team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
-    xcargs: xcargs
   )
 end
 
@@ -300,6 +300,7 @@ end
       dsym_path: ENV['DSYM_OUTPUT_PATH'],
     )
 
+    # Do not create the GitHub release unless explicitly requested
     next unless options[:create_github_release]
 
     archive_zip_path = "#{archive_path}.zip"

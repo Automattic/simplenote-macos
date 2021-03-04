@@ -62,7 +62,7 @@ jobs:
           name: Build and Upload for App Store
           command: |
             bundle exec fastlane run configure_apply
-            bundle exec fastlane build_and_upload_app_store
+            bundle exec fastlane build_and_upload_app_store create_github_release:true
 
 workflows:
   simplenote_macos:
