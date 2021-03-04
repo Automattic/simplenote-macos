@@ -128,6 +128,11 @@ class NoteListViewController: NSViewController {
 extension NoteListViewController {
     @objc
     func switchToTrailingPanel() {
+        guard tableView.selectedRowIndexes.count == 1,
+              !isViewingTrash else {
+            return
+        }
+
         SimplenoteAppDelegate.shared().focusOnTheEditor()
     }
 
