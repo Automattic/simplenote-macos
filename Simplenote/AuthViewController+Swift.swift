@@ -65,6 +65,7 @@ extension AuthViewController {
         clearAuthenticationError()
         refreshButtonTitles()
         refreshVisibleComponentsWithAnimation()
+        refreshEnabledComponents()
     }
 
     @objc
@@ -99,6 +100,14 @@ extension AuthViewController {
             fields.updateAlphaValue(alphaEnd)
             view.layoutSubtreeIfNeeded()
         }
+    }
+
+    /// Makes sure unused components (in the current mode) are effectively disabled
+    ///
+    func refreshEnabledComponents() {
+        passwordField.setEnabled(signingIn)
+        forgotPasswordButton.isEnabled = signingIn
+        wordPressSSOButton.isEnabled = signingIn
     }
 
     /// Drops any Errors onscreen
