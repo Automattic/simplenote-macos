@@ -10,6 +10,9 @@ extension NSWindow {
     func transition(to viewController: NSViewController) {
         let targetView = viewController.view
         targetView.alphaValue = AppKitConstants.alpha0_0
+
+        // Force Layout immediately: Prevent unexpected animations while fading in
+        targetView.needsLayout = true
         targetView.layoutSubtreeIfNeeded()
 
         NSAnimationContext.runAnimationGroup { context in
