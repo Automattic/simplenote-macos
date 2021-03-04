@@ -55,6 +55,8 @@ def build_simplenote(codesign:, archive_path: nil)
     output_directory: @BUILD_FOLDER,
     archive_path: archive_path,
     skip_archive: skip_archive,
+    export_method: 'app-store',
+    export_team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
     xcargs: xcargs
   )
 end
