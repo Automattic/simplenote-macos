@@ -52,6 +52,8 @@ jobs:
             # TODO: figure out a cleaner / less wasteful way of doing this
             rm Simplenote/Credentials/SPCredentials.swift
 
+            brew install getsentry/tools/sentry-cli
+
             bundle exec fastlane run configure_apply
             bundle exec fastlane build_and_upload_app_store
 
