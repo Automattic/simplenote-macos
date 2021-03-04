@@ -6,14 +6,16 @@ orbs:
 
 # Reusable sets of steps
 commands:
-  setup_environment:
+  copy_demo_credentials:
     steps:
-      - checkout
       - run:
           name: Copy Demo SPCredentials
           command: |
             mkdir -p Simplenote/Credentials
             cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
+  setup_environment:
+    steps:
+      - checkout
       - ios/install-dependencies:
           bundle-install: true
           pod-install: true
@@ -31,6 +33,7 @@ jobs:
       xcode-version: "12.4.0"
     steps:
       - setup_environment
+      - copy_demo_credentials
       - run:
           name: Build & Test
           command: bundle exec fastlane test
@@ -45,13 +48,6 @@ jobs:
           name: Build App Store Target
           # command: bundle exec fastlane build_app_store
           command: |
-            # Delete demo credentials to avoid configure_apply to fail because
-            # if the file's alreayd there it would ask the user whether to
-            # override it, but that doesn't work in CI.
-            #
-            # TODO: figure out a cleaner / less wasteful way of doing this
-            rm Simplenote/Credentials/SPCredentials.swift
-
             brew install getsentry/tools/sentry-cli
 
             bundle exec fastlane run configure_apply
