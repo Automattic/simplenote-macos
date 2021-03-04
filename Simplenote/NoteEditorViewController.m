@@ -187,9 +187,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         return;
     }
 
-    [self saveScrollPosition];
-    [self saveCursorLocation];
-    
+    [self saveScrollPositionAndCursorLocation];
+
     // Issue #291:
     // Flipping the editable flag effectively "Commits" the last character being edited (Korean Keyboard)
     self.noteEditor.editable = false;
@@ -326,7 +325,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (void)willReceiveNewContent
 {
-    [self saveCursorLocation];
+    [self saveScrollPositionAndCursorLocation];
 
     SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
 	

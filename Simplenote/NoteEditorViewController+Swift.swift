@@ -867,14 +867,17 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController {
     @objc
-    func saveScrollPosition() {
+    func saveScrollPositionAndCursorLocation() {
         // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
         guard let simperiumKey = note?.simperiumKey else {
             return
         }
 
         let scrollPosition = scrollView.contentView.bounds.origin.y
-        metadataCache.store(scrollPosition: scrollPosition, for: simperiumKey)
+        let cursorLocation = noteEditor.selectedRange().location
+        let metadata = NoteEditorMetadata(scrollPosition: scrollPosition,
+                                          cursorLocation: cursorLocation)
+        metadataCache.store(metadata: metadata, for: simperiumKey)
     }
 
     @objc
@@ -887,14 +890,6 @@ extension NoteEditorViewController {
         // ensure layout to make sure that content size is updated
         noteEditor.ensureLayout()
         scrollView.documentView?.scroll(NSPoint(x: 0, y: scrollPosition))
-    }
-
-    @objc
-    func saveCursorLocation() {
-        guard let simperiumKey = note?.simperiumKey else {
-            return
-        }
-        metadataCache.store(cursorLocation: noteEditor.selectedRange().location, for: simperiumKey)
     }
 
     @objc
