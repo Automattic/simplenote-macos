@@ -293,10 +293,7 @@ extension TagListViewController: SPTextFieldDelegate {
 extension TagListViewController {
     @objc
     func refreshTableRowsActiveStatus() {
-        for row in 0..<tableView.numberOfRows {
-            let tableRow = tableView.rowView(atRow: row, makeIfNecessary: false) as? TableRowView
-            tableRow?.isActive = isActive
-        }
+        tableView.refreshRows(isActive: isActive)
         tableView.reloadSelectedRow()
     }
 }

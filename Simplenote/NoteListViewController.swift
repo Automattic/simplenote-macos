@@ -65,10 +65,7 @@ class NoteListViewController: NSViewController {
                 return
             }
 
-            for row in 0..<tableView.numberOfRows {
-                let rowView = tableView.rowView(atRow: row, makeIfNecessary: false) as? TableRowView
-                rowView?.isActive = isActive
-            }
+            tableView.refreshRows(isActive: isActive)
         }
     }
 
