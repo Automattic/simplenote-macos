@@ -122,7 +122,6 @@
     [[MigrationsHandler new] ensureUpdateIsHandled];
 
     [self cleanupTags];
-    [self configureWelcomeNoteIfNeeded];
     [self startListeningForThemeNotifications];
 
     [SPTracker trackApplicationLaunched];

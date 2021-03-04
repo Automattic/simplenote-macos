@@ -28,8 +28,4 @@ class SimplenoteConstants: NSObject {
     static let simplenoteSettingsURL = "https://app.simplenote.com/settings"
     static let simplenoteVerificationURL = "https://app.simplenote.com/account/verify-email/"
     static let simplenoteRequestSignupURL = "https://jbtest-dot-simple-note-hrd.appspot.com/account/request-signup"
-
-    /// Reserved Object Keys
-    ///
-    static let welcomeNoteObjectKey = "welcomeNote-Mac"
 }
