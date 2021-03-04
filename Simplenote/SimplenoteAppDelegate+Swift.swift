@@ -46,6 +46,7 @@ extension SimplenoteAppDelegate {
         tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
         noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
         noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+        noteEditorViewController.metadataCache = noteEditorMetadataCache
     }
 
     @objc
@@ -84,6 +85,13 @@ extension SimplenoteAppDelegate {
     func configureEditorController() {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController
+    }
+
+    @objc
+    func configureEditorMetadataCache() {
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let fileURL = URL(fileURLWithPath: documentsDirectory, isDirectory: true).appendingPathComponent(Constants.noteEditorMetadataCacheFilename)
+        noteEditorMetadataCache = NoteEditorMetadataCache(storage: FileStorage(fileURL: fileURL))
     }
 
     @objc
@@ -239,6 +247,30 @@ extension SimplenoteAppDelegate {
 
         Options.shared.themeName = option.themeName
     }
+
+    func cycleSidebarAction() {
+        splitViewController.cycleSidebarAction()
+    }
+
+    @objc
+    func focusOnTheNoteList() {
+        noteListViewController.focus()
+    }
+
+    @objc
+    func focusOnTheEditor() {
+        noteEditorViewController.focus()
+    }
+
+    @objc
+    func focusOnTheTags() {
+        tagListViewController.focus()
+    }
+
+    @IBAction
+    func toggleMarkdownPreviewAction(_ sender: Any) {
+        noteEditorViewController.toggleMarkdownView(sender)
+    }
 }
 
 
@@ -346,6 +378,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
 
+        case .toggleMarkdownPreview:
+            return validateToogleMarkdownPreviewItem(menuItem)
+
         default:
             return true
         }
@@ -416,4 +451,15 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
         noteEditorViewController.validateSystemTrashMenuItem(item)
     }
+
+    func validateToogleMarkdownPreviewItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateToogleMarkdownPreviewItem(item)
+    }
+}
+
+
+// MARK: - Constants
+//
+private struct Constants {
+    static let noteEditorMetadataCacheFilename = ".editor-metadata-cache"
 }

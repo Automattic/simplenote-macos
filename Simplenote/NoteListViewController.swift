@@ -96,6 +96,25 @@ class NoteListViewController: NSViewController {
 
         progressIndicator.startAnimation(self)
     }
+
+    func focus() {
+        view.window?.makeFirstResponder(tableView)
+    }
+}
+
+
+// MARK: - Keyboard Shortcuts
+//
+extension NoteListViewController {
+    @objc
+    func switchToTrailingPanel() {
+        SimplenoteAppDelegate.shared().focusOnTheEditor()
+    }
+
+    @objc
+    func switchToLeadingPanel() {
+        SimplenoteAppDelegate.shared().focusOnTheTags()
+    }
 }
 
 

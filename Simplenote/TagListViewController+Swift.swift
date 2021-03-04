@@ -82,6 +82,12 @@ extension TagListViewController {
     var selectedFilter: TagListFilter {
         selectedRow?.matchingFilter ?? .everything
     }
+
+    /// Makes table view first responder
+    ///
+    func focus() {
+        view.window?.makeFirstResponder(tableView)
+    }
 }
 
 
@@ -254,6 +260,16 @@ extension TagListViewController {
         simperium.deleteTrashedNotes()
         simperium.save()
         NotificationCenter.default.post(name: .TagListDidEmptyTrash, object: self)
+    }
+}
+
+
+// MARK: - Keyboard Navigation
+//
+extension TagListViewController {
+    @objc
+    func switchToTrailingPanel() {
+        SimplenoteAppDelegate.shared().focusOnTheNoteList()
     }
 }
 

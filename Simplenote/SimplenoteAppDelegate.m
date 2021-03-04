@@ -94,6 +94,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [self configureEditorMetadataCache];
     [self configureSimperium];
     [self configureSimperiumBuckets];
     [self configureMainInterface];
@@ -274,11 +275,17 @@
     if ([bucket isEqual: self.simperium.notesBucket]) {
         // Note change
         switch (change) {                
-            case SPBucketChangeTypeUpdate:
+            case SPBucketChangeTypeUpdate: {
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
                 }
+                
+                Note *note = [bucket objectForKey:key];
+                if (note) {
+                    [self.noteEditorMetadataCache didUpdateNote:note];
+                }
                 break;
+            }
             
             case SPBucketChangeTypeInsert:
                 break;
@@ -309,6 +316,11 @@
         for (NSString *key in keys) {
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
+
+            Note *note = [bucket objectForKey:key];
+            if (note) {
+                [self.noteEditorMetadataCache willUpdateNote:note];
+            }
         }
     }
 }

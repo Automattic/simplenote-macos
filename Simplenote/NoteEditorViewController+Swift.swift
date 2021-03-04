@@ -44,6 +44,17 @@ extension NoteEditorViewController {
 }
 
 
+// MARK: - Public
+//
+extension NoteEditorViewController {
+    /// Makes editor first responder
+    ///
+    func focus() {
+        view.window?.makeFirstResponder(noteEditor)
+    }
+}
+
+
 // MARK: - Layout
 //
 extension NoteEditorViewController {
@@ -163,6 +174,7 @@ extension NoteEditorViewController {
 
     /// Indicates if the current document is expected to support Markdown
     ///
+    @objc
     var isMarkdownEnabled: Bool {
         note?.markdown == true
     }
@@ -396,6 +408,10 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
         return isDisplayingNote || isSelectingMultipleNotes
     }
+
+    func validateToogleMarkdownPreviewItem(_ item: NSMenuItem) -> Bool {
+        return isMarkdownEnabled
+    }
 }
 
 
@@ -405,7 +421,7 @@ extension NoteEditorViewController {
 
     @IBAction
     func sidebarWasPressed(sender: Any) {
-        SimplenoteAppDelegate.shared().toggleSidebarAction(sender)
+        SimplenoteAppDelegate.shared().cycleSidebarAction()
     }
 
     @IBAction
@@ -827,6 +843,67 @@ extension NoteEditorViewController {
         ])
 
         self.searchMapView = searchMapView
+    }
+}
+
+
+// MARK: - Shortcuts
+//
+extension NoteEditorViewController {
+    @objc
+    func toggleTagsAndEditor() {
+        if noteEditor.isFirstResponder {
+            view.window?.makeFirstResponder(tagsField)
+            tagsField.currentEditor()?.moveToEndOfDocument(nil)
+            tagsField.ensureCaretIsOnscreen()
+        } else {
+            view.window?.makeFirstResponder(noteEditor)
+        }
+    }
+}
+
+
+// MARK: - Editor Metadata
+//
+extension NoteEditorViewController {
+    @objc
+    func saveScrollPosition() {
+        // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
+        guard let simperiumKey = note?.simperiumKey else {
+            return
+        }
+
+        let scrollPosition = scrollView.contentView.bounds.origin.y
+        metadataCache.store(scrollPosition: scrollPosition, for: simperiumKey)
+    }
+
+    @objc
+    func restoreScrollPosition() {
+        guard let simperiumKey = note?.simperiumKey,
+              let scrollPosition = metadataCache.metadata(for: simperiumKey)?.scrollPosition else {
+            scrollView.scrollToTop(animated: false)
+            return
+        }
+        // ensure layout to make sure that content size is updated
+        noteEditor.ensureLayout()
+        scrollView.documentView?.scroll(NSPoint(x: 0, y: scrollPosition))
+    }
+
+    @objc
+    func saveCursorLocation() {
+        guard let simperiumKey = note?.simperiumKey else {
+            return
+        }
+        metadataCache.store(cursorLocation: noteEditor.selectedRange().location, for: simperiumKey)
+    }
+
+    @objc
+    func restoreCursorLocation() {
+        guard let simperiumKey = note?.simperiumKey,
+              let cursorLocation = metadataCache.metadata(for: simperiumKey)?.cursorLocation else {
+            return
+        }
+        noteEditor.setSelectedRange(NSRange(location: cursorLocation, length: 0))
     }
 }
 
