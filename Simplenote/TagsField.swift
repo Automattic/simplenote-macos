@@ -223,7 +223,7 @@ extension TagsField: NSTextViewDelegate {
 
 // MARK: - Cursor Helpers
 //
-private extension TagsField {
+extension TagsField {
 
     func ensureCaretIsOnscreen() {
         guard let newVisibleRect = proposedVisibleRectForEdition else {
@@ -233,7 +233,7 @@ private extension TagsField {
         scrollToVisible(newVisibleRect)
     }
 
-    var proposedVisibleRectForEdition: NSRect? {
+    private var proposedVisibleRectForEdition: NSRect? {
         guard let textView = currentEditor() as? NSTextView, let lm = textView.layoutManager, let container = textView.textContainer else {
             return nil
         }
