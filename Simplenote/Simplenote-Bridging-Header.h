@@ -11,7 +11,7 @@
 
 #pragma mark - Simplenote-Y
 
-#import "LoginWindowController.h"
+#import "AuthViewController.h"
 #import "NoteEditorViewController.h"
 #import "SimplenoteAppDelegate.h"
 #import "SPConstants.h"

@@ -15,16 +15,11 @@ extension SimplenoteAppDelegate {
         }
 
         simperium.delegate = self
-        simperium.presentsLoginByDefault = true
         simperium.verboseLoggingEnabled = false
-        simperium.authenticationWindowControllerClass = LoginWindowController.classForCoder()
-
+        simperium.authenticationWindowControllerClass = AuthWindowController.classForCoder()
         simperium.authenticator.providerString = SPCredentials.simperiumProviderString
 
-        config.logoImageName = .simplenoteLogoLogin
         config.controlColor = .simplenoteBrandColor
-        config.forgotPasswordURL = SPCredentials.simperiumForgotPasswordURL
-        config.resetPasswordURL = SPCredentials.simperiumResetPasswordURL
 
         self.simperium = simperium
     }
