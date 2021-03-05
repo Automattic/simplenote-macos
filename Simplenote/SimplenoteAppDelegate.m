@@ -90,6 +90,8 @@
 {
     [self configureSimperium];
     [self configureSimperiumBuckets];
+    [self configureCrashLogging];
+
     [self configureMainInterface];
     [self configureSplitViewController];
     [self configureMainWindowController];
@@ -103,8 +105,6 @@
 #if SPARKLE_OTA
     [self configureSparkle];
 #endif
-
-    [self setupCrashLogging];
 
 #if VERBOSE_LOGGING
     [self.simperium setVerboseLoggingEnabled:YES];
@@ -166,7 +166,7 @@
 
 #pragma mark - Other
 
-- (void)setupCrashLogging
+- (void)configureCrashLogging
 {
     self.crashLogging = [[CrashLogging alloc] initWithSimperium:self.simperium];
     [self.crashLogging start];
