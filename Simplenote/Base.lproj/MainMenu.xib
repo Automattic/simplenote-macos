@@ -202,8 +202,7 @@
                             <menuItem title="Find" id="218">
                                 <menu key="submenu" title="Find" id="220">
                                     <items>
-                                        <menuItem title="Search..." tag="1" keyEquivalent="f" toolTip="Search all notes" id="1417">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                        <menuItem title="Search..." keyEquivalent="F" toolTip="Search all notes" id="1417">
                                             <connections>
                                                 <action selector="searchWasPressed:" target="494" id="7Ex-5C-tXu"/>
                                             </connections>
@@ -536,6 +535,15 @@
                                 </attributedString>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
+                            <menuItem title="Toggle Markdown Preview" keyEquivalent="P" identifier="toggleMarkdownPreview" id="1db-JI-NZH">
+                                <attributedString key="userComments">
+                                    <fragment content="Toggles Markdown Preview"/>
+                                </attributedString>
+                                <connections>
+                                    <action selector="toggleMarkdownPreviewAction:" target="494" id="U7g-tl-5Zq"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="mgi-Y5-YB1"/>
                             <menuItem title="Theme" id="Jtf-4C-imn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
@@ -578,7 +586,8 @@
                                 </attributedString>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="PUD-cg-cbF"/>
-                            <menuItem title="Focus Mode" keyEquivalent="F" identifier="focusMenuItem" id="nrD-mL-W7Q">
+                            <menuItem title="Focus Mode" keyEquivalent="f" identifier="focusMenuItem" id="nrD-mL-W7Q">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <attributedString key="userComments">
                                     <fragment content="Toggles the Focus Mode"/>
                                 </attributedString>
@@ -616,8 +625,7 @@
                 <menuItem title="Format" id="THl-80-myZ">
                     <menu key="submenu" title="Format" id="5HH-LQ-Fk8">
                         <items>
-                            <menuItem title="Insert Checklist" keyEquivalent="c" id="iNS-zx-oXr">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                            <menuItem title="Insert Checklist" keyEquivalent="C" id="iNS-zx-oXr">
                                 <attributedString key="userComments">
                                     <fragment content="Inserts a new Checklist"/>
                                 </attributedString>

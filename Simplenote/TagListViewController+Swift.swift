@@ -82,6 +82,15 @@ extension TagListViewController {
     var selectedFilter: TagListFilter {
         selectedRow?.matchingFilter ?? .everything
     }
+
+    /// Makes table view first responder
+    ///
+    func focus() {
+        guard isViewLoaded && !view.isHiddenOrHasHiddenAncestor else {
+            return
+        }
+        view.window?.makeFirstResponder(tableView)
+    }
 }
 
 
@@ -161,6 +170,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.style = .sidebar
+        rowView.isActive = isActive
         return rowView
     }
 
@@ -258,11 +268,32 @@ extension TagListViewController {
 }
 
 
+// MARK: - Keyboard Navigation
+//
+extension TagListViewController {
+    @objc
+    func switchToTrailingPanel() {
+        SimplenoteAppDelegate.shared().focusOnTheNoteList()
+    }
+}
+
+
 // MARK: - SPTextFieldDelegate
 //
 extension TagListViewController: SPTextFieldDelegate {
 
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool {
         !menuShowing
+    }
+}
+
+
+// MARK: - Appearance
+//
+extension TagListViewController {
+    @objc
+    func refreshTableRowsActiveStatus() {
+        tableView.refreshRows(isActive: isActive)
+        tableView.reloadSelectedRow()
     }
 }

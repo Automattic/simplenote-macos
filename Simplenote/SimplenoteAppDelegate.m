@@ -85,52 +85,50 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
-    NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
-    [eventManager setEventHandler:self
-                      andSelector:@selector(handleGetURLEvent:withReplyEvent:)
-                    forEventClass:kInternetEventClass
-                       andEventID:kAEGetURL];
-}
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
     [self configureSimperium];
     [self configureSimperiumBuckets];
+    [self configureCrashLogging];
+
+    [self configureEditorMetadataCache];
     [self configureMainInterface];
     [self configureSplitViewController];
     [self configureMainWindowController];
-    [self applyStyle];
-
     [self configureNotesController];
     [self configureEditorController];
     [self configureVerificationCoordinator];
     [self configureVersionsController];
 
+    [self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
 #if SPARKLE_OTA
     [self configureSparkle];
 #endif
-
-    [self setupCrashLogging];
 
 #if VERBOSE_LOGGING
     [self.simperium setVerboseLoggingEnabled:YES];
     [self redirectConsoleLogToDocumentFolder];
 #endif
 
-	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
-
     [[MigrationsHandler new] ensureUpdateIsHandled];
 
+    [self applyStyle];
     [self cleanupTags];
     [self startListeningForThemeNotifications];
 
     [SPTracker trackApplicationLaunched];
 }
 
-- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+- (void)applicationWillTerminate:(NSNotification *)notification
 {
-    NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-    NSURL *url = [NSURL URLWithString:urlString];
+    [self cleanupEditorMetadataCache];
+}
+
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls
+{
+    NSURL *url = [urls firstObject];
 
     if (!url) {
         return;
@@ -172,7 +170,7 @@
 
 #pragma mark - Other
 
-- (void)setupCrashLogging
+- (void)configureCrashLogging
 {
     self.crashLogging = [[CrashLogging alloc] initWithSimperium:self.simperium];
     [self.crashLogging start];
@@ -262,6 +260,8 @@
     [self.verificationCoordinator processDidLogout];
     [SPTracker refreshMetadataForAnonymousUser];
     [self.crashLogging clearCachedUser];
+
+    [self.noteEditorMetadataCache removeAll];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
@@ -282,11 +282,17 @@
     if ([bucket isEqual: self.simperium.notesBucket]) {
         // Note change
         switch (change) {                
-            case SPBucketChangeTypeUpdate:
+            case SPBucketChangeTypeUpdate: {
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
                 }
+                
+                Note *note = [bucket objectForKey:key];
+                if (note) {
+                    [self.noteEditorMetadataCache didUpdateNote:note];
+                }
                 break;
+            }
             
             case SPBucketChangeTypeInsert:
                 break;
@@ -317,6 +323,11 @@
         for (NSString *key in keys) {
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
+
+            Note *note = [bucket objectForKey:key];
+            if (note) {
+                [self.noteEditorMetadataCache willUpdateNote:note];
+            }
         }
     }
 }
@@ -380,6 +391,7 @@
     [_simperium signOutAndRemoveLocalData:YES completion:^{
         // Nuke User Settings
         [[Options shared] reset];
+        [self.noteEditorMetadataCache removeAll];
 
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
@@ -390,11 +402,13 @@
 - (IBAction)toggleSidebarAction:(id)sender
 {
     [self.splitViewController toggleSidebarActionWithSender:sender];
+    [SPTracker trackShortcutToggleSidebar];
 }
 
 - (IBAction)focusModeAction:(id)sender
 {
     [self.splitViewController focusModeActionWithSender:sender];
+    [SPTracker trackToggleFocusMode];
 }
 
 - (IBAction)helpAction:(id)sender

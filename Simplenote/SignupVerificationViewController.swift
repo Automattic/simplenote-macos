@@ -39,6 +39,11 @@ class SignupVerificationViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        /// Note:
+        /// Since this UI is only offered in Light Mode, if the `Theme` was previously set to Dark, the regular `NSColor.simplenoteTextColor` will yield
+        /// the incorrect value. For that reason, we'll stick to Studio Colors directly.
+        ///
         setupMessageLabel()
         setupSupportLabel()
         setupBackButton()
@@ -57,7 +62,7 @@ private extension SignupVerificationViewController {
         paragraphStyle.alignment = .center
 
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: NSColor.simplenoteTextColor,
+            .foregroundColor: NSColor(studioColor: .gray90),
             .font: Fonts.regularMessageFont,
             .paragraphStyle: paragraphStyle
         ]
@@ -76,12 +81,12 @@ private extension SignupVerificationViewController {
         let text = String(format: Localization.support, SPCredentials.simplenoteFeedbackMail)
 
         supportTextField.stringValue = text
-        supportTextField.textColor = .simplenoteSecondaryTextColor
+        supportTextField.textColor = NSColor(studioColor: .gray50)
     }
 
     func setupBackButton() {
         backButton.title = Localization.back
-        backButton.contentTintColor = .simplenoteLinkColor
+        backButton.contentTintColor = NSColor(studioColor: .spBlue50)
     }
 }
 
@@ -113,7 +118,7 @@ private extension SignupVerificationViewController {
 //
 private enum Localization {
     static let messageTemplate = NSLocalizedString("We’ve sent an email to %1$@. Please check your inbox and follow the instructions.", comment: "Signup Body Text")
-    static let support = NSLocalizedString("Didn’t get an email? Please contact %1$@.", comment: "Signup Support Text")
+    static let support = NSLocalizedString("Didn't get an email? You may already have an account. Contact %1$@ for help.", comment: "Signup Support Text")
     static let back = NSLocalizedString("Go Back", comment: "Back Button Title")
 }
 
