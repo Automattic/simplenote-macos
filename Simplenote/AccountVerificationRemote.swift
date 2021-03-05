@@ -41,7 +41,6 @@ class AccountVerificationRemote {
         var request = URLRequest(url: verificationURL.appendingPathComponent(base64EncodedEmail),
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: RemoteConstants.timeout)
-        request.setValue(Locale.current.languageCode, forHTTPHeaderField: "Accept-Language")
         request.httpMethod = RemoteConstants.Method.GET
 
         return request
