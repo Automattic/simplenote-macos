@@ -85,43 +85,36 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
-    NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
-    [eventManager setEventHandler:self
-                      andSelector:@selector(handleGetURLEvent:withReplyEvent:)
-                    forEventClass:kInternetEventClass
-                       andEventID:kAEGetURL];
-}
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    [self configureEditorMetadataCache];
     [self configureSimperium];
     [self configureSimperiumBuckets];
+    [self configureCrashLogging];
+
+    [self configureEditorMetadataCache];
     [self configureMainInterface];
     [self configureSplitViewController];
     [self configureMainWindowController];
-    [self applyStyle];
-
     [self configureNotesController];
     [self configureEditorController];
     [self configureVerificationCoordinator];
     [self configureVersionsController];
 
+    [self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
 #if SPARKLE_OTA
     [self configureSparkle];
 #endif
-
-    [self setupCrashLogging];
 
 #if VERBOSE_LOGGING
     [self.simperium setVerboseLoggingEnabled:YES];
     [self redirectConsoleLogToDocumentFolder];
 #endif
 
-	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
-
     [[MigrationsHandler new] ensureUpdateIsHandled];
 
+    [self applyStyle];
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
     [self startListeningForThemeNotifications];
@@ -134,13 +127,21 @@
     [self cleanupEditorMetadataCache];
 }
 
-- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls
 {
-    NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *url = [urls firstObject];
+
+    if (!url) {
+        return;
+    }
 
     // URL: Open a Note!
     if ([self handleOpenNoteWithUrl:url]) {
+        return;
+    }
+
+    // Magic Link
+    if ([self handleMagicAuthWithUrl:url]) {
         return;
     }
 
@@ -170,7 +171,7 @@
 
 #pragma mark - Other
 
-- (void)setupCrashLogging
+- (void)configureCrashLogging
 {
     self.crashLogging = [[CrashLogging alloc] initWithSimperium:self.simperium];
     [self.crashLogging start];

@@ -165,6 +165,12 @@
 		B51699852480B93100ACF2F4 /* TagsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51699832480B93100ACF2F4 /* TagsField.swift */; };
 		B5177CBB25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */; };
 		B5177CBC25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */; };
+		B5177CC425EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */; };
+		B5177CC525EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */; };
+		B5177CCA25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */; };
+		B5177CCB25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */; };
+		B5177CD025EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */; };
+		B5177CD125EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */; };
 		B518D3782507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D3792507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */; };
 		B518D37B2507BFA4006EA7F8 /* Note+Interlinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */; };
@@ -436,6 +442,12 @@
 		B5F3150A24496A970036872D /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F3150824496A970036872D /* TableRowView.swift */; };
 		B5F50915247319360042FA1D /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F50914247319360042FA1D /* SplitView.swift */; };
 		B5F50916247319360042FA1D /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F50914247319360042FA1D /* SplitView.swift */; };
+		B5F5414825EFFC2200CAF52C /* SignupRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414725EFFC2200CAF52C /* SignupRemote.swift */; };
+		B5F5414925EFFC2200CAF52C /* SignupRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414725EFFC2200CAF52C /* SignupRemote.swift */; };
+		B5F5414E25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */; };
+		B5F5414F25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */; };
+		B5F5415425F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */; };
+		B5F5415525F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */; };
 		B5F807CC2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
@@ -609,6 +621,9 @@
 		B51374F51AC0591900825FCC /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPConstants.m; sourceTree = "<group>"; };
 		B51699832480B93100ACF2F4 /* TagsField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsField.swift; sourceTree = "<group>"; };
 		B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthViewController+Swift.swift"; sourceTree = "<group>"; };
+		B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVerificationViewController.swift; sourceTree = "<group>"; };
+		B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupVerificationViewController.xib; sourceTree = "<group>"; };
+		B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Transitions.swift"; sourceTree = "<group>"; };
 		B518D3772507BF1B006EA7F8 /* NSPasteboard+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasteboard+Simplenote.swift"; sourceTree = "<group>"; };
 		B518D37A2507BFA4006EA7F8 /* Note+Interlinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Interlinks.swift"; sourceTree = "<group>"; };
 		B518D37D2507C356006EA7F8 /* StringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSimplenoteTests.swift; sourceTree = "<group>"; };
@@ -802,6 +817,9 @@
 		B5F04FD521596551004B1AA0 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		B5F3150824496A970036872D /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
 		B5F50914247319360042FA1D /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		B5F5414725EFFC2200CAF52C /* SignupRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupRemote.swift; sourceTree = "<group>"; };
+		B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteConstants.swift; sourceTree = "<group>"; };
+		B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkAuthenticator.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
 		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1019,16 +1037,17 @@
 			isa = PBXGroup;
 			children = (
 				F998F3EA22853C29008C2B59 /* CrashLogging.swift */,
+				A6BF918E25E4EB44003C2018 /* FileStorage.swift */,
+				B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */,
 				B57CB87A244DEC4A00BA7969 /* MigrationsHandler.swift */,
-				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
-				B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */,
-				B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */,
-				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
-				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
 				A6672FB225C7F12F00090DE3 /* NoteContentHelper.swift */,
 				A6BF918825E4EAC6003C2018 /* NoteEditorMetadataCache.swift */,
 				A6BF919425E4F09F003C2018 /* NoteEditorMetadata.swift */,
-				A6BF918E25E4EB44003C2018 /* FileStorage.swift */,
+				B51D85F325A8B392005F08CE /* NoteListPrefixFormatter.swift */,
+				B51E9FE022E615FA004F16B4 /* SPExporter.swift */,
+				B54F9A6924D0BDC100BCF754 /* TagTextFormatter.swift */,
+				37D4DD6920B3574C00C225EA /* WPAuthHandler.h */,
+				37D4DD6820B3574C00C225EA /* WPAuthHandler.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -1150,7 +1169,9 @@
 		B502C1DB25BA2EA200145D6C /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */,
 				B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */,
+				B5F5414725EFFC2200CAF52C /* SignupRemote.swift */,
 			);
 			name = Remote;
 			sourceTree = "<group>";
@@ -1200,6 +1221,7 @@
 				B5C620A1257EA526008359A9 /* NSView+Simplenote.swift */,
 				B55C313B24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift */,
 				B52F203824C5FB1E00ABB43F /* NSWindow+Simplenote.swift */,
+				B5177CCF25EEEEFB00A8D834 /* NSWindow+Transitions.swift */,
 				B58942F924E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift */,
 				B52197852541C65C00182928 /* NumberFormatter+Simplenote.swift */,
 				B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */,
@@ -1275,6 +1297,8 @@
 				B5E96B651BDE732500D707F5 /* AuthViewController.m */,
 				B5177CBA25EEB01600A8D834 /* AuthViewController+Swift.swift */,
 				B597429225E97ADC0063DDD2 /* AuthViewController.xib */,
+				B5177CC325EEBF6900A8D834 /* SignupVerificationViewController.swift */,
+				B5177CC925EEBF8200A8D834 /* SignupVerificationViewController.xib */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -1757,6 +1781,7 @@
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
 				B597429325E97ADC0063DDD2 /* AuthViewController.xib in Resources */,
+				B5177CCA25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */,
 				375581C220292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C71FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 			);
@@ -1783,6 +1808,7 @@
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
 				B597429425E97ADC0063DDD2 /* AuthViewController.xib in Resources */,
+				B5177CCB25EEBF8200A8D834 /* SignupVerificationViewController.xib in Resources */,
 				B5C7DD4A243E524000BEE354 /* PublishViewController.xib in Resources */,
 				B5C19D8C243D30690014086C /* VersionsViewController.xib in Resources */,
 			);
@@ -1980,6 +2006,7 @@
 				26F72AA014032D2A00A7935E /* SimplenoteAppDelegate.m in Sources */,
 				B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */,
 				B500993C24213B370037A431 /* String+Simplenote.swift in Sources */,
+				B5F5414825EFFC2200CAF52C /* SignupRemote.swift in Sources */,
 				B532728225BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
 				B5C9776C25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B51D85F425A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
@@ -2034,12 +2061,15 @@
 				375D293621E033D1007AB25A /* document.c in Sources */,
 				B5609AEC24EEE7200097777A /* SPBucket+Simplenote.swift in Sources */,
 				B56FA7902437C672002CB9FF /* ColorStudio.swift in Sources */,
+				B5177CD025EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */,
 				B5F50915247319360042FA1D /* SplitView.swift in Sources */,
 				B5E086322448E83A00DEF476 /* TagListViewController+Swift.swift in Sources */,
 				B555CE3625ED81F200610BC6 /* AuthWindowController.swift in Sources */,
+				B5F5414E25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */,
 				B53BF1A424AC38C100938C34 /* VersionsController.swift in Sources */,
 				B51AFE7625D36CDD00A196DF /* NSFont+Simplenote.swift in Sources */,
 				B5C7DD46243E51E200BEE354 /* PublishViewController.swift in Sources */,
+				B5F5415425F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */,
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
 				B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
@@ -2093,6 +2123,7 @@
 				B5469FCA2587DE3F007ED7BE /* SortMode.swift in Sources */,
 				B5EB3AD72458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848821BCDB95A005EFBBE /* SPTracker.m in Sources */,
+				B5177CC425EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */,
 				B5283BD023B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
 				B56FA7982437C79D002CB9FF /* SPUserInterface.swift in Sources */,
 				373B50DF20179DFE000568A6 /* Extensions.swift in Sources */,
@@ -2158,11 +2189,13 @@
 				B5D3FCCD201F906E00A813B7 /* StatusChecker.m in Sources */,
 				B52EE32825927D5100347F2B /* NoteListViewController.swift in Sources */,
 				B542FE4B25D42E7B00A3582D /* NoteContentHelper.swift in Sources */,
+				B5177CC525EEBF6900A8D834 /* SignupVerificationViewController.swift in Sources */,
 				466FFEAA17CC10A800399652 /* Note.m in Sources */,
 				B5985ACF24293E360044EDE9 /* NSRegularExpression+Simplenote.swift in Sources */,
 				B51E9FE622E644A0004F16B4 /* NSObject+Helpers.swift in Sources */,
 				A6BF919625E4F09F003C2018 /* NoteEditorMetadata.swift in Sources */,
 				466FFEAB17CC10A800399652 /* Tag.m in Sources */,
+				B5F5414F25EFFC2A00CAF52C /* RemoteConstants.swift in Sources */,
 				B5C9776D25408BD200702C10 /* SeparatorTableViewCell.swift in Sources */,
 				B50FB215251BB2E00028DE25 /* PopoverWindowController.swift in Sources */,
 				B58BBD2B2523D4CA0025135F /* Window.swift in Sources */,
@@ -2189,6 +2222,7 @@
 				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
+				B5177CD125EEEEFB00A8D834 /* NSWindow+Transitions.swift in Sources */,
 				B53ACE1F25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */,
 				466FFEAE17CC10A800399652 /* NSString+Metadata.m in Sources */,
 				A6BF919025E4EB44003C2018 /* FileStorage.swift in Sources */,
@@ -2266,6 +2300,7 @@
 				B555CE3725ED81F200610BC6 /* AuthWindowController.swift in Sources */,
 				B5F04FD121594B6D004B1AA0 /* Simperium+Simplenote.m in Sources */,
 				B58117E325B9E5D200927E0C /* AccountVerificationController.swift in Sources */,
+				B5F5414925EFFC2200CAF52C /* SignupRemote.swift in Sources */,
 				B5EB3AD82458CDB50089858D /* ThemeOption.swift in Sources */,
 				B59848831BCDB95A005EFBBE /* SPTracker.m in Sources */,
 				B5283BD123B679C00085826F /* NSMutableAttributedString+Simplenote.swift in Sources */,
@@ -2279,6 +2314,7 @@
 				B52F8FDA24644DD00062B8ED /* NSFont+Theme.swift in Sources */,
 				B511799C242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42F24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
+				B5F5415525F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */,
 				B58A71BF258422CC00601641 /* NSBezierPath+Simplenote.swift in Sources */,
 				B5DD0F922476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */,

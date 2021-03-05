@@ -36,6 +36,22 @@ extension AuthViewController {
 }
 
 
+// MARK: - Dynamic Properties
+//
+extension AuthViewController {
+
+    @objc
+    var usernameText: String {
+        usernameField.stringValue()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+
+    @objc
+    var passwordText: String {
+        passwordField.stringValue()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+}
+
+
 // MARK: - Refreshing
 //
 extension AuthViewController {
@@ -49,6 +65,7 @@ extension AuthViewController {
         clearAuthenticationError()
         refreshButtonTitles()
         refreshVisibleComponentsWithAnimation()
+        refreshEnabledComponents()
     }
 
     @objc
@@ -85,11 +102,66 @@ extension AuthViewController {
         }
     }
 
+    /// Makes sure unused components (in the current mode) are effectively disabled
+    ///
+    func refreshEnabledComponents() {
+        passwordField.setEnabled(signingIn)
+        forgotPasswordButton.isEnabled = signingIn
+        wordPressSSOButton.isEnabled = signingIn
+    }
+
     /// Drops any Errors onscreen
     ///
     @objc
     func clearAuthenticationError() {
         errorField.stringValue = ""
+    }
+
+    /// Marks the Username Field as the First Responder
+    ///
+    @objc
+    func ensureUsernameIsFirstResponder() {
+        usernameField?.textField.becomeFirstResponder()
+        view.needsDisplay = true
+    }
+}
+
+
+// MARK: - Action Handlers
+//
+extension AuthViewController {
+
+    @objc
+    func performSignupRequest() {
+        startSignupAnimation()
+        setInterfaceEnabled(false)
+
+        let email = usernameText
+        SignupRemote().requestSignup(email: email) { [weak self] (success, statusCode) in
+            guard let self = `self` else {
+                return
+            }
+
+            if success {
+                self.presentSignupVerification(email: email)
+            } else {
+                self.showAuthenticationError(forCode: statusCode)
+            }
+
+            self.stopSignupAnimation()
+            self.setInterfaceEnabled(true)
+        }
+    }
+}
+
+
+// MARK: - Presenting!
+//
+extension AuthViewController {
+
+    func presentSignupVerification(email: String) {
+        let vc = SignupVerificationViewController(email: email, authenticator: authenticator)
+        view.window?.transition(to: vc)
     }
 }
 
