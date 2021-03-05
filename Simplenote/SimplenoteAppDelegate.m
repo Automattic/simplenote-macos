@@ -85,12 +85,6 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
-    NSAppleEventManager *eventManager = [NSAppleEventManager sharedAppleEventManager];
-    [eventManager setEventHandler:self
-                      andSelector:@selector(handleGetURLEvent:withReplyEvent:)
-                    forEventClass:kInternetEventClass
-                       andEventID:kAEGetURL];
-}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -128,10 +122,9 @@
     [SPTracker trackApplicationLaunched];
 }
 
-- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls
 {
-    NSString *urlString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *url = [urls firstObject];
 
     if (!url) {
         return;
