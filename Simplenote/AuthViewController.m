@@ -11,7 +11,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 #pragma mark - Private
 
-@interface AuthViewController () <NSTextFieldDelegate>
+@interface AuthViewController ()
 @property (nonatomic, strong) SPAuthenticationValidator *validator;
 @end
 

@@ -12,10 +12,10 @@ extension AuthViewController {
         errorField.textColor = .red
 
         // Fields
-        usernameField.setPlaceholderString(Localization.emailPlaceholder)
+        usernameField.placeholderString = Localization.emailPlaceholder
         usernameField.delegate = self
 
-        passwordField.setPlaceholderString(Localization.passwordPlaceholder)
+        passwordField.placeholderString = Localization.passwordPlaceholder
         passwordField.delegate = self
 
         // Forgot Password!
@@ -42,12 +42,12 @@ extension AuthViewController {
 
     @objc
     var usernameText: String {
-        usernameField.stringValue()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        usernameField.stringValue?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
 
     @objc
     var passwordText: String {
-        passwordField.stringValue()?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        passwordField.stringValue?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
 }
 
@@ -105,7 +105,7 @@ extension AuthViewController {
     /// Makes sure unused components (in the current mode) are effectively disabled
     ///
     func refreshEnabledComponents() {
-        passwordField.setEnabled(signingIn)
+        passwordField.isEnabled = signingIn
         forgotPasswordButton.isEnabled = signingIn
         wordPressSSOButton.isEnabled = signingIn
     }
