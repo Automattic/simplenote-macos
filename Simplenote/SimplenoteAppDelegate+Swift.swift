@@ -8,20 +8,20 @@ extension SimplenoteAppDelegate {
 
     @objc
     func configureSimperium() {
-        guard let simperium = Simperium(model: managedObjectModel, context: managedObjectContext, coordinator: persistentStoreCoordinator),
-              let config = SPAuthenticationConfiguration.sharedInstance()
-        else {
-            fatalError()
-        }
-
+        let simperium = Simperium(model: managedObjectModel, context: managedObjectContext, coordinator: persistentStoreCoordinator)
         simperium.delegate = self
         simperium.verboseLoggingEnabled = false
         simperium.authenticationWindowControllerClass = AuthWindowController.classForCoder()
-        simperium.authenticator.providerString = SPCredentials.simperiumProviderString
-
-        config.controlColor = .simplenoteBrandColor
-
         self.simperium = simperium
+    }
+
+    @objc
+    func configureSimperiumAuth() {
+        let authenticator = simperium.authenticator
+        authenticator.providerString = SPCredentials.simperiumProviderString
+
+        let config = SPAuthenticationConfiguration.sharedInstance()
+        config.controlColor = .simplenoteBrandColor
     }
 
     @objc
