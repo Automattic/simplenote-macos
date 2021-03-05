@@ -118,7 +118,7 @@ private extension SignupVerificationViewController {
 //
 private enum Localization {
     static let messageTemplate = NSLocalizedString("We’ve sent an email to %1$@. Please check your inbox and follow the instructions.", comment: "Signup Body Text")
-    static let support = NSLocalizedString("Didn’t get an email? Please contact %1$@.", comment: "Signup Support Text")
+    static let support = NSLocalizedString("Didn't get an email? You may already have an account. Contact %1$@ for help.", comment: "Signup Support Text")
     static let back = NSLocalizedString("Go Back", comment: "Back Button Title")
 }
 
