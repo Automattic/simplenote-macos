@@ -116,7 +116,6 @@
 
     [self applyStyle];
     [self cleanupTags];
-    [self configureWelcomeNoteIfNeeded];
     [self startListeningForThemeNotifications];
 
     [SPTracker trackApplicationLaunched];
