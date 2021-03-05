@@ -46,7 +46,6 @@
 - [ ] Can filter by tag when clicking on tag in tag drawer
 - [ ] Can add tag to note and have it appear in filtered tag view when previously not in filter
 - [ ] Can search by keyword, filtered instantly
-- [ ] Can search by keyword with tag selected (Not anymore since 2.6. Keeping this for a while)
 - [ ] Clearing the search field immediately updates filtered notes
 - [ ] Clicking on different tags or `All Notes` or `Trash` immediately updates filtered notes
 - [ ] Search field updates with results of `tag:test` format search string
@@ -66,7 +65,7 @@
 
 - [ ] Can toggle sidebar
 - [ ] Can change analytics sharing setting
-- [ ] With wide editor screen, toggling `Note Editor` > `Line Length` between `Narrow` and `Full` removes and adds border around note content appropriately and immediately.
+- [ ] With wide editor screen, toggling `View` > `Line Length` between `Narrow` and `Full` removes and adds border around note content appropriately and immediately.
 - [ ] Changing `Note Display` mode immediately updates and reflects in note list
 - [ ] Changing `Note Sorting` immediately updates and reflects in note list for each sort type
 - [ ] Changing `Tag Sorting` immediately updates and reflects in tag list

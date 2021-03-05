@@ -94,6 +94,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [self configureEditorMetadataCache];
     [self configureSimperium];
     [self configureSimperiumBuckets];
     [self configureMainInterface];
@@ -126,6 +127,11 @@
     [self startListeningForThemeNotifications];
 
     [SPTracker trackApplicationLaunched];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    [self cleanupEditorMetadataCache];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -254,6 +260,8 @@
     [self.verificationCoordinator processDidLogout];
     [SPTracker refreshMetadataForAnonymousUser];
     [self.crashLogging clearCachedUser];
+
+    [self.noteEditorMetadataCache removeAll];
 }
 
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
@@ -274,11 +282,17 @@
     if ([bucket isEqual: self.simperium.notesBucket]) {
         // Note change
         switch (change) {                
-            case SPBucketChangeTypeUpdate:
+            case SPBucketChangeTypeUpdate: {
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
                 }
+                
+                Note *note = [bucket objectForKey:key];
+                if (note) {
+                    [self.noteEditorMetadataCache didUpdateNote:note];
+                }
                 break;
+            }
             
             case SPBucketChangeTypeInsert:
                 break;
@@ -309,6 +323,11 @@
         for (NSString *key in keys) {
             if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
                 [self.noteEditorViewController willReceiveNewContent];
+
+            Note *note = [bucket objectForKey:key];
+            if (note) {
+                [self.noteEditorMetadataCache willUpdateNote:note];
+            }
         }
     }
 }
@@ -372,6 +391,7 @@
     [_simperium signOutAndRemoveLocalData:YES completion:^{
         // Nuke User Settings
         [[Options shared] reset];
+        [self.noteEditorMetadataCache removeAll];
 
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
@@ -382,11 +402,13 @@
 - (IBAction)toggleSidebarAction:(id)sender
 {
     [self.splitViewController toggleSidebarActionWithSender:sender];
+    [SPTracker trackShortcutToggleSidebar];
 }
 
 - (IBAction)focusModeAction:(id)sender
 {
     [self.splitViewController focusModeActionWithSender:sender];
+    [SPTracker trackToggleFocusMode];
 }
 
 - (IBAction)helpAction:(id)sender

@@ -116,6 +116,13 @@ extension SplitViewController {
 
     @IBAction
     func toggleSidebarAction(sender: Any) {
+        self.state = state.isTagsCollapsed ? .everything : .tagsCollapsed
+        self.previousState = nil
+
+        SPTracker.trackSidebarButtonPresed()
+    }
+
+    func cycleSidebarAction() {
         self.state = state.next
         self.previousState = nil
 

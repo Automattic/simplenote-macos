@@ -378,6 +378,7 @@
                                         </searchFieldCell>
                                         <connections>
                                             <action selector="performSearch:" target="JtV-0Z-Zh8" id="ach-8a-wUY"/>
+                                            <outlet property="nextKeyView" destination="q9F-rT-PZ2" id="QCT-5w-0Fx"/>
                                         </connections>
                                     </searchField>
                                     <button toolTip="Add Note" translatesAutoresizingMaskIntoConstraints="NO" id="LGw-AF-2MK" userLabel="NewNote">
