@@ -86,8 +86,6 @@
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
     [self configureSimperium];
     [self configureSimperiumBuckets];
     [self configureCrashLogging];
@@ -95,13 +93,16 @@
     [self configureMainInterface];
     [self configureSplitViewController];
     [self configureMainWindowController];
-    [self applyStyle];
-
     [self configureNotesController];
     [self configureEditorController];
     [self configureVerificationCoordinator];
     [self configureVersionsController];
 
+    [self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
 #if SPARKLE_OTA
     [self configureSparkle];
 #endif
@@ -111,10 +112,9 @@
     [self redirectConsoleLogToDocumentFolder];
 #endif
 
-	[self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
-
     [[MigrationsHandler new] ensureUpdateIsHandled];
 
+    [self applyStyle];
     [self cleanupTags];
     [self configureWelcomeNoteIfNeeded];
     [self startListeningForThemeNotifications];
