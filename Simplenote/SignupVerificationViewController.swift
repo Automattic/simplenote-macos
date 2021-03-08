@@ -99,6 +99,15 @@ extension SignupVerificationViewController {
     func backWasPressed(_ sender: Any) {
         presentAuthenticationInteface()
     }
+
+    @IBAction
+    func contactWasPressed(_ sender: Any) {
+        guard let targetURL = URL(string: "mailto:" + SPCredentials.simplenoteFeedbackMail) else {
+            return
+        }
+
+        NSWorkspace.shared.open(targetURL)
+    }
 }
 
 
