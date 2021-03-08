@@ -86,6 +86,7 @@
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
     [self configureSimperium];
+    [self configureSimperiumAuth];
     [self configureSimperiumBuckets];
     [self configureCrashLogging];
 

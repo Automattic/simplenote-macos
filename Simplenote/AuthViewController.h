@@ -5,7 +5,7 @@
 
 // MARK: - AuthViewController: Simperium's Authentication UI
 
-@interface AuthViewController : NSViewController <SPAuthenticationInterface>
+@interface AuthViewController : NSViewController <SPAuthenticationInterface, NSTextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet NSStackView                  *stackView;
 @property (nonatomic, strong) IBOutlet NSImageView                  *logoImageView;
