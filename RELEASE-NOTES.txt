@@ -1,3 +1,6 @@
+3.0
+-----
+ 
 2.9
 -----
 - Updated keyboard shortcuts #816
