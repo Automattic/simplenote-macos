@@ -212,6 +212,9 @@
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "1748"; Note = "Closes the Main Window"; */
 "1748.title" = "Close";
 
+/* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
+"1db-JI-NZH.title" = "Toggle Markdown Preview";
+
 /* Class = "NSMenuItem"; title = "Tags Sorting"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
 "4QQ-5e-Vxl.title" = "Tags Sorting";
 
