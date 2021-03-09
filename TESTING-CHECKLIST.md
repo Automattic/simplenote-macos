@@ -74,9 +74,14 @@
 
 ### Keyboard shortcuts ([reference](https://simplenote.com/help/#shortcuts))
 
-- [ ] `Cmd` + `N` creates a new note
-- [ ] `Cmd` + `P` prints the selected note
-- [ ] `Cmd` + `L` moves focus to the search field
-- [ ] `Cmd` + `+` increases the font size
-- [ ] `Cmd` + `-` decreases the font size
-- [ ] `Cmd` + `0` resets the font size
+- [ ] `Cmd + N` Create a new note
+- [ ] `Cmd + P` Print the selected note
+- [ ] `Cmd + +` Increase the font size
+- [ ] `Cmd + -` Decrease the font size
+- [ ] `Cmd + 0` Reset the font size
+- [ ] `Cmd + Option + F` Toggle focus mode
+- [ ] `Cmd + Shift + F` Focus search field
+- [ ] `Cmd + Shift + C` Insert checklist
+- [ ] `Cmd + Shift + Y` Toggle between editing note and tags
+- [ ] `Cmd + Shift + P` Toggle markdown preview shortcut
+- [ ] `Cmd + T` Toggle sidebar
