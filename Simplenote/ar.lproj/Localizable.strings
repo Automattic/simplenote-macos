@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "حذف وسم";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "تجاهل";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "إحصل على المساعدة";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "المحفوظات";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "تسجيل الدخول";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "جارٍ تسجيل الدخول...";
@@ -236,7 +245,7 @@
 "Review Your Account" = "مراجعة حسابك";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "ملاحظات البحث";
 
 /* Search Results Title */
 "Searching" = "البحث";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "اشترك";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "تسجيل الدخول باستخدام ووردبريس.كوم";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "جارٍ التسجيل...";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "لقد أرسلنا بريدًا إلكترونيًا للتحقق إلى %1$@. يرجى التحقُّق من علبة الوارد لديك واتباع الإرشادات.";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "الكلمات";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "كلمة مرورك غير آمنة وتجب إعادة تعيينها. فيما يأتي متطلبات كلمة المرور:";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "مرحبًا بك في Simplenote على نظام التشغيل Mac!\n\nلإضافة ملحوظة، انقر على زر ملحوظة جديدة الذي يحتوي على رمز الإضافة.\n\nلإزالة ملحوظة، انقر على زر سلة المهملات.\n\nيمكنك البحث في جميع ملحوظاتك عن طريق الكتابة في حقل البحث الموجود أعلى قائمة الملحوظات.\n\nانقر على زر الوسوم الموجود في أقصى اليسار لفتح الشريط الجانبي. يمكنك إضافة وسوم إلى ملاحظة بأسفل محرر الملاحظات، ثم استخدام الشريط الجانبي لمساعدتك في المحافظة على التنظيم.\n\nهناك المزيد من خيارات الملاحظات إذا كنت بحاجة إليها. يمكنك إضافة عناوين البريد الإلكتروني بوصفها وسومًا للتعاون مع الأشخاص، أو نشر ملحوظة كصفحة ويب.\n\nاستخدم Simplenote على هاتف iPhone أو جهاز iPad الخاص بك أو جهازك الذي يعمل بنظام التشغيل Android أو في متصفح الويب الخاص بك على الرابط https:\/\/simplenote.com. تبقى ملاحظاتك مُحدَّثة في كل مكان تلقائيًا.";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "وسم:";
 

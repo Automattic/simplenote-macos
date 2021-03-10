@@ -16,4 +16,5 @@ enum AppKitConstants {
     static let delay0_15: TimeInterval = 0.15
     static let delay0_5: TimeInterval = 0.5
     static let duration0_2: TimeInterval = 0.2
+    static let duration0_4: TimeInterval = 0.4
 }

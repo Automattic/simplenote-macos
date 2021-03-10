@@ -55,6 +55,20 @@ class NoteListViewController: NSViewController {
     ///
     weak var searchDelegate: NoteListSearchDelegate?
 
+    var isActive: Bool = false {
+        didSet {
+            if isActive && searchField.currentEditor() != nil {
+                isActive = false
+            }
+
+            guard oldValue != isActive else {
+                return
+            }
+
+            tableView.refreshRows(isActive: isActive)
+        }
+    }
+
 
     // MARK: - ViewController Lifecycle
 
@@ -95,6 +109,33 @@ class NoteListViewController: NSViewController {
         }
 
         progressIndicator.startAnimation(self)
+    }
+
+    func focus() {
+        guard isViewLoaded && !view.isHiddenOrHasHiddenAncestor else {
+            return
+        }
+        view.window?.makeFirstResponder(tableView)
+    }
+}
+
+
+// MARK: - Keyboard Shortcuts
+//
+extension NoteListViewController {
+    @objc
+    func switchToTrailingPanel() {
+        guard tableView.selectedRowIndexes.count == 1,
+              !isViewingTrash else {
+            return
+        }
+
+        SimplenoteAppDelegate.shared().focusOnTheEditor()
+    }
+
+    @objc
+    func switchToLeadingPanel() {
+        SimplenoteAppDelegate.shared().focusOnTheTags()
     }
 }
 
@@ -458,6 +499,7 @@ extension NoteListViewController: SPTableViewDelegate {
     public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         let rowView = TableRowView()
         rowView.style = .list
+        rowView.isActive = isActive
         return rowView
     }
 
@@ -478,6 +520,15 @@ extension NoteListViewController: SPTableViewDelegate {
         ///     5.  Same as scenario #1, this ends up refreshing the Editor, and invoking `save()`
         ///     6.  Because of the re-entrant `save()` OP, this scenario will also produce an exception
         ///
+
+        /// We need the following code to avoid text editor scroll animation when using keyboard to select a note from the list
+        /// No other methods are working :facepalm:
+        if let window = view.window,
+           NSApp.currentEvent?.type == .some(.keyDown),
+           let event = NSEvent.otherEvent(with: .applicationDefined, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: window.windowNumber, context: nil, subtype: 0, data1: 0, data2: 0) {
+            NSApp.postEvent(event, atStart: true)
+        }
+
         DispatchQueue.main.async {
             self.refreshPresentedNote()
         }
@@ -591,7 +642,7 @@ extension NoteListViewController {
 
     @IBAction
     func performSearch(_ sender: Any) {
-        searchQuery = SearchQuery(searchText: searchField.stringValue)
+        searchQuery = SearchQuery(searchText: searchField.stringValue, settings: .default)
         refreshEverything()
         SPTracker.trackListNotesSearched()
     }

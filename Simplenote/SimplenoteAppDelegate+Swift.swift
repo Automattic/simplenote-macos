@@ -1,4 +1,5 @@
 import Foundation
+import Simperium_OSX
 
 
 // MARK: - Initialization
@@ -14,16 +15,11 @@ extension SimplenoteAppDelegate {
         }
 
         simperium.delegate = self
-        simperium.presentsLoginByDefault = true
         simperium.verboseLoggingEnabled = false
-        simperium.authenticationWindowControllerClass = LoginWindowController.classForCoder()
-
+        simperium.authenticationWindowControllerClass = AuthWindowController.classForCoder()
         simperium.authenticator.providerString = SPCredentials.simperiumProviderString
 
-        config.logoImageName = .simplenoteLogoLogin
         config.controlColor = .simplenoteBrandColor
-        config.forgotPasswordURL = SPCredentials.simperiumForgotPasswordURL
-        config.resetPasswordURL = SPCredentials.simperiumResetPasswordURL
 
         self.simperium = simperium
     }
@@ -45,6 +41,7 @@ extension SimplenoteAppDelegate {
         tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
         noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
         noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
+        noteEditorViewController.metadataCache = noteEditorMetadataCache
     }
 
     @objc
@@ -86,44 +83,16 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureEditorMetadataCache() {
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let fileURL = URL(fileURLWithPath: documentsDirectory, isDirectory: true).appendingPathComponent(Constants.noteEditorMetadataCacheFilename)
+        noteEditorMetadataCache = NoteEditorMetadataCache(storage: FileStorage(fileURL: fileURL))
+    }
+
+    @objc
     var window: Window {
         // TODO: Temporary workaround. Let's get rid of this? please? 🔥🔥🔥
         mainWindowController.window as! Window
-    }
-}
-
-
-// MARK: - Welcome Note
-//
-extension SimplenoteAppDelegate {
-
-    @objc
-    func configureWelcomeNoteIfNeeded() {
-        if Options.shared.initialSetupComplete {
-            return
-        }
-
-        Options.shared.initialSetupComplete = true
-        noteListViewController.setWaitingForIndex(true)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + AppKitConstants.delay0_5) {
-            self.createWelcomeNote()
-        }
-    }
-
-    func createWelcomeNote() {
-        let bucket = simperium.notesBucket
-        guard bucket.object(forKey: SimplenoteConstants.welcomeNoteObjectKey) == nil else {
-            return
-        }
-
-        let welcomeNote = bucket.insertNewObject(ofType: Note.self, key: SimplenoteConstants.welcomeNoteObjectKey)
-        welcomeNote.modificationDate = Date()
-        welcomeNote.creationDate = Date()
-        welcomeNote.content = NSLocalizedString("welcomeNote-Mac", comment: "A welcome note for new Mac users")
-        welcomeNote.createPreview()
-
-        simperium.save()
     }
 }
 
@@ -167,6 +136,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func newNoteWasPressed(_ sender: Any) {
         noteEditorViewController.newNoteWasPressed(sender)
+        SPTracker.trackShortcutCreateNote()
     }
 
     @IBAction
@@ -218,6 +188,7 @@ extension SimplenoteAppDelegate {
     @IBAction
     func searchWasPressed(_ sender: Any) {
         noteListViewController.beginSearch()
+        SPTracker.trackShortcutSearch()
     }
 
     @IBAction
@@ -237,6 +208,31 @@ extension SimplenoteAppDelegate {
         }
 
         Options.shared.themeName = option.themeName
+    }
+
+    func cycleSidebarAction() {
+        splitViewController.cycleSidebarAction()
+    }
+
+    @objc
+    func focusOnTheNoteList() {
+        noteListViewController.focus()
+    }
+
+    @objc
+    func focusOnTheEditor() {
+        noteEditorViewController.focus()
+    }
+
+    @objc
+    func focusOnTheTags() {
+        tagListViewController.focus()
+    }
+
+    @IBAction
+    func toggleMarkdownPreviewAction(_ sender: Any) {
+        noteEditorViewController.toggleMarkdownView(sender)
+        SPTracker.trackShortcutToggleMarkdownPreview()
     }
 }
 
@@ -265,6 +261,17 @@ extension SimplenoteAppDelegate {
 
         displayNote(simperiumKey: simperiumKey)
         return true
+    }
+
+    // MARK: - Magic Link authentication
+    //
+    @objc
+    func handleMagicAuth(url: URL) -> Bool {
+        if simperium.user?.authenticated() == true {
+            return false
+        }
+
+        return MagicLinkAuthenticator(authenticator: simperium.authenticator).handle(url: url)
     }
 }
 
@@ -345,6 +352,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
 
+        case .toggleMarkdownPreview:
+            return validateToogleMarkdownPreviewItem(menuItem)
+
         default:
             return true
         }
@@ -415,4 +425,41 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
     func validateSystemTrashMenuItem(_ item: NSMenuItem) -> Bool {
         noteEditorViewController.validateSystemTrashMenuItem(item)
     }
+
+    func validateToogleMarkdownPreviewItem(_ item: NSMenuItem) -> Bool {
+        noteEditorViewController.validateToogleMarkdownPreviewItem(item)
+    }
+
+    /// Updates `active` state of top view controllers based on the current first responder
+    ///
+    func updateActivePanel(with responder: NSResponder) {
+        let viewControllers: [NSResponder] = [tagListViewController, noteListViewController, noteEditorViewController]
+        var nextResponder: NSResponder? = responder
+
+        while let currentResponder = nextResponder {
+            if viewControllers.contains(currentResponder) {
+                tagListViewController.isActive = tagListViewController == currentResponder
+                noteListViewController.isActive = noteListViewController == currentResponder
+                break
+            }
+
+            nextResponder = currentResponder.nextResponder
+        }
+    }
+}
+
+// MARK: - Editor Cache
+//
+extension SimplenoteAppDelegate {
+    @objc
+    func cleanupEditorMetadataCache() {
+        let allKeys = simperium.allNotes.compactMap({ $0.deleted ? nil : $0.simperiumKey })
+        noteEditorMetadataCache.cleanup(keeping: allKeys)
+    }
+}
+
+// MARK: - Constants
+//
+private struct Constants {
+    static let noteEditorMetadataCacheFilename = ".editor-metadata-cache"
 }

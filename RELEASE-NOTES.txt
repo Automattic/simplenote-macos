@@ -1,6 +1,10 @@
+2.10
+-----
+
 2.9
 -----
- 
+- Updated keyboard shortcuts #816
+
 2.8
 -----
 - Searching for a note is showing relevant excerpts #830
@@ -9,7 +13,7 @@
 - SearchBar has been relocated into the Notes List #838
 - SearchBar UI was adjusted #851
 - Fixed a bug that Zoomed the window when double clicking on the Search Bar #841
- 
+
 2.7
 -----
 - New account verification screen #800

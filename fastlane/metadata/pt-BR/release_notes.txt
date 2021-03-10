@@ -1,6 +1,0 @@
-- A pesquisa de anotação mostra resumos relevantes
-- As palavras-chave de pesquisa são destacadas no editor
-- O mapa de pesquisa foi adicionado ao editor
-- A barra de pesquisa foi realocada para a lista de anotações
-- A IU da barra de pesquisa foi ajustada
-- Corrigimos um bug que ampliava a janela quando o usuário dava dois cliques na barra de pesquisa

@@ -11,7 +11,7 @@
 @import Simperium_OSX;
 
 @class BackgroundView;
-@class InterlinkWindowController;
+@class InterlinkProcessor;
 @class NoteEditorViewController;
 @class NoteListViewController;
 @class MarkdownViewController;
@@ -21,6 +21,7 @@
 @class SPTextView;
 @class SearchMapView;
 @class SearchQuery;
+@class NoteEditorMetadataCache;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -70,11 +71,12 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
 @property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) NSLayoutConstraint                      *sidebarSemaphoreLeadingConstraint;
-@property (nonatomic, strong, nullable) InterlinkWindowController               *interlinkWindowController;
+@property (nonatomic, strong) InterlinkProcessor                                *interlinkProcessor;
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
 @property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
+@property (nonatomic, strong, nonnull) NoteEditorMetadataCache                  *metadataCache;
 
 // TODO: Switch NSObject >> SearchQuery. ObjC compiler isn't picking up the Swift Package =(
 @property (nonatomic, strong, nullable) NSObject                                *searchQuery;
@@ -86,7 +88,6 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 - (void)didReceiveNewContent;
 - (void)willReceiveNewContent;
 - (void)fixChecklistColoring;
-- (NSUInteger)newCursorLocation:(NSString *)newText oldText:(NSString *)oldText currentLocation:(NSUInteger)cursorLocation;
 - (IBAction)deleteAction:(id)sender;
 - (IBAction)printAction:(id)sender;
 - (IBAction)adjustFontSizeAction:(id)sender;

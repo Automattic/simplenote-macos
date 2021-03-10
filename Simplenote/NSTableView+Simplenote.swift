@@ -72,4 +72,13 @@ extension NSTableView {
         style = .fullWidth
 #endif
     }
+
+    /// Refresh `isActive` status of table rows
+    ///
+    func refreshRows(isActive: Bool) {
+        for row in 0..<numberOfRows {
+            let rowView = self.rowView(atRow: row, makeIfNecessary: false) as? TableRowView
+            rowView?.isActive = isActive
+        }
+    }
 }

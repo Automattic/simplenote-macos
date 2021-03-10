@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:04+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "למחוק את התגית";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "בטל";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "לקבלת עזרה";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "היסטוריה";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "התחבר";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "נכנס...";
@@ -236,7 +245,7 @@
 "Review Your Account" = "לבדוק את החשבון שלך";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "חיפוש פתקים";
 
 /* Search Results Title */
 "Searching" = "מחפש";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "הרשמה";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "התחברות באמצעות WordPress.com";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "נרשם לחשבון...";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "שלחנו את האימות לכתובת האימייל %1$@. יש לבדוק את תיבת הדואר הנכנס ולפעול לפי ההוראות.";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "מילים";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "הסיסמה שלך לא מאובטחת ועליך לאפס אותה. הדרישות לסיסמה הן:";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "ברוך בואך אל Simplenote Mac!\n\nכדי להוסיף פתק, יש ללחוץ על הכפתור של הפתק החדש עם הסמל 'פלוס' (+).\n\nכדי להסיר פתק, יש ללחוץ על כפתור הפח.\n\nאפשר לחפש בכל הפתקים באמצעות הקלדה בשדה החיפוש מעל רשימת הפתקים.\n\nיש ללחוץ על כפתור התגיות בפינה השמאלית העליונה כדי לפתוח את הסרגל הצדי. אפשר להוסיף תגיות לפתק בתחתית עורך הפתקים, ולאחר מכן להשתמש בסרגל הצדי כדי לעזור לך לשמור על הסדר.\n\nקיימות אפשרויות נוספות לפתקים במקרה הצורך. ניתן להוסיף כתובות אימייל כתגיות כדי ליצור שיתוף פעולה עם אנשים או לפרסם פתק כעמוד אינטרנט.\n\nניתן להשתמש ב-Simplenote במכשירי iPhone, iPad ו-Android או בדפדפן האינטרנט, בכתובת https:\/\/simplenote.com. הפתקים שלך יישארו מעודכנים בכל מקום, באופן אוטומטי.";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "תגית:";
 
