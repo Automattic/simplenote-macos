@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-19 17:23:39+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "删除标签";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "关闭";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "获取帮助";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "历史记录";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "登录";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "正在登录…";
@@ -236,7 +245,7 @@
 "Review Your Account" = "检查您的帐户";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "搜索笔记";
 
 /* Search Results Title */
 "Searching" = "搜索";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "注册";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "通过 WordPress.com 登录";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "正在注册…";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "我们已向 %1$@ 发送了一封验证电子邮件。 请检查您的收件箱并按照说明执行操作。";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "单词";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "您的密码不安全，需要重置。密码要求：";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "欢迎使用 Simplenote Mac！\n\n若要添加笔记，请点击带有加号的“新建笔记”按钮。\n\n若要删除笔记，请点击回收站按钮。\n\n您可以通过在笔记列表上方的搜索字段中输入相关内容来搜索笔记。\n\n点击左上角的”标签“按钮打开边栏。 您可以在笔记编辑器底部向笔记添加标签，并借助侧边栏来整理笔记。\n\n您可以根据需要选择其他笔记选项。 您可以将电子邮件地址添加为标签，以便与他人开展合作，也可以将笔记发布为网页。\n\n您可以通过 iPhone、iPad、Android 设备或网络浏览器 (http:\/\/simplenote.com) 使用 Simplenote。 您的笔记可随时随地自动更新。";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "标签：";
 

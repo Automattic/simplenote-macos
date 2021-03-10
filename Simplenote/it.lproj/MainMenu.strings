@@ -60,6 +60,9 @@
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
 "199.title" = "Taglia";
 
+/* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
+"1db-JI-NZH.title" = "Toggle Markdown Preview";
+
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Ortografia e grammatica";
 

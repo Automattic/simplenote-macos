@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "태그 삭제";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "무시";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "도움말";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "내역";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "로그인";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "로그인 중...";
@@ -236,7 +245,7 @@
 "Review Your Account" = "계정 검토";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "메모 검색";
 
 /* Search Results Title */
 "Searching" = "검색 중";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "가입";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "워드프레스닷컴으로 로그인";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "가입 중...";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "%1$@(으)로 인증 이메일을 보내드렸습니다. 받은 편지함을 확인하고 지침에 따라 주세요.";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "단어";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "비밀번호가 안전하지 않으므로 초기화해야 합니다. 비밀번호 요구 사항은 다음과 같습니다.";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Simplenote Mac을 시작합니다!\n\n메모를 추가하려면 더하기 기호가 있는 새 메모 버튼을 클릭합니다.\n\n메모를 제거하려면 휴지통 버튼을 클릭합니다.\n\n메모 목록 위의 검색 필드에 검색어를 입력해서 모든 메모를 검색할 수 있습니다.\n\n왼쪽 상단의 태그 버튼을 클릭하여 사이드바를 엽니다. 메모 편집기 하단에서 메모에 태그를 추가한 다음 사이드바를 사용하여 메모를 정리할 수 있습니다.\n\n필요한 경우 더 다양한 메모 옵션을 사용할 수 있습니다. 이메일 주소를 태그로 추가하여 다른 사람과 협업하거나 메모를 웹 페이지로 공개할 수 있습니다.\n\niPhone, iPad, Android 기기 또는 웹 브라우저에서 https:\/\/simplenote.com으로 이동하여 Simplenote를 사용할 수 있습니다. 어디에 있든 메모 내용이 자동으로 업데이트됩니다.";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "태그:";
 
