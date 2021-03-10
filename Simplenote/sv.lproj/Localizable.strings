@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-19 09:10:05+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:56:06+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "Ta bort etikett";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "Stäng";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "Skaffa hjälp";
 
+/* Back Button Title */
+"Go Back" = "Gå tillbaka";
+
 /* History Menu Action */
 "History" = "Historik";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Logga in";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Logga in med WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Loggar in…";
@@ -250,9 +259,6 @@
 /* Title of button for signing up */
 "Sign Up" = "Skapa konto";
 
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "Logga in med WordPress.com";
-
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "Skapar konto...";
 
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Vi har skickat en e-postverifiering till %1$@. Kontrollera din inkorg och följ instruktionerna.";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "Ord";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "Ditt lösenord är osäkert och måste återställas. Lösenordskraven är:";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Välkommen till Simplenote för Mac!\n\nKlicka på knappen för ny anteckning med plussymbolen för att lägga till en anteckning.\n\nKlicka på papperskorgen om du vill ta bort en anteckning.\n\nDu kan söka bland alla dina anteckningar genom att skriva i sökfältet över listan med anteckningar.\n\nKlicka på etikettknapparna längst upp till vänster i sidofältet. Du kan lägga till etiketter i en anteckning längst ner i anteckningsredigeraren och därefter använda sidofältet för att organisera dem.\n\nDet finns fler anteckningsalternativ om du behöver dem. Du kan lägga till e-postadresser som etiketter för att samarbeta med andra personer eller publicera en anteckning som en webbplats.\n\nAnvänd Simplenote på din iPhone, iPad, Android-enhet eller i din webbläsare på https:\/\/simplenote.com. Dina anteckningar kommer att hålla sig uppdaterade överallt automatiskt.";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "etikett:";
 
