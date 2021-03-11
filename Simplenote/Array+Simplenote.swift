@@ -24,3 +24,15 @@ extension Array where Element == String {
         return output
     }
 }
+
+
+// MARK: - Array + NSView Convenience API
+//
+extension Array where Element == NSView {
+
+    func updateAlphaValue(_ newAlpha: CGFloat) {
+        forEach { view in
+            view.alphaValue = newAlpha
+        }
+    }
+}

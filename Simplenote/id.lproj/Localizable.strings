@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "Hapus Tag";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "Hentikan";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "Dapatkan Bantuan";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "Riwayat";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Masuk";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Login...";
@@ -236,7 +245,7 @@
 "Review Your Account" = "Tinjau Akun Anda";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "Cari catatan";
 
 /* Search Results Title */
 "Searching" = "Mencari";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "Mendaftar";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "Masuk dengan WordPress.com";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "Mendaftar…";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Kami telah mengirimkan email verifikasi ke %1$@. Harap periksa kotak masuk Anda dan ikuti instruksi berikut.";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "Kata";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "Kata sandi Anda tidak aman dan harus diatur ulang. Persyaratan kata sandi adalah:";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Selamat datang di Simplenote Mac!\n\nUntuk menambahkan catatan, klik tombol catatan baru dengan simbol plus.\n\nUntuk menghapus catatan, klik tombol tempat sampah.\n\nAnda dapat mencari semua catatan dengan mengetik di kolom pencarian di atas daftar catatan.\n\nKlik tombol tag di kiri atas untuk membuka sidebar. Anda dapat menambahkan tag ke catatan di bagian bawah editor catatan, lalu gunakan sidebar untuk membantu Anda merapikannya.\n\nAda lebih banyak opsi catatan jika Anda membutuhkannya. Anda dapat menambahkan alamat email sebagai tag untuk berkolaborasi dengan orang lain, atau menerbitkan catatan sebagai halaman web.\n\nGunakan Simplenote di perangkat iPhone, iPad, Android, atau di perambah web Anda di https:\/\/simplenote.com. Catatan Anda akan tetap diperbarui di mana pun secara otomatis.";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "tag:";
 

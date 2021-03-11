@@ -87,6 +87,11 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteSelectedInactiveBackgroundColor: NSColor {
+        dynamicColor(lightStudio: .gray5, darkStudio: .white, darkColorAlpha: AppKitConstants.alpha0_1)
+    }
+
+    @objc
     static var simplenotePopoverBackgroundColor: NSColor {
         .simplenoteUnderPageBackgroundDarkColor
     }
@@ -98,7 +103,12 @@ extension NSColor {
 
     @objc
     static var simplenoteSecondarySelectedBackgroundColor: NSColor {
-        dynamicColor(lightColor: .simplenoteSecondarySelectedBackgroundLightColor, darkColor: .simplenoteSecondarySelectedBackgroundDarkColor)
+        NSColor(studioColor: .spBlue50)
+    }
+
+    @objc
+    static var simplenoteSecondarySelectedInactiveBackgroundColor: NSColor {
+        dynamicColor(lightStudio: .black, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_1, darkColorAlpha: AppKitConstants.alpha0_1)
     }
 
     @objc
@@ -129,6 +139,11 @@ extension NSColor {
     @objc
     static var simplenoteSecondaryTextColor: NSColor {
         dynamicColor(lightStudio: .gray50, darkStudio: .gray30)
+    }
+
+    @objc
+    static var simplenoteTertiaryTextColor: NSColor {
+        dynamicColor(lightStudio: .gray20, darkStudio: .gray20)
     }
 
     @objc

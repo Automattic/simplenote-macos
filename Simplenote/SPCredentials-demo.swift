@@ -28,6 +28,10 @@ class SPCredentials: NSObject {
     static let simperiumForgotPasswordURL = "https://not-required/"
     static let simperiumResetPasswordURL = "https://not-required/"
 
+    /// Simplenote's Send Feedback Mail
+    ///
+    static let simplenoteFeedbackMail = "not@needed.either"
+
     /// WordPress.com: SSO
     ///
     static let wpcomClientID = "not-required"

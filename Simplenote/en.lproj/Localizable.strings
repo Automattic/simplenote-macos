@@ -81,6 +81,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "Delete Tag";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "Dismiss";
 
@@ -102,6 +105,9 @@
 /* FAQ or contact us */
 "Get Help" = "Get Help";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "History";
 
@@ -114,6 +120,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Log In";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Logging In...";
@@ -242,9 +251,6 @@
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Share information with our analytics tool about your use of services while logged into your Simplenote.com account.";
 
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "Sign in with WordPress.com";
-
 /* Title of button for signing up */
 "Sign Up" = "Sign Up";
 
@@ -256,6 +262,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Skip";
+
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "tag:";
 
 /* Tags Section Name */
 "Tags" = "Tags";
@@ -306,11 +315,11 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "We're having problems. Please try again soon.";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Welcome to Simplenote Mac!\n\nTo add a note, click the new note button with the plus symbol.\n\nTo remove a note, click the trash button.\n\nYou can search all your notes by typing in the search field above the note list.\n\nClick the tags button at the top-left to open the sidebar. You can add tags to a note at the bottom of the note editor, and then use the sidebar to help you stay organized.\n\nThere are more note options if you need them. You can add email addresses as tags to collaborate with people, or publish a note as a web page.\n\nUse Simplenote on your iPhone, iPad, Android device, or in your web browser at https://simplenote.com. Your notes will stay updated everywhere automatically.";
-
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions.";
+
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
 
 /* Number of words in the note */
 "Words" = "Words";

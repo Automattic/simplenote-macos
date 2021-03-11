@@ -30,9 +30,27 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupInterlinksProcessor() {
+        interlinkProcessor = InterlinkProcessor(viewContext: simplenoteAppDelegate.managedObjectContext,
+                                                parentTextView: noteEditor)
+        interlinkProcessor.delegate = self
+    }
+
+    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
+    }
+}
+
+
+// MARK: - Public
+//
+extension NoteEditorViewController {
+    /// Makes editor first responder
+    ///
+    func focus() {
+        view.window?.makeFirstResponder(noteEditor)
     }
 }
 
@@ -156,6 +174,7 @@ extension NoteEditorViewController {
 
     /// Indicates if the current document is expected to support Markdown
     ///
+    @objc
     var isMarkdownEnabled: Bool {
         note?.markdown == true
     }
@@ -164,18 +183,6 @@ extension NoteEditorViewController {
     ///
     var isSelectingMultipleNotes: Bool {
         selectedNotes.count > 1
-    }
-
-    /// Indicates if there's an ongoing Undo Operation in the Text Editor
-    ///
-    var isUndoingEditOP: Bool {
-        noteEditor.undoManager?.isUndoing == true
-    }
-
-    /// Indicates if the Selected Range's Length is non zero: at least one character is highlighted
-    ///
-    var isSelectingText: Bool {
-        noteEditor.selectedRange().length != .zero
     }
 
     /// Simperium 🖖
@@ -401,6 +408,10 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
         return isDisplayingNote || isSelectingMultipleNotes
     }
+
+    func validateToogleMarkdownPreviewItem(_ item: NSMenuItem) -> Bool {
+        return isMarkdownEnabled
+    }
 }
 
 
@@ -410,7 +421,7 @@ extension NoteEditorViewController {
 
     @IBAction
     func sidebarWasPressed(sender: Any) {
-        SimplenoteAppDelegate.shared().toggleSidebarAction(sender)
+        SimplenoteAppDelegate.shared().cycleSidebarAction()
     }
 
     @IBAction
@@ -772,118 +783,6 @@ extension NoteEditorViewController: MetricsControllerDelegate {
 }
 
 
-// MARK: - Interlinking Autocomplete: Public API(s)
-//
-extension NoteEditorViewController {
-
-    /// Displays the Interlink Lookup Window at the cursor's location when all of the following are **true**:
-    ///
-    ///     1. We're not performing an Undo OP
-    ///     2. There is no Highlighted Text in the editor
-    ///     3. There is an interlink `[keyword` at the current location
-    ///     4. There are Notes with `keyword` in their title
-    ///
-    ///  Otherwise we'll simply dismiss the Autocomplete Window, if any.
-    ///
-    @objc
-    func processInterlinkLookup() {
-        guard mustProcessInterlinkLookup,
-              let (markdownRange, keywordRange, keywordText) = noteEditor.interlinkKeywordAtSelectedLocation,
-              refreshInterlinks(for: keywordText, in: markdownRange, excluding: note?.objectID)
-        else {
-            dismissInterlinkWindow()
-            return
-        }
-
-        displayInterlinkWindow(around: keywordRange)
-    }
-
-    /// Dismisses the Interlink Window when ANY of the following evaluates **true**:
-    ///
-    ///     1.  There is Highlighted Text in the editor (or)
-    ///     2.  There is no Interlink `[keyword` at the selected location
-    ///
-    @objc
-    func dismissInterlinkLookupIfNeeded() {
-        guard mustDismissInterlinkLookup else {
-            return
-        }
-
-        dismissInterlinkWindow()
-    }
-}
-
-
-// MARK: - Interlinking Autocomplete: Private API(s)
-//
-private extension NoteEditorViewController {
-
-    /// Indicates if we should process Interlink Lookup
-    ///
-    var mustProcessInterlinkLookup: Bool {
-        isUndoingEditOP == false && isSelectingText == false
-    }
-
-    /// Indicates if we should dismiss the Interlink Window
-    ///
-    var mustDismissInterlinkLookup: Bool {
-        isSelectingText || isInterlinkWindowOnScreen && noteEditor.interlinkKeywordAtSelectedLocation == nil
-    }
-
-    /// Indicates if the Interlink Window is visible
-    ///
-    var isInterlinkWindowOnScreen: Bool {
-        interlinkWindowController?.window?.parent != nil
-    }
-
-    /// Presents the Interlink Window at a given Editor Range (Below / Above!)
-    ///
-    func displayInterlinkWindow(around range: Range<String.Index>) {
-        let locationOnScreen = noteEditor.locationOnScreenForText(in: range)
-        let interlinkWindowController = reusableInterlinkWindowController()
-
-        interlinkWindowController.attach(to: view.window)
-        interlinkWindowController.positionWindow(relativeTo: locationOnScreen)
-    }
-
-    /// DIsmisses the Interlink Window (if any!)
-    ///
-    func dismissInterlinkWindow() {
-        interlinkWindowController?.close()
-    }
-
-    /// Refreshes the Interlinks for a given Keyword at the specified Replacement Range (including Markdown `[` opening character).
-    /// - Returns: `true` whenever there *are* interlinks to be presented
-    ///
-    func refreshInterlinks(for keywordText: String, in replacementRange: Range<String.Index>, excluding excludedID: NSManagedObjectID?) -> Bool {
-        guard let interlinkViewController = reusableInterlinkWindowController().interlinkViewController else {
-            fatalError()
-        }
-
-        interlinkViewController.onInsertInterlink = { [weak self] text in
-            self?.noteEditor.insertTextAndLinkify(text: text, in: replacementRange)
-            self?.dismissInterlinkWindow()
-        }
-
-        return interlinkViewController.refreshInterlinks(for: keywordText, excluding: excludedID)
-    }
-
-    /// Returns a reusable InterlinkWindowController instance
-    ///
-    func reusableInterlinkWindowController() -> InterlinkWindowController {
-        if let interlinkWindowController = interlinkWindowController {
-            return interlinkWindowController
-        }
-
-        let storyboard = NSStoryboard(name: .interlink, bundle: nil)
-        let interlinkWindowController = storyboard.instantiateWindowController(ofType: InterlinkWindowController.self)
-        self.interlinkWindowController = interlinkWindowController
-
-        return interlinkWindowController
-    }
-}
-
-
 // MARK: - Content and Highlights
 //
 extension NoteEditorViewController {
@@ -944,6 +843,73 @@ extension NoteEditorViewController {
         ])
 
         self.searchMapView = searchMapView
+    }
+}
+
+
+// MARK: - Shortcuts
+//
+extension NoteEditorViewController {
+    @objc
+    func toggleTagsAndEditor() {
+        if noteEditor.isFirstResponder {
+            view.window?.makeFirstResponder(tagsField)
+            tagsField.currentEditor()?.moveToEndOfDocument(nil)
+            tagsField.ensureCaretIsOnscreen()
+        } else {
+            view.window?.makeFirstResponder(noteEditor)
+        }
+    }
+}
+
+
+// MARK: - Editor Metadata
+//
+extension NoteEditorViewController {
+    @objc
+    func saveScrollPositionAndCursorLocation() {
+        // Issue #393: `self.note` might be populated, but it's simperiumKey inaccessible
+        guard let simperiumKey = note?.simperiumKey else {
+            return
+        }
+
+        let scrollPosition = scrollView.contentView.bounds.origin.y
+        let cursorLocation = noteEditor.selectedRange().location
+        let metadata = NoteEditorMetadata(scrollPosition: scrollPosition,
+                                          cursorLocation: cursorLocation)
+        metadataCache.store(metadata: metadata, for: simperiumKey)
+    }
+
+    @objc
+    func restoreScrollPosition() {
+        guard let simperiumKey = note?.simperiumKey,
+              let scrollPosition = metadataCache.metadata(for: simperiumKey)?.scrollPosition else {
+            scrollView.scrollToTop(animated: false)
+            return
+        }
+        // ensure layout to make sure that content size is updated
+        noteEditor.ensureLayout()
+        scrollView.documentView?.scroll(NSPoint(x: 0, y: scrollPosition))
+    }
+
+    @objc
+    func restoreCursorLocation() {
+        guard let simperiumKey = note?.simperiumKey,
+              let cursorLocation = metadataCache.metadata(for: simperiumKey)?.cursorLocation else {
+            return
+        }
+        noteEditor.setSelectedRange(NSRange(location: cursorLocation, length: 0))
+    }
+}
+
+
+// MARK: - Interlinks Insertion
+//
+extension NoteEditorViewController: InterlinkProcessorDelegate {
+
+    func interlinkProcessor(_ processor: InterlinkProcessor, insert text: String, in range: Range<String.Index>) {
+        noteEditor.insertTextAndLinkify(text: text, in: range)
+        processor.dismissInterlinkLookup()
     }
 }
 

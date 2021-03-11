@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SignupVerificationViewController" customModule="Simplenote" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="WQ9-kZ-3pe" id="q5h-Wl-sMp"/>
+                <outlet property="messageTextField" destination="gyP-vj-XGe" id="UHt-5z-B2f"/>
+                <outlet property="supportTextField" destination="KH5-BY-5Ba" id="2cF-nz-AJg"/>
+                <outlet property="view" destination="c22-O7-iKe" id="zcf-VY-O2j"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="354"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HWu-qy-Q86">
+                    <rect key="frame" x="45" y="45" width="290" height="264"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZUs-Wp-nnm">
+                            <rect key="frame" x="97" y="168" width="96" height="96"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="96" id="PsL-Jg-ygr"/>
+                                <constraint firstAttribute="height" constant="96" id="uNf-mG-vcQ"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_simplenote_login" id="uUO-oI-hYP"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyP-vj-XGe">
+                            <rect key="frame" x="-2" y="100" width="294" height="48"/>
+                            <textFieldCell key="cell" allowsUndo="NO" alignment="center" title="[We’ve sent an email to example@email.com. Please check your inbox and follow the instructions.]" id="gKj-Oa-Ihv">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KH5-BY-5Ba">
+                            <rect key="frame" x="-2" y="48" width="294" height="32"/>
+                            <gestureRecognizers>
+                                <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="dqG-sI-Es9">
+                                    <connections>
+                                        <action selector="contactWasPressed:" target="-2" id="epN-A4-qrc"/>
+                                    </connections>
+                                </clickGestureRecognizer>
+                            </gestureRecognizers>
+                            <textFieldCell key="cell" allowsUndo="NO" alignment="center" title="[Didn’t get an email? Please contact support@simplenote.com.]" id="lDF-iv-aFc">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WQ9-kZ-3pe" userLabel="Back">
+                            <rect key="frame" x="122" y="0.0" width="46" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="D3f-5W-49n"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" title="[Back]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="xKN-nW-oE8">
+                                <behavior key="behavior" lightByContents="YES"/>
+                                <font key="font" metaFont="systemSemibold" size="13"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="backWasPressed:" target="-2" id="8yt-yh-ffr"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="290" id="Clh-Uk-uPd"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HWu-qy-Q86" secondAttribute="trailing" constant="45" id="2Rp-R1-FCG"/>
+                <constraint firstItem="HWu-qy-Q86" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="45" id="flw-PU-fII"/>
+                <constraint firstItem="HWu-qy-Q86" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="45" id="pDv-Ws-iG2"/>
+                <constraint firstAttribute="bottom" secondItem="HWu-qy-Q86" secondAttribute="bottom" constant="45" id="plS-wp-fky"/>
+            </constraints>
+            <point key="canvasLocation" x="-159" y="154"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icon_simplenote_login" width="96" height="96"/>
+    </resources>
+</document>

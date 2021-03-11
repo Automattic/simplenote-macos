@@ -14,6 +14,14 @@ class TableRowView : NSTableRowView {
         }
     }
 
+    /// If true table view or view controller is a first responder
+    ///
+    var isActive: Bool = true {
+        didSet {
+            needsDisplay = true
+        }
+    }
+
     /// Setting `isNextRowSelected` should trigger a redraw!
     ///
     override var isNextRowSelected: Bool {
@@ -37,7 +45,7 @@ class TableRowView : NSTableRowView {
 
         let insets = style.insets
         let targetRect = bounds.insetBy(dx: insets.dx, dy: insets.dy)
-        style.selectionColor.setFill()
+        style.selectionColor(isActive: isActive).setFill()
         NSBezierPath(roundedRect: targetRect, byRoundingCorners: roundedCorners, radius: style.cornerRadius).fill()
     }
 
@@ -131,14 +139,14 @@ extension TableRowStyle {
         }
     }
 
-    var selectionColor: NSColor {
+    func selectionColor(isActive: Bool) -> NSColor {
         switch self {
         case .fullWidth:
             return .simplenoteSelectedBackgroundColor
         case .sidebar:
-            return .simplenoteSecondarySelectedBackgroundColor
+            return isActive ? .simplenoteSecondarySelectedBackgroundColor : .simplenoteSecondarySelectedInactiveBackgroundColor
         case .list:
-            return .simplenoteSelectedBackgroundColor
+            return isActive ? .simplenoteSelectedBackgroundColor : .simplenoteSelectedInactiveBackgroundColor
         }
     }
 

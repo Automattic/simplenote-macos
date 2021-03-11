@@ -1,44 +1,27 @@
 import Foundation
 import AppKit
-import SimplenoteFoundation
 
 
 // MARK: - InterlinkViewController
 //
 class InterlinkViewController: NSViewController {
 
-    /// Background
+    /// Interface Outlets
     ///
     @IBOutlet private var backgroundView: BackgroundView!
-
-    /// Autocomplete TableView
-    ///
     @IBOutlet private var tableView: NSTableView!
 
     /// Mouse Tracking
     ///
     private lazy var trackingArea = NSTrackingArea(rect: .zero, options: [.inVisibleRect, .activeAlways, .mouseEnteredAndExited], owner: self, userInfo: nil)
 
-    /// Main Context
+    /// Interlink Notes to be presented onScreen
     ///
-    private var mainContext: NSManagedObjectContext {
-        SimplenoteAppDelegate.shared().managedObjectContext
+    var notes = [Note]() {
+        didSet {
+            tableView?.reloadData()
+        }
     }
-
-    /// ResultsController: In charge of CoreData Queries!
-    ///
-    private lazy var resultsController: ResultsController<Note> = {
-        return ResultsController<Note>(viewContext: mainContext, sortedBy: [
-            NSSortDescriptor(keyPath: \Note.content, ascending: true)
-        ])
-    }()
-
-    /// In-Memory Filtered Notes
-    /// -   Our Storage does not split `Title / Body`. Filtering by keywords in the title require a NSPredicate + Block
-    /// -   The above is awfully underperformant.
-    /// -   Most efficient approach code wise / speed involves simply keeping a FRC instance, and filtering it as needed
-    ///
-    private var filteredNotes = [Note]()
 
     /// Closure to be executed whenever a Note is selected. The Interlink URL will be passed along.
     ///
@@ -55,7 +38,6 @@ class InterlinkViewController: NSViewController {
         super.viewDidLoad()
         startListeningToNotifications()
         refreshStyle()
-        setupResultsController()
         setupRoundedCorners()
         setupTableView()
         setupTrackingAreas()
@@ -69,28 +51,6 @@ class InterlinkViewController: NSViewController {
     override func mouseExited(with event: NSEvent) {
         super.mouseExited(with: event)
         NSCursor.arrow.set()
-    }
-}
-
-
-// MARK: - Public API(s)
-//
-extension InterlinkViewController {
-
-    /// Refreshes the Autocomplete Results. Returns `true` when there are visible rows.
-    /// - Important:
-    ///     By design, whenever there are no results we won't be refreshing the TableView. Instead, we'll stick to the "old results".
-    ///     This way we get to avoid the awkward visual effect of "empty autocomplete window"
-    ///
-    func refreshInterlinks(for keyword: String, excluding excludedID: NSManagedObjectID?) -> Bool {
-        filteredNotes = filterNotes(resultsController.fetchedObjects, byTitleKeyword: keyword, excluding: excludedID)
-        let displaysRows = filteredNotes.count > .zero
-
-        if displaysRows {
-            refreshTableView()
-        }
-
-        return displaysRows
     }
 }
 
@@ -118,43 +78,6 @@ private extension InterlinkViewController {
 
     func setupTrackingAreas() {
         view.addTrackingArea(trackingArea)
-    }
-
-    func setupResultsController() {
-        resultsController.predicate = NSPredicate.predicateForNotes(deleted: false)
-        try? resultsController.performFetch()
-    }
-}
-
-
-// MARK: - Filtering
-//
-private extension InterlinkViewController {
-
-    func filterNotes(_ notes: [Note], byTitleKeyword keyword: String, excluding excludedID: NSManagedObjectID?, limit: Int = Settings.maximumNumberOfResults) -> [Note] {
-        var output = [Note]()
-        let normalizedKeyword = keyword.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)
-
-        for note in notes where note.objectID != excludedID {
-            note.ensurePreviewStringsAreAvailable()
-            guard let normalizedTitle = note.titlePreview?.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil),
-                  normalizedTitle.contains(normalizedKeyword)
-            else {
-                continue
-            }
-
-            output.append(note)
-
-            if output.count >= limit {
-                break
-            }
-        }
-
-        return output
-    }
-
-    func refreshTableView() {
-        tableView.reloadDataAndResetSelection()
     }
 }
 
@@ -210,11 +133,7 @@ private extension InterlinkViewController {
 private extension InterlinkViewController {
 
     func noteAtRow(_ row: Int) -> Note? {
-        guard row < filteredNotes.count else {
-            return nil
-        }
-
-        return filteredNotes[row]
+        return row < notes.count ? notes[row] : nil
     }
 }
 
@@ -224,7 +143,7 @@ private extension InterlinkViewController {
 extension InterlinkViewController: NSTableViewDataSource {
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        filteredNotes.count
+        notes.count
     }
 }
 
@@ -270,5 +189,4 @@ extension InterlinkViewController: SPTableViewDelegate {
 //
 private enum Settings {
     static let cornerRadius = CGFloat(6)
-    static let maximumNumberOfResults = 15
 }

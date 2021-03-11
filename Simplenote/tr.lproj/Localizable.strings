@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "Etiket Sil";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "Kapat";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "Yardım Alın";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "Geçmiş";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Giriş yap";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Oturum açılıyor...";
@@ -236,7 +245,7 @@
 "Review Your Account" = "Hesabınızı İnceleyin";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "Notlarda ara";
 
 /* Search Results Title */
 "Searching" = "Arama";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "Üye ol";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "WordPress.com ile Giriş Yap";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "Kayıt Yapılıyor...";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "%1$@ adresine bir doğrulama e-postası gönderdik. Lütfen gelen kutunuzu kontrol edin ve talimatları izleyin.";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "Sözcük";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "Parolanız güvenli değil ve sıfırlanması gerekiyor. Parola gereksinimleri:";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Simplenote Mac'e hoş geldiniz.\n\nNot eklemek için artı simgeli yeni not düğmesini tıklayın.\n\nBir notu kaldırmak için çöp kutusu düğmesini tıklayın.\n\nNot listesinin üstündeki arama alanına yazarak tüm notlarınızı arayabilirsiniz.\n\nKenar çubuğunu açmak için sol üst taraftaki etiketler düğmesini tıklayın. Not düzenleyicinin alt kısmında bir nota etiket ekleyebilir, ardından kenar çubuğunu kullanarak notları düzenli şekilde saklayabilirsiniz.\n\nGerek duyduğunuzda diğer not seçeneklerini de kullanabilirsiniz. Kişilerle işbirliği yapmak için e-posta adreslerini etiket olarak ekleyebilir veya bir notu web sayfası olarak yayınlayabilirsiniz.\n\niPhone, iPad, Android cihazınızda veya https:\/\/simplenote.com adresindeki web tarayıcınızda Simplenote'u kullanın. Notlarınız her yerde otomatik olarak güncellenecek.";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "etiket:";
 
