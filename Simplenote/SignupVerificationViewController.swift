@@ -80,8 +80,23 @@ private extension SignupVerificationViewController {
     func setupSupportLabel() {
         let text = String(format: Localization.support, SPCredentials.simplenoteFeedbackMail)
 
-        supportTextField.stringValue = text
-        supportTextField.textColor = NSColor(studioColor: .gray50)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: NSColor(studioColor: .gray50),
+            .font: Fonts.regularMessageFont,
+            .paragraphStyle: paragraphStyle
+        ]
+
+        let highlightAttributes: [NSAttributedString.Key: Any] = [
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+
+        supportTextField.attributedStringValue = NSMutableAttributedString(string: text,
+                                                                           attributes: attributes,
+                                                                           highlighting: SPCredentials.simplenoteFeedbackMail,
+                                                                           highlightAttributes: highlightAttributes)
     }
 
     func setupBackButton() {
@@ -98,6 +113,15 @@ extension SignupVerificationViewController {
     @IBAction
     func backWasPressed(_ sender: Any) {
         presentAuthenticationInteface()
+    }
+
+    @IBAction
+    func contactWasPressed(_ sender: Any) {
+        guard let targetURL = URL(string: "mailto:" + SPCredentials.simplenoteFeedbackMail) else {
+            return
+        }
+
+        NSWorkspace.shared.open(targetURL)
     }
 }
 

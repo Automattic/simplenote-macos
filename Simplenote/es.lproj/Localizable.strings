@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:04+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: es */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "Eliminar Etiqueta";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "Descartar";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "Obtener ayuda";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "Historial";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Acceder";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Ingresando...";
@@ -236,7 +245,7 @@
 "Review Your Account" = "Revisa tu cuenta";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "Buscar notas";
 
 /* Search Results Title */
 "Searching" = "Buscando";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "Registrarse";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "Ingresar con WordPress.com";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "Registrandose...";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Hemos enviado un correo electrónico de verificación a %1$@. Revisa tu bandeja de entrada y sigue las instrucciones.";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "Palabras";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "Tu contraseña no es segura y debes cambiarla. Los requisitos de la contraseña son los siguientes:";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Te damos la bienvenida a Simplenote para Mac.\n\nPara añadir una nota, haz clic en el botón del símbolo más.\n\nPara eliminar una nota, haz clic en el botón de la papelera.\n\nPuedes buscar tus notas desde el campo de búsqueda disponible en la parte superior de la lista de notas.\n\nHaz clic en los botones de etiquetas de la parte superior izquierda para abrir la barra lateral. Puedes añadir etiquetas a una nota desde la parte inferior del editor de notas y, a continuación, usar la barra lateral para organizarte mejor.\n\nLas notas presentan opciones adicionales. Puedes añadir direcciones de correo electrónico y etiquetas para colaborar con otras personas o publicar una nota como una página web.\n\nUsa Simplenote en tu iPhone, iPad, dispositivo Android o en tu navegador web desde https:\/\/simplenote.com. Tus notas se actualizarán automáticamente en todas partes.";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "etiqueta:";
 

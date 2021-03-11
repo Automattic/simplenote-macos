@@ -41,6 +41,13 @@
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KH5-BY-5Ba">
                             <rect key="frame" x="-2" y="48" width="294" height="32"/>
+                            <gestureRecognizers>
+                                <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="dqG-sI-Es9">
+                                    <connections>
+                                        <action selector="contactWasPressed:" target="-2" id="epN-A4-qrc"/>
+                                    </connections>
+                                </clickGestureRecognizer>
+                            </gestureRecognizers>
                             <textFieldCell key="cell" allowsUndo="NO" alignment="center" title="[Didn’t get an email? Please contact support@simplenote.com.]" id="lDF-iv-aFc">
                                 <font key="font" usesAppearanceFont="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

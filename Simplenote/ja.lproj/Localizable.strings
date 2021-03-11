@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ja_JP */
@@ -86,6 +86,9 @@
 /* Delete Tag Action */
 "Delete Tag" = "タグを削除";
 
+/* Signup Support Text */
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+
 /* Closes the Privacy View */
 "Dismiss" = "非表示にする";
 
@@ -107,6 +110,9 @@
 /* FAQ or contact us */
 "Get Help" = "ヘルプ";
 
+/* Back Button Title */
+"Go Back" = "Go Back";
+
 /* History Menu Action */
 "History" = "履歴";
 
@@ -119,6 +125,9 @@
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "ログイン";
+
+/* button title for wp.com sign in button */
+"Log in with WordPress.com" = "Log in with WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "ログイン中…";
@@ -236,7 +245,7 @@
 "Review Your Account" = "アカウントの設定を確認";
 
 /* Search Field Placeholder */
-"Search notes" = "Search notes";
+"Search notes" = "メモを検索";
 
 /* Search Results Title */
 "Searching" = "検索中";
@@ -249,9 +258,6 @@
 
 /* Title of button for signing up */
 "Sign Up" = "登録";
-
-/* button title for wp.com sign in button */
-"Sign in with WordPress.com" = "WordPress.com アカウントでログイン";
 
 /* Displayed temoprarily while signing up */
 "Signing Up..." = "登録中…";
@@ -314,6 +320,9 @@
 /* Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "%1$@ に確認メールを送信しました。 受信箱を確認して手順に従ってください。";
 
+/* Signup Body Text */
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+
 /* Number of words in the note */
 "Words" = "単語数";
 
@@ -329,6 +338,6 @@
 /* Password Requirements: Title */
 "Your password is insecure and must be reset. The password requirements are:" = "パスワードが安全でないため、リセットする必要があります。パスワードの要件は次のとおりです。";
 
-/* A welcome note for new Mac users */
-"welcomeNote-Mac" = "Simplenote Mac へようこそ !\n\nメモを追加するには、プラス記号の「新しいメモ」ボタンをクリックします。\n\nメモを削除するには、「ゴミ箱」ボタンをクリックします。\n\nメモリストの上にある「検索」フィールドに入力すると、すべてのメモを検索できます。\n\n左上の「タグ」ボタンをクリックするとサイドバーが開きます。 メモエディターの下でメモにタグを追加でき、サイドバーを使用してメモを整理できます。\n\n他にも、必要に応じて使用できるメモオプションがあります。 メールをタグとして追加して他のユーザーと共同作業したり、メモを Web ページとして公開したりできます。\n\nSimplenote は、iPhone、iPad、Android のデバイスまたは Web ブラウザー https:\/\/simplenote.com で使用できます。 メモはすべてのデバイスで自動的に最新の状態に更新されます。";
+/* Search Operator for tags. Please preserve the semicolons */
+"tag:" = "タグ :";
 
