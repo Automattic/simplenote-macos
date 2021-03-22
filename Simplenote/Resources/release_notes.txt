@@ -1,1 +1,1 @@
-- Updated keyboard shortcuts
+- Fixed a UI glitch in the authentication screen
