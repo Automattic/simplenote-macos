@@ -1,8 +1,9 @@
 2.11
 -----
- 
+
 2.10
 -----
+- Fixed a UI glitch in the authentication screen #900
 
 2.9
 -----
