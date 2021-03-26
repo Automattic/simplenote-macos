@@ -315,18 +315,18 @@ end
     )
 
     # Do not create the GitHub release unless explicitly requested
-    next unless options[:create_github_release]
+    if options[:create_github_release]
+      archive_zip_path = "#{archive_path}.zip"
+      zip(path: archive_path, output_path: archive_zip_path)
 
-    archive_zip_path = "#{archive_path}.zip"
-    zip(path: archive_path, output_path: archive_zip_path)
-
-    create_release(
-      repository: GHHELPER_REPO,
-      version: ios_get_app_version(),
-      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
-      release_assets: [archive_zip_path],
-      prerelease: options[:prerelease],
-    )
+      create_release(
+        repository: GHHELPER_REPO,
+        version: ios_get_app_version(),
+        release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+        release_assets: [archive_zip_path],
+        prerelease: options[:prerelease],
+      )
+    end
   end
 
   # Temporary lane to automate the process of uploading the .app manually
