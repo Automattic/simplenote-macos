@@ -1,5 +1,6 @@
 2.11
 -----
+- Fixed a bug that caused double click over the SearchBar to fail #880
 
 2.10
 -----
