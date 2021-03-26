@@ -300,6 +300,8 @@ end
       overwrite_screenshots: false,
       skip_metadata: true,
       skip_app_version_update: true,
+      run_precheck_before_submit: false,
+      precheck_include_in_app_purchases: false,
       skip_binary_upload: false,
       force: true, # Skip verification of HTML preview file
     )
