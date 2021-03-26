@@ -27,7 +27,6 @@ class MainWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        setupToolbar()
         relocateSemaphoreButtons()
         startListeningToFullscreenNotifications()
     }
@@ -54,14 +53,6 @@ private extension MainWindowController {
     ///
     func setupAutosave() {
         simplenoteWindow.setFrameAutosaveName(.mainWindow)
-    }
-
-    /// We're attaching empty Toolbar, which will increase the Window's Title Height
-    ///
-    func setupToolbar() {
-        let customToolbar = NSToolbar()
-        customToolbar.showsBaselineSeparator = false
-        simplenoteWindow.toolbar = customToolbar
     }
 
     /// We'll need to drop the Semaphore Workaround when entering Fullscreen
@@ -110,13 +101,5 @@ extension MainWindowController {
 //
 private enum Metrics {
     static let semaphoreButtonPaddingX: CGFloat = 7
-    static var semaphoreButtonPositionY: CGFloat {
-        let bigSurPositionY: CGFloat = 4
-        let mojavePositionY: CGFloat = 3
-        guard #available(macOS 11, *) else {
-            return mojavePositionY
-        }
-
-        return bigSurPositionY
-    }
+    static var semaphoreButtonPositionY: CGFloat = 18
 }
