@@ -260,7 +260,19 @@ end
     )
   end
 
-  # TODO: Add documentation
+  #############################################################################
+  # build_and_upload_app_store
+  # ---------------------------------------------------------------------------
+  # This lane builds the app and uploads it to the Mac App Store, optionally
+  # creating a GitHub release.
+  # ---------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane build_and_upload_app_store [create_github_release:<create github release>]
+  #
+  # Example:
+  # bundle exec fastlane build_and_upload_app_store
+  # bundle exec fastlane build_and_upload_app_store create_github_release:true
+  #############################################################################
   lane :build_and_upload_app_store do | options |
     # This allows code signing to work on CircleCI. It is skipped if this isn't
     # running on CI.
