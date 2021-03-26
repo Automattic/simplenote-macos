@@ -28,22 +28,51 @@ class SplitViewController: NSSplitViewController {
     // MARK: - Overridden Methods
 
     override func loadView() {
-        let splitView = SplitView()
-        splitView.isVertical = true
-        splitView.dividerStyle = .thin
-        self.splitView = splitView
-        self.view = splitView
+        self.splitView = {
+            let splitView = SplitView()
+            splitView.isVertical = true
+            splitView.dividerStyle = .thin
+            return splitView
+        }()
+
+        self.view = ContentView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMainView()
+        setupSplitView()
+        setupLayoutConstraints()
+    }
+}
 
+
+// MARK: - Layout
+//
+private extension SplitViewController {
+
+    func setupMainView() {
+        view.addSubview(splitView)
+    }
+
+    func setupSplitView() {
         // Note: we must manually set the `autosaveName`, otherwise divider location(s) won't be properly persisted
         splitView.autosaveName = "Please Save Me!"
 
         /// Note: We'll enable Layer Backing, in order to fix this console message:
         /// `WARNING: The SplitView is not layer-backed, but trying to use overlay sidebars` (...)
         splitView.wantsLayer = true
+    }
+
+    func setupLayoutConstraints() {
+        splitView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            splitView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            splitView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            splitView.topAnchor.constraint(equalTo: view.topAnchor),
+            splitView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }
 
@@ -219,6 +248,18 @@ extension SplitItemKind {
         case .editor:
             return Metrics.mainMaxWidth
         }
+    }
+}
+
+
+// MARK: - ContentView
+//
+private class ContentView: NSView {
+
+    /// We really, seriously, really need the coordinate system to be flipped (0,0 top left corner!!)
+    ///
+    override var isFlipped: Bool {
+        true
     }
 }
 
