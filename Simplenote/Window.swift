@@ -130,6 +130,16 @@ private extension Window {
                 continue
             }
 
+            /// Why:
+            ///  1.  We can't adjust the NSTitlebarView height
+            ///  2.  Yes. The default superview may clip the Semaphore Button, if the position falls outside its bounds
+            ///  3.  And yes. This is yet another hack.
+            ///
+            if button.superview != contentView {
+                button.removeFromSuperview()
+                contentView?.addSubview(button, positioned: .above, relativeTo: nil)
+            }
+
             origin.y = semaphoreOriginY
             origin.x += semaphorePaddingX * directionalMultiplier
             button.frame.origin = origin
