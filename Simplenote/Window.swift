@@ -166,7 +166,12 @@ private extension Window {
             return
         }
 
-        self.performZoom(nil)
+        if shouldMiniaturizeOnDoubleClick {
+            miniaturize(nil)
+            return
+        }
+
+        performZoom(nil)
     }
 
     /// In AppKit the Window's Field Editor handles Input, "on behalf" of the First Responder
@@ -185,5 +190,11 @@ private extension Window {
 
         let onScreenResponderBounds = effectiveFirstResponder.convert(effectiveFirstResponder.bounds, to: nil)
         return onScreenResponderBounds.contains(point)
+    }
+
+    /// Indicates if the System Setting "Miniaturize on Double Click" is enabled
+    ///
+    var shouldMiniaturizeOnDoubleClick: Bool {
+        return UserDefaults.standard.string(forKey: "AppleActionOnDoubleClick") == "Minimize"
     }
 }
