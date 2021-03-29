@@ -1,6 +1,7 @@
 2.11
 -----
-- Simplenote's Icons have been revamped #919
+- Fixed a bug that caused double click over the SearchBar to fail #880
+- Simplenote Icons have been revamped #919
 
 2.10
 -----
