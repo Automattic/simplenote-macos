@@ -56,12 +56,16 @@ def build_simplenote(codesign:, archive_path: nil)
     output_directory: BUILD_FOLDER,
     archive_path: archive_path,
     skip_archive: skip_archive,
-    export_method: 'mac-application',
+    export_method: 'app-store',
     export_team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
     xcargs: xcargs,
-    # This is required to successfully archive, see
+    # When exporting for the App Store, we need a .pkg file because that's the
+    # only format upload_to_app_store supports.
+    #
+    # Note for the future readers: this might need to be disabled for the
+    # developer-id export, see
     # https://github.com/fastlane/fastlane/issues/15963#issuecomment-593649185
-    skip_package_pkg: true,
+    skip_package_pkg: false,
   )
 end
 
