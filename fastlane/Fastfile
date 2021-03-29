@@ -299,7 +299,8 @@ end
     # TestFlight does not suport macOS but we can use deliver to upload the
     # binary to the App Store by telling it to skip all the metadata,
     # screenshots, etc.
-    deliver(
+    upload_to_app_store(
+      pkg: File.join(BUILD_FOLDER, 'Simplenote.pkg'),
       skip_screenshots: true,
       overwrite_screenshots: false,
       skip_metadata: true,
