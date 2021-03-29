@@ -118,10 +118,15 @@ private extension Window {
 private extension Window {
 
     func relocateSemaphoreButtonsIfNeeded() {
-        guard let semaphoreOriginY = semaphoreButtonOriginY, let semaphorePaddingX = semaphoreButtonPaddingX else {
+        guard let semaphorePaddingX = semaphoreButtonPaddingX, let semaphoreOriginY = semaphoreButtonOriginY else {
             return
         }
 
+        relocateSemaphoreButtons(semaphorePaddingX: semaphorePaddingX, semaphoreOriginY: semaphoreOriginY)
+        refreshSemaphoreTrackingAreas()
+    }
+
+    func relocateSemaphoreButtons(semaphorePaddingX: CGFloat, semaphoreOriginY: CGFloat) {
         let directionalMultiplier: CGFloat = isRTL ? -1 : 1
 
         for button in buttons {
@@ -144,6 +149,19 @@ private extension Window {
             origin.x += semaphorePaddingX * directionalMultiplier
             button.frame.origin = origin
         }
+    }
+
+    func refreshSemaphoreTrackingAreas() {
+        guard let themeView = contentView?.superview else {
+            return
+        }
+
+        // HACK HACK
+        // Ref. https://github.com/indragiek/INAppStoreWindow/blob/master/INAppStoreWindow/INAppStoreWindow.m#L1324
+        // Ref. https://zhenchao.li/2018-07-04-positioning-traffic-lights-of-your-cocoa-app/
+        //
+        themeView.viewWillStartLiveResize()
+        themeView.viewDidEndLiveResize()
     }
 }
 
