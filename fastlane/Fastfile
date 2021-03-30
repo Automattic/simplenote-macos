@@ -375,6 +375,24 @@ end
     end
   end
 
+  #############################################################################
+  # trigger_app_store_ci_build
+  # ---------------------------------------------------------------------------
+  # This lane triggers a build for App Store distribution on CI
+  # ---------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
+  #############################################################################
+  lane :trigger_app_store_ci_build do | options |
+    circleci_trigger_job(
+      circle_ci_token: ENV["CIRCLE_CI_AUTH_TOKEN"],
+      repository: REPOSITORY_NAME,
+      organization: ORGANIZATION_NAME,
+      branch: options[:branch_to_build],
+      job_params: { app_store_build: true }
+    )
+  end
+
 ########################################################################
 # Helper Lanes
 ########################################################################
