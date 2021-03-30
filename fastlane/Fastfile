@@ -6,7 +6,9 @@ fastlane_require 'shellwords' # used for shell-escaping paths
 # Environment
 ########################################################################
 Dotenv.load('~/.simplenotemacos-env.default')
-ENV[GHHELPER_REPO="Automattic/simplenote-macos"]
+ORGANIZATION_NAME = 'Automattic'
+REPOSITORY_NAME = 'simplenote-macos'
+ENV[GHHELPER_REPO="#{ORGANIZATION_NAME}/#{REPOSITORY_NAME}"]
 ENV["PROJECT_NAME"]="Simplenote"
 ENV["PROJECT_ROOT_FOLDER"]="./"
 ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
