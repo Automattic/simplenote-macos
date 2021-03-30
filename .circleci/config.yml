@@ -4,6 +4,11 @@ orbs:
   # This uses the Orbs located at https://github.com/wordpress-mobile/circleci-orbs
   ios: wordpress-mobile/ios@1.0
 
+parameters:
+  app_store_build:
+    type: boolean
+    default: false
+
 # Reusable sets of steps
 commands:
   copy_demo_credentials:
@@ -49,8 +54,31 @@ jobs:
           name: Verify App Store Target Builds
           command: bundle exec fastlane test_app_store_build
 
+  App Store Upload:
+    executor: *xcode_image
+    steps:
+      - setup_environment
+      - run:
+          name: Decrypt Secrets
+          command: |
+            bundle exec fastlane run configure_apply
+      - run:
+          name: Build and Upload to App Store and GitHub
+          command: |
+            bundle exec fastlane build_and_upload_app_store create_github_release:true
+
 workflows:
   simplenote_macos:
+    when:
+      not: << pipeline.parameters.app_store_build >>
     jobs:
       - Test
       - Verify App Store Target Builds
+
+  app_store:
+    when: << pipeline.parameters.app_store_build >>
+    jobs:
+      - Test
+      - App Store Upload:
+          requires:
+            - Test
