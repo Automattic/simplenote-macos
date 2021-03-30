@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/wordpress-mobile/release-toolkit
-  revision: 48f500bd9212f13d2bf71220c89a8794cdd46e03
-  tag: 0.13.0
+  revision: 348de22c625922cca9a5060261fa7a0c4005786e
+  tag: 0.16.0
   specs:
-    fastlane-plugin-wpmreleasetoolkit (0.13.0)
+    fastlane-plugin-wpmreleasetoolkit (0.16.0)
       activesupport (~> 5)
       bigdecimal (~> 1.4)
       chroma (= 0.2.0)
@@ -21,7 +21,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (3.0.3)
-    activesupport (5.2.4.4)
+    activesupport (5.2.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -94,7 +94,7 @@ GEM
     colored2 (3.1.2)
     commander-fastlane (4.4.6)
       highline (~> 1.7.2)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     declarative (0.0.20)
     declarative-option (0.1.0)
     diffy (3.4.0)
@@ -212,7 +212,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
-    i18n (1.8.7)
+    i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     json (2.5.1)
@@ -224,7 +224,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.0.3)
     mini_portile2 (2.5.0)
-    minitest (5.14.3)
+    minitest (5.14.4)
     molinillo (0.6.6)
     multi_json (1.15.0)
     multipart-post (2.0.0)
@@ -232,13 +232,13 @@ GEM
     nap (1.1.0)
     naturally (2.2.1)
     netrc (0.11.0)
-    nokogiri (1.11.1)
+    nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     octokit (4.20.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
-    oj (3.11.0)
+    oj (3.11.3)
     optimist (3.0.1)
     options (2.3.2)
     os (1.1.1)
