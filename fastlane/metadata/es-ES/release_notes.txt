@@ -1,0 +1,1 @@
+- Hemos corregido un problema de IU en la pantalla de autenticación

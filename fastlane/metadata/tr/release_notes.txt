@@ -1,0 +1,1 @@
+- Kimlik doğrulama ekranındaki bir kullanıcı arayüzü hatası düzeltildi

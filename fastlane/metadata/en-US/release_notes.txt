@@ -1,0 +1,1 @@
+- Fixed a UI glitch in the authentication screen
