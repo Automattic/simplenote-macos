@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-16 14:54:03+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -61,7 +61,7 @@
 "199.title" = "قطع";
 
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
-"1db-JI-NZH.title" = "Toggle Markdown Preview";
+"1db-JI-NZH.title" = "تبديل ضبط المعاينة";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "التدقيق الإملائي والنحوي";

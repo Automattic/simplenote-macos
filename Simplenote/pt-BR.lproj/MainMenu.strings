@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-15 22:54:53+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: pt_BR */
@@ -61,7 +61,7 @@
 "199.title" = "Cortar";
 
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
-"1db-JI-NZH.title" = "Toggle Markdown Preview";
+"1db-JI-NZH.title" = "Ativar\/desativar visualização de markdown";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Ortografia e gramática";

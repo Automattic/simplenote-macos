@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
+/* Translation-Revision-Date: 2021-03-16 11:54:38+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: de */
@@ -87,7 +87,7 @@
 "Delete Tag" = "Schlagwort löschen";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Du hast keine E-Mail bekommen? Vielleicht hast du schon ein Konto. Wende dich für Unterstützung an  %1$@.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Überspringen";
@@ -111,7 +111,7 @@
 "Get Help" = "Hilfe bekommen";
 
 /* Back Button Title */
-"Go Back" = "Go Back";
+"Go Back" = "Zurück";
 
 /* History Menu Action */
 "History" = "Verlauf";
@@ -127,7 +127,7 @@
 "Log In" = "Anmelden";
 
 /* button title for wp.com sign in button */
-"Log in with WordPress.com" = "Log in with WordPress.com";
+"Log in with WordPress.com" = "Melde dich mit WordPress.com an";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Anmelden ...";
@@ -321,7 +321,7 @@
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Wir haben an %1$@ eine Verifizierungs-E-Mail gesendet. Sieh bitte in deinem Posteingang nach und befolge die Anweisungen.";
 
 /* Signup Body Text */
-"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "Wir haben eine E-Mail an %1$@ gesendet. Sieh bitte in deinem Posteingang nach und befolge die Anweisungen.";
 
 /* Number of words in the note */
 "Words" = "Wörter";

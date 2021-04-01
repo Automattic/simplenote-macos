@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-19 10:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-16 09:54:05+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -61,7 +61,7 @@
 "199.title" = "剪下";
 
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
-"1db-JI-NZH.title" = "Toggle Markdown Preview";
+"1db-JI-NZH.title" = "切換 Markdown 預覽";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "拼字與文法";
