@@ -6,4 +6,4 @@ VERSION_LONG=2.10.0.1
 
 // This is the value for the CFBundleVersion it should be incremented on every
 // build that gets distributed
-BUILD_NUMBER=11226
+BUILD_NUMBER=11228
