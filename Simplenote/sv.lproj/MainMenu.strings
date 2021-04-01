@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-16 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-16 14:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -61,7 +61,7 @@
 "199.title" = "Klipp ut";
 
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
-"1db-JI-NZH.title" = "Toggle Markdown Preview";
+"1db-JI-NZH.title" = "Slå på\/av förhandsgranskning av markdown";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Stavning och grammatik";

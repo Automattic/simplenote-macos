@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-08 11:56:06+0000 */
+/* Translation-Revision-Date: 2021-03-16 14:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -87,7 +87,7 @@
 "Delete Tag" = "Ta bort etikett";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Har du inte fått något e-postmeddelande? Det kan hända att du redan har ett konto. Kontakta %1$@ för att få hjälp.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Stäng";
@@ -321,7 +321,7 @@
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Vi har skickat en e-postverifiering till %1$@. Kontrollera din inkorg och följ instruktionerna.";
 
 /* Signup Body Text */
-"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "Vi har skickat ett e-postmeddelande till %1$@. Kontrollera din inkorg och följ instruktionerna.";
 
 /* Number of words in the note */
 "Words" = "Ord";

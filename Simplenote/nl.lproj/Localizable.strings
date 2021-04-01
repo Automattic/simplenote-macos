@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
+/* Translation-Revision-Date: 2021-03-16 18:54:05+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -87,7 +87,7 @@
 "Delete Tag" = "Tag verwijderen";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Niet ontvangen? Misschien heb je al een account. Neem voor hulp contact op met %1$@.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Afbreken";
@@ -111,7 +111,7 @@
 "Get Help" = "Ontvang hulp";
 
 /* Back Button Title */
-"Go Back" = "Go Back";
+"Go Back" = "Ga terug";
 
 /* History Menu Action */
 "History" = "Geschiedenis";
@@ -127,7 +127,7 @@
 "Log In" = "Inloggen";
 
 /* button title for wp.com sign in button */
-"Log in with WordPress.com" = "Log in with WordPress.com";
+"Log in with WordPress.com" = "Inloggen met WordPress.com";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "Bezig met inloggen ...";
@@ -321,7 +321,7 @@
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "We hebben een verificatiemail verzonden naar %1$@. Controleer je postvak IN en volg de instructies.";
 
 /* Signup Body Text */
-"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We hebben een e-mail verzonden naar %1$@. Controleer je postvak IN en volg de instructies.";
 
 /* Number of words in the note */
 "Words" = "Woorden";

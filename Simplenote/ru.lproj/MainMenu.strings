@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-02-18 17:54:03+0000 */
+/* Translation-Revision-Date: 2021-03-16 14:54:03+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -61,7 +61,7 @@
 "199.title" = "Вырезать";
 
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
-"1db-JI-NZH.title" = "Toggle Markdown Preview";
+"1db-JI-NZH.title" = "Включить просмотр Markdown";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Правописание и грамматика";
