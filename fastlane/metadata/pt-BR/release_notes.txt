@@ -1,0 +1,1 @@
+- Correção de um erro de IU na tela de autenticação

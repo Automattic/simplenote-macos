@@ -46,8 +46,8 @@ msgctxt "app_store_keywords"
 msgid "simplenote,note,notes,sync,syncing,list,todo,simple,markdown,ideas"
 msgstr ""
 
-msgctxt "v2.9-whats-new"
+msgctxt "v2.10-whats-new"
 msgid ""
-"- Updated keyboard shortcuts\n"
+"- Fixed a UI glitch in the authentication screen\n"
 msgstr ""
 

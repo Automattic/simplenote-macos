@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-08 11:32:18+0000 */
+/* Translation-Revision-Date: 2021-03-17 09:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -87,7 +87,7 @@
 "Delete Tag" = "刪除標籤";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Didn't get an email? You may already have an account. Contact %1$@ for help.";
+"Didn't get an email? You may already have an account. Contact %1$@ for help." = "沒收到電子郵件嗎？ 你可能已有帳號。 聯絡 %1$@ 尋求協助。";
 
 /* Closes the Privacy View */
 "Dismiss" = "關閉";
@@ -111,7 +111,7 @@
 "Get Help" = "取得協助";
 
 /* Back Button Title */
-"Go Back" = "Go Back";
+"Go Back" = "返回";
 
 /* History Menu Action */
 "History" = "記錄";
@@ -127,7 +127,7 @@
 "Log In" = "登入";
 
 /* button title for wp.com sign in button */
-"Log in with WordPress.com" = "Log in with WordPress.com";
+"Log in with WordPress.com" = "透過 WordPress.com 登入";
 
 /* Displayed temporarily while logging in */
 "Logging In..." = "正在登入…";
@@ -321,7 +321,7 @@
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "我們已傳送一封驗證電子郵件到 %1$@。 請檢查你的收件匣並依照指示操作。";
 
 /* Signup Body Text */
-"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "We’ve sent an email to %1$@. Please check your inbox and follow the instructions.";
+"We’ve sent an email to %1$@. Please check your inbox and follow the instructions." = "我們已將電子郵件傳送至 %1$@。 請檢查你的收件匣並依照指示操作。";
 
 /* Number of words in the note */
 "Words" = "字數";

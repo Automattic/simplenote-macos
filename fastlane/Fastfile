@@ -1,5 +1,6 @@
 default_platform(:ios)
 fastlane_require 'dotenv'
+fastlane_require 'shellwords' # used for shell-escaping paths
 
 ########################################################################
 # Environment
@@ -238,7 +239,42 @@ end
       project_slug: 'simplenote-macos',
       dsym_path: dSYM_PATH,
     )
-   
+
+  end
+
+  # Temporary lane to automate the process of uploading the .app manually
+  # exported after archiving the Simplenote scheme from Xcode.
+  #
+  # The process is not automated via the build_and_upload_beta lane due to
+  # issues with Sparkle and code signing.
+  lane :upload_app_to_appcenter do | options |
+    app_path = options[:app_path]
+    UI.user_error! "Missing .app path option.\nUsage:\n\tfastlane upload_app_to_appcenter app_path:path/to/.app" if app_path.nil?
+
+    app_path = File.expand_path(app_path)
+    UI.user_error! "Could not find .app at #{app_path}" unless File.exist?(app_path)
+
+    Tempfile.create do |t|
+      release_notes_path = File.path(t)
+      system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
+
+      appcenter_upload(
+        api_token: get_required_env("APPCENTER_API_TOKEN"),
+        owner_name: "automattic",
+        owner_type: "organization",
+        app_name: "Simplenote-OSX",
+        ipa: app_path,
+        release_notes: File.read(release_notes_path),
+        notify_testers: false
+      )
+    end
+
+    # Rather than taking another manual step and finding the path to the
+    # archive, let's just bank on the fact that one wouldn't do many archives
+    # of the app on a given day and upload all of the archives done today.
+    Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
+      system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
+    end
   end
 
 ########################################################################

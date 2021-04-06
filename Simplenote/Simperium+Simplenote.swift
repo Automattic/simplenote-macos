@@ -16,28 +16,38 @@ extension Simperium {
     ///
     @objc
     var accountBucket: SPBucket {
-        bucket(forName: Simperium.accountBucketName)
+        bucket(forName: Simperium.accountBucketName)!
     }
 
-    /// Notes Bucket
+    /// Bucket: Notes
     ///
     @objc
     var notesBucket: SPBucket {
-        bucket(forName: Note.classNameWithoutNamespaces)
+        bucket(ofType: Note.self)
     }
 
     /// Bucket: Preferences
     ///
     @objc
     var preferencesBucket: SPBucket {
-        bucket(forName: Preferences.classNameWithoutNamespaces)
+        bucket(ofType: Preferences.self)
     }
 
-    /// Tags Bucket
+    /// Bucket: Tags
     ///
     @objc
     var tagsBucket: SPBucket {
-        bucket(forName: Tag.classNameWithoutNamespaces)
+        bucket(ofType: Tag.self)
+    }
+
+    /// Bucket ofType Convenience API
+    ///
+    func bucket<T: SPManagedObject>(ofType type: T.Type) -> SPBucket {
+        guard let bucket = bucket(forName: T.classNameWithoutNamespaces) else {
+            fatalError()
+        }
+
+        return bucket
     }
 }
 
