@@ -1,1 +1,2 @@
-- Fixed a UI glitch in the authentication screen
+- Fixed a bug that caused double click over the SearchBar to fail
+- Simplenote Icons have been revamped
