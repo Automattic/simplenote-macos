@@ -59,10 +59,6 @@ jobs:
     steps:
       - setup_environment
       - run:
-          name: Decrypt Secrets
-          command: |
-            bundle exec fastlane run configure_apply
-      - run:
           name: Build and Upload to App Store and GitHub
           command: |
             bundle exec fastlane build_and_upload_app_store create_github_release:true
