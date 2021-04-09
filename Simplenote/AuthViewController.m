@@ -29,6 +29,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 {
     if (self = [super init]) {
         self.validator = [SPAuthenticationValidator new];
+        self.signingIn = NO;
     }
 
     return self;
@@ -37,10 +38,10 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     [self setupInterface];
-    [self refreshButtonTitles];
+    [self refreshInterfaceWithAnimation:NO];
     [self startListeningToNotifications];
-    [self setSigningIn:NO];
 }
 
 - (void)startListeningToNotifications
@@ -73,8 +74,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (void)setSigningIn:(BOOL)signingIn {
     _signingIn = signingIn;
-    [self refreshFields];
-    [self ensureUsernameIsFirstResponder];
+    [self didUpdateAuthenticationMode];
 }
 
 
