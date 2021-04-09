@@ -27,6 +27,7 @@ class MainWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        setupMainWindow()
         relocateSemaphoreButtons()
         startListeningToFullscreenNotifications()
     }
@@ -53,6 +54,12 @@ private extension MainWindowController {
     ///
     func setupAutosave() {
         simplenoteWindow.setFrameAutosaveName(.mainWindow)
+    }
+
+    /// Initializes the main Window
+    ///
+    func setupMainWindow() {
+        simplenoteWindow.isMovableByWindowBackground = true
     }
 
     /// We'll need to drop the Semaphore Workaround when entering Fullscreen
