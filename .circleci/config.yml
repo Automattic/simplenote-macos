@@ -59,6 +59,9 @@ jobs:
     steps:
       - setup_environment
       - run:
+          name: Install Sentry CLI
+          command: brew install getsentry/tools/sentry-cli
+      - run:
           name: Build and Upload to App Store and GitHub
           command: |
             bundle exec fastlane build_and_upload_app_store create_github_release:true
