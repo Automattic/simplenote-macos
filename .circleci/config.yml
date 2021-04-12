@@ -40,17 +40,17 @@ jobs:
           name: Build & Test
           command: bundle exec fastlane test
 
-  Build App Store Target:
+  Verify App Store Target Builds:
     executor: *xcode_image
     steps:
       - setup_environment
       - copy_demo_credentials
       - run:
-          name: Build App Store Target
-          command: bundle exec fastlane build_app_store
+          name: Verify App Store Target Builds
+          command: bundle exec fastlane test_app_store_build
 
 workflows:
   simplenote_macos:
     jobs:
       - Test
-      - Build App Store Target
+      - Verify App Store Target Builds
