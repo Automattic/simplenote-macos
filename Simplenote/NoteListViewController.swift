@@ -81,6 +81,7 @@ class NoteListViewController: NSViewController {
 
         setupProgressIndicator()
         setupSearchField()
+        setupHeaderView()
         setupTableView()
         startListeningToNotifications()
         startListControllerSync()
@@ -143,6 +144,12 @@ extension NoteListViewController {
 // MARK: - Interface Initialization
 //
 private extension NoteListViewController {
+
+    /// Setup: Header
+    ///
+    func setupHeaderView() {
+        headerDividerView.forwardsWindowDragEvents = true
+    }
 
     /// Setup: TableView
     ///
