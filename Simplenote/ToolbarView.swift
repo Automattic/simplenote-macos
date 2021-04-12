@@ -39,6 +39,19 @@ class ToolbarView: NSView {
         refreshStyle()
         startListeningToNotifications()
     }
+
+    override func resetCursorRects() {
+        addCursorRect(bounds, cursor: .arrow)
+    }
+
+    override func mouseDown(with event: NSEvent) {
+        /// NO-OP: In macOS < 11 the event may actually get forwarded to the underlying NSTextView. 😯
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        super.mouseDragged(with: event)
+        window?.performDrag(with: event)
+    }
 }
 
 
