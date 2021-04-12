@@ -59,12 +59,12 @@ extension AuthViewController {
     @objc(refreshInterfaceWithAnimation:)
     func refreshInterface(animated: Bool) {
         clearAuthenticationError()
-        refreshButtonTitles(signingIn: signingIn)
-        refreshEnabledComponents(signingIn: signingIn)
-        refreshVisibleComponents(signingIn: signingIn, animated: animated)
+        refreshButtonTitles()
+        refreshEnabledComponents()
+        refreshVisibleComponents(animated: animated)
     }
 
-    func refreshButtonTitles(signingIn: Bool) {
+    func refreshButtonTitles() {
         let actionText    = signingIn ? Localization.signInAction   : Localization.signUpAction
         let tipText       = signingIn ? Localization.signUpTip      : Localization.signInTip
         let switchText    = signingIn ? Localization.signUpAction   : Localization.signInAction
@@ -76,7 +76,7 @@ extension AuthViewController {
 
     /// Makes sure unused components (in the current mode) are effectively disabled
     ///
-    func refreshEnabledComponents(signingIn: Bool) {
+    func refreshEnabledComponents() {
         passwordField.isEnabled = signingIn
         forgotPasswordButton.isEnabled = signingIn
         wordPressSSOButton.isEnabled = signingIn
@@ -84,11 +84,11 @@ extension AuthViewController {
 
     /// Shows / Hides relevant components, based on the specified state
     ///
-    func refreshVisibleComponents(signingIn: Bool, animated: Bool) {
+    func refreshVisibleComponents(animated: Bool) {
         if animated {
-            refreshVisibleComponentsWithAnimation(signingIn: signingIn)
+            refreshVisibleComponentsWithAnimation()
         } else {
-            refreshVisibleComponentsWithoutAnimation(signingIn: signingIn)
+            refreshVisibleComponentsWithoutAnimation()
         }
     }
 
@@ -96,7 +96,7 @@ extension AuthViewController {
     /// - Note: Trust me on this one. It's cleaner to have specific methods, rather than making a single one support the `animated` flag.
     ///         Notice that AppKit requires us to go thru `animator()`.
     ///
-    func refreshVisibleComponentsWithoutAnimation(signingIn: Bool) {
+    func refreshVisibleComponentsWithoutAnimation() {
         passwordFieldHeightConstraint.constant   = Metrics.passwordHeight(signingIn: signingIn)
         forgotPasswordHeightConstraint.constant  = Metrics.forgotHeight(signingIn: signingIn)
         wordPressSSOHeightConstraint.constant    = Metrics.wordPressHeight(signingIn: signingIn)
@@ -104,7 +104,7 @@ extension AuthViewController {
 
     /// Animates Visible / Invisible components, based on the specified state
     ///
-    func refreshVisibleComponentsWithAnimation(signingIn: Bool) {
+    func refreshVisibleComponentsWithAnimation() {
         let fields      = [passwordField, forgotPasswordButton, wordPressSSOButton].compactMap { $0 }
         let alphaStart  = signingIn ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
         let alphaEnd    = signingIn ? AppKitConstants.alpha1_0 : AppKitConstants.alpha0_0
