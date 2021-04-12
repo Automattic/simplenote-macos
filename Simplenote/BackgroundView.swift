@@ -76,6 +76,10 @@ class BackgroundView: NSView {
     ///
     var cursor: NSCursor?
 
+    /// When enabled, this NSView instance will forward Drag events over to the window
+    ///
+    var forwardsWindowDragEvents = false
+
 
     // MARK: - Overridden Methods
 
@@ -104,5 +108,16 @@ class BackgroundView: NSView {
         if let cursor = cursor {
             addCursorRect(bounds, cursor: cursor)
         }
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        super.mouseDragged(with: event)
+
+        /// 😯 This is really happening.
+        guard forwardsWindowDragEvents else {
+            return
+        }
+
+        window?.performDrag(with: event)
     }
 }
