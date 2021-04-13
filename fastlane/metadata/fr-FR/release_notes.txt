@@ -1,1 +1,0 @@
-- Correction d’un problème d’interface utilisateur sur l’écran d’authentification
