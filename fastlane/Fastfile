@@ -14,6 +14,8 @@ ENV["DOWNLOAD_METADATA"]="./fastlane/download_metadata.swift"
 
 USER_ENV_FILE_PATH = File.join(Dir.home, '.simplenotemacos-env.default')
 
+PROJECT_FOLDER = Pathname.new(File.join(Dir.pwd, "..")).expand_path.to_s
+
 WORKSPACE = 'Simplenote.xcworkspace'
 INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote-AppStore'
@@ -136,17 +138,16 @@ end
   #####################################################################################
   desc "Updates the AppStoreStrings.pot file with the latest data"
   lane :update_appstore_strings do | options |
-    prj_folder = Pathname.new(File.join(Dir.pwd, "..")).expand_path.to_s
-    source_metadata_folder = File.join(prj_folder, "fastlane/appstoreres/metadata/source")
+    source_metadata_folder = File.join(PROJECT_FOLDER, "fastlane/appstoreres/metadata/source")
 
     files = {
-      whats_new: File.join(prj_folder,  "/Simplenote/Resources/release_notes.txt"),
+      whats_new: File.join(PROJECT_FOLDER,  "/Simplenote/Resources/release_notes.txt"),
       app_store_subtitle: File.join(source_metadata_folder, "subtitle.txt"),
       app_store_desc: File.join(source_metadata_folder, "description.txt"),
       app_store_keywords: File.join(source_metadata_folder, "keywords.txt")
     }
 
-    ios_update_metadata_source(po_file_path: File.join(prj_folder, "/Simplenote/Resources/AppStoreStrings.pot"),
+    ios_update_metadata_source(po_file_path: File.join(PROJECT_FOLDER, "/Simplenote/Resources/AppStoreStrings.pot"),
       source_files: files,
       release_version: options[:version])
   end
