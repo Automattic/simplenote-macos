@@ -290,9 +290,7 @@ end
       platform: 'macos',
       # This Mac app also needs a Mac Installer Distribution certificate
       additional_cert_types: ['mac_installer_distribution'],
-      # Will default to false, unless a readonly value is specified, or is
-      # running on CI, in which case it will always be true.
-      readonly: options[:readonly] || is_ci,
+      readonly: true,
       app_identifier: 'com.automattic.SimplenoteMac',
       api_key_path: File.join(PROJECT_FOLDER, '.configure-files', 'app_store_connect_fastlane_api_key.json')
     )
