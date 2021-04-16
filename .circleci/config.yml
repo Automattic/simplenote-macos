@@ -6,14 +6,16 @@ orbs:
 
 # Reusable sets of steps
 commands:
-  setup_environment:
+  copy_demo_credentials:
     steps:
-      - checkout
       - run:
           name: Copy Demo SPCredentials
           command: |
             mkdir -p Simplenote/Credentials
             cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
+  setup_environment:
+    steps:
+      - checkout
       - ios/install-dependencies:
           bundle-install: true
           pod-install: true
@@ -26,27 +28,29 @@ commands:
 
 jobs:
   Test:
-    executor:
+    # This uses a YAML anchor to make the configuration repeatable in the rest
+    # of the file.
+    executor: &xcode_image
       name: ios/default
       xcode-version: "12.4.0"
     steps:
       - setup_environment
+      - copy_demo_credentials
       - run:
           name: Build & Test
           command: bundle exec fastlane test
 
-  Build App Store Target:
-    executor:
-      name: ios/default
-      xcode-version: "12.4.0"
+  Verify App Store Target Builds:
+    executor: *xcode_image
     steps:
       - setup_environment
+      - copy_demo_credentials
       - run:
-          name: Build App Store Target
-          command: bundle exec fastlane build_app_store
+          name: Verify App Store Target Builds
+          command: bundle exec fastlane test_app_store_build
 
 workflows:
   simplenote_macos:
     jobs:
       - Test
-      - Build App Store Target
+      - Verify App Store Target Builds
