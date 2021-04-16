@@ -293,7 +293,8 @@ end
       # Will default to false, unless a readonly value is specified, or is
       # running on CI, in which case it will always be true.
       readonly: options[:readonly] || is_ci,
-      app_identifier: 'com.automattic.SimplenoteMac'
+      app_identifier: 'com.automattic.SimplenoteMac',
+      api_key_path: File.join(PROJECT_FOLDER, '.configure-files', 'app_store_connect_fastlane_api_key.json')
     )
 
     archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
