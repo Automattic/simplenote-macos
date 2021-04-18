@@ -5,12 +5,12 @@
 - [ ] Logout
 - [ ] Login with wrong password fails
 - [ ] Login with correct password succeeds
+- [ ] Signup with unique email address succeeds, welcome note is shown after
 - [ ] Login with WordPress.com succeeds
-- [ ] Signup with unique email address succeeds
 
 ### Sync
 
-- [ ] Create new note appears in other device
+- [ ] Created note appears in other device
 - [ ] Changes to new note sync to/from other device
 - [ ] New tag immediately syncs to/from other device
 - [ ] Removed tag immediately syncs to/from other device
@@ -20,9 +20,9 @@
 - [ ] Markdown setting syncs to/from other device
 - [ ] Preview mode disappears/reappears when receiving remote changes to markdown setting
 - [ ] Note pinning syncs immediately to/from other device
-- [ ] Note pinning works regardless if clicking in list view of from note info
-- [ ] Viewing history on one deivce leaves note unchanged on other device
-- [ ] Restoring history immediately syncs note from both directions
+- [ ] Note pinning works regardless if selecting in list view or from note info
+- [ ] Viewing history on one device leaves note unchanged on other device
+- [ ] Restoring history immediately syncs note to/from other device
 - [ ] Syncs when introducing sequential surrogate pairs sharing the same high surrogate, e.g. `🅰🅱` to `🅰🅰🅱`
 
 ### Note editor
@@ -65,12 +65,12 @@
 
 - [ ] Can toggle sidebar
 - [ ] Can change analytics sharing setting
-- [ ] With wide editor screen, toggling `View` > `Line Length` between `Narrow` and `Full` removes and adds border around note content appropriately and immediately.
 - [ ] Changing `Note Display` mode immediately updates and reflects in note list
 - [ ] Changing `Note Sorting` immediately updates and reflects in note list for each sort type
 - [ ] Changing `Tag Sorting` immediately updates and reflects in tag list
 - [ ] For each sort type the pinned notes appear first in the note list
 - [ ] Changing `Theme` immediately updates app for desired color scheme
+- [ ] With wide editor screen, toggling `View` > `Line Length` between `Narrow` and `Full` removes and adds border around note content appropriately and immediately.
 
 ### Keyboard shortcuts ([reference](https://simplenote.com/help/#shortcuts))
 
