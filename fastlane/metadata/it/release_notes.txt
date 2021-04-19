@@ -1,1 +1,2 @@
-- Corretto un errore tecnico della UI nella schermata di autenticazione
+- Risolto un bug che preveniva il doppio-click sulla barra di ricerca
+- Aggiornate le icone nell'app

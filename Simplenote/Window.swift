@@ -118,10 +118,15 @@ private extension Window {
 private extension Window {
 
     func relocateSemaphoreButtonsIfNeeded() {
-        guard let semaphoreOriginY = semaphoreButtonOriginY, let semaphorePaddingX = semaphoreButtonPaddingX else {
+        guard let semaphorePaddingX = semaphoreButtonPaddingX, let semaphoreOriginY = semaphoreButtonOriginY else {
             return
         }
 
+        relocateSemaphoreButtons(semaphorePaddingX: semaphorePaddingX, semaphoreOriginY: semaphoreOriginY)
+        refreshSemaphoreTrackingAreas()
+    }
+
+    func relocateSemaphoreButtons(semaphorePaddingX: CGFloat, semaphoreOriginY: CGFloat) {
         let directionalMultiplier: CGFloat = isRTL ? -1 : 1
 
         for button in buttons {
@@ -130,10 +135,33 @@ private extension Window {
                 continue
             }
 
+            /// Why:
+            ///  1.  We can't adjust the NSTitlebarView height
+            ///  2.  Yes. The default superview may clip the Semaphore Button, if the position falls outside its bounds
+            ///  3.  And yes. This is yet another hack.
+            ///
+            if button.superview != contentView {
+                button.removeFromSuperview()
+                contentView?.addSubview(button, positioned: .above, relativeTo: nil)
+            }
+
             origin.y = semaphoreOriginY
             origin.x += semaphorePaddingX * directionalMultiplier
             button.frame.origin = origin
         }
+    }
+
+    func refreshSemaphoreTrackingAreas() {
+        guard let themeView = contentView?.superview else {
+            return
+        }
+
+        // HACK HACK
+        // Ref. https://github.com/indragiek/INAppStoreWindow/blob/master/INAppStoreWindow/INAppStoreWindow.m#L1324
+        // Ref. https://zhenchao.li/2018-07-04-positioning-traffic-lights-of-your-cocoa-app/
+        //
+        themeView.viewWillStartLiveResize()
+        themeView.viewDidEndLiveResize()
     }
 }
 
@@ -166,7 +194,12 @@ private extension Window {
             return
         }
 
-        self.performZoom(nil)
+        if shouldMiniaturizeOnDoubleClick {
+            miniaturize(nil)
+            return
+        }
+
+        performZoom(nil)
     }
 
     /// In AppKit the Window's Field Editor handles Input, "on behalf" of the First Responder
@@ -185,5 +218,11 @@ private extension Window {
 
         let onScreenResponderBounds = effectiveFirstResponder.convert(effectiveFirstResponder.bounds, to: nil)
         return onScreenResponderBounds.contains(point)
+    }
+
+    /// Indicates if the System Setting "Miniaturize on Double Click" is enabled
+    ///
+    var shouldMiniaturizeOnDoubleClick: Bool {
+        return UserDefaults.standard.string(forKey: "AppleActionOnDoubleClick") == "Minimize"
     }
 }
