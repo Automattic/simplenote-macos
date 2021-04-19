@@ -1,1 +1,0 @@
-– Åtgärdade ett gränssnittsglapp på autentiseringsskärmen
