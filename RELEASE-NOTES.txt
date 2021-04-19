@@ -1,9 +1,10 @@
 2.13
 -----
- 
+
 2.12
 -----
- 
+- Fixed a bug that prevented the app window from being moved #940
+
 2.11
 -----
 - Fixed a bug that caused double click over the SearchBar to fail #880
