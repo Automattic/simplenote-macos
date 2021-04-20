@@ -1,6 +1,7 @@
 2.12
 -----
- 
+- Pressing Shift + Tab will now de-indent items in a list #864
+
 2.11
 -----
 - Fixed a bug that caused double click over the SearchBar to fail #880
