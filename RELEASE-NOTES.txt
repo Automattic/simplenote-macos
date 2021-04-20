@@ -1,6 +1,10 @@
+2.13
+-----
+
 2.12
 -----
 - Pressing Shift + Tab will now de-indent items in a list #864
+- Fixed a bug that prevented the app window from being moved #940
 
 2.11
 -----

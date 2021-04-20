@@ -1,2 +1,1 @@
-- Fixed a bug that caused double click over the SearchBar to fail
-- Simplenote Icons have been revamped
+- Fixed a bug that prevented the app window from being moved
