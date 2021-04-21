@@ -284,6 +284,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         return [self.noteEditor processTabInsertion];
     }
     
+    if (selector == @selector(insertBacktab:)) {
+        return [self.noteEditor processTabDeletion];
+    }
+
     return NO;
 }
 
