@@ -87,7 +87,7 @@
 "Delete Tag" = "태그 삭제";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "이메일을 받지 못하셨나요? 이미 계정이 있을 수도 있습니다. %1$@에 도움말을 문의하세요.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help.";
 
 /* Closes the Privacy View */
 "Dismiss" = "무시";

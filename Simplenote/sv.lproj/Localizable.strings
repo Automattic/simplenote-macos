@@ -87,7 +87,7 @@
 "Delete Tag" = "Ta bort etikett";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Har du inte fått något e-postmeddelande? Det kan hända att du redan har ett konto. Kontakta %1$@ för att få hjälp.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Stäng";
