@@ -70,7 +70,7 @@
 - [ ] Changing `Tag Sorting` immediately updates and reflects in tag list
 - [ ] For each sort type the pinned notes appear first in the note list
 - [ ] Changing `Theme` immediately updates app for desired color scheme
-- [ ] With wide editor screen, toggling `View` > `Line Length` between `Narrow` and `Full` removes and adds border around note content appropriately and immediately.
+- [ ] With wide editor screen, toggling `View` > `Line Length` between `Narrow` and `Full` removes and adds border around note content appropriately and immediately
 
 ### Keyboard shortcuts ([reference](https://simplenote.com/help/#shortcuts))
 
