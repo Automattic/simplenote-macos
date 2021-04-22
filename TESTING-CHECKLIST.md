@@ -20,7 +20,7 @@
 - [ ] Markdown setting syncs to/from other device
 - [ ] Preview mode disappears/reappears when receiving remote changes to markdown setting
 - [ ] Note pinning syncs immediately to/from other device
-- [ ] Note pinning works regardless if selecting in list view or from note info
+- [ ] Note pinning works regardless if done from list view or note info
 - [ ] Viewing history on one device leaves note unchanged on other device
 - [ ] Restoring history immediately syncs note to/from other device
 - [ ] Syncs when introducing sequential surrogate pairs sharing the same high surrogate, e.g. `🅰🅱` to `🅰🅰🅱`
