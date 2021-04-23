@@ -236,35 +236,87 @@ end
   #####################################################################################
   desc "Builds and updates for beta distribution"
   lane :build_and_upload_beta do | options |
+    # This allows code signing to work on CircleCI. It is skipped if this isn't
+    # running on CI.
+    #
+    # See https://circleci.com/docs/2.0/ios-codesigning/
+    setup_circle_ci
+
     ensure_git_status_clean()
 
     configure_apply()
     sh("rake dependencies:pod:clean")
     cocoapods()
 
-    build_app(
+    bundle_id = "com.automattic.SimplenoteMac.beta"
+
+    # Notice that, unlike in the App Store app, we don't need the additional
+    # mac_installer_distribution certificate
+    sync_code_signing(
+      type: "developer_id",
+      platform: "macos",
+      readonly: true,
+      app_identifier: bundle_id,
+    )
+
+    output_directory = BUILD_FOLDER
+    app_file_name = "Simplenote.app"
+
+    build_mac_app(
       workspace: WORKSPACE,
       scheme: INTERNAL_SCHEME,
       clean: true,
-      output_directory: BUILD_FOLDER
+      configuration: 'Release',
+      # We're distributing internally, so we need to explicity specify the method
+      # as the "Developer Id" one we'd manually pick in the Xcode Organizer
+      # distribution UI.
+      #
+      # Note that this alone is not enough. For the build and archive to
+      # succeed, we need the CODE_SIGN_IDENTITY value to be "Develorper ID
+      # Application". This is set in the Xcode project, although we could have
+      # used the xcargs parameter to set it here instead.
+      export_method: "developer-id",
+      # Required to export in "developer-id" mode.
+      # See https://github.com/fastlane/fastlane/issues/15963
+      skip_package_pkg: true,
+      output_directory: output_directory,
+      archive_path: File.join(output_directory, 'Simplenote')
     )
 
-    appcenter_upload(
-      api_token: get_required_env("APPCENTER_API_TOKEN"),
-      owner_name: "automattic",
-      owner_type: "organization",
-      app_name: "Simplenote-OSX",
-      ipa: "./build/Simplenote.app",
-      notify_testers: false
+    app_file_path = File.join(output_directory, app_file_name)
+
+    notarize(
+      package: app_file_path,
+      bundle_id: bundle_id,
+      asc_provider: "AutomatticInc",
+      api_key_path: get_required_env('APP_STORE_CONNECT_API_KEY_PATH'),
+      print_log: options[:print_log] || is_ci,
+      verbose: options[:verbose] || is_ci,
     )
 
-    dSYM_PATH = File.dirname(Dir.pwd) + "/build/Simplenote.app.dSYM.zip"
+    dsym_path = File.join(output_directory, 'Simplenote.app.dSYM.zip')
+
+    Tempfile.create do |t|
+      release_notes_path = File.path(t)
+      system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
+
+      appcenter_upload(
+        api_token: get_required_env("APPCENTER_API_TOKEN"),
+        owner_name: "automattic",
+        owner_type: "organization",
+        app_name: "Simplenote-OSX",
+        file: app_file_path,
+        dsym: dsym_path,
+        release_notes: File.read(release_notes_path),
+        notify_testers: false
+      )
+    end
 
     sentry_upload_dsym(
       auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
       org_slug: 'a8c',
       project_slug: 'simplenote-macos',
-      dsym_path: dSYM_PATH,
+      dsym_path: dsym_path
     )
   end
 
