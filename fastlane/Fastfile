@@ -447,6 +447,21 @@ end
     )
   end
 
+  #############################################################################
+  # trigger_beta_ci_build
+  # ---------------------------------------------------------------------------
+  # This lane triggers a build for beta distribution via App Center on CI
+  # ---------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane trigger_beta_ci_build [branch_to_build:<branch_name>]
+  #############################################################################
+  lane :trigger_beta_ci_build do | options |
+    trigger_circle_ci_build(
+      branch: options[:branch_to_build],
+      parameter_key: :beta_build
+    )
+  end
+
   def trigger_circle_ci_build(branch:, parameter_key:)
     circleci_trigger_job(
       circle_ci_token: ENV["CIRCLE_CI_AUTH_TOKEN"],

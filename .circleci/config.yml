@@ -5,6 +5,9 @@ orbs:
   ios: wordpress-mobile/ios@1.0
 
 parameters:
+  beta_build:
+    type: boolean
+    default: false
   app_store_build:
     type: boolean
     default: false
@@ -69,10 +72,26 @@ jobs:
           command: |
             bundle exec fastlane build_and_upload_app_store create_github_release:true
 
+  Beta Upload:
+    executor: *xcode_image
+    steps:
+      - setup_environment
+      - install_sentry_cli
+      - run:
+          name: Build and Upload Beta to App Center
+          # Extra no output timeout in case notarization doesn't respond for a
+          # while. This is probably overkill because the notarize Fastlane
+          # actions pings it every minute or so, but it doesn't hurt either.
+          no_output_timeout: 30m
+          command: |
+            bundle exec fastlane build_and_upload_beta
+
 workflows:
   simplenote_macos:
     when:
-      not: << pipeline.parameters.app_store_build >>
+      and:
+        - not: << pipeline.parameters.app_store_build >>
+        - not: << pipeline.parameters.beta_build >>
     jobs:
       - Test
       - Verify App Store Target Builds
@@ -82,5 +101,13 @@ workflows:
     jobs:
       - Test
       - App Store Upload:
+          requires:
+            - Test
+
+  beta:
+    when: << pipeline.parameters.beta_build >>
+    jobs:
+      - Test
+      - Beta Upload:
           requires:
             - Test
