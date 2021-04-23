@@ -30,6 +30,11 @@ commands:
           command: |
             rm ~/.ssh/id_rsa
             for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
+  install_sentry_cli:
+    steps:
+      - run:
+          name: Install Sentry CLI
+          command: brew install getsentry/tools/sentry-cli
 
 jobs:
   Test:
@@ -58,9 +63,7 @@ jobs:
     executor: *xcode_image
     steps:
       - setup_environment
-      - run:
-          name: Install Sentry CLI
-          command: brew install getsentry/tools/sentry-cli
+      - install_sentry_cli
       - run:
           name: Build and Upload to App Store and GitHub
           command: |
