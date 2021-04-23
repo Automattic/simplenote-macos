@@ -441,12 +441,19 @@ end
   # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
   #############################################################################
   lane :trigger_app_store_ci_build do | options |
+    trigger_circle_ci_build(
+      branch: options[:branch_to_build],
+      parameter_key: :app_store_build
+    )
+  end
+
+  def trigger_circle_ci_build(branch:, parameter_key:)
     circleci_trigger_job(
       circle_ci_token: ENV["CIRCLE_CI_AUTH_TOKEN"],
       repository: REPOSITORY_NAME,
       organization: ORGANIZATION_NAME,
-      branch: options[:branch_to_build],
-      job_params: { app_store_build: true }
+      branch: branch,
+      job_params: { parameter_key => true }
     )
   end
 
