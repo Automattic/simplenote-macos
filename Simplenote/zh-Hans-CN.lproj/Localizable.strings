@@ -87,7 +87,7 @@
 "Delete Tag" = "删除标签";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "没有收到电子邮件？ 您可能已有帐户。 联系 %1$@ 以寻求帮助。";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help.";
 
 /* Closes the Privacy View */
 "Dismiss" = "关闭";

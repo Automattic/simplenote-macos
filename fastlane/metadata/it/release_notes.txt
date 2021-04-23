@@ -1,2 +1,0 @@
-- Risolto un bug che preveniva il doppio-click sulla barra di ricerca
-- Aggiornate le icone nell'app
