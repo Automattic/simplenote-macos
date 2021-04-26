@@ -7,7 +7,7 @@ set -e
 IDENTITY="Developer ID Application: Automattic, Inc."
 SPARKLE_BIN="${SRCROOT}/External/Sparkle/bin"
 CODESIGN_TOOL="${SPARKLE_BIN}/codesign_embedded_executable"
-CODESIGN_HARDENEDRUNTIME_CMD="codesign --force -o runtime --deep --timestamp"
+CODESIGN_HARDENEDRUNTIME_CMD="codesign --force -o runtime --timestamp"
 
 # XPC
 #
