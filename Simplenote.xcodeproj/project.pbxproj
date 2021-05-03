@@ -2634,7 +2634,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "--deep --timestamp";
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -2689,7 +2689,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "--deep --timestamp";
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
