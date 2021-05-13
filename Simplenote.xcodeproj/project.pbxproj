@@ -452,6 +452,8 @@
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
+		BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */; };
+		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
 		BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
@@ -822,6 +824,8 @@
 		B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkAuthenticator.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
+		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
+		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
 		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1180,6 +1184,7 @@
 			isa = PBXGroup;
 			children = (
 				B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */,
+				BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */,
 			);
 			name = Remote;
 			sourceTree = "<group>";
@@ -1409,6 +1414,7 @@
 				B5009939242131410037A431 /* UnicodeScalarSimplenoteTests.swift */,
 				A6672FBD25C7F77000090DE3 /* NoteBodyExcerptTests.swift */,
 				A6672FBC25C7F77000090DE3 /* StringContentSliceTests.swift */,
+				BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2371,10 +2377,12 @@
 				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
 				B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */,
 				B502C22325BA345700145D6C /* AccountVerificationControllerTests.swift in Sources */,
+				BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */,
 				B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */,
 				B502C22B25BA347700145D6C /* MockAccountVerificationRemote.swift in Sources */,
 				B5469FE225880181007ED7BE /* NSUserDefaults+Tests.swift in Sources */,
 				B5EF32A8258D05640069EC7D /* MockStorage.swift in Sources */,
+				BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */,
 				B500993A242131410037A431 /* UnicodeScalarSimplenoteTests.swift in Sources */,
 				B5CBB073241976280003C271 /* NSAttributedStringToMarkdownConverterTests.swift in Sources */,
 				B518D37E2507C356006EA7F8 /* StringSimplenoteTests.swift in Sources */,
