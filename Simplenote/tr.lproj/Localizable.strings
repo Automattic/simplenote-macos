@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-17 11:54:04+0000 */
+/* Translation-Revision-Date: 2021-04-28 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -87,7 +87,7 @@
 "Delete Tag" = "Etiket Sil";
 
 /* Signup Support Text */
-"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "E-postayı almadınız mı? Bu e-posta adresiyle ilişkilendirilmiş bir hesap mevcut olabilir. Yardım için %1$@ ile iletişime geçin.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Kapat";
