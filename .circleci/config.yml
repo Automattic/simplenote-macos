@@ -32,7 +32,7 @@ jobs:
     # of the file.
     executor: &xcode_image
       name: ios/default
-      xcode-version: "12.5.0"
+      xcode-version: "12.4.0"
     steps:
       - setup_environment
       - copy_demo_credentials
