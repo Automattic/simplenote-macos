@@ -1,6 +1,11 @@
+2.13
+-----
+- Pressing Shift + Tab will now de-indent items in a list. Thanks @sergiou87! #946
+
 2.12
 -----
- 
+- Fixed a bug that prevented the app window from being moved #940
+
 2.11
 -----
 - Fixed a bug that caused double click over the SearchBar to fail #880

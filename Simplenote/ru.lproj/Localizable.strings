@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-16 14:54:05+0000 */
+/* Translation-Revision-Date: 2021-04-28 11:54:03+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -87,7 +87,7 @@
 "Delete Tag" = "Удалить метку";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Письмо не пришло? Возможно, у вас уже есть учётная запись. Обратитесь за помощью по адресу %1$@.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Письмо не пришло? С этим адресом электронной почты уже может быть связана учетная запись. Обратитесь за помощью по адресу %1$@.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Игнорировать";

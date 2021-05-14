@@ -6,7 +6,9 @@ fastlane_require 'shellwords' # used for shell-escaping paths
 # Environment
 ########################################################################
 Dotenv.load('~/.simplenotemacos-env.default')
-ENV[GHHELPER_REPO="Automattic/simplenote-macos"]
+ORGANIZATION_NAME = 'Automattic'
+REPOSITORY_NAME = 'simplenote-macos'
+ENV[GHHELPER_REPO="#{ORGANIZATION_NAME}/#{REPOSITORY_NAME}"]
 ENV["PROJECT_NAME"]="Simplenote"
 ENV["PROJECT_ROOT_FOLDER"]="./"
 ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
@@ -209,14 +211,15 @@ end
   # bundle exec fastlane finalize_release
   # bundle exec fastlane finalize_release skip_confirm:true
   #####################################################################################
-  desc "Removes all the temp tags and puts the final one"
+  desc 'Does the necessary build and metadata updates then triggers an App Store deployment'
   lane :finalize_release do | options |
     ios_finalize_prechecks(options)
     unless ios_current_branch_is_hotfix
       ios_update_metadata(options)
       ios_bump_version_beta()
     end
-    ios_final_tag(options)
+
+    trigger_app_store_ci_build(branch_to_build: "release/#{ios_get_app_version()}")
   end
 
   #####################################################################################
@@ -279,6 +282,10 @@ end
   # bundle exec fastlane build_and_upload_app_store create_github_release:true
   #############################################################################
   lane :build_and_upload_app_store do | options |
+    configure_apply()
+    sh("rake dependencies:pod:clean")
+    cocoapods()
+
     # This allows code signing to work on CircleCI. It is skipped if this isn't
     # running on CI.
     #
@@ -371,6 +378,24 @@ end
     Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
       system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
     end
+  end
+
+  #############################################################################
+  # trigger_app_store_ci_build
+  # ---------------------------------------------------------------------------
+  # This lane triggers a build for App Store distribution on CI
+  # ---------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
+  #############################################################################
+  lane :trigger_app_store_ci_build do | options |
+    circleci_trigger_job(
+      circle_ci_token: ENV["CIRCLE_CI_AUTH_TOKEN"],
+      repository: REPOSITORY_NAME,
+      organization: ORGANIZATION_NAME,
+      branch: options[:branch_to_build],
+      job_params: { app_store_build: true }
+    )
   end
 
 ########################################################################

@@ -46,9 +46,8 @@ msgctxt "app_store_keywords"
 msgid "simplenote,note,notes,sync,syncing,list,todo,simple,markdown,ideas"
 msgstr ""
 
-msgctxt "v2.11-whats-new"
+msgctxt "v2.12-whats-new"
 msgid ""
-"- Fixed a bug that caused double click over the SearchBar to fail\n"
-"- Simplenote Icons have been revamped\n"
+"- Fixed a bug that prevented the app window from being moved\n"
 msgstr ""
 
