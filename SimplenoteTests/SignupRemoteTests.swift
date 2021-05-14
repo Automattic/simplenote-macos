@@ -5,18 +5,14 @@ class SignupRemoteTests: XCTestCase {
     private lazy var urlSession = MockURLSession()
     private lazy var signupRemote = SignupRemote(urlSession: urlSession)
 
-//    func testSuccessWhenStatusCodeIs2xx() {
-//        for _ in 0..<5 {
-//            verifySignupSucceeds(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: true)
-//        }
-//    }
-//
-//    func testFailureWhenStatusCodeIs4xxOr5xx() {
-//        for _ in 0..<5 {
-//            let statusCode = Int.random(in: 400..<600)
-//            verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: false)
-//        }
-//    }
+    func testSuccessWhenStatusCodeIs2xx() {
+        verifySignupSucceeds(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: true)
+    }
+
+    func testFailureWhenStatusCodeIs4xxOr5xx() {
+        let statusCode = Int.random(in: 400..<600)
+        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: false)
+    }
 
     func testRequestSetsEmailToCorrectCase() throws {
         signupRemote.requestSignup(email: "EMAIL@gmail.com", completion: { _, _ in })
