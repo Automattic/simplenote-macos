@@ -1,0 +1,1 @@
+- En bugg som gjorde att appfönstret inte gick att flytta har korrigerats

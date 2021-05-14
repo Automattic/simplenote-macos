@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-17 13:54:04+0000 */
+/* Translation-Revision-Date: 2021-05-12 16:54:43+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -82,7 +82,7 @@
 "205.title" = "לערוך";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
-"207.title" = "Undo";
+"207.title" = "ביטול";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "208"; */
 "208.title" = "למצוא את הבא";
@@ -196,7 +196,7 @@
 "492.title" = "אתר העזרה";
 
 /* Class = "NSMenuItem"; title = "Tags Sorting"; ObjectID = "4QQ-5e-Vxl"; Note = "Opens the Tags List Settings"; */
-"4QQ-5e-Vxl.title" = "Tags Sorting";
+"4QQ-5e-Vxl.title" = "מיון תגיות";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; Note = "Brings Simplenote Windows to front"; */
 "5.title" = "להעביר הכול קדימה";
@@ -217,7 +217,7 @@
 "5HH-LQ-Fk8.title" = "עיצוב";
 
 /* Class = "NSMenu"; title = "Tags Sorting"; ObjectID = "76D-S0-1JD"; Note = "Tag List Settings Menu"; */
-"76D-S0-1JD.title" = "Tags Sorting";
+"76D-S0-1JD.title" = "מיון תגיות";
 
 /* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
 "78.title" = "להדפיס...";
@@ -256,7 +256,7 @@
 "Pwd-hR-fBt.title" = "לייצא הכול";
 
 /* Class = "NSMenuItem"; title = "Note Sorting"; ObjectID = "QGk-SS-2Jf"; Note = "Opens the Note List Sort Order Settings"; */
-"QGk-SS-2Jf.title" = "Note Sorting";
+"QGk-SS-2Jf.title" = "מיון פתקים";
 
 /* Class = "NSMenuItem"; title = "Comfy"; ObjectID = "Qaj-k2-NOz"; Note = "Toggles Comfy Note Display"; */
 "Qaj-k2-NOz.title" = "נוח";
@@ -280,7 +280,7 @@
 "XEL-Qt-3Ik.title" = "שם: מ-A ל-Z";
 
 /* Class = "NSMenu"; title = "Note Sorting"; ObjectID = "YpJ-fs-p4p"; Note = "Note List Sort Mode Settings"; */
-"YpJ-fs-p4p.title" = "Note Sorting";
+"YpJ-fs-p4p.title" = "מיון פתקים";
 
 /* Class = "NSMenuItem"; title = "Created: Newest"; ObjectID = "Z0V-Oz-ijh"; */
 "Z0V-Oz-ijh.title" = "נוצר: החדש ביותר";
