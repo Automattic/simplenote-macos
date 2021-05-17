@@ -6,16 +6,12 @@ class SignupRemoteTests: XCTestCase {
     private lazy var signupRemote = SignupRemote(urlSession: urlSession)
 
     func testSuccessWhenStatusCodeIs2xx() {
-        for _ in 0..<5 {
-            test(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: true)
-        }
+        verifySignupSucceeds(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: true)
     }
 
     func testFailureWhenStatusCodeIs4xxOr5xx() {
-        for _ in 0..<5 {
-            let statusCode = Int.random(in: 400..<600)
-            test(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: false)
-        }
+        let statusCode = Int.random(in: 400..<600)
+        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: false)
     }
 
     func testRequestSetsEmailToCorrectCase() throws {
@@ -47,10 +43,12 @@ class SignupRemoteTests: XCTestCase {
 
         XCTAssertEqual(expecation, decodedEmail)
     }
+}
 
-    private func test(withStatusCode statusCode: Int?, email: String, expectedSuccess: Bool) {
+private extension SignupRemoteTests {
+    func verifySignupSucceeds(withStatusCode statusCode: Int, email: String, expectedSuccess: Bool) {
         urlSession.data = (nil,
-                           response(with: statusCode),
+                           mockResponse(with: statusCode),
                            nil)
 
         let expectation = self.expectation(description: "Verify is called")
@@ -63,10 +61,7 @@ class SignupRemoteTests: XCTestCase {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 
-    private func response(with statusCode: Int?) -> HTTPURLResponse? {
-        guard let statusCode = statusCode else {
-            return nil
-        }
+    func mockResponse(with statusCode: Int) -> HTTPURLResponse? {
         return HTTPURLResponse(url: URL(fileURLWithPath: "/"),
                                statusCode: statusCode,
                                httpVersion: nil,
