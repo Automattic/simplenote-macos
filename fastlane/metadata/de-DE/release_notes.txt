@@ -1,0 +1,1 @@
+- Wir haben einen Fehler behoben, der dazu geführt hat, dass man das App-Fenster nicht verschieben kann

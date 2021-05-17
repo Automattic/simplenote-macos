@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-16 18:54:05+0000 */
+/* Translation-Revision-Date: 2021-04-28 13:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -87,7 +87,7 @@
 "Delete Tag" = "Tag verwijderen";
 
 /* Signup Support Text */
-"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Geen e-mail ontvangen? Misschien is er al een account gekoppeld aan dit e-mailadres. Neem voor hulp contact op met %1$@.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Afbreken";

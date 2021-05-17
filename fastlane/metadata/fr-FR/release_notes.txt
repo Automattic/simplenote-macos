@@ -1,0 +1,1 @@
+- Résolution d’un bogue qui empêchait le déplacement de la fenêtre de l’application

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-16 18:54:03+0000 */
+/* Translation-Revision-Date: 2021-04-28 09:54:59+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -87,7 +87,7 @@
 "Delete Tag" = "删除标签";
 
 /* Signup Support Text */
-"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "没有收到电子邮件？ 可能已经有一个与此电子邮件地址相关联的帐户。 请联系 %1$@ 寻求帮助。";
 
 /* Closes the Privacy View */
 "Dismiss" = "关闭";
