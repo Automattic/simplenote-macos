@@ -12,22 +12,22 @@ PODS:
   - Sentry (6.2.1):
     - Sentry/Core (= 6.2.1)
   - Sentry/Core (6.2.1)
-  - Simperium-OSX (1.7.0):
-    - Simperium-OSX/DiffMatchPach (= 1.7.0)
-    - Simperium-OSX/JRSwizzle (= 1.7.0)
-    - Simperium-OSX/SocketRocket (= 1.7.0)
-    - Simperium-OSX/SPReachability (= 1.7.0)
-    - Simperium-OSX/SSKeychain (= 1.7.0)
-  - Simperium-OSX/DiffMatchPach (1.7.0)
-  - Simperium-OSX/JRSwizzle (1.7.0)
-  - Simperium-OSX/SocketRocket (1.7.0)
-  - Simperium-OSX/SPReachability (1.7.0)
-  - Simperium-OSX/SSKeychain (1.7.0)
+  - Simperium-OSX (1.8.0):
+    - Simperium-OSX/DiffMatchPach (= 1.8.0)
+    - Simperium-OSX/JRSwizzle (= 1.8.0)
+    - Simperium-OSX/SocketRocket (= 1.8.0)
+    - Simperium-OSX/SPReachability (= 1.8.0)
+    - Simperium-OSX/SSKeychain (= 1.8.0)
+  - Simperium-OSX/DiffMatchPach (1.8.0)
+  - Simperium-OSX/JRSwizzle (1.8.0)
+  - Simperium-OSX/SocketRocket (1.8.0)
+  - Simperium-OSX/SPReachability (1.8.0)
+  - Simperium-OSX/SSKeychain (1.8.0)
   - Sodium (0.9.1)
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (= 0.8.0)
-  - Simperium-OSX (= 1.7.0)
+  - Simperium-OSX (from `https://github.com/Simperium/simperium-ios.git`, branch `issue/custom-endpoint`)
 
 SPEC REPOS:
   trunk:
@@ -35,17 +35,26 @@ SPEC REPOS:
     - CocoaLumberjack
     - Reachability
     - Sentry
-    - Simperium-OSX
     - Sodium
+
+EXTERNAL SOURCES:
+  Simperium-OSX:
+    :branch: issue/custom-endpoint
+    :git: https://github.com/Simperium/simperium-ios.git
+
+CHECKOUT OPTIONS:
+  Simperium-OSX:
+    :commit: f3deee7a6962dfd508d7e09649cae985a8b283d7
+    :git: https://github.com/Simperium/simperium-ios.git
 
 SPEC CHECKSUMS:
   Automattic-Tracks-iOS: 1f68ebf14cc9607c65685f46b58e81532932bf48
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Sentry: 9b922b396b0e0bca8516a10e36b0ea3ebea5faf7
-  Simperium-OSX: 0c5149873ee58967cdb1458ddfa285a5dcd9a622
+  Simperium-OSX: f586becb024269d32c8df31189ff670b7cc14230
   Sodium: 23d11554ecd556196d313cf6130d406dfe7ac6da
 
-PODFILE CHECKSUM: bd8c335cdf34080b17d2852116470e7e86dfebdc
+PODFILE CHECKSUM: 1b0d9516f65596e4ceb86c370b9f0ad2834b40b2
 
 COCOAPODS: 1.10.1
