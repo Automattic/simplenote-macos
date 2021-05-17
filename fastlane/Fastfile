@@ -11,6 +11,7 @@ REPOSITORY_NAME = 'simplenote-macos'
 ENV[GHHELPER_REPO="#{ORGANIZATION_NAME}/#{REPOSITORY_NAME}"]
 ENV["PROJECT_NAME"]="Simplenote"
 ENV["PROJECT_ROOT_FOLDER"]="./"
+ENV['APP_STORE_STRINGS_FILE_NAME']='AppStoreStrings.pot'
 ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
 ENV["DOWNLOAD_METADATA"]="./fastlane/download_metadata.swift"
 
