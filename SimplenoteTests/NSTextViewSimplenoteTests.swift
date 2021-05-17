@@ -218,6 +218,45 @@ class NSTextViewSimplenoteTests: XCTestCase {
         XCTAssertEqual(textView.string, text)
     }
 
+    /// Verifies that `processTabDeletion` de-indents the List at the selected range
+    ///
+    func testProcessTabDeletionEffectivelyIndentsTextListsWhenTheCurrentLineContainsSomeListMarker() {
+        for (text, indented) in samplesForIndentation {
+            textView.string = indented
+            textView.setSelectedRange(.zero)
+
+            XCTAssertTrue(textView.processTabDeletion())
+            XCTAssertEqual(textView.string, text)
+        }
+    }
+
+    /// Verifies that `processTabDeletion` registers an Undo OP when de-indenting Text Lists
+    ///
+    func testProcessTabDeletionRegistersAnUndoableOperationWhenIndentingTextLists() {
+        let undoManager = textView.internalUndoManager
+
+        for (_, indented) in samplesForIndentation {
+            textView.string = indented
+            textView.setSelectedRange(.zero)
+
+            XCTAssertTrue(textView.processTabDeletion())
+            XCTAssertTrue(undoManager.canUndo)
+
+            undoManager.undo()
+            XCTAssertEqual(textView.string, indented)
+        }
+    }
+
+    /// Verifies that `processTabDeletion` does nothing if there are no lists at the document
+    ///
+    func testProcessTabDeletionDoesNotIndentWheneverThereAreNoListsInTheCurrentRange() {
+        let text = samplePlainText.joined()
+        textView.string = text
+
+        XCTAssertFalse(textView.processTabDeletion())
+        XCTAssertEqual(textView.string, text)
+    }
+
     /// Verifies that `processNewlineInsertion` does nothing if there are no lists in the document
     ///
     func testProcessNewlineInsertionDoesNothingWheneverThereAreNoListsInTheDocument() {

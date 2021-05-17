@@ -1,0 +1,1 @@
+- Correção de um problema que impedia a movimentação da janela do app

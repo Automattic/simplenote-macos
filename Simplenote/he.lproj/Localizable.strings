@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-17 13:54:03+0000 */
+/* Translation-Revision-Date: 2021-04-29 09:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -87,7 +87,7 @@
 "Delete Tag" = "למחוק את התגית";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "לא קיבלת את הודעת האימייל? ייתכן שכבר יש לך חשבון. ניתן ליצור קשר עם %1$@ לעזרה.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "לא קיבלת את הודעת האימייל? ייתכן שכבר יש חשבון שמשויך לכתובת אימייל זו. ניתן ליצור קשר עם %1$@ לעזרה.";
 
 /* Closes the Privacy View */
 "Dismiss" = "בטל";

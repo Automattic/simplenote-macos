@@ -207,6 +207,28 @@ extension NSTextView {
         return true
     }
 
+    /// De-indents the List at the selected range (if any)
+    ///
+    @objc
+    func processTabDeletion() -> Bool {
+        let (lineRange, lineString) = selectedLineDroppingTrailingNewline()
+
+        guard let rangeOfListMarker = lineString.rangeOfListMarker, rangeOfListMarker.location > 0 else {
+            return false
+        }
+        
+        // Make sure there is a Tab character at the beginning of the line
+        if !lineString.hasPrefix(String.tab) {
+            return false
+        }
+       
+        // Delete the Tab character at the beginning of the line
+        let deletionRange = NSRange(location: lineRange.location, length: 1)
+        insertText("", replacementRange: deletionRange)
+
+        return true
+    }
+
     /// Processes a Newline Insertion on List Items:
     ///
     ///     -   No List Marker: in the current line, this method does nothing.

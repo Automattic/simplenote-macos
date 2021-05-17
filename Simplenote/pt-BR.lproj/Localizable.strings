@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-15 22:54:53+0000 */
+/* Translation-Revision-Date: 2021-04-27 19:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: pt_BR */
@@ -87,7 +87,7 @@
 "Delete Tag" = "Apagar tag";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "Não recebeu um e-mail? Talvez você já tenha uma conta. Fale com %1$@ para obter ajuda.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "Não recebeu um e-mail? Talvez já haja uma conta associada a esse endereço de e-mail. Fale com %1$@ para receber ajuda.";
 
 /* Closes the Privacy View */
 "Dismiss" = "Dispensar";

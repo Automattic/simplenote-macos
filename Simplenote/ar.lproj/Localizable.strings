@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-16 14:54:06+0000 */
+/* Translation-Revision-Date: 2021-04-28 13:54:04+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -87,7 +87,7 @@
 "Delete Tag" = "حذف وسم";
 
 /* Signup Support Text */
-"Didn't get an email? You may already have an account. Contact %1$@ for help." = "ألم يصلك بريدٌ إلكترونيٌ؟ ربما يكون لديك حساب بالفعل. اتصل بـ %1$@ للحصول على مساعدة.";
+"Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help." = "ألم يصلك بريدٌ إلكترونيٌ؟ ربما يوجد حساب بالفعل مقترن بعنوان البريد الإلكتروني هذا. اتصل بـ %1$@ للحصول على مساعدة.";
 
 /* Closes the Privacy View */
 "Dismiss" = "تجاهل";

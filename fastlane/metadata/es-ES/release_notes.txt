@@ -1,0 +1,1 @@
+- Se ha corregido un error que impedía mover la ventana de la aplicación
