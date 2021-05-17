@@ -123,7 +123,6 @@ end
     setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
 
     ios_localize_project()
-    ios_tag_build()
   end
 
   #####################################################################################
