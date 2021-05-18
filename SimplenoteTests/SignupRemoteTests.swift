@@ -28,7 +28,6 @@ class SignupRemoteTests: XCTestCase {
     }
 
     func testRequestSetsEmailToCorrectCaseWithSpecialCharacters() throws {
-        try XCTSkipIf(true, "Skipped to see if CI becomes stable")
         signupRemote.requestSignup(email: "EMAIL123456@#$%^@gmail.com", completion: { _, _ in })
 
         let expecation = "email123456@#$%^@gmail.com"
@@ -39,7 +38,6 @@ class SignupRemoteTests: XCTestCase {
     }
 
     func testRequestSetsEmailToCorrectCaseWithMixedCase() throws {
-        try XCTSkipIf(true, "Skipped to see if CI becomes stable")
         signupRemote.requestSignup(email: "eMaIl@gmail.com", completion: { _, _ in })
 
         let expecation = "email@gmail.com"
