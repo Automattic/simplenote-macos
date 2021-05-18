@@ -11,6 +11,7 @@ REPOSITORY_NAME = 'simplenote-macos'
 ENV[GHHELPER_REPO="#{ORGANIZATION_NAME}/#{REPOSITORY_NAME}"]
 ENV["PROJECT_NAME"]="Simplenote"
 ENV["PROJECT_ROOT_FOLDER"]="./"
+ENV['APP_STORE_STRINGS_FILE_NAME']='AppStoreStrings.pot'
 ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
 ENV["DOWNLOAD_METADATA"]="./fastlane/download_metadata.swift"
 
@@ -118,12 +119,11 @@ end
     ios_bump_version_release()
     new_version = ios_get_app_version()
     ios_update_release_notes(new_version: new_version)
+    get_prs_list(repository:GHHELPER_REPO, milestone: new_version, report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list_#{old_version}_#{new_version}.txt")
     setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
     setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
 
     ios_localize_project()
-    ios_tag_build()
-    get_prs_list(repository:GHHELPER_REPO, start_tag:"#{old_version}", report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list_#{old_version}_#{new_version}.txt")
   end
 
   #####################################################################################

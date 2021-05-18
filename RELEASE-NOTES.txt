@@ -1,3 +1,6 @@
+2.14
+-----
+
 2.13
 -----
 - Pressing Shift + Tab will now de-indent items in a list. Thanks @sergiou87! #946
