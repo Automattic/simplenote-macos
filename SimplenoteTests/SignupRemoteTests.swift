@@ -18,7 +18,8 @@ class SignupRemoteTests: XCTestCase {
         //   https://app.circleci.com/pipelines/github/Automattic/simplenote-macos?branch=merge%2Frelease-2.12-into-develop
         // - CI experimentation:
         //   https://app.circleci.com/pipelines/github/Automattic/simplenote-macos?branch=explore-ci-failures
-        try XCTSkipIf(true, "Skipped because it seems to be leading to timeous in CI")
+        let isCI = (ProcessInfo.processInfo.environment["CIRCLECI"] ?? "").isEmpty == false
+        try XCTSkipIf(isCI, "Skipped because it seems to be leading to timeous in CI")
 
         let statusCode = Int.random(in: 400..<600)
         verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: false)
