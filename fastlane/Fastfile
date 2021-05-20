@@ -302,6 +302,11 @@ end
       verbose: options[:verbose] || is_ci,
     )
 
+    zip(
+      path: app_file_path,
+      output_path: File.join(output_directory, '..', 'appcast_binaries', "#{read_version_from_config}-#{read_build_from_config}.app.zip")
+    )
+
     # dsym_path = File.join(output_directory, 'Simplenote.app.dSYM.zip')
 
     # Tempfile.create do |t|
@@ -326,6 +331,26 @@ end
     #   project_slug: 'simplenote-macos',
     #   dsym_path: dsym_path
     # )
+  end
+
+  def read_version_from_config
+    read_from_config(key: 'VERSION_SHORT')
+  end
+
+  def read_build_from_config
+    read_from_config(key: 'BUILD_NUMBER')
+  end
+
+  def read_from_config(key: key)
+    fastlane_require "Xcodeproj"
+    value = ""
+    # If the file is not available, the method will raise so we should be fine
+    # not handling that case – we'll never return an empty string.
+    File.open("#{File.dirname(__FILE__)}/../config/Version.public.xcconfig") do |config|
+      configuration = Xcodeproj::Config.new(config)
+      value = configuration.attributes[key]
+    end
+    return value
   end
 
   #############################################################################
