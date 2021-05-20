@@ -35,9 +35,9 @@ SU_EXPORT @interface SPUStandardUserDriver : NSObject <SPUUserDriver>
 - (instancetype)initWithHostBundle:(NSBundle *)hostBundle delegate:(nullable id<SPUStandardUserDriverDelegate>)delegate;
 
 /*!
- * Enable or disable hideOnDeactivate for standard update window.
+ Use initWithHostBundle:delegate: instead.
  */
-@property (nonatomic) BOOL hideOnDeactivate;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

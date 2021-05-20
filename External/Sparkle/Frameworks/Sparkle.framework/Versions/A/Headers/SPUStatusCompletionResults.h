@@ -18,31 +18,50 @@
 #import <Foundation/Foundation.h>
 #endif
 
-typedef NS_ENUM(NSUInteger, SPUUserInitiatedCheckStatus) {
-    SPUUserInitiatedCheckDone,
-    SPUUserInitiatedCheckCanceled
+// The value ordering here intentionally aligns with replacing SPUInstallUpdateStatus
+typedef NS_ENUM(NSInteger, SPUUserUpdateChoice) {
+    SPUUserUpdateChoiceSkip,
+    SPUUserUpdateChoiceInstall,
+    SPUUserUpdateChoiceDismiss,
 };
 
-typedef NS_ENUM(NSUInteger, SPUDownloadUpdateStatus) {
-    SPUDownloadUpdateDone,
-    SPUDownloadUpdateCanceled
+typedef NS_ENUM(NSInteger, SPUUserUpdateState) {
+    SPUUserUpdateStateNotDownloaded,
+    SPUUserUpdateStateDownloaded,
+    SPUUserUpdateStateInstalling,
+    SPUUserUpdateStateInformational
 };
 
+// Deprecated
+typedef NS_ENUM(NSInteger, SPUInformationalUpdateAlertChoice) {
+    SPUDismissInformationalNoticeChoice,
+    SPUSkipThisInformationalVersionChoice
+};
+
+// Deprecated
 typedef NS_ENUM(NSUInteger, SPUInstallUpdateStatus) {
     SPUInstallUpdateNow,
     SPUInstallAndRelaunchUpdateNow,
     SPUDismissUpdateInstallation
 };
 
+// Deprecated
 typedef NS_ENUM(NSInteger, SPUUpdateAlertChoice) {
     SPUInstallUpdateChoice,
     SPUInstallLaterChoice,
     SPUSkipThisVersionChoice
 };
 
-typedef NS_ENUM(NSInteger, SPUInformationalUpdateAlertChoice) {
-    SPUDismissInformationalNoticeChoice,
-    SPUSkipThisInformationalVersionChoice
+// Deprecated
+typedef NS_ENUM(NSUInteger, SPUUserInitiatedCheckStatus) {
+    SPUUserInitiatedCheckDone,
+    SPUUserInitiatedCheckCanceled
+};
+
+// Deprecated
+typedef NS_ENUM(NSUInteger, SPUDownloadUpdateStatus) {
+    SPUDownloadUpdateDone,
+    SPUDownloadUpdateCanceled
 };
 
 #endif /* SPUStatusCompletionResults_h */
