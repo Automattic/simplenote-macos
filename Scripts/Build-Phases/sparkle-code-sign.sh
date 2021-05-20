@@ -5,7 +5,13 @@ set -e
 # Codesign
 #
 IDENTITY="Developer ID Application: Automattic, Inc."
-SPARKLE_BIN="${SRCROOT}/External/Sparkle/bin"
+SPARKLE_ROOT="${SRCROOT}/External/Sparkle"
+SPARKLE_BIN="${SPARKLE_ROOT}/bin"
+# See https://sparkle-project.org/documentation/sandboxing/#code-signing
+$SPARKLE_BIN/codesign_xpc_service "$IDENTITY" $SPARKLE_ROOT/XPCServices/org.sparkle-project.InstallerLauncher.xpc
+
+exit 0
+
 CODESIGN_TOOL="${SPARKLE_BIN}/codesign_embedded_executable"
 CODESIGN_HARDENEDRUNTIME_CMD="codesign --force -o runtime --timestamp"
 
