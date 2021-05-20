@@ -250,22 +250,22 @@ end
   #####################################################################################
   desc "Builds and updates for beta distribution"
   lane :build_and_upload_beta do | options |
-    ensure_git_status_clean()
+    # ensure_git_status_clean()
 
-    configure_apply()
-    sh("rake dependencies:pod:clean")
-    cocoapods()
+    # configure_apply()
+    # sh("rake dependencies:pod:clean")
+    # cocoapods()
 
     bundle_id = "com.automattic.SimplenoteMac.beta"
 
     # Notice that, unlike in the App Store app, we don't need the additional
     # mac_installer_distribution certificate
-    sync_code_signing(
-      type: "developer_id",
-      platform: "macos",
-      readonly: true,
-      app_identifier: bundle_id,
-    )
+    # sync_code_signing(
+    #   type: "developer_id",
+    #   platform: "macos",
+    #   readonly: true,
+    #   app_identifier: bundle_id,
+    # )
 
     output_directory = BUILD_FOLDER
     app_file_name = "Simplenote.app"
@@ -302,30 +302,30 @@ end
       verbose: options[:verbose] || is_ci,
     )
 
-    dsym_path = File.join(output_directory, 'Simplenote.app.dSYM.zip')
+    # dsym_path = File.join(output_directory, 'Simplenote.app.dSYM.zip')
 
-    Tempfile.create do |t|
-      release_notes_path = File.path(t)
-      system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
+    # Tempfile.create do |t|
+    #   release_notes_path = File.path(t)
+    #   system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
 
-      appcenter_upload(
-        api_token: get_required_env("APPCENTER_API_TOKEN"),
-        owner_name: "automattic",
-        owner_type: "organization",
-        app_name: "Simplenote-OSX",
-        file: app_file_path,
-        dsym: dsym_path,
-        release_notes: File.read(release_notes_path),
-        notify_testers: false
-      )
-    end
+    #   appcenter_upload(
+    #     api_token: get_required_env("APPCENTER_API_TOKEN"),
+    #     owner_name: "automattic",
+    #     owner_type: "organization",
+    #     app_name: "Simplenote-OSX",
+    #     file: app_file_path,
+    #     dsym: dsym_path,
+    #     release_notes: File.read(release_notes_path),
+    #     notify_testers: false
+    #   )
+    # end
 
-    sentry_upload_dsym(
-      auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
-      org_slug: 'a8c',
-      project_slug: 'simplenote-macos',
-      dsym_path: dsym_path
-    )
+    # sentry_upload_dsym(
+    #   auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
+    #   org_slug: 'a8c',
+    #   project_slug: 'simplenote-macos',
+    #   dsym_path: dsym_path
+    # )
   end
 
   #############################################################################
