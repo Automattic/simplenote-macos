@@ -10,19 +10,19 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Vz9P/o9d6t83PnMmF40mwXvG6Zw=
+			65GUWIpZSaXqomFrwqOrJJBiuU8=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"5de2155d6acd71cd46712f089e0d511f1ad47a72" or cdhash H"573f4ffe8f5deadf373e7326178d26c17bc6e99c" or cdhash H"c200072832f2065cd20a935955933eaf0a34f785" or cdhash H"89c713d9f460c0d60e6eef11db78ed5c076147b9"</string>
+			<string>identifier Autoupdate and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = PZYM8XX95Q</string>
 		</dict>
 		<key>MacOS/Updater.app</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			gx1bvp4iE7h+Q3SUU5vO3BG4sMk=
+			PonQxIDuMlKfGEnz6t/fuKY/HP8=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"c8f4347eae7a0aa3fa4497d9e10513595d37a300" or cdhash H"831d5bbe9e2213b87e437494539bcedc11b8b0c9" or cdhash H"1ba4d959987dfae0b4164e8a3dfaba52365d22fe" or cdhash H"a44f9c807d8ab68eeace09852d0de8a0c3b799ef"</string>
+			<string>identifier "org.sparkle-project.Sparkle.Updater" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = PZYM8XX95Q</string>
 		</dict>
 	</dict>
 	<key>rules</key>
