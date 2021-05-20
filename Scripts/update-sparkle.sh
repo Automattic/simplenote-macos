@@ -23,7 +23,7 @@ git fetch
 # Use `git checkout <sha>` to go to a certain commit, e.g.:
 # `git checkout 4767ef60ece7de7404f402c23177f0810bf72418` will checkout the
 # commit used at the time of writing
-git checkout --track origin/2.x
+git checkout --track origin/2.x || git checkout 2.x && git pull
 git submodule update --init
 
 # The Sparkle Makefile uses $BUILDDIR as the folder where to create the
