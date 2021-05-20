@@ -37,6 +37,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$BUILD_NUMBER</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
@@ -53,10 +55,8 @@
 	<key>NSPrincipalClass</key>
 	<string>SPApplication</string>
 	<key>SUFeedURL</key>
-	<string>https://api.appcenter.ms/v0.1/public/sparkle/apps/ede9c493-4694-6c51-a1db-1db167b49892</string>
+	<string>https://sparkle-distribution-test.s3-ap-southeast-2.amazonaws.com/appcast.xml</string>
 	<key>SUScheduledCheckInterval</key>
 	<string>3600</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 </dict>
 </plist>
