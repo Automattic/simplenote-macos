@@ -55,7 +55,7 @@
 	<key>NSPrincipalClass</key>
 	<string>SPApplication</string>
 	<key>SUFeedURL</key>
-	<string>https://sparkle-distribution-test.s3-ap-southeast-2.amazonaws.com/appcast.xml</string>
+	<string>https://api.appcenter.ms/v0.1/public/sparkle/apps/6edbd306-83d2-41cd-83f5-c91852d1d8f8</string>
 	<key>SUScheduledCheckInterval</key>
 	<string>3600</string>
 </dict>
