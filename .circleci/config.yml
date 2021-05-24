@@ -44,6 +44,15 @@ jobs:
       - run:
           name: Build & Test
           command: bundle exec fastlane test
+          # Starting March 2021, we've been experiencing occasional hangs after
+          # the tests finished running successfully. This reduces the time
+          # CircleCI waits with no output, the idea being that we won't have to
+          # wait for a long time to relaunch the build, which, unfortunately,
+          # is what we have to do in those occasions.
+          #
+          # See
+          # https://app.circleci.com/pipelines/github/Automattic/simplenote-macos/2363/workflows/c0aa85a0-837b-4e3f-bcda-252a273bf008/jobs/2738
+          no_output_timeout: 1m
 
   Verify App Store Target Builds:
     executor: *xcode_image
