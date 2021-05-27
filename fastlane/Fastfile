@@ -311,6 +311,8 @@ end
 
     Tempfile.create do |t|
       release_notes_path = File.path(t)
+      system "echo '# Test build with tweaked Sparkle setup' > #{release_notes_path}"
+      system "echo '---' > #{release_notes_path}"
       system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
 
       appcenter_upload(
