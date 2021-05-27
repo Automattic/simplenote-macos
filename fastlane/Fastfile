@@ -319,7 +319,7 @@ end
         api_token: get_required_env("APPCENTER_API_TOKEN"),
         owner_name: "automattic",
         owner_type: "organization",
-        app_name: "Simplenote-OSX",
+        app_name: "Simplenote-macOS-Gio-Test",
         file: app_file_path,
         dsym: dsym_path,
         release_notes: File.read(release_notes_path),
