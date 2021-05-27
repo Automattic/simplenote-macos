@@ -83,6 +83,7 @@
 		37F742EB202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F742EA202A382400A47D3A /* AboutViewController.swift */; };
 		3F07D7B225DD1CDD00D680D0 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
+		3F23BF84265F6697005E78CF /* org.sparkle-project.InstallerLauncher.xpc in Copy XCP Services */ = {isa = PBXBuildFile; fileRef = 3F23BF7E265F666A005E78CF /* org.sparkle-project.InstallerLauncher.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3FAC7B25254BBCA600B47276 /* SimplenoteInterlinks in Frameworks */ = {isa = PBXBuildFile; productRef = 3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */; };
 		466FFEA817CC10A800399652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9814032D2A00A7935E /* main.m */; };
 		466FFEA917CC10A800399652 /* SimplenoteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F72A9F14032D2A00A7935E /* SimplenoteAppDelegate.m */; };
@@ -485,6 +486,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3F23BF83265F6679005E78CF /* Copy XCP Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				3F23BF84265F6697005E78CF /* org.sparkle-project.InstallerLauncher.xpc in Copy XCP Services */,
+			);
+			name = "Copy XCP Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71881504155F487D001F2E30 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -565,6 +577,7 @@
 		37D4DD6920B3574C00C225EA /* WPAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAuthHandler.h; sourceTree = "<group>"; };
 		37F742EA202A382400A47D3A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		39ACEAE8218A03C6C22DC662 /* Pods-Automattic-Simplenote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Automattic-Simplenote.release.xcconfig"; path = "Target Support Files/Pods-Automattic-Simplenote/Pods-Automattic-Simplenote.release.xcconfig"; sourceTree = "<group>"; };
+		3F23BF7E265F666A005E78CF /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
 		466FFF2F17CC10A800399652 /* Simplenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469512CB17CD23100014A2BF /* Simplenote-Info-Hockey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Simplenote-Info-Hockey.plist"; sourceTree = "<group>"; };
 		46A0BEB8175BFD540050E864 /* Simplenote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Simplenote.entitlements; sourceTree = SOURCE_ROOT; };
@@ -749,9 +762,6 @@
 		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
 		B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEditorViewController+Swift.swift"; sourceTree = "<group>"; };
 		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerStatus.xpc"; sourceTree = "<group>"; };
-		B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerConnection.xpc"; sourceTree = "<group>"; };
-		B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = "org.sparkle-project.InstallerLauncher.xpc"; sourceTree = "<group>"; };
 		B5A89194231ECB3C0007EDCB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitItemMetrics.swift; sourceTree = "<group>"; };
 		B5A9FE472576D25A0084F176 /* NSBox+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBox+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1439,9 +1449,7 @@
 		B5A8918B231ECB3C0007EDCB /* XPCServices */ = {
 			isa = PBXGroup;
 			children = (
-				B5A8918D231ECB3C0007EDCB /* org.sparkle-project.InstallerStatus.xpc */,
-				B5A8918F231ECB3C0007EDCB /* org.sparkle-project.InstallerConnection.xpc */,
-				B5A89190231ECB3C0007EDCB /* org.sparkle-project.InstallerLauncher.xpc */,
+				3F23BF7E265F666A005E78CF /* org.sparkle-project.InstallerLauncher.xpc */,
 			);
 			path = XPCServices;
 			sourceTree = "<group>";
@@ -1614,6 +1622,7 @@
 				26F72A8514032D2A00A7935E /* Frameworks */,
 				26F72A8614032D2A00A7935E /* Resources */,
 				71881504155F487D001F2E30 /* CopyFiles */,
+				3F23BF83265F6679005E78CF /* Copy XCP Services */,
 				B51D44911945FEFD00496889 /* Sparkle XPC Code Sign For Sandbox */,
 				BCBFB16555965D73674605BA /* [CP] Embed Pods Frameworks */,
 			);
