@@ -1,1 +1,1 @@
-- Se ha corregido un error que impedía mover la ventana de la aplicación
+- Ahora, al presionar Mayús + Tab, se elimina la sangría de los elementos de una lista.

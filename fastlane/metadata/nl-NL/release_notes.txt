@@ -1,1 +1,1 @@
-- Probleem opgelost waarbij het app-venster niet kon worden verplaatst
+- Door op Shift + Tab te drukken wordt het inspringen van items in een lijst nu ongedaan gemaakt.

@@ -1,1 +1,1 @@
-- Wir haben einen Fehler behoben, der dazu geführt hat, dass man das App-Fenster nicht verschieben kann
+- Umschalttaste + Tab macht nun das Einrücken von Listenpunkten rückgängig.
