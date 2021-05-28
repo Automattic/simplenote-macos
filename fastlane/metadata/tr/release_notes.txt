@@ -1,1 +1,0 @@
-- Uygulama penceresinin taşınmasını engelleyen bir hata düzeltildi

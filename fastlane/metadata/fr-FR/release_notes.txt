@@ -1,1 +1,1 @@
-- Résolution d’un bogue qui empêchait le déplacement de la fenêtre de l’application
+- Désormais, appuyer sur Maj + Tab supprimera des alinéas aux éléments d’une liste.

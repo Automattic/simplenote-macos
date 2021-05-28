@@ -1,1 +1,1 @@
-- En bugg som gjorde att appfönstret inte gick att flytta har korrigerats
+– Om du trycker skift + tab så tar du tillbaka indrag för objekt i en lista.
