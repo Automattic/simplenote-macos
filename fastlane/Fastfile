@@ -219,7 +219,15 @@ end
       ios_bump_version_beta()
     end
 
-    trigger_app_store_ci_build(branch_to_build: "release/#{ios_get_app_version()}")
+    # Wrap up
+    version = ios_get_app_version
+    branch = "release/#{version}"
+    removebranchprotection(repository: GHHELPER_REPO, branch: branch)
+    setfrozentag(repository: GHHELPER_REPO, milestone: version, freeze: false)
+    create_new_milestone(repository: GHHELPER_REPO)
+    close_milestone(repository: GHHELPER_REPO, milestone: version)
+
+    trigger_app_store_ci_build(branch_to_build: branch)
   end
 
   #####################################################################################
