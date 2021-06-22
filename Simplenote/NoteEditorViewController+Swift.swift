@@ -305,7 +305,7 @@ extension NoteEditorViewController {
 
 // MARK: - ToolbarDelegate
 //
-extension NoteEditorViewController: NoteListSearchDelegate {
+extension NoteEditorViewController: NotesSearchDelegate {
 
     func notesListViewControllerDidSearch(_ query: SearchQuery?) {
         searchQuery = query

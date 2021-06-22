@@ -76,6 +76,7 @@ extension SimplenoteAppDelegate {
     @objc
     func configureNotesController() {
         noteListViewController.searchDelegate = noteEditorViewController
+        noteListViewController.delegate = self
     }
 
     @objc
@@ -475,6 +476,22 @@ extension SimplenoteAppDelegate: TagsControllerDelegate {
 
         noteEditorViewController.tagsControllerDidUpdateFilter(filter)
         noteListViewController.tagsControllerDidUpdateFilter(filter)
+    }
+}
+
+
+extension SimplenoteAppDelegate: NotesControllerDelegate {
+
+    func notesControllerDidSelectNote(note: Note) {
+        noteEditorViewController.displayNote(note)
+    }
+
+    func notesControllerDidSelectNotes(notes: [Note]) {
+        noteEditorViewController.display(notes)
+    }
+
+    func notesControllerDidSelectZeroNotes() {
+        noteEditorViewController.displayNote(nil)
     }
 }
 

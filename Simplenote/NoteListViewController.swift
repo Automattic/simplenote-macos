@@ -2,10 +2,16 @@ import Foundation
 import SimplenoteSearch
 
 
-// MARK: - NoteListSearchDelegate
+// MARK: - NotesSearchDelegate
 //
-protocol NoteListSearchDelegate: AnyObject {
+protocol NotesSearchDelegate: AnyObject {
     func notesListViewControllerDidSearch(_ query: SearchQuery?)
+}
+
+protocol NotesControllerDelegate: AnyObject {
+    func notesControllerDidSelectNote(note: Note)
+    func notesControllerDidSelectNotes(notes: [Note])
+    func notesControllerDidSelectZeroNotes()
 }
 
 
@@ -52,9 +58,14 @@ class NoteListViewController: NSViewController {
         SimplenoteAppDelegate.shared().noteEditorViewController
     }
 
-    /// Search Listener
+    /// Search Delegate
     ///
-    weak var searchDelegate: NoteListSearchDelegate?
+    weak var searchDelegate: NotesSearchDelegate?
+
+    /// Delegate
+    ///
+    weak var delegate: NotesControllerDelegate?
+
 
     var isActive: Bool = false {
         didSet {
@@ -400,17 +411,17 @@ private extension NoteListViewController {
     private func refreshPresentedNote() {
         let selectedNotes = self.selectedNotes
         guard selectedNotes.count > .zero else {
-            noteEditorViewController.displayNote(nil)
+            delegate?.notesControllerDidSelectZeroNotes()
             return
         }
 
         guard selectedNotes.count == 1, let targetNote = selectedNotes.first else {
-            noteEditorViewController.display(selectedNotes)
+            delegate?.notesControllerDidSelectNotes(notes: selectedNotes)
             return
         }
 
         SPTracker.trackListNoteOpened()
-        noteEditorViewController.displayNote(targetNote)
+        delegate?.notesControllerDidSelectNote(note: targetNote)
     }
 }
 
