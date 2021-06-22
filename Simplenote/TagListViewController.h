@@ -12,11 +12,10 @@
 
 @class Tag;
 @class TagListState;
+@protocol TagsControllerDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const TagListDidBeginViewingTagNotification;
-extern NSString * const TagListDidBeginViewingTrashNotification;
 extern NSString * const TagListDidUpdateTagNotification;
 extern NSString * const TagListDidUpdateTagOldNameKey;
 extern NSString * const TagListDidUpdateTagNewNameKey;
@@ -43,6 +42,7 @@ extern NSString * const TagListDidEmptyTrashNotification;
 @property (nonatomic, assign, readwrite) BOOL                           mustSkipSelectionDidChange;
 @property (nonatomic, strong,  readonly) Simperium                      *simperium;
 @property (nonatomic, assign, getter=isActive) BOOL                     active;
+@property (nonatomic, weak,   readwrite) id<TagsControllerDelegate>     delegate;
 
 - (void)loadTags;
 - (NSString *)selectedTagName;

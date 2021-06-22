@@ -1,6 +1,15 @@
 import Foundation
 
 
+
+// MARK: - TagListDelegate
+//
+@objc
+protocol TagsControllerDelegate: AnyObject {
+    func tagsControllerDidUpdateFilter(_ listController: TagListViewController)
+}
+
+
 // MARK: - Interface Initialization
 //
 extension TagListViewController {
@@ -122,9 +131,16 @@ extension TagListViewController {
     }
 
     private func notifyTagsListFilterDidChange() {
-        let isViewingTrash = selectedFilter == .deleted
-        let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
-        NotificationCenter.default.post(name: name, object: self)
+        delegate?.tagsControllerDidUpdateFilter(self)
+    }
+
+    private func trackTagsFilterDidChange() {
+        guard selectedFilter == .deleted else {
+            SPTracker.trackTagRowPressed()
+            return
+        }
+
+        SPTracker.trackListTrashPressed()
     }
 }
 
@@ -184,6 +200,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
         }
 
         notifyTagsListFilterDidChange()
+        trackTagsFilterDidChange()
     }
 }
 

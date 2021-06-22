@@ -79,6 +79,11 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureTagsController() {
+        tagListViewController.delegate = self
+    }
+
+    @objc
     func configureEditorController() {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController
@@ -459,6 +464,20 @@ extension SimplenoteAppDelegate {
         noteEditorMetadataCache.cleanup(keeping: allKeys)
     }
 }
+
+
+// MARK: - TagListActionsDelegate Conformance
+//
+extension SimplenoteAppDelegate: TagsControllerDelegate {
+
+    func tagsControllerDidUpdateFilter(_ listController: TagListViewController) {
+        let filter = listController.selectedFilter
+
+        noteEditorViewController.tagsControllerDidUpdateFilter(filter)
+        noteListViewController.tagsControllerDidUpdateFilter(filter)
+    }
+}
+
 
 // MARK: - Constants
 //

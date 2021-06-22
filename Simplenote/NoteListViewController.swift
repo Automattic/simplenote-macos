@@ -143,6 +143,17 @@ extension NoteListViewController {
 }
 
 
+// MARK: - Public
+//
+extension NoteListViewController {
+
+    func tagsControllerDidUpdateFilter(_ newFilter: TagListFilter) {
+        dismissSearch()
+        refreshEverything()
+    }
+}
+
+
 // MARK: - Interface Initialization
 //
 private extension NoteListViewController {
@@ -754,8 +765,6 @@ extension NoteListViewController {
         nc.addObserver(self, selector: #selector(clipViewDidScroll), name: NSView.boundsDidChangeNotification, object: clipView)
 
         // Notifications: Tags
-        nc.addObserver(self, selector: #selector(didBeginViewingTag), name: .TagListDidBeginViewingTag, object: nil)
-        nc.addObserver(self, selector: #selector(didBeginViewingTrash), name: .TagListDidBeginViewingTrash, object: nil)
         nc.addObserver(self, selector: #selector(didUpdateTag), name: .TagListDidUpdateTag, object: nil)
 
         // Notifications: Settings
@@ -782,20 +791,6 @@ extension NoteListViewController {
 
     @objc
     func sortModeDidChange(_ note: Notification) {
-        refreshEverything()
-    }
-
-    @objc
-    func didBeginViewingTag(_ note: Notification) {
-        SPTracker.trackTagRowPressed()
-        dismissSearch()
-        refreshEverything()
-    }
-
-    @objc
-    func didBeginViewingTrash(_ note: Notification) {
-        SPTracker.trackListTrashPressed()
-        dismissSearch()
         refreshEverything()
     }
 

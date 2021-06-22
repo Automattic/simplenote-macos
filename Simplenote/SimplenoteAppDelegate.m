@@ -94,6 +94,7 @@
     [self configureMainInterface];
     [self configureSplitViewController];
     [self configureMainWindowController];
+    [self configureTagsController];
     [self configureNotesController];
     [self configureEditorController];
     [self configureVerificationCoordinator];

@@ -70,8 +70,8 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong, readonly) MarkdownViewController                  *markdownViewController;
 @property (nonatomic, strong, readonly) Storage                                 *storage;
 @property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
-@property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) NSLayoutConstraint                      *sidebarSemaphoreLeadingConstraint;
+@property (nonatomic, assign) BOOL                                              viewingTrash;
 @property (nonatomic, strong) InterlinkProcessor                                *interlinkProcessor;
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;

@@ -52,10 +52,18 @@ extension NoteEditorViewController {
 // MARK: - Public
 //
 extension NoteEditorViewController {
+
     /// Makes editor first responder
     ///
     func focus() {
         view.window?.makeFirstResponder(noteEditor)
+    }
+
+    func tagsControllerDidUpdateFilter(_ newFilter: TagListFilter) {
+        viewingTrash = newFilter == .deleted
+        refreshEditorActions()
+        refreshToolbarActions()
+        refreshTagsFieldActions()
     }
 }
 
