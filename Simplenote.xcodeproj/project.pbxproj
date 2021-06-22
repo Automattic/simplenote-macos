@@ -1695,7 +1695,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Simperium;
 				TargetAttributes = {
 					26F72A8714032D2A00A7935E = {
