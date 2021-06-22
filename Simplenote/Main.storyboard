@@ -519,8 +519,21 @@
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="La0-hZ-ZgT" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-IN-gUi">
+                                        <rect key="frame" x="10" y="7" width="58" height="15"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Yosemite" id="nCt-Ge-AWn">
+                                            <font key="font" metaFont="systemMedium" size="12"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="3vH-KB-MRu"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PLP-IN-gUi" secondAttribute="trailing" constant="12" id="KoD-BB-lVD"/>
+                                    <constraint firstItem="PLP-IN-gUi" firstAttribute="leading" secondItem="La0-hZ-ZgT" secondAttribute="leading" constant="12" id="NjP-Rg-9D8"/>
+                                    <constraint firstItem="PLP-IN-gUi" firstAttribute="centerY" secondItem="La0-hZ-ZgT" secondAttribute="centerY" id="lwc-S9-ub0"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -533,6 +546,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="La0-hZ-ZgT" id="rz6-TB-W8i"/>
+                        <outlet property="statusTextField" destination="PLP-IN-gUi" id="l0Q-zD-80l"/>
                     </connections>
                 </viewController>
                 <customObject id="qkg-c8-hZz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
