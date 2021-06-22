@@ -5,7 +5,7 @@ import SimplenoteFoundation
 
 // MARK: - MetricsControllerDelegate
 //
-protocol MetricsControllerDelegate: class {
+protocol MetricsControllerDelegate: AnyObject {
     func metricsController(_ controller: MetricsViewController, selected note: Note)
 }
 
