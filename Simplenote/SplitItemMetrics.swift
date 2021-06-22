@@ -63,6 +63,10 @@ enum SplitItemMetrics {
         sidebarTopInset
     }
 
+    /// Breadcrumbs Height!
+    ///
+    static let breadcrumbsViewHeight = CGFloat(28)
+
     /// Header Alpha Threshold: Alpha Visibility threshold after which the Blur should be enabled
     ///
     static let headerAlphaActiveThreshold = CGFloat(0.5)

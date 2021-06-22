@@ -454,6 +454,7 @@
                         <outlet property="noteListMenu" destination="JPb-EX-UT9" id="1Ad-LU-3eM"/>
                         <outlet property="progressIndicator" destination="5oO-Ju-l1S" id="ZDk-V0-rXz"/>
                         <outlet property="scrollView" destination="JDR-c6-dqi" id="PCh-41-2RS"/>
+                        <outlet property="scrollViewBottomConstraint" destination="h9H-wI-zNE" id="FV1-Ny-ft8"/>
                         <outlet property="searchField" destination="whk-9q-XA7" id="uS6-tc-AER"/>
                         <outlet property="statusField" destination="2I0-KH-uBu" id="aPg-Cf-8Zr"/>
                         <outlet property="tableView" destination="q9F-rT-PZ2" id="TRT-PA-LSa"/>
@@ -780,6 +781,7 @@
                         <outlet property="statusImageView" destination="Dj2-Ut-m6l" id="vqt-cc-z7a"/>
                         <outlet property="statusTextField" destination="VFr-Z3-HgO" id="UWY-3k-pwd"/>
                         <outlet property="tagsField" destination="U3o-VN-U2S" id="qmL-AY-16b"/>
+                        <outlet property="tagsViewBottomConstraint" destination="w2I-mr-ERE" id="bm1-m4-so3"/>
                         <outlet property="toolbarView" destination="mdt-4X-jeq" id="Bi4-Hb-jc8"/>
                     </connections>
                 </viewController>

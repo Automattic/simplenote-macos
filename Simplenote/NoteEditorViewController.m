@@ -96,6 +96,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self setupScrollView];
     [self setupStatusImageView];
     [self setupTagsField];
+    [self setupBottomInsets];
 
     // Interlinks
     [self setupInterlinksProcessor];

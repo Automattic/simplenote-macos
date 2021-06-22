@@ -28,6 +28,7 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
+    @IBOutlet private var scrollViewBottomConstraint: NSLayoutConstraint!
 
     /// Layout
     ///
@@ -83,6 +84,7 @@ class NoteListViewController: NSViewController {
         setupSearchField()
         setupHeaderView()
         setupTableView()
+        setupBottomInsets()
         startListeningToNotifications()
         startListControllerSync()
 
@@ -173,6 +175,12 @@ private extension NoteListViewController {
     func setupSearchField() {
         searchField.centersPlaceholder = false
         searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
+    }
+
+    /// Setup: Bottom ScrollView Insets
+    ///
+    func setupBottomInsets() {
+        scrollViewBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets

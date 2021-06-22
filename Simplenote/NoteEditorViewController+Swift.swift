@@ -37,6 +37,11 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupBottomInsets() {
+        tagsViewBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
+    }
+
+    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
