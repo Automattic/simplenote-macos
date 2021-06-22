@@ -173,7 +173,7 @@ extension NSColor {
 
     @objc
     static var simplenoteStatusBarBackgroundColor: NSColor {
-        dynamicColor(lightStudio: .gray5, darkStudio: .darkGray2)
+        dynamicColor(lightStudio: .gray0, darkStudio: .darkGray2)
     }
 
     @objc

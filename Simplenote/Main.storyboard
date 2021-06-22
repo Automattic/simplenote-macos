@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -509,6 +509,36 @@
             </objects>
             <point key="canvasLocation" x="382" y="220"/>
         </scene>
+        <!--Breadcrumbs View Controller-->
+        <scene sceneID="2Es-7J-iRI">
+            <objects>
+                <viewController storyboardIdentifier="BreadcrumbsViewController" id="JHk-ss-c7f" customClass="BreadcrumbsViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="WNl-MD-ENM">
+                        <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="La0-hZ-ZgT" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="3vH-KB-MRu"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="La0-hZ-ZgT" secondAttribute="trailing" id="IKz-vx-WCw"/>
+                            <constraint firstAttribute="bottom" secondItem="La0-hZ-ZgT" secondAttribute="bottom" id="JgV-wf-bxz"/>
+                            <constraint firstItem="La0-hZ-ZgT" firstAttribute="top" secondItem="WNl-MD-ENM" secondAttribute="top" id="jon-fw-SiV"/>
+                            <constraint firstItem="La0-hZ-ZgT" firstAttribute="leading" secondItem="WNl-MD-ENM" secondAttribute="leading" id="x0u-jc-2aX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="La0-hZ-ZgT" id="rz6-TB-W8i"/>
+                    </connections>
+                </viewController>
+                <customObject id="qkg-c8-hZz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="382" y="633"/>
+        </scene>
         <!--Note Editor View Controller-->
         <scene sceneID="JcX-qD-6EF">
             <objects>
@@ -531,7 +561,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="513" height="570"/>
+                                            <size key="minSize" width="528" height="570"/>
                                             <size key="maxSize" width="10000000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>

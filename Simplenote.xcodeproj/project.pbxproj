@@ -329,6 +329,8 @@
 		B59E812F1877C802005ADDCF /* JSONKit+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */; };
 		B59EA98124AA5EFA008ABE4B /* NoteMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EA98024AA5EFA008ABE4B /* NoteMetrics.swift */; };
 		B59EA98224AA5EFA008ABE4B /* NoteMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59EA98024AA5EFA008ABE4B /* NoteMetrics.swift */; };
+		B5A0AB6526822E340030E285 /* BreadcrumbsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0AB6426822E340030E285 /* BreadcrumbsViewController.swift */; };
+		B5A0AB6626822E340030E285 /* BreadcrumbsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A0AB6426822E340030E285 /* BreadcrumbsViewController.swift */; };
 		B5A2F1F02432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A2F1F12432DE54003B29C6 /* NSRange+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */; };
 		B5A5AF7C244FA7BA0051D927 /* NoteEditorViewController+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */; };
@@ -746,6 +748,7 @@
 		B59E812D1877C802005ADDCF /* JSONKit+Simplenote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONKit+Simplenote.h"; sourceTree = "<group>"; };
 		B59E812E1877C802005ADDCF /* JSONKit+Simplenote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONKit+Simplenote.m"; sourceTree = "<group>"; };
 		B59EA98024AA5EFA008ABE4B /* NoteMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMetrics.swift; sourceTree = "<group>"; };
+		B5A0AB6426822E340030E285 /* BreadcrumbsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadcrumbsViewController.swift; sourceTree = "<group>"; };
 		B5A2F1EF2432DE54003B29C6 /* NSRange+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Simplenote.swift"; sourceTree = "<group>"; };
 		B5A5AF7B244FA7BA0051D927 /* NoteEditorViewController+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEditorViewController+Swift.swift"; sourceTree = "<group>"; };
 		B5A8918A231ECB3C0007EDCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -1534,6 +1537,7 @@
 				B5D6833324ACFA79004AFF1B /* Versions */,
 				B586C061245CCD35009508EC /* SplitViewController.swift */,
 				B5A9FE262576C40B0084F176 /* SplitItemMetrics.swift */,
+				B5A0AB6426822E340030E285 /* BreadcrumbsViewController.swift */,
 				B529F7B424586D8700B168F1 /* MarkdownViewController.swift */,
 				B529F7B724586DF800B168F1 /* MarkdownViewController.xib */,
 				B5C7DD3F243E4A7D00BEE354 /* CollaborateViewController.swift */,
@@ -2163,6 +2167,7 @@
 				B5CD5F7E241AC69900D0260F /* NSProcessInfo+Simplenote.swift in Sources */,
 				B59848801BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B5B1CBCD256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
+				B5A0AB6526822E340030E285 /* BreadcrumbsViewController.swift in Sources */,
 				37AE49C21FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,
 				A6084B2C25D1B77000DDFAB2 /* Storage.m in Sources */,
 				B5CBB05C2419714B0003C271 /* NSAttributedStringToMarkdownConverter.swift in Sources */,
@@ -2345,6 +2350,7 @@
 				A6BF918A25E4EAC6003C2018 /* NoteEditorMetadataCache.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
 				B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */,
+				B5A0AB6626822E340030E285 /* BreadcrumbsViewController.swift in Sources */,
 				B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
 				B528D684257FF15000C1EEA4 /* MainWindowController.swift in Sources */,
 				37AE49C31FFEB92A00FCB165 /* SPMarkdownParser.m in Sources */,

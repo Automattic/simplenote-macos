@@ -38,6 +38,7 @@ extension SimplenoteAppDelegate {
 
         mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
         splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
+        breadcrumbsViewController = storyboard.instantiateViewController(ofType: BreadcrumbsViewController.self)
         tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
         noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
         noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
@@ -53,6 +54,7 @@ extension SimplenoteAppDelegate {
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
+        splitViewController.insertSplitViewStatusBar(breadcrumbsViewController)
     }
 
     @objc
