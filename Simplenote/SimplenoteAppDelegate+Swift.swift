@@ -88,6 +88,7 @@ extension SimplenoteAppDelegate {
     func configureEditorController() {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController
+        noteEditorViewController.editorDelegate = self
     }
 
     @objc
@@ -471,9 +472,10 @@ extension SimplenoteAppDelegate {
 //
 extension SimplenoteAppDelegate: TagsControllerDelegate {
 
-    func tagsControllerDidUpdateFilter(_ listController: TagListViewController) {
-        let filter = listController.selectedFilter
+    func tagsControllerDidUpdateFilter(_ controller: TagListViewController) {
+        let filter = controller.selectedFilter
 
+        breadcrumbsViewController.tagsControllerDidUpdateFilter(filter)
         noteEditorViewController.tagsControllerDidUpdateFilter(filter)
         noteListViewController.tagsControllerDidUpdateFilter(filter)
     }
@@ -482,15 +484,18 @@ extension SimplenoteAppDelegate: TagsControllerDelegate {
 
 extension SimplenoteAppDelegate: NotesControllerDelegate {
 
-    func notesControllerDidSelectNote(note: Note) {
+    func notesController(_ controller: NoteListViewController, didSelect note: Note) {
+        breadcrumbsViewController.notesControllerDidSelectNote(note)
         noteEditorViewController.displayNote(note)
     }
 
-    func notesControllerDidSelectNotes(notes: [Note]) {
+    func notesController(_ controller: NoteListViewController, didSelect notes: [Note]) {
+        breadcrumbsViewController.notesControllerDidSelectNotes(notes)
         noteEditorViewController.display(notes)
     }
 
-    func notesControllerDidSelectZeroNotes() {
+    func notesControllerDidSelectZeroNotes(_ controller: NoteListViewController) {
+        breadcrumbsViewController.notesControllerDidSelectZeroNotes()
         noteEditorViewController.displayNote(nil)
     }
 }
