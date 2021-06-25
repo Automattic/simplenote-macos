@@ -13,7 +13,7 @@ class BreadcrumbsViewController: NSViewController {
     ///
     @IBOutlet private var backgroundView: BackgroundView!
 
-    ///
+    /// Status: Tags
     ///
     private var statusForTags = String() {
         didSet {
@@ -21,9 +21,17 @@ class BreadcrumbsViewController: NSViewController {
         }
     }
 
-    ///
+    /// Status: Notes
     ///
     private var statusForNotes = String() {
+        didSet {
+            refreshStatus()
+        }
+    }
+
+    /// Responder Status
+    ///
+    private var isTagsActive: Bool = false {
         didSet {
             refreshStatus()
         }
@@ -79,6 +87,10 @@ private extension BreadcrumbsViewController {
 //
 extension BreadcrumbsViewController {
 
+    func responderWasUpdated(isTagsActive: Bool) {
+        self.isTagsActive = isTagsActive
+    }
+
     func tagsControllerDidUpdateFilter(_ filter: TagListFilter) {
         statusForTags = filter.title
     }
@@ -106,7 +118,42 @@ extension BreadcrumbsViewController {
 private extension BreadcrumbsViewController {
 
     func refreshStatus() {
-        let suffix = statusForNotes.isEmpty ? "" : " / " + statusForNotes
-        statusTextField.stringValue = statusForTags + suffix
+        statusTextField.attributedStringValue = attributedStatusText()
+    }
+
+    func attributedStatusText() -> NSAttributedString {
+        let tagsStyle = isTagsActive ? StatusStyle.activeStyle : StatusStyle.regularStyle
+        let notesStyle  = isTagsActive ? StatusStyle.regularStyle : StatusStyle.activeStyle
+        let output = NSMutableAttributedString(string: statusForTags, attributes: tagsStyle)
+
+        if statusForNotes.isEmpty {
+            return output
+        }
+
+        output += NSAttributedString(string: " / ", attributes: StatusStyle.regularStyle)
+        output += NSMutableAttributedString(string: statusForNotes, attributes: notesStyle)
+
+        return output
+    }
+}
+
+
+// MARK: - StatusStyle
+//
+private enum StatusStyle {
+    static let font = NSFont.systemFont(ofSize: 12, weight: .medium)
+
+    static var regularStyle: [NSAttributedString.Key : Any] {
+        return [
+            .font:              StatusStyle.font,
+            .foregroundColor:   NSColor.simplenoteStatusBarTextColor
+        ]
+    }
+
+    static var activeStyle: [NSAttributedString.Key : Any] {
+        return [
+            .font:              StatusStyle.font,
+            .foregroundColor:   NSColor.simplenoteStatusBarHighlightedTextColor
+        ]
     }
 }

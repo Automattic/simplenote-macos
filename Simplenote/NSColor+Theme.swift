@@ -177,6 +177,16 @@ extension NSColor {
     }
 
     @objc
+    static var simplenoteStatusBarTextColor: NSColor {
+        NSColor(studioColor: .gray30)
+    }
+
+    @objc
+    static var simplenoteStatusBarHighlightedTextColor: NSColor {
+        dynamicColor(lightStudio: .gray90, darkStudio: .white)
+    }
+
+    @objc
     static var simplenoteAlertTextColor: NSColor {
         dynamicColor(lightStudio: .black, darkStudio: .white)
     }

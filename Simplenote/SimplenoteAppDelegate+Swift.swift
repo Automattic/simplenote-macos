@@ -447,8 +447,12 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
 
         while let currentResponder = nextResponder {
             if viewControllers.contains(currentResponder) {
-                tagListViewController.isActive = tagListViewController == currentResponder
-                noteListViewController.isActive = noteListViewController == currentResponder
+                let isTagsFocused = tagListViewController == currentResponder
+                let isNotesFocused = noteListViewController == currentResponder
+
+                tagListViewController.isActive  = isTagsFocused
+                noteListViewController.isActive = isNotesFocused
+                breadcrumbsViewController.responderWasUpdated(isTagsActive: isTagsFocused)
                 break
             }
 
