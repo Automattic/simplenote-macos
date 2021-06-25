@@ -5,7 +5,7 @@ import os.log
 
 // MARK: - VersionsViewControllerDelegate
 //
-protocol VersionsViewControllerDelegate: class {
+protocol VersionsViewControllerDelegate: AnyObject {
     func versionsController(_ controller: VersionsViewController, selected version: Version)
     func versionsControllerDidClickRestore(_ controller: VersionsViewController)
     func versionsControllerWillShow(_ controller: VersionsViewController)

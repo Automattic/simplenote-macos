@@ -4,7 +4,7 @@ import SimplenoteSearch
 
 // MARK: - NoteListSearchDelegate
 //
-protocol NoteListSearchDelegate: class {
+protocol NoteListSearchDelegate: AnyObject {
     func notesListViewControllerDidSearch(_ query: SearchQuery?)
 }
 

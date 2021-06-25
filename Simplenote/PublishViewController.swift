@@ -14,7 +14,7 @@ enum PublishState {
 
 // MARK: - VersionsViewControllerDelegate
 //
-protocol PublishViewControllerDelegate: class {
+protocol PublishViewControllerDelegate: AnyObject {
     func publishControllerDidClickPublish(_ controller: PublishViewController)
     func publishControllerDidClickUnpublish(_ controller: PublishViewController)
 }

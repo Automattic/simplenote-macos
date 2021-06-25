@@ -212,7 +212,6 @@
 		B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53ACDE325DD47BB00CF527A /* InterlinkViewController.xib */; };
 		B53ACE0E25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */; };
 		B53ACE0F25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE0D25DD7DF900CF527A /* InterlinkProcessor.swift */; };
-		B53ACE1325DD7E6C00CF527A /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		B53ACE1E25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE1D25DD9C6A00CF527A /* InterlinkResultsController.swift */; };
 		B53ACE1F25DD9C6A00CF527A /* InterlinkResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53ACE1D25DD9C6A00CF527A /* InterlinkResultsController.swift */; };
 		B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BF19B24ABDE7C00938C34 /* DateFormatter+Simplenote.swift */; };
@@ -1696,7 +1695,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Simperium;
 				TargetAttributes = {
 					26F72A8714032D2A00A7935E = {
@@ -2345,7 +2344,6 @@
 				B5C620A3257EA526008359A9 /* NSView+Simplenote.swift in Sources */,
 				A6BF918A25E4EAC6003C2018 /* NoteEditorMetadataCache.swift in Sources */,
 				B59848811BCDB95A005EFBBE /* SPAutomatticTracker.m in Sources */,
-				B53ACE1325DD7E6C00CF527A /* SearchQuery+Simplenote.swift in Sources */,
 				B5EF32BA258D07F00069EC7D /* NoteListController.swift in Sources */,
 				B51D85F525A8B392005F08CE /* NoteListPrefixFormatter.swift in Sources */,
 				B528D684257FF15000C1EEA4 /* MainWindowController.swift in Sources */,
