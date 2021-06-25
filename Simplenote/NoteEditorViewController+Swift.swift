@@ -303,11 +303,11 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - ToolbarDelegate
+// MARK: - NotesControllerSearchDelegate
 //
-extension NoteEditorViewController: NotesSearchDelegate {
+extension NoteEditorViewController: NotesControllerSearchDelegate {
 
-    func notesListViewControllerDidSearch(_ query: SearchQuery?) {
+    func notesControllerDidSearch(_ query: SearchQuery?) {
         searchQuery = query
         updateKeywordsHighlight()
     }
