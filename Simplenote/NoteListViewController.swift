@@ -645,10 +645,6 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
         // NO-OP
     }
-
-    public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
-        // NO-OP
-    }
 }
 
 

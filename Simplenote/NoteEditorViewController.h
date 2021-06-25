@@ -33,13 +33,12 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 
 
 
-#pragma mark - NoteEditorControllerDelegate
+#pragma mark - Editor Protocols
 
 @protocol EditorControllerNoteActionsDelegate <NSObject>
 - (void)editorController:(NoteEditorViewController *)controller addedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller pinnedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller restoredNoteWithSimperiumKey:(NSString *)simperiumKey;
-- (void)editorController:(NoteEditorViewController *)controller updatedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller deletedNoteWithSimperiumKey:(NSString *)simperiumKey;
 @end
 
