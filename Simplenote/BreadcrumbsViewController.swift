@@ -92,10 +92,17 @@ extension BreadcrumbsViewController {
     }
 
     func tagsControllerDidUpdateFilter(_ filter: TagListFilter) {
+        let newStatusForTags = filter.title
+        guard newStatusForTags != statusForTags else {
+            return
+        }
+
         statusForTags = filter.title
+        statusForNotes = String()
     }
 
     func notesControllerDidSelectNote(_ note: Note) {
+        note.ensurePreviewStringsAreAvailable()
         statusForNotes = note.titlePreview ?? ""
     }
 
@@ -108,7 +115,8 @@ extension BreadcrumbsViewController {
     }
 
     func editorControllerUpdatedNote(_ note: Note) {
-        statusForNotes = note.titlePreview ?? ""
+        // Yup. Same handler, different public API. Capisce?
+        notesControllerDidSelectNote(note)
     }
 }
 
