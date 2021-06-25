@@ -495,6 +495,13 @@ extension SimplenoteAppDelegate: NotesControllerDelegate {
     }
 }
 
+extension SimplenoteAppDelegate: EditorControllerDelegate {
+
+    func editorController(_ controller: NoteEditorViewController, updatedNoteContents note: Note) {
+        breadcrumbsViewController.editorControllerUpdatedNote(note)
+    }
+}
+
 
 // MARK: - Constants
 //

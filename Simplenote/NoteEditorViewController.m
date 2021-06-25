@@ -287,7 +287,9 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self.interlinkProcessor processInterlinkLookupExcludingEntityID: self.note.objectID];
     
     [self.saveTimer invalidate];
-    self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];    
+    self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
+
+    [self.editorDelegate editorController:self updatedNoteContents:self.note];
 }
 
 - (void)textViewDidChangeSelection:(NSNotification *)notification

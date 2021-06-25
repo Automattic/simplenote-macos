@@ -4,6 +4,14 @@ import SimplenoteInterlinks
 import SimplenoteSearch
 
 
+// MARK: - EditorControllerDelegate
+//
+@objc
+protocol EditorControllerDelegate: AnyObject {
+    func editorController(_ controller: NoteEditorViewController, updatedNoteContents: Note)
+}
+
+
 // MARK: - Interface Initialization
 //
 extension NoteEditorViewController {

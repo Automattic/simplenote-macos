@@ -22,6 +22,7 @@
 @class SearchMapView;
 @class SearchQuery;
 @class NoteEditorMetadataCache;
+@protocol EditorControllerDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -75,6 +76,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
+@property (nonatomic,   weak) id<EditorControllerDelegate>                      editorDelegate;
 @property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
 @property (nonatomic, strong, nonnull) NoteEditorMetadataCache                  *metadataCache;
 
