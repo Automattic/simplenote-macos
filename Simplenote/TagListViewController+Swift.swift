@@ -125,13 +125,14 @@ extension TagListViewController {
         headerSeparatorView.alphaValue = alphaForHeaderSeparatorView
     }
 
+    @objc
+    func notifyTagsListFilterDidChange() {
+        delegate?.tagsControllerDidUpdateFilter(self)
+    }
+
     private var alphaForHeaderSeparatorView: CGFloat {
         let absoluteOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
         return min(max(absoluteOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
-    }
-
-    private func notifyTagsListFilterDidChange() {
-        delegate?.tagsControllerDidUpdateFilter(self)
     }
 
     private func trackTagsFilterDidChange() {
