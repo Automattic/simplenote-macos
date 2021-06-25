@@ -315,7 +315,7 @@ extension NoteEditorViewController {
 //
 extension NoteEditorViewController: NotesControllerSearchDelegate {
 
-    func notesControllerDidSearch(_ query: SearchQuery?) {
+    func notesController(_ controller: NoteListViewController, didSearch query: SearchQuery?) {
         searchQuery = query
         updateKeywordsHighlight()
     }
