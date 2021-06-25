@@ -6,7 +6,7 @@ import Foundation
 //
 @objc
 protocol TagsControllerDelegate: AnyObject {
-    func tagsControllerDidUpdateFilter(_ listController: TagListViewController)
+    func tagsControllerDidUpdateFilter(_ controller: TagListViewController)
 }
 
 
