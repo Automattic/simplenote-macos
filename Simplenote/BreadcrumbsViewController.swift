@@ -13,9 +13,18 @@ class BreadcrumbsViewController: NSViewController {
     ///
     @IBOutlet private var searchTextField: NSTextField!
 
+    /// ImageView: Tag / Right Chevron
+    ///
+    @IBOutlet private var tagImageView: NSImageView!
+
     /// TextField: Tag
     ///
     @IBOutlet private var tagTextField: NSTextField!
+
+    /// ImageView: Note / Right Chevron
+    ///
+    @IBOutlet private var noteImageView: NSImageView!
+
 
     /// TextField: Note
     ///
@@ -164,18 +173,24 @@ extension BreadcrumbsViewController {
 private extension BreadcrumbsViewController {
 
     func refreshInterface() {
-        let isSearchHidden          = statusForSearch.isEmpty
-        searchTextField.textColor   = .simplenoteStatusBarHighlightedTextColor
-        searchTextField.stringValue = statusForSearch
-        searchTextField.isHidden    = isSearchHidden
+        let isSearchHidden              = statusForSearch.isEmpty
+        searchTextField.textColor       = .simplenoteStatusBarHighlightedTextColor
+        searchTextField.stringValue     = statusForSearch
+        searchTextField.isHidden        = isSearchHidden
 
-        tagTextField.textColor      = mustHighlightTags ? .simplenoteStatusBarHighlightedTextColor : .simplenoteStatusBarTextColor
-        tagTextField.stringValue    = statusForTags
-        tagTextField.isHidden       = !isSearchHidden
+        let isTagHidden                 = !isSearchHidden
+        tagImageView.isHidden           = isTagHidden
+        tagImageView.contentTintColor   = .simplenoteStatusBarTextColor
+        tagTextField.textColor          = mustHighlightTags ? .simplenoteStatusBarHighlightedTextColor : .simplenoteStatusBarTextColor
+        tagTextField.stringValue        = statusForTags
+        tagTextField.isHidden           = isTagHidden
 
-        noteTextField.textColor     = mustHighlightTags ? .simplenoteStatusBarTextColor : .simplenoteStatusBarHighlightedTextColor
-        noteTextField.stringValue   = statusForNotes
-        noteTextField.isHidden      = !isSearchHidden
+        let isNoteHidden                = !isSearchHidden || statusForNotes.isEmpty
+        noteImageView.isHidden          = isNoteHidden
+        noteImageView.contentTintColor  = .simplenoteStatusBarTextColor
+        noteTextField.textColor         = mustHighlightTags ? .simplenoteStatusBarTextColor : .simplenoteStatusBarHighlightedTextColor
+        noteTextField.stringValue       = statusForNotes
+        noteTextField.isHidden          = isNoteHidden
     }
 }
 

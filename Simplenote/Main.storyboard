@@ -521,7 +521,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-Zy-2Tg">
-                                        <rect key="frame" x="12" y="0.0" width="90" height="28"/>
+                                        <rect key="frame" x="12" y="0.0" width="118" height="28"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-IN-gUi" userLabel="SearchTextField">
                                                 <rect key="frame" x="-2" y="7" width="41" height="14"/>
@@ -531,16 +531,32 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deu-hx-6or" userLabel="TagImageView">
+                                                <rect key="frame" x="41" y="9" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="gpp-Xv-zrn"/>
+                                                    <constraint firstAttribute="width" constant="10" id="hxx-FE-bX4"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_disclosure_right" id="31d-7O-nLE"/>
+                                            </imageView>
                                             <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvK-y1-tIA" userLabel="TagStatusField">
-                                                <rect key="frame" x="39" y="7" width="23" height="14"/>
+                                                <rect key="frame" x="53" y="7" width="23" height="14"/>
                                                 <textFieldCell key="cell" allowsUndo="NO" title="Tag" usesSingleLineMode="YES" id="wqh-AR-wEU">
                                                     <font key="font" metaFont="system" size="11"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lLQ-th-Ae1" userLabel="NoteImageView">
+                                                <rect key="frame" x="78" y="9" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="NxU-uW-HSU"/>
+                                                    <constraint firstAttribute="width" constant="10" id="eLa-2o-qgw"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_disclosure_right" id="xdx-nS-iDo"/>
+                                            </imageView>
                                             <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afF-4l-Dvz" userLabel="NoteStatusField">
-                                                <rect key="frame" x="62" y="7" width="30" height="14"/>
+                                                <rect key="frame" x="90" y="7" width="30" height="14"/>
                                                 <textFieldCell key="cell" allowsUndo="NO" title="Note" usesSingleLineMode="YES" id="XMY-cm-Ljb">
                                                     <font key="font" metaFont="system" size="11"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -555,8 +571,12 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -580,8 +600,10 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="La0-hZ-ZgT" id="rz6-TB-W8i"/>
+                        <outlet property="noteImageView" destination="lLQ-th-Ae1" id="Tha-2R-3Ei"/>
                         <outlet property="noteTextField" destination="afF-4l-Dvz" id="Jas-lE-uxT"/>
                         <outlet property="searchTextField" destination="PLP-IN-gUi" id="Cbo-Qd-JXq"/>
+                        <outlet property="tagImageView" destination="deu-hx-6or" id="wVJ-SC-6YW"/>
                         <outlet property="tagTextField" destination="VvK-y1-tIA" id="Yg9-eK-CK8"/>
                     </connections>
                 </viewController>
@@ -982,6 +1004,7 @@
         <image name="button_preview_off" width="24" height="24"/>
         <image name="button_restore" width="24" height="24"/>
         <image name="button_tags_close" width="24" height="24"/>
+        <image name="icon_disclosure_right" width="16" height="16"/>
         <image name="icon_pin" width="16" height="16"/>
         <image name="icon_shared" width="16" height="16"/>
     </resources>
