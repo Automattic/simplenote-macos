@@ -13,10 +13,6 @@ class BreadcrumbsViewController: NSViewController {
     ///
     @IBOutlet private var searchTextField: NSTextField!
 
-    /// ImageView: Tag / Right Chevron
-    ///
-    @IBOutlet private var tagImageView: NSImageView!
-
     /// TextField: Tag
     ///
     @IBOutlet private var tagTextField: NSTextField!
@@ -110,12 +106,6 @@ private extension BreadcrumbsViewController {
         refreshStyle()
         refreshInterface()
     }
-
-    func refreshStyle() {
-        backgroundView.drawsTopBorder = true
-        backgroundView.borderColor = .simplenoteDividerColor
-        backgroundView.fillColor = .simplenoteStatusBarBackgroundColor
-    }
 }
 
 
@@ -168,7 +158,7 @@ extension BreadcrumbsViewController {
 }
 
 
-// MARK: - Status
+// MARK: - Interface
 //
 private extension BreadcrumbsViewController {
 
@@ -179,8 +169,6 @@ private extension BreadcrumbsViewController {
         searchTextField.isHidden        = isSearchHidden
 
         let isTagHidden                 = !isSearchHidden
-        tagImageView.isHidden           = isTagHidden
-        tagImageView.contentTintColor   = .simplenoteStatusBarTextColor
         tagTextField.textColor          = mustHighlightTags ? .simplenoteStatusBarHighlightedTextColor : .simplenoteStatusBarTextColor
         tagTextField.stringValue        = statusForTags
         tagTextField.isHidden           = isTagHidden
@@ -191,6 +179,12 @@ private extension BreadcrumbsViewController {
         noteTextField.textColor         = mustHighlightTags ? .simplenoteStatusBarTextColor : .simplenoteStatusBarHighlightedTextColor
         noteTextField.stringValue       = statusForNotes
         noteTextField.isHidden          = isNoteHidden
+    }
+
+    func refreshStyle() {
+        backgroundView.drawsTopBorder = true
+        backgroundView.borderColor = .simplenoteDividerColor
+        backgroundView.fillColor = .simplenoteStatusBarBackgroundColor
     }
 }
 
