@@ -2,13 +2,10 @@ import Foundation
 import SimplenoteSearch
 
 
-// MARK: - NotesControllerSearchDelegate
+// MARK: - NotesControllerDelegate
 //
-protocol NotesControllerSearchDelegate: AnyObject {
-    func notesController(_ controller: NoteListViewController, didSearch query: SearchQuery?)
-}
-
 protocol NotesControllerDelegate: AnyObject {
+    func notesController(_ controller: NoteListViewController, didSearch query: SearchQuery?)
     func notesController(_ controller: NoteListViewController, didSelect note: Note)
     func notesController(_ controller: NoteListViewController, didSelect notes: [Note])
     func notesControllerDidSelectZeroNotes(_ controller: NoteListViewController)
@@ -48,7 +45,7 @@ class NoteListViewController: NSViewController {
     ///
     private var searchQuery: SearchQuery? {
         didSet {
-            searchDelegate?.notesController(self, didSearch: searchQuery)
+            delegate?.notesController(self, didSearch: searchQuery)
         }
     }
 
@@ -57,10 +54,6 @@ class NoteListViewController: NSViewController {
     private var noteEditorViewController: NoteEditorViewController {
         SimplenoteAppDelegate.shared().noteEditorViewController
     }
-
-    /// Search Delegate
-    ///
-    weak var searchDelegate: NotesControllerSearchDelegate?
 
     /// Delegate
     ///

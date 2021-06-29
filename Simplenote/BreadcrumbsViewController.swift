@@ -14,7 +14,15 @@ class BreadcrumbsViewController: NSViewController {
     @IBOutlet private var statusTextField: NSTextField!
 
 
-    /// Status: Tags
+    /// Status: Search
+    ///
+    private var statusForSearch: String? {
+        didSet {
+            refreshStatus()
+        }
+    }
+
+    /// Status: Tag
     ///
     private var statusForTags = String() {
         didSet {
@@ -22,7 +30,7 @@ class BreadcrumbsViewController: NSViewController {
         }
     }
 
-    /// Status: Notes
+    /// Status: Note
     ///
     private var statusForNotes = String() {
         didSet {
@@ -102,6 +110,10 @@ extension BreadcrumbsViewController {
         statusForNotes = String()
     }
 
+    func notesControllerDidSearch(text: String?) {
+        statusForSearch = text
+    }
+
     func notesControllerDidSelectNote(_ note: Note) {
         note.ensurePreviewStringsAreAvailable()
 
@@ -134,19 +146,28 @@ extension BreadcrumbsViewController {
 private extension BreadcrumbsViewController {
 
     func refreshStatus() {
-        statusTextField.attributedStringValue = attributedStatusText()
+        statusTextField.attributedStringValue = attributedSearchText() ?? attributedPathText()
     }
 
-    func attributedStatusText() -> NSAttributedString {
-        let tagsStyle   = isTagsActive ? StatusStyle.activeStyle : StatusStyle.regularStyle
-        let notesStyle  = isTagsActive ? StatusStyle.regularStyle : StatusStyle.activeStyle
+    func attributedSearchText() -> NSAttributedString? {
+        guard let searchText = statusForSearch, !searchText.isEmpty else {
+            return nil
+        }
+
+        let text = NSLocalizedString("Searching", comment: "StatusBar Search Indicator") + .space + "\"" + searchText + "\""
+        return NSMutableAttributedString(string: text, attributes: StatusStyle.active)
+    }
+
+    func attributedPathText() -> NSAttributedString {
+        let tagsStyle   = isTagsActive ? StatusStyle.active : StatusStyle.regular
+        let notesStyle  = isTagsActive ? StatusStyle.regular : StatusStyle.active
         let output      = NSMutableAttributedString(string: statusForTags, attributes: tagsStyle)
 
         if statusForNotes.isEmpty {
             return output
         }
 
-        output += NSAttributedString(string: " / ", attributes: StatusStyle.regularStyle)
+        output += NSAttributedString(string: " / ", attributes: StatusStyle.regular)
         output += NSMutableAttributedString(string: statusForNotes, attributes: notesStyle)
 
         return output
@@ -157,18 +178,16 @@ private extension BreadcrumbsViewController {
 // MARK: - StatusStyle
 //
 private enum StatusStyle {
-    static let font = NSFont.systemFont(ofSize: 11, weight: .regular)
-
-    static var regularStyle: [NSAttributedString.Key : Any] {
+    static var regular: [NSAttributedString.Key : Any] {
         return [
-            .font:              StatusStyle.font,
+            .font:              Metrics.font,
             .foregroundColor:   NSColor.simplenoteStatusBarTextColor
         ]
     }
 
-    static var activeStyle: [NSAttributedString.Key : Any] {
+    static var active: [NSAttributedString.Key : Any] {
         return [
-            .font:              StatusStyle.font,
+            .font:              Metrics.font,
             .foregroundColor:   NSColor.simplenoteStatusBarHighlightedTextColor
         ]
     }
@@ -176,5 +195,6 @@ private enum StatusStyle {
 
 
 private enum Metrics {
+    static let font = NSFont.systemFont(ofSize: 11, weight: .regular)
     static let maximumTitleLength = 60
 }

@@ -1,4 +1,5 @@
 import Foundation
+import SimplenoteSearch
 import Simperium_OSX
 
 
@@ -75,7 +76,6 @@ extension SimplenoteAppDelegate {
 
     @objc
     func configureNotesController() {
-        noteListViewController.searchDelegate = noteEditorViewController
         noteListViewController.delegate = self
     }
 
@@ -487,6 +487,11 @@ extension SimplenoteAppDelegate: TagsControllerDelegate {
 
 
 extension SimplenoteAppDelegate: NotesControllerDelegate {
+
+    func notesController(_ controller: NoteListViewController, didSearch query: SearchQuery?) {
+        breadcrumbsViewController.notesControllerDidSearch(text: query?.searchText)
+        noteEditorViewController.refreshSearchResults(for: query)
+    }
 
     func notesController(_ controller: NoteListViewController, didSelect note: Note) {
         breadcrumbsViewController.notesControllerDidSelectNote(note)

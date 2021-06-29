@@ -311,11 +311,11 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - NotesControllerSearchDelegate
+// MARK: - Search API(s)
 //
-extension NoteEditorViewController: NotesControllerSearchDelegate {
+extension NoteEditorViewController {
 
-    func notesController(_ controller: NoteListViewController, didSearch query: SearchQuery?) {
+    func refreshSearchResults(for query: SearchQuery?) {
         searchQuery = query
         updateKeywordsHighlight()
     }
