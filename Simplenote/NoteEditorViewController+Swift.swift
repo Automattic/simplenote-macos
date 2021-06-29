@@ -34,7 +34,7 @@ extension NoteEditorViewController {
         NSLayoutConstraint.activate([
             tagsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             tagsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            tagsView.bottomAnchor.constraint(equalTo: noteEditor.bottomAnchor)
+            tagsView.topAnchor.constraint(equalTo: noteEditor.bottomAnchor)
         ])
     }
 
@@ -63,6 +63,7 @@ extension NoteEditorViewController {
     @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
+        clipView.contentInsets.bottom = SplitItemMetrics.editorContentBottomInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
     }
 }
