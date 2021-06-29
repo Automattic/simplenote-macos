@@ -646,15 +646,6 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Zgz-qj-sTm" userLabel="Tags View">
                                 <rect key="frame" x="0.0" y="0.0" width="528" height="48"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="K6m-2B-IQ0" userLabel="Bottom Divider View" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="47" width="528" height="1"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="6Tb-0t-bpO"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawsTopBorder" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </customView>
                                     <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="FMH-MU-LHX" customClass="HorizontalScrollView" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="23" y="13" width="482" height="25"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dTq-DR-Qae">
@@ -687,13 +678,10 @@
                                     </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="K6m-2B-IQ0" secondAttribute="trailing" id="6nG-9t-6hf"/>
                                     <constraint firstItem="FMH-MU-LHX" firstAttribute="leading" secondItem="Zgz-qj-sTm" secondAttribute="leading" constant="23" id="U46-vh-YjV"/>
-                                    <constraint firstItem="K6m-2B-IQ0" firstAttribute="top" secondItem="Zgz-qj-sTm" secondAttribute="top" id="ave-sr-zJV"/>
                                     <constraint firstAttribute="height" constant="48" id="bmN-kY-Bfy"/>
                                     <constraint firstItem="FMH-MU-LHX" firstAttribute="centerY" secondItem="Zgz-qj-sTm" secondAttribute="centerY" constant="-1" id="hCu-Di-KN9"/>
                                     <constraint firstAttribute="trailing" secondItem="FMH-MU-LHX" secondAttribute="trailing" constant="23" id="nDW-rY-kig"/>
-                                    <constraint firstItem="K6m-2B-IQ0" firstAttribute="leading" secondItem="Zgz-qj-sTm" secondAttribute="leading" id="sOu-TI-Rrf"/>
                                 </constraints>
                             </customView>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="wyB-gA-z62" userLabel="Header Effect View">
@@ -862,7 +850,6 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="RoF-0f-Ugm" id="U5O-mZ-5Kd"/>
-                        <outlet property="bottomDividerView" destination="K6m-2B-IQ0" id="NX8-nx-JVt"/>
                         <outlet property="clipView" destination="4oT-JU-wrs" id="6KU-5h-AY4"/>
                         <outlet property="headerDividerView" destination="LMj-Ag-ut7" id="cby-F8-k2W"/>
                         <outlet property="headerEffectView" destination="wyB-gA-z62" id="WlD-sQ-TGV"/>
