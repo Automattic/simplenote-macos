@@ -149,7 +149,7 @@ private extension BreadcrumbsViewController {
 // MARK: - StatusStyle
 //
 private enum StatusStyle {
-    static let font = NSFont.systemFont(ofSize: 12, weight: .medium)
+    static let font = NSFont.systemFont(ofSize: 11, weight: .regular)
 
     static var regularStyle: [NSAttributedString.Key : Any] {
         return [
