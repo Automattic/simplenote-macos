@@ -104,15 +104,22 @@ extension BreadcrumbsViewController {
 
     func notesControllerDidSelectNote(_ note: Note) {
         note.ensurePreviewStringsAreAvailable()
-        statusForNotes = note.titlePreview ?? ""
+
+        statusForNotes = {
+            let title   = note.titlePreview ?? ""
+            let clipped = String(title.prefix(Metrics.maximumTitleLength))
+            let suffix  = clipped.count < title.count ? "..." : ""
+
+            return clipped + suffix
+        }()
     }
 
     func notesControllerDidSelectNotes(_ notes: [Note]) {
-        statusForNotes = NSLocalizedString("Many Selected", comment: "Presented when there are multiple selected notes")
+        statusForNotes = NSLocalizedString("\(notes.count) Selected", comment: "Presented when there are multiple selected notes")
     }
 
     func notesControllerDidSelectZeroNotes() {
-        statusForNotes = NSLocalizedString("-", comment: "Presented when there are no selected notes")
+        statusForNotes = String()
     }
 
     func editorControllerUpdatedNote(_ note: Note) {
@@ -131,9 +138,9 @@ private extension BreadcrumbsViewController {
     }
 
     func attributedStatusText() -> NSAttributedString {
-        let tagsStyle = isTagsActive ? StatusStyle.activeStyle : StatusStyle.regularStyle
+        let tagsStyle   = isTagsActive ? StatusStyle.activeStyle : StatusStyle.regularStyle
         let notesStyle  = isTagsActive ? StatusStyle.regularStyle : StatusStyle.activeStyle
-        let output = NSMutableAttributedString(string: statusForTags, attributes: tagsStyle)
+        let output      = NSMutableAttributedString(string: statusForTags, attributes: tagsStyle)
 
         if statusForNotes.isEmpty {
             return output
@@ -165,4 +172,9 @@ private enum StatusStyle {
             .foregroundColor:   NSColor.simplenoteStatusBarHighlightedTextColor
         ]
     }
+}
+
+
+private enum Metrics {
+    static let maximumTitleLength = 60
 }
