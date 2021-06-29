@@ -9,16 +9,24 @@ class BreadcrumbsViewController: NSViewController {
     ///
     @IBOutlet private var backgroundView: BackgroundView!
 
-    /// Status: TextField
+    /// TextField: Search
     ///
-    @IBOutlet private var statusTextField: NSTextField!
+    @IBOutlet private var searchTextField: NSTextField!
+
+    /// TextField: Tag
+    ///
+    @IBOutlet private var tagTextField: NSTextField!
+
+    /// TextField: Note
+    ///
+    @IBOutlet private var noteTextField: NSTextField!
 
 
     /// Status: Search
     ///
-    private var statusForSearch: String? {
+    private var statusForSearch = String() {
         didSet {
-            refreshStatus()
+            refreshInterface()
         }
     }
 
@@ -26,7 +34,12 @@ class BreadcrumbsViewController: NSViewController {
     ///
     private var statusForTags = String() {
         didSet {
-            refreshStatus()
+            guard oldValue != statusForTags else {
+                return
+            }
+
+            statusForNotes = String()
+            refreshInterface()
         }
     }
 
@@ -34,15 +47,15 @@ class BreadcrumbsViewController: NSViewController {
     ///
     private var statusForNotes = String() {
         didSet {
-            refreshStatus()
+            refreshInterface()
         }
     }
 
     /// Responder Status
     ///
-    private var isTagsActive: Bool = false {
+    private var mustHighlightTags: Bool = false {
         didSet {
-            refreshStatus()
+            refreshInterface()
         }
     }
 
@@ -70,7 +83,7 @@ private extension BreadcrumbsViewController {
             return
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(themeDidChange), name: .ThemeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
@@ -84,6 +97,11 @@ private extension BreadcrumbsViewController {
 private extension BreadcrumbsViewController {
 
     @objc
+    func themeDidChange() {
+        refreshStyle()
+        refreshInterface()
+    }
+
     func refreshStyle() {
         backgroundView.drawsTopBorder = true
         backgroundView.borderColor = .simplenoteDividerColor
@@ -97,21 +115,21 @@ private extension BreadcrumbsViewController {
 extension BreadcrumbsViewController {
 
     func responderWasUpdated(isTagsActive: Bool) {
-        self.isTagsActive = isTagsActive
+        mustHighlightTags = isTagsActive
     }
 
     func tagsControllerDidUpdateFilter(_ filter: TagListFilter) {
-        let newStatusForTags = filter.title
-        guard newStatusForTags != statusForTags else {
-            return
-        }
-
         statusForTags = filter.title
-        statusForNotes = String()
     }
 
     func notesControllerDidSearch(text: String?) {
-        statusForSearch = text
+        statusForSearch = {
+            guard let text = text, !text.isEmpty else {
+                return ""
+            }
+
+            return NSLocalizedString("Searching", comment: "StatusBar Search Indicator") + .space + "\"" + text + "\""
+        }()
     }
 
     func notesControllerDidSelectNote(_ note: Note) {
@@ -145,55 +163,25 @@ extension BreadcrumbsViewController {
 //
 private extension BreadcrumbsViewController {
 
-    func refreshStatus() {
-        statusTextField.attributedStringValue = attributedSearchText() ?? attributedPathText()
-    }
+    func refreshInterface() {
+        let isSearchHidden          = statusForSearch.isEmpty
+        searchTextField.textColor   = .simplenoteStatusBarHighlightedTextColor
+        searchTextField.stringValue = statusForSearch
+        searchTextField.isHidden    = isSearchHidden
 
-    func attributedSearchText() -> NSAttributedString? {
-        guard let searchText = statusForSearch, !searchText.isEmpty else {
-            return nil
-        }
+        tagTextField.textColor      = mustHighlightTags ? .simplenoteStatusBarHighlightedTextColor : .simplenoteStatusBarTextColor
+        tagTextField.stringValue    = statusForTags
+        tagTextField.isHidden       = !isSearchHidden
 
-        let text = NSLocalizedString("Searching", comment: "StatusBar Search Indicator") + .space + "\"" + searchText + "\""
-        return NSMutableAttributedString(string: text, attributes: StatusStyle.active)
-    }
-
-    func attributedPathText() -> NSAttributedString {
-        let tagsStyle   = isTagsActive ? StatusStyle.active : StatusStyle.regular
-        let notesStyle  = isTagsActive ? StatusStyle.regular : StatusStyle.active
-        let output      = NSMutableAttributedString(string: statusForTags, attributes: tagsStyle)
-
-        if statusForNotes.isEmpty {
-            return output
-        }
-
-        output += NSAttributedString(string: " / ", attributes: StatusStyle.regular)
-        output += NSMutableAttributedString(string: statusForNotes, attributes: notesStyle)
-
-        return output
+        noteTextField.textColor     = mustHighlightTags ? .simplenoteStatusBarTextColor : .simplenoteStatusBarHighlightedTextColor
+        noteTextField.stringValue   = statusForNotes
+        noteTextField.isHidden      = !isSearchHidden
     }
 }
 
 
-// MARK: - StatusStyle
+// MARK: - Metrics
 //
-private enum StatusStyle {
-    static var regular: [NSAttributedString.Key : Any] {
-        return [
-            .font:              Metrics.font,
-            .foregroundColor:   NSColor.simplenoteStatusBarTextColor
-        ]
-    }
-
-    static var active: [NSAttributedString.Key : Any] {
-        return [
-            .font:              Metrics.font,
-            .foregroundColor:   NSColor.simplenoteStatusBarHighlightedTextColor
-        ]
-    }
-}
-
-
 private enum Metrics {
     static let font = NSFont.systemFont(ofSize: 11, weight: .regular)
     static let maximumTitleLength = 60

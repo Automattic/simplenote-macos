@@ -520,20 +520,54 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="La0-hZ-ZgT" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-IN-gUi">
-                                        <rect key="frame" x="10" y="7" width="52" height="14"/>
-                                        <textFieldCell key="cell" allowsUndo="NO" title="Yosemite" usesSingleLineMode="YES" id="nCt-Ge-AWn">
-                                            <font key="font" metaFont="system" size="11"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-Zy-2Tg">
+                                        <rect key="frame" x="12" y="0.0" width="90" height="28"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-IN-gUi" userLabel="SearchTextField">
+                                                <rect key="frame" x="-2" y="7" width="41" height="14"/>
+                                                <textFieldCell key="cell" allowsUndo="NO" title="Search" usesSingleLineMode="YES" id="nCt-Ge-AWn">
+                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvK-y1-tIA" userLabel="TagStatusField">
+                                                <rect key="frame" x="39" y="7" width="23" height="14"/>
+                                                <textFieldCell key="cell" allowsUndo="NO" title="Tag" usesSingleLineMode="YES" id="wqh-AR-wEU">
+                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afF-4l-Dvz" userLabel="NoteStatusField">
+                                                <rect key="frame" x="62" y="7" width="30" height="14"/>
+                                                <textFieldCell key="cell" allowsUndo="NO" title="Note" usesSingleLineMode="YES" id="XMY-cm-Ljb">
+                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="VNe-Th-ZKN"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="3vH-KB-MRu"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PLP-IN-gUi" secondAttribute="trailing" constant="12" id="KoD-BB-lVD"/>
-                                    <constraint firstItem="PLP-IN-gUi" firstAttribute="leading" secondItem="La0-hZ-ZgT" secondAttribute="leading" constant="12" id="NjP-Rg-9D8"/>
-                                    <constraint firstItem="PLP-IN-gUi" firstAttribute="centerY" secondItem="La0-hZ-ZgT" secondAttribute="centerY" id="lwc-S9-ub0"/>
+                                    <constraint firstItem="1pF-Zy-2Tg" firstAttribute="top" secondItem="La0-hZ-ZgT" secondAttribute="top" id="5gv-uq-55C"/>
+                                    <constraint firstAttribute="bottom" secondItem="1pF-Zy-2Tg" secondAttribute="bottom" id="8Qe-ZS-byG"/>
+                                    <constraint firstItem="1pF-Zy-2Tg" firstAttribute="leading" secondItem="La0-hZ-ZgT" secondAttribute="leading" constant="12" id="GEr-YL-UTk"/>
+                                    <constraint firstItem="1pF-Zy-2Tg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="La0-hZ-ZgT" secondAttribute="leading" constant="12" id="HgA-xK-ktY"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -546,7 +580,9 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="La0-hZ-ZgT" id="rz6-TB-W8i"/>
-                        <outlet property="statusTextField" destination="PLP-IN-gUi" id="l0Q-zD-80l"/>
+                        <outlet property="noteTextField" destination="afF-4l-Dvz" id="Jas-lE-uxT"/>
+                        <outlet property="searchTextField" destination="PLP-IN-gUi" id="Cbo-Qd-JXq"/>
+                        <outlet property="tagTextField" destination="VvK-y1-tIA" id="Yg9-eK-CK8"/>
                     </connections>
                 </viewController>
                 <customObject id="qkg-c8-hZz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
