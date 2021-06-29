@@ -28,6 +28,17 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupTagsView() {
+        scrollView.contentView.addSubview(tagsView)
+
+        NSLayoutConstraint.activate([
+            tagsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            tagsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            tagsView.bottomAnchor.constraint(equalTo: noteEditor.bottomAnchor)
+        ])
+    }
+
+    @objc
     func setupTagsField() {
         tagsField.delegate = self
         tagsField.focusRingType = .none
@@ -46,7 +57,7 @@ extension NoteEditorViewController {
 
     @objc
     func setupBottomInsets() {
-        tagsViewBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
+        editorBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
     }
 
     @objc
