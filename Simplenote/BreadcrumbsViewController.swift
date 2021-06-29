@@ -5,13 +5,14 @@ import Foundation
 //
 class BreadcrumbsViewController: NSViewController {
 
-    /// Status Label
-    ///
-    @IBOutlet private var statusTextField: NSTextField!
-
     /// Background
     ///
     @IBOutlet private var backgroundView: BackgroundView!
+
+    /// Status: TextField
+    ///
+    @IBOutlet private var statusTextField: NSTextField!
+
 
     /// Status: Tags
     ///
