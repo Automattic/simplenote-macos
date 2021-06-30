@@ -29,16 +29,16 @@ extension NoteEditorViewController {
 
     @objc
     func setupTagsView() {
-        /// # Important:
+        /// - Important:
         ///     1.  `NSClipView` was really meant to handle a single subview
         ///     2.  As it turns out, embedding the `SPTextView` inside a `NSView` (and making it the `NSClipView.documentView`) brings in several side effects
         ///     3.  For simplicity reasons, our `NSClipView.documentView` is set to the `SPTextView`
         ///     4.  We're also injecting the `TagsView` as a subview to our `NSClipView`
         ///     5.  Adding `contentInsets.bottom` allows the `TagsView` to be visualized. But `NSClipView` does not relay mouse events to this second "extra" subview
         ///
-        /// # Workaround:
-        ///     1. We've increased the `textContainerInset.height` (which affects both top/bottom)
-        ///     2. We've compensated for this "extra" top inset (caused by the new `textContainerInset.height` by adjusting `SplitItemMetrics.editorContentTopInset`
+        /// - Workaround:
+        ///     1.  We've increased the `textContainerInset.height` (which affects both top/bottom)
+        ///     2.  We've compensated for this "extra" top inset (caused by the new `textContainerInset.height` by adjusting `SplitItemMetrics.editorContentTopInset`
         ///
         scrollView.contentView.addSubview(tagsView)
 
