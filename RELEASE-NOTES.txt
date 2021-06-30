@@ -1,6 +1,7 @@
 2.14
 -----
 - New Status Bar: Lets you quickly know what's your Tags / Notes selection #979
+- The new Status Bar can also be hidden via Settings #988
 - Tags Editor is now scrollable, making more room for the editor when appropriate #987
 
 2.13
