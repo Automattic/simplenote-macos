@@ -24,6 +24,12 @@ class SplitViewController: NSSplitViewController {
         notesSplitItem.isCollapsed
     }
 
+    /// Indicates if the Tag List is collapsed
+    ///
+    var isTagsCollapsed: Bool {
+        tagsSplitItem.isCollapsed
+    }
+
 
     // MARK: - Overridden Methods
 
