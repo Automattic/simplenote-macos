@@ -12,6 +12,7 @@ extension UserDefaults {
         case notesListCondensed = "kPreviewLinesPref"
         case notesListSortMode
         case notesListSortModeLegacy = "kAlphabeticalSortPreferencesKey"
+        case statusBarHidden
         case themeName = "VSThemeManagerThemePrefKey"
     }
 }

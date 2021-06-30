@@ -10,5 +10,6 @@ NSString * const AppleInterfaceThemeChangedNotification = @"AppleInterfaceThemeC
 NSString * const EditorDisplayModeDidChangeNotification     = @"EditorDisplayModeDidChangeNotification";
 NSString * const NoteListDisplayModeDidChangeNotification   = @"NoteListDisplayModeDidChangeNotification";
 NSString * const NoteListSortModeDidChangeNotification      = @"NoteListSortModeDidChangeNotification";
+NSString * const StatusBarDisplayModeDidChangeNotification  = @"StatusBarDisplayModeDidChangeNotification";
 NSString * const TagSortModeDidChangeNotification           = @"TagSortModeDidChangeNotification";
 NSString * const ThemeDidChangeNotification                 = @"ThemeDidChangeNotification";

@@ -11,5 +11,6 @@ extern NSString * const AppleInterfaceThemeChangedNotification;
 extern NSString * const EditorDisplayModeDidChangeNotification;
 extern NSString * const NoteListDisplayModeDidChangeNotification;
 extern NSString * const NoteListSortModeDidChangeNotification;
+extern NSString * const StatusBarDisplayModeDidChangeNotification;
 extern NSString * const TagSortModeDidChangeNotification;
 extern NSString * const ThemeDidChangeNotification;
