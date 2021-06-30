@@ -243,6 +243,10 @@ extension SimplenoteAppDelegate {
         noteEditorViewController.toggleMarkdownView(sender)
         SPTracker.trackShortcutToggleMarkdownPreview()
     }
+
+    @IBAction
+    func toggleStatusBarAction(_ sender: Any) {
+    }
 }
 
 
@@ -340,6 +344,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .sidebarMenuItem:
             return validateSidebarMenuItem(menuItem)
 
+        case .statusBarMenuItem:
+            return validateStatusBarMenuItem(menuItem)
+
         case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
             return validateNotesDisplayMenuItem(menuItem)
 
@@ -401,6 +408,13 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.title = splitViewController.isTagsCollapsed
                         ? NSLocalizedString("Show Sidebar", comment: "macOS MenuItem that causes the Tag List to be presented")
                         : NSLocalizedString("Hide Sidebar", comment: "macOS MenuItem that causes the Tag List to be hidden")
+        return true
+    }
+
+    func validateStatusBarMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = Options.shared.statusBarHidden
+                        ? NSLocalizedString("Show Status Bar", comment: "macOS MenuItem that causes the Status Bar to be visible")
+                        : NSLocalizedString("Hide Status Bar", comment: "macOS MenuItem that causes the Status Bar to be hidden")
         return true
     }
 

@@ -603,6 +603,12 @@
                                     <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Show Status Bar" identifier="statusBarMenuItem" id="JXy-Aq-Sr2">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="toggleStatusBarAction:" target="494" id="Efi-XN-3IF"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="cCS-jM-ycR"/>
                             <menuItem title="Enter Full Screen" keyEquivalent="f" id="1324">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
