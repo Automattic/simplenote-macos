@@ -95,7 +95,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self setupStatusImageView];
     [self setupTagsField];
     [self setupTagsView];
-    [self setupBottomInsets];
 
     // Interlinks
     [self setupInterlinksProcessor];
@@ -111,12 +110,14 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [nc addObserver:self selector:@selector(tagUpdated:) name:TagListDidUpdateTagNotification object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
     [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
+    [nc addObserver:self selector:@selector(statusbarWasUpdated:) name:StatusBarDisplayModeDidChangeNotification object:nil];
 
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
 
     [self refreshStyle];
     [self refreshInterface];
+    [self refreshBottomInsets];
 }
 
 - (void)viewWillLayout
@@ -251,6 +252,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (void)displayModeWasUpdated:(NSNotification *)notification
 {
     self.view.needsLayout = YES;
+}
+
+- (void)statusbarWasUpdated:(NSNotification *)notification
+{
+    [self refreshBottomInsets];
 }
 
 

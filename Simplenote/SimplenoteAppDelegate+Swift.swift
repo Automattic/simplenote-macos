@@ -246,6 +246,11 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func toggleStatusBarAction(_ sender: Any) {
+        let isHidden = !Options.shared.statusBarHidden
+        splitViewController.refreshStatusBarItem(collapsed: isHidden)
+        Options.shared.statusBarHidden = isHidden
+
+        SPTracker.trackSettingsStatusBarDisplayMode(hidden: isHidden)
     }
 }
 

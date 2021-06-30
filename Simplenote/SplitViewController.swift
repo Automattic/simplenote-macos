@@ -6,6 +6,10 @@ import Foundation
 @objc
 class SplitViewController: NSSplitViewController {
 
+    /// StatusBar
+    ///
+    private weak var statusBarView: NSView?
+
     /// State FSM: Represents the current Display Mode
     ///
     private var state: SplitState = .everything {
@@ -117,6 +121,7 @@ extension SplitViewController {
     func insertSplitViewStatusBar(_ statusBarViewController: NSViewController) {
         let statusBarView = statusBarViewController.view
         view.addSubview(statusBarView)
+        self.statusBarView = statusBarView
 
         let notesView = splitViewItem(ofKind: .notes).viewController.view
         let editorView = splitViewItem(ofKind: .editor).viewController.view
@@ -127,6 +132,12 @@ extension SplitViewController {
             statusBarView.trailingAnchor.constraint(equalTo: editorView.trailingAnchor),
             statusBarView.bottomAnchor.constraint(equalTo: editorView.bottomAnchor)
         ])
+    }
+
+    /// Displays (or) collapses the StatusBarItem
+    ///
+    func refreshStatusBarItem(collapsed: Bool) {
+        statusBarView?.isHidden = collapsed
     }
 }
 

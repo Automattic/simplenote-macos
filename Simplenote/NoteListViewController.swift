@@ -88,9 +88,9 @@ class NoteListViewController: NSViewController {
         setupSearchField()
         setupHeaderView()
         setupTableView()
-        setupBottomInsets()
         startListeningToNotifications()
         startListControllerSync()
+        refreshBottomInsets()
 
         refreshStyle()
         refreshEverything()
@@ -192,10 +192,10 @@ private extension NoteListViewController {
         searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
     }
 
-    /// Setup: Bottom ScrollView Insets
+    /// Refreshes the Bottom Insets: Making room for the StatusBar (if needed)
     ///
-    func setupBottomInsets() {
-        scrollViewBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
+    func refreshBottomInsets() {
+        scrollViewBottomConstraint.constant = Options.shared.statusBarHidden ? .zero : SplitItemMetrics.breadcrumbsViewHeight
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -770,6 +770,7 @@ extension NoteListViewController {
         // Notifications: Settings
         nc.addObserver(self, selector: #selector(displayModeDidChange), name: .NoteListDisplayModeDidChange, object: nil)
         nc.addObserver(self, selector: #selector(sortModeDidChange), name: .NoteListSortModeDidChange, object: nil)
+        nc.addObserver(self, selector: #selector(statusbarDidChange), name: .StatusBarDisplayModeDidChange, object: nil)
     }
 
     @objc
@@ -792,6 +793,11 @@ extension NoteListViewController {
     @objc
     func sortModeDidChange(_ note: Notification) {
         refreshEverything()
+    }
+
+    @objc
+    func statusbarDidChange(_ note: Notification) {
+        refreshBottomInsets()
     }
 
     @objc
