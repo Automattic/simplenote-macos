@@ -10,8 +10,8 @@ enum SplitItemMetrics {
     private static let sidebarTopInsetBigSur = CGFloat(62)
 
     /// Editor: Content Insets
-    private static let editorContentTopInsetLegacy = CGFloat(38)
-    private static let editorContentTopInsetBigSur = CGFloat(48)
+    private static let editorContentTopInsetLegacy = CGFloat(-10) // Standard (38pt) minus editorContentBottomInset
+    private static let editorContentTopInsetBigSur = CGFloat.zero // Standard (48pt) minus editorContentBottomInset
 
     
     /// Sidebar Insets: Tags + Notes Lists
