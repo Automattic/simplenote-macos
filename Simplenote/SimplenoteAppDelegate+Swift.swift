@@ -337,6 +337,9 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .focusMenuItem:
             return validateFocusMenuItem(menuItem)
 
+        case .sidebarMenuItem:
+            return validateSidebarMenuItem(menuItem)
+
         case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
             return validateNotesDisplayMenuItem(menuItem)
 
@@ -392,6 +395,13 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.state = isFocusModeEnabled ? .on : .off
 
         return isFocusModeEnabled || noteEditorViewController.isDisplayingNote
+    }
+
+    func validateSidebarMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = splitViewController.isTagsCollapsed
+                        ? NSLocalizedString("Show Sidebar", comment: "macOS MenuItem that causes the Tag List to be presented")
+                        : NSLocalizedString("Hide Sidebar", comment: "macOS MenuItem that causes the Tag List to be hidden")
+        return true
     }
 
     func validateNotesDisplayMenuItem(_ item: NSMenuItem) -> Bool {
