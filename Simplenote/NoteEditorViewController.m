@@ -108,7 +108,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.inputHandler = [TextViewInputHandler new];
 
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(tagUpdated:) name:TagListDidUpdateTagNotification object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
     [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
 
@@ -236,11 +235,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     self.statusTextField.stringValue = text ?: @"";
     self.statusImageView.hidden = shouldHideImage;
-}
-
-- (void)tagUpdated:(NSNotification *)notification
-{
-    [self refreshTagsField];
 }
 
 - (void)simperiumWillSave:(NSNotification *)notification

@@ -110,8 +110,16 @@ extension SplitViewController {
     ///
     func insertSplitViewStatusBar(_ statusBarViewController: NSViewController) {
         let statusBarView = statusBarViewController.view
-        view.addSubview(statusBarView)
 
+        statusBarViewController.viewWillAppear()
+        view.addSubview(statusBarView)
+        attachStatusBarView(statusBarView)
+        statusBarViewController.viewDidAppear()
+    }
+
+    /// Attaches a StatusBarView at the bottom of the UI (in between the Notes / Editor items)
+    ///
+    private func attachStatusBarView(_ statusBarView: NSView) {
         let notesView = splitViewItem(ofKind: .notes).viewController.view
         let editorView = splitViewItem(ofKind: .editor).viewController.view
 

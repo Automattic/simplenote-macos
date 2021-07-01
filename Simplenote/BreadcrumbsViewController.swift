@@ -64,6 +64,10 @@ class BreadcrumbsViewController: NSViewController {
         }
     }
 
+    /// Indicates if there's a User Tag being presented (false indicates system filter!)
+    ///
+    private var isUserTagSelected: Bool = false
+
 
     // MARK: - Lifecycle
 
@@ -75,6 +79,11 @@ class BreadcrumbsViewController: NSViewController {
         super.viewDidLoad()
         startListeningToNotifications()
         refreshStyle()
+    }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        refreshRTLSupport()
     }
 }
 
@@ -119,6 +128,21 @@ extension BreadcrumbsViewController {
 
     func tagsControllerDidUpdateFilter(_ filter: TagListFilter) {
         statusForTags = filter.title
+        isUserTagSelected = {
+            guard case .tag(_) = filter else {
+                return false
+            }
+
+            return true
+        }()
+    }
+
+    func tagsControllerDidRenameTag(oldName: String, newName: String) {
+        guard statusForTags == oldName, isUserTagSelected else {
+            return
+        }
+
+        statusForTags = newName
     }
 
     func notesControllerDidSearch(text: String?) {
@@ -186,6 +210,17 @@ private extension BreadcrumbsViewController {
         backgroundView.borderColor = .simplenoteDividerColor
         backgroundView.fillColor = .simplenoteStatusBarBackgroundColor
     }
+
+    func refreshRTLSupport() {
+        let isRTL        = view.window?.isRTL ?? false
+        let isNotRotated = noteImageView.boundsRotation != Metrics.rotation180Degrees
+
+        guard isRTL, isNotRotated else {
+            return
+        }
+
+        noteImageView.rotate(byDegrees: Metrics.rotation180Degrees)
+    }
 }
 
 
@@ -194,4 +229,5 @@ private extension BreadcrumbsViewController {
 private enum Metrics {
     static let font = NSFont.systemFont(ofSize: 11, weight: .regular)
     static let maximumTitleLength = 60
+    static let rotation180Degrees = CGFloat(180)
 }
