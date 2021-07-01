@@ -45,8 +45,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 @property (nonatomic, strong) Storage                   *storage;
 @property (nonatomic, strong) TextViewInputHandler      *inputHandler;
 
-@property (nonatomic, assign) BOOL                      viewingTrash;
-
 @end
 
 
@@ -96,6 +94,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self setupScrollView];
     [self setupStatusImageView];
     [self setupTagsField];
+    [self setupBottomInsets];
 
     // Interlinks
     [self setupInterlinksProcessor];
@@ -108,9 +107,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.inputHandler = [TextViewInputHandler new];
 
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(trashDidLoad:) name:TagListDidBeginViewingTrashNotification object:nil];
-    [nc addObserver:self selector:@selector(tagsDidLoad:) name:TagListDidBeginViewingTagNotification object:nil];
-    [nc addObserver:self selector:@selector(tagUpdated:) name:TagListDidUpdateTagNotification object:nil];
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
     [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
 
@@ -240,27 +236,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     self.statusImageView.hidden = shouldHideImage;
 }
 
-- (void)trashDidLoad:(NSNotification *)notification
-{
-    self.viewingTrash = YES;
-    [self refreshEditorActions];
-    [self refreshToolbarActions];
-    [self refreshTagsFieldActions];
-}
-
-- (void)tagsDidLoad:(NSNotification *)notification
-{
-    self.viewingTrash = NO;
-    [self refreshEditorActions];
-    [self refreshToolbarActions];
-    [self refreshTagsFieldActions];
-}
-
-- (void)tagUpdated:(NSNotification *)notification
-{
-    [self refreshTagsField];
-}
-
 - (void)simperiumWillSave:(NSNotification *)notification
 {
 	[self save];
@@ -307,9 +282,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     
     [self.saveTimer invalidate];
     self.saveTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(saveAndSync:) userInfo:nil repeats:NO];
-    
-    // Update the note list preview
-    [self.noteActionsDelegate editorController:self updatedNoteWithSimperiumKey:self.note.simperiumKey];
+
+    [self.editorDelegate editorController:self updatedNoteContents:self.note];
 }
 
 - (void)textViewDidChangeSelection:(NSNotification *)notification

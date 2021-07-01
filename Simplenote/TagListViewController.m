@@ -17,11 +17,6 @@
 
 
 
-NSString * const TagListDidBeginViewingTagNotification      = @"TagListDidBeginViewingTagNotification";
-NSString * const TagListDidUpdateTagNotification            = @"TagListDidUpdateTagNotification";
-NSString * const TagListDidUpdateTagOldNameKey              = @"OldTag";
-NSString * const TagListDidUpdateTagNewNameKey              = @"NewTag";
-NSString * const TagListDidBeginViewingTrashNotification    = @"TagListDidBeginViewingTrashNotification";
 NSString * const TagListDidEmptyTrashNotification           = @"TagListDidEmptyTrashNotification";
 CGFloat const TagListEstimatedRowHeight                     = 30;
 
@@ -72,6 +67,15 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     [self loadTags];
     [self applyStyle];
+}
+
+- (void)viewWillAppear
+{
+    [super viewWillAppear];
+
+    // Workaround: Triggering this notification right here helps us avoid timming issues between Storyboard
+    // Instantiation and delegate setup.
+    [self notifyTagsListFilterDidChange];
 }
 
 - (void)viewWillLayout
@@ -258,11 +262,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     renamedTag.name = newTagName;
     [self.simperium save];
 
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo:@{
-        TagListDidUpdateTagNewNameKey: newTagName,
-        TagListDidUpdateTagOldNameKey: oldTagName
-    }];
+    [self.delegate tagsControllerDidRenameTag:self oldName:oldTagName newName:newTagName];
 }
 
 - (void)deleteTag:(Tag *)tag
@@ -296,9 +296,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
         [self selectTag:selectedTag];
 	}
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:TagListDidUpdateTagNotification object:self userInfo: @{
-        TagListDidUpdateTagOldNameKey: tagName
-    }];
+    [self.delegate tagsControllerDidDeleteTag:self name:tagName];
 }
 
 

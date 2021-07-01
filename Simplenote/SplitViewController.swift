@@ -98,6 +98,38 @@ extension SplitViewController {
         let splitItem = splitViewItem(ofKind: kind)
         splitItem.animator().isCollapsed = collapsed
     }
+
+    /// Inserts the specified ViewController at the bottom of the view hierarchy.
+    ///
+    /// - Important:
+    ///   The newly inserted Item will be anchored between the Notes List / Editor, and is expected to float above the separators.
+    ///   Nope, there's no official API to do this. It essentially breaks the concept of SplitViewItem.
+    ///
+    /// - Note:
+    ///   We're not using ViewController containment since the superclass appears to override `addChild`, and we end up with a fourth SplitView Item.
+    ///
+    func insertSplitViewStatusBar(_ statusBarViewController: NSViewController) {
+        let statusBarView = statusBarViewController.view
+
+        statusBarViewController.viewWillAppear()
+        view.addSubview(statusBarView)
+        attachStatusBarView(statusBarView)
+        statusBarViewController.viewDidAppear()
+    }
+
+    /// Attaches a StatusBarView at the bottom of the UI (in between the Notes / Editor items)
+    ///
+    private func attachStatusBarView(_ statusBarView: NSView) {
+        let notesView = splitViewItem(ofKind: .notes).viewController.view
+        let editorView = splitViewItem(ofKind: .editor).viewController.view
+
+        statusBarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusBarView.leadingAnchor.constraint(equalTo: notesView.leadingAnchor),
+            statusBarView.trailingAnchor.constraint(equalTo: editorView.trailingAnchor),
+            statusBarView.bottomAnchor.constraint(equalTo: editorView.bottomAnchor)
+        ])
+    }
 }
 
 

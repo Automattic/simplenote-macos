@@ -4,6 +4,14 @@ import SimplenoteInterlinks
 import SimplenoteSearch
 
 
+// MARK: - EditorControllerDelegate
+//
+@objc
+protocol EditorControllerDelegate: AnyObject {
+    func editorController(_ controller: NoteEditorViewController, updatedNoteContents: Note)
+}
+
+
 // MARK: - Interface Initialization
 //
 extension NoteEditorViewController {
@@ -37,6 +45,11 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupBottomInsets() {
+        tagsViewBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
+    }
+
+    @objc
     func refreshScrollInsets() {
         clipView.contentInsets.top = SplitItemMetrics.editorContentTopInset
         scrollView.scrollerInsets.top = SplitItemMetrics.editorScrollerTopInset
@@ -47,10 +60,26 @@ extension NoteEditorViewController {
 // MARK: - Public
 //
 extension NoteEditorViewController {
+
     /// Makes editor first responder
     ///
     func focus() {
         view.window?.makeFirstResponder(noteEditor)
+    }
+
+    func tagsControllerDidUpdateFilter(_ newFilter: TagListFilter) {
+        viewingTrash = newFilter == .deleted
+        refreshEditorActions()
+        refreshToolbarActions()
+        refreshTagsFieldActions()
+    }
+
+    func tagsControllerDidRenameTag(oldName: String, newName: String) {
+        refreshTagsField()
+    }
+
+    func tagsControllerDidDeleteTag(name: String) {
+        refreshTagsField()
     }
 }
 
@@ -290,11 +319,11 @@ extension NoteEditorViewController {
 }
 
 
-// MARK: - ToolbarDelegate
+// MARK: - Search API(s)
 //
-extension NoteEditorViewController: NoteListSearchDelegate {
+extension NoteEditorViewController {
 
-    func notesListViewControllerDidSearch(_ query: SearchQuery?) {
+    func refreshSearchResults(for query: SearchQuery?) {
         searchQuery = query
         updateKeywordsHighlight()
     }

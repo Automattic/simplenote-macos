@@ -22,6 +22,7 @@
 @class SearchMapView;
 @class SearchQuery;
 @class NoteEditorMetadataCache;
+@protocol EditorControllerDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,13 +34,12 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 
 
 
-#pragma mark - NoteEditorControllerDelegate
+#pragma mark - Editor Protocols
 
 @protocol EditorControllerNoteActionsDelegate <NSObject>
 - (void)editorController:(NoteEditorViewController *)controller addedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller pinnedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller restoredNoteWithSimperiumKey:(NSString *)simperiumKey;
-- (void)editorController:(NoteEditorViewController *)controller updatedNoteWithSimperiumKey:(NSString *)simperiumKey;
 - (void)editorController:(NoteEditorViewController *)controller deletedNoteWithSimperiumKey:(NSString *)simperiumKey;
 @end
 
@@ -65,16 +65,18 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong) IBOutlet NSScrollView                             *scrollView;
 @property (nonatomic, strong) IBOutlet NSClipView                               *clipView;
 @property (nonatomic, strong) IBOutlet TagsField                                *tagsField;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint                       *tagsViewBottomConstraint;
 
 @property (nonatomic, strong, readonly) MarkdownViewController                  *markdownViewController;
 @property (nonatomic, strong, readonly) Storage                                 *storage;
 @property (nonatomic, strong, readonly) NSArray<Note *>                         *selectedNotes;
-@property (nonatomic, assign, readonly) BOOL                                    viewingTrash;
 @property (nonatomic, strong, nullable) NSLayoutConstraint                      *sidebarSemaphoreLeadingConstraint;
+@property (nonatomic, assign) BOOL                                              viewingTrash;
 @property (nonatomic, strong) InterlinkProcessor                                *interlinkProcessor;
 @property (nonatomic,   weak) Note                                              *note;
 @property (nonatomic,   weak) id<EditorControllerNoteActionsDelegate>           noteActionsDelegate;
 @property (nonatomic,   weak) id<EditorControllerTagActionsDelegate>            tagActionsDelegate;
+@property (nonatomic,   weak) id<EditorControllerDelegate>                      editorDelegate;
 @property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
 @property (nonatomic, strong, nonnull) NoteEditorMetadataCache                  *metadataCache;
 

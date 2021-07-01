@@ -2,10 +2,13 @@ import Foundation
 import SimplenoteSearch
 
 
-// MARK: - NoteListSearchDelegate
+// MARK: - NotesControllerDelegate
 //
-protocol NoteListSearchDelegate: AnyObject {
-    func notesListViewControllerDidSearch(_ query: SearchQuery?)
+protocol NotesControllerDelegate: AnyObject {
+    func notesController(_ controller: NoteListViewController, didSearch query: SearchQuery?)
+    func notesController(_ controller: NoteListViewController, didSelect note: Note)
+    func notesController(_ controller: NoteListViewController, didSelect notes: [Note])
+    func notesControllerDidSelectZeroNotes(_ controller: NoteListViewController)
 }
 
 
@@ -28,6 +31,7 @@ class NoteListViewController: NSViewController {
     @IBOutlet private var addNoteButton: NSButton!
     @IBOutlet private var noteListMenu: NSMenu!
     @IBOutlet private var trashListMenu: NSMenu!
+    @IBOutlet private var scrollViewBottomConstraint: NSLayoutConstraint!
 
     /// Layout
     ///
@@ -41,7 +45,7 @@ class NoteListViewController: NSViewController {
     ///
     private var searchQuery: SearchQuery? {
         didSet {
-            searchDelegate?.notesListViewControllerDidSearch(searchQuery)
+            delegate?.notesController(self, didSearch: searchQuery)
         }
     }
 
@@ -51,9 +55,10 @@ class NoteListViewController: NSViewController {
         SimplenoteAppDelegate.shared().noteEditorViewController
     }
 
-    /// Search Listener
+    /// Delegate
     ///
-    weak var searchDelegate: NoteListSearchDelegate?
+    weak var delegate: NotesControllerDelegate?
+
 
     var isActive: Bool = false {
         didSet {
@@ -83,6 +88,7 @@ class NoteListViewController: NSViewController {
         setupSearchField()
         setupHeaderView()
         setupTableView()
+        setupBottomInsets()
         startListeningToNotifications()
         startListControllerSync()
 
@@ -141,6 +147,33 @@ extension NoteListViewController {
 }
 
 
+// MARK: - Public
+//
+extension NoteListViewController {
+
+    func tagsControllerDidUpdateFilter(_ newFilter: TagListFilter) {
+        dismissSearch()
+        refreshEverything()
+    }
+
+    func tagsControllerDidRenameTag(oldName: String, newName: String) {
+        tagWasUpdatedOrDeleted(name: oldName)
+    }
+
+    func tagsControllerDidDeleteTag(name: String) {
+        tagWasUpdatedOrDeleted(name: name)
+    }
+
+    private func tagWasUpdatedOrDeleted(name: String) {
+        guard case let .tag(currentTagName) = listController.filter, currentTagName == name else {
+            return
+        }
+
+        refreshEverything()
+    }
+}
+
+
 // MARK: - Interface Initialization
 //
 private extension NoteListViewController {
@@ -173,6 +206,12 @@ private extension NoteListViewController {
     func setupSearchField() {
         searchField.centersPlaceholder = false
         searchField.placeholder = NSLocalizedString("Search notes", comment: "Search Field Placeholder")
+    }
+
+    /// Setup: Bottom ScrollView Insets
+    ///
+    func setupBottomInsets() {
+        scrollViewBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
     }
 
     /// Refreshes the Top Content Insets: We'll match the Notes List Insets
@@ -381,17 +420,17 @@ private extension NoteListViewController {
     private func refreshPresentedNote() {
         let selectedNotes = self.selectedNotes
         guard selectedNotes.count > .zero else {
-            noteEditorViewController.displayNote(nil)
+            delegate?.notesControllerDidSelectZeroNotes(self)
             return
         }
 
         guard selectedNotes.count == 1, let targetNote = selectedNotes.first else {
-            noteEditorViewController.display(selectedNotes)
+            delegate?.notesController(self, didSelect: selectedNotes)
             return
         }
 
         SPTracker.trackListNoteOpened()
-        noteEditorViewController.displayNote(targetNote)
+        delegate?.notesController(self, didSelect: targetNote)
     }
 }
 
@@ -615,10 +654,6 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     public func editorController(_ controller: NoteEditorViewController, restoredNoteWithSimperiumKey simperiumKey: String) {
         // NO-OP
     }
-
-    public func editorController(_ controller: NoteEditorViewController, updatedNoteWithSimperiumKey simperiumKey: String) {
-        // NO-OP
-    }
 }
 
 
@@ -745,11 +780,6 @@ extension NoteListViewController {
         // Notifications: ClipView
         nc.addObserver(self, selector: #selector(clipViewDidScroll), name: NSView.boundsDidChangeNotification, object: clipView)
 
-        // Notifications: Tags
-        nc.addObserver(self, selector: #selector(didBeginViewingTag), name: .TagListDidBeginViewingTag, object: nil)
-        nc.addObserver(self, selector: #selector(didBeginViewingTrash), name: .TagListDidBeginViewingTrash, object: nil)
-        nc.addObserver(self, selector: #selector(didUpdateTag), name: .TagListDidUpdateTag, object: nil)
-
         // Notifications: Settings
         nc.addObserver(self, selector: #selector(displayModeDidChange), name: .NoteListDisplayModeDidChange, object: nil)
         nc.addObserver(self, selector: #selector(sortModeDidChange), name: .NoteListSortModeDidChange, object: nil)
@@ -774,32 +804,6 @@ extension NoteListViewController {
 
     @objc
     func sortModeDidChange(_ note: Notification) {
-        refreshEverything()
-    }
-
-    @objc
-    func didBeginViewingTag(_ note: Notification) {
-        SPTracker.trackTagRowPressed()
-        dismissSearch()
-        refreshEverything()
-    }
-
-    @objc
-    func didBeginViewingTrash(_ note: Notification) {
-        SPTracker.trackListTrashPressed()
-        dismissSearch()
-        refreshEverything()
-    }
-
-    @objc
-    func didUpdateTag(_ note: Notification) {
-        guard case let .tag(name) = listController.filter,
-              let oldName = note.userInfo?[TagListDidUpdateTagOldNameKey] as? String,
-              name == oldName
-        else {
-            return
-        }
-
         refreshEverything()
     }
 }

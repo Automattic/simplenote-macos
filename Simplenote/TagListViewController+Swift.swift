@@ -1,6 +1,17 @@
 import Foundation
 
 
+
+// MARK: - TagListDelegate
+//
+@objc
+protocol TagsControllerDelegate: AnyObject {
+    func tagsControllerDidUpdateFilter(_ controller: TagListViewController)
+    func tagsControllerDidRenameTag(_ controller: TagListViewController, oldName: String, newName: String)
+    func tagsControllerDidDeleteTag(_ controller: TagListViewController, name: String)
+}
+
+
 // MARK: - Interface Initialization
 //
 extension TagListViewController {
@@ -116,15 +127,23 @@ extension TagListViewController {
         headerSeparatorView.alphaValue = alphaForHeaderSeparatorView
     }
 
+    @objc
+    func notifyTagsListFilterDidChange() {
+        delegate?.tagsControllerDidUpdateFilter(self)
+    }
+
     private var alphaForHeaderSeparatorView: CGFloat {
         let absoluteOffSetY = scrollView.documentVisibleRect.origin.y + clipView.contentInsets.top
         return min(max(absoluteOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 
-    private func notifyTagsListFilterDidChange() {
-        let isViewingTrash = selectedFilter == .deleted
-        let name: NSNotification.Name = isViewingTrash ? .TagListDidBeginViewingTrash : .TagListDidBeginViewingTag
-        NotificationCenter.default.post(name: name, object: self)
+    private func trackTagsFilterDidChange() {
+        guard selectedFilter == .deleted else {
+            SPTracker.trackTagRowPressed()
+            return
+        }
+
+        SPTracker.trackListTrashPressed()
     }
 }
 
@@ -184,6 +203,7 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
         }
 
         notifyTagsListFilterDidChange()
+        trackTagsFilterDidChange()
     }
 }
 

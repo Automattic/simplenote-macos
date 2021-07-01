@@ -17,6 +17,11 @@ extension NSImage.Name {
     ///
     static let cross = NSImage.Name("button_cross")
 
+    /// Disclosure: Right
+    ///
+    static let disclosureRight = NSImage.Name("icon_disclosure_right")
+
+
     /// Toolbar: History
     ///
     static let history = NSImage.Name("button_history")

@@ -15,6 +15,7 @@
 @class NoteEditorViewController;
 @class TagListViewController;
 @class SplitViewController;
+@class BreadcrumbsViewController;
 @class AccountVerificationCoordinator;
 @class VersionsController;
 @class NoteEditorMetadataCache;
@@ -39,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) TagListViewController                         *tagListViewController;
 @property (strong, nonatomic) NoteListViewController                        *noteListViewController;
 @property (strong, nonatomic) NoteEditorViewController                      *noteEditorViewController;
+@property (strong, nonatomic) BreadcrumbsViewController                     *breadcrumbsViewController;
 
 @property (strong, nonatomic) AccountVerificationCoordinator                *verificationCoordinator;
 @property (strong, nonatomic) VersionsController                            *versionsController;

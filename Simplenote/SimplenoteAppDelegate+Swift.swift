@@ -1,4 +1,5 @@
 import Foundation
+import SimplenoteSearch
 import Simperium_OSX
 
 
@@ -38,6 +39,7 @@ extension SimplenoteAppDelegate {
 
         mainWindowController = storyboard.instantiateWindowController(ofType: MainWindowController.self)
         splitViewController = storyboard.instantiateViewController(ofType: SplitViewController.self)
+        breadcrumbsViewController = storyboard.instantiateViewController(ofType: BreadcrumbsViewController.self)
         tagListViewController = storyboard.instantiateViewController(ofType: TagListViewController.self)
         noteListViewController = storyboard.instantiateViewController(ofType: NoteListViewController.self)
         noteEditorViewController = storyboard.instantiateViewController(ofType: NoteEditorViewController.self)
@@ -53,6 +55,7 @@ extension SimplenoteAppDelegate {
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
+        splitViewController.insertSplitViewStatusBar(breadcrumbsViewController)
     }
 
     @objc
@@ -73,13 +76,19 @@ extension SimplenoteAppDelegate {
 
     @objc
     func configureNotesController() {
-        noteListViewController.searchDelegate = noteEditorViewController
+        noteListViewController.delegate = self
+    }
+
+    @objc
+    func configureTagsController() {
+        tagListViewController.delegate = self
     }
 
     @objc
     func configureEditorController() {
         noteEditorViewController.tagActionsDelegate = tagListViewController
         noteEditorViewController.noteActionsDelegate = noteListViewController
+        noteEditorViewController.editorDelegate = self
     }
 
     @objc
@@ -438,8 +447,12 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
 
         while let currentResponder = nextResponder {
             if viewControllers.contains(currentResponder) {
-                tagListViewController.isActive = tagListViewController == currentResponder
-                noteListViewController.isActive = noteListViewController == currentResponder
+                let isTagsFocused = tagListViewController == currentResponder
+                let isNotesFocused = noteListViewController == currentResponder
+
+                tagListViewController.isActive  = isTagsFocused
+                noteListViewController.isActive = isNotesFocused
+                breadcrumbsViewController.responderWasUpdated(isTagsActive: isTagsFocused)
                 break
             }
 
@@ -457,6 +470,63 @@ extension SimplenoteAppDelegate {
         noteEditorMetadataCache.cleanup(keeping: allKeys)
     }
 }
+
+
+// MARK: - TagListActionsDelegate Conformance
+//
+extension SimplenoteAppDelegate: TagsControllerDelegate {
+
+    func tagsControllerDidUpdateFilter(_ controller: TagListViewController) {
+        let filter = controller.selectedFilter
+
+        breadcrumbsViewController.tagsControllerDidUpdateFilter(filter)
+        noteEditorViewController.tagsControllerDidUpdateFilter(filter)
+        noteListViewController.tagsControllerDidUpdateFilter(filter)
+    }
+
+    func tagsControllerDidRenameTag(_ controller: TagListViewController, oldName: String, newName: String) {
+        noteListViewController.tagsControllerDidRenameTag(oldName: oldName, newName: newName)
+        noteEditorViewController.tagsControllerDidRenameTag(oldName: oldName, newName: newName)
+        breadcrumbsViewController.tagsControllerDidRenameTag(oldName: oldName, newName: newName)
+    }
+
+    func tagsControllerDidDeleteTag(_ controller: TagListViewController, name: String) {
+        noteListViewController.tagsControllerDidDeleteTag(name: name)
+        noteEditorViewController.tagsControllerDidDeleteTag(name: name)
+    }
+}
+
+
+extension SimplenoteAppDelegate: NotesControllerDelegate {
+
+    func notesController(_ controller: NoteListViewController, didSearch query: SearchQuery?) {
+        breadcrumbsViewController.notesControllerDidSearch(text: query?.searchText)
+        noteEditorViewController.refreshSearchResults(for: query)
+    }
+
+    func notesController(_ controller: NoteListViewController, didSelect note: Note) {
+        breadcrumbsViewController.notesControllerDidSelectNote(note)
+        noteEditorViewController.displayNote(note)
+    }
+
+    func notesController(_ controller: NoteListViewController, didSelect notes: [Note]) {
+        breadcrumbsViewController.notesControllerDidSelectNotes(notes)
+        noteEditorViewController.display(notes)
+    }
+
+    func notesControllerDidSelectZeroNotes(_ controller: NoteListViewController) {
+        breadcrumbsViewController.notesControllerDidSelectZeroNotes()
+        noteEditorViewController.displayNote(nil)
+    }
+}
+
+extension SimplenoteAppDelegate: EditorControllerDelegate {
+
+    func editorController(_ controller: NoteEditorViewController, updatedNoteContents note: Note) {
+        breadcrumbsViewController.editorControllerUpdatedNote(note)
+    }
+}
+
 
 // MARK: - Constants
 //
