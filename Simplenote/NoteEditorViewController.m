@@ -585,8 +585,11 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 {
     if (self.isDisplayingMarkdown || !self.isMarkdownEnabled) {
         [self dismissMarkdownPreview];
+        [self.view.window makeFirstResponder:self.noteEditor];
+
     } else {
         [self displayMarkdownPreview:self.note];
+        [self.view.window makeFirstResponder:nil];
     }
 
     [self refreshEditorActions];
