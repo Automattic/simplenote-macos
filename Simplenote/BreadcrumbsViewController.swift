@@ -126,6 +126,11 @@ extension BreadcrumbsViewController {
         mustHighlightTags = isTagsActive
     }
 
+    @objc
+    func didReceiveNewContent(_ note: Note) {
+        refreshStatus(for: note)
+    }
+
     func tagsControllerDidUpdateFilter(_ filter: TagListFilter) {
         statusForTags = filter.title
         isUserTagSelected = {
@@ -156,15 +161,7 @@ extension BreadcrumbsViewController {
     }
 
     func notesControllerDidSelectNote(_ note: Note) {
-        note.ensurePreviewStringsAreAvailable()
-
-        statusForNotes = {
-            let title   = note.titlePreview ?? ""
-            let clipped = String(title.prefix(Metrics.maximumTitleLength))
-            let suffix  = clipped.count < title.count ? "..." : ""
-
-            return clipped + suffix
-        }()
+        refreshStatus(for: note)
     }
 
     func notesControllerDidSelectNotes(_ notes: [Note]) {
@@ -176,8 +173,25 @@ extension BreadcrumbsViewController {
     }
 
     func editorControllerUpdatedNote(_ note: Note) {
-        // Yup. Same handler, different public API. Capisce?
-        notesControllerDidSelectNote(note)
+        refreshStatus(for: note)
+    }
+}
+
+
+// MARK: - Private Helpers
+//
+private extension BreadcrumbsViewController {
+
+    private func refreshStatus(for note: Note) {
+        note.ensurePreviewStringsAreAvailable()
+
+        statusForNotes = {
+            let title   = note.titlePreview ?? ""
+            let clipped = String(title.prefix(Metrics.maximumTitleLength))
+            let suffix  = clipped.count < title.count ? "..." : ""
+
+            return clipped + suffix
+        }()
     }
 }
 
