@@ -517,79 +517,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="La0-hZ-ZgT" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                            <box borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mNr-a6-tCn" userLabel="BackgroundBox">
+                                <rect key="frame" x="-3" y="-4" width="300" height="34"/>
+                                <view key="contentView" id="k4p-IO-bew">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </box>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="La0-hZ-ZgT" userLabel="DividerView" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
+                            </customView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-Zy-2Tg">
+                                <rect key="frame" x="12" y="0.0" width="104" height="28"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-Zy-2Tg">
-                                        <rect key="frame" x="12" y="0.0" width="104" height="28"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-IN-gUi" userLabel="SearchTextField">
-                                                <rect key="frame" x="-2" y="7" width="41" height="14"/>
-                                                <textFieldCell key="cell" allowsUndo="NO" title="Search" usesSingleLineMode="YES" id="nCt-Ge-AWn">
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvK-y1-tIA" userLabel="TagStatusField">
-                                                <rect key="frame" x="39" y="7" width="23" height="14"/>
-                                                <textFieldCell key="cell" allowsUndo="NO" title="Tag" usesSingleLineMode="YES" id="wqh-AR-wEU">
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lLQ-th-Ae1" userLabel="NoteImageView">
-                                                <rect key="frame" x="64" y="9" width="10" height="10"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="10" id="NxU-uW-HSU"/>
-                                                    <constraint firstAttribute="width" constant="10" id="eLa-2o-qgw"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_disclosure_right" id="xdx-nS-iDo"/>
-                                            </imageView>
-                                            <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afF-4l-Dvz" userLabel="NoteStatusField">
-                                                <rect key="frame" x="76" y="7" width="30" height="14"/>
-                                                <textFieldCell key="cell" allowsUndo="NO" title="Note" usesSingleLineMode="YES" id="XMY-cm-Ljb">
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
+                                    <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-IN-gUi" userLabel="SearchTextField">
+                                        <rect key="frame" x="-2" y="7" width="41" height="14"/>
+                                        <textFieldCell key="cell" allowsUndo="NO" title="Search" usesSingleLineMode="YES" id="nCt-Ge-AWn">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvK-y1-tIA" userLabel="TagStatusField">
+                                        <rect key="frame" x="39" y="7" width="23" height="14"/>
+                                        <textFieldCell key="cell" allowsUndo="NO" title="Tag" usesSingleLineMode="YES" id="wqh-AR-wEU">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lLQ-th-Ae1" userLabel="NoteImageView">
+                                        <rect key="frame" x="64" y="9" width="10" height="10"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="VNe-Th-ZKN"/>
+                                            <constraint firstAttribute="height" constant="10" id="NxU-uW-HSU"/>
+                                            <constraint firstAttribute="width" constant="10" id="eLa-2o-qgw"/>
                                         </constraints>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_disclosure_right" id="xdx-nS-iDo"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afF-4l-Dvz" userLabel="NoteStatusField">
+                                        <rect key="frame" x="76" y="7" width="30" height="14"/>
+                                        <textFieldCell key="cell" allowsUndo="NO" title="Note" usesSingleLineMode="YES" id="XMY-cm-Ljb">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="1pF-Zy-2Tg" firstAttribute="top" secondItem="La0-hZ-ZgT" secondAttribute="top" id="5gv-uq-55C"/>
-                                    <constraint firstAttribute="bottom" secondItem="1pF-Zy-2Tg" secondAttribute="bottom" id="8Qe-ZS-byG"/>
-                                    <constraint firstItem="1pF-Zy-2Tg" firstAttribute="leading" secondItem="La0-hZ-ZgT" secondAttribute="leading" constant="12" id="GEr-YL-UTk"/>
-                                    <constraint firstItem="1pF-Zy-2Tg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="La0-hZ-ZgT" secondAttribute="leading" constant="12" id="HgA-xK-ktY"/>
+                                    <constraint firstAttribute="height" constant="28" id="VNe-Th-ZKN"/>
                                 </constraints>
-                            </customView>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="mNr-a6-tCn" secondAttribute="bottom" id="4zS-rd-ezW"/>
                             <constraint firstAttribute="trailing" secondItem="La0-hZ-ZgT" secondAttribute="trailing" id="IKz-vx-WCw"/>
                             <constraint firstAttribute="bottom" secondItem="La0-hZ-ZgT" secondAttribute="bottom" id="JgV-wf-bxz"/>
+                            <constraint firstItem="1pF-Zy-2Tg" firstAttribute="top" secondItem="WNl-MD-ENM" secondAttribute="top" id="VYQ-31-8cL"/>
+                            <constraint firstAttribute="trailing" secondItem="mNr-a6-tCn" secondAttribute="trailing" id="Yk5-RG-UUX"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1pF-Zy-2Tg" secondAttribute="trailing" constant="12" id="cES-O4-fyg"/>
+                            <constraint firstItem="mNr-a6-tCn" firstAttribute="top" secondItem="WNl-MD-ENM" secondAttribute="top" id="iti-9g-MH9"/>
+                            <constraint firstItem="mNr-a6-tCn" firstAttribute="leading" secondItem="WNl-MD-ENM" secondAttribute="leading" id="iuL-wp-BIi"/>
                             <constraint firstItem="La0-hZ-ZgT" firstAttribute="top" secondItem="WNl-MD-ENM" secondAttribute="top" id="jon-fw-SiV"/>
+                            <constraint firstAttribute="bottom" secondItem="1pF-Zy-2Tg" secondAttribute="bottom" id="rU8-cF-C8e"/>
+                            <constraint firstItem="1pF-Zy-2Tg" firstAttribute="leading" secondItem="WNl-MD-ENM" secondAttribute="leading" constant="12" id="sn0-hy-BSA"/>
                             <constraint firstItem="La0-hZ-ZgT" firstAttribute="leading" secondItem="WNl-MD-ENM" secondAttribute="leading" id="x0u-jc-2aX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundView" destination="La0-hZ-ZgT" id="rz6-TB-W8i"/>
+                        <outlet property="backgroundBox" destination="mNr-a6-tCn" id="Nx6-TT-Z9a"/>
+                        <outlet property="dividerView" destination="La0-hZ-ZgT" id="NaO-AB-tes"/>
                         <outlet property="noteImageView" destination="lLQ-th-Ae1" id="Tha-2R-3Ei"/>
                         <outlet property="noteTextField" destination="afF-4l-Dvz" id="Jas-lE-uxT"/>
                         <outlet property="searchTextField" destination="PLP-IN-gUi" id="Cbo-Qd-JXq"/>
@@ -598,7 +606,7 @@
                 </viewController>
                 <customObject id="qkg-c8-hZz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="633"/>
+            <point key="canvasLocation" x="382" y="705"/>
         </scene>
         <!--Note Editor View Controller-->
         <scene sceneID="JcX-qD-6EF">
@@ -797,7 +805,7 @@
                             <constraint firstItem="3M9-OX-Hpx" firstAttribute="top" secondItem="w7Z-Cl-xvM" secondAttribute="top" id="igC-ZM-wQh"/>
                             <constraint firstItem="Dj2-Ut-m6l" firstAttribute="centerY" secondItem="w7Z-Cl-xvM" secondAttribute="centerY" id="nea-OO-Awf"/>
                             <constraint firstItem="mdt-4X-jeq" firstAttribute="top" secondItem="w7Z-Cl-xvM" secondAttribute="top" id="oil-IL-VG8"/>
-                            <constraint firstAttribute="bottom" secondItem="RoF-0f-Ugm" secondAttribute="bottom" id="qeu-Jg-mO9"/>
+                            <constraint firstItem="3M9-OX-Hpx" firstAttribute="bottom" secondItem="RoF-0f-Ugm" secondAttribute="bottom" id="pXb-pc-ZNb"/>
                             <constraint firstItem="3M9-OX-Hpx" firstAttribute="leading" secondItem="w7Z-Cl-xvM" secondAttribute="leading" id="wOf-bO-sHt"/>
                             <constraint firstItem="wyB-gA-z62" firstAttribute="bottom" secondItem="mdt-4X-jeq" secondAttribute="bottom" id="yAR-Ci-yly"/>
                             <constraint firstItem="wyB-gA-z62" firstAttribute="leading" secondItem="mdt-4X-jeq" secondAttribute="leading" id="yWO-3G-AGN"/>

@@ -7,7 +7,8 @@ class BreadcrumbsViewController: NSViewController {
 
     /// Background
     ///
-    @IBOutlet private var backgroundView: BackgroundView!
+    @IBOutlet private var backgroundBox: NSBox!
+    @IBOutlet private var dividerView: BackgroundView!
 
     /// TextField: Search
     ///
@@ -93,10 +94,6 @@ class BreadcrumbsViewController: NSViewController {
 private extension BreadcrumbsViewController {
 
     func startListeningToNotifications() {
-        if #available(macOS 10.15, *) {
-            return
-        }
-
         NotificationCenter.default.addObserver(self, selector: #selector(themeDidChange), name: .ThemeDidChange, object: nil)
     }
 
@@ -220,9 +217,10 @@ private extension BreadcrumbsViewController {
     }
 
     func refreshStyle() {
-        backgroundView.drawsTopBorder = true
-        backgroundView.borderColor = .simplenoteDividerColor
-        backgroundView.fillColor = .simplenoteStatusBarBackgroundColor
+        backgroundBox.boxType = .simplenoteSidebarBoxType
+        backgroundBox.fillColor = .simplenoteSecondaryBackgroundColor
+        dividerView.borderColor = .simplenoteDividerColor
+        dividerView.drawsTopBorder = true
     }
 
     func refreshRTLSupport() {
