@@ -285,14 +285,17 @@
         // Note change
         switch (change) {                
             case SPBucketChangeTypeUpdate: {
+                Note *note = [bucket objectForKey:key];
+                if (!note) {
+                    break;
+                }
+
                 if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                     [self.noteEditorViewController didReceiveNewContent];
+                    [self.breadcrumbsViewController didReceiveNewContent:note];
                 }
-                
-                Note *note = [bucket objectForKey:key];
-                if (note) {
-                    [self.noteEditorMetadataCache didUpdateNote:note];
-                }
+
+                [self.noteEditorMetadataCache didUpdateNote:note];
                 break;
             }
             
@@ -323,8 +326,9 @@
 {
     if ([bucket isEqual: self.simperium.notesBucket]) {
         for (NSString *key in keys) {
-            if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey])
+            if ([key isEqualToString:self.noteEditorViewController.note.simperiumKey]) {
                 [self.noteEditorViewController willReceiveNewContent];
+            }
 
             Note *note = [bucket objectForKey:key];
             if (note) {
