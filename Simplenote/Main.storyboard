@@ -526,7 +526,7 @@
                                             <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLP-IN-gUi" userLabel="SearchTextField">
                                                 <rect key="frame" x="-2" y="7" width="41" height="14"/>
                                                 <textFieldCell key="cell" allowsUndo="NO" title="Search" usesSingleLineMode="YES" id="nCt-Ge-AWn">
-                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -534,7 +534,7 @@
                                             <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvK-y1-tIA" userLabel="TagStatusField">
                                                 <rect key="frame" x="39" y="7" width="23" height="14"/>
                                                 <textFieldCell key="cell" allowsUndo="NO" title="Tag" usesSingleLineMode="YES" id="wqh-AR-wEU">
-                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -550,7 +550,7 @@
                                             <textField horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afF-4l-Dvz" userLabel="NoteStatusField">
                                                 <rect key="frame" x="76" y="7" width="30" height="14"/>
                                                 <textFieldCell key="cell" allowsUndo="NO" title="Note" usesSingleLineMode="YES" id="XMY-cm-Ljb">
-                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -622,7 +622,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                            <size key="minSize" width="528" height="618"/>
+                                            <size key="minSize" width="513" height="618"/>
                                             <size key="maxSize" width="10000000" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -824,9 +824,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="528" height="48"/>
                     <subviews>
                         <scrollView placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="FMH-MU-LHX" customClass="HorizontalScrollView" customModule="Simplenote" customModuleProvider="target">
-                            <rect key="frame" x="23" y="12" width="482" height="25"/>
+                            <rect key="frame" x="0.0" y="12" width="528" height="25"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dTq-DR-Qae">
-                                <rect key="frame" x="0.0" y="0.0" width="482" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="528" height="25"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tokenField horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" mirrorLayoutDirectionWhenInternationalizing="always" translatesAutoresizingMaskIntoConstraints="NO" id="U3o-VN-U2S" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
@@ -843,9 +843,10 @@
                                     <constraint firstItem="U3o-VN-U2S" firstAttribute="top" secondItem="dTq-DR-Qae" secondAttribute="top" id="osh-hn-mFG"/>
                                     <constraint firstItem="U3o-VN-U2S" firstAttribute="leading" secondItem="dTq-DR-Qae" secondAttribute="leading" id="x2F-hr-KGE"/>
                                 </constraints>
+                                <edgeInsets key="contentInsets" left="23" right="23" top="0.0" bottom="0.0"/>
                             </clipView>
-                            <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="z3o-4M-GrW">
-                                <rect key="frame" x="0.0" y="9" width="482" height="16"/>
+                            <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="z3o-4M-GrW">
+                                <rect key="frame" x="0.0" y="9" width="528" height="16"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="jwH-gh-soS">
@@ -856,10 +857,10 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="FMH-MU-LHX" secondAttribute="bottom" constant="12" id="587-Oz-1BM"/>
-                        <constraint firstItem="FMH-MU-LHX" firstAttribute="leading" secondItem="Zgz-qj-sTm" secondAttribute="leading" constant="23" id="U46-vh-YjV"/>
+                        <constraint firstItem="FMH-MU-LHX" firstAttribute="leading" secondItem="Zgz-qj-sTm" secondAttribute="leading" id="U46-vh-YjV"/>
                         <constraint firstAttribute="height" constant="48" id="bmN-kY-Bfy"/>
                         <constraint firstItem="FMH-MU-LHX" firstAttribute="top" secondItem="Zgz-qj-sTm" secondAttribute="top" constant="11" id="kQp-1h-apM"/>
-                        <constraint firstAttribute="trailing" secondItem="FMH-MU-LHX" secondAttribute="trailing" constant="23" id="nDW-rY-kig"/>
+                        <constraint firstAttribute="trailing" secondItem="FMH-MU-LHX" secondAttribute="trailing" id="nDW-rY-kig"/>
                     </constraints>
                 </customView>
                 <menu title="More Actions" id="O2x-0v-azu" userLabel="Note More Menu">

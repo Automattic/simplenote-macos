@@ -330,7 +330,11 @@ extension NoteEditorViewController {
 
     @objc
     func resetTagsFieldScrollOffset() {
-        tagsField.scroll(.zero)
+        guard let scrollView = tagsField.enclosingScrollView as? HorizontalScrollView else {
+            return
+        }
+
+        scrollView.resetScrollPosition()
     }
 
     /// Refreshes the TagsField's Tokens
