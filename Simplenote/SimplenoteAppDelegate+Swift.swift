@@ -55,7 +55,6 @@ extension SimplenoteAppDelegate {
         splitViewController.insertSplitViewItem(tagsSplitItem, kind: .tags)
         splitViewController.insertSplitViewItem(listSplitItem, kind: .notes)
         splitViewController.insertSplitViewItem(editorSplitItem, kind: .editor)
-        splitViewController.insertSplitViewStatusBar(breadcrumbsViewController)
     }
 
     @objc
@@ -96,6 +95,20 @@ extension SimplenoteAppDelegate {
         let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let fileURL = URL(fileURLWithPath: documentsDirectory, isDirectory: true).appendingPathComponent(Constants.noteEditorMetadataCacheFilename)
         noteEditorMetadataCache = NoteEditorMetadataCache(storage: FileStorage(fileURL: fileURL))
+    }
+
+    @objc
+    func refreshStatusController() {
+        guard !Options.shared.statusBarHidden else {
+            breadcrumbsViewController.view.removeFromSuperview()
+            return
+        }
+
+        guard breadcrumbsViewController.view.superview == nil else {
+            return
+        }
+
+        splitViewController.insertSplitViewStatusBar(breadcrumbsViewController)
     }
 
     @objc
@@ -246,11 +259,10 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func toggleStatusBarAction(_ sender: Any) {
-        let isHidden = !Options.shared.statusBarHidden
-        splitViewController.refreshStatusBarItem(collapsed: isHidden)
-        Options.shared.statusBarHidden = isHidden
+        Options.shared.statusBarHidden.toggle()
+        refreshStatusController()
 
-        SPTracker.trackSettingsStatusBarDisplayMode(hidden: isHidden)
+        SPTracker.trackSettingsStatusBarDisplayMode(hidden: Options.shared.statusBarHidden)
     }
 }
 

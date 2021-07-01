@@ -100,6 +100,8 @@
     [self configureVerificationCoordinator];
     [self configureVersionsController];
 
+    [self refreshStatusController];
+
     [self.simperium authenticateWithAppID:SPCredentials.simperiumAppID APIKey:SPCredentials.simperiumApiKey window:self.window];
 }
 
