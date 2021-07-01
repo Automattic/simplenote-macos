@@ -905,10 +905,12 @@ extension NoteEditorViewController {
     func toggleTagsAndEditor() {
         if noteEditor.isFirstResponder {
             view.window?.makeFirstResponder(tagsField)
+            noteEditor.scrollToEndOfDocument(self)
             tagsField.currentEditor()?.moveToEndOfDocument(nil)
             tagsField.ensureCaretIsOnscreen()
         } else {
             view.window?.makeFirstResponder(noteEditor)
+            noteEditor.scrollToSelectedLocation()
         }
     }
 }

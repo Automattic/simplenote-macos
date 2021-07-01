@@ -364,5 +364,15 @@ extension NSTextView {
 
         layoutManager.ensureLayout(for: textContainer)
     }
+
+    /// Scrolls to the Selected Location
+    ///
+    func scrollToSelectedLocation() {
+        guard let location = selectedRanges.first?.rangeValue.location else {
+            return
+        }
+
+        scrollRangeToVisible(NSRange(location: location, length: .zero))
+    }
 }
 
