@@ -64,6 +64,10 @@ class BreadcrumbsViewController: NSViewController {
         }
     }
 
+    /// Indicates if there's a User Tag being presented (false indicates system filter!)
+    ///
+    private var isUserTagSelected: Bool = false
+
 
     // MARK: - Lifecycle
 
@@ -124,6 +128,21 @@ extension BreadcrumbsViewController {
 
     func tagsControllerDidUpdateFilter(_ filter: TagListFilter) {
         statusForTags = filter.title
+        isUserTagSelected = {
+            guard case .tag(_) = filter else {
+                return false
+            }
+
+            return true
+        }()
+    }
+
+    func tagsControllerDidRenameTag(oldName: String, newName: String) {
+        guard statusForTags == oldName, isUserTagSelected else {
+            return
+        }
+
+        statusForTags = newName
     }
 
     func notesControllerDidSearch(text: String?) {

@@ -73,6 +73,14 @@ extension NoteEditorViewController {
         refreshToolbarActions()
         refreshTagsFieldActions()
     }
+
+    func tagsControllerDidRenameTag(oldName: String, newName: String) {
+        refreshTagsField()
+    }
+
+    func tagsControllerDidDeleteTag(name: String) {
+        refreshTagsField()
+    }
 }
 
 

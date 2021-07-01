@@ -7,6 +7,8 @@ import Foundation
 @objc
 protocol TagsControllerDelegate: AnyObject {
     func tagsControllerDidUpdateFilter(_ controller: TagListViewController)
+    func tagsControllerDidRenameTag(_ controller: TagListViewController, oldName: String, newName: String)
+    func tagsControllerDidDeleteTag(_ controller: TagListViewController, name: String)
 }
 
 
