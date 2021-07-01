@@ -64,18 +64,10 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
     [self startListeningToSettingsNotifications];
     [self startListeningToScrollNotifications];
+    [self startListeningToLaunchNotifications];
 
     [self loadTags];
     [self applyStyle];
-}
-
-- (void)viewWillAppear
-{
-    [super viewWillAppear];
-
-    // Workaround: Triggering this notification right here helps us avoid timming issues between Storyboard
-    // Instantiation and delegate setup.
-    [self notifyTagsListFilterDidChange];
 }
 
 - (void)viewWillLayout
