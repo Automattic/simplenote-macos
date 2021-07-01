@@ -38,6 +38,14 @@ class SplitView: NSSplitView {
         }
     }
 
+    /// Map containing `Divider Index` > `Insets`
+    ///
+    var simplenoteDividerInsets: [Int: NSEdgeInsets] = [:] {
+        didSet {
+            needsDisplay = true
+        }
+    }
+
     // MARK: - Overridden Methods
 
     override var dividerThickness: CGFloat {
@@ -46,6 +54,31 @@ class SplitView: NSSplitView {
 
     override var dividerColor: NSColor {
         return simplenoteDividerColor
+    }
+
+    override func drawDivider(in rect: NSRect) {
+        guard let dividerIndex = indexOfDivider(in: rect), let insets = simplenoteDividerInsets[dividerIndex] else {
+            super.drawDivider(in: rect)
+            return
+        }
+
+        var updated         = rect
+        updated.origin.y    += insets.top
+        updated.size.height -= insets.top + insets.bottom
+        super.drawDivider(in: updated)
+    }
+
+    private func indexOfDivider(in rect: NSRect) -> Int? {
+        for dividerIndex in 0..<arrangedSubviews.count {
+            let min = minPossiblePositionOfDivider(at: dividerIndex)
+            let max = maxPossiblePositionOfDivider(at: dividerIndex)
+
+            if rect.minX >= min && rect.minX < max {
+                return dividerIndex
+            }
+        }
+
+        return nil
     }
 }
 

@@ -214,6 +214,7 @@ extension SplitViewController {
         }
 
         splitView.simplenoteDividerColor = .simplenoteDividerColor
+        splitView.simplenoteDividerInsets = [SplitItemKind.notes.rawValue : SplitItemMetrics.notesDividerInsets]
     }
 }
 

@@ -79,6 +79,10 @@ enum SplitItemMetrics {
     ///
     static let headerMaximumAlphaGradientOffset = CGFloat(14)
 
+    /// SplitView Divider Insets
+    ///
+    static let notesDividerInsets = NSEdgeInsets(top: .zero, left: .zero, bottom: breadcrumbsViewHeight, right: .zero)
+
     /// Spacing required between the Window's Semaphore (Close / Minimize / Maximize) and the first View component
     ///
     static let toolbarSemaphorePaddingX = CGFloat(16)
