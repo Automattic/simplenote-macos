@@ -155,6 +155,22 @@ extension NoteListViewController {
         dismissSearch()
         refreshEverything()
     }
+
+    func tagsControllerDidRenameTag(oldName: String, newName: String) {
+        tagWasUpdatedOrDeleted(name: oldName)
+    }
+
+    func tagsControllerDidDeleteTag(name: String) {
+        tagWasUpdatedOrDeleted(name: name)
+    }
+
+    private func tagWasUpdatedOrDeleted(name: String) {
+        guard case let .tag(currentTagName) = listController.filter, currentTagName == name else {
+            return
+        }
+
+        refreshEverything()
+    }
 }
 
 
@@ -764,9 +780,6 @@ extension NoteListViewController {
         // Notifications: ClipView
         nc.addObserver(self, selector: #selector(clipViewDidScroll), name: NSView.boundsDidChangeNotification, object: clipView)
 
-        // Notifications: Tags
-        nc.addObserver(self, selector: #selector(didUpdateTag), name: .TagListDidUpdateTag, object: nil)
-
         // Notifications: Settings
         nc.addObserver(self, selector: #selector(displayModeDidChange), name: .NoteListDisplayModeDidChange, object: nil)
         nc.addObserver(self, selector: #selector(sortModeDidChange), name: .NoteListSortModeDidChange, object: nil)
@@ -798,18 +811,6 @@ extension NoteListViewController {
     @objc
     func statusbarDidChange(_ note: Notification) {
         refreshBottomInsets()
-    }
-
-    @objc
-    func didUpdateTag(_ note: Notification) {
-        guard case let .tag(name) = listController.filter,
-              let oldName = note.userInfo?[TagListDidUpdateTagOldNameKey] as? String,
-              name == oldName
-        else {
-            return
-        }
-
-        refreshEverything()
     }
 }
 

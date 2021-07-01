@@ -54,7 +54,7 @@ extension NoteEditorViewController {
         tagsField.delegate = self
         tagsField.focusRingType = .none
         tagsField.font = .simplenoteSecondaryTextFont
-        tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
+        tagsField.placeholderText = NSLocalizedString("Tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
         tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
     }
@@ -94,6 +94,14 @@ extension NoteEditorViewController {
         refreshEditorActions()
         refreshToolbarActions()
         refreshTagsFieldActions()
+    }
+
+    func tagsControllerDidRenameTag(oldName: String, newName: String) {
+        refreshTagsField()
+    }
+
+    func tagsControllerDidDeleteTag(name: String) {
+        refreshTagsField()
     }
 }
 
@@ -322,7 +330,11 @@ extension NoteEditorViewController {
 
     @objc
     func resetTagsFieldScrollOffset() {
-        tagsField.scroll(.zero)
+        guard let scrollView = tagsField.enclosingScrollView as? HorizontalScrollView else {
+            return
+        }
+
+        scrollView.resetScrollPosition()
     }
 
     /// Refreshes the TagsField's Tokens
@@ -897,10 +909,12 @@ extension NoteEditorViewController {
     func toggleTagsAndEditor() {
         if noteEditor.isFirstResponder {
             view.window?.makeFirstResponder(tagsField)
+            noteEditor.scrollToEndOfDocument(self)
             tagsField.currentEditor()?.moveToEndOfDocument(nil)
             tagsField.ensureCaretIsOnscreen()
         } else {
             view.window?.makeFirstResponder(noteEditor)
+            noteEditor.scrollToSelectedLocation()
         }
     }
 }

@@ -524,6 +524,17 @@ extension SimplenoteAppDelegate: TagsControllerDelegate {
         noteEditorViewController.tagsControllerDidUpdateFilter(filter)
         noteListViewController.tagsControllerDidUpdateFilter(filter)
     }
+
+    func tagsControllerDidRenameTag(_ controller: TagListViewController, oldName: String, newName: String) {
+        noteListViewController.tagsControllerDidRenameTag(oldName: oldName, newName: newName)
+        noteEditorViewController.tagsControllerDidRenameTag(oldName: oldName, newName: newName)
+        breadcrumbsViewController.tagsControllerDidRenameTag(oldName: oldName, newName: newName)
+    }
+
+    func tagsControllerDidDeleteTag(_ controller: TagListViewController, name: String) {
+        noteListViewController.tagsControllerDidDeleteTag(name: name)
+        noteEditorViewController.tagsControllerDidDeleteTag(name: name)
+    }
 }
 
 

@@ -16,9 +16,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const TagListDidUpdateTagNotification;
-extern NSString * const TagListDidUpdateTagOldNameKey;
-extern NSString * const TagListDidUpdateTagNewNameKey;
 extern NSString * const TagListDidEmptyTrashNotification;
 
 @interface TagListViewController : NSViewController <NSMenuDelegate,

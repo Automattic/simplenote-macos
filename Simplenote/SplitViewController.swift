@@ -114,10 +114,18 @@ extension SplitViewController {
     /// - Note:
     ///   We're not using ViewController containment since the superclass appears to override `addChild`, and we end up with a fourth SplitView Item.
     ///
-    func insertSplitViewStatusBar(_ viewController: NSViewController) {
-        let statusBarView = viewController.view
-        view.addSubview(statusBarView)
+    func insertSplitViewStatusBar(_ statusBarViewController: NSViewController) {
+        let statusBarView = statusBarViewController.view
 
+        statusBarViewController.viewWillAppear()
+        view.addSubview(statusBarView)
+        attachStatusBarView(statusBarView)
+        statusBarViewController.viewDidAppear()
+    }
+
+    /// Attaches a StatusBarView at the bottom of the UI (in between the Notes / Editor items)
+    ///
+    private func attachStatusBarView(_ statusBarView: NSView) {
         let notesView = splitViewItem(ofKind: .notes).viewController.view
         let editorView = splitViewItem(ofKind: .editor).viewController.view
 
