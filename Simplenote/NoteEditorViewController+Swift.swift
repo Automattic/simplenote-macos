@@ -28,11 +28,33 @@ extension NoteEditorViewController {
     }
 
     @objc
+    func setupTagsView() {
+        /// - Important:
+        ///     1.  `NSClipView` was really meant to handle a single subview
+        ///     2.  As it turns out, embedding the `SPTextView` inside a `NSView` (and making it the `NSClipView.documentView`) brings in several side effects
+        ///     3.  For simplicity reasons, our `NSClipView.documentView` is set to the `SPTextView`
+        ///     4.  We're also injecting the `TagsView` as a subview to our `NSClipView`
+        ///     5.  Adding `contentInsets.bottom` allows the `TagsView` to be visualized. But `NSClipView` does not relay mouse events to this second "extra" subview
+        ///
+        /// - Workaround:
+        ///     1.  We've increased the `textContainerInset.height` (which affects both top/bottom)
+        ///     2.  We've compensated for this "extra" top inset (caused by the new `textContainerInset.height` by adjusting `SplitItemMetrics.editorContentTopInset`
+        ///
+        scrollView.contentView.addSubview(tagsView)
+
+        NSLayoutConstraint.activate([
+            tagsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            tagsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            tagsView.bottomAnchor.constraint(equalTo: noteEditor.bottomAnchor)
+        ])
+    }
+
+    @objc
     func setupTagsField() {
         tagsField.delegate = self
         tagsField.focusRingType = .none
         tagsField.font = .simplenoteSecondaryTextFont
-        tagsField.placeholderText = NSLocalizedString("Add tag...", comment: "Placeholder text in the Tags View")
+        tagsField.placeholderText = NSLocalizedString("Tag...", comment: "Placeholder text in the Tags View")
         tagsField.nextKeyView = noteEditor
         tagsField.formatter = TagTextFormatter(maximumLength: SimplenoteConstants.maximumTagLength)
     }
@@ -46,7 +68,7 @@ extension NoteEditorViewController {
 
     @objc
     func setupBottomInsets() {
-        tagsViewBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
+        editorBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
     }
 
     @objc
@@ -165,7 +187,8 @@ extension NoteEditorViewController {
     ///
     private func textContainerInset(superviewWidth: CGFloat, maximumTextWidth: CGFloat) -> NSSize {
         let width = max((superviewWidth - maximumTextWidth), .zero) * 0.5
-        return NSMakeSize(width + EditorMetrics.minimumPadding, EditorMetrics.minimumPadding)
+        let height = SplitItemMetrics.editorContentBottomInset
+        return NSMakeSize(width + EditorMetrics.minimumPadding, height + EditorMetrics.minimumPadding)
     }
 
     /// # Note: Why not receiving the MaximumTextWidth instead?
@@ -264,7 +287,6 @@ extension NoteEditorViewController {
     func refreshStyle() {
         backgroundView.fillColor                = .simplenoteSecondaryBackgroundColor
         headerDividerView.borderColor           = .simplenoteDividerColor
-        bottomDividerView.borderColor           = .simplenoteSecondaryDividerColor
         noteEditor.insertionPointColor          = .simplenoteEditorTextColor
         noteEditor.textColor                    = .simplenoteEditorTextColor
         statusTextField.textColor               = .simplenoteSecondaryTextColor
@@ -308,7 +330,11 @@ extension NoteEditorViewController {
 
     @objc
     func resetTagsFieldScrollOffset() {
-        tagsField.scroll(.zero)
+        guard let scrollView = tagsField.enclosingScrollView as? HorizontalScrollView else {
+            return
+        }
+
+        scrollView.resetScrollPosition()
     }
 
     /// Refreshes the TagsField's Tokens
@@ -883,10 +909,12 @@ extension NoteEditorViewController {
     func toggleTagsAndEditor() {
         if noteEditor.isFirstResponder {
             view.window?.makeFirstResponder(tagsField)
+            noteEditor.scrollToEndOfDocument(self)
             tagsField.currentEditor()?.moveToEndOfDocument(nil)
             tagsField.ensureCaretIsOnscreen()
         } else {
             view.window?.makeFirstResponder(noteEditor)
+            noteEditor.scrollToSelectedLocation()
         }
     }
 }

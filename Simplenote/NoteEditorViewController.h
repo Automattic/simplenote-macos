@@ -57,15 +57,15 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic, strong) IBOutlet BackgroundView                           *backgroundView;
 @property (nonatomic, strong) IBOutlet NSVisualEffectView                       *headerEffectView;
 @property (nonatomic, strong) IBOutlet BackgroundView                           *headerDividerView;
-@property (nonatomic, strong) IBOutlet BackgroundView                           *bottomDividerView;
 @property (nonatomic, strong) IBOutlet ToolbarView                              *toolbarView;
 @property (nonatomic, strong) IBOutlet NSImageView                              *statusImageView;
 @property (nonatomic, strong) IBOutlet NSTextField                              *statusTextField;
 @property (nonatomic, strong) IBOutlet SPTextView                               *noteEditor;
 @property (nonatomic, strong) IBOutlet NSScrollView                             *scrollView;
 @property (nonatomic, strong) IBOutlet NSClipView                               *clipView;
+@property (nonatomic, strong) IBOutlet NSView                                   *tagsView;
 @property (nonatomic, strong) IBOutlet TagsField                                *tagsField;
-@property (nonatomic, strong) IBOutlet NSLayoutConstraint                       *tagsViewBottomConstraint;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint                       *editorBottomConstraint;
 
 @property (nonatomic, strong, readonly) MarkdownViewController                  *markdownViewController;
 @property (nonatomic, strong, readonly) Storage                                 *storage;

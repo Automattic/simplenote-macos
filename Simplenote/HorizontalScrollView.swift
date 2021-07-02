@@ -40,4 +40,11 @@ class HorizontalScrollView: NSScrollView {
         contentView.frame = bounds
         horizontalScroller?.isHidden = true
     }
+
+    /// Scrolls to the left-most edge
+    ///
+    func resetScrollPosition() {
+        let target = NSPoint(x: contentView.contentInsets.left * -1, y: .zero)
+        contentView.setBoundsOrigin(target)
+    }
 }
