@@ -670,7 +670,7 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xD-dy-bio">
-                                        <rect key="frame" x="358" y="0.0" width="154" height="52"/>
+                                        <rect key="frame" x="314" y="0.0" width="198" height="52"/>
                                         <subviews>
                                             <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TI9-l9-KN8" userLabel="Markdown Button">
                                                 <rect key="frame" x="0.0" y="15" width="22" height="22"/>
@@ -686,8 +686,22 @@
                                                     <action selector="toggleMarkdownView:" target="owM-kh-Bm6" id="atS-Vp-By1"/>
                                                 </connections>
                                             </button>
-                                            <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W50-6o-QGr" userLabel="Restore Button">
+                                            <button toolTip="Preview Markdown" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qdW-Hd-d5s" userLabel="Checklists Button">
                                                 <rect key="frame" x="44" y="15" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="HQr-kd-YY5"/>
+                                                    <constraint firstAttribute="width" constant="22" id="UaQ-p1-JLY"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_checklist" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="apN-vs-e7y">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="insertChecklistAction:" target="gag-zR-Yfy" id="QXQ-sq-udV"/>
+                                                </connections>
+                                            </button>
+                                            <button toolTip="Restore" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W50-6o-QGr" userLabel="Restore Button">
+                                                <rect key="frame" x="88" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_restore" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GVO-Z6-G3X">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -697,7 +711,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hVc-Cl-DHn" userLabel="Metrics Button">
-                                                <rect key="frame" x="88" y="15" width="22" height="22"/>
+                                                <rect key="frame" x="132" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_info" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="JJe-f9-FSN">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -710,7 +724,7 @@
                                                 </connections>
                                             </button>
                                             <button toolTip="Info" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-L9-Q1P" userLabel="More Button">
-                                                <rect key="frame" x="132" y="15" width="22" height="22"/>
+                                                <rect key="frame" x="176" y="15" width="22" height="22"/>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="button_ellipsis_outline" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ble-fl-POM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -733,8 +747,10 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -752,6 +768,7 @@
                                     <constraint firstItem="Eki-Gw-aTk" firstAttribute="leading" secondItem="mdt-4X-jeq" secondAttribute="leading" priority="249" constant="16" id="xKL-7N-KKP"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="checklistsButton" destination="qdW-Hd-d5s" id="8Ll-nh-yzC"/>
                                     <outlet property="metricsButton" destination="hVc-Cl-DHn" id="WUB-8E-mFm"/>
                                     <outlet property="moreButton" destination="Z7O-L9-Q1P" id="nAT-Hn-2b2"/>
                                     <outlet property="previewButton" destination="TI9-l9-KN8" id="SLQ-gm-gUw"/>
@@ -973,6 +990,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button_checklist" width="24" height="24"/>
         <image name="button_ellipsis_outline" width="24" height="24"/>
         <image name="button_info" width="24" height="24"/>
         <image name="button_new_note" width="24" height="24"/>

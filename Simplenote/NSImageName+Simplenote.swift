@@ -13,6 +13,10 @@ extension NSImage.Name {
     ///
     static let arrowTopRight = NSImage.Name("icon_arrow_top_right")
 
+    /// Toolbar: Checklist
+    ///
+    static let checklist = NSImage.Name("button_checklist")
+
     /// Alerts: Cross
     ///
     static let cross = NSImage.Name("button_cross")

@@ -3,6 +3,7 @@
 - New Status Bar: Lets you quickly know what's your Tags / Notes selection #979
 - The new Status Bar can also be hidden via Settings #988
 - Tags Editor is now scrollable, making more room for the editor when appropriate #987
+- You can now insert Checklists right from the Editor's Toolbar #993
 
 2.13
 -----

@@ -304,6 +304,7 @@ extension NoteEditorViewController {
     func refreshToolbarActions() {
         let newState = ToolbarState(isDisplayingNote: isDisplayingNote,
                                     isDisplayingMarkdown: isDisplayingMarkdown,
+                                    isEditorActive: noteEditor.isFirstResponder,
                                     isMarkdownEnabled: isMarkdownEnabled,
                                     isSelectingMultipleNotes: isSelectingMultipleNotes,
                                     isViewingTrash: viewingTrash)
@@ -854,6 +855,7 @@ extension NoteEditorViewController {
     func observeEditorIsFirstResponder() {
         noteEditor.onUpdateFirstResponder = { [weak self] in
             self?.updateKeywordsHighlight()
+            self?.refreshToolbarActions()
         }
     }
 
