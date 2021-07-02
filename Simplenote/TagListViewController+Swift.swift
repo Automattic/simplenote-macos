@@ -118,8 +118,24 @@ extension TagListViewController {
     }
 
     @objc
+    func startListeningToLaunchNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(finishedLaunching),
+                                               name: NSApplication.didFinishLaunchingNotification,
+                                               object: nil)
+    }
+
+    @objc
     func clipViewDidScroll(sender: Notification) {
         refreshHeaderSeparatorAlpha()
+    }
+
+    @objc
+    func finishedLaunching(sender: Notification) {
+        /// # Workaround:
+        /// -   Triggering this notification right here helps us avoid timming issues between Storyboard Instantiation and delegate setup.
+        /// -   This used to be a hook in `viewWillAppear`. But since the app can launch in Focus Mode directly (macOS State Restoration) we're forced to go nuclear.
+        notifyTagsListFilterDidChange()
     }
 
     @objc
