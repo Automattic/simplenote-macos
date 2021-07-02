@@ -13,6 +13,10 @@ struct ToolbarState {
     ///
     let isDisplayingMarkdown: Bool
 
+    /// Indicates if the Editor is the First Responder
+    ///
+    let isEditorActive: Bool
+
     /// Indicates if the current document supports Markdown
     ///
     let isMarkdownEnabled: Bool
@@ -30,6 +34,14 @@ struct ToolbarState {
 // MARK: - Derived Properties
 //
 extension ToolbarState {
+
+    var isChecklistsButtonEnabled: Bool {
+        isDisplayingNote && isEditorActive
+    }
+
+    var isChecklistsButtonHidden: Bool {
+        (isViewingTrash || isSelectingMultipleNotes)
+    }
 
     var isMetricsButtonEnabled: Bool {
         (isDisplayingNote || isSelectingMultipleNotes)
@@ -73,6 +85,7 @@ extension ToolbarState {
     static var `default`: ToolbarState {
         ToolbarState(isDisplayingNote: false,
                      isDisplayingMarkdown: false,
+                     isEditorActive: false,
                      isMarkdownEnabled: false,
                      isSelectingMultipleNotes: false,
                      isViewingTrash: false)

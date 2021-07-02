@@ -304,6 +304,7 @@ extension NoteEditorViewController {
     func refreshToolbarActions() {
         let newState = ToolbarState(isDisplayingNote: isDisplayingNote,
                                     isDisplayingMarkdown: isDisplayingMarkdown,
+                                    isEditorActive: isActive,
                                     isMarkdownEnabled: isMarkdownEnabled,
                                     isSelectingMultipleNotes: isSelectingMultipleNotes,
                                     isViewingTrash: viewingTrash)

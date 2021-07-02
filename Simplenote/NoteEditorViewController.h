@@ -79,6 +79,7 @@ typedef NS_ENUM(NSInteger, NoteFontSize) {
 @property (nonatomic,   weak) id<EditorControllerDelegate>                      editorDelegate;
 @property (nonatomic, strong, nullable) SearchMapView                           *searchMapView;
 @property (nonatomic, strong, nonnull) NoteEditorMetadataCache                  *metadataCache;
+@property (nonatomic, assign, getter=isActive) BOOL                             active;
 
 // TODO: Switch NSObject >> SearchQuery. ObjC compiler isn't picking up the Swift Package =(
 @property (nonatomic, strong, nullable) NSObject                                *searchQuery;

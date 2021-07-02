@@ -584,6 +584,18 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [self displayContent:content];
 }
 
+- (void)setActive:(BOOL)active
+{
+    if (active == _active) {
+        return;
+    }
+
+    _active = active;
+
+    [self refreshToolbarActions];
+}
+
+
 
 #pragma mark - NSButton Delegate Methods
 
