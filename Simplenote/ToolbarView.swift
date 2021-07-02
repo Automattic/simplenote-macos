@@ -13,6 +13,7 @@ class ToolbarView: NSView {
     /// Buttons
     ///
     @IBOutlet private(set) var sidebarButton: NSButton!
+    @IBOutlet private(set) var checklistsButton: NSButton!
     @IBOutlet private(set) var metricsButton: NSButton!
     @IBOutlet private(set) var moreButton: NSButton!
     @IBOutlet private(set) var previewButton: NSButton!
@@ -78,6 +79,9 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     func refreshInterface() {
+        checklistsButton.isEnabled = state.isChecklistsButtonEnabled
+        checklistsButton.isHidden = state.isChecklistsButtonHidden
+
         metricsButton.isEnabled = state.isMetricsButtonEnabled
         metricsButton.isHidden = state.isMetricsButtonHidden
 
@@ -99,7 +103,7 @@ private extension ToolbarView {
 private extension ToolbarView {
 
     var allButtons: [NSButton] {
-        [sidebarButton, metricsButton, moreButton, previewButton, restoreButton]
+        [sidebarButton, checklistsButton, metricsButton, moreButton, previewButton, restoreButton]
     }
 
     @objc
@@ -110,6 +114,7 @@ private extension ToolbarView {
     }
 
     func setupActionButtons() {
+        checklistsButton.toolTip = NSLocalizedString("Checklists", comment: "Tooltip: Insert Checklist")
         metricsButton.toolTip = NSLocalizedString("Metrics", comment: "Tooltip: Note Metrics")
         moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
