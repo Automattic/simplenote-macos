@@ -67,8 +67,8 @@ extension NoteEditorViewController {
     }
 
     @objc
-    func setupBottomInsets() {
-        editorBottomConstraint.constant = SplitItemMetrics.breadcrumbsViewHeight
+    func refreshBottomInsets() {
+        editorBottomConstraint.constant = Options.shared.statusBarHidden ? .zero : SplitItemMetrics.breadcrumbsViewHeight
     }
 
     @objc

@@ -8,9 +8,16 @@ class SplitViewController: NSSplitViewController {
 
     /// State FSM: Represents the current Display Mode
     ///
-    private var state: SplitState = .everything {
-        didSet {
-            refreshCollapsedItems(for: state)
+    private var state: SplitState {
+        get {
+            if isFocusModeEnabled {
+                return .editor
+            }
+
+            return isTagsCollapsed ? .tagsCollapsed : .everything
+        }
+        set {
+            refreshCollapsedItems(for: newValue)
         }
     }
 
@@ -22,6 +29,12 @@ class SplitViewController: NSSplitViewController {
     ///
     var isFocusModeEnabled: Bool {
         notesSplitItem.isCollapsed
+    }
+
+    /// Indicates if the Tag List is collapsed
+    ///
+    var isTagsCollapsed: Bool {
+        tagsSplitItem.isCollapsed
     }
 
 
@@ -177,7 +190,7 @@ extension SplitViewController {
 
     @IBAction
     func toggleSidebarAction(sender: Any) {
-        self.state = state.isTagsCollapsed ? .everything : .tagsCollapsed
+        self.state = isTagsCollapsed ? .everything : .tagsCollapsed
         self.previousState = nil
 
         SPTracker.trackSidebarButtonPresed()

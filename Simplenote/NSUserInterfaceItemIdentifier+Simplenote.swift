@@ -33,6 +33,8 @@ extension NSUserInterfaceItemIdentifier {
     static let themeLightMenuItem           = NSUserInterfaceItemIdentifier(rawValue: "themeLightMenuItem")
     static let themeSystemMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "themeSystemMenuItem")
     static let focusMenuItem                = NSUserInterfaceItemIdentifier(rawValue: "focusMenuItem")
+    static let sidebarMenuItem              = NSUserInterfaceItemIdentifier(rawValue: "sidebarMenuItem")
+    static let statusBarMenuItem            = NSUserInterfaceItemIdentifier(rawValue: "statusBarMenuItem")
     static let toggleMarkdownPreview        = NSUserInterfaceItemIdentifier(rawValue: "toggleMarkdownPreview")
 
     /// Identifiers: Notes List

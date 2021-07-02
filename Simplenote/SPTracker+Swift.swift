@@ -4,6 +4,10 @@ import Foundation
 //
 extension SPTracker {
 
+    static func trackSettingsStatusBarDisplayMode(hidden: Bool) {
+        trackAutomatticEvent(withName: "settings_sort_bar_display_mode", properties: ["hidden" : hidden])
+    }
+
     static func trackVerificationReviewScreenViewed() {
         trackAutomatticEvent(withName: "verification_review_screen_viewed", properties: nil)
     }

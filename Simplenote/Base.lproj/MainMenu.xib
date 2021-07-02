@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -595,12 +595,18 @@
                                     <action selector="focusModeAction:" target="494" id="3q6-ha-uEK"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Toggle Sidebar" keyEquivalent="t" id="tkU-Gb-qGx">
+                            <menuItem title="Show Sidebar" keyEquivalent="t" identifier="sidebarMenuItem" id="tkU-Gb-qGx">
                                 <attributedString key="userComments">
                                     <fragment content="Toggles the Sidebar"/>
                                 </attributedString>
                                 <connections>
                                     <action selector="toggleSidebarAction:" target="494" id="eqc-Uf-NHj"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Status Bar" identifier="statusBarMenuItem" id="JXy-Aq-Sr2">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="toggleStatusBarAction:" target="494" id="Efi-XN-3IF"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="cCS-jM-ycR"/>

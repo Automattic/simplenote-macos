@@ -100,6 +100,19 @@ extension Options {
         }
     }
 
+    /// StatusBar
+    ///
+    @objc
+    var statusBarHidden: Bool {
+        get {
+            defaults.bool(forKey: .statusBarHidden)
+        }
+        set {
+            defaults.set(newValue, forKey: .statusBarHidden)
+            NotificationCenter.default.post(name: .StatusBarDisplayModeDidChange, object: nil)
+        }
+    }
+
     /// Theme Name: Null indicates that the system's default theme should be picked
     ///
     var themeName: String? {
