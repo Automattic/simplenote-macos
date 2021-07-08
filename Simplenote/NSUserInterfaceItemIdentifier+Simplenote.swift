@@ -48,6 +48,7 @@ extension NSUserInterfaceItemIdentifier {
     /// Identifiers: Editor
     ///
     static let editorPinMenuItem            = NSUserInterfaceItemIdentifier(rawValue: "editorPinMenuItem")
+    static let editorChecklistMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "editorChecklistMenuItem")
     static let editorMarkdownMenuItem       = NSUserInterfaceItemIdentifier(rawValue: "editorMarkdownMenuItem")
     static let editorCopyInterlinkMenuItem  = NSUserInterfaceItemIdentifier(rawValue: "editorCopyInterlinkMenuItem")
     static let editorShareMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorShareMenuItem")

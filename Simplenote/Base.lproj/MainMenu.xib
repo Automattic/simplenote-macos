@@ -631,7 +631,7 @@
                 <menuItem title="Format" id="THl-80-myZ">
                     <menu key="submenu" title="Format" id="5HH-LQ-Fk8">
                         <items>
-                            <menuItem title="Insert Checklist" keyEquivalent="C" id="iNS-zx-oXr">
+                            <menuItem title="Insert Checklist" keyEquivalent="C" identifier="editorChecklistMenuItem" id="iNS-zx-oXr">
                                 <attributedString key="userComments">
                                     <fragment content="Inserts a new Checklist"/>
                                 </attributedString>

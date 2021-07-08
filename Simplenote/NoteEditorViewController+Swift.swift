@@ -367,6 +367,9 @@ extension NoteEditorViewController: NSMenuItemValidation {
         }
 
         switch identifier {
+        case .editorChecklistMenuItem:
+            return validateEditorChecklistMenuItem(menuItem)
+
         case .editorCopyInterlinkMenuItem:
             return validateEditorCopyInterlinkMenuItem(menuItem)
 
@@ -403,6 +406,10 @@ extension NoteEditorViewController: NSMenuItemValidation {
         default:
             return true
         }
+    }
+
+    func validateEditorChecklistMenuItem(_ item: NSMenuItem) -> Bool {
+        return isDisplayingNote && noteEditor.isFirstResponder
     }
 
     func validateEditorCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
