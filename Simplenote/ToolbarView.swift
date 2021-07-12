@@ -114,7 +114,7 @@ private extension ToolbarView {
     }
 
     func setupActionButtons() {
-        checklistsButton.toolTip = NSLocalizedString("Checklists", comment: "Tooltip: Insert Checklist")
+        checklistsButton.toolTip = NSLocalizedString("Insert Checklist", comment: "Tooltip: Insert Checklist")
         metricsButton.toolTip = NSLocalizedString("Metrics", comment: "Tooltip: Note Metrics")
         moreButton.toolTip = NSLocalizedString("More", comment: "Tooltip: More Actions")
         previewButton.toolTip = NSLocalizedString("Markdown Preview", comment: "Tooltip: Markdown Preview")
