@@ -42,6 +42,9 @@ jobs:
       - setup_environment
       - copy_demo_credentials
       - run:
+          name: TEST
+          command: bundle exec fastlane test_lane
+      - run:
           name: Build & Test
           command: bundle exec fastlane test
           # Starting March 2021, we've been experiencing occasional hangs after

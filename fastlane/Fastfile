@@ -81,6 +81,10 @@ before_all do
   end
 end
 
+lane :test_lane do
+  build_and_upload_app_store
+end
+
 desc 'Runs the unit tests for the project'
 lane :test do | options |
   run_tests(
@@ -320,29 +324,29 @@ end
       force: true, # Skip verification of HTML preview file
     )
 
-    sentry_upload_dsym(
-      auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
-      org_slug: 'a8c',
-      project_slug: 'simplenotemacos',
-      # At the time of writing, there's no way to explicitly configure the
-      # dSYM path, but build_mac_app sets it in the environment if successful.
-      # See `bundle exec fastlane action build_mac_app`.
-      dsym_path: ENV['DSYM_OUTPUT_PATH'],
-    )
+    # sentry_upload_dsym(
+    #   auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
+    #   org_slug: 'a8c',
+    #   project_slug: 'simplenotemacos',
+    #   # At the time of writing, there's no way to explicitly configure the
+    #   # dSYM path, but build_mac_app sets it in the environment if successful.
+    #   # See `bundle exec fastlane action build_mac_app`.
+    #   dsym_path: ENV['DSYM_OUTPUT_PATH'],
+    # )
 
-    # Do not create the GitHub release unless explicitly requested
-    if options[:create_github_release]
-      archive_zip_path = "#{archive_path}.zip"
-      zip(path: archive_path, output_path: archive_zip_path)
+    # # Do not create the GitHub release unless explicitly requested
+    # if options[:create_github_release]
+    #   archive_zip_path = "#{archive_path}.zip"
+    #   zip(path: archive_path, output_path: archive_zip_path)
 
-      create_release(
-        repository: GHHELPER_REPO,
-        version: ios_get_app_version(),
-        release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
-        release_assets: [archive_zip_path],
-        prerelease: options[:prerelease],
-      )
-    end
+    #   create_release(
+    #     repository: GHHELPER_REPO,
+    #     version: ios_get_app_version(),
+    #     release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+    #     release_assets: [archive_zip_path],
+    #     prerelease: options[:prerelease],
+    #   )
+    # end
   end
 
   # Temporary lane to automate the process of uploading the .app manually
