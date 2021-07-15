@@ -23,6 +23,7 @@ WORKSPACE = 'Simplenote.xcworkspace'
 INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote-AppStore'
 BUILD_FOLDER = 'build'
+APP_STORE_CONNECT_API_KEY_PATH = File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'app_store_connect_fastlane_api_key.json')
 
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
@@ -299,7 +300,7 @@ end
       additional_cert_types: ['mac_installer_distribution'],
       readonly: true,
       app_identifier: 'com.automattic.SimplenoteMac',
-      api_key_path: File.join(PROJECT_FOLDER, '.configure-files', 'app_store_connect_fastlane_api_key.json')
+      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
     )
 
     archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
@@ -318,6 +319,7 @@ end
       precheck_include_in_app_purchases: false,
       skip_binary_upload: false,
       force: true, # Skip verification of HTML preview file
+      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
     )
 
     sentry_upload_dsym(
