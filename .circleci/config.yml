@@ -40,10 +40,10 @@ jobs:
       xcode-version: "12.4.0"
     steps:
       - setup_environment
-      - copy_demo_credentials
       - run:
           name: TEST
           command: bundle exec fastlane test_lane
+      - copy_demo_credentials
       - run:
           name: Build & Test
           command: bundle exec fastlane test
