@@ -10,7 +10,7 @@
     },
     {
       "file": "shared/google_cloud_keys.json",
-      "destination": ".configure-files/google_cloud_keys.json",
+      "destination": "~/.configure/simplenote-macos/secrets/google_cloud_keys.json",
       "encrypt": true
     },
     {
