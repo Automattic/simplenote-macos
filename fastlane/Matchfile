@@ -2,4 +2,6 @@
 
 storage_mode('google_cloud')
 google_cloud_bucket_name('a8c-fastlane-match')
-google_cloud_keys_file('.configure-files/google_cloud_keys.json')
+
+secrets_directory = File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets')
+google_cloud_keys_file(File.join(secrets_directory, 'google_cloud_keys.json'))
