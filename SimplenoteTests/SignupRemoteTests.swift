@@ -6,16 +6,16 @@ class SignupRemoteTests: XCTestCase {
     private lazy var signupRemote = SignupRemote(urlSession: urlSession)
 
     func testSuccessWhenStatusCodeIs2xx() {
-        verifySignupSucceeds(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: true)
+        verifySignupSucceeds(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: Remote.Result.success)
     }
 
     func testFailureWhenStatusCodeIs4xxOr5xx() {
         let statusCode = Int.random(in: 400..<600)
-        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: false)
+        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: Remote.Result.failure(statusCode, nil))
     }
 
     func testRequestSetsEmailToCorrectCase() throws {
-        signupRemote.requestSignup(email: "EMAIL@gmail.com", completion: { _, _ in })
+        signupRemote.requestSignup(email: "EMAIL@gmail.com", completion: { _ in })
 
         let expecation = "email@gmail.com"
         let body: Dictionary<String, String> = try XCTUnwrap(urlSession.lastRequest?.decodeHtmlBody())
@@ -25,7 +25,7 @@ class SignupRemoteTests: XCTestCase {
     }
 
     func testRequestSetsEmailToCorrectCaseWithSpecialCharacters() throws {
-        signupRemote.requestSignup(email: "EMAIL123456@#$%^@gmail.com", completion: { _, _ in })
+        signupRemote.requestSignup(email: "EMAIL123456@#$%^@gmail.com", completion: { _ in })
 
         let expecation = "email123456@#$%^@gmail.com"
         let body: Dictionary<String, String> = try XCTUnwrap(urlSession.lastRequest?.decodeHtmlBody())
@@ -35,7 +35,7 @@ class SignupRemoteTests: XCTestCase {
     }
 
     func testRequestSetsEmailToCorrectCaseWithMixedCase() throws {
-        signupRemote.requestSignup(email: "eMaIl@gmail.com", completion: { _, _ in })
+        signupRemote.requestSignup(email: "eMaIl@gmail.com", completion: { _ in })
 
         let expecation = "email@gmail.com"
         let body: Dictionary<String, String> = try XCTUnwrap(urlSession.lastRequest?.decodeHtmlBody())
@@ -46,15 +46,15 @@ class SignupRemoteTests: XCTestCase {
 }
 
 private extension SignupRemoteTests {
-    func verifySignupSucceeds(withStatusCode statusCode: Int, email: String, expectedSuccess: Bool) {
+    func verifySignupSucceeds(withStatusCode statusCode: Int, email: String, expectedSuccess: Remote.Result) {
         urlSession.data = (nil,
                            mockResponse(with: statusCode),
                            nil)
 
         let expectation = self.expectation(description: "Verify is called")
 
-        signupRemote.requestSignup(email: email) { (success, _) in
-            XCTAssertEqual(success, expectedSuccess)
+        signupRemote.requestSignup(email: email) { (result) in
+            XCTAssertEqual(result, expectedSuccess)
             expectation.fulfill()
         }
 

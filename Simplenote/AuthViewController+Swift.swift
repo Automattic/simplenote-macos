@@ -160,14 +160,15 @@ extension AuthViewController {
         setInterfaceEnabled(false)
 
         let email = usernameText
-        SignupRemote().requestSignup(email: email) { [weak self] (success, statusCode) in
+        SignupRemote().requestSignup(email: email) { [weak self] (result) in
             guard let self = `self` else {
                 return
             }
 
-            if success {
+            switch result {
+            case .success:
                 self.presentSignupVerification(email: email)
-            } else {
+            case .failure(let statusCode, _):
                 self.showAuthenticationError(forCode: statusCode)
             }
 
