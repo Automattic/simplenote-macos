@@ -5,13 +5,13 @@ import XCTest
 // MARK: - MockAccountVerificationRemote
 //
 class MockAccountVerificationRemote: AccountVerificationRemote {
-    private var pendingVerifications: [(email: String, completion: (Bool) -> Void)] = []
+    private var pendingVerifications: [(email: String, completion: (Remote.Result) -> Void)] = []
 
-    override func verify(email: String, completion: @escaping (Bool) -> Void) {
+    override func verify(email: String, completion: @escaping (Remote.Result) -> Void) {
         pendingVerifications.append((email, completion))
     }
 
-    func processVerification(for email: String, with result: Bool) {
+    func processVerification(for email: String, with result: Remote.Result) {
         guard let index = pendingVerifications.firstIndex(where: { $0.email == email }) else {
             XCTFail("Cannot find pending verification for email \(email)")
             return
