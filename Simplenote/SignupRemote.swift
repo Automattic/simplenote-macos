@@ -13,7 +13,10 @@ class SignupRemote {
     /// Send signup request for specified email address
     ///
     func requestSignup(email: String, completion: @escaping (_ success: Bool, _ statusCode: Int) -> Void) {
-        let requestURL = request(with: email)
+        guard let requestURL = request(with: email) else {
+            completion(false, .zero)
+            return
+        }
 
         let dataTask = urlSession.dataTask(with: requestURL) { (data, response, error) in
             DispatchQueue.main.async {
@@ -32,8 +35,10 @@ class SignupRemote {
         dataTask.resume()
     }
 
-    private func request(with email: String) -> URLRequest {
-        let url = URL(string: SimplenoteConstants.simplenoteRequestSignupURL)!
+    private func request(with email: String) -> URLRequest? {
+        guard let url = URL(string: SimplenoteConstants.simplenoteRequestSignupURL) else {
+            return nil
+        }
 
         var request = URLRequest(url: url,
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
