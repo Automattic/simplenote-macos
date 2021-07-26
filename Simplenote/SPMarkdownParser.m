@@ -63,14 +63,20 @@
     headerStart = [headerStart stringByAppendingString:[NSString stringWithFormat:colorCSS, textHexColor]];
 
     NSString *headerEnd = @"</style></head><body><div class=\"note-detail-markdown\"><div id=\"static_content\">";
-    NSString *path = [self cssPathForDarkMode:isDarkMode];
-    NSString *css = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:path withExtension:nil]
+
+    NSString *css = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"markdown-default.css" withExtension:nil]
                                              encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *colorCssPath = [self cssPath:isDarkMode];
+    NSString *colors = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource: colorCssPath withExtension:nil]
+                                                 encoding:NSUTF8StringEncoding error:nil];
+
+    css = [css stringByAppendingString:colors];
     
     return [[headerStart stringByAppendingString:css] stringByAppendingString:headerEnd];
 }
 
-+ (NSString *)cssPathForDarkMode:(BOOL)isDarkMode
++ (NSString *)cssPath:(BOOL)isDarkMode
 {
     return isDarkMode ? @"markdown-dark.css" : @"markdown-default.css";
 }
