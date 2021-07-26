@@ -78,7 +78,7 @@
 
 + (NSString *)cssPath:(BOOL)isDarkMode
 {
-    return isDarkMode ? @"markdown-dark.css" : @"markdown-default.css";
+    return isDarkMode ? @"markdown-dark.css" : @"markdown-light.css";
 }
 
 + (NSString *)htmlFooter
