@@ -12,7 +12,7 @@
 }
 
 .note-detail-markdown code {
-    color: #84878a;
+    color: #899199;
 }
 
 .note-detail-markdown pre {
@@ -24,9 +24,9 @@
 }
 
 .note-detail-markdown table tr:nth-child(2n) {
-    background-color: #383d41;
+    background-color: #f6f7f8;
 }
 
 .note-detail-markdown table th, .note-detail-markdown table td {
-    border-color: #575e65;
+    border-color: #c0c4c8;
 }
