@@ -67,7 +67,7 @@
     NSString *css = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"markdown-default.css" withExtension:nil]
                                              encoding:NSUTF8StringEncoding error:nil];
 
-    NSString *colorCssPath = [self cssPath:isDarkMode];
+    NSString *colorCssPath = [self cssPathForDarkMode:isDarkMode];
     NSString *colors = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource: colorCssPath withExtension:nil]
                                                  encoding:NSUTF8StringEncoding error:nil];
 
@@ -76,7 +76,7 @@
     return [[headerStart stringByAppendingString:css] stringByAppendingString:headerEnd];
 }
 
-+ (NSString *)cssPath:(BOOL)isDarkMode
++ (NSString *)cssPathForDarkMode:(BOOL)isDarkMode
 {
     return isDarkMode ? @"markdown-dark.css" : @"markdown-light.css";
 }
