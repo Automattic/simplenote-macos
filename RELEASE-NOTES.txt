@@ -1,3 +1,7 @@
+2.15
+-----
+
+
 2.14
 -----
 - New Status Bar: Lets you quickly know what's your Tags / Notes selection #979
