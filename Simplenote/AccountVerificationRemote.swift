@@ -5,9 +5,9 @@ import Foundation
 class AccountVerificationRemote: Remote {
     /// Send verification request for specified email address
     ///
-    func verify(email: String, completion: @escaping (_ result: Result) -> Void) {
+    func verify(email: String, completion: @escaping (_ result: Result<Int, RemoteError>) -> Void) {
         guard let request = verificationURLRequest(with: email) else {
-            completion(.failure(0, nil))
+            completion(.failure(RemoteError(statusCode: 0)))
             return
         }
 

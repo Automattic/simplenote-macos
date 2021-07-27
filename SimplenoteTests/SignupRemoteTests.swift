@@ -6,12 +6,13 @@ class SignupRemoteTests: XCTestCase {
     private lazy var signupRemote = SignupRemote(urlSession: urlSession)
 
     func testSuccessWhenStatusCodeIs2xx() {
-        verifySignupSucceeds(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: Remote.Result.success)
+        let statusCode = Int.random(in: 200..<300)
+        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: Result.success(statusCode))
     }
 
     func testFailureWhenStatusCodeIs4xxOr5xx() {
         let statusCode = Int.random(in: 400..<600)
-        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: Remote.Result.failure(statusCode, nil))
+        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: Result.failure(RemoteError(statusCode: statusCode)))
     }
 
     func testRequestSetsEmailToCorrectCase() throws {
@@ -46,7 +47,7 @@ class SignupRemoteTests: XCTestCase {
 }
 
 private extension SignupRemoteTests {
-    func verifySignupSucceeds(withStatusCode statusCode: Int, email: String, expectedSuccess: Remote.Result) {
+    func verifySignupSucceeds(withStatusCode statusCode: Int, email: String, expectedSuccess: Result<Int, RemoteError>) {
         urlSession.data = (nil,
                            mockResponse(with: statusCode),
                            nil)

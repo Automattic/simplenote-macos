@@ -118,7 +118,7 @@ private extension AccountVerificationViewController {
             switch result {
             case .success:
                 onSuccess?()
-            case .failure(_, _):
+            case .failure(_):
                 self?.presentErrorAlert()
             }
 

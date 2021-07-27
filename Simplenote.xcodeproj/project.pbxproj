@@ -456,7 +456,7 @@
 		BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */; };
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
 		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
-		BA938CEE26AD055400BE5A1D /* RemoteResult+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* RemoteResult+TestHelpers.swift */; };
+		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		BAE66CAA26AF647500398FF3 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
@@ -832,7 +832,7 @@
 		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
 		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
-		BA938CED26AD055400BE5A1D /* RemoteResult+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteResult+TestHelpers.swift"; sourceTree = "<group>"; };
+		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
 		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1291,7 +1291,7 @@
 			children = (
 				B53FF5462476F9450014E928 /* Constants.swift */,
 				B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */,
-				BA938CED26AD055400BE5A1D /* RemoteResult+TestHelpers.swift */,
+				BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -2389,7 +2389,7 @@
 				B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */,
 				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
 				B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */,
-				BA938CEE26AD055400BE5A1D /* RemoteResult+TestHelpers.swift in Sources */,
+				BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */,
 				B502C22325BA345700145D6C /* AccountVerificationControllerTests.swift in Sources */,
 				BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */,
 				B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */,

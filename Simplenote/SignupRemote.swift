@@ -7,9 +7,9 @@ class SignupRemote: Remote {
 
     /// Send signup request for specified email address
     ///
-    func requestSignup(email: String, completion: @escaping (_ result: Result) -> Void) {
+    func requestSignup(email: String, completion: @escaping (_ result: Result<Int, RemoteError>) -> Void) {
         guard let requestURL = request(with: email) else {
-            completion(.failure(0, nil))
+            completion(.failure(RemoteError(statusCode: 0)))
             return
         }
 

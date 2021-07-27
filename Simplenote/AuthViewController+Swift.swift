@@ -168,8 +168,8 @@ extension AuthViewController {
             switch result {
             case .success:
                 self.presentSignupVerification(email: email)
-            case .failure(let statusCode, _):
-                self.showAuthenticationError(forCode: statusCode)
+            case .failure(let result):
+                self.showAuthenticationError(forCode: result.statusCode)
             }
 
             self.stopSignupAnimation()
