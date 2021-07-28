@@ -1,3 +1,6 @@
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d Selected";
+
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- Minimum of 8 characters";
 
@@ -6,9 +9,6 @@
 
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- Password cannot match email";
-
-/* Presented when there are multiple selected notes */
-"\(notes.count) Selected" = "\(notes.count) Selected";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Add an email address as a tag to share this note with someone. Then you can both make changes to it.";
