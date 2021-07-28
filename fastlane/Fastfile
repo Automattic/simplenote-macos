@@ -114,14 +114,14 @@ end
   #####################################################################################
   desc "Creates a new release branch from the current develop"
   lane :code_freeze do | options |
-    old_version = ios_codefreeze_prechecks(options)
-
-    ios_bump_version_release()
-    new_version = ios_get_app_version()
-    ios_update_release_notes(new_version: new_version)
-    get_prs_list(repository:GHHELPER_REPO, milestone: new_version, report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list_#{old_version}_#{new_version}.txt")
-    setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
-    setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
+#    old_version = ios_codefreeze_prechecks(options)
+#
+#    ios_bump_version_release()
+#    new_version = ios_get_app_version()
+#    ios_update_release_notes(new_version: new_version)
+#    get_prs_list(repository:GHHELPER_REPO, milestone: new_version, report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list_#{old_version}_#{new_version}.txt")
+#    setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
+#    setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
 
     ios_localize_project()
   end
