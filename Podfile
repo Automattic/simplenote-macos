@@ -9,7 +9,6 @@ workspace 'Simplenote.xcworkspace'
 # Main
 #
 abstract_target 'Automattic' do
-
   # Automattic Shared
   #
   pod 'Automattic-Tracks-iOS', '0.8.0'
@@ -23,5 +22,4 @@ abstract_target 'Automattic' do
   # Testing Target
   #
   target 'SimplenoteTests'
-
 end
