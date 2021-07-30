@@ -9,8 +9,7 @@ class AccountVerificationRemoteTests: XCTestCase {
 
     func testSuccessWhenStatusCodeIs2xx() {
         for _ in 0..<5 {
-            let statusCode = Int.random(in: 200..<300)
-            test(withStatusCode: statusCode, expectedResult: Result.success(statusCode))
+            test(withStatusCode: Int.random(in: 200..<300), expectedResult: Result.success(nil))
         }
     }
 
@@ -25,7 +24,7 @@ class AccountVerificationRemoteTests: XCTestCase {
         test(withStatusCode: nil, expectedResult: Result.failure(RemoteError(statusCode: 0)))
     }
 
-    private func test(withStatusCode statusCode: Int?, expectedResult: Result<Int, RemoteError>) {
+    private func test(withStatusCode statusCode: Int?, expectedResult: Result<Data?, RemoteError>) {
         urlSession.data = (nil,
                            response(with: statusCode),
                            nil)

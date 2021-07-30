@@ -10,7 +10,7 @@ class Remote {
     /// Send  task for remote
     /// Sublcassing Notes: To be able to send a task it is required to first setup the URL request for the task to use
     ///
-    func performDataTask(with request: URLRequest, completion: @escaping (_ result: Result<Int, RemoteError>) -> Void) {
+    func performDataTask(with request: URLRequest, completion: @escaping (_ result: Result<Data?, RemoteError>) -> Void) {
         let dataTask = urlSession.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
@@ -21,7 +21,7 @@ class Remote {
                     return
                 }
 
-                completion(.success(statusCode))
+                completion(.success(data))
             }
         }
 
@@ -30,5 +30,15 @@ class Remote {
 }
 
 struct RemoteError: Error, Equatable {
+    static func == (lhs: RemoteError, rhs: RemoteError) -> Bool {
+        lhs.statusCode == rhs.statusCode
+    }
+
     let statusCode: Int
+    let dataTaskError: Error?
+
+    init(statusCode: Int, dataTaskError: Error? = nil) {
+        self.statusCode = statusCode
+        self.dataTaskError = dataTaskError
+    }
 }

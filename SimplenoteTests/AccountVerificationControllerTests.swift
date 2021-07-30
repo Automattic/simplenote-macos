@@ -21,7 +21,7 @@ extension AccountVerificationControllerTests {
     func testVerifyCallsRemoteWithProvidedEmail() {
         // When
         let expectedResult = controller.randomResult()
-        var verificationResult: Result<Int, RemoteError>?
+        var verificationResult: Result<Data?, RemoteError>?
         controller.verify { (result) in
             verificationResult = result
         }

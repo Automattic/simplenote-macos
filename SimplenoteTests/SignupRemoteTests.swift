@@ -6,8 +6,7 @@ class SignupRemoteTests: XCTestCase {
     private lazy var signupRemote = SignupRemote(urlSession: urlSession)
 
     func testSuccessWhenStatusCodeIs2xx() {
-        let statusCode = Int.random(in: 200..<300)
-        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: Result.success(statusCode))
+        verifySignupSucceeds(withStatusCode: Int.random(in: 200..<300), email: "email@gmail.com", expectedSuccess: Result.success(nil))
     }
 
     func testFailureWhenStatusCodeIs4xxOr5xx() {
@@ -47,7 +46,7 @@ class SignupRemoteTests: XCTestCase {
 }
 
 private extension SignupRemoteTests {
-    func verifySignupSucceeds(withStatusCode statusCode: Int, email: String, expectedSuccess: Result<Int, RemoteError>) {
+    func verifySignupSucceeds(withStatusCode statusCode: Int, email: String, expectedSuccess: Result<Data?, RemoteError>) {
         urlSession.data = (nil,
                            mockResponse(with: statusCode),
                            nil)
