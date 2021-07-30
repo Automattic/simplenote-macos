@@ -339,7 +339,7 @@ DEPENDENCIES
   octokit (~> 4.0)
   rake (~> 12.3)
   rubocop (~> 1.18)
-  xcpretty-travis-formatter
+  xcpretty-travis-formatter (~> 1.0)
 
 BUNDLED WITH
    2.2.23
