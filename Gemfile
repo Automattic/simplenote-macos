@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'cocoapods', '>= 1.10'
-gem 'dotenv'
 gem 'fastlane', '~> 2'
 gem 'octokit', '~> 4.0'
 gem 'rake', '~> 12.3'

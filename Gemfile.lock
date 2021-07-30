@@ -332,13 +332,12 @@ PLATFORMS
 
 DEPENDENCIES
   cocoapods (>= 1.10)
-  dotenv
   fastlane (~> 2)
   fastlane-plugin-appcenter (= 1.6.0)
   fastlane-plugin-sentry
   fastlane-plugin-wpmreleasetoolkit!
   octokit (~> 4.0)
-  rake
+  rake (~> 12.3)
   rubocop (~> 1.18)
   xcpretty-travis-formatter
 
