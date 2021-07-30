@@ -4,7 +4,7 @@ gem 'cocoapods', '>= 1.10'
 gem 'dotenv'
 gem 'fastlane', '~> 2'
 gem 'octokit', '~> 4.0'
-gem 'rake'
+gem 'rake', '~> 12.3'
 gem 'rubocop', '~> 1.18'
 gem 'xcpretty-travis-formatter'
 
