@@ -17,7 +17,10 @@ class Remote {
 
                 // Check for 2xx status code
                 guard statusCode / 100 == 2 else {
-                    completion(.failure(RemoteError(statusCode: statusCode)))
+                    let error = statusCode > 0 ?
+                        RemoteError.requestError(statusCode, error):
+                        RemoteError.network
+                    completion(.failure(error))
                     return
                 }
 
@@ -26,19 +29,5 @@ class Remote {
         }
 
         dataTask.resume()
-    }
-}
-
-struct RemoteError: Error, Equatable {
-    static func == (lhs: RemoteError, rhs: RemoteError) -> Bool {
-        lhs.statusCode == rhs.statusCode
-    }
-
-    let statusCode: Int
-    let dataTaskError: Error?
-
-    init(statusCode: Int, dataTaskError: Error? = nil) {
-        self.statusCode = statusCode
-        self.dataTaskError = dataTaskError
     }
 }

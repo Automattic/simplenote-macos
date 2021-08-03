@@ -11,7 +11,7 @@ class SignupRemoteTests: XCTestCase {
 
     func testFailureWhenStatusCodeIs4xxOr5xx() {
         let statusCode = Int.random(in: 400..<600)
-        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: Result.failure(RemoteError(statusCode: statusCode)))
+        verifySignupSucceeds(withStatusCode: statusCode, email: "email@gmail.com", expectedSuccess: Result.failure(RemoteError.requestError(statusCode, nil)))
     }
 
     func testRequestSetsEmailToCorrectCase() throws {

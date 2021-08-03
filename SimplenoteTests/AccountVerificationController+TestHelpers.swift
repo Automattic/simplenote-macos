@@ -3,11 +3,6 @@ import Foundation
 
 extension AccountVerificationController {
     func randomResult() -> Result<Data?, RemoteError> {
-        let random = arc4random_uniform(1)
-        if random == 0 {
-            return .failure(RemoteError(statusCode: 0))
-        } else {
-            return .success(nil)
-        }
+        return Bool.random() ? .success(nil) : .failure(RemoteError.requestError(0, nil))
     }
 }

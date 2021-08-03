@@ -7,7 +7,7 @@ class AccountVerificationRemote: Remote {
     ///
     func verify(email: String, completion: @escaping (_ result: Result<Data?, RemoteError>) -> Void) {
         guard let request = verificationURLRequest(with: email) else {
-            completion(.failure(RemoteError(statusCode: 0)))
+            completion(.failure(RemoteError.urlRequestError))
             return
         }
 

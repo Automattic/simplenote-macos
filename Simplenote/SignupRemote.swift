@@ -9,7 +9,7 @@ class SignupRemote: Remote {
     ///
     func requestSignup(email: String, completion: @escaping (_ result: Result<Data?, RemoteError>) -> Void) {
         guard let requestURL = request(with: email) else {
-            completion(.failure(RemoteError(statusCode: 0)))
+            completion(.failure(RemoteError.urlRequestError))
             return
         }
 
