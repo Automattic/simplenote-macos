@@ -1971,9 +1971,9 @@
 			files = (
 			);
 			inputFileListPaths = (
+				"${SRCROOT}/Scripts/Build-Phases/copy-secret.xcfilelist",
 			);
 			inputPaths = (
-				"${HOME}/.mobile-secrets/macOS/simplenote/SPCredentials.swift",
 			);
 			outputFileListPaths = (
 			);
@@ -1982,7 +1982,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/Scripts/Build-Phases/copy-secret.sh \\\n    $SCRIPT_INPUT_FILE_0 \\\n    $SCRIPT_OUTPUT_FILE_0\n";
+			shellScript = "${SRCROOT}/Scripts/Build-Phases/copy-secret.sh\n";
 		};
 		BCBFB16555965D73674605BA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
