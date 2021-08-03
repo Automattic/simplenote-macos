@@ -458,6 +458,8 @@
 		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BAA0A87A26B9F0B50006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
+		BAA0A88226B9F8970006260E /* AccountDeletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A88126B9F8970006260E /* AccountDeletionController.swift */; };
+		BAA0A88726B9F8B40006260E /* Date+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */; };
 		BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		BAE66CAA26AF647500398FF3 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
@@ -835,6 +837,8 @@
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
 		BAA0A87926B9F0B50006260E /* RemoteError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
+		BAA0A88126B9F8970006260E /* AccountDeletionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDeletionController.swift; sourceTree = "<group>"; };
+		BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Simplenote.swift"; sourceTree = "<group>"; };
 		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1247,6 +1251,7 @@
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
 				BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */,
+				BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1285,6 +1290,7 @@
 				B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */,
 				B53BF1A324AC38C100938C34 /* VersionsController.swift */,
 				B53BF19F24AC1FB800938C34 /* Version.swift */,
+				BAA0A88126B9F8970006260E /* AccountDeletionController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2165,7 +2171,9 @@
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
+				BAA0A88226B9F8970006260E /* AccountDeletionController.swift in Sources */,
 				B574015325B783500058960E /* EmailVerification.swift in Sources */,
+				BAA0A88726B9F8B40006260E /* Date+Simplenote.swift in Sources */,
 				B53BF1A024AC1FB800938C34 /* Version.swift in Sources */,
 				B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
