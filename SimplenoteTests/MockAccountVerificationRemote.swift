@@ -4,7 +4,7 @@ import XCTest
 
 // MARK: - MockAccountVerificationRemote
 //
-class MockAccountVerificationRemote: AccountVerificationRemote {
+class MockAccountRemote: AccountRemote {
     private var pendingVerifications: [(email: String, completion: (Result<Data?, RemoteError>) -> Void)] = []
 
     override func verify(email: String, completion: @escaping (Result<Data?, RemoteError>) -> Void) {

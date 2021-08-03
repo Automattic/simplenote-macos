@@ -135,8 +135,8 @@
 		B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */; };
 		B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501AAD12437E5250084CDA3 /* AppKitConstants.swift */; };
 		B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501AAD12437E5250084CDA3 /* AppKitConstants.swift */; };
-		B502C1DD25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */; };
-		B502C1DE25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */; };
+		B502C1DD25BA2EB700145D6C /* AccountRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountRemote.swift */; };
+		B502C1DE25BA2EB700145D6C /* AccountRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountRemote.swift */; };
 		B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */; };
 		B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1EE25BA2F2400145D6C /* MockURLSession.swift */; };
 		B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */; };
@@ -610,7 +610,7 @@
 		B500993B24213B370037A431 /* String+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Simplenote.swift"; sourceTree = "<group>"; };
 		B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B501AAD12437E5250084CDA3 /* AppKitConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKitConstants.swift; sourceTree = "<group>"; };
-		B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationRemote.swift; sourceTree = "<group>"; };
+		B502C1DC25BA2EB700145D6C /* AccountRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRemote.swift; sourceTree = "<group>"; };
 		B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationRemoteTests.swift; sourceTree = "<group>"; };
 		B502C1EE25BA2F2400145D6C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
@@ -1183,7 +1183,7 @@
 			isa = PBXGroup;
 			children = (
 				B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */,
-				B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */,
+				B502C1DC25BA2EB700145D6C /* AccountRemote.swift */,
 				B5F5414725EFFC2200CAF52C /* SignupRemote.swift */,
 				BA938CEB26ACFF4A00BE5A1D /* Remote.swift */,
 				BAA0A87926B9F0B50006260E /* RemoteError.swift */,
@@ -2096,7 +2096,7 @@
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
-				B502C1DD25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */,
+				B502C1DD25BA2EB700145D6C /* AccountRemote.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
 				B5E086352448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
@@ -2229,7 +2229,7 @@
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
-				B502C1DE25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */,
+				B502C1DE25BA2EB700145D6C /* AccountRemote.swift in Sources */,
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
 				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
 				B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
