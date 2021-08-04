@@ -27,11 +27,9 @@ class AccountDeletionController: NSObject {
     }
 
     private func presentAccountDeletionConfirmationAlert() -> NSApplication.ModalResponse {
-        let alert = NSAlert()
-        alert.messageText = Constants.deleteAccount
-        alert.informativeText = Constants.confirmAlertMessage
-        alert.alertStyle = .critical
+        let alert = NSAlert(messageText: Constants.deleteAccount, informativeText: Constants.confirmAlertMessage)
 
+        alert.alertStyle = .critical
         alert.addButton(withTitle: Constants.deleteAccountButton)
         alert.addButton(withTitle: Constants.cancel)
 
@@ -39,33 +37,26 @@ class AccountDeletionController: NSObject {
     }
 
     @objc
-    private func onConfirmAccountDeletion() {
-        guard let user = user else {
-            return
-        }
-
+    private func onConfirmAccountDeletion(for user: SPUser) {
         AccountRemote().requestDelete(user) { [weak self] (result) in
             switch result {
             case .success:
                 self?.accountDeletionRequestDate = Date()
-                self?.presentSuccessAlert(for: user.email)
+                NSAlert.presentAlert(withMessageText: Constants.succesAlertTitle,
+                                     informativeText: Constants.successMessage(email: user.email))
             case .failure(let error):
-                self?.handleError(error)
+                self?.presentErrorAlert(error)
             }
         }
-
-        NSApplication.shared.stopModal()
     }
 
     private func presentSuccessAlert(for userEmail: String) {
-        let alert = NSAlert()
-        alert.messageText = Constants.succesAlertTitle
-        alert.informativeText = Constants.successMessage(email: userEmail)
+        let alert = NSAlert(messageText: Constants.succesAlertTitle, informativeText: Constants.successMessage(email: userEmail))
 
         alert.runModal()
     }
 
-    private func handleError(_ error: RemoteError) {
+    private func presentErrorAlert(_ error: RemoteError) {
         var code: Int
         var description: String
 
@@ -78,10 +69,7 @@ class AccountDeletionController: NSObject {
             description = Constants.genericErrorMessage
         }
 
-        let alert = NSAlert()
-        alert.messageText = Constants.errorTitle
-        alert.informativeText = Constants.errorMessage
-        alert.runModal()
+        NSAlert.presentAlert(withMessageText: Constants.errorTitle, informativeText: Constants.errorMessage)
         NSLog("An error has occured with account deletion.  Error code: \(code) description: \(description)")
     }
 }
