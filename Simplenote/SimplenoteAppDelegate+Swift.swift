@@ -568,6 +568,25 @@ extension SimplenoteAppDelegate: EditorControllerDelegate {
     }
 }
 
+// MARK: - Account Deletion
+//
+extension SimplenoteAppDelegate {
+    @objc
+    func authenticateSimperiumIfAccountDeletionRequested() {
+        guard let deletionController = accountDeletionController else {
+            return
+        }
+
+        if deletionController.deletionTokenHasExpired {
+            self.accountDeletionController = nil
+            return
+        }
+
+        simperium.authenticateIfNecessary()
+    }
+}
+
+
 
 // MARK: - Constants
 //

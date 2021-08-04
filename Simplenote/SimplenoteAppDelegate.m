@@ -478,6 +478,8 @@
         return YES;
     }
 
+    [self authenticateSimperiumIfAccountDeletionRequested];
+
     [self.window setIsVisible:YES];
     [self.window makeKeyAndOrderFront:self];
     
@@ -592,6 +594,18 @@
 - (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)window
 {
     return [[self managedObjectContext] undoManager];
+}
+
+#pragma mark ================================================================================
+#pragma mark Deletion Controller
+#pragma mark ================================================================================
+
+- (AccountDeletionController *)accountDeletionController {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _accountDeletionController = [AccountDeletionController new];
+    });
+    return _accountDeletionController;
 }
 
 @end
