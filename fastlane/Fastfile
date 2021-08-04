@@ -95,6 +95,7 @@ end
 
 desc 'Builds the app using the App Store target but without code signing, just to check the target builds'
 lane :test_app_store_build do | options |
+  configure_apply
   build_simplenote(codesign: false)
 end
 
