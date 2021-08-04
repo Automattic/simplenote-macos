@@ -8,18 +8,13 @@ class SignupRemote: Remote {
     /// Send signup request for specified email address
     ///
     func requestSignup(email: String, completion: @escaping (_ result: Result<Data?, RemoteError>) -> Void) {
-        guard let requestURL = request(with: email) else {
-            completion(.failure(RemoteError.urlRequestError))
-            return
-        }
+        let requestURL = request(with: email)!
 
         performDataTask(with: requestURL, completion: completion)
     }
 
     private func request(with email: String) -> URLRequest? {
-        guard let url = URL(string: SimplenoteConstants.simplenoteRequestSignupURL) else {
-            return nil
-        }
+        let url = URL(string: SimplenoteConstants.simplenoteRequestSignupURL)!
 
         var request = URLRequest(url: url,
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
