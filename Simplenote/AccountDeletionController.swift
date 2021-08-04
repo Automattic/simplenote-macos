@@ -3,7 +3,6 @@ import Foundation
 @objc
 class AccountDeletionController: NSObject {
     private var accountDeletionRequestDate: Date?
-    private var user: SPUser?
 
     var deletionTokenHasExpired: Bool {
         guard let requestDate = accountDeletionRequestDate,
@@ -16,13 +15,10 @@ class AccountDeletionController: NSObject {
 
     @objc
     func deleteAccount(for user: SPUser) {
-        self.user = user
-
-
         let response = presentAccountDeletionConfirmationAlert()
 
         if response == .alertFirstButtonReturn {
-            onConfirmAccountDeletion()
+            onConfirmAccountDeletion(for: user)
         }
     }
 
