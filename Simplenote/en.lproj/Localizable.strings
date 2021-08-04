@@ -1,3 +1,6 @@
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d Selected";
+
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- Minimum of 8 characters";
 
@@ -9,9 +12,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Add an email address as a tag to share this note with someone. Then you can both make changes to it.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "Add tag...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -108,11 +108,20 @@
 /* Back Button Title */
 "Go Back" = "Go Back";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "Hide Sidebar";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "Hide Status Bar";
+
 /* History Menu Action */
 "History" = "History";
 
 /* Note Metrics Title */
 "Information" = "Information";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "Insert Checklist";
 
 /* Reference Last Modification Date */
 "Last modified" = "Last modified";
@@ -242,7 +251,7 @@
 /* Search Field Placeholder */
 "Search notes" = "Search notes";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "Searching";
 
 /* Share Menu Action */
@@ -250,6 +259,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Share information with our analytics tool about your use of services while logged into your Simplenote.com account.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "Show Sidebar";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "Show Status Bar";
 
 /* Title of button for signing up */
 "Sign Up" = "Sign Up";
@@ -262,6 +277,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Skip";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "Tag...";
 
 /* Search Operator for tags. Please preserve the semicolons */
 "tag:" = "tag:";

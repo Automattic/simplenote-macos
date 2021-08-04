@@ -165,7 +165,8 @@ extension BreadcrumbsViewController {
     }
 
     func notesControllerDidSelectNotes(_ notes: [Note]) {
-        statusForNotes = NSLocalizedString("\(notes.count) Selected", comment: "Presented when there are multiple selected notes")
+        let formatString = NSLocalizedString("%d Selected", comment: "Presented when there are multiple selected notes")
+        statusForNotes = String.localizedStringWithFormat(formatString, notes.count)
     }
 
     func notesControllerDidSelectZeroNotes() {

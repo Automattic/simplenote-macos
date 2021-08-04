@@ -2,6 +2,7 @@
 -----
 - In app account deletion: Now you can delete your account from the app #1013
 
+
 2.14
 -----
 - New Status Bar: Lets you quickly know what's your Tags / Notes selection #979
