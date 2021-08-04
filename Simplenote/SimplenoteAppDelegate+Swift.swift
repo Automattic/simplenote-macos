@@ -98,6 +98,11 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureAccountDeletionController() {
+        accountDeletionController = AccountDeletionController()
+    }
+
+    @objc
     func refreshStatusController() {
         guard !Options.shared.statusBarHidden else {
             breadcrumbsViewController.view.removeFromSuperview()
@@ -578,7 +583,6 @@ extension SimplenoteAppDelegate {
         }
 
         if deletionController.deletionTokenHasExpired {
-            self.accountDeletionController = nil
             return
         }
 

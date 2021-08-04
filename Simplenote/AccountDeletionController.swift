@@ -2,11 +2,12 @@ import Foundation
 
 @objc
 class AccountDeletionController: NSObject {
-    private let accountDeletionRequestDate = Date()
+    private var accountDeletionRequestDate: Date?
     private var user: SPUser?
 
     var deletionTokenHasExpired: Bool {
-        guard let expirationDate = accountDeletionRequestDate.increased(byDays: 1) else {
+        guard let requestDate = accountDeletionRequestDate,
+              let expirationDate = requestDate.increased(byDays: 1) else {
             return true
         }
 
@@ -16,7 +17,7 @@ class AccountDeletionController: NSObject {
     @objc
     func deleteAccount(for user: SPUser) {
         self.user = user
-        // Spinner?
+
 
         let response = presentAccountDeletionConfirmationAlert()
 
@@ -43,12 +44,13 @@ class AccountDeletionController: NSObject {
             return
         }
 
-        AccountRemote().requestDelete(user) { (result) in
+        AccountRemote().requestDelete(user) { [weak self] (result) in
             switch result {
             case .success:
-                self.presentSuccessAlert(for: user.email)
+                self?.accountDeletionRequestDate = Date()
+                self?.presentSuccessAlert(for: user.email)
             case .failure(let error):
-                self.handleError(error)
+                self?.handleError(error)
             }
         }
 
