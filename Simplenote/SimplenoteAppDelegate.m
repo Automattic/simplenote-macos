@@ -384,6 +384,11 @@
     }];
 }
 
+- (IBAction)deleteAccountAction:(id)sender {
+    [SPTracker trackDeleteAccountButttonTapped];
+    [self.accountDeletionController deleteAccountFor:[self.simperium user]];
+}
+
 -(void)signOut
 {
     [SPTracker trackUserSignedOut];
