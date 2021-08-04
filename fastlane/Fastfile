@@ -237,7 +237,7 @@ end
     ios_update_metadata(options)
     ios_bump_version_beta()
 
-    trigger_app_store_ci_build(branch_to_build: "release/#{ios_get_app_version()}")
+    trigger_release_build(branch_to_build: "release/#{ios_get_app_version()}")
   end
 
   #####################################################################################
@@ -399,14 +399,14 @@ end
   end
 
   #############################################################################
-  # trigger_app_store_ci_build
+  # trigger_release_build
   # ---------------------------------------------------------------------------
   # This lane triggers a build for App Store distribution on CI
   # ---------------------------------------------------------------------------
   # Usage:
   # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
   #############################################################################
-  lane :trigger_app_store_ci_build do | options |
+  lane :trigger_release_build do | options |
     circleci_trigger_job(
       circle_ci_token: ENV["CIRCLE_CI_AUTH_TOKEN"],
       repository: REPOSITORY_NAME,
