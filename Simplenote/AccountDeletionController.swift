@@ -54,12 +54,9 @@ private struct Constants {
 
     static let succesAlertTitle = NSLocalizedString("Check Your Email", comment: "Title for delete account succes alert")
     static let successAlertMessage = NSLocalizedString("An email has been sent to %@ Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation", comment: "Delete account confirmation instructions")
-    static let ok = NSLocalizedString("Ok", comment: "Confirm alert message")
 
     static let errorTitle = NSLocalizedString("Error", comment: "Deletion Error Title")
     static let errorMessage = NSLocalizedString("An error occured. Please, try again. If the problem continues, contact us at support@simplenote.com for help.", comment: "Deletion error message")
-    static let genericErrorCode = 0
-    static let genericErrorMessage = "Generic Error"
 
     static func successMessage(email: String) -> String {
         String(format: successAlertMessage, email)
