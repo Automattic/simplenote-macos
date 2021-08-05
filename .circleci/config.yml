@@ -11,13 +11,6 @@ parameters:
 
 # Reusable sets of steps
 commands:
-  copy_demo_credentials:
-    steps:
-      - run:
-          name: Copy Demo SPCredentials
-          command: |
-            mkdir -p Simplenote/Credentials
-            cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
   setup_environment:
     steps:
       - checkout
@@ -40,7 +33,6 @@ jobs:
       xcode-version: "12.4.0"
     steps:
       - setup_environment
-      - copy_demo_credentials
       - run:
           name: Build & Test
           command: bundle exec fastlane test
@@ -58,7 +50,6 @@ jobs:
     executor: *xcode_image
     steps:
       - setup_environment
-      - copy_demo_credentials
       - run:
           name: Verify App Store Target Builds
           command: bundle exec fastlane test_app_store_build
