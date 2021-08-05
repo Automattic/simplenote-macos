@@ -582,7 +582,7 @@ extension SimplenoteAppDelegate {
             return
         }
 
-        if deletionController.deletionTokenHasExpired {
+        if deletionController.mustReauthenticateSimperium {
             return
         }
 
