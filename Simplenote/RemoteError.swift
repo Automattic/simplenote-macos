@@ -5,6 +5,17 @@ enum RemoteError: Error {
     case requestError(Int, Error?)
 }
 
+extension RemoteError {
+    var statusCode: Int {
+        switch self {
+        case .requestError(let statusCode, _):
+            return statusCode
+        default:
+            return .zero
+        }
+    }
+}
+
 extension RemoteError: Equatable {
     static func == (lhs: RemoteError, rhs: RemoteError) -> Bool {
         switch (lhs, rhs) {
