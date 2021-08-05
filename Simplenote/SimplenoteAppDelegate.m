@@ -479,12 +479,15 @@
         return YES;
     }
 
-    [self authenticateSimperiumIfAccountDeletionRequested];
-
     [self.window setIsVisible:YES];
     [self.window makeKeyAndOrderFront:self];
     
     return YES;
+}
+
+- (void)applicationWillBecomeActive:(NSNotification *)notification
+{
+    [self authenticateSimperiumIfAccountDeletionRequested];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
