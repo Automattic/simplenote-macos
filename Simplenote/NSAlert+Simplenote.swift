@@ -7,8 +7,11 @@ extension NSAlert {
         self.informativeText = informativeText
     }
 
-    static func presentAlert(withMessageText messageText: String, informativeText: String) {
+    static func presentAlert(withMessageText messageText: String,
+                             informativeText: String,
+                             for window: Window,
+                             onCompletion: ((NSApplication.ModalResponse) -> Void)? = nil) {
         let alert = NSAlert(messageText: messageText, informativeText: informativeText)
-        alert.runModal()
+        alert.beginSheetModal(for: window, completionHandler: onCompletion)
     }
 }

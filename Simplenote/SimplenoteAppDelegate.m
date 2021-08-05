@@ -387,7 +387,7 @@
 
 - (IBAction)deleteAccountAction:(id)sender {
     [SPTracker trackDeleteAccountButttonTapped];
-    [self.accountDeletionController deleteAccountFor:[self.simperium user]];
+    [self.accountDeletionController requestAccountDeletionFor:self.simperium.user with:self.window];
 }
 
 -(void)signOut

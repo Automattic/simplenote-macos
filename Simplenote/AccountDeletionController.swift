@@ -14,59 +14,35 @@ class AccountDeletionController: NSObject {
     }
 
     @objc
-    func deleteAccount(for user: SPUser) {
-        let response = presentAccountDeletionConfirmationAlert()
-
-        if response == .alertFirstButtonReturn {
-            onConfirmAccountDeletion(for: user)
-        }
-    }
-
-    private func presentAccountDeletionConfirmationAlert() -> NSApplication.ModalResponse {
+    func requestAccountDeletion(for user: SPUser, with window: Window) {
         let alert = NSAlert(messageText: Constants.deleteAccount, informativeText: Constants.confirmAlertMessage)
 
         alert.alertStyle = .critical
         alert.addButton(withTitle: Constants.deleteAccountButton)
         alert.addButton(withTitle: Constants.cancel)
 
-        return alert.runModal()
+        alert.beginSheetModal(for: window) { (modalResponse) in
+            if modalResponse == .alertFirstButtonReturn {
+                self.onConfirmAccountDeletion(for: user, for: window)
+            }
+        }
     }
 
     @objc
-    private func onConfirmAccountDeletion(for user: SPUser) {
+    private func onConfirmAccountDeletion(for user: SPUser, for window: Window) {
         AccountRemote().requestDelete(user) { [weak self] (result) in
             switch result {
             case .success:
                 self?.accountDeletionRequestDate = Date()
                 NSAlert.presentAlert(withMessageText: Constants.succesAlertTitle,
-                                     informativeText: Constants.successMessage(email: user.email))
-            case .failure(let error):
-                self?.presentErrorAlert(error)
+                                     informativeText: Constants.successMessage(email: user.email),
+                                     for: window)
+            case .failure:
+                NSAlert.presentAlert(withMessageText: Constants.errorTitle,
+                                     informativeText: Constants.errorMessage,
+                                     for: window)
             }
         }
-    }
-
-    private func presentSuccessAlert(for userEmail: String) {
-        let alert = NSAlert(messageText: Constants.succesAlertTitle, informativeText: Constants.successMessage(email: userEmail))
-
-        alert.runModal()
-    }
-
-    private func presentErrorAlert(_ error: RemoteError) {
-        var code: Int
-        var description: String
-
-        switch error {
-        case .requestError(let statusCode, let error):
-            code = statusCode
-            description = error?.localizedDescription ?? Constants.genericErrorMessage
-        default:
-            code = Constants.genericErrorCode
-            description = Constants.genericErrorMessage
-        }
-
-        NSAlert.presentAlert(withMessageText: Constants.errorTitle, informativeText: Constants.errorMessage)
-        NSLog("An error has occured with account deletion.  Error code: \(code) description: \(description)")
     }
 }
 
