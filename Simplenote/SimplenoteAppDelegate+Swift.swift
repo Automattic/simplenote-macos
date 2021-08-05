@@ -582,11 +582,11 @@ extension SimplenoteAppDelegate {
             return
         }
 
-        if deletionController.mustReauthenticateSimperium {
+        guard deletionController.mustReauthenticateSimperium else {
             return
         }
 
-        simperium.authenticateIfNecessary()
+        simperium.authenticateIfNecessary() 
     }
 }
 

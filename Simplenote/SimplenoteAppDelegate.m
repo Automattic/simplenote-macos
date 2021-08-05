@@ -487,6 +487,10 @@
 
 - (void)applicationWillBecomeActive:(NSNotification *)notification
 {
+    if (!self.simperium.user.authenticated) {
+        NSLog(@"not authenticated");
+        [[self.simperium window] setIsVisible: false];
+    }
     [self authenticateSimperiumIfAccountDeletionRequested];
 }
 
