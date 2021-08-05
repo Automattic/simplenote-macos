@@ -4,13 +4,13 @@ import Foundation
 class AccountDeletionController: NSObject {
     private var accountDeletionRequestDate: Date?
 
-    var deletionTokenHasExpired: Bool {
+    var mustReauthenticateSimperium: Bool {
         guard let requestDate = accountDeletionRequestDate,
               let expirationDate = requestDate.increased(byDays: 1) else {
-            return true
+            return false
         }
 
-        return Date() > expirationDate
+        return Date() < expirationDate
     }
 
     @objc

@@ -40,7 +40,7 @@ class AccountVerificationController: NSObject {
 
     /// Initialize with user's email
     ///
-    init(email: String, remote: AccountRemote = .init()) {
+    init(email: String, remote: AccountRemote = AccountRemote()) {
         self.email = email
         self.remote = remote
         super.init()
