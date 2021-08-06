@@ -1,1 +1,4 @@
-– Om du trycker skift + tab så tar du tillbaka indrag för objekt i en lista.
+- Nytt statusfält: Ger dig snabb information om dina Etiketter/Anteckningar-val
+- Det nya statusfältet kan även döljas via Inställningar
+- Etikettredigeraren är nu rullningsbar, vilket ger mer utrymme för redigeraren när det behövs
+- Du kan nu infoga checklistor direkt från redigerarens verktygsfält

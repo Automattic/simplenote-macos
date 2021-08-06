@@ -1,0 +1,4 @@
+- Yeni Durum Çubuğu: Etiketler/Notlar seçiminizin ne olduğunu hızlı bir şekilde bilmenizi sağlar
+- Yeni Durum Çubuğu Ayarlar aracılığıyla da gizlenebilir
+- Etiket Düzenleyicisi artık kaydırılabilir ve uygun olduğunda düzenleyiciye daha fazla yer açar
+- Artık Kontrol Listelerini doğrudan Editör Araç Çubuğundan ekleyebilirsiniz
