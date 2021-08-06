@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-27 09:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-04 10:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d Terpilih";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- Minimum 8 karakter";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Tambahkan alamat email sebagai tag untuk membagikan catatan ini kepada seseorang. Selanjutnya Anda dan pengguna yang diberi akses dapat membuat perubahan.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "Tambahkan tag...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "kembali";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "Sembunyikan Bilah sisi";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "Sembunyikan Bilah Status";
+
 /* History Menu Action */
 "History" = "Riwayat";
 
 /* Note Metrics Title */
 "Information" = "Informasi";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "Masukkan Daftar Periksa";
 
 /* Reference Last Modification Date */
 "Last modified" = "Terakhir diubah";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "Cari catatan";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "Mencari";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Bagikan informasi tentang penggunaan layanan Anda dengan alat analisis kami saat login ke akun Simplenote.com Anda.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "Tampilkan Bilah sisi";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "Tampilkan Bilah Status";
 
 /* Title of button for signing up */
 "Sign Up" = "Mendaftar";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Lewati";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "Tag...";
 
 /* Tags Section Name */
 "Tags" = "Tag";

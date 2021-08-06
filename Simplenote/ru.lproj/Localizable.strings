@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-04 14:54:04+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d Выбрано";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "— Не менее 8 символов";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Добавьте в качестве метки адрес электронной почты, чтобы поделиться заметкой с другим пользователем. Вы оба сможете исправлять заметку.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "Добавить метку...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "Назад";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "Скрыть боковую панель";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "Скрыть панель статуса";
+
 /* History Menu Action */
 "History" = "История";
 
 /* Note Metrics Title */
 "Information" = "Информация";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "Вставить чек-лист";
 
 /* Reference Last Modification Date */
 "Last modified" = "Последнее изменение";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "Искать в заметках";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "Поиск";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Позвольте нашему средству аналитики собирать информацию о том, как вы используете наши услуги после входа в учетную запись Simplenote.com.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "Показать боковую панель";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "Показать панель статуса";
 
 /* Title of button for signing up */
 "Sign Up" = "Регистрация";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Пропустить";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "Метка...";
 
 /* Tags Section Name */
 "Tags" = "Метки";

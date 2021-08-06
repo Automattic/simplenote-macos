@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-29 09:54:04+0000 */
+/* Translation-Revision-Date: 2021-08-04 20:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d נבחר";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- לפחות שמונה תווים";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "אפשר להוסיף תגית כדי לשתף את הפתק עם אדם מסוים. לאחר מכן תוכלו שניכם לערוך בו שינויים.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "להוסיף תגית...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "חזרה";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "להסתיר סרגל צדדי";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "להסתיר סרגל סטטוס";
+
 /* History Menu Action */
 "History" = "היסטוריה";
 
 /* Note Metrics Title */
 "Information" = "מידע";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "להוסיף רשימת משימות";
 
 /* Reference Last Modification Date */
 "Last modified" = "תאריך שינוי אחרון";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "חיפוש פתקים";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "מחפש";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "ניתן לשתף בכלי הניתוח שלנו את פרטי השימוש שלך בשירותים השונים לאחר ההתחברות לחשבון שלך ב-Simplenote.com.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "להציג סרגל צדדי";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "להציג סרגל סטטוס";
 
 /* Title of button for signing up */
 "Sign Up" = "הרשמה";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "דלג";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "תגית...";
 
 /* Tags Section Name */
 "Tags" = "תגיות";

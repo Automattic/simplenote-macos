@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 13:54:04+0000 */
+/* Translation-Revision-Date: 2021-08-04 16:54:03+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d مُحدَّد";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- 8 أحرف بحد أقصى";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "أضف عنوان بريد إلكتروني كوسم لمشاركة هذه الملحوظة مع شخص ما. بعدها يمكنكما إجراء التغييرات عليها.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "إضافة وسم...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "الرجوع للخلف";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "إخفاء الشريط الجانبي";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "إخفاء شريط الحالة";
+
 /* History Menu Action */
 "History" = "المحفوظات";
 
 /* Note Metrics Title */
 "Information" = "معلومات";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "إدراج قائمة التحقُّق";
 
 /* Reference Last Modification Date */
 "Last modified" = "آخر تعديل";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "ملاحظات البحث";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "البحث";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "شارك المعلومات مع أداة التحليلات الخاصة بنا حول استخدامك للخدمات في أثناء تسجيل الدخول إلى حسابك على Simplenote.com.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "إظهار الشريط الجانبي";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "إظهار شريط الحالة";
 
 /* Title of button for signing up */
 "Sign Up" = "اشترك";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "تخطي";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "العلامة...";
 
 /* Tags Section Name */
 "Tags" = "وسوم";

@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-30 09:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-05 14:54:04+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ja_JP */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d件選択済み";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- 8文字以上入力してください";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "メールをタグとして追加して、このメモを他の人と共有できます。 共有すると、お互いにメモを変更できるようになります。";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "タグを追加...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "戻る";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "サイドバーを非表示";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "ステータスバーを非表示";
+
 /* History Menu Action */
 "History" = "履歴";
 
 /* Note Metrics Title */
 "Information" = "情報";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "チェックリストを挿入";
 
 /* Reference Last Modification Date */
 "Last modified" = "最終更新日";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "メモを検索";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "検索中";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com アカウントへのログイン中のサービス利用の情報を分析ツールと共有してください。";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "サイドバーを表示";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "ステータスバーを表示";
 
 /* Title of button for signing up */
 "Sign Up" = "登録";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "スキップ";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "タグ ...";
 
 /* Tags Section Name */
 "Tags" = "タグ";
