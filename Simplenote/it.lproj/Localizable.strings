@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-03 13:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: it */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d Selezionato";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- Minimo 8 caratteri";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Aggiungi un indirizzo e-mail come tag e condividi questa nota con qualcuno. Entrambi potete così effettuare modifiche.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "Aggiunta tag in corso...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "Torna indietro";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "Nascondi Barra laterale";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "Nascondi Barra di stato";
+
 /* History Menu Action */
 "History" = "Storia";
 
 /* Note Metrics Title */
 "Information" = "Informazioni";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "Inserisci checklist";
 
 /* Reference Last Modification Date */
 "Last modified" = "Ultima modifica";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "Cerca note";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "Ricerca";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Condividi informazioni relative all'uso dei servizi con lo strumento di analisi mentre sei connesso al tuo account Simplenote.com.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "Mostra Barra laterale";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "Mostra Barra di stato";
 
 /* Title of button for signing up */
 "Sign Up" = "Registrati";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Salta";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "Tag...";
 
 /* Tags Section Name */
 "Tags" = "Tag";

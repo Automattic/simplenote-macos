@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 09:54:59+0000 */
+/* Translation-Revision-Date: 2021-08-04 12:54:04+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "已选择 %d 个笔记";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- 至少需要有 8 个字符";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "将电子邮件地址添加为标签，即可与他人分享此笔记。 而且，您与协作者均可对笔记作出更改。";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "添加标签…";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "返回";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "隐藏侧边栏";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "隐藏状态栏";
+
 /* History Menu Action */
 "History" = "历史记录";
 
 /* Note Metrics Title */
 "Information" = "信息";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "插入清单";
 
 /* Reference Last Modification Date */
 "Last modified" = "上次修改";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "搜索笔记";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "搜索";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "登录到您的 Simplenote.com 帐户后，请使用分析工具共享关于您使用服务的信息。";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "显示侧边栏";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "显示状态栏";
 
 /* Title of button for signing up */
 "Sign Up" = "注册";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "跳过";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "标签...";
 
 /* Tags Section Name */
 "Tags" = "标签";

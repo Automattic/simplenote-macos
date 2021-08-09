@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 17:54:58+0000 */
+/* Translation-Revision-Date: 2021-08-04 12:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: fr */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d sélectionné";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- 8 caractères minimum";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Ajoutez une adresse e-mail sous forme d’étiquette pour partager une note avec un tiers. Vous et l’autre personne pouvez alors la modifier tous les deux.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "Ajouter une étiquette...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "Retour";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "Masquer la colonne latérale";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "Masquer la barre d’état";
+
 /* History Menu Action */
 "History" = "Historique";
 
 /* Note Metrics Title */
 "Information" = "Information";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "Insérer une liste de contrôle";
 
 /* Reference Last Modification Date */
 "Last modified" = "Dernière modification";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "Rechercher des notes";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "Recherche";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Partagez les informations avec notre outil d’analyse à propos de votre utilisation des services lorsque vous êtes connecté avec votre compte Simplenote.com.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "Afficher la colonne latérale";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "Afficher la barre d’état";
 
 /* Title of button for signing up */
 "Sign Up" = "S’inscrire";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Sauter";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "Étiquette...";
 
 /* Tags Section Name */
 "Tags" = "Étiquettes";

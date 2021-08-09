@@ -1,1 +1,4 @@
-- Door op Shift + Tab te drukken wordt het inspringen van items in een lijst nu ongedaan gemaakt.
+- Nieuwe statusbalk: zodat je snel kunt zien welke tags/notities je hebt geselecteerd
+- De nieuwe statusbalk kan ook worden verborgen via Instellingen
+- Je kunt nu scrollen in de Tagseditor, zodat er indien nodig meer ruimte voor de editor vrijkomt
+- Je kunt nu Checklists rechtstreeks vanuit de werkbalk van de editor invoegen

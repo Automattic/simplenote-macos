@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-05 09:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "已選取 %d 個";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- 長度至少為 8 個字元";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "新增電子郵件地址做為標籤，將此筆記與他人分享。 這樣雙方都能變更筆記內容。";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "新增標籤…";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "返回";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "隱藏側邊欄";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "隱藏狀態列";
+
 /* History Menu Action */
 "History" = "記錄";
 
 /* Note Metrics Title */
 "Information" = "資訊";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "插入檢查清單";
 
 /* Reference Last Modification Date */
 "Last modified" = "上次修改日期";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "搜尋紀錄";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "搜尋";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "在你登入 Simplenote.com 帳號後，將你的服務使用相關資訊傳送到我們的分析工具。";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "顯示側邊欄";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "顯示狀態列";
 
 /* Title of button for signing up */
 "Sign Up" = "註冊";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "跳過";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "標籤…";
 
 /* Tags Section Name */
 "Tags" = "標籤";
