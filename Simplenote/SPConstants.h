@@ -22,6 +22,7 @@ extern NSString * const SPSimplenotePublishURL;
 extern NSString * const SPSimplenoteForgotPasswordURL;
 extern NSString * const SPSimplenoteResetPasswordURL;
 extern NSString * const SPWPServiceName;
+extern NSString * const SPUsername;
 extern NSString * const SPSignInErrorNotificationName;
 extern NSString * const SPWPSignInAuthURL;
 extern NSString * const SPHelpURL;

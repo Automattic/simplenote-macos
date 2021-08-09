@@ -272,6 +272,7 @@
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
 {
     [SPTracker refreshMetadataForAnonymousUser];
+    [self logOutIfAccountDeletionRequested];
 }
 
 
@@ -395,7 +396,8 @@
     [SPTracker trackUserSignedOut];
     
     // Remove WordPress token
-    [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
+
+    [self removeStoredCredentialsFromKeychain];
     
     [self.noteListViewController dismissSearch];
     [self.noteEditorViewController displayNote:nil];
@@ -411,6 +413,15 @@
         [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self.simperium authenticateIfNecessary];
     }];
+}
+
+-(void)removeStoredCredentialsFromKeychain
+{
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:SPUsername];
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SPUsername];
+    [SPKeychain deletePasswordForService:self.simperium.appID account:username];
+    [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
 }
 
 - (IBAction)toggleSidebarAction:(id)sender
@@ -487,9 +498,6 @@
 
 - (void)applicationWillBecomeActive:(NSNotification *)notification
 {
-    if (!self.simperium.user.authenticated) {
-        [[self.simperium window] setIsVisible: false];
-    }
     [self authenticateSimperiumIfAccountDeletionRequested];
 }
 

@@ -58,6 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)privacyAction:(nullable id)sender;
 - (IBAction)helpAction:(nullable id)sender;
 
+- (void)signOut;
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
 
