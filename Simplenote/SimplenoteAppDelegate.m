@@ -418,10 +418,7 @@
 
 -(void)removeStoredCredentialsFromKeychain
 {
-    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:SPUsername];
-
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:SPUsername];
-    [SPKeychain deletePasswordForService:self.simperium.appID account:username];
+    [self.simperium.authenticator reset];
     [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
 }
 
