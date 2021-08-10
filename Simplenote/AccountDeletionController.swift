@@ -44,6 +44,11 @@ class AccountDeletionController: NSObject {
             }
         }
     }
+
+    @objc
+    func clearRequestToken() {
+        accountDeletionRequestDate = nil
+    }
 }
 
 private struct Constants {

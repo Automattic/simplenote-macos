@@ -412,6 +412,7 @@
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self.simperium authenticateIfNecessary];
+        [self.accountDeletionController clearRequestToken];
     }];
 }
 
