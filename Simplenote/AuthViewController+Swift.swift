@@ -168,7 +168,7 @@ extension AuthViewController {
             if success {
                 self.presentSignupVerification(email: email)
             } else {
-                self.showAuthenticationError(forCode: statusCode)
+                self.showAuthenticationError(forCode: statusCode, responseString: nil)
             }
 
             self.stopSignupAnimation()
@@ -188,6 +188,20 @@ extension AuthViewController {
     }
 }
 
+// MARK: - Compromised Password
+//
+extension AuthViewController {
+    @objc
+    func showCompromisedPasswordAlert(for window: NSWindow, completion: @escaping (NSApplication.ModalResponse) -> Void) {
+        let alert = NSAlert()
+        alert.messageText = "Compromised Password"
+        alert.informativeText = "This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately."
+        alert.addButton(withTitle: "Change Password")
+        alert.addButton(withTitle: "Not Now")
+
+        alert.beginSheetModal(for: window, completionHandler: completion)
+    }
+}
 
 // MARK: - Metrics
 //

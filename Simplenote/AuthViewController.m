@@ -197,7 +197,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
         [self setInterfaceEnabled:YES];
         [self presentPasswordResetAlert];
     } failure:^(NSInteger responseCode, NSString *responseString, NSError *error) {
-        [self showAuthenticationErrorForCode:responseCode];
+        [self showAuthenticationErrorForCode:responseCode responseString:responseString];
         [self stopLoginAnimation];
         [self setInterfaceEnabled:YES];
     }];
@@ -210,7 +210,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self.authenticator authenticateWithUsername:self.usernameText password:self.passwordText success:^{
         // NO-OP
     } failure:^(NSInteger responseCode, NSString *responseString, NSError *error) {
-        [self showAuthenticationErrorForCode:responseCode];
+        [self showAuthenticationErrorForCode:responseCode responseString: responseString];
         [self stopLoginAnimation];
         [self setInterfaceEnabled:YES];
     }];
@@ -317,14 +317,14 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self.errorField setStringValue:errorMessage];
 }
 
-- (void)showAuthenticationErrorForCode:(NSInteger)responseCode {
+- (void)showAuthenticationErrorForCode:(NSInteger)responseCode responseString:(NSString *)responseString {
     switch (responseCode) {
         case 409:
             [self showAuthenticationError:NSLocalizedString(@"That email is already being used", @"Error when address is in use")];
             [self.view.window makeFirstResponder:self.usernameField];
             break;
         case 401:
-            [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
+            [self process401FromResponseString:responseString];
             break;
 
         default:
@@ -333,7 +333,20 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     }
 }
 
+-(void)process401FromResponseString: (NSString *)responseString
+{
+    if ([responseString  isEqual: @"compromised password"]) {
+        [self showCompromisedPasswordAlertFor:SimplenoteAppDelegate.sharedDelegate.window
+                                   completion:^(NSModalResponse response)  {
+            if (response == NSAlertFirstButtonReturn) {
+                [self openResetPasswordURL];
+            }
+        }];
+        return;
+    }
 
+    [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
+}
 
 #pragma mark - NSTextView
 
