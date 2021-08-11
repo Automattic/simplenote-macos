@@ -272,7 +272,9 @@
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
 {
     [SPTracker refreshMetadataForAnonymousUser];
-    [self logOutIfAccountDeletionRequested];
+    if (error.code == SPSimperiumErrorsInvalidToken) {
+        [self logOutIfAccountDeletionRequested];
+    }
 }
 
 
