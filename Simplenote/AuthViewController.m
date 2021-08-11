@@ -333,9 +333,9 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     }
 }
 
--(void)process401FromResponseString: (NSString *)responseString
+-(void)process401FromResponseString:(NSString *)responseString
 {
-    if ([responseString  isEqual: @"compromised password"]) {
+    if ([responseString  isEqual:@"compromised password"]) {
         [self showCompromisedPasswordAlertFor:NSApplication.sharedApplication.windows.lastObject
                                    completion:^(NSModalResponse response)  {
             if (response == NSAlertFirstButtonReturn) {

@@ -194,10 +194,10 @@ extension AuthViewController {
     @objc
     func showCompromisedPasswordAlert(for window: NSWindow, completion: @escaping (NSApplication.ModalResponse) -> Void) {
         let alert = NSAlert()
-        alert.messageText = "Compromised Password"
-        alert.informativeText = "This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately."
-        alert.addButton(withTitle: "Change Password")
-        alert.addButton(withTitle: "Not Now")
+        alert.messageText = Localization.compromisedPasswordAlert
+        alert.informativeText = Localization.compromisedPasswordMessage
+        alert.addButton(withTitle: Localization.changePasswordAction)
+        alert.addButton(withTitle: Localization.dismissChangePasswordAction)
 
         alert.beginSheetModal(for: window, completionHandler: completion)
     }
@@ -229,4 +229,8 @@ private enum Localization {
     static let signUpTip = NSLocalizedString("Need an account?", comment: "Link to create an account")
     static let forgotAction = NSLocalizedString("Forgot your Password?", comment: "Forgot Password Button")
     static let dotcomSSOAction = NSLocalizedString("Log in with WordPress.com", comment: "button title for wp.com sign in button")
+    static let compromisedPasswordAlert = NSLocalizedString("Compromised Password", comment: "Compromised passsword alert title")
+    static let compromisedPasswordMessage = NSLocalizedString("This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately.", comment: "Compromised password alert message")
+    static let changePasswordAction = NSLocalizedString("Change Password", comment: "Change password action")
+    static let dismissChangePasswordAction = NSLocalizedString("Not Now", comment: "Dismiss change password alert action")
 }
