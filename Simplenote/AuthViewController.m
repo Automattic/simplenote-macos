@@ -324,7 +324,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
             [self.view.window makeFirstResponder:self.usernameField];
             break;
         case 401:
-            [self process401FromResponseString:responseString];
+            if ([self isPasswordCompromisedResponse:responseString]) {
+                [self presentPasswordCompromisedAlert];
+            } else {
+                [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
+            }
             break;
 
         default:
@@ -333,20 +337,20 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     }
 }
 
--(void)process401FromResponseString:(NSString *)responseString
+- (BOOL)isPasswordCompromisedResponse:(NSString *)responseString
 {
-    if ([responseString  isEqual:@"compromised password"]) {
-        __weak typeof(self) weakSelf = self;
-        [self showCompromisedPasswordAlertFor:NSApplication.sharedApplication.windows.lastObject
-                                   completion:^(NSModalResponse response)  {
-            if (response == NSAlertFirstButtonReturn) {
-                [weakSelf openResetPasswordURL];
-            }
-        }];
-        return;
-    }
+   return ([responseString isEqual:@"compromised password"]);
+}
 
-    [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
+-(void)presentPasswordCompromisedAlert
+{
+    __weak typeof(self) weakSelf = self;
+    [self showCompromisedPasswordAlertFor:self.view.window
+                               completion:^(NSModalResponse response)  {
+        if (response == NSAlertFirstButtonReturn) {
+            [weakSelf openResetPasswordURL];
+        }
+    }];
 }
 
 #pragma mark - NSTextView
