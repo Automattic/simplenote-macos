@@ -33,6 +33,6 @@
 - (void)stopSignupAnimation;
 
 - (void)presentPasswordResetAlert;
-- (void)showAuthenticationErrorForCode:(NSInteger)responseCode;
+- (void)showAuthenticationErrorForCode:(NSInteger)responseCode responseString:(NSString *)responseString;
 
 @end
