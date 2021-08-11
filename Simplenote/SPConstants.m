@@ -20,7 +20,6 @@ NSString * const SPAutomatticAnalyticPrivacyURL     = @"https://automattic.com/p
 
 NSString * const SPSimplenotePublishURL             = @"http://simp.ly/publish/";
 NSString * const SPWPServiceName                    = @"simplenote-wpcom";
-NSString * const SPUsername                         = @"SPUsername";
 NSString * const SPSignInErrorNotificationName      = @"SPSignInErrorNotificationName";
 NSString * const SPWPSignInAuthURL                  = @"https://public-api.wordpress.com/oauth2/authorize?response_type=code&scope=global&client_id=%@&redirect_uri=%@&state=%@";
 NSString * const SPHelpURL                          = @"https://simplenote.com/help";

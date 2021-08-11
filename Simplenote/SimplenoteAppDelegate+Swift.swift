@@ -577,9 +577,8 @@ extension SimplenoteAppDelegate: EditorControllerDelegate {
 //
 extension SimplenoteAppDelegate {
     @objc
-    func authenticateSimperiumIfAccountDeletionRequested() {
-        guard let deletionController = accountDeletionController,
-              deletionController.hasValidDeletionRequest else {
+    func authenticateIfAccountDeletionRequested() {
+        guard accountDeletionController?.hasValidDeletionRequest == true else {
             return
         }
 

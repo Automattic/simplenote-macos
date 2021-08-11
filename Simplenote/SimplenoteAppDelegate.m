@@ -397,7 +397,7 @@
     
     // Remove WordPress token
 
-    [self removeStoredCredentialsFromKeychain];
+    [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
     
     [self.noteListViewController dismissSearch];
     [self.noteEditorViewController displayNote:nil];
@@ -414,12 +414,6 @@
         [self.simperium authenticateIfNecessary];
         [self.accountDeletionController clearRequestToken];
     }];
-}
-
--(void)removeStoredCredentialsFromKeychain
-{
-    [self.simperium.authenticator reset];
-    [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
 }
 
 - (IBAction)toggleSidebarAction:(id)sender
@@ -496,7 +490,7 @@
 
 - (void)applicationWillBecomeActive:(NSNotification *)notification
 {
-    [self authenticateSimperiumIfAccountDeletionRequested];
+    [self authenticateIfAccountDeletionRequested];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
