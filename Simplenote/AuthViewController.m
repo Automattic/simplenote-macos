@@ -336,7 +336,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 -(void)process401FromResponseString: (NSString *)responseString
 {
     if ([responseString  isEqual: @"compromised password"]) {
-        [self showCompromisedPasswordAlertFor:SimplenoteAppDelegate.sharedDelegate.window
+        [self showCompromisedPasswordAlertFor:NSApplication.sharedApplication.windows.lastObject
                                    completion:^(NSModalResponse response)  {
             if (response == NSAlertFirstButtonReturn) {
                 [self openResetPasswordURL];
