@@ -52,12 +52,12 @@ class AccountDeletionController: NSObject {
 
 private struct Constants {
     static let deleteAccount = NSLocalizedString("Delete Account", comment: "Delete account title and action")
-    static let confirmAlertMessage = NSLocalizedString("By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible", comment: "Delete account confirmation alert message")
+    static let confirmAlertMessage = NSLocalizedString("By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible.", comment: "Delete account confirmation alert message")
     static let deleteAccountButton = NSLocalizedString("Request Account Deletion", comment: "Title for account deletion confirm button")
     static let cancel = NSLocalizedString("Cancel", comment: "Cancel button title")
 
     static let succesAlertTitle = NSLocalizedString("Check Your Email", comment: "Title for delete account succes alert")
-    static let successAlertMessage = NSLocalizedString("An email has been sent to %@ Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation", comment: "Delete account confirmation instructions")
+    static let successAlertMessage = NSLocalizedString("An email has been sent to %@. Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation.", comment: "Delete account confirmation instructions")
 
     static let errorTitle = NSLocalizedString("Error", comment: "Deletion Error Title")
     static let errorMessage = NSLocalizedString("An error occured. Please, try again. If the problem continues, contact us at support@simplenote.com for help.", comment: "Deletion error message")
