@@ -188,7 +188,7 @@ extension AuthViewController {
     }
 }
 
-// MARK: - Compromised Password
+// MARK: - Login Error Handling
 //
 extension AuthViewController {
     @objc
@@ -200,6 +200,22 @@ extension AuthViewController {
         alert.addButton(withTitle: Localization.dismissChangePasswordAction)
 
         alert.beginSheetModal(for: window, completionHandler: completion)
+    }
+
+    @objc
+    func showUnverifiedEmailAlert(for window: NSWindow, completion: @escaping (NSApplication.ModalResponse) -> Void) {
+        let alert = NSAlert()
+        alert.messageText = Localization.unverifiedMessageText
+        alert.informativeText = Localization.unverifiedInformativeText
+        alert.addButton(withTitle: Localization.unverifiedActionText)
+        alert.addButton(withTitle: Localization.unverifiedCancelText)
+
+        alert.beginSheetModal(for: window, completionHandler: completion)
+    }
+
+    @objc
+    func sendVerificationMessage(for email: String) {
+        AccountVerificationRemote().verify(email: email) { _ in }
     }
 }
 
@@ -233,4 +249,8 @@ private enum Localization {
     static let compromisedPasswordMessage = NSLocalizedString("This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately.", comment: "Compromised password alert message")
     static let changePasswordAction = NSLocalizedString("Change Password", comment: "Change password action")
     static let dismissChangePasswordAction = NSLocalizedString("Not Now", comment: "Dismiss change password alert action")
+    static let unverifiedInformativeText = NSLocalizedString("You must verify your email before being able to login.", comment: "Erro for un verified email")
+    static let unverifiedMessageText = NSLocalizedString("Account Verification Required", comment: "Email verification required alert title")
+    static let unverifiedCancelText = NSLocalizedString("Okay", comment: "Email unverified alert dismiss")
+    static let unverifiedActionText = NSLocalizedString("Resend Verification Email", comment: "Send email verificaiton action")
 }

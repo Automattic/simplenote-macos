@@ -330,7 +330,9 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
                 [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
             }
             break;
-
+        case 403:
+            [self presentUnverifiedEmailAlert];
+            break;
         default:
             [self showAuthenticationError:NSLocalizedString(@"We're having problems. Please try again soon.", @"Generic error")];
             break;
@@ -349,6 +351,17 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
                                completion:^(NSModalResponse response)  {
         if (response == NSAlertFirstButtonReturn) {
             [weakSelf openResetPasswordURL];
+        }
+    }];
+}
+
+-(void) presentUnverifiedEmailAlert
+{
+    __weak typeof(self) weakSelf = self;
+    [self showUnverifiedEmailAlertFor:self.view.window
+                               completion:^(NSModalResponse response)  {
+        if (response == NSAlertFirstButtonReturn) {
+            [weakSelf sendVerificationMessageFor: weakSelf.usernameText];
         }
     }];
 }
