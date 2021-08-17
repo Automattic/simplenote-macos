@@ -169,7 +169,7 @@ extension AuthViewController {
             case .success:
                 self.presentSignupVerification(email: email)
             case .failure(let result):
-                self.showAuthenticationError(forCode: result.statusCode)
+                self.showAuthenticationError(forCode: result.statusCode, responseString: nil)
             }
 
             self.stopSignupAnimation()
