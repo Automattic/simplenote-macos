@@ -2,13 +2,13 @@ import Foundation
 
 enum RemoteError: Error {
     case network
-    case requestError(Int, Error?, String?)
+    case requestError(Int, Error?)
 }
 
 extension RemoteError {
     var statusCode: Int {
         switch self {
-        case .requestError(let statusCode, _, _):
+        case .requestError(let statusCode, _):
             return statusCode
         default:
             return .zero
@@ -21,8 +21,8 @@ extension RemoteError: Equatable {
         switch (lhs, rhs) {
         case (.network, .network):
             return true
-        case (.requestError(let lhsStatus, let lhsError, let lhsResponse), .requestError(let rhsStatus, let rhsError, let rhsResponse)):
-            return lhsStatus == rhsStatus && lhsError?.localizedDescription == rhsError?.localizedDescription && lhsResponse == rhsResponse
+        case (.requestError(let lhsStatus, let lhsError), .requestError(let rhsStatus, let rhsError)):
+            return lhsStatus == rhsStatus && lhsError?.localizedDescription == rhsError?.localizedDescription
         default:
             return false
         }

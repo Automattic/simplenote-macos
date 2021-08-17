@@ -168,21 +168,12 @@ extension AuthViewController {
             switch result {
             case .success:
                 self.presentSignupVerification(email: email)
-            case .failure(let error):
-                self.processRemoteError(error)
+            case .failure(let result):
+                self.showAuthenticationError(forCode: result.statusCode)
             }
 
             self.stopSignupAnimation()
             self.setInterfaceEnabled(true)
-        }
-    }
-
-    private func processRemoteError(_ error: RemoteError) {
-        switch error {
-        case .network:
-            showAuthenticationError(forCode: error.statusCode, responseString: error.localizedDescription)
-        case .requestError(let statusCode, _, let responseMessage):
-            showAuthenticationError(forCode: statusCode, responseString: responseMessage)
         }
     }
 }
