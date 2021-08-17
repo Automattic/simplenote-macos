@@ -12,7 +12,8 @@ abstract_target 'Automattic' do
   # Automattic Shared
   #
   pod 'Automattic-Tracks-iOS', '0.8.0'
-  pod 'Simperium-OSX', '1.8.0'
+  # pod 'Simperium-OSX', '1.8.0'
+  pod 'Simperium-OSX', :git => 'https://github.com/Simperium/simperium-ios.git', :branch => 'issue/drops-unneeded-logout-check'
 
   # Main Target
   #

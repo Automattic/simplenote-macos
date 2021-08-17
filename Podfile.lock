@@ -27,7 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - Automattic-Tracks-iOS (= 0.8.0)
-  - Simperium-OSX (= 1.8.0)
+  - Simperium-OSX (from `https://github.com/Simperium/simperium-ios.git`, branch `issue/drops-unneeded-logout-check`)
 
 SPEC REPOS:
   trunk:
@@ -35,8 +35,17 @@ SPEC REPOS:
     - CocoaLumberjack
     - Reachability
     - Sentry
-    - Simperium-OSX
     - Sodium
+
+EXTERNAL SOURCES:
+  Simperium-OSX:
+    :branch: issue/drops-unneeded-logout-check
+    :git: https://github.com/Simperium/simperium-ios.git
+
+CHECKOUT OPTIONS:
+  Simperium-OSX:
+    :commit: f3a6b32714e32c68eae0dd915217eb4c20a23158
+    :git: https://github.com/Simperium/simperium-ios.git
 
 SPEC CHECKSUMS:
   Automattic-Tracks-iOS: 1f68ebf14cc9607c65685f46b58e81532932bf48
@@ -46,6 +55,6 @@ SPEC CHECKSUMS:
   Simperium-OSX: f586becb024269d32c8df31189ff670b7cc14230
   Sodium: 23d11554ecd556196d313cf6130d406dfe7ac6da
 
-PODFILE CHECKSUM: fea4867d7b2fb08e777ae1d1ffd59c5422e7073b
+PODFILE CHECKSUM: 228dcdfc734e4df170bd39305395424396c2991d
 
 COCOAPODS: 1.10.1
