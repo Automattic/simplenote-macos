@@ -16,7 +16,7 @@ class AccountVerificationRemoteTests: XCTestCase {
     func testFailureWhenStatusCodeIs4xxOr5xx() {
         for _ in 0..<5 {
             let statusCode = Int.random(in: 400..<600)
-            test(withStatusCode: statusCode, expectedResult: Result.failure(RemoteError.requestError(statusCode, nil)))
+            test(withStatusCode: statusCode, expectedResult: Result.failure(RemoteError.requestError(statusCode, nil, nil)))
         }
     }
 
