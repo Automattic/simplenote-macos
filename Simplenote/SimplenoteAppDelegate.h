@@ -19,6 +19,7 @@
 @class AccountVerificationCoordinator;
 @class VersionsController;
 @class NoteEditorMetadataCache;
+@class AccountDeletionController;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -44,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) AccountVerificationCoordinator                *verificationCoordinator;
 @property (strong, nonatomic) VersionsController                            *versionsController;
+@property (nullable, strong, nonatomic) AccountDeletionController           *accountDeletionController;
 
 @property (strong, nonatomic) NoteEditorMetadataCache                       *noteEditorMetadataCache;
 
@@ -56,6 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)privacyAction:(nullable id)sender;
 - (IBAction)helpAction:(nullable id)sender;
 
+- (void)signOut;
 - (void)selectAllNotesTag;
 - (void)selectNoteWithKey:(NSString *)simperiumKey;
 

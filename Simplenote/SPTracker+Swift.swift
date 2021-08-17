@@ -72,3 +72,11 @@ extension SPTracker {
         trackShortcut("cycle_visible_panels")
     }
 }
+
+// MARK: Account Deletion
+ extension SPTracker {
+    @objc
+     static func trackDeleteAccountButttonTapped() {
+         trackAutomatticEvent(withName: "delete_account_button_clicked", properties: nil)
+     }
+ }

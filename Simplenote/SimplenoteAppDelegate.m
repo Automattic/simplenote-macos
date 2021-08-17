@@ -99,6 +99,7 @@
     [self configureEditorController];
     [self configureVerificationCoordinator];
     [self configureVersionsController];
+    [self configureAccountDeletionController];
 
     [self refreshStatusController];
 
@@ -271,6 +272,9 @@
 - (void)simperium:(Simperium *)simperium didFailWithError:(NSError *)error
 {
     [SPTracker refreshMetadataForAnonymousUser];
+    if (error.code == SPSimperiumErrorsInvalidToken) {
+        [self logOutIfAccountDeletionRequested];
+    }
 }
 
 
@@ -384,11 +388,17 @@
     }];
 }
 
+- (IBAction)deleteAccountAction:(id)sender {
+    [SPTracker trackDeleteAccountButttonTapped];
+    [self.accountDeletionController requestAccountDeletionFor:self.simperium.user with:self.window];
+}
+
 -(void)signOut
 {
     [SPTracker trackUserSignedOut];
     
     // Remove WordPress token
+
     [SPKeychain deletePasswordForService:SPWPServiceName account:self.simperium.user.email];
     
     [self.noteListViewController dismissSearch];
@@ -404,6 +414,7 @@
         // Auth window won't show up until next run loop, so be careful not to close main window until then
         [self.window performSelector:@selector(orderOut:) withObject:self afterDelay:0.1f];
         [self.simperium authenticateIfNecessary];
+        [self.accountDeletionController clearRequestToken];
     }];
 }
 
@@ -477,6 +488,11 @@
     [self.window makeKeyAndOrderFront:self];
     
     return YES;
+}
+
+- (void)applicationWillBecomeActive:(NSNotification *)notification
+{
+    [self authenticateIfAccountDeletionRequested];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender

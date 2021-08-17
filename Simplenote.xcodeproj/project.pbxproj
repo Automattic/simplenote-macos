@@ -135,8 +135,8 @@
 		B500993F242140500037A431 /* NSStringSimplenoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */; };
 		B501AAD32437E5600084CDA3 /* AppKitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501AAD12437E5250084CDA3 /* AppKitConstants.swift */; };
 		B501AAD42437E5600084CDA3 /* AppKitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501AAD12437E5250084CDA3 /* AppKitConstants.swift */; };
-		B502C1DD25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */; };
-		B502C1DE25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */; };
+		B502C1DD25BA2EB700145D6C /* AccountRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountRemote.swift */; };
+		B502C1DE25BA2EB700145D6C /* AccountRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1DC25BA2EB700145D6C /* AccountRemote.swift */; };
 		B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */; };
 		B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1EE25BA2F2400145D6C /* MockURLSession.swift */; };
 		B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */; };
@@ -455,7 +455,18 @@
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */; };
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
+		BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
+		BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
+		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
+		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
+		BAA0A87A26B9F0B50006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
+		BAA0A88226B9F8970006260E /* AccountDeletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A88126B9F8970006260E /* AccountDeletionController.swift */; };
+		BAA0A88726B9F8B40006260E /* Date+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */; };
+		BAA0A88B26BA39150006260E /* Date+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */; };
+		BAA0A88F26BA39200006260E /* AccountDeletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A88126B9F8970006260E /* AccountDeletionController.swift */; };
+		BAA0A89326BA39260006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
 		BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
+		BAE66CAA26AF647500398FF3 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BAF8D5DC26AE3BE800CA9383 /* markdown-light.css in Resources */ = {isa = PBXBuildFile; fileRef = BAF8D5DB26AE3BE800CA9383 /* markdown-light.css */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
@@ -607,7 +618,7 @@
 		B500993B24213B370037A431 /* String+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Simplenote.swift"; sourceTree = "<group>"; };
 		B500993E2421404F0037A431 /* NSStringSimplenoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringSimplenoteTests.swift; sourceTree = "<group>"; };
 		B501AAD12437E5250084CDA3 /* AppKitConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKitConstants.swift; sourceTree = "<group>"; };
-		B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationRemote.swift; sourceTree = "<group>"; };
+		B502C1DC25BA2EB700145D6C /* AccountRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRemote.swift; sourceTree = "<group>"; };
 		B502C1E625BA2F0800145D6C /* AccountVerificationRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVerificationRemoteTests.swift; sourceTree = "<group>"; };
 		B502C1EE25BA2F2400145D6C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		B502C1F625BA2F3F00145D6C /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
@@ -829,6 +840,12 @@
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
 		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
 		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
+		BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Simplenote.swift"; sourceTree = "<group>"; };
+		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
+		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
+		BAA0A87926B9F0B50006260E /* RemoteError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
+		BAA0A88126B9F8970006260E /* AccountDeletionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDeletionController.swift; sourceTree = "<group>"; };
+		BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Simplenote.swift"; sourceTree = "<group>"; };
 		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
 		BAF8D5DB26AE3BE800CA9383 /* markdown-light.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "markdown-light.css"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
@@ -1179,8 +1196,10 @@
 			isa = PBXGroup;
 			children = (
 				B5F5414D25EFFC2A00CAF52C /* RemoteConstants.swift */,
-				B502C1DC25BA2EB700145D6C /* AccountVerificationRemote.swift */,
+				B502C1DC25BA2EB700145D6C /* AccountRemote.swift */,
 				B5F5414725EFFC2200CAF52C /* SignupRemote.swift */,
+				BA938CEB26ACFF4A00BE5A1D /* Remote.swift */,
+				BAA0A87926B9F0B50006260E /* RemoteError.swift */,
 			);
 			name = Remote;
 			sourceTree = "<group>";
@@ -1241,6 +1260,8 @@
 				B547285B250920CA00D823BA /* URL+Interlink.swift */,
 				B57CB876244DEBCE00BA7969 /* UserDefaults+Simplenote.swift */,
 				BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */,
+				BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */,
+				BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1279,6 +1300,7 @@
 				B5EDF32E258A8EF00066D91D /* NoteListFilter.swift */,
 				B53BF1A324AC38C100938C34 /* VersionsController.swift */,
 				B53BF19F24AC1FB800938C34 /* Version.swift */,
+				BAA0A88126B9F8970006260E /* AccountDeletionController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1288,6 +1310,7 @@
 			children = (
 				B53FF5462476F9450014E928 /* Constants.swift */,
 				B5469FE125880181007ED7BE /* NSUserDefaults+Tests.swift */,
+				BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -2054,6 +2077,7 @@
 				A6BBDA3325501398005C8343 /* SPTextView.swift in Sources */,
 				B5117998242036B1005F8936 /* NSString+Simplenote.swift in Sources */,
 				B54F9A6A24D0BDC100BCF754 /* TagTextFormatter.swift in Sources */,
+				BAA0A87A26B9F0B50006260E /* RemoteError.swift in Sources */,
 				B5E0863B2449012700DEF476 /* NSImage+Simplenote.swift in Sources */,
 				B5D21CB724881EF600D57A34 /* Array+Simplenote.swift in Sources */,
 				B5177CBB25EEB01600A8D834 /* AuthViewController+Swift.swift in Sources */,
@@ -2085,11 +2109,13 @@
 				B5F5415425F0137100CAF52C /* MagicLinkAuthenticator.swift in Sources */,
 				B503FF4524848B6700066059 /* TagsFieldCell.swift in Sources */,
 				B55C313C24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
+				BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */,
 				376EE3EB202B748E00E3812E /* SPAboutTextField.swift in Sources */,
 				B56FA79B2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
 				B55C312624A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
-				B502C1DD25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */,
+				B502C1DD25BA2EB700145D6C /* AccountRemote.swift in Sources */,
 				375D293E21E033D1007AB25A /* context_test.c in Sources */,
+				BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */,
 				B5E086352448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				71233DD614DB6CD000139E61 /* NoteEditorViewController.m in Sources */,
 				B51699842480B93100ACF2F4 /* TagsField.swift in Sources */,
@@ -2157,7 +2183,9 @@
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
+				BAA0A88226B9F8970006260E /* AccountDeletionController.swift in Sources */,
 				B574015325B783500058960E /* EmailVerification.swift in Sources */,
+				BAA0A88726B9F8B40006260E /* Date+Simplenote.swift in Sources */,
 				B53BF1A024AC1FB800938C34 /* Version.swift in Sources */,
 				B547285C250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				B57CB881244E421400BA7969 /* SPTextField.swift in Sources */,
@@ -2221,7 +2249,7 @@
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
-				B502C1DE25BA2EB700145D6C /* AccountVerificationRemote.swift in Sources */,
+				B502C1DE25BA2EB700145D6C /* AccountRemote.swift in Sources */,
 				F998F3EC22853C49008C2B59 /* CrashLogging.swift in Sources */,
 				B5919365245A7AD300A70C0C /* NSScreen+Simplenote.swift in Sources */,
 				B5C620AC257ED4CF008359A9 /* NSAnimationContext+Simplenote.swift in Sources */,
@@ -2233,6 +2261,7 @@
 				B58BBD3E2523FF160025135F /* PopoverWindow.swift in Sources */,
 				B5985AD6242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
 				B5469FCB2587DE3F007ED7BE /* SortMode.swift in Sources */,
+				BAA0A89326BA39260006260E /* RemoteError.swift in Sources */,
 				B535014C249D5908003837C8 /* HorizontalScrollView.swift in Sources */,
 				B5C7DD3E243E1F1900BEE354 /* VersionsViewController.swift in Sources */,
 				B57CB87C244DEC4B00BA7969 /* MigrationsHandler.swift in Sources */,
@@ -2268,11 +2297,13 @@
 				B53BF1A524AC38C100938C34 /* VersionsController.swift in Sources */,
 				B5C7DD47243E51E200BEE354 /* PublishViewController.swift in Sources */,
 				B56FA79C2437D2E0002CB9FF /* NSAppearance+Simplenote.swift in Sources */,
+				BAE66CAA26AF647500398FF3 /* Remote.swift in Sources */,
 				B55C313D24A55ED800B23B3F /* NSVisualEffectView+Simplenote.swift in Sources */,
 				375D293F21E033D1007AB25A /* context_test.c in Sources */,
 				B55C312724A5117F00B23B3F /* SpacerTableViewCell.swift in Sources */,
 				37F742EC202A382400A47D3A /* AboutViewController.swift in Sources */,
 				B5EDF339258A8F1B0066D91D /* TagListFilter.swift in Sources */,
+				BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */,
 				B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */,
 				B51699852480B93100ACF2F4 /* TagsField.swift in Sources */,
 				B532728325BA1510001DB882 /* SPTracker+Swift.swift in Sources */,
@@ -2289,6 +2320,7 @@
 				B5E8E41224575C990098892B /* ToolbarState.swift in Sources */,
 				B5070E17245938D600715BCC /* NSUserInterfaceItemIdentifier+Simplenote.swift in Sources */,
 				B5C6334A251E6E3200C8BF46 /* LinkTableCellView.swift in Sources */,
+				BAA0A88B26BA39150006260E /* Date+Simplenote.swift in Sources */,
 				B542FE4725D42E6D00A3582D /* SearchMapView.swift in Sources */,
 				B57CB875244DEBC300BA7969 /* Options.swift in Sources */,
 				3712FC8F1FE1ACAA008544AC /* Theme.swift in Sources */,
@@ -2340,6 +2372,7 @@
 				B53ACE0F25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */,
 				B5B1CBCE256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
 				B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */,
+				BAA0A88F26BA39200006260E /* AccountDeletionController.swift in Sources */,
 				B57CB882244E421400BA7969 /* SPTextField.swift in Sources */,
 				B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */,
 				B5A9FE492576D25A0084F176 /* NSBox+Simplenote.swift in Sources */,
@@ -2384,6 +2417,7 @@
 				B502C1F725BA2F3F00145D6C /* MockURLSessionDataTask.swift in Sources */,
 				B502C1E725BA2F0800145D6C /* AccountVerificationRemoteTests.swift in Sources */,
 				B502C1EF25BA2F2400145D6C /* MockURLSession.swift in Sources */,
+				BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */,
 				B502C22325BA345700145D6C /* AccountVerificationControllerTests.swift in Sources */,
 				BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */,
 				B5C1F0AC242E9A9800A627E3 /* MockTextView.swift in Sources */,

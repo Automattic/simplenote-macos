@@ -5,25 +5,26 @@ import XCTest
 //
 class AccountVerificationRemoteTests: XCTestCase {
     private lazy var urlSession = MockURLSession()
-    private lazy var remote = AccountVerificationRemote(urlSession: urlSession)
+    private lazy var remote = AccountRemote(urlSession: urlSession)
 
     func testSuccessWhenStatusCodeIs2xx() {
         for _ in 0..<5 {
-            test(withStatusCode: Int.random(in: 200..<300), expectedResult: true)
+            test(withStatusCode: Int.random(in: 200..<300), expectedResult: Result.success(nil))
         }
     }
 
     func testFailureWhenStatusCodeIs4xxOr5xx() {
         for _ in 0..<5 {
-            test(withStatusCode: Int.random(in: 400..<600), expectedResult: false)
+            let statusCode = Int.random(in: 400..<600)
+            test(withStatusCode: statusCode, expectedResult: Result.failure(RemoteError.requestError(statusCode, nil)))
         }
     }
 
     func testFailureWhenNoResponse() {
-        test(withStatusCode: nil, expectedResult: false)
+        test(withStatusCode: nil, expectedResult: Result.failure(RemoteError.network))
     }
 
-    private func test(withStatusCode statusCode: Int?, expectedResult: Bool) {
+    private func test(withStatusCode statusCode: Int?, expectedResult: Result<Data?, RemoteError>) {
         urlSession.data = (nil,
                            response(with: statusCode),
                            nil)

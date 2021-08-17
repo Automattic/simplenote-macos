@@ -1,6 +1,7 @@
 2.15
 -----
--   [Internal] added login alert for compromised password #1017
+- In app account deletion: Now you can delete your account from the app #1013
+- [Internal] added login alert for compromised password #1017
 
 2.14
 -----
