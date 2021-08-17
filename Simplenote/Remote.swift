@@ -14,11 +14,13 @@ class Remote {
         let dataTask = urlSession.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+                let responseString = data.flatMap { String(data: $0, encoding: .utf8) }
+
 
                 // Check for 2xx status code
                 guard statusCode / 100 == 2 else {
                     let error = statusCode > 0 ?
-                        RemoteError.requestError(statusCode, error):
+                        RemoteError.requestError(statusCode, error, responseString):
                         RemoteError.network
                     completion(.failure(error))
                     return
