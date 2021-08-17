@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-15 22:54:53+0000 */
+/* Translation-Revision-Date: 2021-08-03 09:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: pt_BR */
@@ -237,6 +237,9 @@
 /* Class = "NSMenuItem"; title = "Font Size"; ObjectID = "FPg-7U-5Cl"; */
 "FPg-7U-5Cl.title" = "Tamanho da fonte";
 
+/* Class = "NSMenuItem"; title = "Show Status Bar"; ObjectID = "JXy-Aq-Sr2"; */
+"JXy-Aq-Sr2.title" = "Exibir barra de status";
+
 /* Class = "NSMenu"; title = "Line Length"; ObjectID = "JgX-db-Pi6"; Note = "Line Length Setting Menu"; */
 "JgX-db-Pi6.title" = "Comprimento da linha";
 
@@ -324,8 +327,8 @@
 /* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
 "tQC-gw-hdq.title" = "Condensado";
 
-/* Class = "NSMenuItem"; title = "Toggle Sidebar"; ObjectID = "tkU-Gb-qGx"; Note = "Toggles the Sidebar"; */
-"tkU-Gb-qGx.title" = "Alternar barra lateral";
+/* Class = "NSMenuItem"; title = "Show Sidebar"; ObjectID = "tkU-Gb-qGx"; Note = "Toggles the Sidebar"; */
+"tkU-Gb-qGx.title" = "Exibir barra lateral";
 
 /* Class = "NSMenuItem"; title = "Note Display"; ObjectID = "tl2-gz-YEA"; */
 "tl2-gz-YEA.title" = "Exibição da nota";

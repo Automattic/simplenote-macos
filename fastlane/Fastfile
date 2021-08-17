@@ -95,6 +95,7 @@ end
 
 desc 'Builds the app using the App Store target but without code signing, just to check the target builds'
 lane :test_app_store_build do | options |
+  configure_apply
   build_simplenote(codesign: false)
 end
 
@@ -183,7 +184,7 @@ end
   #####################################################################################
   # new_hotfix_release
   # -----------------------------------------------------------------------------------
-  # This lane updates the release branch for a new hotix release.
+  # This lane creates the release branch for a new hotfix release.
   # -----------------------------------------------------------------------------------
   # Usage:
   # bundle exec fastlane new_hotfix_release [skip_confirm:<skip confirm>] [version:<version>]
@@ -192,11 +193,28 @@ end
   # bundle exec fastlane new_hotfix_release version:10.6.1
   # bundle exec fastlane new_hotfix_release skip_confirm:true version:10.6.1
   #####################################################################################
-  desc "Creates a new hotfix branch from the given tag"
+  desc 'Creates a new hotfix branch for the given version:x.y.z. The branch will be cut from the tag x.y of the previous release'
   lane :new_hotfix_release do | options |
     prev_ver = ios_hotfix_prechecks(options)
     ios_bump_version_hotfix(previous_version: prev_ver, version: options[:version])
-    ios_tag_build()
+  end
+
+  #####################################################################################
+  # finalize_hotfix_release
+  # -----------------------------------------------------------------------------------
+  # This lane finalizes the hotfix branch.
+  # -----------------------------------------------------------------------------------
+  # Usage:
+  # bundle exec fastlane finalize_hotfix_release [skip_confirm:<skip confirm>]
+  #
+  # Example:
+  # bundle exec fastlane finalize_hotfix_release skip_confirm:true
+  #####################################################################################
+  desc 'Performs the final checks and triggers a release build for the hotfix in the current branch'
+  lane :finalize_hotfix_release do |options|
+    ios_finalize_prechecks(options)
+    version = ios_get_app_version
+    trigger_release_build(branch_to_build: "release/#{version}")
   end
 
   #####################################################################################
@@ -214,13 +232,14 @@ end
   #####################################################################################
   desc 'Does the necessary build and metadata updates then triggers an App Store deployment'
   lane :finalize_release do | options |
-    ios_finalize_prechecks(options)
-    unless ios_current_branch_is_hotfix
-      ios_update_metadata(options)
-      ios_bump_version_beta()
-    end
+    UI.user_error!('To finalize a hotfix, please use the finalize_hotfix_release lane instead') if ios_current_branch_is_hotfix
 
-    trigger_app_store_ci_build(branch_to_build: "release/#{ios_get_app_version()}")
+    ios_finalize_prechecks(options)
+    
+    ios_update_metadata(options)
+    ios_bump_version_beta()
+
+    trigger_release_build(branch_to_build: "release/#{ios_get_app_version()}")
   end
 
   #####################################################################################
@@ -383,14 +402,14 @@ end
   end
 
   #############################################################################
-  # trigger_app_store_ci_build
+  # trigger_release_build
   # ---------------------------------------------------------------------------
   # This lane triggers a build for App Store distribution on CI
   # ---------------------------------------------------------------------------
   # Usage:
   # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
   #############################################################################
-  lane :trigger_app_store_ci_build do | options |
+  lane :trigger_release_build do | options |
     circleci_trigger_job(
       circle_ci_token: ENV["CIRCLE_CI_AUTH_TOKEN"],
       repository: REPOSITORY_NAME,

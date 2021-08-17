@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-03 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d Seçilen";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "En az 8 karakter";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Bu notu birisiyle paylaşmak için etiket olarak bir e-posta adresi ekleyin. Bunun ardından her ikiniz de not üzerinde değişiklik yapabilirsiniz.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "Etiket ekle...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "geri dön";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "Kenar Çubuğunu Gizle";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "Durum Çubuğunu Gizle";
+
 /* History Menu Action */
 "History" = "Geçmiş";
 
 /* Note Metrics Title */
 "Information" = "Bilgi";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "Kontrol Listesi Ekle";
 
 /* Reference Last Modification Date */
 "Last modified" = "Son değişiklik";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "Notlarda ara";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "Arama";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com hesabınızda oturumunuz açıkken hizmetleri kullanımınızla ilgili bilgileri analiz aracımızla paylaşın.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "Kenar Çubuğunu Göster";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "Durum Çubuğunu Göster";
 
 /* Title of button for signing up */
 "Sign Up" = "Üye ol";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "Atla";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "Etiketle…";
 
 /* Tags Section Name */
 "Tags" = "Etiketler";

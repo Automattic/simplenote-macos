@@ -1,0 +1,4 @@
+- Nuova Barra di stato: consente di visualizzare rapidamente la selezione di Tag/Note
+- La nuova Barra di stato può anche essere nascosta tramite le Impostazioni
+- L'Editor dei tag è ora a scorrimento, creando più spazio per l'editor quando opportuno
+- È ora possibile inserire checklist direttamente dalla Barra degli strumenti dell'Editor

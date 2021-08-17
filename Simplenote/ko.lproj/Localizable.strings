@@ -1,7 +1,10 @@
-/* Translation-Revision-Date: 2021-04-28 11:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-04 10:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
+
+/* Presented when there are multiple selected notes */
+"%d Selected" = "%d 선택됨";
 
 /* Password Requirement: Length */
 "- Minimum of 8 characters" = "- 최소 8자";
@@ -14,9 +17,6 @@
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "이메일 주소를 태그로 추가하여 이 메모를 다른 사람과 공유합니다. 공유한 사람과 공유받은 사람 모두 메모를 수정할 수 있습니다.";
-
-/* Placeholder text in the Tags View */
-"Add tag..." = "태그 추가...";
 
 /* Title of the all notes filter
    Title of the view that displays all your notes */
@@ -113,11 +113,20 @@
 /* Back Button Title */
 "Go Back" = "돌아가기";
 
+/* macOS MenuItem that causes the Tag List to be hidden */
+"Hide Sidebar" = "사이드바 숨기기";
+
+/* macOS MenuItem that causes the Status Bar to be hidden */
+"Hide Status Bar" = "상태 표시줄 숨기기";
+
 /* History Menu Action */
 "History" = "내역";
 
 /* Note Metrics Title */
 "Information" = "정보";
+
+/* Tooltip: Insert Checklist */
+"Insert Checklist" = "체크리스트 삽입";
 
 /* Reference Last Modification Date */
 "Last modified" = "마지막 변경";
@@ -247,7 +256,7 @@
 /* Search Field Placeholder */
 "Search notes" = "메모 검색";
 
-/* Search Results Title */
+/* StatusBar Search Indicator */
 "Searching" = "검색 중";
 
 /* Share Menu Action */
@@ -255,6 +264,12 @@
 
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com 계정에 로그인되어 있는 동안 이용하는 서비스에 대한 정보를 분석 도구와 공유합니다.";
+
+/* macOS MenuItem that causes the Tag List to be presented */
+"Show Sidebar" = "사이드바 표시";
+
+/* macOS MenuItem that causes the Status Bar to be visible */
+"Show Status Bar" = "상태 표시줄 표시";
 
 /* Title of button for signing up */
 "Sign Up" = "가입";
@@ -267,6 +282,9 @@
 
 /* Text to display on OSX cancel button */
 "Skip" = "생략하기";
+
+/* Placeholder text in the Tags View */
+"Tag..." = "태그...";
 
 /* Tags Section Name */
 "Tags" = "태그";

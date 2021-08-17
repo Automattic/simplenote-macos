@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-03-16 14:54:03+0000 */
+/* Translation-Revision-Date: 2021-08-04 14:54:04+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -237,6 +237,9 @@
 /* Class = "NSMenuItem"; title = "Font Size"; ObjectID = "FPg-7U-5Cl"; */
 "FPg-7U-5Cl.title" = "Размер шрифта";
 
+/* Class = "NSMenuItem"; title = "Show Status Bar"; ObjectID = "JXy-Aq-Sr2"; */
+"JXy-Aq-Sr2.title" = "Показать панель статуса";
+
 /* Class = "NSMenu"; title = "Line Length"; ObjectID = "JgX-db-Pi6"; Note = "Line Length Setting Menu"; */
 "JgX-db-Pi6.title" = "Длина строки";
 
@@ -324,8 +327,8 @@
 /* Class = "NSMenuItem"; title = "Condensed"; ObjectID = "tQC-gw-hdq"; Note = "Toggles Condensed Note Display"; */
 "tQC-gw-hdq.title" = "Сжатое";
 
-/* Class = "NSMenuItem"; title = "Toggle Sidebar"; ObjectID = "tkU-Gb-qGx"; Note = "Toggles the Sidebar"; */
-"tkU-Gb-qGx.title" = "Включить\/выключить боковую панель";
+/* Class = "NSMenuItem"; title = "Show Sidebar"; ObjectID = "tkU-Gb-qGx"; Note = "Toggles the Sidebar"; */
+"tkU-Gb-qGx.title" = "Показать боковую панель";
 
 /* Class = "NSMenuItem"; title = "Note Display"; ObjectID = "tl2-gz-YEA"; */
 "tl2-gz-YEA.title" = "Отображение заметок";
