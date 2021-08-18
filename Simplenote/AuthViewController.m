@@ -331,7 +331,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
             }
             break;
         case 403:
-            [self presentUnverifiedEmailAlert];
+            if ([self isRequiresVerificationdResponse:responseString]) {
+                [self presentUnverifiedEmailAlert];
+            } else {
+                [self showAuthenticationError:NSLocalizedString(@"Authorization failed", @"Error for authorization failure")];
+            }
             break;
         default:
             [self showAuthenticationError:NSLocalizedString(@"We're having problems. Please try again soon.", @"Generic error")];
@@ -342,6 +346,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 - (BOOL)isPasswordCompromisedResponse:(NSString *)responseString
 {
    return ([responseString isEqual:@"compromised password"]);
+}
+
+- (BOOL)isRequiresVerificationdResponse:(NSString *)responseString
+{
+   return ([responseString isEqual:@"requires verification"]);
 }
 
 -(void)presentPasswordCompromisedAlert
