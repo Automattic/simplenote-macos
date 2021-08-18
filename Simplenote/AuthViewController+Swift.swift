@@ -209,14 +209,24 @@ extension AuthViewController {
         alert.messageText = Localization.unverifiedMessageText
         alert.informativeText = Localization.unverifiedInformativeText
         alert.addButton(withTitle: Localization.unverifiedActionText)
-        alert.addButton(withTitle: Localization.unverifiedCancelText)
+        alert.addButton(withTitle: Localization.cancelText)
 
         alert.beginSheetModal(for: window, completionHandler: completion)
     }
 
     @objc
-    func sendVerificationMessage(for email: String) {
-        AccountVerificationRemote().verify(email: email) { _ in }
+    func sendVerificationMessage(for email: String, inWindow window: NSWindow) {
+        AccountRemote().verify(email: email) { result in
+             var alert: NSAlert
+             switch result {
+             case .success:
+                alert = NSAlert(messageText: Localization.verificationSentTitle, informativeText: String(format: Localization.verificationSentTemplate, email))
+             case .failure:
+                alert = NSAlert(messageText: Localization.unverifriedErrorTitle, informativeText: Localization.unverifiedErrorMessage)
+             }
+            alert.addButton(withTitle: Localization.cancelText)
+            alert.beginSheetModal(for: window, completionHandler: nil)
+        }
     }
 }
 
@@ -252,6 +262,10 @@ private enum Localization {
     static let dismissChangePasswordAction = NSLocalizedString("Not Now", comment: "Dismiss change password alert action")
     static let unverifiedInformativeText = NSLocalizedString("You must verify your email before being able to login.", comment: "Erro for un verified email")
     static let unverifiedMessageText = NSLocalizedString("Account Verification Required", comment: "Email verification required alert title")
-    static let unverifiedCancelText = NSLocalizedString("Okay", comment: "Email unverified alert dismiss")
+    static let cancelText = NSLocalizedString("Okay", comment: "Email unverified alert dismiss")
     static let unverifiedActionText = NSLocalizedString("Resend Verification Email", comment: "Send email verificaiton action")
+    static let unverifriedErrorTitle = NSLocalizedString("Request Error", comment: "Request error alert title")
+    static let unverifiedErrorMessage = NSLocalizedString("There was an preparing your verification email, please try again later", comment: "Request error alert message")
+    static let verificationSentTitle = NSLocalizedString("Check your Email", comment: "Vefification sent alert title")
+    static let verificationSentTemplate = NSLocalizedString("We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions.", comment: "Confirmation that an email has been sent")
 }

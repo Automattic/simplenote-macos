@@ -361,7 +361,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     [self showUnverifiedEmailAlertFor:self.view.window
                                completion:^(NSModalResponse response)  {
         if (response == NSAlertFirstButtonReturn) {
-            [weakSelf sendVerificationMessageFor: weakSelf.usernameText];
+            [weakSelf sendVerificationMessageFor:self.usernameText inWindow:self.view.window];
         }
     }];
 }
