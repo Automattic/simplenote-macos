@@ -330,7 +330,13 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
                 [self showAuthenticationError:NSLocalizedString(@"Bad email or password", @"Error for bad email or password")];
             }
             break;
-
+        case 403:
+            if ([self isRequiresVerificationdResponse:responseString]) {
+                [self presentUnverifiedEmailAlert];
+            } else {
+                [self showAuthenticationError:NSLocalizedString(@"Authorization failed", @"Error for authorization failure")];
+            }
+            break;
         default:
             [self showAuthenticationError:NSLocalizedString(@"We're having problems. Please try again soon.", @"Generic error")];
             break;
@@ -342,6 +348,11 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
    return ([responseString isEqual:@"compromised password"]);
 }
 
+- (BOOL)isRequiresVerificationdResponse:(NSString *)responseString
+{
+   return ([responseString isEqual:@"requires verification"]);
+}
+
 -(void)presentPasswordCompromisedAlert
 {
     __weak typeof(self) weakSelf = self;
@@ -349,6 +360,17 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
                                completion:^(NSModalResponse response)  {
         if (response == NSAlertFirstButtonReturn) {
             [weakSelf openResetPasswordURL];
+        }
+    }];
+}
+
+- (void)presentUnverifiedEmailAlert
+{
+    __weak typeof(self) weakSelf = self;
+    [self showUnverifiedEmailAlertFor:self.view.window
+                               completion:^(NSModalResponse response)  {
+        if (response == NSAlertFirstButtonReturn) {
+            [weakSelf sendVerificationMessageFor:self.usernameText inWindow:self.view.window];
         }
     }];
 }
