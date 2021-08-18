@@ -468,6 +468,8 @@
 		BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
 		BAE66CAA26AF647500398FF3 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BAF8D5DC26AE3BE800CA9383 /* markdown-light.css in Resources */ = {isa = PBXBuildFile; fileRef = BAF8D5DB26AE3BE800CA9383 /* markdown-light.css */; };
+		BAFB545026CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */; };
+		BAFB545126CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */; };
 		CD6BC8FB4B8661C30318208C /* Pods_Automattic_SimplenoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D95A169BF4BF7DEABC4021 /* Pods_Automattic_SimplenoteTests.framework */; };
 		D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AA366214AF89DB7A1C687 /* Pods_Automattic_Simplenote.framework */; };
 		F998F3EB22853C29008C2B59 /* CrashLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F998F3EA22853C29008C2B59 /* CrashLogging.swift */; };
@@ -848,6 +850,7 @@
 		BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Simplenote.swift"; sourceTree = "<group>"; };
 		BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchQuery+Simplenote.swift"; sourceTree = "<group>"; };
 		BAF8D5DB26AE3BE800CA9383 /* markdown-light.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "markdown-light.css"; sourceTree = "<group>"; };
+		BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSProgressIndicator+Simplenote.swift"; sourceTree = "<group>"; };
 		F998F3EA22853C29008C2B59 /* CrashLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLogging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1262,6 +1265,7 @@
 				BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */,
 				BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */,
 				BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */,
+				BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2126,6 +2130,7 @@
 				B5C63337251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */,
 				B5A9FE482576D25A0084F176 /* NSBox+Simplenote.swift in Sources */,
 				B56FA7922437C672002CB9FF /* NSColor+Theme.swift in Sources */,
+				BAFB545026CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift in Sources */,
 				B5AF76CB24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203924C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
 				B5EDF323258A236C0066D91D /* NSEdgeInsets+Simplenote.swift in Sources */,
@@ -2314,6 +2319,7 @@
 				B56FA7932437C672002CB9FF /* NSColor+Theme.swift in Sources */,
 				B5C63338251E6A5A00C8BF46 /* InterlinkViewController.swift in Sources */,
 				375D293321E033D1007AB25A /* buffer.c in Sources */,
+				BAFB545126CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift in Sources */,
 				B5AF76CC24A3F27E00B7D530 /* TagListRow.swift in Sources */,
 				B52F203A24C5FB1E00ABB43F /* NSWindow+Simplenote.swift in Sources */,
 				375D294521E033D1007AB25A /* html.c in Sources */,

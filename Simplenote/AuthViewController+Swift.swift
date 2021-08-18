@@ -216,7 +216,11 @@ extension AuthViewController {
 
     @objc
     func sendVerificationMessage(for email: String, inWindow window: NSWindow) {
+        let progressIndicator = NSProgressIndicator.addProgressIndicator(to: view)
+
         AccountRemote().verify(email: email) { result in
+            progressIndicator.removeFromSuperview()
+
              var alert: NSAlert
              switch result {
              case .success:
