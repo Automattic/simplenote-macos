@@ -1,7 +1,7 @@
 2.15
 -----
 -   [Internal] added login alert for compromised password #1017
-- [Internal] added error response case on login for unverified emails #1019
+-   [Internal] added error response case on login for unverified emails #1019
 
 2.14
 -----
