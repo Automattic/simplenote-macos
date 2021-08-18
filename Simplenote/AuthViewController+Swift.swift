@@ -268,7 +268,7 @@ private enum Localization {
     static let dismissChangePasswordAction = NSLocalizedString("Not Now", comment: "Dismiss change password alert action")
     static let unverifiedInformativeText = NSLocalizedString("You must verify your email before being able to login.", comment: "Erro for un verified email")
     static let unverifiedMessageText = NSLocalizedString("Account Verification Required", comment: "Email verification required alert title")
-    static let cancelText = NSLocalizedString("Okay", comment: "Email unverified alert dismiss")
+    static let cancelText = NSLocalizedString("Ok", comment: "Email unverified alert dismiss")
     static let unverifiedActionText = NSLocalizedString("Resend Verification Email", comment: "Send email verificaiton action")
     static let unverifriedErrorTitle = NSLocalizedString("Request Error", comment: "Request error alert title")
     static let unverifiedErrorMessage = NSLocalizedString("There was an preparing your verification email, please try again later", comment: "Request error alert message")
