@@ -2,9 +2,10 @@ import Foundation
 
 extension NSProgressIndicator {
     static func addProgressIndicator(to view: NSView) -> NSProgressIndicator {
-        let progressIndicator = NSProgressIndicator.init(frame: NSRect(x: view.frame.minX, y: view.frame.midY, width: 20, height: 20))
+        let progressIndicator = NSProgressIndicator()
         progressIndicator.translatesAutoresizingMaskIntoConstraints = false
         progressIndicator.style = .spinning
+        progressIndicator.controlSize = .small
 
         view.addSubview(progressIndicator)
 
