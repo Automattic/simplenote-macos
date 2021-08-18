@@ -355,7 +355,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
     }];
 }
 
--(void) presentUnverifiedEmailAlert
+- (void)presentUnverifiedEmailAlert
 {
     __weak typeof(self) weakSelf = self;
     [self showUnverifiedEmailAlertFor:self.view.window
