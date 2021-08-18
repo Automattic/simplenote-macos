@@ -23,9 +23,12 @@ class SimplenoteConstants: NSObject {
     static let simplenoteInterlinkHost = "note"
     static let simplenoteInterlinkMaxTitleLength = 150
 
+    static let currentEngineBaseURL = "https://app.simplenote.com" as NSString
+
     /// URL(s)
     ///
-    static let simplenoteSettingsURL = "https://app.simplenote.com/settings"
-    static let simplenoteVerificationURL = "https://app.simplenote.com/account/verify-email/"
-    static let simplenoteRequestSignupURL = "https://app.simplenote.com/account/request-signup"
+    static let simplenoteSettingsURL        = currentEngineBaseURL.appendingPathComponent("/settings")
+    static let simplenoteVerificationURL    = currentEngineBaseURL.appendingPathComponent("/account/verify-email/")
+    static let simplenoteRequestSignupURL   = currentEngineBaseURL.appendingPathComponent("/account/request-signup")
+    static let accountDeletionURL           = currentEngineBaseURL.appendingPathComponent("/account/request-delete/")
 }

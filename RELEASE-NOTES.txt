@@ -2,6 +2,8 @@
 -----
 -   [Internal] added login alert for compromised password #1017
 -   [Internal] added error response case on login for unverified emails #1019
+- In app account deletion: Now you can delete your account from the app #1013
+- [Internal] added login alert for compromised password #1017
 
 2.14
 -----

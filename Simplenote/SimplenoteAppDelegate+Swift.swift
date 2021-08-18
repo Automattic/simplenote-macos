@@ -98,6 +98,11 @@ extension SimplenoteAppDelegate {
     }
 
     @objc
+    func configureAccountDeletionController() {
+        accountDeletionController = AccountDeletionController()
+    }
+
+    @objc
     func refreshStatusController() {
         guard !Options.shared.statusBarHidden else {
             breadcrumbsViewController.view.removeFromSuperview()
@@ -567,6 +572,30 @@ extension SimplenoteAppDelegate: EditorControllerDelegate {
         breadcrumbsViewController.editorControllerUpdatedNote(note)
     }
 }
+
+// MARK: - Account Deletion
+//
+extension SimplenoteAppDelegate {
+    @objc
+    func authenticateIfAccountDeletionRequested() {
+        guard accountDeletionController?.hasValidDeletionRequest == true else {
+            return
+        }
+
+        simperium.authenticateIfNecessary() 
+    }
+
+    @objc
+    func logOutIfAccountDeletionRequested() {
+        guard let deletionController = accountDeletionController,
+              deletionController.hasValidDeletionRequest else {
+            return
+        }
+
+        signOut()
+    }
+}
+
 
 
 // MARK: - Constants

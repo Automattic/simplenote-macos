@@ -6,7 +6,7 @@ import XCTest
 class AccountVerificationControllerTests: XCTestCase {
 
     private let email = UUID().uuidString
-    private lazy var remote = MockAccountVerificationRemote()
+    private lazy var remote = MockAccountRemote()
     private lazy var controller = AccountVerificationController(email: email, remote: remote)
 
     private lazy var invalidVerification: [String: Any] = [:]
@@ -20,8 +20,8 @@ class AccountVerificationControllerTests: XCTestCase {
 extension AccountVerificationControllerTests {
     func testVerifyCallsRemoteWithProvidedEmail() {
         // When
-        let expectedResult = Bool.random()
-        var verificationResult: Bool?
+        let expectedResult = controller.randomResult()
+        var verificationResult: Result<Data?, RemoteError>?
         controller.verify { (result) in
             verificationResult = result
         }
