@@ -46,11 +46,8 @@ msgctxt "app_store_keywords"
 msgid "simplenote,note,notes,sync,syncing,list,todo,simple,markdown,ideas"
 msgstr ""
 
-msgctxt "v2.14-whats-new"
+msgctxt "v2.15-whats-new"
 msgid ""
-"- New Status Bar: Lets you quickly know what's your Tags / Notes selection\n"
-"- The new Status Bar can also be hidden via Settings\n"
-"- Tags Editor is now scrollable, making more room for the editor when appropriate\n"
-"- You can now insert Checklists right from the Editor's Toolbar\n"
+"- In app account deletion: Now you can delete your account from the app\n"
 msgstr ""
 
