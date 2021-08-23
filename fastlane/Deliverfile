@@ -13,7 +13,7 @@ screenshots_path './screenshots/'
 app_identifier 'com.automattic.SimplenoteMac'
 
 # Make sure to update these keys for a new version
-app_version "2.14"
+app_version "2.15"
 
 privacy_url(
   'default' => 'https://simplenote.com/privacy/'
