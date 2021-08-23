@@ -1,4 +1,1 @@
-- New Status Bar: Lets you quickly know what's your Tags / Notes selection
-- The new Status Bar can also be hidden via Settings
-- Tags Editor is now scrollable, making more room for the editor when appropriate
-- You can now insert Checklists right from the Editor's Toolbar
+- In app account deletion: Now you can delete your account from the app

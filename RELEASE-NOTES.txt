@@ -1,3 +1,7 @@
+2.16
+-----
+
+
 2.15
 -----
 - [Internal] added error response case on login for unverified emails #1019
