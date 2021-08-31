@@ -350,7 +350,7 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
 
 - (BOOL)isRequiresVerificationdResponse:(NSString *)responseString
 {
-   return ([responseString isEqual:@"requires verification"]);
+   return ([responseString isEqual:@"verification required"]);
 }
 
 -(void)presentPasswordCompromisedAlert
