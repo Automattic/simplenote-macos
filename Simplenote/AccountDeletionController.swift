@@ -14,7 +14,7 @@ class AccountDeletionController: NSObject {
 
     @objc
     func requestAccountDeletion(for user: SPUser, with window: Window) {
-        let alert = NSAlert(messageText: Constants.deleteAccount, informativeText: Constants.confirmAlertMessage)
+        let alert = NSAlert(messageText: Constants.deleteAccount, informativeText: Constants.confirmAlertMessage(with: user.email))
 
         alert.alertStyle = .critical
         alert.addButton(withTitle: Constants.deleteAccountButton)
@@ -51,8 +51,11 @@ class AccountDeletionController: NSObject {
 }
 
 private struct Constants {
+    static func confirmAlertMessage(with email: String) -> String {
+        String(format: confirmAlertTemplate, email)
+    }
     static let deleteAccount = NSLocalizedString("Delete Account", comment: "Delete account title and action")
-    static let confirmAlertMessage = NSLocalizedString("By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible.", comment: "Delete account confirmation alert message")
+    static let confirmAlertTemplate = NSLocalizedString("By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible.", comment: "Delete account confirmation alert message")
     static let deleteAccountButton = NSLocalizedString("Request Account Deletion", comment: "Title for account deletion confirm button")
     static let cancel = NSLocalizedString("Cancel", comment: "Cancel button title")
 
