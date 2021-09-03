@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-08-05 09:54:03+0000 */
+/* Translation-Revision-Date: 2021-09-03 09:54:04+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -15,6 +15,9 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- 密碼不能和電子郵件地址相同";
 
+/* Email verification required alert title */
+"Account Verification Required" = "需要驗證帳號";
+
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "新增電子郵件地址做為標籤，將此筆記與他人分享。 這樣雙方都能變更筆記內容。";
 
@@ -25,16 +28,29 @@
 /* Link to sign in to an account */
 "Already have an account?" = "已經有帳號了？";
 
+/* Delete account confirmation instructions */
+"An email has been sent to %@. Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation." = "電子郵件已傳送至 %@。 請檢查你的收件匣，並按照說明來確認刪除帳號。\n\n在收到你的確認之前，我們不會刪除你的帳號。";
+
+/* Deletion error message */
+"An error occured. Please, try again. If the problem continues, contact us at support@simplenote.com for help." = "發生錯誤。 請再試一次。 如果問題持續發生，請聯絡我們尋求協助：support@simplenote.com。";
+
 /* Sign in error message */
 "An error was encountered while signing in." = "登入時發生錯誤。";
 
 /* Hiring Details */
 "Are you a developer? Automattic is Hiring." = "你是開發人員嗎？ Automattic 正在招募人才。";
 
+/* Error for authorization failure */
+"Authorization failed" = "認證失敗";
+
 /* Error for bad email or password */
 "Bad email or password" = "電子郵件地址或密碼錯誤";
 
-/* Cancel the action
+/* Delete account confirmation alert message */
+"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "刪除你的帳號後，使用該帳號建立的所有備註將會永久刪除。 此動作無法復原。";
+
+/* Cancel button title
+   Cancel the action
    Password Reset: Cancel */
 "Cancel" = "取消";
 
@@ -47,14 +63,26 @@
 /* Change email button -> Review you account screen */
 "Change Account Email" = "變更帳號電子郵件";
 
+/* Change password action */
+"Change Password" = "變更密碼";
+
 /* Number of characters in the note */
 "Characters" = "字元數";
+
+/* Title for delete account succes alert */
+"Check Your Email" = "請檢查電子郵件";
+
+/* Vefification sent alert title */
+"Check your Email" = "請檢查你的電子郵件";
 
 /* Collaborate Menu Action */
 "Collaborate" = "協作";
 
 /* Analytics Toggle Text */
 "Collect Information" = "收集資訊";
+
+/* Compromised passsword alert title */
+"Compromised Password" = "密碼遭洩漏";
 
 /* Confirm button -> Review you account screen */
 "Confirm" = "確定";
@@ -77,6 +105,9 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "建立時間：最舊";
 
+/* Delete account title and action */
+"Delete Account" = "刪除帳號";
+
 /* Delete Forever List Action */
 "Delete Forever" = "永久刪除";
 
@@ -97,6 +128,9 @@
 
 /* Empty Trash Action */
 "Empty Trash" = "清空垃圾桶";
+
+/* Deletion Error Title */
+"Error" = "錯誤";
 
 /* Export All Notes Action */
 "Export Everything" = "全部匯出";
@@ -184,6 +218,9 @@
 /* No Search Results */
 "No Results" = "沒有任何搜尋結果";
 
+/* Dismiss change password alert action */
+"Not Now" = "現在不要";
+
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "未發表";
 
@@ -193,6 +230,9 @@
 /* Dismisses an AlertController
    OK button in error alert dialog */
 "OK" = "OK";
+
+/* Email unverified alert dismiss */
+"Ok" = "確定";
 
 /* Placeholder text for password field */
 "Password" = "密碼";
@@ -240,8 +280,17 @@
 /* Rename Tag Action */
 "Rename Tag" = "重新命名標籤";
 
+/* Title for account deletion confirm button */
+"Request Account Deletion" = "要求刪除帳號";
+
+/* Request error alert title */
+"Request Error" = "要求錯誤";
+
 /* Resend email button -> Verify your email screen */
 "Resend Email" = "重新傳送電子郵件";
+
+/* Send email verificaiton action */
+"Resend Verification Email" = "重新傳送驗證電子郵件";
 
 /* Password Reset: Proceed */
 "Reset" = "重設";
@@ -292,8 +341,14 @@
 /* Error when address is in use */
 "That email is already being used" = "此電子信箱已被使用";
 
+/* Request error alert message */
+"There was an preparing your verification email, please try again later" = "你的驗證電子郵件正在準備中，請稍後再試";
+
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "這類資訊有助我們改善產品、提供與你更加相關的行銷活動、帶來量身打造的 Simplenote.com 使用體驗；若要瞭解更多詳細內容，請參閱我們的隱私權政策。";
+
+/* Compromised password alert message */
+"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "此密碼曾出現在資料外洩事件中，這使得你的帳號有很高的風險會遭到盜用。 建議你立即變更密碼。";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "切換側邊欄";
@@ -335,7 +390,8 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "發生問題，請再試一次。";
 
-/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+/* Confirmation that an email has been sent
+   Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "我們已傳送一封驗證電子郵件到 %1$@。 請檢查你的收件匣並依照指示操作。";
 
 /* Signup Body Text */
@@ -349,6 +405,9 @@
 
 /* Message -> Review you account screen. Parameter: %1$@ - email address */
 "You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "你已使用電子郵件地址  %1$@ 註冊 Simplenote。\n\n如果你不再擁有存取此電子郵件地址的權限，對帳號安全性的改善項目可能導致帳號遺失。";
+
+/* Erro for un verified email */
+"You must verify your email before being able to login." = "你必須先驗證電子郵件地址才能登入。";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "您沒有互聯網連接";
