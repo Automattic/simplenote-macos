@@ -1,4 +1,1 @@
-- Nouvelle barre d’état : vous indique rapidement votre sélection d’étiquettes/notes
-- Vous pouvez également masquer la nouvelle barre d’état à la rubrique Réglages
-- L’éditeur d’étiquettes est désormais déroulant, laissant plus de place à l’éditeur au besoin
-- Vous pouvez désormais insérer les listes de contrôle à partir de la barre d’outils de l’éditeur
+- Suppression du compte dans l’application : vous pouvez désormais supprimer votre compte dans l’application

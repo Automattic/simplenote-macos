@@ -1,4 +1,1 @@
-- Nova barra de status: permite que você confira rapidamente a sua seleção de tags/anotações
-- É possível ocultá-la nas configurações
-- Agora, você pode rolar o editor de tags, permitindo que ele tenha mais espaço quando necessário
-- Você também pode inserir listas de verificação diretamente da barra de ferramentas do editor
+– Exclusão da conta no aplicativo: agora, é possível excluir sua conta no aplicativo

@@ -1,4 +1,1 @@
-- Bilah Status Baru: Anda bisa tahu pilihan Tag/Catatan dengan cepat
-- Bilah Status yang baru juga dapat disembunyikan melalui Pengaturan
-- Editor Tag sekarang dapat digulir agar ada ruang bagi penyunting yang lebih luas bila diperlukan
-- Sekarang Anda dapat menyisipkan Daftar Periksa langsung dari Bilah peralatan Editor
+- Penghapusan akun di aplikasi: Kini Anda dapat menghapus akun dari aplikasi

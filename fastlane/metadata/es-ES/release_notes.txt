@@ -1,4 +1,1 @@
-- Nueva barra de estado: permite saber rápidamente qué Etiquetas o Notas están seleccionadas.
-- La nueva barra de estado también se puede ocultar mediante los ajustes
-- El editor de etiquetas es ahora desplazable, para dejar más espacio al editor cuando sea necesario
-- Ahora se pueden insertar listas de verificación directamente desde la barra de herramientas del editor
+- Borrar Cuenta Dentro de la App: Ahora puede borrar su cuenta de usuario dentro de la app. 

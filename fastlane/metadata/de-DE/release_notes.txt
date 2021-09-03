@@ -1,4 +1,1 @@
-- Neue Statusleiste: Hier kannst du schnell sehen, welche Schlagwörter/Notizen du ausgewählt hast.
-- Die neue Statusleiste kann auch über die Einstellungen ausgeblendet werden.
-- Der Schlagwörter-Editor ist jetzt scrollbar, sodass dir bei Bedarf mehr Platz für den Editor zur Verfügung steht.
-- Du kannst jetzt Checklisten direkt über die Toolbar des Editors einfügen.
+- In-App-Kontolöschung: Du kannst dein Konto jetzt direkt in der App löschen
