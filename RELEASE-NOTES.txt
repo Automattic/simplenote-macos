@@ -1,6 +1,6 @@
 2.16
 -----
-
+- Updated the account deletion flow for clarity #1026
 
 2.15
 -----

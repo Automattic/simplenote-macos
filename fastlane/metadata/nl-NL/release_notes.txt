@@ -1,4 +1,1 @@
-- Nieuwe statusbalk: zodat je snel kunt zien welke tags/notities je hebt geselecteerd
-- De nieuwe statusbalk kan ook worden verborgen via Instellingen
-- Je kunt nu scrollen in de Tagseditor, zodat er indien nodig meer ruimte voor de editor vrijkomt
-- Je kunt nu Checklists rechtstreeks vanuit de werkbalk van de editor invoegen
+- Accountverwijdering via de app: Je kan nu je account verwijderen vanuit de app

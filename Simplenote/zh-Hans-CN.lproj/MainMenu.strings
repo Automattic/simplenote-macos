@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-08-04 12:54:04+0000 */
+/* Translation-Revision-Date: 2021-09-02 11:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_CN */
@@ -62,6 +62,9 @@
 
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
 "1db-JI-NZH.title" = "切换 Markdown 预览";
+
+/* Class = "NSMenuItem"; title = "Delete Account"; ObjectID = "1sa-fK-USq"; */
+"1sa-fK-USq.title" = "删除账户";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "拼写和语法";

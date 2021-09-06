@@ -63,6 +63,9 @@
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
 "1db-JI-NZH.title" = "Activar\/Desactivar la vista previa de Markdown";
 
+/* Class = "NSMenuItem"; title = "Delete Account"; ObjectID = "1sa-fK-USq"; */
+"1sa-fK-USq.title" = "Delete Account";
+
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Ortografía y gramática";
 

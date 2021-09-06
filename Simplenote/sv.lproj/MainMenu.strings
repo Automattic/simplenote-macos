@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-07-28 15:03:52+0000 */
+/* Translation-Revision-Date: 2021-08-24 15:26:00+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -63,6 +63,9 @@
 /* Class = "NSMenuItem"; title = "Toggle Markdown Preview"; ObjectID = "1db-JI-NZH"; Note = "Toggles Markdown Preview"; */
 "1db-JI-NZH.title" = "Slå på\/av förhandsgranskning av markdown";
 
+/* Class = "NSMenuItem"; title = "Delete Account"; ObjectID = "1sa-fK-USq"; */
+"1sa-fK-USq.title" = "Ta bort konto";
+
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Stavning och grammatik";
 
@@ -88,7 +91,7 @@
 "208.title" = "Hitta nästa";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "209"; */
-"209.title" = "Hitta…";
+"209.title" = "Hitta …";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "210"; */
 "210.title" = "Hoppa till val";
@@ -220,7 +223,7 @@
 "76D-S0-1JD.title" = "Sortering av etiketter";
 
 /* Class = "NSMenuItem"; title = "Print…"; ObjectID = "78"; Note = "Prints the current note"; */
-"78.title" = "Skriv ut…";
+"78.title" = "Skriv ut …";
 
 /* Class = "NSMenu"; title = "Note"; ObjectID = "81"; Note = "Note Actions Menu"; */
 "81.title" = "Anteckning";

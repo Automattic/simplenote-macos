@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-08-05 09:54:03+0000 */
+/* Translation-Revision-Date: 2021-09-02 09:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: de */
@@ -15,6 +15,9 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "– Das Passwort darf nicht der E-Mail entsprechen.";
 
+/* Email verification required alert title */
+"Account Verification Required" = "Kontobestätigung erforderlich";
+
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Füge eine E-Mail-Adresse als Schlagwort hinzu, um diese Notiz mit jemandem zu teilen. Dann könnt ihr beide Änderungen daran vornehmen.";
 
@@ -25,16 +28,29 @@
 /* Link to sign in to an account */
 "Already have an account?" = "Du hast bereits ein Konto?";
 
+/* Delete account confirmation instructions */
+"An email has been sent to %@. Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation." = "Es wurde eine E-Mail an %@ gesendet. Bitte sieh in deinem Posteingang nach und folge den Anweisungen, um die Kontolöschung zu bestätigen.\n\nDein Konto wird erst dann gelöscht, wenn wir deine Bestätigung erhalten haben.";
+
+/* Deletion error message */
+"An error occured. Please, try again. If the problem continues, contact us at support@simplenote.com for help." = "Es ist ein Fehler aufgetreten. Bitte versuche es erneut. Sollte das Problem weiterhin bestehen, kontaktiere uns unter support@simplenote.com, um Unterstützung zu erhalten.";
+
 /* Sign in error message */
 "An error was encountered while signing in." = "Bei der Anmeldung ist ein Fehler aufgetreten.";
 
 /* Hiring Details */
 "Are you a developer? Automattic is Hiring." = "Bist du Entwickler? Bei Automattic gibt es vielleicht den passenden Job für dich.";
 
+/* Error for authorization failure */
+"Authorization failed" = "Autorisation fehlgeschlagen";
+
 /* Error for bad email or password */
 "Bad email or password" = "Falsche E-Mail-Adresse oder falsches Passwort";
 
-/* Cancel the action
+/* Delete account confirmation alert message */
+"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "Wenn du dein Konto löschst, werden alle Notizen, die in diesem Konto erstellt wurden, unwiderruflich gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden.";
+
+/* Cancel button title
+   Cancel the action
    Password Reset: Cancel */
 "Cancel" = "Abbrechen";
 
@@ -47,14 +63,26 @@
 /* Change email button -> Review you account screen */
 "Change Account Email" = "E-Mail-Adresse des Kontos ändern";
 
+/* Change password action */
+"Change Password" = "Passwort ändern";
+
 /* Number of characters in the note */
 "Characters" = "Zeichen";
+
+/* Title for delete account succes alert */
+"Check Your Email" = "Überprüfe dein E-Mail-Postfach";
+
+/* Vefification sent alert title */
+"Check your Email" = "Überprüfe dein E-Mail-Postfach";
 
 /* Collaborate Menu Action */
 "Collaborate" = "Zusammenarbeiten";
 
 /* Analytics Toggle Text */
 "Collect Information" = "Informationen erfassen";
+
+/* Compromised passsword alert title */
+"Compromised Password" = "Kompromittiertes Passwort";
 
 /* Confirm button -> Review you account screen */
 "Confirm" = "Bestätigen";
@@ -77,6 +105,9 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Erstellt: Älteste";
 
+/* Delete account title and action */
+"Delete Account" = "Konto löschen";
+
 /* Delete Forever List Action */
 "Delete Forever" = "Endgültig löschen";
 
@@ -97,6 +128,9 @@
 
 /* Empty Trash Action */
 "Empty Trash" = "Papierkorb leeren";
+
+/* Deletion Error Title */
+"Error" = "Fehler";
 
 /* Export All Notes Action */
 "Export Everything" = "Alle Inhalte exportieren";
@@ -184,6 +218,9 @@
 /* No Search Results */
 "No Results" = "Keine Ergebnisse";
 
+/* Dismiss change password alert action */
+"Not Now" = "Nicht jetzt";
+
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Nicht veröffentlicht";
 
@@ -193,6 +230,9 @@
 /* Dismisses an AlertController
    OK button in error alert dialog */
 "OK" = "OK";
+
+/* Email unverified alert dismiss */
+"Ok" = "OK";
 
 /* Placeholder text for password field */
 "Password" = "Passwort";
@@ -240,8 +280,17 @@
 /* Rename Tag Action */
 "Rename Tag" = "Schlagwort umbenennen";
 
+/* Title for account deletion confirm button */
+"Request Account Deletion" = "Kontolöschung anfragen";
+
+/* Request error alert title */
+"Request Error" = "Anforderungsfehler";
+
 /* Resend email button -> Verify your email screen */
 "Resend Email" = "E-Mail erneut senden";
+
+/* Send email verificaiton action */
+"Resend Verification Email" = "Verifizierungs-E-Mail erneut senden";
 
 /* Password Reset: Proceed */
 "Reset" = "Zurücksetzen";
@@ -292,8 +341,14 @@
 /* Error when address is in use */
 "That email is already being used" = "Diese E-Mail-Adresse wird bereits verwendet";
 
+/* Request error alert message */
+"There was an preparing your verification email, please try again later" = "Beim Erstellen deiner Bestätigungs-E-Mail ist ein Fehler aufgetreten. Versuche es später bitte erneut.";
+
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Diese Informationen helfen uns dabei, unsere Produkte zu verbessern, Marketing besser auf dich zuzuschneiden, deine Erfahrung mit Simplenote.com zu personalisieren und vielem mehr. All das kannst du auch in unserer Datenschutzerklärung nachlesen.";
+
+/* Compromised password alert message */
+"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "Dieses Passwort ist in einer Datenschutzverletzung aufgetaucht, sodass das Risiko einer Sicherheitsverletzung bei deinem Konto hoch ist. Du solltest dein Passwort sofort ändern.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "Seitenleiste umschalten";
@@ -335,7 +390,8 @@
 /* Generic error */
 "We're having problems. Please try again soon." = "Momentan gibt es ein paar Probleme. Bitte versuche es später erneut.";
 
-/* Message -> Verify your email screen. Parameter: %1$@ - email address */
+/* Confirmation that an email has been sent
+   Message -> Verify your email screen. Parameter: %1$@ - email address */
 "We’ve sent a verification email to %1$@. Please check your inbox and follow the instructions." = "Wir haben an %1$@ eine Verifizierungs-E-Mail gesendet. Sieh bitte in deinem Posteingang nach und befolge die Anweisungen.";
 
 /* Signup Body Text */
@@ -349,6 +405,9 @@
 
 /* Message -> Review you account screen. Parameter: %1$@ - email address */
 "You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "Du bist mit der E-Mail-Adresse %1$@ bei Simplenote registriert.\n\nVerbesserungen der Kontosicherheit können zum Verlust des Kontos führen, wenn du keinen Zugriff mehr auf diese E-Mail-Adresse hast.";
+
+/* Erro for un verified email */
+"You must verify your email before being able to login." = "Du musst deine E-Mail-Adresse bestätigen, bevor du dich anmelden kannst.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "Du bist nicht mit dem Internet verbunden";
