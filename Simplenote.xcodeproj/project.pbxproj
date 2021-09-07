@@ -466,6 +466,7 @@
 		BAA0A88F26BA39200006260E /* AccountDeletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A88126B9F8970006260E /* AccountDeletionController.swift */; };
 		BAA0A89326BA39260006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
 		BAA4854A25D5E22000F3BDB9 /* SearchQuery+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA4854925D5E22000F3BDB9 /* SearchQuery+Simplenote.swift */; };
+		BAD4ECC026E6FC0A00881CC4 /* markdown-light.css in Resources */ = {isa = PBXBuildFile; fileRef = BAF8D5DB26AE3BE800CA9383 /* markdown-light.css */; };
 		BAE66CAA26AF647500398FF3 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BAF8D5DC26AE3BE800CA9383 /* markdown-light.css in Resources */ = {isa = PBXBuildFile; fileRef = BAF8D5DB26AE3BE800CA9383 /* markdown-light.css */; };
 		BAFB545026CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */; };
@@ -1840,6 +1841,7 @@
 				B53ACDE525DD47BB00CF527A /* InterlinkViewController.xib in Resources */,
 				B5438013246358BA00F34B1C /* Icons.xcassets in Resources */,
 				B5C7DD44243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
+				BAD4ECC026E6FC0A00881CC4 /* markdown-light.css in Resources */,
 				B58117D725B9D5F500927E0C /* AccountVerificationViewController.xib in Resources */,
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
