@@ -1,12 +1,18 @@
 2.16
 -----
-- Updated the account deletion flow for clarity #1026
+
+
+2.15.1
+-----
+- Fixed a bug that caused the app window not to load in light mode #1031
+
 
 2.15
 -----
 - [Internal] added error response case on login for unverified emails #1019
 - In app account deletion: Now you can delete your account from the app #1013
 - [Internal] added login alert for compromised password #1017
+- Updated the account deletion flow for clarity #1026
 
 2.14
 -----
