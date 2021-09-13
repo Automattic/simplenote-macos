@@ -8,7 +8,7 @@ A Simplenote client for macOS. Learn more about Simplenote at [Simplenote.com](h
 
 ### Download Xcode
 
-At the moment *Simplenote for macOS* uses Swift 5 and requires Xcode 10.2 or newer. Xcode can be [downloaded from Apple](https://developer.apple.com/downloads/index.action).*
+At the moment *Simplenote for macOS* uses Swift 5 and requires Xcode 12 or newer. Xcode can be [downloaded from Apple](https://developer.apple.com/downloads/index.action).*
 
 ### Third party tools
 
