@@ -455,8 +455,8 @@
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		BA0B43C926F2FCFC00B44A8C /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */; };
 		BA0B43CA26F2FCFC00B44A8C /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */; };
-		BA0B43D526F2FEA200B44A8C /* PreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0B43D426F2FEA200B44A8C /* PreferencesViewController.storyboard */; };
-		BA0B43D626F2FEA200B44A8C /* PreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0B43D426F2FEA200B44A8C /* PreferencesViewController.storyboard */; };
+		BA0B43D526F2FEA200B44A8C /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */; };
+		BA0B43D626F2FEA200B44A8C /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */; };
 		BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */; };
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
 		BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
@@ -846,7 +846,7 @@
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
 		BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
-		BA0B43D426F2FEA200B44A8C /* PreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreferencesViewController.storyboard; sourceTree = "<group>"; };
+		BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
 		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
 		BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Simplenote.swift"; sourceTree = "<group>"; };
@@ -1658,7 +1658,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */,
-				BA0B43D426F2FEA200B44A8C /* PreferencesViewController.storyboard */,
+				BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -1834,7 +1834,7 @@
 				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
-				BA0B43D526F2FEA200B44A8C /* PreferencesViewController.storyboard in Resources */,
+				BA0B43D526F2FEA200B44A8C /* Preferences.storyboard in Resources */,
 				B50F999224F98FFD00A1058D /* Main.storyboard in Resources */,
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
@@ -1863,7 +1863,7 @@
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */,
-				BA0B43D626F2FEA200B44A8C /* PreferencesViewController.storyboard in Resources */,
+				BA0B43D626F2FEA200B44A8C /* Preferences.storyboard in Resources */,
 				B50F999324F98FFD00A1058D /* Main.storyboard in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,

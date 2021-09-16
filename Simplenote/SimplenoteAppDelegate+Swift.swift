@@ -161,6 +161,15 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func preferencesWasPressed(_ sender: Any) {
+        ensureMainWindowIsVisible(sender)
+        let storyboard = NSStoryboard(name: Constants.preferenceStoryboardIdentifier, bundle: nil)
+        let preferencesWindow = storyboard.instantiateController(withIdentifier: Constants.preferencesWindowControllerIdentifier) as? NSWindowController
+        preferencesWindow?.window?.center()
+        preferencesWindow?.showWindow(self)
+    }
+
+    @IBAction
     func newNoteWasPressed(_ sender: Any) {
         noteEditorViewController.newNoteWasPressed(sender)
         SPTracker.trackShortcutCreateNote()
@@ -602,4 +611,6 @@ extension SimplenoteAppDelegate {
 //
 private struct Constants {
     static let noteEditorMetadataCacheFilename = ".editor-metadata-cache"
+    static let preferenceStoryboardIdentifier = "Preferences"
+    static let preferencesWindowControllerIdentifier = "PreferencesWindowController"
 }
