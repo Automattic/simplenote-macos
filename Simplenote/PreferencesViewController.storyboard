@@ -71,6 +71,9 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <color key="contentTintColor" white="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="logOutWasPressed:" target="qdp-Tn-uCV" id="Ktb-us-x7c"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dY1-HT-jLJ">
                                             <rect key="frame" x="228" y="11" width="127" height="32"/>
@@ -78,6 +81,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="deleteAccountWasPressed:" target="qdp-Tn-uCV" id="AsP-Hy-X5L"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -132,6 +138,9 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <action selector="noteSortOrderWasPressed:" target="qdp-Tn-uCV" id="uJC-zb-ZR7"/>
+                                            </connections>
                                         </popUpButton>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3G-SF-4MB">
                                             <rect key="frame" x="156" y="77" width="48" height="18"/>
@@ -139,6 +148,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="noteLineLengthSwitched:" target="qdp-Tn-uCV" id="nc1-6U-hSw"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zEx-kQ-POg">
                                             <rect key="frame" x="214" y="77" width="70" height="18"/>
@@ -146,6 +158,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="noteLineLengthSwitched:" target="qdp-Tn-uCV" id="h3l-a2-mka"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="90b-X3-eWO">
                                             <rect key="frame" x="156" y="45" width="154" height="18"/>
@@ -153,6 +168,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="condensedNoteListPressed:" target="qdp-Tn-uCV" id="Xsg-Dn-bR5"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ugb-os-a8V">
                                             <rect key="frame" x="156" y="14" width="173" height="18"/>
@@ -160,6 +178,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="sortTagsAlphabeticallyPressed:" target="qdp-Tn-uCV" id="z99-pt-Kf2"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -211,6 +232,9 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <action selector="themeWasPressed:" target="qdp-Tn-uCV" id="KZt-dk-gzA"/>
+                                            </connections>
                                         </popUpButton>
                                     </subviews>
                                     <constraints>
@@ -268,6 +292,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="shareAnalyticsWasPressed:" target="qdp-Tn-uCV" id="K26-5l-wYi"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-XE-9uE">
                                             <rect key="frame" x="156" y="20" width="370" height="64"/>
@@ -304,6 +331,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="aboutWasPressed:" target="qdp-Tn-uCV" id="b0g-fo-x6i"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
