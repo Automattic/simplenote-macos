@@ -1,6 +1,12 @@
 import Cocoa
 
 class PreferencesViewController: NSViewController {
+    let simperium: Simperium
+
+    required init?(coder: NSCoder) {
+        self.simperium = SimplenoteAppDelegate.shared().simperium
+        super.init(coder: coder)
+    }
 
     // MARK: Account Section Properties
 
@@ -86,12 +92,44 @@ class PreferencesViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Add styling code
+
+        refreshFields()
+    }
+
+    private func refreshFields() {
+        emailLabel.stringValue = simperium.user?.email ?? ""
     }
 
     // MARK: Account Settings
 
     @IBAction private func logOutWasPressed(_ sender: Any) {
+        let appDelegate = SimplenoteAppDelegate.shared()
+
+        if !StatusChecker.hasUnsentChanges(simperium) {
+            appDelegate.signOut()
+            self.view.window?.close()
+            return
+        }
+
+        let alert = NSAlert(messageText: Constants.unsyncedNotesAlertTitle, informativeText: Constants.unsyncedNotesMessage)
+        alert.addButton(withTitle: Constants.deleteNotesButton)
+        alert.addButton(withTitle: Constants.cancelButton)
+        alert.addButton(withTitle: Constants.visitWebButton)
+        alert.alertStyle = .critical
+
+        alert.beginSheetModal(for: appDelegate.window) { result in
+            switch result {
+            case .alertFirstButtonReturn:
+                appDelegate.signOut()
+            case .alertThirdButtonReturn:
+                let url = URL(string: SimplenoteConstants.currentEngineBaseURL as String)!
+                NSWorkspace.shared.open(url)
+            default:
+                break
+            }
+            self.view.window?.close()
+        }
+
     }
 
     @IBAction private func deleteAccountWasPressed(_ sender: Any) {
@@ -127,4 +165,12 @@ class PreferencesViewController: NSViewController {
     @IBAction private func aboutWasPressed(_ sender: Any) {
     }
     
+}
+
+private struct Constants {
+    static let deleteNotesButton = NSLocalizedString("Delete Notes", comment: "Delete notes and sign out of the app")
+    static let cancelButton = NSLocalizedString("Cancel", comment: "Cancel the action")
+    static let visitWebButton = NSLocalizedString("Visit Web App", comment: "Visit app.simplenote.com in the browser")
+    static let unsyncedNotesAlertTitle = NSLocalizedString("Unsynced Notes Detected", comment: "Alert title displayed in when an account has unsynced notes")
+    static let unsyncedNotesMessage = NSLocalizedString("Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.", comment: "Alert message displayed when an account has unsynced notes")
 }
