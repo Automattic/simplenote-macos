@@ -4,87 +4,83 @@ class PreferencesViewController: NSViewController {
 
     // MARK: Account Section Properties
 
-    /// Account Email Title
-    ///
-    @IBOutlet var accountLabel: NSTextField!
-
     /// Account Email Label
     ///
-    @IBOutlet var emailLabel: NSTextField!
+    @IBOutlet private var emailLabel: NSTextField!
 
     /// Log Out Button:
     ///
-    @IBOutlet var logOutButton: NSButton!
+    @IBOutlet private var logOutButton: NSButton!
 
     /// Delete Account Button
     ///
-    @IBOutlet var deleteAccountButton: NSButton!
+    @IBOutlet private var deleteAccountButton: NSButton!
 
     // MARK: Note List Appearence Section Properties
 
     /// Note Sort Order Title
     ///
-    @IBOutlet var noteSortOrderLabel: NSTextField!
+    @IBOutlet private var noteSortOrderLabel: NSTextField!
 
     /// Note Line Length Title
     ///
-    @IBOutlet var noteLineLengthLabel: NSTextField!
+    @IBOutlet private var noteLineLengthLabel: NSTextField!
 
     /// Note Sort Order Pop Up Button
     ///
-    @IBOutlet var sortOrderPopUp: NSPopUpButton!
+    @IBOutlet private var sortOrderPopUp: NSPopUpButton!
 
     /// Line Length Full Radio Button
     ///
-    @IBOutlet var lineLengthFullRadio: NSButton!
+    @IBOutlet private var lineLengthFullRadio: NSButton!
 
     /// Line Length Narrow Radio Button
     ///
-    @IBOutlet var lineLengthNarrowRadio: NSButton!
+    @IBOutlet private var lineLengthNarrowRadio: NSButton!
 
     /// Condensed Note List Checkbox
     ///
-    @IBOutlet var condensedNoteListCheckbox: NSButton!
+    @IBOutlet private var condensedNoteListCheckbox: NSButton!
 
     /// Sort Tags Alphabetically Checkbox
     ///
-    @IBOutlet var sortTagsAlphabeticallyCheckbox: NSButton!
+    @IBOutlet private var sortTagsAlphabeticallyCheckbox: NSButton!
 
     // MARK: Theme Section Properties
 
     /// Theme Title Label
     ///
-    @IBOutlet var themeLabel: NSTextField!
+    @IBOutlet private var themeLabel: NSTextField!
 
     /// Theme Pop Up Button
     ///
-    @IBOutlet var themePopUp: NSPopUpButton!
+    @IBOutlet private var themePopUp: NSPopUpButton!
 
     // MARK: Text Size Section Properties
 
     /// Text Size Title Label
     ///
-    @IBOutlet var textSizeLabel: NSTextField!
+    @IBOutlet private var textSizeLabel: NSTextField!
 
     /// Text Size Slider
     ///
-    @IBOutlet var textSizeSlider: NSSlider!
+    @IBOutlet private var textSizeSlider: NSSlider!
 
     // MARK: Analytics Section Properties
 
     /// Share Analytics Checkbox
     ///
-    @IBOutlet var shareAnalyticsCheckbox: NSButton!
+    @IBOutlet private var shareAnalyticsCheckbox: NSButton!
 
     /// Analytics Description Label
     ///
-    @IBOutlet var analyticsDescrpitionLabel: NSTextField!
+    @IBOutlet private var analyticsDescrpitionLabel: NSTextField!
 
     // MARK: About Simplenote Section Properties
 
     /// About Simplenote Button
     ///
-    @IBOutlet var aboutSimplenoteButton: NSButton!
+    @IBOutlet private var aboutSimplenoteButton: NSButton!
 
     // MARK: View Life Cycle
 
@@ -95,40 +91,40 @@ class PreferencesViewController: NSViewController {
 
     // MARK: Account Settings
 
-    @IBAction func logOutWasPressed(_ sender: Any) {
+    @IBAction private func logOutWasPressed(_ sender: Any) {
     }
 
-    @IBAction func deleteAccountWasPressed(_ sender: Any) {
+    @IBAction private func deleteAccountWasPressed(_ sender: Any) {
     }
 
     // MARK: NoNote List Appearence Settings
 
-    @IBAction func noteSortOrderWasPressed(_ sender: Any) {
+    @IBAction private func noteSortOrderWasPressed(_ sender: Any) {
     }
 
-    @IBAction func noteLineLengthSwitched(_ sender: Any) {
+    @IBAction private func noteLineLengthSwitched(_ sender: Any) {
 
     }
 
-    @IBAction func condensedNoteListPressed(_ sender: Any) {
+    @IBAction private func condensedNoteListPressed(_ sender: Any) {
     }
 
-    @IBAction func sortTagsAlphabeticallyPressed(_ sender: Any) {
+    @IBAction private func sortTagsAlphabeticallyPressed(_ sender: Any) {
     }
 
     // MARK: Theme Settings
 
-    @IBAction func themeWasPressed(_ sender: Any) {
+    @IBAction private func themeWasPressed(_ sender: Any) {
     }
 
     // MARK: Analytics Settings
 
-    @IBAction func shareAnalyticsWasPressed(_ sender: Any) {
+    @IBAction private func shareAnalyticsWasPressed(_ sender: Any) {
     }
 
     // MARK: About Section
 
-    @IBAction func aboutWasPressed(_ sender: Any) {
+    @IBAction private func aboutWasPressed(_ sender: Any) {
     }
     
 }

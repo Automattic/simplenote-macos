@@ -126,7 +126,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a9v-Yn-JJz">
-                                            <rect key="frame" x="155" y="105" width="373" height="25"/>
+                                            <rect key="frame" x="155" y="105" width="375" height="25"/>
                                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Nnc-gG-F2p" id="jed-gx-5P4">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -220,7 +220,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="56j-XD-J7H">
-                                            <rect key="frame" x="155" y="18" width="373" height="25"/>
+                                            <rect key="frame" x="155" y="18" width="375" height="25"/>
                                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="fOc-cY-Z7k" id="dru-Ob-lp1">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -264,7 +264,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y2O-Rb-5pC">
-                                            <rect key="frame" x="156" y="29" width="368" height="28"/>
+                                            <rect key="frame" x="156" y="29" width="370" height="28"/>
                                             <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="iF2-im-Cg5"/>
                                         </slider>
                                     </subviews>
@@ -297,7 +297,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-XE-9uE">
-                                            <rect key="frame" x="156" y="22" width="370" height="64"/>
+                                            <rect key="frame" x="156" y="22" width="372" height="64"/>
                                             <textFieldCell key="cell" id="YwM-tb-8Rf">
                                                 <font key="font" metaFont="system"/>
                                                 <string key="title">Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information. About Analytics and Privacy.</string>
@@ -355,7 +355,6 @@
                     </view>
                     <connections>
                         <outlet property="aboutSimplenoteButton" destination="mG2-EH-PLX" id="dwx-wW-kf7"/>
-                        <outlet property="accountLabel" destination="zFN-UM-NXQ" id="crJ-gJ-Vhi"/>
                         <outlet property="analyticsDescrpitionLabel" destination="r6j-XE-9uE" id="TR8-Uv-I64"/>
                         <outlet property="condensedNoteListCheckbox" destination="90b-X3-eWO" id="kyL-vt-7yh"/>
                         <outlet property="deleteAccountButton" destination="dY1-HT-jLJ" id="hVx-hN-BqS"/>
