@@ -4,6 +4,8 @@ class PreferencesViewController: NSViewController {
     let simperium: Simperium
     let options = Options.shared
 
+    var aboutWindowController: NSWindowController?
+
     required init?(coder: NSCoder) {
         self.simperium = SimplenoteAppDelegate.shared().simperium
         super.init(coder: coder)
@@ -110,7 +112,7 @@ class PreferencesViewController: NSViewController {
         updateSelectedTheme()
 
         shareAnalyticsCheckbox.state = options.analyticsEnabled ? .on: .off
-        
+
     }
 
     private func setupSortModeFields() {
@@ -263,6 +265,17 @@ class PreferencesViewController: NSViewController {
     // MARK: About Section
 
     @IBAction private func aboutWasPressed(_ sender: Any) {
+        if let aboutWindow = aboutWindowController?.window {
+            if aboutWindow.isVisible {
+                aboutWindow.makeKeyAndOrderFront(self)
+                return
+            }
+        }
+
+        let aboutStoryboard = NSStoryboard(name: Constants.aboutStoryboardName, bundle: nil)
+        aboutWindowController = aboutStoryboard.instantiateController(withIdentifier: Constants.aboutWindowController) as? NSWindowController
+        aboutWindowController?.window?.center()
+        aboutWindowController?.showWindow(self)
     }
     
 }
@@ -273,4 +286,6 @@ private struct Constants {
     static let visitWebButton = NSLocalizedString("Visit Web App", comment: "Visit app.simplenote.com in the browser")
     static let unsyncedNotesAlertTitle = NSLocalizedString("Unsynced Notes Detected", comment: "Alert title displayed in when an account has unsynced notes")
     static let unsyncedNotesMessage = NSLocalizedString("Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.", comment: "Alert message displayed when an account has unsynced notes")
+    static let aboutStoryboardName = "About"
+    static let aboutWindowController = "AboutWindowController"
 }
