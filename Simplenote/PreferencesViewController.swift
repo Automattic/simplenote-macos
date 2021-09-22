@@ -103,6 +103,7 @@ class PreferencesViewController: NSViewController {
         updateSelectedSortMode()
         updateLineLength()
         condensedNoteListCheckbox.state = options.notesListCondensed ? .on : .off
+        sortTagsAlphabeticallyCheckbox.state = options.alphabeticallySortTags ? .on : .off
 
     }
 
@@ -207,6 +208,7 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction private func sortTagsAlphabeticallyPressed(_ sender: Any) {
+        options.alphabeticallySortTags = !options.alphabeticallySortTags
     }
 
     // MARK: Theme Settings
