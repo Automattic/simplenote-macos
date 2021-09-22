@@ -2,6 +2,7 @@ import Cocoa
 
 class PreferencesViewController: NSViewController {
     let simperium: Simperium
+    let options = Options.shared
 
     required init?(coder: NSCoder) {
         self.simperium = SimplenoteAppDelegate.shared().simperium
@@ -92,14 +93,14 @@ class PreferencesViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupSortModeFields()
         refreshFields()
     }
 
     private func refreshFields() {
         emailLabel.stringValue = simperium.user?.email ?? ""
-        setupSortModeFields()
 
+        updateSelectedSortMode()
     }
 
     private func setupSortModeFields() {
@@ -113,6 +114,10 @@ class PreferencesViewController: NSViewController {
         menuItems.forEach({ sortOrderPopUp.menu?.addItem($0) })
     }
 
+    private func updateSelectedSortMode() {
+        let sortMode = options.notesListSortMode
+        sortOrderPopUp.selectItem(withTitle: sortMode.description)
+    }
     // MARK: Account Settings
 
     @IBAction private func logOutWasPressed(_ sender: Any) {
