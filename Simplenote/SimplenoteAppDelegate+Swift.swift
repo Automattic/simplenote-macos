@@ -162,6 +162,7 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func preferencesWasPressed(_ sender: Any) {
+        SPTracker.trackPreferencesWasOpened()
 
         if let preferencesWindow = preferencesWindowController?.window {
             if preferencesWindow.isVisible {
