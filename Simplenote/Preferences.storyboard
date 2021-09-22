@@ -136,7 +136,7 @@
                                                 <action selector="noteSortOrderWasPressed:" target="qdp-Tn-uCV" id="u1e-9C-45t"/>
                                             </connections>
                                         </popUpButton>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3G-SF-4MB">
+                                        <button identifier="lineFullButton" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3G-SF-4MB">
                                             <rect key="frame" x="156" y="79" width="48" height="18"/>
                                             <buttonCell key="cell" type="radio" title="Full" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="DrD-Hs-2LQ">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -146,7 +146,7 @@
                                                 <action selector="noteLineLengthSwitched:" target="qdp-Tn-uCV" id="nc1-6U-hSw"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zEx-kQ-POg">
+                                        <button identifier="lineNarrowButton" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zEx-kQ-POg">
                                             <rect key="frame" x="214" y="79" width="70" height="18"/>
                                             <buttonCell key="cell" type="radio" title="Narrow" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ma2-H7-7tb">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

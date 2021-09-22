@@ -170,7 +170,12 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction private func noteLineLengthSwitched(_ sender: Any) {
+        guard let item = sender as? NSButton else {
+            return
+        }
 
+        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.lineFullButton
+        Options.shared.editorFullWidth = isFullOn
     }
 
     @IBAction private func condensedNoteListPressed(_ sender: Any) {
