@@ -111,6 +111,8 @@ class PreferencesViewController: NSViewController {
 
         updateSelectedTheme()
 
+        textSizeSlider.intValue = Int32(options.fontSize)
+
         shareAnalyticsCheckbox.state = options.analyticsEnabled ? .on: .off
 
     }
@@ -250,6 +252,18 @@ class PreferencesViewController: NSViewController {
 
         Options.shared.themeName = option.themeName
     }
+
+    // MARK: Text Settings
+
+    @IBAction private func textSizeHasChanged(_ sender: Any) {
+        guard let sender = sender as? NSSlider else {
+            return
+        }
+
+        options.fontSize = Int(sender.intValue)
+        SimplenoteAppDelegate.shared().noteEditorViewController.refreshStyle()
+    }
+
 
     // MARK: Analytics Settings
 

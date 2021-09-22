@@ -125,6 +125,19 @@ extension Options {
             NotificationCenter.default.post(name: .ThemeDidChange, object: nil)
         }
     }
+
+    /// Font Size
+    ///
+
+    var fontSize: Int {
+        get {
+            defaults.integer(forKey: .fontSize) ?? Constants.normalFontSize
+        }
+        set {
+            defaults.set(newValue, forKey: .fontSize)
+            SPTracker.trackSettingsFontSizeUpdated()
+        }
+    }
 }
 
 
@@ -143,4 +156,8 @@ private extension Options {
         defaults.set(newMode.rawValue, forKey: .notesListSortMode)
         defaults.removeObject(forKey: .notesListSortModeLegacy)
     }
+}
+
+private struct Constants {
+    static let normalFontSize = 14
 }
