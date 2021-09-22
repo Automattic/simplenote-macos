@@ -162,11 +162,19 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func preferencesWasPressed(_ sender: Any) {
+
+        if let preferencesWindow = preferencesWindowController?.window {
+            if preferencesWindow.isVisible {
+                preferencesWindow.makeKeyAndOrderFront(self)
+                return
+            }
+        }
+
         ensureMainWindowIsVisible(sender)
         let storyboard = NSStoryboard(name: Constants.preferenceStoryboardIdentifier, bundle: nil)
-        let preferencesWindow = storyboard.instantiateController(withIdentifier: Constants.preferencesWindowControllerIdentifier) as? NSWindowController
-        preferencesWindow?.window?.center()
-        preferencesWindow?.showWindow(self)
+        preferencesWindowController = storyboard.instantiateController(withIdentifier: Constants.preferencesWindowControllerIdentifier) as? NSWindowController
+        preferencesWindowController?.window?.center()
+        preferencesWindowController?.showWindow(self)
     }
 
     @IBAction
