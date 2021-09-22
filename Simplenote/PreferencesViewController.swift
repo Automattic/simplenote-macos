@@ -98,6 +98,19 @@ class PreferencesViewController: NSViewController {
 
     private func refreshFields() {
         emailLabel.stringValue = simperium.user?.email ?? ""
+        setupSortModeFields()
+
+    }
+
+    private func setupSortModeFields() {
+        let menuItems: [NSMenuItem] = SortMode.allCases.map { mode in
+            let item = NSMenuItem()
+            item.title = mode.description
+            item.identifier = mode.noteListInterfaceID
+            return item
+        }
+        
+        menuItems.forEach({ sortOrderPopUp.menu?.addItem($0) })
     }
 
     // MARK: Account Settings
@@ -148,6 +161,12 @@ class PreferencesViewController: NSViewController {
     // MARK: NoNote List Appearence Settings
 
     @IBAction private func noteSortOrderWasPressed(_ sender: Any) {
+        guard let menu = sender as? NSPopUpButton, let identifier = menu.selectedItem?.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {
+            return
+        }
+
+        Options.shared.notesListSortMode = newMode
+        SPTracker.trackSettingsNoteListSortMode(newMode.description)
     }
 
     @IBAction private func noteLineLengthSwitched(_ sender: Any) {

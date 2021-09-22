@@ -127,19 +127,13 @@
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a9v-Yn-JJz">
                                             <rect key="frame" x="155" y="105" width="375" height="25"/>
-                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Nnc-gG-F2p" id="jed-gx-5P4">
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="jed-gx-5P4">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
-                                                <menu key="menu" id="98l-J0-Y8S">
-                                                    <items>
-                                                        <menuItem title="Item 1" state="on" id="Nnc-gG-F2p"/>
-                                                        <menuItem title="Item 2" id="3Nd-44-XTG"/>
-                                                        <menuItem title="Item 3" id="bBM-eb-eLE"/>
-                                                    </items>
-                                                </menu>
+                                                <menu key="menu" id="98l-J0-Y8S"/>
                                             </popUpButtonCell>
                                             <connections>
-                                                <action selector="noteSortOrderWasPressed:" target="qdp-Tn-uCV" id="uJC-zb-ZR7"/>
+                                                <action selector="noteSortOrderWasPressed:" target="qdp-Tn-uCV" id="u1e-9C-45t"/>
                                             </connections>
                                         </popUpButton>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3G-SF-4MB">
