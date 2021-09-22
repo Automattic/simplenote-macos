@@ -253,7 +253,7 @@
                                         </textField>
                                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y2O-Rb-5pC">
                                             <rect key="frame" x="156" y="29" width="370" height="28"/>
-                                            <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="iF2-im-Cg5"/>
+                                            <sliderCell key="cell" state="on" alignment="left" maxValue="4" doubleValue="4" tickMarkPosition="above" numberOfTickMarks="5" allowsTickMarkValuesOnly="YES" sliderType="linear" id="iF2-im-Cg5"/>
                                         </slider>
                                     </subviews>
                                     <constraints>
