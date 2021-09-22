@@ -93,7 +93,9 @@ class PreferencesViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupSortModeFields()
+        setupThemeFields()
         refreshFields()
     }
 
@@ -105,6 +107,7 @@ class PreferencesViewController: NSViewController {
         condensedNoteListCheckbox.state = options.notesListCondensed ? .on : .off
         sortTagsAlphabeticallyCheckbox.state = options.alphabeticallySortTags ? .on : .off
 
+        updateSelectedTheme()
     }
 
     private func setupSortModeFields() {
@@ -118,9 +121,26 @@ class PreferencesViewController: NSViewController {
         menuItems.forEach({ sortOrderPopUp.menu?.addItem($0) })
     }
 
+
+    private func setupThemeFields() {
+        let menuItems: [NSMenuItem] = ThemeOption.allCases.map { theme in
+            let item = NSMenuItem()
+            item.title = theme.description
+            item.tag = theme.rawValue
+            return item
+        }
+
+        menuItems.forEach({ themePopUp.menu?.addItem($0) })
+    }
+
     private func updateSelectedSortMode() {
         let sortMode = options.notesListSortMode
         sortOrderPopUp.selectItem(withTitle: sortMode.description)
+    }
+
+    private func updateSelectedTheme() {
+        let theme = SPUserInterface.activeThemeOption
+        themePopUp.selectItem(withTag: theme.rawValue)
     }
 
     private func updateLineLength() {
@@ -214,6 +234,16 @@ class PreferencesViewController: NSViewController {
     // MARK: Theme Settings
 
     @IBAction private func themeWasPressed(_ sender: Any) {
+        guard let menu = sender as? NSPopUpButton,
+              let item = menu.selectedItem else {
+            return
+        }
+
+        guard let option = ThemeOption(rawValue: item.tag) else {
+            return
+        }
+
+        Options.shared.themeName = option.themeName
     }
 
     // MARK: Analytics Settings
