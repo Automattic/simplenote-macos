@@ -102,6 +102,7 @@ class PreferencesViewController: NSViewController {
 
         updateSelectedSortMode()
         updateLineLength()
+        condensedNoteListCheckbox.state = options.notesListCondensed ? .on : .off
 
     }
 
@@ -195,11 +196,12 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction private func condensedNoteListPressed(_ sender: Any) {
-        guard let item = sender as? NSButton else {
+        guard let item = sender as? NSButton,
+              item.identifier == NSUserInterfaceItemIdentifier.noteDisplayCondensedButton else {
             return
         }
 
-        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.noteDisplayCondensedMenuItem
+        let isCondensedOn = item.state == .on
         Options.shared.notesListCondensed = isCondensedOn
         SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
     }
