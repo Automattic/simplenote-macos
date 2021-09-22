@@ -108,6 +108,9 @@ class PreferencesViewController: NSViewController {
         sortTagsAlphabeticallyCheckbox.state = options.alphabeticallySortTags ? .on : .off
 
         updateSelectedTheme()
+
+        shareAnalyticsCheckbox.state = options.analyticsEnabled ? .on: .off
+        
     }
 
     private func setupSortModeFields() {
@@ -249,6 +252,12 @@ class PreferencesViewController: NSViewController {
     // MARK: Analytics Settings
 
     @IBAction private func shareAnalyticsWasPressed(_ sender: Any) {
+        guard let sender = sender as? NSButton else {
+            return
+        }
+
+        let isEnabled = sender.state == .on
+        options.analyticsEnabled = isEnabled
     }
 
     // MARK: About Section
