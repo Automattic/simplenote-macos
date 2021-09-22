@@ -101,6 +101,8 @@ class PreferencesViewController: NSViewController {
         emailLabel.stringValue = simperium.user?.email ?? ""
 
         updateSelectedSortMode()
+        updateLineLength()
+
     }
 
     private func setupSortModeFields() {
@@ -118,6 +120,15 @@ class PreferencesViewController: NSViewController {
         let sortMode = options.notesListSortMode
         sortOrderPopUp.selectItem(withTitle: sortMode.description)
     }
+
+    private func updateLineLength() {
+        if options.editorFullWidth {
+            lineLengthFullRadio.state = .on
+        } else {
+            lineLengthNarrowRadio.state = .on
+        }
+    }
+
     // MARK: Account Settings
 
     @IBAction private func logOutWasPressed(_ sender: Any) {
@@ -184,6 +195,13 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction private func condensedNoteListPressed(_ sender: Any) {
+        guard let item = sender as? NSButton else {
+            return
+        }
+
+        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.noteDisplayCondensedMenuItem
+        Options.shared.notesListCondensed = isCondensedOn
+        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
     }
 
     @IBAction private func sortTagsAlphabeticallyPressed(_ sender: Any) {
