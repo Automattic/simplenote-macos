@@ -1,15 +1,10 @@
 import Cocoa
 
 class PreferencesViewController: NSViewController {
-    let simperium: Simperium
+    let simperium = SimplenoteAppDelegate.shared().simperium
     let options = Options.shared
 
     var aboutWindowController: NSWindowController?
-
-    required init?(coder: NSCoder) {
-        self.simperium = SimplenoteAppDelegate.shared().simperium
-        super.init(coder: coder)
-    }
 
     // MARK: Account Section Properties
 
@@ -17,23 +12,11 @@ class PreferencesViewController: NSViewController {
     ///
     @IBOutlet private var emailLabel: NSTextField!
 
-    /// Log Out Button:
-    ///
-    @IBOutlet private var logOutButton: NSButton!
-
     /// Delete Account Button
     ///
     @IBOutlet private var deleteAccountButton: NSButton!
 
     // MARK: Note List Appearence Section Properties
-
-    /// Note Sort Order Title
-    ///
-    @IBOutlet private var noteSortOrderLabel: NSTextField!
-
-    /// Note Line Length Title
-    ///
-    @IBOutlet private var noteLineLengthLabel: NSTextField!
 
     /// Note Sort Order Pop Up Button
     ///
@@ -57,19 +40,11 @@ class PreferencesViewController: NSViewController {
 
     // MARK: Theme Section Properties
 
-    /// Theme Title Label
-    ///
-    @IBOutlet private var themeLabel: NSTextField!
-
     /// Theme Pop Up Button
     ///
     @IBOutlet private var themePopUp: NSPopUpButton!
 
     // MARK: Text Size Section Properties
-
-    /// Text Size Title Label
-    ///
-    @IBOutlet private var textSizeLabel: NSTextField!
 
     /// Text Size Slider
     ///
@@ -80,16 +55,6 @@ class PreferencesViewController: NSViewController {
     /// Share Analytics Checkbox
     ///
     @IBOutlet private var shareAnalyticsCheckbox: NSButton!
-
-    /// Analytics Description Label
-    ///
-    @IBOutlet private var analyticsDescrpitionLabel: NSTextField!
-
-    // MARK: About Simplenote Section Properties
-
-    /// About Simplenote Button
-    ///
-    @IBOutlet private var aboutSimplenoteButton: NSButton!
 
     // MARK: View Life Cycle
 
@@ -214,7 +179,7 @@ class PreferencesViewController: NSViewController {
         SPTracker.trackDeleteAccountButttonTapped()
         appDelegate.accountDeletionController?.requestAccountDeletion(for: user, with: appDelegate.window)
 
-        self.view.window?.close()
+        view.window?.close()
     }
 
     // MARK: NoNote List Appearence Settings

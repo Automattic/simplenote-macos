@@ -345,22 +345,15 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="aboutSimplenoteButton" destination="mG2-EH-PLX" id="dwx-wW-kf7"/>
-                        <outlet property="analyticsDescrpitionLabel" destination="r6j-XE-9uE" id="TR8-Uv-I64"/>
                         <outlet property="condensedNoteListCheckbox" destination="90b-X3-eWO" id="kyL-vt-7yh"/>
                         <outlet property="deleteAccountButton" destination="dY1-HT-jLJ" id="hVx-hN-BqS"/>
                         <outlet property="emailLabel" destination="f50-wY-LNW" id="o4f-sh-yoK"/>
                         <outlet property="lineLengthFullRadio" destination="j3G-SF-4MB" id="2by-EQ-8rc"/>
                         <outlet property="lineLengthNarrowRadio" destination="zEx-kQ-POg" id="EbH-Uz-8kj"/>
-                        <outlet property="logOutButton" destination="6fw-xR-lm5" id="aUT-Xy-zRE"/>
-                        <outlet property="noteLineLengthLabel" destination="jBA-Tu-fcC" id="R16-dT-Dxp"/>
-                        <outlet property="noteSortOrderLabel" destination="wiE-0N-KMX" id="NKq-34-vBY"/>
                         <outlet property="shareAnalyticsCheckbox" destination="bZv-UX-1sw" id="0Wd-dR-vLC"/>
                         <outlet property="sortOrderPopUp" destination="a9v-Yn-JJz" id="Z7a-UV-4We"/>
                         <outlet property="sortTagsAlphabeticallyCheckbox" destination="ugb-os-a8V" id="W1q-7m-UX6"/>
-                        <outlet property="textSizeLabel" destination="jxq-Dm-lzq" id="pQv-qg-vis"/>
                         <outlet property="textSizeSlider" destination="Y2O-Rb-5pC" id="XuS-1W-cIQ"/>
-                        <outlet property="themeLabel" destination="ZTZ-nE-JEX" id="xmp-Hy-yCb"/>
                         <outlet property="themePopUp" destination="56j-XD-J7H" id="rCx-Oz-dvh"/>
                     </connections>
                 </viewController>
