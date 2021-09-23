@@ -96,11 +96,11 @@ private extension Theme {
 private extension Theme {
 
     private static var fontSize: CGFloat {
-        var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
+        var fontSize = CGFloat(Options.shared.fontSize)
         if fontSize == 0 {
             fontSize = defaultFontSize
         }
-
+        
         return fontSize
     }
 

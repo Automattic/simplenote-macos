@@ -26,7 +26,6 @@
 #pragma mark - Constants
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
-static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
 
 
@@ -461,10 +460,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (NSInteger)getFontSize
 {
-    NSInteger fontSize = [[NSUserDefaults standardUserDefaults] integerForKey:SPFontSizePreferencesKey];
+    NSInteger fontSize = [Options.shared fontSize];
     if (!fontSize) {
         fontSize = NoteFontSizeNormal;
-        [[NSUserDefaults standardUserDefaults] setInteger:fontSize forKey:SPFontSizePreferencesKey];
+        [Options.shared setFontSize:fontSize];
     }
 
     return fontSize;
@@ -491,7 +490,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     }
 
     // Update font size preference and reset fonts
-    [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
+    [Options.shared setFontSize:currentFontSize];
     [self refreshStyle];
 }
 
