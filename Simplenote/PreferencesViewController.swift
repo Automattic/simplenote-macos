@@ -99,6 +99,7 @@ class PreferencesViewController: NSViewController {
         setupSortModeFields()
         setupThemeFields()
         refreshFields()
+        refreshStyle()
     }
 
     private func refreshFields() {
@@ -115,6 +116,19 @@ class PreferencesViewController: NSViewController {
 
         shareAnalyticsCheckbox.state = options.analyticsEnabled ? .on: .off
 
+    }
+
+    private func refreshStyle() {
+        deleteAccountButton.bezelStyle = .roundRect
+        let shadow = NSShadow()
+        shadow.shadowBlurRadius = 0.8
+        shadow.shadowColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.15)
+        deleteAccountButton.shadow = shadow
+
+        let deleteButtonCell = deleteAccountButton.cell as? ButtonCell
+        deleteButtonCell?.regularBackgroundColor = .simplenoteAlertControlBackgroundColor
+        deleteButtonCell?.textColor = .simplenoteAlertControlTextColor
+        deleteButtonCell?.isBordered = true
     }
 
     private func setupSortModeFields() {
