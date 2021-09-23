@@ -178,6 +178,8 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
             return allNotesTableViewCell()
         case .trash:
             return trashTableViewCell()
+        case .settings:
+            return settingsTableViewCell()
         case .header:
             return tagHeaderTableViewCell()
         case .spacer:
@@ -218,6 +220,12 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
             return
         }
 
+        if let selectedRow = selectedRow,
+           selectedRow == .settings {
+            SimplenoteAppDelegate.shared().preferencesWasPressed(self)
+            return
+        }
+
         notifyTagsListFilterDidChange()
         trackTagsFilterDidChange()
     }
@@ -255,6 +263,17 @@ extension TagListViewController {
         tagView.iconImageView.image = NSImage(named: .trash)
         tagView.iconImageView.isHidden = false
         tagView.nameTextField.stringValue = NSLocalizedString("Trash", comment: "Title of the view that displays all your deleted notes")
+
+        return tagView
+    }
+
+    /// Returns a TagTableCellView instance, initialized to be used as Settings Row
+    ///
+    func settingsTableViewCell() -> TagTableCellView {
+        let tagView = tableView.makeTableViewCell(ofType: TagTableCellView.self)
+        tagView.iconImageView.image = NSImage(named: .settings)
+        tagView.iconImageView.isHidden = false
+        tagView.nameTextField.stringValue = NSLocalizedString("Settings", comment: "Title of the view that displays the app settings")
 
         return tagView
     }
