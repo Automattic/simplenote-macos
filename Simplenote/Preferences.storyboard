@@ -13,12 +13,12 @@
                     <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aq8-e7-KtS">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="239" width="546" height="603"/>
+                        <rect key="contentRect" x="196" y="239" width="546" height="575"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-                        <value key="minSize" type="size" width="546" height="603"/>
+                        <value key="minSize" type="size" width="546" height="575"/>
                         <value key="maxSize" type="size" width="546" height="603"/>
                         <view key="contentView" id="2iR-qg-eZc">
-                            <rect key="frame" x="0.0" y="0.0" width="546" height="603"/>
+                            <rect key="frame" x="0.0" y="0.0" width="546" height="575"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <connections>
