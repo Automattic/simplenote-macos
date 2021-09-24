@@ -2,7 +2,6 @@ import Cocoa
 
 class PreferencesViewController: NSViewController {
     let simperium = SimplenoteAppDelegate.shared().simperium
-    let options = Options.shared
 
     var aboutWindowController: NSWindowController?
 
@@ -46,14 +45,14 @@ class PreferencesViewController: NSViewController {
 
         updateSelectedSortMode()
         updateLineLength()
-        condensedNoteListCheckbox.state = options.notesListCondensed ? .on : .off
-        sortTagsAlphabeticallyCheckbox.state = options.alphabeticallySortTags ? .on : .off
+        condensedNoteListCheckbox.state = Options.shared.notesListCondensed ? .on : .off
+        sortTagsAlphabeticallyCheckbox.state = Options.shared.alphabeticallySortTags ? .on : .off
 
         updateSelectedTheme()
 
-        textSizeSlider.intValue = Int32(options.fontSize)
+        textSizeSlider.intValue = Int32(Options.shared.fontSize)
 
-        shareAnalyticsCheckbox.state = options.analyticsEnabled ? .on: .off
+        shareAnalyticsCheckbox.state = Options.shared.analyticsEnabled ? .on: .off
 
     }
 
@@ -94,7 +93,7 @@ class PreferencesViewController: NSViewController {
     }
 
     private func updateSelectedSortMode() {
-        let sortMode = options.notesListSortMode
+        let sortMode = Options.shared.notesListSortMode
         sortOrderPopUp.selectItem(withTitle: sortMode.description)
     }
 
@@ -104,7 +103,7 @@ class PreferencesViewController: NSViewController {
     }
 
     private func updateLineLength() {
-        if options.editorFullWidth {
+        if Options.shared.editorFullWidth {
             lineLengthFullRadio.state = .on
         } else {
             lineLengthNarrowRadio.state = .on
@@ -188,7 +187,7 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction private func sortTagsAlphabeticallyPressed(_ sender: Any) {
-        options.alphabeticallySortTags = !options.alphabeticallySortTags
+        Options.shared.alphabeticallySortTags = !Options.shared.alphabeticallySortTags
     }
 
     // MARK: Theme Settings
@@ -213,7 +212,7 @@ class PreferencesViewController: NSViewController {
             return
         }
 
-        options.fontSize = Int(sender.intValue)
+        Options.shared.fontSize = Int(sender.intValue)
         SimplenoteAppDelegate.shared().noteEditorViewController.refreshStyle()
     }
 
@@ -226,7 +225,7 @@ class PreferencesViewController: NSViewController {
         }
 
         let isEnabled = sender.state == .on
-        options.analyticsEnabled = isEnabled
+        Options.shared.analyticsEnabled = isEnabled
     }
 }
 
