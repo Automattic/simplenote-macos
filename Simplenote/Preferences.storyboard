@@ -13,12 +13,12 @@
                     <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aq8-e7-KtS">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="239" width="546" height="575"/>
+                        <rect key="contentRect" x="196" y="239" width="546" height="515"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-                        <value key="minSize" type="size" width="546" height="575"/>
-                        <value key="maxSize" type="size" width="546" height="575"/>
+                        <value key="minSize" type="size" width="546" height="515"/>
+                        <value key="maxSize" type="size" width="546" height="515"/>
                         <view key="contentView" id="2iR-qg-eZc">
-                            <rect key="frame" x="0.0" y="0.0" width="546" height="575"/>
+                            <rect key="frame" x="0.0" y="0.0" width="546" height="515"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <connections>
@@ -305,38 +305,10 @@
                                     </constraints>
                                 </view>
                             </box>
-                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="aPI-g0-hmZ">
-                                <rect key="frame" x="20" y="58" width="506" height="5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </box>
-                            <box fixedFrame="YES" boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="XC3-Dw-DGr">
-                                <rect key="frame" x="0.0" y="0.0" width="546" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" id="HCw-YN-5Pg">
-                                    <rect key="frame" x="0.0" y="0.0" width="546" height="61"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mG2-EH-PLX">
-                                            <rect key="frame" x="151" y="12" width="142" height="32"/>
-                                            <buttonCell key="cell" type="push" title="About Simplenote" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nH8-vc-ulQ">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="aboutWasPressed:" target="qdp-Tn-uCV" id="b0g-fo-x6i"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="mG2-EH-PLX" firstAttribute="top" secondItem="HCw-YN-5Pg" secondAttribute="top" constant="22" id="OiJ-Yn-DlV"/>
-                                    </constraints>
-                                </view>
-                            </box>
                         </subviews>
                         <constraints>
                             <constraint firstItem="jxq-Dm-lzq" firstAttribute="trailing" secondItem="ZTZ-nE-JEX" secondAttribute="trailing" id="2wF-VT-Zm8"/>
                             <constraint firstItem="56j-XD-J7H" firstAttribute="leading" secondItem="ugb-os-a8V" secondAttribute="leading" id="JwU-ce-gwM"/>
-                            <constraint firstItem="mG2-EH-PLX" firstAttribute="leading" secondItem="r6j-XE-9uE" secondAttribute="leading" id="OAA-KO-FXr"/>
                             <constraint firstItem="Y2O-Rb-5pC" firstAttribute="leading" secondItem="56j-XD-J7H" secondAttribute="leading" id="UYv-lb-Xbh"/>
                             <constraint firstItem="ZTZ-nE-JEX" firstAttribute="trailing" secondItem="jBA-Tu-fcC" secondAttribute="trailing" id="VFc-CW-XpZ"/>
                             <constraint firstItem="a9v-Yn-JJz" firstAttribute="leading" secondItem="6fw-xR-lm5" secondAttribute="leading" id="fo6-2s-V34"/>
