@@ -3,8 +3,6 @@ import Cocoa
 class PreferencesViewController: NSViewController {
     let simperium = SimplenoteAppDelegate.shared().simperium
 
-    var aboutWindowController: NSWindowController?
-
     // MARK: Labels
     
     @IBOutlet private var emailLabel: NSTextField!
