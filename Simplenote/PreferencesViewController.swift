@@ -254,23 +254,6 @@ class PreferencesViewController: NSViewController {
         let isEnabled = sender.state == .on
         options.analyticsEnabled = isEnabled
     }
-
-    // MARK: About Section
-
-    @IBAction private func aboutWasPressed(_ sender: Any) {
-        if let aboutWindow = aboutWindowController?.window {
-            if aboutWindow.isVisible {
-                aboutWindow.makeKeyAndOrderFront(self)
-                return
-            }
-        }
-
-        let aboutStoryboard = NSStoryboard(name: Constants.aboutStoryboardName, bundle: nil)
-        aboutWindowController = aboutStoryboard.instantiateController(withIdentifier: Constants.aboutWindowController) as? NSWindowController
-        aboutWindowController?.window?.center()
-        aboutWindowController?.showWindow(self)
-    }
-    
 }
 
 private struct Constants {
