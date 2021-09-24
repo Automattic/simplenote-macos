@@ -356,6 +356,7 @@
                         <outlet property="lineLengthLabel" destination="8Oy-Hc-uVh" id="HSi-IK-9sD"/>
                         <outlet property="lineLengthNarrowRadio" destination="g1z-1g-qip" id="Kxw-sx-Iwt"/>
                         <outlet property="littleALabel" destination="mc3-70-5SW" id="3ma-a9-Hsc"/>
+                        <outlet property="logoutButton" destination="9Qf-fu-o41" id="63e-OS-Qd6"/>
                         <outlet property="privacyLinkLabel" destination="c5l-53-yQU" id="aCg-Ib-saH"/>
                         <outlet property="shareAnalyticsCheckbox" destination="Ex2-Nd-GEg" id="Pjy-ll-wPY"/>
                         <outlet property="sortOrderLabel" destination="J0b-De-aS5" id="3wQ-te-kgQ"/>

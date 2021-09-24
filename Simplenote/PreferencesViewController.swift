@@ -18,6 +18,7 @@ class PreferencesViewController: NSViewController {
     
     // MARK: Interactive Elements
 
+    @IBOutlet private var logoutButton: NSButton!
     @IBOutlet private var deleteAccountButton: NSButton!
     @IBOutlet private var sortOrderPopUp: NSPopUpButton!
     @IBOutlet private var lineLengthFullRadio: NSButton!
@@ -71,8 +72,22 @@ class PreferencesViewController: NSViewController {
     }
 
     private func setupLabels() {
-        analyticsDescriptionLabel.stringValue = Constants.analyticsDescription
-        privacyLinkLabel.attributedStringValue = Constants.privacyLink()
+        accountTitleLabel.stringValue = Strings.account
+        sortOrderLabel.stringValue = Strings.noteSortOrder
+        lineLengthLabel.stringValue = Strings.noteLineLength
+        themeLabel.stringValue = Strings.theme
+        textSizeLabel.stringValue = Strings.theme
+
+        logoutButton.title = Strings.logoutButtonLabel
+        deleteAccountButton.title = Strings.deleteAccountButtonLabel
+        lineLengthFullRadio.title = Strings.fullLineLengthButtonLabel
+        lineLengthNarrowRadio.title = Strings.narrowLineLengthButtonLabel
+        condensedNoteListCheckbox.title = Strings.condensedNoteListCheckboxLabel
+        sortTagsAlphabeticallyCheckbox.title = Strings.sortTagsCheckboxLabel
+        shareAnalyticsCheckbox.title = Strings.shareAnalyticsCheckboxLabel
+        
+        analyticsDescriptionLabel.stringValue = Strings.analyticsDescription
+        privacyLinkLabel.attributedStringValue = Strings.privacyLink()
         privacyLinkLabel.isSelectable = true
     }
 
@@ -128,10 +143,10 @@ class PreferencesViewController: NSViewController {
             return
         }
 
-        let alert = NSAlert(messageText: Constants.unsyncedNotesAlertTitle, informativeText: Constants.unsyncedNotesMessage)
-        alert.addButton(withTitle: Constants.deleteNotesButton)
-        alert.addButton(withTitle: Constants.cancelButton)
-        alert.addButton(withTitle: Constants.visitWebButton)
+        let alert = NSAlert(messageText: Strings.unsyncedNotesAlertTitle, informativeText: Strings.unsyncedNotesMessage)
+        alert.addButton(withTitle: Strings.deleteNotesButton)
+        alert.addButton(withTitle: Strings.cancelButton)
+        alert.addButton(withTitle: Strings.visitWebButton)
         alert.alertStyle = .critical
 
         alert.beginSheetModal(for: appDelegate.window) { result in
@@ -236,13 +251,24 @@ class PreferencesViewController: NSViewController {
     }
 }
 
-private struct Constants {
+private struct Strings {
+    static let account = NSLocalizedString("Account:", comment: "Account label")
+    static let noteSortOrder = NSLocalizedString("Note sort order:", comment: "Note Sort Order label")
+    static let noteLineLength = NSLocalizedString("Note line length:", comment: "Note line length label")
+    static let theme = NSLocalizedString("Theme:", comment: "Theme label")
+    static let textSize = NSLocalizedString("Text size:", comment: "Text size control label")
+    static let logoutButtonLabel = NSLocalizedString("Logout", comment: "Logout button label")
+    static let deleteAccountButtonLabel = NSLocalizedString("Delete Account", comment: "Delete account button label")
+    static let fullLineLengthButtonLabel = NSLocalizedString("Full", comment: "Full line length button label")
+    static let narrowLineLengthButtonLabel = NSLocalizedString("Narrow", comment: "Narrow line length button label")
+    static let condensedNoteListCheckboxLabel = NSLocalizedString("Condensed Note List", comment: "Condensed note list button label")
+    static let sortTagsCheckboxLabel = NSLocalizedString("Sort Tags Alphabetically", comment: "Sort tags alphabetically checkbox label")
+    static let shareAnalyticsCheckboxLabel = NSLocalizedString("Share Analytics", comment: "Share analytics checkbox label")
     static let deleteNotesButton = NSLocalizedString("Delete Notes", comment: "Delete notes and sign out of the app")
     static let cancelButton = NSLocalizedString("Cancel", comment: "Cancel the action")
     static let visitWebButton = NSLocalizedString("Visit Web App", comment: "Visit app.simplenote.com in the browser")
     static let unsyncedNotesAlertTitle = NSLocalizedString("Unsynced Notes Detected", comment: "Alert title displayed in when an account has unsynced notes")
     static let unsyncedNotesMessage = NSLocalizedString("Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.", comment: "Alert message displayed when an account has unsynced notes")
-
 
     static let analyticsDescription = NSLocalizedString("Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information.", comment: "A description about how we use anayltics")
     static let linkText = NSLocalizedString("About Analytics and Privacy", comment: "A link to more information about our privacy policy")
