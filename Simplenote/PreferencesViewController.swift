@@ -14,7 +14,8 @@ class PreferencesViewController: NSViewController {
     @IBOutlet private var littleALabel: NSTextField!
     @IBOutlet private var bigALabel: NSTextField!
     @IBOutlet private var analyticsDescriptionLabel: NSTextField!
-
+    @IBOutlet private var privacyLinkLabel: NSTextField!
+    
     // MARK: Interactive Elements
 
     @IBOutlet private var deleteAccountButton: NSButton!
@@ -32,6 +33,7 @@ class PreferencesViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupLabels()
         setupSortModeFields()
         setupThemeFields()
         refreshFields()
@@ -55,6 +57,7 @@ class PreferencesViewController: NSViewController {
     }
 
     private func refreshStyle() {
+
         deleteAccountButton.bezelStyle = .roundRect
         let shadow = NSShadow()
         shadow.shadowBlurRadius = 0.8
@@ -65,6 +68,12 @@ class PreferencesViewController: NSViewController {
         deleteButtonCell?.regularBackgroundColor = .simplenoteAlertControlBackgroundColor
         deleteButtonCell?.textColor = .simplenoteAlertControlTextColor
         deleteButtonCell?.isBordered = true
+    }
+
+    private func setupLabels() {
+        analyticsDescriptionLabel.stringValue = Constants.analyticsDescription
+        privacyLinkLabel.attributedStringValue = Constants.privacyLink()
+        privacyLinkLabel.isSelectable = true
     }
 
     private func setupSortModeFields() {
@@ -233,4 +242,14 @@ private struct Constants {
     static let visitWebButton = NSLocalizedString("Visit Web App", comment: "Visit app.simplenote.com in the browser")
     static let unsyncedNotesAlertTitle = NSLocalizedString("Unsynced Notes Detected", comment: "Alert title displayed in when an account has unsynced notes")
     static let unsyncedNotesMessage = NSLocalizedString("Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.", comment: "Alert message displayed when an account has unsynced notes")
+
+
+    static let analyticsDescription = NSLocalizedString("Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information.", comment: "A description about how we use anayltics")
+    static let linkText = NSLocalizedString("About Analytics and Privacy", comment: "A link to more information about our privacy policy")
+    static func privacyLink() -> NSMutableAttributedString {
+        let link = NSMutableAttributedString(string: linkText)
+        link.addAttribute(.link, value: "https://automattic.com/privacy/", range: link.fullRange)
+
+        return link
+    }
 }
