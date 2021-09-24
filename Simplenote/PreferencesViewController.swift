@@ -3,6 +3,8 @@ import Cocoa
 class PreferencesViewController: NSViewController {
     let simperium = SimplenoteAppDelegate.shared().simperium
 
+    @IBOutlet private var backgroundview: BackgroundView!
+
     // MARK: Labels
     
     @IBOutlet private var emailLabel: NSTextField!
@@ -15,7 +17,7 @@ class PreferencesViewController: NSViewController {
     @IBOutlet private var bigALabel: NSTextField!
     @IBOutlet private var analyticsDescriptionLabel: NSTextField!
     @IBOutlet private var privacyLinkLabel: NSTextField!
-    
+
     // MARK: Interactive Elements
 
     @IBOutlet private var logoutButton: NSButton!
@@ -69,6 +71,20 @@ class PreferencesViewController: NSViewController {
         deleteButtonCell?.regularBackgroundColor = .simplenoteAlertControlBackgroundColor
         deleteButtonCell?.textColor = .simplenoteAlertControlTextColor
         deleteButtonCell?.isBordered = true
+
+        backgroundview.fillColor = .simplenoteStatusBarBackgroundColor
+        
+        let allLabels = [emailLabel, accountTitleLabel, sortOrderLabel, lineLengthLabel, themeLabel, textSizeLabel, littleALabel, bigALabel, analyticsDescriptionLabel, privacyLinkLabel]
+        allLabels.forEach { label in
+            label?.textColor = NSColor.simplenoteTextColor
+        }
+
+        let allButtons: [NSButton] = [logoutButton, lineLengthNarrowRadio, lineLengthFullRadio, sortOrderPopUp, condensedNoteListCheckbox, sortTagsAlphabeticallyCheckbox, themePopUp, shareAnalyticsCheckbox]
+        allButtons.forEach { button in
+            let title = NSMutableAttributedString(string: button.title)
+            title.addAttribute(.foregroundColor, value: NSColor.simplenoteTextColor, range: title.fullRange)
+            button.attributedTitle = title
+        }
     }
 
     private func setupLabels() {
@@ -85,7 +101,7 @@ class PreferencesViewController: NSViewController {
         condensedNoteListCheckbox.title = Strings.condensedNoteListCheckboxLabel
         sortTagsAlphabeticallyCheckbox.title = Strings.sortTagsCheckboxLabel
         shareAnalyticsCheckbox.title = Strings.shareAnalyticsCheckboxLabel
-        
+
         analyticsDescriptionLabel.stringValue = Strings.analyticsDescription
         privacyLinkLabel.attributedStringValue = Strings.privacyLink()
         privacyLinkLabel.isSelectable = true

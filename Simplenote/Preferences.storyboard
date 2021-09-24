@@ -37,7 +37,7 @@
         <scene sceneID="6zJ-GI-aZ5">
             <objects>
                 <viewController id="ReV-pG-fyt" customClass="PreferencesViewController" customModule="Simplenote" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="dpg-9k-XwW">
+                    <view key="view" id="dpg-9k-XwW" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="546" height="532"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -348,6 +348,7 @@
                     <connections>
                         <outlet property="accountTitleLabel" destination="tMt-d6-VMG" id="2To-Qy-AKq"/>
                         <outlet property="analyticsDescriptionLabel" destination="I91-g0-Rn6" id="54E-jp-BsH"/>
+                        <outlet property="backgroundview" destination="dpg-9k-XwW" id="UuW-qW-HmI"/>
                         <outlet property="bigALabel" destination="B5Y-HO-nR1" id="NXZ-z4-QZ5"/>
                         <outlet property="condensedNoteListCheckbox" destination="mMH-Pp-tjv" id="x3n-d7-9dd"/>
                         <outlet property="deleteAccountButton" destination="Fm6-Vq-xaX" id="adK-5g-NFp"/>
