@@ -60,18 +60,6 @@ class PreferencesViewController: NSViewController {
     }
 
     private func refreshStyle() {
-
-        deleteAccountButton.bezelStyle = .roundRect
-        let shadow = NSShadow()
-        shadow.shadowBlurRadius = 0.8
-        shadow.shadowColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.15)
-        deleteAccountButton.shadow = shadow
-
-        let deleteButtonCell = deleteAccountButton.cell as? ButtonCell
-        deleteButtonCell?.regularBackgroundColor = .simplenoteAlertControlBackgroundColor
-        deleteButtonCell?.textColor = .simplenoteAlertControlTextColor
-        deleteButtonCell?.isBordered = true
-
         backgroundview.fillColor = .simplenoteStatusBarBackgroundColor
         
         let allLabels = [emailLabel, accountTitleLabel, sortOrderLabel, lineLengthLabel, themeLabel, textSizeLabel, littleALabel, bigALabel, analyticsDescriptionLabel, privacyLinkLabel]
@@ -81,10 +69,10 @@ class PreferencesViewController: NSViewController {
 
         let allButtons: [NSButton] = [logoutButton, lineLengthNarrowRadio, lineLengthFullRadio, sortOrderPopUp, condensedNoteListCheckbox, sortTagsAlphabeticallyCheckbox, themePopUp, shareAnalyticsCheckbox]
         allButtons.forEach { button in
-            let title = NSMutableAttributedString(string: button.title)
-            title.addAttribute(.foregroundColor, value: NSColor.simplenoteTextColor, range: title.fullRange)
-            button.attributedTitle = title
+            button.setTitleColor(.simplenoteTextColor)
         }
+
+        deleteAccountButton.setTitleColor(.simplenoteAlertControlTextColor)        
     }
 
     private func setupLabels() {
@@ -193,7 +181,7 @@ class PreferencesViewController: NSViewController {
         view.window?.close()
     }
 
-    // MARK: NoNote List Appearence Settings
+    // MARK: Note List Appearence Settings
 
     @IBAction private func noteSortOrderWasPressed(_ sender: Any) {
         guard let menu = sender as? NSPopUpButton, let identifier = menu.selectedItem?.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {

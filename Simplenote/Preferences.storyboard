@@ -65,7 +65,7 @@
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fm6-Vq-xaX">
                                                 <rect key="frame" x="228" y="13" width="127" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Delete Account" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bct-IO-zCI" customClass="ButtonCell" customModule="Simplenote" customModuleProvider="target">
+                                                <buttonCell key="cell" type="push" title="Delete Account" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bct-IO-zCI">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -79,7 +79,6 @@
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
-                                                <color key="contentTintColor" white="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="logOutWasPressed:" target="ReV-pG-fyt" id="gcm-qW-zMx"/>
                                                 </connections>
