@@ -6,54 +6,28 @@ class PreferencesViewController: NSViewController {
 
     var aboutWindowController: NSWindowController?
 
-    // MARK: Account Section Properties
-
-    /// Account Email Label
-    ///
+    // MARK: Labels
+    
     @IBOutlet private var emailLabel: NSTextField!
+    @IBOutlet var accountTitleLabel: NSTextField!
+    @IBOutlet var sortOrderLabel: NSTextField!
+    @IBOutlet var lineLengthLabel: NSTextField!
+    @IBOutlet var themeLabel: NSTextField!
+    @IBOutlet var textSizeLabel: NSTextField!
+    @IBOutlet var littleALabel: NSTextField!
+    @IBOutlet var bigALabel: NSTextField!
+    @IBOutlet var analyticsDescriptionLabel: NSTextField!
 
-    /// Delete Account Button
-    ///
+    // MARK: Interactive Elements
+
     @IBOutlet private var deleteAccountButton: NSButton!
-
-    // MARK: Note List Appearence Section Properties
-
-    /// Note Sort Order Pop Up Button
-    ///
     @IBOutlet private var sortOrderPopUp: NSPopUpButton!
-
-    /// Line Length Full Radio Button
-    ///
     @IBOutlet private var lineLengthFullRadio: NSButton!
-
-    /// Line Length Narrow Radio Button
-    ///
     @IBOutlet private var lineLengthNarrowRadio: NSButton!
-
-    /// Condensed Note List Checkbox
-    ///
     @IBOutlet private var condensedNoteListCheckbox: NSButton!
-
-    /// Sort Tags Alphabetically Checkbox
-    ///
     @IBOutlet private var sortTagsAlphabeticallyCheckbox: NSButton!
-
-    // MARK: Theme Section Properties
-
-    /// Theme Pop Up Button
-    ///
     @IBOutlet private var themePopUp: NSPopUpButton!
-
-    // MARK: Text Size Section Properties
-
-    /// Text Size Slider
-    ///
     @IBOutlet private var textSizeSlider: NSSlider!
-
-    // MARK: Analytics Section Properties
-
-    /// Share Analytics Checkbox
-    ///
     @IBOutlet private var shareAnalyticsCheckbox: NSButton!
 
     // MARK: View Life Cycle
@@ -262,6 +236,4 @@ private struct Constants {
     static let visitWebButton = NSLocalizedString("Visit Web App", comment: "Visit app.simplenote.com in the browser")
     static let unsyncedNotesAlertTitle = NSLocalizedString("Unsynced Notes Detected", comment: "Alert title displayed in when an account has unsynced notes")
     static let unsyncedNotesMessage = NSLocalizedString("Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.", comment: "Alert message displayed when an account has unsynced notes")
-    static let aboutStoryboardName = "About"
-    static let aboutWindowController = "AboutWindowController"
 }

@@ -338,15 +338,23 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountTitleLabel" destination="tMt-d6-VMG" id="2To-Qy-AKq"/>
+                        <outlet property="analyticsDescriptionLabel" destination="I91-g0-Rn6" id="54E-jp-BsH"/>
+                        <outlet property="bigALabel" destination="B5Y-HO-nR1" id="NXZ-z4-QZ5"/>
                         <outlet property="condensedNoteListCheckbox" destination="mMH-Pp-tjv" id="x3n-d7-9dd"/>
                         <outlet property="deleteAccountButton" destination="Fm6-Vq-xaX" id="adK-5g-NFp"/>
                         <outlet property="emailLabel" destination="ZUw-Xc-VSa" id="W3l-aV-uA0"/>
                         <outlet property="lineLengthFullRadio" destination="AHv-TO-sDj" id="C3F-jP-GsT"/>
+                        <outlet property="lineLengthLabel" destination="8Oy-Hc-uVh" id="HSi-IK-9sD"/>
                         <outlet property="lineLengthNarrowRadio" destination="g1z-1g-qip" id="Kxw-sx-Iwt"/>
+                        <outlet property="littleALabel" destination="mc3-70-5SW" id="3ma-a9-Hsc"/>
                         <outlet property="shareAnalyticsCheckbox" destination="Ex2-Nd-GEg" id="Pjy-ll-wPY"/>
+                        <outlet property="sortOrderLabel" destination="J0b-De-aS5" id="3wQ-te-kgQ"/>
                         <outlet property="sortOrderPopUp" destination="ug2-qE-z2S" id="Qc5-MC-wCP"/>
                         <outlet property="sortTagsAlphabeticallyCheckbox" destination="BmD-nr-cLR" id="1ly-wo-TtI"/>
+                        <outlet property="textSizeLabel" destination="oZS-M5-Cee" id="Jph-bc-Aqi"/>
                         <outlet property="textSizeSlider" destination="pOX-Cq-Ibe" id="S3a-hu-Eo3"/>
+                        <outlet property="themeLabel" destination="gWg-1w-MAM" id="AMt-2r-9WJ"/>
                         <outlet property="themePopUp" destination="56j-XD-J7H" id="oLX-1c-pmz"/>
                     </connections>
                 </viewController>
