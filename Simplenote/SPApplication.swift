@@ -27,13 +27,6 @@ final class SPApplication: NSApplication {
             return
         }
 
-        if modifierFlags == .command &&
-            event.charactersIgnoringModifiers == "," {
-            if sendAction(#selector(SimplenoteAppDelegate.preferencesWasPressed), to: nil, from: self) {
-                return
-            }
-        }
-
         // We're using `sendAction` in the following methods to make sure the action is delivered through the current responder chain
         if modifierFlags == [.command, .shift] &&
             event.charactersIgnoringModifiers == "Y" {
