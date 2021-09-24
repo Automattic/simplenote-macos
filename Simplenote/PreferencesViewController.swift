@@ -9,14 +9,14 @@ class PreferencesViewController: NSViewController {
     // MARK: Labels
     
     @IBOutlet private var emailLabel: NSTextField!
-    @IBOutlet var accountTitleLabel: NSTextField!
-    @IBOutlet var sortOrderLabel: NSTextField!
-    @IBOutlet var lineLengthLabel: NSTextField!
-    @IBOutlet var themeLabel: NSTextField!
-    @IBOutlet var textSizeLabel: NSTextField!
-    @IBOutlet var littleALabel: NSTextField!
-    @IBOutlet var bigALabel: NSTextField!
-    @IBOutlet var analyticsDescriptionLabel: NSTextField!
+    @IBOutlet private var accountTitleLabel: NSTextField!
+    @IBOutlet private var sortOrderLabel: NSTextField!
+    @IBOutlet private var lineLengthLabel: NSTextField!
+    @IBOutlet private var themeLabel: NSTextField!
+    @IBOutlet private var textSizeLabel: NSTextField!
+    @IBOutlet private var littleALabel: NSTextField!
+    @IBOutlet private var bigALabel: NSTextField!
+    @IBOutlet private var analyticsDescriptionLabel: NSTextField!
 
     // MARK: Interactive Elements
 
