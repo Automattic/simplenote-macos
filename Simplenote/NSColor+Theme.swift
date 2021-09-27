@@ -244,6 +244,11 @@ extension NSColor {
     static var buttonShadowColor: NSColor {
         dynamicColor(lightStudio: .black, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_3, darkColorAlpha: AppKitConstants.alpha0_5)
     }
+
+    @objc
+    static var simplenotePreferencesDividerColor: NSColor {
+        dynamicColor(lightStudio: .black, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_1, darkColorAlpha: AppKitConstants.alpha0_1)
+    }
 }
 
 

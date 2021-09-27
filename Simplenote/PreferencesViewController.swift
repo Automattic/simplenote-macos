@@ -31,6 +31,13 @@ class PreferencesViewController: NSViewController {
     @IBOutlet private var textSizeSlider: NSSlider!
     @IBOutlet private var shareAnalyticsCheckbox: NSButton!
 
+    // Mark: Background Views
+    @IBOutlet var accountSectionBackground: BackgroundView!
+    @IBOutlet var layoutSectionBackground: BackgroundView!
+    @IBOutlet var themeSectionBackground: BackgroundView!
+    @IBOutlet var textSectionBackground: BackgroundView!
+
+
     // MARK: View Life Cycle
 
     override func viewDidLoad() {
@@ -61,16 +68,18 @@ class PreferencesViewController: NSViewController {
 
     private func refreshStyle() {
         backgroundview.fillColor = .simplenoteStatusBarBackgroundColor
+
+        let allBackgrounds = [accountSectionBackground, layoutSectionBackground, themeSectionBackground,textSectionBackground]
+        allBackgrounds.forEach {
+            $0?.drawsBottomBorder = true
+            $0?.borderColor = .simplenotePreferencesDividerColor
+        }
         
         let allLabels = [emailLabel, accountTitleLabel, sortOrderLabel, lineLengthLabel, themeLabel, textSizeLabel, littleALabel, bigALabel, analyticsDescriptionLabel, privacyLinkLabel]
-        allLabels.forEach { label in
-            label?.textColor = NSColor.simplenoteTextColor
-        }
+        allLabels.forEach { $0?.textColor = NSColor.simplenoteTextColor }
 
         let allButtons: [NSButton] = [logoutButton, lineLengthNarrowRadio, lineLengthFullRadio, sortOrderPopUp, condensedNoteListCheckbox, sortTagsAlphabeticallyCheckbox, themePopUp, shareAnalyticsCheckbox]
-        allButtons.forEach { button in
-            button.setTitleColor(.simplenoteTextColor)
-        }
+        allButtons.forEach { $0.setTitleColor(.simplenoteTextColor) }
 
         setupDeleteAccountButtonStyle()
     }
