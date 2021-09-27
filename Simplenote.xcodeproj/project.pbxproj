@@ -463,6 +463,8 @@
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
 		BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
+		BA92897327027D47002B0AD0 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA92897227027D47002B0AD0 /* Int+Extensions.swift */; };
+		BA92897427027D47002B0AD0 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA92897227027D47002B0AD0 /* Int+Extensions.swift */; };
 		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BAA0A87A26B9F0B50006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
@@ -853,6 +855,7 @@
 		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
 		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
 		BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Simplenote.swift"; sourceTree = "<group>"; };
+		BA92897227027D47002B0AD0 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
 		BAA0A87926B9F0B50006260E /* RemoteError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteError.swift; sourceTree = "<group>"; };
@@ -1278,6 +1281,7 @@
 				BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */,
 				BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */,
 				BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */,
+				BA92897227027D47002B0AD0 /* Int+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2213,6 +2217,7 @@
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
 				375D293821E033D1007AB25A /* escape.c in Sources */,
 				B53BF19C24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
+				BA92897327027D47002B0AD0 /* Int+Extensions.swift in Sources */,
 				B58942FA24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				BAA0A88226B9F8970006260E /* AccountDeletionController.swift in Sources */,
 				B574015325B783500058960E /* EmailVerification.swift in Sources */,
@@ -2404,6 +2409,7 @@
 				B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				B53BF1A124AC1FB800938C34 /* Version.swift in Sources */,
 				B53ACE0F25DD7DF900CF527A /* InterlinkProcessor.swift in Sources */,
+				BA92897427027D47002B0AD0 /* Int+Extensions.swift in Sources */,
 				B5B1CBCE256EE72C0040726C /* NSScrollView+Simplenote.swift in Sources */,
 				B547285D250920CA00D823BA /* URL+Interlink.swift in Sources */,
 				BAA0A88F26BA39200006260E /* AccountDeletionController.swift in Sources */,

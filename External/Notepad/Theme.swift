@@ -17,7 +17,7 @@ class Theme: NSObject {
 
     /// Default Font Size
     ///
-    private static let defaultFontSize = CGFloat(14)
+    private static let defaultFontSize = CGFloat(SimplenoteConstants.NoteFontSizeNormal)
 
     /// Body Line Height Multiplier
     ///

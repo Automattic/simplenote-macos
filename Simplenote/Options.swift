@@ -131,7 +131,7 @@ extension Options {
 
     var fontSize: Int {
         get {
-            defaults.integer(forKey: .fontSize) ?? Constants.normalFontSize
+            defaults.integer(forKey: .fontSize) ?? SimplenoteConstants.NoteFontSizeNormal
         }
         set {
             defaults.set(newValue, forKey: .fontSize)
@@ -156,8 +156,4 @@ private extension Options {
         defaults.set(newMode.rawValue, forKey: .notesListSortMode)
         defaults.removeObject(forKey: .notesListSortModeLegacy)
     }
-}
-
-private struct Constants {
-    static let normalFontSize = 14
 }

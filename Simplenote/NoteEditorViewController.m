@@ -458,35 +458,22 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - Fonts
 
-- (NSInteger)getFontSize
-{
-    NSInteger fontSize = [Options.shared fontSize];
-    if (!fontSize) {
-        fontSize = NoteFontSizeNormal;
-        [Options.shared setFontSize:fontSize];
-    }
-
-    return fontSize;
-}
-
 - (IBAction)adjustFontSizeAction:(id)sender
 {
-    [SPTracker trackSettingsFontSizeUpdated];
-    
     NSMenuItem *item = (NSMenuItem *)sender;
-    NSInteger currentFontSize = [self getFontSize];
+    NSInteger currentFontSize = [self getRoundedFontSize];
 
     if (item.tag == 0) {
         // Increase font size
-        currentFontSize++;
-        currentFontSize = MIN(NoteFontSizeMaximum, currentFontSize);
+        currentFontSize += SimplenoteConstants.NoteFontSizeStep;
+        currentFontSize = MIN(SimplenoteConstants.NoteFontSizeMaximum, currentFontSize);
     } else if (item.tag == 2) {
         // Reset to normal size
-        currentFontSize = NoteFontSizeNormal;
+        currentFontSize = SimplenoteConstants.NoteFontSizeNormal;
     } else {
         // Decrease font size
-        currentFontSize--;
-        currentFontSize = MAX(NoteFontSizeMinimum, currentFontSize);
+        currentFontSize -= SimplenoteConstants.NoteFontSizeStep;
+        currentFontSize = MAX(SimplenoteConstants.NoteFontSizeMinimum, currentFontSize);
     }
 
     // Update font size preference and reset fonts
