@@ -21,7 +21,7 @@ class PreferencesViewController: NSViewController {
     // MARK: Interactive Elements
 
     @IBOutlet private var logoutButton: NSButton!
-    @IBOutlet private var deleteAccountButton: NSButton!
+    @IBOutlet private var deleteAccountButton: Button!
     @IBOutlet private var sortOrderPopUp: NSPopUpButton!
     @IBOutlet private var lineLengthFullRadio: NSButton!
     @IBOutlet private var lineLengthNarrowRadio: NSButton!
@@ -72,7 +72,23 @@ class PreferencesViewController: NSViewController {
             button.setTitleColor(.simplenoteTextColor)
         }
 
-        deleteAccountButton.setTitleColor(.simplenoteAlertControlTextColor)        
+        setupDeleteAccountButtonStyle()
+    }
+
+    private func setupDeleteAccountButtonStyle() {
+        deleteAccountButton.bezelStyle = .roundRect
+        deleteAccountButton.textInsets = Constants.deleteButtonInsets
+
+        let shadow = NSShadow()
+        shadow.shadowBlurRadius = AppKitConstants.alpha0_8
+        shadow.shadowColor = .buttonShadowColor
+        deleteAccountButton.shadow = shadow
+
+        let cell = deleteAccountButton.cell as? ButtonCell
+        cell?.regularBackgroundColor = .simplenoteAlertControlBackgroundColor
+        cell?.textColor = .simplenoteAlertControlTextColor
+        cell?.isBordered = true
+        cell?.highlightedBackgroundColor = .simplenoteSecondarySelectedBackgroundColor
     }
 
     private func setupLabels() {
@@ -282,4 +298,8 @@ private struct Strings {
 
         return link
     }
+}
+
+private struct Constants {
+    static let deleteButtonInsets = NSEdgeInsets(top: .zero, left: 4, bottom: 1, right: 4)
 }

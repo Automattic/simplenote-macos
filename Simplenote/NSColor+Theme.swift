@@ -239,6 +239,11 @@ extension NSColor {
     static var simplenoteAlertControlTextColor: NSColor {
         dynamicColor(lightStudio: .red50, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_8, darkColorAlpha: AppKitConstants.alpha0_8)
     }
+
+    @objc
+    static var buttonShadowColor: NSColor {
+        dynamicColor(lightStudio: .black, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_3, darkColorAlpha: AppKitConstants.alpha0_5)
+    }
 }
 
 
