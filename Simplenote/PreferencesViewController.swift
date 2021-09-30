@@ -48,6 +48,12 @@ class PreferencesViewController: NSViewController {
         setupThemeFields()
         refreshFields()
         refreshStyle()
+
+        startListeningToNotifications()
+    }
+
+    deinit {
+        stopListeningToNotifications()
     }
 
     private func refreshFields() {
@@ -66,6 +72,7 @@ class PreferencesViewController: NSViewController {
 
     }
 
+    @objc
     private func refreshStyle() {
         backgroundview.fillColor = .simplenoteStatusBarBackgroundColor
 
@@ -306,6 +313,23 @@ private struct Strings {
         link.addAttribute(.link, value: "https://automattic.com/privacy/", range: link.fullRange)
 
         return link
+    }
+}
+
+// MARK: - Notifications
+//
+private extension PreferencesViewController {
+
+    func startListeningToNotifications() {
+        if #available(macOS 10.15, *) {
+            return
+        }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
+    }
+
+    func stopListeningToNotifications() {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
