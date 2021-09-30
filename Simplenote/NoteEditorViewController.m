@@ -109,6 +109,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
     [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
     [nc addObserver:self selector:@selector(statusbarWasUpdated:) name:StatusBarDisplayModeDidChangeNotification object:nil];
+    [nc addObserver:self selector:@selector(refreshStyle) name:FontSizeDidChangeNotification object:nil];
 
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
@@ -478,7 +479,6 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Update font size preference and reset fonts
     [Options.shared setFontSize:currentFontSize];
-    [self refreshStyle];
 }
 
 #pragma mark - NoteEditor Preferences Helpers

@@ -56,6 +56,7 @@ class PreferencesViewController: NSViewController {
         stopListeningToNotifications()
     }
 
+    @objc
     private func refreshFields() {
         emailLabel.stringValue = simperium.user?.email ?? ""
 
@@ -271,7 +272,6 @@ class PreferencesViewController: NSViewController {
         }
 
         Options.shared.fontSize = Int(sender.intValue)
-        SimplenoteAppDelegate.shared().noteEditorViewController.refreshStyle()
     }
 
 
@@ -321,11 +321,12 @@ private struct Strings {
 private extension PreferencesViewController {
 
     func startListeningToNotifications() {
-        if #available(macOS 10.15, *) {
+        guard #available(macOS 10.15, *) else {
             return
         }
 
         NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshFields), name: .FontSizeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {

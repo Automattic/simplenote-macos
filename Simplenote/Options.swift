@@ -136,6 +136,7 @@ extension Options {
         set {
             defaults.set(newValue, forKey: .fontSize)
             SPTracker.trackSettingsFontSizeUpdated()
+            NotificationCenter.default.post(name: .FontSizeDidChange, object: nil)
         }
     }
 }
