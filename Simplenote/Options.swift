@@ -129,9 +129,13 @@ extension Options {
     /// Font Size
     ///
 
-    var fontSize: Int {
+    var fontSize: CGFloat {
         get {
-            defaults.integer(forKey: .fontSize) ?? SimplenoteConstants.NoteFontSizeNormal
+            guard let savedFontSize = defaults.integer(forKey: .fontSize), savedFontSize != .zero else {
+                return CGFloat(SimplenoteConstants.NoteFontSizeNormal)
+            }
+
+            return CGFloat(savedFontSize)
         }
         set {
             defaults.set(newValue, forKey: .fontSize)

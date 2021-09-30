@@ -15,10 +15,6 @@ import AppKit
 @objc
 class Theme: NSObject {
 
-    /// Default Font Size
-    ///
-    private static let defaultFontSize = CGFloat(SimplenoteConstants.NoteFontSizeNormal)
-
     /// Body Line Height Multiplier
     ///
     private static let bodyLineHeightMultiplier = CGFloat(1.43)
@@ -96,12 +92,7 @@ private extension Theme {
 private extension Theme {
 
     private static var fontSize: CGFloat {
-        var fontSize = CGFloat(Options.shared.fontSize)
-        if fontSize == 0 {
-            fontSize = defaultFontSize
-        }
-        
-        return fontSize
+        Options.shared.fontSize
     }
 
     private static var italicFont: NSFont {

@@ -462,7 +462,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (IBAction)adjustFontSizeAction:(id)sender
 {
     NSMenuItem *item = (NSMenuItem *)sender;
-    NSInteger currentFontSize = [self getRoundedFontSize];
+    NSInteger currentFontSize = [Options.shared fontSize];
 
     if (item.tag == 0) {
         // Increase font size

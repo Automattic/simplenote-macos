@@ -271,7 +271,7 @@ class PreferencesViewController: NSViewController {
             return
         }
 
-        Options.shared.fontSize = Int(sender.intValue)
+        Options.shared.fontSize = CGFloat(sender.floatValue)
     }
 
 
