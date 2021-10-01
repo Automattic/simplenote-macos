@@ -27,7 +27,6 @@ extension NSUserInterfaceItemIdentifier {
     static let noteSortCreateOldestMenuItem = NSUserInterfaceItemIdentifier(rawValue: "noteSortCreateOldestMenuItem")
     static let noteSortModifyNewestMenuItem = NSUserInterfaceItemIdentifier(rawValue: "noteSortModifyNewestMenuItem")
     static let noteSortModifyOldestMenuItem = NSUserInterfaceItemIdentifier(rawValue: "noteSortModifyOldestMenuItem")
-    static let tagSortMenuItem              = NSUserInterfaceItemIdentifier(rawValue: "tagSortMenuItem")
     static let themeDarkMenuItem            = NSUserInterfaceItemIdentifier(rawValue: "themeDarkMenuItem")
     static let themeLightMenuItem           = NSUserInterfaceItemIdentifier(rawValue: "themeLightMenuItem")
     static let themeSystemMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "themeSystemMenuItem")
