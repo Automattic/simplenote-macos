@@ -346,7 +346,7 @@
 
 #pragma mark - Actions
 
-- (IBAction)signOutAction:(id)sender
+- (void)signOutAction:(id)sender
 {
     // Safety first: Check for unsynced notes before they are deleted!
     if ([StatusChecker hasUnsentChanges:self.simperium] == false)  {
@@ -372,7 +372,7 @@
     }];
 }
 
-- (IBAction)deleteAccountAction:(id)sender {
+- (void)deleteAccountAction:(id)sender {
     [SPTracker trackDeleteAccountButttonTapped];
     [self.accountDeletionController requestAccountDeletionFor:self.simperium.user with:self.window];
 }

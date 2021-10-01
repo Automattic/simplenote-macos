@@ -88,26 +88,7 @@
                                     <action selector="emptyTrashWasPressed:" target="494" id="hK4-FN-3lK"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="Jd8-h6-yd1"/>
-                            <menuItem title="Log Out" id="Pde-gm-aAD">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <attributedString key="userComments">
-                                    <fragment content="Logs out from the Account"/>
-                                </attributedString>
-                                <connections>
-                                    <action selector="signOutAction:" target="494" id="VGf-Gg-vor"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="1548">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                            </menuItem>
-                            <menuItem title="Delete Account" id="1sa-fK-USq">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="deleteAccountAction:" target="494" id="Pd0-aU-aHc"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="PVN-fS-SZ9">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Quit Simplenote" keyEquivalent="q" id="136">
