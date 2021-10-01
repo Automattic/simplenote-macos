@@ -429,48 +429,6 @@
                                     <action selector="toggleMarkdownPreviewAction:" target="494" id="U7g-tl-5Zq"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="mgi-Y5-YB1"/>
-                            <menuItem title="Theme" id="Jtf-4C-imn">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
-                                    <items>
-                                        <menuItem title="Light" identifier="themeLightMenuItem" id="Zhe-Bb-jvT">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Light Mode"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="themeWasPressed:" target="494" id="UMx-T4-Puj"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Dark" tag="1" identifier="themeDarkMenuItem" id="qcT-FY-eHe">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Dark Mode"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="themeWasPressed:" target="494" id="8MI-p5-9d3"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
-                                        <menuItem title="System Appearance" tag="2" enabled="NO" identifier="themeSystemMenuItem" id="x6g-cH-Wdm">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles System Appearance"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="themeWasPressed:" target="494" id="Zl6-mY-CMx"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Theme Settings Menu"/>
-                                    </attributedString>
-                                </menu>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Theme Settings"/>
-                                </attributedString>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="PUD-cg-cbF"/>
                             <menuItem title="Focus Mode" keyEquivalent="f" identifier="focusMenuItem" id="nrD-mL-W7Q">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
