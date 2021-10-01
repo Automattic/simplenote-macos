@@ -26,14 +26,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, NoteFontSize) {
-    NoteFontSizeMinimum = 10,
-    NoteFontSizeNormal = 14,
-    NoteFontSizeMaximum = 30
-};
-
-
-
 #pragma mark - Editor Protocols
 
 @protocol EditorControllerNoteActionsDelegate <NSObject>
