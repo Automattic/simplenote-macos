@@ -203,25 +203,6 @@ extension SimplenoteAppDelegate {
         SPTracker.trackShortcutSearch()
     }
 
-    @IBAction
-    func tagsSortModeWasPressed(_ sender: Any) {
-        let options = Options.shared
-        options.alphabeticallySortTags = !options.alphabeticallySortTags
-    }
-
-    @IBAction
-    func themeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem, item.state != .on else {
-            return
-        }
-
-        guard let option = ThemeOption(rawValue: item.tag) else {
-            return
-        }
-
-        Options.shared.themeName = option.themeName
-    }
-
     func cycleSidebarAction() {
         splitViewController.cycleSidebarAction()
     }
@@ -361,9 +342,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .systemTrashMenuItem:
             return validateSystemTrashMenuItem(menuItem)
 
-        case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
-            return validateThemeMenuItem(menuItem)
-
         case .toggleMarkdownPreview:
             return validateToogleMarkdownPreviewItem(menuItem)
 
@@ -399,15 +377,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.title = Options.shared.statusBarHidden
                         ? NSLocalizedString("Show Status Bar", comment: "macOS MenuItem that causes the Status Bar to be visible")
                         : NSLocalizedString("Hide Status Bar", comment: "macOS MenuItem that causes the Status Bar to be hidden")
-        return true
-    }
-
-    func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
-        guard let option = ThemeOption(rawValue: item.tag) else {
-            return false
-        }
-
-        item.state = SPUserInterface.activeThemeOption == option ? .on : .off
         return true
     }
 
