@@ -1,6 +1,6 @@
 # Simplenote for macOS
 
-![Screenshot](https://simplenoteblog.files.wordpress.com/2020/08/mark2-screenshot.png)
+![Screenshot](https://simplenoteblog.files.wordpress.com/2021/09/gh-screenshot.png)
 
 A Simplenote client for macOS. Learn more about Simplenote at [Simplenote.com](https://simplenote.com).
 
@@ -8,7 +8,7 @@ A Simplenote client for macOS. Learn more about Simplenote at [Simplenote.com](h
 
 ### Download Xcode
 
-At the moment *Simplenote for macOS* uses Swift 5 and requires Xcode 10.2 or newer. Xcode can be [downloaded from Apple](https://developer.apple.com/downloads/index.action).*
+At the moment *Simplenote for macOS* uses Swift 5 and requires Xcode 12 or newer. Xcode can be [downloaded from Apple](https://developer.apple.com/downloads/index.action).*
 
 ### Third party tools
 
@@ -69,13 +69,12 @@ Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium
 
 **⚠️ Please note → We're not accepting any new Simperium accounts at this time.**
 
-After you've created your own Simperium application, copy the sample config. For example:
+
+Please copy the **testing Simperium credentials** as follows:
 
 ```
 mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
 ```
-
-Then edit the new `Simplenote/Credentials/SPCredentials.swift` file and change the `simperiumAppID` and `simperiumApiKey` fields to the correct values for your new app.
 
 This will allow you to compile and run the app on a device or a simulator.
 
