@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="OyW-Oe-WWr">
             <objects>
-                <windowController storyboardIdentifier="PreferencesWindowController" id="58P-iA-sht" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="NSWindowController" id="58P-iA-sht" sceneMemberID="viewController">
                     <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aq8-e7-KtS" customClass="Window" customModule="Simplenote" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

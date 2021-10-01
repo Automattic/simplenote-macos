@@ -170,8 +170,8 @@ extension SimplenoteAppDelegate {
         }
 
         ensureMainWindowIsVisible(sender)
-        let storyboard = NSStoryboard(name: Constants.preferenceStoryboardIdentifier, bundle: nil)
-        preferencesWindowController = storyboard.instantiateController(withIdentifier: Constants.preferencesWindowControllerIdentifier) as? NSWindowController
+        let storyboard = NSStoryboard(name: .preferences, bundle: nil)
+        preferencesWindowController = storyboard.instantiateWindowController(ofType: NSWindowController.self)
         preferencesWindowController?.window?.center()
         preferencesWindowController?.showWindow(self)
     }
@@ -618,6 +618,4 @@ extension SimplenoteAppDelegate {
 //
 private struct Constants {
     static let noteEditorMetadataCacheFilename = ".editor-metadata-cache"
-    static let preferenceStoryboardIdentifier = "Preferences"
-    static let preferencesWindowControllerIdentifier = "PreferencesWindowController"
 }
