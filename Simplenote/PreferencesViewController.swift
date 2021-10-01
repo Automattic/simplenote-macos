@@ -130,26 +130,28 @@ class PreferencesViewController: NSViewController {
     }
 
     private func setupSortModeFields() {
-        let menuItems: [NSMenuItem] = SortMode.allCases.map { mode in
+        guard let sortOrderPopupMenu = sortOrderPopUp.menu else {
+            return
+        }
+
+        SortMode.allCases.forEach { mode in
             let item = NSMenuItem()
             item.title = mode.description
             item.identifier = mode.noteListInterfaceID
-            return item
+            sortOrderPopupMenu.addItem(item)
         }
-        
-        menuItems.forEach({ sortOrderPopUp.menu?.addItem($0) })
     }
 
-
     private func setupThemeFields() {
-        let menuItems: [NSMenuItem] = ThemeOption.allCases.map { theme in
+        guard let themePopUpMenu = themePopUp.menu else {
+            return
+        }
+        ThemeOption.allCases.forEach { theme in
             let item = NSMenuItem()
             item.title = theme.description
             item.tag = theme.rawValue
-            return item
+            themePopUpMenu.addItem(item)
         }
-
-        menuItems.forEach({ themePopUp.menu?.addItem($0) })
     }
 
     private func updateAccountEmailLabel() {
