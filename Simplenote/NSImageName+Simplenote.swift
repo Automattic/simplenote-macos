@@ -38,10 +38,6 @@ extension NSImage.Name {
     ///
     static let ellipsisOutline = NSImage.Name("button_ellipsis_outline")
 
-    /// Tags List: Settings
-    ///
-    static let settings = NSImage.Name("button_settings")
-
     /// Toolbar: Info
     ///
     static let info = NSImage.Name("button_info")
@@ -77,6 +73,10 @@ extension NSImage.Name {
     /// Note List: Search
     ///
     static let search = NSImage.Name("button_search")
+
+    /// Tags List: Settings
+    ///
+    static let settings = NSImage.Name("button_settings")
 
     /// Note List: Shared
     ///
