@@ -198,16 +198,6 @@ extension SimplenoteAppDelegate {
     }
 
     @IBAction
-    func notesSortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem, let identifier = item.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {
-            return
-        }
-
-        Options.shared.notesListSortMode = newMode
-        SPTracker.trackSettingsNoteListSortMode(newMode.description)
-    }
-
-    @IBAction
     func searchWasPressed(_ sender: Any) {
         noteListViewController.beginSearch()
         SPTracker.trackShortcutSearch()
@@ -362,12 +352,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .statusBarMenuItem:
             return validateStatusBarMenuItem(menuItem)
 
-        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
-             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
-             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
-
-            return validateNotesSortModeMenuItem(menuItem)
-
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
 
@@ -418,12 +402,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.title = Options.shared.statusBarHidden
                         ? NSLocalizedString("Show Status Bar", comment: "macOS MenuItem that causes the Status Bar to be visible")
                         : NSLocalizedString("Hide Status Bar", comment: "macOS MenuItem that causes the Status Bar to be hidden")
-        return true
-    }
-
-    func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
-        let isSelected = Options.shared.notesListSortMode.noteListInterfaceID == item.identifier
-        item.state = isSelected ? .on : .off
         return true
     }
 

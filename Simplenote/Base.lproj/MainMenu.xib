@@ -421,58 +421,6 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="DH8-X3-mgs"/>
-                            <menuItem title="Note Sorting" id="QGk-SS-2Jf" userLabel="Note Sorting">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
-                                    <items>
-                                        <menuItem title="Name: A-Z" identifier="noteSortAlphaAscMenuItem" id="XEL-Qt-3Ik">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Alphabetical Note Sort Order"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="ox3-Cu-8NL"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Name: Z-A" identifier="noteSortAlphaDescMenuItem" id="BFX-rl-bcH">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="IR5-AJ-8nP"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="Z0V-Oz-ijh">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="usk-E1-YAj"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Created: Oldest" identifier="noteSortCreateOldestMenuItem" id="S16-eV-qeq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="4lP-Wy-PF3"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Modified: Newest" identifier="noteSortModifyNewestMenuItem" id="p5U-fB-pgR">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="Ubm-cN-eZq"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Modified: Oldest" identifier="noteSortModifyOldestMenuItem" id="ssB-vH-kwg">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="nMT-tD-mek"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Note List Sort Mode Settings"/>
-                                    </attributedString>
-                                </menu>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Note List Sort Order Settings"/>
-                                </attributedString>
-                            </menuItem>
                             <menuItem title="Tags Sorting" id="4QQ-5e-Vxl" userLabel="Tags Sorting">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Tags Sorting" id="76D-S0-1JD">
