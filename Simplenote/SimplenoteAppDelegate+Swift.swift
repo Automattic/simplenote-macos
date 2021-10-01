@@ -197,16 +197,6 @@ extension SimplenoteAppDelegate {
     }
 
     @IBAction
-    func lineLengthWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.lineFullMenuItem
-        Options.shared.editorFullWidth = isFullOn
-    }
-
-    @IBAction
     func notesDisplayModeWasPressed(_ sender: Any) {
         guard let item = sender as? NSMenuItem else {
             return
@@ -366,8 +356,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .lineFullMenuItem, .lineNarrowMenuItem:
-            return validateLineLengthMenuItem(menuItem)
 
         case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
@@ -414,15 +402,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         default:
             return true
         }
-    }
-
-    func validateLineLengthMenuItem(_ item: NSMenuItem) -> Bool {
-        let isFullItem = item.identifier == .lineFullMenuItem
-        let isFullEnabled = Options.shared.editorFullWidth
-
-        item.state = isFullItem == isFullEnabled ? .on : .off
-
-        return true
     }
 
     func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
