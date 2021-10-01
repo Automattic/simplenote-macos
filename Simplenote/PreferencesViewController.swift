@@ -1,7 +1,9 @@
 import Cocoa
 
 class PreferencesViewController: NSViewController {
-    let simperium = SimplenoteAppDelegate.shared().simperium
+    private var simperium: Simperium {
+        SimplenoteAppDelegate.shared().simperium
+    }
 
     @IBOutlet private var backgroundview: BackgroundView!
 
@@ -32,10 +34,10 @@ class PreferencesViewController: NSViewController {
     @IBOutlet private var shareAnalyticsCheckbox: NSButton!
 
     // Mark: Background Views
-    @IBOutlet var accountSectionBackground: BackgroundView!
-    @IBOutlet var layoutSectionBackground: BackgroundView!
-    @IBOutlet var themeSectionBackground: BackgroundView!
-    @IBOutlet var textSectionBackground: BackgroundView!
+    @IBOutlet private var accountSectionBackground: BackgroundView!
+    @IBOutlet private var layoutSectionBackground: BackgroundView!
+    @IBOutlet private var themeSectionBackground: BackgroundView!
+    @IBOutlet private var textSectionBackground: BackgroundView!
 
 
     // MARK: View Life Cycle

@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NoteEditorMetadataCache                       *noteEditorMetadataCache;
 
-@property (nullable, strong, nonatomic) NSWindowController                            *preferencesWindowController;
+@property (nullable, strong, nonatomic) NSWindowController                  *preferencesWindowController;
 
 + (SimplenoteAppDelegate *)sharedDelegate;
 
