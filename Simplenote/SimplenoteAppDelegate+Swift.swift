@@ -198,17 +198,6 @@ extension SimplenoteAppDelegate {
     }
 
     @IBAction
-    func notesDisplayModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.noteDisplayCondensedMenuItem
-        Options.shared.notesListCondensed = isCondensedOn
-        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
-    }
-
-    @IBAction
     func notesSortModeWasPressed(_ sender: Any) {
         guard let item = sender as? NSMenuItem, let identifier = item.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {
             return
@@ -373,9 +362,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .statusBarMenuItem:
             return validateStatusBarMenuItem(menuItem)
 
-        case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
-            return validateNotesDisplayMenuItem(menuItem)
-
         case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
              .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
              .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
@@ -432,15 +418,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.title = Options.shared.statusBarHidden
                         ? NSLocalizedString("Show Status Bar", comment: "macOS MenuItem that causes the Status Bar to be visible")
                         : NSLocalizedString("Hide Status Bar", comment: "macOS MenuItem that causes the Status Bar to be hidden")
-        return true
-    }
-
-    func validateNotesDisplayMenuItem(_ item: NSMenuItem) -> Bool {
-        let isCondensedItem = item.identifier == .noteDisplayCondensedMenuItem
-        let isCondensedEnabled = Options.shared.notesListCondensed
-
-        item.state = isCondensedItem == isCondensedEnabled ? .on : .off
-
         return true
     }
 
