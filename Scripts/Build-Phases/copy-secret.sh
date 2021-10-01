@@ -59,6 +59,11 @@ ensure_is_in_input_files_list $EXAMPLE_SECRETS_FILE
 SECRETS_DESTINATION_FILE="${SRCROOT}/Simplenote/Credentials/SPCredentials.swift"
 mkdir -p $(dirname "$SECRETS_DESTINATION_FILE")
 
+if cmp --silent -- ${SECRETS_FILE} ${SECRETS_DESTINATION_FILE}; then
+    echo "☑️ Credentials were not modified. Skipping..."
+    exit 0
+fi
+
 if [ -f "$SECRETS_FILE" ]; then
     echo "Applying Production Secrets"
     cp -v "$SECRETS_FILE" "${SECRETS_DESTINATION_FILE}"
