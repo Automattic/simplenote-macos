@@ -60,19 +60,18 @@ class PreferencesViewController: NSViewController {
 
     @objc
     private func refreshFields() {
-        emailLabel.stringValue = simperium.user?.email ?? ""
+        updateAccountEmailLabel()
 
         updateSelectedSortMode()
         updateLineLength()
-        condensedNoteListCheckbox.state = Options.shared.notesListCondensed ? .on : .off
-        sortTagsAlphabeticallyCheckbox.state = Options.shared.alphabeticallySortTags ? .on : .off
+        updateCondensedNoteListCheckBox()
+        updateSortTagsAlphabeticallyCheckbox()
 
         updateSelectedTheme()
 
-        textSizeSlider.intValue = Int32(Options.shared.fontSize)
+        updateTextSizeSlider()
 
-        shareAnalyticsCheckbox.state = Options.shared.analyticsEnabled ? .on: .off
-
+        updateShareAnalyticsCheckbox()
     }
 
     @objc
@@ -153,6 +152,10 @@ class PreferencesViewController: NSViewController {
         menuItems.forEach({ themePopUp.menu?.addItem($0) })
     }
 
+    private func updateAccountEmailLabel() {
+        emailLabel.stringValue = simperium.user?.email ?? ""
+    }
+
     private func updateSelectedSortMode() {
         let sortMode = Options.shared.notesListSortMode
         sortOrderPopUp.selectItem(withTitle: sortMode.description)
@@ -169,6 +172,23 @@ class PreferencesViewController: NSViewController {
         } else {
             lineLengthNarrowRadio.state = .on
         }
+    }
+
+    private func updateCondensedNoteListCheckBox() {
+        condensedNoteListCheckbox.state = Options.shared.notesListCondensed ? .on : .off
+    }
+
+    private func updateSortTagsAlphabeticallyCheckbox() {
+        sortTagsAlphabeticallyCheckbox.state = Options.shared.alphabeticallySortTags ? .on : .off
+    }
+
+    @objc
+    private func updateTextSizeSlider() {
+        textSizeSlider.intValue = Int32(Options.shared.fontSize)
+    }
+
+    private func updateShareAnalyticsCheckbox() {
+        shareAnalyticsCheckbox.state = Options.shared.analyticsEnabled ? .on: .off
     }
 
     // MARK: Account Settings
@@ -328,7 +348,7 @@ private extension PreferencesViewController {
         }
 
         NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshFields), name: .FontSizeDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTextSizeSlider), name: .FontSizeDidChange, object: nil)
     }
 
     func stopListeningToNotifications() {
