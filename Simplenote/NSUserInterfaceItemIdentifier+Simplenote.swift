@@ -18,8 +18,6 @@ extension NSUserInterfaceItemIdentifier {
 
     /// Identifiers: View Menu
     ///
-    static let lineNarrowMenuItem           = NSUserInterfaceItemIdentifier(rawValue: "lineNarrowMenuItem")
-    static let lineFullMenuItem             = NSUserInterfaceItemIdentifier(rawValue: "lineFullMenuItem")
     static let lineNarrowButton             = NSUserInterfaceItemIdentifier(rawValue: "lineNarrowButton")
     static let lineFullButton               = NSUserInterfaceItemIdentifier(rawValue: "lineFullButton")
     static let noteDisplayComfyMenuItem     = NSUserInterfaceItemIdentifier(rawValue: "noteDisplayComfyMenuItem")

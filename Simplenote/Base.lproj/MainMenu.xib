@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -386,34 +386,6 @@
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>
-                            <menuItem title="Line Length" id="P9P-ed-21W">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Line Length" id="JgX-db-Pi6">
-                                    <items>
-                                        <menuItem title="Narrow" identifier="lineNarrowMenuItem" id="lMi-2X-rR9">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Narrow Line Length"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="lineLengthWasPressed:" target="494" id="XEi-nX-2kv"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Full" tag="1" identifier="lineFullMenuItem" id="bBW-To-3v3">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Full Line Length"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="lineLengthWasPressed:" target="494" id="w7e-po-dAb"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Line Length Setting Menu"/>
-                                    </attributedString>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Font Size" id="FPg-7U-5Cl">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Font Size" systemMenu="font" id="SxH-2F-lin">
