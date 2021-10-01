@@ -337,6 +337,9 @@ static NSString *SPAuthSessionKey = @"SPAuthSessionKey";
                 [self showAuthenticationError:NSLocalizedString(@"Authorization failed", @"Error for authorization failure")];
             }
             break;
+        case 429:
+            [self showAuthenticationError:NSLocalizedString(@"Too many log in attempts. Try again later.", @"Error for too many login attempts")];
+            break;
         default:
             [self showAuthenticationError:NSLocalizedString(@"We're having problems. Please try again soon.", @"Generic error")];
             break;
