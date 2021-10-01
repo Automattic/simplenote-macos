@@ -360,9 +360,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .systemTrashMenuItem:
             return validateSystemTrashMenuItem(menuItem)
 
-        case .tagSortMenuItem:
-            return validateTagSortMenuItem(menuItem)
-
         case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
             return validateThemeMenuItem(menuItem)
 
@@ -401,11 +398,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.title = Options.shared.statusBarHidden
                         ? NSLocalizedString("Show Status Bar", comment: "macOS MenuItem that causes the Status Bar to be visible")
                         : NSLocalizedString("Hide Status Bar", comment: "macOS MenuItem that causes the Status Bar to be hidden")
-        return true
-    }
-
-    func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortTags ? .on : .off
         return true
     }
 

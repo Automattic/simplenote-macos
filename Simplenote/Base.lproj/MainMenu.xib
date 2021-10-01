@@ -421,29 +421,6 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="DH8-X3-mgs"/>
-                            <menuItem title="Tags Sorting" id="4QQ-5e-Vxl" userLabel="Tags Sorting">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Tags Sorting" id="76D-S0-1JD">
-                                    <items>
-                                        <menuItem title="Sort Alphabetically" identifier="tagSortMenuItem" id="axW-cz-MnF">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Sorts the Tags List Alphabetically"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="tagsSortModeWasPressed:" target="494" id="S8M-Sr-6JL"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Tag List Settings Menu"/>
-                                    </attributedString>
-                                </menu>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Tags List Settings"/>
-                                </attributedString>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
                             <menuItem title="Toggle Markdown Preview" keyEquivalent="P" identifier="toggleMarkdownPreview" id="1db-JI-NZH">
                                 <attributedString key="userComments">
                                     <fragment content="Toggles Markdown Preview"/>
