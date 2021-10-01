@@ -461,6 +461,8 @@
 		BA2C65CF26FE996A00FA84E1 /* NSButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */; };
 		BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */; };
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
+		BA553F0827065E20007737E9 /* FontSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA553F0727065E20007737E9 /* FontSettings.swift */; };
+		BA553F0927065E20007737E9 /* FontSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA553F0727065E20007737E9 /* FontSettings.swift */; };
 		BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA92897327027D47002B0AD0 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA92897227027D47002B0AD0 /* Int+Extensions.swift */; };
@@ -854,6 +856,7 @@
 		BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extensions.swift"; sourceTree = "<group>"; };
 		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
 		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
+		BA553F0727065E20007737E9 /* FontSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettings.swift; sourceTree = "<group>"; };
 		BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Simplenote.swift"; sourceTree = "<group>"; };
 		BA92897227027D47002B0AD0 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
@@ -1407,6 +1410,7 @@
 			children = (
 				B57CB873244DEBC300BA7969 /* Options.swift */,
 				B5469FC92587DE3F007ED7BE /* SortMode.swift */,
+				BA553F0727065E20007737E9 /* FontSettings.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2178,6 +2182,7 @@
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
 				A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */,
+				BA553F0827065E20007737E9 /* FontSettings.swift in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				375D294821E033D1007AB25A /* html_blocks.c in Sources */,
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,
@@ -2370,6 +2375,7 @@
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
 				B5BB8CD524DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
+				BA553F0927065E20007737E9 /* FontSettings.swift in Sources */,
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
 				B542FE5325D42EA600A3582D /* SPTextView.swift in Sources */,
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,

@@ -466,17 +466,18 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     if (item.tag == 0) {
         // Increase font size
-        currentFontSize += SimplenoteConstants.NoteFontSizeStep;
-        currentFontSize = MIN(SimplenoteConstants.NoteFontSizeMaximum, currentFontSize);
+        currentFontSize += FontSettings.step;
+        currentFontSize = MIN(FontSettings.maximum, currentFontSize);
     } else if (item.tag == 2) {
         // Reset to normal size
-        currentFontSize = SimplenoteConstants.NoteFontSizeNormal;
+        currentFontSize = FontSettings.normal;
     } else {
         // Decrease font size
-        currentFontSize -= SimplenoteConstants.NoteFontSizeStep;
-        currentFontSize = MAX(SimplenoteConstants.NoteFontSizeMinimum, currentFontSize);
+        currentFontSize -= FontSettings.step;
+        currentFontSize = MAX(FontSettings.minimum, currentFontSize);
     }
 
+    currentFontSize = [FontSettings nearestValidFontSizeFrom:currentFontSize];
     // Update font size preference and reset fonts
     [Options.shared setFontSize:currentFontSize];
 }

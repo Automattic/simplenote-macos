@@ -31,11 +31,4 @@ class SimplenoteConstants: NSObject {
     static let simplenoteVerificationURL    = currentEngineBaseURL.appendingPathComponent("/account/verify-email/")
     static let simplenoteRequestSignupURL   = currentEngineBaseURL.appendingPathComponent("/account/request-signup")
     static let accountDeletionURL           = currentEngineBaseURL.appendingPathComponent("/account/request-delete/")
-
-    /// Font Constants
-    ///
-    static let NoteFontSizeMinimum = 10
-    static let NoteFontSizeNormal = 15
-    static let NoteFontSizeMaximum = 30
-    static let NoteFontSizeStep = 5
 }

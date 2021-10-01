@@ -926,18 +926,6 @@ extension NoteEditorViewController {
             noteEditor.scrollToSelectedLocation()
         }
     }
-
-    @objc
-    func getRoundedFontSize() -> Int {
-        var currentFontSize = Options.shared.fontSize
-        let fontSizeIsNotValid = currentFontSize % SimplenoteConstants.NoteFontSizeStep != .zero
-
-        if fontSizeIsNotValid {
-            currentFontSize = currentFontSize.roundToNearestFive()
-        }
-
-        return currentFontSize
-    }
 }
 
 
