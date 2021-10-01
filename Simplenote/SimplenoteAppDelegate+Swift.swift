@@ -164,11 +164,9 @@ extension SimplenoteAppDelegate {
     func preferencesWasPressed(_ sender: Any) {
         SPTracker.trackPreferencesWasOpened()
 
-        if let preferencesWindow = preferencesWindowController?.window {
-            if preferencesWindow.isVisible {
-                preferencesWindow.makeKeyAndOrderFront(self)
-                return
-            }
+        if preferencesWindowController?.window?.isVisible == true {
+            preferencesWindowController?.window?.makeKeyAndOrderFront(self)
+            return
         }
 
         ensureMainWindowIsVisible(sender)
