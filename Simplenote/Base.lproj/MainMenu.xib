@@ -421,34 +421,6 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="DH8-X3-mgs"/>
-                            <menuItem title="Note Display" id="tl2-gz-YEA">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
-                                    <items>
-                                        <menuItem title="Comfy" state="on" identifier="noteDisplayComfyMenuItem" id="Qaj-k2-NOz">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Comfy Note Display"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="notesDisplayModeWasPressed:" target="494" id="Z0T-Rh-FAn"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Condensed" tag="1" identifier="noteDisplayCondensedMenuItem" id="tQC-gw-hdq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Condensed Note Display"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="notesDisplayModeWasPressed:" target="494" id="HbB-Qg-TTp"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Note Display Settings"/>
-                                    </attributedString>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Note Sorting" id="QGk-SS-2Jf" userLabel="Note Sorting">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
