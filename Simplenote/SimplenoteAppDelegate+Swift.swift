@@ -161,22 +161,6 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
-    func preferencesWasPressed(_ sender: Any) {
-        SPTracker.trackPreferencesWasOpened()
-
-        if preferencesWindowController?.window?.isVisible == true {
-            preferencesWindowController?.window?.makeKeyAndOrderFront(self)
-            return
-        }
-
-        ensureMainWindowIsVisible(sender)
-        let storyboard = NSStoryboard(name: .preferences, bundle: nil)
-        preferencesWindowController = storyboard.instantiateWindowController(ofType: NSWindowController.self)
-        preferencesWindowController?.window?.center()
-        preferencesWindowController?.showWindow(self)
-    }
-
-    @IBAction
     func newNoteWasPressed(_ sender: Any) {
         noteEditorViewController.newNoteWasPressed(sender)
         SPTracker.trackShortcutCreateNote()

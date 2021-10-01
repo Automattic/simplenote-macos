@@ -13,4 +13,3 @@ NSString * const NoteListSortModeDidChangeNotification      = @"NoteListSortMode
 NSString * const StatusBarDisplayModeDidChangeNotification  = @"StatusBarDisplayModeDidChangeNotification";
 NSString * const TagSortModeDidChangeNotification           = @"TagSortModeDidChangeNotification";
 NSString * const ThemeDidChangeNotification                 = @"ThemeDidChangeNotification";
-NSString * const FontSizeDidChangeNotification              = @"FondSizeDidChangeNotification";

@@ -125,24 +125,6 @@ extension Options {
             NotificationCenter.default.post(name: .ThemeDidChange, object: nil)
         }
     }
-
-    /// Font Size
-    ///
-
-    var fontSize: CGFloat {
-        get {
-            guard let savedFontSize = defaults.integer(forKey: .fontSize), savedFontSize != .zero else {
-                return FontSettings.normal
-            }
-
-            return CGFloat(savedFontSize)
-        }
-        set {
-            defaults.set(newValue, forKey: .fontSize)
-            SPTracker.trackSettingsFontSizeUpdated()
-            NotificationCenter.default.post(name: .FontSizeDidChange, object: nil)
-        }
-    }
 }
 
 

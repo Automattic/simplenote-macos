@@ -27,7 +27,6 @@ extension NSStoryboard {
 //
 extension NSStoryboard.Name {
     static let main = "Main"
-    static let preferences = "Preferences"
 }
 
 

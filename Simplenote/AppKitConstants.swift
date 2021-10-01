@@ -7,7 +7,6 @@ enum AppKitConstants {
     static let alpha0_0: CGFloat = 0
     static let alpha0_05: CGFloat = 0.05
     static let alpha0_1: CGFloat = 0.1
-    static let alpha0_3: CGFloat = 0.3
     static let alpha0_4: CGFloat = 0.4
     static let alpha0_5: CGFloat = 0.5
     static let alpha0_6: CGFloat = 0.6

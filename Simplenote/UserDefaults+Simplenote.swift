@@ -14,7 +14,6 @@ extension UserDefaults {
         case notesListSortModeLegacy = "kAlphabeticalSortPreferencesKey"
         case statusBarHidden
         case themeName = "VSThemeManagerThemePrefKey"
-        case fontSize = "kFontSizePreferencesKey"
     }
 }
 

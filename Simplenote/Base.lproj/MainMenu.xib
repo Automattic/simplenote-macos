@@ -29,14 +29,6 @@
                             <menuItem isSeparatorItem="YES" id="236">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Preferences" keyEquivalent="," id="Sfj-nm-Rje">
-                                <connections>
-                                    <action selector="preferencesWasPressed:" target="494" id="klB-Oj-6Fj"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="c7D-IE-HZc">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                            </menuItem>
                             <menuItem title="Services" id="131">
                                 <menu key="submenu" title="Services" systemMenu="services" id="130"/>
                             </menuItem>

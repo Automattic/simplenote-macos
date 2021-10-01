@@ -15,6 +15,10 @@ import AppKit
 @objc
 class Theme: NSObject {
 
+    /// Default Font Size
+    ///
+    private static let defaultFontSize = CGFloat(14)
+
     /// Body Line Height Multiplier
     ///
     private static let bodyLineHeightMultiplier = CGFloat(1.43)
@@ -92,7 +96,12 @@ private extension Theme {
 private extension Theme {
 
     private static var fontSize: CGFloat {
-        Options.shared.fontSize
+        var fontSize = CGFloat(UserDefaults.standard.integer(forKey: "kFontSizePreferencesKey"))
+        if fontSize == 0 {
+            fontSize = defaultFontSize
+        }
+
+        return fontSize
     }
 
     private static var italicFont: NSFont {

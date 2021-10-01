@@ -74,10 +74,6 @@ extension NSImage.Name {
     ///
     static let search = NSImage.Name("button_search")
 
-    /// Tags List: Settings
-    ///
-    static let settings = NSImage.Name("button_settings")
-
     /// Note List: Shared
     ///
     static let shared = NSImage.Name("icon_shared")

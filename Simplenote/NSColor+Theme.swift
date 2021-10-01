@@ -229,26 +229,6 @@ extension NSColor {
     static var simplenoteSearchBarHighlightedBorderColor: NSColor {
         dynamicColor(lightStudio: .spBlue50, darkStudio: .spBlue30, lightColorAlpha: AppKitConstants.alpha0_4, darkColorAlpha: AppKitConstants.alpha0_4)
     }
-
-    @objc
-    static var simplenoteAlertControlBackgroundColor: NSColor {
-        dynamicColor(lightStudio: .white, darkStudio: .red50)
-    }
-
-    @objc
-    static var simplenoteAlertControlTextColor: NSColor {
-        dynamicColor(lightStudio: .red50, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_8, darkColorAlpha: AppKitConstants.alpha0_8)
-    }
-
-    @objc
-    static var buttonShadowColor: NSColor {
-        dynamicColor(lightStudio: .black, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_3, darkColorAlpha: AppKitConstants.alpha0_5)
-    }
-
-    @objc
-    static var simplenotePreferencesDividerColor: NSColor {
-        dynamicColor(lightStudio: .black, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_1, darkColorAlpha: AppKitConstants.alpha0_1)
-    }
 }
 
 
