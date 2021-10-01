@@ -232,22 +232,6 @@
     [self.aboutWindowController showWindow:self];
 }
 
-- (IBAction)privacyAction:(id)sender
-{
-    [self ensureMainWindowIsVisible:sender];
-
-    if (self.privacyWindowController) {
-        [self.privacyWindowController.window makeKeyAndOrderFront:sender];
-        return;
-    }
-
-    NSStoryboard *aboutStoryboard = [NSStoryboard storyboardWithName:@"Privacy" bundle:nil];
-    self.privacyWindowController = [aboutStoryboard instantiateControllerWithIdentifier:@"PrivacyWindowController"];
-    [self.window beginSheet:_privacyWindowController.window completionHandler:^(NSModalResponse returnCode) {
-        self.privacyWindowController = nil;
-    }];
-}
-
 
 #pragma mark - Simperium Delegates
 

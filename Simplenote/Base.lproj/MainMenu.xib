@@ -43,16 +43,6 @@
                             <menuItem isSeparatorItem="YES" id="144">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Privacy Settings" id="RZM-N8-VLN">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Privacy Settings"/>
-                                </attributedString>
-                                <connections>
-                                    <action selector="privacyAction:" target="-1" id="EgA-OE-fPn"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="VsX-bn-hbN"/>
                             <menuItem title="Hide Simplenote" keyEquivalent="h" id="134">
                                 <connections>
                                     <action selector="hide:" target="-1" id="367"/>
