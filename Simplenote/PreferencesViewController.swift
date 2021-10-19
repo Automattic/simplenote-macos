@@ -118,7 +118,7 @@ class PreferencesViewController: NSViewController {
         sortOrderLabel.stringValue = Strings.noteSortOrder
         lineLengthLabel.stringValue = Strings.noteLineLength
         themeLabel.stringValue = Strings.theme
-        textSizeLabel.stringValue = Strings.theme
+        textSizeLabel.stringValue = Strings.textSize
 
         logoutButton.title = Strings.logoutButtonLabel
         deleteAccountButton.title = Strings.deleteAccountButtonLabel
