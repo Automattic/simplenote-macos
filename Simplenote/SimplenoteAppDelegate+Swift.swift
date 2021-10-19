@@ -169,7 +169,6 @@ extension SimplenoteAppDelegate {
             return
         }
 
-        ensureMainWindowIsVisible(sender)
         let storyboard = NSStoryboard(name: .preferences, bundle: nil)
         preferencesWindowController = storyboard.instantiateWindowController(ofType: NSWindowController.self)
         preferencesWindowController?.window?.center()
