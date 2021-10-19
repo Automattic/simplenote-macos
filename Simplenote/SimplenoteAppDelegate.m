@@ -346,37 +346,6 @@
 
 #pragma mark - Actions
 
-- (IBAction)signOutAction:(id)sender
-{
-    // Safety first: Check for unsynced notes before they are deleted!
-    if ([StatusChecker hasUnsentChanges:self.simperium] == false)  {
-        [self signOut];
-        return;
-    }
-
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:NSLocalizedString(@"Delete Notes", @"Delete notes and sign out of the app")];
-    [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel the action")];
-    [alert addButtonWithTitle:NSLocalizedString(@"Visit Web App", @"Visit app.simplenote.com in the browser")];
-    [alert setMessageText:NSLocalizedString(@"Unsynced Notes Detected", @"Alert title displayed in when an account has unsynced notes")];
-    [alert setInformativeText:NSLocalizedString(@"Signing out will delete any unsynced notes. Check your connection and verify your synced notes by signing in to the Web App.", @"Alert message displayed when an account has unsynced notes")];
-    [alert setAlertStyle:NSAlertStyleCritical];
-
-    [alert beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
-        if (result == NSAlertThirdButtonReturn) {
-            NSURL *linkUrl = [NSURL URLWithString:@"https://app.simplenote.com"];
-            [[NSWorkspace sharedWorkspace] openURL:linkUrl];
-        } else if (result == NSAlertFirstButtonReturn) {
-            [self signOut];
-        }
-    }];
-}
-
-- (IBAction)deleteAccountAction:(id)sender {
-    [SPTracker trackDeleteAccountButttonTapped];
-    [self.accountDeletionController requestAccountDeletionFor:self.simperium.user with:self.window];
-}
-
 -(void)signOut
 {
     [SPTracker trackUserSignedOut];
