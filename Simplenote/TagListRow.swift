@@ -6,7 +6,6 @@ import Foundation
 enum TagListRow: Equatable {
     case allNotes
     case trash
-    case settings
     case spacer
     case header
     case tag(_ tag: Tag)
@@ -39,8 +38,7 @@ extension TagListRow {
     static func buildListRows(for tags: [Tag] = []) -> [TagListRow] {
         var rows: [TagListRow] = [
             .allNotes,
-            .trash,
-            .settings
+            .trash
         ]
 
         guard !tags.isEmpty else {
