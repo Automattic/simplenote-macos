@@ -274,7 +274,7 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction private func sortTagsAlphabeticallyPressed(_ sender: Any) {
-        Options.shared.alphabeticallySortTags = !Options.shared.alphabeticallySortTags
+        Options.shared.alphabeticallySortTags.toggle()
     }
 
     // MARK: Theme Settings

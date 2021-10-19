@@ -15,6 +15,6 @@ class FontSettings: NSObject {
         if valueIsValidFontSize(size) {
             return size
         }
-        return 5 * CGFloat((size / 5.0).rounded())
+        return step * (size / step).rounded()
     }
 }
