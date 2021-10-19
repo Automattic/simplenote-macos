@@ -1,1 +1,1 @@
-- In app account deletion: Now you can delete your account from the app
+- Bug fixes
