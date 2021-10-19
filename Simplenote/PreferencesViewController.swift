@@ -355,6 +355,13 @@ private extension PreferencesViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTextSizeSlider), name: .FontSizeDidChange, object: nil)
+
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+            if event.simplenoteSpecialKey == NSEvent.SpecialKey.esc {
+                self.view.window?.close()
+            }
+            return event
+        }
     }
 
     func stopListeningToNotifications() {
