@@ -1,1 +1,0 @@
-- Borrar Cuenta Dentro de la App: Ahora puede borrar su cuenta de usuario dentro de la app. 

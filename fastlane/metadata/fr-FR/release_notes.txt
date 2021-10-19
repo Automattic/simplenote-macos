@@ -1,1 +1,0 @@
-- Suppression du compte dans l’application : vous pouvez désormais supprimer votre compte dans l’application
