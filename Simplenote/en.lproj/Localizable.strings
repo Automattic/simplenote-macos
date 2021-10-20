@@ -42,10 +42,11 @@
 "Bad email or password" = "Bad email or password";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "Cancel";
 
@@ -216,9 +217,6 @@
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Not a valid email address";
 
-/* Dismiss change password alert action */
-"Not Now" = "Not Now";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Not Published";
 
@@ -346,10 +344,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "Toggle Sidebar";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "Too many log in attempts. Try again later.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

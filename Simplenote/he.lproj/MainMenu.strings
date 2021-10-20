@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-08-04 20:54:03+0000 */
+/* Translation-Revision-Date: 2021-09-05 14:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -64,7 +64,7 @@
 "1db-JI-NZH.title" = "לשנות את התצוגה המקדימה של Markdown";
 
 /* Class = "NSMenuItem"; title = "Delete Account"; ObjectID = "1sa-fK-USq"; */
-"1sa-fK-USq.title" = "Delete Account";
+"1sa-fK-USq.title" = "למחוק חשבון";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "איות ודקדוק";

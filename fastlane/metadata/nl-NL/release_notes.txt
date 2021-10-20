@@ -1,1 +1,0 @@
-- Accountverwijdering via de app: Je kan nu je account verwijderen vanuit de app

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-08-04 10:54:03+0000 */
+/* Translation-Revision-Date: 2021-09-04 09:54:45+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -64,7 +64,7 @@
 "1db-JI-NZH.title" = "Pratinjau Markdown Toggle";
 
 /* Class = "NSMenuItem"; title = "Delete Account"; ObjectID = "1sa-fK-USq"; */
-"1sa-fK-USq.title" = "Delete Account";
+"1sa-fK-USq.title" = "Hapus Akun";
 
 /* Class = "NSMenu"; title = "Spelling and Grammar"; ObjectID = "200"; */
 "200.title" = "Ejaan dan Tata Bahasa";

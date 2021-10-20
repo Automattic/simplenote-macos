@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-08-24 11:32:34+0000 */
+/* Translation-Revision-Date: 2021-09-05 14:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -16,7 +16,7 @@
 "- Password cannot match email" = "- הסיסמה לא יכולה להיות כתובת האימייל";
 
 /* Email verification required alert title */
-"Account Verification Required" = "Account Verification Required";
+"Account Verification Required" = "נדרש אימות לחשבון";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "אפשר להוסיף תגית כדי לשתף את הפתק עם אדם מסוים. לאחר מכן תוכלו שניכם לערוך בו שינויים.";
@@ -29,7 +29,7 @@
 "Already have an account?" = "יש לך כבר חשבון?";
 
 /* Delete account confirmation instructions */
-"An email has been sent to %@. Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation." = "An email has been sent to %@. Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation.";
+"An email has been sent to %@. Check your inbox and follow the instructions to confirm account deletion.\n\nYour account won't be deleted until we receive your confirmation." = "הודעת אימייל נשלחה לכתובת %@. יש לבדוק את תיבת הדואר הנכנס ולפעול לפי ההוראות לאישור המחיקה של החשבון.\n\nהחשבון שלך לא יימחק עד שנקבל את אישורך.";
 
 /* Deletion error message */
 "An error occured. Please, try again. If the problem continues, contact us at support@simplenote.com for help." = "אירעה שגיאה. יש לנסות שוב. אם הבעיה ממשיכה, ניתן ליצור איתנו קשר לעזרה בכתובת support@simplenote.com.";
@@ -41,13 +41,13 @@
 "Are you a developer? Automattic is Hiring." = "האם יש לך ניסיון בפיתוח? חברת Automattic מחפשת עובדים.";
 
 /* Error for authorization failure */
-"Authorization failed" = "Authorization failed";
+"Authorization failed" = "לא הצלחתי לקבל אישור";
 
 /* Error for bad email or password */
 "Bad email or password" = "כתובת האימייל או הסיסמה לא תקינים";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible.";
+"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "על ידי מחיקת החשבון שלך, כל הפתקים שנוצרו באמצעות החשבון הזה יימחקו לצמיתות. לא ניתן לבטל את הפעולה הזאת.";
 
 /* Cancel button title
    Cancel the action
@@ -73,7 +73,7 @@
 "Check Your Email" = "יש לבדוק את תיבת האימייל";
 
 /* Vefification sent alert title */
-"Check your Email" = "Check your Email";
+"Check your Email" = "יש לבדוק את תיבת האימייל";
 
 /* Collaborate Menu Action */
 "Collaborate" = "שיתוף פעולה בעריכה";
@@ -82,7 +82,7 @@
 "Collect Information" = "לאסוף מידע";
 
 /* Compromised passsword alert title */
-"Compromised Password" = "Compromised Password";
+"Compromised Password" = "סיסמה בסכנה";
 
 /* Confirm button -> Review you account screen */
 "Confirm" = "אשר";
@@ -284,13 +284,13 @@
 "Request Account Deletion" = "לבקש מחיקת חשבון";
 
 /* Request error alert title */
-"Request Error" = "Request Error";
+"Request Error" = "שגיאה בבקשה";
 
 /* Resend email button -> Verify your email screen */
 "Resend Email" = "לשלוח אימייל מחדש";
 
 /* Send email verificaiton action */
-"Resend Verification Email" = "Resend Verification Email";
+"Resend Verification Email" = "לשלוח מחדש דוא\"ל לאימות";
 
 /* Password Reset: Proceed */
 "Reset" = "אתחול";
@@ -342,13 +342,13 @@
 "That email is already being used" = "כתובת האימייל הזאת כבר נמצאת בשימוש";
 
 /* Request error alert message */
-"There was an preparing your verification email, please try again later" = "There was an preparing your verification email, please try again later";
+"There was an preparing your verification email, please try again later" = "אירעה שגיאה בהכנת האימייל לאימות, יש לנסות שוב מאוחר יותר";
 
 /* Privacy Policy */
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "המידע הזה עוזר לנו לשפר את המוצרים שלנו, להציג שיווק רלוונטי יותר, לספק לך חוויית שימוש אישית ב-Simplenote.com ועוד, כפי שמפורט במדיניות הפרטיות שלנו.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "הסיסמה הזאת מופיעה ברשימה של הפרת נתונים ולכן החשבון שלך נמצא בסיכון גבוה לפגיעה. מומלץ לשנות את הסיסמה שלך באופן מיידי.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "לשנות את הסרגל הצדי";
@@ -407,7 +407,7 @@
 "You are registered with Simplenote using the email %1$@.\n\nImprovements to account security may result in account loss if you no longer have access to this email address." = "החשבון שלך רשום עם Simplenote באמצעות האימייל %1$@.\n\nשיפורים באבטחת החשבון עלולים לגרום לאבדן החשבון אם אין לך עוד גישה לכתובת האימייל הזאת.";
 
 /* Erro for un verified email */
-"You must verify your email before being able to login." = "You must verify your email before being able to login.";
+"You must verify your email before being able to login." = "עליך לאמת את כתובת האימייל שלך לפני ההתחברות.";
 
 /* Error when you're not connected */
 "You're not connected to the internet" = "לא התחברת לאינטרנט";

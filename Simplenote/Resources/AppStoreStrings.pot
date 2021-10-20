@@ -46,8 +46,8 @@ msgctxt "app_store_keywords"
 msgid "simplenote,note,notes,sync,syncing,list,todo,simple,markdown,ideas"
 msgstr ""
 
-msgctxt "v2.15-whats-new"
+msgctxt "v2.16-whats-new"
 msgid ""
-"- In app account deletion: Now you can delete your account from the app\n"
+"- Bug fixes\n"
 msgstr ""
 

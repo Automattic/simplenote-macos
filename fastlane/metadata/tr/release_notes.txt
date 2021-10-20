@@ -1,1 +1,0 @@
-- Uygulamada hesap silme: Artık hesabınızı uygulamadan silebilirsiniz
