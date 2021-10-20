@@ -230,16 +230,15 @@ class PreferencesViewController: NSViewController {
     }
 
     @IBAction private func deleteAccountWasPressed(_ sender: Any) {
-        guard let user = simperium.user else {
+        guard let user = simperium.user,
+        let window = view.window else {
             return
         }
 
         let appDelegate = SimplenoteAppDelegate.shared()
 
         SPTracker.trackDeleteAccountButttonTapped()
-        appDelegate.accountDeletionController?.requestAccountDeletion(for: user, with: appDelegate.window)
-
-        view.window?.close()
+        appDelegate.accountDeletionController?.requestAccountDeletion(for: user, with: window)
     }
 
     // MARK: Note List Appearence Settings

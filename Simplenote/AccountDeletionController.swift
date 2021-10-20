@@ -13,7 +13,7 @@ class AccountDeletionController: NSObject {
     }
 
     @objc
-    func requestAccountDeletion(for user: SPUser, with window: Window) {
+    func requestAccountDeletion(for user: SPUser, with window: NSWindow) {
         let alert = NSAlert(messageText: Constants.deleteAccount, informativeText: Constants.confirmAlertMessage(with: user.email))
 
         alert.alertStyle = .critical
@@ -28,7 +28,7 @@ class AccountDeletionController: NSObject {
     }
 
     @objc
-    private func onConfirmAccountDeletion(for user: SPUser, for window: Window) {
+    private func onConfirmAccountDeletion(for user: SPUser, for window: NSWindow) {
         AccountRemote().requestDelete(user) { [weak self] (result) in
             switch result {
             case .success:
