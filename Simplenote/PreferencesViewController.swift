@@ -150,7 +150,7 @@ class PreferencesViewController: NSViewController {
         guard let themePopUpMenu = themePopUp.menu else {
             return
         }
-        ThemeOption.allCases.forEach { theme in
+        ThemeOption.allCases.reversed().forEach { theme in
             let item = NSMenuItem()
             item.title = theme.description
             item.tag = theme.rawValue
