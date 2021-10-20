@@ -320,7 +320,7 @@ private struct Strings {
     static let noteLineLength = NSLocalizedString("Note line length:", comment: "Note line length label")
     static let theme = NSLocalizedString("Theme:", comment: "Theme label")
     static let textSize = NSLocalizedString("Text size:", comment: "Text size control label")
-    static let logoutButtonLabel = NSLocalizedString("Log out", comment: "Log out button label")
+    static let logoutButtonLabel = NSLocalizedString("Log Out", comment: "Log out button label")
     static let deleteAccountButtonLabel = NSLocalizedString("Delete Account", comment: "Delete account button label")
     static let fullLineLengthButtonLabel = NSLocalizedString("Full", comment: "Full line length button label")
     static let narrowLineLengthButtonLabel = NSLocalizedString("Narrow", comment: "Narrow line length button label")
