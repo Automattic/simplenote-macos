@@ -89,28 +89,11 @@ class PreferencesViewController: NSViewController {
 
         let allButtons: [NSButton] = [logoutButton, lineLengthNarrowRadio, lineLengthFullRadio, sortOrderPopUp, condensedNoteListCheckbox, sortTagsAlphabeticallyCheckbox, themePopUp, shareAnalyticsCheckbox]
         allButtons.forEach { $0.setTitleColor(.simplenoteTextColor) }
-
-        setupDeleteAccountButtonStyle()
+        deleteAccountButton.setTitleColor(.simplenoteAlertControlTextColor)
 
         if simperium.user == nil {
             accountSectionBackground.isHidden = true
         }
-    }
-
-    private func setupDeleteAccountButtonStyle() {
-        deleteAccountButton.bezelStyle = .roundRect
-        deleteAccountButton.textInsets = Constants.deleteButtonInsets
-
-        let shadow = NSShadow()
-        shadow.shadowBlurRadius = AppKitConstants.alpha0_8
-        shadow.shadowColor = .buttonShadowColor
-        deleteAccountButton.shadow = shadow
-
-        let cell = deleteAccountButton.cell as? ButtonCell
-        cell?.regularBackgroundColor = .simplenoteAlertControlBackgroundColor
-        cell?.textColor = .simplenoteAlertControlTextColor
-        cell?.isBordered = true
-        cell?.highlightedBackgroundColor = .simplenoteSecondarySelectedBackgroundColor
     }
 
     private func setupLabels() {
