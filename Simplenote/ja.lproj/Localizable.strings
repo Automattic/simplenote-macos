@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-03 09:54:04+0000 */
+/* Translation-Revision-Date: 2021-10-27 09:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ja_JP */
@@ -47,10 +47,11 @@
 "Bad email or password" = "メールアドレスまたはパスワードが正しくありません";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "アカウントを削除すると、このアカウントで作成したすべてのメモが完全に削除されます。 この操作を元に戻すことはできません。";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "%@ のアカウントを削除すると、このアカウントで作成したすべてのメモが完全に削除されます。 この操作を元に戻すことはできません。";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "キャンセル";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "一致する結果がありません";
 
-/* Dismiss change password alert action */
-"Not Now" = "後で";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "未公開";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "この情報は、製品を改善し、マーケティングをより関連性の高いものとし、Simplenote.com の利用をパーソナライズするのに役立ちます。詳しくは、個人情報保護方針をご覧ください。";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "このパスワードはデータ侵害に含まれており、アカウントが不正アクセスの危険にさらされています。 すぐにパスワードを変更することをお勧めします。";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "このパスワードはデータ侵害に含まれており、アカウントが不正アクセスの危険にさらされています。 データを保護するため、もう一度ログインするにはパスワードを更新する必要があります。";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "サイドバーを切り替える";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "ログイン試行の回数が多すぎます。 後ほど、もう一度お試しください。";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

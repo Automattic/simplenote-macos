@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-05 19:54:03+0000 */
+/* Translation-Revision-Date: 2021-10-26 15:54:04+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -47,10 +47,11 @@
 "Bad email or password" = "بريد إلكتروني أو كلمة مرور سيئة";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "عن طريق حذف حسابك، سيتم حذف جميع الملحوظات التي تم إنشاؤها باستخدام هذا الحساب بشكل نهائي. لا يمكن التراجع عن هذا الإجراء.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "عن طريق حذف الحساب الخاص بـ %@، سيتم حذف جميع الملحوظات التي تم إنشاؤها باستخدام هذا الحساب نهائيًا. لا يمكن التراجع عن هذا الإجراء.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "إلغاء";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "لا توجد نتائج";
 
-/* Dismiss change password alert action */
-"Not Now" = "ليس الآن";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "لم يتم النشر";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "تساعدنا هذه المعلومات على تحسين منتجاتنا، وجعل التسويق لصالحك أكثر ملاءمة، وتخصيص تجربة Simplenote.com الخاصة بك والمزيد، مثلما ورد بالتفصيل في سياسة الخصوصية الخاصة بنا.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "لقد ظهرت كلمة المرور هذه في عملية اختراق بيانات، ما يضع حسابك في خطر كبير لاختراقه. يوصى بتغيير كلمة مرورك على الفور.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "لقد ظهرت كلمة المرور هذه في عملية اختراق بيانات، ما يضع حسابك في خطر كبير لاختراقه. لحماية بياناتك، سيتعين عليك تحديث كلمة مرورك قبل التمكن من تسجيل الدخول مجددًا.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "تبديل الشريط الجانبي";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "محاولات تسجيل دخول كثيرة للغاية. حاول مرة أخرى لاحقًا.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

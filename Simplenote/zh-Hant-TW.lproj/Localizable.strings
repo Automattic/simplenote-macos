@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-03 09:54:04+0000 */
+/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -47,10 +47,11 @@
 "Bad email or password" = "電子郵件地址或密碼錯誤";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "刪除你的帳號後，使用該帳號建立的所有備註將會永久刪除。 此動作無法復原。";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "若刪除 %@ 的帳號，此帳號建立的所有筆記將永久刪除。 此動作無法復原。";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "取消";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "沒有任何搜尋結果";
 
-/* Dismiss change password alert action */
-"Not Now" = "現在不要";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "未發表";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "這類資訊有助我們改善產品、提供與你更加相關的行銷活動、帶來量身打造的 Simplenote.com 使用體驗；若要瞭解更多詳細內容，請參閱我們的隱私權政策。";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "此密碼曾出現在資料外洩事件中，這使得你的帳號有很高的風險會遭到盜用。 建議你立即變更密碼。";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "此密碼曾出現在資料外洩事件中，這使得你的帳號有很高的風險會遭到盜用。 為保護你的資料，你需要更新密碼才能再次登入。";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "切換側邊欄";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "登入嘗試次數過多。 請稍後再試一次。";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

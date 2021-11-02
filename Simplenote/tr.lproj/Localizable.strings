@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-02 16:54:04+0000 */
+/* Translation-Revision-Date: 2021-10-27 13:54:04+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -47,10 +47,11 @@
 "Bad email or password" = "Yanlış e-posta veya parola";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "Hesabınızı sildiğinizde bu hesapla oluşturulan tüm notlar kalıcı olarak silinecektir. Bu eylem geri alınamaz.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "%@ için hesabınızı sildiğinizde bu hesapla oluşturulan tüm notlar kalıcı olarak silinecektir. Bu eylem geri alınamaz.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "İptal";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "Sonuç Yok";
 
-/* Dismiss change password alert action */
-"Not Now" = "Şimdi değil";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Yayımlanmadı";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Bu bilgiler, ürünlerimizi geliştirmemize, pazarlamayı size daha alakalı hale getirmemize, Simplenote.com deneyiminizi kişiselleştirmemize ve gizlilik politikamızda ayrıntılı olarak belirtilen diğer bir çok işlemi yapmamıza yardımcı olur.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "Bu şifre, hesabınızı ileri düzeyde tehlikeye atma riskine sokan bir veri ihlalinde ortaya çıktı. Şifrenizi hemen değiştirmeniz önerilir.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "Bu şifre, hesabınızı ileri düzeyde tehlikeye atma riskine sokan bir veri ihlalinde ortaya çıktı. Verilerinizi korumak için tekrar oturum açmadan önce şifrenizi güncellemeniz gerekir.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "Kenar Çubuğunu Aç\/Kapat";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "Çok fazla oturum açma denemesi. Daha sonra yeniden deneyin.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

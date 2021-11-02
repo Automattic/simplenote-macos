@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-03 09:54:04+0000 */
+/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: it */
@@ -47,10 +47,11 @@
 "Bad email or password" = "E-mail o password errata";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "Eliminando il tuo account, tutte le note create con esso verranno eliminate definitivamente. Questa azione non potrà essere annullata.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "Eliminando il tuo account per %@, tutte le note create con esso verranno eliminate definitivamente. Questa azione non potrà essere annullata.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "Annulla";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "Nessun risultato";
 
-/* Dismiss change password alert action */
-"Not Now" = "Non ora";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Nota pubblicata";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Queste informazioni ci aiutano a migliorare i prodotti, offrire proposte di marketing più pertinenti, personalizzare l’esperienza su Simplenote.com e molto altro, come indicato nel dettaglio nella nostra politica sulla privacy.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "Questa password è apparsa in una violazione dei dati, che mette il tuo account ad alto rischio di compromissione. Si consiglia di modificare subito la tua password.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "Questa password è apparsa in una violazione dei dati, che mette il tuo account ad alto rischio di compromissione. Per proteggere i tuoi dati, dovrai aggiornare la password prima di poter di accedere nuovamente.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "Attiva barra laterale";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "Troppi tentativi di accesso. Riprova più tardi.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

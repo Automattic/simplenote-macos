@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-03 11:54:04+0000 */
+/* Translation-Revision-Date: 2021-10-26 11:54:04+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -47,10 +47,11 @@
 "Bad email or password" = "Неверный адрес эл. почты или пароль";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "При удалении учётной записи все созданные в ней заметки будут безвозвратно удалены. Это действие нельзя отменить.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "При удалении учётной записи для %@ все созданные в ней заметки будут безвозвратно удалены. Это действие нельзя отменить.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "Отменить";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "Нет результатов";
 
-/* Dismiss change password alert action */
-"Not Now" = "Не сейчас";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Не опубликовано";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Эти сведения помогают нам улучшать продукты, предлагать более полезную рекламу, настраивать Simplenote.com согласно вашим предпочтениям и решать другие задачи. Дополнительную информацию см. в политике конфиденциальности.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "Настоящий пароль появлялся в нарушениях безопасности данных, что ставит ваш профиль под высокую угрозу взлома. Рекомендуется немедленно изменить пароль.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "Этот пароль есть в списках украденных, поэтому взломать вашу учётную запись очень легко. Чтобы защитить ваши данные, этот пароль больше не принимается. Придумайте другой, иначе вы не сможете войти.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "Включить\/выключить боковую панель";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "Вы пробовали войти слишком много раз. Повторите попытку позже.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */
