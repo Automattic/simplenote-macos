@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-04 09:54:45+0000 */
+/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -47,10 +47,11 @@
 "Bad email or password" = "Email atau kata sandi salah";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "Dengan menghapus akun, semua catatan yang dibuat dengan akun ini akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "Dengan menghapus akun %@, semua catatan yang dibuat dengan akun ini akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "Batal";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "Tidak ada Hasil";
 
-/* Dismiss change password alert action */
-"Not Now" = "Lain Kali";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Tidak Diterbitkan";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Informasi ini membantu kami menyempurnakan produk, menyusun konten pemasaran yang lebih relevan untuk Anda, mempersonalisasi pengalaman Simplenote.com Anda, dan lainnya seperti yang dijelaskan dalam kebijakan privasi kami.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "Kata sandi ini muncul dalam kasus pelanggaran data, yang membuat akun Anda berisiko tinggi untuk disusupi. Kami sarankan agar Anda segera mengubah kata sandi.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "Kata sandi ini muncul dalam kasus pelanggaran data, yang membuat akun Anda berisiko tinggi untuk disusupi. Untuk melindungi data, Anda perlu memperbarui kata sandi sebelum dapat login kembali.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "Sidebar Toggle";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "Terlalu banyak upaya login. Coba lagi nanti.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

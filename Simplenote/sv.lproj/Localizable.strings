@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-02 09:54:04+0000 */
+/* Translation-Revision-Date: 2021-10-20 13:41:56+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -47,10 +47,11 @@
 "Bad email or password" = "Fel e-post eller lösenord";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "Om du tar bort ditt konto kommer alla anteckningar som har skapats med kontot att tas bort permanent. Det går inte att ångra den här åtgärden.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "Genom att ta bort kontot för %@ tas alla anteckningar som skapats med detta konto bort permanent. Denna åtgärd är inte reversibel.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "Avbryt";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "Inga resultat";
 
-/* Dismiss change password alert action */
-"Not Now" = "Inte nu";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "Inte publicerad";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "Denna information hjälper oss att förbättra våra produkter, göra marknadsföring till dig mer relevant, personifiera din Simplenote.com-upplevelse och mer som beskrivs i vår integritetspolicy.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "Det här lösenordet har dykt upp i ett dataintrång, vilket innebär att ditt konto löper hög risk att komprometteras. Vi rekommenderar att du ändrar ditt lösenord omedelbart.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "Det här lösenordet har dykt upp i ett dataintrång, vilket innebär att ditt konto löper hög risk att komprometteras. För att skydda dina data behöver du uppdatera ditt lösenord innan du kan logga in igen.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "Slå på\/av sidopanel";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "För många inloggningsförsök. Försök igen senare.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */

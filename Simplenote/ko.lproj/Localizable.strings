@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-09-03 09:54:04+0000 */
+/* Translation-Revision-Date: 2021-10-26 13:54:04+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -47,10 +47,11 @@
 "Bad email or password" = "이메일 주소 또는 비밀번호가 잘못되었습니다.";
 
 /* Delete account confirmation alert message */
-"By deleting your account, all notes created with this account will be permanently deleted. This action is not reversible." = "계정을 삭제하면 이 계정을 통해 생성된 모든 메모가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다.";
+"By deleting the account for %@, all notes created with this account will be permanently deleted. This action is not reversible." = "%@에 대한 계정을 삭제하면 이 계정을 통해 생성된 모든 메모가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다.";
 
 /* Cancel button title
    Cancel the action
+   Dismiss change password alert action
    Password Reset: Cancel */
 "Cancel" = "취소";
 
@@ -218,9 +219,6 @@
 /* No Search Results */
 "No Results" = "결과 없음";
 
-/* Dismiss change password alert action */
-"Not Now" = "나중에";
-
 /* Placeholder displayed when a note hasn't been published. */
 "Not Published" = "공개되지 않음";
 
@@ -348,10 +346,13 @@
 "This information helps us improve our products, make marketing to you more relevant, personalize your Simplenote.com experience, and more as detailed in our privacy policy." = "이 정보는 개인정보 취급방침에 명시된 것처럼 제품을 개선하고, 더욱 관련성 있는 마케팅을 제공하며, Simplenote.com 환경을 개인 설정하는 데 도움을 줍니다.";
 
 /* Compromised password alert message */
-"This password has appeared in a data breach, which puts your account at high risk of compromise. It is recommended that you change your password immediately." = "계정 손상 위험이 큰 데이터 위반이 이 비밀번호에서 나타났습니다. 즉시 비밀번호를 변경하는 것이 좋습니다.";
+"This password has appeared in a data breach, which puts your account at high risk of compromise. To protect your data, you'll need to update your password before being able to log in again." = "계정 손상 위험이 큰 데이터 위반이 이 비밀번호에서 나타났습니다. 데이터를 보호하려면 다시 로그인할 수 있기 전에 비밀번호를 업데이트해야 합니다.";
 
 /* Tooltip: Restore a trashed note */
 "Toggle Sidebar" = "사이드바 전환";
+
+/* Error for too many login attempts */
+"Too many log in attempts. Try again later." = "로그인을 너무 많이 시도했습니다. 나중에 다시 시도하세요.";
 
 /* Title for the Trash filter
    Title of the view that displays all your deleted notes */
