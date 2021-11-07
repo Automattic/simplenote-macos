@@ -453,8 +453,16 @@
 		B5F807CD2481982B0048CBD7 /* Note+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */; };
 		B5F807CF2481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
 		B5F807D02481A2010048CBD7 /* Simperium+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */; };
+		BA0B43C926F2FCFC00B44A8C /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */; };
+		BA0B43CA26F2FCFC00B44A8C /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */; };
+		BA0B43D526F2FEA200B44A8C /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */; };
+		BA0B43D626F2FEA200B44A8C /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */; };
+		BA2C65CB26FE996100FA84E1 /* NSButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */; };
+		BA2C65CF26FE996A00FA84E1 /* NSButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */; };
 		BA4C6D16264CA8C000B723A7 /* SignupRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */; };
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
+		BA553F0827065E20007737E9 /* FontSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA553F0727065E20007737E9 /* FontSettings.swift */; };
+		BA553F0927065E20007737E9 /* FontSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA553F0727065E20007737E9 /* FontSettings.swift */; };
 		BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
@@ -841,8 +849,12 @@
 		B5F5415325F0137100CAF52C /* MagicLinkAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkAuthenticator.swift; sourceTree = "<group>"; };
 		B5F807CB2481982B0048CBD7 /* Note+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Simplenote.swift"; sourceTree = "<group>"; };
 		B5F807CE2481A2010048CBD7 /* Simperium+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simperium+Simplenote.swift"; sourceTree = "<group>"; };
+		BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Extensions.swift"; sourceTree = "<group>"; };
 		BA4C6D15264CA8C000B723A7 /* SignupRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRemoteTests.swift; sourceTree = "<group>"; };
 		BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Simplenote.swift"; sourceTree = "<group>"; };
+		BA553F0727065E20007737E9 /* FontSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSettings.swift; sourceTree = "<group>"; };
 		BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAlert+Simplenote.swift"; sourceTree = "<group>"; };
 		BA938CEB26ACFF4A00BE5A1D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVerificationController+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -967,6 +979,7 @@
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				B574CA71242D539400F8D02F /* Handlers */,
 				463774DB171F111600E2E333 /* Models */,
+				BA0B43B826F2FC2900B44A8C /* Preferences */,
 				B502C1DB25BA2EA200145D6C /* Remote */,
 				B57CB879244DEBD500BA7969 /* Settings */,
 				B5C63355251E734100C8BF46 /* Storyboards */,
@@ -1267,6 +1280,7 @@
 				BAA0A88626B9F8B40006260E /* Date+Simplenote.swift */,
 				BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */,
 				BAFB544F26CCA7F1006E037C /* NSProgressIndicator+Simplenote.swift */,
+				BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1392,6 +1406,7 @@
 			children = (
 				B57CB873244DEBC300BA7969 /* Options.swift */,
 				B5469FC92587DE3F007ED7BE /* SortMode.swift */,
+				BA553F0727065E20007737E9 /* FontSettings.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1647,6 +1662,15 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		BA0B43B826F2FC2900B44A8C /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				BA0B43C826F2FCFC00B44A8C /* PreferencesViewController.swift */,
+				BA0B43D426F2FEA200B44A8C /* Preferences.storyboard */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1818,6 +1842,7 @@
 				B5C7DD43243E4A8E00BEE354 /* CollaborateViewController.xib in Resources */,
 				B5A89195231ECB3C0007EDCB /* LICENSE in Resources */,
 				46F0E66717A3300B005BB4D1 /* Localizable.strings in Resources */,
+				BA0B43D526F2FEA200B44A8C /* Preferences.storyboard in Resources */,
 				B50F999224F98FFD00A1058D /* Main.storyboard in Resources */,
 				B5438012246358B700F34B1C /* Icons.xcassets in Resources */,
 				B529F7B824586DF800B168F1 /* MarkdownViewController.xib in Resources */,
@@ -1846,6 +1871,7 @@
 				37AE49CA1FFEBB0B00FCB165 /* markdown-dark.css in Resources */,
 				466FFF1717CC10A800399652 /* Localizable.strings in Resources */,
 				B529F7B924586DF800B168F1 /* MarkdownViewController.xib in Resources */,
+				BA0B43D626F2FEA200B44A8C /* Preferences.storyboard in Resources */,
 				B50F999324F98FFD00A1058D /* Main.storyboard in Resources */,
 				375581C320292AA800529D79 /* About.storyboard in Resources */,
 				37AE49C81FFEBB0B00FCB165 /* markdown-default.css in Resources */,
@@ -2065,6 +2091,7 @@
 				2614F1DF1405A0B10031AE94 /* Note.m in Sources */,
 				B586C062245CCD35009508EC /* SplitViewController.swift in Sources */,
 				2614F1E01405A0B10031AE94 /* Tag.m in Sources */,
+				BA2C65CB26FE996100FA84E1 /* NSButton+Extensions.swift in Sources */,
 				B58117E225B9E5D200927E0C /* AccountVerificationController.swift in Sources */,
 				B5009937242130F70037A431 /* UnicodeScalar+Simplenote.swift in Sources */,
 				B5985AD5242950B40044EDE9 /* NSColor+Simplenote.swift in Sources */,
@@ -2151,6 +2178,7 @@
 				3712FC8E1FE1ACAA008544AC /* Theme.swift in Sources */,
 				B5BB8CD424DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
 				A6672FB325C7F12F00090DE3 /* NoteContentHelper.swift in Sources */,
+				BA553F0827065E20007737E9 /* FontSettings.swift in Sources */,
 				37D4DD6A20B3574D00C225EA /* WPAuthHandler.m in Sources */,
 				375D294821E033D1007AB25A /* html_blocks.c in Sources */,
 				71DCEBE7152E2ED1002744C0 /* NSMutableAttributedString+Styling.m in Sources */,
@@ -2185,6 +2213,7 @@
 				B5A9FE272576C40B0084F176 /* SplitItemMetrics.swift in Sources */,
 				B511799B242036BD005F8936 /* NSTextView+Simplenote.swift in Sources */,
 				B5ACE42E24785D8C00AB02C7 /* BackgroundView.swift in Sources */,
+				BA0B43C926F2FCFC00B44A8C /* PreferencesViewController.swift in Sources */,
 				B5DD0F912476309000C8DD41 /* NoteTableCellView.swift in Sources */,
 				46F0E66317A32269005BB4D1 /* SPTableView.m in Sources */,
 				375D293821E033D1007AB25A /* escape.c in Sources */,
@@ -2254,6 +2283,7 @@
 				B551187324E33BC2007B11E3 /* ClipView.swift in Sources */,
 				B5395E1E253F70E30068F1A6 /* MetricTableViewCell.swift in Sources */,
 				3712FC8D1FE1ACAA008544AC /* Style.swift in Sources */,
+				BA2C65CF26FE996A00FA84E1 /* NSButton+Extensions.swift in Sources */,
 				375D294121E033D1007AB25A /* html_smartypants.c in Sources */,
 				B5E061782450AEDA0076111A /* ToolbarView.swift in Sources */,
 				B502C1DE25BA2EB700145D6C /* AccountRemote.swift in Sources */,
@@ -2340,6 +2370,7 @@
 				B532F8A820C71C1000EA3506 /* WPAuthHandler.m in Sources */,
 				466FFEC117CC10A800399652 /* NSMutableAttributedString+Styling.m in Sources */,
 				B5BB8CD524DB51670024E4C5 /* NSSearchField+Simplenote.swift in Sources */,
+				BA553F0927065E20007737E9 /* FontSettings.swift in Sources */,
 				375D294921E033D1007AB25A /* html_blocks.c in Sources */,
 				B542FE5325D42EA600A3582D /* SPTextView.swift in Sources */,
 				B529F7B624586D8700B168F1 /* MarkdownViewController.swift in Sources */,
@@ -2374,6 +2405,7 @@
 				B503FF4924848D0B00066059 /* TagAttachmentCell.swift in Sources */,
 				466FFED417CC10A800399652 /* SPTableView.m in Sources */,
 				375D293921E033D1007AB25A /* escape.c in Sources */,
+				BA0B43CA26F2FCFC00B44A8C /* PreferencesViewController.swift in Sources */,
 				B53BF19D24ABDE7C00938C34 /* DateFormatter+Simplenote.swift in Sources */,
 				B58942FB24E5EE8E006EC232 /* NSWindowFrameAutosaveName+Simplenote.swift in Sources */,
 				B53BF1A124AC1FB800938C34 /* Version.swift in Sources */,

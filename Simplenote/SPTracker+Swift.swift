@@ -31,6 +31,11 @@ extension SPTracker {
     static func trackVerificationDismissed() {
         trackAutomatticEvent(withName: "verification_dismissed", properties: nil)
     }
+
+    @objc
+    static func trackPreferencesWasOpened() {
+        trackAutomatticEvent(withName: "preferences_was_opened", properties: nil)
+    }
 }
 
 

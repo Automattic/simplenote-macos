@@ -26,7 +26,6 @@
 #pragma mark - Constants
 
 static NSString * const SPTextViewPreferencesKey        = @"kTextViewPreferencesKey";
-static NSString * const SPFontSizePreferencesKey        = @"kFontSizePreferencesKey";
 static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferencesKey";
 
 
@@ -110,6 +109,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     [nc addObserver:self selector:@selector(simperiumWillSave:) name:SimperiumWillSaveNotification object:nil];
     [nc addObserver:self selector:@selector(displayModeWasUpdated:) name:EditorDisplayModeDidChangeNotification object:nil];
     [nc addObserver:self selector:@selector(statusbarWasUpdated:) name:StatusBarDisplayModeDidChangeNotification object:nil];
+    [nc addObserver:self selector:@selector(refreshStyle) name:FontSizeDidChangeNotification object:nil];
 
     [self startListeningToScrollNotifications];
     [self startListeningToWindowNotifications];
@@ -459,40 +459,27 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - Fonts
 
-- (NSInteger)getFontSize
-{
-    NSInteger fontSize = [[NSUserDefaults standardUserDefaults] integerForKey:SPFontSizePreferencesKey];
-    if (!fontSize) {
-        fontSize = NoteFontSizeNormal;
-        [[NSUserDefaults standardUserDefaults] setInteger:fontSize forKey:SPFontSizePreferencesKey];
-    }
-
-    return fontSize;
-}
-
 - (IBAction)adjustFontSizeAction:(id)sender
 {
-    [SPTracker trackSettingsFontSizeUpdated];
-    
     NSMenuItem *item = (NSMenuItem *)sender;
-    NSInteger currentFontSize = [self getFontSize];
+    NSInteger currentFontSize = [Options.shared fontSize];
 
     if (item.tag == 0) {
         // Increase font size
-        currentFontSize++;
-        currentFontSize = MIN(NoteFontSizeMaximum, currentFontSize);
+        currentFontSize += FontSettings.step;
+        currentFontSize = MIN(FontSettings.maximum, currentFontSize);
     } else if (item.tag == 2) {
         // Reset to normal size
-        currentFontSize = NoteFontSizeNormal;
+        currentFontSize = FontSettings.normal;
     } else {
         // Decrease font size
-        currentFontSize--;
-        currentFontSize = MAX(NoteFontSizeMinimum, currentFontSize);
+        currentFontSize -= FontSettings.step;
+        currentFontSize = MAX(FontSettings.minimum, currentFontSize);
     }
 
+    currentFontSize = [FontSettings nearestValidFontSizeFrom:currentFontSize];
     // Update font size preference and reset fonts
-    [[NSUserDefaults standardUserDefaults] setInteger:currentFontSize forKey:SPFontSizePreferencesKey];
-    [self refreshStyle];
+    [Options.shared setFontSize:currentFontSize];
 }
 
 #pragma mark - NoteEditor Preferences Helpers

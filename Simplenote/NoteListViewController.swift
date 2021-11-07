@@ -716,12 +716,6 @@ extension NoteListViewController: NSMenuItemValidation {
         case .listTrashNoteMenuItem:
             return validateListTrashMenuItem(menuItem)
 
-        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
-             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
-             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
-
-            return validateNotesSortModeMenuItem(menuItem)
-
         default:
             return true
         }

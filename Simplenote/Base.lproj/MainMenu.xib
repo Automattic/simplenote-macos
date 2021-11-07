@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -29,22 +29,20 @@
                             <menuItem isSeparatorItem="YES" id="236">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
+                            <menuItem title="Preferences" keyEquivalent="," id="Sfj-nm-Rje">
+                                <connections>
+                                    <action selector="preferencesWasPressed:" target="494" id="klB-Oj-6Fj"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="c7D-IE-HZc">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
                             <menuItem title="Services" id="131">
                                 <menu key="submenu" title="Services" systemMenu="services" id="130"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="144">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Privacy Settings" id="RZM-N8-VLN">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Privacy Settings"/>
-                                </attributedString>
-                                <connections>
-                                    <action selector="privacyAction:" target="-1" id="EgA-OE-fPn"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="VsX-bn-hbN"/>
                             <menuItem title="Hide Simplenote" keyEquivalent="h" id="134">
                                 <connections>
                                     <action selector="hide:" target="-1" id="367"/>
@@ -88,25 +86,6 @@
                                 </attributedString>
                                 <connections>
                                     <action selector="emptyTrashWasPressed:" target="494" id="hK4-FN-3lK"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="Jd8-h6-yd1"/>
-                            <menuItem title="Log Out" id="Pde-gm-aAD">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <attributedString key="userComments">
-                                    <fragment content="Logs out from the Account"/>
-                                </attributedString>
-                                <connections>
-                                    <action selector="signOutAction:" target="494" id="VGf-Gg-vor"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="1548">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                            </menuItem>
-                            <menuItem title="Delete Account" id="1sa-fK-USq">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="deleteAccountAction:" target="494" id="Pd0-aU-aHc"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="PVN-fS-SZ9">
@@ -378,34 +357,6 @@
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>
-                            <menuItem title="Line Length" id="P9P-ed-21W">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Line Length" id="JgX-db-Pi6">
-                                    <items>
-                                        <menuItem title="Narrow" identifier="lineNarrowMenuItem" id="lMi-2X-rR9">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Narrow Line Length"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="lineLengthWasPressed:" target="494" id="XEi-nX-2kv"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Full" tag="1" identifier="lineFullMenuItem" id="bBW-To-3v3">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Full Line Length"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="lineLengthWasPressed:" target="494" id="w7e-po-dAb"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Line Length Setting Menu"/>
-                                    </attributedString>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Font Size" id="FPg-7U-5Cl">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Font Size" systemMenu="font" id="SxH-2F-lin">
@@ -441,109 +392,6 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="DH8-X3-mgs"/>
-                            <menuItem title="Note Display" id="tl2-gz-YEA">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Note Display" systemMenu="font" id="fB2-X8-xNp">
-                                    <items>
-                                        <menuItem title="Comfy" state="on" identifier="noteDisplayComfyMenuItem" id="Qaj-k2-NOz">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Comfy Note Display"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="notesDisplayModeWasPressed:" target="494" id="Z0T-Rh-FAn"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Condensed" tag="1" identifier="noteDisplayCondensedMenuItem" id="tQC-gw-hdq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Condensed Note Display"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="notesDisplayModeWasPressed:" target="494" id="HbB-Qg-TTp"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Note Display Settings"/>
-                                    </attributedString>
-                                </menu>
-                            </menuItem>
-                            <menuItem title="Note Sorting" id="QGk-SS-2Jf" userLabel="Note Sorting">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Note Sorting" systemMenu="font" id="YpJ-fs-p4p">
-                                    <items>
-                                        <menuItem title="Name: A-Z" identifier="noteSortAlphaAscMenuItem" id="XEL-Qt-3Ik">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Alphabetical Note Sort Order"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="ox3-Cu-8NL"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Name: Z-A" identifier="noteSortAlphaDescMenuItem" id="BFX-rl-bcH">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="IR5-AJ-8nP"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Created: Newest" identifier="noteSortCreateNewestMenuItem" id="Z0V-Oz-ijh">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="usk-E1-YAj"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Created: Oldest" identifier="noteSortCreateOldestMenuItem" id="S16-eV-qeq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="4lP-Wy-PF3"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Modified: Newest" identifier="noteSortModifyNewestMenuItem" id="p5U-fB-pgR">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="Ubm-cN-eZq"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Modified: Oldest" identifier="noteSortModifyOldestMenuItem" id="ssB-vH-kwg">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="notesSortModeWasPressed:" target="494" id="nMT-tD-mek"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Note List Sort Mode Settings"/>
-                                    </attributedString>
-                                </menu>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Note List Sort Order Settings"/>
-                                </attributedString>
-                            </menuItem>
-                            <menuItem title="Tags Sorting" id="4QQ-5e-Vxl" userLabel="Tags Sorting">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Tags Sorting" id="76D-S0-1JD">
-                                    <items>
-                                        <menuItem title="Sort Alphabetically" identifier="tagSortMenuItem" id="axW-cz-MnF">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Sorts the Tags List Alphabetically"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="tagsSortModeWasPressed:" target="494" id="S8M-Sr-6JL"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Tag List Settings Menu"/>
-                                    </attributedString>
-                                </menu>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Tags List Settings"/>
-                                </attributedString>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="6I8-iX-Ptg"/>
                             <menuItem title="Toggle Markdown Preview" keyEquivalent="P" identifier="toggleMarkdownPreview" id="1db-JI-NZH">
                                 <attributedString key="userComments">
                                     <fragment content="Toggles Markdown Preview"/>
@@ -551,48 +399,6 @@
                                 <connections>
                                     <action selector="toggleMarkdownPreviewAction:" target="494" id="U7g-tl-5Zq"/>
                                 </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="mgi-Y5-YB1"/>
-                            <menuItem title="Theme" id="Jtf-4C-imn">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Theme" systemMenu="font" id="SIP-Tf-W7J">
-                                    <items>
-                                        <menuItem title="Light" identifier="themeLightMenuItem" id="Zhe-Bb-jvT">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Light Mode"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="themeWasPressed:" target="494" id="UMx-T4-Puj"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Dark" tag="1" identifier="themeDarkMenuItem" id="qcT-FY-eHe">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles Dark Mode"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="themeWasPressed:" target="494" id="8MI-p5-9d3"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" tag="1000" id="vHw-6k-QDk"/>
-                                        <menuItem title="System Appearance" tag="2" enabled="NO" identifier="themeSystemMenuItem" id="x6g-cH-Wdm">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <attributedString key="userComments">
-                                                <fragment content="Toggles System Appearance"/>
-                                            </attributedString>
-                                            <connections>
-                                                <action selector="themeWasPressed:" target="494" id="Zl6-mY-CMx"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                    <attributedString key="userComments">
-                                        <fragment content="Theme Settings Menu"/>
-                                    </attributedString>
-                                </menu>
-                                <attributedString key="userComments">
-                                    <fragment content="Opens the Theme Settings"/>
-                                </attributedString>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="PUD-cg-cbF"/>
                             <menuItem title="Focus Mode" keyEquivalent="f" identifier="focusMenuItem" id="nrD-mL-W7Q">

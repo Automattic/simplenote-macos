@@ -20,6 +20,7 @@
 #import "SPTracker.h"
 #import "TagListViewController.h"
 #import "Storage.h"
+#import "StatusChecker.h"
 
 #pragma mark - Extensions
 

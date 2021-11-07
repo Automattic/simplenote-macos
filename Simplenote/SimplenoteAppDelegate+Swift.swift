@@ -161,6 +161,21 @@ extension SimplenoteAppDelegate {
 extension SimplenoteAppDelegate {
 
     @IBAction
+    func preferencesWasPressed(_ sender: Any) {
+        SPTracker.trackPreferencesWasOpened()
+
+        if preferencesWindowController?.window?.isVisible == true {
+            preferencesWindowController?.window?.makeKeyAndOrderFront(self)
+            return
+        }
+
+        let storyboard = NSStoryboard(name: .preferences, bundle: nil)
+        preferencesWindowController = storyboard.instantiateWindowController(ofType: NSWindowController.self)
+        preferencesWindowController?.window?.center()
+        preferencesWindowController?.showWindow(self)
+    }
+
+    @IBAction
     func newNoteWasPressed(_ sender: Any) {
         noteEditorViewController.newNoteWasPressed(sender)
         SPTracker.trackShortcutCreateNote()
@@ -182,59 +197,9 @@ extension SimplenoteAppDelegate {
     }
 
     @IBAction
-    func lineLengthWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isFullOn = item.identifier == NSUserInterfaceItemIdentifier.lineFullMenuItem
-        Options.shared.editorFullWidth = isFullOn
-    }
-
-    @IBAction
-    func notesDisplayModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem else {
-            return
-        }
-
-        let isCondensedOn = item.identifier == NSUserInterfaceItemIdentifier.noteDisplayCondensedMenuItem
-        Options.shared.notesListCondensed = isCondensedOn
-        SPTracker.trackSettingsListCondensedEnabled(isCondensedOn)
-    }
-
-    @IBAction
-    func notesSortModeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem, let identifier = item.identifier, let newMode = SortMode(noteListInterfaceID: identifier) else {
-            return
-        }
-
-        Options.shared.notesListSortMode = newMode
-        SPTracker.trackSettingsNoteListSortMode(newMode.description)
-    }
-
-    @IBAction
     func searchWasPressed(_ sender: Any) {
         noteListViewController.beginSearch()
         SPTracker.trackShortcutSearch()
-    }
-
-    @IBAction
-    func tagsSortModeWasPressed(_ sender: Any) {
-        let options = Options.shared
-        options.alphabeticallySortTags = !options.alphabeticallySortTags
-    }
-
-    @IBAction
-    func themeWasPressed(_ sender: Any) {
-        guard let item = sender as? NSMenuItem, item.state != .on else {
-            return
-        }
-
-        guard let option = ThemeOption(rawValue: item.tag) else {
-            return
-        }
-
-        Options.shared.themeName = option.themeName
     }
 
     func cycleSidebarAction() {
@@ -351,8 +316,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         }
 
         switch identifier {
-        case .lineFullMenuItem, .lineNarrowMenuItem:
-            return validateLineLengthMenuItem(menuItem)
 
         case .emptyTrashMenuItem:
             return validateEmptyTrashMenuItem(menuItem)
@@ -369,15 +332,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .statusBarMenuItem:
             return validateStatusBarMenuItem(menuItem)
 
-        case .noteDisplayCondensedMenuItem, .noteDisplayComfyMenuItem:
-            return validateNotesDisplayMenuItem(menuItem)
-
-        case .noteSortAlphaAscMenuItem, .noteSortAlphaDescMenuItem,
-             .noteSortCreateNewestMenuItem, .noteSortCreateOldestMenuItem,
-             .noteSortModifyNewestMenuItem, .noteSortModifyOldestMenuItem:
-
-            return validateNotesSortModeMenuItem(menuItem)
-
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
 
@@ -387,27 +341,12 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         case .systemTrashMenuItem:
             return validateSystemTrashMenuItem(menuItem)
 
-        case .tagSortMenuItem:
-            return validateTagSortMenuItem(menuItem)
-
-        case .themeDarkMenuItem, .themeLightMenuItem, .themeSystemMenuItem:
-            return validateThemeMenuItem(menuItem)
-
         case .toggleMarkdownPreview:
             return validateToogleMarkdownPreviewItem(menuItem)
 
         default:
             return true
         }
-    }
-
-    func validateLineLengthMenuItem(_ item: NSMenuItem) -> Bool {
-        let isFullItem = item.identifier == .lineFullMenuItem
-        let isFullEnabled = Options.shared.editorFullWidth
-
-        item.state = isFullItem == isFullEnabled ? .on : .off
-
-        return true
     }
 
     func validateEmptyTrashMenuItem(_ item: NSMenuItem) -> Bool {
@@ -437,35 +376,6 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
         item.title = Options.shared.statusBarHidden
                         ? NSLocalizedString("Show Status Bar", comment: "macOS MenuItem that causes the Status Bar to be visible")
                         : NSLocalizedString("Hide Status Bar", comment: "macOS MenuItem that causes the Status Bar to be hidden")
-        return true
-    }
-
-    func validateNotesDisplayMenuItem(_ item: NSMenuItem) -> Bool {
-        let isCondensedItem = item.identifier == .noteDisplayCondensedMenuItem
-        let isCondensedEnabled = Options.shared.notesListCondensed
-
-        item.state = isCondensedItem == isCondensedEnabled ? .on : .off
-
-        return true
-    }
-
-    func validateNotesSortModeMenuItem(_ item: NSMenuItem) -> Bool {
-        let isSelected = Options.shared.notesListSortMode.noteListInterfaceID == item.identifier
-        item.state = isSelected ? .on : .off
-        return true
-    }
-
-    func validateTagSortMenuItem(_ item: NSMenuItem) -> Bool {
-        item.state = Options.shared.alphabeticallySortTags ? .on : .off
-        return true
-    }
-
-    func validateThemeMenuItem(_ item: NSMenuItem) -> Bool {
-        guard let option = ThemeOption(rawValue: item.tag) else {
-            return false
-        }
-
-        item.state = SPUserInterface.activeThemeOption == option ? .on : .off
         return true
     }
 

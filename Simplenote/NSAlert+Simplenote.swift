@@ -9,7 +9,7 @@ extension NSAlert {
 
     static func presentAlert(withMessageText messageText: String,
                              informativeText: String,
-                             for window: Window,
+                             for window: NSWindow,
                              onCompletion: ((NSApplication.ModalResponse) -> Void)? = nil) {
         let alert = NSAlert(messageText: messageText, informativeText: informativeText)
         alert.beginSheetModal(for: window, completionHandler: onCompletion)
