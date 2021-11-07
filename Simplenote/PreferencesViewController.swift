@@ -320,7 +320,11 @@ private struct Strings {
     static let linkText = NSLocalizedString("About Analytics and Privacy", comment: "A link to more information about our privacy policy")
     static func privacyLink() -> NSMutableAttributedString {
         let link = NSMutableAttributedString(string: linkText)
-        link.addAttribute(.link, value: "https://automattic.com/privacy/", range: link.fullRange)
+
+        link.addAttributes([
+            .link : "https://automattic.com/privacy/",
+            .font : NSFont.systemFont(ofSize: 13)
+        ], range: link.fullRange)
 
         return link
     }
