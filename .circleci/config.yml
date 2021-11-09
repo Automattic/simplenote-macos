@@ -44,7 +44,7 @@ jobs:
           #
           # See
           # https://app.circleci.com/pipelines/github/Automattic/simplenote-macos/2363/workflows/c0aa85a0-837b-4e3f-bcda-252a273bf008/jobs/2738
-          no_output_timeout: 1m
+          no_output_timeout: 3m
 
   Verify App Store Target Builds:
     executor: *xcode_image
