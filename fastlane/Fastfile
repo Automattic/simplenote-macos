@@ -121,7 +121,6 @@ end
     ios_bump_version_release()
     new_version = ios_get_app_version()
     ios_update_release_notes(new_version: new_version)
-    get_prs_list(repository:GHHELPER_REPO, milestone: new_version, report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list_#{old_version}_#{new_version}.txt")
     setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
     setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
 
@@ -418,11 +417,4 @@ end
       job_params: { app_store_build: true }
     )
   end
-
-########################################################################
-# Helper Lanes
-########################################################################
-desc "Get a list of pull request from `start_tag` to the current state"
-lane :get_pullrequests_list do | options |
-  get_prs_list(repository:GHHELPER_REPO, start_tag:"#{options[:start_tag]}", report_path:"#{File.expand_path('~')}/simplenotemacos_prs_list.txt")
-end
+  
