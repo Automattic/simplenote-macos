@@ -14,6 +14,7 @@ ENV["PROJECT_ROOT_FOLDER"]="./"
 ENV['APP_STORE_STRINGS_FILE_NAME']='AppStoreStrings.pot'
 ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
 ENV["DOWNLOAD_METADATA"]="./fastlane/download_metadata.swift"
+ENV['FL_RELEASE_TOOLKIT_DEFAULT_BRANCH'] = 'trunk'
 
 USER_ENV_FILE_PATH = File.join(Dir.home, '.simplenotemacos-env.default')
 
@@ -114,7 +115,7 @@ end
   # bundle exec fastlane code_freeze
   # bundle exec fastlane code_freeze skip_confirm:true
   #####################################################################################
-  desc "Creates a new release branch from the current develop"
+  desc "Creates a new release branch from the current trunk"
   lane :code_freeze do | options |
     old_version = ios_codefreeze_prechecks(options)
 
@@ -234,7 +235,7 @@ end
     UI.user_error!('To finalize a hotfix, please use the finalize_hotfix_release lane instead') if ios_current_branch_is_hotfix
 
     ios_finalize_prechecks(options)
-    
+
     ios_update_metadata(options)
     ios_bump_version_beta()
 
@@ -417,4 +418,4 @@ end
       job_params: { app_store_build: true }
     )
   end
-  
+
