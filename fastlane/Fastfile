@@ -410,12 +410,10 @@ end
   # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
   #############################################################################
   lane :trigger_release_build do | options |
-    circleci_trigger_job(
-      circle_ci_token: ENV["CIRCLE_CI_AUTH_TOKEN"],
-      repository: REPOSITORY_NAME,
-      organization: ORGANIZATION_NAME,
-      branch: options[:branch_to_build],
-      job_params: { app_store_build: true }
+    buildkite_trigger_build(
+      buildkite_organization: 'automattic',
+      buildkite_pipeline: 'simplenote-macos',
+      branch: options[:branch_to_build] || git_branch,
+      pipeline_file: 'release-builds.yml'
     )
   end
-
