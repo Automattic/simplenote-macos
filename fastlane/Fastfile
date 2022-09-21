@@ -306,21 +306,7 @@ end
     sh("rake dependencies:pod:clean")
     cocoapods()
 
-    # This allows code signing to work on CircleCI. It is skipped if this isn't
-    # running on CI.
-    #
-    # See https://circleci.com/docs/2.0/ios-codesigning/
-    setup_circle_ci
-
-    sync_code_signing(
-      type: 'appstore',
-      platform: 'macos',
-      # This Mac app also needs a Mac Installer Distribution certificate
-      additional_cert_types: ['mac_installer_distribution'],
-      readonly: true,
-      app_identifier: 'com.automattic.SimplenoteMac',
-      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
-    )
+    fetch_code_signing_credentials
 
     archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
     build_simplenote(codesign: true, archive_path: archive_path)
@@ -364,6 +350,24 @@ end
         prerelease: options[:prerelease],
       )
     end
+  end
+
+  lane :fetch_code_signing_credentials do
+    # This allows code signing to work on CircleCI. It is skipped if this isn't
+    # running on CI.
+    #
+    # See https://circleci.com/docs/2.0/ios-codesigning/
+    setup_circle_ci
+
+    sync_code_signing(
+      type: 'appstore',
+      platform: 'macos',
+      # This Mac app also needs a Mac Installer Distribution certificate
+      additional_cert_types: ['mac_installer_distribution'],
+      readonly: true,
+      app_identifier: 'com.automattic.SimplenoteMac',
+      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
+    )
   end
 
   # Temporary lane to automate the process of uploading the .app manually
