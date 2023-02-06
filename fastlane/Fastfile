@@ -25,6 +25,7 @@ INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote-AppStore'
 BUILD_FOLDER = 'build'
 APP_STORE_CONNECT_API_KEY_PATH = File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'app_store_connect_fastlane_api_key.json')
+APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
 
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
@@ -364,6 +365,31 @@ end
         prerelease: options[:prerelease],
       )
     end
+  end
+
+  # Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
+  #
+  # @option [Boolean] with_screenshots (default: false) If true, will also upload the latest screenshot files to ASC
+  #
+  desc 'Upload the localized metadata to App Store Connect, optionally including screenshots.'
+  lane :update_metadata_on_app_store_connect do |options|
+    # Skip screenshots by default. The naming is "with" to make it clear that
+    # callers need to opt-in to adding screenshots. The naming of the deliver
+    # (upload_to_app_store) parameter, on the other hand, uses the skip verb.
+    with_screenshots = options.fetch(:with_screenshots, false)
+    skip_screenshots = !with_screenshots
+
+    upload_to_app_store(
+      app_identifier: APP_STORE_BUNDLE_IDENTIFIER,
+      app_version: ios_get_app_version,
+      skip_binary_upload: true,
+      screenshots_path: './screenshots/',
+      skip_screenshots: skip_screenshots,
+      overwrite_screenshots: true, # won't have effect if `skip_screenshots` is true
+      phased_release: true,
+      precheck_include_in_app_purchases: false,
+      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
+    )
   end
 
   # Temporary lane to automate the process of uploading the .app manually
