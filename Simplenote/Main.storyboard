@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -475,6 +475,12 @@
                                 <action selector="copyInterlinkWasPressed:" target="JtV-0Z-Zh8" id="mP7-0c-YCD"/>
                             </connections>
                         </menuItem>
+                        <menuItem title="Duplicate Note" identifier="listDuplicateNoteMenuItem" id="Il6-D0-o4Q" userLabel="Duplicate Note">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="duplicateNote:" target="JtV-0Z-Zh8" id="XN8-bg-PpF"/>
+                            </connections>
+                        </menuItem>
                         <menuItem title="Move to Trash" identifier="listTrashNoteMenuItem" id="sEB-rr-DQo" userLabel="Delete Note">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -844,7 +850,7 @@
                             <rect key="frame" x="0.0" y="12" width="528" height="25"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dTq-DR-Qae">
                                 <rect key="frame" x="0.0" y="0.0" width="528" height="25"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <tokenField horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="462" placeholderIntrinsicHeight="25" mirrorLayoutDirectionWhenInternationalizing="always" translatesAutoresizingMaskIntoConstraints="NO" id="U3o-VN-U2S" customClass="TagsField" customModule="Simplenote" customModuleProvider="target">
                                         <rect key="frame" x="-2" y="0.0" width="466" height="25"/>
@@ -896,8 +902,11 @@
                         </menuItem>
                         <menuItem title="Copy Internal Link" identifier="editorCopyInterlinkMenuItem" id="6b8-Xr-2VS">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="Duplicate Note" identifier="editorDuplicateNoteMenuItem" id="C5L-kt-xCZ" userLabel="Duplicate Note">
+                            <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="copyInterlinkWasPressedWithSender:" target="owM-kh-Bm6" id="Qda-6t-kVe"/>
+                                <action selector="duplicateNoteWasPressed:" target="owM-kh-Bm6" id="Fcv-fy-ayu"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Share" identifier="editorShareMenuItem" id="AAE-bz-XTn">

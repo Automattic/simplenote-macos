@@ -373,6 +373,9 @@ extension NoteEditorViewController: NSMenuItemValidation {
         case .editorCopyInterlinkMenuItem:
             return validateEditorCopyInterlinkMenuItem(menuItem)
 
+        case .editorDuplicateNoteMenuItem:
+            return validateSystemDuplicateNoteMenuItem(menuItem)
+
         case .editorPinMenuItem:
             return validateEditorPinMenuItem(menuItem)
 
@@ -394,6 +397,9 @@ extension NoteEditorViewController: NSMenuItemValidation {
         case .editorCollaborateMenuItem:
             return validateEditorCollaborateMenuItem(menuItem)
 
+        case .systemDuplicateNoteMenuItem:
+            return validateSystemDuplicateNoteMenuItem(menuItem)
+
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
 
@@ -414,6 +420,12 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
     func validateEditorCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
+        return isDisplayingNote
+    }
+
+    func validateListDuplicateNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        // TODO: Add localization keys+values for this new item
+        item.title = NSLocalizedString("Duplicate Note", comment: "Duplicate Note List Action")
         return isDisplayingNote
     }
 
@@ -454,6 +466,10 @@ extension NoteEditorViewController: NSMenuItemValidation {
     func validateEditorCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Collaborate", comment: "Collaborate Menu Action")
         return isDisplayingNote
+    }
+
+    func validateSystemDuplicateNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        return isDisplayingNote && !viewingTrash
     }
 
     func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {

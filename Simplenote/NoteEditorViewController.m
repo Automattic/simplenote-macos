@@ -385,31 +385,13 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (IBAction)newNoteWasPressed:(id)sender
 {
     [SPTracker trackEditorNoteCreated];
+    [self createNoteWasPressed:nil];
+}
 
-    // Save current note first
-    self.note.content = [self.noteEditor plainTextContent];
-    [self save];
-
-    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
-    [appDelegate ensureMainWindowIsVisible:nil];
-
-    Simperium *simperium = appDelegate.simperium;
-    Note *newNote = [simperium.notesBucket insertNewObject];
-    newNote.modificationDate = [NSDate date];
-    newNote.creationDate = [NSDate date];
-    newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
-    
-    NSString *currentTag = [appDelegate selectedTagName];
-    if ([currentTag length] > 0) {
-        [newNote addTag:currentTag];
-    }
-
-    [simperium save];
-
-    [self displayNote:newNote];
-    [self.noteActionsDelegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
-
-    [self.view.window makeFirstResponder:self.noteEditor];
+- (IBAction)duplicateNoteWasPressed:(id)sender
+{
+    // TODO: Set correct analytic event
+    [self duplicateNote:nil];
 }
 
 - (IBAction)deleteAction:(id)sender
@@ -598,5 +580,51 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
         [SPTracker trackShortcutToggleChecklist];
     }
 }
+
+#pragma mark - New Note
+
+- (void)duplicateNote:(nullable Note *)sender
+{
+    if (sender != nil) {
+        [self createNoteWasPressed:sender];
+    } else {
+        [self createNoteWasPressed:self.note];
+    }
+}
+
+- (void) createNoteWasPressed:(nullable Note *)sender {
+
+    // Save current note first
+    self.note.content = [self.noteEditor plainTextContent];
+    [self save];
+
+    SimplenoteAppDelegate *appDelegate = [SimplenoteAppDelegate sharedDelegate];
+    [appDelegate ensureMainWindowIsVisible:nil];
+
+    Simperium *simperium = appDelegate.simperium;
+    Note *newNote = [simperium.notesBucket insertNewObject];
+    newNote.modificationDate = [NSDate date];
+    newNote.creationDate = [NSDate date];
+    newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
+
+    if (sender != nil) {
+        newNote.content = sender.content;
+        newNote.tags = sender.tags;
+        newNote.tagsArray = sender.tagsArray;
+    }
+
+    NSString *currentTag = [appDelegate selectedTagName];
+    if ([currentTag length] > 0) {
+        [newNote addTag:currentTag];
+    }
+
+    [simperium save];
+
+    [self displayNote:newNote];
+    [self.noteActionsDelegate editorController:self addedNoteWithSimperiumKey:newNote.simperiumKey];
+
+    [self.view.window makeFirstResponder:self.noteEditor];
+}
+
 
 @end
