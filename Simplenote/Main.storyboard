@@ -902,6 +902,9 @@
                         </menuItem>
                         <menuItem title="Copy Internal Link" identifier="editorCopyInterlinkMenuItem" id="6b8-Xr-2VS">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="copyInterlinkWasPressedWithSender:" target="owM-kh-Bm6" id="zmB-H6-hW4"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="Duplicate Note" identifier="editorDuplicateNoteMenuItem" id="C5L-kt-xCZ" userLabel="Duplicate Note">
                             <modifierMask key="keyEquivalentModifierMask"/>
