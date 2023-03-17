@@ -14,6 +14,10 @@ class MainWindowController: NSWindowController {
     ///
     override var contentViewController: NSViewController? {
         didSet {
+            if let splitVC = contentViewController as? SplitViewController {
+                updateMinContentWidth(isEditorMode: splitVC.isFocusModeEnabled)
+            }
+
             setupAutosave()
         }
     }
@@ -30,6 +34,7 @@ class MainWindowController: NSWindowController {
         setupMainWindow()
         relocateSemaphoreButtons()
         startListeningToFullscreenNotifications()
+        startListeningToNotifications()
     }
 }
 
@@ -69,6 +74,18 @@ private extension MainWindowController {
         nc.addObserver(self, selector: #selector(willEnterFullscreen), name: NSWindow.willEnterFullScreenNotification, object: simplenoteWindow)
         nc.addObserver(self, selector: #selector(willExitFullscreen), name: NSWindow.willExitFullScreenNotification, object: simplenoteWindow)
     }
+
+    /// We'll need to start to listen when the Split View change the state
+    ///
+    func startListeningToNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMinContentSize(_:)), name: .SplitViewStateDidChange, object: nil)
+    }
+
+    /// Update the min content size of the Main Window, to resize the screen correctly
+    /// 
+    func updateMinContentWidth(isEditorMode: Bool) {
+        simplenoteWindow.contentMinSize = NSSize(width: isEditorMode ? MainWindowMetrics.mainMinWidthInEditorMode : MainWindowMetrics.mainMinWidth, height: MainWindowMetrics.mainMinHeight)
+    }
 }
 
 
@@ -101,6 +118,13 @@ extension MainWindowController {
     func willExitFullscreen() {
         relocateSemaphoreButtons()
     }
+
+    @objc
+    func updateMinContentSize(_ notification: Notification) {
+        let isEditorMode = notification.userInfo?["isEditorMode"] as? Bool
+
+        updateMinContentWidth(isEditorMode: isEditorMode == true)
+    }
 }
 
 
@@ -109,4 +133,12 @@ extension MainWindowController {
 private enum Metrics {
     static let semaphoreButtonPaddingX: CGFloat = 7
     static var semaphoreButtonPositionY: CGFloat = 18
+}
+
+// MARK: - MainWindow's Metrics
+//
+private enum MainWindowMetrics {
+    static let mainMinHeight: CGFloat = 400.0
+    static let mainMinWidth: CGFloat = 720.0
+    static let mainMinWidthInEditorMode: CGFloat = 300.0
 }

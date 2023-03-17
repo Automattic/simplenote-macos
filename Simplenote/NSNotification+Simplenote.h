@@ -15,3 +15,4 @@ extern NSString * const StatusBarDisplayModeDidChangeNotification;
 extern NSString * const TagSortModeDidChangeNotification;
 extern NSString * const ThemeDidChangeNotification;
 extern NSString * const FontSizeDidChangeNotification;
+extern NSString * const SplitViewStateDidChangeNotification;
