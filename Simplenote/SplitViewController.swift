@@ -170,6 +170,8 @@ private extension SplitViewController {
         if notesSplitItem.isCollapsed != state.isNotesCollapsed {
             notesSplitItem.animator().isCollapsed = state.isNotesCollapsed
         }
+
+        NotificationCenter.default.post(name: .SplitViewStateDidChange, object: nil, userInfo: ["isEditorMode": isFocusModeEnabled])
     }
 
     func restorePreviousState() -> Bool {
@@ -227,7 +229,7 @@ extension SplitViewController {
 
 // MARK: - SplitState: Represents the Internal SplitView State
 //
-private enum SplitState {
+private enum SplitState: String {
     case everything
     case tagsCollapsed
     case editor
