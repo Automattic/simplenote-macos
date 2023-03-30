@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)newNoteWasPressed:(id)sender;
 - (IBAction)duplicateNoteWasPressed:(id)sender;
-- (void)duplicateNote:(nullable Note *)sender;
+- (void)duplicateNoteWasPressed;
 - (void)save;
 - (void)displayNote:(nullable Note *)selectedNote;
 - (void)displayNotes:(NSArray<Note *> *)selectedNotes;

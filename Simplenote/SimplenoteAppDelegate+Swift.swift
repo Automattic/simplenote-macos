@@ -183,7 +183,7 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func duplicateNote(_ sender: Any) {
-        noteEditorViewController.duplicateNote(nil)
+        noteEditorViewController.duplicateNoteWasPressed()
         // TODO: Set correct analytic event
     }
 
@@ -342,7 +342,7 @@ extension SimplenoteAppDelegate: NSMenuItemValidation {
             return validateSystemNewNoteMenuItem(menuItem)
 
         case .systemDuplicateNoteMenuItem:
-            return validateSystemNewNoteMenuItem(menuItem)
+            return validateSystemDuplicateNoteMenuItem(menuItem)
 
         case .systemPrintMenuItem:
             return validateSystemPrintMenuItem(menuItem)

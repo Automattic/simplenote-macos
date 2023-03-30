@@ -116,7 +116,7 @@
                                     <action selector="newNoteWasPressed:" target="494" id="kR0-1Q-w9M"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Duplicate" keyEquivalent="d" identifier="systemNewNoteMenuItem" id="T6H-IV-fBg">
+                            <menuItem title="Duplicate" keyEquivalent="d" identifier="systemDuplicateNoteMenuItem" id="T6H-IV-fBg">
                                 <attributedString key="userComments">
                                     <fragment content="Adds a New Note"/>
                                 </attributedString>

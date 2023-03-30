@@ -735,7 +735,6 @@ extension NoteListViewController: NSMenuItemValidation {
     }
 
     func validateListDuplicateNoteMenuItem(_ item: NSMenuItem) -> Bool {
-        // TODO: Add localization keys+values for this new item
         item.title = NSLocalizedString("Duplicate Note", comment: "Duplicate Note List Action")
         return isSelectionNotEmpty
     }
@@ -856,11 +855,11 @@ extension NoteListViewController {
 
     @IBAction
     func duplicateNote(_ sender: Any) {
-        guard let note = selectedNotes.first else {
+        guard selectedNotes.first != nil else {
             return
         }
 
-        noteEditorViewController.duplicateNote(note)
+        noteEditorViewController.duplicateNoteWasPressed()
         // TODO: Set correct analytic event
     }
 

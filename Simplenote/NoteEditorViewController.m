@@ -385,13 +385,13 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 - (IBAction)newNoteWasPressed:(id)sender
 {
     [SPTracker trackEditorNoteCreated];
-    [self createNoteWasPressed:nil];
+    [self createNoteFromNote:nil];
 }
 
 - (IBAction)duplicateNoteWasPressed:(id)sender
 {
     // TODO: Set correct analytic event
-    [self duplicateNote:nil];
+    [self duplicateNoteWasPressed];
 }
 
 - (IBAction)deleteAction:(id)sender
@@ -583,16 +583,12 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - New Note
 
-- (void)duplicateNote:(nullable Note *)sender
+- (void)duplicateNoteWasPressed
 {
-    if (sender != nil) {
-        [self createNoteWasPressed:sender];
-    } else {
-        [self createNoteWasPressed:self.note];
-    }
+    [self createNoteFromNote:self.note];
 }
 
-- (void) createNoteWasPressed:(nullable Note *)sender {
+- (void) createNoteFromNote:(nullable Note *)oldNote {
 
     // Save current note first
     self.note.content = [self.noteEditor plainTextContent];
@@ -607,10 +603,10 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     newNote.creationDate = [NSDate date];
     newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
 
-    if (sender != nil) {
-        newNote.content = sender.content;
-        newNote.tags = sender.tags;
-        newNote.tagsArray = sender.tagsArray;
+    if (oldNote != nil) {
+        newNote.content = oldNote.content;
+        newNote.tags = oldNote.tags;
+        newNote.tagsArray = oldNote.tagsArray;
     }
 
     NSString *currentTag = [appDelegate selectedTagName];
