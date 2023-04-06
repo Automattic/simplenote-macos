@@ -390,8 +390,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)duplicateNoteWasPressed:(id)sender
 {
-    [self duplicateNoteWasPressed];
     [SPTracker trackEditorNoteDuplicated];
+    [self duplicateCurrentNote];
 }
 
 - (IBAction)deleteAction:(id)sender
@@ -583,12 +583,12 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - New Note
 
-- (void)duplicateNoteWasPressed
+- (void)duplicateCurrentNote
 {
     [self createNoteFromNote:self.note];
 }
 
-- (void) createNoteFromNote:(nullable Note *)oldNote {
+- (void)createNoteFromNote:(nullable Note *)oldNote {
 
     // Save current note first
     self.note.content = [self.noteEditor plainTextContent];

@@ -859,7 +859,7 @@ extension NoteListViewController {
             return
         }
 
-        noteEditorViewController.duplicateNoteWasPressed()
+        noteEditorViewController.duplicateCurrentNote()
         SPTracker.trackListNoteDuplicated()
     }
 
