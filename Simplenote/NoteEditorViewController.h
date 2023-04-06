@@ -76,6 +76,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSObject                                *searchQuery;
 
 - (IBAction)newNoteWasPressed:(id)sender;
+- (IBAction)duplicateNoteWasPressed:(id)sender;
+- (void)duplicateNoteWasPressed;
 - (void)save;
 - (void)displayNote:(nullable Note *)selectedNote;
 - (void)displayNotes:(NSArray<Note *> *)selectedNotes;

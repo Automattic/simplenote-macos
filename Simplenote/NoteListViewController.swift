@@ -707,6 +707,9 @@ extension NoteListViewController: NSMenuItemValidation {
         case .listDeleteForeverMenuItem:
             return validateListDeleteForeverMenuItem(menuItem)
 
+        case .listDuplicateNoteMenuItem:
+            return validateListDuplicateNoteMenuItem(menuItem)
+
         case .listPinMenuItem:
             return validateListPinMenuItem(menuItem)
 
@@ -728,6 +731,11 @@ extension NoteListViewController: NSMenuItemValidation {
 
     func validateListDeleteForeverMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Delete Forever", comment: "Delete Forever List Action")
+        return isSelectionNotEmpty
+    }
+
+    func validateListDuplicateNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Duplicate Note", comment: "Duplicate Note List Action")
         return isSelectionNotEmpty
     }
 
@@ -843,6 +851,16 @@ extension NoteListViewController {
         simperium.save()
 
         SPTracker.trackListNoteDeletedForever()
+    }
+
+    @IBAction
+    func duplicateNote(_ sender: Any) {
+        guard selectedNotes.first != nil else {
+            return
+        }
+
+        noteEditorViewController.duplicateNoteWasPressed()
+        // TODO: Set correct analytic event
     }
 
     @IBAction

@@ -373,6 +373,9 @@ extension NoteEditorViewController: NSMenuItemValidation {
         case .editorCopyInterlinkMenuItem:
             return validateEditorCopyInterlinkMenuItem(menuItem)
 
+        case .editorDuplicateNoteMenuItem:
+            return validateEditorDuplicateNoteMenuItem(menuItem)
+
         case .editorPinMenuItem:
             return validateEditorPinMenuItem(menuItem)
 
@@ -393,6 +396,9 @@ extension NoteEditorViewController: NSMenuItemValidation {
 
         case .editorCollaborateMenuItem:
             return validateEditorCollaborateMenuItem(menuItem)
+
+        case .systemDuplicateNoteMenuItem:
+            return validateSystemDuplicateNoteMenuItem(menuItem)
 
         case .systemNewNoteMenuItem:
             return validateSystemNewNoteMenuItem(menuItem)
@@ -415,6 +421,11 @@ extension NoteEditorViewController: NSMenuItemValidation {
     func validateEditorCopyInterlinkMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Copy Internal Link", comment: "Copy Link Menu Action")
         return isDisplayingNote
+    }
+
+    func validateEditorDuplicateNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        item.title = NSLocalizedString("Duplicate Note", comment: "Duplicate Note List Action")
+        return isDisplayingNote && selectedNotes.count == 1
     }
 
     func validateEditorPinMenuItem(_ item: NSMenuItem) -> Bool {
@@ -454,6 +465,10 @@ extension NoteEditorViewController: NSMenuItemValidation {
     func validateEditorCollaborateMenuItem(_ item: NSMenuItem) -> Bool {
         item.title = NSLocalizedString("Collaborate", comment: "Collaborate Menu Action")
         return isDisplayingNote
+    }
+
+    func validateSystemDuplicateNoteMenuItem(_ item: NSMenuItem) -> Bool {
+        return isDisplayingNote && !viewingTrash && selectedNotes.count == 1
     }
 
     func validateSystemNewNoteMenuItem(_ item: NSMenuItem) -> Bool {
