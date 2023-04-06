@@ -390,8 +390,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)duplicateNoteWasPressed:(id)sender
 {
-    // TODO: Set correct analytic event
     [self duplicateNoteWasPressed];
+    [SPTracker trackEditorNoteDuplicated];
 }
 
 - (IBAction)deleteAction:(id)sender

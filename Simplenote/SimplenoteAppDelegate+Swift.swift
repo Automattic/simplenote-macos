@@ -183,8 +183,8 @@ extension SimplenoteAppDelegate {
 
     @IBAction
     func duplicateNote(_ sender: Any) {
-        noteEditorViewController.duplicateNoteWasPressed()
-        // TODO: Set correct analytic event
+        noteEditorViewController.duplicateCurrentNote()
+        SPTracker.trackShortcutDuplicateNote()
     }
 
     @IBAction

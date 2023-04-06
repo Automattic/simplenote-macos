@@ -71,6 +71,11 @@
     [self trackAutomatticEventWithName:@"editor_note_deleted" properties:nil];
 }
 
++ (void)trackEditorNoteDuplicated
+{
+    [self trackAutomatticEventWithName:@"editor_note_duplicated" properties:nil];
+}
+
 + (void)trackEditorNoteRestored
 {
     [self trackAutomatticEventWithName:@"editor_note_restored" properties:nil];
@@ -140,6 +145,11 @@
 + (void)trackListNoteDeletedForever
 {
     [self trackAutomatticEventWithName:@"list_note_deleted_forever" properties:nil];
+}
+
++ (void)trackListNoteDuplicated
+{
+    [self trackAutomatticEventWithName:@"list_note_duplicated" properties:nil];
 }
 
 + (void)trackListNotePinningToggled
