@@ -859,8 +859,8 @@ extension NoteListViewController {
             return
         }
 
-        noteEditorViewController.duplicateNoteWasPressed()
-        // TODO: Set correct analytic event
+        noteEditorViewController.duplicateCurrentNote()
+        SPTracker.trackListNoteDuplicated()
     }
 
     @IBAction

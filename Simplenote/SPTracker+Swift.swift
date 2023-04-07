@@ -63,6 +63,10 @@ extension SPTracker {
         trackShortcut("create_note")
     }
 
+    static func trackShortcutDuplicateNote() {
+        trackShortcut("duplicate_note")
+    }
+
     static func trackShortcutToggleMarkdownPreview() {
         trackShortcut("markdown")
     }

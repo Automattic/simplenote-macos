@@ -12,7 +12,7 @@ extension NSUserInterfaceItemIdentifier {
 
     /// Identifiers: System Menu
     ///
-    static let systemDuplicateNoteMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "systemDuplicateNoteMenuItem")
+    static let systemDuplicateNoteMenuItem  = NSUserInterfaceItemIdentifier(rawValue: "systemDuplicateNoteMenuItem")
     static let systemNewNoteMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "systemNewNoteMenuItem")
     static let systemTrashMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "systemTrashMenuItem")
     static let systemPrintMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "systemPrintMenuItem")
@@ -37,7 +37,7 @@ extension NSUserInterfaceItemIdentifier {
     ///
     static let listCopyInterlinkMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "listCopyInterlinkMenuItem")
     static let listDeleteForeverMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "listDeleteForeverMenuItem")
-    static let listDuplicateNoteMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "listDuplicateNoteMenuItem")
+    static let listDuplicateNoteMenuItem    = NSUserInterfaceItemIdentifier(rawValue: "listDuplicateNoteMenuItem")
     static let listPinMenuItem              = NSUserInterfaceItemIdentifier(rawValue: "listPinMenuItem")
     static let listRestoreNoteMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "listRestoreNoteMenuItem")
     static let listTrashNoteMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "listTrashNoteMenuItem")
@@ -46,7 +46,7 @@ extension NSUserInterfaceItemIdentifier {
     ///
     static let editorPinMenuItem            = NSUserInterfaceItemIdentifier(rawValue: "editorPinMenuItem")
     static let editorChecklistMenuItem      = NSUserInterfaceItemIdentifier(rawValue: "editorChecklistMenuItem")
-    static let editorDuplicateNoteMenuItem        = NSUserInterfaceItemIdentifier(rawValue: "editorDuplicateNoteMenuItem")
+    static let editorDuplicateNoteMenuItem  = NSUserInterfaceItemIdentifier(rawValue: "editorDuplicateNoteMenuItem")
     static let editorMarkdownMenuItem       = NSUserInterfaceItemIdentifier(rawValue: "editorMarkdownMenuItem")
     static let editorCopyInterlinkMenuItem  = NSUserInterfaceItemIdentifier(rawValue: "editorCopyInterlinkMenuItem")
     static let editorShareMenuItem          = NSUserInterfaceItemIdentifier(rawValue: "editorShareMenuItem")

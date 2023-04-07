@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackEditorChecklistInserted;
 + (void)trackEditorNoteCreated;
 + (void)trackEditorNoteDeleted;
++ (void)trackEditorNoteDuplicated;
 + (void)trackEditorNoteRestored;
 + (void)trackEditorNotePublished;
 + (void)trackEditorNoteUnpublished;
@@ -46,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)trackListCopiedInternalLink;
 + (void)trackListNoteDeleted;
 + (void)trackListNoteDeletedForever;
++ (void)trackListNoteDuplicated;
 + (void)trackListNotePinningToggled;
 + (void)trackListNoteRestored;
 + (void)trackListNoteOpened;

@@ -390,8 +390,8 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 - (IBAction)duplicateNoteWasPressed:(id)sender
 {
-    // TODO: Set correct analytic event
-    [self duplicateNoteWasPressed];
+    [SPTracker trackEditorNoteDuplicated];
+    [self duplicateCurrentNote];
 }
 
 - (IBAction)deleteAction:(id)sender
@@ -583,12 +583,12 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
 #pragma mark - New Note
 
-- (void)duplicateNoteWasPressed
+- (void)duplicateCurrentNote
 {
     [self createNoteFromNote:self.note];
 }
 
-- (void) createNoteFromNote:(nullable Note *)oldNote {
+- (void)createNoteFromNote:(nullable Note *)oldNote {
 
     // Save current note first
     self.note.content = [self.noteEditor plainTextContent];
@@ -601,12 +601,14 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
     Note *newNote = [simperium.notesBucket insertNewObject];
     newNote.modificationDate = [NSDate date];
     newNote.creationDate = [NSDate date];
-    newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
 
     if (oldNote != nil) {
         newNote.content = oldNote.content;
         newNote.tags = oldNote.tags;
         newNote.tagsArray = oldNote.tagsArray;
+        newNote.markdown = oldNote.markdown;
+    } else {
+        newNote.markdown = [[NSUserDefaults standardUserDefaults] boolForKey:SPMarkdownPreferencesKey];
     }
 
     NSString *currentTag = [appDelegate selectedTagName];
