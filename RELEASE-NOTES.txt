@@ -1,3 +1,7 @@
+2.19
+-----
+
+
 2.18
 -----
 - Added preferences menu to centralize app options and customizations #1042
