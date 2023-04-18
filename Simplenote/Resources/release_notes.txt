@@ -1,1 +1,1 @@
-- Bug fixes
+Added preferences menu to centralize app options and customizations.
