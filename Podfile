@@ -3,7 +3,7 @@ source 'https://cdn.cocoapods.org/'
 inhibit_all_warnings!
 use_frameworks!
 
-APP_MACOS_DEPLOYMENT_TARGET = Gem::Version.new('13.0')
+APP_MACOS_DEPLOYMENT_TARGET = Gem::Version.new('10.14')
 
 platform :osx, APP_MACOS_DEPLOYMENT_TARGET
 workspace 'Simplenote.xcworkspace'
