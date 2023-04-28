@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
+/* Translation-Revision-Date: 2023-04-27 09:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: id */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- Kata sandi tidak boleh sama dengan email";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "Tentang Analitik dan Privasi";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Dibutuhkan Verifikasi Akun";
+
+/* Account label */
+"Account:" = "Akun:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Tambahkan alamat email sebagai tag untuk membagikan catatan ini kepada seseorang. Selanjutnya Anda dan pengguna yang diberi akses dapat membuat perubahan.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Kata Sandi yang Disusupi";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Daftar Catatan Ringkas";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Konfirmasi";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Dibuat: Paling lama";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Gelap";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Hapus Akun";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Hentikan";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Duplikasi Catatan";
 
 /* Placeholder text for login field */
 "Email" = "Email";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Lupa kata sandi?";
 
+/* Full line length button label */
+"Full" = "Penuh";
+
 /* FAQ or contact us */
 "Get Help" = "Dapatkan Bantuan";
 
 /* Back Button Title */
 "Go Back" = "kembali";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Bantu kami menyempurnakan Simplenote dengan mengirimkan data analitik secara otomatis dari perangkat ini. Termasuk di antaranya adalah data tentang penggunaan umum di aplikasi, kecuali informasi pribadi.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Sembunyikan Bilah sisi";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Terakhir diubah";
 
+/* Light theme name */
+"Light" = "Terang";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Masuk";
+
+/* Log out button label */
+"Log Out" = "Logout";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Log masuk dengan WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Nama: Z-A";
 
+/* Narrow line length button label */
+"Narrow" = "Sempit";
+
 /* Link to create an account */
 "Need an account?" = "Memerlukan akun?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Bukan alamat email yang valid";
+
+/* Note line length label */
+"Note line length:" = "Panjang baris catatan:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Urutan catatan:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Sebarkan";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Berbagi analitik";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Bagikan informasi tentang penggunaan layanan Anda dengan alat analisis kami saat login ke akun Simplenote.com Anda.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Lewati";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Urutkan Tag Menurut Abjad";
+
+/* Default system theme name */
+"System Appearance" = "Tampilan Sistem";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Tag...";
 
 /* Tags Section Name */
 "Tags" = "Tag";
 
+/* Text size control label */
+"Text size:" = "Ukuran teks:";
+
 /* Error when address is in use */
 "That email is already being used" = "Email sudah digunakan";
+
+/* Theme label */
+"Theme:" = "Tema:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "Terjadi masalah saat mempersiapkan email verifikasi Anda, silakan coba lagi nanti";

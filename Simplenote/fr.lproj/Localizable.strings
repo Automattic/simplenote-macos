@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
+/* Translation-Revision-Date: 2023-04-25 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n > 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: fr */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- Le mot de passe et l'adresse e-mail ne doivent pas être identiques";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "À propos des données d’analyse et de la confidentialité";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Vérification de compte requise";
+
+/* Account label */
+"Account:" = "Compte :";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Ajoutez une adresse e-mail sous forme d’étiquette pour partager une note avec un tiers. Vous et l’autre personne pouvez alors la modifier tous les deux.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Mot de passe compromis";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Liste de notes condensée";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Confirmer";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Création : Plus anciennes";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Sombre";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Supprimer le compte";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Ignorer";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Dupliquer la remarque";
 
 /* Placeholder text for login field */
 "Email" = "Email";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Mot de passe oublié ?";
 
+/* Full line length button label */
+"Full" = "Complet";
+
 /* FAQ or contact us */
 "Get Help" = "Obtenir de l’aide";
 
 /* Back Button Title */
 "Go Back" = "Retour";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Aidez-nous à améliorer Simplenote en autorisant l’envoi automatique de données d’analyse depuis cet appareil. Il s’agit de données concernant l’utilisation générale de l’application, en aucun cas d’informations personnelles.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Masquer la colonne latérale";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Dernière modification";
 
+/* Light theme name */
+"Light" = "Clair";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Connexion";
+
+/* Log out button label */
+"Log Out" = "Se déconnecter";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Se connecter avec WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Nom : Z-A";
 
+/* Narrow line length button label */
+"Narrow" = "Narrow";
+
 /* Link to create an account */
 "Need an account?" = "Besoin d’un compte ?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Adresse e-mail non valide";
+
+/* Note line length label */
+"Note line length:" = "Longueur de ligne des remarques :";
+
+/* Note Sort Order label */
+"Note sort order:" = "Ordre de tri des remarques :";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Partager";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Partager des analyses";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Partagez les informations avec notre outil d’analyse à propos de votre utilisation des services lorsque vous êtes connecté avec votre compte Simplenote.com.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Sauter";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Trier les étiquettes par ordre alphabétique";
+
+/* Default system theme name */
+"System Appearance" = "Apparence du système";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Étiquette...";
 
 /* Tags Section Name */
 "Tags" = "Étiquettes";
 
+/* Text size control label */
+"Text size:" = "Taille du texte :";
+
 /* Error when address is in use */
 "That email is already being used" = "Cette adresse e-mail est déjà utilisée";
+
+/* Theme label */
+"Theme:" = "Thème&nbsp;:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "Une erreur est survenue lors de la préparation de votre e-mail de vérification, veuillez réessayer ultérieurement";

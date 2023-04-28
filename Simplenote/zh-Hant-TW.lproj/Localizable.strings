@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
+/* Translation-Revision-Date: 2023-04-24 11:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: zh_TW */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- 密碼不能和電子郵件地址相同";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "關於分析和隱私權";
+
 /* Email verification required alert title */
 "Account Verification Required" = "需要驗證帳號";
+
+/* Account label */
+"Account:" = "帳號：";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "新增電子郵件地址做為標籤，將此筆記與他人分享。 這樣雙方都能變更筆記內容。";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "密碼遭洩漏";
 
+/* Condensed note list button label */
+"Condensed Note List" = "精簡版筆記清單";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "確定";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "建立時間：最舊";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "深色系";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "刪除帳號";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "關閉";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "複製筆記";
 
 /* Placeholder text for login field */
 "Email" = "電子郵件";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "忘記密碼？";
 
+/* Full line length button label */
+"Full" = "完整";
+
 /* FAQ or contact us */
 "Get Help" = "取得協助";
 
 /* Back Button Title */
 "Go Back" = "返回";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "從本裝置自動傳送分析資料，協助我們改善 Simplenote。 這包括應用程式一般使用情況的資料，不包括任何個人資訊。";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "隱藏側邊欄";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "上次修改日期";
 
+/* Light theme name */
+"Light" = "淡色系";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "登入";
+
+/* Log out button label */
+"Log Out" = "登出";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "透過 WordPress.com 登入";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "名稱：Z 到 A";
 
+/* Narrow line length button label */
+"Narrow" = "縮窄";
+
 /* Link to create an account */
 "Need an account?" = "需要帳號？";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "電子郵件地址格式不正確";
+
+/* Note line length label */
+"Note line length:" = "筆記行的長度：";
+
+/* Note Sort Order label */
+"Note sort order:" = "筆記排序順序：";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "分享";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "分享分析資料";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "在你登入 Simplenote.com 帳號後，將你的服務使用相關資訊傳送到我們的分析工具。";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "跳過";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "依英文字母排序標籤";
+
+/* Default system theme name */
+"System Appearance" = "系統外觀";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "標籤…";
 
 /* Tags Section Name */
 "Tags" = "標籤";
 
+/* Text size control label */
+"Text size:" = "文字大小：";
+
 /* Error when address is in use */
 "That email is already being used" = "此電子信箱已被使用";
+
+/* Theme label */
+"Theme:" = "佈景:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "你的驗證電子郵件正在準備中，請稍後再試";

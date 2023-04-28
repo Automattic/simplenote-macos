@@ -1,0 +1,1 @@
+Einstellungsmenü für die Zentralisierung von App-Optionen und Anpassungen hinzugefügt.

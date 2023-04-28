@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-08-24 11:32:33+0000 */
+/* Translation-Revision-Date: 2023-04-21 02:10:08+0000 */
 /* Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: cy_GB */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- Password cannot match email";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "About Analytics and Privacy";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Account Verification Required";
+
+/* Account label */
+"Account:" = "Account:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Add an email address as a tag to share this note with someone. Then you can both make changes to it.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Compromised Password";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Rhestr Gryno o Nodiadau";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Cadarnhau";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Created: Oldest";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Dark";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Delete Account";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Dismiss";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Duplicate Note";
 
 /* Placeholder text for login field */
 "Email" = "E-bost";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Forgot your Password?";
 
+/* Full line length button label */
+"Full" = "Full";
+
 /* FAQ or contact us */
 "Get Help" = "Get Help";
 
 /* Back Button Title */
 "Go Back" = "Go Back";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Hide Sidebar";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Last modified";
 
+/* Light theme name */
+"Light" = "Light";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Log In";
+
+/* Log out button label */
+"Log Out" = "Log Out";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Log in with WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Name: Z-A";
 
+/* Narrow line length button label */
+"Narrow" = "Narrow";
+
 /* Link to create an account */
 "Need an account?" = "Need an account?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Not a valid email address";
+
+/* Note line length label */
+"Note line length:" = "Note line length:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Note sort order:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Share";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Share Analytics";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Share information with our analytics tool about your use of services while logged into your Simplenote.com account.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Skip";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Sort Tags Alphabetically";
+
+/* Default system theme name */
+"System Appearance" = "System Appearance";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Tag...";
 
 /* Tags Section Name */
 "Tags" = "Tags";
 
+/* Text size control label */
+"Text size:" = "Text size:";
+
 /* Error when address is in use */
 "That email is already being used" = "That email is already being used";
+
+/* Theme label */
+"Theme:" = "Theme:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "There was an preparing your verification email, please try again later";

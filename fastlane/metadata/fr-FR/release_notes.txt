@@ -1,0 +1,1 @@
+Ajout d’un menu Préférences pour centraliser les options et personnalisations de l’application.

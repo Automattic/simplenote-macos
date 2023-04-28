@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 13:54:04+0000 */
+/* Translation-Revision-Date: 2023-04-25 13:54:03+0000 */
 /* Plural-Forms: nplurals=1; plural=0; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ko_KR */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- 비밀번호는 이메일과 일치할 수 없습니다.";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "분석 및 개인정보 소개";
+
 /* Email verification required alert title */
 "Account Verification Required" = "계정 인증 필수";
+
+/* Account label */
+"Account:" = "계정:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "이메일 주소를 태그로 추가하여 이 메모를 다른 사람과 공유합니다. 공유한 사람과 공유받은 사람 모두 메모를 수정할 수 있습니다.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "손상된 비밀번호";
 
+/* Condensed note list button label */
+"Condensed Note List" = "메모 요약 목록";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "확인";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "생성됨: 오래된 항목";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "검정";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "계정 삭제";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "무시";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "메모 복제";
 
 /* Placeholder text for login field */
 "Email" = "이메일";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "비밀번호를 잊으셨나요?";
 
+/* Full line length button label */
+"Full" = "전체";
+
 /* FAQ or contact us */
 "Get Help" = "도움말";
 
 /* Back Button Title */
 "Go Back" = "돌아가기";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "이 기기에서 자동으로 분석 데이터를 발송하여 Simplenote 개선을 도와주세요. 앱의 일반적인 사용에 대한 데이터가 포함되며 개인 정보는 포함되지 않습니다.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "사이드바 숨기기";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "마지막 변경";
 
+/* Light theme name */
+"Light" = "밝음";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "로그인";
+
+/* Log out button label */
+"Log Out" = "로그아웃";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "워드프레스닷컴으로 로그인";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "이름: 내림차순";
 
+/* Narrow line length button label */
+"Narrow" = "좁게";
+
 /* Link to create an account */
 "Need an account?" = "계정이 필요하세요?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "유효한 이메일 주소가 아닙니다.";
+
+/* Note line length label */
+"Note line length:" = "메모 줄 길이";
+
+/* Note Sort Order label */
+"Note sort order:" = "메모 정렬 순서:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "공유";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "분석 공유";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com 계정에 로그인되어 있는 동안 이용하는 서비스에 대한 정보를 분석 도구와 공유합니다.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "생략하기";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "알파벳순으로 태그 정렬";
+
+/* Default system theme name */
+"System Appearance" = "시스템 디자인";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "태그...";
 
 /* Tags Section Name */
 "Tags" = "태그";
 
+/* Text size control label */
+"Text size:" = "텍스트 크기:";
+
 /* Error when address is in use */
 "That email is already being used" = "해당 이메일 주소가 이미 사용되고 있습니다.";
+
+/* Theme label */
+"Theme:" = "테마:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "준비 중인 인증 이메일이 있었습니다. 나중에 다시 시도해 주세요.";

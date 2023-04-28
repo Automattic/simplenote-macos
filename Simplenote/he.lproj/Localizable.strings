@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 13:54:04+0000 */
+/* Translation-Revision-Date: 2023-04-24 15:54:19+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: he_IL */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- הסיסמה לא יכולה להיות כתובת האימייל";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "מידע על נתונים אנליטיים ופרטיות";
+
 /* Email verification required alert title */
 "Account Verification Required" = "נדרש אימות לחשבון";
+
+/* Account label */
+"Account:" = "חשבון:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "אפשר להוסיף תגית כדי לשתף את הפתק עם אדם מסוים. לאחר מכן תוכלו שניכם לערוך בו שינויים.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "סיסמה בסכנה";
 
+/* Condensed note list button label */
+"Condensed Note List" = "רשימת פתקים מכווצת";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "אשר";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "נוצר: הישן ביותר";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "צבעים כהים";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "למחוק חשבון";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "בטל";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "לשכפל פתק";
 
 /* Placeholder text for login field */
 "Email" = "לשלוח מייל";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "שכחת את הסיסמה שלך?";
 
+/* Full line length button label */
+"Full" = "מלא";
+
 /* FAQ or contact us */
 "Get Help" = "לקבלת עזרה";
 
 /* Back Button Title */
 "Go Back" = "חזרה";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "באפשרותך לעזור לנו לשפר את Simplenote על ידי שליחה אוטומטית של נתונים אנליטיים מהמכשיר הזה. הנתונים שנאסוף כוללים נתונים לגבי שימוש כללי באפליקציה ולא כוללים מידע אישי.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "להסתיר סרגל צדדי";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "תאריך שינוי אחרון";
 
+/* Light theme name */
+"Light" = "צבעים בהירים";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "התחבר";
+
+/* Log out button label */
+"Log Out" = "התנתקות";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "התחברות באמצעות WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "שם: מ-Z ל-A";
 
+/* Narrow line length button label */
+"Narrow" = "צר";
+
 /* Link to create an account */
 "Need an account?" = "נדרש לך חשבון?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "כתובת האימייל לא חוקית";
+
+/* Note line length label */
+"Note line length:" = "אורך השורה של הפתק:";
+
+/* Note Sort Order label */
+"Note sort order:" = "סדר המיון של הפתקים:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "שיתוף";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "שיתוף הניתוח";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "ניתן לשתף בכלי הניתוח שלנו את פרטי השימוש שלך בשירותים השונים לאחר ההתחברות לחשבון שלך ב-Simplenote.com.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "דלג";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "למיין תגיות בסדר אלפביתי";
+
+/* Default system theme name */
+"System Appearance" = "תצוגת מערכת";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "תגית...";
 
 /* Tags Section Name */
 "Tags" = "תגיות";
 
+/* Text size control label */
+"Text size:" = "גודל הטקסט:";
+
 /* Error when address is in use */
 "That email is already being used" = "כתובת האימייל הזאת כבר נמצאת בשימוש";
+
+/* Theme label */
+"Theme:" = "ערכת עיצוב:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "אירעה שגיאה בהכנת האימייל לאימות, יש לנסות שוב מאוחר יותר";
