@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
+/* Translation-Revision-Date: 2023-04-25 22:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: it */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- La password non può corrispondere all'e-mail";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "Informazioni su analisi e privacy";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Verifica dell'account richiesta";
+
+/* Account label */
+"Account:" = "Account:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Aggiungi un indirizzo e-mail come tag e condividi questa nota con qualcuno. Entrambi potete così effettuare modifiche.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Password compromessa";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Elenco note ristretto";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Conferma";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Data di creazione: meno recente";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Scuro";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Elimina account";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Respinto";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Duplica nota";
 
 /* Placeholder text for login field */
 "Email" = "Email";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Hai dimenticato la password?";
 
+/* Full line length button label */
+"Full" = "Intera";
+
 /* FAQ or contact us */
 "Get Help" = "Richiedi supporto";
 
 /* Back Button Title */
 "Go Back" = "Torna indietro";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Aiutaci a migliorare Simplenote inviando automaticamente dati analitici da questo dispositivo. Ciò include i dati sull'utilizzo generale nell'app e non include alcuna informazione personale.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Nascondi Barra laterale";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Ultima modifica";
 
+/* Light theme name */
+"Light" = "Chiaro";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Accedi";
+
+/* Log out button label */
+"Log Out" = "Esci";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Accedi con WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Nome: Z-A";
 
+/* Narrow line length button label */
+"Narrow" = "Stretto";
+
 /* Link to create an account */
 "Need an account?" = "Bisogno di un conto?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Indirizzo e-mail non valido";
+
+/* Note line length label */
+"Note line length:" = "Lunghezza riga nota:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Ordinamento nota:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Condividi";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Condividi analisi";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Condividi informazioni relative all'uso dei servizi con lo strumento di analisi mentre sei connesso al tuo account Simplenote.com.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Salta";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Tag in ordine alfabetico";
+
+/* Default system theme name */
+"System Appearance" = "Aspetto sistema";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Tag...";
 
 /* Tags Section Name */
 "Tags" = "Tag";
 
+/* Text size control label */
+"Text size:" = "Dimensione del testo:";
+
 /* Error when address is in use */
 "That email is already being used" = "Quell'indirizzo e-mail è già in uso";
+
+/* Theme label */
+"Theme:" = "Tema:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "C'era una e-mail di verifica in preparazione, prova di nuovo più tardi";

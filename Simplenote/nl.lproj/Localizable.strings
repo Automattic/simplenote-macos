@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 15:54:04+0000 */
+/* Translation-Revision-Date: 2023-04-25 13:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: nl */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- Wachtwoord mag niet hetzelfde zijn als e-mailadres";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "Over analyses en privacy";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Accountverificatie vereist";
+
+/* Account label */
+"Account:" = "Account:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Voeg een e-mailadres toe als tag om deze notitie met iemand te delen. Dan kunnen jullie beiden wijzigingen aanbrengen.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Wachtwoord loopt gevaar";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Beknopte notitielijst";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Bevestigen";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Aangemaakt op: Oudste";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Donker";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Account verwijderen";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Afbreken";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Notitie dupliceren";
 
 /* Placeholder text for login field */
 "Email" = "E-mailen";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Wachtwoord vergeten?";
 
+/* Full line length button label */
+"Full" = "Volledig";
+
 /* FAQ or contact us */
 "Get Help" = "Ontvang hulp";
 
 /* Back Button Title */
 "Go Back" = "Ga terug";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Help ons Simplenote te verbeteren door automatisch analytische gegevens te versturen vanaf dit apparaat. Analytische gegevens omvatten ook gegevens over het algemeen gebruik van de app maar bevatten geen persoonsgegevens.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Sidebar verbergen";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Laatst bewerkt";
 
+/* Light theme name */
+"Light" = "Licht";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Inloggen";
+
+/* Log out button label */
+"Log Out" = "Uitloggen";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Inloggen met WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Naam: Z-A";
 
+/* Narrow line length button label */
+"Narrow" = "Smal";
+
 /* Link to create an account */
 "Need an account?" = "Een account nodig?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Geen geldig e-mailadres";
+
+/* Note line length label */
+"Note line length:" = "Regellengte notities:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Sorteervolgorde notities:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Delen";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Analyses delen";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Deel informatie met onze analysetool over hoe je services gebruikt terwijl je bent ingelogd op je Simplenote.com-account.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Overslaan";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Tags op alfabetische volgorde sorteren";
+
+/* Default system theme name */
+"System Appearance" = "Systeemweergave";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Tag...";
 
 /* Tags Section Name */
 "Tags" = "Tags";
 
+/* Text size control label */
+"Text size:" = "Tekstgrootte:";
+
 /* Error when address is in use */
 "That email is already being used" = "Dit e-mailadres is al in gebruik";
+
+/* Theme label */
+"Theme:" = "Thema:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "Er is een fout opgetreden bij het voorbereiden van je verificatie-e-mail. Probeer het later opnieuw.";

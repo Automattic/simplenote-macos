@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-27 13:54:04+0000 */
+/* Translation-Revision-Date: 2023-04-26 15:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=(n > 1); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: tr */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- Parola ile e-posta adresi aynı olamaz";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "Analiz ve Gizlilik Hakkında";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Hesap Doğrulaması Gerekli";
+
+/* Account label */
+"Account:" = "Hesap:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Bu notu birisiyle paylaşmak için etiket olarak bir e-posta adresi ekleyin. Bunun ardından her ikiniz de not üzerinde değişiklik yapabilirsiniz.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Güvenliği İhlal Edilmiş Şifre";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Sıkıştırılmış Not Listesi";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Onayla";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Oluşturma Tarihi: Eski";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Koyu";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Hesabı Sil";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Kapat";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Tekrarlayan Not";
 
 /* Placeholder text for login field */
 "Email" = "E-posta";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Parolanızı mı unuttunuz?";
 
+/* Full line length button label */
+"Full" = "Tam";
+
 /* FAQ or contact us */
 "Get Help" = "Yardım Alın";
 
 /* Back Button Title */
 "Go Back" = "geri dön";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Analiz verilerini bu cihazdan otomatik olarak göndererek Simplenote'u iyileştirmemize yardımcı olun. Bu, uygulamanın genel kullanımına ilişkin verileri içerir, herhangi bir kişisel bilgiyi içermez.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Kenar Çubuğunu Gizle";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Son değişiklik";
 
+/* Light theme name */
+"Light" = "Açık";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Giriş yap";
+
+/* Log out button label */
+"Log Out" = "Çıkış yap";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "WordPress.com'la oturum aç";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Ad: Z-A";
 
+/* Narrow line length button label */
+"Narrow" = "Dar";
+
 /* Link to create an account */
 "Need an account?" = "Hesap mı istiyorsunuz?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Geçerli bir e-posta adresi değil";
+
+/* Note line length label */
+"Note line length:" = "Not satır uzunluğu:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Not sıralama düzeni:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Paylaş";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Analizleri paylaş";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Simplenote.com hesabınızda oturumunuz açıkken hizmetleri kullanımınızla ilgili bilgileri analiz aracımızla paylaşın.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Atla";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Etiketleri Alfabetik Olarak Sırala";
+
+/* Default system theme name */
+"System Appearance" = "Sistem Görünümü";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Etiketle…";
 
 /* Tags Section Name */
 "Tags" = "Etiketler";
 
+/* Text size control label */
+"Text size:" = "Metin boyutu:";
+
 /* Error when address is in use */
 "That email is already being used" = "Bu e-posta zaten kullanılıyor";
+
+/* Theme label */
+"Theme:" = "Tema:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "Doğrulama e-postanız hazırlanırken bir hata oluştu, lütfen daha sonra tekrar deneyin";

@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 15:54:04+0000 */
+/* Translation-Revision-Date: 2023-04-24 21:54:03+0000 */
 /* Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ar */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- يتعذر تطابق كلمة المرور مع البريد الإلكتروني";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "نبذة عن التحليلات والخصوصية";
+
 /* Email verification required alert title */
 "Account Verification Required" = "يلزم التحقُّق من الحساب";
+
+/* Account label */
+"Account:" = "الحساب:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "أضف عنوان بريد إلكتروني كوسم لمشاركة هذه الملحوظة مع شخص ما. بعدها يمكنكما إجراء التغييرات عليها.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "كلمة مرور مخترقة";
 
+/* Condensed note list button label */
+"Condensed Note List" = "قائمة الملاحظات الموجزة";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "تأكيد";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "تاريخ الإنشاء: الأقدم";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "داكن";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "حذف حساب";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "تجاهل";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "تكرار الملحوظة";
 
 /* Placeholder text for login field */
 "Email" = "البريد الإلكتروني";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "هل نسيتَ كلمة المرور الخاصة بك؟";
 
+/* Full line length button label */
+"Full" = "كامل";
+
 /* FAQ or contact us */
 "Get Help" = "إحصل على المساعدة";
 
 /* Back Button Title */
 "Go Back" = "الرجوع للخلف";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "ساعدنا على تحسين Simplenote عن طريق إرسال بيانات التحليلات الواردة من هذا الجهاز. يتضمن ذلك بيانات حول الاستخدام العام في التطبيق ولا يتضمن أي معلومات شخصية.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "إخفاء الشريط الجانبي";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "آخر تعديل";
 
+/* Light theme name */
+"Light" = "فاتح";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "تسجيل الدخول";
+
+/* Log out button label */
+"Log Out" = "تسجيل الخروج";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "تسجيل دخول باستخدام WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "الاسم: من Z إلى A";
 
+/* Narrow line length button label */
+"Narrow" = "ضيق";
+
 /* Link to create an account */
 "Need an account?" = "هل أنت بحاجة إلى حساب؟";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "ليس بريدًا إلكترونيًا صالحًا";
+
+/* Note line length label */
+"Note line length:" = "طول السطر في الملحوظة:";
+
+/* Note Sort Order label */
+"Note sort order:" = "ترتيب الفرز في الملحوظة:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "شارك";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "مشاركة التحليلات";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "شارك المعلومات مع أداة التحليلات الخاصة بنا حول استخدامك للخدمات في أثناء تسجيل الدخول إلى حسابك على Simplenote.com.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "تخطي";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "فرز الوسوم أبجديًا";
+
+/* Default system theme name */
+"System Appearance" = "مظهر النظام";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "العلامة...";
 
 /* Tags Section Name */
 "Tags" = "وسوم";
 
+/* Text size control label */
+"Text size:" = "حجم النص:";
+
 /* Error when address is in use */
 "That email is already being used" = "يتم استخدام ذلك البريد الإلكتروني بالفعل";
+
+/* Theme label */
+"Theme:" = "القالب:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "كان يتم إعداد البريد الإلكتروني للتحقُّق من الصحة الخاص بك، يرجى المحاولة  مرة أخرى لاحقًا";

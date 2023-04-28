@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 11:54:04+0000 */
+/* Translation-Revision-Date: 2023-04-25 11:54:03+0000 */
 /* Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: ru */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "— Пароль не должен совпадать с адресом эл. почты";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "Об аналитике и конфиденциальности";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Требуется подтверждение учётной записи";
+
+/* Account label */
+"Account:" = "Учётная запись:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Добавьте в качестве метки адрес электронной почты, чтобы поделиться заметкой с другим пользователем. Вы оба сможете исправлять заметку.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Скомпрометированный пароль";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Сократить список заметок";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Подтвердить";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Дата создания: сначала старые";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Тёмное оформление";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Удалить учётную запись";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Игнорировать";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Дублировать заметку";
 
 /* Placeholder text for login field */
 "Email" = "Отправить email";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Забыли пароль?";
 
+/* Full line length button label */
+"Full" = "Во всю ширину";
+
 /* FAQ or contact us */
 "Get Help" = "Справка";
 
 /* Back Button Title */
 "Go Back" = "Назад";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Помогите улучшить Simplenote, разрешив автоматическую отправку аналитических данных с этого устройства. К таким данными относится общая информация об использовании приложения, но не личные данные.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Скрыть боковую панель";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Последнее изменение";
 
+/* Light theme name */
+"Light" = "Светлое оформление";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Войти";
+
+/* Log out button label */
+"Log Out" = "Выйти";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Войти через WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Имя: Я–А";
 
+/* Narrow line length button label */
+"Narrow" = "Узкая";
+
 /* Link to create an account */
 "Need an account?" = "Нужна учетная запись?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Этот адрес эл. почты недействителен";
+
+/* Note line length label */
+"Note line length:" = "Длина строки в заметке:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Порядок сортировки заметок:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Поделиться";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Поделиться аналитическими данными";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Позвольте нашему средству аналитики собирать информацию о том, как вы используете наши услуги после входа в учетную запись Simplenote.com.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Пропустить";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Сортировать метки по алфавиту";
+
+/* Default system theme name */
+"System Appearance" = "Внешний вид системы";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Метка...";
 
 /* Tags Section Name */
 "Tags" = "Метки";
 
+/* Text size control label */
+"Text size:" = "Размер шрифта:";
+
 /* Error when address is in use */
 "That email is already being used" = "Этот адрес эл. почты уже используется";
+
+/* Theme label */
+"Theme:" = "Тема:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "Идёт подготовка письма для подтверждения, повторите попытку позже";

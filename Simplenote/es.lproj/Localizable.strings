@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-26 09:54:03+0000 */
+/* Translation-Revision-Date: 2023-04-25 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: es */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- La contraseña no puede coincidir con el correo electrónico";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "Sobre analíticas y privacidad";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Verificación de la cuenta necesaria";
+
+/* Account label */
+"Account:" = "Cuenta:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Añade una dirección de correo electrónico como etiqueta para compartir esta nota con otro usuario. Así, ambos podréis hacer cambios.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Contraseña en riesgo";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Lista de notas condensada";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Confirmar";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Creación: Más antiguo";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Oscuro";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Eliminar cuenta";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Descartar";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Duplicar nota";
 
 /* Placeholder text for login field */
 "Email" = "Email";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Olvidó su contraseña?";
 
+/* Full line length button label */
+"Full" = "Completo";
+
 /* FAQ or contact us */
 "Get Help" = "Obtener ayuda";
 
 /* Back Button Title */
 "Go Back" = "Volver";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Envía datos de forma automática desde este dispositivo para ayudarnos a mejorar Simplenote. Se incluyen datos sobre uso general de la aplicación, pero ninguna información personal.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Ocultar barra lateral";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Última modificación";
 
+/* Light theme name */
+"Light" = "Claro";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Acceder";
+
+/* Log out button label */
+"Log Out" = "Salir";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Accede con WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Nombre: Z-A";
 
+/* Narrow line length button label */
+"Narrow" = "Estrecho";
+
 /* Link to create an account */
 "Need an account?" = "Necesita una cuenta?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "No es un email valido";
+
+/* Note line length label */
+"Note line length:" = "Longitud de la línea de las notas:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Criterio de ordenación de las notas:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Compartir";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Compartir análisis";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Compartir informacion sobre la forma en que utiliza el servicio";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Saltar";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Ordenar las etiquetas alfabéticamente";
+
+/* Default system theme name */
+"System Appearance" = "Apariencia del Sistema";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Etiqueta...";
 
 /* Tags Section Name */
 "Tags" = "Etiquetas";
 
+/* Text size control label */
+"Text size:" = "Tamaño del texto:";
+
 /* Error when address is in use */
 "That email is already being used" = "El email ya se encuentra en uso";
+
+/* Theme label */
+"Theme:" = "Tema:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "Se ha producido un error al preparar el correo electrónico de verificación. Inténtalo de nuevo más tarde.";

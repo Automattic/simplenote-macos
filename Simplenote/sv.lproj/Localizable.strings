@@ -1,4 +1,4 @@
-/* Translation-Revision-Date: 2021-10-20 13:41:56+0000 */
+/* Translation-Revision-Date: 2023-04-25 11:54:03+0000 */
 /* Plural-Forms: nplurals=2; plural=n != 1; */
 /* Generator: GlotPress/2.4.0-alpha */
 /* Language: sv_SE */
@@ -15,8 +15,14 @@
 /* Password Requirement: Email Match */
 "- Password cannot match email" = "- Lösenord kan inte matcha e-post";
 
+/* A link to more information about our privacy policy */
+"About Analytics and Privacy" = "Om analys och integritet";
+
 /* Email verification required alert title */
 "Account Verification Required" = "Verifiering av konto krävs";
+
+/* Account label */
+"Account:" = "Konto:";
 
 /* Text presented when sharing a Note */
 "Add an email address as a tag to share this note with someone. Then you can both make changes to it." = "Lägg till en e-postadress som en etikett för att dela denna anteckning med någon. Då kan ni båda göra ändringar i den.";
@@ -85,6 +91,9 @@
 /* Compromised passsword alert title */
 "Compromised Password" = "Komprometterat lösenord";
 
+/* Condensed note list button label */
+"Condensed Note List" = "Komprimerad anteckningslista";
+
 /* Confirm button -> Review you account screen */
 "Confirm" = "Bekräfta";
 
@@ -106,7 +115,11 @@
 /* Sort Mode: Creation Date, ascending */
 "Created: Oldest" = "Skapad: Äldsta";
 
-/* Delete account title and action */
+/* Dark theme name */
+"Dark" = "Mörk";
+
+/* Delete account button label
+   Delete account title and action */
 "Delete Account" = "Ta bort konto";
 
 /* Delete Forever List Action */
@@ -123,6 +136,9 @@
 
 /* Closes the Privacy View */
 "Dismiss" = "Stäng";
+
+/* Duplicate Note List Action */
+"Duplicate Note" = "Duplicera anteckning";
 
 /* Placeholder text for login field */
 "Email" = "E-post";
@@ -142,11 +158,17 @@
 /* Forgot Password Button */
 "Forgot your Password?" = "Glömt ditt lösenord?";
 
+/* Full line length button label */
+"Full" = "Hel";
+
 /* FAQ or contact us */
 "Get Help" = "Skaffa hjälp";
 
 /* Back Button Title */
 "Go Back" = "Gå tillbaka";
+
+/* A description about how we use anayltics */
+"Help us to improve Simplenote by automatically sending analytics data from this device. This includes data about general usage in the app and does not include any personal information." = "Hjälp oss att förbättra Simplenote genom att automatiskt skicka analysdata från den här enheten. Detta inkluderar data om allmän användning i appen och inkluderar inte någon personlig information.";
 
 /* macOS MenuItem that causes the Tag List to be hidden */
 "Hide Sidebar" = "Dölj sidopanel";
@@ -166,9 +188,15 @@
 /* Reference Last Modification Date */
 "Last modified" = "Senast modifierad";
 
+/* Light theme name */
+"Light" = "Ljus";
+
 /* Title of button for logging in
    Title of button for login */
 "Log In" = "Logga in";
+
+/* Log out button label */
+"Log Out" = "Logga ut";
 
 /* button title for wp.com sign in button */
 "Log in with WordPress.com" = "Logga in med WordPress.com";
@@ -207,6 +235,9 @@
 /* Sort Mode: Alphabetically, descending */
 "Name: Z-A" = "Namn: Z–A";
 
+/* Narrow line length button label */
+"Narrow" = "Smal";
+
 /* Link to create an account */
 "Need an account?" = "Behöver du ett konto?";
 
@@ -224,6 +255,12 @@
 
 /* Error when you enter a bad email address */
 "Not a valid email address" = "Inte en giltig e-postadress";
+
+/* Note line length label */
+"Note line length:" = "Linjelängd för anteckningar:";
+
+/* Note Sort Order label */
+"Note sort order:" = "Sorteringsordning för anteckningar:";
 
 /* Dismisses an AlertController
    OK button in error alert dialog */
@@ -309,6 +346,9 @@
 /* Share Menu Action */
 "Share" = "Dela";
 
+/* Share analytics checkbox label */
+"Share Analytics" = "Dela analys";
+
 /* Cookie Policy Legend */
 "Share information with our analytics tool about your use of services while logged into your Simplenote.com account." = "Dela information med vårt analysverktyg om din användning av tjänster när du är inloggad på ditt Simplenote.com-konto.";
 
@@ -330,14 +370,26 @@
 /* Text to display on OSX cancel button */
 "Skip" = "Hoppa över";
 
+/* Sort tags alphabetically checkbox label */
+"Sort Tags Alphabetically" = "Sortera etiketter alfabetiskt";
+
+/* Default system theme name */
+"System Appearance" = "Systemutseende";
+
 /* Placeholder text in the Tags View */
 "Tag..." = "Etikett …";
 
 /* Tags Section Name */
 "Tags" = "Etiketter";
 
+/* Text size control label */
+"Text size:" = "Textstorlek:";
+
 /* Error when address is in use */
 "That email is already being used" = "Den e-posten används redan";
+
+/* Theme label */
+"Theme:" = "Tema:";
 
 /* Request error alert message */
 "There was an preparing your verification email, please try again later" = "Det gick inte att förbereda ditt verifieringsmeddelande. Försök igen senare.";
