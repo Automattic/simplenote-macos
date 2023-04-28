@@ -1,0 +1,1 @@
+En inställningsmeny har lagts till för att centralisera appalternativ och anpassningar.

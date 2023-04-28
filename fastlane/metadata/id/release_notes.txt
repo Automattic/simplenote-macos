@@ -1,0 +1,1 @@
+Menambahkan menu preferensi untuk memusatkan pilihan dan kustomisasi aplikasi.

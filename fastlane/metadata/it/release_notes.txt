@@ -1,0 +1,1 @@
+Aggiunto il menu delle preferenze per centralizzare le opzioni e le personalizzazioni dell'app.

@@ -1,0 +1,1 @@
+Uygulama seçeneklerini ve özelleştirmeleri merkezileştirmek için tercihler menüsü eklendi.
