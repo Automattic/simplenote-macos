@@ -5,7 +5,7 @@ class FontSettings: NSObject {
     static let minimum = CGFloat(10)
     static let normal = CGFloat(15)
     static let maximum = CGFloat(30)
-    static let step = CGFloat(5)
+    static let step = CGFloat(1)
 
     static func valueIsValidFontSize(_ value: CGFloat) -> Bool {
         value.truncatingRemainder(dividingBy: step) == .zero

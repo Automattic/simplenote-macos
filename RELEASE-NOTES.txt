@@ -1,6 +1,6 @@
 2.19
 -----
-
+- Font Size step has now been decreased to 1pt #1100
 
 2.18
 -----

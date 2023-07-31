@@ -247,7 +247,7 @@
                                             </textField>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pOX-Cq-Ibe">
                                                 <rect key="frame" x="176" y="14" width="370" height="28"/>
-                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="10" maxValue="30" doubleValue="15" tickMarkPosition="above" numberOfTickMarks="5" allowsTickMarkValuesOnly="YES" sliderType="linear" id="swY-bZ-H2P"/>
+                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="10" maxValue="30" doubleValue="15" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="swY-bZ-H2P"/>
                                                 <connections>
                                                     <action selector="textSizeHasChanged:" target="ReV-pG-fyt" id="wVw-V2-F3w"/>
                                                 </connections>
