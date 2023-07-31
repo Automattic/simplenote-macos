@@ -2,6 +2,10 @@
 -----
 - Font Size step has now been decreased to 1pt #1100
 
+2.19
+-----
+- Prevents Text Clipping when Scroll Bars are always visible #1097
+
 2.18
 -----
 - Added preferences menu to centralize app options and customizations #1042

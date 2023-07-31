@@ -180,7 +180,23 @@ extension NoteEditorViewController {
     }
 
     private func maximumTextWidth(for superviewWidth: CGFloat) -> CGFloat {
-        Options.shared.editorFullWidth ? superviewWidth : min(EditorMetrics.maximumNarrowWidth, superviewWidth)
+        guard Options.shared.editorFullWidth else {
+            return min(EditorMetrics.maximumNarrowWidth, superviewWidth)
+        }
+
+        return superviewWidth - legacyScrollerWidth(for: self.scrollView)
+    }
+
+    private func legacyScrollerWidth(for scrollView: NSScrollView) -> CGFloat {
+        guard NSScroller.preferredScrollerStyle == .legacy else {
+            return .zero
+        }
+
+        guard let scroller = scrollView.verticalScroller else {
+            return .zero
+        }
+
+        return NSScroller.scrollerWidth(for: scroller.controlSize, scrollerStyle: scroller.scrollerStyle)
     }
 
     /// Whenever `SuperviewWidth > MaximumTextWidth` this API will return an Inset which will center onscreen the TextContainer
