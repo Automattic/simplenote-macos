@@ -1,2 +1,2 @@
-- Fixed an issue with horizontal clipping where the last character at the end of the line wasn't displayed completel
+- Fixed an issue with horizontal clipping where the last character at the end of the line wasn't displayed completely
 - Font size step has been decreased to 1pt
