@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "v2.19-whats-new"
 msgid ""
-"- Fixed an issue with horizontal clipping where the last character at the end of the line wasn't displayed completel\n"
+"- Fixed an issue with horizontal clipping where the last character at the end of the line wasn't displayed completely\n"
 "- Font size step has been decreased to 1pt\n"
 msgstr ""
 
