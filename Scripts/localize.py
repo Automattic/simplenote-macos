@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # Localize.py - Incremental localization on XCode projects
@@ -42,7 +42,7 @@ class LocalizedString():
         self.key, self.value = re_translation.match(self.translation).groups()
 
     def __unicode__(self):
-        return u'%s%s\n' % (u''.join(self.comments), self.translation)
+        return '%s%s\n' % (''.join(self.comments), self.translation)
 
 
 class LocalizedFile():
@@ -59,7 +59,7 @@ class LocalizedFile():
         try:
             f = open(fname, encoding='utf_8', mode='r')
         except:
-            print 'File %s does not exist.' % fname
+            print('File %s does not exist.' % fname)
             exit(-1)
 
         line = f.readline()
@@ -78,7 +78,7 @@ class LocalizedFile():
                 raise Exception('invalid file')
 
             line = f.readline()
-            while line and line == u'\n':
+            while line and line == '\n':
                 line = f.readline()
 
             string = LocalizedString(comments, translation)
@@ -92,7 +92,7 @@ class LocalizedFile():
         try:
             f = open(fname, encoding='utf_8', mode='w')
         except:
-            print 'Couldn\'t open file %s.' % fname
+            print('Couldn\'t open file %s.' % fname)
             exit(-1)
 
         for string in self.strings:
@@ -104,7 +104,7 @@ class LocalizedFile():
         merged = LocalizedFile()
 
         for string in new.strings:
-            if self.strings_d.has_key(string.key):
+            if string.key in self.strings_d:
                 new_string = copy(self.strings_d[string.key])
                 new_string.comments = string.comments
                 string = new_string
@@ -122,7 +122,7 @@ def merge(out_fname, old_fname, new_fname):
         merged = old.merge_with(new)
         merged.save_to_file(out_fname)
     except:
-        print 'Error: input files have invalid format.'
+        print('Error: input files have invalid format.')
 
 
 def localize_sources(path):

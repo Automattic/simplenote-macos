@@ -46,8 +46,9 @@ msgctxt "app_store_keywords"
 msgid "simplenote,note,notes,sync,syncing,list,todo,simple,markdown,ideas"
 msgstr ""
 
-msgctxt "v2.18-whats-new"
+msgctxt "v2.19-whats-new"
 msgid ""
-"Added preferences menu to centralize app options and customizations.\n"
+"- Fixed an issue with horizontal clipping where the last character at the end of the line wasn't displayed completely\n"
+"- Font size step has been decreased to 1pt\n"
 msgstr ""
 
