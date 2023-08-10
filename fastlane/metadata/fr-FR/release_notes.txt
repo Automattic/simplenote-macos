@@ -1,1 +1,2 @@
-Ajout d’un menu Préférences pour centraliser les options et personnalisations de l’application.
+- Résolution d'un problème lié 
+- Font size step has been decreased to 1pt

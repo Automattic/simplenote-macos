@@ -1,1 +1,2 @@
-Se ha añadido un menú de preferencias para centralizar las opciones y personalizaciones de la aplicación.
+- Se ha solucionado un problema con el recorte horizontal por el cual el último carácter al final de la línea no se mostraba por completo
+- El paso del tamaño de la fuente se ha reducido a 1 punto

@@ -1,1 +1,2 @@
-Aggiunto il menu delle preferenze per centralizzare le opzioni e le personalizzazioni dell'app.
+- Risolto un problema con il ritaglio orizzontale per il quale l'ultimo carattere alla fine della riga non veniva visualizzato completamente
+- La fase del ridimensionamento del carattere è stata ridotta a 1 pt

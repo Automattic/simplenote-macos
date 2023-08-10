@@ -1,1 +1,2 @@
-Menu de preferências adicionado para centralizar as opções e personalizações do aplicativo.
+- Corrigimos um problema no recorte horizontal em que o último caractere da linha não era exibido completamente
+- A etapa de redimensionamento de fonte foi reduzida para uma parte

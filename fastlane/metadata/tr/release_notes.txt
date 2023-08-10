@@ -1,1 +1,2 @@
-Uygulama seçeneklerini ve özelleştirmeleri merkezileştirmek için tercihler menüsü eklendi.
+- Satır sonundaki son karakterin tam gösterilmediği yatay kırpma ile ilgili bir sorun düzeltildi.
+- Yazı tipi boyutu adımı 1 puntoya küçültüldü.
