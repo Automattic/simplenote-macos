@@ -1,1 +1,2 @@
-Einstellungsmenü für die Zentralisierung von App-Optionen und Anpassungen hinzugefügt.
+- Problem mit horizontalem Clipping behoben, wodurch das Ende einer Zeile nicht vollständig angezeigt wurde
+- Schriftgrößenschritt wurde auf 1 pt reduziert

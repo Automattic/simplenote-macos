@@ -1,1 +1,2 @@
-En inställningsmeny har lagts till för att centralisera appalternativ och anpassningar.
+- Vi har åtgärdat ett problem med horisontell beskärning som gjorde att det sista tecknet i slutet av en rad inte visades helt
+- Textstorleken har minskats till 1pt

@@ -1,1 +1,2 @@
-Added preferences menu to centralize app options and customizations.
+- Fixed an issue with horizontal clipping where the last character at the end of the line wasn't displayed completely
+- Font size step has been decreased to 1pt
