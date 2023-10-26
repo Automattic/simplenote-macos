@@ -26,6 +26,7 @@ APP_STORE_SCHEME = 'Simplenote-AppStore'
 BUILD_FOLDER = 'build'
 APP_STORE_CONNECT_API_KEY_PATH = File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'app_store_connect_fastlane_api_key.json')
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
+VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig')
 
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
@@ -121,7 +122,7 @@ end
     old_version = ios_codefreeze_prechecks(options)
 
     ios_bump_version_release(skip_deliver: true)
-    new_version = ios_get_app_version()
+    new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
     ios_update_release_notes(new_version: new_version)
     setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
     setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
@@ -214,7 +215,7 @@ end
   desc 'Performs the final checks and triggers a release build for the hotfix in the current branch'
   lane :finalize_hotfix_release do |options|
     ios_finalize_prechecks(options)
-    version = ios_get_app_version
+    version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
     trigger_release_build(branch_to_build: "release/#{version}")
   end
 
@@ -240,7 +241,7 @@ end
     ios_update_metadata(options)
     ios_bump_version_beta()
 
-    trigger_release_build(branch_to_build: "release/#{ios_get_app_version()}")
+    trigger_release_build(branch_to_build: "release/#{ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)}")
   end
 
   #####################################################################################
@@ -359,7 +360,7 @@ end
 
       create_release(
         repository: GHHELPER_REPO,
-        version: ios_get_app_version(),
+        version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
         release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
         release_assets: [archive_zip_path],
         prerelease: options[:prerelease],
@@ -381,7 +382,7 @@ end
 
     upload_to_app_store(
       app_identifier: APP_STORE_BUNDLE_IDENTIFIER,
-      app_version: ios_get_app_version,
+      app_version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
       skip_binary_upload: true,
       screenshots_path: './screenshots/',
       skip_screenshots: skip_screenshots,
