@@ -127,7 +127,7 @@ end
     setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
     setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
 
-    ios_localize_project()
+    generate_strings_file_for_glotpress()
   end
 
   #####################################################################################
@@ -177,7 +177,7 @@ end
   desc "Updates a release branch for a new beta release"
   lane :new_beta_release do | options |
     ios_betabuild_prechecks(options)
-    ios_localize_project()
+    generate_strings_file_for_glotpress()
     ios_update_metadata()
     ios_bump_version_beta()
     ios_tag_build()
@@ -443,5 +443,26 @@ end
       buildkite_pipeline: 'simplenote-macos',
       branch: options[:branch_to_build] || git_branch,
       pipeline_file: 'release-builds.yml'
+    )
+  end
+
+  desc 'Updates the main `Localizable.strings` file — that will be imported by GlotPress'
+  lane :generate_strings_file_for_glotpress do
+    en_lproj_path = File.join(PROJECT_FOLDER, 'Simplenote', 'en.lproj')
+    ios_generate_strings_file_from_code(
+      paths: ['Simplenote', 'Pods/Simperium-OSX/*/SPAuthentication*'],
+      output_dir: en_lproj_path,
+      quiet: true
+    )
+
+    # Convert the UTF-16 encoded strings file to UTF-8.
+    strings_file_path = File.join(en_lproj_path, 'Localizable.strings')
+    utf8_strings = File.read(strings_file_path, encoding: 'UTF-16', mode: 'rb')
+    File.write(strings_file_path, utf8_strings, mode: 'w', encoding: 'UTF-8')
+
+    git_commit(
+      path: en_lproj_path,
+      message: 'Freeze strings for localization',
+      allow_nothing_to_commit: true
     )
   end
