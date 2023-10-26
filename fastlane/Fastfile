@@ -437,6 +437,7 @@ end
   # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
   #############################################################################
   lane :trigger_release_build do | options |
+    push_to_git_remote(tags: false)
     buildkite_trigger_build(
       buildkite_organization: 'automattic',
       buildkite_pipeline: 'simplenote-macos',
