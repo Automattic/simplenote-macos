@@ -178,7 +178,7 @@ end
   lane :new_beta_release do | options |
     ios_betabuild_prechecks(options)
     generate_strings_file_for_glotpress()
-    ios_update_metadata()
+    download_strings_files_from_glotpress()
     ios_bump_version_beta()
     ios_tag_build()
   end
@@ -238,7 +238,7 @@ end
 
     ios_finalize_prechecks(options)
 
-    ios_update_metadata(options)
+    download_strings_files_from_glotpress()
     ios_bump_version_beta()
 
     trigger_release_build(branch_to_build: "release/#{ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)}")
@@ -464,5 +464,36 @@ end
       path: en_lproj_path,
       message: 'Freeze strings for localization',
       allow_nothing_to_commit: true
+    )
+  end
+
+  desc 'Download strings from from Glotpress'
+  lane :download_strings_files_from_glotpress do
+    locale_codes = {
+      'ar' => 'ar',             # Arabic
+      'cy' => 'cy',             # Welsh
+      'de' => 'de',             # German
+      'el' => 'el',             # Greek
+      'en' => 'en',             # English
+      'es' => 'es',             # Spanish
+      'fa' => 'fa',             # Persian
+      'fr' => 'fr',             # French
+      'he' => 'he',             # Hebrew
+      'id' => 'id',             # Indonesian
+      'it' => 'it',             # Italian
+      'ja' => 'ja',             # Japanese
+      'ko' => 'ko',             # Korean
+      'nl' => 'nl',             # Dutch
+      'pt-br' => 'pt-BR',       # Portuguese (Brazil)
+      'ru' => 'ru',             # Russian
+      'sv' => 'sv',             # Swedish
+      'tr' => 'tr',             # Turkish
+      'zh-cn' => 'zh-Hans-CN',  # Chinese (China)
+      'zh-tw' => 'zh-Hant-TW'   # Chinese (Taiwan)
+    }.freeze
+    ios_download_strings_files_from_glotpress(
+      project_url: 'https://translate.wordpress.com/projects/simplenote/macos/',
+      locales: locale_codes,
+      download_dir: File.join(PROJECT_FOLDER, 'Simplenote')
     )
   end
