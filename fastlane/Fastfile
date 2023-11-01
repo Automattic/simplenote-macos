@@ -12,7 +12,7 @@ ENV[GHHELPER_REPO="#{ORGANIZATION_NAME}/#{REPOSITORY_NAME}"]
 ENV["PROJECT_NAME"]="Simplenote"
 ENV["PROJECT_ROOT_FOLDER"]="./"
 ENV['APP_STORE_STRINGS_FILE_NAME']='AppStoreStrings.pot'
-ENV["PUBLIC_CONFIG_FILE"]="./config/Version.Public.xcconfig"
+ENV["PUBLIC_CONFIG_FILE"]="./config/Version.public.xcconfig"
 ENV["DOWNLOAD_METADATA"]="./fastlane/download_metadata.swift"
 ENV['FL_RELEASE_TOOLKIT_DEFAULT_BRANCH'] = 'trunk'
 
@@ -26,6 +26,7 @@ APP_STORE_SCHEME = 'Simplenote-AppStore'
 BUILD_FOLDER = 'build'
 APP_STORE_CONNECT_API_KEY_PATH = File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'app_store_connect_fastlane_api_key.json')
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
+VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig')
 
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
@@ -120,13 +121,13 @@ end
   lane :code_freeze do | options |
     old_version = ios_codefreeze_prechecks(options)
 
-    ios_bump_version_release(skip_deliver: true)
-    new_version = ios_get_app_version()
+    ios_bump_version_release(skip_deliver: true, skip_glotpress: true)
+    new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
     ios_update_release_notes(new_version: new_version)
     setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
     setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
 
-    ios_localize_project()
+    generate_strings_file_for_glotpress()
   end
 
   #####################################################################################
@@ -176,8 +177,8 @@ end
   desc "Updates a release branch for a new beta release"
   lane :new_beta_release do | options |
     ios_betabuild_prechecks(options)
-    ios_localize_project()
-    ios_update_metadata()
+    generate_strings_file_for_glotpress()
+    download_strings_files_from_glotpress()
     ios_bump_version_beta()
     ios_tag_build()
   end
@@ -214,7 +215,7 @@ end
   desc 'Performs the final checks and triggers a release build for the hotfix in the current branch'
   lane :finalize_hotfix_release do |options|
     ios_finalize_prechecks(options)
-    version = ios_get_app_version
+    version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
     trigger_release_build(branch_to_build: "release/#{version}")
   end
 
@@ -237,10 +238,10 @@ end
 
     ios_finalize_prechecks(options)
 
-    ios_update_metadata(options)
+    download_strings_files_from_glotpress()
     ios_bump_version_beta()
 
-    trigger_release_build(branch_to_build: "release/#{ios_get_app_version()}")
+    trigger_release_build(branch_to_build: "release/#{ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)}")
   end
 
   #####################################################################################
@@ -359,7 +360,7 @@ end
 
       create_release(
         repository: GHHELPER_REPO,
-        version: ios_get_app_version(),
+        version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
         release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
         release_assets: [archive_zip_path],
         prerelease: options[:prerelease],
@@ -381,7 +382,7 @@ end
 
     upload_to_app_store(
       app_identifier: APP_STORE_BUNDLE_IDENTIFIER,
-      app_version: ios_get_app_version,
+      app_version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
       skip_binary_upload: true,
       screenshots_path: './screenshots/',
       skip_screenshots: skip_screenshots,
@@ -436,10 +437,62 @@ end
   # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
   #############################################################################
   lane :trigger_release_build do | options |
+    push_to_git_remote(tags: false)
     buildkite_trigger_build(
       buildkite_organization: 'automattic',
       buildkite_pipeline: 'simplenote-macos',
       branch: options[:branch_to_build] || git_branch,
       pipeline_file: 'release-builds.yml'
+    )
+  end
+
+  desc 'Updates the main `Localizable.strings` file — that will be imported by GlotPress'
+  lane :generate_strings_file_for_glotpress do
+    en_lproj_path = File.join(PROJECT_FOLDER, 'Simplenote', 'en.lproj')
+    ios_generate_strings_file_from_code(
+      paths: ['Simplenote', 'Pods/Simperium-OSX/*/SPAuthentication*'],
+      output_dir: en_lproj_path,
+      quiet: true
+    )
+
+    # Convert the UTF-16 encoded strings file to UTF-8.
+    strings_file_path = File.join(en_lproj_path, 'Localizable.strings')
+    utf8_strings = File.read(strings_file_path, encoding: 'UTF-16', mode: 'rb')
+    File.write(strings_file_path, utf8_strings, mode: 'w', encoding: 'UTF-8')
+
+    git_commit(
+      path: en_lproj_path,
+      message: 'Freeze strings for localization',
+      allow_nothing_to_commit: true
+    )
+  end
+
+  desc 'Download strings from from Glotpress'
+  lane :download_strings_files_from_glotpress do
+    locale_codes = {
+      'ar' => 'ar',             # Arabic
+      'cy' => 'cy',             # Welsh
+      'de' => 'de',             # German
+      'el' => 'el',             # Greek
+      'es' => 'es',             # Spanish
+      'fa' => 'fa',             # Persian
+      'fr' => 'fr',             # French
+      'he' => 'he',             # Hebrew
+      'id' => 'id',             # Indonesian
+      'it' => 'it',             # Italian
+      'ja' => 'ja',             # Japanese
+      'ko' => 'ko',             # Korean
+      'nl' => 'nl',             # Dutch
+      'pt-br' => 'pt-BR',       # Portuguese (Brazil)
+      'ru' => 'ru',             # Russian
+      'sv' => 'sv',             # Swedish
+      'tr' => 'tr',             # Turkish
+      'zh-cn' => 'zh-Hans-CN',  # Chinese (China)
+      'zh-tw' => 'zh-Hant-TW'   # Chinese (Taiwan)
+    }.freeze
+    ios_download_strings_files_from_glotpress(
+      project_url: 'https://translate.wordpress.com/projects/simplenote/macos/',
+      locales: locale_codes,
+      download_dir: File.join(PROJECT_FOLDER, 'Simplenote')
     )
   end
