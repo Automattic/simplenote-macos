@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'cocoapods', '~> 1.12'
+gem 'cocoapods', '~> 1.14'
 gem 'fastlane', '~> 2'
 gem 'rake', '~> 12.3'
 gem 'rubocop', '~> 1.18'
