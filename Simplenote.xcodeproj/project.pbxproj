@@ -2008,6 +2008,7 @@
 		};
 		B51D44911945FEFD00496889 /* Sparkle XPC Code Sign For Sandbox */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
