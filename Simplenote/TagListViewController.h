@@ -23,6 +23,7 @@ extern NSString * const TagListDidEmptyTrashNotification;
                                                      NSTextFieldDelegate,
                                                      NSControlTextEditingDelegate,
                                                      NSDraggingDestination,
+                                                     NSMenuItemValidation,
                                                      EditorControllerTagActionsDelegate>
 
 @property (nonatomic, strong, readwrite) IBOutlet NSVisualEffectView    *backgroundVisualEffectsView;
