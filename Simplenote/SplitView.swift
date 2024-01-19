@@ -9,35 +9,6 @@ class SplitView: NSSplitView {
     ///
     private let defaultDividerThickness = CGFloat(1)
 
-
-    /// Divider Color
-    ///
-    var simplenoteDividerColor: NSColor = .simplenoteDividerColor {
-        didSet {
-            guard simplenoteDividerColor != oldValue else {
-                return
-            }
-
-            /// Forcing Redraw:
-            /// Believe me. Standard API(s) to trigger redraw aren't forcing the Dividers to re-render. That includes the following:
-            ///
-            /// - `layerContentsRedrawPolicy = .onSetNeedsDisplay`
-            /// - `needsDisplay = true`
-            /// - `needsLayout = true`
-            ///
-            /// macOS Catalina doesn't require any special treatment, because of the new Dynamic NSColor API.
-            ///
-            if #available(macOS 10.15, *) {
-                return
-            }
-
-            if #available(macOS 10.14, *) {
-                performMojaveRedrawHack()
-                return
-            }
-        }
-    }
-
     // MARK: - Overridden Methods
 
     override var dividerThickness: CGFloat {
@@ -45,7 +16,7 @@ class SplitView: NSSplitView {
     }
 
     override var dividerColor: NSColor {
-        return simplenoteDividerColor
+        return .simplenoteDividerColor
     }
 }
 

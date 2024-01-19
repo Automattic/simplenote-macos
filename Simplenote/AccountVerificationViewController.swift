@@ -30,12 +30,6 @@ class AccountVerificationViewController: NSViewController {
         }
     }
 
-    // MARK: - Deinit
-
-    deinit {
-        stopListeningToNotifications()
-    }
-
     // MARK: - Initializers
 
     init(configuration: AccountVerificationConfiguration, controller: AccountVerificationController) {
@@ -54,7 +48,6 @@ class AccountVerificationViewController: NSViewController {
         super.viewDidLoad()
         refreshStyle()
         refreshContent()
-        startListeningToNotifications()
     }
 
     override func viewWillAppear() {
@@ -200,29 +193,6 @@ private extension AccountVerificationViewController {
         }
 
         return attributedMessage
-    }
-}
-
-
-// MARK: - Notifications
-//
-private extension AccountVerificationViewController {
-
-    func startListeningToNotifications() {
-        if #available(macOS 10.15, *) {
-            return
-        }
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeWasUpdated), name: .ThemeDidChange, object: nil)
-    }
-
-    func stopListeningToNotifications() {
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    @objc func themeWasUpdated() {
-        refreshStyle()
-        refreshContent()
     }
 }
 

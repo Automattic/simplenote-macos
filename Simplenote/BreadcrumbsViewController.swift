@@ -71,37 +71,14 @@ class BreadcrumbsViewController: NSViewController {
 
     // MARK: - Lifecycle
 
-    deinit {
-        stopListeningToNotifications()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        startListeningToNotifications()
         refreshStyle()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
         refreshRTLSupport()
-    }
-}
-
-
-// MARK: - Notifications
-//
-private extension BreadcrumbsViewController {
-
-    func startListeningToNotifications() {
-        if #available(macOS 10.15, *) {
-            return
-        }
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeDidChange), name: .ThemeDidChange, object: nil)
-    }
-
-    func stopListeningToNotifications() {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 

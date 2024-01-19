@@ -63,12 +63,7 @@ extension NSTableView {
     /// receiver's style is set to Full Width.
     ///
     func ensureStyleIsFullWidth() {
-// BigSur compile-time guard
 #if canImport(WidgetKit)
-        guard #available(macOS 11, *) else {
-            return
-        }
-
         style = .fullWidth
 #endif
     }

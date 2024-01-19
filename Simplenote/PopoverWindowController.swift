@@ -62,12 +62,8 @@ private extension PopoverWindowController {
         window.titlebarAppearsTransparent = true
         window.styleMask = [.borderless]
         window.animationBehavior = .utilityWindow
-
-        // In macOS +10.15 the main ViewController will display rounded corners!
-        if #available(macOS 10.15, *) {
-            window.backgroundColor = .clear
-            window.isOpaque = false
-        }
+        window.backgroundColor = .clear
+        window.isOpaque = false
     }
 
     func calculateWindowOrigin(windowSize: CGSize, positioningRect: CGRect) -> CGPoint {

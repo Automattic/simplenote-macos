@@ -17,11 +17,7 @@ enum SplitItemMetrics {
     /// Sidebar Insets: Tags + Notes Lists
     ///
     static var sidebarTopInset: CGFloat {
-        guard #available(macOS 11, *) else {
-            return sidebarTopInsetLegacy
-        }
-
-        return sidebarTopInsetBigSur
+        sidebarTopInsetBigSur
     }
 
     /// List Insets: Content / Top
@@ -34,10 +30,6 @@ enum SplitItemMetrics {
     ///
     static var listContentBottomInset: CGFloat {
         let bottomInsetBigSur: CGFloat = 10
-        guard #available(macOS 11, *) else {
-            return .zero
-        }
-
         return bottomInsetBigSur
     }
 
@@ -50,11 +42,7 @@ enum SplitItemMetrics {
     /// Editor Insets: Content Top
     ///
     static var editorContentTopInset: CGFloat {
-        guard #available(macOS 11, *) else {
-            return editorContentTopInsetLegacy
-        }
-
-        return editorContentTopInsetBigSur
+        editorContentTopInsetBigSur
     }
 
     /// Editor Insets: Content Bottom

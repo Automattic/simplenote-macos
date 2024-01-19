@@ -21,11 +21,7 @@ extension NSColor {
     /// Note: In `macOS <10.15` this API will always return the NSColor matching the `Current` Appearance
     ///
     static func dynamicColor(lightColor: NSColor, darkColor: NSColor) -> NSColor {
-        guard #available(macOS 10.15, *) else {
-            return SPUserInterface.isDark ? darkColor : lightColor
-        }
-
-        return NSColor(name: nil) {
+        NSColor(name: nil) {
             $0.isDark ? darkColor : lightColor
         }
     }
@@ -43,12 +39,7 @@ extension NSColor {
             }
             return (lightStudio, lightColorAlpha)
         }
-
-        guard #available(macOS 10.15, *) else {
-            let targetColor = colorProvider(SPUserInterface.isDark)
-            return NSColor(studioColor: targetColor.value, alpha: targetColor.alpha)
-        }
-
+        
         return NSColor(name: nil) {
             let targetColor = colorProvider($0.isDark)
             return NSColor(studioColor: targetColor.value, alpha: targetColor.alpha)
@@ -265,11 +256,7 @@ private extension NSColor {
     }
 
     static var simplenoteUnderPageBackgroundDarkColor: NSColor {
-        if #available(OSX 10.14, *) {
-            return .underPageBackgroundColor
-        }
-
-        return NSColor(red: 40.0/255.0, green: 40.0/255.0, blue: 40.0/255.0, alpha: 1.0)
+        return .underPageBackgroundColor
     }
 
     static var simplenoteControlBackgroundDarkColor: NSColor {
