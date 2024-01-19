@@ -465,6 +465,8 @@
 		BA553F0927065E20007737E9 /* FontSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA553F0727065E20007737E9 /* FontSettings.swift */; };
 		BA5F020526BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
 		BA5F020626BB57F000581E92 /* NSAlert+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F020426BB57F000581E92 /* NSAlert+Simplenote.swift */; };
+		BA78AF6F2B5B2BBA00DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF6E2B5B2BBA00DCF896 /* AutomatticTracks */; };
+		BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = BA78AF702B5B2BC300DCF896 /* AutomatticTracks */; };
 		BA938CEC26ACFF4A00BE5A1D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CEB26ACFF4A00BE5A1D /* Remote.swift */; };
 		BA938CEE26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938CED26AD055400BE5A1D /* AccountVerificationController+TestHelpers.swift */; };
 		BAA0A87A26B9F0B50006260E /* RemoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A87926B9F0B50006260E /* RemoteError.swift */; };
@@ -880,6 +882,7 @@
 				B5A8919C231ECB3D0007EDCB /* Sparkle.framework in Frameworks */,
 				26F72A8D14032D2A00A7935E /* Cocoa.framework in Frameworks */,
 				B5609AEA24EEC9910097777A /* SimplenoteSearch in Frameworks */,
+				BA78AF6F2B5B2BBA00DCF896 /* AutomatticTracks in Frameworks */,
 				B5609AF224EF17270097777A /* SimplenoteFoundation in Frameworks */,
 				D0A1D693931CD24A56140DF7 /* Pods_Automattic_Simplenote.framework in Frameworks */,
 			);
@@ -897,6 +900,7 @@
 				466FFEE117CC10A800399652 /* Cocoa.framework in Frameworks */,
 				B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */,
 				B5609AE824EEC9860097777A /* SimplenoteSearch in Frameworks */,
+				BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */,
 				B5609AF024EF171D0097777A /* SimplenoteFoundation in Frameworks */,
 				1E077730C2108B885911E3B5 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
 			);
@@ -1696,6 +1700,7 @@
 				B5609AE924EEC9910097777A /* SimplenoteSearch */,
 				B5609AF124EF17270097777A /* SimplenoteFoundation */,
 				B50FB24B251C08910028DE25 /* SimplenoteInterlinks */,
+				BA78AF6E2B5B2BBA00DCF896 /* AutomatticTracks */,
 			);
 			productName = Simplenote;
 			productReference = 26F72A8814032D2A00A7935E /* Simplenote.app */;
@@ -1722,6 +1727,7 @@
 				B5609AE724EEC9860097777A /* SimplenoteSearch */,
 				B5609AEF24EF171D0097777A /* SimplenoteFoundation */,
 				3FAC7B24254BBCA600B47276 /* SimplenoteInterlinks */,
+				BA78AF702B5B2BC300DCF896 /* AutomatticTracks */,
 			);
 			productName = Simplenote;
 			productReference = 466FFF2F17CC10A800399652 /* Simplenote.app */;
@@ -1811,6 +1817,7 @@
 				B5609AE624EEC9860097777A /* XCRemoteSwiftPackageReference "SimplenoteSearch-Swift" */,
 				B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */,
 				B50FB24A251C08910028DE25 /* XCRemoteSwiftPackageReference "SimplenoteInterlinks-Swift" */,
+				BA78AF6D2B5B2BAE00DCF896 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */,
 			);
 			productRefGroup = 26F72A8914032D2A00A7935E /* Products */;
 			projectDirPath = "";
@@ -3081,6 +3088,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		BA78AF6D2B5B2BAE00DCF896 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Automattic/Automattic-Tracks-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3113,6 +3128,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B5609AEE24EF171D0097777A /* XCRemoteSwiftPackageReference "SimplenoteFoundation-Swift" */;
 			productName = SimplenoteFoundation;
+		};
+		BA78AF6E2B5B2BBA00DCF896 /* AutomatticTracks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA78AF6D2B5B2BAE00DCF896 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */;
+			productName = AutomatticTracks;
+		};
+		BA78AF702B5B2BC300DCF896 /* AutomatticTracks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA78AF6D2B5B2BAE00DCF896 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */;
+			productName = AutomatticTracks;
 		};
 /* End XCSwiftPackageProductDependency section */
 
