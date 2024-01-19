@@ -16,7 +16,7 @@ class SplitView: NSSplitView {
     }
 
     override var dividerColor: NSColor {
-        return .simplenoteDividerColor
+        .simplenoteDividerColor
     }
 }
 
