@@ -437,34 +437,6 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
 
 #pragma mark - NSTableView dragging
 
-// Drag 'n' drop code adapted from http://stackoverflow.com/a/13017587/1379066
-// Much of this code is overly generalized for this use case, but it works
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
-{
-    // Alphabetical tag sorting should not allow drag and drop
-    if (Options.shared.alphabeticallySortTags) {
-        return NO;
-    }
-
-    Tag *tag = [self.state tagAtIndex:rowIndexes.firstIndex];
-    if (tag == nil) {
-        return NO;
-    }
-
-    NSArray *objectURIs = @[
-        tag.objectID.URIRepresentation
-    ];
-
-    NSData *payload = [NSKeyedArchiver archivedDataWithRootObject:objectURIs
-                                            requiringSecureCoding:NO
-                                                            error:nil];
-
-    [pboard declareTypes:@[@"Tag"] owner:self];
-    [pboard setData:payload forType:@"Tag"];
-
-    return YES;
-}
-
 - (BOOL)tableView:(NSTableView *)tableView
        acceptDrop:(id <NSDraggingInfo>)info
               row:(NSInteger)row
@@ -474,7 +446,7 @@ CGFloat const TagListEstimatedRowHeight                     = 30;
     row = row - self.state.indexOfFirstTagRow;
 
     // Get object URIs from paste board
-    NSData *data = [info.draggingPasteboard dataForType:@"Tag"];
+    NSData *data = [info.draggingPasteboard dataForType:[TagListViewController tagDataTypeName]];
     NSSet *supportedClasses = [NSSet setWithObjects:[NSArray class], [NSURL class], nil];
     NSArray *objectURIs = [NSKeyedUnarchiver unarchivedObjectOfClasses:supportedClasses fromData:data error:nil];
 

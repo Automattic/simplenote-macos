@@ -22,6 +22,7 @@ extension TagListViewController {
     func setupTableView() {
         tableView.ensureStyleIsFullWidth()
         tableView.sizeLastColumnToFit()
+        tableView.registerForDraggedTypes([.tag])
     }
 
     /// Setup: Top Header
@@ -338,7 +339,9 @@ extension TagListViewController {
 // MARK: - Drag/Drop
 //
 extension TagListViewController {
-    public func tableView(_ tableView: NSTableView, 
+    @objc static let tagDataTypeName = "com.codality.tag"
+    
+    public func tableView(_ tableView: NSTableView,
                           validateDrop info: NSDraggingInfo,
                           proposedRow row: Int,
                           proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
@@ -358,4 +361,22 @@ extension TagListViewController {
         
         return .move
     }
+    
+    public func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
+        guard !Options.shared.alphabeticallySortTags,
+              let tag = state.tag(atIndex: row),
+              let payload = try? NSKeyedArchiver.archivedData(withRootObject: [tag.objectID.uriRepresentation()], requiringSecureCoding: false) else {
+            return nil
+        }
+        
+        let item = NSPasteboardItem()
+        item.setData(payload, forType: .tag)
+        
+        return item
+    }
+}
+
+// Pasteboard type for dragging tags
+extension NSPasteboard.PasteboardType {
+    static let tag = NSPasteboard.PasteboardType(TagListViewController.tagDataTypeName)
 }
