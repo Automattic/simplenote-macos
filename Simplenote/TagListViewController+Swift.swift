@@ -419,10 +419,9 @@ extension TagListViewController {
         })
 
         // Insert dragged objects at row
-
         if newRow < allObjects.count {
-            let indexSet = NSIndexSet(indexesIn: NSMakeRange(newRow, draggedObjects.count))
-            allObjects.insert(draggedObjects, at: indexSet as IndexSet)
+            let indexSet = IndexSet(integersIn: Range(uncheckedBounds: (newRow, newRow + draggedObjects.count)))
+            allObjects.insert(draggedObjects, at: indexSet)
         } else {
             allObjects.addObjects(from: draggedObjects)
         }
