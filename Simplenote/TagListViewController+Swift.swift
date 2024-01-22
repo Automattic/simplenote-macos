@@ -333,3 +333,29 @@ extension TagListViewController {
         tableView.reloadSelectedRow()
     }
 }
+
+
+// MARK: - Drag/Drop
+//
+extension TagListViewController {
+    public func tableView(_ tableView: NSTableView, 
+                          validateDrop info: NSDraggingInfo,
+                          proposedRow row: Int,
+                          proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+        if let draggingSource = info.draggingSource as? NSTabView,
+           draggingSource != tableView {
+            return []
+        }
+        
+        // Disallow drop outside the Tags Range
+        if row < state.indexOfFirstTagRow || row > state.indexOfLastTagRow + 1 {
+            return []
+        }
+        
+        if dropOperation == .on {
+            tableView.setDropRow(row, dropOperation: .above)
+        }
+        
+        return .move
+    }
+}
