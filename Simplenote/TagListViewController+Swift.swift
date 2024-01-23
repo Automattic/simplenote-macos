@@ -22,6 +22,7 @@ extension TagListViewController {
     func setupTableView() {
         tableView.ensureStyleIsFullWidth()
         tableView.sizeLastColumnToFit()
+        tableView.registerForDraggedTypes([.tag])
     }
 
     /// Setup: Top Header
@@ -332,4 +333,117 @@ extension TagListViewController {
         tableView.refreshRows(isActive: isActive)
         tableView.reloadSelectedRow()
     }
+}
+
+
+// MARK: - Drag/Drop
+//
+extension TagListViewController {
+    @objc static let tagDataTypeName = "com.codality.tag"
+    
+    public func tableView(_ tableView: NSTableView,
+                          validateDrop info: NSDraggingInfo,
+                          proposedRow row: Int,
+                          proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+        if let draggingSource = info.draggingSource as? NSTabView,
+           draggingSource != tableView {
+            return []
+        }
+        
+        // Disallow drop outside the Tags Range
+        if row < state.indexOfFirstTagRow || row > state.indexOfLastTagRow + 1 {
+            return []
+        }
+        
+        if dropOperation == .on {
+            tableView.setDropRow(row, dropOperation: .above)
+        }
+        
+        return .move
+    }
+    
+    public func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
+        guard !Options.shared.alphabeticallySortTags,
+              let tag = state.tag(atIndex: row),
+              let payload = try? NSKeyedArchiver.archivedData(withRootObject: [tag.objectID.uriRepresentation()], requiringSecureCoding: false) else {
+            return nil
+        }
+        
+        let item = NSPasteboardItem()
+        item.setData(payload, forType: .tag)
+        
+        return item
+    }
+    
+    public func tableView(_ tableView: NSTableView,
+                          acceptDrop info: NSDraggingInfo,
+                          row: Int,
+                          dropOperation: NSTableView.DropOperation) -> Bool {
+        // Account for row offset
+        let newRow = row - state.indexOfFirstTagRow
+        
+        // Get object URIs from paste board
+        guard let data = info.draggingPasteboard.data(forType: .tag) else {
+            return false
+        }
+        
+        guard let objectURIs = try? NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClass: NSURL.self, from: data) else {
+            return false
+        }
+        
+        // Get managed object context and persistent store coordinator
+        let context = SimplenoteAppDelegate.shared().managedObjectContext
+        let coordinator = context.persistentStoreCoordinator
+        
+        // Collect manged objects with URIs
+        var draggedObjects: Array<Tag> = objectURIs.compactMap({
+            guard let objectID = coordinator?.managedObjectID(forURIRepresentation: $0 as URL) else {
+                return nil
+            }
+            return context.object(with: objectID) as? Tag
+        })
+
+        // Get managed objects
+        let allObjects = NSMutableArray(array: tagArray)
+        if allObjects.count == .zero {
+            return false
+        }
+
+        // Replace dragged objects with null objects as placeholder to prevent old order
+        draggedObjects.forEach({
+            let index = allObjects.index(of: $0)
+            if index == NSNotFound {
+                return
+            }
+            allObjects.replaceObject(at: index, with: NSNull())
+        })
+
+        // Insert dragged objects at row
+        if newRow < allObjects.count {
+            let indexSet = IndexSet(integersIn: Range(uncheckedBounds: (newRow, newRow + draggedObjects.count)))
+            allObjects.insert(draggedObjects, at: indexSet)
+        } else {
+            allObjects.addObjects(from: draggedObjects)
+        }
+        
+        allObjects.remove(NSNull())
+        
+        var counter = 0
+        for object in allObjects {
+            guard let tag = allObjects[counter] as? Tag else {
+                continue
+            }
+            tag.index = NSNumber(integerLiteral: counter)
+            counter += 1
+        }
+        
+        // Reload data
+        loadTags()
+        return true
+    }
+}
+
+// Pasteboard type for dragging tags
+extension NSPasteboard.PasteboardType {
+    static let tag = NSPasteboard.PasteboardType(TagListViewController.tagDataTypeName)
 }
