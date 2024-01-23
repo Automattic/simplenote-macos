@@ -335,10 +335,6 @@ private struct Strings {
 private extension PreferencesViewController {
 
     func startListeningToNotifications() {
-        guard #available(macOS 10.15, *) else {
-            return
-        }
-
         NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTextSizeSlider), name: .FontSizeDidChange, object: nil)
 

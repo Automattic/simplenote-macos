@@ -30,15 +30,10 @@ class ToolbarView: NSView {
 
     // MARK: - Overridden
 
-    deinit {
-        stopListeningToNotifications()
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         setupActionButtons()
         refreshStyle()
-        startListeningToNotifications()
     }
 
     override func resetCursorRects() {
@@ -52,24 +47,6 @@ class ToolbarView: NSView {
     override func mouseDragged(with event: NSEvent) {
         super.mouseDragged(with: event)
         window?.performDrag(with: event)
-    }
-}
-
-
-// MARK: - Notifications
-//
-private extension ToolbarView {
-
-    func startListeningToNotifications() {
-        if #available(macOS 10.15, *) {
-            return
-        }
-
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
-    }
-
-    func stopListeningToNotifications() {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 

@@ -411,7 +411,6 @@
 
 - (void)applyStyle
 {
-    [self.splitViewController refreshStyle];
     [self.tagListViewController applyStyle];
     [self.noteListViewController refreshStyle];
     [self.noteEditorViewController refreshStyle];

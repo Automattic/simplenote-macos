@@ -426,7 +426,7 @@ static NSString * const SPMarkdownPreferencesKey        = @"kMarkdownPreferences
 
     // Configure wrapping and alignment
     NSPrintInfo *printInfo = [NSPrintInfo sharedPrintInfo];
-    [printInfo setHorizontalPagination:NSFitPagination];
+    [printInfo setHorizontalPagination:NSPrintingPaginationModeFit];
     [printInfo setVerticallyCentered:NO];
 
     // Set the view's frame to the size of the page

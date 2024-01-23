@@ -112,10 +112,6 @@ enum TableRowStyle {
 extension TableRowStyle {
 
     var cornerRadius: CGFloat {
-        guard #available(macOS 11, *) else {
-            return Metrics.legacyCornerRadius
-        }
-
         switch self {
         case .fullWidth:
             return Metrics.legacyCornerRadius
@@ -125,10 +121,6 @@ extension TableRowStyle {
     }
 
     var insets: CGVector {
-        guard #available(macOS 11, *) else {
-            return Metrics.fullWidthInsets
-        }
-
         switch self {
         case .fullWidth:
             return Metrics.fullWidthInsets
@@ -162,10 +154,6 @@ extension TableRowStyle {
     var separatorInsets: NSEdgeInsets {
         guard self == .list else {
             return .zero
-        }
-
-        guard #available(macOS 11, *) else {
-            return Metrics.sidebarLegacySeparatorInsets
         }
 
         return Metrics.sidebarSeparatorInsets

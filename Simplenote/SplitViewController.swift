@@ -215,15 +215,6 @@ extension SplitViewController {
         previousState = state
         state = nextState
     }
-
-    @objc
-    func refreshStyle() {
-        guard let splitView = splitView as? SplitView else {
-            fatalError()
-        }
-
-        splitView.simplenoteDividerColor = .simplenoteDividerColor
-    }
 }
 
 

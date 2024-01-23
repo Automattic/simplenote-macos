@@ -27,16 +27,8 @@ class InterlinkViewController: NSViewController {
     ///
     var onInsertInterlink: ((String) -> Void)?
 
-
-    // MARK: - Overridden Methods
-
-    deinit {
-        stopListeningToNotifications()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        startListeningToNotifications()
         refreshStyle()
         setupRoundedCorners()
         setupTableView()
@@ -60,10 +52,6 @@ class InterlinkViewController: NSViewController {
 private extension InterlinkViewController {
 
     func setupRoundedCorners() {
-        guard #available(macOS 10.15, *) else {
-            return
-        }
-
         backgroundView.wantsLayer = true
         backgroundView.layer?.cornerRadius = Settings.cornerRadius
     }
@@ -95,25 +83,6 @@ extension InterlinkViewController {
         onInsertInterlink?(markdownInterlink)
     }
 }
-
-
-// MARK: - Notifications
-//
-private extension InterlinkViewController {
-
-    func startListeningToNotifications() {
-        if #available(macOS 10.15, *) {
-            return
-        }
-
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshStyle), name: .ThemeDidChange, object: nil)
-    }
-
-    func stopListeningToNotifications() {
-        NotificationCenter.default.removeObserver(self)
-    }
-}
-
 
 // MARK: - Interface
 //
