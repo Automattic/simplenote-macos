@@ -247,7 +247,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="NoteTableCellView" translatesAutoresizingMaskIntoConstraints="NO" id="bde-Ei-vv5" customClass="NoteTableCellView" customModule="Simplenote" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="0.0" width="259" height="68"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="259" height="68"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YP5-KE-GnO" userLabel="Pin Image View">
                                                                     <rect key="frame" x="12" y="45" width="12" height="12"/>
@@ -523,7 +523,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="La0-hZ-ZgT" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
+                            <customView clipsToBounds="YES" translatesAutoresizingMaskIntoConstraints="NO" id="La0-hZ-ZgT" customClass="BackgroundView" customModule="Simplenote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="294" height="28"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-Zy-2Tg">
