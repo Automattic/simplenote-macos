@@ -100,6 +100,12 @@ extension AuthViewController {
         passwordFieldHeightConstraint.constant   = Metrics.passwordHeight(signingIn: signingIn)
         forgotPasswordHeightConstraint.constant  = Metrics.forgotHeight(signingIn: signingIn)
         wordPressSSOHeightConstraint.constant    = Metrics.wordPressHeight(signingIn: signingIn)
+        
+        let fields      = [passwordField, forgotPasswordButton, wordPressSSOButton].compactMap { $0 }
+        let alphaStart  = signingIn ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
+        let alphaEnd    = signingIn ? AppKitConstants.alpha1_0 : AppKitConstants.alpha0_0
+
+        fields.updateAlphaValue(AppKitConstants.alpha0_0)
     }
 
     /// Animates Visible / Invisible components, based on the specified state
