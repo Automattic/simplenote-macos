@@ -404,7 +404,7 @@ extension TagListViewController {
         })
 
         // Get managed objects
-        var allObjects = NSMutableArray(array: tagArray)
+        let allObjects = NSMutableArray(array: tagArray)
         if allObjects.count == .zero {
             return false
         }
