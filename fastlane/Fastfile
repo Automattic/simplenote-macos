@@ -119,11 +119,17 @@ desc 'Creates a new release branch from the current trunk'
 lane :code_freeze do |options|
   ios_codefreeze_prechecks(options)
 
-  ios_bump_version_release(skip_deliver: true, skip_glotpress: true)
+  ios_bump_version_release
   new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
   ios_update_release_notes(new_version: new_version)
-  setbranchprotection(repository: GITHUB_REPO, branch: "release/#{new_version}")
-  setfrozentag(repository: GITHUB_REPO, milestone: new_version)
+  setbranchprotection(
+    repository: GITHUB_REPO,
+    branch: "release/#{new_version}"
+  )
+  setfrozentag(
+    repository: GITHUB_REPO,
+    milestone: new_version
+  )
 
   generate_strings_file_for_glotpress
 end
@@ -151,9 +157,11 @@ lane :update_appstore_strings do |options|
     app_store_keywords: File.join(source_metadata_folder, 'keywords.txt')
   }
 
-  ios_update_metadata_source(po_file_path: File.join(PROJECT_FOLDER, '/Simplenote/Resources/AppStoreStrings.pot'),
-                             source_files: files,
-                             release_version: options[:version])
+  ios_update_metadata_source(
+    po_file_path: File.join(PROJECT_FOLDER, '/Simplenote/Resources/AppStoreStrings.pot'),
+    source_files: files,
+    release_version: options[:version]
+  )
 end
 
 #####################################################################################
@@ -196,7 +204,10 @@ end
 desc 'Creates a new hotfix branch for the given version:x.y.z. The branch will be cut from the tag x.y of the previous release'
 lane :new_hotfix_release do |options|
   prev_ver = ios_hotfix_prechecks(options)
-  ios_bump_version_hotfix(previous_version: prev_ver, version: options[:version])
+  ios_bump_version_hotfix(
+    previous_version: prev_ver,
+    version: options[:version]
+  )
 end
 
 #####################################################################################
