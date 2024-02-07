@@ -60,21 +60,16 @@ def build_simplenote(codesign:, archive_path: nil)
   build_mac_app(
     workspace: WORKSPACE,
     scheme: APP_STORE_SCHEME,
-    configuration: 'Release',
     clean: true,
     output_directory: BUILD_FOLDER,
     archive_path: archive_path,
     skip_archive: skip_archive,
-    export_method: 'app-store',
     export_team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
     xcargs: xcargs,
-    # When exporting for the App Store, we need a .pkg file because that's the
-    # only format upload_to_app_store supports.
-    #
-    # Note for the future readers: this might need to be disabled for the
-    # developer-id export, see
-    # https://github.com/fastlane/fastlane/issues/15963#issuecomment-593649185
-    skip_package_pkg: false,
+    export_options: {
+      method: 'app-store',
+      manageAppVersionAndBuildNumber: false
+    }
   )
 end
 
@@ -310,39 +305,25 @@ end
     sh("rake dependencies:pod:clean")
     cocoapods()
 
-    # This allows code signing to work on CircleCI. It is skipped if this isn't
-    # running on CI.
-    #
-    # See https://circleci.com/docs/2.0/ios-codesigning/
-    setup_circle_ci
+    setup_ci
 
     sync_code_signing(
+      storage_mode: 'google_cloud',
+      google_cloud_bucket_name: 'a8c-fastlane-match',
+      google_cloud_keys_file: File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'google_cloud_keys.json'),
       type: 'appstore',
       platform: 'macos',
       # This Mac app also needs a Mac Installer Distribution certificate
-      additional_cert_types: ['mac_installer_distribution'],
+      additional_cert_types: 'mac_installer_distribution',
       readonly: true,
       app_identifier: 'com.automattic.SimplenoteMac',
       api_key_path: APP_STORE_CONNECT_API_KEY_PATH
     )
 
     archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
-    build_simplenote(codesign: true, archive_path: archive_path)
-
-    # TestFlight does not suport macOS but we can use deliver to upload the
-    # binary to the App Store by telling it to skip all the metadata,
-    # screenshots, etc.
-    upload_to_app_store(
-      pkg: File.join(BUILD_FOLDER, 'Simplenote.pkg'),
-      skip_screenshots: true,
-      overwrite_screenshots: false,
-      skip_metadata: true,
-      skip_app_version_update: true,
-      run_precheck_before_submit: false,
-      precheck_include_in_app_purchases: false,
-      skip_binary_upload: false,
-      force: true, # Skip verification of HTML preview file
-      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
+    build_simplenote(
+      codesign: true,
+      archive_path: archive_path
     )
 
     sentry_upload_dsym(
@@ -368,6 +349,8 @@ end
         prerelease: options[:prerelease],
       )
     end
+
+    upload_to_testflight(api_key_path: APP_STORE_CONNECT_API_KEY_PATH)
   end
 
   # Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
