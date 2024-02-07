@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'cocoapods', '~> 1.14'
-gem 'fastlane', '~> 2'
+gem 'fastlane', '~> 2.219'
 gem 'rake', '~> 12.3'
 gem 'rubocop', '~> 1.18'
 gem 'xcpretty-travis-formatter', '~> 1.0'
