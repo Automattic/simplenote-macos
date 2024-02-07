@@ -84,7 +84,7 @@ before_all do
 end
 
 desc 'Runs the unit tests for the project'
-lane :test do |_options|
+lane :test do
   run_tests(
     workspace: WORKSPACE,
     scheme: INTERNAL_SCHEME,
@@ -95,7 +95,7 @@ lane :test do |_options|
 end
 
 desc 'Builds the app using the App Store target but without code signing, just to check the target builds'
-lane :test_app_store_build do |_options|
+lane :test_app_store_build do
   configure_apply
   build_simplenote(codesign: false)
 end
@@ -266,7 +266,7 @@ end
 # bundle exec fastlane build_and_upload_beta skip_confirm:true
 #####################################################################################
 desc 'Builds and updates for beta distribution'
-lane :build_and_upload_beta do |_options|
+lane :build_and_upload_beta do
   ensure_git_status_clean
 
   configure_apply
