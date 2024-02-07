@@ -148,17 +148,17 @@ end
 #####################################################################################
 desc 'Updates the AppStoreStrings.pot file with the latest data'
 lane :update_appstore_strings do |options|
-  source_metadata_folder = File.join(PROJECT_FOLDER, 'fastlane/appstoreres/metadata/source')
+  source_metadata_folder = File.join(PROJECT_FOLDER, 'fastlane', 'appstoreres', 'metadata', 'source')
 
   files = {
-    whats_new: File.join(PROJECT_FOLDER, '/Simplenote/Resources/release_notes.txt'),
+    whats_new: File.join(PROJECT_FOLDER, 'Simplenote', 'Resources', 'release_notes.txt'),
     app_store_subtitle: File.join(source_metadata_folder, 'subtitle.txt'),
     app_store_desc: File.join(source_metadata_folder, 'description.txt'),
     app_store_keywords: File.join(source_metadata_folder, 'keywords.txt')
   }
 
   ios_update_metadata_source(
-    po_file_path: File.join(PROJECT_FOLDER, '/Simplenote/Resources/AppStoreStrings.pot'),
+    po_file_path: File.join(PROJECT_FOLDER, 'Simplenote', 'Resources', 'AppStoreStrings.pot'),
     source_files: files,
     release_version: options[:version]
   )
@@ -289,7 +289,7 @@ lane :build_and_upload_beta do
     notify_testers: false
   )
 
-  dsym_path = "#{File.dirname(Dir.pwd)}/build/Simplenote.app.dSYM.zip"
+  dsym_path = File.join(File.dirname(Dir.pwd), 'build', 'Simplenote.app.dSYM.zip')
 
   sentry_upload_dsym(
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
@@ -364,7 +364,7 @@ lane :build_and_upload_app_store do |options|
     create_release(
       repository: GITHUB_REPO,
       version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
-      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+      release_notes_file_path: File.join('Simplenote', 'Resources', 'release_notes.txt'),
       release_assets: [archive_zip_path],
       prerelease: options[:prerelease]
     )
