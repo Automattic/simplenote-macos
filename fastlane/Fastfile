@@ -430,8 +430,8 @@ lane :upload_app_to_appcenter do |options|
   # of the app on a given day and upload all of the archives done today.
   Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
     system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
+  end
 end
-
 
 #############################################################################
 # build_and_upload_app_store
@@ -446,10 +446,10 @@ end
 # bundle exec fastlane build_and_upload_app_store
 # bundle exec fastlane build_and_upload_app_store create_github_release:true
 #############################################################################
-lane :build_and_upload_app_store do | options |
-  configure_apply()
-  sh("rake dependencies:pod:clean")
-  cocoapods()
+lane :build_and_upload_app_store do |options|
+  configure_apply
+  sh('rake dependencies:pod:clean')
+  cocoapods
 
   setup_ci
 
@@ -473,13 +473,13 @@ lane :build_and_upload_app_store do | options |
   )
 
   sentry_upload_dsym(
-    auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
+    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenotemacos',
     # At the time of writing, there's no way to explicitly configure the
     # dSYM path, but build_mac_app sets it in the environment if successful.
     # See `bundle exec fastlane action build_mac_app`.
-    dsym_path: ENV['DSYM_OUTPUT_PATH'],
+    dsym_path: ENV.fetch('DSYM_OUTPUT_PATH', nil)
   )
 
   # Do not create the GitHub release unless explicitly requested
@@ -492,7 +492,7 @@ lane :build_and_upload_app_store do | options |
       version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
       release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
       release_assets: [archive_zip_path],
-      prerelease: options[:prerelease],
+      prerelease: options[:prerelease]
     )
   end
 
