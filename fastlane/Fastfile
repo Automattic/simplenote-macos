@@ -120,7 +120,11 @@ end
     new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
     ios_update_release_notes(new_version: new_version)
 
+    UI.important('Pushing changes to remote and configuring the release on GitHub')
+    UI.user_error!("Terminating as requested. Don't forget to run the remainder of this automation manually.") unless options[:skip_confirm] || UI.confirm('Do you want to continue?')
+
     push_to_git_remote(tags: false)
+
     setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
     setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
 
