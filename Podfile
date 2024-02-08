@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://cdn.cocoapods.org/'
 
 inhibit_all_warnings!
@@ -32,9 +34,7 @@ post_install do |installer|
     target.build_configurations.each do |configuration|
       macos_deployment_key = 'MACOSX_DEPLOYMENT_TARGET'
       pod_macos_deployment_target = Gem::Version.new(configuration.build_settings[macos_deployment_key])
-      if pod_macos_deployment_target <= APP_MACOS_DEPLOYMENT_TARGET
-        configuration.build_settings.delete macos_deployment_key
-      end
+      configuration.build_settings.delete macos_deployment_key if pod_macos_deployment_target <= APP_MACOS_DEPLOYMENT_TARGET
     end
   end
 end

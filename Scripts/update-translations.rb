@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-# encoding: utf-8
+# frozen_string_literal: true
 
 # Supported languages:
-# ar,cy,zh-Hans,zh-Hant,nl,fa,fr,de,el,he,id,ko,pt,ru,es,sv,tr,ja,it 
+# ar,cy,zh-Hans,zh-Hant,nl,fa,fr,de,el,he,id,ko,pt,ru,es,sv,tr,ja,it
 # * Arabic
 # * Welsh
 # * Chinese (China) [zh-Hans]
@@ -25,11 +25,11 @@
 require 'json'
 
 if Dir.pwd =~ /Scripts/
-  puts "Must run script from root folder"
+  puts 'Must run script from root folder'
   exit
 end
 
-ALL_LANGS={
+ALL_LANGS = {
   'ar' => 'ar',         # Arabic
   'cy' => 'cy',         # Welsh
   'de' => 'de',         # German
@@ -48,43 +48,42 @@ ALL_LANGS={
   'sv' => 'sv',         # Swedish
   'tr' => 'tr',         # Turkish
   'zh-cn' => 'zh-Hans-CN', # Chinese (China)
-  'zh-tw' => 'zh-Hant-TW', # Chinese (Taiwan)
-}
+  'zh-tw' => 'zh-Hant-TW' # Chinese (Taiwan)
+}.freeze
 
 # Whenever a translation is missing in any given language, we'll fall back to the English String
 FALLBACK_LANG = 'en'
 
-
 def copy_header(target_file, trans_strings)
   trans_strings.each_line do |line|
-    if (!line.start_with?("/*"))
+    unless line.start_with?('/*')
       target_file.write("\n")
-      return
-    end 
+      break
+    end
 
     target_file.write(line)
   end
 end
 
-def copy_comment(f, trans_strings, value)
-  prev_line=""
+def copy_comment(file, trans_strings, value)
+  prev_line = ''
   trans_strings.each_line do |line|
     if line.include?(value)
-      f.write(prev_line)
-      return 
+      file.write(prev_line)
+      break
     end
-    prev_line=line
+    prev_line = line
   end
 end
 
 langs = {}
-if ARGV.count > 0
-  for key in ARGV
-    unless local = ALL_LANGS[key]
+if ARGV.count.positive?
+  ARGV.each do |key|
+    unless (locale = ALL_LANGS[key])
       puts "Unknown language #{key}"
       exit 1
     end
-    langs[key] = local
+    langs[key] = locale
   end
 else
   langs = ALL_LANGS
@@ -92,11 +91,11 @@ end
 
 fallback_lang_dir = File.join('Simplenote', "#{FALLBACK_LANG}.lproj")
 
-langs.each do |code,local|
-  lang_dir = File.join('Simplenote', "#{local}.lproj")
+langs.each do |code, locale|
+  lang_dir = File.join('Simplenote', "#{locale}.lproj")
   puts "Updating #{code}"
   system "mkdir -p #{lang_dir}"
-  
+
   # Backup the current file(s)
   system "if [ -e #{lang_dir}/Localizable.strings ]; then cp #{lang_dir}/Localizable.strings #{lang_dir}/Localizable.strings.bak; fi"
   system "if [ -e #{lang_dir}/MainMenu.strings ]; then cp #{lang_dir}/MainMenu.strings #{lang_dir}/MainMenu.strings.bak; fi"
@@ -110,7 +109,7 @@ langs.each do |code,local|
   system "curl -fLso #{lang_dir}/MainMenu.strings https://translate.wordpress.com/projects/simplenote%2Fmacos/main-menu/#{code}/default/export-translations?format=strings" or begin
     puts "Error downloading MainMenu.strings - Language: [#{code}]"
   end
-  
+
   # Failsafe: Handle empty values
   system "./Scripts/fix-translation.swift #{lang_dir}/Localizable.strings #{fallback_lang_dir}/Localizable.strings"
   system "./Scripts/fix-translation.swift #{lang_dir}/MainMenu.strings #{fallback_lang_dir}/MainMenu.strings"

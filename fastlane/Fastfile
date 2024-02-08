@@ -1,25 +1,12 @@
+# frozen_string_literal: true
+
 default_platform(:ios)
 fastlane_require 'dotenv'
 fastlane_require 'shellwords' # used for shell-escaping paths
 
-########################################################################
-# Environment
-########################################################################
-Dotenv.load('~/.simplenotemacos-env.default')
-ORGANIZATION_NAME = 'Automattic'
-REPOSITORY_NAME = 'simplenote-macos'
-ENV[GHHELPER_REPO="#{ORGANIZATION_NAME}/#{REPOSITORY_NAME}"]
-ENV["PROJECT_NAME"]="Simplenote"
-ENV["PROJECT_ROOT_FOLDER"]="./"
-ENV['APP_STORE_STRINGS_FILE_NAME']='AppStoreStrings.pot'
-ENV["PUBLIC_CONFIG_FILE"]="./config/Version.public.xcconfig"
-ENV["DOWNLOAD_METADATA"]="./fastlane/download_metadata.swift"
-ENV['FL_RELEASE_TOOLKIT_DEFAULT_BRANCH'] = 'trunk'
-
+# Constants
 USER_ENV_FILE_PATH = File.join(Dir.home, '.simplenotemacos-env.default')
-
-PROJECT_FOLDER = Pathname.new(File.join(Dir.pwd, "..")).expand_path.to_s
-
+PROJECT_FOLDER = Pathname.new(File.join(Dir.pwd, '..')).expand_path.to_s
 WORKSPACE = 'Simplenote.xcworkspace'
 INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote-AppStore'
@@ -27,6 +14,19 @@ BUILD_FOLDER = 'build'
 APP_STORE_CONNECT_API_KEY_PATH = File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'app_store_connect_fastlane_api_key.json')
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
 VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig')
+DEFAULT_BRANCH = 'trunk'
+GITHUB_REPO = 'Automattic/simplenote-macos'
+
+########################################################################
+# Environment
+########################################################################
+Dotenv.load('~/.simplenotemacos-env.default')
+ENV['PROJECT_NAME'] = 'Simplenote'
+ENV['PROJECT_ROOT_FOLDER'] = './'
+ENV['APP_STORE_STRINGS_FILE_NAME'] = 'AppStoreStrings.pot'
+ENV['PUBLIC_CONFIG_FILE'] = './config/Version.public.xcconfig'
+ENV['DOWNLOAD_METADATA'] = './fastlane/download_metadata.swift'
+ENV['FL_RELEASE_TOOLKIT_DEFAULT_BRANCH'] = 'trunk'
 
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
@@ -34,16 +34,14 @@ VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig
 SKIP_CODE_SIGNING_XCARGS = {
   COMPILER_INDEX_STORE_ENABLE: 'NO',
   CODE_SIGN_IDENTITY: '',
-  CODE_SIGNING_REQUIRED: 'NO',
-}
+  CODE_SIGNING_REQUIRED: 'NO'
+}.freeze
 
 # Use this instead of getting values from ENV directly
 # It will throw an error if the requested value is missing
 def get_required_env(key)
-  unless ENV.key?(key)
-    UI.user_error!("Environment variable '#{key}' is not set. Have you setup #{USER_ENV_FILE_PATH} correctly?")
-  end
-  ENV[key]
+  UI.user_error!("Environment variable '#{key}' is not set. Have you setup #{USER_ENV_FILE_PATH} correctly?") unless ENV.key?(key)
+  ENV.fetch(key)
 end
 
 # Helper function to DRY the code to build the app
@@ -81,7 +79,7 @@ before_all do
 end
 
 desc 'Runs the unit tests for the project'
-lane :test do | options |
+lane :test do
   run_tests(
     workspace: WORKSPACE,
     scheme: INTERNAL_SCHEME,
@@ -92,7 +90,7 @@ lane :test do | options |
 end
 
 desc 'Builds the app using the App Store target but without code signing, just to check the target builds'
-lane :test_app_store_build do | options |
+lane :test_app_store_build do
   configure_apply
   build_simplenote(codesign: false)
 end
@@ -100,388 +98,400 @@ end
 ########################################################################
 # Release Lanes
 ########################################################################
-  #####################################################################################
-  # code_freeze
-  # -----------------------------------------------------------------------------------
-  # This lane executes the steps planned on code freeze
-  # -----------------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane code_freeze [skip_confirm:<skip confirm>]
-  #
-  # Example:
-  # bundle exec fastlane code_freeze
-  # bundle exec fastlane code_freeze skip_confirm:true
-  #####################################################################################
-  desc "Creates a new release branch from the current trunk"
-  lane :code_freeze do | options |
-    old_version = ios_codefreeze_prechecks(options)
+#####################################################################################
+# code_freeze
+# -----------------------------------------------------------------------------------
+# This lane executes the steps planned on code freeze
+# -----------------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane code_freeze [skip_confirm:<skip confirm>]
+#
+# Example:
+# bundle exec fastlane code_freeze
+# bundle exec fastlane code_freeze skip_confirm:true
+#####################################################################################
+desc 'Creates a new release branch from the current trunk'
+lane :code_freeze do |options|
+  ios_codefreeze_prechecks(options)
 
-    ios_bump_version_release
-    new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
-    ios_update_release_notes(new_version: new_version)
+  ios_bump_version_release
+  new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
+  ios_update_release_notes(new_version: new_version)
 
-    UI.important('Pushing changes to remote and configuring the release on GitHub')
-    UI.user_error!("Terminating as requested. Don't forget to run the remainder of this automation manually.") unless options[:skip_confirm] || UI.confirm('Do you want to continue?')
+  UI.important('Pushing changes to remote and configuring the release on GitHub')
+  UI.user_error!("Terminating as requested. Don't forget to run the remainder of this automation manually.") unless options[:skip_confirm] || UI.confirm('Do you want to continue?')
 
-    push_to_git_remote(tags: false)
+  push_to_git_remote(tags: false)
 
-    setbranchprotection(repository:GHHELPER_REPO, branch: "release/#{new_version}")
-    setfrozentag(repository:GHHELPER_REPO, milestone: new_version)
+  copy_branch_protection(
+    repository: GITHUB_REPO,
+    from_branch: DEFAULT_BRANCH,
+    to_branch: "release/#{new_version}"
+  )
+  setfrozentag(
+    repository: GITHUB_REPO,
+    milestone: new_version
+  )
 
-    generate_strings_file_for_glotpress()
-  end
+  generate_strings_file_for_glotpress
+end
 
-  #####################################################################################
-  # update_appstore_strings
-  # -----------------------------------------------------------------------------------
-  # This lane updates the AppStoreStrings.pot files with the latest content from
-  # the release_notes.txt file and the other text sources
-  # -----------------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane update_appstore_strings version:<release note version>
-  #
-  # Example:
-  # bundle exec fastlane update_appstore_strings version:1.1
-  #####################################################################################
-  desc "Updates the AppStoreStrings.pot file with the latest data"
-  lane :update_appstore_strings do | options |
-    source_metadata_folder = File.join(PROJECT_FOLDER, "fastlane/appstoreres/metadata/source")
+#####################################################################################
+# update_appstore_strings
+# -----------------------------------------------------------------------------------
+# This lane updates the AppStoreStrings.pot files with the latest content from
+# the release_notes.txt file and the other text sources
+# -----------------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane update_appstore_strings version:<release note version>
+#
+# Example:
+# bundle exec fastlane update_appstore_strings version:1.1
+#####################################################################################
+desc 'Updates the AppStoreStrings.pot file with the latest data'
+lane :update_appstore_strings do |options|
+  source_metadata_folder = File.join(PROJECT_FOLDER, 'fastlane', 'appstoreres', 'metadata', 'source')
 
-    files = {
-      whats_new: File.join(PROJECT_FOLDER,  "/Simplenote/Resources/release_notes.txt"),
-      app_store_subtitle: File.join(source_metadata_folder, "subtitle.txt"),
-      app_store_desc: File.join(source_metadata_folder, "description.txt"),
-      app_store_keywords: File.join(source_metadata_folder, "keywords.txt")
-    }
+  files = {
+    whats_new: File.join(PROJECT_FOLDER, 'Simplenote', 'Resources', 'release_notes.txt'),
+    app_store_subtitle: File.join(source_metadata_folder, 'subtitle.txt'),
+    app_store_desc: File.join(source_metadata_folder, 'description.txt'),
+    app_store_keywords: File.join(source_metadata_folder, 'keywords.txt')
+  }
 
-    ios_update_metadata_source(po_file_path: File.join(PROJECT_FOLDER, "/Simplenote/Resources/AppStoreStrings.pot"),
-      source_files: files,
-      release_version: options[:version])
-  end
+  ios_update_metadata_source(
+    po_file_path: File.join(PROJECT_FOLDER, 'Simplenote', 'Resources', 'AppStoreStrings.pot'),
+    source_files: files,
+    release_version: options[:version]
+  )
+end
 
-  #####################################################################################
-  # new_beta_release
-  # -----------------------------------------------------------------------------------
-  # This lane updates the release branch for a new beta release. It will update the
-  # current release branch by default. If you want to update a different branch
-  # (i.e. hotfix branch) pass the related version with the 'base_version' param
-  # (example: base_version:10.6.1 will work on the 10.6.1 branch)
-  # -----------------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane new_beta_release [skip_confirm:<skip confirm>] [base_version:<version>]
-  #
-  # Example:
-  # bundle exec fastlane new_beta_release
-  # bundle exec fastlane new_beta_release skip_confirm:true
-  # bundle exec fastlane new_beta_release base_version:10.6.1
-  #####################################################################################
-  desc "Updates a release branch for a new beta release"
-  lane :new_beta_release do | options |
-    ios_betabuild_prechecks(options)
-    generate_strings_file_for_glotpress()
-    download_strings_files_from_glotpress()
-    ios_bump_version_beta()
-    ios_tag_build()
-  end
+#####################################################################################
+# new_beta_release
+# -----------------------------------------------------------------------------------
+# This lane updates the release branch for a new beta release. It will update the
+# current release branch by default. If you want to update a different branch
+# (i.e. hotfix branch) pass the related version with the 'base_version' param
+# (example: base_version:10.6.1 will work on the 10.6.1 branch)
+# -----------------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane new_beta_release [skip_confirm:<skip confirm>] [base_version:<version>]
+#
+# Example:
+# bundle exec fastlane new_beta_release
+# bundle exec fastlane new_beta_release skip_confirm:true
+# bundle exec fastlane new_beta_release base_version:10.6.1
+#####################################################################################
+desc 'Updates a release branch for a new beta release'
+lane :new_beta_release do |options|
+  ios_betabuild_prechecks(options)
+  generate_strings_file_for_glotpress
+  download_strings_files_from_glotpress
+  ios_bump_version_beta
+  ios_tag_build
+end
 
-  #####################################################################################
-  # new_hotfix_release
-  # -----------------------------------------------------------------------------------
-  # This lane creates the release branch for a new hotfix release.
-  # -----------------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane new_hotfix_release [skip_confirm:<skip confirm>] [version:<version>]
-  #
-  # Example:
-  # bundle exec fastlane new_hotfix_release version:10.6.1
-  # bundle exec fastlane new_hotfix_release skip_confirm:true version:10.6.1
-  #####################################################################################
-  desc 'Creates a new hotfix branch for the given version:x.y.z. The branch will be cut from the tag x.y of the previous release'
-  lane :new_hotfix_release do | options |
-    prev_ver = ios_hotfix_prechecks(options)
-    ios_bump_version_hotfix(previous_version: prev_ver, version: options[:version])
-  end
+#####################################################################################
+# new_hotfix_release
+# -----------------------------------------------------------------------------------
+# This lane creates the release branch for a new hotfix release.
+# -----------------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane new_hotfix_release [skip_confirm:<skip confirm>] [version:<version>]
+#
+# Example:
+# bundle exec fastlane new_hotfix_release version:10.6.1
+# bundle exec fastlane new_hotfix_release skip_confirm:true version:10.6.1
+#####################################################################################
+desc 'Creates a new hotfix branch for the given version:x.y.z. The branch will be cut from the tag x.y of the previous release'
+lane :new_hotfix_release do |options|
+  prev_ver = ios_hotfix_prechecks(options)
+  ios_bump_version_hotfix(
+    previous_version: prev_ver,
+    version: options[:version]
+  )
+end
 
-  #####################################################################################
-  # finalize_hotfix_release
-  # -----------------------------------------------------------------------------------
-  # This lane finalizes the hotfix branch.
-  # -----------------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane finalize_hotfix_release [skip_confirm:<skip confirm>]
-  #
-  # Example:
-  # bundle exec fastlane finalize_hotfix_release skip_confirm:true
-  #####################################################################################
-  desc 'Performs the final checks and triggers a release build for the hotfix in the current branch'
-  lane :finalize_hotfix_release do |options|
-    ios_finalize_prechecks(options)
-    version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
-    trigger_release_build(branch_to_build: "release/#{version}")
-  end
+#####################################################################################
+# finalize_hotfix_release
+# -----------------------------------------------------------------------------------
+# This lane finalizes the hotfix branch.
+# -----------------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane finalize_hotfix_release [skip_confirm:<skip confirm>]
+#
+# Example:
+# bundle exec fastlane finalize_hotfix_release skip_confirm:true
+#####################################################################################
+desc 'Performs the final checks and triggers a release build for the hotfix in the current branch'
+lane :finalize_hotfix_release do |options|
+  ios_finalize_prechecks(options)
+  version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
+  trigger_release_build(branch_to_build: "release/#{version}")
+end
 
-  #####################################################################################
-  # finalize_release
-  # -----------------------------------------------------------------------------------
-  # This lane finalize a release: updates store metadata, pushes the final tag and
-  # cleans all the temp ones
-  # -----------------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane finalize_release [skip_confirm:<skip confirm>] [version:<version>]
-  #
-  # Example:
-  # bundle exec fastlane finalize_release
-  # bundle exec fastlane finalize_release skip_confirm:true
-  #####################################################################################
-  desc 'Does the necessary build and metadata updates then triggers an App Store deployment'
-  lane :finalize_release do | options |
-    UI.user_error!('To finalize a hotfix, please use the finalize_hotfix_release lane instead') if ios_current_branch_is_hotfix
+#####################################################################################
+# finalize_release
+# -----------------------------------------------------------------------------------
+# This lane finalize a release: updates store metadata, pushes the final tag and
+# cleans all the temp ones
+# -----------------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane finalize_release [skip_confirm:<skip confirm>] [version:<version>]
+#
+# Example:
+# bundle exec fastlane finalize_release
+# bundle exec fastlane finalize_release skip_confirm:true
+#####################################################################################
+desc 'Does the necessary build and metadata updates then triggers an App Store deployment'
+lane :finalize_release do |options|
+  UI.user_error!('To finalize a hotfix, please use the finalize_hotfix_release lane instead') if ios_current_branch_is_hotfix
 
-    ios_finalize_prechecks(options)
+  ios_finalize_prechecks(options)
 
-    download_strings_files_from_glotpress()
-    ios_bump_version_beta()
+  download_strings_files_from_glotpress
+  ios_bump_version_beta
 
-    trigger_release_build(branch_to_build: "release/#{ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)}")
-  end
+  trigger_release_build(branch_to_build: "release/#{ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)}")
+end
 
-  #####################################################################################
-  # build_and_upload_beta
-  # -----------------------------------------------------------------------------------
-  # This lane builds the app and upload it for beta testing
-  # -----------------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane build_and_upload_beta [skip_confirm:<skip confirm>]
-  #
-  # Example:
-  # bundle exec fastlane build_and_upload_beta
-  # bundle exec fastlane build_and_upload_beta skip_confirm:true
-  #####################################################################################
-  desc "Builds and updates for beta distribution"
-  lane :build_and_upload_beta do | options |
-    ensure_git_status_clean()
+#####################################################################################
+# build_and_upload_beta
+# -----------------------------------------------------------------------------------
+# This lane builds the app and upload it for beta testing
+# -----------------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane build_and_upload_beta [skip_confirm:<skip confirm>]
+#
+# Example:
+# bundle exec fastlane build_and_upload_beta
+# bundle exec fastlane build_and_upload_beta skip_confirm:true
+#####################################################################################
+desc 'Builds and updates for beta distribution'
+lane :build_and_upload_beta do
+  ensure_git_status_clean
 
-    configure_apply()
-    sh("rake dependencies:pod:clean")
-    cocoapods()
+  configure_apply
+  sh('rake dependencies:pod:clean')
+  cocoapods
 
-    build_app(
-      workspace: WORKSPACE,
-      scheme: INTERNAL_SCHEME,
-      clean: true,
-      output_directory: BUILD_FOLDER
-    )
+  build_app(
+    workspace: WORKSPACE,
+    scheme: INTERNAL_SCHEME,
+    clean: true,
+    output_directory: BUILD_FOLDER
+  )
+
+  appcenter_upload(
+    api_token: get_required_env('APPCENTER_API_TOKEN'),
+    owner_name: 'automattic',
+    owner_type: 'organization',
+    app_name: 'Simplenote-OSX',
+    ipa: './build/Simplenote.app',
+    notify_testers: false
+  )
+
+  dsym_path = File.join(File.dirname(Dir.pwd), 'build', 'Simplenote.app.dSYM.zip')
+
+  sentry_upload_dsym(
+    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
+    org_slug: 'a8c',
+    project_slug: 'simplenote-macos',
+    dsym_path: dsym_path
+  )
+end
+
+# Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
+#
+# @option [Boolean] with_screenshots (default: false) If true, will also upload the latest screenshot files to ASC
+#
+desc 'Upload the localized metadata to App Store Connect, optionally including screenshots.'
+lane :update_metadata_on_app_store_connect do |options|
+  # Skip screenshots by default. The naming is "with" to make it clear that
+  # callers need to opt-in to adding screenshots. The naming of the deliver
+  # (upload_to_app_store) parameter, on the other hand, uses the skip verb.
+  with_screenshots = options.fetch(:with_screenshots, false)
+  skip_screenshots = !with_screenshots
+
+  upload_to_app_store(
+    app_identifier: APP_STORE_BUNDLE_IDENTIFIER,
+    app_version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
+    skip_binary_upload: true,
+    screenshots_path: './screenshots/',
+    skip_screenshots: skip_screenshots,
+    overwrite_screenshots: true, # won't have effect if `skip_screenshots` is true
+    phased_release: true,
+    precheck_include_in_app_purchases: false,
+    api_key_path: APP_STORE_CONNECT_API_KEY_PATH
+  )
+end
+
+# Temporary lane to automate the process of uploading the .app manually
+# exported after archiving the Simplenote scheme from Xcode.
+#
+# The process is not automated via the build_and_upload_beta lane due to
+# issues with Sparkle and code signing.
+lane :upload_app_to_appcenter do |options|
+  app_path = options[:app_path]
+  UI.user_error! "Missing .app path option.\nUsage:\n\tfastlane upload_app_to_appcenter app_path:path/to/.app" if app_path.nil?
+
+  app_path = File.expand_path(app_path)
+  UI.user_error! "Could not find .app at #{app_path}" unless File.exist?(app_path)
+
+  Tempfile.create do |t|
+    release_notes_path = File.path(t)
+    system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
 
     appcenter_upload(
-      api_token: get_required_env("APPCENTER_API_TOKEN"),
-      owner_name: "automattic",
-      owner_type: "organization",
-      app_name: "Simplenote-OSX",
-      ipa: "./build/Simplenote.app",
+      api_token: get_required_env('APPCENTER_API_TOKEN'),
+      owner_name: 'automattic',
+      owner_type: 'organization',
+      app_name: 'Simplenote-OSX',
+      ipa: app_path,
+      release_notes: File.read(release_notes_path),
       notify_testers: false
     )
+  end
 
-    dSYM_PATH = File.dirname(Dir.pwd) + "/build/Simplenote.app.dSYM.zip"
+  # Rather than taking another manual step and finding the path to the
+  # archive, let's just bank on the fact that one wouldn't do many archives
+  # of the app on a given day and upload all of the archives done today.
+  Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
+    system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
+  end
+end
 
-    sentry_upload_dsym(
-      auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
-      org_slug: 'a8c',
-      project_slug: 'simplenote-macos',
-      dsym_path: dSYM_PATH,
+#############################################################################
+# build_and_upload_app_store
+# ---------------------------------------------------------------------------
+# This lane builds the app and uploads it to the Mac App Store, optionally
+# creating a GitHub release.
+# ---------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane build_and_upload_app_store [create_github_release:<create github release>]
+#
+# Example:
+# bundle exec fastlane build_and_upload_app_store
+# bundle exec fastlane build_and_upload_app_store create_github_release:true
+#############################################################################
+lane :build_and_upload_app_store do |options|
+  configure_apply
+  sh('rake dependencies:pod:clean')
+  cocoapods
+
+  setup_ci
+
+  sync_code_signing(
+    storage_mode: 'google_cloud',
+    google_cloud_bucket_name: 'a8c-fastlane-match',
+    google_cloud_keys_file: File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'google_cloud_keys.json'),
+    type: 'appstore',
+    platform: 'macos',
+    # This Mac app also needs a Mac Installer Distribution certificate
+    additional_cert_types: 'mac_installer_distribution',
+    readonly: true,
+    app_identifier: 'com.automattic.SimplenoteMac',
+    api_key_path: APP_STORE_CONNECT_API_KEY_PATH
+  )
+
+  archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
+  build_simplenote(
+    codesign: true,
+    archive_path: archive_path
+  )
+
+  sentry_upload_dsym(
+    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
+    org_slug: 'a8c',
+    project_slug: 'simplenotemacos',
+    # At the time of writing, there's no way to explicitly configure the
+    # dSYM path, but build_mac_app sets it in the environment if successful.
+    # See `bundle exec fastlane action build_mac_app`.
+    dsym_path: ENV.fetch('DSYM_OUTPUT_PATH', nil)
+  )
+
+  # Do not create the GitHub release unless explicitly requested
+  if options[:create_github_release]
+    archive_zip_path = "#{archive_path}.zip"
+    zip(path: archive_path, output_path: archive_zip_path)
+
+    create_release(
+      repository: GHHELPER_REPO,
+      version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
+      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+      release_assets: [archive_zip_path],
+      prerelease: options[:prerelease]
     )
   end
 
-  #############################################################################
-  # build_and_upload_app_store
-  # ---------------------------------------------------------------------------
-  # This lane builds the app and uploads it to the Mac App Store, optionally
-  # creating a GitHub release.
-  # ---------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane build_and_upload_app_store [create_github_release:<create github release>]
-  #
-  # Example:
-  # bundle exec fastlane build_and_upload_app_store
-  # bundle exec fastlane build_and_upload_app_store create_github_release:true
-  #############################################################################
-  lane :build_and_upload_app_store do | options |
-    configure_apply()
-    sh("rake dependencies:pod:clean")
-    cocoapods()
+  upload_to_testflight(api_key_path: APP_STORE_CONNECT_API_KEY_PATH)
+end
 
-    setup_ci
+#############################################################################
+# trigger_release_build
+# ---------------------------------------------------------------------------
+# This lane triggers a build for App Store distribution on CI
+# ---------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
+#############################################################################
+lane :trigger_release_build do |options|
+  push_to_git_remote(tags: false)
+  buildkite_trigger_build(
+    buildkite_organization: 'automattic',
+    buildkite_pipeline: 'simplenote-macos',
+    branch: options[:branch_to_build] || git_branch,
+    pipeline_file: 'release-builds.yml'
+  )
+end
 
-    sync_code_signing(
-      storage_mode: 'google_cloud',
-      google_cloud_bucket_name: 'a8c-fastlane-match',
-      google_cloud_keys_file: File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'google_cloud_keys.json'),
-      type: 'appstore',
-      platform: 'macos',
-      # This Mac app also needs a Mac Installer Distribution certificate
-      additional_cert_types: 'mac_installer_distribution',
-      readonly: true,
-      app_identifier: 'com.automattic.SimplenoteMac',
-      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
-    )
+desc 'Updates the main `Localizable.strings` file — that will be imported by GlotPress'
+lane :generate_strings_file_for_glotpress do
+  en_lproj_path = File.join(PROJECT_FOLDER, 'Simplenote', 'en.lproj')
+  ios_generate_strings_file_from_code(
+    paths: ['Simplenote', 'Pods/Simperium-OSX/*/SPAuthentication*'],
+    output_dir: en_lproj_path,
+    quiet: true
+  )
 
-    archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
-    build_simplenote(
-      codesign: true,
-      archive_path: archive_path
-    )
+  # Convert the UTF-16 encoded strings file to UTF-8.
+  strings_file_path = File.join(en_lproj_path, 'Localizable.strings')
+  utf8_strings = File.read(strings_file_path, encoding: 'UTF-16', mode: 'rb')
+  File.write(strings_file_path, utf8_strings, mode: 'w', encoding: 'UTF-8')
 
-    sentry_upload_dsym(
-      auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
-      org_slug: 'a8c',
-      project_slug: 'simplenotemacos',
-      # At the time of writing, there's no way to explicitly configure the
-      # dSYM path, but build_mac_app sets it in the environment if successful.
-      # See `bundle exec fastlane action build_mac_app`.
-      dsym_path: ENV['DSYM_OUTPUT_PATH'],
-    )
+  git_commit(
+    path: en_lproj_path,
+    message: 'Freeze strings for localization',
+    allow_nothing_to_commit: true
+  )
+end
 
-    # Do not create the GitHub release unless explicitly requested
-    if options[:create_github_release]
-      archive_zip_path = "#{archive_path}.zip"
-      zip(path: archive_path, output_path: archive_zip_path)
-
-      create_release(
-        repository: GHHELPER_REPO,
-        version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
-        release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
-        release_assets: [archive_zip_path],
-        prerelease: options[:prerelease],
-      )
-    end
-
-    upload_to_testflight(api_key_path: APP_STORE_CONNECT_API_KEY_PATH)
-  end
-
-  # Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
-  #
-  # @option [Boolean] with_screenshots (default: false) If true, will also upload the latest screenshot files to ASC
-  #
-  desc 'Upload the localized metadata to App Store Connect, optionally including screenshots.'
-  lane :update_metadata_on_app_store_connect do |options|
-    # Skip screenshots by default. The naming is "with" to make it clear that
-    # callers need to opt-in to adding screenshots. The naming of the deliver
-    # (upload_to_app_store) parameter, on the other hand, uses the skip verb.
-    with_screenshots = options.fetch(:with_screenshots, false)
-    skip_screenshots = !with_screenshots
-
-    upload_to_app_store(
-      app_identifier: APP_STORE_BUNDLE_IDENTIFIER,
-      app_version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
-      skip_binary_upload: true,
-      screenshots_path: './screenshots/',
-      skip_screenshots: skip_screenshots,
-      overwrite_screenshots: true, # won't have effect if `skip_screenshots` is true
-      phased_release: true,
-      precheck_include_in_app_purchases: false,
-      api_key_path: APP_STORE_CONNECT_API_KEY_PATH
-    )
-  end
-
-  # Temporary lane to automate the process of uploading the .app manually
-  # exported after archiving the Simplenote scheme from Xcode.
-  #
-  # The process is not automated via the build_and_upload_beta lane due to
-  # issues with Sparkle and code signing.
-  lane :upload_app_to_appcenter do | options |
-    app_path = options[:app_path]
-    UI.user_error! "Missing .app path option.\nUsage:\n\tfastlane upload_app_to_appcenter app_path:path/to/.app" if app_path.nil?
-
-    app_path = File.expand_path(app_path)
-    UI.user_error! "Could not find .app at #{app_path}" unless File.exist?(app_path)
-
-    Tempfile.create do |t|
-      release_notes_path = File.path(t)
-      system "pushd ..; ruby ./Scripts/extract_release_notes.rb -k > #{release_notes_path}; popd"
-
-      appcenter_upload(
-        api_token: get_required_env("APPCENTER_API_TOKEN"),
-        owner_name: "automattic",
-        owner_type: "organization",
-        app_name: "Simplenote-OSX",
-        ipa: app_path,
-        release_notes: File.read(release_notes_path),
-        notify_testers: false
-      )
-    end
-
-    # Rather than taking another manual step and finding the path to the
-    # archive, let's just bank on the fact that one wouldn't do many archives
-    # of the app on a given day and upload all of the archives done today.
-    Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
-      system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
-    end
-  end
-
-  #############################################################################
-  # trigger_release_build
-  # ---------------------------------------------------------------------------
-  # This lane triggers a build for App Store distribution on CI
-  # ---------------------------------------------------------------------------
-  # Usage:
-  # bundle exec fastlane trigger_release_build [branch_to_build:<branch_name>]
-  #############################################################################
-  lane :trigger_release_build do | options |
-    push_to_git_remote(tags: false)
-    buildkite_trigger_build(
-      buildkite_organization: 'automattic',
-      buildkite_pipeline: 'simplenote-macos',
-      branch: options[:branch_to_build] || git_branch,
-      pipeline_file: 'release-builds.yml'
-    )
-  end
-
-  desc 'Updates the main `Localizable.strings` file — that will be imported by GlotPress'
-  lane :generate_strings_file_for_glotpress do
-    en_lproj_path = File.join(PROJECT_FOLDER, 'Simplenote', 'en.lproj')
-    ios_generate_strings_file_from_code(
-      paths: ['Simplenote', 'Pods/Simperium-OSX/*/SPAuthentication*'],
-      output_dir: en_lproj_path,
-      quiet: true
-    )
-
-    # Convert the UTF-16 encoded strings file to UTF-8.
-    strings_file_path = File.join(en_lproj_path, 'Localizable.strings')
-    utf8_strings = File.read(strings_file_path, encoding: 'UTF-16', mode: 'rb')
-    File.write(strings_file_path, utf8_strings, mode: 'w', encoding: 'UTF-8')
-
-    git_commit(
-      path: en_lproj_path,
-      message: 'Freeze strings for localization',
-      allow_nothing_to_commit: true
-    )
-  end
-
-  desc 'Download strings from from Glotpress'
-  lane :download_strings_files_from_glotpress do
-    locale_codes = {
-      'ar' => 'ar',             # Arabic
-      'cy' => 'cy',             # Welsh
-      'de' => 'de',             # German
-      'el' => 'el',             # Greek
-      'es' => 'es',             # Spanish
-      'fa' => 'fa',             # Persian
-      'fr' => 'fr',             # French
-      'he' => 'he',             # Hebrew
-      'id' => 'id',             # Indonesian
-      'it' => 'it',             # Italian
-      'ja' => 'ja',             # Japanese
-      'ko' => 'ko',             # Korean
-      'nl' => 'nl',             # Dutch
-      'pt-br' => 'pt-BR',       # Portuguese (Brazil)
-      'ru' => 'ru',             # Russian
-      'sv' => 'sv',             # Swedish
-      'tr' => 'tr',             # Turkish
-      'zh-cn' => 'zh-Hans-CN',  # Chinese (China)
-      'zh-tw' => 'zh-Hant-TW'   # Chinese (Taiwan)
-    }.freeze
-    ios_download_strings_files_from_glotpress(
-      project_url: 'https://translate.wordpress.com/projects/simplenote/macos/',
-      locales: locale_codes,
-      download_dir: File.join(PROJECT_FOLDER, 'Simplenote')
-    )
-  end
+desc 'Download strings from from Glotpress'
+lane :download_strings_files_from_glotpress do
+  locale_codes = {
+    'ar' => 'ar',             # Arabic
+    'cy' => 'cy',             # Welsh
+    'de' => 'de',             # German
+    'el' => 'el',             # Greek
+    'es' => 'es',             # Spanish
+    'fa' => 'fa',             # Persian
+    'fr' => 'fr',             # French
+    'he' => 'he',             # Hebrew
+    'id' => 'id',             # Indonesian
+    'it' => 'it',             # Italian
+    'ja' => 'ja',             # Japanese
+    'ko' => 'ko',             # Korean
+    'nl' => 'nl',             # Dutch
+    'pt-br' => 'pt-BR',       # Portuguese (Brazil)
+    'ru' => 'ru',             # Russian
+    'sv' => 'sv',             # Swedish
+    'tr' => 'tr',             # Turkish
+    'zh-cn' => 'zh-Hans-CN',  # Chinese (China)
+    'zh-tw' => 'zh-Hant-TW'   # Chinese (Taiwan)
+  }.freeze
+  ios_download_strings_files_from_glotpress(
+    project_url: 'https://translate.wordpress.com/projects/simplenote/macos/',
+    locales: locale_codes,
+    download_dir: File.join(PROJECT_FOLDER, 'Simplenote')
+  )
+end
