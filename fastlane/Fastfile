@@ -4,22 +4,9 @@ default_platform(:ios)
 fastlane_require 'dotenv'
 fastlane_require 'shellwords' # used for shell-escaping paths
 
-########################################################################
-# Environment
-########################################################################
-Dotenv.load('~/.simplenotemacos-env.default')
-GITHUB_REPO = 'Automattic/simplenote-macos'
-ENV['PROJECT_NAME'] = 'Simplenote'
-ENV['PROJECT_ROOT_FOLDER'] = './'
-ENV['APP_STORE_STRINGS_FILE_NAME'] = 'AppStoreStrings.pot'
-ENV['PUBLIC_CONFIG_FILE'] = './config/Version.public.xcconfig'
-ENV['DOWNLOAD_METADATA'] = './fastlane/download_metadata.swift'
-ENV['FL_RELEASE_TOOLKIT_DEFAULT_BRANCH'] = 'trunk'
-
+# Constants
 USER_ENV_FILE_PATH = File.join(Dir.home, '.simplenotemacos-env.default')
-
 PROJECT_FOLDER = Pathname.new(File.join(Dir.pwd, '..')).expand_path.to_s
-
 WORKSPACE = 'Simplenote.xcworkspace'
 INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote-AppStore'
@@ -27,6 +14,19 @@ BUILD_FOLDER = 'build'
 APP_STORE_CONNECT_API_KEY_PATH = File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'app_store_connect_fastlane_api_key.json')
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
 VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig')
+DEFAULT_BRANCH = 'trunk'
+GITHUB_REPO = 'Automattic/simplenote-macos'
+
+########################################################################
+# Environment
+########################################################################
+Dotenv.load('~/.simplenotemacos-env.default')
+ENV['PROJECT_NAME'] = 'Simplenote'
+ENV['PROJECT_ROOT_FOLDER'] = './'
+ENV['APP_STORE_STRINGS_FILE_NAME'] = 'AppStoreStrings.pot'
+ENV['PUBLIC_CONFIG_FILE'] = './config/Version.public.xcconfig'
+ENV['DOWNLOAD_METADATA'] = './fastlane/download_metadata.swift'
+ENV['FL_RELEASE_TOOLKIT_DEFAULT_BRANCH'] = 'trunk'
 
 # On CI, it's useful to skip code signing unless necessary to avoid spending
 # time syncing the certificates and profiles with match. And while not
@@ -122,9 +122,10 @@ lane :code_freeze do |options|
   ios_bump_version_release
   new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
   ios_update_release_notes(new_version: new_version)
-  setbranchprotection(
+  copy_branch_protection(
     repository: GITHUB_REPO,
-    branch: "release/#{new_version}"
+    from_branch: DEFAULT_BRANCH,
+    to_branch: "release/#{new_version}"
   )
   setfrozentag(
     repository: GITHUB_REPO,
