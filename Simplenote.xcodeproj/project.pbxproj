@@ -21,7 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1E077730C2108B885911E3B5 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */; };
+		24CB911B2B75601F00C9490F /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */; };
+		24CB911C2B75601F00C9490F /* Pods_Automattic_Simplenote_AppStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 86F72E095CFE66DE228AE8CA /* Pods_Automattic_Simplenote_AppStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2614F1DF1405A0B10031AE94 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DC1405A0B10031AE94 /* Note.m */; };
 		2614F1E01405A0B10031AE94 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1DE1405A0B10031AE94 /* Tag.m */; };
 		2614F1E51405A0C60031AE94 /* Simplenote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2614F1E21405A0C60031AE94 /* Simplenote.xcdatamodeld */; };
@@ -512,6 +513,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		24CB911D2B75601F00C9490F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24CB911C2B75601F00C9490F /* Pods_Automattic_Simplenote_AppStore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71881504155F487D001F2E30 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -900,9 +912,9 @@
 				466FFEE117CC10A800399652 /* Cocoa.framework in Frameworks */,
 				B55E98FD1BE03E3F0087CA48 /* Security.framework in Frameworks */,
 				B5609AE824EEC9860097777A /* SimplenoteSearch in Frameworks */,
+				24CB911B2B75601F00C9490F /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
 				BA78AF712B5B2BC300DCF896 /* AutomatticTracks in Frameworks */,
 				B5609AF024EF171D0097777A /* SimplenoteFoundation in Frameworks */,
-				1E077730C2108B885911E3B5 /* Pods_Automattic_Simplenote_AppStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1714,8 +1726,8 @@
 				466FFEA717CC10A800399652 /* Sources */,
 				466FFEDC17CC10A800399652 /* Frameworks */,
 				466FFEE517CC10A800399652 /* Resources */,
-				B51D44821945EF7900496889 /* Set copyright year */,
 				4E51756AEE6CFE89EAD49829 /* [CP] Embed Pods Frameworks */,
+				24CB911D2B75601F00C9490F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1999,20 +2011,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		B51D44821945EF7900496889 /* Set copyright year */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Set copyright year";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Set the copyright year to the current year in the Info.plist\nplist=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nyear=$(date \"+%Y\")\ncopyright=\"Copyright © $year Automattic. All rights reserved.\"\n\n/usr/libexec/PlistBuddy -c \"Set :NSHumanReadableCopyright $copyright\" $plist\n";
 		};
 		B51D44911945FEFD00496889 /* Sparkle XPC Code Sign For Sandbox */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2809,12 +2807,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PZYM8XX95Q;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2836,7 +2835,6 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -2847,6 +2845,7 @@
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -2888,7 +2887,6 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				OTHER_CFLAGS = "${inherited}";
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

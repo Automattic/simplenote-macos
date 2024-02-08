@@ -1,34 +1,68 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "SimplenoteFoundation",
-        "repositoryURL": "git@github.com:Automattic/SimplenoteFoundation-Swift.git",
-        "state": {
-          "branch": null,
-          "revision": "2731e4d28c42d394ddc62cd864d9f7ff96759228",
-          "version": "1.3.0"
-        }
-      },
-      {
-        "package": "SimplenoteInterlinks",
-        "repositoryURL": "git@github.com:Automattic/SimplenoteInterlinks-Swift.git",
-        "state": {
-          "branch": null,
-          "revision": "be3827a5bf05c5349ed62126c3e1dc60a2a6cee6",
-          "version": "1.1.0"
-        }
-      },
-      {
-        "package": "SimplenoteSearch",
-        "repositoryURL": "git@github.com:Automattic/SimplenoteSearch-Swift.git",
-        "state": {
-          "branch": null,
-          "revision": "499d2809d169fcbeb9ff75568d9f1f937f290ffc",
-          "version": "1.3.0"
-        }
+  "pins" : [
+    {
+      "identity" : "automattic-tracks-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Automattic/Automattic-Tracks-iOS",
+      "state" : {
+        "revision" : "b6979ef69b4b094c8809ba83661222dcd0d7667e",
+        "version" : "3.2.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa",
+      "state" : {
+        "revision" : "b847a202a517a90763e8fd0656d8028aeee7b78d",
+        "version" : "8.20.0"
+      }
+    },
+    {
+      "identity" : "simplenotefoundation-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:Automattic/SimplenoteFoundation-Swift.git",
+      "state" : {
+        "revision" : "2731e4d28c42d394ddc62cd864d9f7ff96759228",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "simplenoteinterlinks-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:Automattic/SimplenoteInterlinks-Swift.git",
+      "state" : {
+        "revision" : "be3827a5bf05c5349ed62126c3e1dc60a2a6cee6",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "simplenotesearch-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:Automattic/SimplenoteSearch-Swift.git",
+      "state" : {
+        "revision" : "499d2809d169fcbeb9ff75568d9f1f937f290ffc",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "swift-sodium",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jedisct1/swift-sodium",
+      "state" : {
+        "revision" : "4f9164a0a2c9a6a7ff53a2833d54a5c79c957342",
+        "version" : "0.9.1"
+      }
+    },
+    {
+      "identity" : "uideviceidentifier",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/squarefrog/UIDeviceIdentifier",
+      "state" : {
+        "revision" : "4699794b08bb79a4d77785edaba6ea739e298e4b",
+        "version" : "2.3.0"
+      }
+    }
+  ],
+  "version" : 2
 }
