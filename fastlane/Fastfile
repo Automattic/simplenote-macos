@@ -58,21 +58,16 @@ def build_simplenote(codesign:, archive_path: nil)
   build_mac_app(
     workspace: WORKSPACE,
     scheme: APP_STORE_SCHEME,
-    configuration: 'Release',
     clean: true,
     output_directory: BUILD_FOLDER,
     archive_path: archive_path,
     skip_archive: skip_archive,
-    export_method: 'app-store',
     export_team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id),
     xcargs: xcargs,
-    # When exporting for the App Store, we need a .pkg file because that's the
-    # only format upload_to_app_store supports.
-    #
-    # Note for the future readers: this might need to be disabled for the
-    # developer-id export, see
-    # https://github.com/fastlane/fastlane/issues/15963#issuecomment-593649185
-    skip_package_pkg: false
+    export_options: {
+      method: 'app-store',
+      manageAppVersionAndBuildNumber: false
+    }
   )
 end
 
@@ -122,6 +117,12 @@ lane :code_freeze do |options|
   ios_bump_version_release
   new_version = ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH)
   ios_update_release_notes(new_version: new_version)
+
+  UI.important('Pushing changes to remote and configuring the release on GitHub')
+  UI.user_error!("Terminating as requested. Don't forget to run the remainder of this automation manually.") unless options[:skip_confirm] || UI.confirm('Do you want to continue?')
+
+  push_to_git_remote(tags: false)
+
   copy_branch_protection(
     repository: GITHUB_REPO,
     from_branch: DEFAULT_BRANCH,
@@ -429,7 +430,73 @@ lane :upload_app_to_appcenter do |options|
   # of the app on a given day and upload all of the archives done today.
   Dir["#{Dir.home}/Library/Developer/Xcode/Archives/#{Time.now.strftime '%Y-%m-%d'}/Simplenote *"].each do |path|
     system "sentry-cli upload-dif --org a8c --project simplenote-macos #{Shellwords.shellescape(path)}"
+end
+
+
+#############################################################################
+# build_and_upload_app_store
+# ---------------------------------------------------------------------------
+# This lane builds the app and uploads it to the Mac App Store, optionally
+# creating a GitHub release.
+# ---------------------------------------------------------------------------
+# Usage:
+# bundle exec fastlane build_and_upload_app_store [create_github_release:<create github release>]
+#
+# Example:
+# bundle exec fastlane build_and_upload_app_store
+# bundle exec fastlane build_and_upload_app_store create_github_release:true
+#############################################################################
+lane :build_and_upload_app_store do | options |
+  configure_apply()
+  sh("rake dependencies:pod:clean")
+  cocoapods()
+
+  setup_ci
+
+  sync_code_signing(
+    storage_mode: 'google_cloud',
+    google_cloud_bucket_name: 'a8c-fastlane-match',
+    google_cloud_keys_file: File.join(Dir.home, '.configure', 'simplenote-macos', 'secrets', 'google_cloud_keys.json'),
+    type: 'appstore',
+    platform: 'macos',
+    # This Mac app also needs a Mac Installer Distribution certificate
+    additional_cert_types: 'mac_installer_distribution',
+    readonly: true,
+    app_identifier: 'com.automattic.SimplenoteMac',
+    api_key_path: APP_STORE_CONNECT_API_KEY_PATH
+  )
+
+  archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
+  build_simplenote(
+    codesign: true,
+    archive_path: archive_path
+  )
+
+  sentry_upload_dsym(
+    auth_token: get_required_env("SENTRY_AUTH_TOKEN"),
+    org_slug: 'a8c',
+    project_slug: 'simplenotemacos',
+    # At the time of writing, there's no way to explicitly configure the
+    # dSYM path, but build_mac_app sets it in the environment if successful.
+    # See `bundle exec fastlane action build_mac_app`.
+    dsym_path: ENV['DSYM_OUTPUT_PATH'],
+  )
+
+  # Do not create the GitHub release unless explicitly requested
+  if options[:create_github_release]
+    archive_zip_path = "#{archive_path}.zip"
+    zip(path: archive_path, output_path: archive_zip_path)
+
+    create_release(
+      repository: GHHELPER_REPO,
+      version: ios_get_app_version(public_version_xcconfig_file: VERSION_FILE_PATH),
+      release_notes_file_path: 'Simplenote/Resources/release_notes.txt',
+      release_assets: [archive_zip_path],
+      prerelease: options[:prerelease],
+    )
   end
+
+  upload_to_testflight(api_key_path: APP_STORE_CONNECT_API_KEY_PATH)
 end
 
 #############################################################################
