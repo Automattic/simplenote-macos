@@ -79,11 +79,11 @@ end
 langs = {}
 if ARGV.count.positive?
   ARGV.each do |key|
-    unless (local = ALL_LANGS[key])
+    unless (locale = ALL_LANGS[key])
       puts "Unknown language #{key}"
       exit 1
     end
-    langs[key] = local
+    langs[key] = locale
   end
 else
   langs = ALL_LANGS
@@ -91,8 +91,8 @@ end
 
 fallback_lang_dir = File.join('Simplenote', "#{FALLBACK_LANG}.lproj")
 
-langs.each do |code, local|
-  lang_dir = File.join('Simplenote', "#{local}.lproj")
+langs.each do |code, locale|
+  lang_dir = File.join('Simplenote', "#{locale}.lproj")
   puts "Updating #{code}"
   system "mkdir -p #{lang_dir}"
 
