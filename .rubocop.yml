@@ -11,8 +11,7 @@ Layout/LineLength:
 
 Metrics/BlockLength:
   Exclude:
-    - fastlane/*file
-    - Podfile
+    - fastlane/Fastfile
     - Rakefile
 
 Style/HashSyntax:
