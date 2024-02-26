@@ -2,7 +2,7 @@
 common_params:
   # Common plugin settings to use with the `plugins` key.
   - &common_plugins
-    - automattic/a8c-ci-toolkit#3.0.1
+    - automattic/a8c-ci-toolkit#3.1.0
   # Common environment values to use with the `env` key.
   - &common_env
     IMAGE_ID: xcode-15.2-xl
@@ -13,6 +13,15 @@ steps:
     command: .buildkite/commands/build-and-test.sh
     env: *common_env
     plugins: *common_plugins
+
+  - label: ":swift: SwiftLint"
+    command: run_swiftlint --strict
+    plugins: *common_plugins
+    notify:
+      - github_commit_status:
+          context: "SwiftLint"
+    agents:
+      queue: "default"
 
   - label: "🛠 Verify App Store Target Builds"
     command: .buildkite/commands/build-and-test-app-store.sh
