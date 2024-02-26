@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - CollaborateViewController
 //
 class CollaborateViewController: NSViewController {
@@ -21,8 +20,7 @@ class CollaborateViewController: NSViewController {
         }
     }
 
-
-    // MARK - View Lifecycle
+    // MARK: - View Lifecycle
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -34,7 +32,6 @@ class CollaborateViewController: NSViewController {
         refreshStyle()
     }
 }
-
 
 // MARK: - Private
 //
@@ -51,7 +48,6 @@ private extension CollaborateViewController {
         shareTextField.textColor = .simplenoteTextColor
     }
 }
-
 
 // MARK: - NSPopoverDelegate
 //

@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - NSScrollView + Simplenote
 //
 extension NSScrollView {

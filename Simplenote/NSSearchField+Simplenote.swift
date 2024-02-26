@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSSearchField Methods
 //
 extension NSSearchField {

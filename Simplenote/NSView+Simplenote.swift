@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSView + Simplenote
 //
 extension NSView {

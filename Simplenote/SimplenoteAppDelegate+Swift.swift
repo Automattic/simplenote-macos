@@ -2,7 +2,6 @@ import Foundation
 import SimplenoteSearch
 import Simperium_OSX
 
-
 // MARK: - Initialization
 //
 extension SimplenoteAppDelegate {
@@ -123,7 +122,6 @@ extension SimplenoteAppDelegate {
     }
 }
 
-
 // MARK: - Public API
 //
 extension SimplenoteAppDelegate {
@@ -154,7 +152,6 @@ extension SimplenoteAppDelegate {
         splitViewController.refreshSplitViewItem(ofKind: .notes, collapsed: false)
     }
 }
-
 
 // MARK: - Actions!
 //
@@ -242,7 +239,6 @@ extension SimplenoteAppDelegate {
     }
 }
 
-
 // MARK: - URL Handlers
 //
 extension SimplenoteAppDelegate {
@@ -281,7 +277,6 @@ extension SimplenoteAppDelegate {
     }
 }
 
-
 // MARK: - SPBucketDelegate
 //
 extension SimplenoteAppDelegate: SPBucketDelegate {
@@ -310,7 +305,6 @@ extension SimplenoteAppDelegate: SPBucketDelegate {
         }
     }
 }
-
 
 // MARK: - MenuItem(s) Validation
 //
@@ -440,7 +434,6 @@ extension SimplenoteAppDelegate {
     }
 }
 
-
 // MARK: - TagListActionsDelegate Conformance
 //
 extension SimplenoteAppDelegate: TagsControllerDelegate {
@@ -464,7 +457,6 @@ extension SimplenoteAppDelegate: TagsControllerDelegate {
         noteEditorViewController.tagsControllerDidDeleteTag(name: name)
     }
 }
-
 
 extension SimplenoteAppDelegate: NotesControllerDelegate {
 
@@ -505,7 +497,7 @@ extension SimplenoteAppDelegate {
             return
         }
 
-        simperium.authenticateIfNecessary() 
+        simperium.authenticateIfNecessary()
     }
 
     @objc
@@ -518,8 +510,6 @@ extension SimplenoteAppDelegate {
         signOut()
     }
 }
-
-
 
 // MARK: - Constants
 //

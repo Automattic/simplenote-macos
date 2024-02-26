@@ -1,7 +1,6 @@
 import Foundation
 import SimplenoteSearch
 
-
 // MARK: - NotesControllerDelegate
 //
 protocol NotesControllerDelegate: AnyObject {
@@ -10,7 +9,6 @@ protocol NotesControllerDelegate: AnyObject {
     func notesController(_ controller: NoteListViewController, didSelect notes: [Note])
     func notesControllerDidSelectZeroNotes(_ controller: NoteListViewController)
 }
-
 
 // MARK: - NoteListViewController
 //
@@ -59,7 +57,6 @@ class NoteListViewController: NSViewController {
     ///
     weak var delegate: NotesControllerDelegate?
 
-
     var isActive: Bool = false {
         didSet {
             if isActive && searchField.currentEditor() != nil {
@@ -73,7 +70,6 @@ class NoteListViewController: NSViewController {
             tableView.refreshRows(isActive: isActive)
         }
     }
-
 
     // MARK: - ViewController Lifecycle
 
@@ -126,7 +122,6 @@ class NoteListViewController: NSViewController {
     }
 }
 
-
 // MARK: - Keyboard Shortcuts
 //
 extension NoteListViewController {
@@ -145,7 +140,6 @@ extension NoteListViewController {
         SimplenoteAppDelegate.shared().focusOnTheTags()
     }
 }
-
 
 // MARK: - Public
 //
@@ -172,7 +166,6 @@ extension NoteListViewController {
         refreshEverything()
     }
 }
-
 
 // MARK: - Interface Initialization
 //
@@ -222,7 +215,6 @@ private extension NoteListViewController {
     }
 }
 
-
 // MARK: - Skinning
 //
 extension NoteListViewController {
@@ -241,7 +233,6 @@ extension NoteListViewController {
         tableView.reloadAndPreserveSelection()
     }
 }
-
 
 // MARK: - Layout
 //
@@ -291,7 +282,6 @@ extension NoteListViewController {
     }
 }
 
-
 // MARK: - Dynamic Properties
 //
 private extension NoteListViewController {
@@ -320,7 +310,6 @@ private extension NoteListViewController {
         listController.filter == .deleted
     }
 }
-
 
 // MARK: - ListController API(s) 🤟
 //
@@ -356,7 +345,6 @@ private extension NoteListViewController {
         }
     }
 }
-
 
 // MARK: - Refreshing
 //
@@ -433,7 +421,6 @@ private extension NoteListViewController {
     }
 }
 
-
 // MARK: - Filtering
 //
 private extension NoteListViewController {
@@ -457,7 +444,6 @@ private extension NoteListViewController {
         }
     }
 }
-
 
 // MARK: - Row Selection API(s)
 //
@@ -514,7 +500,6 @@ extension NoteListViewController {
     }
 }
 
-
 // MARK: - Header
 //
 private extension NoteListViewController {
@@ -531,7 +516,6 @@ private extension NoteListViewController {
         return min(max(contentOffSetY / SplitItemMetrics.headerMaximumAlphaGradientOffset, 0), 1)
     }
 }
-
 
 // MARK: - NSTableViewDelegate
 //
@@ -580,7 +564,6 @@ extension NoteListViewController: SPTableViewDelegate {
     }
 }
 
-
 // MARK: - NSTableViewDataSource
 //
 extension NoteListViewController: NSTableViewDataSource {
@@ -599,7 +582,6 @@ extension NoteListViewController: NSTableViewDataSource {
         return true
     }
 }
-
 
 // MARK: - NSTableViewDelegate Helpers
 //
@@ -632,7 +614,6 @@ private extension NoteListViewController {
     }
 }
 
-
 // MARK: - EditorControllerNoteActionsDelegate
 //
 extension NoteListViewController: EditorControllerNoteActionsDelegate {
@@ -655,7 +636,6 @@ extension NoteListViewController: EditorControllerNoteActionsDelegate {
     }
 }
 
-
 // MARK: - Public Search API
 //
 extension NoteListViewController {
@@ -676,7 +656,6 @@ extension NoteListViewController {
     }
 }
 
-
 // MARK: - Search Action
 //
 extension NoteListViewController {
@@ -688,7 +667,6 @@ extension NoteListViewController {
         SPTracker.trackListNotesSearched()
     }
 }
-
 
 // MARK: - MenuItem(s) Validation
 //
@@ -767,7 +745,6 @@ extension NoteListViewController: NSMenuItemValidation {
     }
 }
 
-
 // MARK: - Notifications
 //
 extension NoteListViewController {
@@ -814,7 +791,6 @@ extension NoteListViewController {
         refreshBottomInsets()
     }
 }
-
 
 // MARK: - Actions
 //

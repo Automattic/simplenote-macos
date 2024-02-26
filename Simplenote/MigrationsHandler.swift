@@ -1,7 +1,6 @@
 import Foundation
 import os.log
 
-
 // MARK: - Simplenote's Upgrade handling flows
 //
 @objcMembers
@@ -33,7 +32,6 @@ class MigrationsHandler: NSObject {
         lastKnownVersion = runtimeVersion
     }
 }
-
 
 // MARK: - Private Methods
 //

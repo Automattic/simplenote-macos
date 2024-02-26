@@ -3,14 +3,12 @@ import SimplenoteFoundation
 import SimplenoteInterlinks
 import SimplenoteSearch
 
-
 // MARK: - EditorControllerDelegate
 //
 @objc
 protocol EditorControllerDelegate: AnyObject {
     func editorController(_ controller: NoteEditorViewController, updatedNoteContents: Note)
 }
-
 
 // MARK: - Interface Initialization
 //
@@ -78,7 +76,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Public
 //
 extension NoteEditorViewController {
@@ -104,7 +101,6 @@ extension NoteEditorViewController {
         refreshTagsField()
     }
 }
-
 
 // MARK: - Layout
 //
@@ -154,7 +150,6 @@ extension NoteEditorViewController {
         sidebarSemaphoreLeadingConstraint?.constant = semaphorePaddingX + SplitItemMetrics.toolbarSemaphorePaddingX
     }
 }
-
 
 // MARK: - Display Mode
 //
@@ -216,7 +211,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Internal State
 //
 extension NoteEditorViewController {
@@ -265,7 +259,6 @@ extension NoteEditorViewController {
         SimplenoteAppDelegate.shared()
     }
 }
-
 
 // MARK: - Refreshing Interface
 //
@@ -361,7 +354,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Search API(s)
 //
 extension NoteEditorViewController {
@@ -371,7 +363,6 @@ extension NoteEditorViewController {
         updateKeywordsHighlight()
     }
 }
-
 
 // MARK: - NSMenuItemValidation
 //
@@ -508,7 +499,6 @@ extension NoteEditorViewController: NSMenuItemValidation {
     }
 }
 
-
 // MARK: - Actions
 //
 extension NoteEditorViewController {
@@ -573,7 +563,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Popovers / Pickers
 //
 extension NoteEditorViewController {
@@ -620,7 +609,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Markdown Rendering
 //
 extension NoteEditorViewController {
@@ -658,7 +646,6 @@ extension NoteEditorViewController {
         markdownViewController.removeFromParent()
     }
 }
-
 
 // MARK: - Notifications
 //
@@ -709,7 +696,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - TagsFieldDelegate
 //
 extension NoteEditorViewController: TagsFieldDelegate {
@@ -755,7 +741,6 @@ extension NoteEditorViewController: TagsFieldDelegate {
     }
 }
 
-
 // MARK: - Tags Processing
 //
 extension NoteEditorViewController {
@@ -797,7 +782,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - PublishViewControllerDelegate
 //
 extension NoteEditorViewController: PublishViewControllerDelegate {
@@ -822,7 +806,6 @@ extension NoteEditorViewController: PublishViewControllerDelegate {
         save()
     }
 }
-
 
 // MARK: - VersionsViewControllerDelegate
 //
@@ -857,7 +840,6 @@ extension NoteEditorViewController: VersionsViewControllerDelegate {
     }
 }
 
-
 // MARK: - MetricsControllerDelegate
 //
 extension NoteEditorViewController: MetricsControllerDelegate {
@@ -875,7 +857,6 @@ extension NoteEditorViewController: MetricsControllerDelegate {
         dismiss(controller)
     }
 }
-
 
 // MARK: - Content and Highlights
 //
@@ -916,7 +897,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Search Map
 //
 extension NoteEditorViewController {
@@ -941,7 +921,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Shortcuts
 //
 extension NoteEditorViewController {
@@ -958,7 +937,6 @@ extension NoteEditorViewController {
         }
     }
 }
-
 
 // MARK: - Editor Metadata
 //
@@ -999,7 +977,6 @@ extension NoteEditorViewController {
     }
 }
 
-
 // MARK: - Interlinks Insertion
 //
 extension NoteEditorViewController: InterlinkProcessorDelegate {
@@ -1009,7 +986,6 @@ extension NoteEditorViewController: InterlinkProcessorDelegate {
         processor.dismissInterlinkLookup()
     }
 }
-
 
 // MARK: - EditorMetrics
 //

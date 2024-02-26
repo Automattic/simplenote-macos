@@ -1,7 +1,6 @@
 import XCTest
 @testable import Simplenote
 
-
 // MARK: - UnicodeScalarSimplenoteTests Unit Tests
 //
 class UnicodeScalarSimplenoteTests: XCTestCase {

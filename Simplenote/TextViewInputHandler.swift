@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Input Handler: Encapsulates Simplenote's TextView Input Logic
 //
 class TextViewInputHandler: NSObject {
@@ -8,7 +7,6 @@ class TextViewInputHandler: NSObject {
     /// Lists Processing RegEx
     ///
     private let regexForListMarkers = NSRegularExpression.regexForListMarkers
-
 
     /// Handles TextView's `shouldChangeTextInRange:string:` Delegate API:
     ///

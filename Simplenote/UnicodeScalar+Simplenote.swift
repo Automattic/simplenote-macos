@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - UnicodeScalar Simplenote Methods
 //
 extension UnicodeScalar {

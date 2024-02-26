@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Represents a Theme Menu Option
 //
 enum ThemeOption: Int, CaseIterable {
@@ -8,7 +7,6 @@ enum ThemeOption: Int, CaseIterable {
     case dark = 1
     case system = 2
 }
-
 
 // MARK: - Properties
 //

@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - ToolbarState: Encapsulates all of the logic that determines the inner Toolbar State
 //
 struct ToolbarState {
@@ -29,7 +28,6 @@ struct ToolbarState {
     ///
     let isViewingTrash: Bool
 }
-
 
 // MARK: - Derived Properties
 //
@@ -76,7 +74,6 @@ extension ToolbarState {
         return NSImage(named: name)
     }
 }
-
 
 // MARK: - Default State
 //

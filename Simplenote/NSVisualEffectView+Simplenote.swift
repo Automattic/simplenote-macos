@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - NSVisualEffectView.Material
 //
 extension NSVisualEffectView.Material {
@@ -24,4 +23,3 @@ extension NSVisualEffectView {
         .simplenoteTaglistMaterial
     }
 }
-

@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - ParentWindowDelegate Protocol
 //
 protocol ParentWindowDelegate {
@@ -11,7 +10,6 @@ protocol ParentWindowDelegate {
     ///
     func processParentWindowEvent(_ event: NSEvent) -> Bool
 }
-
 
 // MARK: - Simplenote Window
 //
@@ -30,7 +28,6 @@ class Window: NSWindow {
     /// Horizontal Padding to be applied over all of the Semaphore Buttons
     ///
     var semaphoreButtonPaddingX: CGFloat?
-
 
     // MARK: - Lifecycle
 
@@ -82,7 +79,6 @@ class Window: NSWindow {
     }
 }
 
-
 // MARK: - Initialization
 //
 private extension Window {
@@ -95,7 +91,6 @@ private extension Window {
         NotificationCenter.default.removeObserver(self)
     }
 }
-
 
 // MARK: - Notification Handlers
 //
@@ -111,7 +106,6 @@ private extension Window {
         appearance = NSAppearance.simplenoteAppearance
     }
 }
-
 
 // MARK: - Sempahore
 //
@@ -164,7 +158,6 @@ private extension Window {
         themeView.viewDidEndLiveResize()
     }
 }
-
 
 // MARK: - Titlebar / DoubleClick Workaround
 //

@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - SPTextFieldDelegate: Our custom protocol.
 //         Why: Because `shouldBeginEditing`'s API requires a non null NSText instance, which we really can't acquire
 //         within `acceptsFirstResponder`.
@@ -8,7 +7,6 @@ import Foundation
 protocol SPTextFieldDelegate: NSTextFieldDelegate {
     func controlAcceptsFirstResponder(_ control: NSControl) -> Bool
 }
-
 
 // MARK: - SPTextField
 //
@@ -56,7 +54,6 @@ class SPTextField: NSTextField {
         }
     }
 
-
     // MARK: - Overridden
 
     override var acceptsFirstResponder: Bool {
@@ -79,7 +76,6 @@ class SPTextField: NSTextField {
         refreshTextColor()
     }
 }
-
 
 // MARK: - Private
 //

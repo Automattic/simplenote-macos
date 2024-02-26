@@ -1,7 +1,6 @@
 import Foundation
 
-
-// MARK - Simplenote Methods
+// MARK: - Simplenote Methods
 //
 extension NSAppearance {
 

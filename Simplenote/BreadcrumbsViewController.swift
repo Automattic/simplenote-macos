@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - BreadcrumbsViewController
 //
 class BreadcrumbsViewController: NSViewController {
@@ -21,11 +20,9 @@ class BreadcrumbsViewController: NSViewController {
     ///
     @IBOutlet private var noteImageView: NSImageView!
 
-
     /// TextField: Note
     ///
     @IBOutlet private var noteTextField: NSTextField!
-
 
     /// Status: Search
     ///
@@ -68,7 +65,6 @@ class BreadcrumbsViewController: NSViewController {
     ///
     private var isUserTagSelected: Bool = false
 
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -82,7 +78,6 @@ class BreadcrumbsViewController: NSViewController {
     }
 }
 
-
 // MARK: - Theming
 //
 private extension BreadcrumbsViewController {
@@ -93,7 +88,6 @@ private extension BreadcrumbsViewController {
         refreshInterface()
     }
 }
-
 
 // MARK: - Public API(s)
 //
@@ -111,7 +105,7 @@ extension BreadcrumbsViewController {
     func tagsControllerDidUpdateFilter(_ filter: TagListFilter) {
         statusForTags = filter.title
         isUserTagSelected = {
-            guard case .tag(_) = filter else {
+            guard case .tag = filter else {
                 return false
             }
 
@@ -155,7 +149,6 @@ extension BreadcrumbsViewController {
     }
 }
 
-
 // MARK: - Private Helpers
 //
 private extension BreadcrumbsViewController {
@@ -172,7 +165,6 @@ private extension BreadcrumbsViewController {
         }()
     }
 }
-
 
 // MARK: - Interface
 //
@@ -214,7 +206,6 @@ private extension BreadcrumbsViewController {
         noteImageView.rotate(byDegrees: Metrics.rotation180Degrees)
     }
 }
-
 
 // MARK: - Metrics
 //

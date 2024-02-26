@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Version
 //
 struct Version {
@@ -17,7 +16,6 @@ struct Version {
     ///
     let modificationDate: Date
 
-
     /// Designed Initializer
     ///
     init?(version: String, payload: [AnyHashable: Any]) {
@@ -32,7 +30,6 @@ struct Version {
         self.content = content
     }
 }
-
 
 // MARK: - Parsing Keys
 //

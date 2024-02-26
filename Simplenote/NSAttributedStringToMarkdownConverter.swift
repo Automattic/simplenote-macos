@@ -1,6 +1,5 @@
 import Cocoa
 
-
 // MARK: - NSAttributedString to Markdown Converter
 //
 class NSAttributedStringToMarkdownConverter: NSObject {
@@ -12,7 +11,6 @@ class NSAttributedStringToMarkdownConverter: NSObject {
     /// Markdown replacement for "Checked Checklist"
     ///
     private static let checked = "- [x]"
-
 
     /// Returns the NSString representation of a given NSAttributedString.
     ///

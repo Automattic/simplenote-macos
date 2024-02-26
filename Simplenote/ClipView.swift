@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSClipView
 //
 class ClipView: NSClipView {
@@ -18,7 +17,6 @@ class ClipView: NSClipView {
         if point.y >= contentInsets.top {
             return nil
         }
-
 
         for subview in subviews {
             let translated = convert(point, to: subview)

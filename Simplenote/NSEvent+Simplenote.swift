@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSEvent.SpecialKey + Simplenote
 //
 extension NSEvent.SpecialKey {
@@ -23,7 +22,6 @@ extension NSEvent.SpecialKey {
         SimplenoteAppDelegate.shared().window.isRTL
     }
 }
-
 
 // MARK: - NSEvent + Simplenote
 //

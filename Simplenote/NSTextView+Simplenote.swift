@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simplenote API
 //
 extension NSTextView {
@@ -63,7 +62,6 @@ extension NSTextView {
     }
 }
 
-
 // MARK: - Private!
 //
 private extension NSTextView {
@@ -112,7 +110,6 @@ private extension NSTextView {
     }
 }
 
-
 // MARK: - I/O
 //
 extension NSTextView {
@@ -139,7 +136,6 @@ extension NSTextView {
         return NSAttributedStringToMarkdownConverter.convert(string: attributedString())
     }
 }
-
 
 // MARK: - Linkification
 //
@@ -185,7 +181,6 @@ extension NSTextView {
     }
 }
 
-
 // MARK: - Processing Special Characters
 //
 extension NSTextView {
@@ -216,12 +211,12 @@ extension NSTextView {
         guard let rangeOfListMarker = lineString.rangeOfListMarker, rangeOfListMarker.location > 0 else {
             return false
         }
-        
+
         // Make sure there is a Tab character at the beginning of the line
         if !lineString.hasPrefix(String.tab) {
             return false
         }
-       
+
         // Delete the Tab character at the beginning of the line
         let deletionRange = NSRange(location: lineRange.location, length: 1)
         insertText("", replacementRange: deletionRange)
@@ -284,7 +279,6 @@ extension NSTextView {
     }
 }
 
-
 // MARK: - New Lists
 //
 extension NSTextView {
@@ -305,7 +299,6 @@ extension NSTextView {
     }
 }
 
-
 // MARK: - Interlinks
 //
 extension NSTextView {
@@ -319,7 +312,6 @@ extension NSTextView {
         }
     }
 }
-
 
 // MARK: - Geometry
 //
@@ -375,4 +367,3 @@ extension NSTextView {
         scrollRangeToVisible(NSRange(location: location, length: .zero))
     }
 }
-

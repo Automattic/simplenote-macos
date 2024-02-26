@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - InterlinkViewController
 //
 class InterlinkViewController: NSViewController {
@@ -46,7 +45,6 @@ class InterlinkViewController: NSViewController {
     }
 }
 
-
 // MARK: - Setup!
 //
 private extension InterlinkViewController {
@@ -68,7 +66,6 @@ private extension InterlinkViewController {
         view.addTrackingArea(trackingArea)
     }
 }
-
 
 // MARK: - Action Handlers
 //
@@ -96,7 +93,6 @@ private extension InterlinkViewController {
     }
 }
 
-
 // MARK: - Wrappers
 //
 private extension InterlinkViewController {
@@ -106,7 +102,6 @@ private extension InterlinkViewController {
     }
 }
 
-
 // MARK: - NSTableViewDataSource
 //
 extension InterlinkViewController: NSTableViewDataSource {
@@ -115,7 +110,6 @@ extension InterlinkViewController: NSTableViewDataSource {
         notes.count
     }
 }
-
 
 // MARK: - NSTableViewDelegate
 //
@@ -152,7 +146,6 @@ extension InterlinkViewController: SPTableViewDelegate {
         return tableViewCell
     }
 }
-
 
 // MARK: - Settings!
 //

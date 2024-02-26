@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSTableView+Simplenote
 //
 extension NSTableView {

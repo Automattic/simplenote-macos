@@ -1,7 +1,6 @@
 import XCTest
 @testable import Simplenote
 
-
 // MARK: - NSAttributedStringToMarkdownConverter Unit Tests
 //
 class NSTextViewSimplenoteTests: XCTestCase {
@@ -13,7 +12,6 @@ class NSTextViewSimplenoteTests: XCTestCase {
     /// Mockup TextViewDelegate
     ///
     private let delegate = MockupTextViewDelegate()
-
 
     // MARK: - Overridden Methods
 
@@ -34,7 +32,6 @@ class NSTextViewSimplenoteTests: XCTestCase {
         let result = textView.attributedSubstring(from: .zero, length: text.utf16.count)
         XCTAssertEqual(result.string, text)
     }
-
 
     /// Verifies that `selectedLineDroppingTrailingNewline` returns the expected line Range / String, excluding trailing newlines
     ///
@@ -565,7 +562,6 @@ class NSTextViewSimplenoteTests: XCTestCase {
     }
 }
 
-
 // MARK: - Helpers!
 //
 private extension NSTextViewSimplenoteTests {
@@ -573,32 +569,32 @@ private extension NSTextViewSimplenoteTests {
     var samplesForIndentation: [(text: String, indented: String)] {
         let marker = String.attachmentString
         return [
-            (text: "- L1",          indented: "\t- L1"),
-            (text: "\t- L2",        indented: "\t\t- L2"),
-            (text: "  - L3",        indented: "\t  - L3"),
-            (text: "* L1",          indented: "\t* L1"),
-            (text: "\t* L2",        indented: "\t\t* L2"),
-            (text: "  * L3",        indented: "\t  * L3"),
-            (text: "+ L1",          indented: "\t+ L1"),
-            (text: "\t+ L2",        indented: "\t\t+ L2"),
-            (text: "  + L3",        indented: "\t  + L3"),
-            (text: marker + " L1",  indented: "\t" + marker + " L1"),
+            (text: "- L1", indented: "\t- L1"),
+            (text: "\t- L2", indented: "\t\t- L2"),
+            (text: "  - L3", indented: "\t  - L3"),
+            (text: "* L1", indented: "\t* L1"),
+            (text: "\t* L2", indented: "\t\t* L2"),
+            (text: "  * L3", indented: "\t  * L3"),
+            (text: "+ L1", indented: "\t+ L1"),
+            (text: "\t+ L2", indented: "\t\t+ L2"),
+            (text: "  + L3", indented: "\t  + L3"),
+            (text: marker + " L1", indented: "\t" + marker + " L1"),
         ]
     }
 
     var samplesForNewline: [(text: String, enhanced: String)] {
         let marker = String.attachmentString
         return [
-            (text: "- L1",          enhanced: "- L1\n- "),
-            (text: "\t- L2",        enhanced: "\t- L2\n\t- "),
-            (text: "  - L3",        enhanced: "  - L3\n  - "),
-            (text: "* L1",          enhanced: "* L1\n* "),
-            (text: "\t* L2",        enhanced: "\t* L2\n\t* "),
-            (text: "  * L3",        enhanced: "  * L3\n  * "),
-            (text: "+ L1",          enhanced: "+ L1\n+ "),
-            (text: "\t+ L2",        enhanced: "\t+ L2\n\t+ "),
-            (text: "  + L3",        enhanced: "  + L3\n  + "),
-            (text: marker + " L1",  enhanced: marker + " L1\n" + marker + String.space),
+            (text: "- L1", enhanced: "- L1\n- "),
+            (text: "\t- L2", enhanced: "\t- L2\n\t- "),
+            (text: "  - L3", enhanced: "  - L3\n  - "),
+            (text: "* L1", enhanced: "* L1\n* "),
+            (text: "\t* L2", enhanced: "\t* L2\n\t* "),
+            (text: "  * L3", enhanced: "  * L3\n  * "),
+            (text: "+ L1", enhanced: "+ L1\n+ "),
+            (text: "\t+ L2", enhanced: "\t+ L2\n\t+ "),
+            (text: "  + L3", enhanced: "  + L3\n  + "),
+            (text: marker + " L1", enhanced: marker + " L1\n" + marker + String.space),
         ]
     }
 

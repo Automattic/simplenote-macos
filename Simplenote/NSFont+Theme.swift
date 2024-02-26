@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSFont + Theme API
 //
 extension NSFont {

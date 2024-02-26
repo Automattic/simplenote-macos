@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - PopoverWindowController
 //
 class PopoverWindowController: NSWindowController {
@@ -18,7 +17,6 @@ class PopoverWindowController: NSWindowController {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
 
 // MARK: - Public API
 //
@@ -51,7 +49,6 @@ extension PopoverWindowController {
         window.setFrameOrigin(frameOrigin)
     }
 }
-
 
 // MARK: - Private API(s)
 //
@@ -86,7 +83,6 @@ private extension PopoverWindowController {
         return output
     }
 }
-
 
 // MARK: - Metrics
 //

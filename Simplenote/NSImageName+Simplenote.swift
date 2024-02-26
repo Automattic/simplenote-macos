@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSImage.Name
 //
 extension NSImage.Name {
@@ -24,7 +23,6 @@ extension NSImage.Name {
     /// Disclosure: Right
     ///
     static let disclosureRight = NSImage.Name("icon_disclosure_right")
-
 
     /// Toolbar: History
     ///

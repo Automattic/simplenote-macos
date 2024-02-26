@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - TagListFilter
 //
 enum TagListFilter: Equatable {
@@ -9,7 +8,6 @@ enum TagListFilter: Equatable {
     case untagged
     case tag(name: String)
 }
-
 
 // MARK: - Public API(s)
 //

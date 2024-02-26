@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - SignupRemote
 //
 class SignupRemote: Remote {

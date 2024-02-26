@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - String Constants
 //
 extension String {
@@ -35,7 +34,6 @@ extension String {
         self as NSString
     }
 }
-
 
 // MARK: - Helper API(s)
 //
@@ -93,7 +91,6 @@ extension String {
     }
 }
 
-
 // MARK: - Searching for the first / last characters
 //
 extension String {
@@ -117,7 +114,6 @@ extension String {
         return characterRange?.lowerBound
     }
 }
-
 
 // MARK: - Searching for keywords
 //

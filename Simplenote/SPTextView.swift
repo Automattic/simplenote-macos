@@ -37,7 +37,7 @@ class SPTextView: NSTextView {
         }
     }
 
-    override var typingAttributes: [NSAttributedString.Key : Any] {
+    override var typingAttributes: [NSAttributedString.Key: Any] {
         get {
             simplenoteStorage?.typingAttributes ?? super.typingAttributes
         }
@@ -133,7 +133,6 @@ class SPTextView: NSTextView {
         return true
     }
 }
-
 
 // MARK: - Relative locations
 //

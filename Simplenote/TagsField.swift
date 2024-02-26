@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - TagsFieldDelegate
 //
 protocol TagsFieldDelegate: NSTokenFieldDelegate {
@@ -9,7 +8,6 @@ protocol TagsFieldDelegate: NSTokenFieldDelegate {
     /// This API will be executed whenever a new token is Added / Removed
     func tokenField(_ tokenField: NSTokenField, didChange tokens: [String])
 }
-
 
 // MARK: - TagsField
 //
@@ -87,7 +85,6 @@ class TagsField: NSTokenField {
         }
     }
 
-
     // MARK: - Initializers
 
     override init(frame frameRect: NSRect) {
@@ -100,7 +97,6 @@ class TagsField: NSTokenField {
         setupTokenizationSettings()
     }
 }
-
 
 // MARK: - Text Edition Overridden API
 //
@@ -125,7 +121,7 @@ extension TagsField {
         ///
         let currentNumberOfTokens = numberOfTokens
 
-        if numberOfTokensBeforeEdition != currentNumberOfTokens  {
+        if numberOfTokensBeforeEdition != currentNumberOfTokens {
             tagsFieldDelegate?.tokenField(self, didChange: tokens)
         }
 
@@ -144,7 +140,6 @@ extension TagsField {
         tagsFieldDelegate?.tokenField(self, didChange: tokens)
     }
 }
-
 
 // MARK: - Scroll / Autolayout Support
 //
@@ -177,7 +172,6 @@ extension TagsField {
         return textView?.attributedString().numberOfAttachments == .zero
     }
 }
-
 
 // MARK: - NSTextViewDelegate
 //
@@ -220,7 +214,6 @@ extension TagsField: NSTextViewDelegate {
     }
 }
 
-
 // MARK: - Cursor Helpers
 //
 extension TagsField {
@@ -252,7 +245,6 @@ extension TagsField {
         return output
     }
 }
-
 
 // MARK: - Mouse Support
 //
@@ -309,7 +301,6 @@ private extension TagsField {
     }
 }
 
-
 // MARK: - Placeholder Support
 //
 private extension TagsField {
@@ -330,7 +321,6 @@ private extension TagsField {
         tokenizingCharacterSet = TokenizationSettings.characterSet
     }
 }
-
 
 // MARK: - Settings
 //

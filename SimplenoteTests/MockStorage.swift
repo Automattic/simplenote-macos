@@ -2,7 +2,6 @@ import Foundation
 import CoreData
 @testable import Simplenote
 
-
 /// MockupStorage: InMemory CoreData Stack.
 ///
 class MockStorage {
@@ -41,7 +40,6 @@ class MockStorage {
     }
 }
 
-
 // MARK: - Descriptors
 //
 extension MockStorage {
@@ -65,7 +63,6 @@ extension MockStorage {
     }
 }
 
-
 // MARK: - Stack URL's
 //
 extension MockStorage {
@@ -81,7 +78,6 @@ extension MockStorage {
         return url
     }
 }
-
 
 // MARK: - Private API(s)
 //

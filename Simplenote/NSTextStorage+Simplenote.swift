@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSTextStorage
 //
 extension NSTextStorage {

@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - LinkTableCellView
 //
 @objcMembers
@@ -45,7 +44,6 @@ class LinkTableCellView: NSTableCellView {
         refreshStyle()
     }
 }
-
 
 // MARK: - Selection Workaround
 //

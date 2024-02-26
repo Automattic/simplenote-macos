@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - TagTableCellView
 //
 @objcMembers
@@ -94,7 +93,6 @@ class NoteTableCellView: NSTableCellView {
     ///
     var keywords: [String]?
 
-
     // MARK: - Overridden Methods
 
     override func awakeFromNib() {
@@ -108,7 +106,6 @@ class NoteTableCellView: NSTableCellView {
         reset()
     }
 }
-
 
 // MARK: - Public API(s)
 //
@@ -139,7 +136,6 @@ extension NoteTableCellView {
         sharedImageView.image = sharedImageView.image?.tinted(with: sharedColor)
     }
 }
-
 
 // MARK: - String Builders
 //
@@ -177,7 +173,6 @@ private extension NoteTableCellView {
     }
 }
 
-
 // MARK: - Selection Workaround
 //
 private extension NoteTableCellView {
@@ -190,7 +185,6 @@ private extension NoteTableCellView {
         selected = row.isSelected
     }
 }
-
 
 // MARK: - Interface Initialization
 //
@@ -210,7 +204,6 @@ private extension NoteTableCellView {
         selected = false
     }
 }
-
 
 // MARK: - Interface Initialization
 //
@@ -234,7 +227,6 @@ extension NoteTableCellView {
     }
 }
 
-
 // MARK: - Metrics!
 //
 private enum Metrics {
@@ -246,7 +238,6 @@ private enum Metrics {
     static let outerVerticalStackViewSpacing = CGFloat(2)
 }
 
-
 // MARK: - Interface Settings
 //
 private enum Fonts {
@@ -257,7 +248,6 @@ private enum Fonts {
 
     static let bodyPrefix = NSFont.systemFont(ofSize: 12, weight: .semibold)
 }
-
 
 // MARK: - AttributedStrings Helpers
 //

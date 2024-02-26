@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSBox.BoxType
 //
 extension NSBox.BoxType {

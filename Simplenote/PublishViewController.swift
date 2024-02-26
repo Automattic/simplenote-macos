@@ -1,7 +1,6 @@
 import Foundation
 import SimplenoteFoundation
 
-
 // MARK: - Represents the PublishViewController's Internal State
 //
 enum PublishState {
@@ -11,14 +10,12 @@ enum PublishState {
     case unpublished
 }
 
-
 // MARK: - VersionsViewControllerDelegate
 //
 protocol PublishViewControllerDelegate: AnyObject {
     func publishControllerDidClickPublish(_ controller: PublishViewController)
     func publishControllerDidClickUnpublish(_ controller: PublishViewController)
 }
-
 
 // MARK: - PublishViewController
 //
@@ -53,7 +50,6 @@ class PublishViewController: NSViewController {
         }
     }
 
-
     /// Internal State
     ///
     private var state: PublishState = .unpublishing {
@@ -66,8 +62,7 @@ class PublishViewController: NSViewController {
     ///
     weak var delegate: PublishViewControllerDelegate?
 
-
-    // MARK - View Lifecycle
+    // MARK: - View Lifecycle
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -85,7 +80,6 @@ class PublishViewController: NSViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         startListeningToNotifications()
@@ -94,7 +88,6 @@ class PublishViewController: NSViewController {
         refreshState()
     }
 }
-
 
 // MARK: - Actions
 //
@@ -114,7 +107,6 @@ extension PublishViewController {
     }
 }
 
-
 // MARK: - Initialization
 //
 private extension PublishViewController {
@@ -123,7 +115,6 @@ private extension PublishViewController {
         observer.delegate = self
     }
 }
-
 
 // MARK: - Style
 //
@@ -167,7 +158,6 @@ private extension PublishViewController {
     }
 }
 
-
 // MARK: - Private
 //
 private extension PublishViewController {
@@ -208,7 +198,6 @@ private extension PublishViewController {
     }
 }
 
-
 // MARK: - NSPopoverDelegate
 //
 extension PublishViewController: NSPopoverDelegate {
@@ -218,7 +207,6 @@ extension PublishViewController: NSPopoverDelegate {
     }
 }
 
-
 // MARK: - EntityObserverDelegate
 //
 extension PublishViewController: EntityObserverDelegate {
@@ -227,7 +215,6 @@ extension PublishViewController: EntityObserverDelegate {
         refreshState()
     }
 }
-
 
 // MARK: - Constants
 //

@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - AuthViewController: Interface Initialization
 //
 extension AuthViewController {
@@ -35,7 +34,6 @@ extension AuthViewController {
     }
 }
 
-
 // MARK: - Dynamic Properties
 //
 extension AuthViewController {
@@ -50,7 +48,6 @@ extension AuthViewController {
         passwordField.stringValue?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
 }
-
 
 // MARK: - Refreshing
 //
@@ -100,7 +97,7 @@ extension AuthViewController {
         passwordFieldHeightConstraint.constant   = Metrics.passwordHeight(signingIn: signingIn)
         forgotPasswordHeightConstraint.constant  = Metrics.forgotHeight(signingIn: signingIn)
         wordPressSSOHeightConstraint.constant    = Metrics.wordPressHeight(signingIn: signingIn)
-        
+
         let fields      = [passwordField, forgotPasswordButton, wordPressSSOButton].compactMap { $0 }
         let alphaStart  = signingIn ? AppKitConstants.alpha0_0 : AppKitConstants.alpha1_0
         let alphaEnd    = signingIn ? AppKitConstants.alpha1_0 : AppKitConstants.alpha0_0
@@ -145,7 +142,6 @@ extension AuthViewController {
     }
 }
 
-
 // MARK: - Action Handlers
 //
 extension AuthViewController {
@@ -183,7 +179,6 @@ extension AuthViewController {
         }
     }
 }
-
 
 // MARK: - Presenting!
 //
@@ -255,7 +250,6 @@ private enum Metrics {
         signingIn ? CGFloat(72) : .zero
     }
 }
-
 
 // MARK: - Localization
 //

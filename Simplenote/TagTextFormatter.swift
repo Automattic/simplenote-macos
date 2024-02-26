@@ -1,9 +1,8 @@
 import Foundation
 
-
 // MARK: - TagTextFormatter: Helps us limit the Tag Length in the TagListViewController.
 //
-class TagTextFormatter : Formatter {
+class TagTextFormatter: Formatter {
 
     /// Maximum Allowed Tag Length
     ///
@@ -55,7 +54,7 @@ class TagTextFormatter : Formatter {
         return encodedString.count <= maximumLength
     }
 
-    override func attributedString(for obj: Any, withDefaultAttributes attrs: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString? {
+    override func attributedString(for obj: Any, withDefaultAttributes attrs: [NSAttributedString.Key: Any]? = nil) -> NSAttributedString? {
         nil
     }
 }

@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - BackgroundView
 //
 @objcMembers
@@ -79,7 +78,6 @@ class BackgroundView: NSView {
     /// When enabled, this NSView instance will forward Drag events over to the window
     ///
     var forwardsWindowDragEvents = false
-
 
     // MARK: - Overridden Methods
 

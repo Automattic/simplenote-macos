@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simperium + Buckets
 //
 extension Simperium {
@@ -51,7 +50,6 @@ extension Simperium {
     }
 }
 
-
 // MARK: - Simperium + Tags
 //
 extension Simperium {
@@ -87,7 +85,6 @@ extension Simperium {
         }
     }
 }
-
 
 // MARK: - Simperium + Notes
 //
@@ -132,7 +129,6 @@ extension Simperium {
         ]))
     }
 }
-
 
 // MARK: - Constants
 //

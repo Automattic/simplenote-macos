@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - List State: Allows us to wrap a native Swift type into an ObjC Property
 //         TODO: Let's remove this the second TagListController is Swift native!
 //
@@ -24,7 +23,6 @@ class TagListState: NSObject {
         super.init()
     }
 }
-
 
 // MARK: - Public API(s)
 //

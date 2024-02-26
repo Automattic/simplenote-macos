@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simplenote Methods
 //
 extension Array where Element == String {
@@ -24,7 +23,6 @@ extension Array where Element == String {
         return output
     }
 }
-
 
 // MARK: - Array + NSView Convenience API
 //

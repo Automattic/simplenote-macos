@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Helpers
 //
 extension Note {
@@ -48,7 +47,6 @@ extension Note {
     }
 }
 
-
 // MARK: - Excerpt
 //
 extension Note {
@@ -77,7 +75,6 @@ extension Note {
         return excerptString.replacingNewlinesWithSpaces()
     }
 }
-
 
 // MARK: - Constants
 //

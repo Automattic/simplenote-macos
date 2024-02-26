@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Sort Modes
 //
 enum SortMode: Int, CaseIterable {
@@ -20,7 +19,6 @@ enum SortMode: Int, CaseIterable {
     case modifiedNewest
     case modifiedOldest
 }
-
 
 // MARK: - Public Methods
 //
@@ -43,7 +41,6 @@ extension SortMode {
         }
     }
 }
-
 
 // MARK: - Notes List SortMode <> Interface Identifier
 //

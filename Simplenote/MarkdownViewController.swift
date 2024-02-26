@@ -2,7 +2,6 @@ import Foundation
 import WebKit
 import SimplenoteFoundation
 
-
 // MARK: - MarkdownViewController
 //
 @objcMembers
@@ -40,8 +39,6 @@ class MarkdownViewController: NSViewController {
     /// Entity Observer: Helps us keep track of changes applied to a Note
     ///
     private var entityObserver: EntityObserver?
-
-
 
     // MARK: - Lifecycle
 
@@ -92,7 +89,6 @@ class MarkdownViewController: NSViewController {
     }
 }
 
-
 // MARK: - WKNavigationDelegate
 //
 extension MarkdownViewController: WKNavigationDelegate {
@@ -111,7 +107,6 @@ extension MarkdownViewController: WKNavigationDelegate {
     }
 }
 
-
 // MARK: - EntityObserverDelegate
 //
 extension MarkdownViewController: EntityObserverDelegate {
@@ -120,7 +115,6 @@ extension MarkdownViewController: EntityObserverDelegate {
         refreshHTML()
     }
 }
-
 
 // MARK: - Private
 //
@@ -135,7 +129,6 @@ private extension MarkdownViewController {
         webView.setValue(false, forKey: "drawsBackground")
     }
 }
-
 
 // MARK: - Notification Helpers
 //

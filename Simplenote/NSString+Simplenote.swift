@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simplenote API
 //
 extension NSString {
@@ -82,7 +81,6 @@ extension NSString {
     }
 }
 
-
 // MARK: - Lists Convenience API
 //
 extension NSString {
@@ -121,7 +119,6 @@ extension NSString {
         return NSAttributedString(string: output)
     }
 }
-
 
 // MARK: - Constants
 //

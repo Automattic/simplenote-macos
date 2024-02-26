@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - AccountVerificationViewController
 //
 class AccountVerificationViewController: NSViewController {
@@ -56,7 +55,6 @@ class AccountVerificationViewController: NSViewController {
     }
 }
 
-
 // MARK: - Actions
 //
 extension AccountVerificationViewController {
@@ -98,7 +96,6 @@ extension AccountVerificationViewController {
     }
 }
 
-
 // MARK: - Private
 //
 private extension AccountVerificationViewController {
@@ -111,7 +108,7 @@ private extension AccountVerificationViewController {
             switch result {
             case .success:
                 onSuccess?()
-            case .failure(_):
+            case .failure:
                 self?.presentErrorAlert()
             }
 
@@ -143,7 +140,6 @@ private extension AccountVerificationViewController {
         configuration = .verify
     }
 }
-
 
 // MARK: - Refreshing UI
 //
@@ -196,7 +192,6 @@ private extension AccountVerificationViewController {
     }
 }
 
-
 // MARK: - Tracks
 //
 private extension AccountVerificationViewController {
@@ -212,7 +207,6 @@ private extension AccountVerificationViewController {
         }
     }
 }
-
 
 // MARK: - Configuration
 //
@@ -245,14 +239,12 @@ extension AccountVerificationConfiguration {
                                                          errorMessageTitle: Localization.Verify.errorMessageTitle)
 }
 
-
 // MARK: - UI Metrics
 //
 private enum Settings {
     static let bodyFont = NSFont.systemFont(ofSize: 16)
     static let bodyHightlightFont = NSFont.systemFont(ofSize: 16, weight: .semibold)
 }
-
 
 // MARK: - Localization
 //

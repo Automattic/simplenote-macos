@@ -1,7 +1,6 @@
 import XCTest
 @testable import Simplenote
 
-
 // MARK: - TextViewInputHandler Tests
 //
 class TextViewInputHandlerTests: XCTestCase {
@@ -17,7 +16,6 @@ class TextViewInputHandlerTests: XCTestCase {
     /// Mockup TextViewDelegate
     ///
     let delegate = MockupTextViewDelegate()
-
 
     // MARK: - Overridden
 

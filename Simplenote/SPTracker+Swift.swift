@@ -5,7 +5,7 @@ import Foundation
 extension SPTracker {
 
     static func trackSettingsStatusBarDisplayMode(hidden: Bool) {
-        trackAutomatticEvent(withName: "settings_sort_bar_display_mode", properties: ["hidden" : hidden])
+        trackAutomatticEvent(withName: "settings_sort_bar_display_mode", properties: ["hidden": hidden])
     }
 
     static func trackVerificationReviewScreenViewed() {
@@ -37,7 +37,6 @@ extension SPTracker {
         trackAutomatticEvent(withName: "preferences_was_opened", properties: nil)
     }
 }
-
 
 // MARK: - Shortcuts
 //

@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - NSFont + Simplenote
 //
 extension NSFont {
