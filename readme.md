@@ -33,25 +33,8 @@ Hopefully, you won't need to update Sparkle till version 2.x has shipped but, in
 
 #### SwiftLint
 
-We use [SwiftLint](https://github.com/realm/SwiftLint) to enforce a common style for Swift code. The app should build and work without it, but if you plan to write code, you are encouraged to install it. No commit should have lint warnings or errors.
-
-You can set up a Git [pre-commit hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) to run SwiftLint automatically when committing by running:
-
-`rake git:install_hooks`
-
-This is the recommended way to include SwiftLint in your workflow, as it catches lint issues locally before your code makes its way to Github.
-
-Alternately, a SwiftLint scheme is exposed within the project; Xcode will show a warning if you don't have SwiftLint installed.
-
-Finally, you can also run SwiftLint manually from the command line with:
-
-`rake lint`
-
-If your code has any style violations, you can try to automatically correct them by running:
-
-`rake lint:autocorrect`
-
-Otherwise you have to fix them manually.
+We use [SwiftLint](https://github.com/realm/SwiftLint) to enforce a common style for Swift code. If you plan to write code, SwiftLint is going to be installed when you run `bundle exec pod install` and SwiftLint will run during the build.
+No commit should have lint warnings or errors.
 
 ### Open Xcode
 
