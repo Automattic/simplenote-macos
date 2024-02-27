@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSWindow.FrameAutosaveName
 //
 extension NSWindow.FrameAutosaveName {

@@ -1,6 +1,5 @@
 import Cocoa
 
-
 class AboutViewController: NSViewController {
     private enum Constants {
         static let blogUrl =       "https://simplenote.com/blog"
@@ -15,32 +14,31 @@ class AboutViewController: NSViewController {
 
     /// Background
     ///
-    @IBOutlet private var backgroundBox:    NSBox!
+    @IBOutlet private var backgroundBox: NSBox!
 
     /// Logo
     ///
-    @IBOutlet private var logoImageView:    NSImageView!
+    @IBOutlet private var logoImageView: NSImageView!
 
     /// Blog
     ///
-    @IBOutlet private var blogView:         BackgroundView!
-    @IBOutlet private var twitterView:      BackgroundView!
-    @IBOutlet private var githubView:       BackgroundView!
-    @IBOutlet private var hiringView:       BackgroundView!
-    @IBOutlet private var contactView:      BackgroundView!
+    @IBOutlet private var blogView: BackgroundView!
+    @IBOutlet private var twitterView: BackgroundView!
+    @IBOutlet private var githubView: BackgroundView!
+    @IBOutlet private var hiringView: BackgroundView!
+    @IBOutlet private var contactView: BackgroundView!
 
     /// Labels
     ///
     @IBOutlet private var hiringTitleLabel: NSTextField!
-    @IBOutlet private var hiringTextLabel:  NSTextField!
-    @IBOutlet private var helpLabel:        NSTextField!
-    @IBOutlet private var contactLabel:     NSTextField!
-    @IBOutlet private var tosLabel:         SPAboutTextField!
-    @IBOutlet private var privacyLabel:     SPAboutTextField!
-    @IBOutlet private var californiaLabel:  SPAboutTextField!
-    @IBOutlet private var versionLabel:     NSTextField!
-    @IBOutlet private var copyrightLabel:   NSTextField!
-
+    @IBOutlet private var hiringTextLabel: NSTextField!
+    @IBOutlet private var helpLabel: NSTextField!
+    @IBOutlet private var contactLabel: NSTextField!
+    @IBOutlet private var tosLabel: SPAboutTextField!
+    @IBOutlet private var privacyLabel: SPAboutTextField!
+    @IBOutlet private var californiaLabel: SPAboutTextField!
+    @IBOutlet private var versionLabel: NSTextField!
+    @IBOutlet private var copyrightLabel: NSTextField!
 
     // MARK: - Overridden API(s)
 
@@ -124,11 +122,11 @@ class AboutViewController: NSViewController {
         let copyrightText = String(format: "© %d Automattic", thisYear) // No need for translation
         copyrightLabel.stringValue = copyrightText
     }
-    
+
     @objc func blogLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.blogUrl)!)
     }
-    
+
     @objc func twitterLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.twitterUrl)!)
     }
@@ -136,11 +134,11 @@ class AboutViewController: NSViewController {
     @objc func githubLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.githubUrl)!)
     }
-    
+
     @objc func hiringLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.hiringUrl)!)
     }
-    
+
     @objc func privacyLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.privacyUrl)!)
     }
@@ -148,7 +146,7 @@ class AboutViewController: NSViewController {
     @objc func helpLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.helpUrl)!)
     }
-    
+
     @objc func termsLabelClick() {
         NSWorkspace.shared.open(URL(string: Constants.termsUrl)!)
     }

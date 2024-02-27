@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - SPTextAttachment
 //
 @objcMembers
@@ -29,7 +28,6 @@ class SPTextAttachment: NSTextAttachment {
     ///
     var sizingFont: NSFont?
 
-
     /// Convenience Initializer
     ///
     ///     - tintColor: Text Attachment's Tint Color
@@ -41,7 +39,6 @@ class SPTextAttachment: NSTextAttachment {
         refreshImage()
     }
 }
-
 
 // MARK: - Private Methods
 //
@@ -58,7 +55,6 @@ private extension SPTextAttachment {
         attachmentCell = SPTextAttachmentCell(imageCell: image)
     }
 }
-
 
 // MARK: - SPTextAttachmentCell
 //
@@ -89,7 +85,6 @@ class SPTextAttachmentCell: NSTextAttachmentCell {
     override func draw(withFrame cellFrame: NSRect, in controlView: NSView?, characterIndex charIndex: Int, layoutManager: NSLayoutManager) {
         image?.draw(in: cellFrame)
     }
-
 
     // MARK: - Private Methods
 

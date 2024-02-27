@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - TagAttachmentCell
 //
 class TagAttachmentCell: NSTextAttachmentCell {
@@ -52,7 +51,6 @@ class TagAttachmentCell: NSTextAttachmentCell {
     }
 }
 
-
 // MARK: - Mouse Handling
 //
 extension TagAttachmentCell {
@@ -78,7 +76,6 @@ extension TagAttachmentCell {
         return true
     }
 }
-
 
 // MARK: - Private API
 //
@@ -113,19 +110,17 @@ private extension TagAttachmentCell {
     }
 }
 
-
 // MARK: - Dynamic Properties
 //
 private extension TagAttachmentCell {
 
     var attributes: [NSAttributedString.Key: Any] {
         [
-            .font:              NSFont.simplenoteSecondaryTextFont,
-            .foregroundColor:   NSColor.simplenoteTextColor
+            .font: NSFont.simplenoteSecondaryTextFont,
+            .foregroundColor: NSColor.simplenoteTextColor
         ]
     }
 }
-
 
 // MARK: - Drawing Metrics
 //

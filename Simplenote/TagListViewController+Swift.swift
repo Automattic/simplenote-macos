@@ -1,7 +1,5 @@
 import Foundation
 
-
-
 // MARK: - TagListDelegate
 //
 @objc
@@ -10,7 +8,6 @@ protocol TagsControllerDelegate: AnyObject {
     func tagsControllerDidRenameTag(_ controller: TagListViewController, oldName: String, newName: String)
     func tagsControllerDidDeleteTag(_ controller: TagListViewController, name: String)
 }
-
 
 // MARK: - Interface Initialization
 //
@@ -32,7 +29,6 @@ extension TagListViewController {
         refreshHeaderSeparatorAlpha()
     }
 }
-
 
 // MARK: - Refreshing
 //
@@ -73,7 +69,6 @@ extension TagListViewController {
     }
 }
 
-
 // MARK: - Public API
 //
 extension TagListViewController {
@@ -104,7 +99,6 @@ extension TagListViewController {
         view.window?.makeFirstResponder(tableView)
     }
 }
-
 
 // MARK: - Notifications
 //
@@ -164,7 +158,6 @@ extension TagListViewController {
     }
 }
 
-
 // MARK: - NSTableViewDelegate Helpers
 //
 extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
@@ -223,7 +216,6 @@ extension TagListViewController: NSTableViewDataSource, SPTableViewDelegate {
         trackTagsFilterDidChange()
     }
 }
-
 
 // MARK: - NSTableViewDelegate Helpers
 //
@@ -289,7 +281,6 @@ extension TagListViewController {
     }
 }
 
-
 // MARK: - Actions
 //
 extension TagListViewController {
@@ -304,7 +295,6 @@ extension TagListViewController {
     }
 }
 
-
 // MARK: - Keyboard Navigation
 //
 extension TagListViewController {
@@ -314,7 +304,6 @@ extension TagListViewController {
     }
 }
 
-
 // MARK: - SPTextFieldDelegate
 //
 extension TagListViewController: SPTextFieldDelegate {
@@ -323,7 +312,6 @@ extension TagListViewController: SPTextFieldDelegate {
         !menuShowing
     }
 }
-
 
 // MARK: - Appearance
 //
@@ -335,12 +323,11 @@ extension TagListViewController {
     }
 }
 
-
 // MARK: - Drag/Drop
 //
 extension TagListViewController {
     @objc static let tagDataTypeName = "com.codality.tag"
-    
+
     public func tableView(_ tableView: NSTableView,
                           validateDrop info: NSDraggingInfo,
                           proposedRow row: Int,
@@ -349,52 +336,52 @@ extension TagListViewController {
            draggingSource != tableView {
             return []
         }
-        
+
         // Disallow drop outside the Tags Range
         if row < state.indexOfFirstTagRow || row > state.indexOfLastTagRow + 1 {
             return []
         }
-        
+
         if dropOperation == .on {
             tableView.setDropRow(row, dropOperation: .above)
         }
-        
+
         return .move
     }
-    
+
     public func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
         guard !Options.shared.alphabeticallySortTags,
               let tag = state.tag(atIndex: row),
               let payload = try? NSKeyedArchiver.archivedData(withRootObject: [tag.objectID.uriRepresentation()], requiringSecureCoding: false) else {
             return nil
         }
-        
+
         let item = NSPasteboardItem()
         item.setData(payload, forType: .tag)
-        
+
         return item
     }
-    
+
     public func tableView(_ tableView: NSTableView,
                           acceptDrop info: NSDraggingInfo,
                           row: Int,
                           dropOperation: NSTableView.DropOperation) -> Bool {
         // Account for row offset
         let newRow = row - state.indexOfFirstTagRow
-        
+
         // Get object URIs from paste board
         guard let data = info.draggingPasteboard.data(forType: .tag) else {
             return false
         }
-        
+
         guard let objectURIs = try? NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClass: NSURL.self, from: data) else {
             return false
         }
-        
+
         // Get managed object context and persistent store coordinator
         let context = SimplenoteAppDelegate.shared().managedObjectContext
         let coordinator = context.persistentStoreCoordinator
-        
+
         // Collect manged objects with URIs
         var draggedObjects: Array<Tag> = objectURIs.compactMap({
             guard let objectID = coordinator?.managedObjectID(forURIRepresentation: $0 as URL) else {
@@ -425,9 +412,9 @@ extension TagListViewController {
         } else {
             allObjects.addObjects(from: draggedObjects)
         }
-        
+
         allObjects.remove(NSNull())
-        
+
         var counter = 0
         for object in allObjects {
             guard let tag = allObjects[counter] as? Tag else {
@@ -436,7 +423,7 @@ extension TagListViewController {
             tag.index = NSNumber(integerLiteral: counter)
             counter += 1
         }
-        
+
         // Reload data
         loadTags()
         return true

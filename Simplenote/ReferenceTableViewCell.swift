@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - ReferenceTableViewCell
 //
 class ReferenceTableViewCell: NSTableCellView {
@@ -43,7 +42,6 @@ class ReferenceTableViewCell: NSTableCellView {
         addCursorRect(bounds, cursor: .pointingHand)
     }
 }
-
 
 // MARK: - Private API(s)
 //

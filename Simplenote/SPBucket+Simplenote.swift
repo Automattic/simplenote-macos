@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simperium + Simplenote API(s)
 //
 extension SPBucket {

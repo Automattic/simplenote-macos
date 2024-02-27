@@ -1,7 +1,6 @@
 import XCTest
 @testable import Simplenote
 
-
 // MARK: - NSRegularExpression Simplenote Unit Tests
 //
 class NSRegularExpressionSimplenoteTests: XCTestCase {
@@ -112,7 +111,6 @@ class NSRegularExpressionSimplenoteTests: XCTestCase {
 
         XCTAssertEqual(matches.count, 1)
     }
-
 
     /// Verifies that `NSRegularExpression.regexForListMarkersEmbeddedAnywhere` will match checklists with no spaces between brackets
     ///

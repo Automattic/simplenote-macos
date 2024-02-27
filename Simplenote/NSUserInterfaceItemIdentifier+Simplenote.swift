@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simplenote Extensible Constants
 //
 extension NSUserInterfaceItemIdentifier {

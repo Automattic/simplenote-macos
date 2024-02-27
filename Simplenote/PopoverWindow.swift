@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - AutocompleteWindow
 //
 // This class renders a PopoverWindow: the Parent Window is expected to rely events via the `ParentWindowDelegate` protocol.
@@ -12,7 +11,6 @@ import AppKit
 class PopoverWindow: Window {
 
 }
-
 
 // MARK: - ParentWindowDelegate
 //
@@ -38,7 +36,6 @@ extension PopoverWindow: ParentWindowDelegate {
         }
     }
 }
-
 
 // MARK: - Private API(s)
 //

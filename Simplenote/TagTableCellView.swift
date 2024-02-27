@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - TagTableCellView
 //
 @objcMembers
@@ -18,7 +17,6 @@ class TagTableCellView: NSTableCellView {
     /// Indicates if the mouse was last seen inside the receiver's bounds
     ///
     private(set) var mouseInside = false
-
 
     /// Tracking Areas
     ///
@@ -50,7 +48,6 @@ class TagTableCellView: NSTableCellView {
     }
 }
 
-
 // MARK: - Tracking Areas
 //
 extension TagTableCellView {
@@ -70,7 +67,6 @@ extension TagTableCellView {
         mouseInside = false
     }
 }
-
 
 // MARK: - Styling
 //

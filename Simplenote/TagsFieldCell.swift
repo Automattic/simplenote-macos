@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - TagsFieldCell
 //
 class TagsFieldCell: NSTokenFieldCell {
@@ -46,7 +45,6 @@ class TagsFieldCell: NSTokenFieldCell {
         super.endEditing(textObj)
     }
 }
-
 
 // MARK: - Private API(s)
 //
@@ -117,7 +115,6 @@ private extension TagsFieldCell {
         storage.delegate = nil
     }
 }
-
 
 // MARK: - NSTextStorageDelegate Conformance
 //

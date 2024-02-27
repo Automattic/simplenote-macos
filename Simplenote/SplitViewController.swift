@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - SplitViewController
 //
 @objc
@@ -37,7 +36,6 @@ class SplitViewController: NSSplitViewController {
         tagsSplitItem.isCollapsed
     }
 
-
     // MARK: - Overridden Methods
 
     override func loadView() {
@@ -58,7 +56,6 @@ class SplitViewController: NSSplitViewController {
         setupLayoutConstraints()
     }
 }
-
 
 // MARK: - Layout
 //
@@ -88,7 +85,6 @@ private extension SplitViewController {
         ])
     }
 }
-
 
 // MARK: - Public API
 //
@@ -145,7 +141,6 @@ extension SplitViewController {
     }
 }
 
-
 // MARK: - Private API(s)
 //
 private extension SplitViewController {
@@ -185,7 +180,6 @@ private extension SplitViewController {
     }
 }
 
-
 // MARK: - Actions
 //
 extension SplitViewController {
@@ -217,7 +211,6 @@ extension SplitViewController {
     }
 }
 
-
 // MARK: - SplitState: Represents the Internal SplitView State
 //
 private enum SplitState: String {
@@ -248,7 +241,6 @@ extension SplitState {
     }
 }
 
-
 // MARK: SplitItemName(s) Enum
 //
 enum SplitItemKind: Int, CaseIterable {
@@ -256,7 +248,6 @@ enum SplitItemKind: Int, CaseIterable {
     case notes = 1
     case editor = 2
 }
-
 
 // MARK: - SplitItemName Properties
 //
@@ -289,7 +280,6 @@ extension SplitItemKind {
     }
 }
 
-
 // MARK: - ContentView
 //
 private class ContentView: NSView {
@@ -300,7 +290,6 @@ private class ContentView: NSView {
         true
     }
 }
-
 
 // MARK: - SplitView's Metrics
 //

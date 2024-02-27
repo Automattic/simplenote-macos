@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simplenote's Note Exporter Tool
 //
 @objc
@@ -39,7 +38,6 @@ class SPExporter: NSObject {
     }
 }
 
-
 // MARK: - Private Methods
 //
 private extension SPExporter {
@@ -75,7 +73,6 @@ private extension SPExporter {
         }
     }
 }
-
 
 // MARK: - Constants
 //

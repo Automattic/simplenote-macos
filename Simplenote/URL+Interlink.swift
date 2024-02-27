@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - URL + Interlink
 //
 extension URL {

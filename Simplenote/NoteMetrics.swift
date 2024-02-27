@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NoteMetrics
 //
 struct NoteMetrics {
@@ -20,7 +19,6 @@ struct NoteMetrics {
     /// Modification Date (whenever we're in single selection mode)
     ///
     let modifiedDate: String?
-
 
     /// Designed Initializer
     /// - Parameter notes: Notes from which we should extract metrics

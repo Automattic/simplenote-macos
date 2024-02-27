@@ -1,6 +1,5 @@
 import Foundation
 
-
 /// Bundle: Simplenote Methods
 ///
 extension Bundle {

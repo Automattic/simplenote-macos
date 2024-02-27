@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Tag List Row
 //
 enum TagListRow: Equatable {
@@ -11,7 +10,6 @@ enum TagListRow: Equatable {
     case tag(_ tag: Tag)
     case untagged
 }
-
 
 // MARK: - Helpers API(s)
 //
@@ -59,7 +57,6 @@ extension TagListRow {
         return rows
     }
 }
-
 
 // MARK: - TagListRow: Filter Mapping
 //

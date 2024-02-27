@@ -1,7 +1,6 @@
 import Foundation
 import os.log
 
-
 // MARK: - VersionsController
 //
 class VersionsController: NSObject {
@@ -14,14 +13,12 @@ class VersionsController: NSObject {
     ///
     let simperium: Simperium
 
-
     /// Designated Initializer
     ///
     init(simperium: Simperium) {
         self.simperium = simperium
         super.init()
     }
-
 
     /// Requests the specified number of versions of Notes for a given SimperiumKey.
     ///
@@ -50,7 +47,6 @@ class VersionsController: NSObject {
     }
 }
 
-
 // MARK: - Simperium
 //
 extension VersionsController {
@@ -71,7 +67,6 @@ extension VersionsController {
         wrapper.block(note)
     }
 }
-
 
 // MARK: - ListenerWrapper
 //

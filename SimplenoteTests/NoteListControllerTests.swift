@@ -3,7 +3,6 @@ import SimplenoteFoundation
 import SimplenoteSearch
 @testable import Simplenote
 
-
 // MARK: - NoteListControllerTests
 //
 class NoteListControllerTests: XCTestCase {
@@ -13,7 +12,6 @@ class NoteListControllerTests: XCTestCase {
     private let storage = MockStorage()
     private var noteListController: NoteListController!
 
-
     // MARK: - Overridden Methods
 
     override func setUp() {
@@ -22,7 +20,6 @@ class NoteListControllerTests: XCTestCase {
         noteListController.performFetch()
     }
 }
-
 
 // MARK: - Tests: Filters
 //
@@ -38,7 +35,7 @@ extension NoteListControllerTests {
 
         note.deleted = true
         storage.save()
-        XCTAssertEqual(noteListController.numberOfNotes,.zero)
+        XCTAssertEqual(noteListController.numberOfNotes, .zero)
 
         noteListController.filter = .deleted
         XCTAssertEqual(noteListController.numberOfNotes, .zero)
@@ -78,7 +75,6 @@ extension NoteListControllerTests {
     }
 }
 
-
 // MARK: - Tests: Sorting
 //
 extension NoteListControllerTests {
@@ -101,7 +97,6 @@ extension NoteListControllerTests {
         }
     }
 }
-
 
 // MARK: - Tests: Search
 //
@@ -134,7 +129,6 @@ extension NoteListControllerTests {
         XCTAssertEqual(noteListController.numberOfNotes, .zero)
     }
 }
-
 
 // MARK: - Tests: `note(at:)`
 //
@@ -185,7 +179,6 @@ extension NoteListControllerTests {
     }
 }
 
-
 // MARK: - Tests: `indexOfNote(withSimperiumKey:)`
 //
 extension NoteListControllerTests {
@@ -217,7 +210,6 @@ extension NoteListControllerTests {
         }
     }
 }
-
 
 // MARK: - Tests: onDidChangeContent
 //
@@ -370,7 +362,6 @@ extension NoteListControllerTests {
         waitForExpectations(timeout: Constants.expectationTimeout, handler: nil)
     }
 }
-
 
 // MARK: - Private APIs
 //

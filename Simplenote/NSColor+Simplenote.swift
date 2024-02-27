@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - HTML Colors
 //
 extension NSColor {

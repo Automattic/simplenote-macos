@@ -1,7 +1,6 @@
 import Foundation
 import SimplenoteSearch
 
-
 // MARK: - NoteListFilter
 //
 enum NoteListFilter: Equatable {
@@ -11,7 +10,6 @@ enum NoteListFilter: Equatable {
     case untagged
     case search(query: SearchQuery)
 }
-
 
 // MARK: - NoteListFilter: Public API
 //

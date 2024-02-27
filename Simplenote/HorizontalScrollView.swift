@@ -1,7 +1,6 @@
 import Foundation
 import Cocoa
 
-
 // MARK: - HorizontalScrollView
 //          This NSScrollView subclass remaps Vertical Scroll events into Horizontal Scroll events, in order to
 //          support ScrollWheel events performed with a mouse (single axis device!).
@@ -12,7 +11,7 @@ class HorizontalScrollView: NSScrollView {
         /// Whenever the scroll event happens on the Y axis, we'll generate a new Scroll Event, instead, and we'll remap the deltaY.
         /// Why: we need to support Scroll Wheel events, performed with a mouse (with a single axis).
         ///
-        guard (abs(event.deltaX) <= abs(event.deltaY)), let cgEvent = event.cgEvent?.copy() else {
+        guard abs(event.deltaX) <= abs(event.deltaY), let cgEvent = event.cgEvent?.copy() else {
             super.scrollWheel(with: event)
             return
         }

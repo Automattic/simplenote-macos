@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSRange Simplenote Methods
 //
 extension NSRange {

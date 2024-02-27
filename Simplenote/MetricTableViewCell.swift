@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - MetricTableViewCell
 //
 class MetricTableViewCell: NSTableCellView {
@@ -39,7 +38,6 @@ class MetricTableViewCell: NSTableCellView {
         refreshStyle()
     }
 }
-
 
 // MARK: - Private API(s)
 //

@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - Simplenote's Theme
 //
 class SPUserInterface: NSObject {
@@ -41,7 +40,6 @@ class SPUserInterface: NSObject {
         return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
     }
 }
-
 
 // MARK: - Helpers
 //

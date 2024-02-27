@@ -1,7 +1,6 @@
 import Foundation
 @testable import Simplenote
 
-
 // MARK: - MockStorage Sample Entity Insertion Methods
 //
 extension MockStorage {

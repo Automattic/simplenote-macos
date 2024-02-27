@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - AccountVerificationCoordinator
 //
 @objc
@@ -13,7 +12,6 @@ class AccountVerificationCoordinator: NSObject {
     /// NSViewController instance which will present the Account Verification
     ///
     private var parentViewController: NSViewController
-
 
     /// Designated Initializer
     /// -   parentViewController: ViewController that will be presenting Account Verification
@@ -67,7 +65,6 @@ class AccountVerificationCoordinator: NSObject {
         verificationController?.update(with: verification)
     }
 }
-
 
 // MARK: - User Interface Helpers
 //

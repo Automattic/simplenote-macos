@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - SignupVerificationViewController
 //
 class SignupVerificationViewController: NSViewController {
@@ -20,7 +19,6 @@ class SignupVerificationViewController: NSViewController {
     ///
     private let authenticator: SPAuthenticator
 
-
     /// Designated Initializer
     ///
     init(email: String, authenticator: SPAuthenticator) {
@@ -33,7 +31,6 @@ class SignupVerificationViewController: NSViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
     // MARK: - Overridden Methods
 
@@ -49,7 +46,6 @@ class SignupVerificationViewController: NSViewController {
         setupBackButton()
     }
 }
-
 
 // MARK: - Interface
 //
@@ -105,7 +101,6 @@ private extension SignupVerificationViewController {
     }
 }
 
-
 // MARK: - Action Handlers
 //
 extension SignupVerificationViewController {
@@ -125,7 +120,6 @@ extension SignupVerificationViewController {
     }
 }
 
-
 // MARK: - Private API(s)
 //
 private extension SignupVerificationViewController {
@@ -137,7 +131,6 @@ private extension SignupVerificationViewController {
     }
 }
 
-
 // MARK: - Localization
 //
 private enum Localization {
@@ -145,7 +138,6 @@ private enum Localization {
     static let support = NSLocalizedString("Didn't get an email? There may already be an account associated with this email address. Contact %1$@ for help.", comment: "Signup Support Text")
     static let back = NSLocalizedString("Go Back", comment: "Back Button Title")
 }
-
 
 private enum Fonts {
     static let regularMessageFont = NSFont.systemFont(ofSize: 13)

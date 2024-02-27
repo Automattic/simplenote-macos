@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - DateFormatter
 //
 extension DateFormatter {

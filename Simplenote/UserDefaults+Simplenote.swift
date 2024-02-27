@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Simplenote UserDefaults Keys
 //
 extension UserDefaults {
@@ -17,7 +16,6 @@ extension UserDefaults {
         case fontSize = "kFontSizePreferencesKey"
     }
 }
-
 
 // MARK: - Convenience Methods
 //

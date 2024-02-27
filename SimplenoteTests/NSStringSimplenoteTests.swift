@@ -1,7 +1,6 @@
 import XCTest
 @testable import Simplenote
 
-
 // MARK: - NSAttributedStringToMarkdownConverter Unit Tests
 //
 class NSStringSimplenoteTests: XCTestCase {
@@ -176,11 +175,11 @@ class NSStringSimplenoteTests: XCTestCase {
         let markers = ["•", "-", "+", "*"]
         for marker in markers {
             let samples = [
-                (text: marker + " Some sample string",              location: 0),
-                (text: "\t" + marker + "  Some sample string",      location: 1),
-                (text: "  " + marker + " Some sample string",       location: 2),
-                (text: "     " + marker + " Some sample string",    location: 5),
-                (text: "     " + marker + " Some sample string",    location: 5),
+                (text: marker + " Some sample string", location: 0),
+                (text: "\t" + marker + "  Some sample string", location: 1),
+                (text: "  " + marker + " Some sample string", location: 2),
+                (text: "     " + marker + " Some sample string", location: 5),
+                (text: "     " + marker + " Some sample string", location: 5),
             ]
 
             for (text, location) in samples {

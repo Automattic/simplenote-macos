@@ -1,6 +1,5 @@
 import Cocoa
 
-
 /// Displays the Privacy Settings
 ///
 class PrivacyViewController: NSViewController {
@@ -47,7 +46,6 @@ class PrivacyViewController: NSViewController {
         Options.shared.analyticsEnabled
     }
 
-
     // MARK: - Overridden Methods
 
     override func viewDidLoad() {
@@ -85,7 +83,6 @@ class PrivacyViewController: NSViewController {
         shareEnabledButton.state = isAnalyticsEnabled ? .on : .off
     }
 }
-
 
 // MARK: - Actions
 //

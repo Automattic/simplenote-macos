@@ -2,8 +2,7 @@ import Foundation
 
 // MARK: - MockURLSession
 //
-class MockURLSession: URLSession
-{
+class MockURLSession: URLSession {
     var data: (Data?, URLResponse?, Error?)?
     var lastRequest: URLRequest?
 

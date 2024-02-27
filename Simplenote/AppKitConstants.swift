@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - AppKit Constants, so that we don't repeat ourselves forever!
 //
 enum AppKitConstants {

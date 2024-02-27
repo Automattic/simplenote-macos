@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - ToolbarView
 //
 @objcMembers
@@ -27,7 +26,6 @@ class ToolbarView: NSView {
         }
     }
 
-
     // MARK: - Overridden
 
     override func awakeFromNib() {
@@ -49,7 +47,6 @@ class ToolbarView: NSView {
         window?.performDrag(with: event)
     }
 }
-
 
 // MARK: - State Management
 //
@@ -73,7 +70,6 @@ private extension ToolbarView {
         restoreButton.isHidden = state.isRestoreActionHidden
     }
 }
-
 
 // MARK: - Theming
 //

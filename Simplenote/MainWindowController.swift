@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - MainWindowController
 //
 class MainWindowController: NSWindowController {
@@ -22,7 +21,6 @@ class MainWindowController: NSWindowController {
         }
     }
 
-
     // MARK: - Overridden Methods
 
     deinit {
@@ -38,7 +36,6 @@ class MainWindowController: NSWindowController {
     }
 }
 
-
 // MARK: - NSWindowDelegate
 //
 extension MainWindowController: NSWindowDelegate {
@@ -49,7 +46,6 @@ extension MainWindowController: NSWindowDelegate {
         [.autoHideToolbar, .autoHideMenuBar, .fullScreen]
     }
 }
-
 
 // MARK: - Initialization
 //
@@ -88,7 +84,6 @@ private extension MainWindowController {
     }
 }
 
-
 // MARK: - Semaphore Workaround
 //
 private extension MainWindowController {
@@ -103,7 +98,6 @@ private extension MainWindowController {
         simplenoteWindow.semaphoreButtonPaddingX = nil
     }
 }
-
 
 // MARK: - Notifications
 //
@@ -126,7 +120,6 @@ extension MainWindowController {
         updateMinContentWidth(isEditorMode: isEditorMode == true)
     }
 }
-
 
 // MARK: - Metrics
 //

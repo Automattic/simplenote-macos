@@ -1,7 +1,6 @@
 import Foundation
 import SimplenoteFoundation
 
-
 // MARK: - InterlinkResultsController
 //
 class InterlinkResultsController {
@@ -25,7 +24,6 @@ class InterlinkResultsController {
         try? resultsController.performFetch()
     }
 
-
     /// Returns the collection of Notes filtered by the specified Keyword in their title, excluding a specific ObjectID
     /// - Important: Returns `nil` when there are no results!
     ///
@@ -33,7 +31,6 @@ class InterlinkResultsController {
         filter(notes: resultsController.fetchedObjects, byTitleKeyword: keyword, excluding: excludedID)
     }
 }
-
 
 // MARK: - Private
 //
@@ -69,7 +66,6 @@ private extension InterlinkResultsController {
         return output.isEmpty ? nil : output
     }
 }
-
 
 // MARK: - Settings!
 //

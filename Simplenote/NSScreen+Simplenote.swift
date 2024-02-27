@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSScreen Simplenote Methods
 //
 extension NSScreen {

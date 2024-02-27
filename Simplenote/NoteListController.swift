@@ -3,7 +3,6 @@ import CoreData
 import SimplenoteFoundation
 import SimplenoteSearch
 
-
 // MARK: - NoteListController
 //
 class NoteListController: NSObject {
@@ -47,7 +46,6 @@ class NoteListController: NSObject {
     ///
     var onDidChangeContent: ((_ rowsChangeset: ResultsObjectsChangeset) -> Void)?
 
-
     /// Designated Initializer
     ///
     init(viewContext: NSManagedObjectContext) {
@@ -56,7 +54,6 @@ class NoteListController: NSObject {
         startListeningToNoteEvents()
     }
 }
-
 
 // MARK: - Public API
 //
@@ -121,7 +118,6 @@ extension NoteListController {
     }
 }
 
-
 // MARK: - Private API: ResultsController Refreshing
 //
 private extension NoteListController {
@@ -139,7 +135,6 @@ private extension NoteListController {
         refreshSortDescriptors()
     }
 }
-
 
 // MARK: - Private API
 //

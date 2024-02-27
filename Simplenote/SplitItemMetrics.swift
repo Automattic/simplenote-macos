@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - SplitItemMetrics
 //
 enum SplitItemMetrics {
@@ -13,7 +12,6 @@ enum SplitItemMetrics {
     private static let editorContentTopInsetLegacy = CGFloat(-10) // Standard (38pt) minus editorContentBottomInset
     private static let editorContentTopInsetBigSur = CGFloat.zero // Standard (48pt) minus editorContentBottomInset
 
-    
     /// Sidebar Insets: Tags + Notes Lists
     ///
     static var sidebarTopInset: CGFloat {

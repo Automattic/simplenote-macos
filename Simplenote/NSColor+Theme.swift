@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSColor + Theme API
 //
 extension NSColor {
@@ -11,7 +10,6 @@ extension NSColor {
         self.init(hexString: studioColor.rawValue, alpha: alpha)
     }
 }
-
 
 // MARK: - Dynamic Colors
 //
@@ -39,14 +37,13 @@ extension NSColor {
             }
             return (lightStudio, lightColorAlpha)
         }
-        
+
         return NSColor(name: nil) {
             let targetColor = colorProvider($0.isDark)
             return NSColor(studioColor: targetColor.value, alpha: targetColor.alpha)
         }
     }
 }
-
 
 // MARK: - Simplenote Colors!
 //
@@ -241,7 +238,6 @@ extension NSColor {
         dynamicColor(lightStudio: .black, darkStudio: .white, lightColorAlpha: AppKitConstants.alpha0_1, darkColorAlpha: AppKitConstants.alpha0_1)
     }
 }
-
 
 // MARK: - Internal Colors
 //

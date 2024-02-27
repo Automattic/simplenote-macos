@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - InterlinkProcessorDelegate
 //
 protocol InterlinkProcessorDelegate: NSObjectProtocol {
@@ -9,7 +8,6 @@ protocol InterlinkProcessorDelegate: NSObjectProtocol {
     ///
     func interlinkProcessor(_ processor: InterlinkProcessor, insert text: String, in range: Range<String.Index>)
 }
-
 
 // MARK: - InterlinkProcessor
 //
@@ -39,14 +37,12 @@ class InterlinkProcessor: NSObject {
     ///
     weak var delegate: InterlinkProcessorDelegate?
 
-
     /// Designated Initialier
     ///
     init(viewContext: NSManagedObjectContext, parentTextView: SPTextView) {
         self.resultsController = InterlinkResultsController(viewContext: viewContext)
         self.parentTextView = parentTextView
     }
-
 
     /// Displays the Interlink Lookup Window at the cursor's location when all of the following are **true**:
     ///
@@ -94,7 +90,6 @@ class InterlinkProcessor: NSObject {
     }
 }
 
-
 // MARK: - Interlinking Autocomplete: Private API(s)
 //
 private extension InterlinkProcessor {
@@ -117,7 +112,6 @@ private extension InterlinkProcessor {
         interlinkWindowController.window?.parent != nil
     }
 }
-
 
 // MARK: - Interlinking Autocomplete: Private API(s)
 //

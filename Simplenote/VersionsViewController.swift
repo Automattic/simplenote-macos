@@ -2,7 +2,6 @@ import Foundation
 import AppKit
 import os.log
 
-
 // MARK: - VersionsViewControllerDelegate
 //
 protocol VersionsViewControllerDelegate: AnyObject {
@@ -11,7 +10,6 @@ protocol VersionsViewControllerDelegate: AnyObject {
     func versionsControllerWillShow(_ controller: VersionsViewController)
     func versionsControllerWillClose(_ controller: VersionsViewController)
 }
-
 
 // MARK: - VersionsViewController
 //
@@ -53,7 +51,6 @@ class VersionsViewController: NSViewController {
     ///
     weak var delegate: VersionsViewControllerDelegate?
 
-
     // MARK: - Lifecycle
 
     deinit {
@@ -78,7 +75,6 @@ class VersionsViewController: NSViewController {
     }
 }
 
-
 // MARK: - Initialization
 //
 private extension VersionsViewController {
@@ -98,7 +94,6 @@ private extension VersionsViewController {
     }
 }
 
-
 // MARK: - Notifications
 //
 private extension VersionsViewController {
@@ -114,7 +109,6 @@ private extension VersionsViewController {
     }
 }
 
-
 // MARK: - NSPopoverDelegate
 //
 extension VersionsViewController: NSPopoverDelegate {
@@ -128,7 +122,6 @@ extension VersionsViewController: NSPopoverDelegate {
         delegate?.versionsControllerWillClose(self)
     }
 }
-
 
 // MARK: - Actions
 //
@@ -144,7 +137,6 @@ extension VersionsViewController {
         update(withVersion: String(versionSlider.integerValue))
     }
 }
-
 
 // MARK: - Helpers
 //
@@ -179,7 +171,6 @@ private extension VersionsViewController {
     }
 }
 
-
 // MARK: - Simperium
 //
 private extension VersionsViewController {
@@ -193,14 +184,13 @@ private extension VersionsViewController {
             }
 
             self.versions[note.version] = note
-            
+
             if String(self.versionSlider.integerValue) == note.version {
                 self.update(withVersion: note.version)
             }
         }
     }
 }
-
 
 // MARK: - Settings
 //

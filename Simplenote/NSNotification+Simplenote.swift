@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - NSNotification Simplenote Methods
 //
 extension NSNotification {

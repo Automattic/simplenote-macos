@@ -1,10 +1,9 @@
 import Foundation
 
-
 // MARK: - TableRowView
 //
 @objcMembers
-class TableRowView : NSTableRowView {
+class TableRowView: NSTableRowView {
 
     /// Selection's Inner Selection Insets
     ///
@@ -29,7 +28,6 @@ class TableRowView : NSTableRowView {
             needsDisplay = true
         }
     }
-
 
     // MARK: - Overridden
 
@@ -66,7 +64,6 @@ class TableRowView : NSTableRowView {
         // NO-OP: Even overriding this API yields a weird effect!
     }
 
-
     // MARK: - Drawing
 
     func drawSimplenoteSeparator(in rect: NSRect) {
@@ -89,8 +86,6 @@ class TableRowView : NSTableRowView {
         !isSelected && !isNextRowSelected
     }
 }
-
-
 
 // MARK: - Defines a TableRowView Presentation Style
 //
@@ -159,7 +154,6 @@ extension TableRowStyle {
         return Metrics.sidebarSeparatorInsets
     }
 }
-
 
 // MARK: - Constants
 //

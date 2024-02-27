@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - AuthWindowController
 //
 class AuthWindowController: NSWindowController, SPAuthenticationInterface {
@@ -17,7 +16,6 @@ class AuthWindowController: NSWindowController, SPAuthenticationInterface {
             authViewController.authenticator = authenticator
         }
     }
-
 
     // MARK: - Initializer
 

@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSWindow / Transitons
 //
 extension NSWindow {

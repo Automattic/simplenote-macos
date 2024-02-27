@@ -1,6 +1,5 @@
 import Cocoa
 
-
 @objc(SPApplication)
 final class SPApplication: NSApplication {
     override func sendEvent(_ event: NSEvent) {

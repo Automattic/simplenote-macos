@@ -1,7 +1,6 @@
 import Foundation
 import os.log
 
-
 // MARK: - NSImage + Simplenote
 //
 extension NSImage {

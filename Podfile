@@ -10,6 +10,20 @@ APP_MACOS_DEPLOYMENT_TARGET = Gem::Version.new('10.14')
 platform :osx, APP_MACOS_DEPLOYMENT_TARGET
 workspace 'Simplenote.xcworkspace'
 
+## Tools
+## ===================
+##
+
+def swiftlint_version
+  require 'yaml'
+
+  YAML.load_file('.swiftlint.yml')['swiftlint_version']
+end
+
+abstract_target 'Tools' do
+  pod 'SwiftLint', swiftlint_version
+end
+
 # Main
 #
 abstract_target 'Automattic' do

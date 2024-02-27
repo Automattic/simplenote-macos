@@ -1,7 +1,6 @@
 import Foundation
 import AppKit
 
-
 // MARK: - Button
 //
 class Button: NSButton {
@@ -23,7 +22,6 @@ class Button: NSButton {
         return size
     }
 }
-
 
 // MARK: - ButtonCell
 //
@@ -68,15 +66,14 @@ class ButtonCell: NSButtonCell {
         let titleFont = font ?? NSFont.systemFont(ofSize: NSFont.systemFontSize)
         let titleColor = textColor ?? .white
         let attributedTitle = NSAttributedString(string: title, attributes: [
-            .paragraphStyle     : paragraphStyle,
-            .foregroundColor    : titleColor,
-            .font               : titleFont
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: titleColor,
+            .font: titleFont
         ])
 
         attributedTitle.draw(in: titleFrame)
     }
 }
-
 
 // MARK: - Metrics
 //

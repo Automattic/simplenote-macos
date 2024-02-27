@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NoteListPrefixFormatter
 //
 struct NoteListPrefixFormatter {

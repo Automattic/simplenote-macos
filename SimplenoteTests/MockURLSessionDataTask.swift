@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - MockURLSessionDataTask
 //
 class MockURLSessionDataTask: URLSessionDataTask {

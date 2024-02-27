@@ -1,7 +1,6 @@
 import XCTest
 @testable import Simplenote
 
-
 // MARK: - NSAttributedStringToMarkdownConverter Unit Tests
 //
 class NSAttributedStringToMarkdownConverterTests: XCTestCase {
@@ -24,7 +23,6 @@ class NSAttributedStringToMarkdownConverterTests: XCTestCase {
         XCTAssertEqual(output, document.string)
     }
 }
-
 
 // MARK: - Private Methods
 //

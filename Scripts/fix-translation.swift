@@ -2,13 +2,11 @@
 
 import Foundation
 
-
 guard CommandLine.arguments.count > 2 else {
     print("This helper tool replaces empty Localized Strings found in *File A*, with the ones found in *File B*")
     print("Usage: fix-translation path/to/Localizable.strings path/to/Failsafe.strings")
     exit(1)
 }
-
 
 /// Replaces all of the **Empty Strings** in the specified file, with the entries contained in a "Fallback Map".
 ///
@@ -42,7 +40,6 @@ func stringByFixingEmptyValue(in string: String, fallbackMap: [String: String]) 
     return String(format: "\"%@\" = \"%@\";", key, fixedValue)
 }
 
-
 /// Extracts the substring from the specified TextCheckingResult Range, if possible.
 ///
 func extractSubstring(from string: String, match: NSTextCheckingResult, rangeIndex: Int) -> String? {
@@ -54,10 +51,9 @@ func extractSubstring(from string: String, match: NSTextCheckingResult, rangeInd
     return (string as NSString).substring(with: range)
 }
 
-
 /// Loads a Localizations file in memory, and returns a Dictionary with its contents.
 ///
-func loadStrings(from filename: String) throws -> [String: String]  {
+func loadStrings(from filename: String) throws -> [String: String] {
     let contents = try String(contentsOfFile: filename)
     let regexp = try NSRegularExpression(pattern: "^\"(.*)\" = \"(.*)\";$", options: [])
     var output = [String: String]()
@@ -80,7 +76,6 @@ func loadStrings(from filename: String) throws -> [String: String]  {
 
     return output
 }
-
 
 /// Main!
 ///

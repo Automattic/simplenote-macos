@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSPasteboard + Interlink
 //
 extension NSPasteboard {

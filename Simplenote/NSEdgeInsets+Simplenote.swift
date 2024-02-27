@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSEdgeInsets + Simplenote
 //
 extension NSEdgeInsets {

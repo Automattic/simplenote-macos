@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSWindow + Simplenote
 //
 extension NSWindow {

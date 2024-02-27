@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSStoryboard: Helper API(s)
 //
 extension NSStoryboard {
@@ -22,14 +21,12 @@ extension NSStoryboard {
     }
 }
 
-
 // MARK: - NSStoryboard.Name
 //
 extension NSStoryboard.Name {
     static let main = "Main"
     static let preferences = "Preferences"
 }
-
 
 // MARK: - NSStoryboard.SceneIdentifier + NSViewController
 //
@@ -40,7 +37,6 @@ extension NSViewController {
     }
 }
 
-
 // MARK: - NSStoryboard.SceneIdentifier + NSWindowController
 //
 extension NSWindowController {
@@ -49,4 +45,3 @@ extension NSWindowController {
         classNameWithoutNamespaces
     }
 }
-

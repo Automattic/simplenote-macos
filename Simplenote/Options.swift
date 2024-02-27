@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - Wraps access to all of the UserDefault Values
 //
 @objcMembers
@@ -13,7 +12,6 @@ class Options: NSObject {
     /// User Defaults: Convenience
     ///
     private let defaults: UserDefaults
-
 
     /// Designated Initializer
     ///
@@ -31,7 +29,6 @@ class Options: NSObject {
         defaults.removeObject(forKey: .analyticsEnabled)
     }
 }
-
 
 // MARK: - Actual Options!
 //
@@ -144,7 +141,6 @@ extension Options {
         }
     }
 }
-
 
 // MARK: - Migrations
 //

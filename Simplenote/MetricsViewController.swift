@@ -2,13 +2,11 @@ import Foundation
 import AppKit
 import SimplenoteFoundation
 
-
 // MARK: - MetricsControllerDelegate
 //
 protocol MetricsControllerDelegate: AnyObject {
     func metricsController(_ controller: MetricsViewController, selected note: Note)
 }
-
 
 // MARK: - MetricsViewController
 //
@@ -65,7 +63,6 @@ class MetricsViewController: NSViewController {
     ///
     weak var delegate: MetricsControllerDelegate?
 
-
     // MARK: - Lifecycle
 
     deinit {
@@ -95,7 +92,6 @@ class MetricsViewController: NSViewController {
         refreshStyle()
     }
 }
-
 
 // MARK: - Private
 //
@@ -127,7 +123,6 @@ private extension MetricsViewController {
     }
 }
 
-
 // MARK: - Enclosing Popover: Customize!
 //
 extension MetricsViewController: NSPopoverDelegate {
@@ -136,7 +131,6 @@ extension MetricsViewController: NSPopoverDelegate {
         presentingPopover = notification.object as? NSPopover
     }
 }
-
 
 // MARK: - Theme Support
 //
@@ -157,7 +151,6 @@ private extension MetricsViewController {
     }
 }
 
-
 // MARK: - EntityObserverDelegate
 //
 extension MetricsViewController: EntityObserverDelegate {
@@ -166,7 +159,6 @@ extension MetricsViewController: EntityObserverDelegate {
         refreshInterface()
     }
 }
-
 
 // MARK: - Refreshing!
 //
@@ -252,7 +244,6 @@ private extension MetricsViewController {
     }
 }
 
-
 // MARK: - NSTableViewDataSource
 //
 extension MetricsViewController: NSTableViewDataSource {
@@ -261,7 +252,6 @@ extension MetricsViewController: NSTableViewDataSource {
         rows.count
     }
 }
-
 
 // MARK: - NSTableViewDelegate
 //
@@ -289,7 +279,6 @@ extension MetricsViewController: NSTableViewDelegate {
         delegate?.metricsController(self, selected: note)
     }
 }
-
 
 // MARK: - Cell Initialization
 //
@@ -342,7 +331,6 @@ private extension MetricsViewController {
     }
 }
 
-
 // MARK: - Private Types
 //
 private enum Metrics {
@@ -369,7 +357,6 @@ extension Row {
         return true
     }
 }
-
 
 private func +=(lhs: inout [Row], rhs: Row) {
     lhs.append(rhs)

@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSRegularExpression Simplenote Methods
 //
 extension NSRegularExpression {

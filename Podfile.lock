@@ -10,17 +10,21 @@ PODS:
   - Simperium-OSX/SocketRocket (1.9.0)
   - Simperium-OSX/SPReachability (1.9.0)
   - Simperium-OSX/SSKeychain (1.9.0)
+  - SwiftLint (0.54.0)
 
 DEPENDENCIES:
   - Simperium-OSX (= 1.9.0)
+  - SwiftLint (= 0.54.0)
 
 SPEC REPOS:
   trunk:
     - Simperium-OSX
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Simperium-OSX: bc465c8830e5b731e2489085459acc96160104d6
+  SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
 
-PODFILE CHECKSUM: c01d124e1d7acadfa1b6c7a961645f7721f5ed31
+PODFILE CHECKSUM: 0c6e1eaa48de269bee6c152747e29ea455cb1e74
 
 COCOAPODS: 1.14.1

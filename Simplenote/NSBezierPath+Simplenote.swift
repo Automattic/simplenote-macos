@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - NSBezierPath + Simplenote
 //
 extension NSBezierPath {
@@ -27,14 +26,13 @@ extension NSBezierPath {
         let bottomLeftRadius = corners.contains(.bottomLeft) ? targetRadius : .zero
 
         move(to: origin)
-        appendArc(from: topLeftOrigin,      to: topRightOrigin,     radius: topLeftRadius)
-        appendArc(from: topRightOrigin,     to: bottomRightOrigin,  radius: topRightRadius)
-        appendArc(from: bottomRightOrigin,  to: bottomLeftOrigin,   radius: bottomRightRadius)
-        appendArc(from: bottomLeftOrigin,   to: topLeftOrigin,      radius: bottomLeftRadius)
+        appendArc(from: topLeftOrigin, to: topRightOrigin, radius: topLeftRadius)
+        appendArc(from: topRightOrigin, to: bottomRightOrigin, radius: topRightRadius)
+        appendArc(from: bottomRightOrigin, to: bottomLeftOrigin, radius: bottomRightRadius)
+        appendArc(from: bottomLeftOrigin, to: topLeftOrigin, radius: bottomLeftRadius)
         close()
     }
 }
-
 
 // MARK: - RectCorner
 //

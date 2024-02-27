@@ -1,7 +1,6 @@
 import Foundation
 import SimplenoteSearch
 
-
 extension SearchQuery {
     convenience init(searchText: String) {
         self.init(searchText: searchText, settings: .default)

@@ -1,6 +1,5 @@
 import Foundation
 
-
 // MARK: - SplitView
 //
 class SplitView: NSSplitView {
@@ -19,7 +18,6 @@ class SplitView: NSSplitView {
         .simplenoteDividerColor
     }
 }
-
 
 // MARK: - Forced Redraw Hacks. Please Nuke!
 //
