@@ -595,8 +595,11 @@ extension NoteEditorViewController {
         alert.addButton(withTitle: dismissText)
 
         alert.beginSheetModal(for: window) { (modalResponse) in
-            if modalResponse == .alertFirstButtonReturn {
+            switch modalResponse {
+            case .alertFirstButtonReturn:
                 self.openCollaborationDeprecationWebsite()
+            default:
+                self.focusTagsEditorAfterDelay()
             }
         }
     }
@@ -628,6 +631,12 @@ extension NoteEditorViewController {
 
     var metricsViewController: NSViewController? {
         presentedViewControllers?.first { $0 is MetricsViewController }
+    }
+
+    func focusTagsEditorAfterDelay() {
+        DispatchQueue.main.async {
+            self.tagsField.becomeFirstResponder()
+        }
     }
 
     func openCollaborationDeprecationWebsite() {
