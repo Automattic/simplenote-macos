@@ -520,8 +520,7 @@ extension NoteEditorViewController {
     @IBAction
     func collaborateWasPressed(sender: Any) {
         SPTracker.trackEditorCollaboratorsAccessed()
-        displayCollaboratePopover(from: tagsField)
-        tagsField.becomeFirstResponder()
+        displayCollaborationDeprecationAlert(from: tagsField)
     }
 
     @IBAction
@@ -579,7 +578,7 @@ extension NoteEditorViewController {
         present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
-    func displayCollaboratePopover(from sourceView: NSView) {
+    func displayCollaborationDeprecationAlert(from sourceView: NSView) {
         guard let window = sourceView.window else {
             return
         }
@@ -600,6 +599,11 @@ extension NoteEditorViewController {
                 self.openCollaborationDeprecationWebsite()
             }
         }
+    }
+
+    func displayCollaboratePopover(from sourceView: NSView) {
+        let viewController = CollaborateViewController()
+        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
     }
 
     func displaySharingPicker(from sourceView: NSView, content: String) {
