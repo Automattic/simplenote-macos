@@ -580,8 +580,26 @@ extension NoteEditorViewController {
     }
 
     func displayCollaboratePopover(from sourceView: NSView) {
-        let viewController = CollaborateViewController()
-        present(viewController, asPopoverRelativeTo: sourceView.bounds, of: sourceView, preferredEdge: .maxY, behavior: .transient)
+        guard let window = sourceView.window else {
+            return
+        }
+
+        let messageText = NSLocalizedString("Collaboration is retiring on July 1st, 2024", comment: "Collaboration retirement Alert")
+        let dismissText = NSLocalizedString("Dismiss", comment: "Dismiss text button")
+        let learnMoreText = NSLocalizedString("Learn More", comment: "Learn More button")
+
+        let alert = NSAlert()
+        alert.messageText = messageText
+
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: learnMoreText)
+        alert.addButton(withTitle: dismissText)
+
+        alert.beginSheetModal(for: window) { (modalResponse) in
+            if modalResponse == .alertFirstButtonReturn {
+                self.openCollaborationDeprecationWebsite()
+            }
+        }
     }
 
     func displaySharingPicker(from sourceView: NSView, content: String) {
@@ -606,6 +624,14 @@ extension NoteEditorViewController {
 
     var metricsViewController: NSViewController? {
         presentedViewControllers?.first { $0 is MetricsViewController }
+    }
+
+    func openCollaborationDeprecationWebsite() {
+        guard let url = URL(string: SimplenoteConstants.collaborationDeprecationURL) else {
+            return
+        }
+
+        NSWorkspace.shared.open(url)
     }
 }
 
