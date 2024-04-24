@@ -8,8 +8,7 @@ class CollaborateViewController: NSViewController {
     ///
     @IBOutlet private var shareTextField: NSTextField! {
         didSet {
-            let text = NSLocalizedString("Collaboration is retiring on July 1st, 2024. For more details, click here.", comment: "Collaboration retirement notice")
-            shareTextField.stringValue = text
+            shareTextField.stringValue = NSLocalizedString("Add an email address as a tag to share this note with someone. Then you can both make changes to it.", comment: "Text presented when sharing a Note")
         }
     }
 
@@ -31,15 +30,6 @@ class CollaborateViewController: NSViewController {
         super.viewDidLoad()
         startListeningToNotifications()
         refreshStyle()
-    }
-
-    @IBAction
-    func backgroundWasClicked(_ sender: Any) {
-        guard let url = URL(string: SimplenoteConstants.collaborationDeprecationURL) else {
-            return
-        }
-
-        NSWorkspace.shared.open(url)
     }
 }
 
