@@ -30,4 +30,8 @@ class SimplenoteConstants: NSObject {
     static let simplenoteVerificationURL    = currentEngineBaseURL.appendingPathComponent("/account/verify-email/")
     static let simplenoteRequestSignupURL   = currentEngineBaseURL.appendingPathComponent("/account/request-signup")
     static let accountDeletionURL           = currentEngineBaseURL.appendingPathComponent("/account/request-delete/")
+
+    /// Deprecation
+    ///
+    static let collaborationDeprecationURL = "https://simplenote.com/2024/05/01/collaboration-feature-retirement"
 }
