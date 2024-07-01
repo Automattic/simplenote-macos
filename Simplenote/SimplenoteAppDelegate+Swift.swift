@@ -280,6 +280,14 @@ extension SimplenoteAppDelegate {
         return handleShortcutActivity(userActivity)
     }
 
+    private func handleMagicLinkActivity(_ userActivity: NSUserActivity) -> Bool {
+        guard let url = userActivity.webpageURL else {
+            return false
+        }
+        
+        return handleMagicAuth(url: url)
+    }
+    
     private func handleSpotlightSearchActivity(_ userActivity: NSUserActivity) -> Bool {
         guard userActivity.activityType == CSSearchableItemActionType,
               let simperiumKey = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String else {
