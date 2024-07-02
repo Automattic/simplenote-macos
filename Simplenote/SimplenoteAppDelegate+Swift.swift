@@ -273,6 +273,10 @@ extension SimplenoteAppDelegate {
 
     @objc
     func handleUserActivity(_ userActivity: NSUserActivity) -> Bool {
+        if handleMagicLinkActivity(userActivity) {
+            return true
+        }
+
         if handleSpotlightSearchActivity(userActivity) {
             return true
         }

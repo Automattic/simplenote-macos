@@ -208,7 +208,7 @@ class PreferencesViewController: NSViewController {
             case .alertFirstButtonReturn:
                 appDelegate.signOut()
             case .alertThirdButtonReturn:
-                let url = URL(string: SimplenoteConstants.currentEngineBaseURL as String)!
+                let url = URL(string: SimplenoteConstants.googleAppEngineBaseURL as String)!
                 NSWorkspace.shared.open(url)
             default:
                 break

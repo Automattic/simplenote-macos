@@ -22,7 +22,7 @@ struct MagicLinkAuthenticator {
     }
 
     func handle(url: URL) -> Bool {
-        guard url.host == Constants.host else {
+        guard let host = url.host, AllowedHosts.all.contains(host) else {
             return false
         }
 
@@ -105,8 +105,13 @@ private extension Array where Element == URLQueryItem {
 
 // MARK: - Constants
 //
+private struct AllowedHosts {
+    static let hostForSimplenoteSchema = "login"
+    static let hostForUniversalLinks = SimplenoteConstants.googleAppEngineHost
+    static let all = [hostForSimplenoteSchema, hostForUniversalLinks]
+}
+
 private struct Constants {
-    static let host = "login"
     static let emailField = "email"
     static let tokenField = "token"
     static let authKeyField = "auth_key"

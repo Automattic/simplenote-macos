@@ -22,7 +22,8 @@ class SimplenoteConstants: NSObject {
     static let simplenoteInterlinkHost = "note"
     static let simplenoteInterlinkMaxTitleLength = 150
 
-    static let currentEngineBaseURL = "https://app.simplenote.com" as NSString
+    static let googleAppEngineBaseURL = "https://app.simplenote.com" as NSString
+    static let googleAppEngineHost = "app.simplenote.com"
 
     /// Simplenote: Current Platform
     ///
@@ -30,10 +31,10 @@ class SimplenoteConstants: NSObject {
 
     /// URL(s)
     ///
-    static let loginRequestURL              = currentEngineBaseURL.appendingPathComponent("/account/request-login")
-    static let loginCompletionURL           = currentEngineBaseURL.appendingPathComponent("/account/complete-login")
-    static let simplenoteSettingsURL        = currentEngineBaseURL.appendingPathComponent("/settings")
-    static let simplenoteVerificationURL    = currentEngineBaseURL.appendingPathComponent("/account/verify-email/")
-    static let simplenoteRequestSignupURL   = currentEngineBaseURL.appendingPathComponent("/account/request-signup")
-    static let accountDeletionURL           = currentEngineBaseURL.appendingPathComponent("/account/request-delete/")
+    static let loginRequestURL              = googleAppEngineBaseURL.appendingPathComponent("/account/request-login")
+    static let loginCompletionURL           = googleAppEngineBaseURL.appendingPathComponent("/account/complete-login")
+    static let simplenoteSettingsURL        = googleAppEngineBaseURL.appendingPathComponent("/settings")
+    static let simplenoteVerificationURL    = googleAppEngineBaseURL.appendingPathComponent("/account/verify-email/")
+    static let simplenoteRequestSignupURL   = googleAppEngineBaseURL.appendingPathComponent("/account/request-signup")
+    static let accountDeletionURL           = googleAppEngineBaseURL.appendingPathComponent("/account/request-delete/")
 }
