@@ -160,7 +160,6 @@ extension SPTextView {
             return 0.0
         }
 
-        ensureLayout()
         let textContainerHeight = layoutManager.usedRect(for: textContainer).size.height
         let textContainerMinHeight = scrollView.frame.size.height - scrollView.scrollerInsets.top
         return max(textContainerHeight, textContainerMinHeight)

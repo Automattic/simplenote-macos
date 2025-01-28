@@ -145,39 +145,84 @@ extension NSTextView {
     ///
     @objc
     func processLinksInDocumentAsynchronously() {
-        DispatchQueue.main.async(execute: processLinksInDocument)
-    }
-
-    /// Processess Links in the document
-    ///
-    /// - Important: This API temporarily disables the `delegate`.
-    /// - Note: Invoking `checkTextInDocument` results in a call to`delegate.textDidChange`.
-    ///         This causes the Editor to update the Note's Modification Date, and may affect the List Sort Order (!)
-    ///
-    func processLinksInDocument() {
-        /// Disable the Delegate:
-        let theDelegate = delegate
-        delegate = nil
-
-        /// Issue #472: Linkification should not be undoable
-        undoManager?.disableUndoRegistration()
-
-        if let textStorage = textStorage as? Storage {
-
-            // checkTextInDocument calculate bounds for links and we need to ensure that layout is current before calling beginEditing
-            // otherwise it will crash trying to update layout inside beginEditing / endEditing block
-            ensureLayout()
-            textStorage.beginEditing()
-            checkTextInDocument(nil)
-            textStorage.endEditingWithoutRestyling()
-        } else {
-            checkTextInDocument(nil)
+        // Capture the current text and attributes to process in background
+        guard let textStorage = textStorage,
+              let attributedString = try? NSAttributedString(attributedString: textStorage.copy() as! NSAttributedString) else {
+            return
         }
 
-        undoManager?.enableUndoRegistration()
+        // Capture the current content hash to detect changes
+        let contentHash = attributedString.string.hash
 
-        /// Restore the Delegate
-        delegate = theDelegate
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            // Create a data detector for links
+            let types = NSTextCheckingResult.CheckingType.link.rawValue
+            guard let detector = try? NSDataDetector(types: types) else {
+                return
+            }
+
+            // Find all links in the text
+            let fullRange = NSRange(location: 0, length: attributedString.length)
+            let matches = detector.matches(in: attributedString.string, options: [], range: fullRange)
+
+            // Apply the changes on the main queue
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self,
+                      let textStorage = self.textStorage else {
+                    return
+                }
+
+                // Verify the content hasn't changed while we were processing
+                guard contentHash == textStorage.string.hash else {
+                    return
+                }
+
+                // Verify ranges are still valid
+                guard fullRange.upperBound <= textStorage.length else {
+                    return
+                }
+
+                // Disable the Delegate temporarily
+                let theDelegate = self.delegate
+                self.delegate = nil
+
+                /// Issue #472: Linkification should not be undoable
+                self.undoManager?.disableUndoRegistration()
+
+                if let storage = textStorage as? Storage {
+                    storage.beginEditing()
+
+                    // Remove existing link attributes
+                    textStorage.removeAttribute(.link, range: fullRange)
+
+                    // Add link attributes while preserving existing ones
+                    for match in matches where match.resultType == .link {
+                        // Verify each match range is still valid
+                        guard match.range.upperBound <= textStorage.length else {
+                            continue
+                        }
+
+                        if let url = match.url {
+                            textStorage.addAttribute(.link, value: url, range: match.range)
+                        } else {
+                            // If no URL, create one from the matched text
+                            let text = textStorage.string as NSString
+                            let linkText = text.substring(with: match.range)
+                            if let url = URL(string: linkText) {
+                                textStorage.addAttribute(.link, value: url, range: match.range)
+                            }
+                        }
+                    }
+
+                    storage.endEditingWithoutRestyling()
+                }
+
+                self.undoManager?.enableUndoRegistration()
+
+                /// Restore the Delegate
+                self.delegate = theDelegate
+            }
+        }
     }
 }
 
