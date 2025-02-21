@@ -141,43 +141,53 @@ extension NSTextView {
 //
 extension NSTextView {
 
-    /// Asynchronously Processess Links in the Document
+    /// Asynchronously Processes Links in the Document
     ///
     @objc
     func processLinksInDocumentAsynchronously() {
-        DispatchQueue.main.async(execute: processLinksInDocument)
-    }
-
-    /// Processess Links in the document
-    ///
-    /// - Important: This API temporarily disables the `delegate`.
-    /// - Note: Invoking `checkTextInDocument` results in a call to`delegate.textDidChange`.
-    ///         This causes the Editor to update the Note's Modification Date, and may affect the List Sort Order (!)
-    ///
-    func processLinksInDocument() {
-        /// Disable the Delegate:
-        let theDelegate = delegate
-        delegate = nil
-
-        /// Issue #472: Linkification should not be undoable
-        undoManager?.disableUndoRegistration()
-
-        if let textStorage = textStorage as? Storage {
-
-            // checkTextInDocument calculate bounds for links and we need to ensure that layout is current before calling beginEditing
-            // otherwise it will crash trying to update layout inside beginEditing / endEditing block
-            ensureLayout()
-            textStorage.beginEditing()
-            checkTextInDocument(nil)
-            textStorage.endEditingWithoutRestyling()
-        } else {
-            checkTextInDocument(nil)
+        let content = string
+        let contentLength = content.utf16.count
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
+                return
+            }
+            let range = NSRange(location: 0, length: contentLength)
+            let matches = detector.matches(in: content, options: [], range: range)
+            
+            var linkAttributes: [(NSRange, URL)] = []
+            for match in matches {
+                if let url = match.url {
+                    linkAttributes.append((match.range, url))
+                }
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self,
+                      let storage = self.textStorage as? Storage,
+                      storage.length >= contentLength else {
+                    return
+                }
+                guard content == self.string else {
+                    return
+                }
+                let originalDelegate = self.delegate
+                self.delegate = nil
+                self.undoManager?.disableUndoRegistration()
+                storage.beginEditing()
+                storage.removeAttribute(.link, range: NSRange(location: 0, length: storage.length))
+                
+                for (range, url) in linkAttributes {
+                    guard range.location + range.length <= storage.length else {
+                        continue
+                    }
+                    storage.addAttribute(.link, value: url, range: range)
+                }
+                
+                storage.endEditingWithoutRestyling()
+                self.undoManager?.enableUndoRegistration()
+                self.delegate = originalDelegate
+            }
         }
-
-        undoManager?.enableUndoRegistration()
-
-        /// Restore the Delegate
-        delegate = theDelegate
     }
 }
 
