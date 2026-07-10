@@ -1,27 +1,47 @@
-# This is the default pipeline – it will build and test the app
+# Temporary probe pipeline. Do not merge.
+#
+# Verifies that Ruby 3.4.9 compiles the native gems from source across every
+# queue the Apple repos use, and that the gem cache round-trips. Round 2 must
+# depend on round 1, otherwise both steps miss the cache and neither proves it
+# restores.
+#
+# The `linter` queue only accepts the commands its handler gem knows about
+# (`swiftlint`, `rubocop`, `danger`, gradle wrapper validation), so `rubocop` is
+# the only way to exercise gem installation there.
 
 env:
   IMAGE_ID: $IMAGE_ID
 
 steps:
-  - label: "🔬 Build and Test"
-    command: .buildkite/commands/build-and-test.sh
+  - label: ":rubygems: Mac — round 1 (populate cache)"
+    key: mac-round-1
+    command: .buildkite/commands/probe-gems.sh
     plugins: [$CI_TOOLKIT_PLUGIN]
     agents:
       queue: mac
 
-  - label: ":swift: SwiftLint"
-    command: swiftlint
-    env:
-      SWIFTLINT_OPTION_STRICT: true
-    notify:
-      - github_commit_status:
-          context: SwiftLint
+  - label: ":rubygems: Mac — round 2 (restore cache)"
+    depends_on: mac-round-1
+    command: .buildkite/commands/probe-gems.sh
+    plugins: [$CI_TOOLKIT_PLUGIN]
+    agents:
+      queue: mac
+
+  - label: ":rubygems: Android — round 1 (populate cache)"
+    key: android-round-1
+    command: .buildkite/commands/probe-gems.sh
+    plugins: [$CI_TOOLKIT_PLUGIN]
+    agents:
+      queue: android
+
+  - label: ":rubygems: Android — round 2 (restore cache)"
+    depends_on: android-round-1
+    command: .buildkite/commands/probe-gems.sh
+    plugins: [$CI_TOOLKIT_PLUGIN]
+    agents:
+      queue: android
+
+  - label: ":rubocop: Linter"
+    command: rubocop
     agents:
       queue: linter
-
-  - label: "🛠 Verify App Store Target Builds"
-    command: .buildkite/commands/build-and-test-app-store.sh
-    plugins: [$CI_TOOLKIT_PLUGIN]
-    agents:
-      queue: mac
