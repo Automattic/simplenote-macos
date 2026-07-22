@@ -7,5 +7,3 @@ gem 'fastlane', '~> 2.232'
 gem 'fastlane-plugin-sentry', '~> 1.14'
 gem 'fastlane-plugin-wpmreleasetoolkit', '~> 12.5'
 gem 'rake', '~> 12.3'
-plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
-eval_gemfile(plugins_path) if File.exist?(plugins_path)
