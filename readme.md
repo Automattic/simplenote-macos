@@ -52,14 +52,8 @@ Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium
 
 **⚠️ Please note → We're not accepting any new Simperium accounts at this time.**
 
-
-Please copy the **testing Simperium credentials** as follows:
-
-```
-mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
-```
-
-This will allow you to compile and run the app on a device or a simulator.
+Refer to the `simperium*` properties in `SPCredentials`.
+The type is generated at build time from internal secrets when available, falling back to `Simplenote/SPCredentials-demo.swift` otherwise.
 
 _Note: Simplenote API features such as sharing and publishing will not work with development builds._
 
