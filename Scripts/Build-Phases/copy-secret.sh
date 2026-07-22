@@ -56,7 +56,15 @@ EXAMPLE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials-demo.swift"
 ensure_is_in_input_files_list $SECRETS_FILE
 ensure_is_in_input_files_list $EXAMPLE_SECRETS_FILE
 
-SECRETS_DESTINATION_FILE="${SRCROOT}/Simplenote/Credentials/SPCredentials.swift"
+# The destination comes from the build phase's `outputPaths`, which Xcode
+# exposes as SCRIPT_OUTPUT_FILE_N. Each consumer target writes into its own
+# $(DERIVED_FILE_DIR), keeping the decrypted secret out of the checkout.
+if [ "${SCRIPT_OUTPUT_FILE_COUNT:-0}" -lt 1 ]; then
+  echo "error: No output file given. Declare the destination in the build phase's output files list."
+  exit 1
+fi
+
+SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
 mkdir -p $(dirname "$SECRETS_DESTINATION_FILE")
 
 if cmp --silent -- ${SECRETS_FILE} ${SECRETS_DESTINATION_FILE}; then
@@ -73,7 +81,7 @@ fi
 # No secrets file found. Use the example secrets file as a last resort, unless
 # building for Release.
 
-COULD_NOT_FIND_SECRET_MSG="Could not find secrets file at ${SECRETS_DESTINATION_FILE}. This is likely due to the source secrets being missing from ${SECRETS_ROOT}"
+COULD_NOT_FIND_SECRET_MSG="Could not find secrets file at ${SECRETS_FILE}"
 INTERNAL_CONTRIBUTOR_MSG="If you are an internal contributor, run \`bundle exec fastlane run configure_apply\` to update your secrets"
 
 case $CONFIGURATION in
