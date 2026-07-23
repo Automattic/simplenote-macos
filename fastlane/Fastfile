@@ -15,7 +15,6 @@ INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote'
 BUILD_FOLDER = File.join(PROJECT_FOLDER, 'build')
 APP_NAME = APP_STORE_SCHEME
-DSYM_ZIP_PATH = File.join(BUILD_FOLDER, "#{APP_NAME}.app.dSYM.zip").freeze
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
 APP_STORE_BUNDLE_IDENTIFIER_INTENTS = "#{APP_STORE_BUNDLE_IDENTIFIER}.IntentsExtension".freeze
 VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig')
@@ -343,7 +342,7 @@ lane :build_internal_beta do |skip_dsym_upload: true|
 
   next if skip_dsym_upload || !UI.confirm('Do you want to upload the dSYM to Sentry?')
 
-  upload_dsym_to_sentry
+  upload_dsym_to_sentry(archive_path: lane_context[SharedValues::XCODEBUILD_ARCHIVE])
 end
 
 # Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
@@ -399,7 +398,7 @@ lane :build_and_upload_app_store do |options|
     archive_path: archive_path
   )
 
-  upload_dsym_to_sentry
+  upload_dsym_to_sentry(archive_path: archive_path)
 
   # Do not create the GitHub release unless explicitly requested
   if options[:create_github_release]
@@ -588,13 +587,24 @@ def generate_gitkeep_for_empty_locale_folders
   gitkeeps
 end
 
-def upload_dsym_to_sentry
-  UI.user_error!("Could not find dSYM at expected location '#{DSYM_ZIP_PATH}'.") unless File.exist?(DSYM_ZIP_PATH)
+# Upload the dSYMs from a build archive to Sentry.
+#
+# Reads them out of the archive rather than the zip `gym` writes alongside it:
+# `sentry-cli` searches a path recursively, so pointing it at the archive's
+# `dSYMs/` avoids having to predict that zip's filename. Aim at `dSYMs/` and not
+# the archive root, or the search settles on the stripped binary in `Products/`.
+#
+# @param archive_path [String] Path to the `.xcarchive` the build produced.
+#
+def upload_dsym_to_sentry(archive_path:)
+  dsyms_path = File.join(archive_path, 'dSYMs')
+  UI.user_error!("Could not find dSYMs at '#{dsyms_path}'.") unless File.directory?(dsyms_path)
 
   sentry_debug_files_upload(
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenote-macos',
-    path: [DSYM_ZIP_PATH]
+    path: [dsyms_path],
+    type: 'dsym'
   )
 end
