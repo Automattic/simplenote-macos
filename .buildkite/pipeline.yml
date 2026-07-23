@@ -25,3 +25,17 @@ steps:
     plugins: [$CI_TOOLKIT_PLUGIN]
     agents:
       queue: mac
+
+  # TEMPORARY (AINFRA-2742): exercise the Sentry dSYM upload on real signed
+  # archives for both signing paths. Remove once the 2.x upload is confirmed.
+  - label: "🐛 Sentry dSYM Upload — Internal"
+    command: .buildkite/commands/test-sentry-dsym-upload-internal.sh
+    plugins: [$CI_TOOLKIT_PLUGIN]
+    agents:
+      queue: mac
+
+  - label: "🐛 Sentry dSYM Upload — App Store"
+    command: .buildkite/commands/test-sentry-dsym-upload-app-store.sh
+    plugins: [$CI_TOOLKIT_PLUGIN]
+    agents:
+      queue: mac

@@ -592,6 +592,31 @@ def generate_gitkeep_for_empty_locale_folders
   gitkeeps
 end
 
+########################################################################
+# TEMPORARY (AINFRA-2742): Sentry dSYM upload verification
+#
+# These lanes exist only to exercise `upload_dsym_to_sentry` against real
+# signed archives from both signing paths after the fastlane-plugin-sentry
+# 2.x migration. Remove them, and their Buildkite steps, once the upload is
+# confirmed working.
+########################################################################
+desc 'TEMPORARY: build a Developer ID archive and upload its dSYMs to Sentry'
+lane :test_sentry_dsym_upload_internal do
+  configure_apply
+  configure_code_signing_developer_id
+  build_simplenote_developer_id
+  upload_dsym_to_sentry(archive_path: lane_context[SharedValues::XCODEBUILD_ARCHIVE])
+end
+
+desc 'TEMPORARY: build an App Store archive and upload its dSYMs to Sentry'
+lane :test_sentry_dsym_upload_app_store do
+  configure_apply
+  configure_code_signing_app_store
+  archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
+  build_simplenote(codesign: true, archive_path: archive_path)
+  upload_dsym_to_sentry(archive_path: archive_path)
+end
+
 # Upload the dSYMs from a build archive to Sentry.
 #
 # Reads them out of the archive rather than the zip `gym` writes alongside it:
