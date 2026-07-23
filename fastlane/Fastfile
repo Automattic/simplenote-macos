@@ -124,7 +124,7 @@ def build_simplenote_developer_id
 end
 
 # Helper function to DRY the code to build the app
-def build_simplenote(codesign:, archive_path: nil)
+def build_simplenote(codesign:, archive_path: nil, skip_package_pkg: false)
   if codesign
     skip_archive = false
     xcargs = []
@@ -142,6 +142,7 @@ def build_simplenote(codesign:, archive_path: nil)
     output_name: APP_NAME,
     archive_path: archive_path,
     skip_archive: skip_archive,
+    skip_package_pkg: skip_package_pkg,
     export_team_id: APPLE_TEAM_ID,
     xcargs: xcargs,
     export_options: {
@@ -620,7 +621,9 @@ lane :test_sentry_dsym_upload_app_store do
   configure_apply
   configure_code_signing_app_store
   archive_path = File.join(BUILD_FOLDER, 'Simplenote-Mac.xcarchive')
-  build_simplenote(codesign: true, archive_path: archive_path)
+  # Skip the `.pkg` export: it needs a Mac Installer Distribution cert we don't
+  # sync, and the dSYMs are already in the archive from the archive step.
+  build_simplenote(codesign: true, archive_path: archive_path, skip_package_pkg: true)
   upload_dsym_to_sentry(archive_path: archive_path)
 end
 
