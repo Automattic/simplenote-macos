@@ -99,6 +99,26 @@ end
 
 # Builds the app with a Developer ID certificate, producing a signed archive.
 def build_simplenote_developer_id
+  # `config/Project.Release.xcconfig` pins signing to App Store. Point the app
+  # and its extension at the Developer ID profiles instead. Scoping this to the
+  # two app targets — rather than a global `xcargs` override — leaves the SPM
+  # dependency targets signing to run locally, as they do in the App Store
+  # build; a global override forces a signing team onto them and fails.
+  {
+    APP_STORE_BUNDLE_IDENTIFIER => 'Simplenote',
+    APP_STORE_BUNDLE_IDENTIFIER_INTENTS => 'IntentsExtension'
+  }.each do |bundle_id, target|
+    update_code_signing_settings(
+      path: File.join(PROJECT_FOLDER, PROJECT),
+      use_automatic_signing: false,
+      team_id: APPLE_TEAM_ID,
+      targets: [target],
+      build_configurations: ['Release'],
+      code_sign_identity: 'Developer ID Application',
+      profile_name: "match Direct #{bundle_id} macos"
+    )
+  end
+
   build_app(
     project: PROJECT,
     scheme: INTERNAL_SCHEME,
@@ -106,13 +126,6 @@ def build_simplenote_developer_id
     output_directory: BUILD_FOLDER,
     output_name: APP_NAME,
     export_method: 'developer-id',
-    # `config/Project.Release.xcconfig` pins the archive to App Store signing,
-    # so override it here to sign for Developer ID. The specifier resolves
-    # per target via `$(PRODUCT_BUNDLE_IDENTIFIER)`.
-    xcargs: {
-      PROVISIONING_PROFILE_SPECIFIER: 'match Direct $(PRODUCT_BUNDLE_IDENTIFIER) macos',
-      CODE_SIGN_IDENTITY: 'Developer ID Application'
-    },
     export_options: {
       provisioningProfiles: {
         "#{APP_STORE_BUNDLE_IDENTIFIER}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER} macos",
