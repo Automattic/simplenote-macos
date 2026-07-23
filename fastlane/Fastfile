@@ -106,6 +106,13 @@ def build_simplenote_developer_id
     output_directory: BUILD_FOLDER,
     output_name: APP_NAME,
     export_method: 'developer-id',
+    # `config/Project.Release.xcconfig` pins the archive to App Store signing,
+    # so override it here to sign for Developer ID. The specifier resolves
+    # per target via `$(PRODUCT_BUNDLE_IDENTIFIER)`.
+    xcargs: {
+      PROVISIONING_PROFILE_SPECIFIER: 'match Direct $(PRODUCT_BUNDLE_IDENTIFIER) macos',
+      CODE_SIGN_IDENTITY: 'Developer ID Application'
+    },
     export_options: {
       provisioningProfiles: {
         "#{APP_STORE_BUNDLE_IDENTIFIER}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER} macos",
