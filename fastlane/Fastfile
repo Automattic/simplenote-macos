@@ -597,6 +597,8 @@ end
 # @param archive_path [String] Path to the `.xcarchive` the build produced.
 #
 def upload_dsym_to_sentry(archive_path:)
+  UI.user_error!('The given archive path value '#{archive_path} is missing. Did the build produced an .xcarchive?') if archive_path.to_s.empty?
+  
   dsyms_path = File.join(archive_path, 'dSYMs')
   UI.user_error!("Could not find dSYMs at '#{dsyms_path}'.") unless File.directory?(dsyms_path)
 
