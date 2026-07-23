@@ -14,9 +14,7 @@ PROJECT = 'Simplenote.xcodeproj'
 INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote'
 BUILD_FOLDER = File.join(PROJECT_FOLDER, 'build')
-# Passed to the build actions as `output_name` so the artifact names are ours to
-# state rather than gym's to derive from the app name.
-APP_NAME = 'Simplenote'
+APP_NAME = APP_STORE_SCHEME
 DSYM_ZIP_PATH = File.join(BUILD_FOLDER, "#{APP_NAME}.app.dSYM.zip").freeze
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
 APP_STORE_BUNDLE_IDENTIFIER_INTENTS = "#{APP_STORE_BUNDLE_IDENTIFIER}.IntentsExtension".freeze
