@@ -341,11 +341,11 @@ lane :build_internal_beta do |skip_dsym_upload: true|
 
   next if skip_dsym_upload || !UI.confirm('Do you want to upload the dSYM to Sentry?')
 
-  sentry_upload_dsym(
+  sentry_debug_files_upload(
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenote-macos',
-    dsym_path: dsym_path
+    path: [dsym_path]
   )
 end
 
@@ -402,14 +402,14 @@ lane :build_and_upload_app_store do |options|
     archive_path: archive_path
   )
 
-  sentry_upload_dsym(
+  sentry_debug_files_upload(
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenotemacos',
     # At the time of writing, there's no way to explicitly configure the
     # dSYM path, but build_mac_app sets it in the environment if successful.
     # See `bundle exec fastlane action build_mac_app`.
-    dsym_path: ENV.fetch('DSYM_OUTPUT_PATH', nil)
+    path: [ENV.fetch('DSYM_OUTPUT_PATH', nil)].compact
   )
 
   # Do not create the GitHub release unless explicitly requested
