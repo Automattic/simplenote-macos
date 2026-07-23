@@ -97,6 +97,25 @@ before_all do
   setup_ci # Fixes weird Keychain bugs on CI
 end
 
+# Builds the app with a Developer ID certificate, producing a signed archive.
+def build_simplenote_developer_id
+  build_app(
+    project: PROJECT,
+    scheme: INTERNAL_SCHEME,
+    clean: true,
+    output_directory: BUILD_FOLDER,
+    output_name: APP_NAME,
+    export_method: 'developer-id',
+    export_options: {
+      provisioningProfiles: {
+        "#{APP_STORE_BUNDLE_IDENTIFIER}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER} macos",
+        "#{APP_STORE_BUNDLE_IDENTIFIER_INTENTS}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER_INTENTS} macos"
+      },
+      signingSytle: 'manual'
+    }
+  )
+end
+
 # Helper function to DRY the code to build the app
 def build_simplenote(codesign:, archive_path: nil)
   if codesign
@@ -320,21 +339,7 @@ lane :build_internal_beta do |skip_dsym_upload: true|
   configure_apply
   configure_code_signing_developer_id
 
-  build_app(
-    project: PROJECT,
-    scheme: INTERNAL_SCHEME,
-    clean: true,
-    output_directory: BUILD_FOLDER,
-    output_name: APP_NAME,
-    export_method: 'developer-id',
-    export_options: {
-      provisioningProfiles: {
-        "#{APP_STORE_BUNDLE_IDENTIFIER}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER} macos",
-        "#{APP_STORE_BUNDLE_IDENTIFIER_INTENTS}": "match Direct #{APP_STORE_BUNDLE_IDENTIFIER_INTENTS} macos"
-      },
-      signingSytle: 'manual'
-    }
-  )
+  build_simplenote_developer_id
 
   # Show release notes and the path to the binary
   sh('ruby', '../Scripts/extract_release_notes.rb', '-k')
