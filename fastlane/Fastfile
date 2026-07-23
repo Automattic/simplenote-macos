@@ -14,6 +14,7 @@ PROJECT = 'Simplenote.xcodeproj'
 INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote'
 BUILD_FOLDER = File.join(PROJECT_FOLDER, 'build')
+APP_NAME = APP_STORE_SCHEME
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
 APP_STORE_BUNDLE_IDENTIFIER_INTENTS = "#{APP_STORE_BUNDLE_IDENTIFIER}.IntentsExtension".freeze
 VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig')
@@ -112,6 +113,7 @@ def build_simplenote(codesign:, archive_path: nil)
     scheme: APP_STORE_SCHEME,
     clean: true,
     output_directory: BUILD_FOLDER,
+    output_name: APP_NAME,
     archive_path: archive_path,
     skip_archive: skip_archive,
     export_team_id: APPLE_TEAM_ID,
@@ -323,6 +325,7 @@ lane :build_internal_beta do |skip_dsym_upload: true|
     scheme: INTERNAL_SCHEME,
     clean: true,
     output_directory: BUILD_FOLDER,
+    output_name: APP_NAME,
     export_method: 'developer-id',
     export_options: {
       provisioningProfiles: {
@@ -335,18 +338,11 @@ lane :build_internal_beta do |skip_dsym_upload: true|
 
   # Show release notes and the path to the binary
   sh('ruby', '../Scripts/extract_release_notes.rb', '-k')
-  UI.success("DeveloperID-signed binary is at: #{File.join(BUILD_FOLDER, 'Simplenote.app')}")
-
-  dsym_path = File.join(BUILD_FOLDER, 'Simplenote.app.dSYM.zip')
+  UI.success("DeveloperID-signed binary is at: #{File.join(BUILD_FOLDER, "#{APP_NAME}.app")}")
 
   next if skip_dsym_upload || !UI.confirm('Do you want to upload the dSYM to Sentry?')
 
-  sentry_upload_dsym(
-    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
-    org_slug: 'a8c',
-    project_slug: 'simplenote-macos',
-    dsym_path: dsym_path
-  )
+  upload_dsym_to_sentry(archive_path: lane_context[SharedValues::XCODEBUILD_ARCHIVE])
 end
 
 # Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
@@ -402,15 +398,7 @@ lane :build_and_upload_app_store do |options|
     archive_path: archive_path
   )
 
-  sentry_upload_dsym(
-    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
-    org_slug: 'a8c',
-    project_slug: 'simplenotemacos',
-    # At the time of writing, there's no way to explicitly configure the
-    # dSYM path, but build_mac_app sets it in the environment if successful.
-    # See `bundle exec fastlane action build_mac_app`.
-    dsym_path: ENV.fetch('DSYM_OUTPUT_PATH', nil)
-  )
+  upload_dsym_to_sentry(archive_path: archive_path)
 
   # Do not create the GitHub release unless explicitly requested
   if options[:create_github_release]
@@ -597,4 +585,27 @@ def generate_gitkeep_for_empty_locale_folders
   end
 
   gitkeeps
+end
+
+# Upload the dSYMs from a build archive to Sentry.
+#
+# Reads them out of the archive rather than the zip `gym` writes alongside it:
+# `sentry-cli` searches a path recursively, so pointing it at the archive's
+# `dSYMs/` avoids having to predict that zip's filename. Aim at `dSYMs/` and not
+# the archive root, or the search settles on the stripped binary in `Products/`.
+#
+# @param archive_path [String] Path to the `.xcarchive` the build produced.
+#
+def upload_dsym_to_sentry(archive_path:)
+  UI.user_error!("The given archive path value '#{archive_path}' is missing. Did the build produced an .xcarchive?") if archive_path.to_s.empty?
+  dsyms_path = File.join(archive_path, 'dSYMs')
+  UI.user_error!("Could not find dSYMs at '#{dsyms_path}'.") unless File.directory?(dsyms_path)
+
+  sentry_debug_files_upload(
+    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
+    org_slug: 'a8c',
+    project_slug: 'simplenote-macos',
+    path: [dsyms_path],
+    type: 'dsym'
+  )
 end
