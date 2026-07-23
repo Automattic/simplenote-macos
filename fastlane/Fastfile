@@ -14,6 +14,10 @@ PROJECT = 'Simplenote.xcodeproj'
 INTERNAL_SCHEME = 'Simplenote'
 APP_STORE_SCHEME = 'Simplenote'
 BUILD_FOLDER = File.join(PROJECT_FOLDER, 'build')
+# Passed to the build actions as `output_name` so the artifact names are ours to
+# state rather than gym's to derive from the app name.
+APP_NAME = 'Simplenote'
+DSYM_ZIP_PATH = File.join(BUILD_FOLDER, "#{APP_NAME}.app.dSYM.zip").freeze
 APP_STORE_BUNDLE_IDENTIFIER = 'com.automattic.SimplenoteMac'
 APP_STORE_BUNDLE_IDENTIFIER_INTENTS = "#{APP_STORE_BUNDLE_IDENTIFIER}.IntentsExtension".freeze
 VERSION_FILE_PATH = File.join(PROJECT_FOLDER, 'config', 'Version.Public.xcconfig')
@@ -112,6 +116,7 @@ def build_simplenote(codesign:, archive_path: nil)
     scheme: APP_STORE_SCHEME,
     clean: true,
     output_directory: BUILD_FOLDER,
+    output_name: APP_NAME,
     archive_path: archive_path,
     skip_archive: skip_archive,
     export_team_id: APPLE_TEAM_ID,
@@ -323,6 +328,7 @@ lane :build_internal_beta do |skip_dsym_upload: true|
     scheme: INTERNAL_SCHEME,
     clean: true,
     output_directory: BUILD_FOLDER,
+    output_name: APP_NAME,
     export_method: 'developer-id',
     export_options: {
       provisioningProfiles: {
@@ -335,9 +341,7 @@ lane :build_internal_beta do |skip_dsym_upload: true|
 
   # Show release notes and the path to the binary
   sh('ruby', '../Scripts/extract_release_notes.rb', '-k')
-  UI.success("DeveloperID-signed binary is at: #{File.join(BUILD_FOLDER, 'Simplenote.app')}")
-
-  dsym_path = File.join(BUILD_FOLDER, 'Simplenote.app.dSYM.zip')
+  UI.success("DeveloperID-signed binary is at: #{File.join(BUILD_FOLDER, "#{APP_NAME}.app")}")
 
   next if skip_dsym_upload || !UI.confirm('Do you want to upload the dSYM to Sentry?')
 
@@ -345,7 +349,7 @@ lane :build_internal_beta do |skip_dsym_upload: true|
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenote-macos',
-    path: [dsym_path]
+    path: [DSYM_ZIP_PATH]
   )
 end
 
@@ -406,7 +410,7 @@ lane :build_and_upload_app_store do |options|
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenotemacos',
-    path: [File.join(BUILD_FOLDER, 'Simplenote.app.dSYM.zip')]
+    path: [DSYM_ZIP_PATH]
   )
 
   # Do not create the GitHub release unless explicitly requested
