@@ -23,9 +23,6 @@ DEFAULT_BRANCH = 'trunk'
 GITHUB_REPO = 'Automattic/simplenote-macos'
 APPLE_TEAM_ID = 'PZYM8XX95Q'
 
-SENTRY_ORG = 'a8c'
-SENTRY_PROJECT = 'simplenote-macos'
-
 APP_RESOURCES_DIR = File.join(PROJECT_ROOT_FOLDER, 'Simplenote', 'Resources')
 RELEASE_NOTES_SOURCE_PATH = File.join(APP_RESOURCES_DIR, 'release_notes.txt')
 STORE_METADATA_FOLDER = File.join(PROJECT_ROOT_FOLDER, 'fastlane', 'metadata')
@@ -346,12 +343,7 @@ lane :build_internal_beta do |skip_dsym_upload: true|
 
   next if skip_dsym_upload || !UI.confirm('Do you want to upload the dSYM to Sentry?')
 
-  sentry_debug_files_upload(
-    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
-    org_slug: SENTRY_ORG,
-    project_slug: SENTRY_PROJECT,
-    path: [DSYM_ZIP_PATH]
-  )
+  upload_dsym_to_sentry
 end
 
 # Upload the localized metadata (from `fastlane/metadata/`) to App Store Connect
@@ -407,12 +399,7 @@ lane :build_and_upload_app_store do |options|
     archive_path: archive_path
   )
 
-  sentry_debug_files_upload(
-    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
-    org_slug: SENTRY_ORG,
-    project_slug: SENTRY_PROJECT,
-    path: [DSYM_ZIP_PATH]
-  )
+  upload_dsym_to_sentry
 
   # Do not create the GitHub release unless explicitly requested
   if options[:create_github_release]
@@ -599,4 +586,15 @@ def generate_gitkeep_for_empty_locale_folders
   end
 
   gitkeeps
+end
+
+def upload_dsym_to_sentry
+  UI.user_error!("Could not find dSYM at expected location '#{DSYM_ZIP_PATH}'.") unless File.exist?(DSYM_ZIP_PATH)
+
+  sentry_debug_files_upload(
+    auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
+    org_slug: 'a8c',
+    project_slug: 'simplenote-macos',
+    path: [DSYM_ZIP_PATH]
+  )
 end
