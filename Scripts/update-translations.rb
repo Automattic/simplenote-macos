@@ -77,7 +77,7 @@ def copy_comment(file, trans_strings, value)
 end
 
 langs = {}
-if ARGV.count.positive?
+if ARGV.any?
   ARGV.each do |key|
     unless (locale = ALL_LANGS[key])
       puts "Unknown language #{key}"
