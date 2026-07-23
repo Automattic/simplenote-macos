@@ -406,10 +406,7 @@ lane :build_and_upload_app_store do |options|
     auth_token: get_required_env('SENTRY_AUTH_TOKEN'),
     org_slug: 'a8c',
     project_slug: 'simplenotemacos',
-    # At the time of writing, there's no way to explicitly configure the
-    # dSYM path, but build_mac_app sets it in the environment if successful.
-    # See `bundle exec fastlane action build_mac_app`.
-    path: [ENV.fetch('DSYM_OUTPUT_PATH', nil)].compact
+    path: [File.join(BUILD_FOLDER, 'Simplenote.app.dSYM.zip')]
   )
 
   # Do not create the GitHub release unless explicitly requested
