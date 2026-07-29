@@ -177,7 +177,7 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.4.1)
       xcpretty-travis-formatter (>= 0.0.3, < 2.0.0)
-    fastlane-plugin-sentry (2.6.1)
+    fastlane-plugin-sentry (2.6.2)
       os (~> 1.1, >= 1.1.4)
     fastlane-plugin-wpmreleasetoolkit (12.5.0)
       activesupport (>= 6.1.7.1)
