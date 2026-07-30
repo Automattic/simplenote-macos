@@ -52,6 +52,8 @@ build/
 .configure-files/*
 !.configure-files/*.enc
 
+Simplenote/SPCredentials.external-contributors.swift
+
 # Swift Package Manager
 .build
 

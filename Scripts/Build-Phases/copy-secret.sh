@@ -10,13 +10,17 @@ set -euo pipefail
 #   1. ${SECRETS_ROOT}, for internal contributors. `bundle exec fastlane run
 #      configure_apply` decrypts it there, outside the repo; this phase only
 #      reads it.
-#   2. Simplenote/SPCredentials-demo.swift, committed, so external contributors
-#      can build without any secrets. Under Release the missing secrets are an
-#      error instead.
+#   2. Simplenote/SPCredentials.external-contributors.swift — gitignored, so
+#      external contributors can keep their own Simperium credentials with
+#      little-to-no risk of committing them, starting from a copy of the
+#      committed template.
+#
+# If neither is present, the build will fail.
 
 SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
 SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
-EXAMPLE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials-demo.swift"
+TEMPLATE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials.template.swift"
+EXTERNAL_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials.external-contributors.swift"
 
 # To help the Xcode build system optimize the build, we want to ensure each of
 # the secrets we want to copy is defined as an input file for the run script
@@ -70,7 +74,7 @@ function ensure_is_in_input_files_list() {
 }
 
 ensure_is_in_input_files_list "$SECRETS_FILE"
-ensure_is_in_input_files_list "$EXAMPLE_SECRETS_FILE"
+ensure_is_in_input_files_list "$EXTERNAL_SECRETS_FILE"
 
 # The destination comes from the build phase's `outputPaths`, which Xcode
 # exposes as SCRIPT_OUTPUT_FILE_N. Each consumer target writes into its own
@@ -83,12 +87,12 @@ fi
 SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
 mkdir -p "$(dirname "$SECRETS_DESTINATION_FILE")"
 
-if cmp --silent -- "$SECRETS_FILE" "$SECRETS_DESTINATION_FILE"; then
-    echo "☑️ Credentials were not modified. Skipping..."
-    exit 0
-fi
-
 apply() {
+    if cmp --silent -- "$1" "$SECRETS_DESTINATION_FILE"; then
+        echo "☑️ Credentials were not modified. Skipping..."
+        exit 0
+    fi
+
     echo "Applying secrets from ${1}"
     # `cp -v` names the destination, which differs per consumer target.
     cp -v "$1" "$SECRETS_DESTINATION_FILE"
@@ -99,19 +103,9 @@ if [ -f "$SECRETS_FILE" ]; then
     apply "$SECRETS_FILE"
 fi
 
-# No secrets file found. Use the example secrets file as a last resort, unless
-# building for Release.
+if [ -f "$EXTERNAL_SECRETS_FILE" ]; then
+    apply "$EXTERNAL_SECRETS_FILE"
+fi
 
-COULD_NOT_FIND_SECRET_MSG="Could not find secrets file at ${SECRETS_FILE}"
-INTERNAL_CONTRIBUTOR_MSG="If you are an internal contributor, run \`bundle exec fastlane run configure_apply\` to update your secrets"
-
-case "$CONFIGURATION" in
-  Release)
-    echo "error: $COULD_NOT_FIND_SECRET_MSG. Cannot continue Release build. $INTERNAL_CONTRIBUTOR_MSG and try again. External contributors should not need to perform a Release build."
-    exit 1
-    ;;
-  *)
-    echo "warning: $COULD_NOT_FIND_SECRET_MSG. Falling back to $EXAMPLE_SECRETS_FILE. In a Release build, this would be an error. $INTERNAL_CONTRIBUTOR_MSG and try again. If you are an external contributor, you can ignore this warning."
-    apply "$EXAMPLE_SECRETS_FILE"
-    ;;
-esac
+echo "error: No secrets found! Internal contributors: run \`bundle exec fastlane run configure_apply\`. External contributors: copy '${TEMPLATE_SECRETS_FILE}' to '${EXTERNAL_SECRETS_FILE}', fill in your own Simperium credentials, and build again."
+exit 1

@@ -52,8 +52,8 @@ Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium
 
 **⚠️ Please note → We're not accepting any new Simperium accounts at this time.**
 
-Refer to the `simperium*` properties in `SPCredentials`.
-The type is generated at build time from internal secrets when available, falling back to `Simplenote/SPCredentials-demo.swift` otherwise.
+Credentials live in the `simperium*` properties of the `SPCredentials` type, which is generated at build time from production credentials kept outside the checkout, falling back to user-specified ones.
+When it finds neither, the build fails with instructions on how to provide them.
 
 _Note: Simplenote API features such as sharing and publishing will not work with development builds._
 
