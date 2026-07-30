@@ -2,6 +2,22 @@
 
 set -euo pipefail
 
+# Materialize secrets into the target's DERIVED_FILE_DIR so the decrypted
+# credentials never land in the repo checkout.
+#
+# The compiled file comes from one of two sources, in order:
+#
+#   1. ${SECRETS_ROOT}, for internal contributors. `bundle exec fastlane run
+#      configure_apply` decrypts it there, outside the repo; this phase only
+#      reads it.
+#   2. Simplenote/SPCredentials-demo.swift, committed, so external contributors
+#      can build without any secrets. Under Release the missing secrets are an
+#      error instead.
+
+SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
+SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
+EXAMPLE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials-demo.swift"
+
 # To help the Xcode build system optimize the build, we want to ensure each of
 # the secrets we want to copy is defined as an input file for the run script
 # build phase.
@@ -22,12 +38,13 @@ function ensure_is_in_input_files_list() {
     echo "error: Input file list verification needs a path to verify!"
     exit 1
   fi
-  file_to_find=$1
 
   if [ "$SCRIPT_INPUT_FILE_LIST_COUNT" -eq 0 ]; then
     echo "error: No input file list given (.xcfilelist). Cannot continue."
     exit 1
   fi
+
+  file_to_find=$1
 
   i=0
   found=false
@@ -37,23 +54,20 @@ function ensure_is_in_input_files_list() {
     file_list_resolved_var_name=SCRIPT_INPUT_FILE_LIST_${i}
     # The following reads the processed xcfilelist line by line looking for
     # the given file
-    while read input_file; do
+    while read -r input_file; do
       if [ "$file_to_find" == "$input_file" ]; then
         found=true
         break
       fi
     done <"${!file_list_resolved_var_name}"
-    let i=i+1
+    (( i=i+1 ))
   done
+
   if [ "$found" = false ]; then
     echo "error: Could not find $file_to_find as an input to the build phase. Add $file_to_find to the input files list using the .xcfilelist."
     exit 1
   fi
 }
-
-SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
-SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
-EXAMPLE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials-demo.swift"
 
 ensure_is_in_input_files_list "$SECRETS_FILE"
 ensure_is_in_input_files_list "$EXAMPLE_SECRETS_FILE"
@@ -69,17 +83,17 @@ fi
 SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
 mkdir -p "$(dirname "$SECRETS_DESTINATION_FILE")"
 
+if cmp --silent -- "$SECRETS_FILE" "$SECRETS_DESTINATION_FILE"; then
+    echo "☑️ Credentials were not modified. Skipping..."
+    exit 0
+fi
+
 apply() {
     echo "Applying secrets from ${1}"
     # `cp -v` names the destination, which differs per consumer target.
     cp -v "$1" "$SECRETS_DESTINATION_FILE"
     exit 0
 }
-
-if cmp --silent -- "$SECRETS_FILE" "$SECRETS_DESTINATION_FILE"; then
-    echo "☑️ Credentials were not modified. Skipping..."
-    exit 0
-fi
 
 if [ -f "$SECRETS_FILE" ]; then
     apply "$SECRETS_FILE"
