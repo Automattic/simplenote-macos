@@ -69,9 +69,9 @@ fi
 SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
 mkdir -p "$(dirname "$SECRETS_DESTINATION_FILE")"
 
-# `cp -v` names the destination, which differs per consumer target.
 apply() {
     echo "Applying secrets from ${1}"
+    # `cp -v` names the destination, which differs per consumer target.
     cp -v "$1" "$SECRETS_DESTINATION_FILE"
     exit 0
 }
