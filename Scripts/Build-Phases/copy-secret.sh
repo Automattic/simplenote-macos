@@ -1,4 +1,6 @@
-#!/bin/bash -euo pipefail
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 # To help the Xcode build system optimize the build, we want to ensure each of
 # the secrets we want to copy is defined as an input file for the run script
