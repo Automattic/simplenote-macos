@@ -24,7 +24,7 @@ function ensure_is_in_input_files_list() {
   fi
   file_to_find=$1
 
-  if [ $SCRIPT_INPUT_FILE_LIST_COUNT -eq 0 ]; then
+  if [ "$SCRIPT_INPUT_FILE_LIST_COUNT" -eq 0 ]; then
     echo "error: No input file list given (.xcfilelist). Cannot continue."
     exit 1
   fi
@@ -55,8 +55,8 @@ SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
 SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
 EXAMPLE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials-demo.swift"
 
-ensure_is_in_input_files_list $SECRETS_FILE
-ensure_is_in_input_files_list $EXAMPLE_SECRETS_FILE
+ensure_is_in_input_files_list "$SECRETS_FILE"
+ensure_is_in_input_files_list "$EXAMPLE_SECRETS_FILE"
 
 # The destination comes from the build phase's `outputPaths`, which Xcode
 # exposes as SCRIPT_OUTPUT_FILE_N. Each consumer target writes into its own
@@ -67,9 +67,9 @@ if [ "${SCRIPT_OUTPUT_FILE_COUNT:-0}" -lt 1 ]; then
 fi
 
 SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
-mkdir -p $(dirname "$SECRETS_DESTINATION_FILE")
+mkdir -p "$(dirname "$SECRETS_DESTINATION_FILE")"
 
-if cmp --silent -- ${SECRETS_FILE} ${SECRETS_DESTINATION_FILE}; then
+if cmp --silent -- "$SECRETS_FILE" "$SECRETS_DESTINATION_FILE"; then
     echo "☑️ Credentials were not modified. Skipping..."
     exit 0
 fi
@@ -86,7 +86,7 @@ fi
 COULD_NOT_FIND_SECRET_MSG="Could not find secrets file at ${SECRETS_FILE}"
 INTERNAL_CONTRIBUTOR_MSG="If you are an internal contributor, run \`bundle exec fastlane run configure_apply\` to update your secrets"
 
-case $CONFIGURATION in
+case "$CONFIGURATION" in
   Release)
     echo "error: $COULD_NOT_FIND_SECRET_MSG. Cannot continue Release build. $INTERNAL_CONTRIBUTOR_MSG and try again. External contributors should not need to perform a Release build."
     exit 1
