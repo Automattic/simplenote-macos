@@ -69,15 +69,20 @@ fi
 SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
 mkdir -p "$(dirname "$SECRETS_DESTINATION_FILE")"
 
+# `cp -v` names the destination, which differs per consumer target.
+apply() {
+    echo "Applying secrets from ${1}"
+    cp -v "$1" "$SECRETS_DESTINATION_FILE"
+    exit 0
+}
+
 if cmp --silent -- "$SECRETS_FILE" "$SECRETS_DESTINATION_FILE"; then
     echo "☑️ Credentials were not modified. Skipping..."
     exit 0
 fi
 
 if [ -f "$SECRETS_FILE" ]; then
-    echo "Applying Production Secrets"
-    cp -v "$SECRETS_FILE" "${SECRETS_DESTINATION_FILE}"
-    exit 0
+    apply "$SECRETS_FILE"
 fi
 
 # No secrets file found. Use the example secrets file as a last resort, unless
@@ -93,7 +98,6 @@ case "$CONFIGURATION" in
     ;;
   *)
     echo "warning: $COULD_NOT_FIND_SECRET_MSG. Falling back to $EXAMPLE_SECRETS_FILE. In a Release build, this would be an error. $INTERNAL_CONTRIBUTOR_MSG and try again. If you are an external contributor, you can ignore this warning."
-    echo "Applying Example Secrets"
-    cp -v "$EXAMPLE_SECRETS_FILE" "$SECRETS_DESTINATION_FILE"
+    apply "$EXAMPLE_SECRETS_FILE"
     ;;
 esac
