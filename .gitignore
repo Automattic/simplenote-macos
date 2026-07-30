@@ -31,9 +31,6 @@ Simplenote/DerivedSources/*
 # Settings
 Simplenote/config.plist
 
-# Stale copies of the decrypted credentials, from before they moved to DerivedSources
-Simplenote/Credentials/
-
 # Bundler
 /vendor/
 /vendor/bundle/
