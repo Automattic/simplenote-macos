@@ -88,11 +88,6 @@ SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
 mkdir -p "$(dirname "$SECRETS_DESTINATION_FILE")"
 
 apply() {
-    if cmp --silent -- "$1" "$SECRETS_DESTINATION_FILE"; then
-        echo "☑️ Credentials were not modified. Skipping..."
-        exit 0
-    fi
-
     echo "Applying secrets from ${1}"
     # `cp -v` names the destination, which differs per consumer target.
     cp -v "$1" "$SECRETS_DESTINATION_FILE"
