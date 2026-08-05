@@ -43,7 +43,7 @@ function ensure_is_in_input_files_list() {
     exit 1
   fi
 
-  if [ "$SCRIPT_INPUT_FILE_LIST_COUNT" -eq 0 ]; then
+  if [ "${SCRIPT_INPUT_FILE_LIST_COUNT:-0}" -eq 0 ]; then
     echo "error: No input file list given (.xcfilelist). Cannot continue."
     exit 1
   fi
