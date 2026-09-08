@@ -1,4 +1,26 @@
-#!/bin/bash -euo pipefail
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Materialize secrets into the target's DERIVED_FILE_DIR so the decrypted
+# credentials never land in the repo checkout.
+#
+# The compiled file comes from one of two sources, in order:
+#
+#   1. ${SECRETS_ROOT}, for internal contributors. `bundle exec fastlane run
+#      configure_apply` decrypts it there, outside the repo; this phase only
+#      reads it.
+#   2. Simplenote/SPCredentials.external-contributors.swift — gitignored, so
+#      external contributors can keep their own Simperium credentials with
+#      little-to-no risk of committing them, starting from a copy of the
+#      committed template.
+#
+# If neither is present, the build will fail.
+
+SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
+SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
+TEMPLATE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials.template.swift"
+EXTERNAL_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials.external-contributors.swift"
 
 # To help the Xcode build system optimize the build, we want to ensure each of
 # the secrets we want to copy is defined as an input file for the run script
@@ -20,12 +42,13 @@ function ensure_is_in_input_files_list() {
     echo "error: Input file list verification needs a path to verify!"
     exit 1
   fi
-  file_to_find=$1
 
-  if [ $SCRIPT_INPUT_FILE_LIST_COUNT -eq 0 ]; then
+  if [ "${SCRIPT_INPUT_FILE_LIST_COUNT:-0}" -eq 0 ]; then
     echo "error: No input file list given (.xcfilelist). Cannot continue."
     exit 1
   fi
+
+  file_to_find=$1
 
   i=0
   found=false
@@ -35,55 +58,49 @@ function ensure_is_in_input_files_list() {
     file_list_resolved_var_name=SCRIPT_INPUT_FILE_LIST_${i}
     # The following reads the processed xcfilelist line by line looking for
     # the given file
-    while read input_file; do
+    while read -r input_file; do
       if [ "$file_to_find" == "$input_file" ]; then
         found=true
         break
       fi
     done <"${!file_list_resolved_var_name}"
-    let i=i+1
+    (( i=i+1 ))
   done
+
   if [ "$found" = false ]; then
     echo "error: Could not find $file_to_find as an input to the build phase. Add $file_to_find to the input files list using the .xcfilelist."
     exit 1
   fi
 }
 
-SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
-SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
-EXAMPLE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials-demo.swift"
+ensure_is_in_input_files_list "$SECRETS_FILE"
+ensure_is_in_input_files_list "$EXTERNAL_SECRETS_FILE"
 
-ensure_is_in_input_files_list $SECRETS_FILE
-ensure_is_in_input_files_list $EXAMPLE_SECRETS_FILE
-
-SECRETS_DESTINATION_FILE="${SRCROOT}/Simplenote/Credentials/SPCredentials.swift"
-mkdir -p $(dirname "$SECRETS_DESTINATION_FILE")
-
-if cmp --silent -- ${SECRETS_FILE} ${SECRETS_DESTINATION_FILE}; then
-    echo "☑️ Credentials were not modified. Skipping..."
-    exit 0
+# The destination comes from the build phase's `outputPaths`, which Xcode
+# exposes as SCRIPT_OUTPUT_FILE_N. Each consumer target writes into its own
+# $(DERIVED_FILE_DIR), keeping the decrypted secret out of the checkout.
+if [ "${SCRIPT_OUTPUT_FILE_COUNT:-0}" -lt 1 ]; then
+  echo "error: No output file given. Declare the destination in the build phase's output files list."
+  exit 1
 fi
+
+SECRETS_DESTINATION_FILE="${SCRIPT_OUTPUT_FILE_0}"
+mkdir -p "$(dirname "$SECRETS_DESTINATION_FILE")"
+
+apply() {
+    echo "Applying secrets from ${1}"
+    # `cp -v` names the destination, which differs per consumer target.
+    cp -v "$1" "$SECRETS_DESTINATION_FILE"
+    exit 0
+}
 
 if [ -f "$SECRETS_FILE" ]; then
-    echo "Applying Production Secrets"
-    cp -v "$SECRETS_FILE" "${SECRETS_DESTINATION_FILE}"
-    exit 0
+    apply "$SECRETS_FILE"
 fi
 
-# No secrets file found. Use the example secrets file as a last resort, unless
-# building for Release.
+if [ -f "$EXTERNAL_SECRETS_FILE" ]; then
+    apply "$EXTERNAL_SECRETS_FILE"
+fi
 
-COULD_NOT_FIND_SECRET_MSG="Could not find secrets file at ${SECRETS_DESTINATION_FILE}. This is likely due to the source secrets being missing from ${SECRETS_ROOT}"
-INTERNAL_CONTRIBUTOR_MSG="If you are an internal contributor, run \`bundle exec fastlane run configure_apply\` to update your secrets"
-
-case $CONFIGURATION in
-  Release)
-    echo "error: $COULD_NOT_FIND_SECRET_MSG. Cannot continue Release build. $INTERNAL_CONTRIBUTOR_MSG and try again. External contributors should not need to perform a Release build."
-    exit 1
-    ;;
-  *)
-    echo "warning: $COULD_NOT_FIND_SECRET_MSG. Falling back to $EXAMPLE_SECRETS_FILE. In a Release build, this would be an error. $INTERNAL_CONTRIBUTOR_MSG and try again. If you are an external contributor, you can ignore this warning."
-    echo "Applying Example Secrets"
-    cp -v "$EXAMPLE_SECRETS_FILE" "$SECRETS_DESTINATION_FILE"
-    ;;
-esac
+echo "error: No secrets found! Internal contributors: run \`bundle exec fastlane run configure_apply\`. External contributors: copy '${TEMPLATE_SECRETS_FILE}' to '${EXTERNAL_SECRETS_FILE}', fill in your own Simperium credentials, and build again."
+exit 1

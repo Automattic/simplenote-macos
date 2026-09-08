@@ -25,11 +25,11 @@ DerivedData
 .idea/
 *.hmap
 *.xcscmblueprint
-Simplenote/DerivedSources/
+Simplenote/DerivedSources/*
+!Simplenote/DerivedSources/README.md
 
 # Settings
 Simplenote/config.plist
-Simplenote/Credentials/
 
 # Bundler
 /vendor/
@@ -51,6 +51,8 @@ build/
 # not encrypted should be ignored
 .configure-files/*
 !.configure-files/*.enc
+
+Simplenote/SPCredentials.external-contributors.swift
 
 # Swift Package Manager
 .build
