@@ -55,6 +55,21 @@ Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium
 Credentials live in the `simperium*` properties of the `SPCredentials` type, which is generated at build time from production credentials kept outside the checkout, falling back to user-specified ones.
 When it finds neither, the build fails with instructions on how to provide them.
 
+Internal contributors decrypt the production credentials with:
+
+```
+bundle exec fastlane run configure_apply
+```
+
+External contributors start from the committed template, whose copy is gitignored:
+
+```
+cp Simplenote/SPCredentials.template.swift Simplenote/SPCredentials.external-contributors.swift
+```
+
+Unchanged, the template is enough to compile and run the app and its unit tests.
+Replace its `simperium*` values with your own to use a different Simperium app.
+
 _Note: Simplenote API features such as sharing and publishing will not work with development builds._
 
 ## Style Guidelines
