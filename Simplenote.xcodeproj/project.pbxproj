@@ -6,20 +6,6 @@
 	objectVersion = 54;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B52D0EC8230DCAD7003F799D /* Build configuration list for PBXAggregateTarget "SimplenoteSecrets" */;
-			buildPhases = (
-				B52D0EC9230DCB15003F799D /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = SimplenoteSecrets;
-			productName = GenerateCredentials;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700E97521C1E390004771C9 /* SPTextAttachment.swift */; };
 		3712FC831FE1ACAA008544AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC701FE1ACA9008544AC /* Storage.swift */; };
@@ -233,7 +219,7 @@
 		B5E086362448EA3C00DEF476 /* TagTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086342448EA3C00DEF476 /* TagTableCellView.swift */; };
 		B5E086392448EE9D00DEF476 /* NSTableView+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */; };
 		B5E0863C2449012700DEF476 /* NSImage+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */; };
-		B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
+		B5E196C2230F5F5300F5658A /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C27310000000000000A003 /* SPCredentials.swift */; };
 		B5E8E41224575C990098892B /* ToolbarState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8E41024575C990098892B /* ToolbarState.swift */; };
 		B5E96B671BDE732500D707F5 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E96B651BDE732500D707F5 /* AuthViewController.m */; };
 		B5EB3AD22458B9940089858D /* NSNotification+Simplenote.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EB3AD02458B9940089858D /* NSNotification+Simplenote.m */; };
@@ -264,7 +250,7 @@
 		BA2BF3402C07C75500A7C894 /* FindNoteIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2BF33F2C07C75500A7C894 /* FindNoteIntentHandler.swift */; };
 		BA2C65CF26FE996A00FA84E1 /* NSButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C65CA26FE996100FA84E1 /* NSButton+Extensions.swift */; };
 		BA4C6D18264CAAF800B723A7 /* URLRequest+Simplenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C6D17264CAAF800B723A7 /* URLRequest+Simplenote.swift */; };
-		BA4F223E2C1255A500144EDA /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E196C0230F5F5300F5658A /* SPCredentials.swift */; };
+		BA4F223E2C1255A500144EDA /* SPCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C27310000000000000A004 /* SPCredentials.swift */; };
 		BA54F2462C0E63C700DBCE9D /* AppendNoteIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54F2452C0E63C700DBCE9D /* AppendNoteIntentHandler.swift */; };
 		BA54F2482C0E6A6900DBCE9D /* CreateNewNoteIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54F2472C0E6A6900DBCE9D /* CreateNewNoteIntentHandler.swift */; };
 		BA553F0927065E20007737E9 /* FontSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA553F0727065E20007737E9 /* FontSettings.swift */; };
@@ -340,13 +326,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B52D0ECE230DCEAC003F799D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B52D0EC5230DCAD7003F799D;
-			remoteInfo = GenerateCredentials;
-		};
 		BAB261692BFFD0AF009A98D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
@@ -679,7 +658,9 @@
 		B5E086342448EA3C00DEF476 /* TagTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableCellView.swift; sourceTree = "<group>"; };
 		B5E086372448EE9D00DEF476 /* NSTableView+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Simplenote.swift"; sourceTree = "<group>"; };
 		B5E0863A2449012700DEF476 /* NSImage+Simplenote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Simplenote.swift"; sourceTree = "<group>"; };
-		B5E196C0230F5F5300F5658A /* SPCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = "<group>"; };
+		A8C27310000000000000A003 /* SPCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = DERIVED_FILE_DIR; };
+		A8C27310000000000000A004 /* SPCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCredentials.swift; sourceTree = DERIVED_FILE_DIR; };
+		A8C27310000000000000A008 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B5E8E41024575C990098892B /* ToolbarState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarState.swift; sourceTree = "<group>"; };
 		B5E96B641BDE732500D707F5 /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		B5E96B651BDE732500D707F5 /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
@@ -897,7 +878,7 @@
 				B53BF1A224AC388F00938C34 /* Controllers */,
 				B5CBB05A241971240003C271 /* Converters */,
 				B557A0E825BB0DC700E5313E /* Coordinators */,
-				B52D0ECA230DCE22003F799D /* Credentials */,
+				A8C27310000000000000A005 /* DerivedSources */,
 				B51E9FE322E64473004F16B4 /* Extensions */,
 				B574CA71242D539400F8D02F /* Handlers */,
 				463774DB171F111600E2E333 /* Models */,
@@ -1190,12 +1171,30 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		B52D0ECA230DCE22003F799D /* Credentials */ = {
+		A8C27310000000000000A005 /* DerivedSources */ = {
 			isa = PBXGroup;
 			children = (
-				B5E196C0230F5F5300F5658A /* SPCredentials.swift */,
+				A8C27310000000000000A006 /* Simplenote */,
+				A8C27310000000000000A007 /* IntentsExtension */,
+				A8C27310000000000000A008 /* README.md */,
 			);
-			path = Credentials;
+			path = DerivedSources;
+			sourceTree = "<group>";
+		};
+		A8C27310000000000000A006 /* Simplenote */ = {
+			isa = PBXGroup;
+			children = (
+				A8C27310000000000000A003 /* SPCredentials.swift */,
+			);
+			name = Simplenote;
+			sourceTree = "<group>";
+		};
+		A8C27310000000000000A007 /* IntentsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A8C27310000000000000A004 /* SPCredentials.swift */,
+			);
+			name = IntentsExtension;
 			sourceTree = "<group>";
 		};
 		B52EE32C25927D5D00347F2B /* Notes */ = {
@@ -1697,6 +1696,7 @@
 			buildConfigurationList = 466FFF2C17CC10A800399652 /* Build configuration list for PBXNativeTarget "Simplenote" */;
 			buildPhases = (
 				BAAA71F42C07B8BB00244C01 /* Swiftlint */,
+				A8C27310000000000000A001 /* Copy Secret */,
 				466FFEA717CC10A800399652 /* Sources */,
 				466FFEDC17CC10A800399652 /* Frameworks */,
 				466FFEE517CC10A800399652 /* Resources */,
@@ -1706,7 +1706,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B52D0ECF230DCEAC003F799D /* PBXTargetDependency */,
 				BAB2616A2BFFD0AF009A98D7 /* PBXTargetDependency */,
 			);
 			name = Simplenote;
@@ -1743,6 +1742,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BAB2616F2BFFD0AF009A98D7 /* Build configuration list for PBXNativeTarget "IntentsExtension" */;
 			buildPhases = (
+				A8C27310000000000000A002 /* Copy Secret */,
 				BAB2615E2BFFD0AF009A98D7 /* Sources */,
 				BAB2615F2BFFD0AF009A98D7 /* Frameworks */,
 				BAB261602BFFD0AF009A98D7 /* Resources */,
@@ -1773,10 +1773,6 @@
 				TargetAttributes = {
 					466FFEA617CC10A800399652 = {
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
-					};
-					B52D0EC5230DCAD7003F799D = {
-						CreatedOnToolsVersion = 11.0;
 						ProvisioningStyle = Manual;
 					};
 					B5CBB068241976230003C271 = {
@@ -1830,7 +1826,6 @@
 			projectRoot = "";
 			targets = (
 				466FFEA617CC10A800399652 /* Simplenote */,
-				B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */,
 				B5CBB068241976230003C271 /* SimplenoteTests */,
 				BAB261612BFFD0AF009A98D7 /* IntentsExtension */,
 			);
@@ -1884,9 +1879,8 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B52D0EC9230DCB15003F799D /* ShellScript */ = {
+		A8C27310000000000000A001 /* Copy Secret */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1895,10 +1889,31 @@
 			);
 			inputPaths = (
 			);
+			name = "Copy Secret";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Simplenote/Credentials/SPCredentials.swift",
+				"$(DERIVED_FILE_DIR)/SPCredentials.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/Scripts/Build-Phases/copy-secret.sh\n";
+		};
+		A8C27310000000000000A002 /* Copy Secret */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${SRCROOT}/Scripts/Build-Phases/copy-secret.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "Copy Secret";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/SPCredentials.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2228,11 +2243,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B52D0ECF230DCEAC003F799D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B52D0EC5230DCAD7003F799D /* SimplenoteSecrets */;
-			targetProxy = B52D0ECE230DCEAC003F799D /* PBXContainerItemProxy */;
-		};
 		BAB2616A2BFFD0AF009A98D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BAB261612BFFD0AF009A98D7 /* IntentsExtension */;
@@ -2546,24 +2556,6 @@
 			};
 			name = Release;
 		};
-		B52D0EC6230DCAD7003F799D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B52D0EC7230DCAD7003F799D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		B5CBB071241976230003C271 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2755,15 +2747,6 @@
 			buildConfigurations = (
 				466FFF2D17CC10A800399652 /* Debug */,
 				466FFF2E17CC10A800399652 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B52D0EC8230DCAD7003F799D /* Build configuration list for PBXAggregateTarget "SimplenoteSecrets" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B52D0EC6230DCAD7003F799D /* Debug */,
-				B52D0EC7230DCAD7003F799D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

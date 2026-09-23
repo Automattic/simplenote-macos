@@ -25,11 +25,11 @@ DerivedData
 .idea/
 *.hmap
 *.xcscmblueprint
-Simplenote/DerivedSources/
+Simplenote/DerivedSources/*
+!Simplenote/DerivedSources/README.md
 
 # Settings
 Simplenote/config.plist
-Simplenote/Credentials/
 
 # Bundler
 /vendor/
@@ -47,10 +47,24 @@ fastlane/test_output/
 build/
 
 # Secrets
+#
+# We're in the process of migrating away from configure+mobile-secrets
+# to a8c-secrets.
+#
+# These rules should remain in the repo to avoid accidental leaks
+# for a period after the transition.
+#
+# See https://linear.app/a8c/issue/AINFRA-3240
+#
 # All secrets should be stored encrypted in .configure-files, anything that's
 # not encrypted should be ignored
 .configure-files/*
 !.configure-files/*.enc
+# Stale copies of the decrypted credentials, from before they moved to DerivedSources
+Simplenote/Credentials/
+# /end of pre-a8c-secrets rules
+
+Simplenote/SPCredentials.external-contributors.swift
 
 # Swift Package Manager
 .build

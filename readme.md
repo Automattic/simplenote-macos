@@ -48,18 +48,27 @@ You can also open the project by double clicking on `Simplenote.xcworkspace` fil
 
 ## Setup Credentials
 
-Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium.com). We distribute **testing credentials** that help us authenticate your application, and verify that the API calls being made are valid.
+Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium.com), which requires credentials to authenticate the application and verify that the API calls being made are valid.
 
 **⚠️ Please note → We're not accepting any new Simperium accounts at this time.**
 
+Credentials live in the `simperium*` properties of the `SPCredentials` type, which is generated at build time from production credentials kept outside the checkout, falling back to user-specified ones.
+When it finds neither, the build fails with instructions on how to provide them.
 
-Please copy the **testing Simperium credentials** as follows:
+Internal contributors decrypt the production credentials with:
 
 ```
-mkdir -p Simplenote/Credentials && cp Simplenote/SPCredentials-demo.swift Simplenote/Credentials/SPCredentials.swift
+bundle exec fastlane run configure_apply
 ```
 
-This will allow you to compile and run the app on a device or a simulator.
+External contributors start from the committed template, whose copy is gitignored:
+
+```
+cp Simplenote/SPCredentials.template.swift Simplenote/SPCredentials.external-contributors.swift
+```
+
+Unchanged, the template is enough to compile and run the app and its unit tests.
+Replace its `simperium*` values with your own to use a different Simperium app.
 
 _Note: Simplenote API features such as sharing and publishing will not work with development builds._
 
