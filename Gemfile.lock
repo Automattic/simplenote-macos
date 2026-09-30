@@ -170,7 +170,7 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.4.1)
       xcpretty-travis-formatter (>= 0.0.3, < 2.0.0)
-    fastlane-plugin-sentry (2.7.0)
+    fastlane-plugin-sentry (2.8.0)
       os (~> 1.1, >= 1.1.4)
     fastlane-plugin-wpmreleasetoolkit (12.5.0)
       activesupport (>= 6.1.7.1)
@@ -387,7 +387,7 @@ PLATFORMS
 DEPENDENCIES
   danger-dangermattic (~> 1.4)
   fastlane (~> 2.240)
-  fastlane-plugin-sentry (~> 2.7)
+  fastlane-plugin-sentry (~> 2.8)
   fastlane-plugin-wpmreleasetoolkit (~> 12.5)
   rake (~> 13.4)
 
