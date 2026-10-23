@@ -8,8 +8,8 @@ set -euo pipefail
 # The compiled file comes from one of two sources, in order:
 #
 #   1. The a8c-secrets decrypted tree, for internal contributors. The
-#      `Decrypt Secrets` aggregate target, which this phase's targets depend
-#      on, decrypts it there, outside the repo; this phase only reads it.
+#      `Decrypt Secrets` aggregate target, which this phase's targets must
+#      depend on, decrypts it there, outside the repo; this phase only reads it.
 #   2. Simplenote/SPCredentials.external-contributors.swift — gitignored, so
 #      external contributors can keep their own Simperium credentials with
 #      little-to-no risk of committing them, starting from a copy of the
