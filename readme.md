@@ -55,11 +55,7 @@ Simplenote is powered by the [Simperium Sync'ing protocol](https://www.simperium
 Credentials live in the `simperium*` properties of the `SPCredentials` type, which is generated at build time from production credentials kept outside the checkout, falling back to user-specified ones.
 When it finds neither, the build fails with instructions on how to provide them.
 
-Internal contributors decrypt the production credentials with:
-
-```
-bundle exec fastlane run configure_apply
-```
+Internal contributors install and set up [a8c-secrets](https://github.com/Automattic/a8c-secrets); the build decrypts the production credentials with it.
 
 External contributors start from the committed template, whose copy is gitignored:
 
