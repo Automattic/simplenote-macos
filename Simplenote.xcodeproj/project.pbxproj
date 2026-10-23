@@ -6,6 +6,20 @@
 	objectVersion = 54;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A8C27310000000000000B001 /* Decrypt Secrets */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A8C27310000000000000B003 /* Build configuration list for PBXAggregateTarget "Decrypt Secrets" */;
+			buildPhases = (
+				A8C27310000000000000B002 /* Decrypt Secrets */,
+			);
+			dependencies = (
+			);
+			name = "Decrypt Secrets";
+			productName = "Decrypt Secrets";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		3700E97721C1E390004771C9 /* SPTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700E97521C1E390004771C9 /* SPTextAttachment.swift */; };
 		3712FC831FE1ACAA008544AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712FC701FE1ACA9008544AC /* Storage.swift */; };
@@ -326,6 +340,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A8C27310000000000000B006 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8C27310000000000000B001;
+			remoteInfo = "Decrypt Secrets";
+		};
+		A8C27310000000000000B007 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8C27310000000000000B001;
+			remoteInfo = "Decrypt Secrets";
+		};
 		BAB261692BFFD0AF009A98D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26F72A7F14032D2900A7935E /* Project object */;
@@ -1706,6 +1734,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A8C27310000000000000B008 /* PBXTargetDependency */,
 				BAB2616A2BFFD0AF009A98D7 /* PBXTargetDependency */,
 			);
 			name = Simplenote;
@@ -1750,6 +1779,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A8C27310000000000000B009 /* PBXTargetDependency */,
 			);
 			name = IntentsExtension;
 			packageProductDependencies = (
@@ -1828,6 +1858,7 @@
 				466FFEA617CC10A800399652 /* Simplenote */,
 				B5CBB068241976230003C271 /* SimplenoteTests */,
 				BAB261612BFFD0AF009A98D7 /* IntentsExtension */,
+				A8C27310000000000000B001 /* Decrypt Secrets */,
 			);
 		};
 /* End PBXProject section */
@@ -1918,6 +1949,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/Scripts/Build-Phases/copy-secret.sh\n";
+		};
+		A8C27310000000000000B002 /* Decrypt Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Decrypt Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/Build-Phases/decrypt-secrets.sh\"\n";
 		};
 		BAAA71F42C07B8BB00244C01 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2243,6 +2293,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A8C27310000000000000B008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8C27310000000000000B001 /* Decrypt Secrets */;
+			targetProxy = A8C27310000000000000B006 /* PBXContainerItemProxy */;
+		};
+		A8C27310000000000000B009 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8C27310000000000000B001 /* Decrypt Secrets */;
+			targetProxy = A8C27310000000000000B007 /* PBXContainerItemProxy */;
+		};
 		BAB2616A2BFFD0AF009A98D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BAB261612BFFD0AF009A98D7 /* IntentsExtension */;
@@ -2556,6 +2616,20 @@
 			};
 			name = Release;
 		};
+		A8C27310000000000000B004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A8C27310000000000000B005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B5CBB071241976230003C271 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2747,6 +2821,15 @@
 			buildConfigurations = (
 				466FFF2D17CC10A800399652 /* Debug */,
 				466FFF2E17CC10A800399652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8C27310000000000000B003 /* Build configuration list for PBXAggregateTarget "Decrypt Secrets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8C27310000000000000B004 /* Debug */,
+				A8C27310000000000000B005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
