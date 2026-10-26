@@ -490,10 +490,10 @@ lane :configure_code_signing_developer_id do |readonly: true|
 end
 
 lane :configure_code_signing_app_store do |readonly: true|
-  configure_code_signing(type: 'appstore', readonly: readonly)
+  configure_code_signing(type: 'appstore', readonly: readonly, additional_cert_types: ['mac_installer_distribution'])
 end
 
-def configure_code_signing(type:, readonly: true)
+def configure_code_signing(type:, readonly: true, additional_cert_types: [])
   access_key = get_required_env('MATCH_S3_ACCESS_KEY')
   secret_access_key = get_required_env('MATCH_S3_SECRET_ACCESS_KEY')
 
@@ -511,6 +511,7 @@ def configure_code_signing(type:, readonly: true)
       APP_STORE_BUNDLE_IDENTIFIER,
       APP_STORE_BUNDLE_IDENTIFIER_INTENTS
     ],
+    additional_cert_types: additional_cert_types,
     api_key: app_store_connect_api_key
   )
 end
