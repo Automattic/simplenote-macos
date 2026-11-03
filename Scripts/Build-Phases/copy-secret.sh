@@ -7,9 +7,9 @@ set -euo pipefail
 #
 # The compiled file comes from one of two sources, in order:
 #
-#   1. ${SECRETS_ROOT}, for internal contributors. `bundle exec fastlane run
-#      configure_apply` decrypts it there, outside the repo; this phase only
-#      reads it.
+#   1. The a8c-secrets decrypted tree, for internal contributors. The
+#      `Decrypt Secrets` aggregate target, which this phase's targets must
+#      depend on, decrypts it there, outside the repo; this phase only reads it.
 #   2. Simplenote/SPCredentials.external-contributors.swift — gitignored, so
 #      external contributors can keep their own Simperium credentials with
 #      little-to-no risk of committing them, starting from a copy of the
@@ -17,8 +17,11 @@ set -euo pipefail
 #
 # If neither is present, the build will fail.
 
-SECRETS_ROOT="${HOME}/.configure/simplenote-macos/secrets"
-SECRETS_FILE="${SECRETS_ROOT}/SPCredentials.swift"
+# Build phases don't inherit the shell's PATH, so point at a8c-secrets' default
+# install location.
+export PATH="$HOME/.local/bin:$PATH"
+
+ENCRYPTED_SECRETS_FILE="${SRCROOT}/.a8c-secrets/SPCredentials.swift.age"
 TEMPLATE_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials.template.swift"
 EXTERNAL_SECRETS_FILE="${SRCROOT}/Simplenote/SPCredentials.external-contributors.swift"
 
@@ -73,7 +76,7 @@ function ensure_is_in_input_files_list() {
   fi
 }
 
-ensure_is_in_input_files_list "$SECRETS_FILE"
+ensure_is_in_input_files_list "$ENCRYPTED_SECRETS_FILE"
 ensure_is_in_input_files_list "$EXTERNAL_SECRETS_FILE"
 
 # The destination comes from the build phase's `outputPaths`, which Xcode
@@ -94,7 +97,8 @@ apply() {
     exit 0
 }
 
-if [ -f "$SECRETS_FILE" ]; then
+# `a8c-secrets which` exits non-zero when the file has not been decrypted yet.
+if command -v a8c-secrets > /dev/null 2>&1 && SECRETS_FILE=$(a8c-secrets which SPCredentials.swift 2>/dev/null); then
     apply "$SECRETS_FILE"
 fi
 
@@ -102,5 +106,5 @@ if [ -f "$EXTERNAL_SECRETS_FILE" ]; then
     apply "$EXTERNAL_SECRETS_FILE"
 fi
 
-echo "error: No secrets found! Internal contributors: run \`bundle exec fastlane run configure_apply\`. External contributors: copy '${TEMPLATE_SECRETS_FILE}' to '${EXTERNAL_SECRETS_FILE}', fill in your own Simperium credentials, and build again."
+echo "error: No secrets found! Internal contributors: install a8c-secrets and follow its setup instructions, see https://github.com/Automattic/a8c-secrets. External contributors: copy '${TEMPLATE_SECRETS_FILE}' to '${EXTERNAL_SECRETS_FILE}', fill in your own Simperium credentials, and build again."
 exit 1
