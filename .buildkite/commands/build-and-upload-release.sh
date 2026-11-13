@@ -3,6 +3,9 @@
 echo "--- :rubygems: Setting up Gems"
 install_gems
 
+echo "--- :swift: Restoring Swift Package Manager cache"
+restore_swiftpm_cache --package-resolved Simplenote.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+
 source "$(dirname "${BASH_SOURCE[0]}")/install-a8c-secrets.sh"
 
 echo "--- :hammer_and_wrench: Build and Test"
