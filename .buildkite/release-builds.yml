@@ -1,7 +1,6 @@
 steps:
   - label: "🛠 App Store Upload"
-    # Temporary: drop RBENV_VERSION once .ruby-version is 3.4.13 (AINFRA-3870); the Linux agents lack it until AINFRA-3889/3890/3891.
-    command: RBENV_VERSION=3.4.13 .buildkite/commands/build-and-upload-release.sh
+    command: .buildkite/commands/build-and-upload-release.sh
     priority: 1
     plugins: [$CI_TOOLKIT_PLUGIN]
     agents:
